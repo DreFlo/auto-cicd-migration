@@ -8,8 +8,48 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated cicd -->
       <package
-            uri="http://www.d.fe.up.pt/cicd"
+            uri="http://www.d.fe.up.pt/CICD"
             class="CICD.CICDPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Triggers"
+            class="CICD.Triggers.TriggersPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Options"
+            class="CICD.Options.OptionsPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Matrices"
+            class="CICD.Matrices.MatricesPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Parameters"
+            class="CICD.Parameters.ParametersPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/ExecutionBlocks"
+            class="CICD.ExecutionBlocks.ExecutionBlocksPackage"
             genModel="model/cicd.genmodel"/>
    </extension>
 

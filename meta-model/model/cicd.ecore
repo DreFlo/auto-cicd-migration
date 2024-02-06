@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CICD" nsURI="http://www.d.fe.up.pt/cicd" nsPrefix="cicd">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CICD" nsURI="http://www.d.fe.up.pt/CICD" nsPrefix="CICD">
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//Agent"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
-        eType="#//Trigger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" upperBound="-1" eType="#//Job"
-        containment="true"/>
+        eType="#//Triggers/Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Parameters/Input"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Parameters/Output"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobStreams" upperBound="-1"
+        eType="#//Job" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//EnvironmentVariable" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pipeline_tool_framework"
-        upperBound="-1" eType="#//Tool_framework" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolFrameworks" upperBound="-1"
+        eType="#//ToolFramework" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="permission" upperBound="-1"
         eType="#//Permission" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parallel" upperBound="-1"
-        eType="#//Parallel" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Agent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -28,6 +30,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="directives" upperBound="-1"
         eType="#//StringToStringMapEntry" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ToolFramework">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringToStringMapEntry" instanceClassName="java.util.Map$Entry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -35,92 +40,167 @@
   <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" instanceClassName="java.util.Map$Entry"
       eSuperTypes="#//StringToStringMapEntry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="secret" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchGlobs" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tagGlobs" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//Trigger"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//Trigger"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ManualTrigger" eSuperTypes="#//Trigger"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WebhookTrigger" eSuperTypes="#//Trigger"/>
   <eClassifiers xsi:type="ecore:EClass" name="Job">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tool_framework_job" upperBound="-1"
-        eType="#//Tool_framework" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
+        eType="#//Parameters/Input" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="output" upperBound="-1"
-        eType="#//Artifact"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="command" upperBound="-1"
-        eType="#//Command" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ifthenelse" upperBound="-1"
-        eType="#//IfThenElse" containment="true"/>
+        eType="#//Parameters/Output"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
+        eType="#//EnvironmentVariable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executionBlocks" upperBound="-1"
+        eType="#//ExecutionBlocks/ExecutionBlock" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+        eType="#//DockerContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toolFrameworks" upperBound="-1"
+        eType="#//ToolFramework" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Allow_faillure" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="input" upperBound="-1"
-        eType="#//Artifact" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="environment" upperBound="-1"
-        eType="#//EnvironmentVariable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Description1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="permission" upperBound="-1"
         eType="#//Permission" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Matrix">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rows" lowerBound="1" upperBound="-1"
-        eType="#//MatrixRow" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="includes" upperBound="-1"
-        eType="#//MatrixCombination"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" upperBound="-1"
-        eType="#//MatrixCombination"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MatrixRow">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cells" lowerBound="1" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" transient="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MatrixCombination">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="combinationEntries" lowerBound="1"
-        upperBound="-1" eType="#//StringToStringMapEntry"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Command">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tool" eType="#//Tool_framework"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//Parameters" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Artifact">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tool_framework">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name5" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IfThenElse">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="if" upperBound="-1" eType="#//Command"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="else" upperBound="-1" eType="#//Command"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ifelse" upperBound="-1"
-        eType="#//IfThenElse" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="elseif" upperBound="-1"
-        eType="#//IfThenElse" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameters">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Parameter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//Job"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Permission">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parallel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="job" upperBound="-1" eType="#//Job"
-        containment="true"/>
-  </eClassifiers>
+  <eSubpackages name="Triggers" nsURI="http://www.d.fe.up.pt/CICD/Triggers" nsPrefix="Triggers">
+    <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchGlobs" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="tagGlobs" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//Triggers/Trigger"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//Triggers/Trigger"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ManualTrigger" eSuperTypes="#//Triggers/Trigger"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Triggers/Trigger">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WebhookTrigger" eSuperTypes="#//Triggers/Trigger"/>
+  </eSubpackages>
+  <eSubpackages name="Options" nsURI="http://www.d.fe.up.pt/CICD/Options" nsPrefix="Options">
+    <eClassifiers xsi:type="ecore:EClass" name="Option" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Timeout" eSuperTypes="#//Options/Option">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="minutes" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConcurrencyGroup">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cancelInProgress" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WorkingDirectory" eSuperTypes="#//Options/Option">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RetryOnFailure" eSuperTypes="#//Options/Option">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAttempts" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Matrices" nsURI="http://www.d.fe.up.pt/CICD/Matrices" nsPrefix="Matrices">
+    <eClassifiers xsi:type="ecore:EClass" name="Matrix">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="axes" lowerBound="1"
+          upperBound="-1" eType="#//Matrices/MatrixAxis" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="includes" upperBound="-1"
+          eType="#//Matrices/MatrixCombination"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" upperBound="-1"
+          eType="#//Matrices/MatrixCombination"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MatrixAxis">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cells" lowerBound="1"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          transient="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MatrixCombination">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="combinationEntries" lowerBound="1"
+          upperBound="-1" eType="#//StringToStringMapEntry"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Parameters" nsURI="http://www.d.fe.up.pt/CICD/Parameters" nsPrefix="Parameters">
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//Parameters/Parameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//Parameters/InputType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//Parameters/Parameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="InputType">
+      <eLiterals name="STRING"/>
+      <eLiterals name="NUMBER" value="1"/>
+      <eLiterals name="BOOLEAN" value="2"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="ExecutionBlocks" nsURI="http://www.d.fe.up.pt/CICD/ExecutionBlocks"
+      nsPrefix="ExecutionBlocks">
+    <eClassifiers xsi:type="ecore:EClass" name="ExecutionBlock" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IfThenElse" eSuperTypes="#//ExecutionBlocks/ExecutionBlock">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="if" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="then" lowerBound="1"
+          upperBound="-1" eType="#//ExecutionBlocks/ExecutionBlock" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="else" upperBound="-1"
+          eType="#//ExecutionBlocks/ExecutionBlock" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Step" abstract="true" eSuperTypes="#//ExecutionBlocks/ExecutionBlock">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables"
+          upperBound="-1" eType="#//EnvironmentVariable"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
+          eType="#//Options/Option"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Command" eSuperTypes="#//ExecutionBlocks/Step">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="program" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="kwargs" upperBound="-1"
+          eType="#//StringToStringMapEntry"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="flags" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Plugin" eSuperTypes="#//ExecutionBlocks/Step">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="pluginName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="kwargs" upperBound="-1"
+          eType="#//StringToStringMapEntry"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Cache" eSuperTypes="#//ExecutionBlocks/Step">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cacheName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="keys" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="paths" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Artifact" eSuperTypes="#//ExecutionBlocks/Step">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="includePaths" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="excludePaths" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="retentionTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Expressions" nsURI="http://www.d.fe.up.pt/CICD/Expressions"
+      nsPrefix="Expressions"/>
 </ecore:EPackage>

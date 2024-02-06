@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: devops2;singleton:=true
-Automatic-Module-Name: devops2
+Bundle-SymbolicName: cicd-meta-model;singleton:=true
+Automatic-Module-Name: cicd-meta-model
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: devops2,
- devops2.impl,
- devops2.util
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: CICD,
+ CICD.impl,
+ CICD.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -5,13 +5,12 @@
 -->
 
 <plugin>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated devops2 -->
+      <!-- @generated cicd -->
       <package
-            uri="http://www.example.org/devops2"
-            class="devops2.Devops2Package"
-            genModel="model/devops2.genmodel"/>
+            uri="http://www.d.fe.up.pt/cicd"
+            class="CICD.CICDPackage"
+            genModel="model/cicd.genmodel"/>
    </extension>
 
 </plugin>

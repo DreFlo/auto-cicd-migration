@@ -1,2 +1,3 @@
-gettestingdataset/Repositories.random-processed.json
-gettestingdataset/keys.py
+*.edit
+*.editor
+*.tests

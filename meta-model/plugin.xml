@@ -48,8 +48,64 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated cicd -->
       <package
-            uri="http://www.d.fe.up.pt/CICD/ExecutionBlocks"
-            class="CICD.ExecutionBlocks.ExecutionBlocksPackage"
+            uri="http://www.d.fe.up.pt/CICD/Steps"
+            class="CICD.Steps.StepsPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions"
+            class="CICD.Expressions.ExpressionsPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions/Values"
+            class="CICD.Expressions.Values.ValuesPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions/Values/Literals"
+            class="CICD.Expressions.Values.Literals.LiteralsPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions/Values/Variables"
+            class="CICD.Expressions.Values.Variables.VariablesPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions/BuiltInFunctions"
+            class="CICD.Expressions.BuiltInFunctions.BuiltInFunctionsPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions/"
+            class="CICD.Expressions.BinaryOperations.BinaryOperationsPackage"
+            genModel="model/cicd.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cicd -->
+      <package
+            uri="http://www.d.fe.up.pt/CICD/Expressions/UnaryOperations"
+            class="CICD.Expressions.UnaryOperations.UnaryOperationsPackage"
             genModel="model/cicd.genmodel"/>
    </extension>
 

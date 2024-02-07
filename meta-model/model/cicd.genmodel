@@ -6,17 +6,30 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>cicd.ecore</foreignModel>
   <genPackages prefix="CICD" disposableProviderFactory="true" ecorePackage="cicd.ecore#/">
+    <genClasses image="false" ecoreClass="cicd.ecore#//PipelineBlock">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//PipelineBlock/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//PipelineBlock/agent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//PipelineBlock/inputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//PipelineBlock/outputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//PipelineBlock/environmentVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//PipelineBlock/permissions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//PipelineBlock/timeoutMinutes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//PipelineBlock/workingDirectory"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//PipelineBlock/concurrencyGroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//PipelineBlock/shell"/>
+    </genClasses>
     <genClasses ecoreClass="cicd.ecore#//Pipeline">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Pipeline/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/agent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/triggers"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/inputs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/outputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/jobs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/environmentVariables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/toolFrameworks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/permission"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Pipeline/parallel"/>
+    </genClasses>
+    <genClasses ecoreClass="cicd.ecore#//Job">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Job/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/steps"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/services"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/dependsOn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/necessaryFor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Job/maxAttempts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Job/allowFailure"/>
     </genClasses>
     <genClasses ecoreClass="cicd.ecore#//Agent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Agent/name"/>
@@ -24,36 +37,14 @@
     </genClasses>
     <genClasses ecoreClass="cicd.ecore#//DockerContainer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//DockerContainer/label"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/directives"/>
-    </genClasses>
-    <genClasses ecoreClass="cicd.ecore#//ToolFramework">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ToolFramework/name"/>
-    </genClasses>
-    <genClasses ecoreClass="cicd.ecore#//StringToStringMapEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//StringToStringMapEntry/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//StringToStringMapEntry/value"/>
-    </genClasses>
-    <genClasses ecoreClass="cicd.ecore#//EnvironmentVariable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//EnvironmentVariable/secret"/>
-    </genClasses>
-    <genClasses ecoreClass="cicd.ecore#//Job">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Job/Name1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/input"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/output"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/environmentVariables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/executionBlocks"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/services"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/toolFrameworks"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Job/Allow_faillure"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Job/Description1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Job/permission"/>
-    </genClasses>
-    <genClasses ecoreClass="cicd.ecore#//Permission">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Permission/Key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Permission/Value"/>
-    </genClasses>
-    <genClasses ecoreClass="cicd.ecore#//Parallel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Parallel/job"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/image"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/environmentVariables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/volumes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/ports"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//DockerContainer/options"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/registryUsername"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/registryPassword"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cicd.ecore#//DockerContainer/network"/>
     </genClasses>
     <nestedGenPackages prefix="Triggers" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Triggers">
       <genClasses image="false" ecoreClass="cicd.ecore#//Triggers/Trigger">
@@ -69,19 +60,21 @@
       <genClasses ecoreClass="cicd.ecore#//Triggers/WebhookTrigger"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Options" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Options">
-      <genClasses image="false" ecoreClass="cicd.ecore#//Options/Option"/>
-      <genClasses ecoreClass="cicd.ecore#//Options/Timeout">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/Timeout/minutes"/>
-      </genClasses>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="cicd.ecore#//Options/PermissionType">
+        <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Options/PermissionType/READ"/>
+        <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Options/PermissionType/WRITE"/>
+        <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Options/PermissionType/NONE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="cicd.ecore#//Options/ShellType">
+        <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Options/ShellType/BASH"/>
+      </genEnums>
       <genClasses ecoreClass="cicd.ecore#//Options/ConcurrencyGroup">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/ConcurrencyGroup/groupId"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EReference cicd.ecore#//Options/ConcurrencyGroup/groupId"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/ConcurrencyGroup/cancelInProgress"/>
       </genClasses>
-      <genClasses ecoreClass="cicd.ecore#//Options/WorkingDirectory">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/WorkingDirectory/path"/>
-      </genClasses>
-      <genClasses ecoreClass="cicd.ecore#//Options/RetryOnFailure">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/RetryOnFailure/maxAttempts"/>
+      <genClasses ecoreClass="cicd.ecore#//Options/Permission">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/Permission/key"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Options/Permission/value"/>
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Matrices" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Matrices">
@@ -91,10 +84,11 @@
             ecoreFeature="ecore:EReference cicd.ecore#//Matrices/Matrix/includes"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference cicd.ecore#//Matrices/Matrix/excludes"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Matrices/Matrix/failFast"/>
       </genClasses>
       <genClasses ecoreClass="cicd.ecore#//Matrices/MatrixAxis">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Matrices/MatrixAxis/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Matrices/MatrixAxis/cells"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EReference cicd.ecore#//Matrices/MatrixAxis/cells"/>
       </genClasses>
       <genClasses ecoreClass="cicd.ecore#//Matrices/MatrixCombination">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -106,6 +100,7 @@
         <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Parameters/InputType/STRING"/>
         <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Parameters/InputType/NUMBER"/>
         <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Parameters/InputType/BOOLEAN"/>
+        <genEnumLiterals ecoreEnumLiteral="cicd.ecore#//Parameters/InputType/SECRET"/>
       </genEnums>
       <genClasses image="false" ecoreClass="cicd.ecore#//Parameters/Parameter">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Parameters/Parameter/id"/>
@@ -117,49 +112,96 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Parameters/Input/required"/>
       </genClasses>
       <genClasses ecoreClass="cicd.ecore#//Parameters/Output">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Parameters/Output/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EReference cicd.ecore#//Parameters/Output/value"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="ExecutionBlocks" disposableProviderFactory="true" ecorePackage="cicd.ecore#//ExecutionBlocks">
-      <genClasses image="false" ecoreClass="cicd.ecore#//ExecutionBlocks/ExecutionBlock"/>
-      <genClasses ecoreClass="cicd.ecore#//ExecutionBlocks/IfThenElse">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/IfThenElse/if"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//ExecutionBlocks/IfThenElse/then"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//ExecutionBlocks/IfThenElse/else"/>
+    <nestedGenPackages prefix="Steps" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Steps">
+      <genClasses image="false" ecoreClass="cicd.ecore#//Steps/Step"/>
+      <genClasses ecoreClass="cicd.ecore#//Steps/ConditionalStep">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/ConditionalStep/if"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/ConditionalStep/then"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/ConditionalStep/else"/>
       </genClasses>
-      <genClasses image="false" ecoreClass="cicd.ecore#//ExecutionBlocks/Step">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Step/id"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Step/name"/>
+      <genClasses image="false" ecoreClass="cicd.ecore#//Steps/NonConditionalStep">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/NonConditionalStep/id"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/NonConditionalStep/name"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference cicd.ecore#//ExecutionBlocks/Step/environmentVariables"/>
+            ecoreFeature="ecore:EReference cicd.ecore#//Steps/NonConditionalStep/environmentVariables"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/NonConditionalStep/timeoutMinutes"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/NonConditionalStep/allowFailure"/>
+      </genClasses>
+      <genClasses ecoreClass="cicd.ecore#//Steps/Command">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/Command/program"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/Command/args"/>
+      </genClasses>
+      <genClasses ecoreClass="cicd.ecore#//Steps/Plugin">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/Plugin/pluginName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Steps/Plugin/version"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference cicd.ecore#//ExecutionBlocks/Step/options"/>
+            ecoreFeature="ecore:EReference cicd.ecore#//Steps/Plugin/kwargs"/>
       </genClasses>
-      <genClasses ecoreClass="cicd.ecore#//ExecutionBlocks/Command">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Command/program"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Command/args"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference cicd.ecore#//ExecutionBlocks/Command/kwargs"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Command/flags"/>
+      <genClasses ecoreClass="cicd.ecore#//Steps/Cache">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Cache/cacheName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Cache/keys"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Cache/paths"/>
       </genClasses>
-      <genClasses ecoreClass="cicd.ecore#//ExecutionBlocks/Plugin">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Plugin/pluginName"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Plugin/version"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference cicd.ecore#//ExecutionBlocks/Plugin/kwargs"/>
-      </genClasses>
-      <genClasses ecoreClass="cicd.ecore#//ExecutionBlocks/Cache">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Cache/cacheName"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Cache/keys"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Cache/paths"/>
-      </genClasses>
-      <genClasses ecoreClass="cicd.ecore#//ExecutionBlocks/Artifact">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Artifact/artifactName"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Artifact/includePaths"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Artifact/excludePaths"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//ExecutionBlocks/Artifact/retentionTime"/>
+      <genClasses ecoreClass="cicd.ecore#//Steps/Artifact">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Artifact/artifactName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Artifact/includePaths"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Artifact/excludePaths"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Steps/Artifact/retentionTime"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Expressions" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Expressions"/>
+    <nestedGenPackages prefix="Expressions" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Expressions">
+      <genClasses ecoreClass="cicd.ecore#//Expressions/Assignment">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cicd.ecore#//Expressions/Assignment/key"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference cicd.ecore#//Expressions/Assignment/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="cicd.ecore#//Expressions/Expression"/>
+      <nestedGenPackages prefix="Values" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Expressions/Values">
+        <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Value"/>
+        <nestedGenPackages prefix="Literals" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Expressions/Values/Literals">
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Literals/Literal">
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Expressions/Values/Literals/Literal/value"/>
+          </genClasses>
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Literals/StringLiteral"/>
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Literals/NumberLiteral"/>
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Literals/BooleanLiteral"/>
+        </nestedGenPackages>
+        <nestedGenPackages prefix="Variables" disposableProviderFactory="true" ecorePackage="cicd.ecore#//Expressions/Values/Variables">
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Variables/Variable">
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cicd.ecore#//Expressions/Values/Variables/Variable/name"/>
+          </genClasses>
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Variables/EnvironmentVariable"/>
+          <genClasses ecoreClass="cicd.ecore#//Expressions/Values/Variables/SecretVariable"/>
+        </nestedGenPackages>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="BuiltInFunctions" disposableProviderFactory="true"
+          ecorePackage="cicd.ecore#//Expressions/BuiltInFunctions">
+        <genClasses ecoreClass="cicd.ecore#//Expressions/BuiltInFunctions/BuiltInFunction"/>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="BinaryOperations" disposableProviderFactory="true"
+          ecorePackage="cicd.ecore#//Expressions/BinaryOperations">
+        <genClasses ecoreClass="cicd.ecore#//Expressions/BinaryOperations/BinaryOp">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference cicd.ecore#//Expressions/BinaryOperations/BinaryOp/lhs"/>
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference cicd.ecore#//Expressions/BinaryOperations/BinaryOp/rhs"/>
+        </genClasses>
+        <genClasses ecoreClass="cicd.ecore#//Expressions/BinaryOperations/Conjuntion"/>
+        <genClasses ecoreClass="cicd.ecore#//Expressions/BinaryOperations/Disjunction"/>
+        <genClasses ecoreClass="cicd.ecore#//Expressions/BinaryOperations/Addition"/>
+        <genClasses ecoreClass="cicd.ecore#//Expressions/BinaryOperations/Subtraction"/>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="UnaryOperations" disposableProviderFactory="true"
+          ecorePackage="cicd.ecore#//Expressions/UnaryOperations">
+        <genClasses ecoreClass="cicd.ecore#//Expressions/UnaryOperations/UnaryOp">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference cicd.ecore#//Expressions/UnaryOperations/UnaryOp/rhs"/>
+        </genClasses>
+        <genClasses ecoreClass="cicd.ecore#//Expressions/UnaryOperations/Negation"/>
+      </nestedGenPackages>
+    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

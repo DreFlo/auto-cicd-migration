@@ -65,10 +65,11 @@
     <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchGlobs" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//Triggers/Trigger">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="tagGlobs" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//Triggers/Trigger"/>
     <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//Triggers/Trigger"/>
     <eClassifiers xsi:type="ecore:EClass" name="ManualTrigger" eSuperTypes="#//Triggers/Trigger"/>
     <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Triggers/Trigger">

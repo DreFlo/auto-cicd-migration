@@ -1,0 +1,198 @@
+grammar d.fe.up.pt.cicd.gha.GitHubActions with org.eclipse.xtext.common.Terminals
+
+generate gitHubActions "http://www.fe.d/up/pt/cicd/gha/GitHubActions"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Workflow:
+	('name' ':' name=STRING)? &
+	('on' ':' triggers=TriggerList) &
+	('permissions' ':' permissions+=Permission+)? &
+	('env' ':' environmentVariables+=KeyValuePair+)? &
+	('defaults' ':' defaults=Defaults)? &
+	('concurrency' ':' concurrency=ConcurrencyGroup)? &
+	('jobs' ':' jobs+=Job+)
+;
+
+Job:
+	BEGIN
+	name=STRING ':'
+		BEGIN
+		('name' ':' jobName=STRING)? &
+		('permissions' ':' permissions+=Permission+)? &
+		('needs' ':' dependsOn=YAMLList)? &
+		('if' ':' condition=STRING)? &
+		('runs-on' ':' os=STRING) &
+		('environment' ':' stagingEnvironment=StagingEnvironment)? &
+		('concurrency' ':' concurrency=ConcurrencyGroup)? &
+		('env' ':' environmentVariables+=KeyValuePair+)? &
+		('defaults' ':' defaults=Defaults)? &
+		('steps' ':' steps+=Step+) &
+		('strategy' ':' strategy=Strategy)? &
+		('container' ':' container=Container)? &
+		('services' ':' services+=Service+)? &
+		('uses' ':' reusableWorkflowPath=STRING)? &
+		('with' ':' parameters=Parameters)? &
+		('secrets' ':' secrets=('inherit' | Secrets))
+		END
+	END
+;
+
+ConcurrencyGroup:
+	BEGIN
+	'group' ':' name=ExpressionCall
+	('cancel-in-progress' ':' cancelInProgress=("true" | "false"))?
+	END
+;
+
+TriggerList:
+	triggers+=SimpleTrigger |
+	('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']') |
+	(
+		BEGIN
+		('-' triggers+=SimpleTrigger NEWLINE)+
+		END
+	) |
+	triggers+=OptionedTrigger+
+;
+
+SimpleTrigger returns Trigger:
+	event=TRIGGER_EVENTS
+;
+
+OptionedTrigger returns Trigger:
+	BEGIN
+	event=TRIGGER_EVENTS ':'
+		BEGIN
+		('branches' ':' branches=YAMLList)? &
+		('branches-ignore' ':' branchesIgnore=YAMLList)? &
+		('tags' ':' tags=YAMLList)? &
+		('tags-ignore' ':' tagsIgnore=YAMLList)? &
+		('-' 'cron' ':' cronStrings+=STRING)* &
+		('inputs' ':' inputs+=Input+)? &
+		('output' ':' outputs+=Output)? &
+		('secrets' ':' secrets+=Secrets)? &
+		END 
+	END
+;
+
+Input:
+	'i'
+;
+
+Output:
+	'o'
+;
+
+terminal TRIGGER_EVENTS:
+	'push' | 'pull_request' | 'workflow_call' | 'workflow_dispatch'
+;
+
+Permission:
+	'p'
+;
+
+Defaults:
+	'd'
+;
+
+StagingEnvironment:
+	's'
+;
+
+Step:
+	's'
+;
+
+Strategy:
+	's'
+;
+
+Container:
+	'c'
+;
+
+Service:
+	BEGIN
+	name=STRING ':'
+		BEGIN
+		container=Container
+		END
+	END
+;
+
+Parameters:
+	'p'
+;
+
+Secrets:
+	's'
+;
+
+KeyValuePair:
+	BEGIN
+	key=STRING ':' value=ExpressionCall
+	END
+;
+
+YAMLList:
+	list+=ExpressionCall |
+	('[' list+=ExpressionCall (',' list+=ExpressionCall)* ']') |
+	(
+		BEGIN
+		('-' list+=ExpressionCall NEWLINE)+
+		END
+	)
+;
+
+ExpressionCall:
+	(('${{' Negation | Comparison '}}') | Literal) next=ExpressionCall?
+;
+
+Negation returns Expression:
+	'!' Comparison
+;
+
+Comparison returns Expression:
+	Disjunction ({Comparison.left=current} '==' right=Disjunction)*
+;
+
+Disjunction returns Expression:
+	Conjuntion ({Disjunction.left=current} '||' right=Conjuntion)*
+;
+ 
+Conjuntion returns Expression:
+	Primary ({Conjunction.left=current} '&&' right=Primary)*;
+ 
+Primary returns Expression:
+	 FunctionCall | ArrayAccess | '(' Negation ')'
+;
+
+FunctionCall returns Expression:
+	name=STRING '(' (args+=Literal (',' args+=Literal)*)? ')'
+;
+
+ArrayAccess returns Expression:
+	VariableDereference ({ArrayAccess.left=current} '[' right=INT ']')*
+;
+
+VariableDereference returns Expression:
+	Literal ({VariableDereference.left=current} '.' right=Literal)*
+;
+
+Literal returns Expression:
+	value=STRING
+;
+
+@Override 
+terminal STRING:
+	'"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"' |
+	"'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'" |
+	.+
+;
+
+terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
+
+terminal END: 'synthetic:END';      // decrease indentation
+
+terminal NEWLINE: '\r'? '\n';

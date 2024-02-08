@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: d.fe.up.pt.cicd.gha
+Bundle-ManifestVersion: 2
+Bundle-Name: d.fe.up.pt.cicd.gha
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: d.fe.up.pt.cicd.gha; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17

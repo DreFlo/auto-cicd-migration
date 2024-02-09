@@ -5,7 +5,7 @@ generate gitHubActions "http://www.fe.d/up/pt/cicd/gha/GitHubActions"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Workflow:
-	('name' ':' name=STRING)? &
+	('name' ':' name=YAML_STRING)? &
 	('on' ':' triggers=TriggerList) &
 	('permissions' ':' permissions+=Permission+)? &
 	('env' ':' environmentVariables+=KeyValuePair+)? &
@@ -16,13 +16,13 @@ Workflow:
 
 Job:
 	BEGIN
-	name=STRING ':'
+	name=YAML_STRING ':'
 		BEGIN
-		('name' ':' jobName=STRING)? &
+		('name' ':' jobName=YAML_STRING)? &
 		('permissions' ':' permissions+=Permission+)? &
 		('needs' ':' dependsOn=YAMLList)? &
-		('if' ':' condition=STRING)? &
-		('runs-on' ':' os=STRING) &
+		if=IfStatement? &
+		('runs-on' ':' os=YAML_STRING) &
 		('environment' ':' stagingEnvironment=StagingEnvironment)? &
 		('concurrency' ':' concurrency=ConcurrencyGroup)? &
 		('env' ':' environmentVariables+=KeyValuePair+)? &
@@ -31,11 +31,37 @@ Job:
 		('strategy' ':' strategy=Strategy)? &
 		('container' ':' container=Container)? &
 		('services' ':' services+=Service+)? &
-		('uses' ':' reusableWorkflowPath=STRING)? &
-		('with' ':' parameters=Parameters)? &
-		('secrets' ':' secrets=('inherit' | Secrets))
+		('uses' ':' reusableWorkflowPath=YAML_STRING)? &
+		('with' ':' arguments+=KeyValuePair+)? &
+		('secrets' ':' (inheritSecrets?='inherit' | secrets+=KeyValuePair+))? &
+		('continue-on-error' ':' continueOnError=ExpressionCall)? &
+		('timeout-minutes' ':' timeout=ExpressionCall)?
 		END
 	END
+;
+
+Step:
+	{Step}
+	BEGIN
+	'-'
+	(
+		('id' ':' id=YAML_STRING)? &
+		if=IfStatement? &
+		('name' ':' name=YAML_STRING)? &
+		('uses' ':' package=YAML_STRING)? &
+		('run' ':' command=YAML_STRING)? &
+		('working-directory' ':' dir=YAML_STRING)? &
+		('shell' ':' shell=YAML_STRING)? &
+		('with' ':' ((BEGIN 'entrypoint' ':' entrypoint=YAML_STRING END)? & arguments+=KeyValuePair*))? &
+		('env' ':' environmentVariables+=KeyValuePair+)? &
+		('continue-on-error' ':' continueOnError=ExpressionCall)? &
+		('timeout-minutes' ':' timeout=ExpressionCall)?	
+	)
+	END
+;
+
+IfStatement:
+	'if' ':' condition=ExpressionCall
 ;
 
 ConcurrencyGroup:
@@ -68,70 +94,137 @@ OptionedTrigger returns Trigger:
 		('branches-ignore' ':' branchesIgnore=YAMLList)? &
 		('tags' ':' tags=YAMLList)? &
 		('tags-ignore' ':' tagsIgnore=YAMLList)? &
-		('-' 'cron' ':' cronStrings+=STRING)* &
+		('-' 'cron' ':' cronStrings+=YAML_STRING)* &
 		('inputs' ':' inputs+=Input+)? &
-		('output' ':' outputs+=Output)? &
-		('secrets' ':' secrets+=Secrets)? &
+		('output' ':' outputs+=Output+)? &
+		('secrets' ':' secrets+=Secret+)? &
 		END 
 	END
 ;
 
 Input:
-	'i'
+	BEGIN
+	name=YAML_STRING ':'
+		BEGIN
+		('description' ':' description=ExpressionCall)? &
+		('default' ':' default=ExpressionCall)? &
+		('required' ':' required=BOOLEAN)? &
+		('type' ':' type=('boolean' | 'number' | 'string'))
+		END
+	END
 ;
 
 Output:
-	'o'
-;
-
-terminal TRIGGER_EVENTS:
-	'push' | 'pull_request' | 'workflow_call' | 'workflow_dispatch'
+	BEGIN
+	name=YAML_STRING ':'
+		BEGIN
+		('description' ':' description=ExpressionCall)? &
+		('value' ':' value=ExpressionCall)
+		END
+	END
 ;
 
 Permission:
-	'p'
+	BEGIN
+	name=YAML_STRING ':'
+		BEGIN
+		permission=('read' | 'write' | 'none')
+		END
+	END
 ;
 
 Defaults:
-	'd'
+	BEGIN
+	'run' ':'
+		BEGIN
+		(
+			('shell' ':' shell=YAML_STRING)
+			('working-directory' ':' dir=YAML_STRING)?
+		) |
+		(
+			('working-directory' ':' dir=YAML_STRING)
+			('shell' ':' shell=YAML_STRING)?
+		)
+		END
+	END
 ;
 
 StagingEnvironment:
-	's'
-;
-
-Step:
-	's'
+	(
+		{StagingEnvironment} YAML_STRING |
+		(
+			BEGIN
+			(
+				('name' ':' shell=YAML_STRING)
+				('url' ':' url=ExpressionCall)?
+			) |
+			(
+				('url' ':' url=ExpressionCall)
+				('name' ':' shell=YAML_STRING)?
+			)
+			END
+		)
+	)
 ;
 
 Strategy:
-	's'
+	BEGIN
+	(
+		'matrix' ':'
+			BEGIN
+			('include' ':' include=YAMLList)? &
+			('exlude' ':' exclude=YAMLList)? &
+			axes+=MatrixAxis+
+			END		
+	) &
+	('fail-fast' ':' failFast=ExpressionCall)? &
+	('max-paralell' ':' maxParallel=ExpressionCall)?
+	END
+;
+
+MatrixAxis:
+	name=YAML_STRING ':' cells=YAMLList
 ;
 
 Container:
-	'c'
+	BEGIN
+	('image' ':' image=YAML_STRING) &
+	('env' ':' environmentVariables+=KeyValuePair+)? &
+	('ports' ':' ports=YAMLList)? &
+	('volumes' ':' volumes=YAMLList)? &
+	('options' ':' options=ExpressionCall)? &
+	(
+		'credentials' ':'
+			BEGIN
+			('username' ':' username=ExpressionCall) &
+			('password' ':' password=ExpressionCall)
+			END
+	)
+	END
 ;
 
 Service:
 	BEGIN
-	name=STRING ':'
+	name=YAML_STRING ':'
 		BEGIN
 		container=Container
 		END
 	END
 ;
 
-Parameters:
-	'p'
-;
-
-Secrets:
-	's'
+Secret:
+	BEGIN
+	name=YAML_STRING ':'
+		BEGIN
+		('description' ':' description=YAML_STRING)? &
+		('required' ':' required=BOOLEAN)?
+		END
+	END
 ;
 
 KeyValuePair:
 	BEGIN
-	key=STRING ':' value=ExpressionCall
+	key=YAML_STRING ':' value=ExpressionCall
 	END
 ;
 
@@ -146,49 +239,77 @@ YAMLList:
 ;
 
 ExpressionCall:
-	(('${{' Negation | Comparison '}}') | Literal) next=ExpressionCall?
+	(('${{' Expression '}}') | {Expression} YAML_STRING) next=ExpressionCall?
 ;
 
-Negation returns Expression:
-	'!' Comparison
+Expression:
+	And
+;
+
+And returns Expression:
+    Comparison ({And.lhs=current} '&&' rhs=Comparison )*
 ;
 
 Comparison returns Expression:
-	Disjunction ({Comparison.left=current} '==' right=Disjunction)*
+    Or ({Comparison.lhs=current} op=('<' | '<=' | '>' | '>=' | '==' | '!=') rhs=Or )*
 ;
 
-Disjunction returns Expression:
-	Conjuntion ({Disjunction.left=current} '||' right=Conjuntion)*
-;
- 
-Conjuntion returns Expression:
-	Primary ({Conjunction.left=current} '&&' right=Primary)*;
- 
-Primary returns Expression:
-	 FunctionCall | ArrayAccess | '(' Negation ')'
+Or returns Expression:
+    Not ({Or.lhs=current} '||' rhs=Not)
 ;
 
-FunctionCall returns Expression:
-	name=STRING '(' (args+=Literal (',' args+=Literal)*)? ')'
+Not returns Expression:
+    ('!' Not) | Terminal
 ;
 
-ArrayAccess returns Expression:
-	VariableDereference ({ArrayAccess.left=current} '[' right=INT ']')*
+Terminal returns Expression:
+    {Expression} LITERAL | 
+    Variable | 
+    CallExpression |
+    ('(' Expression ')' )
 ;
 
-VariableDereference returns Expression:
-	Literal ({VariableDereference.left=current} '.' right=Literal)*
+Variable returns Expression:
+	Identifier ({Variable.lhs=current} rhs=(Array | DotStatement))*
 ;
 
-Literal returns Expression:
-	value=STRING
+Identifier returns Expression:
+	name=ID
 ;
 
-@Override 
-terminal STRING:
-	'"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"' |
-	"'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'" |
-	.+
+Array returns Expression:
+    '[' Expression ']'
+;
+
+DotStatement returns Expression:
+    '.' Identifier
+;
+
+CallExpression returns Expression:
+    Identifier '(' (args+=Expression ( ',' args+=Expression )* )? ')'
+;
+
+terminal TRIGGER_EVENTS:
+	'push' | 'pull_request' | 'workflow_call' | 'workflow_dispatch'
+;
+
+terminal LITERAL returns ecore::EString:
+	NUMBER |  INT | BOOLEAN | STRING 
+;
+
+terminal NUMBER returns ecore::EBigDecimal:
+	INT ('.' INT)?
+;
+
+terminal BOOLEAN returns ecore::EBoolean:
+	'true' | 'false'
+;
+
+terminal YAML_STRING returns ecore::EString:
+	('"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"') |
+	("'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'") |
+	(!('$' | NEWLINE))+ |
+	('|' BEGIN (!('$'))+ END)
 ;
 
 terminal BEGIN: 'synthetic:BEGIN';  // increase indentation

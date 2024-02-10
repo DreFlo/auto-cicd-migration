@@ -154,14 +154,8 @@ StagingEnvironment:
 		{StagingEnvironment} YAML_STRING |
 		(
 			BEGIN
-			(
-				('name' ':' shell=YAML_STRING)
-				('url' ':' url=ExpressionCall)?
-			) |
-			(
-				('url' ':' url=ExpressionCall)
-				('name' ':' shell=YAML_STRING)?
-			)
+			('name' ':' shell=YAML_STRING)
+			('url' ':' url=ExpressionCall)?
 			END
 		)
 	)

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GHA" nsURI="http://d.fe.up.pt/GHA" nsPrefix="GHA">
+  <eClassifiers xsi:type="ecore:EClass" name="Workflow">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" lowerBound="1"
+        upperBound="-1" eType="#//Triggers/Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="permissions" upperBound="-1"
+        eType="#//Options/Permission" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
+        eType="#//Expressions/VariableAssignment"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shell" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workingDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concurrencyGroup" eType="#//Options/ConcurrencyGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" lowerBound="1" upperBound="-1"
+        eType="#//Jobs/Job"/>
+  </eClassifiers>
+  <eSubpackages name="Jobs" nsURI="http://d.fe.up.pt/GHA/Jobs" nsPrefix="Jobs">
+    <eClassifiers xsi:type="ecore:EClass" name="Job" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          iD="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="permissions" upperBound="-1"
+          eType="#//Options/Permission" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dependsOn" upperBound="-1"
+          eType="#//Jobs/Job" eOpposite="#//Jobs/Job/necessaryfor"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="necessaryfor" upperBound="-1"
+          eType="#//Jobs/Job" eOpposite="#//Jobs/Job/dependsOn"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="if" eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1"
+          eType="#//Jobs/Agent"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="stagingEnvironment" eType="#//Jobs/StagingEnvironment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables"
+          upperBound="-1" eType="#//Expressions/VariableAssignment"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="shell" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="workingDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="concurrencyGroup" eType="#//Options/ConcurrencyGroup"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="timeoutMinutes" eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="continueOnError" eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" eType="#//Jobs/Matrix"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ReuseWorkflowJob" eSuperTypes="#//Jobs/Job">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="workflowPath" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1"
+          eType="#//Expressions/VariableAssignment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="secrets" upperBound="-1"
+          eType="#//Expressions/VariableAssignment"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ScriptJob" eSuperTypes="#//Jobs/Job"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Agent">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="group" eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="labels" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//Jobs/Container"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Container"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Service" instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
+          eType="#//Jobs/Container"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StagingEnvironment">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="url" eType="#//Expressions/Expression"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Matrix"/>
+  </eSubpackages>
+  <eSubpackages name="Triggers" nsURI="http://d.fe.up.pt/GHA/Triggers" nsPrefix="Triggers">
+    <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true"/>
+  </eSubpackages>
+  <eSubpackages name="Options" nsURI="http://d.fe.up.pt/GHA/Options" nsPrefix="Options">
+    <eClassifiers xsi:type="ecore:EClass" name="Permission" instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="#//Options/PERMISSION_SCOPES"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="#//Options/PERMISSIONS"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PERMISSION_SCOPES"/>
+    <eClassifiers xsi:type="ecore:EEnum" name="PERMISSIONS"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConcurrencyGroup">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1"
+          eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cancelInProgress" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+          defaultValueLiteral="false"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Expressions" nsURI="http://d.fe.up.pt/GHA/Expressions" nsPrefix="Expressions">
+    <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
+          eType="#//Expressions/Expression"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
+  </eSubpackages>
+</ecore:EPackage>

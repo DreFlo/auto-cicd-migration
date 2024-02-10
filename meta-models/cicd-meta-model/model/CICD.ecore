@@ -142,6 +142,7 @@
       <eLiterals name="NUMBER" value="1"/>
       <eLiterals name="BOOLEAN" value="2"/>
       <eLiterals name="SECRET" value="4"/>
+      <eLiterals name="CHOICE" value="5" literal="CHOICE"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="Steps" nsURI="http://www.d.fe.up.pt/CICD/Steps" nsPrefix="Steps">

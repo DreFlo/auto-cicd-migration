@@ -345,8 +345,6 @@ RULE_DOUBLE : RULE_INT '.' RULE_INT;
 
 RULE_BOOLEAN : ('true'|'false');
 
-RULE_YAML_STRING : ('"' ('\\' .|~(('\\'|'"')))+ '"'|'\'' ('\\' .|~(('\\'|'\'')))+ '\''|. ( options {greedy=false;} : . )*('$'|RULE_NEWLINE)|'|' RULE_BEGIN . ( options {greedy=false;} : . )*'$' RULE_END);
-
 fragment RULE_BEGIN : ;
 
 fragment RULE_END : ;

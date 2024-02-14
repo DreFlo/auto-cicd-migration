@@ -6,6 +6,7 @@ parser grammar InternalGitHubActionsParser;
 options {
 	tokenVocab=InternalGitHubActionsLexer;
 	superClass=AbstractInternalAntlrParser;
+	backtrack=true;
 }
 
 @header {
@@ -20,12 +21,18 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
+import org.eclipse.xtext.parser.antlr.IUnorderedGroupHelper.UnorderedGroupState;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
 import d.fe.up.pt.cicd.gha.services.GitHubActionsGrammarAccess;
 
 }
 
 @members {
+
+/*
+  This grammar contains a lot of empty actions to work around a bug in ANTLR.
+  Otherwise the ANTLR tool will create synpreds that cannot be compiled in some rare cases.
+*/
 
  	private GitHubActionsGrammarAccess grammarAccess;
 
@@ -55,16 +62,26 @@ import d.fe.up.pt.cicd.gha.services.GitHubActionsGrammarAccess;
 }
 
 // Entry rule entryRuleWorkflow
-entryRuleWorkflow returns [EObject current=null]:
+entryRuleWorkflow returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getWorkflowAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getWorkflowRule()); }
 	iv_ruleWorkflow=ruleWorkflow
 	{ $current=$iv_ruleWorkflow.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Workflow
 ruleWorkflow returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getWorkflowAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -506,6 +523,9 @@ ruleWorkflow returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleJob
 entryRuleJob returns [EObject current=null]:
@@ -524,6 +544,9 @@ ruleJob returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getJobAccess().getScriptJobParserRuleCall_0());
 		}
 		this_ScriptJob_0=ruleScriptJob
@@ -532,6 +555,9 @@ ruleJob returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getJobAccess().getReuseWorkflowJobParserRuleCall_1());
 		}
@@ -544,16 +570,26 @@ ruleJob returns [EObject current=null]
 ;
 
 // Entry rule entryRuleScriptJob
-entryRuleScriptJob returns [EObject current=null]:
+entryRuleScriptJob returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getScriptJobAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getScriptJobRule()); }
 	iv_ruleScriptJob=ruleScriptJob
 	{ $current=$iv_ruleScriptJob.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule ScriptJob
 ruleScriptJob returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getScriptJobAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -576,9 +612,9 @@ ruleScriptJob returns [EObject current=null]
 							}
 							(
 								(
-									lv_name_2_0=RULE_YAML_STRING
+									lv_name_2_0=RULE_ID
 									{
-										newLeafNode(lv_name_2_0, grammarAccess.getScriptJobAccess().getNameYAML_STRINGTerminalRuleCall_0_1_0());
+										newLeafNode(lv_name_2_0, grammarAccess.getScriptJobAccess().getNameIDTerminalRuleCall_0_1_0());
 									}
 									{
 										if ($current==null) {
@@ -588,7 +624,7 @@ ruleScriptJob returns [EObject current=null]
 											$current,
 											"name",
 											lv_name_2_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.ID");
 									}
 								)
 							)
@@ -690,6 +726,9 @@ ruleScriptJob returns [EObject current=null]
 								(
 									(
 										{
+											/* */
+										}
+										{
 											if ($current==null) {
 												$current = createModelElement(grammarAccess.getScriptJobRule());
 											}
@@ -710,6 +749,9 @@ ruleScriptJob returns [EObject current=null]
 								(
 									(
 										{
+											/* */
+										}
+										{
 											if ($current==null) {
 												$current = createModelElement(grammarAccess.getScriptJobRule());
 											}
@@ -727,6 +769,9 @@ ruleScriptJob returns [EObject current=null]
 									}
 									(
 										(
+											{
+												/* */
+											}
 											{
 												if ($current==null) {
 													$current = createModelElement(grammarAccess.getScriptJobRule());
@@ -757,6 +802,9 @@ ruleScriptJob returns [EObject current=null]
 									}
 									(
 										(
+											{
+												/* */
+											}
 											{
 												if ($current==null) {
 													$current = createModelElement(grammarAccess.getScriptJobRule());
@@ -1249,18 +1297,31 @@ ruleScriptJob returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleReuseWorkflowJob
-entryRuleReuseWorkflowJob returns [EObject current=null]:
+entryRuleReuseWorkflowJob returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getReuseWorkflowJobAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getReuseWorkflowJobRule()); }
 	iv_ruleReuseWorkflowJob=ruleReuseWorkflowJob
 	{ $current=$iv_ruleReuseWorkflowJob.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule ReuseWorkflowJob
 ruleReuseWorkflowJob returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getReuseWorkflowJobAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -1283,9 +1344,9 @@ ruleReuseWorkflowJob returns [EObject current=null]
 							}
 							(
 								(
-									lv_name_2_0=RULE_YAML_STRING
+									lv_name_2_0=RULE_ID
 									{
-										newLeafNode(lv_name_2_0, grammarAccess.getReuseWorkflowJobAccess().getNameYAML_STRINGTerminalRuleCall_0_1_0());
+										newLeafNode(lv_name_2_0, grammarAccess.getReuseWorkflowJobAccess().getNameIDTerminalRuleCall_0_1_0());
 									}
 									{
 										if ($current==null) {
@@ -1295,7 +1356,7 @@ ruleReuseWorkflowJob returns [EObject current=null]
 											$current,
 											"name",
 											lv_name_2_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.ID");
 									}
 								)
 							)
@@ -1397,6 +1458,9 @@ ruleReuseWorkflowJob returns [EObject current=null]
 								(
 									(
 										{
+											/* */
+										}
+										{
 											if ($current==null) {
 												$current = createModelElement(grammarAccess.getReuseWorkflowJobRule());
 											}
@@ -1417,6 +1481,9 @@ ruleReuseWorkflowJob returns [EObject current=null]
 								(
 									(
 										{
+											/* */
+										}
+										{
 											if ($current==null) {
 												$current = createModelElement(grammarAccess.getReuseWorkflowJobRule());
 											}
@@ -1434,6 +1501,9 @@ ruleReuseWorkflowJob returns [EObject current=null]
 									}
 									(
 										(
+											{
+												/* */
+											}
 											{
 												if ($current==null) {
 													$current = createModelElement(grammarAccess.getReuseWorkflowJobRule());
@@ -1464,6 +1534,9 @@ ruleReuseWorkflowJob returns [EObject current=null]
 									}
 									(
 										(
+											{
+												/* */
+											}
 											{
 												if ($current==null) {
 													$current = createModelElement(grammarAccess.getReuseWorkflowJobRule());
@@ -2049,18 +2122,31 @@ ruleReuseWorkflowJob returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleAgent
-entryRuleAgent returns [EObject current=null]:
+entryRuleAgent returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getAgentAccess().getUnorderedGroup_1_1()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getAgentRule()); }
 	iv_ruleAgent=ruleAgent
 	{ $current=$iv_ruleAgent.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Agent
 ruleAgent returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getAgentAccess().getUnorderedGroup_1_1()
+	);
 }
 @after {
 	leaveRule();
@@ -2185,6 +2271,9 @@ ruleAgent returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAgentAccess().getAgentAction_1_0(),
@@ -2389,6 +2478,9 @@ ruleAgent returns [EObject current=null]
 		)
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleStep
 entryRuleStep returns [EObject current=null]:
@@ -2416,6 +2508,9 @@ ruleStep returns [EObject current=null]
 		}
 		(
 			{
+				/* */
+			}
+			{
 				newCompositeNode(grammarAccess.getStepAccess().getCommandParserRuleCall_2_0());
 			}
 			this_Command_2=ruleCommand
@@ -2424,6 +2519,9 @@ ruleStep returns [EObject current=null]
 				afterParserOrEnumRuleCall();
 			}
 			    |
+			{
+				/* */
+			}
 			{
 				newCompositeNode(grammarAccess.getStepAccess().getPackageParserRuleCall_2_1());
 			}
@@ -2441,16 +2539,26 @@ ruleStep returns [EObject current=null]
 ;
 
 // Entry rule entryRuleCommand
-entryRuleCommand returns [EObject current=null]:
+entryRuleCommand returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getCommandAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getCommandRule()); }
 	iv_ruleCommand=ruleCommand
 	{ $current=$iv_ruleCommand.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Command
 ruleCommand returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getCommandAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -2477,9 +2585,9 @@ ruleCommand returns [EObject current=null]
 							}
 							(
 								(
-									lv_id_3_0=RULE_YAML_STRING
+									lv_id_3_0=RULE_STRING
 									{
-										newLeafNode(lv_id_3_0, grammarAccess.getCommandAccess().getIdYAML_STRINGTerminalRuleCall_0_2_0());
+										newLeafNode(lv_id_3_0, grammarAccess.getCommandAccess().getIdSTRINGTerminalRuleCall_0_2_0());
 									}
 									{
 										if ($current==null) {
@@ -2489,7 +2597,7 @@ ruleCommand returns [EObject current=null]
 											$current,
 											"id",
 											lv_id_3_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.STRING");
 									}
 								)
 							)
@@ -2795,18 +2903,33 @@ ruleCommand returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRulePackage
-entryRulePackage returns [EObject current=null]:
+entryRulePackage returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getPackageAccess().getUnorderedGroup(), 
+	grammarAccess.getPackageAccess().getUnorderedGroup_8_0_3()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getPackageRule()); }
 	iv_rulePackage=rulePackage
 	{ $current=$iv_rulePackage.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Package
 rulePackage returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getPackageAccess().getUnorderedGroup(), 
+	grammarAccess.getPackageAccess().getUnorderedGroup_8_0_3()
+	);
 }
 @after {
 	leaveRule();
@@ -2833,9 +2956,9 @@ rulePackage returns [EObject current=null]
 							}
 							(
 								(
-									lv_id_3_0=RULE_YAML_STRING
+									lv_id_3_0=RULE_STRING
 									{
-										newLeafNode(lv_id_3_0, grammarAccess.getPackageAccess().getIdYAML_STRINGTerminalRuleCall_0_2_0());
+										newLeafNode(lv_id_3_0, grammarAccess.getPackageAccess().getIdSTRINGTerminalRuleCall_0_2_0());
 									}
 									{
 										if ($current==null) {
@@ -2845,7 +2968,7 @@ rulePackage returns [EObject current=null]
 											$current,
 											"id",
 											lv_id_3_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.STRING");
 									}
 								)
 							)
@@ -3293,6 +3416,9 @@ rulePackage returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleIfStatement
 entryRuleIfStatement returns [EObject current=null]:
@@ -3319,6 +3445,9 @@ ruleIfStatement returns [EObject current=null]
 			newLeafNode(otherlv_1, grammarAccess.getIfStatementAccess().getColonKeyword_1());
 		}
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getIfStatementAccess().getExpressionParserRuleCall_2());
 		}
 		this_Expression_2=ruleExpression
@@ -3330,49 +3459,59 @@ ruleIfStatement returns [EObject current=null]
 ;
 
 // Entry rule entryRuleConcurrencyGroup
-entryRuleConcurrencyGroup returns [EObject current=null]:
+entryRuleConcurrencyGroup returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getConcurrencyGroupRule()); }
 	iv_ruleConcurrencyGroup=ruleConcurrencyGroup
 	{ $current=$iv_ruleConcurrencyGroup.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule ConcurrencyGroup
 ruleConcurrencyGroup returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1()
+	);
 }
 @after {
 	leaveRule();
 }:
 	(
+		this_BEGIN_0=RULE_BEGIN
+		{
+			newLeafNode(this_BEGIN_0, grammarAccess.getConcurrencyGroupAccess().getBEGINTerminalRuleCall_0());
+		}
 		(
-			{ 
-			  getUnorderedGroupHelper().enter(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup());
-			}
 			(
-				(
-		(
-			{getUnorderedGroupHelper().canSelect(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup(), 0)}?=>(
-				{
-					getUnorderedGroupHelper().select(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup(), 0);
+				{ 
+				  getUnorderedGroupHelper().enter(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1());
 				}
-							({true}?=>(this_BEGIN_1=RULE_BEGIN
-							{
-								newLeafNode(this_BEGIN_1, grammarAccess.getConcurrencyGroupAccess().getBEGINTerminalRuleCall_0_0());
-							}
-							(
-								otherlv_2=Group
+				(
+					(
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1(), 0)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1(), 0);
+					}
+								({true}?=>(otherlv_2=Group
 								{
-									newLeafNode(otherlv_2, grammarAccess.getConcurrencyGroupAccess().getGroupKeyword_0_1_0());
+									newLeafNode(otherlv_2, grammarAccess.getConcurrencyGroupAccess().getGroupKeyword_1_0_0());
 								}
 								otherlv_3=Colon
 								{
-									newLeafNode(otherlv_3, grammarAccess.getConcurrencyGroupAccess().getColonKeyword_0_1_1());
+									newLeafNode(otherlv_3, grammarAccess.getConcurrencyGroupAccess().getColonKeyword_1_0_1());
 								}
 								(
 									(
 										{
-											newCompositeNode(grammarAccess.getConcurrencyGroupAccess().getNameExpressionParserRuleCall_0_1_2_0());
+											newCompositeNode(grammarAccess.getConcurrencyGroupAccess().getNameExpressionParserRuleCall_1_0_2_0());
 										}
 										lv_name_4_0=ruleExpression
 										{
@@ -3388,31 +3527,29 @@ ruleConcurrencyGroup returns [EObject current=null]
 										}
 									)
 								)
-							)
-							))
-				{ 
-					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup());
-				}
-			)
-		)|
-		(
-			{getUnorderedGroupHelper().canSelect(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup(), 1)}?=>(
-				{
-					getUnorderedGroupHelper().select(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup(), 1);
-				}
-							({true}?=>((
-								otherlv_5=CancelInProgress
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1());
+					}
+				)
+			)|
+			(
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1(), 1)}?=>(
+					{
+						getUnorderedGroupHelper().select(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1(), 1);
+					}
+								({true}?=>(otherlv_5=CancelInProgress
 								{
-									newLeafNode(otherlv_5, grammarAccess.getConcurrencyGroupAccess().getCancelInProgressKeyword_1_0_0());
+									newLeafNode(otherlv_5, grammarAccess.getConcurrencyGroupAccess().getCancelInProgressKeyword_1_1_0());
 								}
 								otherlv_6=Colon
 								{
-									newLeafNode(otherlv_6, grammarAccess.getConcurrencyGroupAccess().getColonKeyword_1_0_1());
+									newLeafNode(otherlv_6, grammarAccess.getConcurrencyGroupAccess().getColonKeyword_1_1_1());
 								}
 								(
 									(
 										{
-											newCompositeNode(grammarAccess.getConcurrencyGroupAccess().getCancelInProgressExpressionParserRuleCall_1_0_2_0());
+											newCompositeNode(grammarAccess.getConcurrencyGroupAccess().getCancelInProgressExpressionParserRuleCall_1_1_2_0());
 										}
 										lv_cancelInProgress_7_0=ruleExpression
 										{
@@ -3428,26 +3565,29 @@ ruleConcurrencyGroup returns [EObject current=null]
 										}
 									)
 								)
-							)?
-							this_END_8=RULE_END
-							{
-								newLeafNode(this_END_8, grammarAccess.getConcurrencyGroupAccess().getENDTerminalRuleCall_1_1());
-							}
-							))
+								))
+					{ 
+						getUnorderedGroupHelper().returnFromSelection(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1());
+					}
+				)
+			)
+					)+
+					{getUnorderedGroupHelper().canLeave(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1())}?
+				)
+			)
 				{ 
-					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup());
+				  getUnorderedGroupHelper().leave(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup_1());
 				}
-			)
 		)
-				)+
-				{getUnorderedGroupHelper().canLeave(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup())}?
-			)
-		)
-			{ 
-			  getUnorderedGroupHelper().leave(grammarAccess.getConcurrencyGroupAccess().getUnorderedGroup());
-			}
+		this_END_8=RULE_END
+		{
+			newLeafNode(this_END_8, grammarAccess.getConcurrencyGroupAccess().getENDTerminalRuleCall_2());
+		}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleSimpleTrigger
 entryRuleSimpleTrigger returns [EObject current=null]:
@@ -3466,6 +3606,9 @@ ruleSimpleTrigger returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSimpleTriggerAccess().getSimpleWorkflowDispatchTriggerParserRuleCall_0());
 		}
 		this_SimpleWorkflowDispatchTrigger_0=ruleSimpleWorkflowDispatchTrigger
@@ -3474,6 +3617,9 @@ ruleSimpleTrigger returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getSimpleTriggerAccess().getSimpleWorkflowCallTriggerParserRuleCall_1());
 		}
@@ -3484,6 +3630,9 @@ ruleSimpleTrigger returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSimpleTriggerAccess().getSimplePushTriggerTriggerParserRuleCall_2());
 		}
 		this_SimplePushTriggerTrigger_2=ruleSimplePushTriggerTrigger
@@ -3493,6 +3642,9 @@ ruleSimpleTrigger returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getSimpleTriggerAccess().getSimplePullRequestTriggerParserRuleCall_3());
 		}
 		this_SimplePullRequestTrigger_3=ruleSimplePullRequestTrigger
@@ -3501,6 +3653,9 @@ ruleSimpleTrigger returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getSimpleTriggerAccess().getSimpleStandardEventTriggerParserRuleCall_4());
 		}
@@ -3531,6 +3686,9 @@ ruleSimplePullRequestTrigger returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getSimplePullRequestTriggerAccess().getPullRequestTriggerAction_0_0(),
 						$current);
@@ -3544,6 +3702,9 @@ ruleSimplePullRequestTrigger returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getSimplePullRequestTriggerAccess().getPullRequestTriggerAction_1_0(),
@@ -3576,6 +3737,9 @@ ruleSimplePushTriggerTrigger returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getSimplePushTriggerTriggerAccess().getPushTriggerAction_0(),
 					$current);
@@ -3606,6 +3770,9 @@ ruleSimpleWorkflowCallTrigger returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getSimpleWorkflowCallTriggerAccess().getWorkflowCallTriggerAction_0(),
 					$current);
@@ -3635,6 +3802,9 @@ ruleSimpleWorkflowDispatchTrigger returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getSimpleWorkflowDispatchTriggerAccess().getWorkflowDispatchTriggerAction_0(),
@@ -3701,6 +3871,9 @@ ruleOptionedTrigger returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedPullRequestTriggerParserRuleCall_0());
 		}
 		this_OptionedPullRequestTrigger_0=ruleOptionedPullRequestTrigger
@@ -3709,6 +3882,9 @@ ruleOptionedTrigger returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedPushTriggerParserRuleCall_1());
 		}
@@ -3719,6 +3895,9 @@ ruleOptionedTrigger returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedScheduleTriggerParserRuleCall_2());
 		}
 		this_OptionedScheduleTrigger_2=ruleOptionedScheduleTrigger
@@ -3727,6 +3906,9 @@ ruleOptionedTrigger returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedStandardEventTriggerParserRuleCall_3());
 		}
@@ -3737,6 +3919,9 @@ ruleOptionedTrigger returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedWorkflowCallTriggerParserRuleCall_4());
 		}
 		this_OptionedWorkflowCallTrigger_4=ruleOptionedWorkflowCallTrigger
@@ -3746,6 +3931,9 @@ ruleOptionedTrigger returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedWorkflowRunTriggerParserRuleCall_5());
 		}
 		this_OptionedWorkflowRunTrigger_5=ruleOptionedWorkflowRunTrigger
@@ -3754,6 +3942,9 @@ ruleOptionedTrigger returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getOptionedTriggerAccess().getOptionedWorkflowDispatchTriggerParserRuleCall_6());
 		}
@@ -4128,22 +4319,35 @@ ruleOptionedWorkflowRunTrigger returns [EObject current=null]
 ;
 
 // Entry rule entryRuleOptionedPullRequestTrigger
-entryRuleOptionedPullRequestTrigger returns [EObject current=null]:
+entryRuleOptionedPullRequestTrigger returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOptionedPullRequestTriggerAccess().getUnorderedGroup_3()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getOptionedPullRequestTriggerRule()); }
 	iv_ruleOptionedPullRequestTrigger=ruleOptionedPullRequestTrigger
 	{ $current=$iv_ruleOptionedPullRequestTrigger.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule OptionedPullRequestTrigger
 ruleOptionedPullRequestTrigger returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOptionedPullRequestTriggerAccess().getUnorderedGroup_3()
+	);
 }
 @after {
 	leaveRule();
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getOptionedPullRequestTriggerAccess().getPullRequestTriggerAction_0(),
@@ -4633,24 +4837,40 @@ ruleOptionedPullRequestTrigger returns [EObject current=null]
 		)
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleOptionedPushTrigger
-entryRuleOptionedPushTrigger returns [EObject current=null]:
+entryRuleOptionedPushTrigger returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOptionedPushTriggerAccess().getUnorderedGroup_3()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getOptionedPushTriggerRule()); }
 	iv_ruleOptionedPushTrigger=ruleOptionedPushTrigger
 	{ $current=$iv_ruleOptionedPushTrigger.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule OptionedPushTrigger
 ruleOptionedPushTrigger returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOptionedPushTriggerAccess().getUnorderedGroup_3()
+	);
 }
 @after {
 	leaveRule();
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getOptionedPushTriggerAccess().getPushTriggerAction_0(),
@@ -5150,6 +5370,9 @@ ruleOptionedPushTrigger returns [EObject current=null]
 		)
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleOptionedScheduleTrigger
 entryRuleOptionedScheduleTrigger returns [EObject current=null]:
@@ -5222,22 +5445,35 @@ ruleOptionedScheduleTrigger returns [EObject current=null]
 ;
 
 // Entry rule entryRuleOptionedWorkflowCallTrigger
-entryRuleOptionedWorkflowCallTrigger returns [EObject current=null]:
+entryRuleOptionedWorkflowCallTrigger returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOptionedWorkflowCallTriggerAccess().getUnorderedGroup_3()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getOptionedWorkflowCallTriggerRule()); }
 	iv_ruleOptionedWorkflowCallTrigger=ruleOptionedWorkflowCallTrigger
 	{ $current=$iv_ruleOptionedWorkflowCallTrigger.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule OptionedWorkflowCallTrigger
 ruleOptionedWorkflowCallTrigger returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOptionedWorkflowCallTriggerAccess().getUnorderedGroup_3()
+	);
 }
 @after {
 	leaveRule();
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getOptionedWorkflowCallTriggerAccess().getWorkflowCallTriggerAction_0(),
@@ -5395,6 +5631,9 @@ ruleOptionedWorkflowCallTrigger returns [EObject current=null]
 		)
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleOptionedWorkflowDispatchTrigger
 entryRuleOptionedWorkflowDispatchTrigger returns [EObject current=null]:
@@ -5413,6 +5652,9 @@ ruleOptionedWorkflowDispatchTrigger returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getOptionedWorkflowDispatchTriggerAccess().getWorkflowDispatchTriggerAction_0(),
@@ -5468,16 +5710,26 @@ ruleOptionedWorkflowDispatchTrigger returns [EObject current=null]
 ;
 
 // Entry rule entryRuleInput
-entryRuleInput returns [EObject current=null]:
+entryRuleInput returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getInputAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getInputRule()); }
 	iv_ruleInput=ruleInput
 	{ $current=$iv_ruleInput.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Input
 ruleInput returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getInputAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -5500,9 +5752,9 @@ ruleInput returns [EObject current=null]
 							}
 							(
 								(
-									lv_id_2_0=RULE_YAML_STRING
+									lv_id_2_0=RULE_ID
 									{
-										newLeafNode(lv_id_2_0, grammarAccess.getInputAccess().getIdYAML_STRINGTerminalRuleCall_0_1_0());
+										newLeafNode(lv_id_2_0, grammarAccess.getInputAccess().getIdIDTerminalRuleCall_0_1_0());
 									}
 									{
 										if ($current==null) {
@@ -5512,7 +5764,7 @@ ruleInput returns [EObject current=null]
 											$current,
 											"id",
 											lv_id_2_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.ID");
 									}
 								)
 							)
@@ -5690,9 +5942,9 @@ ruleInput returns [EObject current=null]
 									}
 									(
 										(
-											lv_options_19_0=RULE_YAML_STRING
+											lv_options_19_0=RULE_STRING
 											{
-												newLeafNode(lv_options_19_0, grammarAccess.getInputAccess().getOptionsYAML_STRINGTerminalRuleCall_4_0_0_2_0());
+												newLeafNode(lv_options_19_0, grammarAccess.getInputAccess().getOptionsSTRINGTerminalRuleCall_4_0_0_2_0());
 											}
 											{
 												if ($current==null) {
@@ -5702,7 +5954,7 @@ ruleInput returns [EObject current=null]
 													$current,
 													"options",
 													lv_options_19_0,
-													"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+													"org.eclipse.xtext.common.Terminals.STRING");
 											}
 										)
 									)
@@ -5715,9 +5967,9 @@ ruleInput returns [EObject current=null]
 									}
 									(
 										(
-											lv_options_21_0=RULE_YAML_STRING
+											lv_options_21_0=RULE_STRING
 											{
-												newLeafNode(lv_options_21_0, grammarAccess.getInputAccess().getOptionsYAML_STRINGTerminalRuleCall_4_0_1_1_0());
+												newLeafNode(lv_options_21_0, grammarAccess.getInputAccess().getOptionsSTRINGTerminalRuleCall_4_0_1_1_0());
 											}
 											{
 												if ($current==null) {
@@ -5727,7 +5979,7 @@ ruleInput returns [EObject current=null]
 													$current,
 													"options",
 													lv_options_21_0,
-													"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+													"org.eclipse.xtext.common.Terminals.STRING");
 											}
 										)
 									)
@@ -5738,9 +5990,9 @@ ruleInput returns [EObject current=null]
 										}
 										(
 											(
-												lv_options_23_0=RULE_YAML_STRING
+												lv_options_23_0=RULE_STRING
 												{
-													newLeafNode(lv_options_23_0, grammarAccess.getInputAccess().getOptionsYAML_STRINGTerminalRuleCall_4_0_1_2_1_0());
+													newLeafNode(lv_options_23_0, grammarAccess.getInputAccess().getOptionsSTRINGTerminalRuleCall_4_0_1_2_1_0());
 												}
 												{
 													if ($current==null) {
@@ -5750,7 +6002,7 @@ ruleInput returns [EObject current=null]
 														$current,
 														"options",
 														lv_options_23_0,
-														"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+														"org.eclipse.xtext.common.Terminals.STRING");
 												}
 											)
 										)
@@ -5773,9 +6025,9 @@ ruleInput returns [EObject current=null]
 										}
 										(
 											(
-												lv_options_27_0=RULE_YAML_STRING
+												lv_options_27_0=RULE_STRING
 												{
-													newLeafNode(lv_options_27_0, grammarAccess.getInputAccess().getOptionsYAML_STRINGTerminalRuleCall_4_0_2_1_1_0());
+													newLeafNode(lv_options_27_0, grammarAccess.getInputAccess().getOptionsSTRINGTerminalRuleCall_4_0_2_1_1_0());
 												}
 												{
 													if ($current==null) {
@@ -5785,7 +6037,7 @@ ruleInput returns [EObject current=null]
 														$current,
 														"options",
 														lv_options_27_0,
-														"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+														"org.eclipse.xtext.common.Terminals.STRING");
 												}
 											)
 										)
@@ -5823,18 +6075,31 @@ ruleInput returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleOutput
-entryRuleOutput returns [EObject current=null]:
+entryRuleOutput returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOutputAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getOutputRule()); }
 	iv_ruleOutput=ruleOutput
 	{ $current=$iv_ruleOutput.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Output
 ruleOutput returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getOutputAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -5857,9 +6122,9 @@ ruleOutput returns [EObject current=null]
 							}
 							(
 								(
-									lv_id_2_0=RULE_YAML_STRING
+									lv_id_2_0=RULE_ID
 									{
-										newLeafNode(lv_id_2_0, grammarAccess.getOutputAccess().getIdYAML_STRINGTerminalRuleCall_0_1_0());
+										newLeafNode(lv_id_2_0, grammarAccess.getOutputAccess().getIdIDTerminalRuleCall_0_1_0());
 									}
 									{
 										if ($current==null) {
@@ -5869,7 +6134,7 @@ ruleOutput returns [EObject current=null]
 											$current,
 											"id",
 											lv_id_2_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.ID");
 									}
 								)
 							)
@@ -5973,18 +6238,31 @@ ruleOutput returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleSecret
-entryRuleSecret returns [EObject current=null]:
+entryRuleSecret returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getSecretAccess().getUnorderedGroup()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getSecretRule()); }
 	iv_ruleSecret=ruleSecret
 	{ $current=$iv_ruleSecret.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Secret
 ruleSecret returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getSecretAccess().getUnorderedGroup()
+	);
 }
 @after {
 	leaveRule();
@@ -6007,9 +6285,9 @@ ruleSecret returns [EObject current=null]
 							}
 							(
 								(
-									lv_id_2_0=RULE_YAML_STRING
+									lv_id_2_0=RULE_ID
 									{
-										newLeafNode(lv_id_2_0, grammarAccess.getSecretAccess().getIdYAML_STRINGTerminalRuleCall_0_1_0());
+										newLeafNode(lv_id_2_0, grammarAccess.getSecretAccess().getIdIDTerminalRuleCall_0_1_0());
 									}
 									{
 										if ($current==null) {
@@ -6019,7 +6297,7 @@ ruleSecret returns [EObject current=null]
 											$current,
 											"id",
 											lv_id_2_0,
-											"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+											"org.eclipse.xtext.common.Terminals.ID");
 									}
 								)
 							)
@@ -6123,6 +6401,9 @@ ruleSecret returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRulePermission
 entryRulePermission returns [EObject current=null]:
@@ -6146,64 +6427,76 @@ rulePermission returns [EObject current=null]
 		}
 		(
 			(
-				{
-					newCompositeNode(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_1_0());
-				}
-				lv_key_1_0=rulePERMISSION_SCOPE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getPermissionRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_1_0_0());
 					}
-					set(
-						$current,
-						"key",
-						lv_key_1_0,
-						"d.fe.up.pt.cicd.gha.GitHubActions.PERMISSION_SCOPE");
-					afterParserOrEnumRuleCall();
-				}
+					lv_key_1_0=rulePERMISSION_SCOPE
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPermissionRule());
+						}
+						set(
+							$current,
+							"key",
+							lv_key_1_0,
+							"d.fe.up.pt.cicd.gha.GitHubActions.PERMISSION_SCOPE");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
-		)
-		otherlv_2=Colon
-		{
-			newLeafNode(otherlv_2, grammarAccess.getPermissionAccess().getColonKeyword_2());
-		}
-		(
+			otherlv_2=Colon
+			{
+				newLeafNode(otherlv_2, grammarAccess.getPermissionAccess().getColonKeyword_1_1());
+			}
 			(
-				{
-					newCompositeNode(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_3_0());
-				}
-				lv_value_3_0=rulePERMISSION_VALUE
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getPermissionRule());
+				(
+					{
+						newCompositeNode(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_1_2_0());
 					}
-					set(
-						$current,
-						"value",
-						lv_value_3_0,
-						"d.fe.up.pt.cicd.gha.GitHubActions.PERMISSION_VALUE");
-					afterParserOrEnumRuleCall();
-				}
+					lv_value_3_0=rulePERMISSION_VALUE
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPermissionRule());
+						}
+						set(
+							$current,
+							"value",
+							lv_value_3_0,
+							"d.fe.up.pt.cicd.gha.GitHubActions.PERMISSION_VALUE");
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
 		)
 		this_END_4=RULE_END
 		{
-			newLeafNode(this_END_4, grammarAccess.getPermissionAccess().getENDTerminalRuleCall_4());
+			newLeafNode(this_END_4, grammarAccess.getPermissionAccess().getENDTerminalRuleCall_2());
 		}
 	)
 ;
 
 // Entry rule entryRuleDefaults
-entryRuleDefaults returns [EObject current=null]:
+entryRuleDefaults returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getDefaultsAccess().getUnorderedGroup_4()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getDefaultsRule()); }
 	iv_ruleDefaults=ruleDefaults
 	{ $current=$iv_ruleDefaults.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Defaults
 ruleDefaults returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getDefaultsAccess().getUnorderedGroup_4()
+	);
 }
 @after {
 	leaveRule();
@@ -6326,6 +6619,9 @@ ruleDefaults returns [EObject current=null]
 		}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleStagingEnvironment
 entryRuleStagingEnvironment returns [EObject current=null]:
@@ -6435,16 +6731,28 @@ ruleStagingEnvironment returns [EObject current=null]
 ;
 
 // Entry rule entryRuleStrategy
-entryRuleStrategy returns [EObject current=null]:
+entryRuleStrategy returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getStrategyAccess().getUnorderedGroup(), 
+	grammarAccess.getStrategyAccess().getUnorderedGroup_0_1()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getStrategyRule()); }
 	iv_ruleStrategy=ruleStrategy
 	{ $current=$iv_ruleStrategy.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Strategy
 ruleStrategy returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getStrategyAccess().getUnorderedGroup(), 
+	grammarAccess.getStrategyAccess().getUnorderedGroup_0_1()
+	);
 }
 @after {
 	leaveRule();
@@ -6701,6 +7009,9 @@ ruleStrategy returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleMatrixAxis
 entryRuleMatrixAxis returns [EObject current=null]:
@@ -6724,9 +7035,9 @@ ruleMatrixAxis returns [EObject current=null]
 		}
 		(
 			(
-				lv_name_1_0=RULE_YAML_STRING
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getMatrixAxisAccess().getNameYAML_STRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getMatrixAxisAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -6736,7 +7047,7 @@ ruleMatrixAxis returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
@@ -6926,16 +7237,28 @@ ruleMatrixCombination returns [EObject current=null]
 ;
 
 // Entry rule entryRuleContainer
-entryRuleContainer returns [EObject current=null]:
+entryRuleContainer returns [EObject current=null]@init {
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getContainerAccess().getUnorderedGroup(), 
+	grammarAccess.getContainerAccess().getUnorderedGroup_5_0()
+	);
+}:
 	{ newCompositeNode(grammarAccess.getContainerRule()); }
 	iv_ruleContainer=ruleContainer
 	{ $current=$iv_ruleContainer.current; }
 	EOF;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Rule Container
 ruleContainer returns [EObject current=null]
 @init {
 	enterRule();
+	UnorderedGroupState myUnorderedGroupState = getUnorderedGroupHelper().snapShot(
+	grammarAccess.getContainerAccess().getUnorderedGroup(), 
+	grammarAccess.getContainerAccess().getUnorderedGroup_5_0()
+	);
 }
 @after {
 	leaveRule();
@@ -7472,6 +7795,9 @@ ruleContainer returns [EObject current=null]
 			}
 	)
 ;
+finally {
+	myUnorderedGroupState.restore();
+}
 
 // Entry rule entryRuleService
 entryRuleService returns [EObject current=null]:
@@ -7495,9 +7821,9 @@ ruleService returns [EObject current=null]
 		}
 		(
 			(
-				lv_key_1_0=RULE_YAML_STRING
+				lv_key_1_0=RULE_ID
 				{
-					newLeafNode(lv_key_1_0, grammarAccess.getServiceAccess().getKeyYAML_STRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_key_1_0, grammarAccess.getServiceAccess().getKeyIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -7507,7 +7833,7 @@ ruleService returns [EObject current=null]
 						$current,
 						"key",
 						lv_key_1_0,
-						"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
@@ -7571,9 +7897,9 @@ ruleVariableAssignment returns [EObject current=null]
 		}
 		(
 			(
-				lv_key_1_0=RULE_YAML_STRING
+				lv_key_1_0=RULE_ID
 				{
-					newLeafNode(lv_key_1_0, grammarAccess.getVariableAssignmentAccess().getKeyYAML_STRINGTerminalRuleCall_1_0());
+					newLeafNode(lv_key_1_0, grammarAccess.getVariableAssignmentAccess().getKeyIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -7583,7 +7909,7 @@ ruleVariableAssignment returns [EObject current=null]
 						$current,
 						"key",
 						lv_key_1_0,
-						"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
@@ -7633,6 +7959,9 @@ ruleExpression returns [EObject current=null]
 	leaveRule();
 }:
 	{
+		/* */
+	}
+	{
 		newCompositeNode(grammarAccess.getExpressionAccess().getConcatParserRuleCall());
 	}
 	this_Concat_0=ruleConcat
@@ -7659,6 +7988,9 @@ ruleConcat returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getConcatAccess().getConcatExpressionParserRuleCall_0());
 		}
 		this_ConcatExpression_0=ruleConcatExpression
@@ -7668,6 +8000,9 @@ ruleConcat returns [EObject current=null]
 		}
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElementAndSet(
 						grammarAccess.getConcatAccess().getConcatLhsAction_1_0(),
@@ -7714,6 +8049,9 @@ ruleConcatExpression returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getConcatExpressionAccess().getBracketedExpressionParserRuleCall_0());
 		}
 		this_BracketedExpression_0=ruleBracketedExpression
@@ -7722,6 +8060,9 @@ ruleConcatExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getConcatExpressionAccess().getUnbracketedLiteralParserRuleCall_1());
 		}
@@ -7754,6 +8095,9 @@ ruleBracketedExpression returns [EObject current=null]
 			newLeafNode(otherlv_0, grammarAccess.getBracketedExpressionAccess().getDollarSignLeftCurlyBracketLeftCurlyBracketKeyword_0());
 		}
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getBracketedExpressionAccess().getInsideBracketsExpressionParserRuleCall_1());
 		}
 		this_InsideBracketsExpression_1=ruleInsideBracketsExpression
@@ -7784,6 +8128,9 @@ ruleInsideBracketsExpression returns [EObject current=null]
 	leaveRule();
 }:
 	{
+		/* */
+	}
+	{
 		newCompositeNode(grammarAccess.getInsideBracketsExpressionAccess().getOrParserRuleCall());
 	}
 	this_Or_0=ruleOr
@@ -7808,6 +8155,9 @@ ruleUnbracketedLiteral returns [EObject current=null]
 @after {
 	leaveRule();
 }:
+	{
+		/* */
+	}
 	{
 		newCompositeNode(grammarAccess.getUnbracketedLiteralAccess().getUnbracketedStringParserRuleCall());
 	}
@@ -7835,9 +8185,9 @@ ruleUnbracketedString returns [EObject current=null]
 }:
 	(
 		(
-			lv_value_0_0=RULE_YAML_STRING
+			lv_value_0_0=RULE_STRING
 			{
-				newLeafNode(lv_value_0_0, grammarAccess.getUnbracketedStringAccess().getValueYAML_STRINGTerminalRuleCall_0());
+				newLeafNode(lv_value_0_0, grammarAccess.getUnbracketedStringAccess().getValueSTRINGTerminalRuleCall_0());
 			}
 			{
 				if ($current==null) {
@@ -7847,7 +8197,7 @@ ruleUnbracketedString returns [EObject current=null]
 					$current,
 					"value",
 					lv_value_0_0,
-					"d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
+					"org.eclipse.xtext.common.Terminals.STRING");
 			}
 		)
 	)
@@ -7870,6 +8220,9 @@ ruleOr returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getOrAccess().getAndParserRuleCall_0());
 		}
 		this_And_0=ruleAnd
@@ -7879,6 +8232,9 @@ ruleOr returns [EObject current=null]
 		}
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElementAndSet(
 						grammarAccess.getOrAccess().getOrLhsAction_1_0(),
@@ -7929,6 +8285,9 @@ ruleAnd returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getAndAccess().getEqualityParserRuleCall_0());
 		}
 		this_Equality_0=ruleEquality
@@ -7938,6 +8297,9 @@ ruleAnd returns [EObject current=null]
 		}
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElementAndSet(
 						grammarAccess.getAndAccess().getAndLhsAction_1_0(),
@@ -7988,6 +8350,9 @@ ruleEquality returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getEqualityAccess().getComparisonParserRuleCall_0());
 		}
 		this_Comparison_0=ruleComparison
@@ -7997,6 +8362,9 @@ ruleEquality returns [EObject current=null]
 		}
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElementAndSet(
 						grammarAccess.getEqualityAccess().getEqualityLhsAction_1_0(),
@@ -8062,6 +8430,9 @@ ruleComparison returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getComparisonAccess().getUnaryOpParserRuleCall_0());
 		}
 		this_UnaryOp_0=ruleUnaryOp
@@ -8071,6 +8442,9 @@ ruleComparison returns [EObject current=null]
 		}
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElementAndSet(
 						grammarAccess.getComparisonAccess().getComparisonLhsAction_1_0(),
@@ -8136,6 +8510,9 @@ ruleUnaryOp returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getUnaryOpAccess().getNotParserRuleCall_0());
 		}
 		this_Not_0=ruleNot
@@ -8144,6 +8521,9 @@ ruleUnaryOp returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getUnaryOpAccess().getBlankParserRuleCall_1());
 		}
@@ -8213,6 +8593,9 @@ ruleBlank returns [EObject current=null]
 	leaveRule();
 }:
 	{
+		/* */
+	}
+	{
 		newCompositeNode(grammarAccess.getBlankAccess().getVariableDereferenceParserRuleCall());
 	}
 	this_VariableDereference_0=ruleVariableDereference
@@ -8239,43 +8622,10 @@ ruleVariableDereference returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getVariableDereferenceAccess().getDotDereferenceParserRuleCall_0());
+			/* */
 		}
-		this_DotDereference_0=ruleDotDereference
 		{
-			$current = $this_DotDereference_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getVariableDereferenceAccess().getArrayDereferenceParserRuleCall_1());
-		}
-		this_ArrayDereference_1=ruleArrayDereference
-		{
-			$current = $this_ArrayDereference_1.current;
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
-// Entry rule entryRuleDotDereference
-entryRuleDotDereference returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDotDereferenceRule()); }
-	iv_ruleDotDereference=ruleDotDereference
-	{ $current=$iv_ruleDotDereference.current; }
-	EOF;
-
-// Rule DotDereference
-ruleDotDereference returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			newCompositeNode(grammarAccess.getDotDereferenceAccess().getPrimaryParserRuleCall_0());
+			newCompositeNode(grammarAccess.getVariableDereferenceAccess().getPrimaryParserRuleCall_0());
 		}
 		this_Primary_0=rulePrimary
 		{
@@ -8285,95 +8635,69 @@ ruleDotDereference returns [EObject current=null]
 		(
 			(
 				{
-					$current = forceCreateModelElementAndSet(
-						grammarAccess.getDotDereferenceAccess().getVariableDereferenceVariableAction_1_0(),
-						$current);
+					/* */
 				}
-			)
-			otherlv_2=FullStop
-			{
-				newLeafNode(otherlv_2, grammarAccess.getDotDereferenceAccess().getFullStopKeyword_1_1());
-			}
-			(
-				(
-					lv_property_3_0=RULE_ID
-					{
-						newLeafNode(lv_property_3_0, grammarAccess.getDotDereferenceAccess().getPropertyIDTerminalRuleCall_1_2_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getDotDereferenceRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"property",
-							lv_property_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
-			)
-		)*
-	)
-;
-
-// Entry rule entryRuleArrayDereference
-entryRuleArrayDereference returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getArrayDereferenceRule()); }
-	iv_ruleArrayDereference=ruleArrayDereference
-	{ $current=$iv_ruleArrayDereference.current; }
-	EOF;
-
-// Rule ArrayDereference
-ruleArrayDereference returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			newCompositeNode(grammarAccess.getArrayDereferenceAccess().getPrimaryParserRuleCall_0());
-		}
-		this_Primary_0=rulePrimary
-		{
-			$current = $this_Primary_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		(
-			(
 				{
 					$current = forceCreateModelElementAndSet(
-						grammarAccess.getArrayDereferenceAccess().getVariableDereferenceVariableAction_1_0(),
+						grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0(),
 						$current);
 				}
 			)
-			otherlv_2=LeftSquareBracket
-			{
-				newLeafNode(otherlv_2, grammarAccess.getArrayDereferenceAccess().getLeftSquareBracketKeyword_1_1());
-			}
 			(
 				(
-					lv_property_3_0=RULE_ID
+					otherlv_2=FullStop
 					{
-						newLeafNode(lv_property_3_0, grammarAccess.getArrayDereferenceAccess().getPropertyIDTerminalRuleCall_1_2_0());
+						newLeafNode(otherlv_2, grammarAccess.getVariableDereferenceAccess().getFullStopKeyword_1_1_0_0());
 					}
+					(
+						(
+							lv_property_3_0=RULE_ID
+							{
+								newLeafNode(lv_property_3_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_0_1_0());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getVariableDereferenceRule());
+								}
+								setWithLastConsumed(
+									$current,
+									"property",
+									lv_property_3_0,
+									"org.eclipse.xtext.common.Terminals.ID");
+							}
+						)
+					)
+				)
+				    |
+				(
+					otherlv_4=LeftSquareBracket
 					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getArrayDereferenceRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"property",
-							lv_property_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+						newLeafNode(otherlv_4, grammarAccess.getVariableDereferenceAccess().getLeftSquareBracketKeyword_1_1_1_0());
+					}
+					(
+						(
+							lv_property_5_0=RULE_ID
+							{
+								newLeafNode(lv_property_5_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_1_1_0());
+							}
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getVariableDereferenceRule());
+								}
+								setWithLastConsumed(
+									$current,
+									"property",
+									lv_property_5_0,
+									"org.eclipse.xtext.common.Terminals.ID");
+							}
+						)
+					)
+					otherlv_6=RightSquareBracket
+					{
+						newLeafNode(otherlv_6, grammarAccess.getVariableDereferenceAccess().getRightSquareBracketKeyword_1_1_1_2());
 					}
 				)
 			)
-			otherlv_4=RightSquareBracket
-			{
-				newLeafNode(otherlv_4, grammarAccess.getArrayDereferenceAccess().getRightSquareBracketKeyword_1_3());
-			}
 		)*
 	)
 ;
@@ -8400,6 +8724,9 @@ rulePrimary returns [EObject current=null]
 				newLeafNode(otherlv_0, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
 			}
 			{
+				/* */
+			}
+			{
 				newCompositeNode(grammarAccess.getPrimaryAccess().getInsideBracketsExpressionParserRuleCall_0_1());
 			}
 			this_InsideBracketsExpression_1=ruleInsideBracketsExpression
@@ -8414,6 +8741,9 @@ rulePrimary returns [EObject current=null]
 		)
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getPrimaryAccess().getCallExpressionParserRuleCall_1());
 		}
 		this_CallExpression_3=ruleCallExpression
@@ -8422,6 +8752,9 @@ rulePrimary returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getPrimaryAccess().getAtomicParserRuleCall_2());
 		}
@@ -8452,6 +8785,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getGitHubContextAction_0_0(),
 						$current);
@@ -8481,6 +8817,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getVariableAction_1_0(),
 						$current);
@@ -8508,6 +8847,9 @@ ruleAtomic returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getIntegerLiteralAction_2_0(),
@@ -8537,6 +8879,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getDoubleLiteralAction_3_0(),
 						$current);
@@ -8565,6 +8910,9 @@ ruleAtomic returns [EObject current=null]
 		(
 			(
 				{
+					/* */
+				}
+				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getBooleanLiteralAction_4_0(),
 						$current);
@@ -8592,6 +8940,9 @@ ruleAtomic returns [EObject current=null]
 		    |
 		(
 			(
+				{
+					/* */
+				}
 				{
 					$current = forceCreateModelElement(
 						grammarAccess.getAtomicAccess().getStringLiteralAction_5_0(),
@@ -8637,6 +8988,9 @@ ruleCallExpression returns [EObject current=null]
 }:
 	(
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getContainsParserRuleCall_0());
 		}
 		this_Contains_0=ruleContains
@@ -8645,6 +8999,9 @@ ruleCallExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getStartsWithParserRuleCall_1());
 		}
@@ -8655,6 +9012,9 @@ ruleCallExpression returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getEndsWithParserRuleCall_2());
 		}
 		this_EndsWith_2=ruleEndsWith
@@ -8663,6 +9023,9 @@ ruleCallExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getFormatParserRuleCall_3());
 		}
@@ -8673,6 +9036,9 @@ ruleCallExpression returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getJoinParserRuleCall_4());
 		}
 		this_Join_4=ruleJoin
@@ -8681,6 +9047,9 @@ ruleCallExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getToJSONParserRuleCall_5());
 		}
@@ -8691,6 +9060,9 @@ ruleCallExpression returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getFromJSONParserRuleCall_6());
 		}
 		this_FromJSON_6=ruleFromJSON
@@ -8699,6 +9071,9 @@ ruleCallExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getHashFilesParserRuleCall_7());
 		}
@@ -8709,6 +9084,9 @@ ruleCallExpression returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getSuccessParserRuleCall_8());
 		}
 		this_Success_8=ruleSuccess
@@ -8717,6 +9095,9 @@ ruleCallExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getAlwaysParserRuleCall_9());
 		}
@@ -8727,6 +9108,9 @@ ruleCallExpression returns [EObject current=null]
 		}
 		    |
 		{
+			/* */
+		}
+		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getFailureParserRuleCall_10());
 		}
 		this_Failure_10=ruleFailure
@@ -8735,6 +9119,9 @@ ruleCallExpression returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
+		{
+			/* */
+		}
 		{
 			newCompositeNode(grammarAccess.getCallExpressionAccess().getCancelledParserRuleCall_11());
 		}
@@ -9283,6 +9670,9 @@ ruleSuccess returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getSuccessAccess().getSuccessAction_0(),
 					$current);
@@ -9320,6 +9710,9 @@ ruleAlways returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getAlwaysAccess().getAlwaysAction_0(),
@@ -9359,6 +9752,9 @@ ruleCancelled returns [EObject current=null]
 	(
 		(
 			{
+				/* */
+			}
+			{
 				$current = forceCreateModelElement(
 					grammarAccess.getCancelledAccess().getCancelledAction_0(),
 					$current);
@@ -9396,6 +9792,9 @@ ruleFailure returns [EObject current=null]
 }:
 	(
 		(
+			{
+				/* */
+			}
 			{
 				$current = forceCreateModelElement(
 					grammarAccess.getFailureAccess().getFailureAction_0(),

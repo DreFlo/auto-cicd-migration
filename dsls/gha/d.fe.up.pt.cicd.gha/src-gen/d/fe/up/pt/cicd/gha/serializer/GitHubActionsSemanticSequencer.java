@@ -196,10 +196,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 						|| rule == grammarAccess.getUnaryOpRule()
 						|| rule == grammarAccess.getBlankRule()
 						|| rule == grammarAccess.getVariableDereferenceRule()
-						|| rule == grammarAccess.getDotDereferenceRule()
-						|| action == grammarAccess.getDotDereferenceAccess().getVariableDereferenceVariableAction_1_0()
-						|| rule == grammarAccess.getArrayDereferenceRule()
-						|| action == grammarAccess.getArrayDereferenceAccess().getVariableDereferenceVariableAction_1_0()
+						|| action == grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (StringLiteral) semanticObject); 
@@ -373,7 +370,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_Atomic(context, (Variable) semanticObject); 
 				return; 
 			case VariablesPackage.VARIABLE_DEREFERENCE:
-				sequence_ArrayDereference_DotDereference(context, (VariableDereference) semanticObject); 
+				sequence_VariableDereference(context, (VariableDereference) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -420,10 +417,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Always
 	 *     Blank returns Always
 	 *     VariableDereference returns Always
-	 *     DotDereference returns Always
-	 *     DotDereference.VariableDereference_1_0 returns Always
-	 *     ArrayDereference returns Always
-	 *     ArrayDereference.VariableDereference_1_0 returns Always
+	 *     VariableDereference.VariableDereference_1_0 returns Always
 	 *     Primary returns Always
 	 *     CallExpression returns Always
 	 *     Always returns Always
@@ -458,10 +452,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns And
 	 *     Blank returns And
 	 *     VariableDereference returns And
-	 *     DotDereference returns And
-	 *     DotDereference.VariableDereference_1_0 returns And
-	 *     ArrayDereference returns And
-	 *     ArrayDereference.VariableDereference_1_0 returns And
+	 *     VariableDereference.VariableDereference_1_0 returns And
 	 *     Primary returns And
 	 *
 	 * Constraint:
@@ -479,42 +470,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		feeder.accept(grammarAccess.getAndAccess().getAndLhsAction_1_0(), semanticObject.getLhs());
 		feeder.accept(grammarAccess.getAndAccess().getRhsEqualityParserRuleCall_1_2_0(), semanticObject.getRhs());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns VariableDereference
-	 *     Expression returns VariableDereference
-	 *     Concat returns VariableDereference
-	 *     Concat.Concat_1_0 returns VariableDereference
-	 *     ConcatExpression returns VariableDereference
-	 *     BracketedExpression returns VariableDereference
-	 *     InsideBracketsExpression returns VariableDereference
-	 *     Or returns VariableDereference
-	 *     Or.Or_1_0 returns VariableDereference
-	 *     And returns VariableDereference
-	 *     And.And_1_0 returns VariableDereference
-	 *     Equality returns VariableDereference
-	 *     Equality.Equality_1_0 returns VariableDereference
-	 *     Comparison returns VariableDereference
-	 *     Comparison.Comparison_1_0 returns VariableDereference
-	 *     UnaryOp returns VariableDereference
-	 *     Blank returns VariableDereference
-	 *     VariableDereference returns VariableDereference
-	 *     DotDereference returns VariableDereference
-	 *     DotDereference.VariableDereference_1_0 returns VariableDereference
-	 *     ArrayDereference returns VariableDereference
-	 *     ArrayDereference.VariableDereference_1_0 returns VariableDereference
-	 *     Primary returns VariableDereference
-	 *
-	 * Constraint:
-	 *     ((variable=DotDereference_VariableDereference_1_0 property=ID) | (variable=ArrayDereference_VariableDereference_1_0 property=ID))
-	 * </pre>
-	 */
-	protected void sequence_ArrayDereference_DotDereference(ISerializationContext context, VariableDereference semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -539,10 +494,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns BooleanLiteral
 	 *     Blank returns BooleanLiteral
 	 *     VariableDereference returns BooleanLiteral
-	 *     DotDereference returns BooleanLiteral
-	 *     DotDereference.VariableDereference_1_0 returns BooleanLiteral
-	 *     ArrayDereference returns BooleanLiteral
-	 *     ArrayDereference.VariableDereference_1_0 returns BooleanLiteral
+	 *     VariableDereference.VariableDereference_1_0 returns BooleanLiteral
 	 *     Primary returns BooleanLiteral
 	 *     Atomic returns BooleanLiteral
 	 *
@@ -582,10 +534,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns DoubleLiteral
 	 *     Blank returns DoubleLiteral
 	 *     VariableDereference returns DoubleLiteral
-	 *     DotDereference returns DoubleLiteral
-	 *     DotDereference.VariableDereference_1_0 returns DoubleLiteral
-	 *     ArrayDereference returns DoubleLiteral
-	 *     ArrayDereference.VariableDereference_1_0 returns DoubleLiteral
+	 *     VariableDereference.VariableDereference_1_0 returns DoubleLiteral
 	 *     Primary returns DoubleLiteral
 	 *     Atomic returns DoubleLiteral
 	 *
@@ -625,10 +574,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns GitHubContext
 	 *     Blank returns GitHubContext
 	 *     VariableDereference returns GitHubContext
-	 *     DotDereference returns GitHubContext
-	 *     DotDereference.VariableDereference_1_0 returns GitHubContext
-	 *     ArrayDereference returns GitHubContext
-	 *     ArrayDereference.VariableDereference_1_0 returns GitHubContext
+	 *     VariableDereference.VariableDereference_1_0 returns GitHubContext
 	 *     Primary returns GitHubContext
 	 *     Atomic returns GitHubContext
 	 *
@@ -668,10 +614,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns IntegerLiteral
 	 *     Blank returns IntegerLiteral
 	 *     VariableDereference returns IntegerLiteral
-	 *     DotDereference returns IntegerLiteral
-	 *     DotDereference.VariableDereference_1_0 returns IntegerLiteral
-	 *     ArrayDereference returns IntegerLiteral
-	 *     ArrayDereference.VariableDereference_1_0 returns IntegerLiteral
+	 *     VariableDereference.VariableDereference_1_0 returns IntegerLiteral
 	 *     Primary returns IntegerLiteral
 	 *     Atomic returns IntegerLiteral
 	 *
@@ -706,10 +649,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns StringLiteral
 	 *     Blank returns StringLiteral
 	 *     VariableDereference returns StringLiteral
-	 *     DotDereference returns StringLiteral
-	 *     DotDereference.VariableDereference_1_0 returns StringLiteral
-	 *     ArrayDereference returns StringLiteral
-	 *     ArrayDereference.VariableDereference_1_0 returns StringLiteral
+	 *     VariableDereference.VariableDereference_1_0 returns StringLiteral
 	 *     Primary returns StringLiteral
 	 *     Atomic returns StringLiteral
 	 *
@@ -738,7 +678,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     ConcatExpression returns StringLiteral
 	 *
 	 * Constraint:
-	 *     (value=YAML_STRING | value=STRING)
+	 *     (value=STRING | value=STRING)
 	 * </pre>
 	 */
 	protected void sequence_Atomic_UnbracketedString(ISerializationContext context, StringLiteral semanticObject) {
@@ -767,10 +707,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Variable
 	 *     Blank returns Variable
 	 *     VariableDereference returns Variable
-	 *     DotDereference returns Variable
-	 *     DotDereference.VariableDereference_1_0 returns Variable
-	 *     ArrayDereference returns Variable
-	 *     ArrayDereference.VariableDereference_1_0 returns Variable
+	 *     VariableDereference.VariableDereference_1_0 returns Variable
 	 *     Primary returns Variable
 	 *     Atomic returns Variable
 	 *
@@ -810,10 +747,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Cancelled
 	 *     Blank returns Cancelled
 	 *     VariableDereference returns Cancelled
-	 *     DotDereference returns Cancelled
-	 *     DotDereference.VariableDereference_1_0 returns Cancelled
-	 *     ArrayDereference returns Cancelled
-	 *     ArrayDereference.VariableDereference_1_0 returns Cancelled
+	 *     VariableDereference.VariableDereference_1_0 returns Cancelled
 	 *     Primary returns Cancelled
 	 *     CallExpression returns Cancelled
 	 *     Cancelled returns Cancelled
@@ -835,7 +769,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *
 	 * Constraint:
 	 *     (
-	 *         id=YAML_STRING | 
+	 *         id=STRING | 
 	 *         if=IfStatement | 
 	 *         name=Expression | 
 	 *         shell=Expression | 
@@ -872,10 +806,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Comparison
 	 *     Blank returns Comparison
 	 *     VariableDereference returns Comparison
-	 *     DotDereference returns Comparison
-	 *     DotDereference.VariableDereference_1_0 returns Comparison
-	 *     ArrayDereference returns Comparison
-	 *     ArrayDereference.VariableDereference_1_0 returns Comparison
+	 *     VariableDereference.VariableDereference_1_0 returns Comparison
 	 *     Primary returns Comparison
 	 *
 	 * Constraint:
@@ -931,7 +862,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     ConcurrencyGroup returns ConcurrencyGroup
 	 *
 	 * Constraint:
-	 *     (name=Expression | cancelInProgress=Expression)*
+	 *     (name=Expression | cancelInProgress=Expression)+
 	 * </pre>
 	 */
 	protected void sequence_ConcurrencyGroup(ISerializationContext context, ConcurrencyGroup semanticObject) {
@@ -988,10 +919,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Contains
 	 *     Blank returns Contains
 	 *     VariableDereference returns Contains
-	 *     DotDereference returns Contains
-	 *     DotDereference.VariableDereference_1_0 returns Contains
-	 *     ArrayDereference returns Contains
-	 *     ArrayDereference.VariableDereference_1_0 returns Contains
+	 *     VariableDereference.VariableDereference_1_0 returns Contains
 	 *     Primary returns Contains
 	 *     CallExpression returns Contains
 	 *     Contains returns Contains
@@ -1049,10 +977,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns EndsWith
 	 *     Blank returns EndsWith
 	 *     VariableDereference returns EndsWith
-	 *     DotDereference returns EndsWith
-	 *     DotDereference.VariableDereference_1_0 returns EndsWith
-	 *     ArrayDereference returns EndsWith
-	 *     ArrayDereference.VariableDereference_1_0 returns EndsWith
+	 *     VariableDereference.VariableDereference_1_0 returns EndsWith
 	 *     Primary returns EndsWith
 	 *     CallExpression returns EndsWith
 	 *     EndsWith returns EndsWith
@@ -1096,10 +1021,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Equality
 	 *     Blank returns Equality
 	 *     VariableDereference returns Equality
-	 *     DotDereference returns Equality
-	 *     DotDereference.VariableDereference_1_0 returns Equality
-	 *     ArrayDereference returns Equality
-	 *     ArrayDereference.VariableDereference_1_0 returns Equality
+	 *     VariableDereference.VariableDereference_1_0 returns Equality
 	 *     Primary returns Equality
 	 *
 	 * Constraint:
@@ -1144,10 +1066,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Failure
 	 *     Blank returns Failure
 	 *     VariableDereference returns Failure
-	 *     DotDereference returns Failure
-	 *     DotDereference.VariableDereference_1_0 returns Failure
-	 *     ArrayDereference returns Failure
-	 *     ArrayDereference.VariableDereference_1_0 returns Failure
+	 *     VariableDereference.VariableDereference_1_0 returns Failure
 	 *     Primary returns Failure
 	 *     CallExpression returns Failure
 	 *     Failure returns Failure
@@ -1182,10 +1101,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Format
 	 *     Blank returns Format
 	 *     VariableDereference returns Format
-	 *     DotDereference returns Format
-	 *     DotDereference.VariableDereference_1_0 returns Format
-	 *     ArrayDereference returns Format
-	 *     ArrayDereference.VariableDereference_1_0 returns Format
+	 *     VariableDereference.VariableDereference_1_0 returns Format
 	 *     Primary returns Format
 	 *     CallExpression returns Format
 	 *     Format returns Format
@@ -1220,10 +1136,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns FromJSON
 	 *     Blank returns FromJSON
 	 *     VariableDereference returns FromJSON
-	 *     DotDereference returns FromJSON
-	 *     DotDereference.VariableDereference_1_0 returns FromJSON
-	 *     ArrayDereference returns FromJSON
-	 *     ArrayDereference.VariableDereference_1_0 returns FromJSON
+	 *     VariableDereference.VariableDereference_1_0 returns FromJSON
 	 *     Primary returns FromJSON
 	 *     CallExpression returns FromJSON
 	 *     FromJSON returns FromJSON
@@ -1264,10 +1177,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns HashFiles
 	 *     Blank returns HashFiles
 	 *     VariableDereference returns HashFiles
-	 *     DotDereference returns HashFiles
-	 *     DotDereference.VariableDereference_1_0 returns HashFiles
-	 *     ArrayDereference returns HashFiles
-	 *     ArrayDereference.VariableDereference_1_0 returns HashFiles
+	 *     VariableDereference.VariableDereference_1_0 returns HashFiles
 	 *     Primary returns HashFiles
 	 *     CallExpression returns HashFiles
 	 *     HashFiles returns HashFiles
@@ -1294,13 +1204,13 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *
 	 * Constraint:
 	 *     (
-	 *         (id=YAML_STRING description=Expression?) | 
+	 *         (id=ID description=Expression?) | 
 	 *         default=Expression | 
 	 *         isRequired=Expression | 
 	 *         type=TYPE | 
-	 *         options+=YAML_STRING | 
-	 *         (options+=YAML_STRING options+=YAML_STRING*) | 
-	 *         options+=YAML_STRING
+	 *         options+=STRING | 
+	 *         (options+=STRING options+=STRING*) | 
+	 *         options+=STRING
 	 *     )+
 	 * </pre>
 	 */
@@ -1330,10 +1240,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Join
 	 *     Blank returns Join
 	 *     VariableDereference returns Join
-	 *     DotDereference returns Join
-	 *     DotDereference.VariableDereference_1_0 returns Join
-	 *     ArrayDereference returns Join
-	 *     ArrayDereference.VariableDereference_1_0 returns Join
+	 *     VariableDereference.VariableDereference_1_0 returns Join
 	 *     Primary returns Join
 	 *     CallExpression returns Join
 	 *     Join returns Join
@@ -1353,7 +1260,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MatrixAxis returns MatrixAxis
 	 *
 	 * Constraint:
-	 *     (name=YAML_STRING (cells+=Expression | (cells+=Expression cells+=Expression*) | cells+=Expression+))
+	 *     (name=ID (cells+=Expression | (cells+=Expression cells+=Expression*) | cells+=Expression+))
 	 * </pre>
 	 */
 	protected void sequence_MatrixAxis(ISerializationContext context, MatrixAxis semanticObject) {
@@ -1397,10 +1304,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Not returns Not
 	 *     Blank returns Not
 	 *     VariableDereference returns Not
-	 *     DotDereference returns Not
-	 *     DotDereference.VariableDereference_1_0 returns Not
-	 *     ArrayDereference returns Not
-	 *     ArrayDereference.VariableDereference_1_0 returns Not
+	 *     VariableDereference.VariableDereference_1_0 returns Not
 	 *     Primary returns Not
 	 *
 	 * Constraint:
@@ -1563,10 +1467,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Or
 	 *     Blank returns Or
 	 *     VariableDereference returns Or
-	 *     DotDereference returns Or
-	 *     DotDereference.VariableDereference_1_0 returns Or
-	 *     ArrayDereference returns Or
-	 *     ArrayDereference.VariableDereference_1_0 returns Or
+	 *     VariableDereference.VariableDereference_1_0 returns Or
 	 *     Primary returns Or
 	 *
 	 * Constraint:
@@ -1593,7 +1494,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Output returns Output
 	 *
 	 * Constraint:
-	 *     ((id=YAML_STRING description=Expression?) | value=Expression)+
+	 *     ((id=ID description=Expression?) | value=Expression)+
 	 * </pre>
 	 */
 	protected void sequence_Output(ISerializationContext context, Output semanticObject) {
@@ -1610,7 +1511,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 * Constraint:
 	 *     (
 	 *         (
-	 *             id=YAML_STRING | 
+	 *             id=STRING | 
 	 *             if=IfStatement | 
 	 *             name=Expression | 
 	 *             shell=Expression | 
@@ -1647,8 +1548,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, OptionsPackage.Literals.PERMISSION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_1_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_1_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_1_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -1682,7 +1583,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             timeoutMinutes=Expression
 	 *         )? 
 	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)? 
-	 *         (name=YAML_STRING jobName=Expression?)?
+	 *         (name=ID jobName=Expression?)?
 	 *     )+
 	 * </pre>
 	 */
@@ -1717,7 +1618,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             timeoutMinutes=Expression
 	 *         )? 
 	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)? 
-	 *         (name=YAML_STRING jobName=Expression?)?
+	 *         (name=ID jobName=Expression?)?
 	 *     )+
 	 * </pre>
 	 */
@@ -1732,7 +1633,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Secret returns Secret
 	 *
 	 * Constraint:
-	 *     (isRequired=Expression? (id=YAML_STRING description=Expression?)?)+
+	 *     (isRequired=Expression? (id=ID description=Expression?)?)+
 	 * </pre>
 	 */
 	protected void sequence_Secret(ISerializationContext context, Secret semanticObject) {
@@ -1746,7 +1647,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Service returns Service
 	 *
 	 * Constraint:
-	 *     (key=YAML_STRING value=Container)
+	 *     (key=ID value=Container)
 	 * </pre>
 	 */
 	protected void sequence_Service(ISerializationContext context, Map.Entry semanticObject) {
@@ -1757,7 +1658,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, JobsPackage.Literals.SERVICE__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getServiceAccess().getKeyYAML_STRINGTerminalRuleCall_1_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getServiceAccess().getKeyIDTerminalRuleCall_1_0(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getServiceAccess().getValueContainerParserRuleCall_4_0(), semanticObject.getValue());
 		feeder.finish();
 	}
@@ -1879,10 +1780,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns StartsWith
 	 *     Blank returns StartsWith
 	 *     VariableDereference returns StartsWith
-	 *     DotDereference returns StartsWith
-	 *     DotDereference.VariableDereference_1_0 returns StartsWith
-	 *     ArrayDereference returns StartsWith
-	 *     ArrayDereference.VariableDereference_1_0 returns StartsWith
+	 *     VariableDereference.VariableDereference_1_0 returns StartsWith
 	 *     Primary returns StartsWith
 	 *     CallExpression returns StartsWith
 	 *     StartsWith returns StartsWith
@@ -1940,10 +1838,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Success
 	 *     Blank returns Success
 	 *     VariableDereference returns Success
-	 *     DotDereference returns Success
-	 *     DotDereference.VariableDereference_1_0 returns Success
-	 *     ArrayDereference returns Success
-	 *     ArrayDereference.VariableDereference_1_0 returns Success
+	 *     VariableDereference.VariableDereference_1_0 returns Success
 	 *     Primary returns Success
 	 *     CallExpression returns Success
 	 *     Success returns Success
@@ -1978,10 +1873,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns ToJSON
 	 *     Blank returns ToJSON
 	 *     VariableDereference returns ToJSON
-	 *     DotDereference returns ToJSON
-	 *     DotDereference.VariableDereference_1_0 returns ToJSON
-	 *     ArrayDereference returns ToJSON
-	 *     ArrayDereference.VariableDereference_1_0 returns ToJSON
+	 *     VariableDereference.VariableDereference_1_0 returns ToJSON
 	 *     Primary returns ToJSON
 	 *     CallExpression returns ToJSON
 	 *     ToJSON returns ToJSON
@@ -2008,7 +1900,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnbracketedString returns StringLiteral
 	 *
 	 * Constraint:
-	 *     value=YAML_STRING
+	 *     value=STRING
 	 * </pre>
 	 */
 	protected void sequence_UnbracketedString(ISerializationContext context, StringLiteral semanticObject) {
@@ -2017,7 +1909,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LiteralsPackage.Literals.STRING_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getUnbracketedStringAccess().getValueYAML_STRINGTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getUnbracketedStringAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -2028,7 +1920,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     VariableAssignment returns VariableAssignment
 	 *
 	 * Constraint:
-	 *     (key=YAML_STRING value=Expression)
+	 *     (key=ID value=Expression)
 	 * </pre>
 	 */
 	protected void sequence_VariableAssignment(ISerializationContext context, Map.Entry semanticObject) {
@@ -2039,9 +1931,42 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyYAML_STRINGTerminalRuleCall_1_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyIDTerminalRuleCall_1_0(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getVariableAssignmentAccess().getValueExpressionParserRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     IfStatement returns VariableDereference
+	 *     Expression returns VariableDereference
+	 *     Concat returns VariableDereference
+	 *     Concat.Concat_1_0 returns VariableDereference
+	 *     ConcatExpression returns VariableDereference
+	 *     BracketedExpression returns VariableDereference
+	 *     InsideBracketsExpression returns VariableDereference
+	 *     Or returns VariableDereference
+	 *     Or.Or_1_0 returns VariableDereference
+	 *     And returns VariableDereference
+	 *     And.And_1_0 returns VariableDereference
+	 *     Equality returns VariableDereference
+	 *     Equality.Equality_1_0 returns VariableDereference
+	 *     Comparison returns VariableDereference
+	 *     Comparison.Comparison_1_0 returns VariableDereference
+	 *     UnaryOp returns VariableDereference
+	 *     Blank returns VariableDereference
+	 *     VariableDereference returns VariableDereference
+	 *     VariableDereference.VariableDereference_1_0 returns VariableDereference
+	 *     Primary returns VariableDereference
+	 *
+	 * Constraint:
+	 *     (variable=VariableDereference_VariableDereference_1_0 (property=ID | property=ID))
+	 * </pre>
+	 */
+	protected void sequence_VariableDereference(ISerializationContext context, VariableDereference semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

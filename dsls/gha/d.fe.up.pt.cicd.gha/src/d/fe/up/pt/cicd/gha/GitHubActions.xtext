@@ -46,7 +46,7 @@ Job returns Jobs::Job:
 
 ScriptJob returns Jobs::ScriptJob:
 	BEGIN
-	name=YAML_STRING ':'
+	name=ID ':'
 		BEGIN
 		('name' ':' jobName=Expression)? &
 		('permissions' ':' permissions+=Permission+)? &
@@ -76,7 +76,7 @@ ScriptJob returns Jobs::ScriptJob:
 
 ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
 	BEGIN
-	name=YAML_STRING ':'
+	name=ID ':'
 		BEGIN
 		('name' ':' jobName=Expression)? &
 		('permissions' ':' permissions+=Permission+)? &
@@ -145,7 +145,7 @@ Step returns Steps::Step:
 ;
 
 Command returns Steps::Command:
-	('id' ':' id=YAML_STRING)? &
+	('id' ':' id=STRING)? &
 	if=IfStatement? &
 	('name' ':' name=Expression)? &
 	('shell' ':' shell=Expression)? &
@@ -157,7 +157,7 @@ Command returns Steps::Command:
 ;
 
 Package returns Steps::Package:
-	('id' ':' id=YAML_STRING)? &
+	('id' ':' id=STRING)? &
 	if=IfStatement? &
 	('name' ':' name=Expression)? &
 	('shell' ':' shell=Expression)? &
@@ -185,8 +185,10 @@ IfStatement returns Expressions::Expression:
 
 ConcurrencyGroup returns Options::ConcurrencyGroup:
 	BEGIN
-	('group' ':' name=Expression) &
-	('cancel-in-progress' ':' cancelInProgress=Expression)?
+	(
+		('group' ':' name=Expression) &
+		('cancel-in-progress' ':' cancelInProgress=Expression)?
+	)
 	END
 ;
 
@@ -371,7 +373,7 @@ OptionedWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
 
 Input returns Parameters::Input:
 	BEGIN
-	id=YAML_STRING ':'
+	id=ID ':'
 		BEGIN
 		('description' ':' description=Expression)? &
 		('default' ':' default=Expression)? &
@@ -381,11 +383,11 @@ Input returns Parameters::Input:
 		) &
 		(
 			'options' ':'
-				options+=YAML_STRING |
-				('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+				options+=STRING |
+				('[' options+=STRING (',' options+=STRING)* ']') |
 				(
 					BEGIN
-					('-' options+=YAML_STRING NEWLINE)+
+					('-' options+=STRING NEWLINE)+
 					END
 				)
 		)
@@ -395,7 +397,7 @@ Input returns Parameters::Input:
 
 Output returns Parameters::Output:
 	BEGIN
-	id=YAML_STRING ':'
+	id=ID ':'
 		BEGIN
 		('description' ':' description=Expression)? &
 		('value' ':' value=Expression)
@@ -405,7 +407,7 @@ Output returns Parameters::Output:
 
 Secret returns Parameters::Secret:
 	BEGIN
-	id=YAML_STRING ':'
+	id=ID ':'
 		BEGIN
 		('description' ':' description=Expression)? &
 		('required' ':' isRequired=Expression)?
@@ -415,7 +417,7 @@ Secret returns Parameters::Secret:
 
 Permission returns Options::Permission:
 	BEGIN
-	key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE
+	(key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE)
 	END
 ;
 
@@ -460,7 +462,7 @@ Strategy returns Matrices::Matrix:
 
 MatrixAxis returns Matrices::MatrixAxis:
 	BEGIN
-	name=YAML_STRING ':' 
+	name=ID ':' 
 	(
 		cells+=Expression |
 		('[' cells+=Expression (',' cells+=Expression)* ']') |
@@ -517,7 +519,7 @@ Container returns Jobs::Container:
 
 Service returns Jobs::Service:
 	BEGIN
-	key=YAML_STRING ':'
+	key=ID ':'
 		BEGIN
 		value=Container
 		END
@@ -526,7 +528,7 @@ Service returns Jobs::Service:
 
 VariableAssignment returns Expressions::VariableAssignment:
 	BEGIN
-	key=YAML_STRING ':' value=Expression
+	key=ID ':' value=Expression
 	END
 ;
 
@@ -555,7 +557,7 @@ UnbracketedLiteral returns Literals::Literal:
 ;
 
 UnbracketedString returns Literals::StringLiteral:
-	value=YAML_STRING
+	value=STRING
 ;
 
 Or returns Expressions::Expression:
@@ -588,21 +590,11 @@ Blank returns Expressions::Expression:
 ;
 
 VariableDereference returns Expressions::Expression:
-	DotDereference | ArrayDereference
-;
-
-DotDereference returns Expressions::Expression:
-	Primary ({Variables::VariableDereference.variable=current} '.' property=ID)*
-;
-
-ArrayDereference returns Expressions::Expression:
-	Primary ({Variables::VariableDereference.variable=current} '[' property=ID ']')*
+	Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
 ;
 
 Primary returns Expressions::Expression:
-    ('(' InsideBracketsExpression ')') |
-    CallExpression |
-    Atomic
+    ('(' InsideBracketsExpression ')') | CallExpression | Atomic
 ;
 
 Atomic returns Values::Value:
@@ -792,13 +784,14 @@ terminal DOUBLE returns ecore::EDoubleObject:
 terminal BOOLEAN returns ecore::EBooleanObject:
 	'true' | 'false'
 ;
-
+/*
 terminal YAML_STRING returns ecore::EString:
-	('"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"') |
-	("'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'") |
-	(. -> ('$' | NEWLINE)) |
-	('|' BEGIN . -> '$' END)
+	('"' ( '\\' . | !('\\'|'"') )+ '"') |
+	("'" ( '\\' . | !('\\'|"'") )+ "'") |
+	(!('$' | NEWLINE) -> ('$' | NEWLINE)) |
+	('|' BEGIN !('$' | NEWLINE) -> '$' END)
 ;
+*/
 
 terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
 

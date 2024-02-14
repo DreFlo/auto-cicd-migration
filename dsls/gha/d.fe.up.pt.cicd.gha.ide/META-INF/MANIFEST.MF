@@ -8,5 +8,9 @@ Bundle-SymbolicName: d.fe.up.pt.cicd.gha.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: d.fe.up.pt.cicd.gha,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: d.fe.up.pt.cicd.gha.ide.contentassist.antlr,
+ d.fe.up.pt.cicd.gha.ide.contentassist.antlr.internal,
+ d.fe.up.pt.cicd.gha.ide.contentassist.antlr.lexer

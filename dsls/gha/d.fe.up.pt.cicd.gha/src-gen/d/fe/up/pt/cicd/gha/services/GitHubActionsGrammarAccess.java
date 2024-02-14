@@ -359,7 +359,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
 		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cNameYAML_STRINGTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
 		private final Group cGroup_0_4 = (Group)cGroup_0.eContents().get(4);
@@ -462,7 +462,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//ScriptJob returns Jobs::ScriptJob:
 		//    BEGIN
-		//    name=YAML_STRING ':'
+		//    name=ID ':'
 		//        BEGIN
 		//        ('name' ':' jobName=Expression)? &
 		//        ('permissions' ':' permissions+=Permission+)? &
@@ -492,7 +492,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//name=YAML_STRING ':'
+		//name=ID ':'
 		//    BEGIN
 		//    ('name' ':' jobName=Expression)? &
 		//    ('permissions' ':' permissions+=Permission+)? &
@@ -521,7 +521,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//BEGIN
-		//name=YAML_STRING ':'
+		//name=ID ':'
 		//    BEGIN
 		//    ('name' ':' jobName=Expression)?
 		public Group getGroup_0() { return cGroup_0; }
@@ -529,11 +529,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_0() { return cBEGINTerminalRuleCall_0_0; }
 		
-		//name=YAML_STRING
+		//name=ID
 		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 		
-		//YAML_STRING
-		public RuleCall getNameYAML_STRINGTerminalRuleCall_0_1_0() { return cNameYAML_STRINGTerminalRuleCall_0_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
@@ -852,7 +852,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
 		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cNameYAML_STRINGTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
 		private final Group cGroup_0_4 = (Group)cGroup_0.eContents().get(4);
@@ -968,7 +968,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
 		//    BEGIN
-		//    name=YAML_STRING ':'
+		//    name=ID ':'
 		//        BEGIN
 		//        ('name' ':' jobName=Expression)? &
 		//        ('permissions' ':' permissions+=Permission+)? &
@@ -1000,7 +1000,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//name=YAML_STRING ':'
+		//name=ID ':'
 		//    BEGIN
 		//    ('name' ':' jobName=Expression)? &
 		//    ('permissions' ':' permissions+=Permission+)? &
@@ -1031,7 +1031,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//BEGIN
-		//name=YAML_STRING ':'
+		//name=ID ':'
 		//    BEGIN
 		//    ('name' ':' jobName=Expression)?
 		public Group getGroup_0() { return cGroup_0; }
@@ -1039,11 +1039,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_0() { return cBEGINTerminalRuleCall_0_0; }
 		
-		//name=YAML_STRING
+		//name=ID
 		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 		
-		//YAML_STRING
-		public RuleCall getNameYAML_STRINGTerminalRuleCall_0_1_0() { return cNameYAML_STRINGTerminalRuleCall_0_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
@@ -1786,7 +1786,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cIdKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cIdAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cIdYAML_STRINGTerminalRuleCall_0_2_0 = (RuleCall)cIdAssignment_0_2.eContents().get(0);
+		private final RuleCall cIdSTRINGTerminalRuleCall_0_2_0 = (RuleCall)cIdAssignment_0_2.eContents().get(0);
 		private final Assignment cIfAssignment_1 = (Assignment)cUnorderedGroup.eContents().get(1);
 		private final RuleCall cIfIfStatementParserRuleCall_1_0 = (RuleCall)cIfAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
@@ -1827,7 +1827,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cCommandExpressionParserRuleCall_7_1_2_0 = (RuleCall)cCommandAssignment_7_1_2.eContents().get(0);
 		
 		//Command returns Steps::Command:
-		//    ('id' ':' id=YAML_STRING)? &
+		//    ('id' ':' id=STRING)? &
 		//    if=IfStatement? &
 		//    ('name' ':' name=Expression)? &
 		//    ('shell' ':' shell=Expression)? &
@@ -1839,7 +1839,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('id' ':' id=YAML_STRING)? &
+		//('id' ':' id=STRING)? &
 		//if=IfStatement? &
 		//('name' ':' name=Expression)? &
 		//('shell' ':' shell=Expression)? &
@@ -1850,7 +1850,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//('run' ':' command=Expression)
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//('id' ':' id=YAML_STRING)?
+		//('id' ':' id=STRING)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'id'
@@ -1859,11 +1859,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//id=YAML_STRING
+		//id=STRING
 		public Assignment getIdAssignment_0_2() { return cIdAssignment_0_2; }
 		
-		//YAML_STRING
-		public RuleCall getIdYAML_STRINGTerminalRuleCall_0_2_0() { return cIdYAML_STRINGTerminalRuleCall_0_2_0; }
+		//STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_0_2_0() { return cIdSTRINGTerminalRuleCall_0_2_0; }
 		
 		//if=IfStatement?
 		public Assignment getIfAssignment_1() { return cIfAssignment_1; }
@@ -1987,7 +1987,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cIdKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Assignment cIdAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
-		private final RuleCall cIdYAML_STRINGTerminalRuleCall_0_2_0 = (RuleCall)cIdAssignment_0_2.eContents().get(0);
+		private final RuleCall cIdSTRINGTerminalRuleCall_0_2_0 = (RuleCall)cIdAssignment_0_2.eContents().get(0);
 		private final Assignment cIfAssignment_1 = (Assignment)cUnorderedGroup.eContents().get(1);
 		private final RuleCall cIfIfStatementParserRuleCall_1_0 = (RuleCall)cIfAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
@@ -2048,7 +2048,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_8_1_1 = (RuleCall)cGroup_8_1.eContents().get(1);
 		
 		//Package returns Steps::Package:
-		//    ('id' ':' id=YAML_STRING)? &
+		//    ('id' ':' id=STRING)? &
 		//    if=IfStatement? &
 		//    ('name' ':' name=Expression)? &
 		//    ('shell' ':' shell=Expression)? &
@@ -2071,7 +2071,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('id' ':' id=YAML_STRING)? &
+		//('id' ':' id=STRING)? &
 		//if=IfStatement? &
 		//('name' ':' name=Expression)? &
 		//('shell' ':' shell=Expression)? &
@@ -2093,7 +2093,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//)?
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//('id' ':' id=YAML_STRING)?
+		//('id' ':' id=STRING)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'id'
@@ -2102,11 +2102,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//id=YAML_STRING
+		//id=STRING
 		public Assignment getIdAssignment_0_2() { return cIdAssignment_0_2; }
 		
-		//YAML_STRING
-		public RuleCall getIdYAML_STRINGTerminalRuleCall_0_2_0() { return cIdYAML_STRINGTerminalRuleCall_0_2_0; }
+		//STRING
+		public RuleCall getIdSTRINGTerminalRuleCall_0_2_0() { return cIdSTRINGTerminalRuleCall_0_2_0; }
 		
 		//if=IfStatement?
 		public Assignment getIfAssignment_1() { return cIfAssignment_1; }
@@ -2332,79 +2332,80 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	public class ConcurrencyGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.ConcurrencyGroup");
-		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
-		private final RuleCall cBEGINTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cGroupKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Keyword cColonKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
-		private final Assignment cNameAssignment_0_1_2 = (Assignment)cGroup_0_1.eContents().get(2);
-		private final RuleCall cNameExpressionParserRuleCall_0_1_2_0 = (RuleCall)cNameAssignment_0_1_2.eContents().get(0);
-		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
-		private final Keyword cCancelInProgressKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cBEGINTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_1 = (UnorderedGroup)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cUnorderedGroup_1.eContents().get(0);
+		private final Keyword cGroupKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
 		private final Keyword cColonKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
-		private final Assignment cCancelInProgressAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
-		private final RuleCall cCancelInProgressExpressionParserRuleCall_1_0_2_0 = (RuleCall)cCancelInProgressAssignment_1_0_2.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Assignment cNameAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cNameExpressionParserRuleCall_1_0_2_0 = (RuleCall)cNameAssignment_1_0_2.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cUnorderedGroup_1.eContents().get(1);
+		private final Keyword cCancelInProgressKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Keyword cColonKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cCancelInProgressAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cCancelInProgressExpressionParserRuleCall_1_1_2_0 = (RuleCall)cCancelInProgressAssignment_1_1_2.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//ConcurrencyGroup returns Options::ConcurrencyGroup:
 		//    BEGIN
-		//    ('group' ':' name=Expression) &
-		//    ('cancel-in-progress' ':' cancelInProgress=Expression)?
+		//    (
+		//        ('group' ':' name=Expression) &
+		//        ('cancel-in-progress' ':' cancelInProgress=Expression)?
+		//    )
 		//    END
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//('group' ':' name=Expression) &
-		//('cancel-in-progress' ':' cancelInProgress=Expression)?
+		//(
+		//    ('group' ':' name=Expression) &
+		//    ('cancel-in-progress' ':' cancelInProgress=Expression)?
+		//)
 		//END
-		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
+		public Group getGroup() { return cGroup; }
 		
 		//BEGIN
+		public RuleCall getBEGINTerminalRuleCall_0() { return cBEGINTerminalRuleCall_0; }
+		
+		//(
+		//    ('group' ':' name=Expression) &
+		//    ('cancel-in-progress' ':' cancelInProgress=Expression)?
+		//)
+		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
+		
 		//('group' ':' name=Expression)
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_0() { return cBEGINTerminalRuleCall_0_0; }
-		
-		//('group' ':' name=Expression)
-		public Group getGroup_0_1() { return cGroup_0_1; }
-		
-		//'group'
-		public Keyword getGroupKeyword_0_1_0() { return cGroupKeyword_0_1_0; }
-		
-		//':'
-		public Keyword getColonKeyword_0_1_1() { return cColonKeyword_0_1_1; }
-		
-		//name=Expression
-		public Assignment getNameAssignment_0_1_2() { return cNameAssignment_0_1_2; }
-		
-		//Expression
-		public RuleCall getNameExpressionParserRuleCall_0_1_2_0() { return cNameExpressionParserRuleCall_0_1_2_0; }
-		
-		//('cancel-in-progress' ':' cancelInProgress=Expression)?
-		//END
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//('cancel-in-progress' ':' cancelInProgress=Expression)?
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//'cancel-in-progress'
-		public Keyword getCancelInProgressKeyword_1_0_0() { return cCancelInProgressKeyword_1_0_0; }
+		//'group'
+		public Keyword getGroupKeyword_1_0_0() { return cGroupKeyword_1_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1_0_1() { return cColonKeyword_1_0_1; }
 		
-		//cancelInProgress=Expression
-		public Assignment getCancelInProgressAssignment_1_0_2() { return cCancelInProgressAssignment_1_0_2; }
+		//name=Expression
+		public Assignment getNameAssignment_1_0_2() { return cNameAssignment_1_0_2; }
 		
 		//Expression
-		public RuleCall getCancelInProgressExpressionParserRuleCall_1_0_2_0() { return cCancelInProgressExpressionParserRuleCall_1_0_2_0; }
+		public RuleCall getNameExpressionParserRuleCall_1_0_2_0() { return cNameExpressionParserRuleCall_1_0_2_0; }
+		
+		//('cancel-in-progress' ':' cancelInProgress=Expression)?
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//'cancel-in-progress'
+		public Keyword getCancelInProgressKeyword_1_1_0() { return cCancelInProgressKeyword_1_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1_1_1() { return cColonKeyword_1_1_1; }
+		
+		//cancelInProgress=Expression
+		public Assignment getCancelInProgressAssignment_1_1_2() { return cCancelInProgressAssignment_1_1_2; }
+		
+		//Expression
+		public RuleCall getCancelInProgressExpressionParserRuleCall_1_1_2_0() { return cCancelInProgressExpressionParserRuleCall_1_1_2_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_1_1() { return cENDTerminalRuleCall_1_1; }
+		public RuleCall getENDTerminalRuleCall_2() { return cENDTerminalRuleCall_2; }
 	}
 	public class SimpleTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.SimpleTrigger");
@@ -4274,7 +4275,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
 		private final Assignment cIdAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cIdYAML_STRINGTerminalRuleCall_0_1_0 = (RuleCall)cIdAssignment_0_1.eContents().get(0);
+		private final RuleCall cIdIDTerminalRuleCall_0_1_0 = (RuleCall)cIdAssignment_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
 		private final Group cGroup_0_4 = (Group)cGroup_0.eContents().get(4);
@@ -4303,22 +4304,22 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cOptionsKeyword_4_0_0_0 = (Keyword)cGroup_4_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_4_0_0_1 = (Keyword)cGroup_4_0_0.eContents().get(1);
 		private final Assignment cOptionsAssignment_4_0_0_2 = (Assignment)cGroup_4_0_0.eContents().get(2);
-		private final RuleCall cOptionsYAML_STRINGTerminalRuleCall_4_0_0_2_0 = (RuleCall)cOptionsAssignment_4_0_0_2.eContents().get(0);
+		private final RuleCall cOptionsSTRINGTerminalRuleCall_4_0_0_2_0 = (RuleCall)cOptionsAssignment_4_0_0_2.eContents().get(0);
 		private final Group cGroup_4_0_1 = (Group)cAlternatives_4_0.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_4_0_1_0 = (Keyword)cGroup_4_0_1.eContents().get(0);
 		private final Assignment cOptionsAssignment_4_0_1_1 = (Assignment)cGroup_4_0_1.eContents().get(1);
-		private final RuleCall cOptionsYAML_STRINGTerminalRuleCall_4_0_1_1_0 = (RuleCall)cOptionsAssignment_4_0_1_1.eContents().get(0);
+		private final RuleCall cOptionsSTRINGTerminalRuleCall_4_0_1_1_0 = (RuleCall)cOptionsAssignment_4_0_1_1.eContents().get(0);
 		private final Group cGroup_4_0_1_2 = (Group)cGroup_4_0_1.eContents().get(2);
 		private final Keyword cCommaKeyword_4_0_1_2_0 = (Keyword)cGroup_4_0_1_2.eContents().get(0);
 		private final Assignment cOptionsAssignment_4_0_1_2_1 = (Assignment)cGroup_4_0_1_2.eContents().get(1);
-		private final RuleCall cOptionsYAML_STRINGTerminalRuleCall_4_0_1_2_1_0 = (RuleCall)cOptionsAssignment_4_0_1_2_1.eContents().get(0);
+		private final RuleCall cOptionsSTRINGTerminalRuleCall_4_0_1_2_1_0 = (RuleCall)cOptionsAssignment_4_0_1_2_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_4_0_1_3 = (Keyword)cGroup_4_0_1.eContents().get(3);
 		private final Group cGroup_4_0_2 = (Group)cAlternatives_4_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_4_0_2_0 = (RuleCall)cGroup_4_0_2.eContents().get(0);
 		private final Group cGroup_4_0_2_1 = (Group)cGroup_4_0_2.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_4_0_2_1_0 = (Keyword)cGroup_4_0_2_1.eContents().get(0);
 		private final Assignment cOptionsAssignment_4_0_2_1_1 = (Assignment)cGroup_4_0_2_1.eContents().get(1);
-		private final RuleCall cOptionsYAML_STRINGTerminalRuleCall_4_0_2_1_1_0 = (RuleCall)cOptionsAssignment_4_0_2_1_1.eContents().get(0);
+		private final RuleCall cOptionsSTRINGTerminalRuleCall_4_0_2_1_1_0 = (RuleCall)cOptionsAssignment_4_0_2_1_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_4_0_2_1_2 = (RuleCall)cGroup_4_0_2_1.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_4_0_2_2 = (RuleCall)cGroup_4_0_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
@@ -4326,7 +4327,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//Input returns Parameters::Input:
 		//    BEGIN
-		//    id=YAML_STRING ':'
+		//    id=ID ':'
 		//        BEGIN
 		//        ('description' ':' description=Expression)? &
 		//        ('default' ':' default=Expression)? &
@@ -4336,11 +4337,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//        ) &
 		//        (
 		//            'options' ':'
-		//                options+=YAML_STRING |
-		//                ('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+		//                options+=STRING |
+		//                ('[' options+=STRING (',' options+=STRING)* ']') |
 		//                (
 		//                    BEGIN
-		//                    ('-' options+=YAML_STRING NEWLINE)+
+		//                    ('-' options+=STRING NEWLINE)+
 		//                    END
 		//                )
 		//        )
@@ -4350,7 +4351,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//id=YAML_STRING ':'
+		//id=ID ':'
 		//    BEGIN
 		//    ('description' ':' description=Expression)? &
 		//    ('default' ':' default=Expression)? &
@@ -4360,11 +4361,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    ) &
 		//    (
 		//        'options' ':'
-		//            options+=YAML_STRING |
-		//            ('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+		//            options+=STRING |
+		//            ('[' options+=STRING (',' options+=STRING)* ']') |
 		//            (
 		//                BEGIN
-		//                ('-' options+=YAML_STRING NEWLINE)+
+		//                ('-' options+=STRING NEWLINE)+
 		//                END
 		//            )
 		//    )
@@ -4373,7 +4374,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//BEGIN
-		//id=YAML_STRING ':'
+		//id=ID ':'
 		//    BEGIN
 		//    ('description' ':' description=Expression)?
 		public Group getGroup_0() { return cGroup_0; }
@@ -4381,11 +4382,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_0() { return cBEGINTerminalRuleCall_0_0; }
 		
-		//id=YAML_STRING
+		//id=ID
 		public Assignment getIdAssignment_0_1() { return cIdAssignment_0_1; }
 		
-		//YAML_STRING
-		public RuleCall getIdYAML_STRINGTerminalRuleCall_0_1_0() { return cIdYAML_STRINGTerminalRuleCall_0_1_0; }
+		//ID
+		public RuleCall getIdIDTerminalRuleCall_0_1_0() { return cIdIDTerminalRuleCall_0_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
@@ -4457,11 +4458,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//    (
 		//        'options' ':'
-		//            options+=YAML_STRING |
-		//            ('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+		//            options+=STRING |
+		//            ('[' options+=STRING (',' options+=STRING)* ']') |
 		//            (
 		//                BEGIN
-		//                ('-' options+=YAML_STRING NEWLINE)+
+		//                ('-' options+=STRING NEWLINE)+
 		//                END
 		//            )
 		//    )
@@ -4471,18 +4472,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    'options' ':'
-		//        options+=YAML_STRING |
-		//        ('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+		//        options+=STRING |
+		//        ('[' options+=STRING (',' options+=STRING)* ']') |
 		//        (
 		//            BEGIN
-		//            ('-' options+=YAML_STRING NEWLINE)+
+		//            ('-' options+=STRING NEWLINE)+
 		//            END
 		//        )
 		//)
 		public Alternatives getAlternatives_4_0() { return cAlternatives_4_0; }
 		
 		//'options' ':'
-		//    options+=YAML_STRING
+		//    options+=STRING
 		public Group getGroup_4_0_0() { return cGroup_4_0_0; }
 		
 		//'options'
@@ -4491,42 +4492,42 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_4_0_0_1() { return cColonKeyword_4_0_0_1; }
 		
-		//options+=YAML_STRING
+		//options+=STRING
 		public Assignment getOptionsAssignment_4_0_0_2() { return cOptionsAssignment_4_0_0_2; }
 		
-		//YAML_STRING
-		public RuleCall getOptionsYAML_STRINGTerminalRuleCall_4_0_0_2_0() { return cOptionsYAML_STRINGTerminalRuleCall_4_0_0_2_0; }
+		//STRING
+		public RuleCall getOptionsSTRINGTerminalRuleCall_4_0_0_2_0() { return cOptionsSTRINGTerminalRuleCall_4_0_0_2_0; }
 		
-		//('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']')
+		//('[' options+=STRING (',' options+=STRING)* ']')
 		public Group getGroup_4_0_1() { return cGroup_4_0_1; }
 		
 		//'['
 		public Keyword getLeftSquareBracketKeyword_4_0_1_0() { return cLeftSquareBracketKeyword_4_0_1_0; }
 		
-		//options+=YAML_STRING
+		//options+=STRING
 		public Assignment getOptionsAssignment_4_0_1_1() { return cOptionsAssignment_4_0_1_1; }
 		
-		//YAML_STRING
-		public RuleCall getOptionsYAML_STRINGTerminalRuleCall_4_0_1_1_0() { return cOptionsYAML_STRINGTerminalRuleCall_4_0_1_1_0; }
+		//STRING
+		public RuleCall getOptionsSTRINGTerminalRuleCall_4_0_1_1_0() { return cOptionsSTRINGTerminalRuleCall_4_0_1_1_0; }
 		
-		//(',' options+=YAML_STRING)*
+		//(',' options+=STRING)*
 		public Group getGroup_4_0_1_2() { return cGroup_4_0_1_2; }
 		
 		//','
 		public Keyword getCommaKeyword_4_0_1_2_0() { return cCommaKeyword_4_0_1_2_0; }
 		
-		//options+=YAML_STRING
+		//options+=STRING
 		public Assignment getOptionsAssignment_4_0_1_2_1() { return cOptionsAssignment_4_0_1_2_1; }
 		
-		//YAML_STRING
-		public RuleCall getOptionsYAML_STRINGTerminalRuleCall_4_0_1_2_1_0() { return cOptionsYAML_STRINGTerminalRuleCall_4_0_1_2_1_0; }
+		//STRING
+		public RuleCall getOptionsSTRINGTerminalRuleCall_4_0_1_2_1_0() { return cOptionsSTRINGTerminalRuleCall_4_0_1_2_1_0; }
 		
 		//']'
 		public Keyword getRightSquareBracketKeyword_4_0_1_3() { return cRightSquareBracketKeyword_4_0_1_3; }
 		
 		//(
 		//    BEGIN
-		//    ('-' options+=YAML_STRING NEWLINE)+
+		//    ('-' options+=STRING NEWLINE)+
 		//    END
 		//)
 		public Group getGroup_4_0_2() { return cGroup_4_0_2; }
@@ -4534,17 +4535,17 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_4_0_2_0() { return cBEGINTerminalRuleCall_4_0_2_0; }
 		
-		//('-' options+=YAML_STRING NEWLINE)+
+		//('-' options+=STRING NEWLINE)+
 		public Group getGroup_4_0_2_1() { return cGroup_4_0_2_1; }
 		
 		//'-'
 		public Keyword getHyphenMinusKeyword_4_0_2_1_0() { return cHyphenMinusKeyword_4_0_2_1_0; }
 		
-		//options+=YAML_STRING
+		//options+=STRING
 		public Assignment getOptionsAssignment_4_0_2_1_1() { return cOptionsAssignment_4_0_2_1_1; }
 		
-		//YAML_STRING
-		public RuleCall getOptionsYAML_STRINGTerminalRuleCall_4_0_2_1_1_0() { return cOptionsYAML_STRINGTerminalRuleCall_4_0_2_1_1_0; }
+		//STRING
+		public RuleCall getOptionsSTRINGTerminalRuleCall_4_0_2_1_1_0() { return cOptionsSTRINGTerminalRuleCall_4_0_2_1_1_0; }
 		
 		//NEWLINE
 		public RuleCall getNEWLINETerminalRuleCall_4_0_2_1_2() { return cNEWLINETerminalRuleCall_4_0_2_1_2; }
@@ -4564,7 +4565,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
 		private final Assignment cIdAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cIdYAML_STRINGTerminalRuleCall_0_1_0 = (RuleCall)cIdAssignment_0_1.eContents().get(0);
+		private final RuleCall cIdIDTerminalRuleCall_0_1_0 = (RuleCall)cIdAssignment_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
 		private final Group cGroup_0_4 = (Group)cGroup_0.eContents().get(4);
@@ -4583,7 +4584,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//Output returns Parameters::Output:
 		//    BEGIN
-		//    id=YAML_STRING ':'
+		//    id=ID ':'
 		//        BEGIN
 		//        ('description' ':' description=Expression)? &
 		//        ('value' ':' value=Expression)
@@ -4593,7 +4594,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//id=YAML_STRING ':'
+		//id=ID ':'
 		//    BEGIN
 		//    ('description' ':' description=Expression)? &
 		//    ('value' ':' value=Expression)
@@ -4602,7 +4603,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//BEGIN
-		//id=YAML_STRING ':'
+		//id=ID ':'
 		//    BEGIN
 		//    ('description' ':' description=Expression)?
 		public Group getGroup_0() { return cGroup_0; }
@@ -4610,11 +4611,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_0() { return cBEGINTerminalRuleCall_0_0; }
 		
-		//id=YAML_STRING
+		//id=ID
 		public Assignment getIdAssignment_0_1() { return cIdAssignment_0_1; }
 		
-		//YAML_STRING
-		public RuleCall getIdYAML_STRINGTerminalRuleCall_0_1_0() { return cIdYAML_STRINGTerminalRuleCall_0_1_0; }
+		//ID
+		public RuleCall getIdIDTerminalRuleCall_0_1_0() { return cIdIDTerminalRuleCall_0_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
@@ -4669,7 +4670,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
 		private final Assignment cIdAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cIdYAML_STRINGTerminalRuleCall_0_1_0 = (RuleCall)cIdAssignment_0_1.eContents().get(0);
+		private final RuleCall cIdIDTerminalRuleCall_0_1_0 = (RuleCall)cIdAssignment_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
 		private final Group cGroup_0_4 = (Group)cGroup_0.eContents().get(4);
@@ -4688,7 +4689,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//Secret returns Parameters::Secret:
 		//    BEGIN
-		//    id=YAML_STRING ':'
+		//    id=ID ':'
 		//        BEGIN
 		//        ('description' ':' description=Expression)? &
 		//        ('required' ':' isRequired=Expression)?
@@ -4698,7 +4699,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//id=YAML_STRING ':'
+		//id=ID ':'
 		//    BEGIN
 		//    ('description' ':' description=Expression)? &
 		//    ('required' ':' isRequired=Expression)?
@@ -4707,7 +4708,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//BEGIN
-		//id=YAML_STRING ':'
+		//id=ID ':'
 		//    BEGIN
 		//    ('description' ':' description=Expression)?
 		public Group getGroup_0() { return cGroup_0; }
@@ -4715,11 +4716,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_0() { return cBEGINTerminalRuleCall_0_0; }
 		
-		//id=YAML_STRING
+		//id=ID
 		public Assignment getIdAssignment_0_1() { return cIdAssignment_0_1; }
 		
-		//YAML_STRING
-		public RuleCall getIdYAML_STRINGTerminalRuleCall_0_1_0() { return cIdYAML_STRINGTerminalRuleCall_0_1_0; }
+		//ID
+		public RuleCall getIdIDTerminalRuleCall_0_1_0() { return cIdIDTerminalRuleCall_0_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_2() { return cColonKeyword_0_2; }
@@ -4772,45 +4773,49 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Permission");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cBEGINTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Assignment cKeyAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cKeyPERMISSION_SCOPEEnumRuleCall_1_0 = (RuleCall)cKeyAssignment_1.eContents().get(0);
-		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValuePERMISSION_VALUEEnumRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Assignment cKeyAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cKeyPERMISSION_SCOPEEnumRuleCall_1_0_0 = (RuleCall)cKeyAssignment_1_0.eContents().get(0);
+		private final Keyword cColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cValuePERMISSION_VALUEEnumRuleCall_1_2_0 = (RuleCall)cValueAssignment_1_2.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Permission returns Options::Permission:
 		//    BEGIN
-		//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE
+		//    (key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE)
 		//    END
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE
+		//(key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE)
 		//END
 		public Group getGroup() { return cGroup; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0() { return cBEGINTerminalRuleCall_0; }
 		
+		//(key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE)
+		public Group getGroup_1() { return cGroup_1; }
+		
 		//key=PERMISSION_SCOPE
-		public Assignment getKeyAssignment_1() { return cKeyAssignment_1; }
+		public Assignment getKeyAssignment_1_0() { return cKeyAssignment_1_0; }
 		
 		//PERMISSION_SCOPE
-		public RuleCall getKeyPERMISSION_SCOPEEnumRuleCall_1_0() { return cKeyPERMISSION_SCOPEEnumRuleCall_1_0; }
+		public RuleCall getKeyPERMISSION_SCOPEEnumRuleCall_1_0_0() { return cKeyPERMISSION_SCOPEEnumRuleCall_1_0_0; }
 		
 		//':'
-		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
 		//value=PERMISSION_VALUE
-		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
+		public Assignment getValueAssignment_1_2() { return cValueAssignment_1_2; }
 		
 		//PERMISSION_VALUE
-		public RuleCall getValuePERMISSION_VALUEEnumRuleCall_3_0() { return cValuePERMISSION_VALUEEnumRuleCall_3_0; }
+		public RuleCall getValuePERMISSION_VALUEEnumRuleCall_1_2_0() { return cValuePERMISSION_VALUEEnumRuleCall_1_2_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_4() { return cENDTerminalRuleCall_4; }
+		public RuleCall getENDTerminalRuleCall_2() { return cENDTerminalRuleCall_2; }
 	}
 	public class DefaultsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Defaults");
@@ -5190,7 +5195,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cBEGINTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameYAML_STRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
 		private final Assignment cCellsAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
@@ -5216,7 +5221,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//MatrixAxis returns Matrices::MatrixAxis:
 		//    BEGIN
-		//    name=YAML_STRING ':'
+		//    name=ID ':'
 		//    (
 		//        cells+=Expression |
 		//        ('[' cells+=Expression (',' cells+=Expression)* ']') |
@@ -5231,7 +5236,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//name=YAML_STRING ':'
+		//name=ID ':'
 		//(
 		//    cells+=Expression |
 		//    ('[' cells+=Expression (',' cells+=Expression)* ']') |
@@ -5247,11 +5252,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0() { return cBEGINTerminalRuleCall_0; }
 		
-		//name=YAML_STRING
+		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//YAML_STRING
-		public RuleCall getNameYAML_STRINGTerminalRuleCall_1_0() { return cNameYAML_STRINGTerminalRuleCall_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -5827,7 +5832,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cBEGINTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cKeyAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cKeyYAML_STRINGTerminalRuleCall_1_0 = (RuleCall)cKeyAssignment_1.eContents().get(0);
+		private final RuleCall cKeyIDTerminalRuleCall_1_0 = (RuleCall)cKeyAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
@@ -5837,7 +5842,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//Service returns Jobs::Service:
 		//    BEGIN
-		//    key=YAML_STRING ':'
+		//    key=ID ':'
 		//        BEGIN
 		//        value=Container
 		//        END
@@ -5846,7 +5851,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//key=YAML_STRING ':'
+		//key=ID ':'
 		//    BEGIN
 		//    value=Container
 		//    END
@@ -5856,11 +5861,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0() { return cBEGINTerminalRuleCall_0; }
 		
-		//key=YAML_STRING
+		//key=ID
 		public Assignment getKeyAssignment_1() { return cKeyAssignment_1; }
 		
-		//YAML_STRING
-		public RuleCall getKeyYAML_STRINGTerminalRuleCall_1_0() { return cKeyYAML_STRINGTerminalRuleCall_1_0; }
+		//ID
+		public RuleCall getKeyIDTerminalRuleCall_1_0() { return cKeyIDTerminalRuleCall_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -5885,7 +5890,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cBEGINTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Assignment cKeyAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cKeyYAML_STRINGTerminalRuleCall_1_0 = (RuleCall)cKeyAssignment_1.eContents().get(0);
+		private final RuleCall cKeyIDTerminalRuleCall_1_0 = (RuleCall)cKeyAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueExpressionParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
@@ -5893,24 +5898,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//VariableAssignment returns Expressions::VariableAssignment:
 		//    BEGIN
-		//    key=YAML_STRING ':' value=Expression
+		//    key=ID ':' value=Expression
 		//    END
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//BEGIN
-		//key=YAML_STRING ':' value=Expression
+		//key=ID ':' value=Expression
 		//END
 		public Group getGroup() { return cGroup; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0() { return cBEGINTerminalRuleCall_0; }
 		
-		//key=YAML_STRING
+		//key=ID
 		public Assignment getKeyAssignment_1() { return cKeyAssignment_1; }
 		
-		//YAML_STRING
-		public RuleCall getKeyYAML_STRINGTerminalRuleCall_1_0() { return cKeyYAML_STRINGTerminalRuleCall_1_0; }
+		//ID
+		public RuleCall getKeyIDTerminalRuleCall_1_0() { return cKeyIDTerminalRuleCall_1_0; }
 		
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
@@ -6039,18 +6044,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	public class UnbracketedStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.UnbracketedString");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueYAML_STRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//UnbracketedString returns Literals::StringLiteral:
-		//    value=YAML_STRING
+		//    value=STRING
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//value=YAML_STRING
+		//value=STRING
 		public Assignment getValueAssignment() { return cValueAssignment; }
 		
-		//YAML_STRING
-		public RuleCall getValueYAML_STRINGTerminalRuleCall_0() { return cValueYAML_STRINGTerminalRuleCall_0; }
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
 	}
 	public class OrElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Or");
@@ -6262,99 +6267,67 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	public class VariableDereferenceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.VariableDereference");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cDotDereferenceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cArrayDereferenceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cVariableDereferenceVariableAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Group cGroup_1_1_0 = (Group)cAlternatives_1_1.eContents().get(0);
+		private final Keyword cFullStopKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
+		private final Assignment cPropertyAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
+		private final RuleCall cPropertyIDTerminalRuleCall_1_1_0_1_0 = (RuleCall)cPropertyAssignment_1_1_0_1.eContents().get(0);
+		private final Group cGroup_1_1_1 = (Group)cAlternatives_1_1.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
+		private final Assignment cPropertyAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
+		private final RuleCall cPropertyIDTerminalRuleCall_1_1_1_1_0 = (RuleCall)cPropertyAssignment_1_1_1_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_1_1_2 = (Keyword)cGroup_1_1_1.eContents().get(2);
 		
 		//VariableDereference returns Expressions::Expression:
-		//    DotDereference | ArrayDereference
+		//    Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DotDereference | ArrayDereference
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//DotDereference
-		public RuleCall getDotDereferenceParserRuleCall_0() { return cDotDereferenceParserRuleCall_0; }
-		
-		//ArrayDereference
-		public RuleCall getArrayDereferenceParserRuleCall_1() { return cArrayDereferenceParserRuleCall_1; }
-	}
-	public class DotDereferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.DotDereference");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cVariableDereferenceVariableAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cFullStopKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cPropertyAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cPropertyIDTerminalRuleCall_1_2_0 = (RuleCall)cPropertyAssignment_1_2.eContents().get(0);
-		
-		//DotDereference returns Expressions::Expression:
-		//    Primary ({Variables::VariableDereference.variable=current} '.' property=ID)*
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//Primary ({Variables::VariableDereference.variable=current} '.' property=ID)*
+		//Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
 		public Group getGroup() { return cGroup; }
 		
 		//Primary
 		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//({Variables::VariableDereference.variable=current} '.' property=ID)*
+		//({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Variables::VariableDereference.variable=current}
 		public Action getVariableDereferenceVariableAction_1_0() { return cVariableDereferenceVariableAction_1_0; }
+		
+		//(('.' property=ID) | ('[' property=ID ']'))
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		
+		//('.' property=ID)
+		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_1_1() { return cFullStopKeyword_1_1; }
+		public Keyword getFullStopKeyword_1_1_0_0() { return cFullStopKeyword_1_1_0_0; }
 		
 		//property=ID
-		public Assignment getPropertyAssignment_1_2() { return cPropertyAssignment_1_2; }
+		public Assignment getPropertyAssignment_1_1_0_1() { return cPropertyAssignment_1_1_0_1; }
 		
 		//ID
-		public RuleCall getPropertyIDTerminalRuleCall_1_2_0() { return cPropertyIDTerminalRuleCall_1_2_0; }
-	}
-	public class ArrayDereferenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.ArrayDereference");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cVariableDereferenceVariableAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cPropertyAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cPropertyIDTerminalRuleCall_1_2_0 = (RuleCall)cPropertyAssignment_1_2.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		public RuleCall getPropertyIDTerminalRuleCall_1_1_0_1_0() { return cPropertyIDTerminalRuleCall_1_1_0_1_0; }
 		
-		//ArrayDereference returns Expressions::Expression:
-		//    Primary ({Variables::VariableDereference.variable=current} '[' property=ID ']')*
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//Primary ({Variables::VariableDereference.variable=current} '[' property=ID ']')*
-		public Group getGroup() { return cGroup; }
-		
-		//Primary
-		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
-		
-		//({Variables::VariableDereference.variable=current} '[' property=ID ']')*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{Variables::VariableDereference.variable=current}
-		public Action getVariableDereferenceVariableAction_1_0() { return cVariableDereferenceVariableAction_1_0; }
+		//('[' property=ID ']')
+		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_1_1() { return cLeftSquareBracketKeyword_1_1; }
+		public Keyword getLeftSquareBracketKeyword_1_1_1_0() { return cLeftSquareBracketKeyword_1_1_1_0; }
 		
 		//property=ID
-		public Assignment getPropertyAssignment_1_2() { return cPropertyAssignment_1_2; }
+		public Assignment getPropertyAssignment_1_1_1_1() { return cPropertyAssignment_1_1_1_1; }
 		
 		//ID
-		public RuleCall getPropertyIDTerminalRuleCall_1_2_0() { return cPropertyIDTerminalRuleCall_1_2_0; }
+		public RuleCall getPropertyIDTerminalRuleCall_1_1_1_1_0() { return cPropertyIDTerminalRuleCall_1_1_1_1_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_1_3() { return cRightSquareBracketKeyword_1_3; }
+		public Keyword getRightSquareBracketKeyword_1_1_1_2() { return cRightSquareBracketKeyword_1_1_1_2; }
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Primary");
@@ -6367,15 +6340,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cAtomicParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Primary returns Expressions::Expression:
-		//    ('(' InsideBracketsExpression ')') |
-		//    CallExpression |
-		//    Atomic
+		//    ('(' InsideBracketsExpression ')') | CallExpression | Atomic
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('(' InsideBracketsExpression ')') |
-		//CallExpression |
-		//Atomic
+		//('(' InsideBracketsExpression ')') | CallExpression | Atomic
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//('(' InsideBracketsExpression ')')
@@ -8005,8 +7974,6 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	private final NotElements pNot;
 	private final BlankElements pBlank;
 	private final VariableDereferenceElements pVariableDereference;
-	private final DotDereferenceElements pDotDereference;
-	private final ArrayDereferenceElements pArrayDereference;
 	private final PrimaryElements pPrimary;
 	private final AtomicElements pAtomic;
 	private final CallExpressionElements pCallExpression;
@@ -8032,7 +7999,6 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	private final PERMISSION_VALUEElements ePERMISSION_VALUE;
 	private final TerminalRule tDOUBLE;
 	private final TerminalRule tBOOLEAN;
-	private final TerminalRule tYAML_STRING;
 	private final TerminalRule tBEGIN;
 	private final TerminalRule tEND;
 	private final TerminalRule tNEWLINE;
@@ -8097,8 +8063,6 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		this.pNot = new NotElements();
 		this.pBlank = new BlankElements();
 		this.pVariableDereference = new VariableDereferenceElements();
-		this.pDotDereference = new DotDereferenceElements();
-		this.pArrayDereference = new ArrayDereferenceElements();
 		this.pPrimary = new PrimaryElements();
 		this.pAtomic = new AtomicElements();
 		this.pCallExpression = new CallExpressionElements();
@@ -8124,7 +8088,6 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		this.ePERMISSION_VALUE = new PERMISSION_VALUEElements();
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.DOUBLE");
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.BOOLEAN");
-		this.tYAML_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.YAML_STRING");
 		this.tBEGIN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.BEGIN");
 		this.tEND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.END");
 		this.tNEWLINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.NEWLINE");
@@ -8197,7 +8160,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//ScriptJob returns Jobs::ScriptJob:
 	//    BEGIN
-	//    name=YAML_STRING ':'
+	//    name=ID ':'
 	//        BEGIN
 	//        ('name' ':' jobName=Expression)? &
 	//        ('permissions' ':' permissions+=Permission+)? &
@@ -8234,7 +8197,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
 	//    BEGIN
-	//    name=YAML_STRING ':'
+	//    name=ID ':'
 	//        BEGIN
 	//        ('name' ':' jobName=Expression)? &
 	//        ('permissions' ':' permissions+=Permission+)? &
@@ -8323,7 +8286,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Command returns Steps::Command:
-	//    ('id' ':' id=YAML_STRING)? &
+	//    ('id' ':' id=STRING)? &
 	//    if=IfStatement? &
 	//    ('name' ':' name=Expression)? &
 	//    ('shell' ':' shell=Expression)? &
@@ -8342,7 +8305,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Package returns Steps::Package:
-	//    ('id' ':' id=YAML_STRING)? &
+	//    ('id' ':' id=STRING)? &
 	//    if=IfStatement? &
 	//    ('name' ':' name=Expression)? &
 	//    ('shell' ':' shell=Expression)? &
@@ -8384,8 +8347,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//ConcurrencyGroup returns Options::ConcurrencyGroup:
 	//    BEGIN
-	//    ('group' ':' name=Expression) &
-	//    ('cancel-in-progress' ':' cancelInProgress=Expression)?
+	//    (
+	//        ('group' ':' name=Expression) &
+	//        ('cancel-in-progress' ':' cancelInProgress=Expression)?
+	//    )
 	//    END
 	//;
 	public ConcurrencyGroupElements getConcurrencyGroupAccess() {
@@ -8675,7 +8640,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Input returns Parameters::Input:
 	//    BEGIN
-	//    id=YAML_STRING ':'
+	//    id=ID ':'
 	//        BEGIN
 	//        ('description' ':' description=Expression)? &
 	//        ('default' ':' default=Expression)? &
@@ -8685,11 +8650,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//        ) &
 	//        (
 	//            'options' ':'
-	//                options+=YAML_STRING |
-	//                ('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+	//                options+=STRING |
+	//                ('[' options+=STRING (',' options+=STRING)* ']') |
 	//                (
 	//                    BEGIN
-	//                    ('-' options+=YAML_STRING NEWLINE)+
+	//                    ('-' options+=STRING NEWLINE)+
 	//                    END
 	//                )
 	//        )
@@ -8706,7 +8671,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Output returns Parameters::Output:
 	//    BEGIN
-	//    id=YAML_STRING ':'
+	//    id=ID ':'
 	//        BEGIN
 	//        ('description' ':' description=Expression)? &
 	//        ('value' ':' value=Expression)
@@ -8723,7 +8688,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Secret returns Parameters::Secret:
 	//    BEGIN
-	//    id=YAML_STRING ':'
+	//    id=ID ':'
 	//        BEGIN
 	//        ('description' ':' description=Expression)? &
 	//        ('required' ':' isRequired=Expression)?
@@ -8740,7 +8705,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Permission returns Options::Permission:
 	//    BEGIN
-	//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE
+	//    (key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE)
 	//    END
 	//;
 	public PermissionElements getPermissionAccess() {
@@ -8811,7 +8776,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//MatrixAxis returns Matrices::MatrixAxis:
 	//    BEGIN
-	//    name=YAML_STRING ':'
+	//    name=ID ':'
 	//    (
 	//        cells+=Expression |
 	//        ('[' cells+=Expression (',' cells+=Expression)* ']') |
@@ -8889,7 +8854,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Service returns Jobs::Service:
 	//    BEGIN
-	//    key=YAML_STRING ':'
+	//    key=ID ':'
 	//        BEGIN
 	//        value=Container
 	//        END
@@ -8905,7 +8870,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//VariableAssignment returns Expressions::VariableAssignment:
 	//    BEGIN
-	//    key=YAML_STRING ':' value=Expression
+	//    key=ID ':' value=Expression
 	//    END
 	//;
 	public VariableAssignmentElements getVariableAssignmentAccess() {
@@ -8983,7 +8948,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//UnbracketedString returns Literals::StringLiteral:
-	//    value=YAML_STRING
+	//    value=STRING
 	//;
 	public UnbracketedStringElements getUnbracketedStringAccess() {
 		return pUnbracketedString;
@@ -9071,7 +9036,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//VariableDereference returns Expressions::Expression:
-	//    DotDereference | ArrayDereference
+	//    Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
 	//;
 	public VariableDereferenceElements getVariableDereferenceAccess() {
 		return pVariableDereference;
@@ -9081,32 +9046,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getVariableDereferenceAccess().getRule();
 	}
 	
-	//DotDereference returns Expressions::Expression:
-	//    Primary ({Variables::VariableDereference.variable=current} '.' property=ID)*
-	//;
-	public DotDereferenceElements getDotDereferenceAccess() {
-		return pDotDereference;
-	}
-	
-	public ParserRule getDotDereferenceRule() {
-		return getDotDereferenceAccess().getRule();
-	}
-	
-	//ArrayDereference returns Expressions::Expression:
-	//    Primary ({Variables::VariableDereference.variable=current} '[' property=ID ']')*
-	//;
-	public ArrayDereferenceElements getArrayDereferenceAccess() {
-		return pArrayDereference;
-	}
-	
-	public ParserRule getArrayDereferenceRule() {
-		return getArrayDereferenceAccess().getRule();
-	}
-	
 	//Primary returns Expressions::Expression:
-	//    ('(' InsideBracketsExpression ')') |
-	//    CallExpression |
-	//    Atomic
+	//    ('(' InsideBracketsExpression ')') | CallExpression | Atomic
 	//;
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
@@ -9464,16 +9405,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return tBOOLEAN;
 	}
 	
+	///*
 	//terminal YAML_STRING returns ecore::EString:
-	//    ('"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"') |
-	//    ("'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'") |
-	//    (. -> ('$' | NEWLINE)) |
-	//    ('|' BEGIN . -> '$' END)
+	//    ('"' ( '\\' . | !('\\'|'"') )+ '"') |
+	//    ("'" ( '\\' . | !('\\'|"'") )+ "'") |
+	//    (!('$' | NEWLINE) -> ('$' | NEWLINE)) |
+	//    ('|' BEGIN !('$' | NEWLINE) -> '$' END)
 	//;
-	public TerminalRule getYAML_STRINGRule() {
-		return tYAML_STRING;
-	}
-	
+	//*/
 	//terminal BEGIN: 'synthetic:BEGIN';
 	public TerminalRule getBEGINRule() {
 		return tBEGIN;

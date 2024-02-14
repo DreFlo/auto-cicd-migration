@@ -5,8 +5,7 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 
 var rootPath = ".."
 
-Workflow {
-	
+Workflow {	
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -34,7 +33,13 @@ Workflow {
 			name = "d.fe.up.pt.cicd.gha.GitHubActions"
 			fileExtensions = "gha"
 			
-			referencedResource = "platform:/resource/gha-meta-model/model/GHA.genmodel"			
+			referencedResource = "platform:/resource/gha-meta-model/model/GHA.genmodel"
+			
+			parserGenerator = {
+				options = {
+					backtrack = true
+				}
+			}		
 
 			serializer = {
 				generateStub = false

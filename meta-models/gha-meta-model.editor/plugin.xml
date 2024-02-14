@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.presentation.GHAModelWizardID"
+            name="%_UI_GHAModelWizard_label"
+            class="GHA.presentation.GHAModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GHAModelFile.gif">
+         <description>%_UI_GHAModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.presentation.GHAEditorID"
+            name="%_UI_GHAEditor_label"
+            icon="icons/full/obj16/GHAModelFile.gif"
+            extensions="gha"
+            class="GHA.presentation.GHAEditor"
+            contributorClass="GHA.presentation.GHAActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Jobs.presentation.JobsModelWizardID"
+            name="%_UI_JobsModelWizard_label"
+            class="GHA.Jobs.presentation.JobsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/JobsModelFile.gif">
+         <description>%_UI_JobsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Jobs.presentation.JobsEditorID"
+            name="%_UI_JobsEditor_label"
+            icon="icons/full/obj16/JobsModelFile.gif"
+            extensions="jobs"
+            class="GHA.Jobs.presentation.JobsEditor"
+            contributorClass="GHA.Jobs.presentation.JobsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Jobs.Matrices.presentation.MatricesModelWizardID"
+            name="%_UI_MatricesModelWizard_label"
+            class="GHA.Jobs.Matrices.presentation.MatricesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MatricesModelFile.gif">
+         <description>%_UI_MatricesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Jobs.Matrices.presentation.MatricesEditorID"
+            name="%_UI_MatricesEditor_label"
+            icon="icons/full/obj16/MatricesModelFile.gif"
+            extensions="matrices"
+            class="GHA.Jobs.Matrices.presentation.MatricesEditor"
+            contributorClass="GHA.Jobs.Matrices.presentation.MatricesActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Jobs.Steps.presentation.StepsModelWizardID"
+            name="%_UI_StepsModelWizard_label"
+            class="GHA.Jobs.Steps.presentation.StepsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StepsModelFile.gif">
+         <description>%_UI_StepsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Jobs.Steps.presentation.StepsEditorID"
+            name="%_UI_StepsEditor_label"
+            icon="icons/full/obj16/StepsModelFile.gif"
+            extensions="steps"
+            class="GHA.Jobs.Steps.presentation.StepsEditor"
+            contributorClass="GHA.Jobs.Steps.presentation.StepsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Triggers.presentation.TriggersModelWizardID"
+            name="%_UI_TriggersModelWizard_label"
+            class="GHA.Triggers.presentation.TriggersModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TriggersModelFile.gif">
+         <description>%_UI_TriggersModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Triggers.presentation.TriggersEditorID"
+            name="%_UI_TriggersEditor_label"
+            icon="icons/full/obj16/TriggersModelFile.gif"
+            extensions="triggers"
+            class="GHA.Triggers.presentation.TriggersEditor"
+            contributorClass="GHA.Triggers.presentation.TriggersActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Triggers.Parameters.presentation.ParametersModelWizardID"
+            name="%_UI_ParametersModelWizard_label"
+            class="GHA.Triggers.Parameters.presentation.ParametersModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ParametersModelFile.gif">
+         <description>%_UI_ParametersModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Triggers.Parameters.presentation.ParametersEditorID"
+            name="%_UI_ParametersEditor_label"
+            icon="icons/full/obj16/ParametersModelFile.gif"
+            extensions="parameters"
+            class="GHA.Triggers.Parameters.presentation.ParametersEditor"
+            contributorClass="GHA.Triggers.Parameters.presentation.ParametersActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Options.presentation.OptionsModelWizardID"
+            name="%_UI_OptionsModelWizard_label"
+            class="GHA.Options.presentation.OptionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/OptionsModelFile.gif">
+         <description>%_UI_OptionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Options.presentation.OptionsEditorID"
+            name="%_UI_OptionsEditor_label"
+            icon="icons/full/obj16/OptionsModelFile.gif"
+            extensions="options"
+            class="GHA.Options.presentation.OptionsEditor"
+            contributorClass="GHA.Options.presentation.OptionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.presentation.ExpressionsModelWizardID"
+            name="%_UI_ExpressionsModelWizard_label"
+            class="GHA.Expressions.presentation.ExpressionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ExpressionsModelFile.gif">
+         <description>%_UI_ExpressionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.presentation.ExpressionsEditorID"
+            name="%_UI_ExpressionsEditor_label"
+            icon="icons/full/obj16/ExpressionsModelFile.gif"
+            extensions="expressions"
+            class="GHA.Expressions.presentation.ExpressionsEditor"
+            contributorClass="GHA.Expressions.presentation.ExpressionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.BinaryOperators.presentation.BinaryOperatorsModelWizardID"
+            name="%_UI_BinaryOperatorsModelWizard_label"
+            class="GHA.Expressions.BinaryOperators.presentation.BinaryOperatorsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BinaryOperatorsModelFile.gif">
+         <description>%_UI_BinaryOperatorsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.BinaryOperators.presentation.BinaryOperatorsEditorID"
+            name="%_UI_BinaryOperatorsEditor_label"
+            icon="icons/full/obj16/BinaryOperatorsModelFile.gif"
+            extensions="binaryoperators"
+            class="GHA.Expressions.BinaryOperators.presentation.BinaryOperatorsEditor"
+            contributorClass="GHA.Expressions.BinaryOperators.presentation.BinaryOperatorsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.BinaryOperators.EqualityOperators.presentation.EqualityOperatorsModelWizardID"
+            name="%_UI_EqualityOperatorsModelWizard_label"
+            class="GHA.Expressions.BinaryOperators.EqualityOperators.presentation.EqualityOperatorsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/EqualityOperatorsModelFile.gif">
+         <description>%_UI_EqualityOperatorsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.BinaryOperators.EqualityOperators.presentation.EqualityOperatorsEditorID"
+            name="%_UI_EqualityOperatorsEditor_label"
+            icon="icons/full/obj16/EqualityOperatorsModelFile.gif"
+            extensions="equalityoperators"
+            class="GHA.Expressions.BinaryOperators.EqualityOperators.presentation.EqualityOperatorsEditor"
+            contributorClass="GHA.Expressions.BinaryOperators.EqualityOperators.presentation.EqualityOperatorsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.BinaryOperators.LogicalOperators.presentation.LogicalOperatorsModelWizardID"
+            name="%_UI_LogicalOperatorsModelWizard_label"
+            class="GHA.Expressions.BinaryOperators.LogicalOperators.presentation.LogicalOperatorsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/LogicalOperatorsModelFile.gif">
+         <description>%_UI_LogicalOperatorsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.BinaryOperators.LogicalOperators.presentation.LogicalOperatorsEditorID"
+            name="%_UI_LogicalOperatorsEditor_label"
+            icon="icons/full/obj16/LogicalOperatorsModelFile.gif"
+            extensions="logicaloperators"
+            class="GHA.Expressions.BinaryOperators.LogicalOperators.presentation.LogicalOperatorsEditor"
+            contributorClass="GHA.Expressions.BinaryOperators.LogicalOperators.presentation.LogicalOperatorsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.UnaryOperators.presentation.UnaryOperatorsModelWizardID"
+            name="%_UI_UnaryOperatorsModelWizard_label"
+            class="GHA.Expressions.UnaryOperators.presentation.UnaryOperatorsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/UnaryOperatorsModelFile.gif">
+         <description>%_UI_UnaryOperatorsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.UnaryOperators.presentation.UnaryOperatorsEditorID"
+            name="%_UI_UnaryOperatorsEditor_label"
+            icon="icons/full/obj16/UnaryOperatorsModelFile.gif"
+            extensions="unaryoperators"
+            class="GHA.Expressions.UnaryOperators.presentation.UnaryOperatorsEditor"
+            contributorClass="GHA.Expressions.UnaryOperators.presentation.UnaryOperatorsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsModelWizardID"
+            name="%_UI_BuiltInFunctionsModelWizard_label"
+            class="GHA.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BuiltInFunctionsModelFile.gif">
+         <description>%_UI_BuiltInFunctionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsEditorID"
+            name="%_UI_BuiltInFunctionsEditor_label"
+            icon="icons/full/obj16/BuiltInFunctionsModelFile.gif"
+            extensions="builtinfunctions"
+            class="GHA.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsEditor"
+            contributorClass="GHA.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.presentation.StatusCheckFunctionsModelWizardID"
+            name="%_UI_StatusCheckFunctionsModelWizard_label"
+            class="GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.presentation.StatusCheckFunctionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StatusCheckFunctionsModelFile.gif">
+         <description>%_UI_StatusCheckFunctionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.presentation.StatusCheckFunctionsEditorID"
+            name="%_UI_StatusCheckFunctionsEditor_label"
+            icon="icons/full/obj16/StatusCheckFunctionsModelFile.gif"
+            extensions="statuscheckfunctions"
+            class="GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.presentation.StatusCheckFunctionsEditor"
+            contributorClass="GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.presentation.StatusCheckFunctionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.Values.Literals.presentation.LiteralsModelWizardID"
+            name="%_UI_LiteralsModelWizard_label"
+            class="GHA.Expressions.Values.Literals.presentation.LiteralsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/LiteralsModelFile.gif">
+         <description>%_UI_LiteralsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.Values.Literals.presentation.LiteralsEditorID"
+            name="%_UI_LiteralsEditor_label"
+            icon="icons/full/obj16/LiteralsModelFile.gif"
+            extensions="literals"
+            class="GHA.Expressions.Values.Literals.presentation.LiteralsEditor"
+            contributorClass="GHA.Expressions.Values.Literals.presentation.LiteralsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="GHA.Expressions.Values.Variables.presentation.VariablesModelWizardID"
+            name="%_UI_VariablesModelWizard_label"
+            class="GHA.Expressions.Values.Variables.presentation.VariablesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/VariablesModelFile.gif">
+         <description>%_UI_VariablesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="GHA.Expressions.Values.Variables.presentation.VariablesEditorID"
+            name="%_UI_VariablesEditor_label"
+            icon="icons/full/obj16/VariablesModelFile.gif"
+            extensions="variables"
+            class="GHA.Expressions.Values.Variables.presentation.VariablesEditor"
+            contributorClass="GHA.Expressions.Values.Variables.presentation.VariablesActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

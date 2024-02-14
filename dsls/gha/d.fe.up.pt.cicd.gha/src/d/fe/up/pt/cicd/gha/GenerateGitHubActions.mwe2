@@ -33,6 +33,8 @@ Workflow {
 		language = StandardLanguage {
 			name = "d.fe.up.pt.cicd.gha.GitHubActions"
 			fileExtensions = "gha"
+			
+			referencedResource = "platform:/resource/gha-meta-model/model/GHA.genmodel"			
 
 			serializer = {
 				generateStub = false

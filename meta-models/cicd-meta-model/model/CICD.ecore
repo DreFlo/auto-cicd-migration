@@ -108,7 +108,8 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" upperBound="-1"
           eType="#//Matrices/MatrixCombination"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="failFast" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+          defaultValueLiteral="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="MatrixAxis">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
@@ -212,11 +213,11 @@
       <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//Expressions/Expression"/>
       <eSubpackages name="Literals" nsURI="http://www.d.fe.up.pt/CICD/Expressions/Values/Literals"
           nsPrefix="Literals">
-        <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Expressions/Values/Value">
+        <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Expressions/Values/Value"/>
+        <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal">
           <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
               eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eClassifiers>
-        <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal"/>
         <eClassifiers xsi:type="ecore:EClass" name="NumberLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal"/>
         <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal"/>
       </eSubpackages>

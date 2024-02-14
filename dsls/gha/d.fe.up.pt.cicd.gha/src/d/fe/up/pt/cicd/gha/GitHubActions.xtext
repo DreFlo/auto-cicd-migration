@@ -1,309 +1,803 @@
 grammar d.fe.up.pt.cicd.gha.GitHubActions with org.eclipse.xtext.common.Terminals
 
-generate gitHubActions "http://www.fe.d/up/pt/cicd/gha/GitHubActions"
-
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "platform:/resource/gha-meta-model/model/GHA.ecore" as GHA
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs" as Jobs
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs/Matrices" as Matrices
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs/Steps" as Steps
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Triggers" as Triggers
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Triggers/Parameters" as Parameters
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Options" as Options
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions" as Expressions
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators" as BinaryOperators
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators/EqualityOperators" as EqualityOperators
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators" as ComparisonOperators
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators/LogicalOperators" as LogicalOperators
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/UnaryOperators" as UnaryOperators
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BuiltInFunctions" as BuiltInFunctions
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions" as StatusCheckFunctions
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values" as Values
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values/Literals" as Literals
+import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values/Variables" as Variables
 
-Workflow:
-	('name' ':' name=YAML_STRING)? &
-	('on' ':' triggers=TriggerList) &
+Workflow returns GHA::Workflow:
+	('name' ':' name=Expression)? &
+	('run-name' ':' runName=Expression)? &
+	('on' ':' (
+		triggers+=SimpleTrigger |
+		('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']') |
+		(
+			BEGIN
+			('-' triggers+=SimpleTrigger NEWLINE)+
+			END
+		) |
+		triggers+=OptionedTrigger+
+	)) &
 	('permissions' ':' permissions+=Permission+)? &
-	('env' ':' environmentVariables+=KeyValuePair+)? &
+	('env' ':' environmentVariables+=VariableAssignment+)? &
 	('defaults' ':' defaults=Defaults)? &
-	('concurrency' ':' concurrency=ConcurrencyGroup)? &
+	('concurrency' ':' concurrencyGroup=ConcurrencyGroup)? &
 	('jobs' ':' jobs+=Job+)
 ;
 
-Job:
+Job returns Jobs::Job:
+	ScriptJob | ReuseWorkflowJob
+;
+
+ScriptJob returns Jobs::ScriptJob:
 	BEGIN
 	name=YAML_STRING ':'
 		BEGIN
-		('name' ':' jobName=YAML_STRING)? &
+		('name' ':' jobName=Expression)? &
 		('permissions' ':' permissions+=Permission+)? &
-		('needs' ':' dependsOn=YAMLList)? &
+		('needs' ':' 
+			dependsOn+=[Jobs::Job] |
+			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']') |
+			(
+				BEGIN
+				('-' dependsOn+=[Jobs::Job] NEWLINE)+
+				END
+		))? &
 		if=IfStatement? &
-		('runs-on' ':' os=YAML_STRING) &
+		('runs-on' ':' agent=Agent) &
 		('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		('concurrency' ':' concurrency=ConcurrencyGroup)? &
-		('env' ':' environmentVariables+=KeyValuePair+)? &
+		('concurrency' ':' concurrencyGroup=ConcurrencyGroup)? &
+		('env' ':' environmentVariables+=VariableAssignment+)? &
 		('defaults' ':' defaults=Defaults)? &
 		('steps' ':' steps+=Step+) &
 		('strategy' ':' strategy=Strategy)? &
 		('container' ':' container=Container)? &
 		('services' ':' services+=Service+)? &
-		('uses' ':' reusableWorkflowPath=YAML_STRING)? &
-		('with' ':' arguments+=KeyValuePair+)? &
-		('secrets' ':' (inheritSecrets?='inherit' | secrets+=KeyValuePair+))? &
-		('continue-on-error' ':' continueOnError=ExpressionCall)? &
-		('timeout-minutes' ':' timeout=ExpressionCall)?
+		('continue-on-error' ':' continueOnError=Expression)? &
+		('timeout-minutes' ':' timeoutMinutes=Expression)?
 		END
 	END
 ;
 
-Step:
-	{Step}
+ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
 	BEGIN
-	'-'
-	(
-		('id' ':' id=YAML_STRING)? &
+	name=YAML_STRING ':'
+		BEGIN
+		('name' ':' jobName=Expression)? &
+		('permissions' ':' permissions+=Permission+)? &
+		('needs' ':' 
+			dependsOn+=[Jobs::Job] |
+			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']') |
+			(
+				BEGIN
+				('-' dependsOn+=[Jobs::Job] NEWLINE)+
+				END
+		))? &
 		if=IfStatement? &
-		('name' ':' name=YAML_STRING)? &
-		('uses' ':' package=YAML_STRING)? &
-		('run' ':' command=YAML_STRING)? &
-		('working-directory' ':' dir=YAML_STRING)? &
-		('shell' ':' shell=YAML_STRING)? &
-		('with' ':' ((BEGIN 'entrypoint' ':' entrypoint=YAML_STRING END)? & arguments+=KeyValuePair*))? &
-		('env' ':' environmentVariables+=KeyValuePair+)? &
-		('continue-on-error' ':' continueOnError=ExpressionCall)? &
-		('timeout-minutes' ':' timeout=ExpressionCall)?	
+		('runs-on' ':' agent=Agent) &
+		('environment' ':' stagingEnvironment=StagingEnvironment)? &
+		('concurrency' ':' concurrencyGroup=ConcurrencyGroup)? &
+		('env' ':' environmentVariables+=VariableAssignment+)? &
+		('defaults' ':' defaults=Defaults)? &
+		('strategy' ':' strategy=Strategy)? &
+		('container' ':' container=Container)? &
+		('services' ':' services+=Service+)? &
+		('uses' ':' workflowPath=Expression)? &
+		('with' ':' args+=VariableAssignment+)? &
+		('secrets' ':' (inheritSecrets?='inherit' | secrets+=VariableAssignment+))? &
+		('continue-on-error' ':' continueOnError=Expression)? &
+		('timeout-minutes' ':' timeoutMinutes=Expression)?
+		END
+	END
+;
+
+Agent returns Jobs::Agent:
+	(
+		labels+=Expression |
+		('[' labels+=Expression (',' labels+=Expression)* ']') |
+		(
+			BEGIN
+			('-' labels+=Expression NEWLINE)+
+			END
+		)
+	) |
+	{Jobs::Agent} 
+	(
+		(
+			'labels' ':'
+				labels+=Expression |
+				('[' labels+=Expression (',' labels+=Expression)* ']') |
+				(
+					BEGIN
+					('-' labels+=Expression NEWLINE)+
+					END
+				)
+		)? &
+		(
+			'group' ':' 
+				BEGIN
+				group=Expression
+				END
+		)?
+		
 	)
-	END
 ;
 
-IfStatement:
-	'if' ':' condition=ExpressionCall
-;
-
-ConcurrencyGroup:
+Step returns Steps::Step:
 	BEGIN
-	'group' ':' name=ExpressionCall
-	('cancel-in-progress' ':' cancelInProgress=("true" | "false"))?
+	'-'(Command | Package)
 	END
 ;
 
-TriggerList:
-	triggers+=SimpleTrigger |
-	('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']') |
+Command returns Steps::Command:
+	('id' ':' id=YAML_STRING)? &
+	if=IfStatement? &
+	('name' ':' name=Expression)? &
+	('shell' ':' shell=Expression)? &
+	('working-directory' ':' workingDirectory=Expression)? &
+	('env' ':' environmentVariables+=VariableAssignment+)? &
+	('continue-on-error' ':' continueOnError=Expression)? &
+	('timeout-minutes' ':' timeoutMinutes=Expression)?
+	('run' ':' command=Expression)
+;
+
+Package returns Steps::Package:
+	('id' ':' id=YAML_STRING)? &
+	if=IfStatement? &
+	('name' ':' name=Expression)? &
+	('shell' ':' shell=Expression)? &
+	('working-directory' ':' workingDirectory=Expression)? &
+	('env' ':' environmentVariables+=VariableAssignment+)? &
+	('continue-on-error' ':' continueOnError=Expression)? &
+	('timeout-minutes' ':' timeoutMinutes=Expression)?
+	('uses' ':' uses=Expression) &
+	('with' ':'
+		BEGIN
+		(
+			('entrypoint' ':' entrypoint=Expression) &
+			('args' ':' containerArgs=Expression)?
+		) |
+		(
+			args+=VariableAssignment+
+		)
+		END
+	)?
+;
+
+IfStatement returns Expressions::Expression:
+	'if' ':' Expression
+;
+
+ConcurrencyGroup returns Options::ConcurrencyGroup:
+	BEGIN
+	('group' ':' name=Expression) &
+	('cancel-in-progress' ':' cancelInProgress=Expression)?
+	END
+;
+
+SimpleTrigger returns Triggers::Trigger:
+	SimpleWorkflowDispatchTrigger | 
+	SimpleWorkflowCallTrigger |
+	SimplePushTriggerTrigger |
+	SimplePullRequestTrigger |
+	SimpleStandardEventTrigger
+;
+
+SimplePullRequestTrigger returns Triggers::PullRequestTrigger:
+	{Triggers::PullRequestTrigger} 'pull_request' | {Triggers::PullRequestTrigger} 'pull_request_target'
+;
+
+SimplePushTriggerTrigger returns Triggers::PushTrigger:
+	{Triggers::PushTrigger} 'push'
+;
+
+SimpleWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
+	{Triggers::WorkflowCallTrigger} 'workflow_call'
+;
+
+SimpleWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
+	{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch'
+;
+
+SimpleStandardEventTrigger returns Triggers::StandardEventTrigger:
+	event=EVENT
+;
+
+OptionedTrigger returns Triggers::Trigger:
+	OptionedPullRequestTrigger |
+	OptionedPushTrigger |
+	OptionedScheduleTrigger |
+	OptionedStandardEventTrigger |
+	OptionedWorkflowCallTrigger |
+	OptionedWorkflowRunTrigger |
+	OptionedWorkflowDispatchTrigger
+;
+
+OptionedStandardEventTrigger returns Triggers::StandardEventTrigger:
+	BEGIN
+	event=EVENT ':'
+		BEGIN
+		'types' ':' 
+			eventTypes+=WEBHOOK_ACTIVITY_TYPE |
+			('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']') |
+			(
+				BEGIN
+				('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+				END
+			)
+		END
+	END
+;
+
+OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
+	'workflow_run' ':'
+		BEGIN
+		('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+			branches+=Expression |
+			('[' branches+=Expression (',' branches+=Expression)* ']') |
+			(
+				BEGIN
+				('-' branches+=Expression NEWLINE)+
+				END
+			)
+		END
+;
+
+OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
+	{Triggers::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':' 
 	(
 		BEGIN
-		('-' triggers+=SimpleTrigger NEWLINE)+
-		END
-	) |
-	triggers+=OptionedTrigger+
+		(
+			'types' ':' 
+				eventTypes+=WEBHOOK_ACTIVITY_TYPE |
+				('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']') |
+				(
+					BEGIN
+					('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+					END
+				)
+		)? &
+		(
+			('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+				branches+=Expression |
+				('[' branches+=Expression (',' branches+=Expression)* ']') |
+				(
+					BEGIN
+					('-' branches+=Expression NEWLINE)+
+					END
+				)
+		)? &
+		(
+			('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+				paths+=Expression |
+				('[' paths+=Expression (',' paths+=Expression)* ']') |
+				(
+					BEGIN
+					('-' paths+=Expression NEWLINE)+
+					END
+				)
+		)?
+		END	
+	)
 ;
 
-SimpleTrigger returns Trigger:
-	event=TRIGGER_EVENTS
-;
-
-OptionedTrigger returns Trigger:
-	BEGIN
-	event=TRIGGER_EVENTS ':'
+OptionedPushTrigger returns Triggers::PushTrigger:
+	{Triggers::PushTrigger} 'push' ':'
+	(
 		BEGIN
-		('branches' ':' branches=YAMLList)? &
-		('branches-ignore' ':' branchesIgnore=YAMLList)? &
-		('tags' ':' tags=YAMLList)? &
-		('tags-ignore' ':' tagsIgnore=YAMLList)? &
-		('-' 'cron' ':' cronStrings+=YAML_STRING)* &
-		('inputs' ':' inputs+=Input+)? &
-		('output' ':' outputs+=Output+)? &
-		('secrets' ':' secrets+=Secret+)? &
-		END 
+		(
+			('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+				branches+=Expression |
+				('[' branches+=Expression (',' branches+=Expression)* ']') |
+				(
+					BEGIN
+					('-' branches+=Expression NEWLINE)+
+					END
+				)
+		)? &
+		(
+			('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+				paths+=Expression |
+				('[' paths+=Expression (',' paths+=Expression)* ']') |
+				(
+					BEGIN
+					('-' paths+=Expression NEWLINE)+
+					END
+				)
+		)? &
+		(
+			('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
+				tags+=Expression |
+				('[' tags+=Expression (',' tags+=Expression)* ']') |
+				(
+					BEGIN
+					('-' tags+=Expression NEWLINE)+
+					END
+				)
+		)?
+		END
+	)
+;
+
+OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
+	'schedule' ':'
+	(
+		BEGIN
+		(
+			'-' 'cron' ':' crons+=Expression
+		)+
+		END
+	)
+;
+
+OptionedWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
+	{Triggers::WorkflowCallTrigger} 'workflow_call' ':'
+	(
+		BEGIN
+		(
+			'inputs' ':' inputs+=Input+
+		)? &
+		(
+			'outputs' ':' outputs+=Output+
+		)? &
+		(
+			'secrets' ':' secrets+=Secret+
+		)?
+		END
+	)
+;
+
+OptionedWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
+	{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
+		BEGIN
+		('inputs' ':' inputs+=Input+)?
+		END
+;
+
+Input returns Parameters::Input:
+	BEGIN
+	id=YAML_STRING ':'
+		BEGIN
+		('description' ':' description=Expression)? &
+		('default' ':' default=Expression)? &
+		('required' ':' isRequired=Expression)? &
+		(
+			'type' ':' type=TYPE
+		) &
+		(
+			'options' ':'
+				options+=YAML_STRING |
+				('[' options+=YAML_STRING (',' options+=YAML_STRING)* ']') |
+				(
+					BEGIN
+					('-' options+=YAML_STRING NEWLINE)+
+					END
+				)
+		)
+		END
 	END
 ;
 
-Input:
+Output returns Parameters::Output:
 	BEGIN
-	name=YAML_STRING ':'
+	id=YAML_STRING ':'
 		BEGIN
-		('description' ':' description=ExpressionCall)? &
-		('default' ':' default=ExpressionCall)? &
-		('required' ':' required=BOOLEAN)? &
-		('type' ':' type=('boolean' | 'number' | 'string'))
+		('description' ':' description=Expression)? &
+		('value' ':' value=Expression)
 		END
 	END
 ;
 
-Output:
+Secret returns Parameters::Secret:
 	BEGIN
-	name=YAML_STRING ':'
+	id=YAML_STRING ':'
 		BEGIN
-		('description' ':' description=ExpressionCall)? &
-		('value' ':' value=ExpressionCall)
+		('description' ':' description=Expression)? &
+		('required' ':' isRequired=Expression)?
 		END
 	END
 ;
 
-Permission:
+Permission returns Options::Permission:
 	BEGIN
-	name=YAML_STRING ':'
-		BEGIN
-		permission=('read' | 'write' | 'none')
-		END
+	key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE
 	END
 ;
 
-Defaults:
+
+
+Defaults returns Options::Defaults:
 	BEGIN
 	'run' ':'
 		BEGIN
 		(
-			('shell' ':' shell=YAML_STRING)
-			('working-directory' ':' dir=YAML_STRING)?
-		) |
-		(
-			('working-directory' ':' dir=YAML_STRING)
-			('shell' ':' shell=YAML_STRING)?
+			('shell' ':' shell=Expression) &
+			('working-directory' ':' workingDirectory=Expression)?
 		)
 		END
 	END
 ;
 
-StagingEnvironment:
+StagingEnvironment returns Jobs::StagingEnvironment:
+	name=Expression |
 	(
-		{StagingEnvironment} YAML_STRING |
-		(
-			BEGIN
-			('name' ':' shell=YAML_STRING)
-			('url' ':' url=ExpressionCall)?
-			END
-		)
+		BEGIN
+		('name' ':' name=Expression)
+		('url' ':' url=Expression)?
+		END
 	)
 ;
 
-Strategy:
+Strategy returns Matrices::Matrix:
 	BEGIN
 	(
 		'matrix' ':'
 			BEGIN
-			('include' ':' include=YAMLList)? &
-			('exlude' ':' exclude=YAMLList)? &
+			('includes' ':' includes+=MatrixCombination)? &
+			('exludes' ':' excludes+=MatrixCombination)? &
 			axes+=MatrixAxis+
 			END		
 	) &
-	('fail-fast' ':' failFast=ExpressionCall)? &
-	('max-paralell' ':' maxParallel=ExpressionCall)?
+	('fail-fast' ':' failFast=Expression)? &
+	('max-paralell' ':' maxParallel=Expression)?
 	END
 ;
 
-MatrixAxis:
-	name=YAML_STRING ':' cells=YAMLList
+MatrixAxis returns Matrices::MatrixAxis:
+	BEGIN
+	name=YAML_STRING ':' 
+	(
+		cells+=Expression |
+		('[' cells+=Expression (',' cells+=Expression)* ']') |
+		(
+			BEGIN
+			('-' cells+=Expression NEWLINE)+
+			END
+		)
+	)
+	END
 ;
 
-Container:
+MatrixCombination returns Matrices::MatrixCombination:
 	BEGIN
-	('image' ':' image=YAML_STRING) &
-	('env' ':' environmentVariables+=KeyValuePair+)? &
-	('ports' ':' ports=YAMLList)? &
-	('volumes' ':' volumes=YAMLList)? &
-	('options' ':' options=ExpressionCall)? &
+	'-'
+		BEGIN
+		entries+=VariableAssignment
+		END
+	END
+;
+
+Container returns Jobs::Container:
+	BEGIN
+	('image' ':' image=Expression) &
+	('env' ':' environmentVariables+=VariableAssignment+)? &
+	('ports' ':' 
+		ports+=Expression |
+		('[' ports+=Expression (',' ports+=Expression)* ']') |
+		(
+			BEGIN
+			('-' ports+=Expression NEWLINE)+
+			END
+		)
+	)? &
+	('volumes' ':'
+		volumes+=Expression |
+		('[' volumes+=Expression (',' volumes+=Expression)* ']') |
+		(
+			BEGIN
+			('-' volumes+=Expression NEWLINE)+
+			END
+		)
+	)? &
+	('options' ':' options=Expression)? &
 	(
 		'credentials' ':'
 			BEGIN
-			('username' ':' username=ExpressionCall) &
-			('password' ':' password=ExpressionCall)
+			('username' ':' username=Expression) &
+			('password' ':' password=Expression)
 			END
-	)
+	)?
 	END
 ;
 
-Service:
+Service returns Jobs::Service:
 	BEGIN
-	name=YAML_STRING ':'
+	key=YAML_STRING ':'
 		BEGIN
-		container=Container
+		value=Container
 		END
 	END
 ;
 
-Secret:
+VariableAssignment returns Expressions::VariableAssignment:
 	BEGIN
-	name=YAML_STRING ':'
-		BEGIN
-		('description' ':' description=YAML_STRING)? &
-		('required' ':' required=BOOLEAN)?
-		END
+	key=YAML_STRING ':' value=Expression
 	END
 ;
 
-KeyValuePair:
-	BEGIN
-	key=YAML_STRING ':' value=ExpressionCall
-	END
+Expression returns Expressions::Expression:
+	Concat
 ;
 
-YAMLList:
-	list+=ExpressionCall |
-	('[' list+=ExpressionCall (',' list+=ExpressionCall)* ']') |
-	(
-		BEGIN
-		('-' list+=ExpressionCall NEWLINE)+
-		END
-	)
+Concat returns Expressions::Expression:
+	ConcatExpression ({BinaryOperators::Concat.lhs=current}	rhs=ConcatExpression)*
 ;
 
-ExpressionCall:
-	(('${{' Expression '}}') | {Expression} YAML_STRING) next=ExpressionCall?
+ConcatExpression returns Expressions::Expression:
+	BracketedExpression | UnbracketedLiteral
 ;
 
-Expression:
-	And
+BracketedExpression returns Expressions::Expression:
+	'${{' InsideBracketsExpression '}}'
 ;
 
-And returns Expression:
-    Comparison ({And.lhs=current} '&&' rhs=Comparison )*
+InsideBracketsExpression returns Expressions::Expression:
+	Or
 ;
 
-Comparison returns Expression:
-    Or ({Comparison.lhs=current} op=('<' | '<=' | '>' | '>=' | '==' | '!=') rhs=Or )*
+UnbracketedLiteral returns Literals::Literal:
+	UnbracketedString
 ;
 
-Or returns Expression:
-    Not ({Or.lhs=current} '||' rhs=Not)
+UnbracketedString returns Literals::StringLiteral:
+	value=YAML_STRING
 ;
 
-Not returns Expression:
-    ('!' Not) | Terminal
+Or returns Expressions::Expression:
+    And ({LogicalOperators::Or.lhs=current} '||' rhs=And)*
 ;
 
-Terminal returns Expression:
-    {Expression} LITERAL | 
-    Variable | 
+
+And returns Expressions::Expression:
+    Equality ({LogicalOperators::And.lhs=current} '&&' rhs=Equality )*
+;
+
+Equality returns Expressions::Expression:
+	Comparison ({EqualityOperators::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+;
+
+Comparison returns Expressions::Expression:
+	UnaryOp ({ComparisonOperators::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+;
+
+UnaryOp returns Expressions::Expression:
+	Not | Blank
+;
+
+Not returns UnaryOperators::Not:
+	'!' childExpr=VariableDereference
+;
+
+Blank returns Expressions::Expression:
+	VariableDereference
+;
+
+VariableDereference returns Expressions::Expression:
+	DotDereference | ArrayDereference
+;
+
+DotDereference returns Expressions::Expression:
+	Primary ({Variables::VariableDereference.variable=current} '.' property=ID)*
+;
+
+ArrayDereference returns Expressions::Expression:
+	Primary ({Variables::VariableDereference.variable=current} '[' property=ID ']')*
+;
+
+Primary returns Expressions::Expression:
+    ('(' InsideBracketsExpression ')') |
     CallExpression |
-    ('(' Expression ')' )
+    Atomic
 ;
 
-Variable returns Expression:
-	Identifier ({Variable.lhs=current} rhs=(Array | DotStatement))*
+Atomic returns Values::Value:
+	({Variables::GitHubContext} context=CONTEXT) |
+	({Variables::Variable} name=ID) | 
+	({Literals::IntegerLiteral} value=INT) |
+	({Literals::DoubleLiteral} value=DOUBLE) |
+	({Literals::BooleanLiteral} value=BOOLEAN) |
+	({Literals::StringLiteral} value=STRING)	
 ;
 
-Identifier returns Expression:
-	name=ID
+CallExpression returns BuiltInFunctions::BuiltInFunctionCall:
+	Contains |
+	StartsWith |
+	EndsWith |
+	Format |
+	Join |
+	ToJSON |
+	FromJSON |
+	HashFiles |
+	Success |
+	Always |
+	Failure |
+	Cancelled
 ;
 
-Array returns Expression:
-    '[' Expression ']'
+Contains returns BuiltInFunctions::Contains:
+	'contains' '(' search=InsideBracketsExpression ',' item=InsideBracketsExpression ')'
 ;
 
-DotStatement returns Expression:
-    '.' Identifier
+StartsWith returns BuiltInFunctions::StartsWith:
+	'startsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 ;
 
-CallExpression returns Expression:
-    Identifier '(' (args+=Expression ( ',' args+=Expression )* )? ')'
+EndsWith returns BuiltInFunctions::EndsWith:
+	'endsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 ;
 
-terminal TRIGGER_EVENTS:
-	'push' | 'pull_request' | 'workflow_call' | 'workflow_dispatch'
+Format returns BuiltInFunctions::Format:
+	'format' '(' string=InsideBracketsExpression (',' replaceValues+=InsideBracketsExpression)* ')'
 ;
 
-terminal LITERAL returns ecore::EString:
-	NUMBER |  INT | BOOLEAN | STRING 
+Join returns BuiltInFunctions::Join:
+	'join' '(' array=InsideBracketsExpression (',' sep=InsideBracketsExpression)? ')'
 ;
 
-terminal NUMBER returns ecore::EBigDecimal:
-	INT ('.' INT)?
+ToJSON returns BuiltInFunctions::ToJSON:
+	'toJSON' '(' value=InsideBracketsExpression ')'
 ;
 
-terminal BOOLEAN returns ecore::EBoolean:
+FromJSON returns BuiltInFunctions::FromJSON:
+	'fromJSON' '(' value=InsideBracketsExpression ')'
+;
+
+HashFiles returns BuiltInFunctions::HashFiles:
+	'hashFiles' '(' path=InsideBracketsExpression ')'
+;
+
+Success returns StatusCheckFunctions::Success:
+	{StatusCheckFunctions::Success} 'success' '(' ')'
+;
+
+Always returns StatusCheckFunctions::Always:
+	{StatusCheckFunctions::Always} 'always' '(' ')'
+;
+
+Cancelled returns StatusCheckFunctions::Cancelled:
+	{StatusCheckFunctions::Cancelled} 'cancelled' '(' ')'
+;
+
+Failure returns StatusCheckFunctions::Failure:
+	{StatusCheckFunctions::Failure} 'failure' '(' ')'
+;
+
+enum COMPARISON_OP returns ComparisonOperators::COMPARISON_OPS:
+	GT='>' |
+	GTE='>=' |
+	LT='<' |
+	LTE='<='
+;
+
+enum EQUALITY_OP returns EqualityOperators::EQUALITY_OPS:
+	EQUALS='==' |
+	NOT_EQUALS='!='
+;
+
+enum CONTEXT returns Variables::CONTEXTS:
+	GITHUB='github' |
+	ENV='env' |
+	VARS='vars' |
+	JOB='job' |
+	JOBS='jobs' |
+	STEPS='steps' |
+	RUNNER='runner' |
+	SECRETS='secrets' |
+	STRATEGY='strategy' |
+	MATRIX='matrix' |
+	NEEDS='needs' |
+	INPUTS='inputs'
+;
+
+enum TYPE returns Parameters::INPUT_TYPES:
+	BOOLEAN='boolean' |
+	NUMBER='number' |
+	STRING='string' |
+	ENVIRONMENT='environment' |
+	CHOICE='choice'
+;
+
+enum WEBHOOK_ACTIVITY_TYPE returns Triggers::WEBHOOK_ACTIVITY_TYPES:
+	ASSIGNED='assigned' |
+	AUTO_MERGE_DISABLED='auto_merge_disabled' |
+	AUTO_MERGE_ENABLED='auto_merge_enabled' |
+	CLOSED='closed' |
+	CONVERTED_TO_DRAFT='converted_to_draft' |
+	EDITED='edited' |
+	LABELED='labeled' |
+	LOCKED='locked' |
+	OPENED='opened' |
+	READY_FOR_REVIEW='ready_for_review' |
+	REOPENED='reopened' |
+	REVIEW_REQUEST_REMOVED='review_request_removed' |
+	REVIEW_REQUESTED='review_requested' |
+	SYNCHRONIZE='synchronize' |
+	UNASSIGNED='unassigned' |
+	UNLABELED='unlabeled' |
+	UNLOCKED='unlocked' |
+	CREATED='created' |
+	DELETED='deleted'
+;
+
+enum EVENT returns Triggers::EVENTS:
+	BRANCH_PROTECTION_RULE='branch_protection_rule' |
+	CHECK_RUN='check_run' |
+	CHECK_SUITE='check_suite' |
+	CREATE='create' |
+	DELETE='delete' |
+	DEPLOYMENT='deployment' |
+	DEPLOYMENT_STATUS='deployment_status' |
+	DISCUSSION='discussion' |
+	FORK='fork' |
+	GOLLUM='gollum' |
+	ISSUES='issues' |
+	LABEL='label' |
+	MERGE_GROUP='merge_group' |
+	MILESTONE='milestone' |
+	PAGE_BUILD='page_build' |
+	PROJECT='project' |
+	PROJECT_CARD='project_card' |
+	PROJECT_COLUMN='project_column' |
+	PUBLIC='public' |
+	PULL_REQUEST_REVIEW='pull_request_review' |
+	PULL_REQUEST_REVIEW_COMMENT='pull_request_review_comment' |
+	REGISTRY_PACKAGE='registry_package' |
+	RELEASE='release' |
+	REPOSITORY_DISPATCH='repository_dispatch' |
+	WATCH='watch' |
+	STATUS='status'
+;
+
+enum PERMISSION_SCOPE returns Options::PERMISSION_SCOPES:
+	ACTIONS='actions' | 
+	CHECKS='checks' | 
+	CONTENTS='contents' | 
+	DEPLOYMENTS='deployments' | 
+	DISCUSSIONS='discussions' | 
+	ID_TOKEN='id-token' |
+	ISSUES='issues' |
+	PACKAGES='packages' |
+	PAGES='pages' |
+	PULL_REQUESTS='pull_requests' |
+	REPOSITORY_PROJECTS='repository_projects' |
+	SECURITY_EVENTS='security_events' |
+	STATUSES='statuses'
+;
+
+enum PERMISSION_VALUE returns Options::PERMISSIONS:
+	READ='read' |
+	WRITE='write' |
+	NONE='none'
+;
+
+terminal DOUBLE returns ecore::EDoubleObject:
+	INT '.' INT
+;
+
+terminal BOOLEAN returns ecore::EBooleanObject:
 	'true' | 'false'
 ;
 
 terminal YAML_STRING returns ecore::EString:
 	('"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )+ '"') |
 	("'" ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|"'") )+ "'") |
-	(!('$' | NEWLINE))+ |
-	('|' BEGIN (!('$'))+ END)
+	(. -> ('$' | NEWLINE)) |
+	('|' BEGIN . -> '$' END)
 ;
 
 terminal BEGIN: 'synthetic:BEGIN';  // increase indentation

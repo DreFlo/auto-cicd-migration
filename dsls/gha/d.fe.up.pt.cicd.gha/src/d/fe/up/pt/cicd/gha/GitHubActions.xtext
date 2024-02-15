@@ -1,7 +1,7 @@
 grammar d.fe.up.pt.cicd.gha.GitHubActions with org.eclipse.xtext.common.Terminals
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "platform:/resource/gha-meta-model/model/GHA.ecore" as GHA
+import "http://d.fe.up.pt/GHA" as GHA
 import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs" as Jobs
 import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs/Matrices" as Matrices
 import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs/Steps" as Steps
@@ -21,23 +21,27 @@ import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values/L
 import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values/Variables" as Variables
 
 Workflow returns GHA::Workflow:
-	('name' ':' name=Expression)? &
-	('run-name' ':' runName=Expression)? &
-	('on' ':' (
-		triggers+=SimpleTrigger |
-		('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']') |
-		(
-			BEGIN
-			('-' triggers+=SimpleTrigger NEWLINE)+
-			END
-		) |
-		triggers+=OptionedTrigger+
-	)) &
-	('permissions' ':' permissions+=Permission+)? &
-	('env' ':' environmentVariables+=VariableAssignment+)? &
-	('defaults' ':' defaults=Defaults)? &
-	('concurrency' ':' concurrencyGroup=ConcurrencyGroup)? &
-	('jobs' ':' jobs+=Job+)
+	(
+		('name' ':' name=Expression NEWLINE)? &
+		('run-name' ':' runName=Expression NEWLINE)? &
+		('on' ':' (
+			(triggers+=SimpleTrigger NEWLINE) |
+			('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+			(
+				NEWLINE
+				BEGIN
+				('-' triggers+=SimpleTrigger NEWLINE)+
+				END
+			) |
+			triggers+=OptionedTrigger+
+		)) &
+		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
+		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
+		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
+		('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+	)
+	(=>END_OF_FILE)
 ;
 
 Job returns Jobs::Job:
@@ -45,15 +49,16 @@ Job returns Jobs::Job:
 ;
 
 ScriptJob returns Jobs::ScriptJob:
-	BEGIN
 	name=ID ':'
+		NEWLINE
 		BEGIN
-		('name' ':' jobName=Expression)? &
-		('permissions' ':' permissions+=Permission+)? &
+		('name' ':' jobName=Expression NEWLINE)? &
+		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		('needs' ':' 
-			dependsOn+=[Jobs::Job] |
-			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']') |
+			(dependsOn+=[Jobs::Job] NEWLINE) |
+			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
 			(
+				NEWLINE
 				BEGIN
 				('-' dependsOn+=[Jobs::Job] NEWLINE)+
 				END
@@ -61,116 +66,133 @@ ScriptJob returns Jobs::ScriptJob:
 		if=IfStatement? &
 		('runs-on' ':' agent=Agent) &
 		('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		('concurrency' ':' concurrencyGroup=ConcurrencyGroup)? &
-		('env' ':' environmentVariables+=VariableAssignment+)? &
-		('defaults' ':' defaults=Defaults)? &
-		('steps' ':' steps+=Step+) &
-		('strategy' ':' strategy=Strategy)? &
+		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
+		('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
+		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
+		('steps' ':' NEWLINE BEGIN steps+=Step+ END) &
+		('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
 		('container' ':' container=Container)? &
-		('services' ':' services+=Service+)? &
-		('continue-on-error' ':' continueOnError=Expression)? &
-		('timeout-minutes' ':' timeoutMinutes=Expression)?
+		('services' ':' NEWLINE BEGIN services+=Service+ END)? &
+		('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
+		('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
 		END
-	END
 ;
 
 ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
-	BEGIN
 	name=ID ':'
+		NEWLINE
 		BEGIN
-		('name' ':' jobName=Expression)? &
-		('permissions' ':' permissions+=Permission+)? &
+		('name' ':' jobName=Expression  NEWLINE)? &
+		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		('needs' ':' 
-			dependsOn+=[Jobs::Job] |
-			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']') |
+			(dependsOn+=[Jobs::Job] NEWLINE) |
+			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
 			(
+				NEWLINE
 				BEGIN
 				('-' dependsOn+=[Jobs::Job] NEWLINE)+
 				END
-		))? &
+			)
+		)? &
 		if=IfStatement? &
 		('runs-on' ':' agent=Agent) &
 		('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		('concurrency' ':' concurrencyGroup=ConcurrencyGroup)? &
-		('env' ':' environmentVariables+=VariableAssignment+)? &
-		('defaults' ':' defaults=Defaults)? &
-		('strategy' ':' strategy=Strategy)? &
+		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
+		('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
+		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
+		('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
 		('container' ':' container=Container)? &
-		('services' ':' services+=Service+)? &
-		('uses' ':' workflowPath=Expression)? &
-		('with' ':' args+=VariableAssignment+)? &
-		('secrets' ':' (inheritSecrets?='inherit' | secrets+=VariableAssignment+))? &
-		('continue-on-error' ':' continueOnError=Expression)? &
-		('timeout-minutes' ':' timeoutMinutes=Expression)?
+		('services' ':' NEWLINE BEGIN services+=Service+ END)? &
+		('uses' ':' workflowPath=Expression NEWLINE)? &
+		('with' ':' NEWLINE BEGIN args+=VariableAssignment+ END)? &
+		('secrets' ':' ((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END)))? &
+		('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
+		('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
 		END
-	END
 ;
 
 Agent returns Jobs::Agent:
 	(
-		labels+=Expression |
-		('[' labels+=Expression (',' labels+=Expression)* ']') |
+		(labels+=Expression NEWLINE) |
+		('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
 		(
+			NEWLINE
 			BEGIN
 			('-' labels+=Expression NEWLINE)+
 			END
 		)
 	) |
-	{Jobs::Agent} 
 	(
+		NEWLINE
+		BEGIN
 		(
-			'labels' ':'
-				labels+=Expression |
-				('[' labels+=Expression (',' labels+=Expression)* ']') |
-				(
-					BEGIN
-					('-' labels+=Expression NEWLINE)+
-					END
-				)
-		)? &
+			(
+				'labels' ':'
+					(labels+=Expression NEWLINE) |
+					('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' labels+=Expression NEWLINE)+
+						END
+					)
+			)
+			(
+				'group' ':' group=Expression NEWLINE
+			)?
+		)|
 		(
-			'group' ':' 
-				BEGIN
-				group=Expression
-				END
-		)?
-		
+			(
+				'group' ':' group=Expression NEWLINE
+			)
+			(
+				'labels' ':'
+					(labels+=Expression NEWLINE) |
+					('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' labels+=Expression NEWLINE)+
+						END
+					)
+			)?
+		)
+		END
 	)
 ;
 
 Step returns Steps::Step:
-	BEGIN
-	'-'(Command | Package)
-	END
+	'-' BEGIN (Command | Package) END
 ;
 
 Command returns Steps::Command:
-	('id' ':' id=STRING)? &
+	('id' ':' id=STRING NEWLINE)? &
 	if=IfStatement? &
-	('name' ':' name=Expression)? &
-	('shell' ':' shell=Expression)? &
-	('working-directory' ':' workingDirectory=Expression)? &
-	('env' ':' environmentVariables+=VariableAssignment+)? &
-	('continue-on-error' ':' continueOnError=Expression)? &
-	('timeout-minutes' ':' timeoutMinutes=Expression)?
-	('run' ':' command=Expression)
+	('name' ':' name=Expression NEWLINE)? &
+	('shell' ':' shell=Expression NEWLINE)? &
+	('working-directory' ':' workingDirectory=Expression NEWLINE)? &
+	('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
+	('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
+	('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+	('run' ':' command=Expression NEWLINE)
 ;
 
 Package returns Steps::Package:
-	('id' ':' id=STRING)? &
+	('id' ':' id=STRING NEWLINE)? &
 	if=IfStatement? &
-	('name' ':' name=Expression)? &
-	('shell' ':' shell=Expression)? &
-	('working-directory' ':' workingDirectory=Expression)? &
-	('env' ':' environmentVariables+=VariableAssignment+)? &
-	('continue-on-error' ':' continueOnError=Expression)? &
-	('timeout-minutes' ':' timeoutMinutes=Expression)?
-	('uses' ':' uses=Expression) &
+	('name' ':' name=Expression NEWLINE)? &
+	('shell' ':' shell=Expression NEWLINE)? &
+	('working-directory' ':' workingDirectory=Expression NEWLINE)? &
+	('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
+	('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
+	('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+	('uses' ':' uses=Expression NEWLINE) &
 	('with' ':'
+		NEWLINE
 		BEGIN
 		(
-			('entrypoint' ':' entrypoint=Expression) &
-			('args' ':' containerArgs=Expression)?
+			('entrypoint' ':' entrypoint=Expression NEWLINE) &
+			('args' ':' containerArgs=Expression NEWLINE)?
 		) |
 		(
 			args+=VariableAssignment+
@@ -180,24 +202,23 @@ Package returns Steps::Package:
 ;
 
 IfStatement returns Expressions::Expression:
-	'if' ':' Expression
+	'if' ':' Expression NEWLINE
 ;
 
 ConcurrencyGroup returns Options::ConcurrencyGroup:
-	BEGIN
-	(
-		('group' ':' name=Expression) &
-		('cancel-in-progress' ':' cancelInProgress=Expression)?
-	)
-	END
+	('group' ':' name=Expression NEWLINE) &
+	('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
 ;
 
 SimpleTrigger returns Triggers::Trigger:
-	SimpleWorkflowDispatchTrigger | 
-	SimpleWorkflowCallTrigger |
-	SimplePushTriggerTrigger |
-	SimplePullRequestTrigger |
-	SimpleStandardEventTrigger
+	(
+		SimpleWorkflowDispatchTrigger | 
+		SimpleWorkflowCallTrigger |
+		SimplePushTriggerTrigger |
+		SimplePullRequestTrigger |
+		SimpleStandardEventTrigger
+	)
+	NEWLINE
 ;
 
 SimplePullRequestTrigger returns Triggers::PullRequestTrigger:
@@ -221,38 +242,45 @@ SimpleStandardEventTrigger returns Triggers::StandardEventTrigger:
 ;
 
 OptionedTrigger returns Triggers::Trigger:
-	OptionedPullRequestTrigger |
-	OptionedPushTrigger |
-	OptionedScheduleTrigger |
-	OptionedStandardEventTrigger |
-	OptionedWorkflowCallTrigger |
-	OptionedWorkflowRunTrigger |
-	OptionedWorkflowDispatchTrigger
+	NEWLINE
+	BEGIN
+	(
+		OptionedPullRequestTrigger |
+		OptionedPushTrigger |
+		OptionedScheduleTrigger |
+		OptionedStandardEventTrigger |
+		OptionedWorkflowCallTrigger |
+		OptionedWorkflowRunTrigger |
+		OptionedWorkflowDispatchTrigger
+	)
+	END
 ;
 
 OptionedStandardEventTrigger returns Triggers::StandardEventTrigger:
-	BEGIN
 	event=EVENT ':'
+		NEWLINE
 		BEGIN
 		'types' ':' 
-			eventTypes+=WEBHOOK_ACTIVITY_TYPE |
-			('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']') |
+			(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
+			('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
 			(
+				NEWLINE
 				BEGIN
 				('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
 				END
 			)
 		END
-	END
 ;
 
 OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
 	'workflow_run' ':'
+		NEWLINE
 		BEGIN
 		('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-			branches+=Expression |
-			('[' branches+=Expression (',' branches+=Expression)* ']') |
+			(branches+=Expression NEWLINE) |
+			('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
 			(
+				NEWLINE
 				BEGIN
 				('-' branches+=Expression NEWLINE)+
 				END
@@ -263,37 +291,114 @@ OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
 OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
 	{Triggers::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':' 
 	(
+		NEWLINE
 		BEGIN
 		(
-			'types' ':' 
-				eventTypes+=WEBHOOK_ACTIVITY_TYPE |
-				('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']') |
-				(
-					BEGIN
-					('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
-					END
-				)
-		)? &
+			(
+				'types' ':' 
+					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
+					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+						END
+					)
+			)
+			(
+				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+					(branches+=Expression NEWLINE) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' branches+=Expression NEWLINE)+
+						END
+					)
+			)? &
+			(
+				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+					(paths+=Expression NEWLINE) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' paths+=Expression NEWLINE)+
+						END
+					)
+			)?
+		) |
 		(
-			('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-				branches+=Expression |
-				('[' branches+=Expression (',' branches+=Expression)* ']') |
-				(
-					BEGIN
-					('-' branches+=Expression NEWLINE)+
-					END
-				)
-		)? &
+			
+			(
+				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+					(branches+=Expression NEWLINE) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' branches+=Expression NEWLINE)+
+						END
+					)
+			)
+			(
+				'types' ':' 
+					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
+					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+						END
+					)
+			)? &
+			(
+				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+					(paths+=Expression NEWLINE) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' paths+=Expression NEWLINE)+
+						END
+					)
+			)?
+		) |
 		(
-			('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-				paths+=Expression |
-				('[' paths+=Expression (',' paths+=Expression)* ']') |
-				(
-					BEGIN
-					('-' paths+=Expression NEWLINE)+
-					END
-				)
-		)?
+			(
+				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+					(paths+=Expression NEWLINE) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' paths+=Expression NEWLINE)+
+						END
+					)
+			)
+			(
+				'types' ':' 
+					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
+					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+						END
+					)
+			)? &
+			(
+				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+					(branches+=Expression NEWLINE) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' branches+=Expression NEWLINE)+
+						END
+					)
+			)?
+		)
 		END	
 	)
 ;
@@ -301,37 +406,114 @@ OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
 OptionedPushTrigger returns Triggers::PushTrigger:
 	{Triggers::PushTrigger} 'push' ':'
 	(
+		NEWLINE
 		BEGIN
 		(
-			('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-				branches+=Expression |
-				('[' branches+=Expression (',' branches+=Expression)* ']') |
-				(
-					BEGIN
-					('-' branches+=Expression NEWLINE)+
-					END
-				)
-		)? &
+			(
+				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+					(branches+=Expression NEWLINE) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' branches+=Expression NEWLINE)+
+						END
+					)
+			)
+			(
+				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+					(paths+=Expression NEWLINE) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' paths+=Expression NEWLINE)+
+						END
+					)
+			)? &
+			(
+				('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
+					(tags+=Expression NEWLINE) |
+					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' tags+=Expression NEWLINE)+
+						END
+					)
+			)?
+		) |
 		(
-			('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-				paths+=Expression |
-				('[' paths+=Expression (',' paths+=Expression)* ']') |
-				(
-					BEGIN
-					('-' paths+=Expression NEWLINE)+
-					END
-				)
-		)? &
+			
+			(
+				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+					(paths+=Expression NEWLINE) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' paths+=Expression NEWLINE)+
+						END
+					)
+			)
+			(
+				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+					(branches+=Expression NEWLINE) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' branches+=Expression NEWLINE)+
+						END
+					)
+			)? &
+			(
+				('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
+					(tags+=Expression NEWLINE) |
+					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' tags+=Expression NEWLINE)+
+						END
+					)
+			)?
+		) |
 		(
-			('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-				tags+=Expression |
-				('[' tags+=Expression (',' tags+=Expression)* ']') |
-				(
-					BEGIN
-					('-' tags+=Expression NEWLINE)+
-					END
-				)
-		)?
+			(
+				('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
+					(tags+=Expression NEWLINE) |
+					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' tags+=Expression NEWLINE)+
+						END
+					)
+			)
+			(
+				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
+					(branches+=Expression NEWLINE) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' branches+=Expression NEWLINE)+
+						END
+					)
+			)? &
+			(
+				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
+					(paths+=Expression NEWLINE) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(
+						NEWLINE
+						BEGIN
+						('-' paths+=Expression NEWLINE)+
+						END
+					)
+			)?
+		)
 		END
 	)
 ;
@@ -339,9 +521,10 @@ OptionedPushTrigger returns Triggers::PushTrigger:
 OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
 	'schedule' ':'
 	(
+		NEWLINE
 		BEGIN
 		(
-			'-' 'cron' ':' crons+=Expression
+			'-' 'cron' ':' crons+=Expression NEWLINE
 		)+
 		END
 	)
@@ -350,186 +533,207 @@ OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
 OptionedWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
 	{Triggers::WorkflowCallTrigger} 'workflow_call' ':'
 	(
+		NEWLINE
 		BEGIN
 		(
-			'inputs' ':' inputs+=Input+
-		)? &
+			(
+				'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+			)
+			(
+				'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+			)? &
+			(
+				'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+			)?
+		) |
 		(
-			'outputs' ':' outputs+=Output+
-		)? &
+			(
+				'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+			)
+			(
+				'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+			)? &
+			(
+				'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+			)?
+		) |
 		(
-			'secrets' ':' secrets+=Secret+
-		)?
+			(
+				'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+			)
+			(
+				'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+			)? &
+			(
+				'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+			)?
+			
+		)
 		END
 	)
 ;
 
 OptionedWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
 	{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
+		NEWLINE
 		BEGIN
-		('inputs' ':' inputs+=Input+)?
+		('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
 		END
 ;
 
 Input returns Parameters::Input:
-	BEGIN
 	id=ID ':'
+		NEWLINE
 		BEGIN
-		('description' ':' description=Expression)? &
-		('default' ':' default=Expression)? &
-		('required' ':' isRequired=Expression)? &
-		(
-			'type' ':' type=TYPE
-		) &
+		('description' ':' description=Expression NEWLINE)? &
+		('default' ':' default=Expression NEWLINE)? &
+		('required' ':' isRequired=Expression NEWLINE)? &
+		('type' ':' type=TYPE NEWLINE) &
 		(
 			'options' ':'
-				options+=STRING |
-				('[' options+=STRING (',' options+=STRING)* ']') |
+				(options+=STRING NEWLINE) |
+				('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
 				(
+					NEWLINE
 					BEGIN
 					('-' options+=STRING NEWLINE)+
 					END
 				)
 		)
 		END
-	END
 ;
 
 Output returns Parameters::Output:
-	BEGIN
 	id=ID ':'
+		NEWLINE
 		BEGIN
-		('description' ':' description=Expression)? &
-		('value' ':' value=Expression)
+		('description' ':' description=Expression NEWLINE)? &
+		('value' ':' value=Expression NEWLINE)
 		END
-	END
 ;
 
 Secret returns Parameters::Secret:
-	BEGIN
 	id=ID ':'
+		NEWLINE
 		BEGIN
-		('description' ':' description=Expression)? &
-		('required' ':' isRequired=Expression)?
+		(
+			('description' ':' description=Expression NEWLINE) &
+			('required' ':' isRequired=Expression NEWLINE)?
+		) |
+		(
+			('required' ':' isRequired=Expression NEWLINE) &
+			('description' ':' description=Expression NEWLINE)?
+		)
 		END
-	END
 ;
 
 Permission returns Options::Permission:
-	BEGIN
-	(key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE)
-	END
+	key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
 ;
 
-
-
 Defaults returns Options::Defaults:
-	BEGIN
 	'run' ':'
+		NEWLINE
 		BEGIN
 		(
-			('shell' ':' shell=Expression) &
-			('working-directory' ':' workingDirectory=Expression)?
+			('shell' ':' shell=Expression NEWLINE) &
+			('working-directory' ':' workingDirectory=Expression NEWLINE)?
 		)
 		END
-	END
 ;
 
 StagingEnvironment returns Jobs::StagingEnvironment:
-	name=Expression |
+	(name=Expression NEWLINE) |
 	(
+		NEWLINE
 		BEGIN
-		('name' ':' name=Expression)
-		('url' ':' url=Expression)?
+		('name' ':' name=Expression NEWLINE)
+		('url' ':' url=Expression NEWLINE)?
 		END
 	)
 ;
 
 Strategy returns Matrices::Matrix:
-	BEGIN
 	(
 		'matrix' ':'
+			NEWLINE
 			BEGIN
-			('includes' ':' includes+=MatrixCombination)? &
-			('exludes' ':' excludes+=MatrixCombination)? &
-			axes+=MatrixAxis+
+			('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)? &
+			('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)? &
+			(BEGIN axes+=MatrixAxis+ END)
 			END		
 	) &
-	('fail-fast' ':' failFast=Expression)? &
-	('max-paralell' ':' maxParallel=Expression)?
-	END
+	('fail-fast' ':' failFast=Expression NEWLINE)? &
+	('max-paralell' ':' maxParallel=Expression NEWLINE)?
 ;
 
 MatrixAxis returns Matrices::MatrixAxis:
-	BEGIN
 	name=ID ':' 
 	(
-		cells+=Expression |
-		('[' cells+=Expression (',' cells+=Expression)* ']') |
+		(cells+=Expression NEWLINE) |
+		('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
 		(
+			NEWLINE
 			BEGIN
 			('-' cells+=Expression NEWLINE)+
 			END
 		)
 	)
-	END
 ;
 
 MatrixCombination returns Matrices::MatrixCombination:
-	BEGIN
-	'-'
-		BEGIN
-		entries+=VariableAssignment
-		END
-	END
+	'-' BEGIN entries+=VariableAssignment END
 ;
 
 Container returns Jobs::Container:
-	BEGIN
-	('image' ':' image=Expression) &
-	('env' ':' environmentVariables+=VariableAssignment+)? &
-	('ports' ':' 
-		ports+=Expression |
-		('[' ports+=Expression (',' ports+=Expression)* ']') |
-		(
-			BEGIN
-			('-' ports+=Expression NEWLINE)+
-			END
-		)
-	)? &
-	('volumes' ':'
-		volumes+=Expression |
-		('[' volumes+=Expression (',' volumes+=Expression)* ']') |
-		(
-			BEGIN
-			('-' volumes+=Expression NEWLINE)+
-			END
-		)
-	)? &
-	('options' ':' options=Expression)? &
 	(
-		'credentials' ':'
-			BEGIN
-			('username' ':' username=Expression) &
-			('password' ':' password=Expression)
-			END
-	)?
-	END
+		image=Expression NEWLINE
+	) |
+	(
+		NEWLINE
+		BEGIN
+		('image' ':' image=Expression NEWLINE) &
+		('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)? &
+		('ports' ':' 
+			(ports+=Expression NEWLINE) |
+			('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+			(
+				BEGIN
+				('-' ports+=Expression NEWLINE)+
+				END
+			)
+		)? &
+		('volumes' ':'
+			(volumes+=Expression NEWLINE) |
+			('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+			(
+				BEGIN
+				('-' volumes+=Expression NEWLINE)+
+				END
+			)
+		)? &
+		('options' ':' options=Expression NEWLINE)? &
+		(
+			'credentials' ':'
+				BEGIN
+				('username' ':' username=Expression NEWLINE) &
+				('password' ':' password=Expression NEWLINE)
+				END
+		)?
+		END
+	)
 ;
 
 Service returns Jobs::Service:
-	BEGIN
 	key=ID ':'
+		NEWLINE
 		BEGIN
 		value=Container
 		END
-	END
 ;
 
 VariableAssignment returns Expressions::VariableAssignment:
-	BEGIN
-	key=ID ':' value=Expression
-	END
+	key=ID ':' value=Expression NEWLINE
 ;
 
 Expression returns Expressions::Expression:
@@ -798,3 +1002,5 @@ terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
 terminal END: 'synthetic:END';      // decrease indentation
 
 terminal NEWLINE: '\r'? '\n';
+
+terminal END_OF_FILE: EOF;

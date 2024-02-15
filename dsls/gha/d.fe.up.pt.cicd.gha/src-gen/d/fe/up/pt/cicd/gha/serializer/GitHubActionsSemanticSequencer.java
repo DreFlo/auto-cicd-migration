@@ -387,8 +387,9 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         labels+=Expression | 
 	 *         (labels+=Expression labels+=Expression*) | 
 	 *         labels+=Expression+ | 
-	 *         ((labels+=Expression | labels+=Expression | group=Expression)? (labels+=Expression labels+=Expression*)?)+
-	 *     )?
+	 *         ((labels+=Expression | (labels+=Expression labels+=Expression*) | labels+=Expression+) group=Expression?) | 
+	 *         (group=Expression (labels+=Expression | (labels+=Expression labels+=Expression*) | labels+=Expression+)?)
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_Agent(ISerializationContext context, Agent semanticObject) {
@@ -877,20 +878,23 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *
 	 * Constraint:
 	 *     (
+	 *         image=Expression | 
 	 *         (
-	 *             image=Expression | 
-	 *             environmentVariables+=VariableAssignment | 
-	 *             ports+=Expression | 
-	 *             ports+=Expression | 
-	 *             volumes+=Expression | 
-	 *             volumes+=Expression | 
-	 *             options=Expression | 
-	 *             username=Expression | 
-	 *             password=Expression
-	 *         )? 
-	 *         (ports+=Expression ports+=Expression*)? 
-	 *         (volumes+=Expression volumes+=Expression*)?
-	 *     )+
+	 *             (
+	 *                 image=Expression | 
+	 *                 environmentVariables+=VariableAssignment | 
+	 *                 ports+=Expression | 
+	 *                 ports+=Expression | 
+	 *                 volumes+=Expression | 
+	 *                 volumes+=Expression | 
+	 *                 options=Expression | 
+	 *                 username=Expression | 
+	 *                 password=Expression
+	 *             )? 
+	 *             (ports+=Expression ports+=Expression*)? 
+	 *             (volumes+=Expression volumes+=Expression*)?
+	 *         )+
+	 *     )?
 	 * </pre>
 	 */
 	protected void sequence_Container(ISerializationContext context, Container semanticObject) {
@@ -1330,13 +1334,37 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *
 	 * Constraint:
 	 *     (
-	 *         (eventTypes+=WEBHOOK_ACTIVITY_TYPE | eventTypes+=WEBHOOK_ACTIVITY_TYPE | branches+=Expression | paths+=Expression)? 
-	 *         (branches+=Expression branches+=Expression*)? 
-	 *         (paths+=Expression paths+=Expression*)? 
-	 *         (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*)? 
-	 *         (ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression)? 
-	 *         (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression)?
-	 *     )+
+	 *         (
+	 *             (
+	 *                 (eventTypes+=WEBHOOK_ACTIVITY_TYPE | eventTypes+=WEBHOOK_ACTIVITY_TYPE) 
+	 *                 (branches+=Expression branches+=Expression*)? 
+	 *                 branches+=Expression* 
+	 *                 (ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression)?
+	 *             ) | 
+	 *             (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | 
+	 *             (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | 
+	 *             (paths+=Expression paths+=Expression*) | 
+	 *             paths+=Expression
+	 *         )+ | 
+	 *         (
+	 *             paths+=Expression? 
+	 *             (paths+=Expression paths+=Expression*)? 
+	 *             (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression)? 
+	 *             (
+	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression) 
+	 *                 (eventTypes+=WEBHOOK_ACTIVITY_TYPE | (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | eventTypes+=WEBHOOK_ACTIVITY_TYPE+)?
+	 *             )?
+	 *         )+ | 
+	 *         (
+	 *             branches+=Expression? 
+	 *             (branches+=Expression branches+=Expression*)? 
+	 *             (ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression)? 
+	 *             (
+	 *                 ((ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | (paths+=Expression paths+=Expression*) | paths+=Expression) 
+	 *                 (eventTypes+=WEBHOOK_ACTIVITY_TYPE | (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | eventTypes+=WEBHOOK_ACTIVITY_TYPE+)?
+	 *             )?
+	 *         )+
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_OptionedPullRequestTrigger(ISerializationContext context, PullRequestTrigger semanticObject) {
@@ -1352,14 +1380,34 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *
 	 * Constraint:
 	 *     (
-	 *         (branches+=Expression | paths+=Expression | tags+=Expression)? 
-	 *         (paths+=Expression paths+=Expression*)? 
-	 *         (tags+=Expression tags+=Expression*)? 
-	 *         (branches+=Expression branches+=Expression*)? 
-	 *         (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression)? 
-	 *         (ignoreSpecifiedTags?='tags-ignore'? tags+=Expression)? 
-	 *         (ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression)?
-	 *     )+
+	 *         (
+	 *             tags+=Expression? 
+	 *             (tags+=Expression tags+=Expression*)? 
+	 *             (ignoreSpecifiedTags?='tags-ignore'? tags+=Expression)? 
+	 *             (
+	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression) 
+	 *                 ((ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | (paths+=Expression paths+=Expression*) | paths+=Expression+)?
+	 *             )?
+	 *         )+ | 
+	 *         (
+	 *             tags+=Expression? 
+	 *             (tags+=Expression tags+=Expression*)? 
+	 *             (ignoreSpecifiedTags?='tags-ignore'? tags+=Expression)? 
+	 *             (
+	 *                 ((ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | (paths+=Expression paths+=Expression*) | paths+=Expression) 
+	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression+)?
+	 *             )?
+	 *         )+ | 
+	 *         (
+	 *             paths+=Expression? 
+	 *             (paths+=Expression paths+=Expression*)? 
+	 *             (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression)? 
+	 *             (
+	 *                 ((ignoreSpecifiedTags?='tags-ignore'? tags+=Expression) | (tags+=Expression tags+=Expression*) | tags+=Expression) 
+	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression+)?
+	 *             )?
+	 *         )+
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_OptionedPushTrigger(ISerializationContext context, PushTrigger semanticObject) {
@@ -1408,7 +1456,11 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     OptionedWorkflowCallTrigger returns WorkflowCallTrigger
 	 *
 	 * Constraint:
-	 *     (inputs+=Input | outputs+=Output | secrets+=Secret)*
+	 *     (
+	 *         (secrets+=Secret? (inputs+=Input outputs+=Output*)?)+ | 
+	 *         (secrets+=Secret? (outputs+=Output inputs+=Input*)?)+ | 
+	 *         (outputs+=Output? (secrets+=Secret inputs+=Input*)?)+
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_OptionedWorkflowCallTrigger(ISerializationContext context, WorkflowCallTrigger semanticObject) {
@@ -1423,7 +1475,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     OptionedWorkflowDispatchTrigger returns WorkflowDispatchTrigger
 	 *
 	 * Constraint:
-	 *     inputs+=Input*
+	 *     inputs+=Input+
 	 * </pre>
 	 */
 	protected void sequence_OptionedWorkflowDispatchTrigger(ISerializationContext context, WorkflowDispatchTrigger semanticObject) {
@@ -1548,8 +1600,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, OptionsPackage.Literals.PERMISSION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_1_0_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_1_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -1582,8 +1634,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             continueOnError=Expression | 
 	 *             timeoutMinutes=Expression
 	 *         )? 
-	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)? 
-	 *         (name=ID jobName=Expression?)?
+	 *         (name=ID jobName=Expression?)? 
+	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)?
 	 *     )+
 	 * </pre>
 	 */
@@ -1617,8 +1669,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             continueOnError=Expression | 
 	 *             timeoutMinutes=Expression
 	 *         )? 
-	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)? 
-	 *         (name=ID jobName=Expression?)?
+	 *         (name=ID jobName=Expression?)? 
+	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)?
 	 *     )+
 	 * </pre>
 	 */
@@ -1633,7 +1685,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Secret returns Secret
 	 *
 	 * Constraint:
-	 *     (isRequired=Expression? (id=ID description=Expression?)?)+
+	 *     ((id=ID (description=Expression | isRequired=Expression)*) | (isRequired=Expression | description=Expression)+)
 	 * </pre>
 	 */
 	protected void sequence_Secret(ISerializationContext context, Secret semanticObject) {
@@ -1658,7 +1710,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, JobsPackage.Literals.SERVICE__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getServiceAccess().getKeyIDTerminalRuleCall_1_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getServiceAccess().getKeyIDTerminalRuleCall_0_0(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getServiceAccess().getValueContainerParserRuleCall_4_0(), semanticObject.getValue());
 		feeder.finish();
 	}
@@ -1931,8 +1983,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyIDTerminalRuleCall_1_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getValueExpressionParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyIDTerminalRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getValueExpressionParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

@@ -351,6 +351,8 @@ fragment RULE_END : ;
 
 RULE_NEWLINE : '\r'? '\n';
 
+RULE_END_OF_FILE : EOF;
+
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;

@@ -13,6 +13,38 @@
           <release>17</release>
         </configuration>
       </plugin>
+      <plugin>
+    	<groupId>org.eclipse.xtext</groupId>
+    	<artifactId>xtext-maven-plugin</artifactId>
+    	<version>2.33.0</version>
+    	<executions>
+    		<execution>
+    			<goals>
+    				<goal>generate</goal>
+    			</goals>
+    		</execution>
+    	</executions>
+    	<configuration>
+    		<languages>
+    			<language>
+    				<setup>d.fe.up.pt.cicd.gha.GitHubActionsStandaloneSetup</setup>
+    				<outputConfigurations>
+    					<outputConfiguration>
+    						<outputDirectory>src/main/generated-sources/xtend/</outputDirectory>
+    					</outputConfiguration>
+    				</outputConfigurations>
+    			</language>
+    		</languages>
+    		<incrementalXtextBuild>true</incrementalXtextBuild> <!-- default value: false -->
+    	</configuration>
+    	<dependencies>
+    		<dependency>
+    			<groupId>d.fe.up.pt.cicd.gha</groupId>
+				<artifactId>d.fe.up.pt.cicd.gha</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+    		</dependency>
+    	</dependencies>
+    </plugin>
     </plugins>
   </build>
 </project>

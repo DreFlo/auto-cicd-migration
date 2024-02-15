@@ -9,22 +9,7 @@ Bundle-Activator: GHA.presentation.GHAEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: GHA.Expressions.BinaryOperators.EqualityOperators.presentation,
- GHA.Expressions.BinaryOperators.LogicalOperators.presentation,
- GHA.Expressions.BinaryOperators.presentation,
- GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.presentation,
- GHA.Expressions.BuiltInFunctions.presentation,
- GHA.Expressions.UnaryOperators.presentation,
- GHA.Expressions.Values.Literals.presentation,
- GHA.Expressions.Values.Variables.presentation,
- GHA.Expressions.presentation,
- GHA.Jobs.Matrices.presentation,
- GHA.Jobs.Steps.presentation,
- GHA.Jobs.presentation,
- GHA.Options.presentation,
- GHA.Triggers.Parameters.presentation,
- GHA.Triggers.presentation,
- GHA.presentation
+Export-Package: GHA.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  gha-meta-model.edit;visibility:=reexport,

@@ -9,7 +9,8 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: d.fe.up.pt.cicd.gha,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ gha-meta-model;bundle-version="0.1.0"
 Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",
  org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-17

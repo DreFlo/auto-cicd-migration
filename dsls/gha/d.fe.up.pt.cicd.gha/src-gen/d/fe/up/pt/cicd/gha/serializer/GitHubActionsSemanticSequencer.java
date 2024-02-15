@@ -3,70 +3,54 @@
  */
 package d.fe.up.pt.cicd.gha.serializer;
 
-import GHA.Expressions.BinaryOperators.BinaryOperatorsPackage;
-import GHA.Expressions.BinaryOperators.ComparisonOperators.Comparison;
-import GHA.Expressions.BinaryOperators.ComparisonOperators.ComparisonOperatorsPackage;
-import GHA.Expressions.BinaryOperators.Concat;
-import GHA.Expressions.BinaryOperators.EqualityOperators.Equality;
-import GHA.Expressions.BinaryOperators.EqualityOperators.EqualityOperatorsPackage;
-import GHA.Expressions.BinaryOperators.LogicalOperators.And;
-import GHA.Expressions.BinaryOperators.LogicalOperators.LogicalOperatorsPackage;
-import GHA.Expressions.BinaryOperators.LogicalOperators.Or;
-import GHA.Expressions.BuiltInFunctions.BuiltInFunctionsPackage;
-import GHA.Expressions.BuiltInFunctions.Contains;
-import GHA.Expressions.BuiltInFunctions.EndsWith;
-import GHA.Expressions.BuiltInFunctions.Format;
-import GHA.Expressions.BuiltInFunctions.FromJSON;
-import GHA.Expressions.BuiltInFunctions.HashFiles;
-import GHA.Expressions.BuiltInFunctions.Join;
-import GHA.Expressions.BuiltInFunctions.StartsWith;
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.Always;
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.Cancelled;
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.Failure;
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.StatusCheckFunctionsPackage;
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.Success;
-import GHA.Expressions.BuiltInFunctions.ToJSON;
-import GHA.Expressions.ExpressionsPackage;
-import GHA.Expressions.UnaryOperators.Not;
-import GHA.Expressions.UnaryOperators.UnaryOperatorsPackage;
-import GHA.Expressions.Values.Literals.BooleanLiteral;
-import GHA.Expressions.Values.Literals.DoubleLiteral;
-import GHA.Expressions.Values.Literals.IntegerLiteral;
-import GHA.Expressions.Values.Literals.LiteralsPackage;
-import GHA.Expressions.Values.Literals.StringLiteral;
-import GHA.Expressions.Values.Variables.GitHubContext;
-import GHA.Expressions.Values.Variables.Variable;
-import GHA.Expressions.Values.Variables.VariableDereference;
-import GHA.Expressions.Values.Variables.VariablesPackage;
+import GHA.Agent;
+import GHA.Always;
+import GHA.And;
+import GHA.BooleanLiteral;
+import GHA.Cancelled;
+import GHA.Command;
+import GHA.Comparison;
+import GHA.Concat;
+import GHA.ConcurrencyGroup;
+import GHA.Container;
+import GHA.Contains;
+import GHA.Defaults;
+import GHA.DoubleLiteral;
+import GHA.EndsWith;
+import GHA.Equality;
+import GHA.Failure;
+import GHA.Format;
+import GHA.FromJSON;
 import GHA.GHAPackage;
-import GHA.Jobs.Agent;
-import GHA.Jobs.Container;
-import GHA.Jobs.JobsPackage;
-import GHA.Jobs.Matrices.MatricesPackage;
-import GHA.Jobs.Matrices.Matrix;
-import GHA.Jobs.Matrices.MatrixAxis;
-import GHA.Jobs.Matrices.MatrixCombination;
-import GHA.Jobs.ReuseWorkflowJob;
-import GHA.Jobs.ScriptJob;
-import GHA.Jobs.StagingEnvironment;
-import GHA.Jobs.Steps.Command;
-import GHA.Jobs.Steps.StepsPackage;
-import GHA.Options.ConcurrencyGroup;
-import GHA.Options.Defaults;
-import GHA.Options.OptionsPackage;
-import GHA.Triggers.Parameters.Input;
-import GHA.Triggers.Parameters.Output;
-import GHA.Triggers.Parameters.ParametersPackage;
-import GHA.Triggers.Parameters.Secret;
-import GHA.Triggers.PullRequestTrigger;
-import GHA.Triggers.PushTrigger;
-import GHA.Triggers.ScheduleTrigger;
-import GHA.Triggers.StandardEventTrigger;
-import GHA.Triggers.TriggersPackage;
-import GHA.Triggers.WorkflowCallTrigger;
-import GHA.Triggers.WorkflowDispatchTrigger;
-import GHA.Triggers.WorkflowRunTrigger;
+import GHA.GitHubContext;
+import GHA.HashFiles;
+import GHA.Input;
+import GHA.IntegerLiteral;
+import GHA.Join;
+import GHA.Matrix;
+import GHA.MatrixAxis;
+import GHA.MatrixCombination;
+import GHA.Not;
+import GHA.Or;
+import GHA.Output;
+import GHA.PullRequestTrigger;
+import GHA.PushTrigger;
+import GHA.ReuseWorkflowJob;
+import GHA.ScheduleTrigger;
+import GHA.ScriptJob;
+import GHA.Secret;
+import GHA.StagingEnvironment;
+import GHA.StandardEventTrigger;
+import GHA.StartsWith;
+import GHA.StringLiteral;
+import GHA.Success;
+import GHA.ToJSON;
+import GHA.Variable;
+import GHA.VariableDereference;
 import GHA.Workflow;
+import GHA.WorkflowCallTrigger;
+import GHA.WorkflowDispatchTrigger;
+import GHA.WorkflowRunTrigger;
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.gha.services.GitHubActionsGrammarAccess;
 import java.util.Map;
@@ -93,96 +77,244 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == BinaryOperatorsPackage.eINSTANCE)
+		if (epackage == GHAPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case BinaryOperatorsPackage.CONCAT:
-				sequence_Concat(context, (Concat) semanticObject); 
-				return; 
-			}
-		else if (epackage == BuiltInFunctionsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case BuiltInFunctionsPackage.CONTAINS:
-				sequence_Contains(context, (Contains) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.ENDS_WITH:
-				sequence_EndsWith(context, (EndsWith) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.FORMAT:
-				sequence_Format(context, (Format) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.FROM_JSON:
-				sequence_FromJSON(context, (FromJSON) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.HASH_FILES:
-				sequence_HashFiles(context, (HashFiles) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.JOIN:
-				sequence_Join(context, (Join) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.STARTS_WITH:
-				sequence_StartsWith(context, (StartsWith) semanticObject); 
-				return; 
-			case BuiltInFunctionsPackage.TO_JSON:
-				sequence_ToJSON(context, (ToJSON) semanticObject); 
-				return; 
-			}
-		else if (epackage == ComparisonOperatorsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case ComparisonOperatorsPackage.COMPARISON:
-				sequence_Comparison(context, (Comparison) semanticObject); 
-				return; 
-			}
-		else if (epackage == EqualityOperatorsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case EqualityOperatorsPackage.EQUALITY:
-				sequence_Equality(context, (Equality) semanticObject); 
-				return; 
-			}
-		else if (epackage == ExpressionsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case ExpressionsPackage.VARIABLE_ASSIGNMENT:
-				sequence_VariableAssignment(context, (Map.Entry) semanticObject); 
-				return; 
-			}
-		else if (epackage == GHAPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case GHAPackage.WORKFLOW:
-				sequence_Workflow(context, (Workflow) semanticObject); 
-				return; 
-			}
-		else if (epackage == JobsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case JobsPackage.AGENT:
+			case GHAPackage.AGENT:
 				sequence_Agent(context, (Agent) semanticObject); 
 				return; 
-			case JobsPackage.CONTAINER:
+			case GHAPackage.ALWAYS:
+				sequence_Always(context, (Always) semanticObject); 
+				return; 
+			case GHAPackage.AND:
+				sequence_And(context, (And) semanticObject); 
+				return; 
+			case GHAPackage.BOOLEAN_LITERAL:
+				if (rule == grammarAccess.getIfStatementRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getConcatRule()
+						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
+						|| rule == grammarAccess.getConcatExpressionRule()
+						|| rule == grammarAccess.getBracketedExpressionRule()
+						|| rule == grammarAccess.getInsideBracketsExpressionRule()
+						|| rule == grammarAccess.getOrRule()
+						|| action == grammarAccess.getOrAccess().getOrLhsAction_1_0()
+						|| rule == grammarAccess.getAndRule()
+						|| action == grammarAccess.getAndAccess().getAndLhsAction_1_0()
+						|| rule == grammarAccess.getEqualityRule()
+						|| action == grammarAccess.getEqualityAccess().getEqualityLhsAction_1_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLhsAction_1_0()
+						|| rule == grammarAccess.getUnaryOpRule()
+						|| rule == grammarAccess.getBlankRule()
+						|| rule == grammarAccess.getVariableDereferenceRule()
+						|| action == grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0()
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (BooleanLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getBooleanLiteralRule()) {
+					sequence_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case GHAPackage.CANCELLED:
+				sequence_Cancelled(context, (Cancelled) semanticObject); 
+				return; 
+			case GHAPackage.COMMAND:
+				sequence_Command(context, (Command) semanticObject); 
+				return; 
+			case GHAPackage.COMPARISON:
+				sequence_Comparison(context, (Comparison) semanticObject); 
+				return; 
+			case GHAPackage.CONCAT:
+				sequence_Concat(context, (Concat) semanticObject); 
+				return; 
+			case GHAPackage.CONCURRENCY_GROUP:
+				sequence_ConcurrencyGroup(context, (ConcurrencyGroup) semanticObject); 
+				return; 
+			case GHAPackage.CONTAINER:
 				sequence_Container(context, (Container) semanticObject); 
 				return; 
-			case JobsPackage.REUSE_WORKFLOW_JOB:
+			case GHAPackage.CONTAINS:
+				sequence_Contains(context, (Contains) semanticObject); 
+				return; 
+			case GHAPackage.DEFAULTS:
+				sequence_Defaults(context, (Defaults) semanticObject); 
+				return; 
+			case GHAPackage.DOUBLE_LITERAL:
+				if (rule == grammarAccess.getIfStatementRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getConcatRule()
+						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
+						|| rule == grammarAccess.getConcatExpressionRule()
+						|| rule == grammarAccess.getBracketedExpressionRule()
+						|| rule == grammarAccess.getInsideBracketsExpressionRule()
+						|| rule == grammarAccess.getOrRule()
+						|| action == grammarAccess.getOrAccess().getOrLhsAction_1_0()
+						|| rule == grammarAccess.getAndRule()
+						|| action == grammarAccess.getAndAccess().getAndLhsAction_1_0()
+						|| rule == grammarAccess.getEqualityRule()
+						|| action == grammarAccess.getEqualityAccess().getEqualityLhsAction_1_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLhsAction_1_0()
+						|| rule == grammarAccess.getUnaryOpRule()
+						|| rule == grammarAccess.getBlankRule()
+						|| rule == grammarAccess.getVariableDereferenceRule()
+						|| action == grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0()
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (DoubleLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getDoubleLiteralRule()) {
+					sequence_DoubleLiteral(context, (DoubleLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case GHAPackage.ENDS_WITH:
+				sequence_EndsWith(context, (EndsWith) semanticObject); 
+				return; 
+			case GHAPackage.EQUALITY:
+				sequence_Equality(context, (Equality) semanticObject); 
+				return; 
+			case GHAPackage.FAILURE:
+				sequence_Failure(context, (Failure) semanticObject); 
+				return; 
+			case GHAPackage.FORMAT:
+				sequence_Format(context, (Format) semanticObject); 
+				return; 
+			case GHAPackage.FROM_JSON:
+				sequence_FromJSON(context, (FromJSON) semanticObject); 
+				return; 
+			case GHAPackage.GIT_HUB_CONTEXT:
+				sequence_Atomic(context, (GitHubContext) semanticObject); 
+				return; 
+			case GHAPackage.HASH_FILES:
+				sequence_HashFiles(context, (HashFiles) semanticObject); 
+				return; 
+			case GHAPackage.INPUT:
+				sequence_Input(context, (Input) semanticObject); 
+				return; 
+			case GHAPackage.INTEGER_LITERAL:
+				if (rule == grammarAccess.getBracketedExpressionRule()
+						|| rule == grammarAccess.getInsideBracketsExpressionRule()
+						|| rule == grammarAccess.getOrRule()
+						|| action == grammarAccess.getOrAccess().getOrLhsAction_1_0()
+						|| rule == grammarAccess.getAndRule()
+						|| action == grammarAccess.getAndAccess().getAndLhsAction_1_0()
+						|| rule == grammarAccess.getEqualityRule()
+						|| action == grammarAccess.getEqualityAccess().getEqualityLhsAction_1_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLhsAction_1_0()
+						|| rule == grammarAccess.getUnaryOpRule()
+						|| rule == grammarAccess.getBlankRule()
+						|| rule == grammarAccess.getVariableDereferenceRule()
+						|| action == grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0()
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (IntegerLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getIfStatementRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getConcatRule()
+						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
+						|| rule == grammarAccess.getConcatExpressionRule()) {
+					sequence_Atomic_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getUnbracketedLiteralRule()
+						|| rule == grammarAccess.getIntegerLiteralRule()) {
+					sequence_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case GHAPackage.JOIN:
+				sequence_Join(context, (Join) semanticObject); 
+				return; 
+			case GHAPackage.MATRIX:
+				sequence_Strategy(context, (Matrix) semanticObject); 
+				return; 
+			case GHAPackage.MATRIX_AXIS:
+				sequence_MatrixAxis(context, (MatrixAxis) semanticObject); 
+				return; 
+			case GHAPackage.MATRIX_COMBINATION:
+				sequence_MatrixCombination(context, (MatrixCombination) semanticObject); 
+				return; 
+			case GHAPackage.NOT:
+				sequence_Not(context, (Not) semanticObject); 
+				return; 
+			case GHAPackage.OR:
+				sequence_Or(context, (Or) semanticObject); 
+				return; 
+			case GHAPackage.OUTPUT:
+				sequence_Output(context, (Output) semanticObject); 
+				return; 
+			case GHAPackage.PACKAGE:
+				sequence_Package(context, (GHA.Package) semanticObject); 
+				return; 
+			case GHAPackage.PERMISSION:
+				sequence_Permission(context, (Map.Entry) semanticObject); 
+				return; 
+			case GHAPackage.PULL_REQUEST_TRIGGER:
+				if (rule == grammarAccess.getOptionedTriggerRule()
+						|| rule == grammarAccess.getOptionedPullRequestTriggerRule()) {
+					sequence_OptionedPullRequestTrigger(context, (PullRequestTrigger) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getSimpleTriggerRule()
+						|| rule == grammarAccess.getSimplePullRequestTriggerRule()) {
+					sequence_SimplePullRequestTrigger(context, (PullRequestTrigger) semanticObject); 
+					return; 
+				}
+				else break;
+			case GHAPackage.PUSH_TRIGGER:
+				if (rule == grammarAccess.getOptionedTriggerRule()
+						|| rule == grammarAccess.getOptionedPushTriggerRule()) {
+					sequence_OptionedPushTrigger(context, (PushTrigger) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getSimpleTriggerRule()
+						|| rule == grammarAccess.getSimplePushTriggerTriggerRule()) {
+					sequence_SimplePushTriggerTrigger(context, (PushTrigger) semanticObject); 
+					return; 
+				}
+				else break;
+			case GHAPackage.REUSE_WORKFLOW_JOB:
 				sequence_ReuseWorkflowJob(context, (ReuseWorkflowJob) semanticObject); 
 				return; 
-			case JobsPackage.SCRIPT_JOB:
+			case GHAPackage.SCHEDULE_TRIGGER:
+				sequence_OptionedScheduleTrigger(context, (ScheduleTrigger) semanticObject); 
+				return; 
+			case GHAPackage.SCRIPT_JOB:
 				sequence_ScriptJob(context, (ScriptJob) semanticObject); 
 				return; 
-			case JobsPackage.SERVICE:
+			case GHAPackage.SECRET:
+				sequence_Secret(context, (Secret) semanticObject); 
+				return; 
+			case GHAPackage.SERVICE:
 				sequence_Service(context, (Map.Entry) semanticObject); 
 				return; 
-			case JobsPackage.STAGING_ENVIRONMENT:
+			case GHAPackage.STAGING_ENVIRONMENT:
 				sequence_StagingEnvironment(context, (StagingEnvironment) semanticObject); 
 				return; 
-			}
-		else if (epackage == LiteralsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case LiteralsPackage.BOOLEAN_LITERAL:
-				sequence_Atomic(context, (BooleanLiteral) semanticObject); 
+			case GHAPackage.STANDARD_EVENT_TRIGGER:
+				if (rule == grammarAccess.getOptionedTriggerRule()
+						|| rule == grammarAccess.getOptionedStandardEventTriggerRule()) {
+					sequence_OptionedStandardEventTrigger(context, (StandardEventTrigger) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getSimpleTriggerRule()
+						|| rule == grammarAccess.getSimpleStandardEventTriggerRule()) {
+					sequence_SimpleStandardEventTrigger(context, (StandardEventTrigger) semanticObject); 
+					return; 
+				}
+				else break;
+			case GHAPackage.STARTS_WITH:
+				sequence_StartsWith(context, (StartsWith) semanticObject); 
 				return; 
-			case LiteralsPackage.DOUBLE_LITERAL:
-				sequence_Atomic(context, (DoubleLiteral) semanticObject); 
-				return; 
-			case LiteralsPackage.INTEGER_LITERAL:
-				sequence_Atomic(context, (IntegerLiteral) semanticObject); 
-				return; 
-			case LiteralsPackage.STRING_LITERAL:
+			case GHAPackage.STRING_LITERAL:
 				if (rule == grammarAccess.getBracketedExpressionRule()
 						|| rule == grammarAccess.getInsideBracketsExpressionRule()
 						|| rule == grammarAccess.getOrRule()
@@ -207,127 +339,34 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 						|| rule == grammarAccess.getConcatRule()
 						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
 						|| rule == grammarAccess.getConcatExpressionRule()) {
-					sequence_Atomic_UnbracketedString(context, (StringLiteral) semanticObject); 
+					sequence_Atomic_StringLiteral(context, (StringLiteral) semanticObject); 
 					return; 
 				}
 				else if (rule == grammarAccess.getUnbracketedLiteralRule()
-						|| rule == grammarAccess.getUnbracketedStringRule()) {
-					sequence_UnbracketedString(context, (StringLiteral) semanticObject); 
+						|| rule == grammarAccess.getStringLiteralRule()) {
+					sequence_StringLiteral(context, (StringLiteral) semanticObject); 
 					return; 
 				}
 				else break;
-			}
-		else if (epackage == LogicalOperatorsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case LogicalOperatorsPackage.AND:
-				sequence_And(context, (And) semanticObject); 
-				return; 
-			case LogicalOperatorsPackage.OR:
-				sequence_Or(context, (Or) semanticObject); 
-				return; 
-			}
-		else if (epackage == MatricesPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case MatricesPackage.MATRIX:
-				sequence_Strategy(context, (Matrix) semanticObject); 
-				return; 
-			case MatricesPackage.MATRIX_AXIS:
-				sequence_MatrixAxis(context, (MatrixAxis) semanticObject); 
-				return; 
-			case MatricesPackage.MATRIX_COMBINATION:
-				sequence_MatrixCombination(context, (MatrixCombination) semanticObject); 
-				return; 
-			}
-		else if (epackage == OptionsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case OptionsPackage.CONCURRENCY_GROUP:
-				sequence_ConcurrencyGroup(context, (ConcurrencyGroup) semanticObject); 
-				return; 
-			case OptionsPackage.DEFAULTS:
-				sequence_Defaults(context, (Defaults) semanticObject); 
-				return; 
-			case OptionsPackage.PERMISSION:
-				sequence_Permission(context, (Map.Entry) semanticObject); 
-				return; 
-			}
-		else if (epackage == ParametersPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case ParametersPackage.INPUT:
-				sequence_Input(context, (Input) semanticObject); 
-				return; 
-			case ParametersPackage.OUTPUT:
-				sequence_Output(context, (Output) semanticObject); 
-				return; 
-			case ParametersPackage.SECRET:
-				sequence_Secret(context, (Secret) semanticObject); 
-				return; 
-			}
-		else if (epackage == StatusCheckFunctionsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case StatusCheckFunctionsPackage.ALWAYS:
-				sequence_Always(context, (Always) semanticObject); 
-				return; 
-			case StatusCheckFunctionsPackage.CANCELLED:
-				sequence_Cancelled(context, (Cancelled) semanticObject); 
-				return; 
-			case StatusCheckFunctionsPackage.FAILURE:
-				sequence_Failure(context, (Failure) semanticObject); 
-				return; 
-			case StatusCheckFunctionsPackage.SUCCESS:
+			case GHAPackage.SUCCESS:
 				sequence_Success(context, (Success) semanticObject); 
 				return; 
-			}
-		else if (epackage == StepsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case StepsPackage.COMMAND:
-				sequence_Command(context, (Command) semanticObject); 
+			case GHAPackage.TO_JSON:
+				sequence_ToJSON(context, (ToJSON) semanticObject); 
 				return; 
-			case StepsPackage.PACKAGE:
-				sequence_Package(context, (GHA.Jobs.Steps.Package) semanticObject); 
+			case GHAPackage.VARIABLE:
+				sequence_Atomic(context, (Variable) semanticObject); 
 				return; 
-			}
-		else if (epackage == TriggersPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case TriggersPackage.PULL_REQUEST_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedPullRequestTriggerRule()) {
-					sequence_OptionedPullRequestTrigger(context, (PullRequestTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimplePullRequestTriggerRule()) {
-					sequence_SimplePullRequestTrigger(context, (PullRequestTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case TriggersPackage.PUSH_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedPushTriggerRule()) {
-					sequence_OptionedPushTrigger(context, (PushTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimplePushTriggerTriggerRule()) {
-					sequence_SimplePushTriggerTrigger(context, (PushTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case TriggersPackage.SCHEDULE_TRIGGER:
-				sequence_OptionedScheduleTrigger(context, (ScheduleTrigger) semanticObject); 
+			case GHAPackage.VARIABLE_ASSIGNMENT:
+				sequence_VariableAssignment(context, (Map.Entry) semanticObject); 
 				return; 
-			case TriggersPackage.STANDARD_EVENT_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedStandardEventTriggerRule()) {
-					sequence_OptionedStandardEventTrigger(context, (StandardEventTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimpleStandardEventTriggerRule()) {
-					sequence_SimpleStandardEventTrigger(context, (StandardEventTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case TriggersPackage.WORKFLOW_CALL_TRIGGER:
+			case GHAPackage.VARIABLE_DEREFERENCE:
+				sequence_VariableDereference(context, (VariableDereference) semanticObject); 
+				return; 
+			case GHAPackage.WORKFLOW:
+				sequence_Workflow(context, (Workflow) semanticObject); 
+				return; 
+			case GHAPackage.WORKFLOW_CALL_TRIGGER:
 				if (rule == grammarAccess.getOptionedTriggerRule()
 						|| rule == grammarAccess.getOptionedWorkflowCallTriggerRule()) {
 					sequence_OptionedWorkflowCallTrigger(context, (WorkflowCallTrigger) semanticObject); 
@@ -339,7 +378,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					return; 
 				}
 				else break;
-			case TriggersPackage.WORKFLOW_DISPATCH_TRIGGER:
+			case GHAPackage.WORKFLOW_DISPATCH_TRIGGER:
 				if (rule == grammarAccess.getOptionedTriggerRule()
 						|| rule == grammarAccess.getOptionedWorkflowDispatchTriggerRule()) {
 					sequence_OptionedWorkflowDispatchTrigger(context, (WorkflowDispatchTrigger) semanticObject); 
@@ -351,26 +390,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					return; 
 				}
 				else break;
-			case TriggersPackage.WORKFLOW_RUN_TRIGGER:
+			case GHAPackage.WORKFLOW_RUN_TRIGGER:
 				sequence_OptionedWorkflowRunTrigger(context, (WorkflowRunTrigger) semanticObject); 
-				return; 
-			}
-		else if (epackage == UnaryOperatorsPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case UnaryOperatorsPackage.NOT:
-				sequence_Not(context, (Not) semanticObject); 
-				return; 
-			}
-		else if (epackage == VariablesPackage.eINSTANCE)
-			switch (semanticObject.eClass().getClassifierID()) {
-			case VariablesPackage.GIT_HUB_CONTEXT:
-				sequence_Atomic(context, (GitHubContext) semanticObject); 
-				return; 
-			case VariablesPackage.VARIABLE:
-				sequence_Atomic(context, (Variable) semanticObject); 
-				return; 
-			case VariablesPackage.VARIABLE_DEREFERENCE:
-				sequence_VariableDereference(context, (VariableDereference) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -462,10 +483,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_And(ISerializationContext context, And semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS));
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__LHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__RHS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAndAccess().getAndLhsAction_1_0(), semanticObject.getLhs());
@@ -505,8 +526,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Atomic(ISerializationContext context, BooleanLiteral semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LiteralsPackage.Literals.BOOLEAN_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LiteralsPackage.Literals.BOOLEAN_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BOOLEAN_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BOOLEAN_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getValueBOOLEANTerminalRuleCall_4_1_0(), semanticObject.isValue());
@@ -545,8 +566,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Atomic(ISerializationContext context, DoubleLiteral semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LiteralsPackage.Literals.DOUBLE_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LiteralsPackage.Literals.DOUBLE_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.DOUBLE_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.DOUBLE_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_3_1_0(), semanticObject.getValue());
@@ -585,8 +606,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Atomic(ISerializationContext context, GitHubContext semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, VariablesPackage.Literals.GIT_HUB_CONTEXT__CONTEXT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VariablesPackage.Literals.GIT_HUB_CONTEXT__CONTEXT));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.GIT_HUB_CONTEXT__CONTEXT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.GIT_HUB_CONTEXT__CONTEXT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getContextCONTEXTEnumRuleCall_0_1_0(), semanticObject.getContext());
@@ -597,11 +618,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns IntegerLiteral
-	 *     Expression returns IntegerLiteral
-	 *     Concat returns IntegerLiteral
-	 *     Concat.Concat_1_0 returns IntegerLiteral
-	 *     ConcatExpression returns IntegerLiteral
 	 *     BracketedExpression returns IntegerLiteral
 	 *     InsideBracketsExpression returns IntegerLiteral
 	 *     Or returns IntegerLiteral
@@ -625,12 +641,30 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Atomic(ISerializationContext context, IntegerLiteral semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LiteralsPackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LiteralsPackage.Literals.INTEGER_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.INTEGER_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_2_1_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     IfStatement returns IntegerLiteral
+	 *     Expression returns IntegerLiteral
+	 *     Concat returns IntegerLiteral
+	 *     Concat.Concat_1_0 returns IntegerLiteral
+	 *     ConcatExpression returns IntegerLiteral
+	 *
+	 * Constraint:
+	 *     (value=INT | value=INT)
+	 * </pre>
+	 */
+	protected void sequence_Atomic_IntegerLiteral(ISerializationContext context, IntegerLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -660,8 +694,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Atomic(ISerializationContext context, StringLiteral semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LiteralsPackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LiteralsPackage.Literals.STRING_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STRING_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_5_1_0(), semanticObject.getValue());
@@ -679,10 +713,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     ConcatExpression returns StringLiteral
 	 *
 	 * Constraint:
-	 *     (value=STRING | value=STRING)
+	 *     (value=YAMLString | value=STRING)
 	 * </pre>
 	 */
-	protected void sequence_Atomic_UnbracketedString(ISerializationContext context, StringLiteral semanticObject) {
+	protected void sequence_Atomic_StringLiteral(ISerializationContext context, StringLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -718,11 +752,31 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Atomic(ISerializationContext context, Variable semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, VariablesPackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, VariablesPackage.Literals.VARIABLE__NAME));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.VARIABLE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getNameIDTerminalRuleCall_1_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     BooleanLiteral returns BooleanLiteral
+	 *
+	 * Constraint:
+	 *     value?=BOOLEAN
+	 * </pre>
+	 */
+	protected void sequence_BooleanLiteral(ISerializationContext context, BooleanLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BOOLEAN_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BOOLEAN_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0(), semanticObject.isValue());
 		feeder.finish();
 	}
 	
@@ -816,12 +870,12 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Comparison(ISerializationContext context, Comparison semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS));
-			if (transientValues.isValueTransient(semanticObject, ComparisonOperatorsPackage.Literals.COMPARISON__OP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ComparisonOperatorsPackage.Literals.COMPARISON__OP));
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__LHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.COMPARISON__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.COMPARISON__OP));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__RHS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getComparisonAccess().getComparisonLhsAction_1_0(), semanticObject.getLhs());
@@ -845,10 +899,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Concat(ISerializationContext context, Concat semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS));
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__LHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__RHS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getConcatAccess().getConcatLhsAction_1_0(), semanticObject.getLhs());
@@ -934,10 +988,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Contains(ISerializationContext context, Contains semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.CONTAINS__SEARCH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.CONTAINS__SEARCH));
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.CONTAINS__ITEM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.CONTAINS__ITEM));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.CONTAINS__SEARCH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.CONTAINS__SEARCH));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.CONTAINS__ITEM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.CONTAINS__ITEM));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getContainsAccess().getSearchInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getSearch());
@@ -957,6 +1011,26 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Defaults(ISerializationContext context, Defaults semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     DoubleLiteral returns DoubleLiteral
+	 *
+	 * Constraint:
+	 *     value=DOUBLE
+	 * </pre>
+	 */
+	protected void sequence_DoubleLiteral(ISerializationContext context, DoubleLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.DOUBLE_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.DOUBLE_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDoubleLiteralAccess().getValueDOUBLETerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -992,10 +1066,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_EndsWith(ISerializationContext context, EndsWith semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.ENDS_WITH__SEARCH_STRING) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.ENDS_WITH__SEARCH_STRING));
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.ENDS_WITH__SEARCH_VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.ENDS_WITH__SEARCH_VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.ENDS_WITH__SEARCH_STRING) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.ENDS_WITH__SEARCH_STRING));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.ENDS_WITH__SEARCH_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.ENDS_WITH__SEARCH_VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEndsWithAccess().getSearchStringInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getSearchString());
@@ -1034,12 +1108,12 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Equality(ISerializationContext context, Equality semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS));
-			if (transientValues.isValueTransient(semanticObject, EqualityOperatorsPackage.Literals.EQUALITY__OP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, EqualityOperatorsPackage.Literals.EQUALITY__OP));
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__LHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.EQUALITY__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.EQUALITY__OP));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__RHS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEqualityAccess().getEqualityLhsAction_1_0(), semanticObject.getLhs());
@@ -1151,8 +1225,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_FromJSON(ISerializationContext context, FromJSON semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.FROM_JSON__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.FROM_JSON__VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.FROM_JSON__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.FROM_JSON__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFromJSONAccess().getValueInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getValue());
@@ -1192,8 +1266,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_HashFiles(ISerializationContext context, HashFiles semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.HASH_FILES__PATH) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.HASH_FILES__PATH));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.HASH_FILES__PATH) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.HASH_FILES__PATH));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getHashFilesAccess().getPathInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getPath());
@@ -1208,7 +1282,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *
 	 * Constraint:
 	 *     (
-	 *         (id=ID description=Expression?) | 
+	 *         (id=YAMLID description=Expression?) | 
 	 *         default=Expression | 
 	 *         isRequired=Expression | 
 	 *         type=TYPE | 
@@ -1220,6 +1294,27 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Input(ISerializationContext context, Input semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     UnbracketedLiteral returns IntegerLiteral
+	 *     IntegerLiteral returns IntegerLiteral
+	 *
+	 * Constraint:
+	 *     value=INT
+	 * </pre>
+	 */
+	protected void sequence_IntegerLiteral(ISerializationContext context, IntegerLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.INTEGER_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntegerLiteralAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -1264,7 +1359,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     MatrixAxis returns MatrixAxis
 	 *
 	 * Constraint:
-	 *     (name=ID (cells+=Expression | (cells+=Expression cells+=Expression*) | cells+=Expression+))
+	 *     (name=YAMLID (cells+=Expression | (cells+=Expression cells+=Expression*) | cells+=Expression+))
 	 * </pre>
 	 */
 	protected void sequence_MatrixAxis(ISerializationContext context, MatrixAxis semanticObject) {
@@ -1317,8 +1412,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Not(ISerializationContext context, Not semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, UnaryOperatorsPackage.Literals.UNARY_OP__CHILD_EXPR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, UnaryOperatorsPackage.Literals.UNARY_OP__CHILD_EXPR));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.UNARY_OP__CHILD_EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.UNARY_OP__CHILD_EXPR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getNotAccess().getChildExprVariableDereferenceParserRuleCall_1_0(), semanticObject.getChildExpr());
@@ -1528,10 +1623,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Or(ISerializationContext context, Or semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__LHS));
-			if (transientValues.isValueTransient(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BinaryOperatorsPackage.Literals.BINARY_OP__RHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__LHS));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__RHS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOrAccess().getOrLhsAction_1_0(), semanticObject.getLhs());
@@ -1546,7 +1641,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Output returns Output
 	 *
 	 * Constraint:
-	 *     ((id=ID description=Expression?) | value=Expression)+
+	 *     ((id=YAMLID description=Expression?) | value=Expression)+
 	 * </pre>
 	 */
 	protected void sequence_Output(ISerializationContext context, Output semanticObject) {
@@ -1578,7 +1673,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     )+
 	 * </pre>
 	 */
-	protected void sequence_Package(ISerializationContext context, GHA.Jobs.Steps.Package semanticObject) {
+	protected void sequence_Package(ISerializationContext context, GHA.Package semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1594,10 +1689,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Permission(ISerializationContext context, Map.Entry semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, OptionsPackage.Literals.PERMISSION__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, OptionsPackage.Literals.PERMISSION__KEY));
-			if (transientValues.isValueTransient((EObject) semanticObject, OptionsPackage.Literals.PERMISSION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, OptionsPackage.Literals.PERMISSION__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.PERMISSION__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.PERMISSION__KEY));
+			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.PERMISSION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.PERMISSION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
 		feeder.accept(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_0_0(), semanticObject.getKey());
@@ -1634,7 +1729,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             continueOnError=Expression | 
 	 *             timeoutMinutes=Expression
 	 *         )? 
-	 *         (name=ID jobName=Expression?)? 
+	 *         (name=YAMLID jobName=Expression?)? 
 	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)?
 	 *     )+
 	 * </pre>
@@ -1669,7 +1764,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             continueOnError=Expression | 
 	 *             timeoutMinutes=Expression
 	 *         )? 
-	 *         (name=ID jobName=Expression?)? 
+	 *         (name=YAMLID jobName=Expression?)? 
 	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)?
 	 *     )+
 	 * </pre>
@@ -1685,7 +1780,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Secret returns Secret
 	 *
 	 * Constraint:
-	 *     ((id=ID (description=Expression | isRequired=Expression)*) | (isRequired=Expression | description=Expression)+)
+	 *     ((id=YAMLID (description=Expression | isRequired=Expression)*) | (isRequired=Expression | description=Expression)+)
 	 * </pre>
 	 */
 	protected void sequence_Secret(ISerializationContext context, Secret semanticObject) {
@@ -1699,18 +1794,18 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Service returns Service
 	 *
 	 * Constraint:
-	 *     (key=ID value=Container)
+	 *     (key=YAMLID value=Container)
 	 * </pre>
 	 */
 	protected void sequence_Service(ISerializationContext context, Map.Entry semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, JobsPackage.Literals.SERVICE__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, JobsPackage.Literals.SERVICE__KEY));
-			if (transientValues.isValueTransient((EObject) semanticObject, JobsPackage.Literals.SERVICE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, JobsPackage.Literals.SERVICE__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.SERVICE__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.SERVICE__KEY));
+			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.SERVICE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.SERVICE__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getServiceAccess().getKeyIDTerminalRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getServiceAccess().getKeyYAMLIDParserRuleCall_0_0(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getServiceAccess().getValueContainerParserRuleCall_4_0(), semanticObject.getValue());
 		feeder.finish();
 	}
@@ -1758,8 +1853,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_SimpleStandardEventTrigger(ISerializationContext context, StandardEventTrigger semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TriggersPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TriggersPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSimpleStandardEventTriggerAccess().getEventEVENTEnumRuleCall_0(), semanticObject.getEvent());
@@ -1843,10 +1938,10 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_StartsWith(ISerializationContext context, StartsWith semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.STARTS_WITH__SEARCH_STRING) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.STARTS_WITH__SEARCH_STRING));
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.STARTS_WITH__SEARCH_VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.STARTS_WITH__SEARCH_VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.STARTS_WITH__SEARCH_STRING) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STARTS_WITH__SEARCH_STRING));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStartsWithAccess().getSearchStringInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getSearchString());
@@ -1866,6 +1961,27 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_Strategy(ISerializationContext context, Matrix semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     UnbracketedLiteral returns StringLiteral
+	 *     StringLiteral returns StringLiteral
+	 *
+	 * Constraint:
+	 *     value=YAMLString
+	 * </pre>
+	 */
+	protected void sequence_StringLiteral(ISerializationContext context, StringLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STRING_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStringLiteralAccess().getValueYAMLStringParserRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -1936,8 +2052,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 */
 	protected void sequence_ToJSON(ISerializationContext context, ToJSON semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, BuiltInFunctionsPackage.Literals.TO_JSON__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BuiltInFunctionsPackage.Literals.TO_JSON__VALUE));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.TO_JSON__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.TO_JSON__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getToJSONAccess().getValueInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getValue());
@@ -1948,42 +2064,21 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     UnbracketedLiteral returns StringLiteral
-	 *     UnbracketedString returns StringLiteral
-	 *
-	 * Constraint:
-	 *     value=STRING
-	 * </pre>
-	 */
-	protected void sequence_UnbracketedString(ISerializationContext context, StringLiteral semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, LiteralsPackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LiteralsPackage.Literals.STRING_LITERAL__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getUnbracketedStringAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     VariableAssignment returns VariableAssignment
 	 *
 	 * Constraint:
-	 *     (key=ID value=Expression)
+	 *     (key=YAMLID value=Expression)
 	 * </pre>
 	 */
 	protected void sequence_VariableAssignment(ISerializationContext context, Map.Entry semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT__KEY));
-			if (transientValues.isValueTransient((EObject) semanticObject, ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__KEY));
+			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyIDTerminalRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyYAMLIDParserRuleCall_0_0(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getVariableAssignmentAccess().getValueExpressionParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
@@ -2014,7 +2109,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Primary returns VariableDereference
 	 *
 	 * Constraint:
-	 *     (variable=VariableDereference_VariableDereference_1_0 (property=ID | property=ID))
+	 *     (variable=VariableDereference_VariableDereference_1_0 (property=ID | property=ID | property=ID))
 	 * </pre>
 	 */
 	protected void sequence_VariableDereference(ISerializationContext context, VariableDereference semanticObject) {

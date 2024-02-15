@@ -461,7 +461,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cScriptJobParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cReuseWorkflowJobParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Job returns Jobs::Job:
+		//Job returns GHA::Job:
 		//    ScriptJob | ReuseWorkflowJob
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -480,7 +480,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final Assignment cNameAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0_0 = (RuleCall)cNameAssignment_0_0.eContents().get(0);
+		private final RuleCall cNameYAMLIDParserRuleCall_0_0_0 = (RuleCall)cNameAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
@@ -609,19 +609,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_14_0_3 = (RuleCall)cGroup_14_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_14_1 = (RuleCall)cGroup_14.eContents().get(1);
 		
-		//ScriptJob returns Jobs::ScriptJob:
-		//    name=ID ':'
+		//ScriptJob returns GHA::ScriptJob:
+		//    name=YAMLID ':'
 		//        NEWLINE
 		//        BEGIN
 		//        ('name' ':' jobName=Expression NEWLINE)? &
 		//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		//        ('needs' ':'
-		//            (dependsOn+=[Jobs::Job] NEWLINE) |
-		//            ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+		//            (dependsOn+=[GHA::Job] NEWLINE) |
+		//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 		//            (
 		//                NEWLINE
 		//                BEGIN
-		//                ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//                END
 		//        ))? &
 		//        if=IfStatement? &
@@ -640,18 +640,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ':'
+		//name=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('name' ':' jobName=Expression NEWLINE)? &
 		//    ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		//    ('needs' ':'
-		//        (dependsOn+=[Jobs::Job] NEWLINE) |
-		//        ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+		//        (dependsOn+=[GHA::Job] NEWLINE) |
+		//        ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 		//        (
 		//            NEWLINE
 		//            BEGIN
-		//            ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//            ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//            END
 		//    ))? &
 		//    if=IfStatement? &
@@ -669,17 +669,17 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    END
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//name=ID ':'
+		//name=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('name' ':' jobName=Expression NEWLINE)?
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//name=ID
+		//name=YAMLID
 		public Assignment getNameAssignment_0_0() { return cNameAssignment_0_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0_0() { return cNameIDTerminalRuleCall_0_0_0; }
+		//YAMLID
+		public RuleCall getNameYAMLIDParserRuleCall_0_0_0() { return cNameYAMLIDParserRuleCall_0_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
@@ -733,18 +733,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public RuleCall getENDTerminalRuleCall_1_5() { return cENDTerminalRuleCall_1_5; }
 		
 		//('needs' ':'
-		//    (dependsOn+=[Jobs::Job] NEWLINE) |
-		//    ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+		//    (dependsOn+=[GHA::Job] NEWLINE) |
+		//    ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 		//    (
 		//        NEWLINE
 		//        BEGIN
-		//        ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//        ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//        END
 		//))?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//'needs' ':'
-		//            (dependsOn+=[Jobs::Job] NEWLINE)
+		//            (dependsOn+=[GHA::Job] NEWLINE)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
 		//'needs'
@@ -753,13 +753,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
 		
-		//(dependsOn+=[Jobs::Job] NEWLINE)
+		//(dependsOn+=[GHA::Job] NEWLINE)
 		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_0_2_0() { return cDependsOnAssignment_2_0_2_0; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_0_2_0_0() { return cDependsOnJobCrossReference_2_0_2_0_0; }
 		
 		//ID
@@ -768,31 +768,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//NEWLINE
 		public RuleCall getNEWLINETerminalRuleCall_2_0_2_1() { return cNEWLINETerminalRuleCall_2_0_2_1; }
 		
-		//('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE)
+		//('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE)
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2_1_0() { return cLeftSquareBracketKeyword_2_1_0; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_1_1() { return cDependsOnAssignment_2_1_1; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_1_1_0() { return cDependsOnJobCrossReference_2_1_1_0; }
 		
 		//ID
 		public RuleCall getDependsOnJobIDTerminalRuleCall_2_1_1_0_1() { return cDependsOnJobIDTerminalRuleCall_2_1_1_0_1; }
 		
-		//(',' dependsOn+=[Jobs::Job])*
+		//(',' dependsOn+=[GHA::Job])*
 		public Group getGroup_2_1_2() { return cGroup_2_1_2; }
 		
 		//','
 		public Keyword getCommaKeyword_2_1_2_0() { return cCommaKeyword_2_1_2_0; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_1_2_1() { return cDependsOnAssignment_2_1_2_1; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_1_2_1_0() { return cDependsOnJobCrossReference_2_1_2_1_0; }
 		
 		//ID
@@ -807,7 +807,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    (
 		//        NEWLINE
 		//        BEGIN
-		//        ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//        ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//        END
 		//)
 		public Group getGroup_2_2() { return cGroup_2_2; }
@@ -818,16 +818,16 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_2_1() { return cBEGINTerminalRuleCall_2_2_1; }
 		
-		//('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//('-' dependsOn+=[GHA::Job] NEWLINE)+
 		public Group getGroup_2_2_2() { return cGroup_2_2_2; }
 		
 		//'-'
 		public Keyword getHyphenMinusKeyword_2_2_2_0() { return cHyphenMinusKeyword_2_2_2_0; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_2_2_1() { return cDependsOnAssignment_2_2_2_1; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_2_2_1_0() { return cDependsOnJobCrossReference_2_2_2_1_0; }
 		
 		//ID
@@ -1082,7 +1082,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final Assignment cNameAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0_0 = (RuleCall)cNameAssignment_0_0.eContents().get(0);
+		private final RuleCall cNameYAMLIDParserRuleCall_0_0_0 = (RuleCall)cNameAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
@@ -1231,19 +1231,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_16_0_3 = (RuleCall)cGroup_16_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_16_1 = (RuleCall)cGroup_16.eContents().get(1);
 		
-		//ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
-		//    name=ID ':'
+		//ReuseWorkflowJob returns GHA::ReuseWorkflowJob:
+		//    name=YAMLID ':'
 		//        NEWLINE
 		//        BEGIN
 		//        ('name' ':' jobName=Expression  NEWLINE)? &
 		//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		//        ('needs' ':'
-		//            (dependsOn+=[Jobs::Job] NEWLINE) |
-		//            ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+		//            (dependsOn+=[GHA::Job] NEWLINE) |
+		//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 		//            (
 		//                NEWLINE
 		//                BEGIN
-		//                ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//                END
 		//            )
 		//        )? &
@@ -1265,18 +1265,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ':'
+		//name=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('name' ':' jobName=Expression  NEWLINE)? &
 		//    ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		//    ('needs' ':'
-		//        (dependsOn+=[Jobs::Job] NEWLINE) |
-		//        ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+		//        (dependsOn+=[GHA::Job] NEWLINE) |
+		//        ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 		//        (
 		//            NEWLINE
 		//            BEGIN
-		//            ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//            ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//            END
 		//        )
 		//    )? &
@@ -1297,17 +1297,17 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    END
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//name=ID ':'
+		//name=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('name' ':' jobName=Expression  NEWLINE)?
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//name=ID
+		//name=YAMLID
 		public Assignment getNameAssignment_0_0() { return cNameAssignment_0_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0_0() { return cNameIDTerminalRuleCall_0_0_0; }
+		//YAMLID
+		public RuleCall getNameYAMLIDParserRuleCall_0_0_0() { return cNameYAMLIDParserRuleCall_0_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
@@ -1361,19 +1361,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public RuleCall getENDTerminalRuleCall_1_5() { return cENDTerminalRuleCall_1_5; }
 		
 		//('needs' ':'
-		//    (dependsOn+=[Jobs::Job] NEWLINE) |
-		//    ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+		//    (dependsOn+=[GHA::Job] NEWLINE) |
+		//    ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 		//    (
 		//        NEWLINE
 		//        BEGIN
-		//        ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//        ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//        END
 		//    )
 		//)?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//'needs' ':'
-		//            (dependsOn+=[Jobs::Job] NEWLINE)
+		//            (dependsOn+=[GHA::Job] NEWLINE)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
 		//'needs'
@@ -1382,13 +1382,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
 		
-		//(dependsOn+=[Jobs::Job] NEWLINE)
+		//(dependsOn+=[GHA::Job] NEWLINE)
 		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_0_2_0() { return cDependsOnAssignment_2_0_2_0; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_0_2_0_0() { return cDependsOnJobCrossReference_2_0_2_0_0; }
 		
 		//ID
@@ -1397,31 +1397,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//NEWLINE
 		public RuleCall getNEWLINETerminalRuleCall_2_0_2_1() { return cNEWLINETerminalRuleCall_2_0_2_1; }
 		
-		//('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE)
+		//('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE)
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//'['
 		public Keyword getLeftSquareBracketKeyword_2_1_0() { return cLeftSquareBracketKeyword_2_1_0; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_1_1() { return cDependsOnAssignment_2_1_1; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_1_1_0() { return cDependsOnJobCrossReference_2_1_1_0; }
 		
 		//ID
 		public RuleCall getDependsOnJobIDTerminalRuleCall_2_1_1_0_1() { return cDependsOnJobIDTerminalRuleCall_2_1_1_0_1; }
 		
-		//(',' dependsOn+=[Jobs::Job])*
+		//(',' dependsOn+=[GHA::Job])*
 		public Group getGroup_2_1_2() { return cGroup_2_1_2; }
 		
 		//','
 		public Keyword getCommaKeyword_2_1_2_0() { return cCommaKeyword_2_1_2_0; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_1_2_1() { return cDependsOnAssignment_2_1_2_1; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_1_2_1_0() { return cDependsOnJobCrossReference_2_1_2_1_0; }
 		
 		//ID
@@ -1436,7 +1436,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//(
 		//    NEWLINE
 		//    BEGIN
-		//    ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//    ('-' dependsOn+=[GHA::Job] NEWLINE)+
 		//    END
 		//)
 		public Group getGroup_2_2() { return cGroup_2_2; }
@@ -1447,16 +1447,16 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_2_1() { return cBEGINTerminalRuleCall_2_2_1; }
 		
-		//('-' dependsOn+=[Jobs::Job] NEWLINE)+
+		//('-' dependsOn+=[GHA::Job] NEWLINE)+
 		public Group getGroup_2_2_2() { return cGroup_2_2_2; }
 		
 		//'-'
 		public Keyword getHyphenMinusKeyword_2_2_2_0() { return cHyphenMinusKeyword_2_2_2_0; }
 		
-		//dependsOn+=[Jobs::Job]
+		//dependsOn+=[GHA::Job]
 		public Assignment getDependsOnAssignment_2_2_2_1() { return cDependsOnAssignment_2_2_2_1; }
 		
-		//[Jobs::Job]
+		//[GHA::Job]
 		public CrossReference getDependsOnJobCrossReference_2_2_2_1_0() { return cDependsOnJobCrossReference_2_2_2_1_0; }
 		
 		//ID
@@ -1868,7 +1868,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_1_1_0_1_2_3 = (RuleCall)cGroup_1_1_0_1_2.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
 		
-		//Agent returns Jobs::Agent:
+		//Agent returns GHA::Agent:
 		//    (
 		//        (labels+=Expression NEWLINE) |
 		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
@@ -2421,7 +2421,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPackageParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
 		private final RuleCall cENDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//Step returns Steps::Step:
+		//Step returns GHA::Step:
 		//    '-' BEGIN (Command | Package) END
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -2504,7 +2504,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cCommandExpressionParserRuleCall_7_1_2_0 = (RuleCall)cCommandAssignment_7_1_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_7_1_3 = (RuleCall)cGroup_7_1.eContents().get(3);
 		
-		//Command returns Steps::Command:
+		//Command returns GHA::Command:
 		//    ('id' ':' id=STRING NEWLINE)? &
 		//    if=IfStatement? &
 		//    ('name' ':' name=Expression NEWLINE)? &
@@ -2768,7 +2768,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cArgsVariableAssignmentParserRuleCall_8_1_0_0 = (RuleCall)cArgsAssignment_8_1_0.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_8_1_1 = (RuleCall)cGroup_8_1.eContents().get(1);
 		
-		//Package returns Steps::Package:
+		//Package returns GHA::Package:
 		//    ('id' ':' id=STRING NEWLINE)? &
 		//    if=IfStatement? &
 		//    ('name' ':' name=Expression NEWLINE)? &
@@ -3078,7 +3078,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cExpressionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final RuleCall cNEWLINETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//IfStatement returns Expressions::Expression:
+		//IfStatement returns GHA::Expression:
 		//    'if' ':' Expression NEWLINE
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -3114,7 +3114,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cCancelInProgressExpressionParserRuleCall_1_2_0 = (RuleCall)cCancelInProgressAssignment_1_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_3 = (RuleCall)cGroup_1.eContents().get(3);
 		
-		//ConcurrencyGroup returns Options::ConcurrencyGroup:
+		//ConcurrencyGroup returns GHA::ConcurrencyGroup:
 		//    ('group' ':' name=Expression NEWLINE) &
 		//    ('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
 		//;
@@ -3171,7 +3171,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cSimpleStandardEventTriggerParserRuleCall_0_4 = (RuleCall)cAlternatives_0.eContents().get(4);
 		private final RuleCall cNEWLINETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		
-		//SimpleTrigger returns Triggers::Trigger:
+		//SimpleTrigger returns GHA::Trigger:
 		//    (
 		//        SimpleWorkflowDispatchTrigger |
 		//        SimpleWorkflowCallTrigger |
@@ -3230,27 +3230,27 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Action cPullRequestTriggerAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cPull_request_targetKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
-		//SimplePullRequestTrigger returns Triggers::PullRequestTrigger:
-		//    {Triggers::PullRequestTrigger} 'pull_request' | {Triggers::PullRequestTrigger} 'pull_request_target'
+		//SimplePullRequestTrigger returns GHA::PullRequestTrigger:
+		//    {GHA::PullRequestTrigger} 'pull_request' | {GHA::PullRequestTrigger} 'pull_request_target'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::PullRequestTrigger} 'pull_request' | {Triggers::PullRequestTrigger} 'pull_request_target'
+		//{GHA::PullRequestTrigger} 'pull_request' | {GHA::PullRequestTrigger} 'pull_request_target'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{Triggers::PullRequestTrigger} 'pull_request'
+		//{GHA::PullRequestTrigger} 'pull_request'
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//{Triggers::PullRequestTrigger}
+		//{GHA::PullRequestTrigger}
 		public Action getPullRequestTriggerAction_0_0() { return cPullRequestTriggerAction_0_0; }
 		
 		//'pull_request'
 		public Keyword getPull_requestKeyword_0_1() { return cPull_requestKeyword_0_1; }
 		
-		//{Triggers::PullRequestTrigger} 'pull_request_target'
+		//{GHA::PullRequestTrigger} 'pull_request_target'
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{Triggers::PullRequestTrigger}
+		//{GHA::PullRequestTrigger}
 		public Action getPullRequestTriggerAction_1_0() { return cPullRequestTriggerAction_1_0; }
 		
 		//'pull_request_target'
@@ -3262,15 +3262,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Action cPushTriggerAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cPushKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//SimplePushTriggerTrigger returns Triggers::PushTrigger:
-		//    {Triggers::PushTrigger} 'push'
+		//SimplePushTriggerTrigger returns GHA::PushTrigger:
+		//    {GHA::PushTrigger} 'push'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::PushTrigger} 'push'
+		//{GHA::PushTrigger} 'push'
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::PushTrigger}
+		//{GHA::PushTrigger}
 		public Action getPushTriggerAction_0() { return cPushTriggerAction_0; }
 		
 		//'push'
@@ -3282,15 +3282,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Action cWorkflowCallTriggerAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cWorkflow_callKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//SimpleWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
-		//    {Triggers::WorkflowCallTrigger} 'workflow_call'
+		//SimpleWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
+		//    {GHA::WorkflowCallTrigger} 'workflow_call'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::WorkflowCallTrigger} 'workflow_call'
+		//{GHA::WorkflowCallTrigger} 'workflow_call'
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::WorkflowCallTrigger}
+		//{GHA::WorkflowCallTrigger}
 		public Action getWorkflowCallTriggerAction_0() { return cWorkflowCallTriggerAction_0; }
 		
 		//'workflow_call'
@@ -3302,15 +3302,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Action cWorkflowDispatchTriggerAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cWorkflow_dispatchKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
-		//SimpleWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
-		//    {Triggers::WorkflowDispatchTrigger} 'workflow_dispatch'
+		//SimpleWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
+		//    {GHA::WorkflowDispatchTrigger} 'workflow_dispatch'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch'
+		//{GHA::WorkflowDispatchTrigger} 'workflow_dispatch'
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::WorkflowDispatchTrigger}
+		//{GHA::WorkflowDispatchTrigger}
 		public Action getWorkflowDispatchTriggerAction_0() { return cWorkflowDispatchTriggerAction_0; }
 		
 		//'workflow_dispatch'
@@ -3321,7 +3321,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cEventAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cEventEVENTEnumRuleCall_0 = (RuleCall)cEventAssignment.eContents().get(0);
 		
-		//SimpleStandardEventTrigger returns Triggers::StandardEventTrigger:
+		//SimpleStandardEventTrigger returns GHA::StandardEventTrigger:
 		//    event=EVENT
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -3347,7 +3347,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cOptionedWorkflowDispatchTriggerParserRuleCall_2_6 = (RuleCall)cAlternatives_2.eContents().get(6);
 		private final RuleCall cENDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//OptionedTrigger returns Triggers::Trigger:
+		//OptionedTrigger returns GHA::Trigger:
 		//    NEWLINE
 		//    BEGIN
 		//    (
@@ -3455,7 +3455,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_2_0_3 = (RuleCall)cGroup_2_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//OptionedStandardEventTrigger returns Triggers::StandardEventTrigger:
+		//OptionedStandardEventTrigger returns GHA::StandardEventTrigger:
 		//    event=EVENT ':'
 		//        NEWLINE
 		//        BEGIN
@@ -3640,7 +3640,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_2_0_3 = (RuleCall)cGroup_2_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
+		//OptionedWorkflowRunTrigger returns GHA::WorkflowRunTrigger:
 		//    'workflow_run' ':'
 		//        NEWLINE
 		//        BEGIN
@@ -4074,8 +4074,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_3_2_0_1_2_3 = (RuleCall)cGroup_3_2_0_1_2.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
 		
-		//OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
-		//    {Triggers::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
+		//OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
+		//    {GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
 		//    (
 		//        NEWLINE
 		//        BEGIN
@@ -4189,7 +4189,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
+		//{GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
 		//(
 		//    NEWLINE
 		//    BEGIN
@@ -4302,7 +4302,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//)
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::PullRequestTrigger}
+		//{GHA::PullRequestTrigger}
 		public Action getPullRequestTriggerAction_0() { return cPullRequestTriggerAction_0; }
 		
 		//('pull_request' | 'pull_request_target')
@@ -5914,8 +5914,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_3_2_0_1_2_3 = (RuleCall)cGroup_3_2_0_1_2.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
 		
-		//OptionedPushTrigger returns Triggers::PushTrigger:
-		//    {Triggers::PushTrigger} 'push' ':'
+		//OptionedPushTrigger returns GHA::PushTrigger:
+		//    {GHA::PushTrigger} 'push' ':'
 		//    (
 		//        NEWLINE
 		//        BEGIN
@@ -6029,7 +6029,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::PushTrigger} 'push' ':'
+		//{GHA::PushTrigger} 'push' ':'
 		//(
 		//    NEWLINE
 		//    BEGIN
@@ -6142,7 +6142,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//)
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::PushTrigger}
+		//{GHA::PushTrigger}
 		public Action getPushTriggerAction_0() { return cPushTriggerAction_0; }
 		
 		//'push'
@@ -7503,7 +7503,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_2_2_4 = (RuleCall)cGroup_2_2.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_2_3 = (RuleCall)cGroup_2.eContents().get(3);
 		
-		//OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
+		//OptionedScheduleTrigger returns GHA::ScheduleTrigger:
 		//    'schedule' ':'
 		//    (
 		//        NEWLINE
@@ -7666,8 +7666,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_3_2_0_1_5 = (RuleCall)cGroup_3_2_0_1.eContents().get(5);
 		private final RuleCall cENDTerminalRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
 		
-		//OptionedWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
-		//    {Triggers::WorkflowCallTrigger} 'workflow_call' ':'
+		//OptionedWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
+		//    {GHA::WorkflowCallTrigger} 'workflow_call' ':'
 		//    (
 		//        NEWLINE
 		//        BEGIN
@@ -7709,7 +7709,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::WorkflowCallTrigger} 'workflow_call' ':'
+		//{GHA::WorkflowCallTrigger} 'workflow_call' ':'
 		//(
 		//    NEWLINE
 		//    BEGIN
@@ -7750,7 +7750,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//)
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::WorkflowCallTrigger}
+		//{GHA::WorkflowCallTrigger}
 		public Action getWorkflowCallTriggerAction_0() { return cWorkflowCallTriggerAction_0; }
 		
 		//'workflow_call'
@@ -8152,8 +8152,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_5_5 = (RuleCall)cGroup_5.eContents().get(5);
 		private final RuleCall cENDTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
 		
-		//OptionedWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
-		//    {Triggers::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
+		//OptionedWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
+		//    {GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
 		//        NEWLINE
 		//        BEGIN
 		//        ('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
@@ -8161,14 +8161,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
+		//{GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
 		//    END
 		public Group getGroup() { return cGroup; }
 		
-		//{Triggers::WorkflowDispatchTrigger}
+		//{GHA::WorkflowDispatchTrigger}
 		public Action getWorkflowDispatchTriggerAction_0() { return cWorkflowDispatchTriggerAction_0; }
 		
 		//'workflow_dispatch'
@@ -8215,7 +8215,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final Assignment cIdAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cIdIDTerminalRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
+		private final RuleCall cIdYAMLIDParserRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
@@ -8273,8 +8273,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_4_0_2_3 = (RuleCall)cGroup_4_0_2.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
 		
-		//Input returns Parameters::Input:
-		//    id=ID ':'
+		//Input returns GHA::Input:
+		//    id=YAMLID ':'
 		//        NEWLINE
 		//        BEGIN
 		//        ('description' ':' description=Expression NEWLINE)? &
@@ -8296,7 +8296,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//id=ID ':'
+		//id=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('description' ':' description=Expression NEWLINE)? &
@@ -8317,17 +8317,17 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    END
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//id=ID ':'
+		//id=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('description' ':' description=Expression NEWLINE)?
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//id=ID
+		//id=YAMLID
 		public Assignment getIdAssignment_0_0() { return cIdAssignment_0_0; }
 		
-		//ID
-		public RuleCall getIdIDTerminalRuleCall_0_0_0() { return cIdIDTerminalRuleCall_0_0_0; }
+		//YAMLID
+		public RuleCall getIdYAMLIDParserRuleCall_0_0_0() { return cIdYAMLIDParserRuleCall_0_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
@@ -8529,7 +8529,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
 		private final Assignment cIdAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cIdIDTerminalRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
+		private final RuleCall cIdYAMLIDParserRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
@@ -8548,8 +8548,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_1_0_3 = (RuleCall)cGroup_1_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//Output returns Parameters::Output:
-		//    id=ID ':'
+		//Output returns GHA::Output:
+		//    id=YAMLID ':'
 		//        NEWLINE
 		//        BEGIN
 		//        ('description' ':' description=Expression NEWLINE)? &
@@ -8558,7 +8558,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//id=ID ':'
+		//id=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('description' ':' description=Expression NEWLINE)? &
@@ -8566,17 +8566,17 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    END
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//id=ID ':'
+		//id=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    ('description' ':' description=Expression NEWLINE)?
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//id=ID
+		//id=YAMLID
 		public Assignment getIdAssignment_0_0() { return cIdAssignment_0_0; }
 		
-		//ID
-		public RuleCall getIdIDTerminalRuleCall_0_0_0() { return cIdIDTerminalRuleCall_0_0_0; }
+		//YAMLID
+		public RuleCall getIdYAMLIDParserRuleCall_0_0_0() { return cIdYAMLIDParserRuleCall_0_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
@@ -8635,7 +8635,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Assignment cIdAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cIdIDTerminalRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
+		private final RuleCall cIdYAMLIDParserRuleCall_0_0_0 = (RuleCall)cIdAssignment_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_0_2 = (RuleCall)cGroup_0.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
@@ -8668,8 +8668,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_1_0_1_3 = (RuleCall)cGroup_1_0_1.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//Secret returns Parameters::Secret:
-		//    id=ID ':'
+		//Secret returns GHA::Secret:
+		//    id=YAMLID ':'
 		//        NEWLINE
 		//        BEGIN
 		//        (
@@ -8684,7 +8684,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//id=ID ':'
+		//id=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    (
@@ -8698,7 +8698,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    END
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//id=ID ':'
+		//id=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    (
@@ -8707,11 +8707,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    )
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//id=ID
+		//id=YAMLID
 		public Assignment getIdAssignment_0_0() { return cIdAssignment_0_0; }
 		
-		//ID
-		public RuleCall getIdIDTerminalRuleCall_0_0_0() { return cIdIDTerminalRuleCall_0_0_0; }
+		//YAMLID
+		public RuleCall getIdYAMLIDParserRuleCall_0_0_0() { return cIdYAMLIDParserRuleCall_0_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
@@ -8826,7 +8826,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cValuePERMISSION_VALUEEnumRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//Permission returns Options::Permission:
+		//Permission returns GHA::Permission:
 		//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -8874,7 +8874,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_4_1_3 = (RuleCall)cGroup_4_1.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
-		//Defaults returns Options::Defaults:
+		//Defaults returns GHA::Defaults:
 		//    'run' ':'
 		//        NEWLINE
 		//        BEGIN
@@ -8977,7 +8977,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_1_3_3 = (RuleCall)cGroup_1_3.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_4 = (RuleCall)cGroup_1.eContents().get(4);
 		
-		//StagingEnvironment returns Jobs::StagingEnvironment:
+		//StagingEnvironment returns GHA::StagingEnvironment:
 		//    (name=Expression NEWLINE) |
 		//    (
 		//        NEWLINE
@@ -9110,7 +9110,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cMaxParallelExpressionParserRuleCall_2_2_0 = (RuleCall)cMaxParallelAssignment_2_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_2_3 = (RuleCall)cGroup_2.eContents().get(3);
 		
-		//Strategy returns Matrices::Matrix:
+		//Strategy returns GHA::Matrix:
 		//    (
 		//        'matrix' ':'
 		//            NEWLINE
@@ -9277,7 +9277,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.MatrixAxis");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final RuleCall cNameYAMLIDParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
@@ -9304,8 +9304,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_2_2_2_2 = (RuleCall)cGroup_2_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_2_2_3 = (RuleCall)cGroup_2_2.eContents().get(3);
 		
-		//MatrixAxis returns Matrices::MatrixAxis:
-		//    name=ID ':'
+		//MatrixAxis returns GHA::MatrixAxis:
+		//    name=YAMLID ':'
 		//    (
 		//        (cells+=Expression NEWLINE) |
 		//        ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
@@ -9319,7 +9319,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ':'
+		//name=YAMLID ':'
 		//(
 		//    (cells+=Expression NEWLINE) |
 		//    ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
@@ -9332,11 +9332,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//)
 		public Group getGroup() { return cGroup; }
 		
-		//name=ID
+		//name=YAMLID
 		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		//YAMLID
+		public RuleCall getNameYAMLIDParserRuleCall_0_0() { return cNameYAMLIDParserRuleCall_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -9436,7 +9436,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cEntriesVariableAssignmentParserRuleCall_2_0 = (RuleCall)cEntriesAssignment_2.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//MatrixCombination returns Matrices::MatrixCombination:
+		//MatrixCombination returns GHA::MatrixCombination:
 		//    '-' BEGIN entries+=VariableAssignment END
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -9563,7 +9563,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cENDTerminalRuleCall_1_5_0_1_1 = (RuleCall)cGroup_1_5_0_1.eContents().get(1);
 		private final RuleCall cENDTerminalRuleCall_1_5_1 = (RuleCall)cGroup_1_5.eContents().get(1);
 		
-		//Container returns Jobs::Container:
+		//Container returns GHA::Container:
 		//    (
 		//        image=Expression NEWLINE
 		//    ) |
@@ -10023,7 +10023,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Service");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cKeyAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cKeyIDTerminalRuleCall_0_0 = (RuleCall)cKeyAssignment_0.eContents().get(0);
+		private final RuleCall cKeyYAMLIDParserRuleCall_0_0 = (RuleCall)cKeyAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final RuleCall cBEGINTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
@@ -10031,8 +10031,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cValueContainerParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
 		
-		//Service returns Jobs::Service:
-		//    key=ID ':'
+		//Service returns GHA::Service:
+		//    key=YAMLID ':'
 		//        NEWLINE
 		//        BEGIN
 		//        value=Container
@@ -10040,18 +10040,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//key=ID ':'
+		//key=YAMLID ':'
 		//    NEWLINE
 		//    BEGIN
 		//    value=Container
 		//    END
 		public Group getGroup() { return cGroup; }
 		
-		//key=ID
+		//key=YAMLID
 		public Assignment getKeyAssignment_0() { return cKeyAssignment_0; }
 		
-		//ID
-		public RuleCall getKeyIDTerminalRuleCall_0_0() { return cKeyIDTerminalRuleCall_0_0; }
+		//YAMLID
+		public RuleCall getKeyYAMLIDParserRuleCall_0_0() { return cKeyYAMLIDParserRuleCall_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -10075,25 +10075,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.VariableAssignment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cKeyAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cKeyIDTerminalRuleCall_0_0 = (RuleCall)cKeyAssignment_0.eContents().get(0);
+		private final RuleCall cKeyYAMLIDParserRuleCall_0_0 = (RuleCall)cKeyAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueExpressionParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
-		//VariableAssignment returns Expressions::VariableAssignment:
-		//    key=ID ':' value=Expression NEWLINE
+		//VariableAssignment returns GHA::VariableAssignment:
+		//    key=YAMLID ':' value=Expression NEWLINE
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//key=ID ':' value=Expression NEWLINE
+		//key=YAMLID ':' value=Expression NEWLINE
 		public Group getGroup() { return cGroup; }
 		
-		//key=ID
+		//key=YAMLID
 		public Assignment getKeyAssignment_0() { return cKeyAssignment_0; }
 		
-		//ID
-		public RuleCall getKeyIDTerminalRuleCall_0_0() { return cKeyIDTerminalRuleCall_0_0; }
+		//YAMLID
+		public RuleCall getKeyYAMLIDParserRuleCall_0_0() { return cKeyYAMLIDParserRuleCall_0_0; }
 		
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -10111,7 +10111,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Expression");
 		private final RuleCall cConcatParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//Expression returns Expressions::Expression:
+		//Expression returns GHA::Expression:
 		//    Concat
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10128,21 +10128,21 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cRhsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRhsConcatExpressionParserRuleCall_1_1_0 = (RuleCall)cRhsAssignment_1_1.eContents().get(0);
 		
-		//Concat returns Expressions::Expression:
-		//    ConcatExpression ({BinaryOperators::Concat.lhs=current}    rhs=ConcatExpression)*
+		//Concat returns GHA::Expression:
+		//    ConcatExpression ({GHA::Concat.lhs=current}    rhs=ConcatExpression)*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ConcatExpression ({BinaryOperators::Concat.lhs=current}	rhs=ConcatExpression)*
+		//ConcatExpression ({GHA::Concat.lhs=current}	rhs=ConcatExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//ConcatExpression
 		public RuleCall getConcatExpressionParserRuleCall_0() { return cConcatExpressionParserRuleCall_0; }
 		
-		//({BinaryOperators::Concat.lhs=current}	rhs=ConcatExpression)*
+		//({GHA::Concat.lhs=current}	rhs=ConcatExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{BinaryOperators::Concat.lhs=current}
+		//{GHA::Concat.lhs=current}
 		public Action getConcatLhsAction_1_0() { return cConcatLhsAction_1_0; }
 		
 		//rhs=ConcatExpression
@@ -10157,7 +10157,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBracketedExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cUnbracketedLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//ConcatExpression returns Expressions::Expression:
+		//ConcatExpression returns GHA::Expression:
 		//    BracketedExpression | UnbracketedLiteral
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10178,7 +10178,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cInsideBracketsExpressionParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Keyword cRightCurlyBracketRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//BracketedExpression returns Expressions::Expression:
+		//BracketedExpression returns GHA::Expression:
 		//    '${{' InsideBracketsExpression '}}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10199,7 +10199,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.InsideBracketsExpression");
 		private final RuleCall cOrParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//InsideBracketsExpression returns Expressions::Expression:
+		//InsideBracketsExpression returns GHA::Expression:
 		//    Or
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10209,31 +10209,87 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	public class UnbracketedLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.UnbracketedLiteral");
-		private final RuleCall cUnbracketedStringParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cStringLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//UnbracketedLiteral returns Literals::Literal:
-		//    UnbracketedString
+		//UnbracketedLiteral returns GHA::Literal:
+		//    StringLiteral | IntegerLiteral
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//UnbracketedString
-		public RuleCall getUnbracketedStringParserRuleCall() { return cUnbracketedStringParserRuleCall; }
+		//StringLiteral | IntegerLiteral
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//StringLiteral
+		public RuleCall getStringLiteralParserRuleCall_0() { return cStringLiteralParserRuleCall_0; }
+		
+		//IntegerLiteral
+		public RuleCall getIntegerLiteralParserRuleCall_1() { return cIntegerLiteralParserRuleCall_1; }
 	}
-	public class UnbracketedStringElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.UnbracketedString");
+	public class StringLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.StringLiteral");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueYAMLStringParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
-		//UnbracketedString returns Literals::StringLiteral:
-		//    value=STRING
+		//StringLiteral returns GHA::StringLiteral:
+		//    value=YAMLString
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//value=STRING
+		//value=YAMLString
 		public Assignment getValueAssignment() { return cValueAssignment; }
 		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
+		//YAMLString
+		public RuleCall getValueYAMLStringParserRuleCall_0() { return cValueYAMLStringParserRuleCall_0; }
+	}
+	public class IntegerLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.IntegerLiteral");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//IntegerLiteral returns GHA::IntegerLiteral:
+		//    value=INT
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=INT
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+	}
+	public class DoubleLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.DoubleLiteral");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueDOUBLETerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//DoubleLiteral returns GHA::DoubleLiteral:
+		//    value=DOUBLE
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=DOUBLE
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//DOUBLE
+		public RuleCall getValueDOUBLETerminalRuleCall_0() { return cValueDOUBLETerminalRuleCall_0; }
+	}
+	public class BooleanLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.BooleanLiteral");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueBOOLEANTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//BooleanLiteral returns GHA::BooleanLiteral:
+		//    value?=BOOLEAN
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value?=BOOLEAN
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//BOOLEAN
+		public RuleCall getValueBOOLEANTerminalRuleCall_0() { return cValueBOOLEANTerminalRuleCall_0; }
 	}
 	public class OrElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Or");
@@ -10245,21 +10301,21 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cRhsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRhsAndParserRuleCall_1_2_0 = (RuleCall)cRhsAssignment_1_2.eContents().get(0);
 		
-		//Or returns Expressions::Expression:
-		//    And ({LogicalOperators::Or.lhs=current} '||' rhs=And)*
+		//Or returns GHA::Expression:
+		//    And ({GHA::Or.lhs=current} '||' rhs=And)*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//And ({LogicalOperators::Or.lhs=current} '||' rhs=And)*
+		//And ({GHA::Or.lhs=current} '||' rhs=And)*
 		public Group getGroup() { return cGroup; }
 		
 		//And
 		public RuleCall getAndParserRuleCall_0() { return cAndParserRuleCall_0; }
 		
-		//({LogicalOperators::Or.lhs=current} '||' rhs=And)*
+		//({GHA::Or.lhs=current} '||' rhs=And)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{LogicalOperators::Or.lhs=current}
+		//{GHA::Or.lhs=current}
 		public Action getOrLhsAction_1_0() { return cOrLhsAction_1_0; }
 		
 		//'||'
@@ -10281,21 +10337,21 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cRhsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRhsEqualityParserRuleCall_1_2_0 = (RuleCall)cRhsAssignment_1_2.eContents().get(0);
 		
-		//And returns Expressions::Expression:
-		//    Equality ({LogicalOperators::And.lhs=current} '&&' rhs=Equality )*
+		//And returns GHA::Expression:
+		//    Equality ({GHA::And.lhs=current} '&&' rhs=Equality )*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Equality ({LogicalOperators::And.lhs=current} '&&' rhs=Equality )*
+		//Equality ({GHA::And.lhs=current} '&&' rhs=Equality )*
 		public Group getGroup() { return cGroup; }
 		
 		//Equality
 		public RuleCall getEqualityParserRuleCall_0() { return cEqualityParserRuleCall_0; }
 		
-		//({LogicalOperators::And.lhs=current} '&&' rhs=Equality )*
+		//({GHA::And.lhs=current} '&&' rhs=Equality )*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{LogicalOperators::And.lhs=current}
+		//{GHA::And.lhs=current}
 		public Action getAndLhsAction_1_0() { return cAndLhsAction_1_0; }
 		
 		//'&&'
@@ -10318,21 +10374,21 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cRhsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRhsComparisonParserRuleCall_1_2_0 = (RuleCall)cRhsAssignment_1_2.eContents().get(0);
 		
-		//Equality returns Expressions::Expression:
-		//    Comparison ({EqualityOperators::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+		//Equality returns GHA::Expression:
+		//    Comparison ({GHA::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Comparison ({EqualityOperators::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+		//Comparison ({GHA::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
 		public Group getGroup() { return cGroup; }
 		
 		//Comparison
 		public RuleCall getComparisonParserRuleCall_0() { return cComparisonParserRuleCall_0; }
 		
-		//({EqualityOperators::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+		//({GHA::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{EqualityOperators::Equality.lhs=current}
+		//{GHA::Equality.lhs=current}
 		public Action getEqualityLhsAction_1_0() { return cEqualityLhsAction_1_0; }
 		
 		//op=EQUALITY_OP
@@ -10358,21 +10414,21 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cRhsAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRhsUnaryOpParserRuleCall_1_2_0 = (RuleCall)cRhsAssignment_1_2.eContents().get(0);
 		
-		//Comparison returns Expressions::Expression:
-		//    UnaryOp ({ComparisonOperators::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+		//Comparison returns GHA::Expression:
+		//    UnaryOp ({GHA::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//UnaryOp ({ComparisonOperators::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+		//UnaryOp ({GHA::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
 		public Group getGroup() { return cGroup; }
 		
 		//UnaryOp
 		public RuleCall getUnaryOpParserRuleCall_0() { return cUnaryOpParserRuleCall_0; }
 		
-		//({ComparisonOperators::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+		//({GHA::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{ComparisonOperators::Comparison.lhs=current}
+		//{GHA::Comparison.lhs=current}
 		public Action getComparisonLhsAction_1_0() { return cComparisonLhsAction_1_0; }
 		
 		//op=COMPARISON_OP
@@ -10393,7 +10449,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNotParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cBlankParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//UnaryOp returns Expressions::Expression:
+		//UnaryOp returns GHA::Expression:
 		//    Not | Blank
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10414,7 +10470,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cChildExprAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cChildExprVariableDereferenceParserRuleCall_1_0 = (RuleCall)cChildExprAssignment_1.eContents().get(0);
 		
-		//Not returns UnaryOperators::Not:
+		//Not returns GHA::Not:
 		//    '!' childExpr=VariableDereference
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10435,7 +10491,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Blank");
 		private final RuleCall cVariableDereferenceParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//Blank returns Expressions::Expression:
+		//Blank returns GHA::Expression:
 		//    VariableDereference
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10454,30 +10510,40 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cFullStopKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
 		private final Assignment cPropertyAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
 		private final RuleCall cPropertyIDTerminalRuleCall_1_1_0_1_0 = (RuleCall)cPropertyAssignment_1_1_0_1.eContents().get(0);
-		private final Group cGroup_1_1_1 = (Group)cAlternatives_1_1.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
-		private final Assignment cPropertyAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
-		private final RuleCall cPropertyIDTerminalRuleCall_1_1_1_1_0 = (RuleCall)cPropertyAssignment_1_1_1_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_1_1_1_2 = (Keyword)cGroup_1_1_1.eContents().get(2);
+		private final Alternatives cAlternatives_1_1_1 = (Alternatives)cAlternatives_1_1.eContents().get(1);
+		private final Group cGroup_1_1_1_0 = (Group)cAlternatives_1_1_1.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1_1_1_0_0 = (Keyword)cGroup_1_1_1_0.eContents().get(0);
+		private final Group cGroup_1_1_1_0_1 = (Group)cGroup_1_1_1_0.eContents().get(1);
+		private final Keyword cQuotationMarkKeyword_1_1_1_0_1_0 = (Keyword)cGroup_1_1_1_0_1.eContents().get(0);
+		private final Assignment cPropertyAssignment_1_1_1_0_1_1 = (Assignment)cGroup_1_1_1_0_1.eContents().get(1);
+		private final RuleCall cPropertyIDTerminalRuleCall_1_1_1_0_1_1_0 = (RuleCall)cPropertyAssignment_1_1_1_0_1_1.eContents().get(0);
+		private final Keyword cQuotationMarkKeyword_1_1_1_0_1_2 = (Keyword)cGroup_1_1_1_0_1.eContents().get(2);
+		private final Group cGroup_1_1_1_1 = (Group)cAlternatives_1_1_1.eContents().get(1);
+		private final Group cGroup_1_1_1_1_0 = (Group)cGroup_1_1_1_1.eContents().get(0);
+		private final Keyword cApostropheKeyword_1_1_1_1_0_0 = (Keyword)cGroup_1_1_1_1_0.eContents().get(0);
+		private final Assignment cPropertyAssignment_1_1_1_1_0_1 = (Assignment)cGroup_1_1_1_1_0.eContents().get(1);
+		private final RuleCall cPropertyIDTerminalRuleCall_1_1_1_1_0_1_0 = (RuleCall)cPropertyAssignment_1_1_1_1_0_1.eContents().get(0);
+		private final Keyword cQuotationMarkKeyword_1_1_1_1_0_2 = (Keyword)cGroup_1_1_1_1_0.eContents().get(2);
+		private final Keyword cRightSquareBracketKeyword_1_1_1_1_1 = (Keyword)cGroup_1_1_1_1.eContents().get(1);
 		
-		//VariableDereference returns Expressions::Expression:
-		//    Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
+		//VariableDereference returns GHA::Expression:
+		//    Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']')))*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
+		//Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']')))*
 		public Group getGroup() { return cGroup; }
 		
 		//Primary
 		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
+		//({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']')))*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{Variables::VariableDereference.variable=current}
+		//{GHA::VariableDereference.variable=current}
 		public Action getVariableDereferenceVariableAction_1_0() { return cVariableDereferenceVariableAction_1_0; }
 		
-		//(('.' property=ID) | ('[' property=ID ']'))
+		//(('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']'))
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
 		//('.' property=ID)
@@ -10492,20 +10558,50 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getPropertyIDTerminalRuleCall_1_1_0_1_0() { return cPropertyIDTerminalRuleCall_1_1_0_1_0; }
 		
-		//('[' property=ID ']')
-		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
+		//('[' ('"' property=ID '"') | ("'" property=ID '"') ']')
+		public Alternatives getAlternatives_1_1_1() { return cAlternatives_1_1_1; }
+		
+		//'[' ('"' property=ID '"')
+		public Group getGroup_1_1_1_0() { return cGroup_1_1_1_0; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_1_1_1_0() { return cLeftSquareBracketKeyword_1_1_1_0; }
+		public Keyword getLeftSquareBracketKeyword_1_1_1_0_0() { return cLeftSquareBracketKeyword_1_1_1_0_0; }
+		
+		//('"' property=ID '"')
+		public Group getGroup_1_1_1_0_1() { return cGroup_1_1_1_0_1; }
+		
+		//'"'
+		public Keyword getQuotationMarkKeyword_1_1_1_0_1_0() { return cQuotationMarkKeyword_1_1_1_0_1_0; }
 		
 		//property=ID
-		public Assignment getPropertyAssignment_1_1_1_1() { return cPropertyAssignment_1_1_1_1; }
+		public Assignment getPropertyAssignment_1_1_1_0_1_1() { return cPropertyAssignment_1_1_1_0_1_1; }
 		
 		//ID
-		public RuleCall getPropertyIDTerminalRuleCall_1_1_1_1_0() { return cPropertyIDTerminalRuleCall_1_1_1_1_0; }
+		public RuleCall getPropertyIDTerminalRuleCall_1_1_1_0_1_1_0() { return cPropertyIDTerminalRuleCall_1_1_1_0_1_1_0; }
+		
+		//'"'
+		public Keyword getQuotationMarkKeyword_1_1_1_0_1_2() { return cQuotationMarkKeyword_1_1_1_0_1_2; }
+		
+		//("'" property=ID '"') ']'
+		public Group getGroup_1_1_1_1() { return cGroup_1_1_1_1; }
+		
+		//("'" property=ID '"')
+		public Group getGroup_1_1_1_1_0() { return cGroup_1_1_1_1_0; }
+		
+		//"'"
+		public Keyword getApostropheKeyword_1_1_1_1_0_0() { return cApostropheKeyword_1_1_1_1_0_0; }
+		
+		//property=ID
+		public Assignment getPropertyAssignment_1_1_1_1_0_1() { return cPropertyAssignment_1_1_1_1_0_1; }
+		
+		//ID
+		public RuleCall getPropertyIDTerminalRuleCall_1_1_1_1_0_1_0() { return cPropertyIDTerminalRuleCall_1_1_1_1_0_1_0; }
+		
+		//'"'
+		public Keyword getQuotationMarkKeyword_1_1_1_1_0_2() { return cQuotationMarkKeyword_1_1_1_1_0_2; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_1_1_1_2() { return cRightSquareBracketKeyword_1_1_1_2; }
+		public Keyword getRightSquareBracketKeyword_1_1_1_1_1() { return cRightSquareBracketKeyword_1_1_1_1_1; }
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Primary");
@@ -10517,7 +10613,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cCallExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cAtomicParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//Primary returns Expressions::Expression:
+		//Primary returns GHA::Expression:
 		//    ('(' InsideBracketsExpression ')') | CallExpression | Atomic
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10571,28 +10667,28 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cValueAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
 		private final RuleCall cValueSTRINGTerminalRuleCall_5_1_0 = (RuleCall)cValueAssignment_5_1.eContents().get(0);
 		
-		//Atomic returns Values::Value:
-		//    ({Variables::GitHubContext} context=CONTEXT) |
-		//    ({Variables::Variable} name=ID) |
-		//    ({Literals::IntegerLiteral} value=INT) |
-		//    ({Literals::DoubleLiteral} value=DOUBLE) |
-		//    ({Literals::BooleanLiteral} value=BOOLEAN) |
-		//    ({Literals::StringLiteral} value=STRING)
+		//Atomic returns GHA::Value:
+		//    ({GHA::GitHubContext} context=CONTEXT) |
+		//    ({GHA::Variable} name=ID) |
+		//    ({GHA::IntegerLiteral} value=INT) |
+		//    ({GHA::DoubleLiteral} value=DOUBLE) |
+		//    ({GHA::BooleanLiteral} value=BOOLEAN) |
+		//    ({GHA::StringLiteral} value=STRING)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//({Variables::GitHubContext} context=CONTEXT) |
-		//({Variables::Variable} name=ID) |
-		//({Literals::IntegerLiteral} value=INT) |
-		//({Literals::DoubleLiteral} value=DOUBLE) |
-		//({Literals::BooleanLiteral} value=BOOLEAN) |
-		//({Literals::StringLiteral} value=STRING)
+		//({GHA::GitHubContext} context=CONTEXT) |
+		//({GHA::Variable} name=ID) |
+		//({GHA::IntegerLiteral} value=INT) |
+		//({GHA::DoubleLiteral} value=DOUBLE) |
+		//({GHA::BooleanLiteral} value=BOOLEAN) |
+		//({GHA::StringLiteral} value=STRING)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//({Variables::GitHubContext} context=CONTEXT)
+		//({GHA::GitHubContext} context=CONTEXT)
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//{Variables::GitHubContext}
+		//{GHA::GitHubContext}
 		public Action getGitHubContextAction_0_0() { return cGitHubContextAction_0_0; }
 		
 		//context=CONTEXT
@@ -10601,10 +10697,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//CONTEXT
 		public RuleCall getContextCONTEXTEnumRuleCall_0_1_0() { return cContextCONTEXTEnumRuleCall_0_1_0; }
 		
-		//({Variables::Variable} name=ID)
+		//({GHA::Variable} name=ID)
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{Variables::Variable}
+		//{GHA::Variable}
 		public Action getVariableAction_1_0() { return cVariableAction_1_0; }
 		
 		//name=ID
@@ -10613,10 +10709,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
 		
-		//({Literals::IntegerLiteral} value=INT)
+		//({GHA::IntegerLiteral} value=INT)
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//{Literals::IntegerLiteral}
+		//{GHA::IntegerLiteral}
 		public Action getIntegerLiteralAction_2_0() { return cIntegerLiteralAction_2_0; }
 		
 		//value=INT
@@ -10625,10 +10721,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//INT
 		public RuleCall getValueINTTerminalRuleCall_2_1_0() { return cValueINTTerminalRuleCall_2_1_0; }
 		
-		//({Literals::DoubleLiteral} value=DOUBLE)
+		//({GHA::DoubleLiteral} value=DOUBLE)
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//{Literals::DoubleLiteral}
+		//{GHA::DoubleLiteral}
 		public Action getDoubleLiteralAction_3_0() { return cDoubleLiteralAction_3_0; }
 		
 		//value=DOUBLE
@@ -10637,10 +10733,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//DOUBLE
 		public RuleCall getValueDOUBLETerminalRuleCall_3_1_0() { return cValueDOUBLETerminalRuleCall_3_1_0; }
 		
-		//({Literals::BooleanLiteral} value=BOOLEAN)
+		//({GHA::BooleanLiteral} value=BOOLEAN)
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//{Literals::BooleanLiteral}
+		//{GHA::BooleanLiteral}
 		public Action getBooleanLiteralAction_4_0() { return cBooleanLiteralAction_4_0; }
 		
 		//value=BOOLEAN
@@ -10649,10 +10745,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//BOOLEAN
 		public RuleCall getValueBOOLEANTerminalRuleCall_4_1_0() { return cValueBOOLEANTerminalRuleCall_4_1_0; }
 		
-		//({Literals::StringLiteral} value=STRING)
+		//({GHA::StringLiteral} value=STRING)
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//{Literals::StringLiteral}
+		//{GHA::StringLiteral}
 		public Action getStringLiteralAction_5_0() { return cStringLiteralAction_5_0; }
 		
 		//value=STRING
@@ -10677,7 +10773,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cFailureParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		private final RuleCall cCancelledParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		
-		//CallExpression returns BuiltInFunctions::BuiltInFunctionCall:
+		//CallExpression returns GHA::BuiltInFunctionCall:
 		//    Contains |
 		//    StartsWith |
 		//    EndsWith |
@@ -10755,7 +10851,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cItemInsideBracketsExpressionParserRuleCall_4_0 = (RuleCall)cItemAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Contains returns BuiltInFunctions::Contains:
+		//Contains returns GHA::Contains:
 		//    'contains' '(' search=InsideBracketsExpression ',' item=InsideBracketsExpression ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10799,7 +10895,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cSearchValueInsideBracketsExpressionParserRuleCall_4_0 = (RuleCall)cSearchValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//StartsWith returns BuiltInFunctions::StartsWith:
+		//StartsWith returns GHA::StartsWith:
 		//    'startsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10843,7 +10939,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cSearchValueInsideBracketsExpressionParserRuleCall_4_0 = (RuleCall)cSearchValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//EndsWith returns BuiltInFunctions::EndsWith:
+		//EndsWith returns GHA::EndsWith:
 		//    'endsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10888,7 +10984,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cReplaceValuesInsideBracketsExpressionParserRuleCall_3_1_0 = (RuleCall)cReplaceValuesAssignment_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Format returns BuiltInFunctions::Format:
+		//Format returns GHA::Format:
 		//    'format' '(' string=InsideBracketsExpression (',' replaceValues+=InsideBracketsExpression)* ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10936,7 +11032,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cSepInsideBracketsExpressionParserRuleCall_3_1_0 = (RuleCall)cSepAssignment_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Join returns BuiltInFunctions::Join:
+		//Join returns GHA::Join:
 		//    'join' '(' array=InsideBracketsExpression (',' sep=InsideBracketsExpression)? ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -10980,7 +11076,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cValueInsideBracketsExpressionParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//ToJSON returns BuiltInFunctions::ToJSON:
+		//ToJSON returns GHA::ToJSON:
 		//    'toJSON' '(' value=InsideBracketsExpression ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -11012,7 +11108,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cValueInsideBracketsExpressionParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//FromJSON returns BuiltInFunctions::FromJSON:
+		//FromJSON returns GHA::FromJSON:
 		//    'fromJSON' '(' value=InsideBracketsExpression ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -11044,7 +11140,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathInsideBracketsExpressionParserRuleCall_2_0 = (RuleCall)cPathAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//HashFiles returns BuiltInFunctions::HashFiles:
+		//HashFiles returns GHA::HashFiles:
 		//    'hashFiles' '(' path=InsideBracketsExpression ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -11075,15 +11171,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Success returns StatusCheckFunctions::Success:
-		//    {StatusCheckFunctions::Success} 'success' '(' ')'
+		//Success returns GHA::Success:
+		//    {GHA::Success} 'success' '(' ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{StatusCheckFunctions::Success} 'success' '(' ')'
+		//{GHA::Success} 'success' '(' ')'
 		public Group getGroup() { return cGroup; }
 		
-		//{StatusCheckFunctions::Success}
+		//{GHA::Success}
 		public Action getSuccessAction_0() { return cSuccessAction_0; }
 		
 		//'success'
@@ -11103,15 +11199,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Always returns StatusCheckFunctions::Always:
-		//    {StatusCheckFunctions::Always} 'always' '(' ')'
+		//Always returns GHA::Always:
+		//    {GHA::Always} 'always' '(' ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{StatusCheckFunctions::Always} 'always' '(' ')'
+		//{GHA::Always} 'always' '(' ')'
 		public Group getGroup() { return cGroup; }
 		
-		//{StatusCheckFunctions::Always}
+		//{GHA::Always}
 		public Action getAlwaysAction_0() { return cAlwaysAction_0; }
 		
 		//'always'
@@ -11131,15 +11227,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Cancelled returns StatusCheckFunctions::Cancelled:
-		//    {StatusCheckFunctions::Cancelled} 'cancelled' '(' ')'
+		//Cancelled returns GHA::Cancelled:
+		//    {GHA::Cancelled} 'cancelled' '(' ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{StatusCheckFunctions::Cancelled} 'cancelled' '(' ')'
+		//{GHA::Cancelled} 'cancelled' '(' ')'
 		public Group getGroup() { return cGroup; }
 		
-		//{StatusCheckFunctions::Cancelled}
+		//{GHA::Cancelled}
 		public Action getCancelledAction_0() { return cCancelledAction_0; }
 		
 		//'cancelled'
@@ -11159,15 +11255,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Failure returns StatusCheckFunctions::Failure:
-		//    {StatusCheckFunctions::Failure} 'failure' '(' ')'
+		//Failure returns GHA::Failure:
+		//    {GHA::Failure} 'failure' '(' ')'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{StatusCheckFunctions::Failure} 'failure' '(' ')'
+		//{GHA::Failure} 'failure' '(' ')'
 		public Group getGroup() { return cGroup; }
 		
-		//{StatusCheckFunctions::Failure}
+		//{GHA::Failure}
 		public Action getFailureAction_0() { return cFailureAction_0; }
 		
 		//'failure'
@@ -11178,6 +11274,80 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+	public class YAMLIDElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.YAMLID");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cQuotationMarkKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cQuotationMarkKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cApostropheKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Keyword cApostropheKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final RuleCall cIDTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//YAMLID returns ecore::EString:
+		//    ('"' ID '"') |
+		//    ("'" ID "'") |
+		//    ID
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//('"' ID '"') |
+		//("'" ID "'") |
+		//ID
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//('"' ID '"')
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'"'
+		public Keyword getQuotationMarkKeyword_0_0() { return cQuotationMarkKeyword_0_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_0_1() { return cIDTerminalRuleCall_0_1; }
+		
+		//'"'
+		public Keyword getQuotationMarkKeyword_0_2() { return cQuotationMarkKeyword_0_2; }
+		
+		//("'" ID "'")
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//"'"
+		public Keyword getApostropheKeyword_1_0() { return cApostropheKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+		
+		//"'"
+		public Keyword getApostropheKeyword_1_2() { return cApostropheKeyword_1_2; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_2() { return cIDTerminalRuleCall_2; }
+	}
+	public class YAMLStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.YAMLString");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cUNQUOTED_STRINGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//YAMLString returns ecore::EString:
+		//    STRING |
+		//    UNQUOTED_STRING
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//STRING |
+		//UNQUOTED_STRING
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+		
+		//UNQUOTED_STRING
+		public RuleCall getUNQUOTED_STRINGTerminalRuleCall_1() { return cUNQUOTED_STRINGTerminalRuleCall_1; }
 	}
 	
 	public class COMPARISON_OPElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
@@ -11192,7 +11362,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cLTEEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
 		private final Keyword cLTELessThanSignEqualsSignKeyword_3_0 = (Keyword)cLTEEnumLiteralDeclaration_3.eContents().get(0);
 		
-		//enum COMPARISON_OP returns ComparisonOperators::COMPARISON_OPS:
+		//enum COMPARISON_OP returns GHA::COMPARISON_OPS:
 		//    GT='>' |
 		//    GTE='>=' |
 		//    LT='<' |
@@ -11238,7 +11408,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cNOT_EQUALSEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
 		private final Keyword cNOT_EQUALSExclamationMarkEqualsSignKeyword_1_0 = (Keyword)cNOT_EQUALSEnumLiteralDeclaration_1.eContents().get(0);
 		
-		//enum EQUALITY_OP returns EqualityOperators::EQUALITY_OPS:
+		//enum EQUALITY_OP returns GHA::EQUALITY_OPS:
 		//    EQUALS='==' |
 		//    NOT_EQUALS='!='
 		//;
@@ -11288,7 +11458,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cINPUTSEnumLiteralDeclaration_11 = (EnumLiteralDeclaration)cAlternatives.eContents().get(11);
 		private final Keyword cINPUTSInputsKeyword_11_0 = (Keyword)cINPUTSEnumLiteralDeclaration_11.eContents().get(0);
 		
-		//enum CONTEXT returns Variables::CONTEXTS:
+		//enum CONTEXT returns GHA::CONTEXTS:
 		//    GITHUB='github' |
 		//    ENV='env' |
 		//    VARS='vars' |
@@ -11404,7 +11574,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cCHOICEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
 		private final Keyword cCHOICEChoiceKeyword_4_0 = (Keyword)cCHOICEEnumLiteralDeclaration_4.eContents().get(0);
 		
-		//enum TYPE returns Parameters::INPUT_TYPES:
+		//enum TYPE returns GHA::INPUT_TYPES:
 		//    BOOLEAN='boolean' |
 		//    NUMBER='number' |
 		//    STRING='string' |
@@ -11492,7 +11662,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cDELETEDEnumLiteralDeclaration_18 = (EnumLiteralDeclaration)cAlternatives.eContents().get(18);
 		private final Keyword cDELETEDDeletedKeyword_18_0 = (Keyword)cDELETEDEnumLiteralDeclaration_18.eContents().get(0);
 		
-		//enum WEBHOOK_ACTIVITY_TYPE returns Triggers::WEBHOOK_ACTIVITY_TYPES:
+		//enum WEBHOOK_ACTIVITY_TYPE returns GHA::WEBHOOK_ACTIVITY_TYPES:
 		//    ASSIGNED='assigned' |
 		//    AUTO_MERGE_DISABLED='auto_merge_disabled' |
 		//    AUTO_MERGE_ENABLED='auto_merge_enabled' |
@@ -11706,7 +11876,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cSTATUSEnumLiteralDeclaration_25 = (EnumLiteralDeclaration)cAlternatives.eContents().get(25);
 		private final Keyword cSTATUSStatusKeyword_25_0 = (Keyword)cSTATUSEnumLiteralDeclaration_25.eContents().get(0);
 		
-		//enum EVENT returns Triggers::EVENTS:
+		//enum EVENT returns GHA::EVENTS:
 		//    BRANCH_PROTECTION_RULE='branch_protection_rule' |
 		//    CHECK_RUN='check_run' |
 		//    CHECK_SUITE='check_suite' |
@@ -11950,7 +12120,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cSTATUSESEnumLiteralDeclaration_12 = (EnumLiteralDeclaration)cAlternatives.eContents().get(12);
 		private final Keyword cSTATUSESStatusesKeyword_12_0 = (Keyword)cSTATUSESEnumLiteralDeclaration_12.eContents().get(0);
 		
-		//enum PERMISSION_SCOPE returns Options::PERMISSION_SCOPES:
+		//enum PERMISSION_SCOPE returns GHA::PERMISSION_SCOPES:
 		//    ACTIONS='actions' |
 		//    CHECKS='checks' |
 		//    CONTENTS='contents' |
@@ -12070,7 +12240,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final EnumLiteralDeclaration cNONEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cNONENoneKeyword_2_0 = (Keyword)cNONEEnumLiteralDeclaration_2.eContents().get(0);
 		
-		//enum PERMISSION_VALUE returns Options::PERMISSIONS:
+		//enum PERMISSION_VALUE returns GHA::PERMISSIONS:
 		//    READ='read' |
 		//    WRITE='write' |
 		//    NONE='none'
@@ -12143,7 +12313,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	private final BracketedExpressionElements pBracketedExpression;
 	private final InsideBracketsExpressionElements pInsideBracketsExpression;
 	private final UnbracketedLiteralElements pUnbracketedLiteral;
-	private final UnbracketedStringElements pUnbracketedString;
+	private final StringLiteralElements pStringLiteral;
+	private final IntegerLiteralElements pIntegerLiteral;
+	private final DoubleLiteralElements pDoubleLiteral;
+	private final BooleanLiteralElements pBooleanLiteral;
 	private final OrElements pOr;
 	private final AndElements pAnd;
 	private final EqualityElements pEquality;
@@ -12175,8 +12348,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	private final EVENTElements eEVENT;
 	private final PERMISSION_SCOPEElements ePERMISSION_SCOPE;
 	private final PERMISSION_VALUEElements ePERMISSION_VALUE;
+	private final YAMLIDElements pYAMLID;
+	private final YAMLStringElements pYAMLString;
 	private final TerminalRule tDOUBLE;
 	private final TerminalRule tBOOLEAN;
+	private final TerminalRule tUNQUOTED_STRING;
 	private final TerminalRule tBEGIN;
 	private final TerminalRule tEND;
 	private final TerminalRule tNEWLINE;
@@ -12233,7 +12409,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		this.pBracketedExpression = new BracketedExpressionElements();
 		this.pInsideBracketsExpression = new InsideBracketsExpressionElements();
 		this.pUnbracketedLiteral = new UnbracketedLiteralElements();
-		this.pUnbracketedString = new UnbracketedStringElements();
+		this.pStringLiteral = new StringLiteralElements();
+		this.pIntegerLiteral = new IntegerLiteralElements();
+		this.pDoubleLiteral = new DoubleLiteralElements();
+		this.pBooleanLiteral = new BooleanLiteralElements();
 		this.pOr = new OrElements();
 		this.pAnd = new AndElements();
 		this.pEquality = new EqualityElements();
@@ -12265,8 +12444,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		this.eEVENT = new EVENTElements();
 		this.ePERMISSION_SCOPE = new PERMISSION_SCOPEElements();
 		this.ePERMISSION_VALUE = new PERMISSION_VALUEElements();
+		this.pYAMLID = new YAMLIDElements();
+		this.pYAMLString = new YAMLStringElements();
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.DOUBLE");
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.BOOLEAN");
+		this.tUNQUOTED_STRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.UNQUOTED_STRING");
 		this.tBEGIN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.BEGIN");
 		this.tEND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.END");
 		this.tNEWLINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.NEWLINE");
@@ -12331,7 +12513,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getWorkflowAccess().getRule();
 	}
 	
-	//Job returns Jobs::Job:
+	//Job returns GHA::Job:
 	//    ScriptJob | ReuseWorkflowJob
 	//;
 	public JobElements getJobAccess() {
@@ -12342,19 +12524,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getJobAccess().getRule();
 	}
 	
-	//ScriptJob returns Jobs::ScriptJob:
-	//    name=ID ':'
+	//ScriptJob returns GHA::ScriptJob:
+	//    name=YAMLID ':'
 	//        NEWLINE
 	//        BEGIN
 	//        ('name' ':' jobName=Expression NEWLINE)? &
 	//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 	//        ('needs' ':'
-	//            (dependsOn+=[Jobs::Job] NEWLINE) |
-	//            ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+	//            (dependsOn+=[GHA::Job] NEWLINE) |
+	//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 	//            (
 	//                NEWLINE
 	//                BEGIN
-	//                ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+	//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
 	//                END
 	//        ))? &
 	//        if=IfStatement? &
@@ -12379,19 +12561,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getScriptJobAccess().getRule();
 	}
 	
-	//ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
-	//    name=ID ':'
+	//ReuseWorkflowJob returns GHA::ReuseWorkflowJob:
+	//    name=YAMLID ':'
 	//        NEWLINE
 	//        BEGIN
 	//        ('name' ':' jobName=Expression  NEWLINE)? &
 	//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 	//        ('needs' ':'
-	//            (dependsOn+=[Jobs::Job] NEWLINE) |
-	//            ('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+	//            (dependsOn+=[GHA::Job] NEWLINE) |
+	//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 	//            (
 	//                NEWLINE
 	//                BEGIN
-	//                ('-' dependsOn+=[Jobs::Job] NEWLINE)+
+	//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
 	//                END
 	//            )
 	//        )? &
@@ -12419,7 +12601,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getReuseWorkflowJobAccess().getRule();
 	}
 	
-	//Agent returns Jobs::Agent:
+	//Agent returns GHA::Agent:
 	//    (
 	//        (labels+=Expression NEWLINE) |
 	//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
@@ -12476,7 +12658,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getAgentAccess().getRule();
 	}
 	
-	//Step returns Steps::Step:
+	//Step returns GHA::Step:
 	//    '-' BEGIN (Command | Package) END
 	//;
 	public StepElements getStepAccess() {
@@ -12487,7 +12669,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getStepAccess().getRule();
 	}
 	
-	//Command returns Steps::Command:
+	//Command returns GHA::Command:
 	//    ('id' ':' id=STRING NEWLINE)? &
 	//    if=IfStatement? &
 	//    ('name' ':' name=Expression NEWLINE)? &
@@ -12506,7 +12688,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getCommandAccess().getRule();
 	}
 	
-	//Package returns Steps::Package:
+	//Package returns GHA::Package:
 	//    ('id' ':' id=STRING NEWLINE)? &
 	//    if=IfStatement? &
 	//    ('name' ':' name=Expression NEWLINE)? &
@@ -12537,7 +12719,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getPackageAccess().getRule();
 	}
 	
-	//IfStatement returns Expressions::Expression:
+	//IfStatement returns GHA::Expression:
 	//    'if' ':' Expression NEWLINE
 	//;
 	public IfStatementElements getIfStatementAccess() {
@@ -12548,7 +12730,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getIfStatementAccess().getRule();
 	}
 	
-	//ConcurrencyGroup returns Options::ConcurrencyGroup:
+	//ConcurrencyGroup returns GHA::ConcurrencyGroup:
 	//    ('group' ':' name=Expression NEWLINE) &
 	//    ('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
 	//;
@@ -12560,7 +12742,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getConcurrencyGroupAccess().getRule();
 	}
 	
-	//SimpleTrigger returns Triggers::Trigger:
+	//SimpleTrigger returns GHA::Trigger:
 	//    (
 	//        SimpleWorkflowDispatchTrigger |
 	//        SimpleWorkflowCallTrigger |
@@ -12578,8 +12760,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSimpleTriggerAccess().getRule();
 	}
 	
-	//SimplePullRequestTrigger returns Triggers::PullRequestTrigger:
-	//    {Triggers::PullRequestTrigger} 'pull_request' | {Triggers::PullRequestTrigger} 'pull_request_target'
+	//SimplePullRequestTrigger returns GHA::PullRequestTrigger:
+	//    {GHA::PullRequestTrigger} 'pull_request' | {GHA::PullRequestTrigger} 'pull_request_target'
 	//;
 	public SimplePullRequestTriggerElements getSimplePullRequestTriggerAccess() {
 		return pSimplePullRequestTrigger;
@@ -12589,8 +12771,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSimplePullRequestTriggerAccess().getRule();
 	}
 	
-	//SimplePushTriggerTrigger returns Triggers::PushTrigger:
-	//    {Triggers::PushTrigger} 'push'
+	//SimplePushTriggerTrigger returns GHA::PushTrigger:
+	//    {GHA::PushTrigger} 'push'
 	//;
 	public SimplePushTriggerTriggerElements getSimplePushTriggerTriggerAccess() {
 		return pSimplePushTriggerTrigger;
@@ -12600,8 +12782,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSimplePushTriggerTriggerAccess().getRule();
 	}
 	
-	//SimpleWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
-	//    {Triggers::WorkflowCallTrigger} 'workflow_call'
+	//SimpleWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
+	//    {GHA::WorkflowCallTrigger} 'workflow_call'
 	//;
 	public SimpleWorkflowCallTriggerElements getSimpleWorkflowCallTriggerAccess() {
 		return pSimpleWorkflowCallTrigger;
@@ -12611,8 +12793,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSimpleWorkflowCallTriggerAccess().getRule();
 	}
 	
-	//SimpleWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
-	//    {Triggers::WorkflowDispatchTrigger} 'workflow_dispatch'
+	//SimpleWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
+	//    {GHA::WorkflowDispatchTrigger} 'workflow_dispatch'
 	//;
 	public SimpleWorkflowDispatchTriggerElements getSimpleWorkflowDispatchTriggerAccess() {
 		return pSimpleWorkflowDispatchTrigger;
@@ -12622,7 +12804,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSimpleWorkflowDispatchTriggerAccess().getRule();
 	}
 	
-	//SimpleStandardEventTrigger returns Triggers::StandardEventTrigger:
+	//SimpleStandardEventTrigger returns GHA::StandardEventTrigger:
 	//    event=EVENT
 	//;
 	public SimpleStandardEventTriggerElements getSimpleStandardEventTriggerAccess() {
@@ -12633,7 +12815,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSimpleStandardEventTriggerAccess().getRule();
 	}
 	
-	//OptionedTrigger returns Triggers::Trigger:
+	//OptionedTrigger returns GHA::Trigger:
 	//    NEWLINE
 	//    BEGIN
 	//    (
@@ -12655,7 +12837,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedTriggerAccess().getRule();
 	}
 	
-	//OptionedStandardEventTrigger returns Triggers::StandardEventTrigger:
+	//OptionedStandardEventTrigger returns GHA::StandardEventTrigger:
 	//    event=EVENT ':'
 	//        NEWLINE
 	//        BEGIN
@@ -12678,7 +12860,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedStandardEventTriggerAccess().getRule();
 	}
 	
-	//OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
+	//OptionedWorkflowRunTrigger returns GHA::WorkflowRunTrigger:
 	//    'workflow_run' ':'
 	//        NEWLINE
 	//        BEGIN
@@ -12701,8 +12883,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedWorkflowRunTriggerAccess().getRule();
 	}
 	
-	//OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
-	//    {Triggers::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
+	//OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
+	//    {GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
 	//    (
 	//        NEWLINE
 	//        BEGIN
@@ -12822,8 +13004,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedPullRequestTriggerAccess().getRule();
 	}
 	
-	//OptionedPushTrigger returns Triggers::PushTrigger:
-	//    {Triggers::PushTrigger} 'push' ':'
+	//OptionedPushTrigger returns GHA::PushTrigger:
+	//    {GHA::PushTrigger} 'push' ':'
 	//    (
 	//        NEWLINE
 	//        BEGIN
@@ -12943,7 +13125,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedPushTriggerAccess().getRule();
 	}
 	
-	//OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
+	//OptionedScheduleTrigger returns GHA::ScheduleTrigger:
 	//    'schedule' ':'
 	//    (
 	//        NEWLINE
@@ -12962,8 +13144,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedScheduleTriggerAccess().getRule();
 	}
 	
-	//OptionedWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
-	//    {Triggers::WorkflowCallTrigger} 'workflow_call' ':'
+	//OptionedWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
+	//    {GHA::WorkflowCallTrigger} 'workflow_call' ':'
 	//    (
 	//        NEWLINE
 	//        BEGIN
@@ -13011,8 +13193,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedWorkflowCallTriggerAccess().getRule();
 	}
 	
-	//OptionedWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
-	//    {Triggers::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
+	//OptionedWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
+	//    {GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
 	//        NEWLINE
 	//        BEGIN
 	//        ('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
@@ -13026,8 +13208,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOptionedWorkflowDispatchTriggerAccess().getRule();
 	}
 	
-	//Input returns Parameters::Input:
-	//    id=ID ':'
+	//Input returns GHA::Input:
+	//    id=YAMLID ':'
 	//        NEWLINE
 	//        BEGIN
 	//        ('description' ':' description=Expression NEWLINE)? &
@@ -13055,8 +13237,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getInputAccess().getRule();
 	}
 	
-	//Output returns Parameters::Output:
-	//    id=ID ':'
+	//Output returns GHA::Output:
+	//    id=YAMLID ':'
 	//        NEWLINE
 	//        BEGIN
 	//        ('description' ':' description=Expression NEWLINE)? &
@@ -13071,8 +13253,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOutputAccess().getRule();
 	}
 	
-	//Secret returns Parameters::Secret:
-	//    id=ID ':'
+	//Secret returns GHA::Secret:
+	//    id=YAMLID ':'
 	//        NEWLINE
 	//        BEGIN
 	//        (
@@ -13093,7 +13275,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSecretAccess().getRule();
 	}
 	
-	//Permission returns Options::Permission:
+	//Permission returns GHA::Permission:
 	//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
 	//;
 	public PermissionElements getPermissionAccess() {
@@ -13104,7 +13286,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getPermissionAccess().getRule();
 	}
 	
-	//Defaults returns Options::Defaults:
+	//Defaults returns GHA::Defaults:
 	//    'run' ':'
 	//        NEWLINE
 	//        BEGIN
@@ -13122,7 +13304,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getDefaultsAccess().getRule();
 	}
 	
-	//StagingEnvironment returns Jobs::StagingEnvironment:
+	//StagingEnvironment returns GHA::StagingEnvironment:
 	//    (name=Expression NEWLINE) |
 	//    (
 	//        NEWLINE
@@ -13140,7 +13322,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getStagingEnvironmentAccess().getRule();
 	}
 	
-	//Strategy returns Matrices::Matrix:
+	//Strategy returns GHA::Matrix:
 	//    (
 	//        'matrix' ':'
 	//            NEWLINE
@@ -13161,8 +13343,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getStrategyAccess().getRule();
 	}
 	
-	//MatrixAxis returns Matrices::MatrixAxis:
-	//    name=ID ':'
+	//MatrixAxis returns GHA::MatrixAxis:
+	//    name=YAMLID ':'
 	//    (
 	//        (cells+=Expression NEWLINE) |
 	//        ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
@@ -13182,7 +13364,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getMatrixAxisAccess().getRule();
 	}
 	
-	//MatrixCombination returns Matrices::MatrixCombination:
+	//MatrixCombination returns GHA::MatrixCombination:
 	//    '-' BEGIN entries+=VariableAssignment END
 	//;
 	public MatrixCombinationElements getMatrixCombinationAccess() {
@@ -13193,7 +13375,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getMatrixCombinationAccess().getRule();
 	}
 	
-	//Container returns Jobs::Container:
+	//Container returns GHA::Container:
 	//    (
 	//        image=Expression NEWLINE
 	//    ) |
@@ -13239,8 +13421,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getContainerAccess().getRule();
 	}
 	
-	//Service returns Jobs::Service:
-	//    key=ID ':'
+	//Service returns GHA::Service:
+	//    key=YAMLID ':'
 	//        NEWLINE
 	//        BEGIN
 	//        value=Container
@@ -13254,8 +13436,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getServiceAccess().getRule();
 	}
 	
-	//VariableAssignment returns Expressions::VariableAssignment:
-	//    key=ID ':' value=Expression NEWLINE
+	//VariableAssignment returns GHA::VariableAssignment:
+	//    key=YAMLID ':' value=Expression NEWLINE
 	//;
 	public VariableAssignmentElements getVariableAssignmentAccess() {
 		return pVariableAssignment;
@@ -13265,7 +13447,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getVariableAssignmentAccess().getRule();
 	}
 	
-	//Expression returns Expressions::Expression:
+	//Expression returns GHA::Expression:
 	//    Concat
 	//;
 	public ExpressionElements getExpressionAccess() {
@@ -13276,8 +13458,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getExpressionAccess().getRule();
 	}
 	
-	//Concat returns Expressions::Expression:
-	//    ConcatExpression ({BinaryOperators::Concat.lhs=current}    rhs=ConcatExpression)*
+	//Concat returns GHA::Expression:
+	//    ConcatExpression ({GHA::Concat.lhs=current}    rhs=ConcatExpression)*
 	//;
 	public ConcatElements getConcatAccess() {
 		return pConcat;
@@ -13287,7 +13469,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getConcatAccess().getRule();
 	}
 	
-	//ConcatExpression returns Expressions::Expression:
+	//ConcatExpression returns GHA::Expression:
 	//    BracketedExpression | UnbracketedLiteral
 	//;
 	public ConcatExpressionElements getConcatExpressionAccess() {
@@ -13298,7 +13480,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getConcatExpressionAccess().getRule();
 	}
 	
-	//BracketedExpression returns Expressions::Expression:
+	//BracketedExpression returns GHA::Expression:
 	//    '${{' InsideBracketsExpression '}}'
 	//;
 	public BracketedExpressionElements getBracketedExpressionAccess() {
@@ -13309,7 +13491,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getBracketedExpressionAccess().getRule();
 	}
 	
-	//InsideBracketsExpression returns Expressions::Expression:
+	//InsideBracketsExpression returns GHA::Expression:
 	//    Or
 	//;
 	public InsideBracketsExpressionElements getInsideBracketsExpressionAccess() {
@@ -13320,8 +13502,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getInsideBracketsExpressionAccess().getRule();
 	}
 	
-	//UnbracketedLiteral returns Literals::Literal:
-	//    UnbracketedString
+	//UnbracketedLiteral returns GHA::Literal:
+	//    StringLiteral | IntegerLiteral
 	//;
 	public UnbracketedLiteralElements getUnbracketedLiteralAccess() {
 		return pUnbracketedLiteral;
@@ -13331,19 +13513,52 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getUnbracketedLiteralAccess().getRule();
 	}
 	
-	//UnbracketedString returns Literals::StringLiteral:
-	//    value=STRING
+	//StringLiteral returns GHA::StringLiteral:
+	//    value=YAMLString
 	//;
-	public UnbracketedStringElements getUnbracketedStringAccess() {
-		return pUnbracketedString;
+	public StringLiteralElements getStringLiteralAccess() {
+		return pStringLiteral;
 	}
 	
-	public ParserRule getUnbracketedStringRule() {
-		return getUnbracketedStringAccess().getRule();
+	public ParserRule getStringLiteralRule() {
+		return getStringLiteralAccess().getRule();
 	}
 	
-	//Or returns Expressions::Expression:
-	//    And ({LogicalOperators::Or.lhs=current} '||' rhs=And)*
+	//IntegerLiteral returns GHA::IntegerLiteral:
+	//    value=INT
+	//;
+	public IntegerLiteralElements getIntegerLiteralAccess() {
+		return pIntegerLiteral;
+	}
+	
+	public ParserRule getIntegerLiteralRule() {
+		return getIntegerLiteralAccess().getRule();
+	}
+	
+	//DoubleLiteral returns GHA::DoubleLiteral:
+	//    value=DOUBLE
+	//;
+	public DoubleLiteralElements getDoubleLiteralAccess() {
+		return pDoubleLiteral;
+	}
+	
+	public ParserRule getDoubleLiteralRule() {
+		return getDoubleLiteralAccess().getRule();
+	}
+	
+	//BooleanLiteral returns GHA::BooleanLiteral:
+	//    value?=BOOLEAN
+	//;
+	public BooleanLiteralElements getBooleanLiteralAccess() {
+		return pBooleanLiteral;
+	}
+	
+	public ParserRule getBooleanLiteralRule() {
+		return getBooleanLiteralAccess().getRule();
+	}
+	
+	//Or returns GHA::Expression:
+	//    And ({GHA::Or.lhs=current} '||' rhs=And)*
 	//;
 	public OrElements getOrAccess() {
 		return pOr;
@@ -13353,8 +13568,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getOrAccess().getRule();
 	}
 	
-	//And returns Expressions::Expression:
-	//    Equality ({LogicalOperators::And.lhs=current} '&&' rhs=Equality )*
+	//And returns GHA::Expression:
+	//    Equality ({GHA::And.lhs=current} '&&' rhs=Equality )*
 	//;
 	public AndElements getAndAccess() {
 		return pAnd;
@@ -13364,8 +13579,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getAndAccess().getRule();
 	}
 	
-	//Equality returns Expressions::Expression:
-	//    Comparison ({EqualityOperators::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+	//Equality returns GHA::Expression:
+	//    Comparison ({GHA::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
 	//;
 	public EqualityElements getEqualityAccess() {
 		return pEquality;
@@ -13375,8 +13590,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getEqualityAccess().getRule();
 	}
 	
-	//Comparison returns Expressions::Expression:
-	//    UnaryOp ({ComparisonOperators::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+	//Comparison returns GHA::Expression:
+	//    UnaryOp ({GHA::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
 	//;
 	public ComparisonElements getComparisonAccess() {
 		return pComparison;
@@ -13386,7 +13601,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getComparisonAccess().getRule();
 	}
 	
-	//UnaryOp returns Expressions::Expression:
+	//UnaryOp returns GHA::Expression:
 	//    Not | Blank
 	//;
 	public UnaryOpElements getUnaryOpAccess() {
@@ -13397,7 +13612,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getUnaryOpAccess().getRule();
 	}
 	
-	//Not returns UnaryOperators::Not:
+	//Not returns GHA::Not:
 	//    '!' childExpr=VariableDereference
 	//;
 	public NotElements getNotAccess() {
@@ -13408,7 +13623,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getNotAccess().getRule();
 	}
 	
-	//Blank returns Expressions::Expression:
+	//Blank returns GHA::Expression:
 	//    VariableDereference
 	//;
 	public BlankElements getBlankAccess() {
@@ -13419,8 +13634,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getBlankAccess().getRule();
 	}
 	
-	//VariableDereference returns Expressions::Expression:
-	//    Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
+	//VariableDereference returns GHA::Expression:
+	//    Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']')))*
 	//;
 	public VariableDereferenceElements getVariableDereferenceAccess() {
 		return pVariableDereference;
@@ -13430,7 +13645,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getVariableDereferenceAccess().getRule();
 	}
 	
-	//Primary returns Expressions::Expression:
+	//Primary returns GHA::Expression:
 	//    ('(' InsideBracketsExpression ')') | CallExpression | Atomic
 	//;
 	public PrimaryElements getPrimaryAccess() {
@@ -13441,13 +13656,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getPrimaryAccess().getRule();
 	}
 	
-	//Atomic returns Values::Value:
-	//    ({Variables::GitHubContext} context=CONTEXT) |
-	//    ({Variables::Variable} name=ID) |
-	//    ({Literals::IntegerLiteral} value=INT) |
-	//    ({Literals::DoubleLiteral} value=DOUBLE) |
-	//    ({Literals::BooleanLiteral} value=BOOLEAN) |
-	//    ({Literals::StringLiteral} value=STRING)
+	//Atomic returns GHA::Value:
+	//    ({GHA::GitHubContext} context=CONTEXT) |
+	//    ({GHA::Variable} name=ID) |
+	//    ({GHA::IntegerLiteral} value=INT) |
+	//    ({GHA::DoubleLiteral} value=DOUBLE) |
+	//    ({GHA::BooleanLiteral} value=BOOLEAN) |
+	//    ({GHA::StringLiteral} value=STRING)
 	//;
 	public AtomicElements getAtomicAccess() {
 		return pAtomic;
@@ -13457,7 +13672,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getAtomicAccess().getRule();
 	}
 	
-	//CallExpression returns BuiltInFunctions::BuiltInFunctionCall:
+	//CallExpression returns GHA::BuiltInFunctionCall:
 	//    Contains |
 	//    StartsWith |
 	//    EndsWith |
@@ -13479,7 +13694,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getCallExpressionAccess().getRule();
 	}
 	
-	//Contains returns BuiltInFunctions::Contains:
+	//Contains returns GHA::Contains:
 	//    'contains' '(' search=InsideBracketsExpression ',' item=InsideBracketsExpression ')'
 	//;
 	public ContainsElements getContainsAccess() {
@@ -13490,7 +13705,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getContainsAccess().getRule();
 	}
 	
-	//StartsWith returns BuiltInFunctions::StartsWith:
+	//StartsWith returns GHA::StartsWith:
 	//    'startsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 	//;
 	public StartsWithElements getStartsWithAccess() {
@@ -13501,7 +13716,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getStartsWithAccess().getRule();
 	}
 	
-	//EndsWith returns BuiltInFunctions::EndsWith:
+	//EndsWith returns GHA::EndsWith:
 	//    'endsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 	//;
 	public EndsWithElements getEndsWithAccess() {
@@ -13512,7 +13727,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getEndsWithAccess().getRule();
 	}
 	
-	//Format returns BuiltInFunctions::Format:
+	//Format returns GHA::Format:
 	//    'format' '(' string=InsideBracketsExpression (',' replaceValues+=InsideBracketsExpression)* ')'
 	//;
 	public FormatElements getFormatAccess() {
@@ -13523,7 +13738,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getFormatAccess().getRule();
 	}
 	
-	//Join returns BuiltInFunctions::Join:
+	//Join returns GHA::Join:
 	//    'join' '(' array=InsideBracketsExpression (',' sep=InsideBracketsExpression)? ')'
 	//;
 	public JoinElements getJoinAccess() {
@@ -13534,7 +13749,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getJoinAccess().getRule();
 	}
 	
-	//ToJSON returns BuiltInFunctions::ToJSON:
+	//ToJSON returns GHA::ToJSON:
 	//    'toJSON' '(' value=InsideBracketsExpression ')'
 	//;
 	public ToJSONElements getToJSONAccess() {
@@ -13545,7 +13760,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getToJSONAccess().getRule();
 	}
 	
-	//FromJSON returns BuiltInFunctions::FromJSON:
+	//FromJSON returns GHA::FromJSON:
 	//    'fromJSON' '(' value=InsideBracketsExpression ')'
 	//;
 	public FromJSONElements getFromJSONAccess() {
@@ -13556,7 +13771,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getFromJSONAccess().getRule();
 	}
 	
-	//HashFiles returns BuiltInFunctions::HashFiles:
+	//HashFiles returns GHA::HashFiles:
 	//    'hashFiles' '(' path=InsideBracketsExpression ')'
 	//;
 	public HashFilesElements getHashFilesAccess() {
@@ -13567,8 +13782,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getHashFilesAccess().getRule();
 	}
 	
-	//Success returns StatusCheckFunctions::Success:
-	//    {StatusCheckFunctions::Success} 'success' '(' ')'
+	//Success returns GHA::Success:
+	//    {GHA::Success} 'success' '(' ')'
 	//;
 	public SuccessElements getSuccessAccess() {
 		return pSuccess;
@@ -13578,8 +13793,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getSuccessAccess().getRule();
 	}
 	
-	//Always returns StatusCheckFunctions::Always:
-	//    {StatusCheckFunctions::Always} 'always' '(' ')'
+	//Always returns GHA::Always:
+	//    {GHA::Always} 'always' '(' ')'
 	//;
 	public AlwaysElements getAlwaysAccess() {
 		return pAlways;
@@ -13589,8 +13804,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getAlwaysAccess().getRule();
 	}
 	
-	//Cancelled returns StatusCheckFunctions::Cancelled:
-	//    {StatusCheckFunctions::Cancelled} 'cancelled' '(' ')'
+	//Cancelled returns GHA::Cancelled:
+	//    {GHA::Cancelled} 'cancelled' '(' ')'
 	//;
 	public CancelledElements getCancelledAccess() {
 		return pCancelled;
@@ -13600,8 +13815,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getCancelledAccess().getRule();
 	}
 	
-	//Failure returns StatusCheckFunctions::Failure:
-	//    {StatusCheckFunctions::Failure} 'failure' '(' ')'
+	//Failure returns GHA::Failure:
+	//    {GHA::Failure} 'failure' '(' ')'
 	//;
 	public FailureElements getFailureAccess() {
 		return pFailure;
@@ -13611,7 +13826,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getFailureAccess().getRule();
 	}
 	
-	//enum COMPARISON_OP returns ComparisonOperators::COMPARISON_OPS:
+	//enum COMPARISON_OP returns GHA::COMPARISON_OPS:
 	//    GT='>' |
 	//    GTE='>=' |
 	//    LT='<' |
@@ -13625,7 +13840,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getCOMPARISON_OPAccess().getRule();
 	}
 	
-	//enum EQUALITY_OP returns EqualityOperators::EQUALITY_OPS:
+	//enum EQUALITY_OP returns GHA::EQUALITY_OPS:
 	//    EQUALS='==' |
 	//    NOT_EQUALS='!='
 	//;
@@ -13637,7 +13852,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getEQUALITY_OPAccess().getRule();
 	}
 	
-	//enum CONTEXT returns Variables::CONTEXTS:
+	//enum CONTEXT returns GHA::CONTEXTS:
 	//    GITHUB='github' |
 	//    ENV='env' |
 	//    VARS='vars' |
@@ -13659,7 +13874,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getCONTEXTAccess().getRule();
 	}
 	
-	//enum TYPE returns Parameters::INPUT_TYPES:
+	//enum TYPE returns GHA::INPUT_TYPES:
 	//    BOOLEAN='boolean' |
 	//    NUMBER='number' |
 	//    STRING='string' |
@@ -13674,7 +13889,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getTYPEAccess().getRule();
 	}
 	
-	//enum WEBHOOK_ACTIVITY_TYPE returns Triggers::WEBHOOK_ACTIVITY_TYPES:
+	//enum WEBHOOK_ACTIVITY_TYPE returns GHA::WEBHOOK_ACTIVITY_TYPES:
 	//    ASSIGNED='assigned' |
 	//    AUTO_MERGE_DISABLED='auto_merge_disabled' |
 	//    AUTO_MERGE_ENABLED='auto_merge_enabled' |
@@ -13703,7 +13918,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getWEBHOOK_ACTIVITY_TYPEAccess().getRule();
 	}
 	
-	//enum EVENT returns Triggers::EVENTS:
+	//enum EVENT returns GHA::EVENTS:
 	//    BRANCH_PROTECTION_RULE='branch_protection_rule' |
 	//    CHECK_RUN='check_run' |
 	//    CHECK_SUITE='check_suite' |
@@ -13739,7 +13954,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getEVENTAccess().getRule();
 	}
 	
-	//enum PERMISSION_SCOPE returns Options::PERMISSION_SCOPES:
+	//enum PERMISSION_SCOPE returns GHA::PERMISSION_SCOPES:
 	//    ACTIONS='actions' |
 	//    CHECKS='checks' |
 	//    CONTENTS='contents' |
@@ -13762,7 +13977,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getPERMISSION_SCOPEAccess().getRule();
 	}
 	
-	//enum PERMISSION_VALUE returns Options::PERMISSIONS:
+	//enum PERMISSION_VALUE returns GHA::PERMISSIONS:
 	//    READ='read' |
 	//    WRITE='write' |
 	//    NONE='none'
@@ -13773,6 +13988,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	public EnumRule getPERMISSION_VALUERule() {
 		return getPERMISSION_VALUEAccess().getRule();
+	}
+	
+	//YAMLID returns ecore::EString:
+	//    ('"' ID '"') |
+	//    ("'" ID "'") |
+	//    ID
+	//;
+	public YAMLIDElements getYAMLIDAccess() {
+		return pYAMLID;
+	}
+	
+	public ParserRule getYAMLIDRule() {
+		return getYAMLIDAccess().getRule();
+	}
+	
+	//YAMLString returns ecore::EString:
+	//    STRING |
+	//    UNQUOTED_STRING
+	//;
+	public YAMLStringElements getYAMLStringAccess() {
+		return pYAMLString;
+	}
+	
+	public ParserRule getYAMLStringRule() {
+		return getYAMLStringAccess().getRule();
 	}
 	
 	//terminal DOUBLE returns ecore::EDoubleObject:
@@ -13789,14 +14029,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		return tBOOLEAN;
 	}
 	
-	///*
-	//terminal YAML_STRING returns ecore::EString:
-	//    ('"' ( '\\' . | !('\\'|'"') )+ '"') |
-	//    ("'" ( '\\' . | !('\\'|"'") )+ "'") |
-	//    (!('$' | NEWLINE) -> ('$' | NEWLINE)) |
-	//    ('|' BEGIN !('$' | NEWLINE) -> '$' END)
+	//terminal UNQUOTED_STRING returns ecore::EString:
+	//    (('a..z'|'A'..'Z'|'_'|'~') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~')*) |
+	//    ('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'\n')* END)
 	//;
-	//*/
+	public TerminalRule getUNQUOTED_STRINGRule() {
+		return tUNQUOTED_STRING;
+	}
+	
 	//terminal BEGIN: 'synthetic:BEGIN';
 	public TerminalRule getBEGINRule() {
 		return tBEGIN;

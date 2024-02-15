@@ -9,6 +9,108 @@
   <foreignModel>GHA.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="GHA" disposableProviderFactory="true" ecorePackage="GHA.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//EVENTS">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/BRANCH_PROTECTION_RULE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/CHECK_RUN"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/CHECK_SUITE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/CREATE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/DELETE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/DEPLOYMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/DEPLOYMENT_STATUS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/DISCUSSION"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/DISCUSSION_COMMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/FORK"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/GOLLUM"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/ISSUE_COMMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/ISSUES"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/LABEL"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/MERGE_GROUP"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/MILESTONE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PAGE_BUILD"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PROJECT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PROJECT_CARD"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PROJECT_COLUMN"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PUBLIC"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PULL_REQUEST_REVIEW"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/PULL_REQUEST_REVIEW_COMMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/REGISTRY_PACKAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/RELEASE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/REPOSITORY_DISPATCH"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/STATUS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EVENTS/WATCH"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/ASSIGNED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/AUTO_MERGE_DISABLED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/AUTO_MERGE_ENABLED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/CLOSED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/CONVERTED_TO_DRAFT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/EDITED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/LABELED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/LOCKED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/OPENED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/READY_FOR_REVIEW"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/REOPENED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/REVIEW_REQUEST_REMOVED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/REVIEW_REQUESTED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/SYNCHRONIZE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/UNASSIGNED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/UNLABELED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/UNLOCKED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/CREATED"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//WEBHOOK_ACTIVITY_TYPES/DELETED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//PERMISSION_SCOPES">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/ACTIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/CHECKS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/CONTENTS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/DEPLOYMENTS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/DISCUSSIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/ID_TOKEN"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/ISSUES"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/PACKAGES"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/PAGES"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/PULL_REQUESTS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/REPOSITORY_PROJECTS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/SECURITY_EVENTS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSION_SCOPES/STATUSES"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//PERMISSIONS">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSIONS/READ"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSIONS/WRITE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//PERMISSIONS/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//EQUALITY_OPS">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EQUALITY_OPS/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//EQUALITY_OPS/NOT_EQUALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//COMPARISON_OPS">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//COMPARISON_OPS/GT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//COMPARISON_OPS/GTE"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//COMPARISON_OPS/LT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//COMPARISON_OPS/LTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//CONTEXTS">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/GITHUB"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/ENV"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/VARS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/JOB"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/JOBS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/STEPS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/RUNNER"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/SECRETS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/STRATEGY"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/MATRIX"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/NEEDS"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//CONTEXTS/INPUTS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//INPUT_TYPES">
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//INPUT_TYPES/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//INPUT_TYPES/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//INPUT_TYPES/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//INPUT_TYPES/ENVIRONMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//INPUT_TYPES/CHOICE"/>
+    </genEnums>
     <genClasses ecoreClass="GHA.ecore#//Workflow">
       <genFeatures createChild="false" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/runName"/>
@@ -19,374 +121,230 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/concurrencyGroup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/jobs"/>
     </genClasses>
-    <nestedGenPackages prefix="Jobs" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Jobs">
-      <genClasses image="false" ecoreClass="GHA.ecore#//Jobs/Job">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Jobs/Job/name"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/jobName"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/permissions"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/dependsOn"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/if"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/agent"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/container"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/stagingEnvironment"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/defaults"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/environmentVariables"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/services"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/concurrencyGroup"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/timeoutMinutes"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/continueOnError"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Job/strategy"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Jobs/ReuseWorkflowJob">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/ReuseWorkflowJob/workflowPath"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/ReuseWorkflowJob/args"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/ReuseWorkflowJob/secrets"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Jobs/ReuseWorkflowJob/inheritSecrets"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Jobs/ScriptJob">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/ScriptJob/steps"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Jobs/Agent">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Agent/group"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Agent/labels"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Jobs/Container">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/image"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/username"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/password"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/environmentVariables"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/ports"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/volumes"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Container/options"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Jobs/Service">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Jobs/Service/key"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Service/value"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Jobs/StagingEnvironment">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/StagingEnvironment/name"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/StagingEnvironment/url"/>
-      </genClasses>
-      <nestedGenPackages prefix="Matrices" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Jobs/Matrices">
-        <genClasses ecoreClass="GHA.ecore#//Jobs/Matrices/Matrix">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/Matrix/axes"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/Matrix/includes"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/Matrix/excludes"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/Matrix/failFast"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/Matrix/maxParallel"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Jobs/Matrices/MatrixAxis">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Jobs/Matrices/MatrixAxis/name"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/MatrixAxis/cells"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Jobs/Matrices/MatrixCombination">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Matrices/MatrixCombination/entries"/>
-        </genClasses>
-      </nestedGenPackages>
-      <nestedGenPackages prefix="Steps" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Jobs/Steps">
-        <genClasses image="false" ecoreClass="GHA.ecore#//Jobs/Steps/Step">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Jobs/Steps/Step/id"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/if"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/name"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/timeoutMinutes"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/continueOnError"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/shell"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/workingDirectory"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Step/environmentVariables"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Jobs/Steps/Command">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Command/command"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Jobs/Steps/Package">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Package/uses"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Package/args"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Package/entrypoint"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Jobs/Steps/Package/containerArgs"/>
-        </genClasses>
-      </nestedGenPackages>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="Triggers" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Triggers">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Triggers/EVENTS">
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/BRANCH_PROTECTION_RULE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/CHECK_RUN"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/CHECK_SUITE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/CREATE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/DELETE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/DEPLOYMENT"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/DEPLOYMENT_STATUS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/DISCUSSION"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/DISCUSSION_COMMENT"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/FORK"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/GOLLUM"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/ISSUE_COMMENT"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/ISSUES"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/LABEL"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/MERGE_GROUP"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/MILESTONE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PAGE_BUILD"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PROJECT"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PROJECT_CARD"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PROJECT_COLUMN"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PUBLIC"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PULL_REQUEST_REVIEW"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/PULL_REQUEST_REVIEW_COMMENT"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/REGISTRY_PACKAGE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/RELEASE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/REPOSITORY_DISPATCH"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/STATUS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/EVENTS/WATCH"/>
-      </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES">
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/ASSIGNED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/AUTO_MERGE_DISABLED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/AUTO_MERGE_ENABLED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/CLOSED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/CONVERTED_TO_DRAFT"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/EDITED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/LABELED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/LOCKED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/OPENED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/READY_FOR_REVIEW"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/REOPENED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/REVIEW_REQUEST_REMOVED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/REVIEW_REQUESTED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/SYNCHRONIZE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/UNASSIGNED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/UNLABELED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/UNLOCKED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/CREATED"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/WEBHOOK_ACTIVITY_TYPES/DELETED"/>
-      </genEnums>
-      <genClasses image="false" ecoreClass="GHA.ecore#//Triggers/Trigger"/>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/StandardEventTrigger">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/StandardEventTrigger/event"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/StandardEventTrigger/eventTypes"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/WorkflowRunTrigger">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/WorkflowRunTrigger/branches"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/WorkflowRunTrigger/ignoreSpecifiedBranches"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/PullRequestTrigger">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/PullRequestTrigger/eventTypes"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/PullRequestTrigger/branches"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/PullRequestTrigger/ignoreSpecifiedBranches"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/PullRequestTrigger/paths"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/PullRequestTrigger/ignoreSpecifiedPaths"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/PushTrigger">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/PushTrigger/branches"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/PushTrigger/ignoreSpecifiedBranches"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/PushTrigger/paths"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/PushTrigger/ignoreSpecifiedPaths"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/PushTrigger/tags"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/PushTrigger/ignoreSpecifiedTags"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/ScheduleTrigger">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/ScheduleTrigger/crons"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/WorkflowCallTrigger">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/WorkflowCallTrigger/inputs"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/WorkflowCallTrigger/outputs"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/WorkflowCallTrigger/secrets"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Triggers/WorkflowDispatchTrigger">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/WorkflowDispatchTrigger/inputs"/>
-      </genClasses>
-      <nestedGenPackages prefix="Parameters" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Triggers/Parameters">
-        <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Triggers/Parameters/INPUT_TYPES">
-          <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/Parameters/INPUT_TYPES/STRING"/>
-          <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/Parameters/INPUT_TYPES/NUMBER"/>
-          <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/Parameters/INPUT_TYPES/BOOLEAN"/>
-          <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/Parameters/INPUT_TYPES/ENVIRONMENT"/>
-          <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Triggers/Parameters/INPUT_TYPES/CHOICE"/>
-        </genEnums>
-        <genClasses image="false" ecoreClass="GHA.ecore#//Triggers/Parameters/Parameter">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/Parameters/Parameter/id"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/Parameters/Parameter/description"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Triggers/Parameters/Input">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/Parameters/Input/type"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/Parameters/Input/isRequired"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/Parameters/Input/default"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Triggers/Parameters/Input/options"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Triggers/Parameters/Secret">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/Parameters/Secret/isRequired"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Triggers/Parameters/Output">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Triggers/Parameters/Output/value"/>
-        </genClasses>
-      </nestedGenPackages>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="Options" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Options">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Options/PERMISSION_SCOPES">
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/ACTIONS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/CHECKS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/CONTENTS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/DEPLOYMENTS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/DISCUSSIONS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/ID_TOKEN"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/ISSUES"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/PACKAGES"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/PAGES"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/PULL_REQUESTS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/REPOSITORY_PROJECTS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/SECURITY_EVENTS"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSION_SCOPES/STATUSES"/>
-      </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Options/PERMISSIONS">
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSIONS/READ"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSIONS/WRITE"/>
-        <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Options/PERMISSIONS/NONE"/>
-      </genEnums>
-      <genClasses ecoreClass="GHA.ecore#//Options/Permission">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Options/Permission/key"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Options/Permission/value"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Options/ConcurrencyGroup">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Options/ConcurrencyGroup/name"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Options/ConcurrencyGroup/cancelInProgress"/>
-      </genClasses>
-      <genClasses ecoreClass="GHA.ecore#//Options/Defaults">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Options/Defaults/shell"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Options/Defaults/workingDirectory"/>
-      </genClasses>
-    </nestedGenPackages>
-    <nestedGenPackages prefix="Expressions" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Expressions">
-      <genClasses ecoreClass="GHA.ecore#//Expressions/VariableAssignment">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/VariableAssignment/key"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/VariableAssignment/value"/>
-      </genClasses>
-      <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/Expression"/>
-      <nestedGenPackages prefix="BinaryOperators" disposableProviderFactory="true"
-          ecorePackage="GHA.ecore#//Expressions/BinaryOperators">
-        <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/BinaryOperators/BinaryOp">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BinaryOperators/BinaryOp/lhs"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BinaryOperators/BinaryOp/rhs"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BinaryOperators/Concat"/>
-        <nestedGenPackages prefix="EqualityOperators" disposableProviderFactory="true"
-            ecorePackage="GHA.ecore#//Expressions/BinaryOperators/EqualityOperators">
-          <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Expressions/BinaryOperators/EqualityOperators/EQUALITY_OPS">
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/BinaryOperators/EqualityOperators/EQUALITY_OPS/EQUALS"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/BinaryOperators/EqualityOperators/EQUALITY_OPS/NOT_EQUALS"/>
-          </genEnums>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BinaryOperators/EqualityOperators/Equality">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/BinaryOperators/EqualityOperators/Equality/op"/>
-          </genClasses>
-        </nestedGenPackages>
-        <nestedGenPackages prefix="ComparisonOperators" disposableProviderFactory="true"
-            ecorePackage="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators">
-          <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/COMPARISON_OPS">
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/COMPARISON_OPS/GT"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/COMPARISON_OPS/GTE"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/COMPARISON_OPS/LT"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/COMPARISON_OPS/LTE"/>
-          </genEnums>
-          <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/Comparison">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators/Comparison/op"/>
-          </genClasses>
-        </nestedGenPackages>
-        <nestedGenPackages prefix="LogicalOperators" disposableProviderFactory="true"
-            ecorePackage="GHA.ecore#//Expressions/BinaryOperators/LogicalOperators">
-          <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/BinaryOperators/LogicalOperators/LogicalOp"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BinaryOperators/LogicalOperators/Or"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BinaryOperators/LogicalOperators/And"/>
-        </nestedGenPackages>
-      </nestedGenPackages>
-      <nestedGenPackages prefix="UnaryOperators" disposableProviderFactory="true"
-          ecorePackage="GHA.ecore#//Expressions/UnaryOperators">
-        <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/UnaryOperators/UnaryOp">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/UnaryOperators/UnaryOp/childExpr"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/UnaryOperators/Not"/>
-      </nestedGenPackages>
-      <nestedGenPackages prefix="BuiltInFunctions" disposableProviderFactory="true"
-          ecorePackage="GHA.ecore#//Expressions/BuiltInFunctions">
-        <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/BuiltInFunctionCall"/>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/Contains">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/Contains/search"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/Contains/item"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/StartsWith">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/StartsWith/searchString"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/StartsWith/searchValue"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/EndsWith">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/EndsWith/searchString"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/EndsWith/searchValue"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/Format">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/Format/string"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/Format/replaceValues"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/Join">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/Join/array"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/Join/sep"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/ToJSON">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/ToJSON/value"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/FromJSON">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/FromJSON/value"/>
-        </genClasses>
-        <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/HashFiles">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/BuiltInFunctions/HashFiles/path"/>
-        </genClasses>
-        <nestedGenPackages prefix="StatusCheckFunctions" disposableProviderFactory="true"
-            ecorePackage="GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions">
-          <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions/StatusCheck"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions/Always"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions/Success"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions/Cancelled"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions/Failure"/>
-        </nestedGenPackages>
-      </nestedGenPackages>
-      <nestedGenPackages prefix="Values" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Expressions/Values">
-        <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/Values/Value"/>
-        <nestedGenPackages prefix="Literals" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Expressions/Values/Literals">
-          <genClasses image="false" ecoreClass="GHA.ecore#//Expressions/Values/Literals/Literal"/>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Literals/StringLiteral">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Literals/StringLiteral/value"/>
-          </genClasses>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Literals/IntegerLiteral">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Literals/IntegerLiteral/value"/>
-          </genClasses>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Literals/DoubleLiteral">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Literals/DoubleLiteral/value"/>
-          </genClasses>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Literals/BooleanLiteral">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Literals/BooleanLiteral/value"/>
-          </genClasses>
-        </nestedGenPackages>
-        <nestedGenPackages prefix="Variables" disposableProviderFactory="true" ecorePackage="GHA.ecore#//Expressions/Values/Variables">
-          <genEnums typeSafeEnumCompatible="false" ecoreEnum="GHA.ecore#//Expressions/Values/Variables/CONTEXTS">
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/GITHUB"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/ENV"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/VARS"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/JOB"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/JOBS"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/STEPS"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/RUNNER"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/SECRETS"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/STRATEGY"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/MATRIX"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/NEEDS"/>
-            <genEnumLiterals ecoreEnumLiteral="GHA.ecore#//Expressions/Values/Variables/CONTEXTS/INPUTS"/>
-          </genEnums>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Variables/Variable">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Variables/Variable/name"/>
-          </genClasses>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Variables/GitHubContext">
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Variables/GitHubContext/context"/>
-          </genClasses>
-          <genClasses ecoreClass="GHA.ecore#//Expressions/Values/Variables/VariableDereference">
-            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Expressions/Values/Variables/VariableDereference/variable"/>
-            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Expressions/Values/Variables/VariableDereference/property"/>
-          </genClasses>
-        </nestedGenPackages>
-      </nestedGenPackages>
-    </nestedGenPackages>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Job">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Job/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/jobName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/permissions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/dependsOn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/if"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/agent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/stagingEnvironment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/defaults"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/environmentVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/services"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/concurrencyGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/timeoutMinutes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/continueOnError"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/strategy"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//ReuseWorkflowJob">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ReuseWorkflowJob/workflowPath"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ReuseWorkflowJob/args"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ReuseWorkflowJob/secrets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//ReuseWorkflowJob/inheritSecrets"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//ScriptJob">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ScriptJob/steps"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Agent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Agent/group"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Agent/labels"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/image"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/username"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/password"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/environmentVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/ports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/volumes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Container/options"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Service">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Service/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Service/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//StagingEnvironment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//StagingEnvironment/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//StagingEnvironment/url"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Trigger"/>
+    <genClasses ecoreClass="GHA.ecore#//StandardEventTrigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//StandardEventTrigger/event"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//StandardEventTrigger/eventTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//WorkflowRunTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowRunTrigger/branches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//WorkflowRunTrigger/ignoreSpecifiedBranches"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//PullRequestTrigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PullRequestTrigger/eventTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PullRequestTrigger/branches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PullRequestTrigger/ignoreSpecifiedBranches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PullRequestTrigger/paths"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PullRequestTrigger/ignoreSpecifiedPaths"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//PushTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PushTrigger/branches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PushTrigger/ignoreSpecifiedBranches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PushTrigger/paths"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PushTrigger/ignoreSpecifiedPaths"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PushTrigger/tags"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PushTrigger/ignoreSpecifiedTags"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//ScheduleTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ScheduleTrigger/crons"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//WorkflowCallTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallTrigger/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallTrigger/outputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallTrigger/secrets"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//WorkflowDispatchTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowDispatchTrigger/inputs"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Permission">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Permission/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Permission/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//ConcurrencyGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ConcurrencyGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ConcurrencyGroup/cancelInProgress"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Defaults">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Defaults/shell"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Defaults/workingDirectory"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//VariableAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableAssignment/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//VariableAssignment/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Expression"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//BinaryOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//BinaryOp/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//BinaryOp/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Concat"/>
+    <genClasses ecoreClass="GHA.ecore#//Equality">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Equality/op"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Comparison">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Comparison/op"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//LogicalOp"/>
+    <genClasses ecoreClass="GHA.ecore#//Or"/>
+    <genClasses ecoreClass="GHA.ecore#//And"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//UnaryOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//UnaryOp/childExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Not"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//BuiltInFunctionCall"/>
+    <genClasses ecoreClass="GHA.ecore#//Contains">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Contains/search"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Contains/item"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//StartsWith">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//StartsWith/searchString"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//StartsWith/searchValue"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//EndsWith">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//EndsWith/searchString"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//EndsWith/searchValue"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Format">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Format/string"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Format/replaceValues"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Join">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Join/array"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Join/sep"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//ToJSON">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ToJSON/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//FromJSON">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//FromJSON/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//HashFiles">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//HashFiles/path"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//StatusCheck"/>
+    <genClasses ecoreClass="GHA.ecore#//Always"/>
+    <genClasses ecoreClass="GHA.ecore#//Success"/>
+    <genClasses ecoreClass="GHA.ecore#//Cancelled"/>
+    <genClasses ecoreClass="GHA.ecore#//Failure"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Value"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Literal"/>
+    <genClasses ecoreClass="GHA.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//DoubleLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Variable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//GitHubContext">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//GitHubContext/context"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//VariableDereference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//VariableDereference/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableDereference/property"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Matrix">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/axes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/includes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/excludes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/failFast"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/maxParallel"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//MatrixAxis">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//MatrixAxis/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//MatrixAxis/cells"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//MatrixCombination">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//MatrixCombination/entries"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Step">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Step/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/if"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/timeoutMinutes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/continueOnError"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/shell"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/workingDirectory"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/environmentVariables"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Command">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Command/command"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Package/uses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Package/args"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Package/entrypoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Package/containerArgs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Parameter/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Parameter/description"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Input">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Input/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Input/isRequired"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Input/default"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Input/options"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Secret">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Secret/isRequired"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//Output">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Output/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

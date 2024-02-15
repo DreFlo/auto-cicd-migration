@@ -2,23 +2,6 @@ grammar d.fe.up.pt.cicd.gha.GitHubActions with org.eclipse.xtext.common.Terminal
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://d.fe.up.pt/GHA" as GHA
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs" as Jobs
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs/Matrices" as Matrices
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Jobs/Steps" as Steps
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Triggers" as Triggers
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Triggers/Parameters" as Parameters
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Options" as Options
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions" as Expressions
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators" as BinaryOperators
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators/EqualityOperators" as EqualityOperators
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators/ComparisonOperators" as ComparisonOperators
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BinaryOperators/LogicalOperators" as LogicalOperators
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/UnaryOperators" as UnaryOperators
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BuiltInFunctions" as BuiltInFunctions
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/BuiltInFunctions/StatusCheckFunctions" as StatusCheckFunctions
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values" as Values
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values/Literals" as Literals
-import "platform:/resource/gha-meta-model/model/GHA.ecore#//Expressions/Values/Variables" as Variables
 
 Workflow returns GHA::Workflow:
 	(
@@ -44,23 +27,23 @@ Workflow returns GHA::Workflow:
 	(=>END_OF_FILE)
 ;
 
-Job returns Jobs::Job:
+Job returns GHA::Job:
 	ScriptJob | ReuseWorkflowJob
 ;
 
-ScriptJob returns Jobs::ScriptJob:
-	name=ID ':'
+ScriptJob returns GHA::ScriptJob:
+	name=YAMLID ':'
 		NEWLINE
 		BEGIN
 		('name' ':' jobName=Expression NEWLINE)? &
 		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		('needs' ':' 
-			(dependsOn+=[Jobs::Job] NEWLINE) |
-			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+			(dependsOn+=[GHA::Job] NEWLINE) |
+			('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 			(
 				NEWLINE
 				BEGIN
-				('-' dependsOn+=[Jobs::Job] NEWLINE)+
+				('-' dependsOn+=[GHA::Job] NEWLINE)+
 				END
 		))? &
 		if=IfStatement? &
@@ -78,19 +61,19 @@ ScriptJob returns Jobs::ScriptJob:
 		END
 ;
 
-ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
-	name=ID ':'
+ReuseWorkflowJob returns GHA::ReuseWorkflowJob:
+	name=YAMLID ':'
 		NEWLINE
 		BEGIN
 		('name' ':' jobName=Expression  NEWLINE)? &
 		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
 		('needs' ':' 
-			(dependsOn+=[Jobs::Job] NEWLINE) |
-			('[' dependsOn+=[Jobs::Job] (',' dependsOn+=[Jobs::Job])* ']' NEWLINE) |
+			(dependsOn+=[GHA::Job] NEWLINE) |
+			('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
 			(
 				NEWLINE
 				BEGIN
-				('-' dependsOn+=[Jobs::Job] NEWLINE)+
+				('-' dependsOn+=[GHA::Job] NEWLINE)+
 				END
 			)
 		)? &
@@ -111,7 +94,7 @@ ReuseWorkflowJob returns Jobs::ReuseWorkflowJob:
 		END
 ;
 
-Agent returns Jobs::Agent:
+Agent returns GHA::Agent:
 	(
 		(labels+=Expression NEWLINE) |
 		('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
@@ -161,11 +144,11 @@ Agent returns Jobs::Agent:
 	)
 ;
 
-Step returns Steps::Step:
+Step returns GHA::Step:
 	'-' BEGIN (Command | Package) END
 ;
 
-Command returns Steps::Command:
+Command returns GHA::Command:
 	('id' ':' id=STRING NEWLINE)? &
 	if=IfStatement? &
 	('name' ':' name=Expression NEWLINE)? &
@@ -177,7 +160,7 @@ Command returns Steps::Command:
 	('run' ':' command=Expression NEWLINE)
 ;
 
-Package returns Steps::Package:
+Package returns GHA::Package:
 	('id' ':' id=STRING NEWLINE)? &
 	if=IfStatement? &
 	('name' ':' name=Expression NEWLINE)? &
@@ -201,16 +184,16 @@ Package returns Steps::Package:
 	)?
 ;
 
-IfStatement returns Expressions::Expression:
+IfStatement returns GHA::Expression:
 	'if' ':' Expression NEWLINE
 ;
 
-ConcurrencyGroup returns Options::ConcurrencyGroup:
+ConcurrencyGroup returns GHA::ConcurrencyGroup:
 	('group' ':' name=Expression NEWLINE) &
 	('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
 ;
 
-SimpleTrigger returns Triggers::Trigger:
+SimpleTrigger returns GHA::Trigger:
 	(
 		SimpleWorkflowDispatchTrigger | 
 		SimpleWorkflowCallTrigger |
@@ -221,27 +204,27 @@ SimpleTrigger returns Triggers::Trigger:
 	NEWLINE
 ;
 
-SimplePullRequestTrigger returns Triggers::PullRequestTrigger:
-	{Triggers::PullRequestTrigger} 'pull_request' | {Triggers::PullRequestTrigger} 'pull_request_target'
+SimplePullRequestTrigger returns GHA::PullRequestTrigger:
+	{GHA::PullRequestTrigger} 'pull_request' | {GHA::PullRequestTrigger} 'pull_request_target'
 ;
 
-SimplePushTriggerTrigger returns Triggers::PushTrigger:
-	{Triggers::PushTrigger} 'push'
+SimplePushTriggerTrigger returns GHA::PushTrigger:
+	{GHA::PushTrigger} 'push'
 ;
 
-SimpleWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
-	{Triggers::WorkflowCallTrigger} 'workflow_call'
+SimpleWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
+	{GHA::WorkflowCallTrigger} 'workflow_call'
 ;
 
-SimpleWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
-	{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch'
+SimpleWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
+	{GHA::WorkflowDispatchTrigger} 'workflow_dispatch'
 ;
 
-SimpleStandardEventTrigger returns Triggers::StandardEventTrigger:
+SimpleStandardEventTrigger returns GHA::StandardEventTrigger:
 	event=EVENT
 ;
 
-OptionedTrigger returns Triggers::Trigger:
+OptionedTrigger returns GHA::Trigger:
 	NEWLINE
 	BEGIN
 	(
@@ -256,7 +239,7 @@ OptionedTrigger returns Triggers::Trigger:
 	END
 ;
 
-OptionedStandardEventTrigger returns Triggers::StandardEventTrigger:
+OptionedStandardEventTrigger returns GHA::StandardEventTrigger:
 	event=EVENT ':'
 		NEWLINE
 		BEGIN
@@ -272,7 +255,7 @@ OptionedStandardEventTrigger returns Triggers::StandardEventTrigger:
 		END
 ;
 
-OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
+OptionedWorkflowRunTrigger returns GHA::WorkflowRunTrigger:
 	'workflow_run' ':'
 		NEWLINE
 		BEGIN
@@ -288,8 +271,8 @@ OptionedWorkflowRunTrigger returns Triggers::WorkflowRunTrigger:
 		END
 ;
 
-OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
-	{Triggers::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':' 
+OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
+	{GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':' 
 	(
 		NEWLINE
 		BEGIN
@@ -403,8 +386,8 @@ OptionedPullRequestTrigger returns Triggers::PullRequestTrigger:
 	)
 ;
 
-OptionedPushTrigger returns Triggers::PushTrigger:
-	{Triggers::PushTrigger} 'push' ':'
+OptionedPushTrigger returns GHA::PushTrigger:
+	{GHA::PushTrigger} 'push' ':'
 	(
 		NEWLINE
 		BEGIN
@@ -518,7 +501,7 @@ OptionedPushTrigger returns Triggers::PushTrigger:
 	)
 ;
 
-OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
+OptionedScheduleTrigger returns GHA::ScheduleTrigger:
 	'schedule' ':'
 	(
 		NEWLINE
@@ -530,8 +513,8 @@ OptionedScheduleTrigger returns Triggers::ScheduleTrigger:
 	)
 ;
 
-OptionedWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
-	{Triggers::WorkflowCallTrigger} 'workflow_call' ':'
+OptionedWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
+	{GHA::WorkflowCallTrigger} 'workflow_call' ':'
 	(
 		NEWLINE
 		BEGIN
@@ -573,16 +556,16 @@ OptionedWorkflowCallTrigger returns Triggers::WorkflowCallTrigger:
 	)
 ;
 
-OptionedWorkflowDispatchTrigger returns Triggers::WorkflowDispatchTrigger:
-	{Triggers::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
+OptionedWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
+	{GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
 		NEWLINE
 		BEGIN
 		('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
 		END
 ;
 
-Input returns Parameters::Input:
-	id=ID ':'
+Input returns GHA::Input:
+	id=YAMLID ':'
 		NEWLINE
 		BEGIN
 		('description' ':' description=Expression NEWLINE)? &
@@ -603,8 +586,8 @@ Input returns Parameters::Input:
 		END
 ;
 
-Output returns Parameters::Output:
-	id=ID ':'
+Output returns GHA::Output:
+	id=YAMLID ':'
 		NEWLINE
 		BEGIN
 		('description' ':' description=Expression NEWLINE)? &
@@ -612,8 +595,8 @@ Output returns Parameters::Output:
 		END
 ;
 
-Secret returns Parameters::Secret:
-	id=ID ':'
+Secret returns GHA::Secret:
+	id=YAMLID ':'
 		NEWLINE
 		BEGIN
 		(
@@ -627,11 +610,11 @@ Secret returns Parameters::Secret:
 		END
 ;
 
-Permission returns Options::Permission:
+Permission returns GHA::Permission:
 	key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
 ;
 
-Defaults returns Options::Defaults:
+Defaults returns GHA::Defaults:
 	'run' ':'
 		NEWLINE
 		BEGIN
@@ -642,7 +625,7 @@ Defaults returns Options::Defaults:
 		END
 ;
 
-StagingEnvironment returns Jobs::StagingEnvironment:
+StagingEnvironment returns GHA::StagingEnvironment:
 	(name=Expression NEWLINE) |
 	(
 		NEWLINE
@@ -653,7 +636,7 @@ StagingEnvironment returns Jobs::StagingEnvironment:
 	)
 ;
 
-Strategy returns Matrices::Matrix:
+Strategy returns GHA::Matrix:
 	(
 		'matrix' ':'
 			NEWLINE
@@ -667,8 +650,8 @@ Strategy returns Matrices::Matrix:
 	('max-paralell' ':' maxParallel=Expression NEWLINE)?
 ;
 
-MatrixAxis returns Matrices::MatrixAxis:
-	name=ID ':' 
+MatrixAxis returns GHA::MatrixAxis:
+	name=YAMLID ':' 
 	(
 		(cells+=Expression NEWLINE) |
 		('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
@@ -681,11 +664,11 @@ MatrixAxis returns Matrices::MatrixAxis:
 	)
 ;
 
-MatrixCombination returns Matrices::MatrixCombination:
+MatrixCombination returns GHA::MatrixCombination:
 	'-' BEGIN entries+=VariableAssignment END
 ;
 
-Container returns Jobs::Container:
+Container returns GHA::Container:
 	(
 		image=Expression NEWLINE
 	) |
@@ -724,93 +707,105 @@ Container returns Jobs::Container:
 	)
 ;
 
-Service returns Jobs::Service:
-	key=ID ':'
+Service returns GHA::Service:
+	key=YAMLID ':'
 		NEWLINE
 		BEGIN
 		value=Container
 		END
 ;
 
-VariableAssignment returns Expressions::VariableAssignment:
-	key=ID ':' value=Expression NEWLINE
+VariableAssignment returns GHA::VariableAssignment:
+	key=YAMLID ':' value=Expression NEWLINE
 ;
 
-Expression returns Expressions::Expression:
+Expression returns GHA::Expression:
 	Concat
 ;
 
-Concat returns Expressions::Expression:
-	ConcatExpression ({BinaryOperators::Concat.lhs=current}	rhs=ConcatExpression)*
+Concat returns GHA::Expression:
+	ConcatExpression ({GHA::Concat.lhs=current}	rhs=ConcatExpression)*
 ;
 
-ConcatExpression returns Expressions::Expression:
+ConcatExpression returns GHA::Expression:
 	BracketedExpression | UnbracketedLiteral
 ;
 
-BracketedExpression returns Expressions::Expression:
+BracketedExpression returns GHA::Expression:
 	'${{' InsideBracketsExpression '}}'
 ;
 
-InsideBracketsExpression returns Expressions::Expression:
+InsideBracketsExpression returns GHA::Expression:
 	Or
 ;
 
-UnbracketedLiteral returns Literals::Literal:
-	UnbracketedString
+UnbracketedLiteral returns GHA::Literal:
+	StringLiteral | IntegerLiteral
 ;
 
-UnbracketedString returns Literals::StringLiteral:
-	value=STRING
+StringLiteral returns GHA::StringLiteral:
+	value=YAMLString
 ;
 
-Or returns Expressions::Expression:
-    And ({LogicalOperators::Or.lhs=current} '||' rhs=And)*
+IntegerLiteral returns GHA::IntegerLiteral: 
+	value=INT
+;
+
+DoubleLiteral returns GHA::DoubleLiteral:
+	value=DOUBLE
+;
+
+BooleanLiteral returns GHA::BooleanLiteral:
+	value?=BOOLEAN
+;
+
+Or returns GHA::Expression:
+    And ({GHA::Or.lhs=current} '||' rhs=And)*
 ;
 
 
-And returns Expressions::Expression:
-    Equality ({LogicalOperators::And.lhs=current} '&&' rhs=Equality )*
+And returns GHA::Expression:
+    Equality ({GHA::And.lhs=current} '&&' rhs=Equality )*
 ;
 
-Equality returns Expressions::Expression:
-	Comparison ({EqualityOperators::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+Equality returns GHA::Expression:
+	Comparison ({GHA::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
 ;
 
-Comparison returns Expressions::Expression:
-	UnaryOp ({ComparisonOperators::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+Comparison returns GHA::Expression:
+	UnaryOp ({GHA::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
 ;
 
-UnaryOp returns Expressions::Expression:
+UnaryOp returns GHA::Expression:
 	Not | Blank
 ;
 
-Not returns UnaryOperators::Not:
+Not returns GHA::Not:
 	'!' childExpr=VariableDereference
 ;
 
-Blank returns Expressions::Expression:
+Blank returns GHA::Expression:
 	VariableDereference
 ;
 
-VariableDereference returns Expressions::Expression:
-	Primary ({Variables::VariableDereference.variable=current} (('.' property=ID) | ('[' property=ID ']')))*
+VariableDereference returns GHA::Expression:
+	Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']')))*
 ;
 
-Primary returns Expressions::Expression:
+Primary returns GHA::Expression:
     ('(' InsideBracketsExpression ')') | CallExpression | Atomic
 ;
 
-Atomic returns Values::Value:
-	({Variables::GitHubContext} context=CONTEXT) |
-	({Variables::Variable} name=ID) | 
-	({Literals::IntegerLiteral} value=INT) |
-	({Literals::DoubleLiteral} value=DOUBLE) |
-	({Literals::BooleanLiteral} value=BOOLEAN) |
-	({Literals::StringLiteral} value=STRING)	
+Atomic returns GHA::Value:
+	({GHA::GitHubContext} context=CONTEXT) |
+	({GHA::Variable} name=ID) | 
+	({GHA::IntegerLiteral} value=INT) |
+	({GHA::DoubleLiteral} value=DOUBLE) |
+	({GHA::BooleanLiteral} value=BOOLEAN) |
+	({GHA::StringLiteral} value=STRING)	
 ;
 
-CallExpression returns BuiltInFunctions::BuiltInFunctionCall:
+CallExpression returns GHA::BuiltInFunctionCall:
 	Contains |
 	StartsWith |
 	EndsWith |
@@ -825,67 +820,67 @@ CallExpression returns BuiltInFunctions::BuiltInFunctionCall:
 	Cancelled
 ;
 
-Contains returns BuiltInFunctions::Contains:
+Contains returns GHA::Contains:
 	'contains' '(' search=InsideBracketsExpression ',' item=InsideBracketsExpression ')'
 ;
 
-StartsWith returns BuiltInFunctions::StartsWith:
+StartsWith returns GHA::StartsWith:
 	'startsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 ;
 
-EndsWith returns BuiltInFunctions::EndsWith:
+EndsWith returns GHA::EndsWith:
 	'endsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
 ;
 
-Format returns BuiltInFunctions::Format:
+Format returns GHA::Format:
 	'format' '(' string=InsideBracketsExpression (',' replaceValues+=InsideBracketsExpression)* ')'
 ;
 
-Join returns BuiltInFunctions::Join:
+Join returns GHA::Join:
 	'join' '(' array=InsideBracketsExpression (',' sep=InsideBracketsExpression)? ')'
 ;
 
-ToJSON returns BuiltInFunctions::ToJSON:
+ToJSON returns GHA::ToJSON:
 	'toJSON' '(' value=InsideBracketsExpression ')'
 ;
 
-FromJSON returns BuiltInFunctions::FromJSON:
+FromJSON returns GHA::FromJSON:
 	'fromJSON' '(' value=InsideBracketsExpression ')'
 ;
 
-HashFiles returns BuiltInFunctions::HashFiles:
+HashFiles returns GHA::HashFiles:
 	'hashFiles' '(' path=InsideBracketsExpression ')'
 ;
 
-Success returns StatusCheckFunctions::Success:
-	{StatusCheckFunctions::Success} 'success' '(' ')'
+Success returns GHA::Success:
+	{GHA::Success} 'success' '(' ')'
 ;
 
-Always returns StatusCheckFunctions::Always:
-	{StatusCheckFunctions::Always} 'always' '(' ')'
+Always returns GHA::Always:
+	{GHA::Always} 'always' '(' ')'
 ;
 
-Cancelled returns StatusCheckFunctions::Cancelled:
-	{StatusCheckFunctions::Cancelled} 'cancelled' '(' ')'
+Cancelled returns GHA::Cancelled:
+	{GHA::Cancelled} 'cancelled' '(' ')'
 ;
 
-Failure returns StatusCheckFunctions::Failure:
-	{StatusCheckFunctions::Failure} 'failure' '(' ')'
+Failure returns GHA::Failure:
+	{GHA::Failure} 'failure' '(' ')'
 ;
 
-enum COMPARISON_OP returns ComparisonOperators::COMPARISON_OPS:
+enum COMPARISON_OP returns GHA::COMPARISON_OPS:
 	GT='>' |
 	GTE='>=' |
 	LT='<' |
 	LTE='<='
 ;
 
-enum EQUALITY_OP returns EqualityOperators::EQUALITY_OPS:
+enum EQUALITY_OP returns GHA::EQUALITY_OPS:
 	EQUALS='==' |
 	NOT_EQUALS='!='
 ;
 
-enum CONTEXT returns Variables::CONTEXTS:
+enum CONTEXT returns GHA::CONTEXTS:
 	GITHUB='github' |
 	ENV='env' |
 	VARS='vars' |
@@ -900,7 +895,7 @@ enum CONTEXT returns Variables::CONTEXTS:
 	INPUTS='inputs'
 ;
 
-enum TYPE returns Parameters::INPUT_TYPES:
+enum TYPE returns GHA::INPUT_TYPES:
 	BOOLEAN='boolean' |
 	NUMBER='number' |
 	STRING='string' |
@@ -908,7 +903,7 @@ enum TYPE returns Parameters::INPUT_TYPES:
 	CHOICE='choice'
 ;
 
-enum WEBHOOK_ACTIVITY_TYPE returns Triggers::WEBHOOK_ACTIVITY_TYPES:
+enum WEBHOOK_ACTIVITY_TYPE returns GHA::WEBHOOK_ACTIVITY_TYPES:
 	ASSIGNED='assigned' |
 	AUTO_MERGE_DISABLED='auto_merge_disabled' |
 	AUTO_MERGE_ENABLED='auto_merge_enabled' |
@@ -930,7 +925,7 @@ enum WEBHOOK_ACTIVITY_TYPE returns Triggers::WEBHOOK_ACTIVITY_TYPES:
 	DELETED='deleted'
 ;
 
-enum EVENT returns Triggers::EVENTS:
+enum EVENT returns GHA::EVENTS:
 	BRANCH_PROTECTION_RULE='branch_protection_rule' |
 	CHECK_RUN='check_run' |
 	CHECK_SUITE='check_suite' |
@@ -959,7 +954,7 @@ enum EVENT returns Triggers::EVENTS:
 	STATUS='status'
 ;
 
-enum PERMISSION_SCOPE returns Options::PERMISSION_SCOPES:
+enum PERMISSION_SCOPE returns GHA::PERMISSION_SCOPES:
 	ACTIONS='actions' | 
 	CHECKS='checks' | 
 	CONTENTS='contents' | 
@@ -975,10 +970,21 @@ enum PERMISSION_SCOPE returns Options::PERMISSION_SCOPES:
 	STATUSES='statuses'
 ;
 
-enum PERMISSION_VALUE returns Options::PERMISSIONS:
+enum PERMISSION_VALUE returns GHA::PERMISSIONS:
 	READ='read' |
 	WRITE='write' |
 	NONE='none'
+;
+
+YAMLID returns ecore::EString:
+	('"' ID '"') |
+	("'" ID "'") |
+	ID
+;
+
+YAMLString returns ecore::EString:
+	STRING |
+	UNQUOTED_STRING
 ;
 
 terminal DOUBLE returns ecore::EDoubleObject:
@@ -988,14 +994,11 @@ terminal DOUBLE returns ecore::EDoubleObject:
 terminal BOOLEAN returns ecore::EBooleanObject:
 	'true' | 'false'
 ;
-/*
-terminal YAML_STRING returns ecore::EString:
-	('"' ( '\\' . | !('\\'|'"') )+ '"') |
-	("'" ( '\\' . | !('\\'|"'") )+ "'") |
-	(!('$' | NEWLINE) -> ('$' | NEWLINE)) |
-	('|' BEGIN !('$' | NEWLINE) -> '$' END)
+
+terminal UNQUOTED_STRING returns ecore::EString:
+	(('a..z'|'A'..'Z'|'_'|'~') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~')*) |
+	('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'\n')* END)
 ;
-*/
 
 terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
 

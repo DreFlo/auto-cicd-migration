@@ -2,17 +2,6 @@
  */
 package GHA;
 
-import GHA.Expressions.Expression;
-
-import GHA.Jobs.Job;
-
-import GHA.Options.ConcurrencyGroup;
-import GHA.Options.Defaults;
-import GHA.Options.PERMISSIONS;
-import GHA.Options.PERMISSION_SCOPES;
-
-import GHA.Triggers.Trigger;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
@@ -88,7 +77,7 @@ public interface Workflow extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Triggers</b></em>' containment reference list.
-	 * The list contents are of type {@link GHA.Triggers.Trigger}.
+	 * The list contents are of type {@link GHA.Trigger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Triggers</em>' containment reference list.
@@ -100,13 +89,13 @@ public interface Workflow extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Permissions</b></em>' map.
-	 * The key is of type {@link GHA.Options.PERMISSION_SCOPES},
-	 * and the value is of type {@link GHA.Options.PERMISSIONS},
+	 * The key is of type {@link GHA.PERMISSION_SCOPES},
+	 * and the value is of type {@link GHA.PERMISSIONS},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Permissions</em>' map.
 	 * @see GHA.GHAPackage#getWorkflow_Permissions()
-	 * @model mapType="GHA.Options.Permission&lt;GHA.Options.PERMISSION_SCOPES, GHA.Options.PERMISSIONS&gt;"
+	 * @model mapType="GHA.Permission&lt;GHA.PERMISSION_SCOPES, GHA.PERMISSIONS&gt;"
 	 * @generated
 	 */
 	EMap<PERMISSION_SCOPES, PERMISSIONS> getPermissions();
@@ -136,12 +125,12 @@ public interface Workflow extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
 	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link GHA.Expressions.Expression},
+	 * and the value is of type {@link GHA.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see GHA.GHAPackage#getWorkflow_EnvironmentVariables()
-	 * @model mapType="GHA.Expressions.VariableAssignment&lt;org.eclipse.emf.ecore.EString, GHA.Expressions.Expression&gt;"
+	 * @model mapType="GHA.VariableAssignment&lt;org.eclipse.emf.ecore.EString, GHA.Expression&gt;"
 	 * @generated
 	 */
 	EMap<String, Expression> getEnvironmentVariables();
@@ -170,7 +159,7 @@ public interface Workflow extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Jobs</b></em>' containment reference list.
-	 * The list contents are of type {@link GHA.Jobs.Job}.
+	 * The list contents are of type {@link GHA.Job}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jobs</em>' containment reference list.

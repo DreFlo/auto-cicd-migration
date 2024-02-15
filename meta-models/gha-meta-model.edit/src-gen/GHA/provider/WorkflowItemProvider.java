@@ -2,34 +2,8 @@
  */
 package GHA.provider;
 
-import GHA.Expressions.BinaryOperators.BinaryOperatorsFactory;
-
-import GHA.Expressions.BinaryOperators.EqualityOperators.EqualityOperatorsFactory;
-
-import GHA.Expressions.BinaryOperators.LogicalOperators.LogicalOperatorsFactory;
-
-import GHA.Expressions.BuiltInFunctions.BuiltInFunctionsFactory;
-
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.StatusCheckFunctionsFactory;
-
-import GHA.Expressions.ExpressionsFactory;
-import GHA.Expressions.ExpressionsPackage;
-
-import GHA.Expressions.UnaryOperators.UnaryOperatorsFactory;
-
-import GHA.Expressions.Values.Literals.LiteralsFactory;
-
-import GHA.Expressions.Values.Variables.VariablesFactory;
-
+import GHA.GHAFactory;
 import GHA.GHAPackage;
-
-import GHA.Jobs.JobsFactory;
-
-import GHA.Options.OptionsFactory;
-import GHA.Options.OptionsPackage;
-
-import GHA.Triggers.TriggersFactory;
-
 import GHA.Workflow;
 
 import java.util.Collection;
@@ -208,116 +182,116 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BinaryOperatorsFactory.eINSTANCE.createConcat()));
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				EqualityOperatorsFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				LogicalOperatorsFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				LogicalOperatorsFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				UnaryOperatorsFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				BuiltInFunctionsFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				StatusCheckFunctionsFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				StatusCheckFunctionsFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				StatusCheckFunctionsFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				StatusCheckFunctionsFactory.eINSTANCE.createFailure()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				LiteralsFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				LiteralsFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				LiteralsFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				LiteralsFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				VariablesFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				VariablesFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				VariablesFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createStandardEventTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createWorkflowRunTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createPullRequestTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createPushTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createScheduleTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createWorkflowCallTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
-				TriggersFactory.eINSTANCE.createWorkflowDispatchTrigger()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__PERMISSIONS,
-				OptionsFactory.eINSTANCE.create(OptionsPackage.Literals.PERMISSION)));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__DEFAULTS,
-				OptionsFactory.eINSTANCE.createDefaults()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__ENVIRONMENT_VARIABLES,
-				ExpressionsFactory.eINSTANCE.create(ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT)));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__CONCURRENCY_GROUP,
-				OptionsFactory.eINSTANCE.createConcurrencyGroup()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS,
-				JobsFactory.eINSTANCE.createReuseWorkflowJob()));
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS, JobsFactory.eINSTANCE.createScriptJob()));
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createNot()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createContains()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createStartsWith()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createEndsWith()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createFormat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createJoin()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createToJSON()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createFromJSON()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createHashFiles()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createAlways()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createSuccess()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createCancelled()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createFailure()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createGitHubContext()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createStandardEventTrigger()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createWorkflowRunTrigger()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createPullRequestTrigger()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS, GHAFactory.eINSTANCE.createPushTrigger()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createScheduleTrigger()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createWorkflowCallTrigger()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createWorkflowDispatchTrigger()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__PERMISSIONS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.PERMISSION)));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__DEFAULTS, GHAFactory.eINSTANCE.createDefaults()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__ENVIRONMENT_VARIABLES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__CONCURRENCY_GROUP,
+				GHAFactory.eINSTANCE.createConcurrencyGroup()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS,
+				GHAFactory.eINSTANCE.createReuseWorkflowJob()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS, GHAFactory.eINSTANCE.createScriptJob()));
 	}
 
 	/**

@@ -155,40 +155,6 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import GHA.provider.GHAItemProviderAdapterFactory;
 
-import GHA.Expressions.BinaryOperators.ComparisonOperators.provider.ComparisonOperatorsItemProviderAdapterFactory;
-
-import GHA.Expressions.BinaryOperators.EqualityOperators.provider.EqualityOperatorsItemProviderAdapterFactory;
-
-import GHA.Expressions.BinaryOperators.LogicalOperators.provider.LogicalOperatorsItemProviderAdapterFactory;
-
-import GHA.Expressions.BinaryOperators.provider.BinaryOperatorsItemProviderAdapterFactory;
-
-import GHA.Expressions.BuiltInFunctions.StatusCheckFunctions.provider.StatusCheckFunctionsItemProviderAdapterFactory;
-
-import GHA.Expressions.BuiltInFunctions.provider.BuiltInFunctionsItemProviderAdapterFactory;
-
-import GHA.Expressions.UnaryOperators.provider.UnaryOperatorsItemProviderAdapterFactory;
-
-import GHA.Expressions.Values.Literals.provider.LiteralsItemProviderAdapterFactory;
-
-import GHA.Expressions.Values.Variables.provider.VariablesItemProviderAdapterFactory;
-
-import GHA.Expressions.Values.provider.ValuesItemProviderAdapterFactory;
-
-import GHA.Expressions.provider.ExpressionsItemProviderAdapterFactory;
-
-import GHA.Jobs.Matrices.provider.MatricesItemProviderAdapterFactory;
-
-import GHA.Jobs.Steps.provider.StepsItemProviderAdapterFactory;
-
-import GHA.Jobs.provider.JobsItemProviderAdapterFactory;
-
-import GHA.Options.provider.OptionsItemProviderAdapterFactory;
-
-import GHA.Triggers.Parameters.provider.ParametersItemProviderAdapterFactory;
-
-import GHA.Triggers.provider.TriggersItemProviderAdapterFactory;
-
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -720,23 +686,6 @@ public class GHAEditor extends MultiPageEditorPart
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new GHAItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new JobsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new MatricesItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new StepsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new TriggersItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ParametersItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new OptionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ExpressionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BinaryOperatorsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new EqualityOperatorsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ComparisonOperatorsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new LogicalOperatorsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new UnaryOperatorsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BuiltInFunctionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new StatusCheckFunctionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ValuesItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new LiteralsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new VariablesItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

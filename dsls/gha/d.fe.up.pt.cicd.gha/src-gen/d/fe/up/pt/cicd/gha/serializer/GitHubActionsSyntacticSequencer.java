@@ -152,6 +152,8 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (ruleCall.getRule() == grammarAccess.getBEGINRule())
 			return getBEGINToken(semanticObject, ruleCall, node);
+		else if (ruleCall.getRule() == grammarAccess.getBOOLEANRule())
+			return getBOOLEANToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getENDRule())
 			return getENDToken(semanticObject, ruleCall, node);
 		else if (ruleCall.getRule() == grammarAccess.getEND_OF_FILERule())
@@ -166,6 +168,17 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 * Defaults to the empty string.
 	 */
 	protected String getBEGINToken(EObject semanticObject, RuleCall ruleCall, INode node) { return ""; }
+	
+	/**
+	 * terminal BOOLEAN returns ecore::EBooleanObject:
+	 * 	'true' | 'false'
+	 * ;
+	 */
+	protected String getBOOLEANToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return "true";
+	}
 	
 	/**
 	 * Synthetic terminal rule. The concrete syntax is to be specified by clients.
@@ -1272,7 +1285,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) (rule start)
 	 *     (rule start) (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     (rule start) (ambiguity) if=IfStatement
-	 *     (rule start) (ambiguity) name=ID
+	 *     (rule start) (ambiguity) name=YAMLID
 	 *     agent=Agent (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     agent=Agent (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     agent=Agent (ambiguity) 'container' ':' container=Container
@@ -1293,7 +1306,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     agent=Agent (ambiguity) (rule end)
 	 *     agent=Agent (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     agent=Agent (ambiguity) if=IfStatement
-	 *     agent=Agent (ambiguity) name=ID
+	 *     agent=Agent (ambiguity) name=YAMLID
 	 *     args+=VariableAssignment END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     args+=VariableAssignment END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     args+=VariableAssignment END (ambiguity) 'container' ':' container=Container
@@ -1313,7 +1326,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     args+=VariableAssignment END (ambiguity) (rule end)
 	 *     args+=VariableAssignment END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     args+=VariableAssignment END (ambiguity) if=IfStatement
-	 *     args+=VariableAssignment END (ambiguity) name=ID
+	 *     args+=VariableAssignment END (ambiguity) name=YAMLID
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) 'container' ':' container=Container
@@ -1334,7 +1347,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) (rule end)
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) if=IfStatement
-	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) name=ID
+	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) name=YAMLID
 	 *     container=Container (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     container=Container (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     container=Container (ambiguity) 'container' ':' container=Container
@@ -1355,7 +1368,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     container=Container (ambiguity) (rule end)
 	 *     container=Container (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     container=Container (ambiguity) if=IfStatement
-	 *     container=Container (ambiguity) name=ID
+	 *     container=Container (ambiguity) name=YAMLID
 	 *     continueOnError=Expression NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     continueOnError=Expression NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     continueOnError=Expression NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1376,7 +1389,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     continueOnError=Expression NEWLINE (ambiguity) (rule end)
 	 *     continueOnError=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     continueOnError=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     continueOnError=Expression NEWLINE (ambiguity) name=ID
+	 *     continueOnError=Expression NEWLINE (ambiguity) name=YAMLID
 	 *     defaults=Defaults END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     defaults=Defaults END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     defaults=Defaults END (ambiguity) 'container' ':' container=Container
@@ -1397,7 +1410,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     defaults=Defaults END (ambiguity) (rule end)
 	 *     defaults=Defaults END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     defaults=Defaults END (ambiguity) if=IfStatement
-	 *     defaults=Defaults END (ambiguity) name=ID
+	 *     defaults=Defaults END (ambiguity) name=YAMLID
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1418,7 +1431,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) (rule end)
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) if=IfStatement
-	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) name=ID
+	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) name=YAMLID
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1439,7 +1452,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) (rule end)
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) if=IfStatement
-	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) name=ID
+	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) name=YAMLID
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) 'container' ':' container=Container
@@ -1459,7 +1472,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) 'with' ':' NEWLINE BEGIN args+=VariableAssignment
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) (rule end)
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) if=IfStatement
-	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) name=ID
+	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) name=YAMLID
 	 *     environmentVariables+=VariableAssignment END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     environmentVariables+=VariableAssignment END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     environmentVariables+=VariableAssignment END (ambiguity) 'container' ':' container=Container
@@ -1479,7 +1492,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     environmentVariables+=VariableAssignment END (ambiguity) (rule end)
 	 *     environmentVariables+=VariableAssignment END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     environmentVariables+=VariableAssignment END (ambiguity) if=IfStatement
-	 *     environmentVariables+=VariableAssignment END (ambiguity) name=ID
+	 *     environmentVariables+=VariableAssignment END (ambiguity) name=YAMLID
 	 *     if=IfStatement (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     if=IfStatement (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     if=IfStatement (ambiguity) 'container' ':' container=Container
@@ -1500,7 +1513,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     if=IfStatement (ambiguity) (rule end)
 	 *     if=IfStatement (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     if=IfStatement (ambiguity) if=IfStatement
-	 *     if=IfStatement (ambiguity) name=ID
+	 *     if=IfStatement (ambiguity) name=YAMLID
 	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1521,7 +1534,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) (rule end)
 	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) if=IfStatement
-	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) name=ID
+	 *     inheritSecrets?='inherit' NEWLINE (ambiguity) name=YAMLID
 	 *     jobName=Expression NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     jobName=Expression NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     jobName=Expression NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1542,28 +1555,28 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     jobName=Expression NEWLINE (ambiguity) (rule end)
 	 *     jobName=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     jobName=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     jobName=Expression NEWLINE (ambiguity) name=ID
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) '[' dependsOn+=[Job|ID]
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'container' ':' container=Container
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'continue-on-error' ':' continueOnError=Expression
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'defaults' ':' NEWLINE BEGIN defaults=Defaults
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'environment' ':' stagingEnvironment=StagingEnvironment
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'needs' ':' dependsOn+=[Job|ID]
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'permissions' ':' NEWLINE BEGIN permissions+=Permission
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'runs-on' ':' agent=Agent
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'secrets' ':' NEWLINE BEGIN secrets+=VariableAssignment
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'secrets' ':' inheritSecrets?='inherit'
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'services' ':' NEWLINE BEGIN services+=Service
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'strategy' ':' NEWLINE BEGIN strategy=Strategy
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'timeout-minutes' ':' timeoutMinutes=Expression
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'uses' ':' workflowPath=Expression
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'with' ':' NEWLINE BEGIN args+=VariableAssignment
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) (rule end)
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) if=IfStatement
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) name=ID
+	 *     jobName=Expression NEWLINE (ambiguity) name=YAMLID
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) '[' dependsOn+=[Job|ID]
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'container' ':' container=Container
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'continue-on-error' ':' continueOnError=Expression
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'defaults' ':' NEWLINE BEGIN defaults=Defaults
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'environment' ':' stagingEnvironment=StagingEnvironment
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'needs' ':' dependsOn+=[Job|ID]
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'permissions' ':' NEWLINE BEGIN permissions+=Permission
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'runs-on' ':' agent=Agent
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'secrets' ':' NEWLINE BEGIN secrets+=VariableAssignment
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'secrets' ':' inheritSecrets?='inherit'
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'services' ':' NEWLINE BEGIN services+=Service
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'strategy' ':' NEWLINE BEGIN strategy=Strategy
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'timeout-minutes' ':' timeoutMinutes=Expression
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'uses' ':' workflowPath=Expression
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'with' ':' NEWLINE BEGIN args+=VariableAssignment
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) (rule end)
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) if=IfStatement
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) name=YAMLID
 	 *     permissions+=Permission END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     permissions+=Permission END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     permissions+=Permission END (ambiguity) 'container' ':' container=Container
@@ -1583,7 +1596,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     permissions+=Permission END (ambiguity) (rule end)
 	 *     permissions+=Permission END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     permissions+=Permission END (ambiguity) if=IfStatement
-	 *     permissions+=Permission END (ambiguity) name=ID
+	 *     permissions+=Permission END (ambiguity) name=YAMLID
 	 *     secrets+=VariableAssignment END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     secrets+=VariableAssignment END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     secrets+=VariableAssignment END (ambiguity) 'container' ':' container=Container
@@ -1603,7 +1616,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     secrets+=VariableAssignment END (ambiguity) (rule end)
 	 *     secrets+=VariableAssignment END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     secrets+=VariableAssignment END (ambiguity) if=IfStatement
-	 *     secrets+=VariableAssignment END (ambiguity) name=ID
+	 *     secrets+=VariableAssignment END (ambiguity) name=YAMLID
 	 *     services+=Service END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     services+=Service END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     services+=Service END (ambiguity) 'container' ':' container=Container
@@ -1623,7 +1636,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     services+=Service END (ambiguity) (rule end)
 	 *     services+=Service END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     services+=Service END (ambiguity) if=IfStatement
-	 *     services+=Service END (ambiguity) name=ID
+	 *     services+=Service END (ambiguity) name=YAMLID
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) 'container' ':' container=Container
@@ -1644,7 +1657,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) (rule end)
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) if=IfStatement
-	 *     stagingEnvironment=StagingEnvironment (ambiguity) name=ID
+	 *     stagingEnvironment=StagingEnvironment (ambiguity) name=YAMLID
 	 *     strategy=Strategy END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     strategy=Strategy END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     strategy=Strategy END (ambiguity) 'container' ':' container=Container
@@ -1665,7 +1678,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     strategy=Strategy END (ambiguity) (rule end)
 	 *     strategy=Strategy END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     strategy=Strategy END (ambiguity) if=IfStatement
-	 *     strategy=Strategy END (ambiguity) name=ID
+	 *     strategy=Strategy END (ambiguity) name=YAMLID
 	 *     workflowPath=Expression NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     workflowPath=Expression NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     workflowPath=Expression NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1686,7 +1699,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     workflowPath=Expression NEWLINE (ambiguity) (rule end)
 	 *     workflowPath=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     workflowPath=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     workflowPath=Expression NEWLINE (ambiguity) name=ID
+	 *     workflowPath=Expression NEWLINE (ambiguity) name=YAMLID
 	 
 	 * </pre>
 	 */
@@ -1721,7 +1734,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     timeoutMinutes=Expression NEWLINE (ambiguity) (rule end)
 	 *     timeoutMinutes=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     timeoutMinutes=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     timeoutMinutes=Expression NEWLINE (ambiguity) name=ID
+	 *     timeoutMinutes=Expression NEWLINE (ambiguity) name=YAMLID
 	 
 	 * </pre>
 	 */
@@ -1885,7 +1898,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) (rule start)
 	 *     (rule start) (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     (rule start) (ambiguity) if=IfStatement
-	 *     (rule start) (ambiguity) name=ID
+	 *     (rule start) (ambiguity) name=YAMLID
 	 *     agent=Agent (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     agent=Agent (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     agent=Agent (ambiguity) 'container' ':' container=Container
@@ -1903,7 +1916,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     agent=Agent (ambiguity) (rule end)
 	 *     agent=Agent (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     agent=Agent (ambiguity) if=IfStatement
-	 *     agent=Agent (ambiguity) name=ID
+	 *     agent=Agent (ambiguity) name=YAMLID
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) 'container' ':' container=Container
@@ -1921,7 +1934,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) (rule end)
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) if=IfStatement
-	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) name=ID
+	 *     concurrencyGroup=ConcurrencyGroup END (ambiguity) name=YAMLID
 	 *     container=Container (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     container=Container (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     container=Container (ambiguity) 'container' ':' container=Container
@@ -1939,7 +1952,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     container=Container (ambiguity) (rule end)
 	 *     container=Container (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     container=Container (ambiguity) if=IfStatement
-	 *     container=Container (ambiguity) name=ID
+	 *     container=Container (ambiguity) name=YAMLID
 	 *     continueOnError=Expression NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     continueOnError=Expression NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     continueOnError=Expression NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1957,7 +1970,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     continueOnError=Expression NEWLINE (ambiguity) (rule end)
 	 *     continueOnError=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     continueOnError=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     continueOnError=Expression NEWLINE (ambiguity) name=ID
+	 *     continueOnError=Expression NEWLINE (ambiguity) name=YAMLID
 	 *     defaults=Defaults END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     defaults=Defaults END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     defaults=Defaults END (ambiguity) 'container' ':' container=Container
@@ -1975,7 +1988,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     defaults=Defaults END (ambiguity) (rule end)
 	 *     defaults=Defaults END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     defaults=Defaults END (ambiguity) if=IfStatement
-	 *     defaults=Defaults END (ambiguity) name=ID
+	 *     defaults=Defaults END (ambiguity) name=YAMLID
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) 'container' ':' container=Container
@@ -1993,7 +2006,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) (rule end)
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) if=IfStatement
-	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) name=ID
+	 *     dependsOn+=[Job|ID] ']' NEWLINE (ambiguity) name=YAMLID
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) 'container' ':' container=Container
@@ -2011,7 +2024,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) (rule end)
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) if=IfStatement
-	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) name=ID
+	 *     dependsOn+=[Job|ID] NEWLINE (ambiguity) name=YAMLID
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) 'container' ':' container=Container
@@ -2028,7 +2041,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) 'timeout-minutes' ':' timeoutMinutes=Expression
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) (rule end)
 	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) if=IfStatement
-	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) name=ID
+	 *     dependsOn+=[Job|ID] NEWLINE END (ambiguity) name=YAMLID
 	 *     environmentVariables+=VariableAssignment END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     environmentVariables+=VariableAssignment END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     environmentVariables+=VariableAssignment END (ambiguity) 'container' ':' container=Container
@@ -2045,7 +2058,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     environmentVariables+=VariableAssignment END (ambiguity) (rule end)
 	 *     environmentVariables+=VariableAssignment END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     environmentVariables+=VariableAssignment END (ambiguity) if=IfStatement
-	 *     environmentVariables+=VariableAssignment END (ambiguity) name=ID
+	 *     environmentVariables+=VariableAssignment END (ambiguity) name=YAMLID
 	 *     if=IfStatement (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     if=IfStatement (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     if=IfStatement (ambiguity) 'container' ':' container=Container
@@ -2063,7 +2076,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     if=IfStatement (ambiguity) (rule end)
 	 *     if=IfStatement (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     if=IfStatement (ambiguity) if=IfStatement
-	 *     if=IfStatement (ambiguity) name=ID
+	 *     if=IfStatement (ambiguity) name=YAMLID
 	 *     jobName=Expression NEWLINE (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     jobName=Expression NEWLINE (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     jobName=Expression NEWLINE (ambiguity) 'container' ':' container=Container
@@ -2081,25 +2094,25 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     jobName=Expression NEWLINE (ambiguity) (rule end)
 	 *     jobName=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     jobName=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     jobName=Expression NEWLINE (ambiguity) name=ID
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) '[' dependsOn+=[Job|ID]
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'container' ':' container=Container
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'continue-on-error' ':' continueOnError=Expression
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'defaults' ':' NEWLINE BEGIN defaults=Defaults
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'environment' ':' stagingEnvironment=StagingEnvironment
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'needs' ':' dependsOn+=[Job|ID]
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'permissions' ':' NEWLINE BEGIN permissions+=Permission
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'runs-on' ':' agent=Agent
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'services' ':' NEWLINE BEGIN services+=Service
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'steps' ':' NEWLINE BEGIN steps+=Step
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'strategy' ':' NEWLINE BEGIN strategy=Strategy
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) 'timeout-minutes' ':' timeoutMinutes=Expression
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) (rule end)
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) if=IfStatement
-	 *     name=ID ':' NEWLINE BEGIN (ambiguity) name=ID
+	 *     jobName=Expression NEWLINE (ambiguity) name=YAMLID
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) '[' dependsOn+=[Job|ID]
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'container' ':' container=Container
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'continue-on-error' ':' continueOnError=Expression
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'defaults' ':' NEWLINE BEGIN defaults=Defaults
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'environment' ':' stagingEnvironment=StagingEnvironment
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'needs' ':' dependsOn+=[Job|ID]
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'permissions' ':' NEWLINE BEGIN permissions+=Permission
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'runs-on' ':' agent=Agent
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'services' ':' NEWLINE BEGIN services+=Service
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'steps' ':' NEWLINE BEGIN steps+=Step
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'strategy' ':' NEWLINE BEGIN strategy=Strategy
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) 'timeout-minutes' ':' timeoutMinutes=Expression
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) (rule end)
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) if=IfStatement
+	 *     name=YAMLID ':' NEWLINE BEGIN (ambiguity) name=YAMLID
 	 *     permissions+=Permission END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     permissions+=Permission END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     permissions+=Permission END (ambiguity) 'container' ':' container=Container
@@ -2116,7 +2129,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     permissions+=Permission END (ambiguity) (rule end)
 	 *     permissions+=Permission END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     permissions+=Permission END (ambiguity) if=IfStatement
-	 *     permissions+=Permission END (ambiguity) name=ID
+	 *     permissions+=Permission END (ambiguity) name=YAMLID
 	 *     services+=Service END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     services+=Service END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     services+=Service END (ambiguity) 'container' ':' container=Container
@@ -2133,7 +2146,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     services+=Service END (ambiguity) (rule end)
 	 *     services+=Service END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     services+=Service END (ambiguity) if=IfStatement
-	 *     services+=Service END (ambiguity) name=ID
+	 *     services+=Service END (ambiguity) name=YAMLID
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) 'container' ':' container=Container
@@ -2151,7 +2164,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) (rule end)
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     stagingEnvironment=StagingEnvironment (ambiguity) if=IfStatement
-	 *     stagingEnvironment=StagingEnvironment (ambiguity) name=ID
+	 *     stagingEnvironment=StagingEnvironment (ambiguity) name=YAMLID
 	 *     steps+=Step END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     steps+=Step END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     steps+=Step END (ambiguity) 'container' ':' container=Container
@@ -2168,7 +2181,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     steps+=Step END (ambiguity) (rule end)
 	 *     steps+=Step END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     steps+=Step END (ambiguity) if=IfStatement
-	 *     steps+=Step END (ambiguity) name=ID
+	 *     steps+=Step END (ambiguity) name=YAMLID
 	 *     strategy=Strategy END (ambiguity) '[' dependsOn+=[Job|ID]
 	 *     strategy=Strategy END (ambiguity) 'concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup
 	 *     strategy=Strategy END (ambiguity) 'container' ':' container=Container
@@ -2186,7 +2199,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     strategy=Strategy END (ambiguity) (rule end)
 	 *     strategy=Strategy END (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     strategy=Strategy END (ambiguity) if=IfStatement
-	 *     strategy=Strategy END (ambiguity) name=ID
+	 *     strategy=Strategy END (ambiguity) name=YAMLID
 	 
 	 * </pre>
 	 */
@@ -2218,7 +2231,7 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     timeoutMinutes=Expression NEWLINE (ambiguity) (rule end)
 	 *     timeoutMinutes=Expression NEWLINE (ambiguity) NEWLINE BEGIN '-' dependsOn+=[Job|ID]
 	 *     timeoutMinutes=Expression NEWLINE (ambiguity) if=IfStatement
-	 *     timeoutMinutes=Expression NEWLINE (ambiguity) name=ID
+	 *     timeoutMinutes=Expression NEWLINE (ambiguity) name=YAMLID
 	 
 	 * </pre>
 	 */

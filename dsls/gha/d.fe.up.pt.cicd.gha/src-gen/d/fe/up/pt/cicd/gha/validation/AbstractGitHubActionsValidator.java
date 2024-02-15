@@ -14,23 +14,6 @@ public abstract class AbstractGitHubActionsValidator extends AbstractDeclarative
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Jobs"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Jobs/Steps"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Options"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Triggers"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Triggers/Parameters"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Jobs/Matrices"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/BinaryOperators"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/Values/Literals"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/BinaryOperators/LogicalOperators"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/BinaryOperators/EqualityOperators"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/BinaryOperators/ComparisonOperators"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/UnaryOperators"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/Values/Variables"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/Values"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/BuiltInFunctions"));
-		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/GHA/Expressions/BuiltInFunctions/StatusCheckFunctions"));
 		return result;
 	}
 }

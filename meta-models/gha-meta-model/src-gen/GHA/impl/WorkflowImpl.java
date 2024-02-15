@@ -2,25 +2,14 @@
  */
 package GHA.impl;
 
-import GHA.Expressions.Expression;
-import GHA.Expressions.ExpressionsPackage;
-
-import GHA.Expressions.impl.VariableAssignmentImpl;
-
+import GHA.ConcurrencyGroup;
+import GHA.Defaults;
+import GHA.Expression;
 import GHA.GHAPackage;
-
-import GHA.Jobs.Job;
-
-import GHA.Options.ConcurrencyGroup;
-import GHA.Options.Defaults;
-import GHA.Options.OptionsPackage;
-import GHA.Options.PERMISSIONS;
-import GHA.Options.PERMISSION_SCOPES;
-
-import GHA.Options.impl.PermissionImpl;
-
-import GHA.Triggers.Trigger;
-
+import GHA.Job;
+import GHA.PERMISSIONS;
+import GHA.PERMISSION_SCOPES;
+import GHA.Trigger;
 import GHA.Workflow;
 
 import java.util.Collection;
@@ -286,7 +275,7 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 	@Override
 	public EMap<PERMISSION_SCOPES, PERMISSIONS> getPermissions() {
 		if (permissions == null) {
-			permissions = new EcoreEMap<PERMISSION_SCOPES, PERMISSIONS>(OptionsPackage.Literals.PERMISSION,
+			permissions = new EcoreEMap<PERMISSION_SCOPES, PERMISSIONS>(GHAPackage.Literals.PERMISSION,
 					PermissionImpl.class, this, GHAPackage.WORKFLOW__PERMISSIONS);
 		}
 		return permissions;
@@ -352,7 +341,7 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 	@Override
 	public EMap<String, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(ExpressionsPackage.Literals.VARIABLE_ASSIGNMENT,
+			environmentVariables = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, GHAPackage.WORKFLOW__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;

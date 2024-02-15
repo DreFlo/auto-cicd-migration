@@ -96,6 +96,1133 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link GHA.ReuseWorkflowJob} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReuseWorkflowJobItemProvider reuseWorkflowJobItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.ReuseWorkflowJob}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReuseWorkflowJobAdapter() {
+		if (reuseWorkflowJobItemProvider == null) {
+			reuseWorkflowJobItemProvider = new ReuseWorkflowJobItemProvider(this);
+		}
+
+		return reuseWorkflowJobItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.ScriptJob} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ScriptJobItemProvider scriptJobItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.ScriptJob}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScriptJobAdapter() {
+		if (scriptJobItemProvider == null) {
+			scriptJobItemProvider = new ScriptJobItemProvider(this);
+		}
+
+		return scriptJobItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Agent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AgentItemProvider agentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Agent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAgentAdapter() {
+		if (agentItemProvider == null) {
+			agentItemProvider = new AgentItemProvider(this);
+		}
+
+		return agentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Container} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContainerItemProvider containerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Container}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContainerAdapter() {
+		if (containerItemProvider == null) {
+			containerItemProvider = new ContainerItemProvider(this);
+		}
+
+		return containerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ServiceItemProvider serviceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServiceAdapter() {
+		if (serviceItemProvider == null) {
+			serviceItemProvider = new ServiceItemProvider(this);
+		}
+
+		return serviceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.StagingEnvironment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StagingEnvironmentItemProvider stagingEnvironmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.StagingEnvironment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStagingEnvironmentAdapter() {
+		if (stagingEnvironmentItemProvider == null) {
+			stagingEnvironmentItemProvider = new StagingEnvironmentItemProvider(this);
+		}
+
+		return stagingEnvironmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.StandardEventTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StandardEventTriggerItemProvider standardEventTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.StandardEventTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStandardEventTriggerAdapter() {
+		if (standardEventTriggerItemProvider == null) {
+			standardEventTriggerItemProvider = new StandardEventTriggerItemProvider(this);
+		}
+
+		return standardEventTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.WorkflowRunTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkflowRunTriggerItemProvider workflowRunTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.WorkflowRunTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkflowRunTriggerAdapter() {
+		if (workflowRunTriggerItemProvider == null) {
+			workflowRunTriggerItemProvider = new WorkflowRunTriggerItemProvider(this);
+		}
+
+		return workflowRunTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.PullRequestTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PullRequestTriggerItemProvider pullRequestTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.PullRequestTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPullRequestTriggerAdapter() {
+		if (pullRequestTriggerItemProvider == null) {
+			pullRequestTriggerItemProvider = new PullRequestTriggerItemProvider(this);
+		}
+
+		return pullRequestTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.PushTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PushTriggerItemProvider pushTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.PushTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPushTriggerAdapter() {
+		if (pushTriggerItemProvider == null) {
+			pushTriggerItemProvider = new PushTriggerItemProvider(this);
+		}
+
+		return pushTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.ScheduleTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ScheduleTriggerItemProvider scheduleTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.ScheduleTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScheduleTriggerAdapter() {
+		if (scheduleTriggerItemProvider == null) {
+			scheduleTriggerItemProvider = new ScheduleTriggerItemProvider(this);
+		}
+
+		return scheduleTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.WorkflowCallTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkflowCallTriggerItemProvider workflowCallTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.WorkflowCallTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkflowCallTriggerAdapter() {
+		if (workflowCallTriggerItemProvider == null) {
+			workflowCallTriggerItemProvider = new WorkflowCallTriggerItemProvider(this);
+		}
+
+		return workflowCallTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.WorkflowDispatchTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkflowDispatchTriggerItemProvider workflowDispatchTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.WorkflowDispatchTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkflowDispatchTriggerAdapter() {
+		if (workflowDispatchTriggerItemProvider == null) {
+			workflowDispatchTriggerItemProvider = new WorkflowDispatchTriggerItemProvider(this);
+		}
+
+		return workflowDispatchTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PermissionItemProvider permissionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPermissionAdapter() {
+		if (permissionItemProvider == null) {
+			permissionItemProvider = new PermissionItemProvider(this);
+		}
+
+		return permissionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.ConcurrencyGroup} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConcurrencyGroupItemProvider concurrencyGroupItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.ConcurrencyGroup}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConcurrencyGroupAdapter() {
+		if (concurrencyGroupItemProvider == null) {
+			concurrencyGroupItemProvider = new ConcurrencyGroupItemProvider(this);
+		}
+
+		return concurrencyGroupItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Defaults} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DefaultsItemProvider defaultsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Defaults}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDefaultsAdapter() {
+		if (defaultsItemProvider == null) {
+			defaultsItemProvider = new DefaultsItemProvider(this);
+		}
+
+		return defaultsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableAssignmentItemProvider variableAssignmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableAssignmentAdapter() {
+		if (variableAssignmentItemProvider == null) {
+			variableAssignmentItemProvider = new VariableAssignmentItemProvider(this);
+		}
+
+		return variableAssignmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Concat} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConcatItemProvider concatItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Concat}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConcatAdapter() {
+		if (concatItemProvider == null) {
+			concatItemProvider = new ConcatItemProvider(this);
+		}
+
+		return concatItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Equality} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EqualityItemProvider equalityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Equality}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEqualityAdapter() {
+		if (equalityItemProvider == null) {
+			equalityItemProvider = new EqualityItemProvider(this);
+		}
+
+		return equalityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Or} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrItemProvider orItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Or}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrAdapter() {
+		if (orItemProvider == null) {
+			orItemProvider = new OrItemProvider(this);
+		}
+
+		return orItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.And} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AndItemProvider andItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.And}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAndAdapter() {
+		if (andItemProvider == null) {
+			andItemProvider = new AndItemProvider(this);
+		}
+
+		return andItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Not} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NotItemProvider notItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Not}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNotAdapter() {
+		if (notItemProvider == null) {
+			notItemProvider = new NotItemProvider(this);
+		}
+
+		return notItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Contains} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContainsItemProvider containsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Contains}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContainsAdapter() {
+		if (containsItemProvider == null) {
+			containsItemProvider = new ContainsItemProvider(this);
+		}
+
+		return containsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.StartsWith} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StartsWithItemProvider startsWithItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.StartsWith}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStartsWithAdapter() {
+		if (startsWithItemProvider == null) {
+			startsWithItemProvider = new StartsWithItemProvider(this);
+		}
+
+		return startsWithItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.EndsWith} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EndsWithItemProvider endsWithItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.EndsWith}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEndsWithAdapter() {
+		if (endsWithItemProvider == null) {
+			endsWithItemProvider = new EndsWithItemProvider(this);
+		}
+
+		return endsWithItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Format} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FormatItemProvider formatItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Format}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFormatAdapter() {
+		if (formatItemProvider == null) {
+			formatItemProvider = new FormatItemProvider(this);
+		}
+
+		return formatItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Join} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JoinItemProvider joinItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Join}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJoinAdapter() {
+		if (joinItemProvider == null) {
+			joinItemProvider = new JoinItemProvider(this);
+		}
+
+		return joinItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.ToJSON} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ToJSONItemProvider toJSONItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.ToJSON}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createToJSONAdapter() {
+		if (toJSONItemProvider == null) {
+			toJSONItemProvider = new ToJSONItemProvider(this);
+		}
+
+		return toJSONItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.FromJSON} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FromJSONItemProvider fromJSONItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.FromJSON}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFromJSONAdapter() {
+		if (fromJSONItemProvider == null) {
+			fromJSONItemProvider = new FromJSONItemProvider(this);
+		}
+
+		return fromJSONItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.HashFiles} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HashFilesItemProvider hashFilesItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.HashFiles}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createHashFilesAdapter() {
+		if (hashFilesItemProvider == null) {
+			hashFilesItemProvider = new HashFilesItemProvider(this);
+		}
+
+		return hashFilesItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Always} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AlwaysItemProvider alwaysItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Always}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAlwaysAdapter() {
+		if (alwaysItemProvider == null) {
+			alwaysItemProvider = new AlwaysItemProvider(this);
+		}
+
+		return alwaysItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Success} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SuccessItemProvider successItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Success}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSuccessAdapter() {
+		if (successItemProvider == null) {
+			successItemProvider = new SuccessItemProvider(this);
+		}
+
+		return successItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Cancelled} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CancelledItemProvider cancelledItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Cancelled}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCancelledAdapter() {
+		if (cancelledItemProvider == null) {
+			cancelledItemProvider = new CancelledItemProvider(this);
+		}
+
+		return cancelledItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Failure} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FailureItemProvider failureItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Failure}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFailureAdapter() {
+		if (failureItemProvider == null) {
+			failureItemProvider = new FailureItemProvider(this);
+		}
+
+		return failureItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.StringLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringLiteralItemProvider stringLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.StringLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringLiteralAdapter() {
+		if (stringLiteralItemProvider == null) {
+			stringLiteralItemProvider = new StringLiteralItemProvider(this);
+		}
+
+		return stringLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.IntegerLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntegerLiteralItemProvider integerLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.IntegerLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIntegerLiteralAdapter() {
+		if (integerLiteralItemProvider == null) {
+			integerLiteralItemProvider = new IntegerLiteralItemProvider(this);
+		}
+
+		return integerLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.DoubleLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DoubleLiteralItemProvider doubleLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.DoubleLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDoubleLiteralAdapter() {
+		if (doubleLiteralItemProvider == null) {
+			doubleLiteralItemProvider = new DoubleLiteralItemProvider(this);
+		}
+
+		return doubleLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.BooleanLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BooleanLiteralItemProvider booleanLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.BooleanLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBooleanLiteralAdapter() {
+		if (booleanLiteralItemProvider == null) {
+			booleanLiteralItemProvider = new BooleanLiteralItemProvider(this);
+		}
+
+		return booleanLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Variable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableItemProvider variableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableAdapter() {
+		if (variableItemProvider == null) {
+			variableItemProvider = new VariableItemProvider(this);
+		}
+
+		return variableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.GitHubContext} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GitHubContextItemProvider gitHubContextItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.GitHubContext}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGitHubContextAdapter() {
+		if (gitHubContextItemProvider == null) {
+			gitHubContextItemProvider = new GitHubContextItemProvider(this);
+		}
+
+		return gitHubContextItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.VariableDereference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.VariableDereference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableDereferenceAdapter() {
+		if (variableDereferenceItemProvider == null) {
+			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
+		}
+
+		return variableDereferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Matrix} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatrixItemProvider matrixItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Matrix}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatrixAdapter() {
+		if (matrixItemProvider == null) {
+			matrixItemProvider = new MatrixItemProvider(this);
+		}
+
+		return matrixItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.MatrixAxis} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatrixAxisItemProvider matrixAxisItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.MatrixAxis}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatrixAxisAdapter() {
+		if (matrixAxisItemProvider == null) {
+			matrixAxisItemProvider = new MatrixAxisItemProvider(this);
+		}
+
+		return matrixAxisItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.MatrixCombination} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatrixCombinationItemProvider matrixCombinationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.MatrixCombination}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatrixCombinationAdapter() {
+		if (matrixCombinationItemProvider == null) {
+			matrixCombinationItemProvider = new MatrixCombinationItemProvider(this);
+		}
+
+		return matrixCombinationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Command} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommandItemProvider commandItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Command}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCommandAdapter() {
+		if (commandItemProvider == null) {
+			commandItemProvider = new CommandItemProvider(this);
+		}
+
+		return commandItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Package} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PackageItemProvider packageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Package}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPackageAdapter() {
+		if (packageItemProvider == null) {
+			packageItemProvider = new PackageItemProvider(this);
+		}
+
+		return packageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Input} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InputItemProvider inputItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Input}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInputAdapter() {
+		if (inputItemProvider == null) {
+			inputItemProvider = new InputItemProvider(this);
+		}
+
+		return inputItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Secret} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SecretItemProvider secretItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Secret}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSecretAdapter() {
+		if (secretItemProvider == null) {
+			secretItemProvider = new SecretItemProvider(this);
+		}
+
+		return secretItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link GHA.Output} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OutputItemProvider outputItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link GHA.Output}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOutputAdapter() {
+		if (outputItemProvider == null) {
+			outputItemProvider = new OutputItemProvider(this);
+		}
+
+		return outputItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,6 +1329,104 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	public void dispose() {
 		if (workflowItemProvider != null)
 			workflowItemProvider.dispose();
+		if (reuseWorkflowJobItemProvider != null)
+			reuseWorkflowJobItemProvider.dispose();
+		if (scriptJobItemProvider != null)
+			scriptJobItemProvider.dispose();
+		if (agentItemProvider != null)
+			agentItemProvider.dispose();
+		if (containerItemProvider != null)
+			containerItemProvider.dispose();
+		if (serviceItemProvider != null)
+			serviceItemProvider.dispose();
+		if (stagingEnvironmentItemProvider != null)
+			stagingEnvironmentItemProvider.dispose();
+		if (standardEventTriggerItemProvider != null)
+			standardEventTriggerItemProvider.dispose();
+		if (workflowRunTriggerItemProvider != null)
+			workflowRunTriggerItemProvider.dispose();
+		if (pullRequestTriggerItemProvider != null)
+			pullRequestTriggerItemProvider.dispose();
+		if (pushTriggerItemProvider != null)
+			pushTriggerItemProvider.dispose();
+		if (scheduleTriggerItemProvider != null)
+			scheduleTriggerItemProvider.dispose();
+		if (workflowCallTriggerItemProvider != null)
+			workflowCallTriggerItemProvider.dispose();
+		if (workflowDispatchTriggerItemProvider != null)
+			workflowDispatchTriggerItemProvider.dispose();
+		if (permissionItemProvider != null)
+			permissionItemProvider.dispose();
+		if (concurrencyGroupItemProvider != null)
+			concurrencyGroupItemProvider.dispose();
+		if (defaultsItemProvider != null)
+			defaultsItemProvider.dispose();
+		if (variableAssignmentItemProvider != null)
+			variableAssignmentItemProvider.dispose();
+		if (concatItemProvider != null)
+			concatItemProvider.dispose();
+		if (equalityItemProvider != null)
+			equalityItemProvider.dispose();
+		if (orItemProvider != null)
+			orItemProvider.dispose();
+		if (andItemProvider != null)
+			andItemProvider.dispose();
+		if (notItemProvider != null)
+			notItemProvider.dispose();
+		if (containsItemProvider != null)
+			containsItemProvider.dispose();
+		if (startsWithItemProvider != null)
+			startsWithItemProvider.dispose();
+		if (endsWithItemProvider != null)
+			endsWithItemProvider.dispose();
+		if (formatItemProvider != null)
+			formatItemProvider.dispose();
+		if (joinItemProvider != null)
+			joinItemProvider.dispose();
+		if (toJSONItemProvider != null)
+			toJSONItemProvider.dispose();
+		if (fromJSONItemProvider != null)
+			fromJSONItemProvider.dispose();
+		if (hashFilesItemProvider != null)
+			hashFilesItemProvider.dispose();
+		if (alwaysItemProvider != null)
+			alwaysItemProvider.dispose();
+		if (successItemProvider != null)
+			successItemProvider.dispose();
+		if (cancelledItemProvider != null)
+			cancelledItemProvider.dispose();
+		if (failureItemProvider != null)
+			failureItemProvider.dispose();
+		if (stringLiteralItemProvider != null)
+			stringLiteralItemProvider.dispose();
+		if (integerLiteralItemProvider != null)
+			integerLiteralItemProvider.dispose();
+		if (doubleLiteralItemProvider != null)
+			doubleLiteralItemProvider.dispose();
+		if (booleanLiteralItemProvider != null)
+			booleanLiteralItemProvider.dispose();
+		if (variableItemProvider != null)
+			variableItemProvider.dispose();
+		if (gitHubContextItemProvider != null)
+			gitHubContextItemProvider.dispose();
+		if (variableDereferenceItemProvider != null)
+			variableDereferenceItemProvider.dispose();
+		if (matrixItemProvider != null)
+			matrixItemProvider.dispose();
+		if (matrixAxisItemProvider != null)
+			matrixAxisItemProvider.dispose();
+		if (matrixCombinationItemProvider != null)
+			matrixCombinationItemProvider.dispose();
+		if (commandItemProvider != null)
+			commandItemProvider.dispose();
+		if (packageItemProvider != null)
+			packageItemProvider.dispose();
+		if (inputItemProvider != null)
+			inputItemProvider.dispose();
+		if (secretItemProvider != null)
+			secretItemProvider.dispose();
+		if (outputItemProvider != null)
+			outputItemProvider.dispose();
 	}
 
 }

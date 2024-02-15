@@ -30,430 +30,466 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	public class WorkflowElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Workflow");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final UnorderedGroup cUnorderedGroup_0 = (UnorderedGroup)cGroup.eContents().get(0);
-		private final Group cGroup_0_0 = (Group)cUnorderedGroup_0.eContents().get(0);
-		private final Keyword cNameKeyword_0_0_0 = (Keyword)cGroup_0_0.eContents().get(0);
-		private final Keyword cColonKeyword_0_0_1 = (Keyword)cGroup_0_0.eContents().get(1);
-		private final Assignment cNameAssignment_0_0_2 = (Assignment)cGroup_0_0.eContents().get(2);
-		private final RuleCall cNameExpressionParserRuleCall_0_0_2_0 = (RuleCall)cNameAssignment_0_0_2.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_0_0_3 = (RuleCall)cGroup_0_0.eContents().get(3);
-		private final Group cGroup_0_1 = (Group)cUnorderedGroup_0.eContents().get(1);
-		private final Keyword cRunNameKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Keyword cColonKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
-		private final Assignment cRunNameAssignment_0_1_2 = (Assignment)cGroup_0_1.eContents().get(2);
-		private final RuleCall cRunNameExpressionParserRuleCall_0_1_2_0 = (RuleCall)cRunNameAssignment_0_1_2.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_0_1_3 = (RuleCall)cGroup_0_1.eContents().get(3);
-		private final Group cGroup_0_2 = (Group)cUnorderedGroup_0.eContents().get(2);
-		private final Keyword cOnKeyword_0_2_0 = (Keyword)cGroup_0_2.eContents().get(0);
-		private final Keyword cColonKeyword_0_2_1 = (Keyword)cGroup_0_2.eContents().get(1);
-		private final Alternatives cAlternatives_0_2_2 = (Alternatives)cGroup_0_2.eContents().get(2);
-		private final Group cGroup_0_2_2_0 = (Group)cAlternatives_0_2_2.eContents().get(0);
-		private final Assignment cTriggersAssignment_0_2_2_0_0 = (Assignment)cGroup_0_2_2_0.eContents().get(0);
-		private final RuleCall cTriggersSimpleTriggerParserRuleCall_0_2_2_0_0_0 = (RuleCall)cTriggersAssignment_0_2_2_0_0.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_0_2_2_0_1 = (RuleCall)cGroup_0_2_2_0.eContents().get(1);
-		private final Group cGroup_0_2_2_1 = (Group)cAlternatives_0_2_2.eContents().get(1);
-		private final Keyword cLeftSquareBracketKeyword_0_2_2_1_0 = (Keyword)cGroup_0_2_2_1.eContents().get(0);
-		private final Assignment cTriggersAssignment_0_2_2_1_1 = (Assignment)cGroup_0_2_2_1.eContents().get(1);
-		private final RuleCall cTriggersSimpleTriggerParserRuleCall_0_2_2_1_1_0 = (RuleCall)cTriggersAssignment_0_2_2_1_1.eContents().get(0);
-		private final Group cGroup_0_2_2_1_2 = (Group)cGroup_0_2_2_1.eContents().get(2);
-		private final Keyword cCommaKeyword_0_2_2_1_2_0 = (Keyword)cGroup_0_2_2_1_2.eContents().get(0);
-		private final Assignment cTriggersAssignment_0_2_2_1_2_1 = (Assignment)cGroup_0_2_2_1_2.eContents().get(1);
-		private final RuleCall cTriggersSimpleTriggerParserRuleCall_0_2_2_1_2_1_0 = (RuleCall)cTriggersAssignment_0_2_2_1_2_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_0_2_2_1_3 = (Keyword)cGroup_0_2_2_1.eContents().get(3);
-		private final RuleCall cNEWLINETerminalRuleCall_0_2_2_1_4 = (RuleCall)cGroup_0_2_2_1.eContents().get(4);
-		private final Group cGroup_0_2_2_2 = (Group)cAlternatives_0_2_2.eContents().get(2);
-		private final RuleCall cNEWLINETerminalRuleCall_0_2_2_2_0 = (RuleCall)cGroup_0_2_2_2.eContents().get(0);
-		private final RuleCall cBEGINTerminalRuleCall_0_2_2_2_1 = (RuleCall)cGroup_0_2_2_2.eContents().get(1);
-		private final Group cGroup_0_2_2_2_2 = (Group)cGroup_0_2_2_2.eContents().get(2);
-		private final Keyword cHyphenMinusKeyword_0_2_2_2_2_0 = (Keyword)cGroup_0_2_2_2_2.eContents().get(0);
-		private final Assignment cTriggersAssignment_0_2_2_2_2_1 = (Assignment)cGroup_0_2_2_2_2.eContents().get(1);
-		private final RuleCall cTriggersSimpleTriggerParserRuleCall_0_2_2_2_2_1_0 = (RuleCall)cTriggersAssignment_0_2_2_2_2_1.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_0_2_2_2_2_2 = (RuleCall)cGroup_0_2_2_2_2.eContents().get(2);
-		private final RuleCall cENDTerminalRuleCall_0_2_2_2_3 = (RuleCall)cGroup_0_2_2_2.eContents().get(3);
-		private final Assignment cTriggersAssignment_0_2_2_3 = (Assignment)cAlternatives_0_2_2.eContents().get(3);
-		private final RuleCall cTriggersOptionedTriggerParserRuleCall_0_2_2_3_0 = (RuleCall)cTriggersAssignment_0_2_2_3.eContents().get(0);
-		private final Group cGroup_0_3 = (Group)cUnorderedGroup_0.eContents().get(3);
-		private final Keyword cPermissionsKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
-		private final Keyword cColonKeyword_0_3_1 = (Keyword)cGroup_0_3.eContents().get(1);
-		private final RuleCall cNEWLINETerminalRuleCall_0_3_2 = (RuleCall)cGroup_0_3.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_0_3_3 = (RuleCall)cGroup_0_3.eContents().get(3);
-		private final Assignment cPermissionsAssignment_0_3_4 = (Assignment)cGroup_0_3.eContents().get(4);
-		private final RuleCall cPermissionsPermissionParserRuleCall_0_3_4_0 = (RuleCall)cPermissionsAssignment_0_3_4.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_0_3_5 = (RuleCall)cGroup_0_3.eContents().get(5);
-		private final Group cGroup_0_4 = (Group)cUnorderedGroup_0.eContents().get(4);
-		private final Keyword cEnvKeyword_0_4_0 = (Keyword)cGroup_0_4.eContents().get(0);
-		private final Keyword cColonKeyword_0_4_1 = (Keyword)cGroup_0_4.eContents().get(1);
-		private final RuleCall cNEWLINETerminalRuleCall_0_4_2 = (RuleCall)cGroup_0_4.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_0_4_3 = (RuleCall)cGroup_0_4.eContents().get(3);
-		private final Assignment cEnvironmentVariablesAssignment_0_4_4 = (Assignment)cGroup_0_4.eContents().get(4);
-		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_0_4_4_0 = (RuleCall)cEnvironmentVariablesAssignment_0_4_4.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_0_4_5 = (RuleCall)cGroup_0_4.eContents().get(5);
-		private final Group cGroup_0_5 = (Group)cUnorderedGroup_0.eContents().get(5);
-		private final Keyword cDefaultsKeyword_0_5_0 = (Keyword)cGroup_0_5.eContents().get(0);
-		private final Keyword cColonKeyword_0_5_1 = (Keyword)cGroup_0_5.eContents().get(1);
-		private final RuleCall cNEWLINETerminalRuleCall_0_5_2 = (RuleCall)cGroup_0_5.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_0_5_3 = (RuleCall)cGroup_0_5.eContents().get(3);
-		private final Assignment cDefaultsAssignment_0_5_4 = (Assignment)cGroup_0_5.eContents().get(4);
-		private final RuleCall cDefaultsDefaultsParserRuleCall_0_5_4_0 = (RuleCall)cDefaultsAssignment_0_5_4.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_0_5_5 = (RuleCall)cGroup_0_5.eContents().get(5);
-		private final Group cGroup_0_6 = (Group)cUnorderedGroup_0.eContents().get(6);
-		private final Keyword cConcurrencyKeyword_0_6_0 = (Keyword)cGroup_0_6.eContents().get(0);
-		private final Keyword cColonKeyword_0_6_1 = (Keyword)cGroup_0_6.eContents().get(1);
-		private final RuleCall cNEWLINETerminalRuleCall_0_6_2 = (RuleCall)cGroup_0_6.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_0_6_3 = (RuleCall)cGroup_0_6.eContents().get(3);
-		private final Assignment cConcurrencyGroupAssignment_0_6_4 = (Assignment)cGroup_0_6.eContents().get(4);
-		private final RuleCall cConcurrencyGroupConcurrencyGroupParserRuleCall_0_6_4_0 = (RuleCall)cConcurrencyGroupAssignment_0_6_4.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_0_6_5 = (RuleCall)cGroup_0_6.eContents().get(5);
-		private final Group cGroup_0_7 = (Group)cUnorderedGroup_0.eContents().get(7);
-		private final Keyword cJobsKeyword_0_7_0 = (Keyword)cGroup_0_7.eContents().get(0);
-		private final Keyword cColonKeyword_0_7_1 = (Keyword)cGroup_0_7.eContents().get(1);
-		private final RuleCall cNEWLINETerminalRuleCall_0_7_2 = (RuleCall)cGroup_0_7.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_0_7_3 = (RuleCall)cGroup_0_7.eContents().get(3);
-		private final Assignment cJobsAssignment_0_7_4 = (Assignment)cGroup_0_7.eContents().get(4);
-		private final RuleCall cJobsJobParserRuleCall_0_7_4_0 = (RuleCall)cJobsAssignment_0_7_4.eContents().get(0);
-		private final RuleCall cENDTerminalRuleCall_0_7_5 = (RuleCall)cGroup_0_7.eContents().get(5);
-		private final RuleCall cEND_OF_FILETerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_1 = (UnorderedGroup)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cUnorderedGroup_1.eContents().get(0);
+		private final Keyword cNameKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Keyword cColonKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cNameExpressionParserRuleCall_1_0_2_0 = (RuleCall)cNameAssignment_1_0_2.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_0_3 = (RuleCall)cGroup_1_0.eContents().get(3);
+		private final Group cGroup_1_1 = (Group)cUnorderedGroup_1.eContents().get(1);
+		private final Keyword cRunNameKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Keyword cColonKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cRunNameAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cRunNameExpressionParserRuleCall_1_1_2_0 = (RuleCall)cRunNameAssignment_1_1_2.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_1_3 = (RuleCall)cGroup_1_1.eContents().get(3);
+		private final Group cGroup_1_2 = (Group)cUnorderedGroup_1.eContents().get(2);
+		private final Keyword cOnKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
+		private final Keyword cColonKeyword_1_2_1 = (Keyword)cGroup_1_2.eContents().get(1);
+		private final Alternatives cAlternatives_1_2_2 = (Alternatives)cGroup_1_2.eContents().get(2);
+		private final Group cGroup_1_2_2_0 = (Group)cAlternatives_1_2_2.eContents().get(0);
+		private final Assignment cTriggersAssignment_1_2_2_0_0 = (Assignment)cGroup_1_2_2_0.eContents().get(0);
+		private final RuleCall cTriggersSimpleTriggerParserRuleCall_1_2_2_0_0_0 = (RuleCall)cTriggersAssignment_1_2_2_0_0.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_0_1 = (RuleCall)cGroup_1_2_2_0.eContents().get(1);
+		private final Group cGroup_1_2_2_1 = (Group)cAlternatives_1_2_2.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_2_2_1_0 = (Keyword)cGroup_1_2_2_1.eContents().get(0);
+		private final Assignment cTriggersAssignment_1_2_2_1_1 = (Assignment)cGroup_1_2_2_1.eContents().get(1);
+		private final RuleCall cTriggersSimpleTriggerParserRuleCall_1_2_2_1_1_0 = (RuleCall)cTriggersAssignment_1_2_2_1_1.eContents().get(0);
+		private final Group cGroup_1_2_2_1_2 = (Group)cGroup_1_2_2_1.eContents().get(2);
+		private final Keyword cCommaKeyword_1_2_2_1_2_0 = (Keyword)cGroup_1_2_2_1_2.eContents().get(0);
+		private final Assignment cTriggersAssignment_1_2_2_1_2_1 = (Assignment)cGroup_1_2_2_1_2.eContents().get(1);
+		private final RuleCall cTriggersSimpleTriggerParserRuleCall_1_2_2_1_2_1_0 = (RuleCall)cTriggersAssignment_1_2_2_1_2_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_2_2_1_3 = (Keyword)cGroup_1_2_2_1.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_1_4 = (RuleCall)cGroup_1_2_2_1.eContents().get(4);
+		private final Group cGroup_1_2_2_2 = (Group)cAlternatives_1_2_2.eContents().get(2);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_2_0 = (RuleCall)cGroup_1_2_2_2.eContents().get(0);
+		private final RuleCall cBEGINTerminalRuleCall_1_2_2_2_1 = (RuleCall)cGroup_1_2_2_2.eContents().get(1);
+		private final Group cGroup_1_2_2_2_2 = (Group)cGroup_1_2_2_2.eContents().get(2);
+		private final Keyword cHyphenMinusKeyword_1_2_2_2_2_0 = (Keyword)cGroup_1_2_2_2_2.eContents().get(0);
+		private final Assignment cTriggersAssignment_1_2_2_2_2_1 = (Assignment)cGroup_1_2_2_2_2.eContents().get(1);
+		private final RuleCall cTriggersSimpleTriggerParserRuleCall_1_2_2_2_2_1_0 = (RuleCall)cTriggersAssignment_1_2_2_2_2_1.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_2_2_2 = (RuleCall)cGroup_1_2_2_2_2.eContents().get(2);
+		private final RuleCall cENDTerminalRuleCall_1_2_2_2_3 = (RuleCall)cGroup_1_2_2_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_2_4 = (RuleCall)cGroup_1_2_2_2.eContents().get(4);
+		private final Assignment cTriggersAssignment_1_2_2_3 = (Assignment)cAlternatives_1_2_2.eContents().get(3);
+		private final RuleCall cTriggersOptionedTriggerParserRuleCall_1_2_2_3_0 = (RuleCall)cTriggersAssignment_1_2_2_3.eContents().get(0);
+		private final Group cGroup_1_3 = (Group)cUnorderedGroup_1.eContents().get(3);
+		private final Keyword cPermissionsKeyword_1_3_0 = (Keyword)cGroup_1_3.eContents().get(0);
+		private final Keyword cColonKeyword_1_3_1 = (Keyword)cGroup_1_3.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_3_2 = (RuleCall)cGroup_1_3.eContents().get(2);
+		private final RuleCall cBEGINTerminalRuleCall_1_3_3 = (RuleCall)cGroup_1_3.eContents().get(3);
+		private final Assignment cPermissionsAssignment_1_3_4 = (Assignment)cGroup_1_3.eContents().get(4);
+		private final RuleCall cPermissionsPermissionParserRuleCall_1_3_4_0 = (RuleCall)cPermissionsAssignment_1_3_4.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_1_3_5 = (RuleCall)cGroup_1_3.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_3_6 = (RuleCall)cGroup_1_3.eContents().get(6);
+		private final Group cGroup_1_4 = (Group)cUnorderedGroup_1.eContents().get(4);
+		private final Keyword cEnvKeyword_1_4_0 = (Keyword)cGroup_1_4.eContents().get(0);
+		private final Keyword cColonKeyword_1_4_1 = (Keyword)cGroup_1_4.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_4_2 = (RuleCall)cGroup_1_4.eContents().get(2);
+		private final RuleCall cBEGINTerminalRuleCall_1_4_3 = (RuleCall)cGroup_1_4.eContents().get(3);
+		private final Assignment cEnvironmentVariablesAssignment_1_4_4 = (Assignment)cGroup_1_4.eContents().get(4);
+		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_1_4_4_0 = (RuleCall)cEnvironmentVariablesAssignment_1_4_4.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_1_4_5 = (RuleCall)cGroup_1_4.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_4_6 = (RuleCall)cGroup_1_4.eContents().get(6);
+		private final Group cGroup_1_5 = (Group)cUnorderedGroup_1.eContents().get(5);
+		private final Keyword cDefaultsKeyword_1_5_0 = (Keyword)cGroup_1_5.eContents().get(0);
+		private final Keyword cColonKeyword_1_5_1 = (Keyword)cGroup_1_5.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5_2 = (RuleCall)cGroup_1_5.eContents().get(2);
+		private final RuleCall cBEGINTerminalRuleCall_1_5_3 = (RuleCall)cGroup_1_5.eContents().get(3);
+		private final Assignment cDefaultsAssignment_1_5_4 = (Assignment)cGroup_1_5.eContents().get(4);
+		private final RuleCall cDefaultsDefaultsParserRuleCall_1_5_4_0 = (RuleCall)cDefaultsAssignment_1_5_4.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_1_5_5 = (RuleCall)cGroup_1_5.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5_6 = (RuleCall)cGroup_1_5.eContents().get(6);
+		private final Group cGroup_1_6 = (Group)cUnorderedGroup_1.eContents().get(6);
+		private final Keyword cConcurrencyKeyword_1_6_0 = (Keyword)cGroup_1_6.eContents().get(0);
+		private final Keyword cColonKeyword_1_6_1 = (Keyword)cGroup_1_6.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_6_2 = (RuleCall)cGroup_1_6.eContents().get(2);
+		private final RuleCall cBEGINTerminalRuleCall_1_6_3 = (RuleCall)cGroup_1_6.eContents().get(3);
+		private final Assignment cConcurrencyGroupAssignment_1_6_4 = (Assignment)cGroup_1_6.eContents().get(4);
+		private final RuleCall cConcurrencyGroupConcurrencyGroupParserRuleCall_1_6_4_0 = (RuleCall)cConcurrencyGroupAssignment_1_6_4.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_1_6_5 = (RuleCall)cGroup_1_6.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_6_6 = (RuleCall)cGroup_1_6.eContents().get(6);
+		private final Group cGroup_1_7 = (Group)cUnorderedGroup_1.eContents().get(7);
+		private final Keyword cJobsKeyword_1_7_0 = (Keyword)cGroup_1_7.eContents().get(0);
+		private final Keyword cColonKeyword_1_7_1 = (Keyword)cGroup_1_7.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_7_2 = (RuleCall)cGroup_1_7.eContents().get(2);
+		private final RuleCall cBEGINTerminalRuleCall_1_7_3 = (RuleCall)cGroup_1_7.eContents().get(3);
+		private final Assignment cJobsAssignment_1_7_4 = (Assignment)cGroup_1_7.eContents().get(4);
+		private final RuleCall cJobsJobParserRuleCall_1_7_4_0 = (RuleCall)cJobsAssignment_1_7_4.eContents().get(0);
+		private final RuleCall cENDTerminalRuleCall_1_7_5 = (RuleCall)cGroup_1_7.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_7_6 = (RuleCall)cGroup_1_7.eContents().get(6);
+		private final RuleCall cEND_OF_FILETerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Workflow returns GHA::Workflow:
+		//    NEWLINE*
 		//    (
-		//        ('name' ':' name=Expression NEWLINE)? &
-		//        ('run-name' ':' runName=Expression NEWLINE)? &
+		//        ('name' ':' name=Expression NEWLINE+)? &
+		//        ('run-name' ':' runName=Expression NEWLINE+)? &
 		//        ('on' ':' (
-		//            (triggers+=SimpleTrigger NEWLINE) |
-		//            ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+		//            (triggers+=SimpleTrigger NEWLINE+) |
+		//            ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' triggers+=SimpleTrigger NEWLINE)+
+		//                ('-' triggers+=SimpleTrigger NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            ) |
 		//            triggers+=OptionedTrigger+
 		//        )) &
-		//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
-		//        ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//        ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//        ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//        ('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+		//        ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
+		//        ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//        ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//        ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//        ('jobs' ':' NEWLINE+ BEGIN jobs+=Job+ END NEWLINE*)
 		//    )
 		//    (=>END_OF_FILE)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//NEWLINE*
 		//(
-		//    ('name' ':' name=Expression NEWLINE)? &
-		//    ('run-name' ':' runName=Expression NEWLINE)? &
+		//    ('name' ':' name=Expression NEWLINE+)? &
+		//    ('run-name' ':' runName=Expression NEWLINE+)? &
 		//    ('on' ':' (
-		//        (triggers+=SimpleTrigger NEWLINE) |
-		//        ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+		//        (triggers+=SimpleTrigger NEWLINE+) |
+		//        ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' triggers+=SimpleTrigger NEWLINE)+
+		//            ('-' triggers+=SimpleTrigger NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        ) |
 		//        triggers+=OptionedTrigger+
 		//    )) &
-		//    ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
-		//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//    ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//    ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//    ('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+		//    ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
+		//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//    ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//    ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//    ('jobs' ':' NEWLINE+ BEGIN jobs+=Job+ END NEWLINE*)
 		//)
 		//(=>END_OF_FILE)
 		public Group getGroup() { return cGroup; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_0() { return cNEWLINETerminalRuleCall_0; }
+		
 		//(
-		//    ('name' ':' name=Expression NEWLINE)? &
-		//    ('run-name' ':' runName=Expression NEWLINE)? &
+		//    ('name' ':' name=Expression NEWLINE+)? &
+		//    ('run-name' ':' runName=Expression NEWLINE+)? &
 		//    ('on' ':' (
-		//        (triggers+=SimpleTrigger NEWLINE) |
-		//        ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+		//        (triggers+=SimpleTrigger NEWLINE+) |
+		//        ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' triggers+=SimpleTrigger NEWLINE)+
+		//            ('-' triggers+=SimpleTrigger NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        ) |
 		//        triggers+=OptionedTrigger+
 		//    )) &
-		//    ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
-		//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//    ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//    ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//    ('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+		//    ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
+		//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//    ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//    ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//    ('jobs' ':' NEWLINE+ BEGIN jobs+=Job+ END NEWLINE*)
 		//)
-		public UnorderedGroup getUnorderedGroup_0() { return cUnorderedGroup_0; }
+		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
 		
-		//('name' ':' name=Expression NEWLINE)?
-		public Group getGroup_0_0() { return cGroup_0_0; }
+		//('name' ':' name=Expression NEWLINE+)?
+		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//'name'
-		public Keyword getNameKeyword_0_0_0() { return cNameKeyword_0_0_0; }
+		public Keyword getNameKeyword_1_0_0() { return cNameKeyword_1_0_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_0_1() { return cColonKeyword_0_0_1; }
+		public Keyword getColonKeyword_1_0_1() { return cColonKeyword_1_0_1; }
 		
 		//name=Expression
-		public Assignment getNameAssignment_0_0_2() { return cNameAssignment_0_0_2; }
+		public Assignment getNameAssignment_1_0_2() { return cNameAssignment_1_0_2; }
 		
 		//Expression
-		public RuleCall getNameExpressionParserRuleCall_0_0_2_0() { return cNameExpressionParserRuleCall_0_0_2_0; }
+		public RuleCall getNameExpressionParserRuleCall_1_0_2_0() { return cNameExpressionParserRuleCall_1_0_2_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_0_3() { return cNEWLINETerminalRuleCall_0_0_3; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_0_3() { return cNEWLINETerminalRuleCall_1_0_3; }
 		
-		//('run-name' ':' runName=Expression NEWLINE)?
-		public Group getGroup_0_1() { return cGroup_0_1; }
+		//('run-name' ':' runName=Expression NEWLINE+)?
+		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//'run-name'
-		public Keyword getRunNameKeyword_0_1_0() { return cRunNameKeyword_0_1_0; }
+		public Keyword getRunNameKeyword_1_1_0() { return cRunNameKeyword_1_1_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_1_1() { return cColonKeyword_0_1_1; }
+		public Keyword getColonKeyword_1_1_1() { return cColonKeyword_1_1_1; }
 		
 		//runName=Expression
-		public Assignment getRunNameAssignment_0_1_2() { return cRunNameAssignment_0_1_2; }
+		public Assignment getRunNameAssignment_1_1_2() { return cRunNameAssignment_1_1_2; }
 		
 		//Expression
-		public RuleCall getRunNameExpressionParserRuleCall_0_1_2_0() { return cRunNameExpressionParserRuleCall_0_1_2_0; }
+		public RuleCall getRunNameExpressionParserRuleCall_1_1_2_0() { return cRunNameExpressionParserRuleCall_1_1_2_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_1_3() { return cNEWLINETerminalRuleCall_0_1_3; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_1_3() { return cNEWLINETerminalRuleCall_1_1_3; }
 		
 		//('on' ':' (
-		//    (triggers+=SimpleTrigger NEWLINE) |
-		//    ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+		//    (triggers+=SimpleTrigger NEWLINE+) |
+		//    ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' triggers+=SimpleTrigger NEWLINE)+
+		//        ('-' triggers+=SimpleTrigger NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    ) |
 		//    triggers+=OptionedTrigger+
 		//))
-		public Group getGroup_0_2() { return cGroup_0_2; }
+		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//'on'
-		public Keyword getOnKeyword_0_2_0() { return cOnKeyword_0_2_0; }
+		public Keyword getOnKeyword_1_2_0() { return cOnKeyword_1_2_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_2_1() { return cColonKeyword_0_2_1; }
+		public Keyword getColonKeyword_1_2_1() { return cColonKeyword_1_2_1; }
 		
 		//(
-		//           (triggers+=SimpleTrigger NEWLINE) |
-		//           ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+		//           (triggers+=SimpleTrigger NEWLINE+) |
+		//           ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 		//           (
-		//               NEWLINE
+		//               NEWLINE+
 		//               BEGIN
-		//               ('-' triggers+=SimpleTrigger NEWLINE)+
+		//               ('-' triggers+=SimpleTrigger NEWLINE+)+
 		//               END
+		//               NEWLINE*
 		//           ) |
 		//           triggers+=OptionedTrigger+
 		//       )
-		public Alternatives getAlternatives_0_2_2() { return cAlternatives_0_2_2; }
+		public Alternatives getAlternatives_1_2_2() { return cAlternatives_1_2_2; }
 		
-		//(triggers+=SimpleTrigger NEWLINE)
-		public Group getGroup_0_2_2_0() { return cGroup_0_2_2_0; }
+		//(triggers+=SimpleTrigger NEWLINE+)
+		public Group getGroup_1_2_2_0() { return cGroup_1_2_2_0; }
 		
 		//triggers+=SimpleTrigger
-		public Assignment getTriggersAssignment_0_2_2_0_0() { return cTriggersAssignment_0_2_2_0_0; }
+		public Assignment getTriggersAssignment_1_2_2_0_0() { return cTriggersAssignment_1_2_2_0_0; }
 		
 		//SimpleTrigger
-		public RuleCall getTriggersSimpleTriggerParserRuleCall_0_2_2_0_0_0() { return cTriggersSimpleTriggerParserRuleCall_0_2_2_0_0_0; }
+		public RuleCall getTriggersSimpleTriggerParserRuleCall_1_2_2_0_0_0() { return cTriggersSimpleTriggerParserRuleCall_1_2_2_0_0_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_2_2_0_1() { return cNEWLINETerminalRuleCall_0_2_2_0_1; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_0_1() { return cNEWLINETerminalRuleCall_1_2_2_0_1; }
 		
-		//('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE)
-		public Group getGroup_0_2_2_1() { return cGroup_0_2_2_1; }
+		//('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+)
+		public Group getGroup_1_2_2_1() { return cGroup_1_2_2_1; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_0_2_2_1_0() { return cLeftSquareBracketKeyword_0_2_2_1_0; }
+		public Keyword getLeftSquareBracketKeyword_1_2_2_1_0() { return cLeftSquareBracketKeyword_1_2_2_1_0; }
 		
 		//triggers+=SimpleTrigger
-		public Assignment getTriggersAssignment_0_2_2_1_1() { return cTriggersAssignment_0_2_2_1_1; }
+		public Assignment getTriggersAssignment_1_2_2_1_1() { return cTriggersAssignment_1_2_2_1_1; }
 		
 		//SimpleTrigger
-		public RuleCall getTriggersSimpleTriggerParserRuleCall_0_2_2_1_1_0() { return cTriggersSimpleTriggerParserRuleCall_0_2_2_1_1_0; }
+		public RuleCall getTriggersSimpleTriggerParserRuleCall_1_2_2_1_1_0() { return cTriggersSimpleTriggerParserRuleCall_1_2_2_1_1_0; }
 		
 		//(',' triggers+=SimpleTrigger)*
-		public Group getGroup_0_2_2_1_2() { return cGroup_0_2_2_1_2; }
+		public Group getGroup_1_2_2_1_2() { return cGroup_1_2_2_1_2; }
 		
 		//','
-		public Keyword getCommaKeyword_0_2_2_1_2_0() { return cCommaKeyword_0_2_2_1_2_0; }
+		public Keyword getCommaKeyword_1_2_2_1_2_0() { return cCommaKeyword_1_2_2_1_2_0; }
 		
 		//triggers+=SimpleTrigger
-		public Assignment getTriggersAssignment_0_2_2_1_2_1() { return cTriggersAssignment_0_2_2_1_2_1; }
+		public Assignment getTriggersAssignment_1_2_2_1_2_1() { return cTriggersAssignment_1_2_2_1_2_1; }
 		
 		//SimpleTrigger
-		public RuleCall getTriggersSimpleTriggerParserRuleCall_0_2_2_1_2_1_0() { return cTriggersSimpleTriggerParserRuleCall_0_2_2_1_2_1_0; }
+		public RuleCall getTriggersSimpleTriggerParserRuleCall_1_2_2_1_2_1_0() { return cTriggersSimpleTriggerParserRuleCall_1_2_2_1_2_1_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_0_2_2_1_3() { return cRightSquareBracketKeyword_0_2_2_1_3; }
+		public Keyword getRightSquareBracketKeyword_1_2_2_1_3() { return cRightSquareBracketKeyword_1_2_2_1_3; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_2_2_1_4() { return cNEWLINETerminalRuleCall_0_2_2_1_4; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_1_4() { return cNEWLINETerminalRuleCall_1_2_2_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' triggers+=SimpleTrigger NEWLINE)+
+		//    ('-' triggers+=SimpleTrigger NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
-		public Group getGroup_0_2_2_2() { return cGroup_0_2_2_2; }
+		public Group getGroup_1_2_2_2() { return cGroup_1_2_2_2; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_2_2_2_0() { return cNEWLINETerminalRuleCall_0_2_2_2_0; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_2_0() { return cNEWLINETerminalRuleCall_1_2_2_2_0; }
 		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_2_2_2_1() { return cBEGINTerminalRuleCall_0_2_2_2_1; }
+		public RuleCall getBEGINTerminalRuleCall_1_2_2_2_1() { return cBEGINTerminalRuleCall_1_2_2_2_1; }
 		
-		//('-' triggers+=SimpleTrigger NEWLINE)+
-		public Group getGroup_0_2_2_2_2() { return cGroup_0_2_2_2_2; }
+		//('-' triggers+=SimpleTrigger NEWLINE+)+
+		public Group getGroup_1_2_2_2_2() { return cGroup_1_2_2_2_2; }
 		
 		//'-'
-		public Keyword getHyphenMinusKeyword_0_2_2_2_2_0() { return cHyphenMinusKeyword_0_2_2_2_2_0; }
+		public Keyword getHyphenMinusKeyword_1_2_2_2_2_0() { return cHyphenMinusKeyword_1_2_2_2_2_0; }
 		
 		//triggers+=SimpleTrigger
-		public Assignment getTriggersAssignment_0_2_2_2_2_1() { return cTriggersAssignment_0_2_2_2_2_1; }
+		public Assignment getTriggersAssignment_1_2_2_2_2_1() { return cTriggersAssignment_1_2_2_2_2_1; }
 		
 		//SimpleTrigger
-		public RuleCall getTriggersSimpleTriggerParserRuleCall_0_2_2_2_2_1_0() { return cTriggersSimpleTriggerParserRuleCall_0_2_2_2_2_1_0; }
+		public RuleCall getTriggersSimpleTriggerParserRuleCall_1_2_2_2_2_1_0() { return cTriggersSimpleTriggerParserRuleCall_1_2_2_2_2_1_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_2_2_2_2_2() { return cNEWLINETerminalRuleCall_0_2_2_2_2_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_2_2_2() { return cNEWLINETerminalRuleCall_1_2_2_2_2_2; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_0_2_2_2_3() { return cENDTerminalRuleCall_0_2_2_2_3; }
+		public RuleCall getENDTerminalRuleCall_1_2_2_2_3() { return cENDTerminalRuleCall_1_2_2_2_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_2_4() { return cNEWLINETerminalRuleCall_1_2_2_2_4; }
 		
 		//triggers+=OptionedTrigger+
-		public Assignment getTriggersAssignment_0_2_2_3() { return cTriggersAssignment_0_2_2_3; }
+		public Assignment getTriggersAssignment_1_2_2_3() { return cTriggersAssignment_1_2_2_3; }
 		
 		//OptionedTrigger
-		public RuleCall getTriggersOptionedTriggerParserRuleCall_0_2_2_3_0() { return cTriggersOptionedTriggerParserRuleCall_0_2_2_3_0; }
+		public RuleCall getTriggersOptionedTriggerParserRuleCall_1_2_2_3_0() { return cTriggersOptionedTriggerParserRuleCall_1_2_2_3_0; }
 		
-		//('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)?
-		public Group getGroup_0_3() { return cGroup_0_3; }
+		//('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)?
+		public Group getGroup_1_3() { return cGroup_1_3; }
 		
 		//'permissions'
-		public Keyword getPermissionsKeyword_0_3_0() { return cPermissionsKeyword_0_3_0; }
+		public Keyword getPermissionsKeyword_1_3_0() { return cPermissionsKeyword_1_3_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_3_1() { return cColonKeyword_0_3_1; }
+		public Keyword getColonKeyword_1_3_1() { return cColonKeyword_1_3_1; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_3_2() { return cNEWLINETerminalRuleCall_0_3_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_3_2() { return cNEWLINETerminalRuleCall_1_3_2; }
 		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_3_3() { return cBEGINTerminalRuleCall_0_3_3; }
+		public RuleCall getBEGINTerminalRuleCall_1_3_3() { return cBEGINTerminalRuleCall_1_3_3; }
 		
 		//permissions+=Permission+
-		public Assignment getPermissionsAssignment_0_3_4() { return cPermissionsAssignment_0_3_4; }
+		public Assignment getPermissionsAssignment_1_3_4() { return cPermissionsAssignment_1_3_4; }
 		
 		//Permission
-		public RuleCall getPermissionsPermissionParserRuleCall_0_3_4_0() { return cPermissionsPermissionParserRuleCall_0_3_4_0; }
+		public RuleCall getPermissionsPermissionParserRuleCall_1_3_4_0() { return cPermissionsPermissionParserRuleCall_1_3_4_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_0_3_5() { return cENDTerminalRuleCall_0_3_5; }
+		public RuleCall getENDTerminalRuleCall_1_3_5() { return cENDTerminalRuleCall_1_3_5; }
 		
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)?
-		public Group getGroup_0_4() { return cGroup_0_4; }
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_3_6() { return cNEWLINETerminalRuleCall_1_3_6; }
+		
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)?
+		public Group getGroup_1_4() { return cGroup_1_4; }
 		
 		//'env'
-		public Keyword getEnvKeyword_0_4_0() { return cEnvKeyword_0_4_0; }
+		public Keyword getEnvKeyword_1_4_0() { return cEnvKeyword_1_4_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_4_1() { return cColonKeyword_0_4_1; }
+		public Keyword getColonKeyword_1_4_1() { return cColonKeyword_1_4_1; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_4_2() { return cNEWLINETerminalRuleCall_0_4_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_4_2() { return cNEWLINETerminalRuleCall_1_4_2; }
 		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_4_3() { return cBEGINTerminalRuleCall_0_4_3; }
+		public RuleCall getBEGINTerminalRuleCall_1_4_3() { return cBEGINTerminalRuleCall_1_4_3; }
 		
 		//environmentVariables+=VariableAssignment+
-		public Assignment getEnvironmentVariablesAssignment_0_4_4() { return cEnvironmentVariablesAssignment_0_4_4; }
+		public Assignment getEnvironmentVariablesAssignment_1_4_4() { return cEnvironmentVariablesAssignment_1_4_4; }
 		
 		//VariableAssignment
-		public RuleCall getEnvironmentVariablesVariableAssignmentParserRuleCall_0_4_4_0() { return cEnvironmentVariablesVariableAssignmentParserRuleCall_0_4_4_0; }
+		public RuleCall getEnvironmentVariablesVariableAssignmentParserRuleCall_1_4_4_0() { return cEnvironmentVariablesVariableAssignmentParserRuleCall_1_4_4_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_0_4_5() { return cENDTerminalRuleCall_0_4_5; }
+		public RuleCall getENDTerminalRuleCall_1_4_5() { return cENDTerminalRuleCall_1_4_5; }
 		
-		//('defaults' ':' NEWLINE BEGIN defaults=Defaults END)?
-		public Group getGroup_0_5() { return cGroup_0_5; }
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_4_6() { return cNEWLINETerminalRuleCall_1_4_6; }
+		
+		//('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)?
+		public Group getGroup_1_5() { return cGroup_1_5; }
 		
 		//'defaults'
-		public Keyword getDefaultsKeyword_0_5_0() { return cDefaultsKeyword_0_5_0; }
+		public Keyword getDefaultsKeyword_1_5_0() { return cDefaultsKeyword_1_5_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_5_1() { return cColonKeyword_0_5_1; }
+		public Keyword getColonKeyword_1_5_1() { return cColonKeyword_1_5_1; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_5_2() { return cNEWLINETerminalRuleCall_0_5_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_5_2() { return cNEWLINETerminalRuleCall_1_5_2; }
 		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_5_3() { return cBEGINTerminalRuleCall_0_5_3; }
+		public RuleCall getBEGINTerminalRuleCall_1_5_3() { return cBEGINTerminalRuleCall_1_5_3; }
 		
 		//defaults=Defaults
-		public Assignment getDefaultsAssignment_0_5_4() { return cDefaultsAssignment_0_5_4; }
+		public Assignment getDefaultsAssignment_1_5_4() { return cDefaultsAssignment_1_5_4; }
 		
 		//Defaults
-		public RuleCall getDefaultsDefaultsParserRuleCall_0_5_4_0() { return cDefaultsDefaultsParserRuleCall_0_5_4_0; }
+		public RuleCall getDefaultsDefaultsParserRuleCall_1_5_4_0() { return cDefaultsDefaultsParserRuleCall_1_5_4_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_0_5_5() { return cENDTerminalRuleCall_0_5_5; }
+		public RuleCall getENDTerminalRuleCall_1_5_5() { return cENDTerminalRuleCall_1_5_5; }
 		
-		//('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)?
-		public Group getGroup_0_6() { return cGroup_0_6; }
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_5_6() { return cNEWLINETerminalRuleCall_1_5_6; }
+		
+		//('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)?
+		public Group getGroup_1_6() { return cGroup_1_6; }
 		
 		//'concurrency'
-		public Keyword getConcurrencyKeyword_0_6_0() { return cConcurrencyKeyword_0_6_0; }
+		public Keyword getConcurrencyKeyword_1_6_0() { return cConcurrencyKeyword_1_6_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_6_1() { return cColonKeyword_0_6_1; }
+		public Keyword getColonKeyword_1_6_1() { return cColonKeyword_1_6_1; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_6_2() { return cNEWLINETerminalRuleCall_0_6_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_6_2() { return cNEWLINETerminalRuleCall_1_6_2; }
 		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_6_3() { return cBEGINTerminalRuleCall_0_6_3; }
+		public RuleCall getBEGINTerminalRuleCall_1_6_3() { return cBEGINTerminalRuleCall_1_6_3; }
 		
 		//concurrencyGroup=ConcurrencyGroup
-		public Assignment getConcurrencyGroupAssignment_0_6_4() { return cConcurrencyGroupAssignment_0_6_4; }
+		public Assignment getConcurrencyGroupAssignment_1_6_4() { return cConcurrencyGroupAssignment_1_6_4; }
 		
 		//ConcurrencyGroup
-		public RuleCall getConcurrencyGroupConcurrencyGroupParserRuleCall_0_6_4_0() { return cConcurrencyGroupConcurrencyGroupParserRuleCall_0_6_4_0; }
+		public RuleCall getConcurrencyGroupConcurrencyGroupParserRuleCall_1_6_4_0() { return cConcurrencyGroupConcurrencyGroupParserRuleCall_1_6_4_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_0_6_5() { return cENDTerminalRuleCall_0_6_5; }
+		public RuleCall getENDTerminalRuleCall_1_6_5() { return cENDTerminalRuleCall_1_6_5; }
 		
-		//('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
-		public Group getGroup_0_7() { return cGroup_0_7; }
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_6_6() { return cNEWLINETerminalRuleCall_1_6_6; }
+		
+		//('jobs' ':' NEWLINE+ BEGIN jobs+=Job+ END NEWLINE*)
+		public Group getGroup_1_7() { return cGroup_1_7; }
 		
 		//'jobs'
-		public Keyword getJobsKeyword_0_7_0() { return cJobsKeyword_0_7_0; }
+		public Keyword getJobsKeyword_1_7_0() { return cJobsKeyword_1_7_0; }
 		
 		//':'
-		public Keyword getColonKeyword_0_7_1() { return cColonKeyword_0_7_1; }
+		public Keyword getColonKeyword_1_7_1() { return cColonKeyword_1_7_1; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_0_7_2() { return cNEWLINETerminalRuleCall_0_7_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_7_2() { return cNEWLINETerminalRuleCall_1_7_2; }
 		
 		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_0_7_3() { return cBEGINTerminalRuleCall_0_7_3; }
+		public RuleCall getBEGINTerminalRuleCall_1_7_3() { return cBEGINTerminalRuleCall_1_7_3; }
 		
 		//jobs+=Job+
-		public Assignment getJobsAssignment_0_7_4() { return cJobsAssignment_0_7_4; }
+		public Assignment getJobsAssignment_1_7_4() { return cJobsAssignment_1_7_4; }
 		
 		//Job
-		public RuleCall getJobsJobParserRuleCall_0_7_4_0() { return cJobsJobParserRuleCall_0_7_4_0; }
+		public RuleCall getJobsJobParserRuleCall_1_7_4_0() { return cJobsJobParserRuleCall_1_7_4_0; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_0_7_5() { return cENDTerminalRuleCall_0_7_5; }
+		public RuleCall getENDTerminalRuleCall_1_7_5() { return cENDTerminalRuleCall_1_7_5; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_7_6() { return cNEWLINETerminalRuleCall_1_7_6; }
 		
 		//(=>END_OF_FILE)
-		public RuleCall getEND_OF_FILETerminalRuleCall_1() { return cEND_OF_FILETerminalRuleCall_1; }
+		public RuleCall getEND_OF_FILETerminalRuleCall_2() { return cEND_OF_FILETerminalRuleCall_2; }
 	}
 	public class JobElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Job");
@@ -498,6 +534,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cPermissionsAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
 		private final RuleCall cPermissionsPermissionParserRuleCall_1_4_0 = (RuleCall)cPermissionsAssignment_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_1_5 = (RuleCall)cGroup_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_6 = (RuleCall)cGroup_1.eContents().get(6);
 		private final Alternatives cAlternatives_2 = (Alternatives)cUnorderedGroup.eContents().get(2);
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
 		private final Keyword cNeedsKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
@@ -529,6 +566,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cDependsOnJobIDTerminalRuleCall_2_2_2_1_0_1 = (RuleCall)cDependsOnJobCrossReference_2_2_2_1_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_2_2_2_2 = (RuleCall)cGroup_2_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_2_2_3 = (RuleCall)cGroup_2_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_2_2_4 = (RuleCall)cGroup_2_2.eContents().get(4);
 		private final Assignment cIfAssignment_3 = (Assignment)cUnorderedGroup.eContents().get(3);
 		private final RuleCall cIfIfStatementParserRuleCall_3_0 = (RuleCall)cIfAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cUnorderedGroup.eContents().get(4);
@@ -549,6 +587,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cConcurrencyGroupAssignment_6_4 = (Assignment)cGroup_6.eContents().get(4);
 		private final RuleCall cConcurrencyGroupConcurrencyGroupParserRuleCall_6_4_0 = (RuleCall)cConcurrencyGroupAssignment_6_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_6_5 = (RuleCall)cGroup_6.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_6_6 = (RuleCall)cGroup_6.eContents().get(6);
 		private final Group cGroup_7 = (Group)cUnorderedGroup.eContents().get(7);
 		private final Keyword cEnvKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Keyword cColonKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
@@ -557,6 +596,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cEnvironmentVariablesAssignment_7_4 = (Assignment)cGroup_7.eContents().get(4);
 		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_7_4_0 = (RuleCall)cEnvironmentVariablesAssignment_7_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_7_5 = (RuleCall)cGroup_7.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_7_6 = (RuleCall)cGroup_7.eContents().get(6);
 		private final Group cGroup_8 = (Group)cUnorderedGroup.eContents().get(8);
 		private final Keyword cDefaultsKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Keyword cColonKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
@@ -565,6 +605,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cDefaultsAssignment_8_4 = (Assignment)cGroup_8.eContents().get(4);
 		private final RuleCall cDefaultsDefaultsParserRuleCall_8_4_0 = (RuleCall)cDefaultsAssignment_8_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_8_5 = (RuleCall)cGroup_8.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_8_6 = (RuleCall)cGroup_8.eContents().get(6);
 		private final Group cGroup_9 = (Group)cUnorderedGroup.eContents().get(9);
 		private final Keyword cStepsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
 		private final Keyword cColonKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
@@ -573,6 +614,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cStepsAssignment_9_4 = (Assignment)cGroup_9.eContents().get(4);
 		private final RuleCall cStepsStepParserRuleCall_9_4_0 = (RuleCall)cStepsAssignment_9_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_9_5 = (RuleCall)cGroup_9.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_9_6 = (RuleCall)cGroup_9.eContents().get(6);
 		private final Group cGroup_10 = (Group)cUnorderedGroup.eContents().get(10);
 		private final Keyword cStrategyKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
 		private final Keyword cColonKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
@@ -581,6 +623,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cStrategyAssignment_10_4 = (Assignment)cGroup_10.eContents().get(4);
 		private final RuleCall cStrategyStrategyParserRuleCall_10_4_0 = (RuleCall)cStrategyAssignment_10_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_10_5 = (RuleCall)cGroup_10.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_10_6 = (RuleCall)cGroup_10.eContents().get(6);
 		private final Group cGroup_11 = (Group)cUnorderedGroup.eContents().get(11);
 		private final Keyword cContainerKeyword_11_0 = (Keyword)cGroup_11.eContents().get(0);
 		private final Keyword cColonKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
@@ -594,6 +637,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cServicesAssignment_12_4 = (Assignment)cGroup_12.eContents().get(4);
 		private final RuleCall cServicesServiceParserRuleCall_12_4_0 = (RuleCall)cServicesAssignment_12_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_12_5 = (RuleCall)cGroup_12.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_12_6 = (RuleCall)cGroup_12.eContents().get(6);
 		private final Group cGroup_13 = (Group)cUnorderedGroup.eContents().get(13);
 		private final Keyword cContinueOnErrorKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
 		private final Keyword cColonKeyword_13_1 = (Keyword)cGroup_13.eContents().get(1);
@@ -608,71 +652,76 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cTimeoutMinutesExpressionParserRuleCall_14_0_2_0 = (RuleCall)cTimeoutMinutesAssignment_14_0_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_14_0_3 = (RuleCall)cGroup_14_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_14_1 = (RuleCall)cGroup_14.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_14_2 = (RuleCall)cGroup_14.eContents().get(2);
 		
 		//ScriptJob returns GHA::ScriptJob:
 		//    name=YAMLID ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('name' ':' jobName=Expression NEWLINE)? &
-		//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		//        ('name' ':' jobName=Expression NEWLINE+)? &
+		//        ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 		//        ('needs' ':'
-		//            (dependsOn+=[GHA::Job] NEWLINE) |
-		//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+		//            (dependsOn+=[GHA::Job] NEWLINE+) |
+		//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//                ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//        ))? &
 		//        if=IfStatement? &
 		//        ('runs-on' ':' agent=Agent) &
 		//        ('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		//        ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//        ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//        ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//        ('steps' ':' NEWLINE BEGIN steps+=Step+ END) &
-		//        ('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+		//        ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//        ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//        ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//        ('steps' ':' NEWLINE+ BEGIN steps+=Step+ END NEWLINE*) &
+		//        ('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 		//        ('container' ':' container=Container)? &
-		//        ('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-		//        ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//        ('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+		//        ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('name' ':' jobName=Expression NEWLINE)? &
-		//    ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		//    ('name' ':' jobName=Expression NEWLINE+)? &
+		//    ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 		//    ('needs' ':'
-		//        (dependsOn+=[GHA::Job] NEWLINE) |
-		//        ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+		//        (dependsOn+=[GHA::Job] NEWLINE+) |
+		//        ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//            ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//    ))? &
 		//    if=IfStatement? &
 		//    ('runs-on' ':' agent=Agent) &
 		//    ('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		//    ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//    ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//    ('steps' ':' NEWLINE BEGIN steps+=Step+ END) &
-		//    ('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+		//    ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//    ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//    ('steps' ':' NEWLINE+ BEGIN steps+=Step+ END NEWLINE*) &
+		//    ('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 		//    ('container' ':' container=Container)? &
-		//    ('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//    ('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		//    END
+		//    NEWLINE*
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//name=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('name' ':' jobName=Expression NEWLINE)?
+		//    ('name' ':' jobName=Expression NEWLINE+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//name=YAMLID
@@ -684,13 +733,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_3() { return cBEGINTerminalRuleCall_0_3; }
 		
-		//('name' ':' jobName=Expression NEWLINE)?
+		//('name' ':' jobName=Expression NEWLINE+)?
 		public Group getGroup_0_4() { return cGroup_0_4; }
 		
 		//'name'
@@ -705,10 +754,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getJobNameExpressionParserRuleCall_0_4_2_0() { return cJobNameExpressionParserRuleCall_0_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_4_3() { return cNEWLINETerminalRuleCall_0_4_3; }
 		
-		//('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)?
+		//('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'permissions'
@@ -717,7 +766,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_2() { return cNEWLINETerminalRuleCall_1_2; }
 		
 		//BEGIN
@@ -732,19 +781,23 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_1_5() { return cENDTerminalRuleCall_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_6() { return cNEWLINETerminalRuleCall_1_6; }
+		
 		//('needs' ':'
-		//    (dependsOn+=[GHA::Job] NEWLINE) |
-		//    ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+		//    (dependsOn+=[GHA::Job] NEWLINE+) |
+		//    ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//        ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//))?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//'needs' ':'
-		//            (dependsOn+=[GHA::Job] NEWLINE)
+		//            (dependsOn+=[GHA::Job] NEWLINE+)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
 		//'needs'
@@ -753,7 +806,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
 		
-		//(dependsOn+=[GHA::Job] NEWLINE)
+		//(dependsOn+=[GHA::Job] NEWLINE+)
 		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 		
 		//dependsOn+=[GHA::Job]
@@ -765,10 +818,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getDependsOnJobIDTerminalRuleCall_2_0_2_0_0_1() { return cDependsOnJobIDTerminalRuleCall_2_0_2_0_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_2_1() { return cNEWLINETerminalRuleCall_2_0_2_1; }
 		
-		//('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE)
+		//('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+)
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//'['
@@ -801,24 +854,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_1_4() { return cNEWLINETerminalRuleCall_2_1_4; }
 		
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//        ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//)
 		public Group getGroup_2_2() { return cGroup_2_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_0() { return cNEWLINETerminalRuleCall_2_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_2_1() { return cBEGINTerminalRuleCall_2_2_1; }
 		
-		//('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		public Group getGroup_2_2_2() { return cGroup_2_2_2; }
 		
 		//'-'
@@ -833,11 +887,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getDependsOnJobIDTerminalRuleCall_2_2_2_1_0_1() { return cDependsOnJobIDTerminalRuleCall_2_2_2_1_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_2_2() { return cNEWLINETerminalRuleCall_2_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_2_3() { return cENDTerminalRuleCall_2_2_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_2_4() { return cNEWLINETerminalRuleCall_2_2_4; }
 		
 		//if=IfStatement?
 		public Assignment getIfAssignment_3() { return cIfAssignment_3; }
@@ -875,7 +932,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//StagingEnvironment
 		public RuleCall getStagingEnvironmentStagingEnvironmentParserRuleCall_5_2_0() { return cStagingEnvironmentStagingEnvironmentParserRuleCall_5_2_0; }
 		
-		//('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)?
+		//('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)?
 		public Group getGroup_6() { return cGroup_6; }
 		
 		//'concurrency'
@@ -884,7 +941,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_6_1() { return cColonKeyword_6_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_6_2() { return cNEWLINETerminalRuleCall_6_2; }
 		
 		//BEGIN
@@ -899,7 +956,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_6_5() { return cENDTerminalRuleCall_6_5; }
 		
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_6_6() { return cNEWLINETerminalRuleCall_6_6; }
+		
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)?
 		public Group getGroup_7() { return cGroup_7; }
 		
 		//'env'
@@ -908,7 +968,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_7_1() { return cColonKeyword_7_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_7_2() { return cNEWLINETerminalRuleCall_7_2; }
 		
 		//BEGIN
@@ -923,7 +983,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_7_5() { return cENDTerminalRuleCall_7_5; }
 		
-		//('defaults' ':' NEWLINE BEGIN defaults=Defaults END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_7_6() { return cNEWLINETerminalRuleCall_7_6; }
+		
+		//('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)?
 		public Group getGroup_8() { return cGroup_8; }
 		
 		//'defaults'
@@ -932,7 +995,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_8_1() { return cColonKeyword_8_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_8_2() { return cNEWLINETerminalRuleCall_8_2; }
 		
 		//BEGIN
@@ -947,7 +1010,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_8_5() { return cENDTerminalRuleCall_8_5; }
 		
-		//('steps' ':' NEWLINE BEGIN steps+=Step+ END)
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_8_6() { return cNEWLINETerminalRuleCall_8_6; }
+		
+		//('steps' ':' NEWLINE+ BEGIN steps+=Step+ END NEWLINE*)
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//'steps'
@@ -956,7 +1022,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_9_1() { return cColonKeyword_9_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_9_2() { return cNEWLINETerminalRuleCall_9_2; }
 		
 		//BEGIN
@@ -971,7 +1037,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_9_5() { return cENDTerminalRuleCall_9_5; }
 		
-		//('strategy' ':' NEWLINE BEGIN strategy=Strategy END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_9_6() { return cNEWLINETerminalRuleCall_9_6; }
+		
+		//('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)?
 		public Group getGroup_10() { return cGroup_10; }
 		
 		//'strategy'
@@ -980,7 +1049,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_10_1() { return cColonKeyword_10_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_10_2() { return cNEWLINETerminalRuleCall_10_2; }
 		
 		//BEGIN
@@ -994,6 +1063,9 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_10_5() { return cENDTerminalRuleCall_10_5; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_10_6() { return cNEWLINETerminalRuleCall_10_6; }
 		
 		//('container' ':' container=Container)?
 		public Group getGroup_11() { return cGroup_11; }
@@ -1010,7 +1082,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Container
 		public RuleCall getContainerContainerParserRuleCall_11_2_0() { return cContainerContainerParserRuleCall_11_2_0; }
 		
-		//('services' ':' NEWLINE BEGIN services+=Service+ END)?
+		//('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)?
 		public Group getGroup_12() { return cGroup_12; }
 		
 		//'services'
@@ -1019,7 +1091,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_12_1() { return cColonKeyword_12_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_12_2() { return cNEWLINETerminalRuleCall_12_2; }
 		
 		//BEGIN
@@ -1034,7 +1106,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_12_5() { return cENDTerminalRuleCall_12_5; }
 		
-		//('continue-on-error' ':' continueOnError=Expression NEWLINE)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_12_6() { return cNEWLINETerminalRuleCall_12_6; }
+		
+		//('continue-on-error' ':' continueOnError=Expression NEWLINE+)?
 		public Group getGroup_13() { return cGroup_13; }
 		
 		//'continue-on-error'
@@ -1049,14 +1124,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getContinueOnErrorExpressionParserRuleCall_13_2_0() { return cContinueOnErrorExpressionParserRuleCall_13_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_13_3() { return cNEWLINETerminalRuleCall_13_3; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		//END
+		//NEWLINE*
 		public Group getGroup_14() { return cGroup_14; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		public Group getGroup_14_0() { return cGroup_14_0; }
 		
 		//'timeout-minutes'
@@ -1071,11 +1147,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTimeoutMinutesExpressionParserRuleCall_14_0_2_0() { return cTimeoutMinutesExpressionParserRuleCall_14_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_14_0_3() { return cNEWLINETerminalRuleCall_14_0_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_14_1() { return cENDTerminalRuleCall_14_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_14_2() { return cNEWLINETerminalRuleCall_14_2; }
 	}
 	public class ReuseWorkflowJobElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.ReuseWorkflowJob");
@@ -1100,6 +1179,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cPermissionsAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
 		private final RuleCall cPermissionsPermissionParserRuleCall_1_4_0 = (RuleCall)cPermissionsAssignment_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_1_5 = (RuleCall)cGroup_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_1_6 = (RuleCall)cGroup_1.eContents().get(6);
 		private final Alternatives cAlternatives_2 = (Alternatives)cUnorderedGroup.eContents().get(2);
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
 		private final Keyword cNeedsKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
@@ -1131,6 +1211,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cDependsOnJobIDTerminalRuleCall_2_2_2_1_0_1 = (RuleCall)cDependsOnJobCrossReference_2_2_2_1_0.eContents().get(1);
 		private final RuleCall cNEWLINETerminalRuleCall_2_2_2_2 = (RuleCall)cGroup_2_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_2_2_3 = (RuleCall)cGroup_2_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_2_2_4 = (RuleCall)cGroup_2_2.eContents().get(4);
 		private final Assignment cIfAssignment_3 = (Assignment)cUnorderedGroup.eContents().get(3);
 		private final RuleCall cIfIfStatementParserRuleCall_3_0 = (RuleCall)cIfAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cUnorderedGroup.eContents().get(4);
@@ -1151,6 +1232,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cConcurrencyGroupAssignment_6_4 = (Assignment)cGroup_6.eContents().get(4);
 		private final RuleCall cConcurrencyGroupConcurrencyGroupParserRuleCall_6_4_0 = (RuleCall)cConcurrencyGroupAssignment_6_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_6_5 = (RuleCall)cGroup_6.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_6_6 = (RuleCall)cGroup_6.eContents().get(6);
 		private final Group cGroup_7 = (Group)cUnorderedGroup.eContents().get(7);
 		private final Keyword cEnvKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Keyword cColonKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
@@ -1159,6 +1241,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cEnvironmentVariablesAssignment_7_4 = (Assignment)cGroup_7.eContents().get(4);
 		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_7_4_0 = (RuleCall)cEnvironmentVariablesAssignment_7_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_7_5 = (RuleCall)cGroup_7.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_7_6 = (RuleCall)cGroup_7.eContents().get(6);
 		private final Group cGroup_8 = (Group)cUnorderedGroup.eContents().get(8);
 		private final Keyword cDefaultsKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Keyword cColonKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
@@ -1167,6 +1250,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cDefaultsAssignment_8_4 = (Assignment)cGroup_8.eContents().get(4);
 		private final RuleCall cDefaultsDefaultsParserRuleCall_8_4_0 = (RuleCall)cDefaultsAssignment_8_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_8_5 = (RuleCall)cGroup_8.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_8_6 = (RuleCall)cGroup_8.eContents().get(6);
 		private final Group cGroup_9 = (Group)cUnorderedGroup.eContents().get(9);
 		private final Keyword cStrategyKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
 		private final Keyword cColonKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
@@ -1175,6 +1259,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cStrategyAssignment_9_4 = (Assignment)cGroup_9.eContents().get(4);
 		private final RuleCall cStrategyStrategyParserRuleCall_9_4_0 = (RuleCall)cStrategyAssignment_9_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_9_5 = (RuleCall)cGroup_9.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_9_6 = (RuleCall)cGroup_9.eContents().get(6);
 		private final Group cGroup_10 = (Group)cUnorderedGroup.eContents().get(10);
 		private final Keyword cContainerKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
 		private final Keyword cColonKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
@@ -1188,6 +1273,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cServicesAssignment_11_4 = (Assignment)cGroup_11.eContents().get(4);
 		private final RuleCall cServicesServiceParserRuleCall_11_4_0 = (RuleCall)cServicesAssignment_11_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_11_5 = (RuleCall)cGroup_11.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_11_6 = (RuleCall)cGroup_11.eContents().get(6);
 		private final Group cGroup_12 = (Group)cUnorderedGroup.eContents().get(12);
 		private final Keyword cUsesKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
 		private final Keyword cColonKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
@@ -1202,6 +1288,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cArgsAssignment_13_4 = (Assignment)cGroup_13.eContents().get(4);
 		private final RuleCall cArgsVariableAssignmentParserRuleCall_13_4_0 = (RuleCall)cArgsAssignment_13_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_13_5 = (RuleCall)cGroup_13.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_13_6 = (RuleCall)cGroup_13.eContents().get(6);
 		private final Group cGroup_14 = (Group)cUnorderedGroup.eContents().get(14);
 		private final Keyword cSecretsKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
 		private final Keyword cColonKeyword_14_1 = (Keyword)cGroup_14.eContents().get(1);
@@ -1216,6 +1303,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cSecretsAssignment_14_2_1_2 = (Assignment)cGroup_14_2_1.eContents().get(2);
 		private final RuleCall cSecretsVariableAssignmentParserRuleCall_14_2_1_2_0 = (RuleCall)cSecretsAssignment_14_2_1_2.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_14_2_1_3 = (RuleCall)cGroup_14_2_1.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_14_2_1_4 = (RuleCall)cGroup_14_2_1.eContents().get(4);
 		private final Group cGroup_15 = (Group)cUnorderedGroup.eContents().get(15);
 		private final Keyword cContinueOnErrorKeyword_15_0 = (Keyword)cGroup_15.eContents().get(0);
 		private final Keyword cColonKeyword_15_1 = (Keyword)cGroup_15.eContents().get(1);
@@ -1230,77 +1318,82 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cTimeoutMinutesExpressionParserRuleCall_16_0_2_0 = (RuleCall)cTimeoutMinutesAssignment_16_0_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_16_0_3 = (RuleCall)cGroup_16_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_16_1 = (RuleCall)cGroup_16.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_16_2 = (RuleCall)cGroup_16.eContents().get(2);
 		
 		//ReuseWorkflowJob returns GHA::ReuseWorkflowJob:
 		//    name=YAMLID ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('name' ':' jobName=Expression  NEWLINE)? &
-		//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		//        ('name' ':' jobName=Expression  NEWLINE+)? &
+		//        ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 		//        ('needs' ':'
-		//            (dependsOn+=[GHA::Job] NEWLINE) |
-		//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+		//            (dependsOn+=[GHA::Job] NEWLINE+) |
+		//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//                ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//        )? &
 		//        if=IfStatement? &
 		//        ('runs-on' ':' agent=Agent) &
 		//        ('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		//        ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//        ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//        ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//        ('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+		//        ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//        ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//        ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//        ('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 		//        ('container' ':' container=Container)? &
-		//        ('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-		//        ('uses' ':' workflowPath=Expression NEWLINE)? &
-		//        ('with' ':' NEWLINE BEGIN args+=VariableAssignment+ END)? &
-		//        ('secrets' ':' ((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END)))? &
-		//        ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//        ('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+		//        ('uses' ':' workflowPath=Expression NEWLINE+)? &
+		//        ('with' ':' NEWLINE+ BEGIN args+=VariableAssignment+ END NEWLINE*)? &
+		//        ('secrets' ':' ((inheritSecrets?='inherit' NEWLINE+) | (NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*)))? &
+		//        ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('name' ':' jobName=Expression  NEWLINE)? &
-		//    ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		//    ('name' ':' jobName=Expression  NEWLINE+)? &
+		//    ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 		//    ('needs' ':'
-		//        (dependsOn+=[GHA::Job] NEWLINE) |
-		//        ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+		//        (dependsOn+=[GHA::Job] NEWLINE+) |
+		//        ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//            ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    )? &
 		//    if=IfStatement? &
 		//    ('runs-on' ':' agent=Agent) &
 		//    ('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		//    ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//    ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		//    ('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+		//    ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//    ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		//    ('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 		//    ('container' ':' container=Container)? &
-		//    ('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-		//    ('uses' ':' workflowPath=Expression NEWLINE)? &
-		//    ('with' ':' NEWLINE BEGIN args+=VariableAssignment+ END)? &
-		//    ('secrets' ':' ((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END)))? &
-		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//    ('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+		//    ('uses' ':' workflowPath=Expression NEWLINE+)? &
+		//    ('with' ':' NEWLINE+ BEGIN args+=VariableAssignment+ END NEWLINE*)? &
+		//    ('secrets' ':' ((inheritSecrets?='inherit' NEWLINE+) | (NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*)))? &
+		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		//    END
+		//    NEWLINE*
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//name=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('name' ':' jobName=Expression  NEWLINE)?
+		//    ('name' ':' jobName=Expression  NEWLINE+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//name=YAMLID
@@ -1312,13 +1405,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_3() { return cBEGINTerminalRuleCall_0_3; }
 		
-		//('name' ':' jobName=Expression  NEWLINE)?
+		//('name' ':' jobName=Expression  NEWLINE+)?
 		public Group getGroup_0_4() { return cGroup_0_4; }
 		
 		//'name'
@@ -1333,10 +1426,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getJobNameExpressionParserRuleCall_0_4_2_0() { return cJobNameExpressionParserRuleCall_0_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_4_3() { return cNEWLINETerminalRuleCall_0_4_3; }
 		
-		//('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)?
+		//('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'permissions'
@@ -1345,7 +1438,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_2() { return cNEWLINETerminalRuleCall_1_2; }
 		
 		//BEGIN
@@ -1360,20 +1453,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_1_5() { return cENDTerminalRuleCall_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_6() { return cNEWLINETerminalRuleCall_1_6; }
+		
 		//('needs' ':'
-		//    (dependsOn+=[GHA::Job] NEWLINE) |
-		//    ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+		//    (dependsOn+=[GHA::Job] NEWLINE+) |
+		//    ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//        ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//)?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//'needs' ':'
-		//            (dependsOn+=[GHA::Job] NEWLINE)
+		//            (dependsOn+=[GHA::Job] NEWLINE+)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
 		//'needs'
@@ -1382,7 +1479,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
 		
-		//(dependsOn+=[GHA::Job] NEWLINE)
+		//(dependsOn+=[GHA::Job] NEWLINE+)
 		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 		
 		//dependsOn+=[GHA::Job]
@@ -1394,10 +1491,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getDependsOnJobIDTerminalRuleCall_2_0_2_0_0_1() { return cDependsOnJobIDTerminalRuleCall_2_0_2_0_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_2_1() { return cNEWLINETerminalRuleCall_2_0_2_1; }
 		
-		//('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE)
+		//('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+)
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//'['
@@ -1430,24 +1527,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_1_4() { return cNEWLINETerminalRuleCall_2_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//    ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_2_2() { return cGroup_2_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_0() { return cNEWLINETerminalRuleCall_2_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_2_1() { return cBEGINTerminalRuleCall_2_2_1; }
 		
-		//('-' dependsOn+=[GHA::Job] NEWLINE)+
+		//('-' dependsOn+=[GHA::Job] NEWLINE+)+
 		public Group getGroup_2_2_2() { return cGroup_2_2_2; }
 		
 		//'-'
@@ -1462,11 +1560,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getDependsOnJobIDTerminalRuleCall_2_2_2_1_0_1() { return cDependsOnJobIDTerminalRuleCall_2_2_2_1_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_2_2() { return cNEWLINETerminalRuleCall_2_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_2_3() { return cENDTerminalRuleCall_2_2_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_2_4() { return cNEWLINETerminalRuleCall_2_2_4; }
 		
 		//if=IfStatement?
 		public Assignment getIfAssignment_3() { return cIfAssignment_3; }
@@ -1504,7 +1605,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//StagingEnvironment
 		public RuleCall getStagingEnvironmentStagingEnvironmentParserRuleCall_5_2_0() { return cStagingEnvironmentStagingEnvironmentParserRuleCall_5_2_0; }
 		
-		//('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)?
+		//('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)?
 		public Group getGroup_6() { return cGroup_6; }
 		
 		//'concurrency'
@@ -1513,7 +1614,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_6_1() { return cColonKeyword_6_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_6_2() { return cNEWLINETerminalRuleCall_6_2; }
 		
 		//BEGIN
@@ -1528,7 +1629,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_6_5() { return cENDTerminalRuleCall_6_5; }
 		
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_6_6() { return cNEWLINETerminalRuleCall_6_6; }
+		
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)?
 		public Group getGroup_7() { return cGroup_7; }
 		
 		//'env'
@@ -1537,7 +1641,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_7_1() { return cColonKeyword_7_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_7_2() { return cNEWLINETerminalRuleCall_7_2; }
 		
 		//BEGIN
@@ -1552,7 +1656,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_7_5() { return cENDTerminalRuleCall_7_5; }
 		
-		//('defaults' ':' NEWLINE BEGIN defaults=Defaults END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_7_6() { return cNEWLINETerminalRuleCall_7_6; }
+		
+		//('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)?
 		public Group getGroup_8() { return cGroup_8; }
 		
 		//'defaults'
@@ -1561,7 +1668,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_8_1() { return cColonKeyword_8_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_8_2() { return cNEWLINETerminalRuleCall_8_2; }
 		
 		//BEGIN
@@ -1576,7 +1683,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_8_5() { return cENDTerminalRuleCall_8_5; }
 		
-		//('strategy' ':' NEWLINE BEGIN strategy=Strategy END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_8_6() { return cNEWLINETerminalRuleCall_8_6; }
+		
+		//('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)?
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//'strategy'
@@ -1585,7 +1695,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_9_1() { return cColonKeyword_9_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_9_2() { return cNEWLINETerminalRuleCall_9_2; }
 		
 		//BEGIN
@@ -1599,6 +1709,9 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_9_5() { return cENDTerminalRuleCall_9_5; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_9_6() { return cNEWLINETerminalRuleCall_9_6; }
 		
 		//('container' ':' container=Container)?
 		public Group getGroup_10() { return cGroup_10; }
@@ -1615,7 +1728,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Container
 		public RuleCall getContainerContainerParserRuleCall_10_2_0() { return cContainerContainerParserRuleCall_10_2_0; }
 		
-		//('services' ':' NEWLINE BEGIN services+=Service+ END)?
+		//('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)?
 		public Group getGroup_11() { return cGroup_11; }
 		
 		//'services'
@@ -1624,7 +1737,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_11_1() { return cColonKeyword_11_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_11_2() { return cNEWLINETerminalRuleCall_11_2; }
 		
 		//BEGIN
@@ -1639,7 +1752,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_11_5() { return cENDTerminalRuleCall_11_5; }
 		
-		//('uses' ':' workflowPath=Expression NEWLINE)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_11_6() { return cNEWLINETerminalRuleCall_11_6; }
+		
+		//('uses' ':' workflowPath=Expression NEWLINE+)?
 		public Group getGroup_12() { return cGroup_12; }
 		
 		//'uses'
@@ -1654,10 +1770,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getWorkflowPathExpressionParserRuleCall_12_2_0() { return cWorkflowPathExpressionParserRuleCall_12_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_12_3() { return cNEWLINETerminalRuleCall_12_3; }
 		
-		//('with' ':' NEWLINE BEGIN args+=VariableAssignment+ END)?
+		//('with' ':' NEWLINE+ BEGIN args+=VariableAssignment+ END NEWLINE*)?
 		public Group getGroup_13() { return cGroup_13; }
 		
 		//'with'
@@ -1666,7 +1782,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_13_1() { return cColonKeyword_13_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_13_2() { return cNEWLINETerminalRuleCall_13_2; }
 		
 		//BEGIN
@@ -1681,7 +1797,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_13_5() { return cENDTerminalRuleCall_13_5; }
 		
-		//('secrets' ':' ((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END)))?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_13_6() { return cNEWLINETerminalRuleCall_13_6; }
+		
+		//('secrets' ':' ((inheritSecrets?='inherit' NEWLINE+) | (NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*)))?
 		public Group getGroup_14() { return cGroup_14; }
 		
 		//'secrets'
@@ -1690,10 +1809,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_14_1() { return cColonKeyword_14_1; }
 		
-		//((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END))
+		//((inheritSecrets?='inherit' NEWLINE+) | (NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*))
 		public Alternatives getAlternatives_14_2() { return cAlternatives_14_2; }
 		
-		//(inheritSecrets?='inherit' NEWLINE)
+		//(inheritSecrets?='inherit' NEWLINE+)
 		public Group getGroup_14_2_0() { return cGroup_14_2_0; }
 		
 		//inheritSecrets?='inherit'
@@ -1702,13 +1821,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'inherit'
 		public Keyword getInheritSecretsInheritKeyword_14_2_0_0_0() { return cInheritSecretsInheritKeyword_14_2_0_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_14_2_0_1() { return cNEWLINETerminalRuleCall_14_2_0_1; }
 		
-		//(NEWLINE BEGIN secrets+=VariableAssignment+ END)
+		//(NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*)
 		public Group getGroup_14_2_1() { return cGroup_14_2_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_14_2_1_0() { return cNEWLINETerminalRuleCall_14_2_1_0; }
 		
 		//BEGIN
@@ -1723,7 +1842,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_14_2_1_3() { return cENDTerminalRuleCall_14_2_1_3; }
 		
-		//('continue-on-error' ':' continueOnError=Expression NEWLINE)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_14_2_1_4() { return cNEWLINETerminalRuleCall_14_2_1_4; }
+		
+		//('continue-on-error' ':' continueOnError=Expression NEWLINE+)?
 		public Group getGroup_15() { return cGroup_15; }
 		
 		//'continue-on-error'
@@ -1738,14 +1860,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getContinueOnErrorExpressionParserRuleCall_15_2_0() { return cContinueOnErrorExpressionParserRuleCall_15_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_15_3() { return cNEWLINETerminalRuleCall_15_3; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		//END
+		//NEWLINE*
 		public Group getGroup_16() { return cGroup_16; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		public Group getGroup_16_0() { return cGroup_16_0; }
 		
 		//'timeout-minutes'
@@ -1760,11 +1883,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTimeoutMinutesExpressionParserRuleCall_16_0_2_0() { return cTimeoutMinutesExpressionParserRuleCall_16_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_16_0_3() { return cNEWLINETerminalRuleCall_16_0_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_16_1() { return cENDTerminalRuleCall_16_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_16_2() { return cNEWLINETerminalRuleCall_16_2; }
 	}
 	public class AgentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Agent");
@@ -1793,6 +1919,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cLabelsExpressionParserRuleCall_0_2_2_1_0 = (RuleCall)cLabelsAssignment_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_0_2_2_2 = (RuleCall)cGroup_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_0_2_3 = (RuleCall)cGroup_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_0_2_4 = (RuleCall)cGroup_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_1 = (Alternatives)cAlternatives.eContents().get(1);
 		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_0_0 = (RuleCall)cGroup_1_0.eContents().get(0);
@@ -1825,6 +1952,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cLabelsExpressionParserRuleCall_1_0_2_0_2_2_1_0 = (RuleCall)cLabelsAssignment_1_0_2_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_0_2_0_2_2_2 = (RuleCall)cGroup_1_0_2_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_1_0_2_0_2_3 = (RuleCall)cGroup_1_0_2_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_0_2_0_2_4 = (RuleCall)cGroup_1_0_2_0_2.eContents().get(4);
 		private final Group cGroup_1_0_2_1 = (Group)cGroup_1_0_2.eContents().get(1);
 		private final Keyword cGroupKeyword_1_0_2_1_0 = (Keyword)cGroup_1_0_2_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_0_2_1_1 = (Keyword)cGroup_1_0_2_1.eContents().get(1);
@@ -1866,121 +1994,132 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cLabelsExpressionParserRuleCall_1_1_0_1_2_2_1_0 = (RuleCall)cLabelsAssignment_1_1_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_1_0_1_2_2_2 = (RuleCall)cGroup_1_1_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_1_1_0_1_2_3 = (RuleCall)cGroup_1_1_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_1_0_1_2_4 = (RuleCall)cGroup_1_1_0_1_2.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_1_1_1 = (RuleCall)cGroup_1_1.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_1_2 = (RuleCall)cGroup_1_1.eContents().get(2);
 		
 		//Agent returns GHA::Agent:
 		//    (
-		//        (labels+=Expression NEWLINE) |
-		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//        (labels+=Expression NEWLINE+) |
+		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' labels+=Expression NEWLINE)+
+		//            ('-' labels+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    ) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
 		//            (
 		//                'labels' ':'
-		//                    (labels+=Expression NEWLINE) |
-		//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//                    (labels+=Expression NEWLINE+) |
+		//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' labels+=Expression NEWLINE)+
+		//                        ('-' labels+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
-		//                'group' ':' group=Expression NEWLINE
+		//                'group' ':' group=Expression NEWLINE+
 		//            )?
 		//        )|
 		//        (
 		//            (
-		//                'group' ':' group=Expression NEWLINE
+		//                'group' ':' group=Expression NEWLINE+
 		//            )
 		//            (
 		//                'labels' ':'
-		//                    (labels+=Expression NEWLINE) |
-		//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//                    (labels+=Expression NEWLINE+) |
+		//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' labels+=Expression NEWLINE)+
+		//                        ('-' labels+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        )
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(
-		//    (labels+=Expression NEWLINE) |
-		//    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//    (labels+=Expression NEWLINE+) |
+		//    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' labels+=Expression NEWLINE)+
+		//        ('-' labels+=Expression NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//) |
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
 		//            'labels' ':'
-		//                (labels+=Expression NEWLINE) |
-		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//                (labels+=Expression NEWLINE+) |
+		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' labels+=Expression NEWLINE)+
+		//                    ('-' labels+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
-		//            'group' ':' group=Expression NEWLINE
+		//            'group' ':' group=Expression NEWLINE+
 		//        )?
 		//    )|
 		//    (
 		//        (
-		//            'group' ':' group=Expression NEWLINE
+		//            'group' ':' group=Expression NEWLINE+
 		//        )
 		//        (
 		//            'labels' ':'
-		//                (labels+=Expression NEWLINE) |
-		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//                (labels+=Expression NEWLINE+) |
+		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' labels+=Expression NEWLINE)+
+		//                    ('-' labels+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//(
-		//    (labels+=Expression NEWLINE) |
-		//    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//    (labels+=Expression NEWLINE+) |
+		//    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' labels+=Expression NEWLINE)+
+		//        ('-' labels+=Expression NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 		
-		//(labels+=Expression NEWLINE)
+		//(labels+=Expression NEWLINE+)
 		public Group getGroup_0_0() { return cGroup_0_0; }
 		
 		//labels+=Expression
@@ -1989,10 +2128,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getLabelsExpressionParserRuleCall_0_0_0_0() { return cLabelsExpressionParserRuleCall_0_0_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_0_1() { return cNEWLINETerminalRuleCall_0_0_1; }
 		
-		//('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE)
+		//('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+)
 		public Group getGroup_0_1() { return cGroup_0_1; }
 		
 		//'['
@@ -2019,24 +2158,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_0_1_3() { return cRightSquareBracketKeyword_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_1_4() { return cNEWLINETerminalRuleCall_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' labels+=Expression NEWLINE)+
+		//    ('-' labels+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_0_2() { return cGroup_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2_0() { return cNEWLINETerminalRuleCall_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_2_1() { return cBEGINTerminalRuleCall_0_2_1; }
 		
-		//('-' labels+=Expression NEWLINE)+
+		//('-' labels+=Expression NEWLINE+)+
 		public Group getGroup_0_2_2() { return cGroup_0_2_2; }
 		
 		//'-'
@@ -2048,72 +2188,79 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getLabelsExpressionParserRuleCall_0_2_2_1_0() { return cLabelsExpressionParserRuleCall_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2_2_2() { return cNEWLINETerminalRuleCall_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_0_2_3() { return cENDTerminalRuleCall_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_0_2_4() { return cNEWLINETerminalRuleCall_0_2_4; }
+		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
 		//            'labels' ':'
-		//                (labels+=Expression NEWLINE) |
-		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//                (labels+=Expression NEWLINE+) |
+		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' labels+=Expression NEWLINE)+
+		//                    ('-' labels+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
-		//            'group' ':' group=Expression NEWLINE
+		//            'group' ':' group=Expression NEWLINE+
 		//        )?
 		//    )|
 		//    (
 		//        (
-		//            'group' ':' group=Expression NEWLINE
+		//            'group' ':' group=Expression NEWLINE+
 		//        )
 		//        (
 		//            'labels' ':'
-		//                (labels+=Expression NEWLINE) |
-		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//                (labels+=Expression NEWLINE+) |
+		//                ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' labels+=Expression NEWLINE)+
+		//                    ('-' labels+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		//BEGIN
 		//(
 		//    (
 		//        'labels' ':'
-		//            (labels+=Expression NEWLINE) |
-		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//            (labels+=Expression NEWLINE+) |
+		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' labels+=Expression NEWLINE)+
+		//                ('-' labels+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
-		//        'group' ':' group=Expression NEWLINE
+		//        'group' ':' group=Expression NEWLINE+
 		//    )?
 		//)
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_0() { return cNEWLINETerminalRuleCall_1_0_0; }
 		
 		//BEGIN
@@ -2122,36 +2269,38 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//(
 		//    (
 		//        'labels' ':'
-		//            (labels+=Expression NEWLINE) |
-		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//            (labels+=Expression NEWLINE+) |
+		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' labels+=Expression NEWLINE)+
+		//                ('-' labels+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
-		//        'group' ':' group=Expression NEWLINE
+		//        'group' ':' group=Expression NEWLINE+
 		//    )?
 		//)
 		public Group getGroup_1_0_2() { return cGroup_1_0_2; }
 		
 		//(
 		//    'labels' ':'
-		//        (labels+=Expression NEWLINE) |
-		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//        (labels+=Expression NEWLINE+) |
+		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' labels+=Expression NEWLINE)+
+		//            ('-' labels+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_1_0_2_0() { return cAlternatives_1_0_2_0; }
 		
 		//'labels' ':'
-		//    (labels+=Expression NEWLINE)
+		//    (labels+=Expression NEWLINE+)
 		public Group getGroup_1_0_2_0_0() { return cGroup_1_0_2_0_0; }
 		
 		//'labels'
@@ -2160,7 +2309,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_0_2_0_0_1() { return cColonKeyword_1_0_2_0_0_1; }
 		
-		//(labels+=Expression NEWLINE)
+		//(labels+=Expression NEWLINE+)
 		public Group getGroup_1_0_2_0_0_2() { return cGroup_1_0_2_0_0_2; }
 		
 		//labels+=Expression
@@ -2169,10 +2318,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getLabelsExpressionParserRuleCall_1_0_2_0_0_2_0_0() { return cLabelsExpressionParserRuleCall_1_0_2_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_2_0_0_2_1() { return cNEWLINETerminalRuleCall_1_0_2_0_0_2_1; }
 		
-		//('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE)
+		//('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+)
 		public Group getGroup_1_0_2_0_1() { return cGroup_1_0_2_0_1; }
 		
 		//'['
@@ -2199,24 +2348,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_1_0_2_0_1_3() { return cRightSquareBracketKeyword_1_0_2_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_2_0_1_4() { return cNEWLINETerminalRuleCall_1_0_2_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' labels+=Expression NEWLINE)+
+		//    ('-' labels+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_1_0_2_0_2() { return cGroup_1_0_2_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_2_0_2_0() { return cNEWLINETerminalRuleCall_1_0_2_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_1_0_2_0_2_1() { return cBEGINTerminalRuleCall_1_0_2_0_2_1; }
 		
-		//('-' labels+=Expression NEWLINE)+
+		//('-' labels+=Expression NEWLINE+)+
 		public Group getGroup_1_0_2_0_2_2() { return cGroup_1_0_2_0_2_2; }
 		
 		//'-'
@@ -2228,14 +2378,17 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getLabelsExpressionParserRuleCall_1_0_2_0_2_2_1_0() { return cLabelsExpressionParserRuleCall_1_0_2_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_2_0_2_2_2() { return cNEWLINETerminalRuleCall_1_0_2_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_0_2_0_2_3() { return cENDTerminalRuleCall_1_0_2_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_0_2_0_2_4() { return cNEWLINETerminalRuleCall_1_0_2_0_2_4; }
+		
 		//(
-		//    'group' ':' group=Expression NEWLINE
+		//    'group' ':' group=Expression NEWLINE+
 		//)?
 		public Group getGroup_1_0_2_1() { return cGroup_1_0_2_1; }
 		
@@ -2251,48 +2404,51 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getGroupExpressionParserRuleCall_1_0_2_1_2_0() { return cGroupExpressionParserRuleCall_1_0_2_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_2_1_3() { return cNEWLINETerminalRuleCall_1_0_2_1_3; }
 		
 		//(
 		//    (
-		//        'group' ':' group=Expression NEWLINE
+		//        'group' ':' group=Expression NEWLINE+
 		//    )
 		//    (
 		//        'labels' ':'
-		//            (labels+=Expression NEWLINE) |
-		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//            (labels+=Expression NEWLINE+) |
+		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' labels+=Expression NEWLINE)+
+		//                ('-' labels+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//(
 		//    (
-		//        'group' ':' group=Expression NEWLINE
+		//        'group' ':' group=Expression NEWLINE+
 		//    )
 		//    (
 		//        'labels' ':'
-		//            (labels+=Expression NEWLINE) |
-		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//            (labels+=Expression NEWLINE+) |
+		//            ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' labels+=Expression NEWLINE)+
+		//                ('-' labels+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
 		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 		
 		//(
-		//    'group' ':' group=Expression NEWLINE
+		//    'group' ':' group=Expression NEWLINE+
 		//)
 		public Group getGroup_1_1_0_0() { return cGroup_1_1_0_0; }
 		
@@ -2308,24 +2464,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getGroupExpressionParserRuleCall_1_1_0_0_2_0() { return cGroupExpressionParserRuleCall_1_1_0_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_1_0_0_3() { return cNEWLINETerminalRuleCall_1_1_0_0_3; }
 		
 		//(
 		//    'labels' ':'
-		//        (labels+=Expression NEWLINE) |
-		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		//        (labels+=Expression NEWLINE+) |
+		//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' labels+=Expression NEWLINE)+
+		//            ('-' labels+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_1_1_0_1() { return cAlternatives_1_1_0_1; }
 		
 		//'labels' ':'
-		//    (labels+=Expression NEWLINE)
+		//    (labels+=Expression NEWLINE+)
 		public Group getGroup_1_1_0_1_0() { return cGroup_1_1_0_1_0; }
 		
 		//'labels'
@@ -2334,7 +2491,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_1_0_1_0_1() { return cColonKeyword_1_1_0_1_0_1; }
 		
-		//(labels+=Expression NEWLINE)
+		//(labels+=Expression NEWLINE+)
 		public Group getGroup_1_1_0_1_0_2() { return cGroup_1_1_0_1_0_2; }
 		
 		//labels+=Expression
@@ -2343,10 +2500,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getLabelsExpressionParserRuleCall_1_1_0_1_0_2_0_0() { return cLabelsExpressionParserRuleCall_1_1_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_1_0_1_0_2_1() { return cNEWLINETerminalRuleCall_1_1_0_1_0_2_1; }
 		
-		//('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE)
+		//('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+)
 		public Group getGroup_1_1_0_1_1() { return cGroup_1_1_0_1_1; }
 		
 		//'['
@@ -2373,24 +2530,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_1_1_0_1_1_3() { return cRightSquareBracketKeyword_1_1_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_1_0_1_1_4() { return cNEWLINETerminalRuleCall_1_1_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' labels+=Expression NEWLINE)+
+		//    ('-' labels+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_1_1_0_1_2() { return cGroup_1_1_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_1_0_1_2_0() { return cNEWLINETerminalRuleCall_1_1_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_1_1_0_1_2_1() { return cBEGINTerminalRuleCall_1_1_0_1_2_1; }
 		
-		//('-' labels+=Expression NEWLINE)+
+		//('-' labels+=Expression NEWLINE+)+
 		public Group getGroup_1_1_0_1_2_2() { return cGroup_1_1_0_1_2_2; }
 		
 		//'-'
@@ -2402,14 +2560,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getLabelsExpressionParserRuleCall_1_1_0_1_2_2_1_0() { return cLabelsExpressionParserRuleCall_1_1_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_1_0_1_2_2_2() { return cNEWLINETerminalRuleCall_1_1_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_1_0_1_2_3() { return cENDTerminalRuleCall_1_1_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_1_0_1_2_4() { return cNEWLINETerminalRuleCall_1_1_0_1_2_4; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_1_1() { return cENDTerminalRuleCall_1_1_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_1_2() { return cNEWLINETerminalRuleCall_1_1_2; }
 	}
 	public class StepElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Step");
@@ -2484,6 +2648,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cEnvironmentVariablesAssignment_5_4 = (Assignment)cGroup_5.eContents().get(4);
 		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_5_4_0 = (RuleCall)cEnvironmentVariablesAssignment_5_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_5_5 = (RuleCall)cGroup_5.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_5_6 = (RuleCall)cGroup_5.eContents().get(6);
 		private final Group cGroup_6 = (Group)cUnorderedGroup.eContents().get(6);
 		private final Keyword cContinueOnErrorKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Keyword cColonKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
@@ -2505,30 +2670,30 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_7_1_3 = (RuleCall)cGroup_7_1.eContents().get(3);
 		
 		//Command returns GHA::Command:
-		//    ('id' ':' id=STRING NEWLINE)? &
+		//    ('id' ':' id=STRING NEWLINE+)? &
 		//    if=IfStatement? &
-		//    ('name' ':' name=Expression NEWLINE)? &
-		//    ('shell' ':' shell=Expression NEWLINE)? &
-		//    ('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-		//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-		//    ('run' ':' command=Expression NEWLINE)
+		//    ('name' ':' name=Expression NEWLINE+)? &
+		//    ('shell' ':' shell=Expression NEWLINE+)? &
+		//    ('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+		//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+		//    ('run' ':' command=Expression NEWLINE+)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('id' ':' id=STRING NEWLINE)? &
+		//('id' ':' id=STRING NEWLINE+)? &
 		//if=IfStatement? &
-		//('name' ':' name=Expression NEWLINE)? &
-		//('shell' ':' shell=Expression NEWLINE)? &
-		//('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-		//('run' ':' command=Expression NEWLINE)
+		//('name' ':' name=Expression NEWLINE+)? &
+		//('shell' ':' shell=Expression NEWLINE+)? &
+		//('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		//('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+		//('run' ':' command=Expression NEWLINE+)
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//('id' ':' id=STRING NEWLINE)?
+		//('id' ':' id=STRING NEWLINE+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'id'
@@ -2543,7 +2708,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//STRING
 		public RuleCall getIdSTRINGTerminalRuleCall_0_2_0() { return cIdSTRINGTerminalRuleCall_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_3() { return cNEWLINETerminalRuleCall_0_3; }
 		
 		//if=IfStatement?
@@ -2552,7 +2717,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//IfStatement
 		public RuleCall getIfIfStatementParserRuleCall_1_0() { return cIfIfStatementParserRuleCall_1_0; }
 		
-		//('name' ':' name=Expression NEWLINE)?
+		//('name' ':' name=Expression NEWLINE+)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//'name'
@@ -2567,10 +2732,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getNameExpressionParserRuleCall_2_2_0() { return cNameExpressionParserRuleCall_2_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_3() { return cNEWLINETerminalRuleCall_2_3; }
 		
-		//('shell' ':' shell=Expression NEWLINE)?
+		//('shell' ':' shell=Expression NEWLINE+)?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'shell'
@@ -2585,10 +2750,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getShellExpressionParserRuleCall_3_2_0() { return cShellExpressionParserRuleCall_3_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_3() { return cNEWLINETerminalRuleCall_3_3; }
 		
-		//('working-directory' ':' workingDirectory=Expression NEWLINE)?
+		//('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'working-directory'
@@ -2603,10 +2768,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getWorkingDirectoryExpressionParserRuleCall_4_2_0() { return cWorkingDirectoryExpressionParserRuleCall_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_3() { return cNEWLINETerminalRuleCall_4_3; }
 		
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)?
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)?
 		public Group getGroup_5() { return cGroup_5; }
 		
 		//'env'
@@ -2615,7 +2780,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_5_1() { return cColonKeyword_5_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_5_2() { return cNEWLINETerminalRuleCall_5_2; }
 		
 		//BEGIN
@@ -2630,7 +2795,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_5_5() { return cENDTerminalRuleCall_5_5; }
 		
-		//('continue-on-error' ':' continueOnError=Expression NEWLINE)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_5_6() { return cNEWLINETerminalRuleCall_5_6; }
+		
+		//('continue-on-error' ':' continueOnError=Expression NEWLINE+)?
 		public Group getGroup_6() { return cGroup_6; }
 		
 		//'continue-on-error'
@@ -2645,14 +2813,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getContinueOnErrorExpressionParserRuleCall_6_2_0() { return cContinueOnErrorExpressionParserRuleCall_6_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_6_3() { return cNEWLINETerminalRuleCall_6_3; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-		//('run' ':' command=Expression NEWLINE)
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+		//('run' ':' command=Expression NEWLINE+)
 		public Group getGroup_7() { return cGroup_7; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		public Group getGroup_7_0() { return cGroup_7_0; }
 		
 		//'timeout-minutes'
@@ -2667,10 +2835,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTimeoutMinutesExpressionParserRuleCall_7_0_2_0() { return cTimeoutMinutesExpressionParserRuleCall_7_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_7_0_3() { return cNEWLINETerminalRuleCall_7_0_3; }
 		
-		//('run' ':' command=Expression NEWLINE)
+		//('run' ':' command=Expression NEWLINE+)
 		public Group getGroup_7_1() { return cGroup_7_1; }
 		
 		//'run'
@@ -2685,7 +2853,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getCommandExpressionParserRuleCall_7_1_2_0() { return cCommandExpressionParserRuleCall_7_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_7_1_3() { return cNEWLINETerminalRuleCall_7_1_3; }
 	}
 	public class PackageElements extends AbstractParserRuleElementFinder {
@@ -2725,6 +2893,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cEnvironmentVariablesAssignment_5_4 = (Assignment)cGroup_5.eContents().get(4);
 		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_5_4_0 = (RuleCall)cEnvironmentVariablesAssignment_5_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_5_5 = (RuleCall)cGroup_5.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_5_6 = (RuleCall)cGroup_5.eContents().get(6);
 		private final Group cGroup_6 = (Group)cUnorderedGroup.eContents().get(6);
 		private final Keyword cContinueOnErrorKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Keyword cColonKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
@@ -2767,56 +2936,59 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cArgsAssignment_8_1_0 = (Assignment)cGroup_8_1.eContents().get(0);
 		private final RuleCall cArgsVariableAssignmentParserRuleCall_8_1_0_0 = (RuleCall)cArgsAssignment_8_1_0.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_8_1_1 = (RuleCall)cGroup_8_1.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_8_1_2 = (RuleCall)cGroup_8_1.eContents().get(2);
 		
 		//Package returns GHA::Package:
-		//    ('id' ':' id=STRING NEWLINE)? &
+		//    ('id' ':' id=STRING NEWLINE+)? &
 		//    if=IfStatement? &
-		//    ('name' ':' name=Expression NEWLINE)? &
-		//    ('shell' ':' shell=Expression NEWLINE)? &
-		//    ('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-		//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-		//    ('uses' ':' uses=Expression NEWLINE) &
+		//    ('name' ':' name=Expression NEWLINE+)? &
+		//    ('shell' ':' shell=Expression NEWLINE+)? &
+		//    ('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+		//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE)? &
+		//    ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+		//    ('uses' ':' uses=Expression NEWLINE+) &
 		//    ('with' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
-		//            ('entrypoint' ':' entrypoint=Expression NEWLINE) &
-		//            ('args' ':' containerArgs=Expression NEWLINE)?
+		//            ('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+		//            ('args' ':' containerArgs=Expression NEWLINE+)?
 		//        ) |
 		//        (
 		//            args+=VariableAssignment+
 		//        )
 		//        END
+		//        NEWLINE*
 		//    )?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('id' ':' id=STRING NEWLINE)? &
+		//('id' ':' id=STRING NEWLINE+)? &
 		//if=IfStatement? &
-		//('name' ':' name=Expression NEWLINE)? &
-		//('shell' ':' shell=Expression NEWLINE)? &
-		//('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		//('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-		//('uses' ':' uses=Expression NEWLINE) &
+		//('name' ':' name=Expression NEWLINE+)? &
+		//('shell' ':' shell=Expression NEWLINE+)? &
+		//('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE)? &
+		//('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+		//('uses' ':' uses=Expression NEWLINE+) &
 		//('with' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        ('entrypoint' ':' entrypoint=Expression NEWLINE) &
-		//        ('args' ':' containerArgs=Expression NEWLINE)?
+		//        ('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+		//        ('args' ':' containerArgs=Expression NEWLINE+)?
 		//    ) |
 		//    (
 		//        args+=VariableAssignment+
 		//    )
 		//    END
+		//    NEWLINE*
 		//)?
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//('id' ':' id=STRING NEWLINE)?
+		//('id' ':' id=STRING NEWLINE+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'id'
@@ -2831,7 +3003,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//STRING
 		public RuleCall getIdSTRINGTerminalRuleCall_0_2_0() { return cIdSTRINGTerminalRuleCall_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_3() { return cNEWLINETerminalRuleCall_0_3; }
 		
 		//if=IfStatement?
@@ -2840,7 +3012,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//IfStatement
 		public RuleCall getIfIfStatementParserRuleCall_1_0() { return cIfIfStatementParserRuleCall_1_0; }
 		
-		//('name' ':' name=Expression NEWLINE)?
+		//('name' ':' name=Expression NEWLINE+)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//'name'
@@ -2855,10 +3027,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getNameExpressionParserRuleCall_2_2_0() { return cNameExpressionParserRuleCall_2_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_3() { return cNEWLINETerminalRuleCall_2_3; }
 		
-		//('shell' ':' shell=Expression NEWLINE)?
+		//('shell' ':' shell=Expression NEWLINE+)?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'shell'
@@ -2873,10 +3045,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getShellExpressionParserRuleCall_3_2_0() { return cShellExpressionParserRuleCall_3_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_3() { return cNEWLINETerminalRuleCall_3_3; }
 		
-		//('working-directory' ':' workingDirectory=Expression NEWLINE)?
+		//('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'working-directory'
@@ -2891,10 +3063,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getWorkingDirectoryExpressionParserRuleCall_4_2_0() { return cWorkingDirectoryExpressionParserRuleCall_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_3() { return cNEWLINETerminalRuleCall_4_3; }
 		
-		//('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)?
+		//('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE)?
 		public Group getGroup_5() { return cGroup_5; }
 		
 		//'env'
@@ -2903,7 +3075,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_5_1() { return cColonKeyword_5_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_5_2() { return cNEWLINETerminalRuleCall_5_2; }
 		
 		//BEGIN
@@ -2918,7 +3090,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_5_5() { return cENDTerminalRuleCall_5_5; }
 		
-		//('continue-on-error' ':' continueOnError=Expression NEWLINE)?
+		//NEWLINE
+		public RuleCall getNEWLINETerminalRuleCall_5_6() { return cNEWLINETerminalRuleCall_5_6; }
+		
+		//('continue-on-error' ':' continueOnError=Expression NEWLINE+)?
 		public Group getGroup_6() { return cGroup_6; }
 		
 		//'continue-on-error'
@@ -2933,14 +3108,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getContinueOnErrorExpressionParserRuleCall_6_2_0() { return cContinueOnErrorExpressionParserRuleCall_6_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_6_3() { return cNEWLINETerminalRuleCall_6_3; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-		//('uses' ':' uses=Expression NEWLINE)
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+		//('uses' ':' uses=Expression NEWLINE+)
 		public Group getGroup_7() { return cGroup_7; }
 		
-		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		//('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		public Group getGroup_7_0() { return cGroup_7_0; }
 		
 		//'timeout-minutes'
@@ -2955,10 +3130,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTimeoutMinutesExpressionParserRuleCall_7_0_2_0() { return cTimeoutMinutesExpressionParserRuleCall_7_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_7_0_3() { return cNEWLINETerminalRuleCall_7_0_3; }
 		
-		//('uses' ':' uses=Expression NEWLINE)
+		//('uses' ':' uses=Expression NEWLINE+)
 		public Group getGroup_7_1() { return cGroup_7_1; }
 		
 		//'uses'
@@ -2973,29 +3148,30 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getUsesExpressionParserRuleCall_7_1_2_0() { return cUsesExpressionParserRuleCall_7_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_7_1_3() { return cNEWLINETerminalRuleCall_7_1_3; }
 		
 		//('with' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        ('entrypoint' ':' entrypoint=Expression NEWLINE) &
-		//        ('args' ':' containerArgs=Expression NEWLINE)?
+		//        ('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+		//        ('args' ':' containerArgs=Expression NEWLINE+)?
 		//    ) |
 		//    (
 		//        args+=VariableAssignment+
 		//    )
 		//    END
+		//    NEWLINE*
 		//)?
 		public Alternatives getAlternatives_8() { return cAlternatives_8; }
 		
 		//'with' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
-		//            ('entrypoint' ':' entrypoint=Expression NEWLINE) &
-		//            ('args' ':' containerArgs=Expression NEWLINE)?
+		//            ('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+		//            ('args' ':' containerArgs=Expression NEWLINE+)?
 		//        )
 		public Group getGroup_8_0() { return cGroup_8_0; }
 		
@@ -3005,19 +3181,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_8_0_1() { return cColonKeyword_8_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_8_0_2() { return cNEWLINETerminalRuleCall_8_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_8_0_3() { return cBEGINTerminalRuleCall_8_0_3; }
 		
 		//(
-		//    ('entrypoint' ':' entrypoint=Expression NEWLINE) &
-		//    ('args' ':' containerArgs=Expression NEWLINE)?
+		//    ('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+		//    ('args' ':' containerArgs=Expression NEWLINE+)?
 		//)
 		public UnorderedGroup getUnorderedGroup_8_0_4() { return cUnorderedGroup_8_0_4; }
 		
-		//('entrypoint' ':' entrypoint=Expression NEWLINE)
+		//('entrypoint' ':' entrypoint=Expression NEWLINE+)
 		public Group getGroup_8_0_4_0() { return cGroup_8_0_4_0; }
 		
 		//'entrypoint'
@@ -3032,10 +3208,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getEntrypointExpressionParserRuleCall_8_0_4_0_2_0() { return cEntrypointExpressionParserRuleCall_8_0_4_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_8_0_4_0_3() { return cNEWLINETerminalRuleCall_8_0_4_0_3; }
 		
-		//('args' ':' containerArgs=Expression NEWLINE)?
+		//('args' ':' containerArgs=Expression NEWLINE+)?
 		public Group getGroup_8_0_4_1() { return cGroup_8_0_4_1; }
 		
 		//'args'
@@ -3050,13 +3226,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getContainerArgsExpressionParserRuleCall_8_0_4_1_2_0() { return cContainerArgsExpressionParserRuleCall_8_0_4_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_8_0_4_1_3() { return cNEWLINETerminalRuleCall_8_0_4_1_3; }
 		
 		//(
 		//    args+=VariableAssignment+
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_8_1() { return cGroup_8_1; }
 		
 		//(
@@ -3069,6 +3246,9 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_8_1_1() { return cENDTerminalRuleCall_8_1_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_8_1_2() { return cNEWLINETerminalRuleCall_8_1_2; }
 	}
 	public class IfStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.IfStatement");
@@ -3079,11 +3259,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//IfStatement returns GHA::Expression:
-		//    'if' ':' Expression NEWLINE
+		//    'if' ':' Expression NEWLINE+
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'if' ':' Expression NEWLINE
+		//'if' ':' Expression NEWLINE+
 		public Group getGroup() { return cGroup; }
 		
 		//'if'
@@ -3095,7 +3275,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getExpressionParserRuleCall_2() { return cExpressionParserRuleCall_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3() { return cNEWLINETerminalRuleCall_3; }
 	}
 	public class ConcurrencyGroupElements extends AbstractParserRuleElementFinder {
@@ -3115,16 +3295,16 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_1_3 = (RuleCall)cGroup_1.eContents().get(3);
 		
 		//ConcurrencyGroup returns GHA::ConcurrencyGroup:
-		//    ('group' ':' name=Expression NEWLINE) &
-		//    ('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
+		//    ('group' ':' name=Expression NEWLINE+) &
+		//    ('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE+)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('group' ':' name=Expression NEWLINE) &
-		//('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
+		//('group' ':' name=Expression NEWLINE+) &
+		//('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE+)?
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//('group' ':' name=Expression NEWLINE)
+		//('group' ':' name=Expression NEWLINE+)
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'group'
@@ -3139,10 +3319,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getNameExpressionParserRuleCall_0_2_0() { return cNameExpressionParserRuleCall_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_3() { return cNEWLINETerminalRuleCall_0_3; }
 		
-		//('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
+		//('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE+)?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'cancel-in-progress'
@@ -3157,7 +3337,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getCancelInProgressExpressionParserRuleCall_1_2_0() { return cCancelInProgressExpressionParserRuleCall_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_3() { return cNEWLINETerminalRuleCall_1_3; }
 	}
 	public class SimpleTriggerElements extends AbstractParserRuleElementFinder {
@@ -3179,7 +3359,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//        SimplePullRequestTrigger |
 		//        SimpleStandardEventTrigger
 		//    )
-		//    NEWLINE
+		//    NEWLINE+
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -3190,7 +3370,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    SimplePullRequestTrigger |
 		//    SimpleStandardEventTrigger
 		//)
-		//NEWLINE
+		//NEWLINE+
 		public Group getGroup() { return cGroup; }
 		
 		//(
@@ -3217,7 +3397,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//SimpleStandardEventTrigger
 		public RuleCall getSimpleStandardEventTriggerParserRuleCall_0_4() { return cSimpleStandardEventTriggerParserRuleCall_0_4; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1() { return cNEWLINETerminalRuleCall_1; }
 	}
 	public class SimplePullRequestTriggerElements extends AbstractParserRuleElementFinder {
@@ -3346,9 +3526,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cOptionedWorkflowRunTriggerParserRuleCall_2_5 = (RuleCall)cAlternatives_2.eContents().get(5);
 		private final RuleCall cOptionedWorkflowDispatchTriggerParserRuleCall_2_6 = (RuleCall)cAlternatives_2.eContents().get(6);
 		private final RuleCall cENDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
 		
 		//OptionedTrigger returns GHA::Trigger:
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        OptionedPullRequestTrigger |
@@ -3360,10 +3541,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//        OptionedWorkflowDispatchTrigger
 		//    )
 		//    END
+		//    NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//NEWLINE
+		//NEWLINE+
 		//BEGIN
 		//(
 		//    OptionedPullRequestTrigger |
@@ -3375,9 +3557,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//    OptionedWorkflowDispatchTrigger
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup() { return cGroup; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0() { return cNEWLINETerminalRuleCall_0; }
 		
 		//BEGIN
@@ -3417,6 +3600,9 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3() { return cENDTerminalRuleCall_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_4() { return cNEWLINETerminalRuleCall_4; }
 	}
 	public class OptionedStandardEventTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedStandardEventTrigger");
@@ -3453,45 +3639,51 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_2_0_2_1_0 = (RuleCall)cEventTypesAssignment_2_0_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_2_0_2_2 = (RuleCall)cGroup_2_0_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_2_0_3 = (RuleCall)cGroup_2_0.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_2_0_4 = (RuleCall)cGroup_2_0.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
 		//OptionedStandardEventTrigger returns GHA::StandardEventTrigger:
 		//    event=EVENT ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        'types' ':'
-		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//event=EVENT ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    END
+		//    NEWLINE*
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//event=EVENT ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//event=EVENT
@@ -3503,7 +3695,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
@@ -3515,7 +3707,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_5() { return cColonKeyword_0_5; }
 		
-		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_0_6() { return cGroup_0_6; }
 		
 		//eventTypes+=WEBHOOK_ACTIVITY_TYPE
@@ -3524,10 +3716,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_0_6_0_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_0_6_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_6_1() { return cNEWLINETerminalRuleCall_0_6_1; }
 		
-		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE)
+		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+)
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'['
@@ -3554,33 +3746,36 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_1_3() { return cRightSquareBracketKeyword_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_4() { return cNEWLINETerminalRuleCall_1_4; }
 		
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//END
+		//NEWLINE*
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_0() { return cNEWLINETerminalRuleCall_2_0_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_0_1() { return cBEGINTerminalRuleCall_2_0_1; }
 		
-		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 		
 		//'-'
@@ -3592,14 +3787,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_2_0_2_1_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_2_0_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_2_2() { return cNEWLINETerminalRuleCall_2_0_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_0_3() { return cENDTerminalRuleCall_2_0_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_0_4() { return cNEWLINETerminalRuleCall_2_0_4; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_1() { return cENDTerminalRuleCall_2_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_2() { return cNEWLINETerminalRuleCall_2_2; }
 	}
 	public class OptionedWorkflowRunTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedWorkflowRunTrigger");
@@ -3638,45 +3839,51 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_2_0_2_1_0 = (RuleCall)cBranchesAssignment_2_0_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_2_0_2_2 = (RuleCall)cGroup_2_0_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_2_0_3 = (RuleCall)cGroup_2_0.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_2_0_4 = (RuleCall)cGroup_2_0.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
 		//OptionedWorkflowRunTrigger returns GHA::WorkflowRunTrigger:
 		//    'workflow_run' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'workflow_run' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    END
+		//    NEWLINE*
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'workflow_run' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE)
+		//        (branches+=Expression NEWLINE+)
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'workflow_run'
@@ -3685,7 +3892,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
@@ -3706,7 +3913,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_5() { return cColonKeyword_0_5; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_0_6() { return cGroup_0_6; }
 		
 		//branches+=Expression
@@ -3715,10 +3922,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_0_6_0_0() { return cBranchesExpressionParserRuleCall_0_6_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_6_1() { return cNEWLINETerminalRuleCall_0_6_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'['
@@ -3745,33 +3952,36 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_1_3() { return cRightSquareBracketKeyword_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_4() { return cNEWLINETerminalRuleCall_1_4; }
 		
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' branches+=Expression NEWLINE)+
+		//        ('-' branches+=Expression NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//END
+		//NEWLINE*
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_0() { return cNEWLINETerminalRuleCall_2_0_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_0_1() { return cBEGINTerminalRuleCall_2_0_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_2_0_2() { return cGroup_2_0_2; }
 		
 		//'-'
@@ -3783,14 +3993,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_2_0_2_1_0() { return cBranchesExpressionParserRuleCall_2_0_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_2_2() { return cNEWLINETerminalRuleCall_2_0_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_0_3() { return cENDTerminalRuleCall_2_0_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_0_4() { return cNEWLINETerminalRuleCall_2_0_4; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_1() { return cENDTerminalRuleCall_2_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_2() { return cNEWLINETerminalRuleCall_2_2; }
 	}
 	public class OptionedPullRequestTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedPullRequestTrigger");
@@ -3833,6 +4049,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_0_2_0_0_2_2_1_0 = (RuleCall)cEventTypesAssignment_3_0_2_0_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_0_2_2_2 = (RuleCall)cGroup_3_0_2_0_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_0_0_2_3 = (RuleCall)cGroup_3_0_2_0_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_0_2_4 = (RuleCall)cGroup_3_0_2_0_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_0_2_0_1 = (Alternatives)cGroup_3_0_2_0.eContents().get(1);
 		private final Group cGroup_3_0_2_0_1_0 = (Group)cAlternatives_3_0_2_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_0_2_0_1_0_0 = (Alternatives)cGroup_3_0_2_0_1_0.eContents().get(0);
@@ -3863,6 +4080,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_3_0_2_0_1_2_2_1_0 = (RuleCall)cBranchesAssignment_3_0_2_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_1_2_2_2 = (RuleCall)cGroup_3_0_2_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_0_1_2_3 = (RuleCall)cGroup_3_0_2_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_1_2_4 = (RuleCall)cGroup_3_0_2_0_1_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_0_2_1 = (Alternatives)cUnorderedGroup_3_0_2.eContents().get(1);
 		private final Group cGroup_3_0_2_1_0 = (Group)cAlternatives_3_0_2_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_0_2_1_0_0 = (Alternatives)cGroup_3_0_2_1_0.eContents().get(0);
@@ -3893,6 +4111,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathsExpressionParserRuleCall_3_0_2_1_2_2_1_0 = (RuleCall)cPathsAssignment_3_0_2_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_1_2_2_2 = (RuleCall)cGroup_3_0_2_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_1_2_3 = (RuleCall)cGroup_3_0_2_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_1_2_4 = (RuleCall)cGroup_3_0_2_1_2.eContents().get(4);
 		private final UnorderedGroup cUnorderedGroup_3_1 = (UnorderedGroup)cAlternatives_3.eContents().get(1);
 		private final Group cGroup_3_1_0 = (Group)cUnorderedGroup_3_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_1_0_0 = (Alternatives)cGroup_3_1_0.eContents().get(0);
@@ -3925,6 +4144,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_3_1_0_0_2_2_1_0 = (RuleCall)cBranchesAssignment_3_1_0_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_0_2_2_2 = (RuleCall)cGroup_3_1_0_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_1_0_0_2_3 = (RuleCall)cGroup_3_1_0_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_0_2_4 = (RuleCall)cGroup_3_1_0_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_1_0_1 = (Alternatives)cGroup_3_1_0.eContents().get(1);
 		private final Group cGroup_3_1_0_1_0 = (Group)cAlternatives_3_1_0_1.eContents().get(0);
 		private final Keyword cTypesKeyword_3_1_0_1_0_0 = (Keyword)cGroup_3_1_0_1_0.eContents().get(0);
@@ -3952,6 +4172,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_1_0_1_2_2_1_0 = (RuleCall)cEventTypesAssignment_3_1_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_1_2_2_2 = (RuleCall)cGroup_3_1_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_1_0_1_2_3 = (RuleCall)cGroup_3_1_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_1_2_4 = (RuleCall)cGroup_3_1_0_1_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_1_1 = (Alternatives)cUnorderedGroup_3_1.eContents().get(1);
 		private final Group cGroup_3_1_1_0 = (Group)cAlternatives_3_1_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_1_1_0_0 = (Alternatives)cGroup_3_1_1_0.eContents().get(0);
@@ -3982,6 +4203,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathsExpressionParserRuleCall_3_1_1_2_2_1_0 = (RuleCall)cPathsAssignment_3_1_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_1_1_2_2_2 = (RuleCall)cGroup_3_1_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_1_1_2_3 = (RuleCall)cGroup_3_1_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_1_2_4 = (RuleCall)cGroup_3_1_1_2.eContents().get(4);
 		private final Group cGroup_3_2 = (Group)cAlternatives_3.eContents().get(2);
 		private final UnorderedGroup cUnorderedGroup_3_2_0 = (UnorderedGroup)cGroup_3_2.eContents().get(0);
 		private final Group cGroup_3_2_0_0 = (Group)cUnorderedGroup_3_2_0.eContents().get(0);
@@ -4015,6 +4237,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathsExpressionParserRuleCall_3_2_0_0_0_2_2_1_0 = (RuleCall)cPathsAssignment_3_2_0_0_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_0_2_2_2 = (RuleCall)cGroup_3_2_0_0_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_0_0_2_3 = (RuleCall)cGroup_3_2_0_0_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_0_2_4 = (RuleCall)cGroup_3_2_0_0_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_2_0_0_1 = (Alternatives)cGroup_3_2_0_0.eContents().get(1);
 		private final Group cGroup_3_2_0_0_1_0 = (Group)cAlternatives_3_2_0_0_1.eContents().get(0);
 		private final Keyword cTypesKeyword_3_2_0_0_1_0_0 = (Keyword)cGroup_3_2_0_0_1_0.eContents().get(0);
@@ -4042,6 +4265,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_2_0_0_1_2_2_1_0 = (RuleCall)cEventTypesAssignment_3_2_0_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_1_2_2_2 = (RuleCall)cGroup_3_2_0_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_0_1_2_3 = (RuleCall)cGroup_3_2_0_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_1_2_4 = (RuleCall)cGroup_3_2_0_0_1_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_2_0_1 = (Alternatives)cUnorderedGroup_3_2_0.eContents().get(1);
 		private final Group cGroup_3_2_0_1_0 = (Group)cAlternatives_3_2_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_2_0_1_0_0 = (Alternatives)cGroup_3_2_0_1_0.eContents().get(0);
@@ -4072,233 +4296,255 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_3_2_0_1_2_2_1_0 = (RuleCall)cBranchesAssignment_3_2_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_1_2_2_2 = (RuleCall)cGroup_3_2_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_1_2_3 = (RuleCall)cGroup_3_2_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_1_2_4 = (RuleCall)cGroup_3_2_0_1_2.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_2 = (RuleCall)cGroup_3_2.eContents().get(2);
 		
 		//OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
 		//    {GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
 		//            (
 		//                'types' ':'
-		//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
 		//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                    (branches+=Expression NEWLINE) |
-		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                    (branches+=Expression NEWLINE+) |
+		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' branches+=Expression NEWLINE)+
+		//                        ('-' branches+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )? &
 		//            (
 		//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                    (paths+=Expression NEWLINE) |
-		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                    (paths+=Expression NEWLINE+) |
+		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' paths+=Expression NEWLINE)+
+		//                        ('-' paths+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        ) |
 		//        (
 		//            (
 		//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                    (branches+=Expression NEWLINE) |
-		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                    (branches+=Expression NEWLINE+) |
+		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' branches+=Expression NEWLINE)+
+		//                        ('-' branches+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
 		//                'types' ':'
-		//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )? &
 		//            (
 		//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                    (paths+=Expression NEWLINE) |
-		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                    (paths+=Expression NEWLINE+) |
+		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' paths+=Expression NEWLINE)+
+		//                        ('-' paths+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        ) |
 		//        (
 		//            (
 		//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                    (paths+=Expression NEWLINE) |
-		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                    (paths+=Expression NEWLINE+) |
+		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' paths+=Expression NEWLINE)+
+		//                        ('-' paths+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
 		//                'types' ':'
-		//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )? &
 		//            (
 		//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                    (branches+=Expression NEWLINE) |
-		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                    (branches+=Expression NEWLINE+) |
+		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' branches+=Expression NEWLINE)+
+		//                        ('-' branches+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        )
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
 		//            'types' ':'
-		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            'types' ':'
-		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            'types' ':'
-		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup() { return cGroup; }
 		
@@ -4318,157 +4564,170 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
 		//            'types' ':'
-		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            'types' ':'
-		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            'types' ':'
-		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//                (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//                ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		//BEGIN
 		//(
 		//    (
 		//        'types' ':'
-		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
 		public Group getGroup_3_0() { return cGroup_3_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_0() { return cNEWLINETerminalRuleCall_3_0_0; }
 		
 		//BEGIN
@@ -4477,35 +4736,38 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//(
 		//    (
 		//        'types' ':'
-		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
@@ -4513,43 +4775,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Group getGroup_3_0_2_0() { return cGroup_3_0_2_0; }
 		
 		//(
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_3_0_2_0_0() { return cAlternatives_3_0_2_0_0; }
 		
 		//'types' ':'
-		//    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_3_0_2_0_0_0() { return cGroup_3_0_2_0_0_0; }
 		
 		//'types'
@@ -4558,7 +4823,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_0_0_0_1() { return cColonKeyword_3_0_2_0_0_0_1; }
 		
-		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_3_0_2_0_0_0_2() { return cGroup_3_0_2_0_0_0_2; }
 		
 		//eventTypes+=WEBHOOK_ACTIVITY_TYPE
@@ -4567,10 +4832,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_0_2_0_0_0_2_0_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_0_2_0_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_0_2_1() { return cNEWLINETerminalRuleCall_3_0_2_0_0_0_2_1; }
 		
-		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE)
+		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+)
 		public Group getGroup_3_0_2_0_0_1() { return cGroup_3_0_2_0_0_1; }
 		
 		//'['
@@ -4597,24 +4862,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_0_2_0_0_1_3() { return cRightSquareBracketKeyword_3_0_2_0_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_1_4() { return cNEWLINETerminalRuleCall_3_0_2_0_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_0_2_0_0_2() { return cGroup_3_0_2_0_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2_0() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_0_2_0_0_2_1() { return cBEGINTerminalRuleCall_3_0_2_0_0_2_1; }
 		
-		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		public Group getGroup_3_0_2_0_0_2_2() { return cGroup_3_0_2_0_0_2_2; }
 		
 		//'-'
@@ -4626,27 +4892,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_0_2_0_0_2_2_1_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_0_2_0_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2_2_2() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_0_0_2_3() { return cENDTerminalRuleCall_3_0_2_0_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2_4() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2_4; }
+		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_0_2_0_1() { return cAlternatives_3_0_2_0_1; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//    (branches+=Expression NEWLINE)
+		//    (branches+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_0_1_0() { return cGroup_3_0_2_0_1_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')
@@ -4664,7 +4934,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_0_1_0_1() { return cColonKeyword_3_0_2_0_1_0_1; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_0_1_0_2() { return cGroup_3_0_2_0_1_0_2; }
 		
 		//branches+=Expression
@@ -4673,10 +4943,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_0_2_0_1_0_2_0_0() { return cBranchesExpressionParserRuleCall_3_0_2_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_0_2_0_1_0_2_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_0_2_0_1_1() { return cGroup_3_0_2_0_1_1; }
 		
 		//'['
@@ -4703,24 +4973,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_0_2_0_1_1_3() { return cRightSquareBracketKeyword_3_0_2_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_1_4() { return cNEWLINETerminalRuleCall_3_0_2_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_0_2_0_1_2() { return cGroup_3_0_2_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2_0() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_0_2_0_1_2_1() { return cBEGINTerminalRuleCall_3_0_2_0_1_2_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_3_0_2_0_1_2_2() { return cGroup_3_0_2_0_1_2_2; }
 		
 		//'-'
@@ -4732,27 +5003,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_0_2_0_1_2_2_1_0() { return cBranchesExpressionParserRuleCall_3_0_2_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_0_1_2_3() { return cENDTerminalRuleCall_3_0_2_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2_4() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2_4; }
+		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_0_2_1() { return cAlternatives_3_0_2_1; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//    (paths+=Expression NEWLINE)
+		//    (paths+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_1_0() { return cGroup_3_0_2_1_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')
@@ -4770,7 +5045,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_1_0_1() { return cColonKeyword_3_0_2_1_0_1; }
 		
-		//(paths+=Expression NEWLINE)
+		//(paths+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_1_0_2() { return cGroup_3_0_2_1_0_2; }
 		
 		//paths+=Expression
@@ -4779,10 +5054,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_0_2_1_0_2_0_0() { return cPathsExpressionParserRuleCall_3_0_2_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_0_2_1() { return cNEWLINETerminalRuleCall_3_0_2_1_0_2_1; }
 		
-		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE)
+		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_0_2_1_1() { return cGroup_3_0_2_1_1; }
 		
 		//'['
@@ -4809,24 +5084,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_0_2_1_1_3() { return cRightSquareBracketKeyword_3_0_2_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_1_4() { return cNEWLINETerminalRuleCall_3_0_2_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' paths+=Expression NEWLINE)+
+		//    ('-' paths+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_0_2_1_2() { return cGroup_3_0_2_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2_0() { return cNEWLINETerminalRuleCall_3_0_2_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_0_2_1_2_1() { return cBEGINTerminalRuleCall_3_0_2_1_2_1; }
 		
-		//('-' paths+=Expression NEWLINE)+
+		//('-' paths+=Expression NEWLINE+)+
 		public Group getGroup_3_0_2_1_2_2() { return cGroup_3_0_2_1_2_2; }
 		
 		//'-'
@@ -4838,44 +5114,50 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_0_2_1_2_2_1_0() { return cPathsExpressionParserRuleCall_3_0_2_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2_2_2() { return cNEWLINETerminalRuleCall_3_0_2_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_1_2_3() { return cENDTerminalRuleCall_3_0_2_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2_4() { return cNEWLINETerminalRuleCall_3_0_2_1_2_4; }
+		
 		//(
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        'types' ':'
-		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
@@ -4883,43 +5165,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//(
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
 		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_3_1_0_0() { return cAlternatives_3_1_0_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//    (branches+=Expression NEWLINE)
+		//    (branches+=Expression NEWLINE+)
 		public Group getGroup_3_1_0_0_0() { return cGroup_3_1_0_0_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')
@@ -4937,7 +5222,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_0_0_0_1() { return cColonKeyword_3_1_0_0_0_1; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_3_1_0_0_0_2() { return cGroup_3_1_0_0_0_2; }
 		
 		//branches+=Expression
@@ -4946,10 +5231,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_1_0_0_0_2_0_0() { return cBranchesExpressionParserRuleCall_3_1_0_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_0_2_1() { return cNEWLINETerminalRuleCall_3_1_0_0_0_2_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_1_0_0_1() { return cGroup_3_1_0_0_1; }
 		
 		//'['
@@ -4976,24 +5261,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_1_0_0_1_3() { return cRightSquareBracketKeyword_3_1_0_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_1_4() { return cNEWLINETerminalRuleCall_3_1_0_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_1_0_0_2() { return cGroup_3_1_0_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2_0() { return cNEWLINETerminalRuleCall_3_1_0_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_1_0_0_2_1() { return cBEGINTerminalRuleCall_3_1_0_0_2_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_3_1_0_0_2_2() { return cGroup_3_1_0_0_2_2; }
 		
 		//'-'
@@ -5005,27 +5291,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_1_0_0_2_2_1_0() { return cBranchesExpressionParserRuleCall_3_1_0_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2_2_2() { return cNEWLINETerminalRuleCall_3_1_0_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_0_0_2_3() { return cENDTerminalRuleCall_3_1_0_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2_4() { return cNEWLINETerminalRuleCall_3_1_0_0_2_4; }
+		
 		//(
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_1_0_1() { return cAlternatives_3_1_0_1; }
 		
 		//'types' ':'
-		//    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_3_1_0_1_0() { return cGroup_3_1_0_1_0; }
 		
 		//'types'
@@ -5034,7 +5324,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_0_1_0_1() { return cColonKeyword_3_1_0_1_0_1; }
 		
-		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_3_1_0_1_0_2() { return cGroup_3_1_0_1_0_2; }
 		
 		//eventTypes+=WEBHOOK_ACTIVITY_TYPE
@@ -5043,10 +5333,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_1_0_1_0_2_0_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_1_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_1_0_1_0_2_1; }
 		
-		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE)
+		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+)
 		public Group getGroup_3_1_0_1_1() { return cGroup_3_1_0_1_1; }
 		
 		//'['
@@ -5073,24 +5363,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_1_0_1_1_3() { return cRightSquareBracketKeyword_3_1_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_1_4() { return cNEWLINETerminalRuleCall_3_1_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_1_0_1_2() { return cGroup_3_1_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2_0() { return cNEWLINETerminalRuleCall_3_1_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_1_0_1_2_1() { return cBEGINTerminalRuleCall_3_1_0_1_2_1; }
 		
-		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		public Group getGroup_3_1_0_1_2_2() { return cGroup_3_1_0_1_2_2; }
 		
 		//'-'
@@ -5102,27 +5393,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_1_0_1_2_2_1_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_1_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_1_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_0_1_2_3() { return cENDTerminalRuleCall_3_1_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2_4() { return cNEWLINETerminalRuleCall_3_1_0_1_2_4; }
+		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_1_1() { return cAlternatives_3_1_1; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//    (paths+=Expression NEWLINE)
+		//    (paths+=Expression NEWLINE+)
 		public Group getGroup_3_1_1_0() { return cGroup_3_1_1_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')
@@ -5140,7 +5435,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_1_0_1() { return cColonKeyword_3_1_1_0_1; }
 		
-		//(paths+=Expression NEWLINE)
+		//(paths+=Expression NEWLINE+)
 		public Group getGroup_3_1_1_0_2() { return cGroup_3_1_1_0_2; }
 		
 		//paths+=Expression
@@ -5149,10 +5444,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_1_1_0_2_0_0() { return cPathsExpressionParserRuleCall_3_1_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_0_2_1() { return cNEWLINETerminalRuleCall_3_1_1_0_2_1; }
 		
-		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE)
+		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_1_1_1() { return cGroup_3_1_1_1; }
 		
 		//'['
@@ -5179,24 +5474,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_1_1_1_3() { return cRightSquareBracketKeyword_3_1_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_1_4() { return cNEWLINETerminalRuleCall_3_1_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' paths+=Expression NEWLINE)+
+		//    ('-' paths+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_1_1_2() { return cGroup_3_1_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2_0() { return cNEWLINETerminalRuleCall_3_1_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_1_1_2_1() { return cBEGINTerminalRuleCall_3_1_1_2_1; }
 		
-		//('-' paths+=Expression NEWLINE)+
+		//('-' paths+=Expression NEWLINE+)+
 		public Group getGroup_3_1_1_2_2() { return cGroup_3_1_1_2_2; }
 		
 		//'-'
@@ -5208,82 +5504,92 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_1_1_2_2_1_0() { return cPathsExpressionParserRuleCall_3_1_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2_2_2() { return cNEWLINETerminalRuleCall_3_1_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_1_2_3() { return cENDTerminalRuleCall_3_1_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2_4() { return cNEWLINETerminalRuleCall_3_1_1_2_4; }
+		
 		//(
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        'types' ':'
-		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_3_2() { return cGroup_3_2; }
 		
 		//(
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        'types' ':'
-		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
@@ -5291,43 +5597,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//(
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Group getGroup_3_2_0_0() { return cGroup_3_2_0_0; }
 		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_3_2_0_0_0() { return cAlternatives_3_2_0_0_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//    (paths+=Expression NEWLINE)
+		//    (paths+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_0_0_0() { return cGroup_3_2_0_0_0_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')
@@ -5345,7 +5654,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_0_0_0_1() { return cColonKeyword_3_2_0_0_0_0_1; }
 		
-		//(paths+=Expression NEWLINE)
+		//(paths+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_0_0_0_2() { return cGroup_3_2_0_0_0_0_2; }
 		
 		//paths+=Expression
@@ -5354,10 +5663,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_2_0_0_0_0_2_0_0() { return cPathsExpressionParserRuleCall_3_2_0_0_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_0_2_1() { return cNEWLINETerminalRuleCall_3_2_0_0_0_0_2_1; }
 		
-		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE)
+		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_2_0_0_0_1() { return cGroup_3_2_0_0_0_1; }
 		
 		//'['
@@ -5384,24 +5693,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_2_0_0_0_1_3() { return cRightSquareBracketKeyword_3_2_0_0_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_1_4() { return cNEWLINETerminalRuleCall_3_2_0_0_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' paths+=Expression NEWLINE)+
+		//    ('-' paths+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_2_0_0_0_2() { return cGroup_3_2_0_0_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2_0() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_2_0_0_0_2_1() { return cBEGINTerminalRuleCall_3_2_0_0_0_2_1; }
 		
-		//('-' paths+=Expression NEWLINE)+
+		//('-' paths+=Expression NEWLINE+)+
 		public Group getGroup_3_2_0_0_0_2_2() { return cGroup_3_2_0_0_0_2_2; }
 		
 		//'-'
@@ -5413,27 +5723,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_2_0_0_0_2_2_1_0() { return cPathsExpressionParserRuleCall_3_2_0_0_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2_2_2() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_0_0_2_3() { return cENDTerminalRuleCall_3_2_0_0_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2_4() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2_4; }
+		
 		//(
 		//    'types' ':'
-		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+		//        (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+		//        ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//            ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_2_0_0_1() { return cAlternatives_3_2_0_0_1; }
 		
 		//'types' ':'
-		//    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_3_2_0_0_1_0() { return cGroup_3_2_0_0_1_0; }
 		
 		//'types'
@@ -5442,7 +5756,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_0_1_0_1() { return cColonKeyword_3_2_0_0_1_0_1; }
 		
-		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)
+		//(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)
 		public Group getGroup_3_2_0_0_1_0_2() { return cGroup_3_2_0_0_1_0_2; }
 		
 		//eventTypes+=WEBHOOK_ACTIVITY_TYPE
@@ -5451,10 +5765,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_2_0_0_1_0_2_0_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_2_0_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_2_0_0_1_0_2_1; }
 		
-		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE)
+		//('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+)
 		public Group getGroup_3_2_0_0_1_1() { return cGroup_3_2_0_0_1_1; }
 		
 		//'['
@@ -5481,24 +5795,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_2_0_0_1_1_3() { return cRightSquareBracketKeyword_3_2_0_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_1_4() { return cNEWLINETerminalRuleCall_3_2_0_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//    ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_2_0_0_1_2() { return cGroup_3_2_0_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2_0() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_2_0_0_1_2_1() { return cBEGINTerminalRuleCall_3_2_0_0_1_2_1; }
 		
-		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+		//('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 		public Group getGroup_3_2_0_0_1_2_2() { return cGroup_3_2_0_0_1_2_2; }
 		
 		//'-'
@@ -5510,27 +5825,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//WEBHOOK_ACTIVITY_TYPE
 		public RuleCall getEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_2_0_0_1_2_2_1_0() { return cEventTypesWEBHOOK_ACTIVITY_TYPEEnumRuleCall_3_2_0_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_0_1_2_3() { return cENDTerminalRuleCall_3_2_0_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2_4() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2_4; }
+		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_2_0_1() { return cAlternatives_3_2_0_1; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//    (branches+=Expression NEWLINE)
+		//    (branches+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_1_0() { return cGroup_3_2_0_1_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')
@@ -5548,7 +5867,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_1_0_1() { return cColonKeyword_3_2_0_1_0_1; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_1_0_2() { return cGroup_3_2_0_1_0_2; }
 		
 		//branches+=Expression
@@ -5557,10 +5876,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_2_0_1_0_2_0_0() { return cBranchesExpressionParserRuleCall_3_2_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_2_0_1_0_2_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_2_0_1_1() { return cGroup_3_2_0_1_1; }
 		
 		//'['
@@ -5587,24 +5906,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_2_0_1_1_3() { return cRightSquareBracketKeyword_3_2_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_1_4() { return cNEWLINETerminalRuleCall_3_2_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_2_0_1_2() { return cGroup_3_2_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2_0() { return cNEWLINETerminalRuleCall_3_2_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_2_0_1_2_1() { return cBEGINTerminalRuleCall_3_2_0_1_2_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_3_2_0_1_2_2() { return cGroup_3_2_0_1_2_2; }
 		
 		//'-'
@@ -5616,14 +5936,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_2_0_1_2_2_1_0() { return cBranchesExpressionParserRuleCall_3_2_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_2_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_1_2_3() { return cENDTerminalRuleCall_3_2_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2_4() { return cNEWLINETerminalRuleCall_3_2_0_1_2_4; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_1() { return cENDTerminalRuleCall_3_2_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_2() { return cNEWLINETerminalRuleCall_3_2_2; }
 	}
 	public class OptionedPushTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedPushTrigger");
@@ -5667,6 +5993,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_3_0_2_0_0_2_2_1_0 = (RuleCall)cBranchesAssignment_3_0_2_0_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_0_2_2_2 = (RuleCall)cGroup_3_0_2_0_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_0_0_2_3 = (RuleCall)cGroup_3_0_2_0_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_0_2_4 = (RuleCall)cGroup_3_0_2_0_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_0_2_0_1 = (Alternatives)cGroup_3_0_2_0.eContents().get(1);
 		private final Group cGroup_3_0_2_0_1_0 = (Group)cAlternatives_3_0_2_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_0_2_0_1_0_0 = (Alternatives)cGroup_3_0_2_0_1_0.eContents().get(0);
@@ -5697,6 +6024,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathsExpressionParserRuleCall_3_0_2_0_1_2_2_1_0 = (RuleCall)cPathsAssignment_3_0_2_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_1_2_2_2 = (RuleCall)cGroup_3_0_2_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_0_1_2_3 = (RuleCall)cGroup_3_0_2_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_1_2_4 = (RuleCall)cGroup_3_0_2_0_1_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_0_2_1 = (Alternatives)cUnorderedGroup_3_0_2.eContents().get(1);
 		private final Group cGroup_3_0_2_1_0 = (Group)cAlternatives_3_0_2_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_0_2_1_0_0 = (Alternatives)cGroup_3_0_2_1_0.eContents().get(0);
@@ -5727,6 +6055,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cTagsExpressionParserRuleCall_3_0_2_1_2_2_1_0 = (RuleCall)cTagsAssignment_3_0_2_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_1_2_2_2 = (RuleCall)cGroup_3_0_2_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_1_2_3 = (RuleCall)cGroup_3_0_2_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_1_2_4 = (RuleCall)cGroup_3_0_2_1_2.eContents().get(4);
 		private final UnorderedGroup cUnorderedGroup_3_1 = (UnorderedGroup)cAlternatives_3.eContents().get(1);
 		private final Group cGroup_3_1_0 = (Group)cUnorderedGroup_3_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_1_0_0 = (Alternatives)cGroup_3_1_0.eContents().get(0);
@@ -5759,6 +6088,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathsExpressionParserRuleCall_3_1_0_0_2_2_1_0 = (RuleCall)cPathsAssignment_3_1_0_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_0_2_2_2 = (RuleCall)cGroup_3_1_0_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_1_0_0_2_3 = (RuleCall)cGroup_3_1_0_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_0_2_4 = (RuleCall)cGroup_3_1_0_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_1_0_1 = (Alternatives)cGroup_3_1_0.eContents().get(1);
 		private final Group cGroup_3_1_0_1_0 = (Group)cAlternatives_3_1_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_1_0_1_0_0 = (Alternatives)cGroup_3_1_0_1_0.eContents().get(0);
@@ -5789,6 +6119,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_3_1_0_1_2_2_1_0 = (RuleCall)cBranchesAssignment_3_1_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_1_2_2_2 = (RuleCall)cGroup_3_1_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_1_0_1_2_3 = (RuleCall)cGroup_3_1_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_1_2_4 = (RuleCall)cGroup_3_1_0_1_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_1_1 = (Alternatives)cUnorderedGroup_3_1.eContents().get(1);
 		private final Group cGroup_3_1_1_0 = (Group)cAlternatives_3_1_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_1_1_0_0 = (Alternatives)cGroup_3_1_1_0.eContents().get(0);
@@ -5819,6 +6150,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cTagsExpressionParserRuleCall_3_1_1_2_2_1_0 = (RuleCall)cTagsAssignment_3_1_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_1_1_2_2_2 = (RuleCall)cGroup_3_1_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_1_1_2_3 = (RuleCall)cGroup_3_1_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_1_2_4 = (RuleCall)cGroup_3_1_1_2.eContents().get(4);
 		private final Group cGroup_3_2 = (Group)cAlternatives_3.eContents().get(2);
 		private final UnorderedGroup cUnorderedGroup_3_2_0 = (UnorderedGroup)cGroup_3_2.eContents().get(0);
 		private final Group cGroup_3_2_0_0 = (Group)cUnorderedGroup_3_2_0.eContents().get(0);
@@ -5852,6 +6184,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cTagsExpressionParserRuleCall_3_2_0_0_0_2_2_1_0 = (RuleCall)cTagsAssignment_3_2_0_0_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_0_2_2_2 = (RuleCall)cGroup_3_2_0_0_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_0_0_2_3 = (RuleCall)cGroup_3_2_0_0_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_0_2_4 = (RuleCall)cGroup_3_2_0_0_0_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_2_0_0_1 = (Alternatives)cGroup_3_2_0_0.eContents().get(1);
 		private final Group cGroup_3_2_0_0_1_0 = (Group)cAlternatives_3_2_0_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_2_0_0_1_0_0 = (Alternatives)cGroup_3_2_0_0_1_0.eContents().get(0);
@@ -5882,6 +6215,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cBranchesExpressionParserRuleCall_3_2_0_0_1_2_2_1_0 = (RuleCall)cBranchesAssignment_3_2_0_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_1_2_2_2 = (RuleCall)cGroup_3_2_0_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_0_1_2_3 = (RuleCall)cGroup_3_2_0_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_1_2_4 = (RuleCall)cGroup_3_2_0_0_1_2.eContents().get(4);
 		private final Alternatives cAlternatives_3_2_0_1 = (Alternatives)cUnorderedGroup_3_2_0.eContents().get(1);
 		private final Group cGroup_3_2_0_1_0 = (Group)cAlternatives_3_2_0_1.eContents().get(0);
 		private final Alternatives cAlternatives_3_2_0_1_0_0 = (Alternatives)cGroup_3_2_0_1_0.eContents().get(0);
@@ -5912,233 +6246,255 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPathsExpressionParserRuleCall_3_2_0_1_2_2_1_0 = (RuleCall)cPathsAssignment_3_2_0_1_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_1_2_2_2 = (RuleCall)cGroup_3_2_0_1_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_1_2_3 = (RuleCall)cGroup_3_2_0_1_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_1_2_4 = (RuleCall)cGroup_3_2_0_1_2.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_2 = (RuleCall)cGroup_3_2.eContents().get(2);
 		
 		//OptionedPushTrigger returns GHA::PushTrigger:
 		//    {GHA::PushTrigger} 'push' ':'
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
 		//            (
 		//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                    (branches+=Expression NEWLINE) |
-		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                    (branches+=Expression NEWLINE+) |
+		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' branches+=Expression NEWLINE)+
+		//                        ('-' branches+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
 		//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                    (paths+=Expression NEWLINE) |
-		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                    (paths+=Expression NEWLINE+) |
+		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' paths+=Expression NEWLINE)+
+		//                        ('-' paths+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )? &
 		//            (
 		//                ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                    (tags+=Expression NEWLINE) |
-		//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                    (tags+=Expression NEWLINE+) |
+		//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' tags+=Expression NEWLINE)+
+		//                        ('-' tags+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        ) |
 		//        (
 		//            (
 		//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                    (paths+=Expression NEWLINE) |
-		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                    (paths+=Expression NEWLINE+) |
+		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' paths+=Expression NEWLINE)+
+		//                        ('-' paths+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
 		//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                    (branches+=Expression NEWLINE) |
-		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                    (branches+=Expression NEWLINE+) |
+		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' branches+=Expression NEWLINE)+
+		//                        ('-' branches+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )? &
 		//            (
 		//                ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                    (tags+=Expression NEWLINE) |
-		//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                    (tags+=Expression NEWLINE+) |
+		//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' tags+=Expression NEWLINE)+
+		//                        ('-' tags+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        ) |
 		//        (
 		//            (
 		//                ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                    (tags+=Expression NEWLINE) |
-		//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                    (tags+=Expression NEWLINE+) |
+		//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' tags+=Expression NEWLINE)+
+		//                        ('-' tags+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )
 		//            (
 		//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                    (branches+=Expression NEWLINE) |
-		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                    (branches+=Expression NEWLINE+) |
+		//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' branches+=Expression NEWLINE)+
+		//                        ('-' branches+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )? &
 		//            (
 		//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                    (paths+=Expression NEWLINE) |
-		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                    (paths+=Expression NEWLINE+) |
+		//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                    (
-		//                        NEWLINE
+		//                        NEWLINE+
 		//                        BEGIN
-		//                        ('-' paths+=Expression NEWLINE)+
+		//                        ('-' paths+=Expression NEWLINE+)+
 		//                        END
+		//                        NEWLINE*
 		//                    )
 		//            )?
 		//        )
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GHA::PushTrigger} 'push' ':'
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                (tags+=Expression NEWLINE) |
-		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                (tags+=Expression NEWLINE+) |
+		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' tags+=Expression NEWLINE)+
+		//                    ('-' tags+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                (tags+=Expression NEWLINE) |
-		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                (tags+=Expression NEWLINE+) |
+		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' tags+=Expression NEWLINE)+
+		//                    ('-' tags+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                (tags+=Expression NEWLINE) |
-		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                (tags+=Expression NEWLINE+) |
+		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' tags+=Expression NEWLINE)+
+		//                    ('-' tags+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup() { return cGroup; }
 		
@@ -6152,157 +6508,170 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                (tags+=Expression NEWLINE) |
-		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                (tags+=Expression NEWLINE+) |
+		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' tags+=Expression NEWLINE)+
+		//                    ('-' tags+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                (tags+=Expression NEWLINE) |
-		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                (tags+=Expression NEWLINE+) |
+		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' tags+=Expression NEWLINE)+
+		//                    ('-' tags+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    ) |
 		//    (
 		//        (
 		//            ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//                (tags+=Expression NEWLINE) |
-		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//                (tags+=Expression NEWLINE+) |
+		//                ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' tags+=Expression NEWLINE)+
+		//                    ('-' tags+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        (
 		//            ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//                (branches+=Expression NEWLINE) |
-		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//                (branches+=Expression NEWLINE+) |
+		//                ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' branches+=Expression NEWLINE)+
+		//                    ('-' branches+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )? &
 		//        (
 		//            ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//                (paths+=Expression NEWLINE) |
-		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//                (paths+=Expression NEWLINE+) |
+		//                ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' paths+=Expression NEWLINE)+
+		//                    ('-' paths+=Expression NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		//BEGIN
 		//(
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//            (tags+=Expression NEWLINE) |
-		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//            (tags+=Expression NEWLINE+) |
+		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' tags+=Expression NEWLINE)+
+		//                ('-' tags+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
 		public Group getGroup_3_0() { return cGroup_3_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_0() { return cNEWLINETerminalRuleCall_3_0_0; }
 		
 		//BEGIN
@@ -6311,35 +6680,38 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//(
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//            (tags+=Expression NEWLINE) |
-		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//            (tags+=Expression NEWLINE+) |
+		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' tags+=Expression NEWLINE)+
+		//                ('-' tags+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
@@ -6347,43 +6719,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Group getGroup_3_0_2_0() { return cGroup_3_0_2_0; }
 		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_3_0_2_0_0() { return cAlternatives_3_0_2_0_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//    (branches+=Expression NEWLINE)
+		//    (branches+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_0_0_0() { return cGroup_3_0_2_0_0_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')
@@ -6401,7 +6776,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_0_0_0_1() { return cColonKeyword_3_0_2_0_0_0_1; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_0_0_0_2() { return cGroup_3_0_2_0_0_0_2; }
 		
 		//branches+=Expression
@@ -6410,10 +6785,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_0_2_0_0_0_2_0_0() { return cBranchesExpressionParserRuleCall_3_0_2_0_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_0_2_1() { return cNEWLINETerminalRuleCall_3_0_2_0_0_0_2_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_0_2_0_0_1() { return cGroup_3_0_2_0_0_1; }
 		
 		//'['
@@ -6440,24 +6815,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_0_2_0_0_1_3() { return cRightSquareBracketKeyword_3_0_2_0_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_1_4() { return cNEWLINETerminalRuleCall_3_0_2_0_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_0_2_0_0_2() { return cGroup_3_0_2_0_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2_0() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_0_2_0_0_2_1() { return cBEGINTerminalRuleCall_3_0_2_0_0_2_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_3_0_2_0_0_2_2() { return cGroup_3_0_2_0_0_2_2; }
 		
 		//'-'
@@ -6469,27 +6845,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_0_2_0_0_2_2_1_0() { return cBranchesExpressionParserRuleCall_3_0_2_0_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2_2_2() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_0_0_2_3() { return cENDTerminalRuleCall_3_0_2_0_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2_4() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2_4; }
+		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_0_2_0_1() { return cAlternatives_3_0_2_0_1; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//    (paths+=Expression NEWLINE)
+		//    (paths+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_0_1_0() { return cGroup_3_0_2_0_1_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')
@@ -6507,7 +6887,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_0_1_0_1() { return cColonKeyword_3_0_2_0_1_0_1; }
 		
-		//(paths+=Expression NEWLINE)
+		//(paths+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_0_1_0_2() { return cGroup_3_0_2_0_1_0_2; }
 		
 		//paths+=Expression
@@ -6516,10 +6896,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_0_2_0_1_0_2_0_0() { return cPathsExpressionParserRuleCall_3_0_2_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_0_2_0_1_0_2_1; }
 		
-		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE)
+		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_0_2_0_1_1() { return cGroup_3_0_2_0_1_1; }
 		
 		//'['
@@ -6546,24 +6926,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_0_2_0_1_1_3() { return cRightSquareBracketKeyword_3_0_2_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_1_4() { return cNEWLINETerminalRuleCall_3_0_2_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' paths+=Expression NEWLINE)+
+		//    ('-' paths+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_0_2_0_1_2() { return cGroup_3_0_2_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2_0() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_0_2_0_1_2_1() { return cBEGINTerminalRuleCall_3_0_2_0_1_2_1; }
 		
-		//('-' paths+=Expression NEWLINE)+
+		//('-' paths+=Expression NEWLINE+)+
 		public Group getGroup_3_0_2_0_1_2_2() { return cGroup_3_0_2_0_1_2_2; }
 		
 		//'-'
@@ -6575,27 +6956,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_0_2_0_1_2_2_1_0() { return cPathsExpressionParserRuleCall_3_0_2_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_0_1_2_3() { return cENDTerminalRuleCall_3_0_2_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2_4() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2_4; }
+		
 		//(
 		//    ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//        (tags+=Expression NEWLINE) |
-		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//        (tags+=Expression NEWLINE+) |
+		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' tags+=Expression NEWLINE)+
+		//            ('-' tags+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_0_2_1() { return cAlternatives_3_0_2_1; }
 		
 		//('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//    (tags+=Expression NEWLINE)
+		//    (tags+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_1_0() { return cGroup_3_0_2_1_0; }
 		
 		//('tags' | ignoreSpecifiedTags?='tags-ignore')
@@ -6613,7 +6998,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_1_0_1() { return cColonKeyword_3_0_2_1_0_1; }
 		
-		//(tags+=Expression NEWLINE)
+		//(tags+=Expression NEWLINE+)
 		public Group getGroup_3_0_2_1_0_2() { return cGroup_3_0_2_1_0_2; }
 		
 		//tags+=Expression
@@ -6622,10 +7007,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTagsExpressionParserRuleCall_3_0_2_1_0_2_0_0() { return cTagsExpressionParserRuleCall_3_0_2_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_0_2_1() { return cNEWLINETerminalRuleCall_3_0_2_1_0_2_1; }
 		
-		//('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE)
+		//('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_0_2_1_1() { return cGroup_3_0_2_1_1; }
 		
 		//'['
@@ -6652,24 +7037,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_0_2_1_1_3() { return cRightSquareBracketKeyword_3_0_2_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_1_4() { return cNEWLINETerminalRuleCall_3_0_2_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' tags+=Expression NEWLINE)+
+		//    ('-' tags+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_0_2_1_2() { return cGroup_3_0_2_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2_0() { return cNEWLINETerminalRuleCall_3_0_2_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_0_2_1_2_1() { return cBEGINTerminalRuleCall_3_0_2_1_2_1; }
 		
-		//('-' tags+=Expression NEWLINE)+
+		//('-' tags+=Expression NEWLINE+)+
 		public Group getGroup_3_0_2_1_2_2() { return cGroup_3_0_2_1_2_2; }
 		
 		//'-'
@@ -6681,44 +7067,50 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTagsExpressionParserRuleCall_3_0_2_1_2_2_1_0() { return cTagsExpressionParserRuleCall_3_0_2_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2_2_2() { return cNEWLINETerminalRuleCall_3_0_2_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_1_2_3() { return cENDTerminalRuleCall_3_0_2_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2_4() { return cNEWLINETerminalRuleCall_3_0_2_1_2_4; }
+		
 		//(
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//            (tags+=Expression NEWLINE) |
-		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//            (tags+=Expression NEWLINE+) |
+		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' tags+=Expression NEWLINE)+
+		//                ('-' tags+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
@@ -6726,43 +7118,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
 		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_3_1_0_0() { return cAlternatives_3_1_0_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//    (paths+=Expression NEWLINE)
+		//    (paths+=Expression NEWLINE+)
 		public Group getGroup_3_1_0_0_0() { return cGroup_3_1_0_0_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')
@@ -6780,7 +7175,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_0_0_0_1() { return cColonKeyword_3_1_0_0_0_1; }
 		
-		//(paths+=Expression NEWLINE)
+		//(paths+=Expression NEWLINE+)
 		public Group getGroup_3_1_0_0_0_2() { return cGroup_3_1_0_0_0_2; }
 		
 		//paths+=Expression
@@ -6789,10 +7184,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_1_0_0_0_2_0_0() { return cPathsExpressionParserRuleCall_3_1_0_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_0_2_1() { return cNEWLINETerminalRuleCall_3_1_0_0_0_2_1; }
 		
-		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE)
+		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_1_0_0_1() { return cGroup_3_1_0_0_1; }
 		
 		//'['
@@ -6819,24 +7214,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_1_0_0_1_3() { return cRightSquareBracketKeyword_3_1_0_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_1_4() { return cNEWLINETerminalRuleCall_3_1_0_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' paths+=Expression NEWLINE)+
+		//    ('-' paths+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_1_0_0_2() { return cGroup_3_1_0_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2_0() { return cNEWLINETerminalRuleCall_3_1_0_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_1_0_0_2_1() { return cBEGINTerminalRuleCall_3_1_0_0_2_1; }
 		
-		//('-' paths+=Expression NEWLINE)+
+		//('-' paths+=Expression NEWLINE+)+
 		public Group getGroup_3_1_0_0_2_2() { return cGroup_3_1_0_0_2_2; }
 		
 		//'-'
@@ -6848,27 +7244,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_1_0_0_2_2_1_0() { return cPathsExpressionParserRuleCall_3_1_0_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2_2_2() { return cNEWLINETerminalRuleCall_3_1_0_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_0_0_2_3() { return cENDTerminalRuleCall_3_1_0_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2_4() { return cNEWLINETerminalRuleCall_3_1_0_0_2_4; }
+		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_1_0_1() { return cAlternatives_3_1_0_1; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//    (branches+=Expression NEWLINE)
+		//    (branches+=Expression NEWLINE+)
 		public Group getGroup_3_1_0_1_0() { return cGroup_3_1_0_1_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')
@@ -6886,7 +7286,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_0_1_0_1() { return cColonKeyword_3_1_0_1_0_1; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_3_1_0_1_0_2() { return cGroup_3_1_0_1_0_2; }
 		
 		//branches+=Expression
@@ -6895,10 +7295,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_1_0_1_0_2_0_0() { return cBranchesExpressionParserRuleCall_3_1_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_1_0_1_0_2_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_1_0_1_1() { return cGroup_3_1_0_1_1; }
 		
 		//'['
@@ -6925,24 +7325,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_1_0_1_1_3() { return cRightSquareBracketKeyword_3_1_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_1_4() { return cNEWLINETerminalRuleCall_3_1_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_1_0_1_2() { return cGroup_3_1_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2_0() { return cNEWLINETerminalRuleCall_3_1_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_1_0_1_2_1() { return cBEGINTerminalRuleCall_3_1_0_1_2_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_3_1_0_1_2_2() { return cGroup_3_1_0_1_2_2; }
 		
 		//'-'
@@ -6954,27 +7355,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_1_0_1_2_2_1_0() { return cBranchesExpressionParserRuleCall_3_1_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_1_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_0_1_2_3() { return cENDTerminalRuleCall_3_1_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2_4() { return cNEWLINETerminalRuleCall_3_1_0_1_2_4; }
+		
 		//(
 		//    ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//        (tags+=Expression NEWLINE) |
-		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//        (tags+=Expression NEWLINE+) |
+		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' tags+=Expression NEWLINE)+
+		//            ('-' tags+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_1_1() { return cAlternatives_3_1_1; }
 		
 		//('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//    (tags+=Expression NEWLINE)
+		//    (tags+=Expression NEWLINE+)
 		public Group getGroup_3_1_1_0() { return cGroup_3_1_1_0; }
 		
 		//('tags' | ignoreSpecifiedTags?='tags-ignore')
@@ -6992,7 +7397,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_1_0_1() { return cColonKeyword_3_1_1_0_1; }
 		
-		//(tags+=Expression NEWLINE)
+		//(tags+=Expression NEWLINE+)
 		public Group getGroup_3_1_1_0_2() { return cGroup_3_1_1_0_2; }
 		
 		//tags+=Expression
@@ -7001,10 +7406,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTagsExpressionParserRuleCall_3_1_1_0_2_0_0() { return cTagsExpressionParserRuleCall_3_1_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_0_2_1() { return cNEWLINETerminalRuleCall_3_1_1_0_2_1; }
 		
-		//('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE)
+		//('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_1_1_1() { return cGroup_3_1_1_1; }
 		
 		//'['
@@ -7031,24 +7436,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_1_1_1_3() { return cRightSquareBracketKeyword_3_1_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_1_4() { return cNEWLINETerminalRuleCall_3_1_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' tags+=Expression NEWLINE)+
+		//    ('-' tags+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_1_1_2() { return cGroup_3_1_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2_0() { return cNEWLINETerminalRuleCall_3_1_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_1_1_2_1() { return cBEGINTerminalRuleCall_3_1_1_2_1; }
 		
-		//('-' tags+=Expression NEWLINE)+
+		//('-' tags+=Expression NEWLINE+)+
 		public Group getGroup_3_1_1_2_2() { return cGroup_3_1_1_2_2; }
 		
 		//'-'
@@ -7060,82 +7466,92 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTagsExpressionParserRuleCall_3_1_1_2_2_1_0() { return cTagsExpressionParserRuleCall_3_1_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2_2_2() { return cNEWLINETerminalRuleCall_3_1_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_1_2_3() { return cENDTerminalRuleCall_3_1_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2_4() { return cNEWLINETerminalRuleCall_3_1_1_2_4; }
+		
 		//(
 		//    (
 		//        ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//            (tags+=Expression NEWLINE) |
-		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//            (tags+=Expression NEWLINE+) |
+		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' tags+=Expression NEWLINE)+
+		//                ('-' tags+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_3_2() { return cGroup_3_2; }
 		
 		//(
 		//    (
 		//        ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//            (tags+=Expression NEWLINE) |
-		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//            (tags+=Expression NEWLINE+) |
+		//            ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' tags+=Expression NEWLINE)+
+		//                ('-' tags+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    (
 		//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//            (branches+=Expression NEWLINE) |
-		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//            (branches+=Expression NEWLINE+) |
+		//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' branches+=Expression NEWLINE)+
+		//                ('-' branches+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )? &
 		//    (
 		//        ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//            (paths+=Expression NEWLINE) |
-		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//            (paths+=Expression NEWLINE+) |
+		//            ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' paths+=Expression NEWLINE)+
+		//                ('-' paths+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )?
 		//)
@@ -7143,43 +7559,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//        (tags+=Expression NEWLINE) |
-		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//        (tags+=Expression NEWLINE+) |
+		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' tags+=Expression NEWLINE)+
+		//            ('-' tags+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Group getGroup_3_2_0_0() { return cGroup_3_2_0_0; }
 		
 		//(
 		//    ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//        (tags+=Expression NEWLINE) |
-		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+		//        (tags+=Expression NEWLINE+) |
+		//        ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' tags+=Expression NEWLINE)+
+		//            ('-' tags+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_3_2_0_0_0() { return cAlternatives_3_2_0_0_0; }
 		
 		//('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-		//    (tags+=Expression NEWLINE)
+		//    (tags+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_0_0_0() { return cGroup_3_2_0_0_0_0; }
 		
 		//('tags' | ignoreSpecifiedTags?='tags-ignore')
@@ -7197,7 +7616,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_0_0_0_1() { return cColonKeyword_3_2_0_0_0_0_1; }
 		
-		//(tags+=Expression NEWLINE)
+		//(tags+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_0_0_0_2() { return cGroup_3_2_0_0_0_0_2; }
 		
 		//tags+=Expression
@@ -7206,10 +7625,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTagsExpressionParserRuleCall_3_2_0_0_0_0_2_0_0() { return cTagsExpressionParserRuleCall_3_2_0_0_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_0_2_1() { return cNEWLINETerminalRuleCall_3_2_0_0_0_0_2_1; }
 		
-		//('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE)
+		//('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_2_0_0_0_1() { return cGroup_3_2_0_0_0_1; }
 		
 		//'['
@@ -7236,24 +7655,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_2_0_0_0_1_3() { return cRightSquareBracketKeyword_3_2_0_0_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_1_4() { return cNEWLINETerminalRuleCall_3_2_0_0_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' tags+=Expression NEWLINE)+
+		//    ('-' tags+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_2_0_0_0_2() { return cGroup_3_2_0_0_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2_0() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_2_0_0_0_2_1() { return cBEGINTerminalRuleCall_3_2_0_0_0_2_1; }
 		
-		//('-' tags+=Expression NEWLINE)+
+		//('-' tags+=Expression NEWLINE+)+
 		public Group getGroup_3_2_0_0_0_2_2() { return cGroup_3_2_0_0_0_2_2; }
 		
 		//'-'
@@ -7265,27 +7685,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getTagsExpressionParserRuleCall_3_2_0_0_0_2_2_1_0() { return cTagsExpressionParserRuleCall_3_2_0_0_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2_2_2() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_0_0_2_3() { return cENDTerminalRuleCall_3_2_0_0_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2_4() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2_4; }
+		
 		//(
 		//    ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//        (branches+=Expression NEWLINE) |
-		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+		//        (branches+=Expression NEWLINE+) |
+		//        ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' branches+=Expression NEWLINE)+
+		//            ('-' branches+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_2_0_0_1() { return cAlternatives_3_2_0_0_1; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-		//    (branches+=Expression NEWLINE)
+		//    (branches+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_0_1_0() { return cGroup_3_2_0_0_1_0; }
 		
 		//('branches' | ignoreSpecifiedBranches?='branches-ignore')
@@ -7303,7 +7727,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_0_1_0_1() { return cColonKeyword_3_2_0_0_1_0_1; }
 		
-		//(branches+=Expression NEWLINE)
+		//(branches+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_0_1_0_2() { return cGroup_3_2_0_0_1_0_2; }
 		
 		//branches+=Expression
@@ -7312,10 +7736,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_2_0_0_1_0_2_0_0() { return cBranchesExpressionParserRuleCall_3_2_0_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_2_0_0_1_0_2_1; }
 		
-		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE)
+		//('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_2_0_0_1_1() { return cGroup_3_2_0_0_1_1; }
 		
 		//'['
@@ -7342,24 +7766,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_2_0_0_1_1_3() { return cRightSquareBracketKeyword_3_2_0_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_1_4() { return cNEWLINETerminalRuleCall_3_2_0_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' branches+=Expression NEWLINE)+
+		//    ('-' branches+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_2_0_0_1_2() { return cGroup_3_2_0_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2_0() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_2_0_0_1_2_1() { return cBEGINTerminalRuleCall_3_2_0_0_1_2_1; }
 		
-		//('-' branches+=Expression NEWLINE)+
+		//('-' branches+=Expression NEWLINE+)+
 		public Group getGroup_3_2_0_0_1_2_2() { return cGroup_3_2_0_0_1_2_2; }
 		
 		//'-'
@@ -7371,27 +7796,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getBranchesExpressionParserRuleCall_3_2_0_0_1_2_2_1_0() { return cBranchesExpressionParserRuleCall_3_2_0_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_0_1_2_3() { return cENDTerminalRuleCall_3_2_0_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2_4() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2_4; }
+		
 		//(
 		//    ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//        (paths+=Expression NEWLINE) |
-		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+		//        (paths+=Expression NEWLINE+) |
+		//        ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' paths+=Expression NEWLINE)+
+		//            ('-' paths+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)?
 		public Alternatives getAlternatives_3_2_0_1() { return cAlternatives_3_2_0_1; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-		//    (paths+=Expression NEWLINE)
+		//    (paths+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_1_0() { return cGroup_3_2_0_1_0; }
 		
 		//('paths' | ignoreSpecifiedPaths?='paths-ignore')
@@ -7409,7 +7838,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_1_0_1() { return cColonKeyword_3_2_0_1_0_1; }
 		
-		//(paths+=Expression NEWLINE)
+		//(paths+=Expression NEWLINE+)
 		public Group getGroup_3_2_0_1_0_2() { return cGroup_3_2_0_1_0_2; }
 		
 		//paths+=Expression
@@ -7418,10 +7847,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_2_0_1_0_2_0_0() { return cPathsExpressionParserRuleCall_3_2_0_1_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_0_2_1() { return cNEWLINETerminalRuleCall_3_2_0_1_0_2_1; }
 		
-		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE)
+		//('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+)
 		public Group getGroup_3_2_0_1_1() { return cGroup_3_2_0_1_1; }
 		
 		//'['
@@ -7448,24 +7877,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_3_2_0_1_1_3() { return cRightSquareBracketKeyword_3_2_0_1_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_1_4() { return cNEWLINETerminalRuleCall_3_2_0_1_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' paths+=Expression NEWLINE)+
+		//    ('-' paths+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_3_2_0_1_2() { return cGroup_3_2_0_1_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2_0() { return cNEWLINETerminalRuleCall_3_2_0_1_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3_2_0_1_2_1() { return cBEGINTerminalRuleCall_3_2_0_1_2_1; }
 		
-		//('-' paths+=Expression NEWLINE)+
+		//('-' paths+=Expression NEWLINE+)+
 		public Group getGroup_3_2_0_1_2_2() { return cGroup_3_2_0_1_2_2; }
 		
 		//'-'
@@ -7477,14 +7907,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPathsExpressionParserRuleCall_3_2_0_1_2_2_1_0() { return cPathsExpressionParserRuleCall_3_2_0_1_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2_2_2() { return cNEWLINETerminalRuleCall_3_2_0_1_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_1_2_3() { return cENDTerminalRuleCall_3_2_0_1_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2_4() { return cNEWLINETerminalRuleCall_3_2_0_1_2_4; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_1() { return cENDTerminalRuleCall_3_2_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_2() { return cNEWLINETerminalRuleCall_3_2_2; }
 	}
 	public class OptionedScheduleTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedScheduleTrigger");
@@ -7502,28 +7938,31 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cCronsExpressionParserRuleCall_2_2_3_0 = (RuleCall)cCronsAssignment_2_2_3.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_2_2_4 = (RuleCall)cGroup_2_2.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_2_3 = (RuleCall)cGroup_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_2_4 = (RuleCall)cGroup_2.eContents().get(4);
 		
 		//OptionedScheduleTrigger returns GHA::ScheduleTrigger:
 		//    'schedule' ':'
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
-		//            '-' 'cron' ':' crons+=Expression NEWLINE
+		//            '-' 'cron' ':' crons+=Expression NEWLINE+
 		//        )+
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'schedule' ':'
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        '-' 'cron' ':' crons+=Expression NEWLINE
+		//        '-' 'cron' ':' crons+=Expression NEWLINE+
 		//    )+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup() { return cGroup; }
 		
@@ -7534,23 +7973,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        '-' 'cron' ':' crons+=Expression NEWLINE
+		//        '-' 'cron' ':' crons+=Expression NEWLINE+
 		//    )+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0() { return cNEWLINETerminalRuleCall_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_1() { return cBEGINTerminalRuleCall_2_1; }
 		
 		//(
-		//    '-' 'cron' ':' crons+=Expression NEWLINE
+		//    '-' 'cron' ':' crons+=Expression NEWLINE+
 		//)+
 		public Group getGroup_2_2() { return cGroup_2_2; }
 		
@@ -7569,11 +8009,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getCronsExpressionParserRuleCall_2_2_3_0() { return cCronsExpressionParserRuleCall_2_2_3_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_4() { return cNEWLINETerminalRuleCall_2_2_4; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_3() { return cENDTerminalRuleCall_2_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_4() { return cNEWLINETerminalRuleCall_2_4; }
 	}
 	public class OptionedWorkflowCallTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedWorkflowCallTrigger");
@@ -7595,6 +8038,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cInputsAssignment_3_0_2_0_0_4 = (Assignment)cGroup_3_0_2_0_0.eContents().get(4);
 		private final RuleCall cInputsInputParserRuleCall_3_0_2_0_0_4_0 = (RuleCall)cInputsAssignment_3_0_2_0_0_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_0_0_5 = (RuleCall)cGroup_3_0_2_0_0.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_0_6 = (RuleCall)cGroup_3_0_2_0_0.eContents().get(6);
 		private final Group cGroup_3_0_2_0_1 = (Group)cGroup_3_0_2_0.eContents().get(1);
 		private final Keyword cOutputsKeyword_3_0_2_0_1_0 = (Keyword)cGroup_3_0_2_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_3_0_2_0_1_1 = (Keyword)cGroup_3_0_2_0_1.eContents().get(1);
@@ -7603,6 +8047,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cOutputsAssignment_3_0_2_0_1_4 = (Assignment)cGroup_3_0_2_0_1.eContents().get(4);
 		private final RuleCall cOutputsOutputParserRuleCall_3_0_2_0_1_4_0 = (RuleCall)cOutputsAssignment_3_0_2_0_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_0_1_5 = (RuleCall)cGroup_3_0_2_0_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_0_1_6 = (RuleCall)cGroup_3_0_2_0_1.eContents().get(6);
 		private final Group cGroup_3_0_2_1 = (Group)cUnorderedGroup_3_0_2.eContents().get(1);
 		private final Keyword cSecretsKeyword_3_0_2_1_0 = (Keyword)cGroup_3_0_2_1.eContents().get(0);
 		private final Keyword cColonKeyword_3_0_2_1_1 = (Keyword)cGroup_3_0_2_1.eContents().get(1);
@@ -7611,6 +8056,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cSecretsAssignment_3_0_2_1_4 = (Assignment)cGroup_3_0_2_1.eContents().get(4);
 		private final RuleCall cSecretsSecretParserRuleCall_3_0_2_1_4_0 = (RuleCall)cSecretsAssignment_3_0_2_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_0_2_1_5 = (RuleCall)cGroup_3_0_2_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_0_2_1_6 = (RuleCall)cGroup_3_0_2_1.eContents().get(6);
 		private final UnorderedGroup cUnorderedGroup_3_1 = (UnorderedGroup)cAlternatives_3.eContents().get(1);
 		private final Group cGroup_3_1_0 = (Group)cUnorderedGroup_3_1.eContents().get(0);
 		private final Group cGroup_3_1_0_0 = (Group)cGroup_3_1_0.eContents().get(0);
@@ -7621,6 +8067,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cOutputsAssignment_3_1_0_0_4 = (Assignment)cGroup_3_1_0_0.eContents().get(4);
 		private final RuleCall cOutputsOutputParserRuleCall_3_1_0_0_4_0 = (RuleCall)cOutputsAssignment_3_1_0_0_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_1_0_0_5 = (RuleCall)cGroup_3_1_0_0.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_0_6 = (RuleCall)cGroup_3_1_0_0.eContents().get(6);
 		private final Group cGroup_3_1_0_1 = (Group)cGroup_3_1_0.eContents().get(1);
 		private final Keyword cInputsKeyword_3_1_0_1_0 = (Keyword)cGroup_3_1_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_3_1_0_1_1 = (Keyword)cGroup_3_1_0_1.eContents().get(1);
@@ -7629,6 +8076,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cInputsAssignment_3_1_0_1_4 = (Assignment)cGroup_3_1_0_1.eContents().get(4);
 		private final RuleCall cInputsInputParserRuleCall_3_1_0_1_4_0 = (RuleCall)cInputsAssignment_3_1_0_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_1_0_1_5 = (RuleCall)cGroup_3_1_0_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_0_1_6 = (RuleCall)cGroup_3_1_0_1.eContents().get(6);
 		private final Group cGroup_3_1_1 = (Group)cUnorderedGroup_3_1.eContents().get(1);
 		private final Keyword cSecretsKeyword_3_1_1_0 = (Keyword)cGroup_3_1_1.eContents().get(0);
 		private final Keyword cColonKeyword_3_1_1_1 = (Keyword)cGroup_3_1_1.eContents().get(1);
@@ -7637,6 +8085,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cSecretsAssignment_3_1_1_4 = (Assignment)cGroup_3_1_1.eContents().get(4);
 		private final RuleCall cSecretsSecretParserRuleCall_3_1_1_4_0 = (RuleCall)cSecretsAssignment_3_1_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_1_1_5 = (RuleCall)cGroup_3_1_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_1_1_6 = (RuleCall)cGroup_3_1_1.eContents().get(6);
 		private final Group cGroup_3_2 = (Group)cAlternatives_3.eContents().get(2);
 		private final UnorderedGroup cUnorderedGroup_3_2_0 = (UnorderedGroup)cGroup_3_2.eContents().get(0);
 		private final Group cGroup_3_2_0_0 = (Group)cUnorderedGroup_3_2_0.eContents().get(0);
@@ -7648,6 +8097,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cSecretsAssignment_3_2_0_0_0_4 = (Assignment)cGroup_3_2_0_0_0.eContents().get(4);
 		private final RuleCall cSecretsSecretParserRuleCall_3_2_0_0_0_4_0 = (RuleCall)cSecretsAssignment_3_2_0_0_0_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_0_0_5 = (RuleCall)cGroup_3_2_0_0_0.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_0_6 = (RuleCall)cGroup_3_2_0_0_0.eContents().get(6);
 		private final Group cGroup_3_2_0_0_1 = (Group)cGroup_3_2_0_0.eContents().get(1);
 		private final Keyword cInputsKeyword_3_2_0_0_1_0 = (Keyword)cGroup_3_2_0_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_3_2_0_0_1_1 = (Keyword)cGroup_3_2_0_0_1.eContents().get(1);
@@ -7656,6 +8106,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cInputsAssignment_3_2_0_0_1_4 = (Assignment)cGroup_3_2_0_0_1.eContents().get(4);
 		private final RuleCall cInputsInputParserRuleCall_3_2_0_0_1_4_0 = (RuleCall)cInputsAssignment_3_2_0_0_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_0_1_5 = (RuleCall)cGroup_3_2_0_0_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_0_1_6 = (RuleCall)cGroup_3_2_0_0_1.eContents().get(6);
 		private final Group cGroup_3_2_0_1 = (Group)cUnorderedGroup_3_2_0.eContents().get(1);
 		private final Keyword cOutputsKeyword_3_2_0_1_0 = (Keyword)cGroup_3_2_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_3_2_0_1_1 = (Keyword)cGroup_3_2_0_1.eContents().get(1);
@@ -7664,89 +8115,93 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cOutputsAssignment_3_2_0_1_4 = (Assignment)cGroup_3_2_0_1.eContents().get(4);
 		private final RuleCall cOutputsOutputParserRuleCall_3_2_0_1_4_0 = (RuleCall)cOutputsAssignment_3_2_0_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_3_2_0_1_5 = (RuleCall)cGroup_3_2_0_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_0_1_6 = (RuleCall)cGroup_3_2_0_1.eContents().get(6);
 		private final RuleCall cENDTerminalRuleCall_3_2_1 = (RuleCall)cGroup_3_2.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_3_2_2 = (RuleCall)cGroup_3_2.eContents().get(2);
 		
 		//OptionedWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
 		//    {GHA::WorkflowCallTrigger} 'workflow_call' ':'
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
 		//            (
-		//                'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//                'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//            )
 		//            (
-		//                'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//                'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//            )? &
 		//            (
-		//                'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//                'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//            )?
 		//        ) |
 		//        (
 		//            (
-		//                'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//                'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//            )
 		//            (
-		//                'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//                'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//            )? &
 		//            (
-		//                'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//                'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//            )?
 		//        ) |
 		//        (
 		//            (
-		//                'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//                'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//            )
 		//            (
-		//                'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//                'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//            )? &
 		//            (
-		//                'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//                'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//            )?
 		//        )
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GHA::WorkflowCallTrigger} 'workflow_call' ':'
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
-		//            'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//            'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//        )
 		//        (
-		//            'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//            'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//        )? &
 		//        (
-		//            'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//            'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//        )?
 		//    ) |
 		//    (
 		//        (
-		//            'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//            'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//        )
 		//        (
-		//            'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//            'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//        )? &
 		//        (
-		//            'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//            'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//        )?
 		//    ) |
 		//    (
 		//        (
-		//            'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//            'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//        )
 		//        (
-		//            'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//            'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//        )? &
 		//        (
-		//            'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//            'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup() { return cGroup; }
 		
@@ -7760,61 +8215,62 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
 		//        (
-		//            'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//            'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//        )
 		//        (
-		//            'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//            'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//        )? &
 		//        (
-		//            'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//            'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//        )?
 		//    ) |
 		//    (
 		//        (
-		//            'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//            'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//        )
 		//        (
-		//            'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//            'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//        )? &
 		//        (
-		//            'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//            'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//        )?
 		//    ) |
 		//    (
 		//        (
-		//            'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//            'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//        )
 		//        (
-		//            'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//            'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//        )? &
 		//        (
-		//            'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//            'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//        )?
 		//    )
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		//BEGIN
 		//(
 		//    (
-		//        'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//        'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//    )
 		//    (
-		//        'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//        'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//    )? &
 		//    (
-		//        'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//        'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//    )?
 		//)
 		public Group getGroup_3_0() { return cGroup_3_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_0() { return cNEWLINETerminalRuleCall_3_0_0; }
 		
 		//BEGIN
@@ -7822,27 +8278,27 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//(
 		//    (
-		//        'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//        'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//    )
 		//    (
-		//        'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//        'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//    )? &
 		//    (
-		//        'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//        'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//    )?
 		//)
 		public UnorderedGroup getUnorderedGroup_3_0_2() { return cUnorderedGroup_3_0_2; }
 		
 		//(
-		//    'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//    'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//)
 		//(
-		//    'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//    'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//)?
 		public Group getGroup_3_0_2_0() { return cGroup_3_0_2_0; }
 		
 		//(
-		//    'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//    'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//)
 		public Group getGroup_3_0_2_0_0() { return cGroup_3_0_2_0_0; }
 		
@@ -7852,7 +8308,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_0_0_1() { return cColonKeyword_3_0_2_0_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_2() { return cNEWLINETerminalRuleCall_3_0_2_0_0_2; }
 		
 		//BEGIN
@@ -7867,8 +8323,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_0_0_5() { return cENDTerminalRuleCall_3_0_2_0_0_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_0_6() { return cNEWLINETerminalRuleCall_3_0_2_0_0_6; }
+		
 		//(
-		//    'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//    'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//)?
 		public Group getGroup_3_0_2_0_1() { return cGroup_3_0_2_0_1; }
 		
@@ -7878,7 +8337,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_0_1_1() { return cColonKeyword_3_0_2_0_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_2() { return cNEWLINETerminalRuleCall_3_0_2_0_1_2; }
 		
 		//BEGIN
@@ -7893,8 +8352,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_0_1_5() { return cENDTerminalRuleCall_3_0_2_0_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_0_1_6() { return cNEWLINETerminalRuleCall_3_0_2_0_1_6; }
+		
 		//(
-		//    'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//    'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//)?
 		public Group getGroup_3_0_2_1() { return cGroup_3_0_2_1; }
 		
@@ -7904,7 +8366,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_0_2_1_1() { return cColonKeyword_3_0_2_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_2() { return cNEWLINETerminalRuleCall_3_0_2_1_2; }
 		
 		//BEGIN
@@ -7919,29 +8381,32 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_0_2_1_5() { return cENDTerminalRuleCall_3_0_2_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_0_2_1_6() { return cNEWLINETerminalRuleCall_3_0_2_1_6; }
+		
 		//(
 		//    (
-		//        'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//        'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//    )
 		//    (
-		//        'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//        'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//    )? &
 		//    (
-		//        'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//        'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//    )?
 		//)
 		public UnorderedGroup getUnorderedGroup_3_1() { return cUnorderedGroup_3_1; }
 		
 		//(
-		//    'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//    'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//)
 		//(
-		//    'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//    'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//)?
 		public Group getGroup_3_1_0() { return cGroup_3_1_0; }
 		
 		//(
-		//    'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//    'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//)
 		public Group getGroup_3_1_0_0() { return cGroup_3_1_0_0; }
 		
@@ -7951,7 +8416,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_0_0_1() { return cColonKeyword_3_1_0_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_2() { return cNEWLINETerminalRuleCall_3_1_0_0_2; }
 		
 		//BEGIN
@@ -7966,8 +8431,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_0_0_5() { return cENDTerminalRuleCall_3_1_0_0_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_0_0_6() { return cNEWLINETerminalRuleCall_3_1_0_0_6; }
+		
 		//(
-		//    'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//    'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//)?
 		public Group getGroup_3_1_0_1() { return cGroup_3_1_0_1; }
 		
@@ -7977,7 +8445,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_0_1_1() { return cColonKeyword_3_1_0_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_2() { return cNEWLINETerminalRuleCall_3_1_0_1_2; }
 		
 		//BEGIN
@@ -7992,8 +8460,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_0_1_5() { return cENDTerminalRuleCall_3_1_0_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_0_1_6() { return cNEWLINETerminalRuleCall_3_1_0_1_6; }
+		
 		//(
-		//    'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//    'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//)?
 		public Group getGroup_3_1_1() { return cGroup_3_1_1; }
 		
@@ -8003,7 +8474,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_1_1_1() { return cColonKeyword_3_1_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_1_1_2() { return cNEWLINETerminalRuleCall_3_1_1_2; }
 		
 		//BEGIN
@@ -8018,43 +8489,47 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_1_1_5() { return cENDTerminalRuleCall_3_1_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_1_1_6() { return cNEWLINETerminalRuleCall_3_1_1_6; }
+		
 		//(
 		//    (
-		//        'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//        'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//    )
 		//    (
-		//        'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//        'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//    )? &
 		//    (
-		//        'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//        'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//    )?
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_3_2() { return cGroup_3_2; }
 		
 		//(
 		//    (
-		//        'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//        'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//    )
 		//    (
-		//        'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//        'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//    )? &
 		//    (
-		//        'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//        'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//    )?
 		//)
 		public UnorderedGroup getUnorderedGroup_3_2_0() { return cUnorderedGroup_3_2_0; }
 		
 		//(
-		//    'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//    'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//)
 		//(
-		//    'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//    'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//)?
 		public Group getGroup_3_2_0_0() { return cGroup_3_2_0_0; }
 		
 		//(
-		//    'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+		//    'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 		//)
 		public Group getGroup_3_2_0_0_0() { return cGroup_3_2_0_0_0; }
 		
@@ -8064,7 +8539,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_0_0_1() { return cColonKeyword_3_2_0_0_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_2() { return cNEWLINETerminalRuleCall_3_2_0_0_0_2; }
 		
 		//BEGIN
@@ -8079,8 +8554,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_0_0_5() { return cENDTerminalRuleCall_3_2_0_0_0_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_0_6() { return cNEWLINETerminalRuleCall_3_2_0_0_0_6; }
+		
 		//(
-		//    'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+		//    'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 		//)?
 		public Group getGroup_3_2_0_0_1() { return cGroup_3_2_0_0_1; }
 		
@@ -8090,7 +8568,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_0_1_1() { return cColonKeyword_3_2_0_0_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_2() { return cNEWLINETerminalRuleCall_3_2_0_0_1_2; }
 		
 		//BEGIN
@@ -8105,8 +8583,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_0_1_5() { return cENDTerminalRuleCall_3_2_0_0_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_0_1_6() { return cNEWLINETerminalRuleCall_3_2_0_0_1_6; }
+		
 		//(
-		//    'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+		//    'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 		//)?
 		public Group getGroup_3_2_0_1() { return cGroup_3_2_0_1; }
 		
@@ -8116,7 +8597,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_3_2_0_1_1() { return cColonKeyword_3_2_0_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_2() { return cNEWLINETerminalRuleCall_3_2_0_1_2; }
 		
 		//BEGIN
@@ -8131,8 +8612,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_0_1_5() { return cENDTerminalRuleCall_3_2_0_1_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_0_1_6() { return cNEWLINETerminalRuleCall_3_2_0_1_6; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_3_2_1() { return cENDTerminalRuleCall_3_2_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_3_2_2() { return cNEWLINETerminalRuleCall_3_2_2; }
 	}
 	public class OptionedWorkflowDispatchTriggerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.OptionedWorkflowDispatchTrigger");
@@ -8150,22 +8637,26 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cInputsAssignment_5_4 = (Assignment)cGroup_5.eContents().get(4);
 		private final RuleCall cInputsInputParserRuleCall_5_4_0 = (RuleCall)cInputsAssignment_5_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_5_5 = (RuleCall)cGroup_5.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_5_6 = (RuleCall)cGroup_5.eContents().get(6);
 		private final RuleCall cENDTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
+		private final RuleCall cNEWLINETerminalRuleCall_7 = (RuleCall)cGroup.eContents().get(7);
 		
 		//OptionedWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
 		//    {GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
+		//        ('inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*)
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
+		//    ('inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*)
 		//    END
+		//    NEWLINE*
 		public Group getGroup() { return cGroup; }
 		
 		//{GHA::WorkflowDispatchTrigger}
@@ -8177,13 +8668,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3() { return cNEWLINETerminalRuleCall_3; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_4() { return cBEGINTerminalRuleCall_4; }
 		
-		//('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
+		//('inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*)
 		public Group getGroup_5() { return cGroup_5; }
 		
 		//'inputs'
@@ -8192,7 +8683,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_5_1() { return cColonKeyword_5_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_5_2() { return cNEWLINETerminalRuleCall_5_2; }
 		
 		//BEGIN
@@ -8207,8 +8698,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_5_5() { return cENDTerminalRuleCall_5_5; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_5_6() { return cNEWLINETerminalRuleCall_5_6; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_6() { return cENDTerminalRuleCall_6; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_7() { return cNEWLINETerminalRuleCall_7; }
 	}
 	public class InputElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Input");
@@ -8271,56 +8768,62 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cOptionsSTRINGTerminalRuleCall_4_0_2_2_1_0 = (RuleCall)cOptionsAssignment_4_0_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_4_0_2_2_2 = (RuleCall)cGroup_4_0_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_4_0_2_3 = (RuleCall)cGroup_4_0_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_4_0_2_4 = (RuleCall)cGroup_4_0_2.eContents().get(4);
 		private final RuleCall cENDTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_4_2 = (RuleCall)cGroup_4.eContents().get(2);
 		
 		//Input returns GHA::Input:
 		//    id=YAMLID ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('description' ':' description=Expression NEWLINE)? &
-		//        ('default' ':' default=Expression NEWLINE)? &
-		//        ('required' ':' isRequired=Expression NEWLINE)? &
-		//        ('type' ':' type=TYPE NEWLINE) &
+		//        ('description' ':' description=Expression NEWLINE+)? &
+		//        ('default' ':' default=Expression NEWLINE+)? &
+		//        ('required' ':' isRequired=Expression NEWLINE+)? &
+		//        ('type' ':' type=TYPE NEWLINE+) &
 		//        (
 		//            'options' ':'
-		//                (options+=STRING NEWLINE) |
-		//                ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
+		//                (options+=STRING NEWLINE+) |
+		//                ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+) |
 		//                (
-		//                    NEWLINE
+		//                    NEWLINE+
 		//                    BEGIN
-		//                    ('-' options+=STRING NEWLINE)+
+		//                    ('-' options+=STRING NEWLINE+)+
 		//                    END
+		//                    NEWLINE*
 		//                )
 		//        )
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//id=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('description' ':' description=Expression NEWLINE)? &
-		//    ('default' ':' default=Expression NEWLINE)? &
-		//    ('required' ':' isRequired=Expression NEWLINE)? &
-		//    ('type' ':' type=TYPE NEWLINE) &
+		//    ('description' ':' description=Expression NEWLINE+)? &
+		//    ('default' ':' default=Expression NEWLINE+)? &
+		//    ('required' ':' isRequired=Expression NEWLINE+)? &
+		//    ('type' ':' type=TYPE NEWLINE+) &
 		//    (
 		//        'options' ':'
-		//            (options+=STRING NEWLINE) |
-		//            ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
+		//            (options+=STRING NEWLINE+) |
+		//            ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+) |
 		//            (
-		//                NEWLINE
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' options+=STRING NEWLINE)+
+		//                ('-' options+=STRING NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//    )
 		//    END
+		//    NEWLINE*
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//id=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('description' ':' description=Expression NEWLINE)?
+		//    ('description' ':' description=Expression NEWLINE+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//id=YAMLID
@@ -8332,13 +8835,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_3() { return cBEGINTerminalRuleCall_0_3; }
 		
-		//('description' ':' description=Expression NEWLINE)?
+		//('description' ':' description=Expression NEWLINE+)?
 		public Group getGroup_0_4() { return cGroup_0_4; }
 		
 		//'description'
@@ -8353,10 +8856,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getDescriptionExpressionParserRuleCall_0_4_2_0() { return cDescriptionExpressionParserRuleCall_0_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_4_3() { return cNEWLINETerminalRuleCall_0_4_3; }
 		
-		//('default' ':' default=Expression NEWLINE)?
+		//('default' ':' default=Expression NEWLINE+)?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'default'
@@ -8371,10 +8874,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getDefaultExpressionParserRuleCall_1_2_0() { return cDefaultExpressionParserRuleCall_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_3() { return cNEWLINETerminalRuleCall_1_3; }
 		
-		//('required' ':' isRequired=Expression NEWLINE)?
+		//('required' ':' isRequired=Expression NEWLINE+)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//'required'
@@ -8389,10 +8892,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getIsRequiredExpressionParserRuleCall_2_2_0() { return cIsRequiredExpressionParserRuleCall_2_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_3() { return cNEWLINETerminalRuleCall_2_3; }
 		
-		//('type' ':' type=TYPE NEWLINE)
+		//('type' ':' type=TYPE NEWLINE+)
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'type'
@@ -8407,38 +8910,41 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//TYPE
 		public RuleCall getTypeTYPEEnumRuleCall_3_2_0() { return cTypeTYPEEnumRuleCall_3_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3_3() { return cNEWLINETerminalRuleCall_3_3; }
 		
 		//(
 		//    'options' ':'
-		//        (options+=STRING NEWLINE) |
-		//        ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
+		//        (options+=STRING NEWLINE+) |
+		//        ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' options+=STRING NEWLINE)+
+		//            ('-' options+=STRING NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//(
 		//    'options' ':'
-		//        (options+=STRING NEWLINE) |
-		//        ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
+		//        (options+=STRING NEWLINE+) |
+		//        ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' options+=STRING NEWLINE)+
+		//            ('-' options+=STRING NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//)
 		public Alternatives getAlternatives_4_0() { return cAlternatives_4_0; }
 		
 		//'options' ':'
-		//    (options+=STRING NEWLINE)
+		//    (options+=STRING NEWLINE+)
 		public Group getGroup_4_0_0() { return cGroup_4_0_0; }
 		
 		//'options'
@@ -8447,7 +8953,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_4_0_0_1() { return cColonKeyword_4_0_0_1; }
 		
-		//(options+=STRING NEWLINE)
+		//(options+=STRING NEWLINE+)
 		public Group getGroup_4_0_0_2() { return cGroup_4_0_0_2; }
 		
 		//options+=STRING
@@ -8456,10 +8962,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//STRING
 		public RuleCall getOptionsSTRINGTerminalRuleCall_4_0_0_2_0_0() { return cOptionsSTRINGTerminalRuleCall_4_0_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_0_0_2_1() { return cNEWLINETerminalRuleCall_4_0_0_2_1; }
 		
-		//('[' options+=STRING (',' options+=STRING)* ']' NEWLINE)
+		//('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+)
 		public Group getGroup_4_0_1() { return cGroup_4_0_1; }
 		
 		//'['
@@ -8486,24 +8992,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_4_0_1_3() { return cRightSquareBracketKeyword_4_0_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_0_1_4() { return cNEWLINETerminalRuleCall_4_0_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' options+=STRING NEWLINE)+
+		//    ('-' options+=STRING NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_4_0_2() { return cGroup_4_0_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_0_2_0() { return cNEWLINETerminalRuleCall_4_0_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_4_0_2_1() { return cBEGINTerminalRuleCall_4_0_2_1; }
 		
-		//('-' options+=STRING NEWLINE)+
+		//('-' options+=STRING NEWLINE+)+
 		public Group getGroup_4_0_2_2() { return cGroup_4_0_2_2; }
 		
 		//'-'
@@ -8515,14 +9022,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//STRING
 		public RuleCall getOptionsSTRINGTerminalRuleCall_4_0_2_2_1_0() { return cOptionsSTRINGTerminalRuleCall_4_0_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_0_2_2_2() { return cNEWLINETerminalRuleCall_4_0_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_4_0_2_3() { return cENDTerminalRuleCall_4_0_2_3; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_4_0_2_4() { return cNEWLINETerminalRuleCall_4_0_2_4; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_4_1() { return cENDTerminalRuleCall_4_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_4_2() { return cNEWLINETerminalRuleCall_4_2; }
 	}
 	public class OutputElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Output");
@@ -8547,29 +9060,32 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cValueExpressionParserRuleCall_1_0_2_0 = (RuleCall)cValueAssignment_1_0_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_0_3 = (RuleCall)cGroup_1_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
 		
 		//Output returns GHA::Output:
 		//    id=YAMLID ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('description' ':' description=Expression NEWLINE)? &
-		//        ('value' ':' value=Expression NEWLINE)
+		//        ('description' ':' description=Expression NEWLINE+)? &
+		//        ('value' ':' value=Expression NEWLINE+)
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//id=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('description' ':' description=Expression NEWLINE)? &
-		//    ('value' ':' value=Expression NEWLINE)
+		//    ('description' ':' description=Expression NEWLINE+)? &
+		//    ('value' ':' value=Expression NEWLINE+)
 		//    END
+		//    NEWLINE*
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//id=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('description' ':' description=Expression NEWLINE)?
+		//    ('description' ':' description=Expression NEWLINE+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//id=YAMLID
@@ -8581,13 +9097,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_3() { return cBEGINTerminalRuleCall_0_3; }
 		
-		//('description' ':' description=Expression NEWLINE)?
+		//('description' ':' description=Expression NEWLINE+)?
 		public Group getGroup_0_4() { return cGroup_0_4; }
 		
 		//'description'
@@ -8602,14 +9118,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getDescriptionExpressionParserRuleCall_0_4_2_0() { return cDescriptionExpressionParserRuleCall_0_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_4_3() { return cNEWLINETerminalRuleCall_0_4_3; }
 		
-		//('value' ':' value=Expression NEWLINE)
+		//('value' ':' value=Expression NEWLINE+)
 		//END
+		//NEWLINE*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//('value' ':' value=Expression NEWLINE)
+		//('value' ':' value=Expression NEWLINE+)
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
 		//'value'
@@ -8624,11 +9141,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getValueExpressionParserRuleCall_1_0_2_0() { return cValueExpressionParserRuleCall_1_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_3() { return cNEWLINETerminalRuleCall_1_0_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_1() { return cENDTerminalRuleCall_1_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_2() { return cNEWLINETerminalRuleCall_1_2; }
 	}
 	public class SecretElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Secret");
@@ -8667,43 +9187,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cDescriptionExpressionParserRuleCall_1_0_1_2_0 = (RuleCall)cDescriptionAssignment_1_0_1_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_0_1_3 = (RuleCall)cGroup_1_0_1.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
 		
 		//Secret returns GHA::Secret:
 		//    id=YAMLID ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
-		//            ('description' ':' description=Expression NEWLINE) &
-		//            ('required' ':' isRequired=Expression NEWLINE)?
+		//            ('description' ':' description=Expression NEWLINE+) &
+		//            ('required' ':' isRequired=Expression NEWLINE+)?
 		//        ) |
 		//        (
-		//            ('required' ':' isRequired=Expression NEWLINE) &
-		//            ('description' ':' description=Expression NEWLINE)?
+		//            ('required' ':' isRequired=Expression NEWLINE+) &
+		//            ('description' ':' description=Expression NEWLINE+)?
 		//        )
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//id=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        ('description' ':' description=Expression NEWLINE) &
-		//        ('required' ':' isRequired=Expression NEWLINE)?
+		//        ('description' ':' description=Expression NEWLINE+) &
+		//        ('required' ':' isRequired=Expression NEWLINE+)?
 		//    ) |
 		//    (
-		//        ('required' ':' isRequired=Expression NEWLINE) &
-		//        ('description' ':' description=Expression NEWLINE)?
+		//        ('required' ':' isRequired=Expression NEWLINE+) &
+		//        ('description' ':' description=Expression NEWLINE+)?
 		//    )
 		//    END
+		//    NEWLINE*
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//id=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        ('description' ':' description=Expression NEWLINE) &
-		//        ('required' ':' isRequired=Expression NEWLINE)?
+		//        ('description' ':' description=Expression NEWLINE+) &
+		//        ('required' ':' isRequired=Expression NEWLINE+)?
 		//    )
 		public Group getGroup_0() { return cGroup_0; }
 		
@@ -8716,19 +9239,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1() { return cColonKeyword_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_2() { return cNEWLINETerminalRuleCall_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_3() { return cBEGINTerminalRuleCall_0_3; }
 		
 		//(
-		//    ('description' ':' description=Expression NEWLINE) &
-		//    ('required' ':' isRequired=Expression NEWLINE)?
+		//    ('description' ':' description=Expression NEWLINE+) &
+		//    ('required' ':' isRequired=Expression NEWLINE+)?
 		//)
 		public UnorderedGroup getUnorderedGroup_0_4() { return cUnorderedGroup_0_4; }
 		
-		//('description' ':' description=Expression NEWLINE)
+		//('description' ':' description=Expression NEWLINE+)
 		public Group getGroup_0_4_0() { return cGroup_0_4_0; }
 		
 		//'description'
@@ -8743,10 +9266,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getDescriptionExpressionParserRuleCall_0_4_0_2_0() { return cDescriptionExpressionParserRuleCall_0_4_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_4_0_3() { return cNEWLINETerminalRuleCall_0_4_0_3; }
 		
-		//('required' ':' isRequired=Expression NEWLINE)?
+		//('required' ':' isRequired=Expression NEWLINE+)?
 		public Group getGroup_0_4_1() { return cGroup_0_4_1; }
 		
 		//'required'
@@ -8761,23 +9284,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getIsRequiredExpressionParserRuleCall_0_4_1_2_0() { return cIsRequiredExpressionParserRuleCall_0_4_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_4_1_3() { return cNEWLINETerminalRuleCall_0_4_1_3; }
 		
 		//(
-		//    ('required' ':' isRequired=Expression NEWLINE) &
-		//    ('description' ':' description=Expression NEWLINE)?
+		//    ('required' ':' isRequired=Expression NEWLINE+) &
+		//    ('description' ':' description=Expression NEWLINE+)?
 		//)
 		//END
+		//NEWLINE*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//(
-		//    ('required' ':' isRequired=Expression NEWLINE) &
-		//    ('description' ':' description=Expression NEWLINE)?
+		//    ('required' ':' isRequired=Expression NEWLINE+) &
+		//    ('description' ':' description=Expression NEWLINE+)?
 		//)
 		public UnorderedGroup getUnorderedGroup_1_0() { return cUnorderedGroup_1_0; }
 		
-		//('required' ':' isRequired=Expression NEWLINE)
+		//('required' ':' isRequired=Expression NEWLINE+)
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 		
 		//'required'
@@ -8792,10 +9316,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getIsRequiredExpressionParserRuleCall_1_0_0_2_0() { return cIsRequiredExpressionParserRuleCall_1_0_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_0_3() { return cNEWLINETerminalRuleCall_1_0_0_3; }
 		
-		//('description' ':' description=Expression NEWLINE)?
+		//('description' ':' description=Expression NEWLINE+)?
 		public Group getGroup_1_0_1() { return cGroup_1_0_1; }
 		
 		//'description'
@@ -8810,11 +9334,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getDescriptionExpressionParserRuleCall_1_0_1_2_0() { return cDescriptionExpressionParserRuleCall_1_0_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_1_3() { return cNEWLINETerminalRuleCall_1_0_1_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_1() { return cENDTerminalRuleCall_1_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_2() { return cNEWLINETerminalRuleCall_1_2; }
 	}
 	public class PermissionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Permission");
@@ -8827,11 +9354,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//Permission returns GHA::Permission:
-		//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
+		//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE+
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
+		//key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE+
 		public Group getGroup() { return cGroup; }
 		
 		//key=PERMISSION_SCOPE
@@ -8849,7 +9376,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//PERMISSION_VALUE
 		public RuleCall getValuePERMISSION_VALUEEnumRuleCall_2_0() { return cValuePERMISSION_VALUEEnumRuleCall_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3() { return cNEWLINETerminalRuleCall_3; }
 	}
 	public class DefaultsElements extends AbstractParserRuleElementFinder {
@@ -8873,27 +9400,30 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cWorkingDirectoryExpressionParserRuleCall_4_1_2_0 = (RuleCall)cWorkingDirectoryAssignment_4_1_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_4_1_3 = (RuleCall)cGroup_4_1.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
 		
 		//Defaults returns GHA::Defaults:
 		//    'run' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        (
-		//            ('shell' ':' shell=Expression NEWLINE) &
-		//            ('working-directory' ':' workingDirectory=Expression NEWLINE)?
+		//            ('shell' ':' shell=Expression NEWLINE+) &
+		//            ('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		//        )
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'run' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    (
-		//        ('shell' ':' shell=Expression NEWLINE) &
-		//        ('working-directory' ':' workingDirectory=Expression NEWLINE)?
+		//        ('shell' ':' shell=Expression NEWLINE+) &
+		//        ('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		//    )
 		//    END
+		//    NEWLINE*
 		public Group getGroup() { return cGroup; }
 		
 		//'run'
@@ -8902,19 +9432,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2() { return cNEWLINETerminalRuleCall_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_3() { return cBEGINTerminalRuleCall_3; }
 		
 		//(
-		//    ('shell' ':' shell=Expression NEWLINE) &
-		//    ('working-directory' ':' workingDirectory=Expression NEWLINE)?
+		//    ('shell' ':' shell=Expression NEWLINE+) &
+		//    ('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		//)
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('shell' ':' shell=Expression NEWLINE)
+		//('shell' ':' shell=Expression NEWLINE+)
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'shell'
@@ -8929,10 +9459,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getShellExpressionParserRuleCall_4_0_2_0() { return cShellExpressionParserRuleCall_4_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_0_3() { return cNEWLINETerminalRuleCall_4_0_3; }
 		
-		//('working-directory' ':' workingDirectory=Expression NEWLINE)?
+		//('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'working-directory'
@@ -8947,11 +9477,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getWorkingDirectoryExpressionParserRuleCall_4_1_2_0() { return cWorkingDirectoryExpressionParserRuleCall_4_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_4_1_3() { return cNEWLINETerminalRuleCall_4_1_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_5() { return cENDTerminalRuleCall_5; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_6() { return cNEWLINETerminalRuleCall_6; }
 	}
 	public class StagingEnvironmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.StagingEnvironment");
@@ -8976,30 +9509,33 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cUrlExpressionParserRuleCall_1_3_2_0 = (RuleCall)cUrlAssignment_1_3_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_3_3 = (RuleCall)cGroup_1_3.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_4 = (RuleCall)cGroup_1.eContents().get(4);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5 = (RuleCall)cGroup_1.eContents().get(5);
 		
 		//StagingEnvironment returns GHA::StagingEnvironment:
-		//    (name=Expression NEWLINE) |
+		//    (name=Expression NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('name' ':' name=Expression NEWLINE)
-		//        ('url' ':' url=Expression NEWLINE)?
+		//        ('name' ':' name=Expression NEWLINE+)
+		//        ('url' ':' url=Expression NEWLINE+)?
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(name=Expression NEWLINE) |
+		//(name=Expression NEWLINE+) |
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('name' ':' name=Expression NEWLINE)
-		//    ('url' ':' url=Expression NEWLINE)?
+		//    ('name' ':' name=Expression NEWLINE+)
+		//    ('url' ':' url=Expression NEWLINE+)?
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//(name=Expression NEWLINE)
+		//(name=Expression NEWLINE+)
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//name=Expression
@@ -9008,25 +9544,26 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getNameExpressionParserRuleCall_0_0_0() { return cNameExpressionParserRuleCall_0_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_1() { return cNEWLINETerminalRuleCall_0_1; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('name' ':' name=Expression NEWLINE)
-		//    ('url' ':' url=Expression NEWLINE)?
+		//    ('name' ':' name=Expression NEWLINE+)
+		//    ('url' ':' url=Expression NEWLINE+)?
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0() { return cNEWLINETerminalRuleCall_1_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_1_1() { return cBEGINTerminalRuleCall_1_1; }
 		
-		//('name' ':' name=Expression NEWLINE)
+		//('name' ':' name=Expression NEWLINE+)
 		public Group getGroup_1_2() { return cGroup_1_2; }
 		
 		//'name'
@@ -9041,10 +9578,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getNameExpressionParserRuleCall_1_2_2_0() { return cNameExpressionParserRuleCall_1_2_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_2_3() { return cNEWLINETerminalRuleCall_1_2_3; }
 		
-		//('url' ':' url=Expression NEWLINE)?
+		//('url' ':' url=Expression NEWLINE+)?
 		public Group getGroup_1_3() { return cGroup_1_3; }
 		
 		//'url'
@@ -9059,11 +9596,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getUrlExpressionParserRuleCall_1_3_2_0() { return cUrlExpressionParserRuleCall_1_3_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_3_3() { return cNEWLINETerminalRuleCall_1_3_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_4() { return cENDTerminalRuleCall_1_4; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_5() { return cNEWLINETerminalRuleCall_1_5; }
 	}
 	public class StrategyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Strategy");
@@ -9082,6 +9622,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cIncludesAssignment_0_0_4_4 = (Assignment)cGroup_0_0_4.eContents().get(4);
 		private final RuleCall cIncludesMatrixCombinationParserRuleCall_0_0_4_4_0 = (RuleCall)cIncludesAssignment_0_0_4_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_0_0_4_5 = (RuleCall)cGroup_0_0_4.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_0_0_4_6 = (RuleCall)cGroup_0_0_4.eContents().get(6);
 		private final Group cGroup_0_1 = (Group)cUnorderedGroup_0.eContents().get(1);
 		private final Keyword cExludesKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
 		private final Keyword cColonKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
@@ -9090,13 +9631,16 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cExcludesAssignment_0_1_4 = (Assignment)cGroup_0_1.eContents().get(4);
 		private final RuleCall cExcludesMatrixCombinationParserRuleCall_0_1_4_0 = (RuleCall)cExcludesAssignment_0_1_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_0_1_5 = (RuleCall)cGroup_0_1.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_0_1_6 = (RuleCall)cGroup_0_1.eContents().get(6);
 		private final Group cGroup_0_2 = (Group)cUnorderedGroup_0.eContents().get(2);
 		private final Group cGroup_0_2_0 = (Group)cGroup_0_2.eContents().get(0);
 		private final RuleCall cBEGINTerminalRuleCall_0_2_0_0 = (RuleCall)cGroup_0_2_0.eContents().get(0);
 		private final Assignment cAxesAssignment_0_2_0_1 = (Assignment)cGroup_0_2_0.eContents().get(1);
 		private final RuleCall cAxesMatrixAxisParserRuleCall_0_2_0_1_0 = (RuleCall)cAxesAssignment_0_2_0_1.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_0_2_0_2 = (RuleCall)cGroup_0_2_0.eContents().get(2);
+		private final RuleCall cNEWLINETerminalRuleCall_0_2_0_3 = (RuleCall)cGroup_0_2_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_0_2_1 = (RuleCall)cGroup_0_2.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_0_2_2 = (RuleCall)cGroup_0_2.eContents().get(2);
 		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
 		private final Keyword cFailFastKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Keyword cColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
@@ -9113,46 +9657,49 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Strategy returns GHA::Matrix:
 		//    (
 		//        'matrix' ':'
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)? &
-		//            ('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)? &
-		//            (BEGIN axes+=MatrixAxis+ END)
+		//            ('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)? &
+		//            ('exludes' ':' NEWLINE+ BEGIN excludes+=MatrixCombination END NEWLINE*)? &
+		//            (BEGIN axes+=MatrixAxis+ END NEWLINE*)
 		//            END
+		//            NEWLINE*
 		//    ) &
-		//    ('fail-fast' ':' failFast=Expression NEWLINE)? &
-		//    ('max-paralell' ':' maxParallel=Expression NEWLINE)?
+		//    ('fail-fast' ':' failFast=Expression NEWLINE+)? &
+		//    ('max-paralell' ':' maxParallel=Expression NEWLINE+)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(
 		//    'matrix' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)? &
-		//        ('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)? &
-		//        (BEGIN axes+=MatrixAxis+ END)
+		//        ('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)? &
+		//        ('exludes' ':' NEWLINE+ BEGIN excludes+=MatrixCombination END NEWLINE*)? &
+		//        (BEGIN axes+=MatrixAxis+ END NEWLINE*)
 		//        END
+		//        NEWLINE*
 		//) &
-		//('fail-fast' ':' failFast=Expression NEWLINE)? &
-		//('max-paralell' ':' maxParallel=Expression NEWLINE)?
+		//('fail-fast' ':' failFast=Expression NEWLINE+)? &
+		//('max-paralell' ':' maxParallel=Expression NEWLINE+)?
 		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
 		//(
 		//    'matrix' ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)? &
-		//        ('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)? &
-		//        (BEGIN axes+=MatrixAxis+ END)
+		//        ('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)? &
+		//        ('exludes' ':' NEWLINE+ BEGIN excludes+=MatrixCombination END NEWLINE*)? &
+		//        (BEGIN axes+=MatrixAxis+ END NEWLINE*)
 		//        END
+		//        NEWLINE*
 		//)
 		public UnorderedGroup getUnorderedGroup_0() { return cUnorderedGroup_0; }
 		
 		//'matrix' ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)?
+		//    ('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)?
 		public Group getGroup_0_0() { return cGroup_0_0; }
 		
 		//'matrix'
@@ -9161,13 +9708,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_0_1() { return cColonKeyword_0_0_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_0_2() { return cNEWLINETerminalRuleCall_0_0_2; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_0_0_3() { return cBEGINTerminalRuleCall_0_0_3; }
 		
-		//('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)?
+		//('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)?
 		public Group getGroup_0_0_4() { return cGroup_0_0_4; }
 		
 		//'includes'
@@ -9176,7 +9723,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_0_4_1() { return cColonKeyword_0_0_4_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_0_4_2() { return cNEWLINETerminalRuleCall_0_0_4_2; }
 		
 		//BEGIN
@@ -9191,7 +9738,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_0_0_4_5() { return cENDTerminalRuleCall_0_0_4_5; }
 		
-		//('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_0_0_4_6() { return cNEWLINETerminalRuleCall_0_0_4_6; }
+		
+		//('exludes' ':' NEWLINE+ BEGIN excludes+=MatrixCombination END NEWLINE*)?
 		public Group getGroup_0_1() { return cGroup_0_1; }
 		
 		//'exludes'
@@ -9200,7 +9750,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_0_1_1() { return cColonKeyword_0_1_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_1_2() { return cNEWLINETerminalRuleCall_0_1_2; }
 		
 		//BEGIN
@@ -9215,11 +9765,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_0_1_5() { return cENDTerminalRuleCall_0_1_5; }
 		
-		//(BEGIN axes+=MatrixAxis+ END)
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_0_1_6() { return cNEWLINETerminalRuleCall_0_1_6; }
+		
+		//(BEGIN axes+=MatrixAxis+ END NEWLINE*)
 		//END
+		//NEWLINE*
 		public Group getGroup_0_2() { return cGroup_0_2; }
 		
-		//(BEGIN axes+=MatrixAxis+ END)
+		//(BEGIN axes+=MatrixAxis+ END NEWLINE*)
 		public Group getGroup_0_2_0() { return cGroup_0_2_0; }
 		
 		//BEGIN
@@ -9234,10 +9788,16 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_0_2_0_2() { return cENDTerminalRuleCall_0_2_0_2; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_0_2_0_3() { return cNEWLINETerminalRuleCall_0_2_0_3; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_0_2_1() { return cENDTerminalRuleCall_0_2_1; }
 		
-		//('fail-fast' ':' failFast=Expression NEWLINE)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_0_2_2() { return cNEWLINETerminalRuleCall_0_2_2; }
+		
+		//('fail-fast' ':' failFast=Expression NEWLINE+)?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'fail-fast'
@@ -9252,10 +9812,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getFailFastExpressionParserRuleCall_1_2_0() { return cFailFastExpressionParserRuleCall_1_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_3() { return cNEWLINETerminalRuleCall_1_3; }
 		
-		//('max-paralell' ':' maxParallel=Expression NEWLINE)?
+		//('max-paralell' ':' maxParallel=Expression NEWLINE+)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//'max-paralell'
@@ -9270,7 +9830,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getMaxParallelExpressionParserRuleCall_2_2_0() { return cMaxParallelExpressionParserRuleCall_2_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_3() { return cNEWLINETerminalRuleCall_2_3; }
 	}
 	public class MatrixAxisElements extends AbstractParserRuleElementFinder {
@@ -9303,17 +9863,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cCellsExpressionParserRuleCall_2_2_2_1_0 = (RuleCall)cCellsAssignment_2_2_2_1.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_2_2_2_2 = (RuleCall)cGroup_2_2_2.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_2_2_3 = (RuleCall)cGroup_2_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_2_2_4 = (RuleCall)cGroup_2_2.eContents().get(4);
 		
 		//MatrixAxis returns GHA::MatrixAxis:
 		//    name=YAMLID ':'
 		//    (
-		//        (cells+=Expression NEWLINE) |
-		//        ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
+		//        (cells+=Expression NEWLINE+) |
+		//        ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE+) |
 		//        (
-		//            NEWLINE
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' cells+=Expression NEWLINE)+
+		//            ('-' cells+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    )
 		//;
@@ -9321,13 +9883,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//name=YAMLID ':'
 		//(
-		//    (cells+=Expression NEWLINE) |
-		//    ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
+		//    (cells+=Expression NEWLINE+) |
+		//    ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' cells+=Expression NEWLINE)+
+		//        ('-' cells+=Expression NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//)
 		public Group getGroup() { return cGroup; }
@@ -9342,18 +9905,19 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 		
 		//(
-		//    (cells+=Expression NEWLINE) |
-		//    ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
+		//    (cells+=Expression NEWLINE+) |
+		//    ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE+) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' cells+=Expression NEWLINE)+
+		//        ('-' cells+=Expression NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//(cells+=Expression NEWLINE)
+		//(cells+=Expression NEWLINE+)
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
 		//cells+=Expression
@@ -9362,10 +9926,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getCellsExpressionParserRuleCall_2_0_0_0() { return cCellsExpressionParserRuleCall_2_0_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_0_1() { return cNEWLINETerminalRuleCall_2_0_1; }
 		
-		//('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE)
+		//('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE+)
 		public Group getGroup_2_1() { return cGroup_2_1; }
 		
 		//'['
@@ -9392,24 +9956,25 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_2_1_3() { return cRightSquareBracketKeyword_2_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_1_4() { return cNEWLINETerminalRuleCall_2_1_4; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' cells+=Expression NEWLINE)+
+		//    ('-' cells+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_2_2() { return cGroup_2_2; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_0() { return cNEWLINETerminalRuleCall_2_2_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_2_2_1() { return cBEGINTerminalRuleCall_2_2_1; }
 		
-		//('-' cells+=Expression NEWLINE)+
+		//('-' cells+=Expression NEWLINE+)+
 		public Group getGroup_2_2_2() { return cGroup_2_2_2; }
 		
 		//'-'
@@ -9421,11 +9986,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getCellsExpressionParserRuleCall_2_2_2_1_0() { return cCellsExpressionParserRuleCall_2_2_2_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2_2_2_2() { return cNEWLINETerminalRuleCall_2_2_2_2; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_2_2_3() { return cENDTerminalRuleCall_2_2_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_2_2_4() { return cNEWLINETerminalRuleCall_2_2_4; }
 	}
 	public class MatrixCombinationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.MatrixCombination");
@@ -9483,6 +10051,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cEnvironmentVariablesAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
 		private final RuleCall cEnvironmentVariablesVariableAssignmentParserRuleCall_1_1_3_0 = (RuleCall)cEnvironmentVariablesAssignment_1_1_3.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_1_1_4 = (RuleCall)cGroup_1_1.eContents().get(4);
+		private final RuleCall cNEWLINETerminalRuleCall_1_1_5 = (RuleCall)cGroup_1_1.eContents().get(5);
 		private final Alternatives cAlternatives_1_2 = (Alternatives)cUnorderedGroup_1.eContents().get(2);
 		private final Group cGroup_1_2_0 = (Group)cAlternatives_1_2.eContents().get(0);
 		private final Keyword cPortsKeyword_1_2_0_0 = (Keyword)cGroup_1_2_0.eContents().get(0);
@@ -9502,13 +10071,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cRightSquareBracketKeyword_1_2_1_3 = (Keyword)cGroup_1_2_1.eContents().get(3);
 		private final RuleCall cNEWLINETerminalRuleCall_1_2_1_4 = (RuleCall)cGroup_1_2_1.eContents().get(4);
 		private final Group cGroup_1_2_2 = (Group)cAlternatives_1_2.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_1_2_2_0 = (RuleCall)cGroup_1_2_2.eContents().get(0);
-		private final Group cGroup_1_2_2_1 = (Group)cGroup_1_2_2.eContents().get(1);
-		private final Keyword cHyphenMinusKeyword_1_2_2_1_0 = (Keyword)cGroup_1_2_2_1.eContents().get(0);
-		private final Assignment cPortsAssignment_1_2_2_1_1 = (Assignment)cGroup_1_2_2_1.eContents().get(1);
-		private final RuleCall cPortsExpressionParserRuleCall_1_2_2_1_1_0 = (RuleCall)cPortsAssignment_1_2_2_1_1.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_1_2 = (RuleCall)cGroup_1_2_2_1.eContents().get(2);
-		private final RuleCall cENDTerminalRuleCall_1_2_2_2 = (RuleCall)cGroup_1_2_2.eContents().get(2);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_0 = (RuleCall)cGroup_1_2_2.eContents().get(0);
+		private final RuleCall cBEGINTerminalRuleCall_1_2_2_1 = (RuleCall)cGroup_1_2_2.eContents().get(1);
+		private final Group cGroup_1_2_2_2 = (Group)cGroup_1_2_2.eContents().get(2);
+		private final Keyword cHyphenMinusKeyword_1_2_2_2_0 = (Keyword)cGroup_1_2_2_2.eContents().get(0);
+		private final Assignment cPortsAssignment_1_2_2_2_1 = (Assignment)cGroup_1_2_2_2.eContents().get(1);
+		private final RuleCall cPortsExpressionParserRuleCall_1_2_2_2_1_0 = (RuleCall)cPortsAssignment_1_2_2_2_1.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_2_2 = (RuleCall)cGroup_1_2_2_2.eContents().get(2);
+		private final RuleCall cENDTerminalRuleCall_1_2_2_3 = (RuleCall)cGroup_1_2_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_2_2_4 = (RuleCall)cGroup_1_2_2.eContents().get(4);
 		private final Alternatives cAlternatives_1_3 = (Alternatives)cUnorderedGroup_1.eContents().get(3);
 		private final Group cGroup_1_3_0 = (Group)cAlternatives_1_3.eContents().get(0);
 		private final Keyword cVolumesKeyword_1_3_0_0 = (Keyword)cGroup_1_3_0.eContents().get(0);
@@ -9528,13 +10099,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cRightSquareBracketKeyword_1_3_1_3 = (Keyword)cGroup_1_3_1.eContents().get(3);
 		private final RuleCall cNEWLINETerminalRuleCall_1_3_1_4 = (RuleCall)cGroup_1_3_1.eContents().get(4);
 		private final Group cGroup_1_3_2 = (Group)cAlternatives_1_3.eContents().get(2);
-		private final RuleCall cBEGINTerminalRuleCall_1_3_2_0 = (RuleCall)cGroup_1_3_2.eContents().get(0);
-		private final Group cGroup_1_3_2_1 = (Group)cGroup_1_3_2.eContents().get(1);
-		private final Keyword cHyphenMinusKeyword_1_3_2_1_0 = (Keyword)cGroup_1_3_2_1.eContents().get(0);
-		private final Assignment cVolumesAssignment_1_3_2_1_1 = (Assignment)cGroup_1_3_2_1.eContents().get(1);
-		private final RuleCall cVolumesExpressionParserRuleCall_1_3_2_1_1_0 = (RuleCall)cVolumesAssignment_1_3_2_1_1.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_1_3_2_1_2 = (RuleCall)cGroup_1_3_2_1.eContents().get(2);
-		private final RuleCall cENDTerminalRuleCall_1_3_2_2 = (RuleCall)cGroup_1_3_2.eContents().get(2);
+		private final RuleCall cNEWLINETerminalRuleCall_1_3_2_0 = (RuleCall)cGroup_1_3_2.eContents().get(0);
+		private final RuleCall cBEGINTerminalRuleCall_1_3_2_1 = (RuleCall)cGroup_1_3_2.eContents().get(1);
+		private final Group cGroup_1_3_2_2 = (Group)cGroup_1_3_2.eContents().get(2);
+		private final Keyword cHyphenMinusKeyword_1_3_2_2_0 = (Keyword)cGroup_1_3_2_2.eContents().get(0);
+		private final Assignment cVolumesAssignment_1_3_2_2_1 = (Assignment)cGroup_1_3_2_2.eContents().get(1);
+		private final RuleCall cVolumesExpressionParserRuleCall_1_3_2_2_1_0 = (RuleCall)cVolumesAssignment_1_3_2_2_1.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_3_2_2_2 = (RuleCall)cGroup_1_3_2_2.eContents().get(2);
+		private final RuleCall cENDTerminalRuleCall_1_3_2_3 = (RuleCall)cGroup_1_3_2.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_3_2_4 = (RuleCall)cGroup_1_3_2.eContents().get(4);
 		private final Group cGroup_1_4 = (Group)cUnorderedGroup_1.eContents().get(4);
 		private final Keyword cOptionsKeyword_1_4_0 = (Keyword)cGroup_1_4.eContents().get(0);
 		private final Keyword cColonKeyword_1_4_1 = (Keyword)cGroup_1_4.eContents().get(1);
@@ -9546,13 +10119,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup_1_5_0_0 = (Group)cUnorderedGroup_1_5_0.eContents().get(0);
 		private final Keyword cCredentialsKeyword_1_5_0_0_0 = (Keyword)cGroup_1_5_0_0.eContents().get(0);
 		private final Keyword cColonKeyword_1_5_0_0_1 = (Keyword)cGroup_1_5_0_0.eContents().get(1);
-		private final RuleCall cBEGINTerminalRuleCall_1_5_0_0_2 = (RuleCall)cGroup_1_5_0_0.eContents().get(2);
-		private final Group cGroup_1_5_0_0_3 = (Group)cGroup_1_5_0_0.eContents().get(3);
-		private final Keyword cUsernameKeyword_1_5_0_0_3_0 = (Keyword)cGroup_1_5_0_0_3.eContents().get(0);
-		private final Keyword cColonKeyword_1_5_0_0_3_1 = (Keyword)cGroup_1_5_0_0_3.eContents().get(1);
-		private final Assignment cUsernameAssignment_1_5_0_0_3_2 = (Assignment)cGroup_1_5_0_0_3.eContents().get(2);
-		private final RuleCall cUsernameExpressionParserRuleCall_1_5_0_0_3_2_0 = (RuleCall)cUsernameAssignment_1_5_0_0_3_2.eContents().get(0);
-		private final RuleCall cNEWLINETerminalRuleCall_1_5_0_0_3_3 = (RuleCall)cGroup_1_5_0_0_3.eContents().get(3);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5_0_0_2 = (RuleCall)cGroup_1_5_0_0.eContents().get(2);
+		private final RuleCall cBEGINTerminalRuleCall_1_5_0_0_3 = (RuleCall)cGroup_1_5_0_0.eContents().get(3);
+		private final Group cGroup_1_5_0_0_4 = (Group)cGroup_1_5_0_0.eContents().get(4);
+		private final Keyword cUsernameKeyword_1_5_0_0_4_0 = (Keyword)cGroup_1_5_0_0_4.eContents().get(0);
+		private final Keyword cColonKeyword_1_5_0_0_4_1 = (Keyword)cGroup_1_5_0_0_4.eContents().get(1);
+		private final Assignment cUsernameAssignment_1_5_0_0_4_2 = (Assignment)cGroup_1_5_0_0_4.eContents().get(2);
+		private final RuleCall cUsernameExpressionParserRuleCall_1_5_0_0_4_2_0 = (RuleCall)cUsernameAssignment_1_5_0_0_4_2.eContents().get(0);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5_0_0_4_3 = (RuleCall)cGroup_1_5_0_0_4.eContents().get(3);
 		private final Group cGroup_1_5_0_1 = (Group)cUnorderedGroup_1_5_0.eContents().get(1);
 		private final Group cGroup_1_5_0_1_0 = (Group)cGroup_1_5_0_1.eContents().get(0);
 		private final Keyword cPasswordKeyword_1_5_0_1_0_0 = (Keyword)cGroup_1_5_0_1_0.eContents().get(0);
@@ -9561,88 +10135,104 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cPasswordExpressionParserRuleCall_1_5_0_1_0_2_0 = (RuleCall)cPasswordAssignment_1_5_0_1_0_2.eContents().get(0);
 		private final RuleCall cNEWLINETerminalRuleCall_1_5_0_1_0_3 = (RuleCall)cGroup_1_5_0_1_0.eContents().get(3);
 		private final RuleCall cENDTerminalRuleCall_1_5_0_1_1 = (RuleCall)cGroup_1_5_0_1.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5_0_1_2 = (RuleCall)cGroup_1_5_0_1.eContents().get(2);
 		private final RuleCall cENDTerminalRuleCall_1_5_1 = (RuleCall)cGroup_1_5.eContents().get(1);
+		private final RuleCall cNEWLINETerminalRuleCall_1_5_2 = (RuleCall)cGroup_1_5.eContents().get(2);
 		
 		//Container returns GHA::Container:
 		//    (
-		//        image=Expression NEWLINE
+		//        image=Expression NEWLINE+
 		//    ) |
 		//    (
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
-		//        ('image' ':' image=Expression NEWLINE) &
-		//        ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)? &
+		//        ('image' ':' image=Expression NEWLINE+) &
+		//        ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
 		//        ('ports' ':'
-		//            (ports+=Expression NEWLINE) |
-		//            ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+		//            (ports+=Expression NEWLINE+) |
+		//            ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+) |
 		//            (
+		//                NEWLINE+
 		//                BEGIN
-		//                ('-' ports+=Expression NEWLINE)+
+		//                ('-' ports+=Expression NEWLINE+)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//        )? &
 		//        ('volumes' ':'
-		//            (volumes+=Expression NEWLINE) |
-		//            ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+		//            (volumes+=Expression NEWLINE+) |
+		//            ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+) |
 		//            (
+		//                NEWLINE*
 		//                BEGIN
-		//                ('-' volumes+=Expression NEWLINE)+
+		//                ('-' volumes+=Expression NEWLINE*)+
 		//                END
+		//                NEWLINE*
 		//            )
 		//        )? &
-		//        ('options' ':' options=Expression NEWLINE)? &
+		//        ('options' ':' options=Expression NEWLINE+)? &
 		//        (
 		//            'credentials' ':'
+		//                NEWLINE+
 		//                BEGIN
-		//                ('username' ':' username=Expression NEWLINE) &
-		//                ('password' ':' password=Expression NEWLINE)
+		//                ('username' ':' username=Expression NEWLINE+) &
+		//                ('password' ':' password=Expression NEWLINE+)
 		//                END
+		//                NEWLINE*
 		//        )?
 		//        END
+		//        NEWLINE*
 		//    )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(
-		//    image=Expression NEWLINE
+		//    image=Expression NEWLINE+
 		//) |
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('image' ':' image=Expression NEWLINE) &
-		//    ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)? &
+		//    ('image' ':' image=Expression NEWLINE+) &
+		//    ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
 		//    ('ports' ':'
-		//        (ports+=Expression NEWLINE) |
-		//        ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+		//        (ports+=Expression NEWLINE+) |
+		//        ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+) |
 		//        (
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' ports+=Expression NEWLINE)+
+		//            ('-' ports+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    )? &
 		//    ('volumes' ':'
-		//        (volumes+=Expression NEWLINE) |
-		//        ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+		//        (volumes+=Expression NEWLINE+) |
+		//        ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+) |
 		//        (
+		//            NEWLINE*
 		//            BEGIN
-		//            ('-' volumes+=Expression NEWLINE)+
+		//            ('-' volumes+=Expression NEWLINE*)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    )? &
-		//    ('options' ':' options=Expression NEWLINE)? &
+		//    ('options' ':' options=Expression NEWLINE+)? &
 		//    (
 		//        'credentials' ':'
+		//            NEWLINE+
 		//            BEGIN
-		//            ('username' ':' username=Expression NEWLINE) &
-		//            ('password' ':' password=Expression NEWLINE)
+		//            ('username' ':' username=Expression NEWLINE+) &
+		//            ('password' ':' password=Expression NEWLINE+)
 		//            END
+		//            NEWLINE*
 		//    )?
 		//    END
+		//    NEWLINE*
 		//)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//(
-		//    image=Expression NEWLINE
+		//    image=Expression NEWLINE+
 		//)
 		public Group getGroup_0() { return cGroup_0; }
 		
@@ -9652,56 +10242,63 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getImageExpressionParserRuleCall_0_0_0() { return cImageExpressionParserRuleCall_0_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_0_1() { return cNEWLINETerminalRuleCall_0_1; }
 		
 		//(
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
-		//    ('image' ':' image=Expression NEWLINE) &
-		//    ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)? &
+		//    ('image' ':' image=Expression NEWLINE+) &
+		//    ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
 		//    ('ports' ':'
-		//        (ports+=Expression NEWLINE) |
-		//        ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+		//        (ports+=Expression NEWLINE+) |
+		//        ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+) |
 		//        (
+		//            NEWLINE+
 		//            BEGIN
-		//            ('-' ports+=Expression NEWLINE)+
+		//            ('-' ports+=Expression NEWLINE+)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    )? &
 		//    ('volumes' ':'
-		//        (volumes+=Expression NEWLINE) |
-		//        ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+		//        (volumes+=Expression NEWLINE+) |
+		//        ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+) |
 		//        (
+		//            NEWLINE*
 		//            BEGIN
-		//            ('-' volumes+=Expression NEWLINE)+
+		//            ('-' volumes+=Expression NEWLINE*)+
 		//            END
+		//            NEWLINE*
 		//        )
 		//    )? &
-		//    ('options' ':' options=Expression NEWLINE)? &
+		//    ('options' ':' options=Expression NEWLINE+)? &
 		//    (
 		//        'credentials' ':'
+		//            NEWLINE+
 		//            BEGIN
-		//            ('username' ':' username=Expression NEWLINE) &
-		//            ('password' ':' password=Expression NEWLINE)
+		//            ('username' ':' username=Expression NEWLINE+) &
+		//            ('password' ':' password=Expression NEWLINE+)
 		//            END
+		//            NEWLINE*
 		//    )?
 		//    END
+		//    NEWLINE*
 		//)
 		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		//BEGIN
-		//('image' ':' image=Expression NEWLINE)
+		//('image' ':' image=Expression NEWLINE+)
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_0() { return cNEWLINETerminalRuleCall_1_0_0; }
 		
 		//BEGIN
 		public RuleCall getBEGINTerminalRuleCall_1_0_1() { return cBEGINTerminalRuleCall_1_0_1; }
 		
-		//('image' ':' image=Expression NEWLINE)
+		//('image' ':' image=Expression NEWLINE+)
 		public Group getGroup_1_0_2() { return cGroup_1_0_2; }
 		
 		//'image'
@@ -9716,10 +10313,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getImageExpressionParserRuleCall_1_0_2_2_0() { return cImageExpressionParserRuleCall_1_0_2_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_0_2_3() { return cNEWLINETerminalRuleCall_1_0_2_3; }
 		
-		//('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)?
+		//('env' ':' BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//'env'
@@ -9740,19 +10337,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//END
 		public RuleCall getENDTerminalRuleCall_1_1_4() { return cENDTerminalRuleCall_1_1_4; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_1_5() { return cNEWLINETerminalRuleCall_1_1_5; }
+		
 		//('ports' ':'
-		//    (ports+=Expression NEWLINE) |
-		//    ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+		//    (ports+=Expression NEWLINE+) |
+		//    ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+) |
 		//    (
+		//        NEWLINE+
 		//        BEGIN
-		//        ('-' ports+=Expression NEWLINE)+
+		//        ('-' ports+=Expression NEWLINE+)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//)?
 		public Alternatives getAlternatives_1_2() { return cAlternatives_1_2; }
 		
 		//'ports' ':'
-		//            (ports+=Expression NEWLINE)
+		//            (ports+=Expression NEWLINE+)
 		public Group getGroup_1_2_0() { return cGroup_1_2_0; }
 		
 		//'ports'
@@ -9761,7 +10363,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_2_0_1() { return cColonKeyword_1_2_0_1; }
 		
-		//(ports+=Expression NEWLINE)
+		//(ports+=Expression NEWLINE+)
 		public Group getGroup_1_2_0_2() { return cGroup_1_2_0_2; }
 		
 		//ports+=Expression
@@ -9770,10 +10372,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPortsExpressionParserRuleCall_1_2_0_2_0_0() { return cPortsExpressionParserRuleCall_1_2_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_2_0_2_1() { return cNEWLINETerminalRuleCall_1_2_0_2_1; }
 		
-		//('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE)
+		//('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+)
 		public Group getGroup_1_2_1() { return cGroup_1_2_1; }
 		
 		//'['
@@ -9800,50 +10402,60 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_1_2_1_3() { return cRightSquareBracketKeyword_1_2_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_2_1_4() { return cNEWLINETerminalRuleCall_1_2_1_4; }
 		
 		//(
+		//    NEWLINE+
 		//    BEGIN
-		//    ('-' ports+=Expression NEWLINE)+
+		//    ('-' ports+=Expression NEWLINE+)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_1_2_2() { return cGroup_1_2_2; }
 		
-		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_1_2_2_0() { return cBEGINTerminalRuleCall_1_2_2_0; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_0() { return cNEWLINETerminalRuleCall_1_2_2_0; }
 		
-		//('-' ports+=Expression NEWLINE)+
-		public Group getGroup_1_2_2_1() { return cGroup_1_2_2_1; }
+		//BEGIN
+		public RuleCall getBEGINTerminalRuleCall_1_2_2_1() { return cBEGINTerminalRuleCall_1_2_2_1; }
+		
+		//('-' ports+=Expression NEWLINE+)+
+		public Group getGroup_1_2_2_2() { return cGroup_1_2_2_2; }
 		
 		//'-'
-		public Keyword getHyphenMinusKeyword_1_2_2_1_0() { return cHyphenMinusKeyword_1_2_2_1_0; }
+		public Keyword getHyphenMinusKeyword_1_2_2_2_0() { return cHyphenMinusKeyword_1_2_2_2_0; }
 		
 		//ports+=Expression
-		public Assignment getPortsAssignment_1_2_2_1_1() { return cPortsAssignment_1_2_2_1_1; }
+		public Assignment getPortsAssignment_1_2_2_2_1() { return cPortsAssignment_1_2_2_2_1; }
 		
 		//Expression
-		public RuleCall getPortsExpressionParserRuleCall_1_2_2_1_1_0() { return cPortsExpressionParserRuleCall_1_2_2_1_1_0; }
+		public RuleCall getPortsExpressionParserRuleCall_1_2_2_2_1_0() { return cPortsExpressionParserRuleCall_1_2_2_2_1_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_1_2_2_1_2() { return cNEWLINETerminalRuleCall_1_2_2_1_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_2_2() { return cNEWLINETerminalRuleCall_1_2_2_2_2; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_1_2_2_2() { return cENDTerminalRuleCall_1_2_2_2; }
+		public RuleCall getENDTerminalRuleCall_1_2_2_3() { return cENDTerminalRuleCall_1_2_2_3; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_2_2_4() { return cNEWLINETerminalRuleCall_1_2_2_4; }
 		
 		//('volumes' ':'
-		//    (volumes+=Expression NEWLINE) |
-		//    ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+		//    (volumes+=Expression NEWLINE+) |
+		//    ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+) |
 		//    (
+		//        NEWLINE*
 		//        BEGIN
-		//        ('-' volumes+=Expression NEWLINE)+
+		//        ('-' volumes+=Expression NEWLINE*)+
 		//        END
+		//        NEWLINE*
 		//    )
 		//)?
 		public Alternatives getAlternatives_1_3() { return cAlternatives_1_3; }
 		
 		//'volumes' ':'
-		//            (volumes+=Expression NEWLINE)
+		//            (volumes+=Expression NEWLINE+)
 		public Group getGroup_1_3_0() { return cGroup_1_3_0; }
 		
 		//'volumes'
@@ -9852,7 +10464,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_3_0_1() { return cColonKeyword_1_3_0_1; }
 		
-		//(volumes+=Expression NEWLINE)
+		//(volumes+=Expression NEWLINE+)
 		public Group getGroup_1_3_0_2() { return cGroup_1_3_0_2; }
 		
 		//volumes+=Expression
@@ -9861,10 +10473,10 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getVolumesExpressionParserRuleCall_1_3_0_2_0_0() { return cVolumesExpressionParserRuleCall_1_3_0_2_0_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_3_0_2_1() { return cNEWLINETerminalRuleCall_1_3_0_2_1; }
 		
-		//('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE)
+		//('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+)
 		public Group getGroup_1_3_1() { return cGroup_1_3_1; }
 		
 		//'['
@@ -9891,38 +10503,46 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//']'
 		public Keyword getRightSquareBracketKeyword_1_3_1_3() { return cRightSquareBracketKeyword_1_3_1_3; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_3_1_4() { return cNEWLINETerminalRuleCall_1_3_1_4; }
 		
 		//(
+		//    NEWLINE*
 		//    BEGIN
-		//    ('-' volumes+=Expression NEWLINE)+
+		//    ('-' volumes+=Expression NEWLINE*)+
 		//    END
+		//    NEWLINE*
 		//)
 		public Group getGroup_1_3_2() { return cGroup_1_3_2; }
 		
-		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_1_3_2_0() { return cBEGINTerminalRuleCall_1_3_2_0; }
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_3_2_0() { return cNEWLINETerminalRuleCall_1_3_2_0; }
 		
-		//('-' volumes+=Expression NEWLINE)+
-		public Group getGroup_1_3_2_1() { return cGroup_1_3_2_1; }
+		//BEGIN
+		public RuleCall getBEGINTerminalRuleCall_1_3_2_1() { return cBEGINTerminalRuleCall_1_3_2_1; }
+		
+		//('-' volumes+=Expression NEWLINE*)+
+		public Group getGroup_1_3_2_2() { return cGroup_1_3_2_2; }
 		
 		//'-'
-		public Keyword getHyphenMinusKeyword_1_3_2_1_0() { return cHyphenMinusKeyword_1_3_2_1_0; }
+		public Keyword getHyphenMinusKeyword_1_3_2_2_0() { return cHyphenMinusKeyword_1_3_2_2_0; }
 		
 		//volumes+=Expression
-		public Assignment getVolumesAssignment_1_3_2_1_1() { return cVolumesAssignment_1_3_2_1_1; }
+		public Assignment getVolumesAssignment_1_3_2_2_1() { return cVolumesAssignment_1_3_2_2_1; }
 		
 		//Expression
-		public RuleCall getVolumesExpressionParserRuleCall_1_3_2_1_1_0() { return cVolumesExpressionParserRuleCall_1_3_2_1_1_0; }
+		public RuleCall getVolumesExpressionParserRuleCall_1_3_2_2_1_0() { return cVolumesExpressionParserRuleCall_1_3_2_2_1_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_1_3_2_1_2() { return cNEWLINETerminalRuleCall_1_3_2_1_2; }
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_3_2_2_2() { return cNEWLINETerminalRuleCall_1_3_2_2_2; }
 		
 		//END
-		public RuleCall getENDTerminalRuleCall_1_3_2_2() { return cENDTerminalRuleCall_1_3_2_2; }
+		public RuleCall getENDTerminalRuleCall_1_3_2_3() { return cENDTerminalRuleCall_1_3_2_3; }
 		
-		//('options' ':' options=Expression NEWLINE)?
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_3_2_4() { return cNEWLINETerminalRuleCall_1_3_2_4; }
+		
+		//('options' ':' options=Expression NEWLINE+)?
 		public Group getGroup_1_4() { return cGroup_1_4; }
 		
 		//'options'
@@ -9937,31 +10557,37 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getOptionsExpressionParserRuleCall_1_4_2_0() { return cOptionsExpressionParserRuleCall_1_4_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_4_3() { return cNEWLINETerminalRuleCall_1_4_3; }
 		
 		//(
 		//    'credentials' ':'
+		//        NEWLINE+
 		//        BEGIN
-		//        ('username' ':' username=Expression NEWLINE) &
-		//        ('password' ':' password=Expression NEWLINE)
+		//        ('username' ':' username=Expression NEWLINE+) &
+		//        ('password' ':' password=Expression NEWLINE+)
 		//        END
+		//        NEWLINE*
 		//)?
 		//END
+		//NEWLINE*
 		public Group getGroup_1_5() { return cGroup_1_5; }
 		
 		//(
 		//    'credentials' ':'
+		//        NEWLINE+
 		//        BEGIN
-		//        ('username' ':' username=Expression NEWLINE) &
-		//        ('password' ':' password=Expression NEWLINE)
+		//        ('username' ':' username=Expression NEWLINE+) &
+		//        ('password' ':' password=Expression NEWLINE+)
 		//        END
+		//        NEWLINE*
 		//)?
 		public UnorderedGroup getUnorderedGroup_1_5_0() { return cUnorderedGroup_1_5_0; }
 		
 		//'credentials' ':'
+		//    NEWLINE+
 		//    BEGIN
-		//    ('username' ':' username=Expression NEWLINE)
+		//    ('username' ':' username=Expression NEWLINE+)
 		public Group getGroup_1_5_0_0() { return cGroup_1_5_0_0; }
 		
 		//'credentials'
@@ -9970,32 +10596,36 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1_5_0_0_1() { return cColonKeyword_1_5_0_0_1; }
 		
-		//BEGIN
-		public RuleCall getBEGINTerminalRuleCall_1_5_0_0_2() { return cBEGINTerminalRuleCall_1_5_0_0_2; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_5_0_0_2() { return cNEWLINETerminalRuleCall_1_5_0_0_2; }
 		
-		//('username' ':' username=Expression NEWLINE)
-		public Group getGroup_1_5_0_0_3() { return cGroup_1_5_0_0_3; }
+		//BEGIN
+		public RuleCall getBEGINTerminalRuleCall_1_5_0_0_3() { return cBEGINTerminalRuleCall_1_5_0_0_3; }
+		
+		//('username' ':' username=Expression NEWLINE+)
+		public Group getGroup_1_5_0_0_4() { return cGroup_1_5_0_0_4; }
 		
 		//'username'
-		public Keyword getUsernameKeyword_1_5_0_0_3_0() { return cUsernameKeyword_1_5_0_0_3_0; }
+		public Keyword getUsernameKeyword_1_5_0_0_4_0() { return cUsernameKeyword_1_5_0_0_4_0; }
 		
 		//':'
-		public Keyword getColonKeyword_1_5_0_0_3_1() { return cColonKeyword_1_5_0_0_3_1; }
+		public Keyword getColonKeyword_1_5_0_0_4_1() { return cColonKeyword_1_5_0_0_4_1; }
 		
 		//username=Expression
-		public Assignment getUsernameAssignment_1_5_0_0_3_2() { return cUsernameAssignment_1_5_0_0_3_2; }
+		public Assignment getUsernameAssignment_1_5_0_0_4_2() { return cUsernameAssignment_1_5_0_0_4_2; }
 		
 		//Expression
-		public RuleCall getUsernameExpressionParserRuleCall_1_5_0_0_3_2_0() { return cUsernameExpressionParserRuleCall_1_5_0_0_3_2_0; }
+		public RuleCall getUsernameExpressionParserRuleCall_1_5_0_0_4_2_0() { return cUsernameExpressionParserRuleCall_1_5_0_0_4_2_0; }
 		
-		//NEWLINE
-		public RuleCall getNEWLINETerminalRuleCall_1_5_0_0_3_3() { return cNEWLINETerminalRuleCall_1_5_0_0_3_3; }
+		//NEWLINE+
+		public RuleCall getNEWLINETerminalRuleCall_1_5_0_0_4_3() { return cNEWLINETerminalRuleCall_1_5_0_0_4_3; }
 		
-		//('password' ':' password=Expression NEWLINE)
+		//('password' ':' password=Expression NEWLINE+)
 		//END
+		//NEWLINE*
 		public Group getGroup_1_5_0_1() { return cGroup_1_5_0_1; }
 		
-		//('password' ':' password=Expression NEWLINE)
+		//('password' ':' password=Expression NEWLINE+)
 		public Group getGroup_1_5_0_1_0() { return cGroup_1_5_0_1_0; }
 		
 		//'password'
@@ -10010,14 +10640,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getPasswordExpressionParserRuleCall_1_5_0_1_0_2_0() { return cPasswordExpressionParserRuleCall_1_5_0_1_0_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_1_5_0_1_0_3() { return cNEWLINETerminalRuleCall_1_5_0_1_0_3; }
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_5_0_1_1() { return cENDTerminalRuleCall_1_5_0_1_1; }
 		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_5_0_1_2() { return cNEWLINETerminalRuleCall_1_5_0_1_2; }
+		
 		//END
 		public RuleCall getENDTerminalRuleCall_1_5_1() { return cENDTerminalRuleCall_1_5_1; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_1_5_2() { return cNEWLINETerminalRuleCall_1_5_2; }
 	}
 	public class ServiceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.Service");
@@ -10030,21 +10666,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cValueContainerParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		private final RuleCall cENDTerminalRuleCall_5 = (RuleCall)cGroup.eContents().get(5);
+		private final RuleCall cNEWLINETerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
 		
 		//Service returns GHA::Service:
 		//    key=YAMLID ':'
-		//        NEWLINE
+		//        NEWLINE+
 		//        BEGIN
 		//        value=Container
 		//        END
+		//        NEWLINE*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//key=YAMLID ':'
-		//    NEWLINE
+		//    NEWLINE+
 		//    BEGIN
 		//    value=Container
 		//    END
+		//    NEWLINE*
 		public Group getGroup() { return cGroup; }
 		
 		//key=YAMLID
@@ -10056,7 +10695,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//':'
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_2() { return cNEWLINETerminalRuleCall_2; }
 		
 		//BEGIN
@@ -10070,6 +10709,9 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//END
 		public RuleCall getENDTerminalRuleCall_5() { return cENDTerminalRuleCall_5; }
+		
+		//NEWLINE*
+		public RuleCall getNEWLINETerminalRuleCall_6() { return cNEWLINETerminalRuleCall_6; }
 	}
 	public class VariableAssignmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.VariableAssignment");
@@ -10082,11 +10724,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final RuleCall cNEWLINETerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//VariableAssignment returns GHA::VariableAssignment:
-		//    key=YAMLID ':' value=Expression NEWLINE
+		//    key=YAMLID ':' value=Expression NEWLINE+
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//key=YAMLID ':' value=Expression NEWLINE
+		//key=YAMLID ':' value=Expression NEWLINE+
 		public Group getGroup() { return cGroup; }
 		
 		//key=YAMLID
@@ -10104,7 +10746,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getValueExpressionParserRuleCall_2_0() { return cValueExpressionParserRuleCall_2_0; }
 		
-		//NEWLINE
+		//NEWLINE+
 		public RuleCall getNEWLINETerminalRuleCall_3() { return cNEWLINETerminalRuleCall_3; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
@@ -10212,13 +10854,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cStringLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDoubleLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cBooleanLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//UnbracketedLiteral returns GHA::Literal:
-		//    StringLiteral | IntegerLiteral
+		//    StringLiteral | IntegerLiteral | DoubleLiteral | BooleanLiteral
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//StringLiteral | IntegerLiteral
+		//StringLiteral | IntegerLiteral | DoubleLiteral | BooleanLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//StringLiteral
@@ -10226,6 +10870,12 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//IntegerLiteral
 		public RuleCall getIntegerLiteralParserRuleCall_1() { return cIntegerLiteralParserRuleCall_1; }
+		
+		//DoubleLiteral
+		public RuleCall getDoubleLiteralParserRuleCall_2() { return cDoubleLiteralParserRuleCall_2; }
+		
+		//BooleanLiteral
+		public RuleCall getBooleanLiteralParserRuleCall_3() { return cBooleanLiteralParserRuleCall_3; }
 	}
 	public class StringLiteralElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.GitHubActions.StringLiteral");
@@ -12483,25 +13133,27 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 
 	
 	//Workflow returns GHA::Workflow:
+	//    NEWLINE*
 	//    (
-	//        ('name' ':' name=Expression NEWLINE)? &
-	//        ('run-name' ':' runName=Expression NEWLINE)? &
+	//        ('name' ':' name=Expression NEWLINE+)? &
+	//        ('run-name' ':' runName=Expression NEWLINE+)? &
 	//        ('on' ':' (
-	//            (triggers+=SimpleTrigger NEWLINE) |
-	//            ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+	//            (triggers+=SimpleTrigger NEWLINE+) |
+	//            ('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 	//            (
-	//                NEWLINE
+	//                NEWLINE+
 	//                BEGIN
-	//                ('-' triggers+=SimpleTrigger NEWLINE)+
+	//                ('-' triggers+=SimpleTrigger NEWLINE+)+
 	//                END
+	//                NEWLINE*
 	//            ) |
 	//            triggers+=OptionedTrigger+
 	//        )) &
-	//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
-	//        ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	//        ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-	//        ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-	//        ('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+	//        ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
+	//        ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+	//        ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+	//        ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+	//        ('jobs' ':' NEWLINE+ BEGIN jobs+=Job+ END NEWLINE*)
 	//    )
 	//    (=>END_OF_FILE)
 	//;
@@ -12526,32 +13178,34 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//ScriptJob returns GHA::ScriptJob:
 	//    name=YAMLID ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('name' ':' jobName=Expression NEWLINE)? &
-	//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+	//        ('name' ':' jobName=Expression NEWLINE+)? &
+	//        ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 	//        ('needs' ':'
-	//            (dependsOn+=[GHA::Job] NEWLINE) |
-	//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+	//            (dependsOn+=[GHA::Job] NEWLINE+) |
+	//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 	//            (
-	//                NEWLINE
+	//                NEWLINE+
 	//                BEGIN
-	//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
+	//                ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 	//                END
+	//                NEWLINE*
 	//        ))? &
 	//        if=IfStatement? &
 	//        ('runs-on' ':' agent=Agent) &
 	//        ('environment' ':' stagingEnvironment=StagingEnvironment)? &
-	//        ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-	//        ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	//        ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-	//        ('steps' ':' NEWLINE BEGIN steps+=Step+ END) &
-	//        ('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+	//        ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+	//        ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+	//        ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+	//        ('steps' ':' NEWLINE+ BEGIN steps+=Step+ END NEWLINE*) &
+	//        ('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 	//        ('container' ':' container=Container)? &
-	//        ('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-	//        ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-	//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+	//        ('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+	//        ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+	//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 	//        END
+	//        NEWLINE*
 	//;
 	public ScriptJobElements getScriptJobAccess() {
 		return pScriptJob;
@@ -12563,35 +13217,37 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//ReuseWorkflowJob returns GHA::ReuseWorkflowJob:
 	//    name=YAMLID ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('name' ':' jobName=Expression  NEWLINE)? &
-	//        ('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+	//        ('name' ':' jobName=Expression  NEWLINE+)? &
+	//        ('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 	//        ('needs' ':'
-	//            (dependsOn+=[GHA::Job] NEWLINE) |
-	//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+	//            (dependsOn+=[GHA::Job] NEWLINE+) |
+	//            ('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 	//            (
-	//                NEWLINE
+	//                NEWLINE+
 	//                BEGIN
-	//                ('-' dependsOn+=[GHA::Job] NEWLINE)+
+	//                ('-' dependsOn+=[GHA::Job] NEWLINE+)+
 	//                END
+	//                NEWLINE*
 	//            )
 	//        )? &
 	//        if=IfStatement? &
 	//        ('runs-on' ':' agent=Agent) &
 	//        ('environment' ':' stagingEnvironment=StagingEnvironment)? &
-	//        ('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-	//        ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	//        ('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-	//        ('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+	//        ('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+	//        ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+	//        ('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+	//        ('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 	//        ('container' ':' container=Container)? &
-	//        ('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-	//        ('uses' ':' workflowPath=Expression NEWLINE)? &
-	//        ('with' ':' NEWLINE BEGIN args+=VariableAssignment+ END)? &
-	//        ('secrets' ':' ((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END)))? &
-	//        ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-	//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+	//        ('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+	//        ('uses' ':' workflowPath=Expression NEWLINE+)? &
+	//        ('with' ':' NEWLINE+ BEGIN args+=VariableAssignment+ END NEWLINE*)? &
+	//        ('secrets' ':' ((inheritSecrets?='inherit' NEWLINE+) | (NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*)))? &
+	//        ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+	//        ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 	//        END
+	//        NEWLINE*
 	//;
 	public ReuseWorkflowJobElements getReuseWorkflowJobAccess() {
 		return pReuseWorkflowJob;
@@ -12603,51 +13259,55 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Agent returns GHA::Agent:
 	//    (
-	//        (labels+=Expression NEWLINE) |
-	//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+	//        (labels+=Expression NEWLINE+) |
+	//        ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 	//        (
-	//            NEWLINE
+	//            NEWLINE+
 	//            BEGIN
-	//            ('-' labels+=Expression NEWLINE)+
+	//            ('-' labels+=Expression NEWLINE+)+
 	//            END
+	//            NEWLINE*
 	//        )
 	//    ) |
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
 	//            (
 	//                'labels' ':'
-	//                    (labels+=Expression NEWLINE) |
-	//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+	//                    (labels+=Expression NEWLINE+) |
+	//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' labels+=Expression NEWLINE)+
+	//                        ('-' labels+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
-	//                'group' ':' group=Expression NEWLINE
+	//                'group' ':' group=Expression NEWLINE+
 	//            )?
 	//        )|
 	//        (
 	//            (
-	//                'group' ':' group=Expression NEWLINE
+	//                'group' ':' group=Expression NEWLINE+
 	//            )
 	//            (
 	//                'labels' ':'
-	//                    (labels+=Expression NEWLINE) |
-	//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+	//                    (labels+=Expression NEWLINE+) |
+	//                    ('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' labels+=Expression NEWLINE)+
+	//                        ('-' labels+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        )
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public AgentElements getAgentAccess() {
@@ -12670,15 +13330,15 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Command returns GHA::Command:
-	//    ('id' ':' id=STRING NEWLINE)? &
+	//    ('id' ':' id=STRING NEWLINE+)? &
 	//    if=IfStatement? &
-	//    ('name' ':' name=Expression NEWLINE)? &
-	//    ('shell' ':' shell=Expression NEWLINE)? &
-	//    ('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-	//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	//    ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-	//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-	//    ('run' ':' command=Expression NEWLINE)
+	//    ('name' ':' name=Expression NEWLINE+)? &
+	//    ('shell' ':' shell=Expression NEWLINE+)? &
+	//    ('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+	//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+	//    ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+	//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+	//    ('run' ':' command=Expression NEWLINE+)
 	//;
 	public CommandElements getCommandAccess() {
 		return pCommand;
@@ -12689,26 +13349,27 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Package returns GHA::Package:
-	//    ('id' ':' id=STRING NEWLINE)? &
+	//    ('id' ':' id=STRING NEWLINE+)? &
 	//    if=IfStatement? &
-	//    ('name' ':' name=Expression NEWLINE)? &
-	//    ('shell' ':' shell=Expression NEWLINE)? &
-	//    ('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-	//    ('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	//    ('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-	//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-	//    ('uses' ':' uses=Expression NEWLINE) &
+	//    ('name' ':' name=Expression NEWLINE+)? &
+	//    ('shell' ':' shell=Expression NEWLINE+)? &
+	//    ('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+	//    ('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE)? &
+	//    ('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+	//    ('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+	//    ('uses' ':' uses=Expression NEWLINE+) &
 	//    ('with' ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
-	//            ('entrypoint' ':' entrypoint=Expression NEWLINE) &
-	//            ('args' ':' containerArgs=Expression NEWLINE)?
+	//            ('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+	//            ('args' ':' containerArgs=Expression NEWLINE+)?
 	//        ) |
 	//        (
 	//            args+=VariableAssignment+
 	//        )
 	//        END
+	//        NEWLINE*
 	//    )?
 	//;
 	public PackageElements getPackageAccess() {
@@ -12720,7 +13381,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//IfStatement returns GHA::Expression:
-	//    'if' ':' Expression NEWLINE
+	//    'if' ':' Expression NEWLINE+
 	//;
 	public IfStatementElements getIfStatementAccess() {
 		return pIfStatement;
@@ -12731,8 +13392,8 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//ConcurrencyGroup returns GHA::ConcurrencyGroup:
-	//    ('group' ':' name=Expression NEWLINE) &
-	//    ('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
+	//    ('group' ':' name=Expression NEWLINE+) &
+	//    ('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE+)?
 	//;
 	public ConcurrencyGroupElements getConcurrencyGroupAccess() {
 		return pConcurrencyGroup;
@@ -12750,7 +13411,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//        SimplePullRequestTrigger |
 	//        SimpleStandardEventTrigger
 	//    )
-	//    NEWLINE
+	//    NEWLINE+
 	//;
 	public SimpleTriggerElements getSimpleTriggerAccess() {
 		return pSimpleTrigger;
@@ -12816,7 +13477,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//OptionedTrigger returns GHA::Trigger:
-	//    NEWLINE
+	//    NEWLINE+
 	//    BEGIN
 	//    (
 	//        OptionedPullRequestTrigger |
@@ -12828,6 +13489,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//        OptionedWorkflowDispatchTrigger
 	//    )
 	//    END
+	//    NEWLINE*
 	//;
 	public OptionedTriggerElements getOptionedTriggerAccess() {
 		return pOptionedTrigger;
@@ -12839,18 +13501,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//OptionedStandardEventTrigger returns GHA::StandardEventTrigger:
 	//    event=EVENT ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        'types' ':'
-	//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-	//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+	//            (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+	//            ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 	//            (
-	//                NEWLINE
+	//                NEWLINE+
 	//                BEGIN
-	//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+	//                ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 	//                END
+	//                NEWLINE*
 	//            )
 	//        END
+	//        NEWLINE*
 	//;
 	public OptionedStandardEventTriggerElements getOptionedStandardEventTriggerAccess() {
 		return pOptionedStandardEventTrigger;
@@ -12862,18 +13526,20 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//OptionedWorkflowRunTrigger returns GHA::WorkflowRunTrigger:
 	//    'workflow_run' ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//            (branches+=Expression NEWLINE) |
-	//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//            (branches+=Expression NEWLINE+) |
+	//            ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//            (
-	//                NEWLINE
+	//                NEWLINE+
 	//                BEGIN
-	//                ('-' branches+=Expression NEWLINE)+
+	//                ('-' branches+=Expression NEWLINE+)+
 	//                END
+	//                NEWLINE*
 	//            )
 	//        END
+	//        NEWLINE*
 	//;
 	public OptionedWorkflowRunTriggerElements getOptionedWorkflowRunTriggerAccess() {
 		return pOptionedWorkflowRunTrigger;
@@ -12886,114 +13552,124 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
 	//    {GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':'
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
 	//            (
 	//                'types' ':'
-	//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-	//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+	//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+	//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+	//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
 	//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//                    (branches+=Expression NEWLINE) |
-	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//                    (branches+=Expression NEWLINE+) |
+	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' branches+=Expression NEWLINE)+
+	//                        ('-' branches+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )? &
 	//            (
 	//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-	//                    (paths+=Expression NEWLINE) |
-	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+	//                    (paths+=Expression NEWLINE+) |
+	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' paths+=Expression NEWLINE)+
+	//                        ('-' paths+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        ) |
 	//        (
 	//            (
 	//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//                    (branches+=Expression NEWLINE) |
-	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//                    (branches+=Expression NEWLINE+) |
+	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' branches+=Expression NEWLINE)+
+	//                        ('-' branches+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
 	//                'types' ':'
-	//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-	//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+	//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+	//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+	//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )? &
 	//            (
 	//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-	//                    (paths+=Expression NEWLINE) |
-	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+	//                    (paths+=Expression NEWLINE+) |
+	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' paths+=Expression NEWLINE)+
+	//                        ('-' paths+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        ) |
 	//        (
 	//            (
 	//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-	//                    (paths+=Expression NEWLINE) |
-	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+	//                    (paths+=Expression NEWLINE+) |
+	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' paths+=Expression NEWLINE)+
+	//                        ('-' paths+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
 	//                'types' ':'
-	//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-	//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+	//                    (eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+	//                    ('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+	//                        ('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )? &
 	//            (
 	//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//                    (branches+=Expression NEWLINE) |
-	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//                    (branches+=Expression NEWLINE+) |
+	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' branches+=Expression NEWLINE)+
+	//                        ('-' branches+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        )
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public OptionedPullRequestTriggerElements getOptionedPullRequestTriggerAccess() {
@@ -13007,114 +13683,124 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//OptionedPushTrigger returns GHA::PushTrigger:
 	//    {GHA::PushTrigger} 'push' ':'
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
 	//            (
 	//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//                    (branches+=Expression NEWLINE) |
-	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//                    (branches+=Expression NEWLINE+) |
+	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' branches+=Expression NEWLINE)+
+	//                        ('-' branches+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
 	//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-	//                    (paths+=Expression NEWLINE) |
-	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+	//                    (paths+=Expression NEWLINE+) |
+	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' paths+=Expression NEWLINE)+
+	//                        ('-' paths+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )? &
 	//            (
 	//                ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-	//                    (tags+=Expression NEWLINE) |
-	//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+	//                    (tags+=Expression NEWLINE+) |
+	//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' tags+=Expression NEWLINE)+
+	//                        ('-' tags+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        ) |
 	//        (
 	//            (
 	//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-	//                    (paths+=Expression NEWLINE) |
-	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+	//                    (paths+=Expression NEWLINE+) |
+	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' paths+=Expression NEWLINE)+
+	//                        ('-' paths+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
 	//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//                    (branches+=Expression NEWLINE) |
-	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//                    (branches+=Expression NEWLINE+) |
+	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' branches+=Expression NEWLINE)+
+	//                        ('-' branches+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )? &
 	//            (
 	//                ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-	//                    (tags+=Expression NEWLINE) |
-	//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+	//                    (tags+=Expression NEWLINE+) |
+	//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' tags+=Expression NEWLINE)+
+	//                        ('-' tags+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        ) |
 	//        (
 	//            (
 	//                ('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-	//                    (tags+=Expression NEWLINE) |
-	//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+	//                    (tags+=Expression NEWLINE+) |
+	//                    ('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' tags+=Expression NEWLINE)+
+	//                        ('-' tags+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )
 	//            (
 	//                ('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-	//                    (branches+=Expression NEWLINE) |
-	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+	//                    (branches+=Expression NEWLINE+) |
+	//                    ('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' branches+=Expression NEWLINE)+
+	//                        ('-' branches+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )? &
 	//            (
 	//                ('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-	//                    (paths+=Expression NEWLINE) |
-	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+	//                    (paths+=Expression NEWLINE+) |
+	//                    ('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 	//                    (
-	//                        NEWLINE
+	//                        NEWLINE+
 	//                        BEGIN
-	//                        ('-' paths+=Expression NEWLINE)+
+	//                        ('-' paths+=Expression NEWLINE+)+
 	//                        END
+	//                        NEWLINE*
 	//                    )
 	//            )?
 	//        )
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public OptionedPushTriggerElements getOptionedPushTriggerAccess() {
@@ -13128,12 +13814,13 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//OptionedScheduleTrigger returns GHA::ScheduleTrigger:
 	//    'schedule' ':'
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
-	//            '-' 'cron' ':' crons+=Expression NEWLINE
+	//            '-' 'cron' ':' crons+=Expression NEWLINE+
 	//        )+
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public OptionedScheduleTriggerElements getOptionedScheduleTriggerAccess() {
@@ -13147,42 +13834,43 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//OptionedWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
 	//    {GHA::WorkflowCallTrigger} 'workflow_call' ':'
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
 	//            (
-	//                'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+	//                'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 	//            )
 	//            (
-	//                'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+	//                'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 	//            )? &
 	//            (
-	//                'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+	//                'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 	//            )?
 	//        ) |
 	//        (
 	//            (
-	//                'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+	//                'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 	//            )
 	//            (
-	//                'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+	//                'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 	//            )? &
 	//            (
-	//                'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+	//                'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 	//            )?
 	//        ) |
 	//        (
 	//            (
-	//                'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+	//                'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 	//            )
 	//            (
-	//                'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+	//                'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 	//            )? &
 	//            (
-	//                'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+	//                'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 	//            )?
 	//        )
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public OptionedWorkflowCallTriggerElements getOptionedWorkflowCallTriggerAccess() {
@@ -13195,10 +13883,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//OptionedWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
 	//    {GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
+	//        ('inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*)
 	//        END
+	//        NEWLINE*
 	//;
 	public OptionedWorkflowDispatchTriggerElements getOptionedWorkflowDispatchTriggerAccess() {
 		return pOptionedWorkflowDispatchTrigger;
@@ -13210,24 +13899,26 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Input returns GHA::Input:
 	//    id=YAMLID ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('description' ':' description=Expression NEWLINE)? &
-	//        ('default' ':' default=Expression NEWLINE)? &
-	//        ('required' ':' isRequired=Expression NEWLINE)? &
-	//        ('type' ':' type=TYPE NEWLINE) &
+	//        ('description' ':' description=Expression NEWLINE+)? &
+	//        ('default' ':' default=Expression NEWLINE+)? &
+	//        ('required' ':' isRequired=Expression NEWLINE+)? &
+	//        ('type' ':' type=TYPE NEWLINE+) &
 	//        (
 	//            'options' ':'
-	//                (options+=STRING NEWLINE) |
-	//                ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
+	//                (options+=STRING NEWLINE+) |
+	//                ('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+) |
 	//                (
-	//                    NEWLINE
+	//                    NEWLINE+
 	//                    BEGIN
-	//                    ('-' options+=STRING NEWLINE)+
+	//                    ('-' options+=STRING NEWLINE+)+
 	//                    END
+	//                    NEWLINE*
 	//                )
 	//        )
 	//        END
+	//        NEWLINE*
 	//;
 	public InputElements getInputAccess() {
 		return pInput;
@@ -13239,11 +13930,12 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Output returns GHA::Output:
 	//    id=YAMLID ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('description' ':' description=Expression NEWLINE)? &
-	//        ('value' ':' value=Expression NEWLINE)
+	//        ('description' ':' description=Expression NEWLINE+)? &
+	//        ('value' ':' value=Expression NEWLINE+)
 	//        END
+	//        NEWLINE*
 	//;
 	public OutputElements getOutputAccess() {
 		return pOutput;
@@ -13255,17 +13947,18 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Secret returns GHA::Secret:
 	//    id=YAMLID ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
-	//            ('description' ':' description=Expression NEWLINE) &
-	//            ('required' ':' isRequired=Expression NEWLINE)?
+	//            ('description' ':' description=Expression NEWLINE+) &
+	//            ('required' ':' isRequired=Expression NEWLINE+)?
 	//        ) |
 	//        (
-	//            ('required' ':' isRequired=Expression NEWLINE) &
-	//            ('description' ':' description=Expression NEWLINE)?
+	//            ('required' ':' isRequired=Expression NEWLINE+) &
+	//            ('description' ':' description=Expression NEWLINE+)?
 	//        )
 	//        END
+	//        NEWLINE*
 	//;
 	public SecretElements getSecretAccess() {
 		return pSecret;
@@ -13276,7 +13969,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Permission returns GHA::Permission:
-	//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
+	//    key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE+
 	//;
 	public PermissionElements getPermissionAccess() {
 		return pPermission;
@@ -13288,13 +13981,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Defaults returns GHA::Defaults:
 	//    'run' ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        (
-	//            ('shell' ':' shell=Expression NEWLINE) &
-	//            ('working-directory' ':' workingDirectory=Expression NEWLINE)?
+	//            ('shell' ':' shell=Expression NEWLINE+) &
+	//            ('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 	//        )
 	//        END
+	//        NEWLINE*
 	//;
 	public DefaultsElements getDefaultsAccess() {
 		return pDefaults;
@@ -13305,13 +13999,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//StagingEnvironment returns GHA::StagingEnvironment:
-	//    (name=Expression NEWLINE) |
+	//    (name=Expression NEWLINE+) |
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('name' ':' name=Expression NEWLINE)
-	//        ('url' ':' url=Expression NEWLINE)?
+	//        ('name' ':' name=Expression NEWLINE+)
+	//        ('url' ':' url=Expression NEWLINE+)?
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public StagingEnvironmentElements getStagingEnvironmentAccess() {
@@ -13325,15 +14020,16 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//Strategy returns GHA::Matrix:
 	//    (
 	//        'matrix' ':'
-	//            NEWLINE
+	//            NEWLINE+
 	//            BEGIN
-	//            ('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)? &
-	//            ('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)? &
-	//            (BEGIN axes+=MatrixAxis+ END)
+	//            ('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)? &
+	//            ('exludes' ':' NEWLINE+ BEGIN excludes+=MatrixCombination END NEWLINE*)? &
+	//            (BEGIN axes+=MatrixAxis+ END NEWLINE*)
 	//            END
+	//            NEWLINE*
 	//    ) &
-	//    ('fail-fast' ':' failFast=Expression NEWLINE)? &
-	//    ('max-paralell' ':' maxParallel=Expression NEWLINE)?
+	//    ('fail-fast' ':' failFast=Expression NEWLINE+)? &
+	//    ('max-paralell' ':' maxParallel=Expression NEWLINE+)?
 	//;
 	public StrategyElements getStrategyAccess() {
 		return pStrategy;
@@ -13346,13 +14042,14 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	//MatrixAxis returns GHA::MatrixAxis:
 	//    name=YAMLID ':'
 	//    (
-	//        (cells+=Expression NEWLINE) |
-	//        ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
+	//        (cells+=Expression NEWLINE+) |
+	//        ('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE+) |
 	//        (
-	//            NEWLINE
+	//            NEWLINE+
 	//            BEGIN
-	//            ('-' cells+=Expression NEWLINE)+
+	//            ('-' cells+=Expression NEWLINE+)+
 	//            END
+	//            NEWLINE*
 	//        )
 	//    )
 	//;
@@ -13377,40 +14074,47 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Container returns GHA::Container:
 	//    (
-	//        image=Expression NEWLINE
+	//        image=Expression NEWLINE+
 	//    ) |
 	//    (
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
-	//        ('image' ':' image=Expression NEWLINE) &
-	//        ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)? &
+	//        ('image' ':' image=Expression NEWLINE+) &
+	//        ('env' ':' BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
 	//        ('ports' ':'
-	//            (ports+=Expression NEWLINE) |
-	//            ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+	//            (ports+=Expression NEWLINE+) |
+	//            ('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+) |
 	//            (
+	//                NEWLINE+
 	//                BEGIN
-	//                ('-' ports+=Expression NEWLINE)+
+	//                ('-' ports+=Expression NEWLINE+)+
 	//                END
+	//                NEWLINE*
 	//            )
 	//        )? &
 	//        ('volumes' ':'
-	//            (volumes+=Expression NEWLINE) |
-	//            ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+	//            (volumes+=Expression NEWLINE+) |
+	//            ('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+) |
 	//            (
+	//                NEWLINE*
 	//                BEGIN
-	//                ('-' volumes+=Expression NEWLINE)+
+	//                ('-' volumes+=Expression NEWLINE*)+
 	//                END
+	//                NEWLINE*
 	//            )
 	//        )? &
-	//        ('options' ':' options=Expression NEWLINE)? &
+	//        ('options' ':' options=Expression NEWLINE+)? &
 	//        (
 	//            'credentials' ':'
+	//                NEWLINE+
 	//                BEGIN
-	//                ('username' ':' username=Expression NEWLINE) &
-	//                ('password' ':' password=Expression NEWLINE)
+	//                ('username' ':' username=Expression NEWLINE+) &
+	//                ('password' ':' password=Expression NEWLINE+)
 	//                END
+	//                NEWLINE*
 	//        )?
 	//        END
+	//        NEWLINE*
 	//    )
 	//;
 	public ContainerElements getContainerAccess() {
@@ -13423,10 +14127,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Service returns GHA::Service:
 	//    key=YAMLID ':'
-	//        NEWLINE
+	//        NEWLINE+
 	//        BEGIN
 	//        value=Container
 	//        END
+	//        NEWLINE*
 	//;
 	public ServiceElements getServiceAccess() {
 		return pService;
@@ -13437,7 +14142,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//VariableAssignment returns GHA::VariableAssignment:
-	//    key=YAMLID ':' value=Expression NEWLINE
+	//    key=YAMLID ':' value=Expression NEWLINE+
 	//;
 	public VariableAssignmentElements getVariableAssignmentAccess() {
 		return pVariableAssignment;
@@ -13503,7 +14208,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//UnbracketedLiteral returns GHA::Literal:
-	//    StringLiteral | IntegerLiteral
+	//    StringLiteral | IntegerLiteral | DoubleLiteral | BooleanLiteral
 	//;
 	public UnbracketedLiteralElements getUnbracketedLiteralAccess() {
 		return pUnbracketedLiteral;
@@ -14031,7 +14736,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//terminal UNQUOTED_STRING returns ecore::EString:
 	//    (('a..z'|'A'..'Z'|'_'|'~') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~')*) |
-	//    ('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'\n')* END)
+	//    ('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|NEWLINE)* END)
 	//;
 	public TerminalRule getUNQUOTED_STRINGRule() {
 		return tUNQUOTED_STRING;

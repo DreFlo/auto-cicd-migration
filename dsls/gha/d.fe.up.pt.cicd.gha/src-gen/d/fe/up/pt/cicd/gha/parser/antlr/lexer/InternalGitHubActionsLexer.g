@@ -349,7 +349,7 @@ RULE_DOUBLE : RULE_INT '.' RULE_INT;
 
 RULE_BOOLEAN : ('true'|'false');
 
-RULE_UNQUOTED_STRING : (('a..z'|'A'..'Z'|'_'|'~') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~')*|'|' ('+'|'-')? RULE_NEWLINE RULE_BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'\n')* RULE_END);
+RULE_UNQUOTED_STRING : (('a..z'|'A'..'Z'|'_'|'~') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~')*|'|' ('+'|'-')? RULE_NEWLINE RULE_BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|RULE_NEWLINE)* RULE_END);
 
 fragment RULE_BEGIN : ;
 

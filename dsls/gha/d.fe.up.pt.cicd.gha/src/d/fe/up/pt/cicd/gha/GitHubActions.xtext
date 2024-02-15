@@ -4,25 +4,27 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://d.fe.up.pt/GHA" as GHA
 
 Workflow returns GHA::Workflow:
+	NEWLINE*
 	(
-		('name' ':' name=Expression NEWLINE)? &
-		('run-name' ':' runName=Expression NEWLINE)? &
+		('name' ':' name=Expression NEWLINE+)? &
+		('run-name' ':' runName=Expression NEWLINE+)? &
 		('on' ':' (
-			(triggers+=SimpleTrigger NEWLINE) |
-			('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+			(triggers+=SimpleTrigger NEWLINE+) |
+			('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE+) |
 			(
-				NEWLINE
+				NEWLINE+
 				BEGIN
-				('-' triggers+=SimpleTrigger NEWLINE)+
+				('-' triggers+=SimpleTrigger NEWLINE+)+
 				END
+				NEWLINE*
 			) |
 			triggers+=OptionedTrigger+
 		)) &
-		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
-		('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+		('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
+		('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		('jobs' ':' NEWLINE+ BEGIN jobs+=Job+ END NEWLINE*)
 	)
 	(=>END_OF_FILE)
 ;
@@ -33,114 +35,122 @@ Job returns GHA::Job:
 
 ScriptJob returns GHA::ScriptJob:
 	name=YAMLID ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('name' ':' jobName=Expression NEWLINE)? &
-		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		('name' ':' jobName=Expression NEWLINE+)? &
+		('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 		('needs' ':' 
-			(dependsOn+=[GHA::Job] NEWLINE) |
-			('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+			(dependsOn+=[GHA::Job] NEWLINE+) |
+			('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 			(
-				NEWLINE
+				NEWLINE+
 				BEGIN
-				('-' dependsOn+=[GHA::Job] NEWLINE)+
+				('-' dependsOn+=[GHA::Job] NEWLINE+)+
 				END
+				NEWLINE*
 		))? &
 		if=IfStatement? &
 		('runs-on' ':' agent=Agent) &
 		('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		('steps' ':' NEWLINE BEGIN steps+=Step+ END) &
-		('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+		('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		('steps' ':' NEWLINE+ BEGIN steps+=Step+ END NEWLINE*) &
+		('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 		('container' ':' container=Container)? &
-		('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-		('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+		('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		END
+		NEWLINE*
 ;
 
 ReuseWorkflowJob returns GHA::ReuseWorkflowJob:
 	name=YAMLID ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('name' ':' jobName=Expression  NEWLINE)? &
-		('permissions' ':' NEWLINE BEGIN permissions+=Permission+ END)? &
+		('name' ':' jobName=Expression  NEWLINE+)? &
+		('permissions' ':' NEWLINE+ BEGIN permissions+=Permission+ END NEWLINE*)? &
 		('needs' ':' 
-			(dependsOn+=[GHA::Job] NEWLINE) |
-			('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE) |
+			(dependsOn+=[GHA::Job] NEWLINE+) |
+			('[' dependsOn+=[GHA::Job] (',' dependsOn+=[GHA::Job])* ']' NEWLINE+) |
 			(
-				NEWLINE
+				NEWLINE+
 				BEGIN
-				('-' dependsOn+=[GHA::Job] NEWLINE)+
+				('-' dependsOn+=[GHA::Job] NEWLINE+)+
 				END
+				NEWLINE*
 			)
 		)? &
 		if=IfStatement? &
 		('runs-on' ':' agent=Agent) &
 		('environment' ':' stagingEnvironment=StagingEnvironment)? &
-		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
-		('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
-		('strategy' ':' NEWLINE BEGIN strategy=Strategy END)? &
+		('concurrency' ':' NEWLINE+ BEGIN concurrencyGroup=ConcurrencyGroup END NEWLINE*)? &
+		('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+		('defaults' ':' NEWLINE+ BEGIN defaults=Defaults END NEWLINE*)? &
+		('strategy' ':' NEWLINE+ BEGIN strategy=Strategy END NEWLINE*)? &
 		('container' ':' container=Container)? &
-		('services' ':' NEWLINE BEGIN services+=Service+ END)? &
-		('uses' ':' workflowPath=Expression NEWLINE)? &
-		('with' ':' NEWLINE BEGIN args+=VariableAssignment+ END)? &
-		('secrets' ':' ((inheritSecrets?='inherit' NEWLINE) | (NEWLINE BEGIN secrets+=VariableAssignment+ END)))? &
-		('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-		('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
+		('services' ':' NEWLINE+ BEGIN services+=Service+ END NEWLINE*)? &
+		('uses' ':' workflowPath=Expression NEWLINE+)? &
+		('with' ':' NEWLINE+ BEGIN args+=VariableAssignment+ END NEWLINE*)? &
+		('secrets' ':' ((inheritSecrets?='inherit' NEWLINE+) | (NEWLINE+ BEGIN secrets+=VariableAssignment+ END NEWLINE*)))? &
+		('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+		('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
 		END
+		NEWLINE*
 ;
 
 Agent returns GHA::Agent:
 	(
-		(labels+=Expression NEWLINE) |
-		('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+		(labels+=Expression NEWLINE+) |
+		('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 		(
-			NEWLINE
+			NEWLINE+
 			BEGIN
-			('-' labels+=Expression NEWLINE)+
+			('-' labels+=Expression NEWLINE+)+
 			END
+			NEWLINE*
 		)
 	) |
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
 			(
 				'labels' ':'
-					(labels+=Expression NEWLINE) |
-					('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+					(labels+=Expression NEWLINE+) |
+					('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' labels+=Expression NEWLINE)+
+						('-' labels+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
-				'group' ':' group=Expression NEWLINE
+				'group' ':' group=Expression NEWLINE+
 			)?
 		)|
 		(
 			(
-				'group' ':' group=Expression NEWLINE
+				'group' ':' group=Expression NEWLINE+
 			)
 			(
 				'labels' ':'
-					(labels+=Expression NEWLINE) |
-					('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE) |
+					(labels+=Expression NEWLINE+) |
+					('[' labels+=Expression (',' labels+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' labels+=Expression NEWLINE)+
+						('-' labels+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		)
 		END
+		NEWLINE*
 	)
 ;
 
@@ -149,48 +159,49 @@ Step returns GHA::Step:
 ;
 
 Command returns GHA::Command:
-	('id' ':' id=STRING NEWLINE)? &
+	('id' ':' id=STRING NEWLINE+)? &
 	if=IfStatement? &
-	('name' ':' name=Expression NEWLINE)? &
-	('shell' ':' shell=Expression NEWLINE)? &
-	('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-	('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-	('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-	('run' ':' command=Expression NEWLINE)
+	('name' ':' name=Expression NEWLINE+)? &
+	('shell' ':' shell=Expression NEWLINE+)? &
+	('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+	('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
+	('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+	('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+	('run' ':' command=Expression NEWLINE+)
 ;
 
 Package returns GHA::Package:
-	('id' ':' id=STRING NEWLINE)? &
+	('id' ':' id=STRING NEWLINE+)? &
 	if=IfStatement? &
-	('name' ':' name=Expression NEWLINE)? &
-	('shell' ':' shell=Expression NEWLINE)? &
-	('working-directory' ':' workingDirectory=Expression NEWLINE)? &
-	('env' ':' NEWLINE BEGIN environmentVariables+=VariableAssignment+ END)? &
-	('continue-on-error' ':' continueOnError=Expression NEWLINE)? &
-	('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE)?
-	('uses' ':' uses=Expression NEWLINE) &
+	('name' ':' name=Expression NEWLINE+)? &
+	('shell' ':' shell=Expression NEWLINE+)? &
+	('working-directory' ':' workingDirectory=Expression NEWLINE+)? &
+	('env' ':' NEWLINE+ BEGIN environmentVariables+=VariableAssignment+ END NEWLINE)? &
+	('continue-on-error' ':' continueOnError=Expression NEWLINE+)? &
+	('timeout-minutes' ':' timeoutMinutes=Expression NEWLINE+)?
+	('uses' ':' uses=Expression NEWLINE+) &
 	('with' ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
-			('entrypoint' ':' entrypoint=Expression NEWLINE) &
-			('args' ':' containerArgs=Expression NEWLINE)?
+			('entrypoint' ':' entrypoint=Expression NEWLINE+) &
+			('args' ':' containerArgs=Expression NEWLINE+)?
 		) |
 		(
 			args+=VariableAssignment+
 		)
 		END
+		NEWLINE*
 	)?
 ;
 
 IfStatement returns GHA::Expression:
-	'if' ':' Expression NEWLINE
+	'if' ':' Expression NEWLINE+
 ;
 
 ConcurrencyGroup returns GHA::ConcurrencyGroup:
-	('group' ':' name=Expression NEWLINE) &
-	('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE)?
+	('group' ':' name=Expression NEWLINE+) &
+	('cancel-in-progress' ':' cancelInProgress=Expression NEWLINE+)?
 ;
 
 SimpleTrigger returns GHA::Trigger:
@@ -201,7 +212,7 @@ SimpleTrigger returns GHA::Trigger:
 		SimplePullRequestTrigger |
 		SimpleStandardEventTrigger
 	)
-	NEWLINE
+	NEWLINE+
 ;
 
 SimplePullRequestTrigger returns GHA::PullRequestTrigger:
@@ -225,7 +236,7 @@ SimpleStandardEventTrigger returns GHA::StandardEventTrigger:
 ;
 
 OptionedTrigger returns GHA::Trigger:
-	NEWLINE
+	NEWLINE+
 	BEGIN
 	(
 		OptionedPullRequestTrigger |
@@ -237,77 +248,85 @@ OptionedTrigger returns GHA::Trigger:
 		OptionedWorkflowDispatchTrigger
 	)
 	END
+	NEWLINE*
 ;
 
 OptionedStandardEventTrigger returns GHA::StandardEventTrigger:
 	event=EVENT ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		'types' ':' 
-			(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-			('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+			(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+			('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 			(
-				NEWLINE
+				NEWLINE+
 				BEGIN
-				('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+				('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 				END
+				NEWLINE*
 			)
 		END
+		NEWLINE*
 ;
 
 OptionedWorkflowRunTrigger returns GHA::WorkflowRunTrigger:
 	'workflow_run' ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-			(branches+=Expression NEWLINE) |
-			('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+			(branches+=Expression NEWLINE+) |
+			('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 			(
-				NEWLINE
+				NEWLINE+
 				BEGIN
-				('-' branches+=Expression NEWLINE)+
+				('-' branches+=Expression NEWLINE+)+
 				END
+				NEWLINE*
 			)
 		END
+		NEWLINE*
 ;
 
 OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
 	{GHA::PullRequestTrigger} ('pull_request' | 'pull_request_target') ':' 
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
 			(
 				'types' ':' 
-					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
 				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-					(branches+=Expression NEWLINE) |
-					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(branches+=Expression NEWLINE+) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' branches+=Expression NEWLINE)+
+						('-' branches+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)? &
 			(
 				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-					(paths+=Expression NEWLINE) |
-					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(paths+=Expression NEWLINE+) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' paths+=Expression NEWLINE)+
+						('-' paths+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		) |
@@ -315,114 +334,124 @@ OptionedPullRequestTrigger returns GHA::PullRequestTrigger:
 			
 			(
 				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-					(branches+=Expression NEWLINE) |
-					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(branches+=Expression NEWLINE+) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' branches+=Expression NEWLINE)+
+						('-' branches+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
 				'types' ':' 
-					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)? &
 			(
 				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-					(paths+=Expression NEWLINE) |
-					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(paths+=Expression NEWLINE+) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' paths+=Expression NEWLINE)+
+						('-' paths+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		) |
 		(
 			(
 				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-					(paths+=Expression NEWLINE) |
-					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(paths+=Expression NEWLINE+) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' paths+=Expression NEWLINE)+
+						('-' paths+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
 				'types' ':' 
-					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE) |
-					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE) |
+					(eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+) |
+					('[' eventTypes+=WEBHOOK_ACTIVITY_TYPE (',' eventTypes+=WEBHOOK_ACTIVITY_TYPE)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE)+
+						('-' eventTypes+=WEBHOOK_ACTIVITY_TYPE NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)? &
 			(
 				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-					(branches+=Expression NEWLINE) |
-					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(branches+=Expression NEWLINE+) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' branches+=Expression NEWLINE)+
+						('-' branches+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		)
 		END	
+		NEWLINE*
 	)
 ;
 
 OptionedPushTrigger returns GHA::PushTrigger:
 	{GHA::PushTrigger} 'push' ':'
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
 			(
 				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-					(branches+=Expression NEWLINE) |
-					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(branches+=Expression NEWLINE+) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' branches+=Expression NEWLINE)+
+						('-' branches+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
 				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-					(paths+=Expression NEWLINE) |
-					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(paths+=Expression NEWLINE+) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' paths+=Expression NEWLINE)+
+						('-' paths+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)? &
 			(
 				('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-					(tags+=Expression NEWLINE) |
-					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+					(tags+=Expression NEWLINE+) |
+					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' tags+=Expression NEWLINE)+
+						('-' tags+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		) |
@@ -430,236 +459,254 @@ OptionedPushTrigger returns GHA::PushTrigger:
 			
 			(
 				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-					(paths+=Expression NEWLINE) |
-					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(paths+=Expression NEWLINE+) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' paths+=Expression NEWLINE)+
+						('-' paths+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
 				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-					(branches+=Expression NEWLINE) |
-					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(branches+=Expression NEWLINE+) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' branches+=Expression NEWLINE)+
+						('-' branches+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)? &
 			(
 				('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-					(tags+=Expression NEWLINE) |
-					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+					(tags+=Expression NEWLINE+) |
+					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' tags+=Expression NEWLINE)+
+						('-' tags+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		) |
 		(
 			(
 				('tags' | ignoreSpecifiedTags?='tags-ignore')  ':'
-					(tags+=Expression NEWLINE) |
-					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE) |
+					(tags+=Expression NEWLINE+) |
+					('[' tags+=Expression (',' tags+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' tags+=Expression NEWLINE)+
+						('-' tags+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)
 			(
 				('branches' | ignoreSpecifiedBranches?='branches-ignore')  ':'
-					(branches+=Expression NEWLINE) |
-					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE) |
+					(branches+=Expression NEWLINE+) |
+					('[' branches+=Expression (',' branches+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' branches+=Expression NEWLINE)+
+						('-' branches+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)? &
 			(
 				('paths' | ignoreSpecifiedPaths?='paths-ignore')  ':'
-					(paths+=Expression NEWLINE) |
-					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE) |
+					(paths+=Expression NEWLINE+) |
+					('[' paths+=Expression (',' paths+=Expression)* ']' NEWLINE+) |
 					(
-						NEWLINE
+						NEWLINE+
 						BEGIN
-						('-' paths+=Expression NEWLINE)+
+						('-' paths+=Expression NEWLINE+)+
 						END
+						NEWLINE*
 					)
 			)?
 		)
 		END
+		NEWLINE*
 	)
 ;
 
 OptionedScheduleTrigger returns GHA::ScheduleTrigger:
 	'schedule' ':'
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
-			'-' 'cron' ':' crons+=Expression NEWLINE
+			'-' 'cron' ':' crons+=Expression NEWLINE+
 		)+
 		END
+		NEWLINE*
 	)
 ;
 
 OptionedWorkflowCallTrigger returns GHA::WorkflowCallTrigger:
 	{GHA::WorkflowCallTrigger} 'workflow_call' ':'
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
 			(
-				'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+				'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 			)
 			(
-				'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+				'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 			)? &
 			(
-				'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+				'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 			)?
 		) |
 		(
 			(
-				'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+				'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 			)
 			(
-				'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+				'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 			)? &
 			(
-				'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+				'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 			)?
 		) |
 		(
 			(
-				'secrets' ':' NEWLINE BEGIN secrets+=Secret+ END
+				'secrets' ':' NEWLINE+ BEGIN secrets+=Secret+ END NEWLINE*
 			)
 			(
-				'inputs' ':' NEWLINE BEGIN inputs+=Input+ END
+				'inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*
 			)? &
 			(
-				'outputs' ':' NEWLINE BEGIN outputs+=Output+ END
+				'outputs' ':' NEWLINE+ BEGIN outputs+=Output+ END NEWLINE*
 			)?
 			
 		)
 		END
+		NEWLINE*
 	)
 ;
 
 OptionedWorkflowDispatchTrigger returns GHA::WorkflowDispatchTrigger:
 	{GHA::WorkflowDispatchTrigger} 'workflow_dispatch' ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('inputs' ':' NEWLINE BEGIN inputs+=Input+ END)
+		('inputs' ':' NEWLINE+ BEGIN inputs+=Input+ END NEWLINE*)
 		END
+		NEWLINE*
 ;
 
 Input returns GHA::Input:
 	id=YAMLID ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('description' ':' description=Expression NEWLINE)? &
-		('default' ':' default=Expression NEWLINE)? &
-		('required' ':' isRequired=Expression NEWLINE)? &
-		('type' ':' type=TYPE NEWLINE) &
+		('description' ':' description=Expression NEWLINE+)? &
+		('default' ':' default=Expression NEWLINE+)? &
+		('required' ':' isRequired=Expression NEWLINE+)? &
+		('type' ':' type=TYPE NEWLINE+) &
 		(
 			'options' ':'
-				(options+=STRING NEWLINE) |
-				('[' options+=STRING (',' options+=STRING)* ']' NEWLINE) |
+				(options+=STRING NEWLINE+) |
+				('[' options+=STRING (',' options+=STRING)* ']' NEWLINE+) |
 				(
-					NEWLINE
+					NEWLINE+
 					BEGIN
-					('-' options+=STRING NEWLINE)+
+					('-' options+=STRING NEWLINE+)+
 					END
+					NEWLINE*
 				)
 		)
 		END
+		NEWLINE*
 ;
 
 Output returns GHA::Output:
 	id=YAMLID ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('description' ':' description=Expression NEWLINE)? &
-		('value' ':' value=Expression NEWLINE)
+		('description' ':' description=Expression NEWLINE+)? &
+		('value' ':' value=Expression NEWLINE+)
 		END
+		NEWLINE*
 ;
 
 Secret returns GHA::Secret:
 	id=YAMLID ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
-			('description' ':' description=Expression NEWLINE) &
-			('required' ':' isRequired=Expression NEWLINE)?
+			('description' ':' description=Expression NEWLINE+) &
+			('required' ':' isRequired=Expression NEWLINE+)?
 		) |
 		(
-			('required' ':' isRequired=Expression NEWLINE) &
-			('description' ':' description=Expression NEWLINE)?
+			('required' ':' isRequired=Expression NEWLINE+) &
+			('description' ':' description=Expression NEWLINE+)?
 		)
 		END
+		NEWLINE*
 ;
 
 Permission returns GHA::Permission:
-	key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE
+	key=PERMISSION_SCOPE ':' value=PERMISSION_VALUE NEWLINE+
 ;
 
 Defaults returns GHA::Defaults:
 	'run' ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		(
-			('shell' ':' shell=Expression NEWLINE) &
-			('working-directory' ':' workingDirectory=Expression NEWLINE)?
+			('shell' ':' shell=Expression NEWLINE+) &
+			('working-directory' ':' workingDirectory=Expression NEWLINE+)?
 		)
 		END
+		NEWLINE*
 ;
 
 StagingEnvironment returns GHA::StagingEnvironment:
-	(name=Expression NEWLINE) |
+	(name=Expression NEWLINE+) |
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('name' ':' name=Expression NEWLINE)
-		('url' ':' url=Expression NEWLINE)?
+		('name' ':' name=Expression NEWLINE+)
+		('url' ':' url=Expression NEWLINE+)?
 		END
+		NEWLINE*
 	)
 ;
 
 Strategy returns GHA::Matrix:
 	(
 		'matrix' ':'
-			NEWLINE
+			NEWLINE+
 			BEGIN
-			('includes' ':' NEWLINE BEGIN includes+=MatrixCombination END)? &
-			('exludes' ':' NEWLINE BEGIN excludes+=MatrixCombination END)? &
-			(BEGIN axes+=MatrixAxis+ END)
-			END		
+			('includes' ':' NEWLINE+ BEGIN includes+=MatrixCombination END NEWLINE*)? &
+			('exludes' ':' NEWLINE+ BEGIN excludes+=MatrixCombination END NEWLINE*)? &
+			(BEGIN axes+=MatrixAxis+ END NEWLINE*)
+			END
+			NEWLINE*
 	) &
-	('fail-fast' ':' failFast=Expression NEWLINE)? &
-	('max-paralell' ':' maxParallel=Expression NEWLINE)?
+	('fail-fast' ':' failFast=Expression NEWLINE+)? &
+	('max-paralell' ':' maxParallel=Expression NEWLINE+)?
 ;
 
 MatrixAxis returns GHA::MatrixAxis:
 	name=YAMLID ':' 
 	(
-		(cells+=Expression NEWLINE) |
-		('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE) |
+		(cells+=Expression NEWLINE+) |
+		('[' cells+=Expression (',' cells+=Expression)* ']' NEWLINE+) |
 		(
-			NEWLINE
+			NEWLINE+
 			BEGIN
-			('-' cells+=Expression NEWLINE)+
+			('-' cells+=Expression NEWLINE+)+
 			END
+			NEWLINE*
 		)
 	)
 ;
@@ -670,53 +717,61 @@ MatrixCombination returns GHA::MatrixCombination:
 
 Container returns GHA::Container:
 	(
-		image=Expression NEWLINE
+		image=Expression NEWLINE+
 	) |
 	(
-		NEWLINE
+		NEWLINE+
 		BEGIN
-		('image' ':' image=Expression NEWLINE) &
-		('env' ':' BEGIN environmentVariables+=VariableAssignment+ END)? &
+		('image' ':' image=Expression NEWLINE+) &
+		('env' ':' BEGIN environmentVariables+=VariableAssignment+ END NEWLINE*)? &
 		('ports' ':' 
-			(ports+=Expression NEWLINE) |
-			('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE) |
+			(ports+=Expression NEWLINE+) |
+			('[' ports+=Expression (',' ports+=Expression)* ']' NEWLINE+) |
 			(
+				NEWLINE+
 				BEGIN
-				('-' ports+=Expression NEWLINE)+
+				('-' ports+=Expression NEWLINE+)+
 				END
+				NEWLINE*
 			)
 		)? &
 		('volumes' ':'
-			(volumes+=Expression NEWLINE) |
-			('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE) |
+			(volumes+=Expression NEWLINE+) |
+			('[' volumes+=Expression (',' volumes+=Expression)* ']' NEWLINE+) |
 			(
+				NEWLINE*
 				BEGIN
-				('-' volumes+=Expression NEWLINE)+
+				('-' volumes+=Expression NEWLINE*)+
 				END
+				NEWLINE*
 			)
 		)? &
-		('options' ':' options=Expression NEWLINE)? &
+		('options' ':' options=Expression NEWLINE+)? &
 		(
 			'credentials' ':'
+				NEWLINE+
 				BEGIN
-				('username' ':' username=Expression NEWLINE) &
-				('password' ':' password=Expression NEWLINE)
+				('username' ':' username=Expression NEWLINE+) &
+				('password' ':' password=Expression NEWLINE+)
 				END
+				NEWLINE*
 		)?
 		END
+		NEWLINE*
 	)
 ;
 
 Service returns GHA::Service:
 	key=YAMLID ':'
-		NEWLINE
+		NEWLINE+
 		BEGIN
 		value=Container
 		END
+		NEWLINE*
 ;
 
 VariableAssignment returns GHA::VariableAssignment:
-	key=YAMLID ':' value=Expression NEWLINE
+	key=YAMLID ':' value=Expression NEWLINE+
 ;
 
 Expression returns GHA::Expression:
@@ -740,7 +795,7 @@ InsideBracketsExpression returns GHA::Expression:
 ;
 
 UnbracketedLiteral returns GHA::Literal:
-	StringLiteral | IntegerLiteral
+	StringLiteral | IntegerLiteral | DoubleLiteral | BooleanLiteral
 ;
 
 StringLiteral returns GHA::StringLiteral:
@@ -997,7 +1052,7 @@ terminal BOOLEAN returns ecore::EBooleanObject:
 
 terminal UNQUOTED_STRING returns ecore::EString:
 	(('a..z'|'A'..'Z'|'_'|'~') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~')*) |
-	('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'\n')* END)
+	('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|NEWLINE)* END)
 ;
 
 terminal BEGIN: 'synthetic:BEGIN';  // increase indentation

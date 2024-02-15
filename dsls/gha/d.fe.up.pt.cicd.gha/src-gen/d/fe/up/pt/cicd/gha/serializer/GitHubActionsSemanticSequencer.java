@@ -89,12 +89,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_And(context, (And) semanticObject); 
 				return; 
 			case GHAPackage.BOOLEAN_LITERAL:
-				if (rule == grammarAccess.getIfStatementRule()
-						|| rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getConcatRule()
-						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
-						|| rule == grammarAccess.getConcatExpressionRule()
-						|| rule == grammarAccess.getBracketedExpressionRule()
+				if (rule == grammarAccess.getBracketedExpressionRule()
 						|| rule == grammarAccess.getInsideBracketsExpressionRule()
 						|| rule == grammarAccess.getOrRule()
 						|| action == grammarAccess.getOrAccess().getOrLhsAction_1_0()
@@ -113,7 +108,16 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					sequence_Atomic(context, (BooleanLiteral) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getBooleanLiteralRule()) {
+				else if (rule == grammarAccess.getIfStatementRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getConcatRule()
+						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
+						|| rule == grammarAccess.getConcatExpressionRule()) {
+					sequence_Atomic_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getUnbracketedLiteralRule()
+						|| rule == grammarAccess.getBooleanLiteralRule()) {
 					sequence_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
 					return; 
 				}
@@ -143,12 +147,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				sequence_Defaults(context, (Defaults) semanticObject); 
 				return; 
 			case GHAPackage.DOUBLE_LITERAL:
-				if (rule == grammarAccess.getIfStatementRule()
-						|| rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getConcatRule()
-						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
-						|| rule == grammarAccess.getConcatExpressionRule()
-						|| rule == grammarAccess.getBracketedExpressionRule()
+				if (rule == grammarAccess.getBracketedExpressionRule()
 						|| rule == grammarAccess.getInsideBracketsExpressionRule()
 						|| rule == grammarAccess.getOrRule()
 						|| action == grammarAccess.getOrAccess().getOrLhsAction_1_0()
@@ -167,7 +166,16 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					sequence_Atomic(context, (DoubleLiteral) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getDoubleLiteralRule()) {
+				else if (rule == grammarAccess.getIfStatementRule()
+						|| rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getConcatRule()
+						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
+						|| rule == grammarAccess.getConcatExpressionRule()) {
+					sequence_Atomic_DoubleLiteral(context, (DoubleLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getUnbracketedLiteralRule()
+						|| rule == grammarAccess.getDoubleLiteralRule()) {
 					sequence_DoubleLiteral(context, (DoubleLiteral) semanticObject); 
 					return; 
 				}
@@ -498,11 +506,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns BooleanLiteral
-	 *     Expression returns BooleanLiteral
-	 *     Concat returns BooleanLiteral
-	 *     Concat.Concat_1_0 returns BooleanLiteral
-	 *     ConcatExpression returns BooleanLiteral
 	 *     BracketedExpression returns BooleanLiteral
 	 *     InsideBracketsExpression returns BooleanLiteral
 	 *     Or returns BooleanLiteral
@@ -538,11 +541,24 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns DoubleLiteral
-	 *     Expression returns DoubleLiteral
-	 *     Concat returns DoubleLiteral
-	 *     Concat.Concat_1_0 returns DoubleLiteral
-	 *     ConcatExpression returns DoubleLiteral
+	 *     IfStatement returns BooleanLiteral
+	 *     Expression returns BooleanLiteral
+	 *     Concat returns BooleanLiteral
+	 *     Concat.Concat_1_0 returns BooleanLiteral
+	 *     ConcatExpression returns BooleanLiteral
+	 *
+	 * Constraint:
+	 *     (value?=BOOLEAN | value=BOOLEAN)
+	 * </pre>
+	 */
+	protected void sequence_Atomic_BooleanLiteral(ISerializationContext context, BooleanLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     BracketedExpression returns DoubleLiteral
 	 *     InsideBracketsExpression returns DoubleLiteral
 	 *     Or returns DoubleLiteral
@@ -572,6 +588,24 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_3_1_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     IfStatement returns DoubleLiteral
+	 *     Expression returns DoubleLiteral
+	 *     Concat returns DoubleLiteral
+	 *     Concat.Concat_1_0 returns DoubleLiteral
+	 *     ConcatExpression returns DoubleLiteral
+	 *
+	 * Constraint:
+	 *     (value=DOUBLE | value=DOUBLE)
+	 * </pre>
+	 */
+	protected void sequence_Atomic_DoubleLiteral(ISerializationContext context, DoubleLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -764,6 +798,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     UnbracketedLiteral returns BooleanLiteral
 	 *     BooleanLiteral returns BooleanLiteral
 	 *
 	 * Constraint:
@@ -1017,6 +1052,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     UnbracketedLiteral returns DoubleLiteral
 	 *     DoubleLiteral returns DoubleLiteral
 	 *
 	 * Constraint:

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link GHA.Step#getId <em>Id</em>}</li>
- *   <li>{@link GHA.Step#getIf <em>If</em>}</li>
+ *   <li>{@link GHA.Step#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link GHA.Step#getName <em>Name</em>}</li>
  *   <li>{@link GHA.Step#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link GHA.Step#getContinueOnError <em>Continue On Error</em>}</li>
@@ -53,26 +53,26 @@ public interface Step extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>If</b></em>' containment reference.
+	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>If</em>' containment reference.
-	 * @see #setIf(Expression)
-	 * @see GHA.GHAPackage#getStep_If()
+	 * @return the value of the '<em>If Condition</em>' containment reference.
+	 * @see #setIfCondition(Expression)
+	 * @see GHA.GHAPackage#getStep_IfCondition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Expression getIf();
+	Expression getIfCondition();
 
 	/**
-	 * Sets the value of the '{@link GHA.Step#getIf <em>If</em>}' containment reference.
+	 * Sets the value of the '{@link GHA.Step#getIfCondition <em>If Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>If</em>' containment reference.
-	 * @see #getIf()
+	 * @param value the new value of the '<em>If Condition</em>' containment reference.
+	 * @see #getIfCondition()
 	 * @generated
 	 */
-	void setIf(Expression value);
+	void setIfCondition(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.

@@ -105,7 +105,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(GHAPackage.Literals.JOB__JOB_NAME);
 			childrenFeatures.add(GHAPackage.Literals.JOB__PERMISSIONS);
-			childrenFeatures.add(GHAPackage.Literals.JOB__IF);
+			childrenFeatures.add(GHAPackage.Literals.JOB__IF_CONDITION);
 			childrenFeatures.add(GHAPackage.Literals.JOB__AGENT);
 			childrenFeatures.add(GHAPackage.Literals.JOB__CONTAINER);
 			childrenFeatures.add(GHAPackage.Literals.JOB__STAGING_ENVIRONMENT);
@@ -173,7 +173,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 			return;
 		case GHAPackage.JOB__JOB_NAME:
 		case GHAPackage.JOB__PERMISSIONS:
-		case GHAPackage.JOB__IF:
+		case GHAPackage.JOB__IF_CONDITION:
 		case GHAPackage.JOB__AGENT:
 		case GHAPackage.JOB__CONTAINER:
 		case GHAPackage.JOB__STAGING_ENVIRONMENT:
@@ -276,69 +276,77 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__PERMISSIONS,
 				GHAFactory.eINSTANCE.create(GHAPackage.Literals.PERMISSION)));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createConcat()));
-
 		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createFailure()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createGitHubContext()));
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.JOB__IF, GHAFactory.eINSTANCE.createVariableDereference()));
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createNot()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createContains()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createStartsWith()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createEndsWith()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createFormat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createJoin()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createToJSON()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createFromJSON()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createHashFiles()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createAlways()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createSuccess()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createCancelled()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createFailure()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createGitHubContext()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__AGENT, GHAFactory.eINSTANCE.createAgent()));
@@ -521,7 +529,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		Object childObject = child;
 
 		boolean qualify = childFeature == GHAPackage.Literals.JOB__JOB_NAME
-				|| childFeature == GHAPackage.Literals.JOB__IF
+				|| childFeature == GHAPackage.Literals.JOB__IF_CONDITION
 				|| childFeature == GHAPackage.Literals.JOB__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.JOB__CONTINUE_ON_ERROR;
 

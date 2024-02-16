@@ -379,7 +379,8 @@ public class PackageItemProvider extends StepItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == GHAPackage.Literals.STEP__IF || childFeature == GHAPackage.Literals.STEP__NAME
+		boolean qualify = childFeature == GHAPackage.Literals.STEP__IF_CONDITION
+				|| childFeature == GHAPackage.Literals.STEP__NAME
 				|| childFeature == GHAPackage.Literals.STEP__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.STEP__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.STEP__SHELL

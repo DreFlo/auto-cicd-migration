@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link GHA.Job#getJobName <em>Job Name</em>}</li>
  *   <li>{@link GHA.Job#getPermissions <em>Permissions</em>}</li>
  *   <li>{@link GHA.Job#getDependsOn <em>Depends On</em>}</li>
- *   <li>{@link GHA.Job#getIf <em>If</em>}</li>
+ *   <li>{@link GHA.Job#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link GHA.Job#getAgent <em>Agent</em>}</li>
  *   <li>{@link GHA.Job#getContainer <em>Container</em>}</li>
  *   <li>{@link GHA.Job#getStagingEnvironment <em>Staging Environment</em>}</li>
@@ -108,26 +108,26 @@ public interface Job extends EObject {
 	EList<Job> getDependsOn();
 
 	/**
-	 * Returns the value of the '<em><b>If</b></em>' containment reference.
+	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>If</em>' containment reference.
-	 * @see #setIf(Expression)
-	 * @see GHA.GHAPackage#getJob_If()
+	 * @return the value of the '<em>If Condition</em>' containment reference.
+	 * @see #setIfCondition(Expression)
+	 * @see GHA.GHAPackage#getJob_IfCondition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Expression getIf();
+	Expression getIfCondition();
 
 	/**
-	 * Sets the value of the '{@link GHA.Job#getIf <em>If</em>}' containment reference.
+	 * Sets the value of the '{@link GHA.Job#getIfCondition <em>If Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>If</em>' containment reference.
-	 * @see #getIf()
+	 * @param value the new value of the '<em>If Condition</em>' containment reference.
+	 * @see #getIfCondition()
 	 * @generated
 	 */
-	void setIf(Expression value);
+	void setIfCondition(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Agent</b></em>' containment reference.

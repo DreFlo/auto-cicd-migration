@@ -44,7 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link GHA.impl.JobImpl#getJobName <em>Job Name</em>}</li>
  *   <li>{@link GHA.impl.JobImpl#getPermissions <em>Permissions</em>}</li>
  *   <li>{@link GHA.impl.JobImpl#getDependsOn <em>Depends On</em>}</li>
- *   <li>{@link GHA.impl.JobImpl#getIf <em>If</em>}</li>
+ *   <li>{@link GHA.impl.JobImpl#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link GHA.impl.JobImpl#getAgent <em>Agent</em>}</li>
  *   <li>{@link GHA.impl.JobImpl#getContainer <em>Container</em>}</li>
  *   <li>{@link GHA.impl.JobImpl#getStagingEnvironment <em>Staging Environment</em>}</li>
@@ -111,14 +111,14 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	protected EList<Job> dependsOn;
 
 	/**
-	 * The cached value of the '{@link #getIf() <em>If</em>}' containment reference.
+	 * The cached value of the '{@link #getIfCondition() <em>If Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIf()
+	 * @see #getIfCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression if_;
+	protected Expression ifCondition;
 
 	/**
 	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference.
@@ -346,8 +346,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * @generated
 	 */
 	@Override
-	public Expression getIf() {
-		return if_;
+	public Expression getIfCondition() {
+		return ifCondition;
 	}
 
 	/**
@@ -355,12 +355,12 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIf(Expression newIf, NotificationChain msgs) {
-		Expression oldIf = if_;
-		if_ = newIf;
+	public NotificationChain basicSetIfCondition(Expression newIfCondition, NotificationChain msgs) {
+		Expression oldIfCondition = ifCondition;
+		ifCondition = newIfCondition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GHAPackage.JOB__IF, oldIf,
-					newIf);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GHAPackage.JOB__IF_CONDITION,
+					oldIfCondition, newIfCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -375,20 +375,21 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * @generated
 	 */
 	@Override
-	public void setIf(Expression newIf) {
-		if (newIf != if_) {
+	public void setIfCondition(Expression newIfCondition) {
+		if (newIfCondition != ifCondition) {
 			NotificationChain msgs = null;
-			if (if_ != null)
-				msgs = ((InternalEObject) if_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GHAPackage.JOB__IF, null,
-						msgs);
-			if (newIf != null)
-				msgs = ((InternalEObject) newIf).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GHAPackage.JOB__IF, null,
-						msgs);
-			msgs = basicSetIf(newIf, msgs);
+			if (ifCondition != null)
+				msgs = ((InternalEObject) ifCondition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - GHAPackage.JOB__IF_CONDITION, null, msgs);
+			if (newIfCondition != null)
+				msgs = ((InternalEObject) newIfCondition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - GHAPackage.JOB__IF_CONDITION, null, msgs);
+			msgs = basicSetIfCondition(newIfCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.JOB__IF, newIf, newIf));
+			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.JOB__IF_CONDITION, newIfCondition,
+					newIfCondition));
 	}
 
 	/**
@@ -845,8 +846,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return basicSetJobName(null, msgs);
 		case GHAPackage.JOB__PERMISSIONS:
 			return ((InternalEList<?>) getPermissions()).basicRemove(otherEnd, msgs);
-		case GHAPackage.JOB__IF:
-			return basicSetIf(null, msgs);
+		case GHAPackage.JOB__IF_CONDITION:
+			return basicSetIfCondition(null, msgs);
 		case GHAPackage.JOB__AGENT:
 			return basicSetAgent(null, msgs);
 		case GHAPackage.JOB__CONTAINER:
@@ -890,8 +891,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 				return getPermissions().map();
 		case GHAPackage.JOB__DEPENDS_ON:
 			return getDependsOn();
-		case GHAPackage.JOB__IF:
-			return getIf();
+		case GHAPackage.JOB__IF_CONDITION:
+			return getIfCondition();
 		case GHAPackage.JOB__AGENT:
 			return getAgent();
 		case GHAPackage.JOB__CONTAINER:
@@ -944,8 +945,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			getDependsOn().clear();
 			getDependsOn().addAll((Collection<? extends Job>) newValue);
 			return;
-		case GHAPackage.JOB__IF:
-			setIf((Expression) newValue);
+		case GHAPackage.JOB__IF_CONDITION:
+			setIfCondition((Expression) newValue);
 			return;
 		case GHAPackage.JOB__AGENT:
 			setAgent((Agent) newValue);
@@ -1001,8 +1002,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 		case GHAPackage.JOB__DEPENDS_ON:
 			getDependsOn().clear();
 			return;
-		case GHAPackage.JOB__IF:
-			setIf((Expression) null);
+		case GHAPackage.JOB__IF_CONDITION:
+			setIfCondition((Expression) null);
 			return;
 		case GHAPackage.JOB__AGENT:
 			setAgent((Agent) null);
@@ -1054,8 +1055,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return permissions != null && !permissions.isEmpty();
 		case GHAPackage.JOB__DEPENDS_ON:
 			return dependsOn != null && !dependsOn.isEmpty();
-		case GHAPackage.JOB__IF:
-			return if_ != null;
+		case GHAPackage.JOB__IF_CONDITION:
+			return ifCondition != null;
 		case GHAPackage.JOB__AGENT:
 			return agent != null;
 		case GHAPackage.JOB__CONTAINER:

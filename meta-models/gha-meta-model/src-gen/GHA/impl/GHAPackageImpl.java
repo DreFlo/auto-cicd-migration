@@ -787,7 +787,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_If() {
+	public EReference getJob_IfCondition() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -2257,7 +2257,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_If() {
+	public EReference getStep_IfCondition() {
 		return (EReference) stepEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -2636,7 +2636,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(jobEClass, JOB__JOB_NAME);
 		createEReference(jobEClass, JOB__PERMISSIONS);
 		createEReference(jobEClass, JOB__DEPENDS_ON);
-		createEReference(jobEClass, JOB__IF);
+		createEReference(jobEClass, JOB__IF_CONDITION);
 		createEReference(jobEClass, JOB__AGENT);
 		createEReference(jobEClass, JOB__CONTAINER);
 		createEReference(jobEClass, JOB__STAGING_ENVIRONMENT);
@@ -2838,7 +2838,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__ID);
-		createEReference(stepEClass, STEP__IF);
+		createEReference(stepEClass, STEP__IF_CONDITION);
 		createEReference(stepEClass, STEP__NAME);
 		createEReference(stepEClass, STEP__TIMEOUT_MINUTES);
 		createEReference(stepEClass, STEP__CONTINUE_ON_ERROR);
@@ -2998,9 +2998,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getJob_DependsOn(), this.getJob(), null, "dependsOn", null, 0, -1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getJob_If(), this.getExpression(), null, "if", null, 0, 1, Job.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getJob_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, Job.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_Agent(), this.getAgent(), null, "agent", null, 1, 1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
@@ -3409,9 +3409,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Id(), ecorePackage.getEString(), "id", null, 0, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_If(), this.getExpression(), null, "if", null, 0, 1, Step.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getStep_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, Step.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_Name(), this.getExpression(), null, "name", null, 0, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);

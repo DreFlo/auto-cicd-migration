@@ -260,7 +260,7 @@ public class ReuseWorkflowJobItemProvider extends JobItemProvider {
 		Object childObject = child;
 
 		boolean qualify = childFeature == GHAPackage.Literals.JOB__JOB_NAME
-				|| childFeature == GHAPackage.Literals.JOB__IF
+				|| childFeature == GHAPackage.Literals.JOB__IF_CONDITION
 				|| childFeature == GHAPackage.Literals.JOB__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.JOB__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.REUSE_WORKFLOW_JOB__WORKFLOW_PATH

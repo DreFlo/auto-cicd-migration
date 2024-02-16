@@ -31,7 +31,7 @@
         eType="#//Permission" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependsOn" upperBound="-1"
         eType="#//Job"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="if" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//Agent"
         containment="true"/>
@@ -400,7 +400,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="if" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Expression"
         containment="true"/>

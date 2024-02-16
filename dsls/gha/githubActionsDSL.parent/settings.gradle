@@ -1,0 +1,3 @@
+include 'githubActionsDSL'
+include 'githubActionsDSL.ide'
+include 'githubActionsDSL.tests'

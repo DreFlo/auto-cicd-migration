@@ -205,13 +205,13 @@ public interface GHAPackage extends EPackage {
 	int JOB__DEPENDS_ON = 3;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__IF = 4;
+	int JOB__IF_CONDITION = 4;
 
 	/**
 	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
@@ -368,13 +368,13 @@ public interface GHAPackage extends EPackage {
 	int REUSE_WORKFLOW_JOB__DEPENDS_ON = JOB__DEPENDS_ON;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REUSE_WORKFLOW_JOB__IF = JOB__IF;
+	int REUSE_WORKFLOW_JOB__IF_CONDITION = JOB__IF_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
@@ -567,13 +567,13 @@ public interface GHAPackage extends EPackage {
 	int SCRIPT_JOB__DEPENDS_ON = JOB__DEPENDS_ON;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCRIPT_JOB__IF = JOB__IF;
+	int SCRIPT_JOB__IF_CONDITION = JOB__IF_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
@@ -2960,13 +2960,13 @@ public interface GHAPackage extends EPackage {
 	int STEP__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__IF = 1;
+	int STEP__IF_CONDITION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -3060,13 +3060,13 @@ public interface GHAPackage extends EPackage {
 	int COMMAND__ID = STEP__ID;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND__IF = STEP__IF;
+	int COMMAND__IF_CONDITION = STEP__IF_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -3169,13 +3169,13 @@ public interface GHAPackage extends EPackage {
 	int PACKAGE__ID = STEP__ID;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PACKAGE__IF = STEP__IF;
+	int PACKAGE__IF_CONDITION = STEP__IF_CONDITION;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -3756,15 +3756,15 @@ public interface GHAPackage extends EPackage {
 	EReference getJob_DependsOn();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link GHA.Job#getIf <em>If</em>}'.
+	 * Returns the meta object for the containment reference '{@link GHA.Job#getIfCondition <em>If Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>If</em>'.
-	 * @see GHA.Job#getIf()
+	 * @return the meta object for the containment reference '<em>If Condition</em>'.
+	 * @see GHA.Job#getIfCondition()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_If();
+	EReference getJob_IfCondition();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link GHA.Job#getAgent <em>Agent</em>}'.
@@ -5324,15 +5324,15 @@ public interface GHAPackage extends EPackage {
 	EAttribute getStep_Id();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link GHA.Step#getIf <em>If</em>}'.
+	 * Returns the meta object for the containment reference '{@link GHA.Step#getIfCondition <em>If Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>If</em>'.
-	 * @see GHA.Step#getIf()
+	 * @return the meta object for the containment reference '<em>If Condition</em>'.
+	 * @see GHA.Step#getIfCondition()
 	 * @see #getStep()
 	 * @generated
 	 */
-	EReference getStep_If();
+	EReference getStep_IfCondition();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link GHA.Step#getName <em>Name</em>}'.
@@ -5823,12 +5823,12 @@ public interface GHAPackage extends EPackage {
 		EReference JOB__DEPENDS_ON = eINSTANCE.getJob_DependsOn();
 
 		/**
-		 * The meta object literal for the '<em><b>If</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__IF = eINSTANCE.getJob_If();
+		EReference JOB__IF_CONDITION = eINSTANCE.getJob_IfCondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Agent</b></em>' containment reference feature.
@@ -7112,12 +7112,12 @@ public interface GHAPackage extends EPackage {
 		EAttribute STEP__ID = eINSTANCE.getStep_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>If</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__IF = eINSTANCE.getStep_If();
+		EReference STEP__IF_CONDITION = eINSTANCE.getStep_IfCondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.

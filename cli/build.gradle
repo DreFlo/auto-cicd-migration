@@ -1,0 +1,86 @@
+plugins {
+  	id 'java'
+	id 'application'
+ 	id 'distribution'
+    id 'org.xtext.xtext' version '4.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.14.0'
+    implementation group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.32.0'
+    // https://mvnrepository.com/artifact/com.google.inject/guice
+	implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
+	//implementation fileTree(dir: 'libs', include: ['*.jar'])
+	xtextTooling 'd.fe.up.pt.cicd.gha:d.fe.up.pt.cicd.gha:1.0.0-SNAPSHOT'
+}
+
+xtext {
+	version = '2.33.0'
+	languages {
+		GHA {
+			setup = 'd.fe.up.pt.cicd.gha.GitHubActionsStandaloneSetup'
+			consumesJava = true
+			output {
+		        dir = 'build/builddsl'
+		        producesJavaFor sourceSets.main
+		      }
+		}
+	}
+}
+/*
+xtend {
+  generator {
+    //whether to generate @SuppressWarnings("all"), enabled by default
+    suppressWarningsAnnotation = false
+    //whether to generate the @Generated annotation, disabled by default
+    generatedAnnotation {
+      active = true
+      comment = "Copyright My Cool Company"
+      includeDate = true
+    }
+  }
+  debugger {
+    //how to install debug info into generated Java code
+    //SMAP adds Xtend debug info on top of Java
+    //PRIMARY makes Xtend the only debug info (throws away Java line numbers)
+    //default is SMAP
+    sourceInstaller = 'SMAP' //or 'PRIMARY' or 'NONE'
+    //whether to hide synthetic variables in the debugger
+    hideSyntheticVariables = true
+  }
+  validator {
+    //adjust severity of issues
+    //available levels are error, warning, info and ignore
+    error 'org.eclipse.xtend.core.validation.IssueCodes.unused_private_member'
+    // These issue IDs can be found in your Eclipse project's .settings/org.eclipse.xtend.core.Xtend.prefs
+    // after enabling Project > Properties > Xtend > Errors/Warnings: [X] Enable project specific settings
+  }
+}
+*/
+
+
+sourceSets {
+   main {
+		java {
+		   srcDir 'src'               
+		}
+   }
+	
+   test {
+      java {
+         srcDir 'test'
+      }
+	  
+	  resources {
+		srcDir 'test'
+	  }
+   }
+    
+}
+
+mainClassName = 'cli.Main'

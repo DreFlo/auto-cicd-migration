@@ -88,7 +88,7 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GHAPackage.Literals.STEP__IF);
+			childrenFeatures.add(GHAPackage.Literals.STEP__IF_CONDITION);
 			childrenFeatures.add(GHAPackage.Literals.STEP__NAME);
 			childrenFeatures.add(GHAPackage.Literals.STEP__TIMEOUT_MINUTES);
 			childrenFeatures.add(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR);
@@ -150,7 +150,7 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		case GHAPackage.STEP__ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case GHAPackage.STEP__IF:
+		case GHAPackage.STEP__IF_CONDITION:
 		case GHAPackage.STEP__NAME:
 		case GHAPackage.STEP__TIMEOUT_MINUTES:
 		case GHAPackage.STEP__CONTINUE_ON_ERROR:
@@ -175,72 +175,76 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createFailure()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createGitHubContext()));
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF, GHAFactory.eINSTANCE.createVariableDereference()));
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createNot()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createContains()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createStartsWith()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createEndsWith()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createFormat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createJoin()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createToJSON()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createFromJSON()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createHashFiles()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createAlways()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createSuccess()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createCancelled()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createFailure()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createGitHubContext()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createConcat()));
@@ -613,7 +617,8 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == GHAPackage.Literals.STEP__IF || childFeature == GHAPackage.Literals.STEP__NAME
+		boolean qualify = childFeature == GHAPackage.Literals.STEP__IF_CONDITION
+				|| childFeature == GHAPackage.Literals.STEP__NAME
 				|| childFeature == GHAPackage.Literals.STEP__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.STEP__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.STEP__SHELL

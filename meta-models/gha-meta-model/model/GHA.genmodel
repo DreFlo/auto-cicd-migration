@@ -126,7 +126,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/jobName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/permissions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/dependsOn"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/if"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/ifCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/agent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/container"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/stagingEnvironment"/>
@@ -313,7 +313,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="GHA.ecore#//Step">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Step/id"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/if"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/ifCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/timeoutMinutes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/continueOnError"/>

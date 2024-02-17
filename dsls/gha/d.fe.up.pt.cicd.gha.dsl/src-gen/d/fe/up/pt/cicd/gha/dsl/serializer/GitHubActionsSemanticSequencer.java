@@ -5,18 +5,13 @@ package d.fe.up.pt.cicd.gha.dsl.serializer;
 
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.gha.dsl.services.GitHubActionsGrammarAccess;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Agent;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Always;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.And;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.BooleanLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Cancelled;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Command;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Comparison;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Concat;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Container;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
@@ -26,23 +21,10 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.FromJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Join;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixCombination;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Not;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Or;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StringLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Success;
@@ -50,10 +32,6 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Variable;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowDispatchTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowRunTrigger;
-import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -79,9 +57,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == GHAPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case GHAPackage.AGENT:
-				sequence_Agent(context, (Agent) semanticObject); 
-				return; 
 			case GHAPackage.ALWAYS:
 				sequence_Always(context, (Always) semanticObject); 
 				return; 
@@ -108,11 +83,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					sequence_Atomic(context, (BooleanLiteral) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getIfStatementRule()
-						|| rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getConcatRule()
-						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
-						|| rule == grammarAccess.getConcatExpressionRule()) {
+				else if (rule == grammarAccess.getConcatExpressionRule()) {
 					sequence_Atomic_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
 					return; 
 				}
@@ -125,26 +96,14 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 			case GHAPackage.CANCELLED:
 				sequence_Cancelled(context, (Cancelled) semanticObject); 
 				return; 
-			case GHAPackage.COMMAND:
-				sequence_Command(context, (Command) semanticObject); 
-				return; 
 			case GHAPackage.COMPARISON:
 				sequence_Comparison(context, (Comparison) semanticObject); 
 				return; 
 			case GHAPackage.CONCAT:
 				sequence_Concat(context, (Concat) semanticObject); 
 				return; 
-			case GHAPackage.CONCURRENCY_GROUP:
-				sequence_ConcurrencyGroup(context, (ConcurrencyGroup) semanticObject); 
-				return; 
-			case GHAPackage.CONTAINER:
-				sequence_Container(context, (Container) semanticObject); 
-				return; 
 			case GHAPackage.CONTAINS:
 				sequence_Contains(context, (Contains) semanticObject); 
-				return; 
-			case GHAPackage.DEFAULTS:
-				sequence_Defaults(context, (Defaults) semanticObject); 
 				return; 
 			case GHAPackage.DOUBLE_LITERAL:
 				if (rule == grammarAccess.getBracketedExpressionRule()
@@ -166,11 +125,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					sequence_Atomic(context, (DoubleLiteral) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getIfStatementRule()
-						|| rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getConcatRule()
-						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
-						|| rule == grammarAccess.getConcatExpressionRule()) {
+				else if (rule == grammarAccess.getConcatExpressionRule()) {
 					sequence_Atomic_DoubleLiteral(context, (DoubleLiteral) semanticObject); 
 					return; 
 				}
@@ -201,9 +156,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 			case GHAPackage.HASH_FILES:
 				sequence_HashFiles(context, (HashFiles) semanticObject); 
 				return; 
-			case GHAPackage.INPUT:
-				sequence_Input(context, (Input) semanticObject); 
-				return; 
 			case GHAPackage.INTEGER_LITERAL:
 				if (rule == grammarAccess.getBracketedExpressionRule()
 						|| rule == grammarAccess.getInsideBracketsExpressionRule()
@@ -224,11 +176,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					sequence_Atomic(context, (IntegerLiteral) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getIfStatementRule()
-						|| rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getConcatRule()
-						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
-						|| rule == grammarAccess.getConcatExpressionRule()) {
+				else if (rule == grammarAccess.getConcatExpressionRule()) {
 					sequence_Atomic_IntegerLiteral(context, (IntegerLiteral) semanticObject); 
 					return; 
 				}
@@ -241,84 +189,12 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 			case GHAPackage.JOIN:
 				sequence_Join(context, (Join) semanticObject); 
 				return; 
-			case GHAPackage.MATRIX:
-				sequence_Strategy(context, (Matrix) semanticObject); 
-				return; 
-			case GHAPackage.MATRIX_AXIS:
-				sequence_MatrixAxis(context, (MatrixAxis) semanticObject); 
-				return; 
-			case GHAPackage.MATRIX_COMBINATION:
-				sequence_MatrixCombination(context, (MatrixCombination) semanticObject); 
-				return; 
 			case GHAPackage.NOT:
 				sequence_Not(context, (Not) semanticObject); 
 				return; 
 			case GHAPackage.OR:
 				sequence_Or(context, (Or) semanticObject); 
 				return; 
-			case GHAPackage.OUTPUT:
-				sequence_Output(context, (Output) semanticObject); 
-				return; 
-			case GHAPackage.PACKAGE:
-				sequence_Package(context, (d.fe.up.pt.cicd.gha.metamodel.GHA.Package) semanticObject); 
-				return; 
-			case GHAPackage.PERMISSION:
-				sequence_Permission(context, (Map.Entry) semanticObject); 
-				return; 
-			case GHAPackage.PULL_REQUEST_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedPullRequestTriggerRule()) {
-					sequence_OptionedPullRequestTrigger(context, (PullRequestTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimplePullRequestTriggerRule()) {
-					sequence_SimplePullRequestTrigger(context, (PullRequestTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case GHAPackage.PUSH_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedPushTriggerRule()) {
-					sequence_OptionedPushTrigger(context, (PushTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimplePushTriggerTriggerRule()) {
-					sequence_SimplePushTriggerTrigger(context, (PushTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case GHAPackage.REUSE_WORKFLOW_JOB:
-				sequence_ReuseWorkflowJob(context, (ReuseWorkflowJob) semanticObject); 
-				return; 
-			case GHAPackage.SCHEDULE_TRIGGER:
-				sequence_OptionedScheduleTrigger(context, (ScheduleTrigger) semanticObject); 
-				return; 
-			case GHAPackage.SCRIPT_JOB:
-				sequence_ScriptJob(context, (ScriptJob) semanticObject); 
-				return; 
-			case GHAPackage.SECRET:
-				sequence_Secret(context, (Secret) semanticObject); 
-				return; 
-			case GHAPackage.SERVICE:
-				sequence_Service(context, (Map.Entry) semanticObject); 
-				return; 
-			case GHAPackage.STAGING_ENVIRONMENT:
-				sequence_StagingEnvironment(context, (StagingEnvironment) semanticObject); 
-				return; 
-			case GHAPackage.STANDARD_EVENT_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedStandardEventTriggerRule()) {
-					sequence_OptionedStandardEventTrigger(context, (StandardEventTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimpleStandardEventTriggerRule()) {
-					sequence_SimpleStandardEventTrigger(context, (StandardEventTrigger) semanticObject); 
-					return; 
-				}
-				else break;
 			case GHAPackage.STARTS_WITH:
 				sequence_StartsWith(context, (StartsWith) semanticObject); 
 				return; 
@@ -342,11 +218,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 					sequence_Atomic(context, (StringLiteral) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getIfStatementRule()
-						|| rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getConcatRule()
-						|| action == grammarAccess.getConcatAccess().getConcatLhsAction_1_0()
-						|| rule == grammarAccess.getConcatExpressionRule()) {
+				else if (rule == grammarAccess.getConcatExpressionRule()) {
 					sequence_Atomic_StringLiteral(context, (StringLiteral) semanticObject); 
 					return; 
 				}
@@ -365,41 +237,11 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 			case GHAPackage.VARIABLE:
 				sequence_Atomic(context, (Variable) semanticObject); 
 				return; 
-			case GHAPackage.VARIABLE_ASSIGNMENT:
-				sequence_VariableAssignment(context, (Map.Entry) semanticObject); 
-				return; 
 			case GHAPackage.VARIABLE_DEREFERENCE:
 				sequence_VariableDereference(context, (VariableDereference) semanticObject); 
 				return; 
 			case GHAPackage.WORKFLOW:
 				sequence_Workflow(context, (Workflow) semanticObject); 
-				return; 
-			case GHAPackage.WORKFLOW_CALL_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedWorkflowCallTriggerRule()) {
-					sequence_OptionedWorkflowCallTrigger(context, (WorkflowCallTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimpleWorkflowCallTriggerRule()) {
-					sequence_SimpleWorkflowCallTrigger(context, (WorkflowCallTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case GHAPackage.WORKFLOW_DISPATCH_TRIGGER:
-				if (rule == grammarAccess.getOptionedTriggerRule()
-						|| rule == grammarAccess.getOptionedWorkflowDispatchTriggerRule()) {
-					sequence_OptionedWorkflowDispatchTrigger(context, (WorkflowDispatchTrigger) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getSimpleTriggerRule()
-						|| rule == grammarAccess.getSimpleWorkflowDispatchTriggerRule()) {
-					sequence_SimpleWorkflowDispatchTrigger(context, (WorkflowDispatchTrigger) semanticObject); 
-					return; 
-				}
-				else break;
-			case GHAPackage.WORKFLOW_RUN_TRIGGER:
-				sequence_OptionedWorkflowRunTrigger(context, (WorkflowRunTrigger) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -409,30 +251,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Agent returns Agent
-	 *
-	 * Constraint:
-	 *     (
-	 *         labels+=Expression | 
-	 *         (labels+=Expression labels+=Expression*) | 
-	 *         labels+=Expression+ | 
-	 *         ((labels+=Expression | (labels+=Expression labels+=Expression*) | labels+=Expression+) group=Expression?) | 
-	 *         (group=Expression (labels+=Expression | (labels+=Expression labels+=Expression*) | labels+=Expression+)?)
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_Agent(ISerializationContext context, Agent semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns Always
-	 *     Expression returns Always
-	 *     Concat returns Always
-	 *     Concat.Concat_1_0 returns Always
 	 *     ConcatExpression returns Always
 	 *     BracketedExpression returns Always
 	 *     InsideBracketsExpression returns Always
@@ -464,10 +282,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns And
-	 *     Expression returns And
-	 *     Concat returns And
-	 *     Concat.Concat_1_0 returns And
 	 *     ConcatExpression returns And
 	 *     BracketedExpression returns And
 	 *     InsideBracketsExpression returns And
@@ -498,7 +312,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAndAccess().getAndLhsAction_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getAndAccess().getRhsEqualityParserRuleCall_1_2_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getAndAccess().getRhsEqualityParserRuleCall_1_4_0(), semanticObject.getRhs());
 		feeder.finish();
 	}
 	
@@ -541,10 +355,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns BooleanLiteral
-	 *     Expression returns BooleanLiteral
-	 *     Concat returns BooleanLiteral
-	 *     Concat.Concat_1_0 returns BooleanLiteral
 	 *     ConcatExpression returns BooleanLiteral
 	 *
 	 * Constraint:
@@ -594,10 +404,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns DoubleLiteral
-	 *     Expression returns DoubleLiteral
-	 *     Concat returns DoubleLiteral
-	 *     Concat.Concat_1_0 returns DoubleLiteral
 	 *     ConcatExpression returns DoubleLiteral
 	 *
 	 * Constraint:
@@ -612,10 +418,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns GitHubContext
-	 *     Expression returns GitHubContext
-	 *     Concat returns GitHubContext
-	 *     Concat.Concat_1_0 returns GitHubContext
 	 *     ConcatExpression returns GitHubContext
 	 *     BracketedExpression returns GitHubContext
 	 *     InsideBracketsExpression returns GitHubContext
@@ -687,10 +489,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns IntegerLiteral
-	 *     Expression returns IntegerLiteral
-	 *     Concat returns IntegerLiteral
-	 *     Concat.Concat_1_0 returns IntegerLiteral
 	 *     ConcatExpression returns IntegerLiteral
 	 *
 	 * Constraint:
@@ -740,10 +538,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns StringLiteral
-	 *     Expression returns StringLiteral
-	 *     Concat returns StringLiteral
-	 *     Concat.Concat_1_0 returns StringLiteral
 	 *     ConcatExpression returns StringLiteral
 	 *
 	 * Constraint:
@@ -758,10 +552,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Variable
-	 *     Expression returns Variable
-	 *     Concat returns Variable
-	 *     Concat.Concat_1_0 returns Variable
 	 *     ConcatExpression returns Variable
 	 *     BracketedExpression returns Variable
 	 *     InsideBracketsExpression returns Variable
@@ -819,10 +609,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Cancelled
-	 *     Expression returns Cancelled
-	 *     Concat returns Cancelled
-	 *     Concat.Concat_1_0 returns Cancelled
 	 *     ConcatExpression returns Cancelled
 	 *     BracketedExpression returns Cancelled
 	 *     InsideBracketsExpression returns Cancelled
@@ -854,34 +640,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Step returns Command
-	 *     Command returns Command
-	 *
-	 * Constraint:
-	 *     (
-	 *         id=STRING | 
-	 *         ifCondition=IfStatement | 
-	 *         name=Expression | 
-	 *         shell=Expression | 
-	 *         workingDirectory=Expression | 
-	 *         environmentVariables+=VariableAssignment | 
-	 *         continueOnError=Expression | 
-	 *         (timeoutMinutes=Expression? command=Expression)
-	 *     )+
-	 * </pre>
-	 */
-	protected void sequence_Command(ISerializationContext context, Command semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns Comparison
-	 *     Expression returns Comparison
-	 *     Concat returns Comparison
-	 *     Concat.Concat_1_0 returns Comparison
 	 *     ConcatExpression returns Comparison
 	 *     BracketedExpression returns Comparison
 	 *     InsideBracketsExpression returns Comparison
@@ -914,8 +672,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getComparisonAccess().getComparisonLhsAction_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getComparisonAccess().getOpCOMPARISON_OPEnumRuleCall_1_1_0(), semanticObject.getOp());
-		feeder.accept(grammarAccess.getComparisonAccess().getRhsUnaryOpParserRuleCall_1_2_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getComparisonAccess().getOpCOMPARISON_OPEnumRuleCall_1_2_0(), semanticObject.getOp());
+		feeder.accept(grammarAccess.getComparisonAccess().getRhsUnaryOpParserRuleCall_1_4_0(), semanticObject.getRhs());
 		feeder.finish();
 	}
 	
@@ -923,39 +681,14 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Concat
 	 *     Expression returns Concat
 	 *     Concat returns Concat
-	 *     Concat.Concat_1_0 returns Concat
 	 *
 	 * Constraint:
-	 *     (lhs=Concat_Concat_1_0 rhs=ConcatExpression)
+	 *     (expressions+=ConcatExpression expressions+=ConcatExpression*)
 	 * </pre>
 	 */
 	protected void sequence_Concat(ISerializationContext context, Concat semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__LHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__LHS));
-			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.BINARY_OP__RHS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BINARY_OP__RHS));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getConcatAccess().getConcatLhsAction_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getConcatAccess().getRhsConcatExpressionParserRuleCall_1_1_0(), semanticObject.getRhs());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     ConcurrencyGroup returns ConcurrencyGroup
-	 *
-	 * Constraint:
-	 *     (name=Expression | cancelInProgress=Expression)+
-	 * </pre>
-	 */
-	protected void sequence_ConcurrencyGroup(ISerializationContext context, ConcurrencyGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -963,41 +696,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Container returns Container
-	 *
-	 * Constraint:
-	 *     (
-	 *         image=Expression | 
-	 *         (
-	 *             (
-	 *                 image=Expression | 
-	 *                 environmentVariables+=VariableAssignment | 
-	 *                 ports+=Expression | 
-	 *                 ports+=Expression | 
-	 *                 volumes+=Expression | 
-	 *                 volumes+=Expression | 
-	 *                 options=Expression | 
-	 *                 username=Expression | 
-	 *                 password=Expression
-	 *             )? 
-	 *             (ports+=Expression ports+=Expression*)? 
-	 *             (volumes+=Expression volumes+=Expression*)?
-	 *         )+
-	 *     )?
-	 * </pre>
-	 */
-	protected void sequence_Container(ISerializationContext context, Container semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns Contains
-	 *     Expression returns Contains
-	 *     Concat returns Contains
-	 *     Concat.Concat_1_0 returns Contains
 	 *     ConcatExpression returns Contains
 	 *     BracketedExpression returns Contains
 	 *     InsideBracketsExpression returns Contains
@@ -1029,23 +727,9 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.CONTAINS__ITEM));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getContainsAccess().getSearchInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getSearch());
-		feeder.accept(grammarAccess.getContainsAccess().getItemInsideBracketsExpressionParserRuleCall_4_0(), semanticObject.getItem());
+		feeder.accept(grammarAccess.getContainsAccess().getSearchInsideBracketsExpressionParserRuleCall_3_0(), semanticObject.getSearch());
+		feeder.accept(grammarAccess.getContainsAccess().getItemInsideBracketsExpressionParserRuleCall_7_0(), semanticObject.getItem());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Defaults returns Defaults
-	 *
-	 * Constraint:
-	 *     (shell=Expression | workingDirectory=Expression)+
-	 * </pre>
-	 */
-	protected void sequence_Defaults(ISerializationContext context, Defaults semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1073,10 +757,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns EndsWith
-	 *     Expression returns EndsWith
-	 *     Concat returns EndsWith
-	 *     Concat.Concat_1_0 returns EndsWith
 	 *     ConcatExpression returns EndsWith
 	 *     BracketedExpression returns EndsWith
 	 *     InsideBracketsExpression returns EndsWith
@@ -1108,8 +788,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.ENDS_WITH__SEARCH_VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEndsWithAccess().getSearchStringInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getSearchString());
-		feeder.accept(grammarAccess.getEndsWithAccess().getSearchValueInsideBracketsExpressionParserRuleCall_4_0(), semanticObject.getSearchValue());
+		feeder.accept(grammarAccess.getEndsWithAccess().getSearchStringInsideBracketsExpressionParserRuleCall_3_0(), semanticObject.getSearchString());
+		feeder.accept(grammarAccess.getEndsWithAccess().getSearchValueInsideBracketsExpressionParserRuleCall_7_0(), semanticObject.getSearchValue());
 		feeder.finish();
 	}
 	
@@ -1117,10 +797,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Equality
-	 *     Expression returns Equality
-	 *     Concat returns Equality
-	 *     Concat.Concat_1_0 returns Equality
 	 *     ConcatExpression returns Equality
 	 *     BracketedExpression returns Equality
 	 *     InsideBracketsExpression returns Equality
@@ -1153,8 +829,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEqualityAccess().getEqualityLhsAction_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getEqualityAccess().getOpEQUALITY_OPEnumRuleCall_1_1_0(), semanticObject.getOp());
-		feeder.accept(grammarAccess.getEqualityAccess().getRhsComparisonParserRuleCall_1_2_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getEqualityAccess().getOpEQUALITY_OPEnumRuleCall_1_2_0(), semanticObject.getOp());
+		feeder.accept(grammarAccess.getEqualityAccess().getRhsComparisonParserRuleCall_1_4_0(), semanticObject.getRhs());
 		feeder.finish();
 	}
 	
@@ -1162,10 +838,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Failure
-	 *     Expression returns Failure
-	 *     Concat returns Failure
-	 *     Concat.Concat_1_0 returns Failure
 	 *     ConcatExpression returns Failure
 	 *     BracketedExpression returns Failure
 	 *     InsideBracketsExpression returns Failure
@@ -1197,10 +869,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Format
-	 *     Expression returns Format
-	 *     Concat returns Format
-	 *     Concat.Concat_1_0 returns Format
 	 *     ConcatExpression returns Format
 	 *     BracketedExpression returns Format
 	 *     InsideBracketsExpression returns Format
@@ -1232,10 +900,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns FromJSON
-	 *     Expression returns FromJSON
-	 *     Concat returns FromJSON
-	 *     Concat.Concat_1_0 returns FromJSON
 	 *     ConcatExpression returns FromJSON
 	 *     BracketedExpression returns FromJSON
 	 *     InsideBracketsExpression returns FromJSON
@@ -1265,7 +929,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.FROM_JSON__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getFromJSONAccess().getValueInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getFromJSONAccess().getValueInsideBracketsExpressionParserRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -1273,10 +937,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns HashFiles
-	 *     Expression returns HashFiles
-	 *     Concat returns HashFiles
-	 *     Concat.Concat_1_0 returns HashFiles
 	 *     ConcatExpression returns HashFiles
 	 *     BracketedExpression returns HashFiles
 	 *     InsideBracketsExpression returns HashFiles
@@ -1306,30 +966,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.HASH_FILES__PATH));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getHashFilesAccess().getPathInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getPath());
+		feeder.accept(grammarAccess.getHashFilesAccess().getPathInsideBracketsExpressionParserRuleCall_3_0(), semanticObject.getPath());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Input returns Input
-	 *
-	 * Constraint:
-	 *     (
-	 *         (id=YAMLID description=Expression?) | 
-	 *         default=Expression | 
-	 *         isRequired=Expression | 
-	 *         type=TYPE | 
-	 *         options+=STRING | 
-	 *         (options+=STRING options+=STRING*) | 
-	 *         options+=STRING
-	 *     )+
-	 * </pre>
-	 */
-	protected void sequence_Input(ISerializationContext context, Input semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1357,10 +995,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Join
-	 *     Expression returns Join
-	 *     Concat returns Join
-	 *     Concat.Concat_1_0 returns Join
 	 *     ConcatExpression returns Join
 	 *     BracketedExpression returns Join
 	 *     InsideBracketsExpression returns Join
@@ -1392,38 +1026,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     MatrixAxis returns MatrixAxis
-	 *
-	 * Constraint:
-	 *     (name=YAMLID (cells+=Expression | (cells+=Expression cells+=Expression*) | cells+=Expression+))
-	 * </pre>
-	 */
-	protected void sequence_MatrixAxis(ISerializationContext context, MatrixAxis semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MatrixCombination returns MatrixCombination
-	 *
-	 * Constraint:
-	 *     entries+=VariableAssignment
-	 * </pre>
-	 */
-	protected void sequence_MatrixCombination(ISerializationContext context, MatrixCombination semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns Not
-	 *     Expression returns Not
-	 *     Concat returns Not
-	 *     Concat.Concat_1_0 returns Not
 	 *     ConcatExpression returns Not
 	 *     BracketedExpression returns Not
 	 *     InsideBracketsExpression returns Not
@@ -1460,182 +1062,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     OptionedTrigger returns PullRequestTrigger
-	 *     OptionedPullRequestTrigger returns PullRequestTrigger
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             (
-	 *                 (eventTypes+=WEBHOOK_ACTIVITY_TYPE | eventTypes+=WEBHOOK_ACTIVITY_TYPE) 
-	 *                 (branches+=Expression branches+=Expression*)? 
-	 *                 branches+=Expression* 
-	 *                 (ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression)?
-	 *             ) | 
-	 *             (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | 
-	 *             (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | 
-	 *             (paths+=Expression paths+=Expression*) | 
-	 *             paths+=Expression
-	 *         )+ | 
-	 *         (
-	 *             paths+=Expression? 
-	 *             (paths+=Expression paths+=Expression*)? 
-	 *             (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression)? 
-	 *             (
-	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression) 
-	 *                 (eventTypes+=WEBHOOK_ACTIVITY_TYPE | (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | eventTypes+=WEBHOOK_ACTIVITY_TYPE+)?
-	 *             )?
-	 *         )+ | 
-	 *         (
-	 *             branches+=Expression? 
-	 *             (branches+=Expression branches+=Expression*)? 
-	 *             (ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression)? 
-	 *             (
-	 *                 ((ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | (paths+=Expression paths+=Expression*) | paths+=Expression) 
-	 *                 (eventTypes+=WEBHOOK_ACTIVITY_TYPE | (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | eventTypes+=WEBHOOK_ACTIVITY_TYPE+)?
-	 *             )?
-	 *         )+
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_OptionedPullRequestTrigger(ISerializationContext context, PullRequestTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     OptionedTrigger returns PushTrigger
-	 *     OptionedPushTrigger returns PushTrigger
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             tags+=Expression? 
-	 *             (tags+=Expression tags+=Expression*)? 
-	 *             (ignoreSpecifiedTags?='tags-ignore'? tags+=Expression)? 
-	 *             (
-	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression) 
-	 *                 ((ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | (paths+=Expression paths+=Expression*) | paths+=Expression+)?
-	 *             )?
-	 *         )+ | 
-	 *         (
-	 *             tags+=Expression? 
-	 *             (tags+=Expression tags+=Expression*)? 
-	 *             (ignoreSpecifiedTags?='tags-ignore'? tags+=Expression)? 
-	 *             (
-	 *                 ((ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression) | (paths+=Expression paths+=Expression*) | paths+=Expression) 
-	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression+)?
-	 *             )?
-	 *         )+ | 
-	 *         (
-	 *             paths+=Expression? 
-	 *             (paths+=Expression paths+=Expression*)? 
-	 *             (ignoreSpecifiedPaths?='paths-ignore'? paths+=Expression)? 
-	 *             (
-	 *                 ((ignoreSpecifiedTags?='tags-ignore'? tags+=Expression) | (tags+=Expression tags+=Expression*) | tags+=Expression) 
-	 *                 ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression+)?
-	 *             )?
-	 *         )+
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_OptionedPushTrigger(ISerializationContext context, PushTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     OptionedTrigger returns ScheduleTrigger
-	 *     OptionedScheduleTrigger returns ScheduleTrigger
-	 *
-	 * Constraint:
-	 *     crons+=Expression+
-	 * </pre>
-	 */
-	protected void sequence_OptionedScheduleTrigger(ISerializationContext context, ScheduleTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     OptionedTrigger returns StandardEventTrigger
-	 *     OptionedStandardEventTrigger returns StandardEventTrigger
-	 *
-	 * Constraint:
-	 *     (
-	 *         (event=EVENT eventTypes+=WEBHOOK_ACTIVITY_TYPE) | 
-	 *         (eventTypes+=WEBHOOK_ACTIVITY_TYPE eventTypes+=WEBHOOK_ACTIVITY_TYPE*) | 
-	 *         eventTypes+=WEBHOOK_ACTIVITY_TYPE+
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_OptionedStandardEventTrigger(ISerializationContext context, StandardEventTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     OptionedTrigger returns WorkflowCallTrigger
-	 *     OptionedWorkflowCallTrigger returns WorkflowCallTrigger
-	 *
-	 * Constraint:
-	 *     (
-	 *         (secrets+=Secret? (inputs+=Input outputs+=Output*)?)+ | 
-	 *         (secrets+=Secret? (outputs+=Output inputs+=Input*)?)+ | 
-	 *         (outputs+=Output? (secrets+=Secret inputs+=Input*)?)+
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_OptionedWorkflowCallTrigger(ISerializationContext context, WorkflowCallTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     OptionedTrigger returns WorkflowDispatchTrigger
-	 *     OptionedWorkflowDispatchTrigger returns WorkflowDispatchTrigger
-	 *
-	 * Constraint:
-	 *     inputs+=Input+
-	 * </pre>
-	 */
-	protected void sequence_OptionedWorkflowDispatchTrigger(ISerializationContext context, WorkflowDispatchTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     OptionedTrigger returns WorkflowRunTrigger
-	 *     OptionedWorkflowRunTrigger returns WorkflowRunTrigger
-	 *
-	 * Constraint:
-	 *     ((ignoreSpecifiedBranches?='branches-ignore'? branches+=Expression) | (branches+=Expression branches+=Expression*) | branches+=Expression+)
-	 * </pre>
-	 */
-	protected void sequence_OptionedWorkflowRunTrigger(ISerializationContext context, WorkflowRunTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns Or
-	 *     Expression returns Or
-	 *     Concat returns Or
-	 *     Concat.Concat_1_0 returns Or
 	 *     ConcatExpression returns Or
 	 *     BracketedExpression returns Or
 	 *     InsideBracketsExpression returns Or
@@ -1666,7 +1092,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getOrAccess().getOrLhsAction_1_0(), semanticObject.getLhs());
-		feeder.accept(grammarAccess.getOrAccess().getRhsAndParserRuleCall_1_2_0(), semanticObject.getRhs());
+		feeder.accept(grammarAccess.getOrAccess().getRhsAndParserRuleCall_1_4_0(), semanticObject.getRhs());
 		feeder.finish();
 	}
 	
@@ -1674,281 +1100,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Output returns Output
-	 *
-	 * Constraint:
-	 *     ((id=YAMLID description=Expression?) | value=Expression)+
-	 * </pre>
-	 */
-	protected void sequence_Output(ISerializationContext context, Output semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Step returns Package
-	 *     Package returns Package
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             id=STRING | 
-	 *             ifCondition=IfStatement | 
-	 *             name=Expression | 
-	 *             shell=Expression | 
-	 *             workingDirectory=Expression | 
-	 *             environmentVariables+=VariableAssignment | 
-	 *             continueOnError=Expression | 
-	 *             entrypoint=Expression | 
-	 *             containerArgs=Expression | 
-	 *             args+=VariableAssignment
-	 *         )? 
-	 *         (timeoutMinutes=Expression? uses=Expression)?
-	 *     )+
-	 * </pre>
-	 */
-	protected void sequence_Package(ISerializationContext context, d.fe.up.pt.cicd.gha.metamodel.GHA.Package semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Permission returns Permission
-	 *
-	 * Constraint:
-	 *     (key=PERMISSION_SCOPE value=PERMISSION_VALUE)
-	 * </pre>
-	 */
-	protected void sequence_Permission(ISerializationContext context, Map.Entry semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.PERMISSION__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.PERMISSION__KEY));
-			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.PERMISSION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.PERMISSION__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getPermissionAccess().getKeyPERMISSION_SCOPEEnumRuleCall_0_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getPermissionAccess().getValuePERMISSION_VALUEEnumRuleCall_2_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Job returns ReuseWorkflowJob
-	 *     ReuseWorkflowJob returns ReuseWorkflowJob
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             permissions+=Permission | 
-	 *             dependsOn+=[Job|ID] | 
-	 *             dependsOn+=[Job|ID] | 
-	 *             ifCondition=IfStatement | 
-	 *             agent=Agent | 
-	 *             stagingEnvironment=StagingEnvironment | 
-	 *             concurrencyGroup=ConcurrencyGroup | 
-	 *             environmentVariables+=VariableAssignment | 
-	 *             defaults=Defaults | 
-	 *             strategy=Strategy | 
-	 *             container=Container | 
-	 *             services+=Service | 
-	 *             workflowPath=Expression | 
-	 *             args+=VariableAssignment | 
-	 *             inheritSecrets?='inherit' | 
-	 *             secrets+=VariableAssignment | 
-	 *             continueOnError=Expression | 
-	 *             timeoutMinutes=Expression
-	 *         )? 
-	 *         (name=YAMLID jobName=Expression?)? 
-	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)?
-	 *     )+
-	 * </pre>
-	 */
-	protected void sequence_ReuseWorkflowJob(ISerializationContext context, ReuseWorkflowJob semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Job returns ScriptJob
-	 *     ScriptJob returns ScriptJob
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             permissions+=Permission | 
-	 *             dependsOn+=[Job|ID] | 
-	 *             dependsOn+=[Job|ID] | 
-	 *             ifCondition=IfStatement | 
-	 *             agent=Agent | 
-	 *             stagingEnvironment=StagingEnvironment | 
-	 *             concurrencyGroup=ConcurrencyGroup | 
-	 *             environmentVariables+=VariableAssignment | 
-	 *             defaults=Defaults | 
-	 *             steps+=Step | 
-	 *             strategy=Strategy | 
-	 *             container=Container | 
-	 *             services+=Service | 
-	 *             continueOnError=Expression | 
-	 *             timeoutMinutes=Expression
-	 *         )? 
-	 *         (name=YAMLID jobName=Expression?)? 
-	 *         (dependsOn+=[Job|ID] dependsOn+=[Job|ID]*)?
-	 *     )+
-	 * </pre>
-	 */
-	protected void sequence_ScriptJob(ISerializationContext context, ScriptJob semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Secret returns Secret
-	 *
-	 * Constraint:
-	 *     ((id=YAMLID (description=Expression | isRequired=Expression)*) | (isRequired=Expression | description=Expression)+)
-	 * </pre>
-	 */
-	protected void sequence_Secret(ISerializationContext context, Secret semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Service returns Service
-	 *
-	 * Constraint:
-	 *     (key=YAMLID value=Container)
-	 * </pre>
-	 */
-	protected void sequence_Service(ISerializationContext context, Map.Entry semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.SERVICE__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.SERVICE__KEY));
-			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.SERVICE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.SERVICE__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getServiceAccess().getKeyYAMLIDParserRuleCall_0_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getServiceAccess().getValueContainerParserRuleCall_4_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     SimpleTrigger returns PullRequestTrigger
-	 *     SimplePullRequestTrigger returns PullRequestTrigger
-	 *
-	 * Constraint:
-	 *     {PullRequestTrigger}
-	 * </pre>
-	 */
-	protected void sequence_SimplePullRequestTrigger(ISerializationContext context, PullRequestTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     SimpleTrigger returns PushTrigger
-	 *     SimplePushTriggerTrigger returns PushTrigger
-	 *
-	 * Constraint:
-	 *     {PushTrigger}
-	 * </pre>
-	 */
-	protected void sequence_SimplePushTriggerTrigger(ISerializationContext context, PushTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     SimpleTrigger returns StandardEventTrigger
-	 *     SimpleStandardEventTrigger returns StandardEventTrigger
-	 *
-	 * Constraint:
-	 *     event=EVENT
-	 * </pre>
-	 */
-	protected void sequence_SimpleStandardEventTrigger(ISerializationContext context, StandardEventTrigger semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSimpleStandardEventTriggerAccess().getEventEVENTEnumRuleCall_0(), semanticObject.getEvent());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     SimpleTrigger returns WorkflowCallTrigger
-	 *     SimpleWorkflowCallTrigger returns WorkflowCallTrigger
-	 *
-	 * Constraint:
-	 *     {WorkflowCallTrigger}
-	 * </pre>
-	 */
-	protected void sequence_SimpleWorkflowCallTrigger(ISerializationContext context, WorkflowCallTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     SimpleTrigger returns WorkflowDispatchTrigger
-	 *     SimpleWorkflowDispatchTrigger returns WorkflowDispatchTrigger
-	 *
-	 * Constraint:
-	 *     {WorkflowDispatchTrigger}
-	 * </pre>
-	 */
-	protected void sequence_SimpleWorkflowDispatchTrigger(ISerializationContext context, WorkflowDispatchTrigger semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     StagingEnvironment returns StagingEnvironment
-	 *
-	 * Constraint:
-	 *     (name=Expression | (name=Expression url=Expression?))
-	 * </pre>
-	 */
-	protected void sequence_StagingEnvironment(ISerializationContext context, StagingEnvironment semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns StartsWith
-	 *     Expression returns StartsWith
-	 *     Concat returns StartsWith
-	 *     Concat.Concat_1_0 returns StartsWith
 	 *     ConcatExpression returns StartsWith
 	 *     BracketedExpression returns StartsWith
 	 *     InsideBracketsExpression returns StartsWith
@@ -1980,23 +1131,9 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStartsWithAccess().getSearchStringInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getSearchString());
-		feeder.accept(grammarAccess.getStartsWithAccess().getSearchValueInsideBracketsExpressionParserRuleCall_4_0(), semanticObject.getSearchValue());
+		feeder.accept(grammarAccess.getStartsWithAccess().getSearchStringInsideBracketsExpressionParserRuleCall_3_0(), semanticObject.getSearchString());
+		feeder.accept(grammarAccess.getStartsWithAccess().getSearchValueInsideBracketsExpressionParserRuleCall_7_0(), semanticObject.getSearchValue());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Strategy returns Matrix
-	 *
-	 * Constraint:
-	 *     (includes+=MatrixCombination | excludes+=MatrixCombination | axes+=MatrixAxis | failFast=Expression | maxParallel=Expression)*
-	 * </pre>
-	 */
-	protected void sequence_Strategy(ISerializationContext context, Matrix semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2024,10 +1161,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns Success
-	 *     Expression returns Success
-	 *     Concat returns Success
-	 *     Concat.Concat_1_0 returns Success
 	 *     ConcatExpression returns Success
 	 *     BracketedExpression returns Success
 	 *     InsideBracketsExpression returns Success
@@ -2059,10 +1192,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IfStatement returns ToJSON
-	 *     Expression returns ToJSON
-	 *     Concat returns ToJSON
-	 *     Concat.Concat_1_0 returns ToJSON
 	 *     ConcatExpression returns ToJSON
 	 *     BracketedExpression returns ToJSON
 	 *     InsideBracketsExpression returns ToJSON
@@ -2092,7 +1221,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.TO_JSON__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getToJSONAccess().getValueInsideBracketsExpressionParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getToJSONAccess().getValueInsideBracketsExpressionParserRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -2100,33 +1229,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     VariableAssignment returns VariableAssignment
-	 *
-	 * Constraint:
-	 *     (key=YAMLID value=Expression)
-	 * </pre>
-	 */
-	protected void sequence_VariableAssignment(ISerializationContext context, Map.Entry semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__KEY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__KEY));
-			if (transientValues.isValueTransient((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getKeyYAMLIDParserRuleCall_0_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getVariableAssignmentAccess().getValueExpressionParserRuleCall_2_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IfStatement returns VariableDereference
-	 *     Expression returns VariableDereference
-	 *     Concat returns VariableDereference
-	 *     Concat.Concat_1_0 returns VariableDereference
 	 *     ConcatExpression returns VariableDereference
 	 *     BracketedExpression returns VariableDereference
 	 *     InsideBracketsExpression returns VariableDereference
@@ -2159,19 +1261,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Workflow returns Workflow
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=Expression | 
-	 *         runName=Expression | 
-	 *         triggers+=SimpleTrigger | 
-	 *         (triggers+=SimpleTrigger triggers+=SimpleTrigger*) | 
-	 *         triggers+=SimpleTrigger | 
-	 *         triggers+=OptionedTrigger | 
-	 *         permissions+=Permission | 
-	 *         environmentVariables+=VariableAssignment | 
-	 *         defaults=Defaults | 
-	 *         concurrencyGroup=ConcurrencyGroup | 
-	 *         jobs+=Job
-	 *     )+
+	 *     (name=Expression | runName=Expression)+
 	 * </pre>
 	 */
 	protected void sequence_Workflow(ISerializationContext context, Workflow semanticObject) {

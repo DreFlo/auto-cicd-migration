@@ -5,12 +5,13 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://d.fe.up.pt/GHA" as GHA
 
 Workflow returns GHA::Workflow:
+	(WS? NEWLINE)*
 	(
-		('name' ':' name=Expression NEWLINE)? &
-		('run-name' ':' runName=Expression NEWLINE)? &
-		('on' ':' (
+		('name' ':' WS? name=Expression NEWLINE (WS? NEWLINE)*)? &
+		('run-name' ':' WS? runName=Expression)? /* &
+		('on' ':' WS? (
 			(triggers+=SimpleTrigger NEWLINE) |
-			('[' triggers+=SimpleTrigger (',' triggers+=SimpleTrigger)* ']' NEWLINE) |
+			('[' WS? triggers+=SimpleTrigger ( WS? ',' WS? triggers+=SimpleTrigger)* WS? ']' NEWLINE) |
 			(
 				NEWLINE
 				BEGIN
@@ -24,10 +25,11 @@ Workflow returns GHA::Workflow:
 		('defaults' ':' NEWLINE BEGIN defaults=Defaults END)? &
 		('concurrency' ':' NEWLINE BEGIN concurrencyGroup=ConcurrencyGroup END)? &
 		('jobs' ':' NEWLINE BEGIN jobs+=Job+ END)
+		* 
+		*/
 	)
-	(=>END_OF_FILE)
 ;
-
+/*
 Job returns GHA::Job:
 	ScriptJob | ReuseWorkflowJob
 ;
@@ -772,13 +774,15 @@ Service returns GHA::Service:
 VariableAssignment returns GHA::VariableAssignment:
 	key=YAMLID ':' value=Expression NEWLINE+
 ;
+* 
+*/
 
 Expression returns GHA::Expression:
 	Concat
 ;
 
-Concat returns GHA::Expression:
-	ConcatExpression ({GHA::Concat.lhs=current}	rhs=ConcatExpression)*
+Concat returns GHA::Concat:
+	expressions+=ConcatExpression (WS expressions+=ConcatExpression)*
 ;
 
 ConcatExpression returns GHA::Expression:
@@ -786,7 +790,7 @@ ConcatExpression returns GHA::Expression:
 ;
 
 BracketedExpression returns GHA::Expression:
-	'${{' InsideBracketsExpression '}}'
+	'${{' WS? InsideBracketsExpression WS? '}}'
 ;
 
 InsideBracketsExpression returns GHA::Expression:
@@ -814,20 +818,20 @@ BooleanLiteral returns GHA::BooleanLiteral:
 ;
 
 Or returns GHA::Expression:
-    And ({GHA::Or.lhs=current} '||' rhs=And)*
+    And ({GHA::Or.lhs=current} WS? '||' WS? rhs=And)*
 ;
 
 
 And returns GHA::Expression:
-    Equality ({GHA::And.lhs=current} '&&' rhs=Equality )*
+    Equality ({GHA::And.lhs=current} WS? '&&' WS? rhs=Equality )*
 ;
 
 Equality returns GHA::Expression:
-	Comparison ({GHA::Equality.lhs=current} op=EQUALITY_OP rhs=Comparison )*
+	Comparison ({GHA::Equality.lhs=current} WS? op=EQUALITY_OP WS? rhs=Comparison )*
 ;
 
 Comparison returns GHA::Expression:
-	UnaryOp ({GHA::Comparison.lhs=current} op=COMPARISON_OP rhs=UnaryOp )*
+	UnaryOp ({GHA::Comparison.lhs=current} WS? op=COMPARISON_OP WS? rhs=UnaryOp )*
 ;
 
 UnaryOp returns GHA::Expression:
@@ -843,11 +847,11 @@ Blank returns GHA::Expression:
 ;
 
 VariableDereference returns GHA::Expression:
-	Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' ('"' property=ID '"') | ("'" property=ID '"') ']')))*
+	Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('[' WS? ('"' property=ID '"') | ("'" property=ID '"') WS? ']')))*
 ;
 
 Primary returns GHA::Expression:
-    ('(' InsideBracketsExpression ')') | CallExpression | Atomic
+    ('(' WS? InsideBracketsExpression WS? ')') | CallExpression | Atomic
 ;
 
 Atomic returns GHA::Value:
@@ -875,51 +879,51 @@ CallExpression returns GHA::BuiltInFunctionCall:
 ;
 
 Contains returns GHA::Contains:
-	'contains' '(' search=InsideBracketsExpression ',' item=InsideBracketsExpression ')'
+	'contains' '(' WS? search=InsideBracketsExpression WS? ',' WS? item=InsideBracketsExpression WS? ')'
 ;
 
 StartsWith returns GHA::StartsWith:
-	'startsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
+	'startsWith' '(' WS? searchString=InsideBracketsExpression WS? ',' WS? searchValue=InsideBracketsExpression WS? ')'
 ;
 
 EndsWith returns GHA::EndsWith:
-	'endsWith' '(' searchString=InsideBracketsExpression ',' searchValue=InsideBracketsExpression ')'
+	'endsWith' '(' WS? searchString=InsideBracketsExpression WS? ',' WS? searchValue=InsideBracketsExpression WS? ')'
 ;
 
 Format returns GHA::Format:
-	'format' '(' string=InsideBracketsExpression (',' replaceValues+=InsideBracketsExpression)* ')'
+	'format' '(' WS? string=InsideBracketsExpression (WS? ',' WS? replaceValues+=InsideBracketsExpression)* WS? ')'
 ;
 
 Join returns GHA::Join:
-	'join' '(' array=InsideBracketsExpression (',' sep=InsideBracketsExpression)? ')'
+	'join' '(' WS? array=InsideBracketsExpression (WS? ',' WS? sep=InsideBracketsExpression)? WS? ')'
 ;
 
 ToJSON returns GHA::ToJSON:
-	'toJSON' '(' value=InsideBracketsExpression ')'
+	'toJSON' '(' WS? value=InsideBracketsExpression WS? ')'
 ;
 
 FromJSON returns GHA::FromJSON:
-	'fromJSON' '(' value=InsideBracketsExpression ')'
+	'fromJSON' '(' WS? value=InsideBracketsExpression WS? ')'
 ;
 
 HashFiles returns GHA::HashFiles:
-	'hashFiles' '(' path=InsideBracketsExpression ')'
+	'hashFiles' '(' WS? path=InsideBracketsExpression WS? ')'
 ;
 
 Success returns GHA::Success:
-	{GHA::Success} 'success' '(' ')'
+	{GHA::Success} 'success' '(' WS? ')'
 ;
 
 Always returns GHA::Always:
-	{GHA::Always} 'always' '(' ')'
+	{GHA::Always} 'always' '(' WS? ')'
 ;
 
 Cancelled returns GHA::Cancelled:
-	{GHA::Cancelled} 'cancelled' '(' ')'
+	{GHA::Cancelled} 'cancelled' '(' WS? ')'
 ;
 
 Failure returns GHA::Failure:
-	{GHA::Failure} 'failure' '(' ')'
+	{GHA::Failure} 'failure' '(' WS? ')'
 ;
 
 enum COMPARISON_OP returns GHA::COMPARISON_OPS:
@@ -1050,8 +1054,15 @@ terminal BOOLEAN returns ecore::EBooleanObject:
 ;
 
 terminal UNQUOTED_STRING returns ecore::EString:
-	(('a..z'|'A'..'Z'|'_'|'~'|' ') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~'|' ')*) |
-	('|' ('+'|'-')? NEWLINE BEGIN ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|NEWLINE)* END)
+	UNQUOTED_STRING_BEGIN_CHARS UNQUOTED_STRING_CHARS*
+;
+
+terminal fragment UNQUOTED_STRING_CHARS:
+	'a'..'z'|'A'..'Z'|'_'|'0'..'9'|'@'|'`'|'~'
+;
+
+terminal fragment UNQUOTED_STRING_BEGIN_CHARS:
+	'a'..'z'|'A'..'Z'|'_'|'@'|'`'|'~'
 ;
 
 terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
@@ -1060,5 +1071,6 @@ terminal END: 'synthetic:END';      // decrease indentation
 
 terminal NEWLINE: '\r'? '\n';
 
-terminal END_OF_FILE: EOF;
+@Override 
+terminal WS: (' '|'\t')+;
 

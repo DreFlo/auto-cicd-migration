@@ -13,6 +13,7 @@ dependencies {
     implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
     implementation group: 'commons-io', name: 'commons-io', version: '2.14.0'
     implementation group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.32.0'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     // https://mvnrepository.com/artifact/com.google.inject/guice
 	implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
 }

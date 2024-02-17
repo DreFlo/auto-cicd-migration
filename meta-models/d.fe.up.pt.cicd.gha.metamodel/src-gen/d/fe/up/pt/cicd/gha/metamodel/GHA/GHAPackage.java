@@ -1594,22 +1594,13 @@ public interface GHAPackage extends EPackage {
 	int CONCAT = 22;
 
 	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT__LHS = BINARY_OP__LHS;
-
-	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCAT__RHS = BINARY_OP__RHS;
+	int CONCAT__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Concat</em>' class.
@@ -1618,7 +1609,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+	int CONCAT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Concat</em>' class.
@@ -1627,7 +1618,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCAT_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+	int CONCAT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EqualityImpl <em>Equality</em>}' class.
@@ -4621,6 +4612,17 @@ public interface GHAPackage extends EPackage {
 	EClass getConcat();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Concat#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Concat#getExpressions()
+	 * @see #getConcat()
+	 * @generated
+	 */
+	EReference getConcat_Expressions();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Equality <em>Equality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6506,6 +6508,14 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONCAT = eINSTANCE.getConcat();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCAT__EXPRESSIONS = eINSTANCE.getConcat_Expressions();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EqualityImpl <em>Equality</em>}' class.

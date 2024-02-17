@@ -1,0 +1,15 @@
+name: Workflow
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+true: push
+permissions: {actions: read}
+env: {SERVER: production}
+defaults:
+  run: {shell: bash, working-directory: ./scripts}
+concurrency: {group: '${{ github.workflow }}-${{ github.ref }}', cancel-in-progress: true}
+jobs:
+  my_first_job:
+    name: My first job
+    steps:
+    - name: Print a greeting
+      env: {MY_VAR: Hi there! My name is, FIRST_NAME: Mona, MIDDLE_NAME: The, LAST_NAME: Octocat}
+      run: echo 1

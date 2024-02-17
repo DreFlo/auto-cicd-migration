@@ -1587,6 +1587,16 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getConcat_Expressions() {
+		return (EReference) concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEquality() {
 		return equalityEClass;
 	}
@@ -2737,6 +2747,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(binaryOpEClass, BINARY_OP__RHS);
 
 		concatEClass = createEClass(CONCAT);
+		createEReference(concatEClass, CONCAT__EXPRESSIONS);
 
 		equalityEClass = createEClass(EQUALITY);
 		createEAttribute(equalityEClass, EQUALITY__OP);
@@ -2921,7 +2932,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		workflowCallTriggerEClass.getESuperTypes().add(this.getTrigger());
 		workflowDispatchTriggerEClass.getESuperTypes().add(this.getTrigger());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
-		concatEClass.getESuperTypes().add(this.getBinaryOp());
+		concatEClass.getESuperTypes().add(this.getExpression());
 		equalityEClass.getESuperTypes().add(this.getBinaryOp());
 		comparisonEClass.getESuperTypes().add(this.getBinaryOp());
 		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
@@ -3230,6 +3241,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 				IS_ORDERED);
 
 		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcat_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Concat.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(equalityEClass, Equality.class, "Equality", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

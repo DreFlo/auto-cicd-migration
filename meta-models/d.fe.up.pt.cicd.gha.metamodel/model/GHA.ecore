@@ -159,81 +159,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
         eType="#//Input" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="EVENTS">
-    <eLiterals name="BRANCH_PROTECTION_RULE" literal="branch_protection_rule"/>
-    <eLiterals name="CHECK_RUN" value="1" literal="check_run"/>
-    <eLiterals name="CHECK_SUITE" value="2" literal="check_suite"/>
-    <eLiterals name="CREATE" value="3" literal="create"/>
-    <eLiterals name="DELETE" value="4" literal="delete"/>
-    <eLiterals name="DEPLOYMENT" value="5" literal="deployment"/>
-    <eLiterals name="DEPLOYMENT_STATUS" value="6" literal="deployment_status"/>
-    <eLiterals name="DISCUSSION" value="7" literal="discussion"/>
-    <eLiterals name="DISCUSSION_COMMENT" value="8" literal="discussion_comment"/>
-    <eLiterals name="FORK" value="9" literal="fork"/>
-    <eLiterals name="GOLLUM" value="10" literal="gollum"/>
-    <eLiterals name="ISSUE_COMMENT" value="11" literal="issue_comment"/>
-    <eLiterals name="ISSUES" value="12" literal="issues"/>
-    <eLiterals name="LABEL" value="13" literal="label"/>
-    <eLiterals name="MERGE_GROUP" value="14" literal="merge_group"/>
-    <eLiterals name="MILESTONE" value="15" literal="milestone"/>
-    <eLiterals name="PAGE_BUILD" value="16" literal="page_build"/>
-    <eLiterals name="PROJECT" value="17" literal="project"/>
-    <eLiterals name="PROJECT_CARD" value="18" literal="project_card"/>
-    <eLiterals name="PROJECT_COLUMN" value="19" literal="project_column"/>
-    <eLiterals name="PUBLIC" value="20" literal="public"/>
-    <eLiterals name="PULL_REQUEST_REVIEW" value="21" literal="pull_request_review"/>
-    <eLiterals name="PULL_REQUEST_REVIEW_COMMENT" value="22" literal="pull_request_review_comment"/>
-    <eLiterals name="REGISTRY_PACKAGE" value="23" literal="registry_package"/>
-    <eLiterals name="RELEASE" value="24" literal="release"/>
-    <eLiterals name="REPOSITORY_DISPATCH" value="25" literal="repository_dispatch"/>
-    <eLiterals name="STATUS" value="26" literal="status"/>
-    <eLiterals name="WATCH" value="27" literal="watch"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="WEBHOOK_ACTIVITY_TYPES">
-    <eLiterals name="ASSIGNED" literal="assigned"/>
-    <eLiterals name="AUTO_MERGE_DISABLED" value="1" literal="auto_merge_disabled"/>
-    <eLiterals name="AUTO_MERGE_ENABLED" value="2" literal="auto_merge_enabled"/>
-    <eLiterals name="CLOSED" value="4" literal="closed"/>
-    <eLiterals name="CONVERTED_TO_DRAFT" value="5" literal="converted_to_draft"/>
-    <eLiterals name="EDITED" value="6" literal="edited"/>
-    <eLiterals name="LABELED" value="7" literal="labeled"/>
-    <eLiterals name="LOCKED" value="8" literal="locked"/>
-    <eLiterals name="OPENED" value="9" literal="opened"/>
-    <eLiterals name="READY_FOR_REVIEW" value="10" literal="ready_for_review"/>
-    <eLiterals name="REOPENED" value="11" literal="reopened"/>
-    <eLiterals name="REVIEW_REQUEST_REMOVED" value="12" literal="review_request_removed"/>
-    <eLiterals name="REVIEW_REQUESTED" value="13" literal="review_requested"/>
-    <eLiterals name="SYNCHRONIZE" value="14" literal="synchronize"/>
-    <eLiterals name="UNASSIGNED" value="15" literal="unassigned"/>
-    <eLiterals name="UNLABELED" value="16" literal="unlabeled"/>
-    <eLiterals name="UNLOCKED" value="17" literal="unlocked"/>
-    <eLiterals name="CREATED" value="18"/>
-    <eLiterals name="DELETED" value="19"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Permission" instanceClassName="java.util.Map$Entry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="#//PERMISSION_SCOPES"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//PERMISSIONS"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PERMISSION_SCOPES">
-    <eLiterals name="ACTIONS" literal="actions"/>
-    <eLiterals name="CHECKS" value="1" literal="checks"/>
-    <eLiterals name="CONTENTS" value="2" literal="contents"/>
-    <eLiterals name="DEPLOYMENTS" value="3" literal="deployments"/>
-    <eLiterals name="DISCUSSIONS" value="4" literal="discussions"/>
-    <eLiterals name="ID_TOKEN" value="5" literal="id-token"/>
-    <eLiterals name="ISSUES" value="6" literal="issues"/>
-    <eLiterals name="PACKAGES" value="7" literal="packages"/>
-    <eLiterals name="PAGES" value="8" literal="pages"/>
-    <eLiterals name="PULL_REQUESTS" value="9" literal="pull_requests"/>
-    <eLiterals name="REPOSITORY_PROJECTS" value="10" literal="repository_projects"/>
-    <eLiterals name="SECURITY_EVENTS" value="11" literal="security_events"/>
-    <eLiterals name="STATUSES" value="12" literal="statuses"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PERMISSIONS">
-    <eLiterals name="READ" literal="read"/>
-    <eLiterals name="WRITE" value="1" literal="write"/>
-    <eLiterals name="NONE" value="2" literal="none"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConcurrencyGroup">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//Expression"
@@ -260,22 +189,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//BinaryOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" lowerBound="1"
+        upperBound="-1" eType="#//Expression" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Equality" eSuperTypes="#//BinaryOp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//EQUALITY_OPS"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="EQUALITY_OPS">
-    <eLiterals name="EQUALS" literal="=="/>
-    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Comparison" abstract="true" eSuperTypes="#//BinaryOp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//COMPARISON_OPS"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="COMPARISON_OPS">
-    <eLiterals name="GT" literal=">"/>
-    <eLiterals name="GTE" value="1" literal=">="/>
-    <eLiterals name="LT" value="2" literal="&lt;"/>
-    <eLiterals name="LTE" value="3" literal="&lt;="/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalOp" abstract="true" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//LogicalOp"/>
@@ -362,20 +284,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="CONTEXTS">
-    <eLiterals name="GITHUB" literal="github"/>
-    <eLiterals name="ENV" value="1" literal="env"/>
-    <eLiterals name="VARS" value="2" literal="vars"/>
-    <eLiterals name="JOB" value="3" literal="job"/>
-    <eLiterals name="JOBS" value="4" literal="jobs"/>
-    <eLiterals name="STEPS" value="5" literal="step"/>
-    <eLiterals name="RUNNER" value="6" literal="runner"/>
-    <eLiterals name="SECRETS" value="7" literal="secrets"/>
-    <eLiterals name="STRATEGY" value="8" literal="strategy"/>
-    <eLiterals name="MATRIX" value="9" literal="matrix"/>
-    <eLiterals name="NEEDS" value="10" literal="needs"/>
-    <eLiterals name="INPUTS" value="11" literal="inputs"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Matrix">
     <eStructuralFeatures xsi:type="ecore:EReference" name="axes" lowerBound="1" upperBound="-1"
         eType="#//MatrixAxis" containment="true"/>
@@ -451,6 +359,101 @@
   <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//Parameter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EVENTS">
+    <eLiterals name="BRANCH_PROTECTION_RULE" literal="branch_protection_rule"/>
+    <eLiterals name="CHECK_RUN" value="1" literal="check_run"/>
+    <eLiterals name="CHECK_SUITE" value="2" literal="check_suite"/>
+    <eLiterals name="CREATE" value="3" literal="create"/>
+    <eLiterals name="DELETE" value="4" literal="delete"/>
+    <eLiterals name="DEPLOYMENT" value="5" literal="deployment"/>
+    <eLiterals name="DEPLOYMENT_STATUS" value="6" literal="deployment_status"/>
+    <eLiterals name="DISCUSSION" value="7" literal="discussion"/>
+    <eLiterals name="DISCUSSION_COMMENT" value="8" literal="discussion_comment"/>
+    <eLiterals name="FORK" value="9" literal="fork"/>
+    <eLiterals name="GOLLUM" value="10" literal="gollum"/>
+    <eLiterals name="ISSUE_COMMENT" value="11" literal="issue_comment"/>
+    <eLiterals name="ISSUES" value="12" literal="issues"/>
+    <eLiterals name="LABEL" value="13" literal="label"/>
+    <eLiterals name="MERGE_GROUP" value="14" literal="merge_group"/>
+    <eLiterals name="MILESTONE" value="15" literal="milestone"/>
+    <eLiterals name="PAGE_BUILD" value="16" literal="page_build"/>
+    <eLiterals name="PROJECT" value="17" literal="project"/>
+    <eLiterals name="PROJECT_CARD" value="18" literal="project_card"/>
+    <eLiterals name="PROJECT_COLUMN" value="19" literal="project_column"/>
+    <eLiterals name="PUBLIC" value="20" literal="public"/>
+    <eLiterals name="PULL_REQUEST_REVIEW" value="21" literal="pull_request_review"/>
+    <eLiterals name="PULL_REQUEST_REVIEW_COMMENT" value="22" literal="pull_request_review_comment"/>
+    <eLiterals name="REGISTRY_PACKAGE" value="23" literal="registry_package"/>
+    <eLiterals name="RELEASE" value="24" literal="release"/>
+    <eLiterals name="REPOSITORY_DISPATCH" value="25" literal="repository_dispatch"/>
+    <eLiterals name="STATUS" value="26" literal="status"/>
+    <eLiterals name="WATCH" value="27" literal="watch"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WEBHOOK_ACTIVITY_TYPES">
+    <eLiterals name="ASSIGNED" literal="assigned"/>
+    <eLiterals name="AUTO_MERGE_DISABLED" value="1" literal="auto_merge_disabled"/>
+    <eLiterals name="AUTO_MERGE_ENABLED" value="2" literal="auto_merge_enabled"/>
+    <eLiterals name="CLOSED" value="4" literal="closed"/>
+    <eLiterals name="CONVERTED_TO_DRAFT" value="5" literal="converted_to_draft"/>
+    <eLiterals name="EDITED" value="6" literal="edited"/>
+    <eLiterals name="LABELED" value="7" literal="labeled"/>
+    <eLiterals name="LOCKED" value="8" literal="locked"/>
+    <eLiterals name="OPENED" value="9" literal="opened"/>
+    <eLiterals name="READY_FOR_REVIEW" value="10" literal="ready_for_review"/>
+    <eLiterals name="REOPENED" value="11" literal="reopened"/>
+    <eLiterals name="REVIEW_REQUEST_REMOVED" value="12" literal="review_request_removed"/>
+    <eLiterals name="REVIEW_REQUESTED" value="13" literal="review_requested"/>
+    <eLiterals name="SYNCHRONIZE" value="14" literal="synchronize"/>
+    <eLiterals name="UNASSIGNED" value="15" literal="unassigned"/>
+    <eLiterals name="UNLABELED" value="16" literal="unlabeled"/>
+    <eLiterals name="UNLOCKED" value="17" literal="unlocked"/>
+    <eLiterals name="CREATED" value="18"/>
+    <eLiterals name="DELETED" value="19"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PERMISSION_SCOPES">
+    <eLiterals name="ACTIONS" literal="actions"/>
+    <eLiterals name="CHECKS" value="1" literal="checks"/>
+    <eLiterals name="CONTENTS" value="2" literal="contents"/>
+    <eLiterals name="DEPLOYMENTS" value="3" literal="deployments"/>
+    <eLiterals name="DISCUSSIONS" value="4" literal="discussions"/>
+    <eLiterals name="ID_TOKEN" value="5" literal="id-token"/>
+    <eLiterals name="ISSUES" value="6" literal="issues"/>
+    <eLiterals name="PACKAGES" value="7" literal="packages"/>
+    <eLiterals name="PAGES" value="8" literal="pages"/>
+    <eLiterals name="PULL_REQUESTS" value="9" literal="pull_requests"/>
+    <eLiterals name="REPOSITORY_PROJECTS" value="10" literal="repository_projects"/>
+    <eLiterals name="SECURITY_EVENTS" value="11" literal="security_events"/>
+    <eLiterals name="STATUSES" value="12" literal="statuses"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PERMISSIONS">
+    <eLiterals name="READ" literal="read"/>
+    <eLiterals name="WRITE" value="1" literal="write"/>
+    <eLiterals name="NONE" value="2" literal="none"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EQUALITY_OPS">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="COMPARISON_OPS">
+    <eLiterals name="GT" literal=">"/>
+    <eLiterals name="GTE" value="1" literal=">="/>
+    <eLiterals name="LT" value="2" literal="&lt;"/>
+    <eLiterals name="LTE" value="3" literal="&lt;="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CONTEXTS">
+    <eLiterals name="GITHUB" literal="github"/>
+    <eLiterals name="ENV" value="1" literal="env"/>
+    <eLiterals name="VARS" value="2" literal="vars"/>
+    <eLiterals name="JOB" value="3" literal="job"/>
+    <eLiterals name="JOBS" value="4" literal="jobs"/>
+    <eLiterals name="STEPS" value="5" literal="step"/>
+    <eLiterals name="RUNNER" value="6" literal="runner"/>
+    <eLiterals name="SECRETS" value="7" literal="secrets"/>
+    <eLiterals name="STRATEGY" value="8" literal="strategy"/>
+    <eLiterals name="MATRIX" value="9" literal="matrix"/>
+    <eLiterals name="NEEDS" value="10" literal="needs"/>
+    <eLiterals name="INPUTS" value="11" literal="inputs"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="INPUT_TYPES">
     <eLiterals name="STRING" literal="string"/>

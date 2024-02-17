@@ -310,8 +310,6 @@ public class GHASwitch<T> extends Switch<T> {
 			Concat concat = (Concat) theEObject;
 			T result = caseConcat(concat);
 			if (result == null)
-				result = caseBinaryOp(concat);
-			if (result == null)
 				result = caseExpression(concat);
 			if (result == null)
 				result = defaultCase(theEObject);

@@ -225,7 +225,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//BinaryOp/lhs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//BinaryOp/rhs"/>
     </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//Concat"/>
+    <genClasses ecoreClass="GHA.ecore#//Concat">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Concat/expressions"/>
+    </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Equality">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Equality/op"/>
     </genClasses>

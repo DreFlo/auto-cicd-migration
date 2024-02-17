@@ -1,24 +1,17 @@
 name: "Workflow"
-
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-
 on: push
-
 permissions:
   actions: read
-
 env:
   SERVER: production
-
 defaults:
   run:
     shell: bash
     working-directory: ./scripts
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   my_first_job:
     name: My first job

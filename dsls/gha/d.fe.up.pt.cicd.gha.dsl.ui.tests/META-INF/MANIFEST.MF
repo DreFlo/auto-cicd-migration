@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: d.fe.up.pt.cicd.gha.dsl.ui.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: d.fe.up.pt.cicd.gha.dsl.ui.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: d.fe.up.pt.cicd.gha.dsl.ui.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: d.fe.up.pt.cicd.gha.dsl.ui,
+ d.fe.up.pt.cicd.gha.metamodel,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.ui.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.ui.testing,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.workbench;resolution:=optional
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",
+ org.junit.jupiter.api.extension;version="[5.1.0,6.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: d.fe.up.pt.cicd.gha.dsl.ui.tests;x-internal=true

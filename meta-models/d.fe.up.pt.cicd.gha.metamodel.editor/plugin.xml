@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated GHA -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.gha.metamodel.GHA.presentation.GHAModelWizardID"
+            name="%_UI_GHAModelWizard_label"
+            class="d.fe.up.pt.cicd.gha.metamodel.GHA.presentation.GHAModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GHAModelFile.gif">
+         <description>%_UI_GHAModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated GHA -->
+      <editor
+            id="d.fe.up.pt.cicd.gha.metamodel.GHA.presentation.GHAEditorID"
+            name="%_UI_GHAEditor_label"
+            icon="icons/full/obj16/GHAModelFile.gif"
+            extensions="gha"
+            class="d.fe.up.pt.cicd.gha.metamodel.GHA.presentation.GHAEditor"
+            contributorClass="d.fe.up.pt.cicd.gha.metamodel.GHA.presentation.GHAActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

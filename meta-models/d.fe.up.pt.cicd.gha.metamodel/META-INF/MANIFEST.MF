@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: d.fe.up.pt.cicd.gha.metamodel;singleton:=true
+Automatic-Module-Name: d.fe.up.pt.cicd.gha.metamodel
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: d.fe.up.pt.cicd.gha.metamodel.GHA,
+ d.fe.up.pt.cicd.gha.metamodel.GHA.impl,
+ d.fe.up.pt.cicd.gha.metamodel.GHA.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy

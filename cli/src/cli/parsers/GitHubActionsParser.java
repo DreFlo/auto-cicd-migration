@@ -2,7 +2,7 @@ package cli.parsers;
 
 import com.google.inject.Injector;
 
-import d.fe.up.pt.cicd.gha.GitHubActionsStandaloneSetup;
+import d.fe.up.pt.cicd.gha.dsl.GitHubActionsStandaloneSetup;
 
 public class GitHubActionsParser extends AbstractParser {
 	@Override

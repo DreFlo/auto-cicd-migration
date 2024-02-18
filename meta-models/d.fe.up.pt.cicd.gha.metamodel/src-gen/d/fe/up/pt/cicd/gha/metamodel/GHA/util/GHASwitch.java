@@ -19,6 +19,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Failure;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Format;
@@ -27,6 +28,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Join;
@@ -41,12 +43,15 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
@@ -197,11 +202,49 @@ public class GHASwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case GHAPackage.EVENT_TYPE_TRIGGER: {
+			EventTypeTrigger eventTypeTrigger = (EventTypeTrigger) theEObject;
+			T result = caseEventTypeTrigger(eventTypeTrigger);
+			if (result == null)
+				result = caseTrigger(eventTypeTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.SPECIFIED_BRANCHES_TRIGGER: {
+			SpecifiedBranchesTrigger specifiedBranchesTrigger = (SpecifiedBranchesTrigger) theEObject;
+			T result = caseSpecifiedBranchesTrigger(specifiedBranchesTrigger);
+			if (result == null)
+				result = caseTrigger(specifiedBranchesTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.SPECIFIED_PATHS_TRIGGER: {
+			SpecifiedPathsTrigger specifiedPathsTrigger = (SpecifiedPathsTrigger) theEObject;
+			T result = caseSpecifiedPathsTrigger(specifiedPathsTrigger);
+			if (result == null)
+				result = caseTrigger(specifiedPathsTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case GHAPackage.STANDARD_EVENT_TRIGGER: {
 			StandardEventTrigger standardEventTrigger = (StandardEventTrigger) theEObject;
 			T result = caseStandardEventTrigger(standardEventTrigger);
 			if (result == null)
+				result = caseEventTypeTrigger(standardEventTrigger);
+			if (result == null)
 				result = caseTrigger(standardEventTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.INPUT_TRIGGER: {
+			InputTrigger inputTrigger = (InputTrigger) theEObject;
+			T result = caseInputTrigger(inputTrigger);
+			if (result == null)
+				result = caseTrigger(inputTrigger);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -209,6 +252,8 @@ public class GHASwitch<T> extends Switch<T> {
 		case GHAPackage.WORKFLOW_RUN_TRIGGER: {
 			WorkflowRunTrigger workflowRunTrigger = (WorkflowRunTrigger) theEObject;
 			T result = caseWorkflowRunTrigger(workflowRunTrigger);
+			if (result == null)
+				result = caseSpecifiedBranchesTrigger(workflowRunTrigger);
 			if (result == null)
 				result = caseTrigger(workflowRunTrigger);
 			if (result == null)
@@ -219,7 +264,30 @@ public class GHASwitch<T> extends Switch<T> {
 			PullRequestTrigger pullRequestTrigger = (PullRequestTrigger) theEObject;
 			T result = casePullRequestTrigger(pullRequestTrigger);
 			if (result == null)
+				result = caseEventTypeTrigger(pullRequestTrigger);
+			if (result == null)
+				result = caseSpecifiedBranchesTrigger(pullRequestTrigger);
+			if (result == null)
+				result = caseSpecifiedPathsTrigger(pullRequestTrigger);
+			if (result == null)
 				result = caseTrigger(pullRequestTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.PULL_REQUEST_TARGET_TRIGGER: {
+			PullRequestTargetTrigger pullRequestTargetTrigger = (PullRequestTargetTrigger) theEObject;
+			T result = casePullRequestTargetTrigger(pullRequestTargetTrigger);
+			if (result == null)
+				result = casePullRequestTrigger(pullRequestTargetTrigger);
+			if (result == null)
+				result = caseEventTypeTrigger(pullRequestTargetTrigger);
+			if (result == null)
+				result = caseSpecifiedBranchesTrigger(pullRequestTargetTrigger);
+			if (result == null)
+				result = caseSpecifiedPathsTrigger(pullRequestTargetTrigger);
+			if (result == null)
+				result = caseTrigger(pullRequestTargetTrigger);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -227,6 +295,10 @@ public class GHASwitch<T> extends Switch<T> {
 		case GHAPackage.PUSH_TRIGGER: {
 			PushTrigger pushTrigger = (PushTrigger) theEObject;
 			T result = casePushTrigger(pushTrigger);
+			if (result == null)
+				result = caseSpecifiedBranchesTrigger(pushTrigger);
+			if (result == null)
+				result = caseSpecifiedPathsTrigger(pushTrigger);
 			if (result == null)
 				result = caseTrigger(pushTrigger);
 			if (result == null)
@@ -246,6 +318,8 @@ public class GHASwitch<T> extends Switch<T> {
 			WorkflowCallTrigger workflowCallTrigger = (WorkflowCallTrigger) theEObject;
 			T result = caseWorkflowCallTrigger(workflowCallTrigger);
 			if (result == null)
+				result = caseInputTrigger(workflowCallTrigger);
+			if (result == null)
 				result = caseTrigger(workflowCallTrigger);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -254,6 +328,8 @@ public class GHASwitch<T> extends Switch<T> {
 		case GHAPackage.WORKFLOW_DISPATCH_TRIGGER: {
 			WorkflowDispatchTrigger workflowDispatchTrigger = (WorkflowDispatchTrigger) theEObject;
 			T result = caseWorkflowDispatchTrigger(workflowDispatchTrigger);
+			if (result == null)
+				result = caseInputTrigger(workflowDispatchTrigger);
 			if (result == null)
 				result = caseTrigger(workflowDispatchTrigger);
 			if (result == null)
@@ -878,6 +954,51 @@ public class GHASwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Event Type Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Event Type Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEventTypeTrigger(EventTypeTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Specified Branches Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Specified Branches Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSpecifiedBranchesTrigger(SpecifiedBranchesTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Specified Paths Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Specified Paths Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSpecifiedPathsTrigger(SpecifiedPathsTrigger object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Standard Event Trigger</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -889,6 +1010,21 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStandardEventTrigger(StandardEventTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Input Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Input Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInputTrigger(InputTrigger object) {
 		return null;
 	}
 
@@ -919,6 +1055,21 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePullRequestTrigger(PullRequestTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pull Request Target Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pull Request Target Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePullRequestTargetTrigger(PullRequestTargetTrigger object) {
 		return null;
 	}
 

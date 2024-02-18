@@ -13,10 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getBranches <em>Branches</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getPaths <em>Paths</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedPaths <em>Ignore Specified Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getTags <em>Tags</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedTags <em>Ignore Specified Tags</em>}</li>
  * </ul>
@@ -25,77 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface PushTrigger extends Trigger {
-	/**
-	 * Returns the value of the '<em><b>Branches</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Branches</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getPushTrigger_Branches()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Expression> getBranches();
-
-	/**
-	 * Returns the value of the '<em><b>Ignore Specified Branches</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ignore Specified Branches</em>' attribute.
-	 * @see #setIgnoreSpecifiedBranches(boolean)
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getPushTrigger_IgnoreSpecifiedBranches()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isIgnoreSpecifiedBranches();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ignore Specified Branches</em>' attribute.
-	 * @see #isIgnoreSpecifiedBranches()
-	 * @generated
-	 */
-	void setIgnoreSpecifiedBranches(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Paths</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Paths</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getPushTrigger_Paths()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Expression> getPaths();
-
-	/**
-	 * Returns the value of the '<em><b>Ignore Specified Paths</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ignore Specified Paths</em>' attribute.
-	 * @see #setIgnoreSpecifiedPaths(boolean)
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getPushTrigger_IgnoreSpecifiedPaths()
-	 * @model default="false" required="true"
-	 * @generated
-	 */
-	boolean isIgnoreSpecifiedPaths();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedPaths <em>Ignore Specified Paths</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ignore Specified Paths</em>' attribute.
-	 * @see #isIgnoreSpecifiedPaths()
-	 * @generated
-	 */
-	void setIgnoreSpecifiedPaths(boolean value);
-
+public interface PushTrigger extends SpecifiedBranchesTrigger, SpecifiedPathsTrigger {
 	/**
 	 * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression}.

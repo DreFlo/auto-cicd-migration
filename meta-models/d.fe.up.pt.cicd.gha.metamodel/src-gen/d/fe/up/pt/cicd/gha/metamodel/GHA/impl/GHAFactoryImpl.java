@@ -39,6 +39,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Or;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
@@ -133,6 +134,8 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 			return createWorkflowRunTrigger();
 		case GHAPackage.PULL_REQUEST_TRIGGER:
 			return createPullRequestTrigger();
+		case GHAPackage.PULL_REQUEST_TARGET_TRIGGER:
+			return createPullRequestTargetTrigger();
 		case GHAPackage.PUSH_TRIGGER:
 			return createPushTrigger();
 		case GHAPackage.SCHEDULE_TRIGGER:
@@ -383,6 +386,17 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	public PullRequestTrigger createPullRequestTrigger() {
 		PullRequestTriggerImpl pullRequestTrigger = new PullRequestTriggerImpl();
 		return pullRequestTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PullRequestTargetTrigger createPullRequestTargetTrigger() {
+		PullRequestTargetTriggerImpl pullRequestTargetTrigger = new PullRequestTargetTriggerImpl();
+		return pullRequestTargetTrigger;
 	}
 
 	/**

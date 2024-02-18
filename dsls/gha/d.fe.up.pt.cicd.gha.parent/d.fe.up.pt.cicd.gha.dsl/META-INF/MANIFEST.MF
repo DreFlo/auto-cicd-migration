@@ -12,7 +12,9 @@ Require-Bundle: d.fe.up.pt.cicd.gha.metamodel,
  org.eclipse.equinox.common;bundle-version="3.16.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.xtext.util,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.objectweb.asm;bundle-version="[9.6.0,9.7.0)";resolution:=optional,
+ org.eclipse.xtext.common.types
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: d.fe.up.pt.cicd.gha.dsl.serializer,
  d.fe.up.pt.cicd.gha.dsl.scoping,

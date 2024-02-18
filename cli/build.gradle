@@ -16,6 +16,7 @@ dependencies {
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     // https://mvnrepository.com/artifact/com.google.inject/guice
 	implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
+    implementation group: 'com.amihaiemil.web', name: 'eo-yaml', version: '7.2.0'
 }
 
 dependencies {

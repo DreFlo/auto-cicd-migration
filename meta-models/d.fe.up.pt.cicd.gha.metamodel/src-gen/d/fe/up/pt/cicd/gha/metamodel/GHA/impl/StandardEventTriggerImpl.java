@@ -5,19 +5,10 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EVENTS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES;
-
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,12 +19,11 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl#getEvent <em>Event</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl#getEventTypes <em>Event Types</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StandardEventTriggerImpl extends TriggerImpl implements StandardEventTrigger {
+public class StandardEventTriggerImpl extends EventTypeTriggerImpl implements StandardEventTrigger {
 	/**
 	 * The default value of the '{@link #getEvent() <em>Event</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -53,16 +43,6 @@ public class StandardEventTriggerImpl extends TriggerImpl implements StandardEve
 	 * @ordered
 	 */
 	protected EVENTS event = EVENT_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getEventTypes() <em>Event Types</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEventTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<WEBHOOK_ACTIVITY_TYPES> eventTypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,26 +93,10 @@ public class StandardEventTriggerImpl extends TriggerImpl implements StandardEve
 	 * @generated
 	 */
 	@Override
-	public EList<WEBHOOK_ACTIVITY_TYPES> getEventTypes() {
-		if (eventTypes == null) {
-			eventTypes = new EDataTypeUniqueEList<WEBHOOK_ACTIVITY_TYPES>(WEBHOOK_ACTIVITY_TYPES.class, this,
-					GHAPackage.STANDARD_EVENT_TRIGGER__EVENT_TYPES);
-		}
-		return eventTypes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT:
 			return getEvent();
-		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT_TYPES:
-			return getEventTypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -149,10 +113,6 @@ public class StandardEventTriggerImpl extends TriggerImpl implements StandardEve
 		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT:
 			setEvent((EVENTS) newValue);
 			return;
-		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT_TYPES:
-			getEventTypes().clear();
-			getEventTypes().addAll((Collection<? extends WEBHOOK_ACTIVITY_TYPES>) newValue);
-			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -168,9 +128,6 @@ public class StandardEventTriggerImpl extends TriggerImpl implements StandardEve
 		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT:
 			setEvent(EVENT_EDEFAULT);
 			return;
-		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT_TYPES:
-			getEventTypes().clear();
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -185,8 +142,6 @@ public class StandardEventTriggerImpl extends TriggerImpl implements StandardEve
 		switch (featureID) {
 		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT:
 			return event != EVENT_EDEFAULT;
-		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT_TYPES:
-			return eventTypes != null && !eventTypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -204,8 +159,6 @@ public class StandardEventTriggerImpl extends TriggerImpl implements StandardEve
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (event: ");
 		result.append(event);
-		result.append(", eventTypes: ");
-		result.append(eventTypes);
 		result.append(')');
 		return result.toString();
 	}

@@ -18,6 +18,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Failure;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Format;
@@ -27,6 +28,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Join;
@@ -39,12 +41,15 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Not;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Or;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
@@ -148,7 +153,35 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass eventTypeTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specifiedBranchesTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specifiedPathsTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass standardEventTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inputTriggerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,6 +196,13 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	private EClass pullRequestTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pullRequestTargetTriggerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1147,6 +1187,86 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getEventTypeTrigger() {
+		return eventTypeTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEventTypeTrigger_EventTypes() {
+		return (EAttribute) eventTypeTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSpecifiedBranchesTrigger() {
+		return specifiedBranchesTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSpecifiedBranchesTrigger_Branches() {
+		return (EReference) specifiedBranchesTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSpecifiedBranchesTrigger_IgnoreSpecifiedBranches() {
+		return (EAttribute) specifiedBranchesTriggerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSpecifiedPathsTrigger() {
+		return specifiedPathsTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSpecifiedPathsTrigger_Paths() {
+		return (EReference) specifiedPathsTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSpecifiedPathsTrigger_IgnoreSpecifiedPaths() {
+		return (EAttribute) specifiedPathsTriggerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStandardEventTrigger() {
 		return standardEventTriggerEClass;
 	}
@@ -1167,8 +1287,18 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStandardEventTrigger_EventTypes() {
-		return (EAttribute) standardEventTriggerEClass.getEStructuralFeatures().get(1);
+	public EClass getInputTrigger() {
+		return inputTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInputTrigger_Inputs() {
+		return (EReference) inputTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1187,26 +1317,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflowRunTrigger_Branches() {
-		return (EReference) workflowRunTriggerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getWorkflowRunTrigger_IgnoreSpecifiedBranches() {
-		return (EAttribute) workflowRunTriggerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getPullRequestTrigger() {
 		return pullRequestTriggerEClass;
 	}
@@ -1217,48 +1327,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPullRequestTrigger_EventTypes() {
-		return (EAttribute) pullRequestTriggerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPullRequestTrigger_Branches() {
-		return (EReference) pullRequestTriggerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPullRequestTrigger_IgnoreSpecifiedBranches() {
-		return (EAttribute) pullRequestTriggerEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPullRequestTrigger_Paths() {
-		return (EReference) pullRequestTriggerEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPullRequestTrigger_IgnoreSpecifiedPaths() {
-		return (EAttribute) pullRequestTriggerEClass.getEStructuralFeatures().get(4);
+	public EClass getPullRequestTargetTrigger() {
+		return pullRequestTargetTriggerEClass;
 	}
 
 	/**
@@ -1277,7 +1347,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPushTrigger_Branches() {
+	public EReference getPushTrigger_Tags() {
 		return (EReference) pushTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1287,48 +1357,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPushTrigger_IgnoreSpecifiedBranches() {
-		return (EAttribute) pushTriggerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPushTrigger_Paths() {
-		return (EReference) pushTriggerEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPushTrigger_IgnoreSpecifiedPaths() {
-		return (EAttribute) pushTriggerEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPushTrigger_Tags() {
-		return (EReference) pushTriggerEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getPushTrigger_IgnoreSpecifiedTags() {
-		return (EAttribute) pushTriggerEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) pushTriggerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1367,7 +1397,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflowCallTrigger_Inputs() {
+	public EReference getWorkflowCallTrigger_Outputs() {
 		return (EReference) workflowCallTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1377,18 +1407,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflowCallTrigger_Outputs() {
-		return (EReference) workflowCallTriggerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getWorkflowCallTrigger_Secrets() {
-		return (EReference) workflowCallTriggerEClass.getEStructuralFeatures().get(2);
+		return (EReference) workflowCallTriggerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1399,16 +1419,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	@Override
 	public EClass getWorkflowDispatchTrigger() {
 		return workflowDispatchTriggerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getWorkflowDispatchTrigger_Inputs() {
-		return (EReference) workflowDispatchTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2690,26 +2700,30 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		triggerEClass = createEClass(TRIGGER);
 
+		eventTypeTriggerEClass = createEClass(EVENT_TYPE_TRIGGER);
+		createEAttribute(eventTypeTriggerEClass, EVENT_TYPE_TRIGGER__EVENT_TYPES);
+
+		specifiedBranchesTriggerEClass = createEClass(SPECIFIED_BRANCHES_TRIGGER);
+		createEReference(specifiedBranchesTriggerEClass, SPECIFIED_BRANCHES_TRIGGER__BRANCHES);
+		createEAttribute(specifiedBranchesTriggerEClass, SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES);
+
+		specifiedPathsTriggerEClass = createEClass(SPECIFIED_PATHS_TRIGGER);
+		createEReference(specifiedPathsTriggerEClass, SPECIFIED_PATHS_TRIGGER__PATHS);
+		createEAttribute(specifiedPathsTriggerEClass, SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS);
+
 		standardEventTriggerEClass = createEClass(STANDARD_EVENT_TRIGGER);
 		createEAttribute(standardEventTriggerEClass, STANDARD_EVENT_TRIGGER__EVENT);
-		createEAttribute(standardEventTriggerEClass, STANDARD_EVENT_TRIGGER__EVENT_TYPES);
+
+		inputTriggerEClass = createEClass(INPUT_TRIGGER);
+		createEReference(inputTriggerEClass, INPUT_TRIGGER__INPUTS);
 
 		workflowRunTriggerEClass = createEClass(WORKFLOW_RUN_TRIGGER);
-		createEReference(workflowRunTriggerEClass, WORKFLOW_RUN_TRIGGER__BRANCHES);
-		createEAttribute(workflowRunTriggerEClass, WORKFLOW_RUN_TRIGGER__IGNORE_SPECIFIED_BRANCHES);
 
 		pullRequestTriggerEClass = createEClass(PULL_REQUEST_TRIGGER);
-		createEAttribute(pullRequestTriggerEClass, PULL_REQUEST_TRIGGER__EVENT_TYPES);
-		createEReference(pullRequestTriggerEClass, PULL_REQUEST_TRIGGER__BRANCHES);
-		createEAttribute(pullRequestTriggerEClass, PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES);
-		createEReference(pullRequestTriggerEClass, PULL_REQUEST_TRIGGER__PATHS);
-		createEAttribute(pullRequestTriggerEClass, PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS);
+
+		pullRequestTargetTriggerEClass = createEClass(PULL_REQUEST_TARGET_TRIGGER);
 
 		pushTriggerEClass = createEClass(PUSH_TRIGGER);
-		createEReference(pushTriggerEClass, PUSH_TRIGGER__BRANCHES);
-		createEAttribute(pushTriggerEClass, PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES);
-		createEReference(pushTriggerEClass, PUSH_TRIGGER__PATHS);
-		createEAttribute(pushTriggerEClass, PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS);
 		createEReference(pushTriggerEClass, PUSH_TRIGGER__TAGS);
 		createEAttribute(pushTriggerEClass, PUSH_TRIGGER__IGNORE_SPECIFIED_TAGS);
 
@@ -2717,12 +2731,10 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(scheduleTriggerEClass, SCHEDULE_TRIGGER__CRONS);
 
 		workflowCallTriggerEClass = createEClass(WORKFLOW_CALL_TRIGGER);
-		createEReference(workflowCallTriggerEClass, WORKFLOW_CALL_TRIGGER__INPUTS);
 		createEReference(workflowCallTriggerEClass, WORKFLOW_CALL_TRIGGER__OUTPUTS);
 		createEReference(workflowCallTriggerEClass, WORKFLOW_CALL_TRIGGER__SECRETS);
 
 		workflowDispatchTriggerEClass = createEClass(WORKFLOW_DISPATCH_TRIGGER);
-		createEReference(workflowDispatchTriggerEClass, WORKFLOW_DISPATCH_TRIGGER__INPUTS);
 
 		permissionEClass = createEClass(PERMISSION);
 		createEAttribute(permissionEClass, PERMISSION__KEY);
@@ -2924,13 +2936,21 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		// Add supertypes to classes
 		reuseWorkflowJobEClass.getESuperTypes().add(this.getJob());
 		scriptJobEClass.getESuperTypes().add(this.getJob());
-		standardEventTriggerEClass.getESuperTypes().add(this.getTrigger());
-		workflowRunTriggerEClass.getESuperTypes().add(this.getTrigger());
-		pullRequestTriggerEClass.getESuperTypes().add(this.getTrigger());
-		pushTriggerEClass.getESuperTypes().add(this.getTrigger());
+		eventTypeTriggerEClass.getESuperTypes().add(this.getTrigger());
+		specifiedBranchesTriggerEClass.getESuperTypes().add(this.getTrigger());
+		specifiedPathsTriggerEClass.getESuperTypes().add(this.getTrigger());
+		standardEventTriggerEClass.getESuperTypes().add(this.getEventTypeTrigger());
+		inputTriggerEClass.getESuperTypes().add(this.getTrigger());
+		workflowRunTriggerEClass.getESuperTypes().add(this.getSpecifiedBranchesTrigger());
+		pullRequestTriggerEClass.getESuperTypes().add(this.getEventTypeTrigger());
+		pullRequestTriggerEClass.getESuperTypes().add(this.getSpecifiedBranchesTrigger());
+		pullRequestTriggerEClass.getESuperTypes().add(this.getSpecifiedPathsTrigger());
+		pullRequestTargetTriggerEClass.getESuperTypes().add(this.getPullRequestTrigger());
+		pushTriggerEClass.getESuperTypes().add(this.getSpecifiedBranchesTrigger());
+		pushTriggerEClass.getESuperTypes().add(this.getSpecifiedPathsTrigger());
 		scheduleTriggerEClass.getESuperTypes().add(this.getTrigger());
-		workflowCallTriggerEClass.getESuperTypes().add(this.getTrigger());
-		workflowDispatchTriggerEClass.getESuperTypes().add(this.getTrigger());
+		workflowCallTriggerEClass.getESuperTypes().add(this.getInputTrigger());
+		workflowDispatchTriggerEClass.getESuperTypes().add(this.getInputTrigger());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		concatEClass.getESuperTypes().add(this.getExpression());
 		equalityEClass.getESuperTypes().add(this.getBinaryOp());
@@ -3115,56 +3135,53 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(triggerEClass, Trigger.class, "Trigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(eventTypeTriggerEClass, EventTypeTrigger.class, "EventTypeTrigger", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEventTypeTrigger_EventTypes(), this.getWEBHOOK_ACTIVITY_TYPES(), "eventTypes", null, 0, -1,
+				EventTypeTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(specifiedBranchesTriggerEClass, SpecifiedBranchesTrigger.class, "SpecifiedBranchesTrigger",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpecifiedBranchesTrigger_Branches(), this.getExpression(), null, "branches", null, 0, -1,
+				SpecifiedBranchesTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSpecifiedBranchesTrigger_IgnoreSpecifiedBranches(), ecorePackage.getEBoolean(),
+				"ignoreSpecifiedBranches", "false", 1, 1, SpecifiedBranchesTrigger.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specifiedPathsTriggerEClass, SpecifiedPathsTrigger.class, "SpecifiedPathsTrigger", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpecifiedPathsTrigger_Paths(), this.getExpression(), null, "paths", null, 0, -1,
+				SpecifiedPathsTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSpecifiedPathsTrigger_IgnoreSpecifiedPaths(), ecorePackage.getEBoolean(),
+				"ignoreSpecifiedPaths", "false", 1, 1, SpecifiedPathsTrigger.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(standardEventTriggerEClass, StandardEventTrigger.class, "StandardEventTrigger", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStandardEventTrigger_Event(), this.getEVENTS(), "event", null, 1, 1,
 				StandardEventTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStandardEventTrigger_EventTypes(), this.getWEBHOOK_ACTIVITY_TYPES(), "eventTypes", null, 0,
-				-1, StandardEventTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+
+		initEClass(inputTriggerEClass, InputTrigger.class, "InputTrigger", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInputTrigger_Inputs(), this.getInput(), null, "inputs", null, 0, -1, InputTrigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workflowRunTriggerEClass, WorkflowRunTrigger.class, "WorkflowRunTrigger", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkflowRunTrigger_Branches(), this.getExpression(), null, "branches", null, 0, -1,
-				WorkflowRunTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWorkflowRunTrigger_IgnoreSpecifiedBranches(), ecorePackage.getEBoolean(),
-				"ignoreSpecifiedBranches", "false", 1, 1, WorkflowRunTrigger.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pullRequestTriggerEClass, PullRequestTrigger.class, "PullRequestTrigger", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPullRequestTrigger_EventTypes(), this.getWEBHOOK_ACTIVITY_TYPES(), "eventTypes", null, 0, 3,
-				PullRequestTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getPullRequestTrigger_Branches(), this.getExpression(), null, "branches", null, 0, -1,
-				PullRequestTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPullRequestTrigger_IgnoreSpecifiedBranches(), ecorePackage.getEBoolean(),
-				"ignoreSpecifiedBranches", "false", 1, 1, PullRequestTrigger.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPullRequestTrigger_Paths(), this.getExpression(), null, "paths", null, 0, -1,
-				PullRequestTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPullRequestTrigger_IgnoreSpecifiedPaths(), ecorePackage.getEBoolean(), "ignoreSpecifiedPaths",
-				"false", 1, 1, PullRequestTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pullRequestTargetTriggerEClass, PullRequestTargetTrigger.class, "PullRequestTargetTrigger",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pushTriggerEClass, PushTrigger.class, "PushTrigger", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPushTrigger_Branches(), this.getExpression(), null, "branches", null, 0, -1,
-				PushTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPushTrigger_IgnoreSpecifiedBranches(), ecorePackage.getEBoolean(), "ignoreSpecifiedBranches",
-				"false", 1, 1, PushTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPushTrigger_Paths(), this.getExpression(), null, "paths", null, 0, -1, PushTrigger.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPushTrigger_IgnoreSpecifiedPaths(), ecorePackage.getEBoolean(), "ignoreSpecifiedPaths",
-				"false", 1, 1, PushTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPushTrigger_Tags(), this.getExpression(), null, "tags", null, 0, -1, PushTrigger.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3180,9 +3197,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(workflowCallTriggerEClass, WorkflowCallTrigger.class, "WorkflowCallTrigger", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkflowCallTrigger_Inputs(), this.getInput(), null, "inputs", null, 0, -1,
-				WorkflowCallTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkflowCallTrigger_Outputs(), this.getOutput(), null, "outputs", null, 0, -1,
 				WorkflowCallTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3192,9 +3206,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(workflowDispatchTriggerEClass, WorkflowDispatchTrigger.class, "WorkflowDispatchTrigger",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkflowDispatchTrigger_Inputs(), this.getInput(), null, "inputs", null, 0, -1,
-				WorkflowDispatchTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(permissionEClass, Map.Entry.class, "Permission", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);

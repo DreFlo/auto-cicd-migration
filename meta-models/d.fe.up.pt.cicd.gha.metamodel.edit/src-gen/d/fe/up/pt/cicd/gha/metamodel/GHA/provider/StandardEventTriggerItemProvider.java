@@ -23,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StandardEventTriggerItemProvider extends TriggerItemProvider {
+public class StandardEventTriggerItemProvider extends EventTypeTriggerItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -46,7 +46,6 @@ public class StandardEventTriggerItemProvider extends TriggerItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addEventPropertyDescriptor(object);
-			addEventTypesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -65,22 +64,6 @@ public class StandardEventTriggerItemProvider extends TriggerItemProvider {
 								"_UI_StandardEventTrigger_type"),
 						GHAPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Event Types feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEventTypesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_StandardEventTrigger_eventTypes_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_StandardEventTrigger_eventTypes_feature",
-						"_UI_StandardEventTrigger_type"),
-				GHAPackage.Literals.STANDARD_EVENT_TRIGGER__EVENT_TYPES, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -131,7 +114,6 @@ public class StandardEventTriggerItemProvider extends TriggerItemProvider {
 
 		switch (notification.getFeatureID(StandardEventTrigger.class)) {
 		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT:
-		case GHAPackage.STANDARD_EVENT_TRIGGER__EVENT_TYPES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

@@ -16,7 +16,9 @@ Require-Bundle: d.fe.up.pt.cicd.gha.dsl,
  org.eclipse.ui.ide;bundle-version="3.18.500",
  org.eclipse.ui,
  org.eclipse.compare,
- org.eclipse.xtext.builder
+ org.eclipse.xtext.builder,
+ org.eclipse.xtext.xbase.ui,
+ org.eclipse.xtext.common.types.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: d.fe.up.pt.cicd.gha.dsl.ui.quickfix,

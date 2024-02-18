@@ -13,7 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger#getInputs <em>Inputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger#getSecrets <em>Secrets</em>}</li>
  * </ul>
@@ -22,19 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface WorkflowCallTrigger extends Trigger {
-	/**
-	 * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Input}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inputs</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getWorkflowCallTrigger_Inputs()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Input> getInputs();
-
+public interface WorkflowCallTrigger extends InputTrigger {
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Output}.

@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Standard Event Trigger</b></em>'.
@@ -14,14 +12,13 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger#getEvent <em>Event</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger#getEventTypes <em>Event Types</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getStandardEventTrigger()
  * @model
  * @generated
  */
-public interface StandardEventTrigger extends Trigger {
+public interface StandardEventTrigger extends EventTypeTrigger {
 	/**
 	 * Returns the value of the '<em><b>Event</b></em>' attribute.
 	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.gha.metamodel.GHA.EVENTS}.
@@ -46,19 +43,5 @@ public interface StandardEventTrigger extends Trigger {
 	 * @generated
 	 */
 	void setEvent(EVENTS value);
-
-	/**
-	 * Returns the value of the '<em><b>Event Types</b></em>' attribute list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES}.
-	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Event Types</em>' attribute list.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getStandardEventTrigger_EventTypes()
-	 * @model
-	 * @generated
-	 */
-	EList<WEBHOOK_ACTIVITY_TYPES> getEventTypes();
 
 } // StandardEventTrigger

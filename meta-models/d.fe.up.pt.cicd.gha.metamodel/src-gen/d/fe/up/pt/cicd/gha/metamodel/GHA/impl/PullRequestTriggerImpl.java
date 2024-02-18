@@ -5,8 +5,8 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES;
-
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -18,8 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTriggerImpl#getEventTypes <em>Event Types</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTriggerImpl#getBranches <em>Branches</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTriggerImpl#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTriggerImpl#getPaths <em>Paths</em>}</li>
@@ -40,17 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTrigger {
-	/**
-	 * The cached value of the '{@link #getEventTypes() <em>Event Types</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEventTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<WEBHOOK_ACTIVITY_TYPES> eventTypes;
-
+public class PullRequestTriggerImpl extends EventTypeTriggerImpl implements PullRequestTrigger {
 	/**
 	 * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -128,20 +115,6 @@ public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTr
 	@Override
 	protected EClass eStaticClass() {
 		return GHAPackage.Literals.PULL_REQUEST_TRIGGER;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<WEBHOOK_ACTIVITY_TYPES> getEventTypes() {
-		if (eventTypes == null) {
-			eventTypes = new EDataTypeUniqueEList<WEBHOOK_ACTIVITY_TYPES>(WEBHOOK_ACTIVITY_TYPES.class, this,
-					GHAPackage.PULL_REQUEST_TRIGGER__EVENT_TYPES);
-		}
-		return eventTypes;
 	}
 
 	/**
@@ -246,8 +219,6 @@ public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTr
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case GHAPackage.PULL_REQUEST_TRIGGER__EVENT_TYPES:
-			return getEventTypes();
 		case GHAPackage.PULL_REQUEST_TRIGGER__BRANCHES:
 			return getBranches();
 		case GHAPackage.PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
@@ -269,10 +240,6 @@ public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTr
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case GHAPackage.PULL_REQUEST_TRIGGER__EVENT_TYPES:
-			getEventTypes().clear();
-			getEventTypes().addAll((Collection<? extends WEBHOOK_ACTIVITY_TYPES>) newValue);
-			return;
 		case GHAPackage.PULL_REQUEST_TRIGGER__BRANCHES:
 			getBranches().clear();
 			getBranches().addAll((Collection<? extends Expression>) newValue);
@@ -299,9 +266,6 @@ public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTr
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case GHAPackage.PULL_REQUEST_TRIGGER__EVENT_TYPES:
-			getEventTypes().clear();
-			return;
 		case GHAPackage.PULL_REQUEST_TRIGGER__BRANCHES:
 			getBranches().clear();
 			return;
@@ -326,8 +290,6 @@ public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTr
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case GHAPackage.PULL_REQUEST_TRIGGER__EVENT_TYPES:
-			return eventTypes != null && !eventTypes.isEmpty();
 		case GHAPackage.PULL_REQUEST_TRIGGER__BRANCHES:
 			return branches != null && !branches.isEmpty();
 		case GHAPackage.PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
@@ -346,14 +308,72 @@ public class PullRequestTriggerImpl extends TriggerImpl implements PullRequestTr
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == SpecifiedBranchesTrigger.class) {
+			switch (derivedFeatureID) {
+			case GHAPackage.PULL_REQUEST_TRIGGER__BRANCHES:
+				return GHAPackage.SPECIFIED_BRANCHES_TRIGGER__BRANCHES;
+			case GHAPackage.PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
+				return GHAPackage.SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES;
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == SpecifiedPathsTrigger.class) {
+			switch (derivedFeatureID) {
+			case GHAPackage.PULL_REQUEST_TRIGGER__PATHS:
+				return GHAPackage.SPECIFIED_PATHS_TRIGGER__PATHS;
+			case GHAPackage.PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS:
+				return GHAPackage.SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == SpecifiedBranchesTrigger.class) {
+			switch (baseFeatureID) {
+			case GHAPackage.SPECIFIED_BRANCHES_TRIGGER__BRANCHES:
+				return GHAPackage.PULL_REQUEST_TRIGGER__BRANCHES;
+			case GHAPackage.SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
+				return GHAPackage.PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES;
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == SpecifiedPathsTrigger.class) {
+			switch (baseFeatureID) {
+			case GHAPackage.SPECIFIED_PATHS_TRIGGER__PATHS:
+				return GHAPackage.PULL_REQUEST_TRIGGER__PATHS;
+			case GHAPackage.SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS:
+				return GHAPackage.PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (eventTypes: ");
-		result.append(eventTypes);
-		result.append(", ignoreSpecifiedBranches: ");
+		result.append(" (ignoreSpecifiedBranches: ");
 		result.append(ignoreSpecifiedBranches);
 		result.append(", ignoreSpecifiedPaths: ");
 		result.append(ignoreSpecifiedPaths);

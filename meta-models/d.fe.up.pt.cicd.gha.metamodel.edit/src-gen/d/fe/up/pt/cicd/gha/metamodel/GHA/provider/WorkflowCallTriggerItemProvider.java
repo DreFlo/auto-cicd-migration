@@ -23,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkflowCallTriggerItemProvider extends TriggerItemProvider {
+public class WorkflowCallTriggerItemProvider extends InputTriggerItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -61,7 +61,6 @@ public class WorkflowCallTriggerItemProvider extends TriggerItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GHAPackage.Literals.WORKFLOW_CALL_TRIGGER__INPUTS);
 			childrenFeatures.add(GHAPackage.Literals.WORKFLOW_CALL_TRIGGER__OUTPUTS);
 			childrenFeatures.add(GHAPackage.Literals.WORKFLOW_CALL_TRIGGER__SECRETS);
 		}
@@ -125,7 +124,6 @@ public class WorkflowCallTriggerItemProvider extends TriggerItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(WorkflowCallTrigger.class)) {
-		case GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS:
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__OUTPUTS:
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__SECRETS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -144,9 +142,6 @@ public class WorkflowCallTriggerItemProvider extends TriggerItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW_CALL_TRIGGER__INPUTS,
-				GHAFactory.eINSTANCE.createInput()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW_CALL_TRIGGER__OUTPUTS,
 				GHAFactory.eINSTANCE.createOutput()));

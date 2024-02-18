@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,8 +30,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl#getBranches <em>Branches</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl#getPaths <em>Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl#isIgnoreSpecifiedPaths <em>Ignore Specified Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl#getTags <em>Tags</em>}</li>
@@ -39,37 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
-	/**
-	 * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBranches()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Expression> branches;
-
-	/**
-	 * The default value of the '{@link #isIgnoreSpecifiedBranches() <em>Ignore Specified Branches</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIgnoreSpecifiedBranches()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IGNORE_SPECIFIED_BRANCHES_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIgnoreSpecifiedBranches() <em>Ignore Specified Branches</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIgnoreSpecifiedBranches()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean ignoreSpecifiedBranches = IGNORE_SPECIFIED_BRANCHES_EDEFAULT;
-
+public class PushTriggerImpl extends SpecifiedBranchesTriggerImpl implements PushTrigger {
 	/**
 	 * The cached value of the '{@link #getPaths() <em>Paths</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -155,44 +124,6 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	 * @generated
 	 */
 	@Override
-	public EList<Expression> getBranches() {
-		if (branches == null) {
-			branches = new EObjectContainmentEList<Expression>(Expression.class, this,
-					GHAPackage.PUSH_TRIGGER__BRANCHES);
-		}
-		return branches;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isIgnoreSpecifiedBranches() {
-		return ignoreSpecifiedBranches;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setIgnoreSpecifiedBranches(boolean newIgnoreSpecifiedBranches) {
-		boolean oldIgnoreSpecifiedBranches = ignoreSpecifiedBranches;
-		ignoreSpecifiedBranches = newIgnoreSpecifiedBranches;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES,
-					oldIgnoreSpecifiedBranches, ignoreSpecifiedBranches));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Expression> getPaths() {
 		if (paths == null) {
 			paths = new EObjectContainmentEList<Expression>(Expression.class, this, GHAPackage.PUSH_TRIGGER__PATHS);
@@ -269,8 +200,6 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case GHAPackage.PUSH_TRIGGER__BRANCHES:
-			return ((InternalEList<?>) getBranches()).basicRemove(otherEnd, msgs);
 		case GHAPackage.PUSH_TRIGGER__PATHS:
 			return ((InternalEList<?>) getPaths()).basicRemove(otherEnd, msgs);
 		case GHAPackage.PUSH_TRIGGER__TAGS:
@@ -287,10 +216,6 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case GHAPackage.PUSH_TRIGGER__BRANCHES:
-			return getBranches();
-		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
-			return isIgnoreSpecifiedBranches();
 		case GHAPackage.PUSH_TRIGGER__PATHS:
 			return getPaths();
 		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS:
@@ -312,13 +237,6 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case GHAPackage.PUSH_TRIGGER__BRANCHES:
-			getBranches().clear();
-			getBranches().addAll((Collection<? extends Expression>) newValue);
-			return;
-		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
-			setIgnoreSpecifiedBranches((Boolean) newValue);
-			return;
 		case GHAPackage.PUSH_TRIGGER__PATHS:
 			getPaths().clear();
 			getPaths().addAll((Collection<? extends Expression>) newValue);
@@ -345,12 +263,6 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case GHAPackage.PUSH_TRIGGER__BRANCHES:
-			getBranches().clear();
-			return;
-		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
-			setIgnoreSpecifiedBranches(IGNORE_SPECIFIED_BRANCHES_EDEFAULT);
-			return;
 		case GHAPackage.PUSH_TRIGGER__PATHS:
 			getPaths().clear();
 			return;
@@ -375,10 +287,6 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case GHAPackage.PUSH_TRIGGER__BRANCHES:
-			return branches != null && !branches.isEmpty();
-		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
-			return ignoreSpecifiedBranches != IGNORE_SPECIFIED_BRANCHES_EDEFAULT;
 		case GHAPackage.PUSH_TRIGGER__PATHS:
 			return paths != null && !paths.isEmpty();
 		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS:
@@ -397,14 +305,52 @@ public class PushTriggerImpl extends TriggerImpl implements PushTrigger {
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == SpecifiedPathsTrigger.class) {
+			switch (derivedFeatureID) {
+			case GHAPackage.PUSH_TRIGGER__PATHS:
+				return GHAPackage.SPECIFIED_PATHS_TRIGGER__PATHS;
+			case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS:
+				return GHAPackage.SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == SpecifiedPathsTrigger.class) {
+			switch (baseFeatureID) {
+			case GHAPackage.SPECIFIED_PATHS_TRIGGER__PATHS:
+				return GHAPackage.PUSH_TRIGGER__PATHS;
+			case GHAPackage.SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS:
+				return GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (ignoreSpecifiedBranches: ");
-		result.append(ignoreSpecifiedBranches);
-		result.append(", ignoreSpecifiedPaths: ");
+		result.append(" (ignoreSpecifiedPaths: ");
 		result.append(ignoreSpecifiedPaths);
 		result.append(", ignoreSpecifiedTags: ");
 		result.append(ignoreSpecifiedTags);

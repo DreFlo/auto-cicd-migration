@@ -170,26 +170,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//StagingEnvironment/url"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GHA.ecore#//Trigger"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//EventTypeTrigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//EventTypeTrigger/eventTypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//SpecifiedBranchesTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//SpecifiedBranchesTrigger/branches"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//SpecifiedBranchesTrigger/ignoreSpecifiedBranches"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//SpecifiedPathsTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//SpecifiedPathsTrigger/paths"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//SpecifiedPathsTrigger/ignoreSpecifiedPaths"/>
+    </genClasses>
     <genClasses ecoreClass="GHA.ecore#//StandardEventTrigger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//StandardEventTrigger/event"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//StandardEventTrigger/eventTypes"/>
     </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//WorkflowRunTrigger">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowRunTrigger/branches"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//WorkflowRunTrigger/ignoreSpecifiedBranches"/>
+    <genClasses image="false" ecoreClass="GHA.ecore#//InputTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//InputTrigger/inputs"/>
     </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//PullRequestTrigger">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PullRequestTrigger/eventTypes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PullRequestTrigger/branches"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PullRequestTrigger/ignoreSpecifiedBranches"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PullRequestTrigger/paths"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PullRequestTrigger/ignoreSpecifiedPaths"/>
-    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//WorkflowRunTrigger"/>
+    <genClasses ecoreClass="GHA.ecore#//PullRequestTrigger"/>
+    <genClasses ecoreClass="GHA.ecore#//PullRequestTargetTrigger"/>
     <genClasses ecoreClass="GHA.ecore#//PushTrigger">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PushTrigger/branches"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PushTrigger/ignoreSpecifiedBranches"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PushTrigger/paths"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PushTrigger/ignoreSpecifiedPaths"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//PushTrigger/tags"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//PushTrigger/ignoreSpecifiedTags"/>
     </genClasses>
@@ -197,13 +198,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ScheduleTrigger/crons"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//WorkflowCallTrigger">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallTrigger/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallTrigger/outputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallTrigger/secrets"/>
     </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//WorkflowDispatchTrigger">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowDispatchTrigger/inputs"/>
-    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//WorkflowDispatchTrigger"/>
     <genClasses ecoreClass="GHA.ecore#//Permission">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Permission/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Permission/value"/>

@@ -11,4 +11,8 @@ public class SyntaxException extends Exception {
 	public SyntaxException(List<String> messages) {
         super("Syntax Error: " + String.join("\n", messages));
     }
+
+	public SyntaxException(String message) {
+		super("Syntax Error: " + message);
+	}
 }

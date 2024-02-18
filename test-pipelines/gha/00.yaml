@@ -1,4 +1,36 @@
- 
-name:          "Workflow"
+name: ${{always()}}
 
-run-name: eu${{ inputs.deploy_target || github.tu }}final
+run-name: "string with spaces"
+
+on:
+  check_run:
+    types: assigned
+  workflow_run:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - path
+  push:
+    tags:
+      - tag
+  schedule:
+    - "cron": "oooooo"
+  workflow_call:
+    inputs:
+      username:
+        description: 'A username passed from the caller workflow'
+        default: 'john-doe'
+        required: false
+        type: string
+    outputs:
+      workflow_output1:
+        description: "The first job output"
+        value: ${{ jobs.my_job.outputs.job_output1 }}
+      workflow_output2:
+        description: "The second job output"
+        value: ${{ jobs.my_job.outputs.job_output2 }}
+    secrets:
+      access-token:
+        description: 'A token passed from the caller workflow'
+        required: false

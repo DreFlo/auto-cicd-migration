@@ -25,7 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PushTriggerItemProvider extends TriggerItemProvider {
+public class PushTriggerItemProvider extends SpecifiedBranchesTriggerItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -47,27 +47,10 @@ public class PushTriggerItemProvider extends TriggerItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIgnoreSpecifiedBranchesPropertyDescriptor(object);
 			addIgnoreSpecifiedPathsPropertyDescriptor(object);
 			addIgnoreSpecifiedTagsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Ignore Specified Branches feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIgnoreSpecifiedBranchesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_PushTrigger_ignoreSpecifiedBranches_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_PushTrigger_ignoreSpecifiedBranches_feature",
-						"_UI_PushTrigger_type"),
-				GHAPackage.Literals.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -77,13 +60,13 @@ public class PushTriggerItemProvider extends TriggerItemProvider {
 	 * @generated
 	 */
 	protected void addIgnoreSpecifiedPathsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_PushTrigger_ignoreSpecifiedPaths_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_PushTrigger_ignoreSpecifiedPaths_feature",
-								"_UI_PushTrigger_type"),
-						GHAPackage.Literals.PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS, true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SpecifiedPathsTrigger_ignoreSpecifiedPaths_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SpecifiedPathsTrigger_ignoreSpecifiedPaths_feature", "_UI_SpecifiedPathsTrigger_type"),
+				GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -114,8 +97,7 @@ public class PushTriggerItemProvider extends TriggerItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES);
-			childrenFeatures.add(GHAPackage.Literals.PUSH_TRIGGER__PATHS);
+			childrenFeatures.add(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS);
 			childrenFeatures.add(GHAPackage.Literals.PUSH_TRIGGER__TAGS);
 		}
 		return childrenFeatures;
@@ -179,12 +161,10 @@ public class PushTriggerItemProvider extends TriggerItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(PushTrigger.class)) {
-		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES:
 		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS:
 		case GHAPackage.PUSH_TRIGGER__IGNORE_SPECIFIED_TAGS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case GHAPackage.PUSH_TRIGGER__BRANCHES:
 		case GHAPackage.PUSH_TRIGGER__PATHS:
 		case GHAPackage.PUSH_TRIGGER__TAGS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -204,148 +184,76 @@ public class PushTriggerItemProvider extends TriggerItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createConcat()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createEquality()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createOr()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createOr()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createAnd()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createNot()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createNot()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createContains()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createStartsWith()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createEndsWith()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createFormat()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createFormat()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createJoin()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createJoin()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createToJSON()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createToJSON()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createFromJSON()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createHashFiles()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createAlways()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createAlways()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createSuccess()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createSuccess()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createCancelled()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES, GHAFactory.eINSTANCE.createFailure()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createFailure()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createStringLiteral()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createDoubleLiteral()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createVariable()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__BRANCHES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createFailure()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS, GHAFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__PATHS,
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
@@ -432,8 +340,8 @@ public class PushTriggerItemProvider extends TriggerItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == GHAPackage.Literals.PUSH_TRIGGER__BRANCHES
-				|| childFeature == GHAPackage.Literals.PUSH_TRIGGER__PATHS
+		boolean qualify = childFeature == GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES
+				|| childFeature == GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS
 				|| childFeature == GHAPackage.Literals.PUSH_TRIGGER__TAGS;
 
 		if (qualify) {

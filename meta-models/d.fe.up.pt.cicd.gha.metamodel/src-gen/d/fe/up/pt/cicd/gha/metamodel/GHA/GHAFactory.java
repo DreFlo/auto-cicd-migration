@@ -103,6 +103,15 @@ public interface GHAFactory extends EFactory {
 	PullRequestTrigger createPullRequestTrigger();
 
 	/**
+	 * Returns a new object of class '<em>Pull Request Target Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pull Request Target Trigger</em>'.
+	 * @generated
+	 */
+	PullRequestTargetTrigger createPullRequestTargetTrigger();
+
+	/**
 	 * Returns a new object of class '<em>Push Trigger</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

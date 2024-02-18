@@ -19,6 +19,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Failure;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Format;
@@ -27,6 +28,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Join;
@@ -41,12 +43,15 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
@@ -175,8 +180,28 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseEventTypeTrigger(EventTypeTrigger object) {
+			return createEventTypeTriggerAdapter();
+		}
+
+		@Override
+		public Adapter caseSpecifiedBranchesTrigger(SpecifiedBranchesTrigger object) {
+			return createSpecifiedBranchesTriggerAdapter();
+		}
+
+		@Override
+		public Adapter caseSpecifiedPathsTrigger(SpecifiedPathsTrigger object) {
+			return createSpecifiedPathsTriggerAdapter();
+		}
+
+		@Override
 		public Adapter caseStandardEventTrigger(StandardEventTrigger object) {
 			return createStandardEventTriggerAdapter();
+		}
+
+		@Override
+		public Adapter caseInputTrigger(InputTrigger object) {
+			return createInputTriggerAdapter();
 		}
 
 		@Override
@@ -187,6 +212,11 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter casePullRequestTrigger(PullRequestTrigger object) {
 			return createPullRequestTriggerAdapter();
+		}
+
+		@Override
+		public Adapter casePullRequestTargetTrigger(PullRequestTargetTrigger object) {
+			return createPullRequestTargetTriggerAdapter();
 		}
 
 		@Override
@@ -590,6 +620,48 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger <em>Event Type Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger
+	 * @generated
+	 */
+	public Adapter createEventTypeTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger <em>Specified Branches Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger
+	 * @generated
+	 */
+	public Adapter createSpecifiedBranchesTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger <em>Specified Paths Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger
+	 * @generated
+	 */
+	public Adapter createSpecifiedPathsTriggerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger <em>Standard Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -600,6 +672,20 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStandardEventTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger <em>Input Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger
+	 * @generated
+	 */
+	public Adapter createInputTriggerAdapter() {
 		return null;
 	}
 
@@ -628,6 +714,20 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPullRequestTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger <em>Pull Request Target Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger
+	 * @generated
+	 */
+	public Adapter createPullRequestTargetTriggerAdapter() {
 		return null;
 	}
 

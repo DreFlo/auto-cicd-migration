@@ -950,23 +950,14 @@ public interface GHAPackage extends EPackage {
 	int TRIGGER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl <em>Standard Event Trigger</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EventTypeTriggerImpl <em>Event Type Trigger</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStandardEventTrigger()
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EventTypeTriggerImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEventTypeTrigger()
 	 * @generated
 	 */
-	int STANDARD_EVENT_TRIGGER = 9;
-
-	/**
-	 * The feature id for the '<em><b>Event</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STANDARD_EVENT_TRIGGER__EVENT = TRIGGER_FEATURE_COUNT + 0;
+	int EVENT_TYPE_TRIGGER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
@@ -975,7 +966,145 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STANDARD_EVENT_TRIGGER__EVENT_TYPES = TRIGGER_FEATURE_COUNT + 1;
+	int EVENT_TYPE_TRIGGER__EVENT_TYPES = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Event Type Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_TYPE_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Event Type Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_TYPE_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedBranchesTriggerImpl <em>Specified Branches Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedBranchesTriggerImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSpecifiedBranchesTrigger()
+	 * @generated
+	 */
+	int SPECIFIED_BRANCHES_TRIGGER = 10;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_BRANCHES_TRIGGER__BRANCHES = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Specified Branches Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Specified Branches Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_BRANCHES_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedPathsTriggerImpl <em>Specified Paths Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedPathsTriggerImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSpecifiedPathsTrigger()
+	 * @generated
+	 */
+	int SPECIFIED_PATHS_TRIGGER = 11;
+
+	/**
+	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_PATHS_TRIGGER__PATHS = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Paths</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Specified Paths Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_PATHS_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Specified Paths Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIFIED_PATHS_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl <em>Standard Event Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStandardEventTrigger()
+	 * @generated
+	 */
+	int STANDARD_EVENT_TRIGGER = 12;
+
+	/**
+	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_EVENT_TRIGGER__EVENT_TYPES = EVENT_TYPE_TRIGGER__EVENT_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Event</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STANDARD_EVENT_TRIGGER__EVENT = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Standard Event Trigger</em>' class.
@@ -984,7 +1113,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STANDARD_EVENT_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 2;
+	int STANDARD_EVENT_TRIGGER_FEATURE_COUNT = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Standard Event Trigger</em>' class.
@@ -993,7 +1122,44 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STANDARD_EVENT_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+	int STANDARD_EVENT_TRIGGER_OPERATION_COUNT = EVENT_TYPE_TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.InputTriggerImpl <em>Input Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.InputTriggerImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getInputTrigger()
+	 * @generated
+	 */
+	int INPUT_TRIGGER = 13;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_TRIGGER__INPUTS = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Input Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Input Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowRunTriggerImpl <em>Workflow Run Trigger</em>}' class.
@@ -1003,7 +1169,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowRunTrigger()
 	 * @generated
 	 */
-	int WORKFLOW_RUN_TRIGGER = 10;
+	int WORKFLOW_RUN_TRIGGER = 14;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -1012,7 +1178,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_RUN_TRIGGER__BRANCHES = TRIGGER_FEATURE_COUNT + 0;
+	int WORKFLOW_RUN_TRIGGER__BRANCHES = SPECIFIED_BRANCHES_TRIGGER__BRANCHES;
 
 	/**
 	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
@@ -1021,7 +1187,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_RUN_TRIGGER__IGNORE_SPECIFIED_BRANCHES = TRIGGER_FEATURE_COUNT + 1;
+	int WORKFLOW_RUN_TRIGGER__IGNORE_SPECIFIED_BRANCHES = SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES;
 
 	/**
 	 * The number of structural features of the '<em>Workflow Run Trigger</em>' class.
@@ -1030,7 +1196,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_RUN_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 2;
+	int WORKFLOW_RUN_TRIGGER_FEATURE_COUNT = SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Workflow Run Trigger</em>' class.
@@ -1039,7 +1205,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_RUN_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+	int WORKFLOW_RUN_TRIGGER_OPERATION_COUNT = SPECIFIED_BRANCHES_TRIGGER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTriggerImpl <em>Pull Request Trigger</em>}' class.
@@ -1049,7 +1215,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPullRequestTrigger()
 	 * @generated
 	 */
-	int PULL_REQUEST_TRIGGER = 11;
+	int PULL_REQUEST_TRIGGER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
@@ -1058,7 +1224,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER__EVENT_TYPES = TRIGGER_FEATURE_COUNT + 0;
+	int PULL_REQUEST_TRIGGER__EVENT_TYPES = EVENT_TYPE_TRIGGER__EVENT_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -1067,7 +1233,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER__BRANCHES = TRIGGER_FEATURE_COUNT + 1;
+	int PULL_REQUEST_TRIGGER__BRANCHES = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
@@ -1076,7 +1242,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES = TRIGGER_FEATURE_COUNT + 2;
+	int PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
@@ -1085,7 +1251,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER__PATHS = TRIGGER_FEATURE_COUNT + 3;
+	int PULL_REQUEST_TRIGGER__PATHS = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Ignore Specified Paths</b></em>' attribute.
@@ -1094,7 +1260,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS = TRIGGER_FEATURE_COUNT + 4;
+	int PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Pull Request Trigger</em>' class.
@@ -1103,7 +1269,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 5;
+	int PULL_REQUEST_TRIGGER_FEATURE_COUNT = EVENT_TYPE_TRIGGER_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Pull Request Trigger</em>' class.
@@ -1112,7 +1278,80 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PULL_REQUEST_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+	int PULL_REQUEST_TRIGGER_OPERATION_COUNT = EVENT_TYPE_TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTargetTriggerImpl <em>Pull Request Target Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTargetTriggerImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPullRequestTargetTrigger()
+	 * @generated
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER = 16;
+
+	/**
+	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER__EVENT_TYPES = PULL_REQUEST_TRIGGER__EVENT_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER__BRANCHES = PULL_REQUEST_TRIGGER__BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER__IGNORE_SPECIFIED_BRANCHES = PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER__PATHS = PULL_REQUEST_TRIGGER__PATHS;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Paths</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER__IGNORE_SPECIFIED_PATHS = PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS;
+
+	/**
+	 * The number of structural features of the '<em>Pull Request Target Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER_FEATURE_COUNT = PULL_REQUEST_TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Pull Request Target Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PULL_REQUEST_TARGET_TRIGGER_OPERATION_COUNT = PULL_REQUEST_TRIGGER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl <em>Push Trigger</em>}' class.
@@ -1122,7 +1361,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPushTrigger()
 	 * @generated
 	 */
-	int PUSH_TRIGGER = 12;
+	int PUSH_TRIGGER = 17;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -1131,7 +1370,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER__BRANCHES = TRIGGER_FEATURE_COUNT + 0;
+	int PUSH_TRIGGER__BRANCHES = SPECIFIED_BRANCHES_TRIGGER__BRANCHES;
 
 	/**
 	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
@@ -1140,7 +1379,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES = TRIGGER_FEATURE_COUNT + 1;
+	int PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES = SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES;
 
 	/**
 	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
@@ -1149,7 +1388,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER__PATHS = TRIGGER_FEATURE_COUNT + 2;
+	int PUSH_TRIGGER__PATHS = SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Ignore Specified Paths</b></em>' attribute.
@@ -1158,7 +1397,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS = TRIGGER_FEATURE_COUNT + 3;
+	int PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS = SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
@@ -1167,7 +1406,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER__TAGS = TRIGGER_FEATURE_COUNT + 4;
+	int PUSH_TRIGGER__TAGS = SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Ignore Specified Tags</b></em>' attribute.
@@ -1176,7 +1415,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER__IGNORE_SPECIFIED_TAGS = TRIGGER_FEATURE_COUNT + 5;
+	int PUSH_TRIGGER__IGNORE_SPECIFIED_TAGS = SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Push Trigger</em>' class.
@@ -1185,7 +1424,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 6;
+	int PUSH_TRIGGER_FEATURE_COUNT = SPECIFIED_BRANCHES_TRIGGER_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Push Trigger</em>' class.
@@ -1194,7 +1433,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+	int PUSH_TRIGGER_OPERATION_COUNT = SPECIFIED_BRANCHES_TRIGGER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ScheduleTriggerImpl <em>Schedule Trigger</em>}' class.
@@ -1204,7 +1443,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getScheduleTrigger()
 	 * @generated
 	 */
-	int SCHEDULE_TRIGGER = 13;
+	int SCHEDULE_TRIGGER = 18;
 
 	/**
 	 * The feature id for the '<em><b>Crons</b></em>' containment reference list.
@@ -1241,7 +1480,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowCallTrigger()
 	 * @generated
 	 */
-	int WORKFLOW_CALL_TRIGGER = 14;
+	int WORKFLOW_CALL_TRIGGER = 19;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1250,7 +1489,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_CALL_TRIGGER__INPUTS = TRIGGER_FEATURE_COUNT + 0;
+	int WORKFLOW_CALL_TRIGGER__INPUTS = INPUT_TRIGGER__INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -1259,7 +1498,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_CALL_TRIGGER__OUTPUTS = TRIGGER_FEATURE_COUNT + 1;
+	int WORKFLOW_CALL_TRIGGER__OUTPUTS = INPUT_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Secrets</b></em>' containment reference list.
@@ -1268,7 +1507,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_CALL_TRIGGER__SECRETS = TRIGGER_FEATURE_COUNT + 2;
+	int WORKFLOW_CALL_TRIGGER__SECRETS = INPUT_TRIGGER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Workflow Call Trigger</em>' class.
@@ -1277,7 +1516,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_CALL_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 3;
+	int WORKFLOW_CALL_TRIGGER_FEATURE_COUNT = INPUT_TRIGGER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Workflow Call Trigger</em>' class.
@@ -1286,7 +1525,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_CALL_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+	int WORKFLOW_CALL_TRIGGER_OPERATION_COUNT = INPUT_TRIGGER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowDispatchTriggerImpl <em>Workflow Dispatch Trigger</em>}' class.
@@ -1296,7 +1535,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowDispatchTrigger()
 	 * @generated
 	 */
-	int WORKFLOW_DISPATCH_TRIGGER = 15;
+	int WORKFLOW_DISPATCH_TRIGGER = 20;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1305,7 +1544,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_DISPATCH_TRIGGER__INPUTS = TRIGGER_FEATURE_COUNT + 0;
+	int WORKFLOW_DISPATCH_TRIGGER__INPUTS = INPUT_TRIGGER__INPUTS;
 
 	/**
 	 * The number of structural features of the '<em>Workflow Dispatch Trigger</em>' class.
@@ -1314,7 +1553,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_DISPATCH_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+	int WORKFLOW_DISPATCH_TRIGGER_FEATURE_COUNT = INPUT_TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Workflow Dispatch Trigger</em>' class.
@@ -1323,7 +1562,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_DISPATCH_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+	int WORKFLOW_DISPATCH_TRIGGER_OPERATION_COUNT = INPUT_TRIGGER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PermissionImpl <em>Permission</em>}' class.
@@ -1333,7 +1572,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPermission()
 	 * @generated
 	 */
-	int PERMISSION = 16;
+	int PERMISSION = 21;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1379,7 +1618,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getConcurrencyGroup()
 	 * @generated
 	 */
-	int CONCURRENCY_GROUP = 17;
+	int CONCURRENCY_GROUP = 22;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -1425,7 +1664,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDefaults()
 	 * @generated
 	 */
-	int DEFAULTS = 18;
+	int DEFAULTS = 23;
 
 	/**
 	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
@@ -1471,7 +1710,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableAssignment()
 	 * @generated
 	 */
-	int VARIABLE_ASSIGNMENT = 19;
+	int VARIABLE_ASSIGNMENT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1517,7 +1756,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 20;
+	int EXPRESSION = 25;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -1545,7 +1784,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 21;
+	int BINARY_OP = 26;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1591,7 +1830,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 22;
+	int CONCAT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -1628,7 +1867,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEquality()
 	 * @generated
 	 */
-	int EQUALITY = 23;
+	int EQUALITY = 28;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1683,7 +1922,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getComparison()
 	 * @generated
 	 */
-	int COMPARISON = 24;
+	int COMPARISON = 29;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1738,7 +1977,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 25;
+	int LOGICAL_OP = 30;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1784,7 +2023,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 26;
+	int OR = 31;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1830,7 +2069,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 27;
+	int AND = 32;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1876,7 +2115,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 28;
+	int UNARY_OP = 33;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1913,7 +2152,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 29;
+	int NOT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1950,7 +2189,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBuiltInFunctionCall()
 	 * @generated
 	 */
-	int BUILT_IN_FUNCTION_CALL = 30;
+	int BUILT_IN_FUNCTION_CALL = 35;
 
 	/**
 	 * The number of structural features of the '<em>Built In Function Call</em>' class.
@@ -1978,7 +2217,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 31;
+	int CONTAINS = 36;
 
 	/**
 	 * The feature id for the '<em><b>Search</b></em>' containment reference.
@@ -2024,7 +2263,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStartsWith()
 	 * @generated
 	 */
-	int STARTS_WITH = 32;
+	int STARTS_WITH = 37;
 
 	/**
 	 * The feature id for the '<em><b>Search String</b></em>' containment reference.
@@ -2070,7 +2309,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEndsWith()
 	 * @generated
 	 */
-	int ENDS_WITH = 33;
+	int ENDS_WITH = 38;
 
 	/**
 	 * The feature id for the '<em><b>Search String</b></em>' containment reference.
@@ -2116,7 +2355,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFormat()
 	 * @generated
 	 */
-	int FORMAT = 34;
+	int FORMAT = 39;
 
 	/**
 	 * The feature id for the '<em><b>String</b></em>' containment reference.
@@ -2162,7 +2401,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getJoin()
 	 * @generated
 	 */
-	int JOIN = 35;
+	int JOIN = 40;
 
 	/**
 	 * The feature id for the '<em><b>Array</b></em>' containment reference.
@@ -2208,7 +2447,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getToJSON()
 	 * @generated
 	 */
-	int TO_JSON = 36;
+	int TO_JSON = 41;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2245,7 +2484,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFromJSON()
 	 * @generated
 	 */
-	int FROM_JSON = 37;
+	int FROM_JSON = 42;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2282,7 +2521,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getHashFiles()
 	 * @generated
 	 */
-	int HASH_FILES = 38;
+	int HASH_FILES = 43;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -2319,7 +2558,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStatusCheck()
 	 * @generated
 	 */
-	int STATUS_CHECK = 39;
+	int STATUS_CHECK = 44;
 
 	/**
 	 * The number of structural features of the '<em>Status Check</em>' class.
@@ -2347,7 +2586,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAlways()
 	 * @generated
 	 */
-	int ALWAYS = 40;
+	int ALWAYS = 45;
 
 	/**
 	 * The number of structural features of the '<em>Always</em>' class.
@@ -2375,7 +2614,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSuccess()
 	 * @generated
 	 */
-	int SUCCESS = 41;
+	int SUCCESS = 46;
 
 	/**
 	 * The number of structural features of the '<em>Success</em>' class.
@@ -2403,7 +2642,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCancelled()
 	 * @generated
 	 */
-	int CANCELLED = 42;
+	int CANCELLED = 47;
 
 	/**
 	 * The number of structural features of the '<em>Cancelled</em>' class.
@@ -2431,7 +2670,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFailure()
 	 * @generated
 	 */
-	int FAILURE = 43;
+	int FAILURE = 48;
 
 	/**
 	 * The number of structural features of the '<em>Failure</em>' class.
@@ -2459,7 +2698,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 44;
+	int VALUE = 49;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -2487,7 +2726,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 45;
+	int LITERAL = 50;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -2515,7 +2754,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 46;
+	int STRING_LITERAL = 51;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2552,7 +2791,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 47;
+	int INTEGER_LITERAL = 52;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2589,7 +2828,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 48;
+	int DOUBLE_LITERAL = 53;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2626,7 +2865,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 49;
+	int BOOLEAN_LITERAL = 54;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2663,7 +2902,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 50;
+	int VARIABLE = 55;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2700,7 +2939,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getGitHubContext()
 	 * @generated
 	 */
-	int GIT_HUB_CONTEXT = 51;
+	int GIT_HUB_CONTEXT = 56;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' attribute.
@@ -2737,7 +2976,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableDereference()
 	 * @generated
 	 */
-	int VARIABLE_DEREFERENCE = 52;
+	int VARIABLE_DEREFERENCE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -2783,7 +3022,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 53;
+	int MATRIX = 58;
 
 	/**
 	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
@@ -2856,7 +3095,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrixAxis()
 	 * @generated
 	 */
-	int MATRIX_AXIS = 54;
+	int MATRIX_AXIS = 59;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2902,7 +3141,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 55;
+	int MATRIX_COMBINATION = 60;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' map.
@@ -2939,7 +3178,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 56;
+	int STEP = 61;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3039,7 +3278,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 57;
+	int COMMAND = 62;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3148,7 +3387,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPackage()
 	 * @generated
 	 */
-	int PACKAGE = 58;
+	int PACKAGE = 63;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3284,7 +3523,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 59;
+	int PARAMETER = 64;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3330,7 +3569,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 60;
+	int INPUT = 65;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3412,7 +3651,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSecret()
 	 * @generated
 	 */
-	int SECRET = 61;
+	int SECRET = 66;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3467,7 +3706,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 62;
+	int OUTPUT = 67;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3522,7 +3761,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEVENTS()
 	 * @generated
 	 */
-	int EVENTS = 63;
+	int EVENTS = 68;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES <em>WEBHOOK ACTIVITY TYPES</em>}' enum.
@@ -3532,7 +3771,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWEBHOOK_ACTIVITY_TYPES()
 	 * @generated
 	 */
-	int WEBHOOK_ACTIVITY_TYPES = 64;
+	int WEBHOOK_ACTIVITY_TYPES = 69;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES <em>PERMISSION SCOPES</em>}' enum.
@@ -3542,7 +3781,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPERMISSION_SCOPES()
 	 * @generated
 	 */
-	int PERMISSION_SCOPES = 65;
+	int PERMISSION_SCOPES = 70;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS <em>PERMISSIONS</em>}' enum.
@@ -3552,7 +3791,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPERMISSIONS()
 	 * @generated
 	 */
-	int PERMISSIONS = 66;
+	int PERMISSIONS = 71;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3562,7 +3801,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 67;
+	int EQUALITY_OPS = 72;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3572,7 +3811,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 68;
+	int COMPARISON_OPS = 73;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.CONTEXTS <em>CONTEXTS</em>}' enum.
@@ -3582,7 +3821,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCONTEXTS()
 	 * @generated
 	 */
-	int CONTEXTS = 69;
+	int CONTEXTS = 74;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.INPUT_TYPES <em>INPUT TYPES</em>}' enum.
@@ -3592,7 +3831,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getINPUT_TYPES()
 	 * @generated
 	 */
-	int INPUT_TYPES = 70;
+	int INPUT_TYPES = 75;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow <em>Workflow</em>}'.
@@ -4138,6 +4377,91 @@ public interface GHAPackage extends EPackage {
 	EClass getTrigger();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger <em>Event Type Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Event Type Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger
+	 * @generated
+	 */
+	EClass getEventTypeTrigger();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger#getEventTypes <em>Event Types</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Event Types</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.EventTypeTrigger#getEventTypes()
+	 * @see #getEventTypeTrigger()
+	 * @generated
+	 */
+	EAttribute getEventTypeTrigger_EventTypes();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger <em>Specified Branches Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Specified Branches Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger
+	 * @generated
+	 */
+	EClass getSpecifiedBranchesTrigger();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger#getBranches <em>Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Branches</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger#getBranches()
+	 * @see #getSpecifiedBranchesTrigger()
+	 * @generated
+	 */
+	EReference getSpecifiedBranchesTrigger_Branches();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Specified Branches</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger#isIgnoreSpecifiedBranches()
+	 * @see #getSpecifiedBranchesTrigger()
+	 * @generated
+	 */
+	EAttribute getSpecifiedBranchesTrigger_IgnoreSpecifiedBranches();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger <em>Specified Paths Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Specified Paths Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger
+	 * @generated
+	 */
+	EClass getSpecifiedPathsTrigger();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger#getPaths <em>Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Paths</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger#getPaths()
+	 * @see #getSpecifiedPathsTrigger()
+	 * @generated
+	 */
+	EReference getSpecifiedPathsTrigger_Paths();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger#isIgnoreSpecifiedPaths <em>Ignore Specified Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Specified Paths</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger#isIgnoreSpecifiedPaths()
+	 * @see #getSpecifiedPathsTrigger()
+	 * @generated
+	 */
+	EAttribute getSpecifiedPathsTrigger_IgnoreSpecifiedPaths();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger <em>Standard Event Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4159,15 +4483,25 @@ public interface GHAPackage extends EPackage {
 	EAttribute getStandardEventTrigger_Event();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger#getEventTypes <em>Event Types</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger <em>Input Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Event Types</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger#getEventTypes()
-	 * @see #getStandardEventTrigger()
+	 * @return the meta object for class '<em>Input Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger
 	 * @generated
 	 */
-	EAttribute getStandardEventTrigger_EventTypes();
+	EClass getInputTrigger();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger#getInputs <em>Inputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Inputs</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger#getInputs()
+	 * @see #getInputTrigger()
+	 * @generated
+	 */
+	EReference getInputTrigger_Inputs();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowRunTrigger <em>Workflow Run Trigger</em>}'.
@@ -4180,28 +4514,6 @@ public interface GHAPackage extends EPackage {
 	EClass getWorkflowRunTrigger();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowRunTrigger#getBranches <em>Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Branches</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowRunTrigger#getBranches()
-	 * @see #getWorkflowRunTrigger()
-	 * @generated
-	 */
-	EReference getWorkflowRunTrigger_Branches();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowRunTrigger#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ignore Specified Branches</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowRunTrigger#isIgnoreSpecifiedBranches()
-	 * @see #getWorkflowRunTrigger()
-	 * @generated
-	 */
-	EAttribute getWorkflowRunTrigger_IgnoreSpecifiedBranches();
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger <em>Pull Request Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4212,59 +4524,14 @@ public interface GHAPackage extends EPackage {
 	EClass getPullRequestTrigger();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#getEventTypes <em>Event Types</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger <em>Pull Request Target Trigger</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Event Types</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#getEventTypes()
-	 * @see #getPullRequestTrigger()
+	 * @return the meta object for class '<em>Pull Request Target Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger
 	 * @generated
 	 */
-	EAttribute getPullRequestTrigger_EventTypes();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#getBranches <em>Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Branches</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#getBranches()
-	 * @see #getPullRequestTrigger()
-	 * @generated
-	 */
-	EReference getPullRequestTrigger_Branches();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ignore Specified Branches</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#isIgnoreSpecifiedBranches()
-	 * @see #getPullRequestTrigger()
-	 * @generated
-	 */
-	EAttribute getPullRequestTrigger_IgnoreSpecifiedBranches();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#getPaths <em>Paths</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Paths</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#getPaths()
-	 * @see #getPullRequestTrigger()
-	 * @generated
-	 */
-	EReference getPullRequestTrigger_Paths();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#isIgnoreSpecifiedPaths <em>Ignore Specified Paths</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ignore Specified Paths</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger#isIgnoreSpecifiedPaths()
-	 * @see #getPullRequestTrigger()
-	 * @generated
-	 */
-	EAttribute getPullRequestTrigger_IgnoreSpecifiedPaths();
+	EClass getPullRequestTargetTrigger();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger <em>Push Trigger</em>}'.
@@ -4275,50 +4542,6 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPushTrigger();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getBranches <em>Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Branches</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getBranches()
-	 * @see #getPushTrigger()
-	 * @generated
-	 */
-	EReference getPushTrigger_Branches();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ignore Specified Branches</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedBranches()
-	 * @see #getPushTrigger()
-	 * @generated
-	 */
-	EAttribute getPushTrigger_IgnoreSpecifiedBranches();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getPaths <em>Paths</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Paths</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getPaths()
-	 * @see #getPushTrigger()
-	 * @generated
-	 */
-	EReference getPushTrigger_Paths();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedPaths <em>Ignore Specified Paths</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ignore Specified Paths</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#isIgnoreSpecifiedPaths()
-	 * @see #getPushTrigger()
-	 * @generated
-	 */
-	EAttribute getPushTrigger_IgnoreSpecifiedPaths();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger#getTags <em>Tags</em>}'.
@@ -4374,17 +4597,6 @@ public interface GHAPackage extends EPackage {
 	EClass getWorkflowCallTrigger();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger#getInputs <em>Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Inputs</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger#getInputs()
-	 * @see #getWorkflowCallTrigger()
-	 * @generated
-	 */
-	EReference getWorkflowCallTrigger_Inputs();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4415,17 +4627,6 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getWorkflowDispatchTrigger();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowDispatchTrigger#getInputs <em>Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Inputs</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowDispatchTrigger#getInputs()
-	 * @see #getWorkflowDispatchTrigger()
-	 * @generated
-	 */
-	EReference getWorkflowDispatchTrigger_Inputs();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Permission</em>}'.
@@ -6127,6 +6328,78 @@ public interface GHAPackage extends EPackage {
 		EClass TRIGGER = eINSTANCE.getTrigger();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EventTypeTriggerImpl <em>Event Type Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EventTypeTriggerImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEventTypeTrigger()
+		 * @generated
+		 */
+		EClass EVENT_TYPE_TRIGGER = eINSTANCE.getEventTypeTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Event Types</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVENT_TYPE_TRIGGER__EVENT_TYPES = eINSTANCE.getEventTypeTrigger_EventTypes();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedBranchesTriggerImpl <em>Specified Branches Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedBranchesTriggerImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSpecifiedBranchesTrigger()
+		 * @generated
+		 */
+		EClass SPECIFIED_BRANCHES_TRIGGER = eINSTANCE.getSpecifiedBranchesTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFIED_BRANCHES_TRIGGER__BRANCHES = eINSTANCE.getSpecifiedBranchesTrigger_Branches();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Specified Branches</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIFIED_BRANCHES_TRIGGER__IGNORE_SPECIFIED_BRANCHES = eINSTANCE
+				.getSpecifiedBranchesTrigger_IgnoreSpecifiedBranches();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedPathsTriggerImpl <em>Specified Paths Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.SpecifiedPathsTriggerImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSpecifiedPathsTrigger()
+		 * @generated
+		 */
+		EClass SPECIFIED_PATHS_TRIGGER = eINSTANCE.getSpecifiedPathsTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Paths</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIFIED_PATHS_TRIGGER__PATHS = eINSTANCE.getSpecifiedPathsTrigger_Paths();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Specified Paths</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SPECIFIED_PATHS_TRIGGER__IGNORE_SPECIFIED_PATHS = eINSTANCE
+				.getSpecifiedPathsTrigger_IgnoreSpecifiedPaths();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StandardEventTriggerImpl <em>Standard Event Trigger</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6145,12 +6418,22 @@ public interface GHAPackage extends EPackage {
 		EAttribute STANDARD_EVENT_TRIGGER__EVENT = eINSTANCE.getStandardEventTrigger_Event();
 
 		/**
-		 * The meta object literal for the '<em><b>Event Types</b></em>' attribute list feature.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.InputTriggerImpl <em>Input Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.InputTriggerImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getInputTrigger()
+		 * @generated
+		 */
+		EClass INPUT_TRIGGER = eINSTANCE.getInputTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STANDARD_EVENT_TRIGGER__EVENT_TYPES = eINSTANCE.getStandardEventTrigger_EventTypes();
+		EReference INPUT_TRIGGER__INPUTS = eINSTANCE.getInputTrigger_Inputs();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowRunTriggerImpl <em>Workflow Run Trigger</em>}' class.
@@ -6163,23 +6446,6 @@ public interface GHAPackage extends EPackage {
 		EClass WORKFLOW_RUN_TRIGGER = eINSTANCE.getWorkflowRunTrigger();
 
 		/**
-		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKFLOW_RUN_TRIGGER__BRANCHES = eINSTANCE.getWorkflowRunTrigger_Branches();
-
-		/**
-		 * The meta object literal for the '<em><b>Ignore Specified Branches</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WORKFLOW_RUN_TRIGGER__IGNORE_SPECIFIED_BRANCHES = eINSTANCE
-				.getWorkflowRunTrigger_IgnoreSpecifiedBranches();
-
-		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTriggerImpl <em>Pull Request Trigger</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6190,46 +6456,14 @@ public interface GHAPackage extends EPackage {
 		EClass PULL_REQUEST_TRIGGER = eINSTANCE.getPullRequestTrigger();
 
 		/**
-		 * The meta object literal for the '<em><b>Event Types</b></em>' attribute list feature.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTargetTriggerImpl <em>Pull Request Target Trigger</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PullRequestTargetTriggerImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPullRequestTargetTrigger()
 		 * @generated
 		 */
-		EAttribute PULL_REQUEST_TRIGGER__EVENT_TYPES = eINSTANCE.getPullRequestTrigger_EventTypes();
-
-		/**
-		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PULL_REQUEST_TRIGGER__BRANCHES = eINSTANCE.getPullRequestTrigger_Branches();
-
-		/**
-		 * The meta object literal for the '<em><b>Ignore Specified Branches</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_BRANCHES = eINSTANCE
-				.getPullRequestTrigger_IgnoreSpecifiedBranches();
-
-		/**
-		 * The meta object literal for the '<em><b>Paths</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PULL_REQUEST_TRIGGER__PATHS = eINSTANCE.getPullRequestTrigger_Paths();
-
-		/**
-		 * The meta object literal for the '<em><b>Ignore Specified Paths</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PULL_REQUEST_TRIGGER__IGNORE_SPECIFIED_PATHS = eINSTANCE
-				.getPullRequestTrigger_IgnoreSpecifiedPaths();
+		EClass PULL_REQUEST_TARGET_TRIGGER = eINSTANCE.getPullRequestTargetTrigger();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PushTriggerImpl <em>Push Trigger</em>}' class.
@@ -6240,38 +6474,6 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PUSH_TRIGGER = eINSTANCE.getPushTrigger();
-
-		/**
-		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PUSH_TRIGGER__BRANCHES = eINSTANCE.getPushTrigger_Branches();
-
-		/**
-		 * The meta object literal for the '<em><b>Ignore Specified Branches</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PUSH_TRIGGER__IGNORE_SPECIFIED_BRANCHES = eINSTANCE.getPushTrigger_IgnoreSpecifiedBranches();
-
-		/**
-		 * The meta object literal for the '<em><b>Paths</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PUSH_TRIGGER__PATHS = eINSTANCE.getPushTrigger_Paths();
-
-		/**
-		 * The meta object literal for the '<em><b>Ignore Specified Paths</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PUSH_TRIGGER__IGNORE_SPECIFIED_PATHS = eINSTANCE.getPushTrigger_IgnoreSpecifiedPaths();
 
 		/**
 		 * The meta object literal for the '<em><b>Tags</b></em>' containment reference list feature.
@@ -6318,14 +6520,6 @@ public interface GHAPackage extends EPackage {
 		EClass WORKFLOW_CALL_TRIGGER = eINSTANCE.getWorkflowCallTrigger();
 
 		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKFLOW_CALL_TRIGGER__INPUTS = eINSTANCE.getWorkflowCallTrigger_Inputs();
-
-		/**
 		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6350,14 +6544,6 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EClass WORKFLOW_DISPATCH_TRIGGER = eINSTANCE.getWorkflowDispatchTrigger();
-
-		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORKFLOW_DISPATCH_TRIGGER__INPUTS = eINSTANCE.getWorkflowDispatchTrigger_Inputs();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.PermissionImpl <em>Permission</em>}' class.

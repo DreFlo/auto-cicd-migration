@@ -303,6 +303,29 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PullRequestTargetTriggerItemProvider pullRequestTargetTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPullRequestTargetTriggerAdapter() {
+		if (pullRequestTargetTriggerItemProvider == null) {
+			pullRequestTargetTriggerItemProvider = new PullRequestTargetTriggerItemProvider(this);
+		}
+
+		return pullRequestTargetTriggerItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1347,6 +1370,8 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 			workflowRunTriggerItemProvider.dispose();
 		if (pullRequestTriggerItemProvider != null)
 			pullRequestTriggerItemProvider.dispose();
+		if (pullRequestTargetTriggerItemProvider != null)
+			pullRequestTargetTriggerItemProvider.dispose();
 		if (pushTriggerItemProvider != null)
 			pushTriggerItemProvider.dispose();
 		if (scheduleTriggerItemProvider != null)

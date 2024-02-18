@@ -102,42 +102,37 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StandardEventTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" lowerBound="1" eType="#//EVENTS"
-        iD="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EventTypeTrigger" abstract="true" eSuperTypes="#//Trigger">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventTypes" upperBound="-1"
         eType="#//WEBHOOK_ACTIVITY_TYPES"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkflowRunTrigger" eSuperTypes="#//Trigger">
+  <eClassifiers xsi:type="ecore:EClass" name="SpecifiedBranchesTrigger" abstract="true"
+      eSuperTypes="#//Trigger">
     <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreSpecifiedBranches"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eventTypes" upperBound="3"
-        eType="#//WEBHOOK_ACTIVITY_TYPES"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreSpecifiedBranches"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecifiedPathsTrigger" abstract="true"
+      eSuperTypes="#//Trigger">
     <eStructuralFeatures xsi:type="ecore:EReference" name="paths" upperBound="-1"
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreSpecifiedPaths" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreSpecifiedBranches"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="paths" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreSpecifiedPaths" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StandardEventTrigger" eSuperTypes="#//EventTypeTrigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" lowerBound="1" eType="#//EVENTS"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputTrigger" abstract="true" eSuperTypes="#//Trigger">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Input" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkflowRunTrigger" eSuperTypes="#//SpecifiedBranchesTrigger"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//EventTypeTrigger #//SpecifiedBranchesTrigger #//SpecifiedPathsTrigger"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PullRequestTargetTrigger" eSuperTypes="#//PullRequestTrigger"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//SpecifiedBranchesTrigger #//SpecifiedPathsTrigger">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ignoreSpecifiedTags" lowerBound="1"
@@ -147,18 +142,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="crons" lowerBound="1" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkflowCallTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//Input" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkflowCallTrigger" eSuperTypes="#//InputTrigger">
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
         eType="#//Output" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secrets" upperBound="-1"
         eType="#//Secret" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WorkflowDispatchTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//Input" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkflowDispatchTrigger" eSuperTypes="#//InputTrigger"/>
   <eClassifiers xsi:type="ecore:EClass" name="Permission" instanceClassName="java.util.Map$Entry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="#//PERMISSION_SCOPES"
         iD="true"/>

@@ -317,6 +317,9 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
 				GHAFactory.eINSTANCE.createPullRequestTrigger()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
+				GHAFactory.eINSTANCE.createPullRequestTargetTrigger()));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS, GHAFactory.eINSTANCE.createPushTrigger()));
 

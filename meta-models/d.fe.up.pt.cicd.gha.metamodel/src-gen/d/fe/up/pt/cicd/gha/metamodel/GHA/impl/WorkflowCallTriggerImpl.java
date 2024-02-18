@@ -3,7 +3,6 @@
 package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger;
@@ -28,24 +27,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallTriggerImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallTriggerImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallTriggerImpl#getSecrets <em>Secrets</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCallTrigger {
-	/**
-	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Input> inputs;
-
+public class WorkflowCallTriggerImpl extends InputTriggerImpl implements WorkflowCallTrigger {
 	/**
 	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -91,19 +79,6 @@ public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCall
 	 * @generated
 	 */
 	@Override
-	public EList<Input> getInputs() {
-		if (inputs == null) {
-			inputs = new EObjectContainmentEList<Input>(Input.class, this, GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS);
-		}
-		return inputs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Output> getOutputs() {
 		if (outputs == null) {
 			outputs = new EObjectContainmentEList<Output>(Output.class, this,
@@ -134,8 +109,6 @@ public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCall
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS:
-			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__OUTPUTS:
 			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__SECRETS:
@@ -152,8 +125,6 @@ public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCall
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS:
-			return getInputs();
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__OUTPUTS:
 			return getOutputs();
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__SECRETS:
@@ -171,10 +142,6 @@ public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCall
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS:
-			getInputs().clear();
-			getInputs().addAll((Collection<? extends Input>) newValue);
-			return;
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__OUTPUTS:
 			getOutputs().clear();
 			getOutputs().addAll((Collection<? extends Output>) newValue);
@@ -195,9 +162,6 @@ public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCall
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS:
-			getInputs().clear();
-			return;
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__OUTPUTS:
 			getOutputs().clear();
 			return;
@@ -216,8 +180,6 @@ public class WorkflowCallTriggerImpl extends TriggerImpl implements WorkflowCall
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case GHAPackage.WORKFLOW_CALL_TRIGGER__INPUTS:
-			return inputs != null && !inputs.isEmpty();
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__OUTPUTS:
 			return outputs != null && !outputs.isEmpty();
 		case GHAPackage.WORKFLOW_CALL_TRIGGER__SECRETS:

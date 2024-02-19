@@ -6,16 +6,13 @@ import com.google.inject.Injector;
 
 import d.fe.up.pt.cicd.gha.dsl.GitHubActionsStandaloneSetup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.*;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Package;
 import org.eclipse.xtext.parser.IParseResult;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.StreamSupport;
-
-import static cli.utils.GHAModelUtils.printAST;
 
 public class GitHubActionsParser extends AbstractParser<Workflow> {
 	@Override
@@ -25,10 +22,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	@Override
 	protected String formatPipeline(String pipeline) {
-		return pipeline
-				.replaceAll("\n?(\s|\t)*on(\s|\t)*:", "\n\"on\":")
-				.replaceAll("\t", "\s\s")
-				.replaceAll("-\s*cron\s*:", "- \"cron\":");
+		return pipeline;
 	}
 
 	@Override
@@ -57,31 +51,74 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		if (yamlMap.value("on") == null) {
 			throw new SyntaxException(List.of("Must have triggers"));
 		} else {
-			System.out.println(yamlMap.value("on").type());
 			workflow.getTriggers().addAll(parseWorkflowTriggers(yamlMap.value("on")));
 		}
 
-		printAST(workflow);
+		if (yamlMap.value("permissions") != null) {
+			workflow.getPermissions().putAll(parsePermissions(yamlMap.value("permissions").asMapping()));
+		}
+
+		if (yamlMap.value("env") != null) {
+			workflow.getEnvironmentVariables().putAll(parseVariableAssignments(yamlMap.value("env").asMapping()));
+		}
+
+		if (yamlMap.value("defaults") != null) {
+			workflow.setDefaults(parseDefaults(yamlMap.value("defaults").asMapping()));
+		}
+
+		if (yamlMap.value("concurrency") != null) {
+			workflow.setConcurrencyGroup(parseConcurrencyGroup(yamlMap.value("concurrency").asMapping()));
+		}
+
+		if (yamlMap.value("jobs") != null) {
+			workflow.getJobs().addAll(parseJobs(yamlMap.value("jobs")));
+		} else {
+			throw new SyntaxException("Must have jobs");
+		}
+
+		//printAST(workflow);
 
 		return workflow;
 	}
 
 	private Expression parseExpression(String expressionString) throws SyntaxException {
-		if (expressionString.startsWith("${{") && expressionString.endsWith("}}")) {
+		List<String> parts = splitExpression(expressionString);
+
+		if (parts.size() == 1) {
+			return parseExpressionAtomic(parts.get(0));
+		}
+
+		Concat concat = GHAPackage.eINSTANCE.getGHAFactory().createConcat();
+
+		for (String subExpression : parts) {
+			concat.getExpressions().add(parseExpression(subExpression));
+		}
+
+		return concat;
+	}
+
+	private Expression parseExpressionAtomic(String expressionString) throws SyntaxException {
+		if (expressionString.matches("^\\$\\{\\{.*}}$")) {
 			return parseBracketedExpression(expressionString.substring(3, expressionString.length() - 2));
-		} else if (!expressionString.contains("${{")) {
-			// TODO Casting
-			StringLiteral stringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
-			stringLiteral.setValue(expressionString);
-			return stringLiteral;
 		} else {
-			Concat concat = GHAPackage.eINSTANCE.getGHAFactory().createConcat();
-
-			for (String subExpression : splitExpression(expressionString)) {
-				concat.getExpressions().add(parseExpression(subExpression));
+			if (expressionString.matches("[0-9]+")) {
+				IntegerLiteral integerLiteral = GHAPackage.eINSTANCE.getGHAFactory().createIntegerLiteral();
+				integerLiteral.setValue(Integer.parseInt(expressionString));
+				return integerLiteral;
+			} else if (expressionString.matches("true|false")) {
+				BooleanLiteral booleanLiteral = GHAPackage.eINSTANCE.getGHAFactory().createBooleanLiteral();
+				booleanLiteral.setValue(Boolean.parseBoolean(expressionString));
+				return booleanLiteral;
+			} else if (expressionString.matches("[0-9]+\\.[0-9]+")) {
+				DoubleLiteral doubleLiteral = GHAPackage.eINSTANCE.getGHAFactory().createDoubleLiteral();
+				doubleLiteral.setValue(Double.parseDouble(expressionString));
+				return doubleLiteral;
 			}
-
-			return concat;
+			else {
+				StringLiteral stringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
+				stringLiteral.setValue(expressionString);
+				return stringLiteral;
+			}
 		}
 	}
 
@@ -106,8 +143,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			}
 		}
 
-		System.out.println(parts);;
-
 		return parts;
 	}
 
@@ -120,7 +155,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private Expression parseBracketedExpression(String expressionString) throws SyntaxException {
-		System.out.println(expressionString);
 		IParseResult result = parser.parse(new StringReader(expressionString));
 
 		if (result.hasSyntaxErrors()) {
@@ -386,5 +420,434 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			throw new SyntaxException("Invalid string");
 		}
 		return result;
+	}
+
+	private Map<PERMISSION_SCOPES, PERMISSIONS> parsePermissions(YamlMapping permissionsMap) throws SyntaxException {
+		Map<PERMISSION_SCOPES, PERMISSIONS> result = new HashMap<>();
+
+		for (YamlNode key : permissionsMap.keys()) {
+			if (key.type().equals(Node.SCALAR)) {
+				result.put(PERMISSION_SCOPES.get(key.asScalar().value()), PERMISSIONS.get(permissionsMap.string(key.asScalar().value())));
+			} else {
+				throw new SyntaxException("Invalid permission");
+			}
+		}
+
+		return result;
+	}
+
+	private Map<String, Expression> parseVariableAssignments(YamlMapping variablesMap) throws SyntaxException {
+		Map<String, Expression> result = new HashMap<>();
+
+		for (YamlNode key : variablesMap.keys()) {
+			if (key.type().equals(Node.SCALAR)) {
+				result.put(key.asScalar().value(), parseExpression(variablesMap.string(key.asScalar().value())));
+			} else {
+				throw new SyntaxException("Invalid variable assignment");
+			}
+		}
+
+		return result;
+	}
+
+	private Defaults parseDefaults(YamlMapping defaultsMap) throws SyntaxException {
+		Defaults defaults = GHAPackage.eINSTANCE.getGHAFactory().createDefaults();
+
+		if (defaultsMap.yamlMapping("run") != null) {
+			defaultsMap = defaultsMap.yamlMapping("run");
+		} else {
+			throw new SyntaxException("Must have run");
+		}
+
+		if (defaultsMap.string("shell") != null) {
+			defaults.setShell(parseExpression(defaultsMap.string("shell")));
+		} else {
+			throw new SyntaxException("Must have shell");
+		}
+
+		if (defaultsMap.string("working-directory") != null) {
+			defaults.setWorkingDirectory(parseExpression(defaultsMap.string("working-directory")));
+		}
+
+		return defaults;
+	}
+
+	private ConcurrencyGroup parseConcurrencyGroup(YamlMapping concurrencyGroupMap) throws SyntaxException {
+		ConcurrencyGroup concurrencyGroup = GHAPackage.eINSTANCE.getGHAFactory().createConcurrencyGroup();
+
+		if (concurrencyGroupMap.string("group") != null) {
+			concurrencyGroup.setName(parseExpression(concurrencyGroupMap.string("group")));
+		} else {
+			throw new SyntaxException("Must have name");
+		}
+
+		if (concurrencyGroupMap.string("cancel-in-progress") != null) {
+			concurrencyGroup.setCancelInProgress(parseExpression(concurrencyGroupMap.string("cancel-in-progress")));
+		}
+
+		return concurrencyGroup;
+	}
+
+	private List<Job> parseJobs(YamlNode jobsNode) throws SyntaxException {
+		Map<String, Job> result = new HashMap<>();
+		if (jobsNode.type().equals(Node.MAPPING)) {
+			YamlMapping jobsMap = jobsNode.asMapping();
+			for (YamlNode key : jobsMap.keys()) {
+				if (key.type().equals(Node.SCALAR)) {
+					result.put(
+							key.asScalar().value(), 
+							parseJob(
+									key.asScalar().value(), 
+									jobsMap.value(key.asScalar().value()).asMapping(), 
+									result
+							)
+					);
+				} else {
+					throw new SyntaxException("Invalid job");
+				}
+			}
+		} else {
+			throw new SyntaxException("Invalid job");
+		}
+		return new ArrayList<>(result.values());
+	}
+
+	private Job parseJob(String id, YamlMapping jobMap, Map<String, Job> jobs) throws SyntaxException {
+		Job job;
+
+		if (jobMap.value("steps") != null) {
+			job = GHAPackage.eINSTANCE.getGHAFactory().createScriptJob();
+			((ScriptJob) job).getSteps().addAll(parseSteps(jobMap.value("steps")));
+		} else if (jobMap.value("uses") != null) {
+			job = GHAPackage.eINSTANCE.getGHAFactory().createReuseWorkflowJob();
+			((ReuseWorkflowJob) job).setWorkflowPath(parseExpression(jobMap.string("uses")));
+
+			if (jobMap.value("with") != null) {
+				((ReuseWorkflowJob) job).getArgs().putAll(parseVariableAssignments(jobMap.value("with").asMapping()));
+			}
+
+			if (jobMap.value("secrets") != null) {
+				YamlNode secrets = jobMap.value("secrets");
+				if (secrets.type().equals(Node.SCALAR) && secrets.asScalar().value().equals("inherit")) {
+					((ReuseWorkflowJob) job).setInheritSecrets(true);
+				} else if (secrets.type().equals(Node.MAPPING)) {
+					((ReuseWorkflowJob) job).getSecrets().putAll(parseVariableAssignments(secrets.asMapping()));
+				} else {
+					throw new SyntaxException("Invalid secrets");
+				}
+			}
+		} else {
+			throw new SyntaxException("Must have steps or workflow path");
+		}
+
+		job.setName(id);
+
+		if (jobMap.string("name") != null) {
+			job.setJobName(parseExpression(jobMap.string("name")));
+		}
+
+		if (jobMap.value("runs-on") != null) {
+			job.setAgent(parseAgent(jobMap.value("runs-on")));
+		}
+
+		if (jobMap.value("environment") != null) {
+			job.setStagingEnvironment(parseStagingEnvironment(jobMap.value("environment")));
+		}
+
+		if (jobMap.value("concurrency") != null) {
+			job.setConcurrencyGroup(parseConcurrencyGroup(jobMap.yamlMapping("concurrency")));
+		}
+
+		if (jobMap.value("env") != null) {
+			job.getEnvironmentVariables().putAll(parseVariableAssignments(jobMap.value("env").asMapping()));
+		}
+
+		if (jobMap.value("defaults") != null) {
+			job.setDefaults(parseDefaults(jobMap.value("defaults").asMapping()));
+		}
+
+		if (jobMap.value("permissions") != null) {
+			job.getPermissions().putAll(parsePermissions(jobMap.value("permissions").asMapping()));
+		}
+
+		if (jobMap.value("if") != null) {
+			job.setIfCondition(parseExpression(jobMap.string("if")));
+		}
+
+		if (jobMap.value("strategy") != null) {
+			job.setStrategy(parseMatrix(jobMap.yamlMapping("strategy")));
+		}
+
+		if (jobMap.value("container") != null) {
+			job.setContainer(parseContainer(jobMap.value("container")));
+		}
+
+		if (jobMap.value("services") != null) {
+			job.getServices().putAll(parseServices(jobMap.value("services")));
+		}
+
+		if (jobMap.value("timeout-minutes") != null) {
+			job.setTimeoutMinutes(parseExpression(jobMap.string("timeout-minutes")));
+		}
+
+		if (jobMap.value("continue-on-error") != null) {
+			job.setContinueOnError(parseExpression(jobMap.string("continue-on-error")));
+		}
+
+		if (jobMap.value("needs") != null) {
+			job.getDependsOn().addAll(parseDependencies(jobMap.value("needs"), jobs));
+		}
+
+		return job;
+	}
+
+	private Agent parseAgent(YamlNode agentNode) throws SyntaxException {
+		Agent agent = GHAPackage.eINSTANCE.getGHAFactory().createAgent();
+
+		if (!agentNode.type().equals(Node.MAPPING)) {
+			agent.getLabels().addAll(parseExpressions(agentNode));
+		} else {
+			YamlMapping agentMap = agentNode.asMapping();
+			if (agentMap.string("group") != null) {
+				agent.setGroup(parseExpression(agentMap.string("group")));
+			}
+			if (agentMap.value("labels") != null) {
+				agent.getLabels().addAll(parseExpressions(agentMap.value("labels")));
+			}
+		}
+
+		return agent;
+	}
+
+	private StagingEnvironment parseStagingEnvironment(YamlNode environmentNode) throws SyntaxException {
+		StagingEnvironment environment = GHAPackage.eINSTANCE.getGHAFactory().createStagingEnvironment();
+		if (environmentNode.type().equals(Node.MAPPING)) {
+			YamlMapping environmentMap = environmentNode.asMapping();
+			if (environmentMap.string("name") != null) {
+				environment.setName(parseExpression(environmentMap.string("name")));
+			}
+			if (environmentMap.string("url") != null) {
+				environment.setUrl(parseExpression(environmentMap.string("url")));
+			}
+		} else if (environmentNode.type().equals(Node.SCALAR)) {
+			environment.setName(parseExpression(environmentNode.asScalar().value()));
+		} else {
+			throw new SyntaxException("Invalid environment");
+		}
+		return environment;
+	}
+
+	private Matrix parseMatrix(YamlMapping matrixNode) throws SyntaxException {
+		Matrix matrix = GHAPackage.eINSTANCE.getGHAFactory().createMatrix();
+		if (matrixNode.asMapping().value("matrix") != null) {
+			YamlMapping matrixMap = matrixNode.asMapping().value("matrix").asMapping();
+			if (matrixMap.value("include") != null) {
+				matrix.getIncludes().addAll(parseMatrixCombinations(matrixMap.value("include")));
+			}
+			if (matrixMap.value("exclude") != null) {
+				matrix.getExcludes().addAll(parseMatrixCombinations(matrixMap.value("exclude")));
+			}
+			for (YamlNode key : matrixMap.keys()) {
+				if (!key.asScalar().value().equals("include") && !key.asScalar().value().equals("exclude")) {
+					matrix.getAxes().add(parseMatrixAxis(key.asScalar().value(), matrixMap.value(key.asScalar().value())));
+				}
+			}
+		} else {
+			throw new SyntaxException("Invalid matrix");
+		}
+
+		if (matrixNode.string("fail-fast") != null) {
+			matrix.setFailFast(parseExpression(matrixNode.string("fail-fast")));
+		}
+
+		if (matrixNode.string("max-parallel") != null) {
+			matrix.setMaxParallel(parseExpression(matrixNode.string("max-parallel")));
+		}
+
+		return matrix;
+	}
+
+	private List<MatrixCombination> parseMatrixCombinations(YamlNode combinationNode) throws SyntaxException {
+		List<MatrixCombination> combinations = new ArrayList<>();
+		if (combinationNode.type().equals(Node.SEQUENCE)) {
+			for (YamlNode yamlCombination : combinationNode.asSequence().values()) {
+				MatrixCombination combination = GHAPackage.eINSTANCE.getGHAFactory().createMatrixCombination();
+				if (yamlCombination.type().equals(Node.MAPPING)) {
+					combination.getEntries().putAll(parseVariableAssignments(yamlCombination.asMapping()));
+					combinations.add(combination);
+				} else {
+					throw new SyntaxException("Invalid matrix combination");
+				}
+			}
+
+		} else {
+			throw new SyntaxException("Invalid matrix combination");
+		}
+		return combinations;
+	}
+
+	private MatrixAxis parseMatrixAxis(String key, YamlNode axisNode) throws SyntaxException {
+		MatrixAxis axis = GHAPackage.eINSTANCE.getGHAFactory().createMatrixAxis();
+		axis.setName(key);
+		if (axisNode.type().equals(Node.SEQUENCE)) {
+			axis.getCells().addAll(parseExpressions(axisNode));
+		} else {
+			throw new SyntaxException("Invalid matrix axis");
+		}
+		return axis;
+	}
+
+	private Container parseContainer(YamlNode containerNode) throws SyntaxException {
+		Container container = GHAPackage.eINSTANCE.getGHAFactory().createContainer();
+		if (containerNode.type().equals(Node.SCALAR)) {
+			container.setImage(parseExpression(containerNode.asScalar().value()));
+		} else if (containerNode.type().equals(Node.MAPPING)) {
+			YamlMapping containerMap = containerNode.asMapping();
+			if (containerMap.string("image") != null) {
+				container.setImage(parseExpression(containerMap.string("image")));
+			}
+			if (containerMap.string("options") != null) {
+				container.setOptions(parseExpression(containerMap.string("options")));
+			}
+			if (containerMap.string("env") != null) {
+				container.getEnvironmentVariables().putAll(parseVariableAssignments(containerMap.value("env").asMapping()));
+			}
+			if (containerMap.string("ports") != null) {
+				container.getPorts().addAll(parseExpressions(containerMap.value("ports")));
+			}
+			if (containerMap.string("volumes") != null) {
+				container.getVolumes().addAll(parseExpressions(containerMap.value("volumes")));
+			}
+			if (containerMap.yamlMapping("credentials") != null) {
+				container.setUsername(parseExpression(containerMap.yamlMapping("credentials").string("username")));
+				container.setPassword(parseExpression(containerMap.yamlMapping("credentials").string("password")));
+			}
+		}
+
+		return container;
+	}
+
+	private Map<String, Container> parseServices(YamlNode servicesNode) throws SyntaxException {
+		Map<String, Container> result = new HashMap<>();
+		if (servicesNode.type().equals(Node.MAPPING)) {
+			YamlMapping servicesMap = servicesNode.asMapping();
+			for (YamlNode key : servicesMap.keys()) {
+				if (key.type().equals(Node.SCALAR)) {
+					result.put(key.asScalar().value(), parseContainer(servicesMap.value(key.asScalar().value())));
+				} else {
+					throw new SyntaxException("Invalid service");
+				}
+			}
+		} else {
+			throw new SyntaxException("Invalid service");
+		}
+		return result;
+	}
+
+	private List<Job> parseDependencies(YamlNode dependenciesNode, Map<String, Job> jobs) throws SyntaxException {
+		List<Job> result = new ArrayList<>();
+		if (dependenciesNode.type().equals(Node.SCALAR)) {
+			if (jobs.containsKey(dependenciesNode.asScalar().value())) {
+				result.add(jobs.get(dependenciesNode.asScalar().value()));
+			} else {
+				throw new SyntaxException("Invalid dependency");
+			}
+		} else if (dependenciesNode.type().equals(Node.SEQUENCE)) {
+			Collection<YamlNode> dependencies = dependenciesNode.asSequence().values();
+			for (YamlNode dependency : dependencies) {
+				if (dependency.type().equals(Node.SCALAR)) {
+					if (jobs.containsKey(dependency.asScalar().value())) {
+						result.add(jobs.get(dependency.asScalar().value()));
+					} else {
+						throw new SyntaxException("Invalid dependency");
+					}
+				} else {
+					throw new SyntaxException("Invalid dependency");
+				}
+			}
+		} else {
+			throw new SyntaxException("Invalid dependency");
+		}
+		return result;
+	}
+
+	private List<Step> parseSteps(YamlNode stepsNode) throws SyntaxException {
+		List<Step> result = new ArrayList<>();
+		if (stepsNode.type().equals(Node.SEQUENCE)) {
+			Collection<YamlNode> steps = stepsNode.asSequence().values();
+			for (YamlNode step : steps) {
+				if (step.type().equals(Node.MAPPING)) {
+					result.add(parseStep(step.asMapping()));
+				} else {
+					throw new SyntaxException("Invalid step");
+				}
+			}
+		} else {
+			throw new SyntaxException("Invalid step");
+		}
+		return result;
+	}
+
+	private Step parseStep(YamlMapping stepMap) throws SyntaxException {
+		Step step;
+
+		if (stepMap.string("run") != null) {
+			step = GHAPackage.eINSTANCE.getGHAFactory().createCommand();
+
+			((Command) step).setCommand(parseExpression(stepMap.string("run")));
+		} else if (stepMap.string("uses") != null) {
+			step = GHAPackage.eINSTANCE.getGHAFactory().createPackage();
+
+			((Package) step).setUses(parseExpression(stepMap.string("uses")));
+
+			if (stepMap.yamlMapping("with") != null) {
+				YamlMapping withMap = stepMap.yamlMapping("with");
+
+				if (withMap.value("entrypoint") != null) {
+					((Package) step).setEntrypoint(parseExpression(withMap.string("entrypoint")));
+
+					if (withMap.value("args") != null) {
+						((Package) step).setContainerArgs(parseExpression(withMap.string("args")));
+					}
+				}
+				else {
+					for (YamlNode key : withMap.keys()) {
+						if (key.type().equals(Node.SCALAR)) {
+							((Package) step).getArgs().put(key.asScalar().value(), parseExpression(withMap.string(key.asScalar().value())));
+						} else {
+							throw new SyntaxException("Invalid argument");
+						}
+					}
+				}
+			}
+		} else {
+			throw new SyntaxException("Must have run, uses or shell");
+		}
+
+		if (stepMap.string("id") != null) {
+			step.setId(stepMap.string("id"));
+		}
+		if (stepMap.string("name") != null) {
+			step.setName(parseExpression(stepMap.string("name")));
+		}
+		if (stepMap.string("shell") != null) {
+			step.setShell(parseExpression(stepMap.string("shell")));
+		}
+		if (stepMap.value("env") != null) {
+			step.getEnvironmentVariables().putAll(parseVariableAssignments(stepMap.value("env").asMapping()));
+		}
+		if (stepMap.value("if") != null) {
+			step.setIfCondition(parseExpression(stepMap.string("if")));
+		}
+		if (stepMap.value("timeout-minutes") != null) {
+			step.setTimeoutMinutes(parseExpression(stepMap.string("timeout-minutes")));
+		}
+		if (stepMap.value("continue-on-error") != null) {
+			step.setContinueOnError(parseExpression(stepMap.string("continue-on-error")));
+		}
+		if (stepMap.value("working-directory") != null) {
+			step.setWorkingDirectory(parseExpression(stepMap.string("working-directory")));
+		}
+		return step;
 	}
 }

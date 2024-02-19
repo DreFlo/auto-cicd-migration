@@ -34,3 +34,9 @@ on:
       access-token:
         description: 'A token passed from the caller workflow'
         required: false
+
+permissions:
+  actions: read
+
+env:
+  SERVER: production

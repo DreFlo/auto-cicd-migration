@@ -26,6 +26,16 @@ public class GHAModelUtils {
             for (var trigger : workflow.getTriggers()) {
                 printAST(trigger, depth + 2);
             }
+
+            printLine("Permissions", depth + 1);
+            for (var permission : workflow.getPermissions()) {
+                printAST((EObject) permission, depth + 2);
+            }
+
+            printLine("Environment Variables", depth + 1);
+            for (var envVar : workflow.getEnvironmentVariables()) {
+                printAST((EObject) envVar, depth + 2);
+            }
         } else if (root instanceof BinaryOp binaryOp) {
             printLine("BinaryOp" + binaryOp.getClass(), depth);
 

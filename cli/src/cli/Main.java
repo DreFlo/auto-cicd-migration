@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import cli.parsers.*;
 import cli.parsers.exceptions.*;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
@@ -27,8 +26,7 @@ public class Main {
 		}
 		
 		try {
-			Workflow workflow = parser.parse(Files.readString(Path.of(args[0])));
-			System.out.println(workflow);
+			parser.parse(Files.readString(Path.of(args[0])));
 		} catch (SyntaxException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -1,4 +1,0 @@
-{
-    "java.compile.nullAnalysis.mode": "disabled",
-    "sarif-viewer.connectToGithubCodeScanning": "off"
-}

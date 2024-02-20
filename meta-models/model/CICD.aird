@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_V2iwkM_QEe6l_fqc4UuMSg" selectedViews="_V3krUM_QEe6l_fqc4UuMSg _V4DzgM_QEe6l_fqc4UuMSg" version="15.0.0.202209061200">
+    <semanticResources>CICD.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_V3krUM_QEe6l_fqc4UuMSg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_V65FEM_QEe6l_fqc4UuMSg" name="CICD" repPath="#_V6uF8M_QEe6l_fqc4UuMSg" changeId="6e8a2140-e70d-426a-adcf-b6116d1abba9">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_V4DzgM_QEe6l_fqc4UuMSg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_V5W0AM_QEe6l_fqc4UuMSg" name="[name + ' package entities'/]" repPath="#_V4n0MM_QEe6l_fqc4UuMSg" changeId="f888e4ec-f72d-4a1e-b8bb-dbc26c7c5491">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_V4n0MM_QEe6l_fqc4UuMSg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_V5qWAM_QEe6l_fqc4UuMSg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_V5qWAc_QEe6l_fqc4UuMSg" type="Sirius" element="_V4n0MM_QEe6l_fqc4UuMSg" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_V5qWAs_QEe6l_fqc4UuMSg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_V54_gM_QEe6l_fqc4UuMSg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_V54_gc_QEe6l_fqc4UuMSg"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_V43EwM_QEe6l_fqc4UuMSg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_V6uF8M_QEe6l_fqc4UuMSg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_V65sIM_QEe6l_fqc4UuMSg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_V65sIc_QEe6l_fqc4UuMSg" type="Sirius" element="_V6uF8M_QEe6l_fqc4UuMSg" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_V65sIs_QEe6l_fqc4UuMSg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_V79cEM_QEe6l_fqc4UuMSg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_V79cEc_QEe6l_fqc4UuMSg"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_V63P4M_QEe6l_fqc4UuMSg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
+    <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

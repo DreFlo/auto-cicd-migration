@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.presentation.CICDModelWizardID"
+            name="%_UI_CICDModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.presentation.CICDModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CICDModelFile.gif">
+         <description>%_UI_CICDModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.presentation.CICDEditorID"
+            name="%_UI_CICDEditor_label"
+            icon="icons/full/obj16/CICDModelFile.gif"
+            extensions="cicd"
+            class="d.fe.up.pt.cicd.metamodel.CICD.presentation.CICDEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.presentation.CICDActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Triggers.presentation.TriggersModelWizardID"
+            name="%_UI_TriggersModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Triggers.presentation.TriggersModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TriggersModelFile.gif">
+         <description>%_UI_TriggersModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Triggers.presentation.TriggersEditorID"
+            name="%_UI_TriggersEditor_label"
+            icon="icons/full/obj16/TriggersModelFile.gif"
+            extensions="triggers"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Triggers.presentation.TriggersEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Triggers.presentation.TriggersActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Options.presentation.OptionsModelWizardID"
+            name="%_UI_OptionsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Options.presentation.OptionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/OptionsModelFile.gif">
+         <description>%_UI_OptionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Options.presentation.OptionsEditorID"
+            name="%_UI_OptionsEditor_label"
+            icon="icons/full/obj16/OptionsModelFile.gif"
+            extensions="options"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Options.presentation.OptionsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Options.presentation.OptionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Matrices.presentation.MatricesModelWizardID"
+            name="%_UI_MatricesModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Matrices.presentation.MatricesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MatricesModelFile.gif">
+         <description>%_UI_MatricesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Matrices.presentation.MatricesEditorID"
+            name="%_UI_MatricesEditor_label"
+            icon="icons/full/obj16/MatricesModelFile.gif"
+            extensions="matrices"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Matrices.presentation.MatricesEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Matrices.presentation.MatricesActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Parameters.presentation.ParametersModelWizardID"
+            name="%_UI_ParametersModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Parameters.presentation.ParametersModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ParametersModelFile.gif">
+         <description>%_UI_ParametersModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Parameters.presentation.ParametersEditorID"
+            name="%_UI_ParametersEditor_label"
+            icon="icons/full/obj16/ParametersModelFile.gif"
+            extensions="parameters"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Parameters.presentation.ParametersEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Parameters.presentation.ParametersActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Steps.presentation.StepsModelWizardID"
+            name="%_UI_StepsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Steps.presentation.StepsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StepsModelFile.gif">
+         <description>%_UI_StepsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Steps.presentation.StepsEditorID"
+            name="%_UI_StepsEditor_label"
+            icon="icons/full/obj16/StepsModelFile.gif"
+            extensions="steps"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Steps.presentation.StepsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Steps.presentation.StepsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.presentation.ExpressionsModelWizardID"
+            name="%_UI_ExpressionsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.presentation.ExpressionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ExpressionsModelFile.gif">
+         <description>%_UI_ExpressionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.presentation.ExpressionsEditorID"
+            name="%_UI_ExpressionsEditor_label"
+            icon="icons/full/obj16/ExpressionsModelFile.gif"
+            extensions="expressions"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.presentation.ExpressionsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.presentation.ExpressionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.presentation.ValuesModelWizardID"
+            name="%_UI_ValuesModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.presentation.ValuesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ValuesModelFile.gif">
+         <description>%_UI_ValuesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.presentation.ValuesEditorID"
+            name="%_UI_ValuesEditor_label"
+            icon="icons/full/obj16/ValuesModelFile.gif"
+            extensions="values"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.presentation.ValuesEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.presentation.ValuesActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.presentation.LiteralsModelWizardID"
+            name="%_UI_LiteralsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.presentation.LiteralsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/LiteralsModelFile.gif">
+         <description>%_UI_LiteralsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.presentation.LiteralsEditorID"
+            name="%_UI_LiteralsEditor_label"
+            icon="icons/full/obj16/LiteralsModelFile.gif"
+            extensions="literals"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.presentation.LiteralsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.presentation.LiteralsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.presentation.VariablesModelWizardID"
+            name="%_UI_VariablesModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.presentation.VariablesModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/VariablesModelFile.gif">
+         <description>%_UI_VariablesModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.presentation.VariablesEditorID"
+            name="%_UI_VariablesEditor_label"
+            icon="icons/full/obj16/VariablesModelFile.gif"
+            extensions="variables"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.presentation.VariablesEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.presentation.VariablesActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsModelWizardID"
+            name="%_UI_BuiltInFunctionsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BuiltInFunctionsModelFile.gif">
+         <description>%_UI_BuiltInFunctionsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsEditorID"
+            name="%_UI_BuiltInFunctionsEditor_label"
+            icon="icons/full/obj16/BuiltInFunctionsModelFile.gif"
+            extensions="builtinfunctions"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.presentation.BuiltInFunctionsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.presentation.BinaryOperationsModelWizardID"
+            name="%_UI_BinaryOperationsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.presentation.BinaryOperationsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/BinaryOperationsModelFile.gif">
+         <description>%_UI_BinaryOperationsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.presentation.BinaryOperationsEditorID"
+            name="%_UI_BinaryOperationsEditor_label"
+            icon="icons/full/obj16/BinaryOperationsModelFile.gif"
+            extensions="binaryoperations"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.presentation.BinaryOperationsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.presentation.BinaryOperationsActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated CICD -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.presentation.UnaryOperationsModelWizardID"
+            name="%_UI_UnaryOperationsModelWizard_label"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.presentation.UnaryOperationsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/UnaryOperationsModelFile.gif">
+         <description>%_UI_UnaryOperationsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated CICD -->
+      <editor
+            id="d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.presentation.UnaryOperationsEditorID"
+            name="%_UI_UnaryOperationsEditor_label"
+            icon="icons/full/obj16/UnaryOperationsModelFile.gif"
+            extensions="unaryoperations"
+            class="d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.presentation.UnaryOperationsEditor"
+            contributorClass="d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.presentation.UnaryOperationsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

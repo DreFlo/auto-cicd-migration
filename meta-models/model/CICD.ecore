@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="CICD" nsURI="http://www.d.fe.up.pt/CICD" nsPrefix="CICD">
+  <eClassifiers xsi:type="ecore:EClass" name="PipelineBlock" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//Agent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Parameters/Input"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Parameters/Output"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
+        eType="#//Expressions/Assignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="permissions" upperBound="-1"
+        eType="#//Options/Permission" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeoutMinutes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workingDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="concurrencyGroup" eType="#//Options/ConcurrencyGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shell" lowerBound="1" eType="#//Options/ShellType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pipeline" eSuperTypes="#//PipelineBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="#//Triggers/Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" ordered="false" upperBound="-1"
+        eType="#//Job" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="#//PipelineBlock">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+        eType="#//Steps/Step" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
+        eType="#//DockerContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependsOn" upperBound="-1"
+        eType="#//Job" eOpposite="#//Job/necessaryFor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="necessaryFor" upperBound="-1"
+        eType="#//Job" eOpposite="#//Job/dependsOn"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAttempts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+        defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" lowerBound="1" eType="#//Expressions/Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
+        eType="#//Expressions/Assignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="volumes" upperBound="-1"
+        eType="#//Expressions/Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Expressions/Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryUsername" lowerBound="1"
+        eType="#//Expressions/Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryPassword" lowerBound="1"
+        eType="#//Expressions/Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="network" lowerBound="1"
+        eType="#//Expressions/Expression"/>
+  </eClassifiers>
+  <eSubpackages name="Triggers" nsURI="http://www.d.fe.up.pt/CICD/Triggers" nsPrefix="Triggers">
+    <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchGlobs" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PushTrigger" eSuperTypes="#//Triggers/Trigger">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="tagGlobs" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//Triggers/Trigger"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ManualTrigger" eSuperTypes="#//Triggers/Trigger"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Triggers/Trigger">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WebhookTrigger" eSuperTypes="#//Triggers/Trigger"/>
+  </eSubpackages>
+  <eSubpackages name="Options" nsURI="http://www.d.fe.up.pt/CICD/Options" nsPrefix="Options">
+    <eClassifiers xsi:type="ecore:EClass" name="ConcurrencyGroup">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="groupId" lowerBound="1"
+          eType="#//Expressions/Expression"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cancelInProgress" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Permission" instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="#//Options/PermissionType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PermissionType">
+      <eLiterals name="READ"/>
+      <eLiterals name="WRITE" value="1"/>
+      <eLiterals name="NONE" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ShellType">
+      <eLiterals name="BASH"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Matrices" nsURI="http://www.d.fe.up.pt/CICD/Matrices" nsPrefix="Matrices">
+    <eClassifiers xsi:type="ecore:EClass" name="Matrix">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="axes" lowerBound="1"
+          upperBound="-1" eType="#//Matrices/MatrixAxis" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="includes" upperBound="-1"
+          eType="#//Matrices/MatrixCombination"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" upperBound="-1"
+          eType="#//Matrices/MatrixCombination"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="failFast" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+          defaultValueLiteral="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MatrixAxis">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cells" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Expression"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MatrixCombination">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="combinationEntries" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Assignment"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Parameters" nsURI="http://www.d.fe.up.pt/CICD/Parameters" nsPrefix="Parameters">
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//Parameters/Parameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//Parameters/InputType"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//Parameters/Parameter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
+          eType="#//Expressions/Values/Value"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="InputType">
+      <eLiterals name="STRING"/>
+      <eLiterals name="NUMBER" value="1"/>
+      <eLiterals name="BOOLEAN" value="2"/>
+      <eLiterals name="SECRET" value="4"/>
+      <eLiterals name="CHOICE" value="5" literal="CHOICE"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Steps" nsURI="http://www.d.fe.up.pt/CICD/Steps" nsPrefix="Steps">
+    <eClassifiers xsi:type="ecore:EClass" name="Step" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//Steps/Step">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="if" lowerBound="1" eType="#//Expressions/Expression"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="then" lowerBound="1"
+          upperBound="-1" eType="#//Steps/Step" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="else" upperBound="-1"
+          eType="#//Steps/Step" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NonConditionalStep" abstract="true"
+        eSuperTypes="#//Steps/Step">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables"
+          upperBound="-1" eType="#//Expressions/Assignment"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeoutMinutes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="false"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Command" eSuperTypes="#//Steps/NonConditionalStep">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="program" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Plugin" eSuperTypes="#//Steps/NonConditionalStep">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="pluginName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="kwargs" upperBound="-1"
+          eType="#//Expressions/Assignment"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Cache" eSuperTypes="#//Steps/NonConditionalStep">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cacheName" lowerBound="1"
+          eType="#//Expressions/Expression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="keys" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Expression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="paths" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Expression" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Artifact" eSuperTypes="#//Steps/NonConditionalStep">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="artifactName" lowerBound="1"
+          eType="#//Expressions/Expression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="includePaths" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Expression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="excludePaths" lowerBound="1"
+          upperBound="-1" eType="#//Expressions/Expression" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="retentionTime" eType="#//Expressions/Expression"
+          containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Expressions" nsURI="http://www.d.fe.up.pt/CICD/Expressions"
+      nsPrefix="Expressions">
+    <eClassifiers xsi:type="ecore:EClass" name="Assignment" instanceClassName="java.util.Map$Entry">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Expressions/Values/Variables/EnvironmentVariable"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
+          eType="#//Expressions/Expression"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
+    <eSubpackages name="Values" nsURI="http://www.d.fe.up.pt/CICD/Expressions/Values"
+        nsPrefix="Values">
+      <eClassifiers xsi:type="ecore:EClass" name="Value" eSuperTypes="#//Expressions/Expression"/>
+      <eSubpackages name="Literals" nsURI="http://www.d.fe.up.pt/CICD/Expressions/Values/Literals"
+          nsPrefix="Literals">
+        <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Expressions/Values/Value"/>
+        <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+              eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="NumberLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal"/>
+        <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Expressions/Values/Literals/Literal"/>
+      </eSubpackages>
+      <eSubpackages name="Variables" nsURI="http://www.d.fe.up.pt/CICD/Expressions/Values/Variables"
+          nsPrefix="Variables">
+        <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Expressions/Values/Value">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+              eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="EnvironmentVariable" eSuperTypes="#//Expressions/Values/Variables/Variable"/>
+        <eClassifiers xsi:type="ecore:EClass" name="SecretVariable" eSuperTypes="#//Expressions/Values/Variables/Variable"/>
+      </eSubpackages>
+    </eSubpackages>
+    <eSubpackages name="BuiltInFunctions" nsURI="http://www.d.fe.up.pt/CICD/Expressions/BuiltInFunctions"
+        nsPrefix="BuiltInFunctions">
+      <eClassifiers xsi:type="ecore:EClass" name="BuiltInFunction" eSuperTypes="#//Expressions/Expression"/>
+    </eSubpackages>
+    <eSubpackages name="BinaryOperations" nsURI="http://www.d.fe.up.pt/CICD/Expressions/"
+        nsPrefix="BinaryOperations">
+      <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" eSuperTypes="#//Expressions/Expression">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1"
+            eType="#//Expressions/Expression"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1"
+            eType="#//Expressions/Expression"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Conjuntion" eSuperTypes="#//Expressions/BinaryOperations/BinaryOp"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Disjunction" eSuperTypes="#//Expressions/BinaryOperations/BinaryOp"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Addition" eSuperTypes="#//Expressions/BinaryOperations/BinaryOp"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Subtraction" eSuperTypes="#//Expressions/BinaryOperations/BinaryOp"/>
+    </eSubpackages>
+    <eSubpackages name="UnaryOperations" nsURI="http://www.d.fe.up.pt/CICD/Expressions/UnaryOperations"
+        nsPrefix="UnaryOperations">
+      <eClassifiers xsi:type="ecore:EClass" name="UnaryOp" eSuperTypes="#//Expressions/Expression">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1"
+            eType="#//Expressions/Expression"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Negation" eSuperTypes="#//Expressions/UnaryOperations/UnaryOp"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

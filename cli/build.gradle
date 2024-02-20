@@ -7,13 +7,23 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://repo.eclipse.org/content/repositories/atl-releases/"
+    }
 }
 
 dependencies {
     implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
     implementation group: 'commons-io', name: 'commons-io', version: '2.14.0'
     implementation group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.32.0'
-    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    // https://mvnrepository.com/artifact/org.eclipse.m2m.atl/org.eclipse.m2m.atl.common
+    implementation group: 'org.eclipse.m2m.atl', name: 'org.eclipse.m2m.atl.common', version: '4.9.0'
+    // https://mvnrepository.com/artifact/org.eclipse.m2m.atl/org.eclipse.m2m.atl.core
+    implementation group: 'org.eclipse.m2m.atl', name: 'org.eclipse.m2m.atl.core', version: '4.9.0'
+    // https://mvnrepository.com/artifact/org.eclipse.m2m.atl/org.eclipse.m2m.atl.core.emf
+    implementation group: 'org.eclipse.m2m.atl', name: 'org.eclipse.m2m.atl.core.emf', version: '4.6.0'
+    // https://mvnrepository.com/artifact/org.eclipse.m2m.atl/org.eclipse.m2m.atl.engine.emfvm
+    implementation group: 'org.eclipse.m2m.atl', name: 'org.eclipse.m2m.atl.engine.emfvm', version: '4.9.0'
     // https://mvnrepository.com/artifact/com.google.inject/guice
 	implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
     implementation group: 'com.amihaiemil.web', name: 'eo-yaml', version: '7.2.0'
@@ -28,6 +38,8 @@ sourceSets {
 		java {
 		   srcDir 'src'               
 		}
+       resources {
+           srcDir 'src'       }
    }
 	
    test {

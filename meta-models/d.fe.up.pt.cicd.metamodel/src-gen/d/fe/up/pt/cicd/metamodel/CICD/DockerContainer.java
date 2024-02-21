@@ -2,10 +2,6 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
@@ -82,20 +78,20 @@ public interface DockerContainer extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable},
-	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable},
+	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
 	EMap<EnvironmentVariable, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Volumes</b></em>' reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Volumes</em>' reference list.
@@ -107,7 +103,7 @@ public interface DockerContainer extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Ports</b></em>' reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ports</em>' reference list.

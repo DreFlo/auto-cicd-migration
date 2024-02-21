@@ -9,19 +9,7 @@ Bundle-Activator: d.fe.up.pt.cicd.metamodel.CICD.provider.CICDEditPlugin$Impleme
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Expressions.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Matrices.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Options.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Parameters.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Steps.provider,
- d.fe.up.pt.cicd.metamodel.CICD.Triggers.provider,
- d.fe.up.pt.cicd.metamodel.CICD.provider
+Export-Package: d.fe.up.pt.cicd.metamodel.CICD.provider
 Require-Bundle: org.eclipse.core.runtime,
  d.fe.up.pt.cicd.metamodel;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport

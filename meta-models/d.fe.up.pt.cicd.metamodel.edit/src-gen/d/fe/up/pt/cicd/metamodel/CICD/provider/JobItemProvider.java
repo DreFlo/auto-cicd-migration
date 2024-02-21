@@ -2,10 +2,9 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
+import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Steps.StepsFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -245,19 +244,19 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.JOB__STEPS, StepsFactory.eINSTANCE.createConditionalStep()));
+				createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createConditionalStep()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, StepsFactory.eINSTANCE.createCommand()));
+				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createCommand()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, StepsFactory.eINSTANCE.createPlugin()));
+				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createPlugin()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, StepsFactory.eINSTANCE.createCache()));
+				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createCache()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, StepsFactory.eINSTANCE.createArtifact()));
+				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createArtifact()));
 	}
 
 }

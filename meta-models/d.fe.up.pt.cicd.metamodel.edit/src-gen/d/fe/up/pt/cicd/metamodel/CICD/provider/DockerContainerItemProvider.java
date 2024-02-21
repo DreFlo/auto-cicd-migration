@@ -2,11 +2,9 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
+import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsFactory;
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -291,7 +289,7 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES,
-				ExpressionsFactory.eINSTANCE.create(ExpressionsPackage.Literals.ASSIGNMENT)));
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
 	}
 
 	/**

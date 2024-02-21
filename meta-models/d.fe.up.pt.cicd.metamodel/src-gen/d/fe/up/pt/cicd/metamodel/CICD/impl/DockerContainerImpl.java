@@ -4,13 +4,8 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression;
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.impl.AssignmentImpl;
+import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 
 import java.util.Collection;
 
@@ -256,9 +251,8 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public EMap<EnvironmentVariable, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(
-					ExpressionsPackage.Literals.ASSIGNMENT, AssignmentImpl.class, this,
-					CICDPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, CICDPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

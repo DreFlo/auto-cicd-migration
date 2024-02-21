@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 
-public class GHA2CICDTransformer extends ToTIMTransformer<Workflow, GHAPackage>{
-    public GHA2CICDTransformer(ResourceSet resourceSet) throws IOException {
+public class GHA2CICDTransformer extends ToTIMAbstractTransformer<Workflow, GHAPackage> {
+    public GHA2CICDTransformer(ResourceSet resourceSet) {
         super(resourceSet, GHAPackage.eINSTANCE, "gha2cicd.asm", "GHA");
     }
 }

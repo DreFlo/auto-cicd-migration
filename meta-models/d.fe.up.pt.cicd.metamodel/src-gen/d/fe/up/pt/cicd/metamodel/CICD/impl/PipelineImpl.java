@@ -5,8 +5,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Triggers.Trigger;
+import d.fe.up.pt.cicd.metamodel.CICD.Trigger;
 
 import java.util.Collection;
 

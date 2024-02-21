@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Triggers.Trigger;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -26,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Pipeline extends PipelineBlock {
 	/**
 	 * Returns the value of the '<em><b>Triggers</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Triggers.Trigger}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Trigger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Triggers</em>' containment reference list.

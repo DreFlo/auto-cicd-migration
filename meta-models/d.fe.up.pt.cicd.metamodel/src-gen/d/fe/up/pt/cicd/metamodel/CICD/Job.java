@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Steps.Step;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -53,7 +51,7 @@ public interface Job extends PipelineBlock {
 
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Steps.Step}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Step}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Steps</em>' containment reference list.

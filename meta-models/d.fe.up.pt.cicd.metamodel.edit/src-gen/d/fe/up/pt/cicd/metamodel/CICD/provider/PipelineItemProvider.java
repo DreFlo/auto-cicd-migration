@@ -6,8 +6,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Triggers.TriggersFactory;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -148,19 +146,19 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
-				TriggersFactory.eINSTANCE.createPushTrigger()));
+				CICDFactory.eINSTANCE.createPushTrigger()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
-				TriggersFactory.eINSTANCE.createPullRequestTrigger()));
+				CICDFactory.eINSTANCE.createPullRequestTrigger()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
-				TriggersFactory.eINSTANCE.createManualTrigger()));
+				CICDFactory.eINSTANCE.createManualTrigger()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
-				TriggersFactory.eINSTANCE.createScheduledTrigger()));
+				CICDFactory.eINSTANCE.createScheduledTrigger()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
-				TriggersFactory.eINSTANCE.createWebhookTrigger()));
+				CICDFactory.eINSTANCE.createWebhookTrigger()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.PIPELINE__JOBS, CICDFactory.eINSTANCE.createJob()));

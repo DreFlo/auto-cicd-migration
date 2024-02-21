@@ -58,6 +58,294 @@ public interface CICDFactory extends EFactory {
 	DockerContainer createDockerContainer();
 
 	/**
+	 * Returns a new object of class '<em>Push Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Push Trigger</em>'.
+	 * @generated
+	 */
+	PushTrigger createPushTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Pull Request Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pull Request Trigger</em>'.
+	 * @generated
+	 */
+	PullRequestTrigger createPullRequestTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Manual Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Manual Trigger</em>'.
+	 * @generated
+	 */
+	ManualTrigger createManualTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Scheduled Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scheduled Trigger</em>'.
+	 * @generated
+	 */
+	ScheduledTrigger createScheduledTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Webhook Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Webhook Trigger</em>'.
+	 * @generated
+	 */
+	WebhookTrigger createWebhookTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Concurrency Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concurrency Group</em>'.
+	 * @generated
+	 */
+	ConcurrencyGroup createConcurrencyGroup();
+
+	/**
+	 * Returns a new object of class '<em>Matrix</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matrix</em>'.
+	 * @generated
+	 */
+	Matrix createMatrix();
+
+	/**
+	 * Returns a new object of class '<em>Matrix Axis</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matrix Axis</em>'.
+	 * @generated
+	 */
+	MatrixAxis createMatrixAxis();
+
+	/**
+	 * Returns a new object of class '<em>Matrix Combination</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matrix Combination</em>'.
+	 * @generated
+	 */
+	MatrixCombination createMatrixCombination();
+
+	/**
+	 * Returns a new object of class '<em>Input</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Input</em>'.
+	 * @generated
+	 */
+	Input createInput();
+
+	/**
+	 * Returns a new object of class '<em>Output</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Output</em>'.
+	 * @generated
+	 */
+	Output createOutput();
+
+	/**
+	 * Returns a new object of class '<em>Conditional Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conditional Step</em>'.
+	 * @generated
+	 */
+	ConditionalStep createConditionalStep();
+
+	/**
+	 * Returns a new object of class '<em>Command</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Command</em>'.
+	 * @generated
+	 */
+	Command createCommand();
+
+	/**
+	 * Returns a new object of class '<em>Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plugin</em>'.
+	 * @generated
+	 */
+	Plugin createPlugin();
+
+	/**
+	 * Returns a new object of class '<em>Cache</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cache</em>'.
+	 * @generated
+	 */
+	Cache createCache();
+
+	/**
+	 * Returns a new object of class '<em>Artifact</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Artifact</em>'.
+	 * @generated
+	 */
+	Artifact createArtifact();
+
+	/**
+	 * Returns a new object of class '<em>Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Value</em>'.
+	 * @generated
+	 */
+	Value createValue();
+
+	/**
+	 * Returns a new object of class '<em>Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal</em>'.
+	 * @generated
+	 */
+	Literal createLiteral();
+
+	/**
+	 * Returns a new object of class '<em>String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Literal</em>'.
+	 * @generated
+	 */
+	StringLiteral createStringLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Number Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Number Literal</em>'.
+	 * @generated
+	 */
+	NumberLiteral createNumberLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Literal</em>'.
+	 * @generated
+	 */
+	BooleanLiteral createBooleanLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
+	Variable createVariable();
+
+	/**
+	 * Returns a new object of class '<em>Environment Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Environment Variable</em>'.
+	 * @generated
+	 */
+	EnvironmentVariable createEnvironmentVariable();
+
+	/**
+	 * Returns a new object of class '<em>Secret Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Secret Variable</em>'.
+	 * @generated
+	 */
+	SecretVariable createSecretVariable();
+
+	/**
+	 * Returns a new object of class '<em>Built In Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Built In Function</em>'.
+	 * @generated
+	 */
+	BuiltInFunction createBuiltInFunction();
+
+	/**
+	 * Returns a new object of class '<em>Binary Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Binary Op</em>'.
+	 * @generated
+	 */
+	BinaryOp createBinaryOp();
+
+	/**
+	 * Returns a new object of class '<em>Conjuntion</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conjuntion</em>'.
+	 * @generated
+	 */
+	Conjuntion createConjuntion();
+
+	/**
+	 * Returns a new object of class '<em>Disjunction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Disjunction</em>'.
+	 * @generated
+	 */
+	Disjunction createDisjunction();
+
+	/**
+	 * Returns a new object of class '<em>Addition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Addition</em>'.
+	 * @generated
+	 */
+	Addition createAddition();
+
+	/**
+	 * Returns a new object of class '<em>Subtraction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Subtraction</em>'.
+	 * @generated
+	 */
+	Subtraction createSubtraction();
+
+	/**
+	 * Returns a new object of class '<em>Unary Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unary Op</em>'.
+	 * @generated
+	 */
+	UnaryOp createUnaryOp();
+
+	/**
+	 * Returns a new object of class '<em>Negation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Negation</em>'.
+	 * @generated
+	 */
+	Negation createNegation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

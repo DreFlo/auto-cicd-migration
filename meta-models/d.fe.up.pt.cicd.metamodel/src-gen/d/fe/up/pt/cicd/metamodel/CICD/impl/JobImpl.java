@@ -5,8 +5,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Steps.Step;
+import d.fe.up.pt.cicd.metamodel.CICD.Step;
 
 import java.util.Collection;
 

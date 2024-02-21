@@ -4,13 +4,6 @@ package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsFactory;
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.OptionsFactory;
-import d.fe.up.pt.cicd.metamodel.CICD.Options.OptionsPackage;
-
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
 
 import java.util.Collection;
@@ -280,10 +273,10 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 				createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__AGENT, CICDFactory.eINSTANCE.createAgent()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES,
-				ExpressionsFactory.eINSTANCE.create(ExpressionsPackage.Literals.ASSIGNMENT)));
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__PERMISSIONS,
-				OptionsFactory.eINSTANCE.create(OptionsPackage.Literals.PERMISSION)));
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.PERMISSION)));
 	}
 
 	/**

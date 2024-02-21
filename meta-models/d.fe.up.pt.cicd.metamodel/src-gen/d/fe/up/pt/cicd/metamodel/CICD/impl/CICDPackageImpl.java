@@ -2,66 +2,59 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
+import d.fe.up.pt.cicd.metamodel.CICD.Addition;
 import d.fe.up.pt.cicd.metamodel.CICD.Agent;
+import d.fe.up.pt.cicd.metamodel.CICD.Artifact;
+import d.fe.up.pt.cicd.metamodel.CICD.BinaryOp;
+import d.fe.up.pt.cicd.metamodel.CICD.BooleanLiteral;
+import d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.Cache;
+import d.fe.up.pt.cicd.metamodel.CICD.Command;
+import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
+import d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep;
+import d.fe.up.pt.cicd.metamodel.CICD.Conjuntion;
+import d.fe.up.pt.cicd.metamodel.CICD.Disjunction;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.BinaryOperationsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.impl.BinaryOperationsPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.BuiltInFunctionsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.impl.BuiltInFunctionsPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.UnaryOperationsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.impl.UnaryOperationsPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.LiteralsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.impl.LiteralsPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.ValuesPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.VariablesPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.impl.VariablesPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.impl.ValuesPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.impl.ExpressionsPackageImpl;
-
+import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
+import d.fe.up.pt.cicd.metamodel.CICD.Input;
+import d.fe.up.pt.cicd.metamodel.CICD.InputType;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Matrices.MatricesPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Matrices.impl.MatricesPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.OptionsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.impl.OptionsPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.ParametersPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.impl.ParametersPackageImpl;
-
+import d.fe.up.pt.cicd.metamodel.CICD.Literal;
+import d.fe.up.pt.cicd.metamodel.CICD.ManualTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
+import d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis;
+import d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination;
+import d.fe.up.pt.cicd.metamodel.CICD.Negation;
+import d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep;
+import d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral;
+import d.fe.up.pt.cicd.metamodel.CICD.Output;
+import d.fe.up.pt.cicd.metamodel.CICD.Parameter;
+import d.fe.up.pt.cicd.metamodel.CICD.PermissionType;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
+import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
+import d.fe.up.pt.cicd.metamodel.CICD.PullRequestTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.PushTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
+import d.fe.up.pt.cicd.metamodel.CICD.ShellType;
+import d.fe.up.pt.cicd.metamodel.CICD.Step;
+import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
+import d.fe.up.pt.cicd.metamodel.CICD.Subtraction;
+import d.fe.up.pt.cicd.metamodel.CICD.Trigger;
+import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
+import d.fe.up.pt.cicd.metamodel.CICD.Value;
+import d.fe.up.pt.cicd.metamodel.CICD.Variable;
+import d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Steps.StepsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Steps.impl.StepsPackageImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Triggers.TriggersPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Triggers.impl.TriggersPackageImpl;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -108,6 +101,300 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass dockerContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass triggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pushTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pullRequestTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass manualTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scheduledTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass webhookTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concurrencyGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass permissionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixAxisEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixCombinationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass parameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inputEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass outputEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nonConditionalStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass commandEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pluginEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cacheEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass artifactEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assignmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass numberLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass booleanLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass environmentVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass secretVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass builtInFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass binaryOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conjuntionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass disjunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass additionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subtractionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unaryOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass negationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum permissionTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum shellTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum inputTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -159,85 +446,11 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		isInited = true;
 
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TriggersPackage.eNS_URI);
-		TriggersPackageImpl theTriggersPackage = (TriggersPackageImpl) (registeredPackage instanceof TriggersPackageImpl
-				? registeredPackage
-				: TriggersPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OptionsPackage.eNS_URI);
-		OptionsPackageImpl theOptionsPackage = (OptionsPackageImpl) (registeredPackage instanceof OptionsPackageImpl
-				? registeredPackage
-				: OptionsPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MatricesPackage.eNS_URI);
-		MatricesPackageImpl theMatricesPackage = (MatricesPackageImpl) (registeredPackage instanceof MatricesPackageImpl
-				? registeredPackage
-				: MatricesPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ParametersPackage.eNS_URI);
-		ParametersPackageImpl theParametersPackage = (ParametersPackageImpl) (registeredPackage instanceof ParametersPackageImpl
-				? registeredPackage
-				: ParametersPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(StepsPackage.eNS_URI);
-		StepsPackageImpl theStepsPackage = (StepsPackageImpl) (registeredPackage instanceof StepsPackageImpl
-				? registeredPackage
-				: StepsPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ExpressionsPackage.eNS_URI);
-		ExpressionsPackageImpl theExpressionsPackage = (ExpressionsPackageImpl) (registeredPackage instanceof ExpressionsPackageImpl
-				? registeredPackage
-				: ExpressionsPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ValuesPackage.eNS_URI);
-		ValuesPackageImpl theValuesPackage = (ValuesPackageImpl) (registeredPackage instanceof ValuesPackageImpl
-				? registeredPackage
-				: ValuesPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(LiteralsPackage.eNS_URI);
-		LiteralsPackageImpl theLiteralsPackage = (LiteralsPackageImpl) (registeredPackage instanceof LiteralsPackageImpl
-				? registeredPackage
-				: LiteralsPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablesPackage.eNS_URI);
-		VariablesPackageImpl theVariablesPackage = (VariablesPackageImpl) (registeredPackage instanceof VariablesPackageImpl
-				? registeredPackage
-				: VariablesPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(BuiltInFunctionsPackage.eNS_URI);
-		BuiltInFunctionsPackageImpl theBuiltInFunctionsPackage = (BuiltInFunctionsPackageImpl) (registeredPackage instanceof BuiltInFunctionsPackageImpl
-				? registeredPackage
-				: BuiltInFunctionsPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(BinaryOperationsPackage.eNS_URI);
-		BinaryOperationsPackageImpl theBinaryOperationsPackage = (BinaryOperationsPackageImpl) (registeredPackage instanceof BinaryOperationsPackageImpl
-				? registeredPackage
-				: BinaryOperationsPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UnaryOperationsPackage.eNS_URI);
-		UnaryOperationsPackageImpl theUnaryOperationsPackage = (UnaryOperationsPackageImpl) (registeredPackage instanceof UnaryOperationsPackageImpl
-				? registeredPackage
-				: UnaryOperationsPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theCICDPackage.createPackageContents();
-		theTriggersPackage.createPackageContents();
-		theOptionsPackage.createPackageContents();
-		theMatricesPackage.createPackageContents();
-		theParametersPackage.createPackageContents();
-		theStepsPackage.createPackageContents();
-		theExpressionsPackage.createPackageContents();
-		theValuesPackage.createPackageContents();
-		theLiteralsPackage.createPackageContents();
-		theVariablesPackage.createPackageContents();
-		theBuiltInFunctionsPackage.createPackageContents();
-		theBinaryOperationsPackage.createPackageContents();
-		theUnaryOperationsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCICDPackage.initializePackageContents();
-		theTriggersPackage.initializePackageContents();
-		theOptionsPackage.initializePackageContents();
-		theMatricesPackage.initializePackageContents();
-		theParametersPackage.initializePackageContents();
-		theStepsPackage.initializePackageContents();
-		theExpressionsPackage.initializePackageContents();
-		theValuesPackage.initializePackageContents();
-		theLiteralsPackage.initializePackageContents();
-		theVariablesPackage.initializePackageContents();
-		theBuiltInFunctionsPackage.initializePackageContents();
-		theBinaryOperationsPackage.initializePackageContents();
-		theUnaryOperationsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCICDPackage.freeze();
@@ -603,6 +816,896 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getTrigger() {
+		return triggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTrigger_BranchGlobs() {
+		return (EAttribute) triggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPushTrigger() {
+		return pushTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPushTrigger_TagGlobs() {
+		return (EAttribute) pushTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPullRequestTrigger() {
+		return pullRequestTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getManualTrigger() {
+		return manualTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScheduledTrigger() {
+		return scheduledTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScheduledTrigger_Cron() {
+		return (EAttribute) scheduledTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWebhookTrigger() {
+		return webhookTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConcurrencyGroup() {
+		return concurrencyGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcurrencyGroup_GroupId() {
+		return (EReference) concurrencyGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConcurrencyGroup_CancelInProgress() {
+		return (EAttribute) concurrencyGroupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPermission() {
+		return permissionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPermission_Key() {
+		return (EAttribute) permissionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPermission_Value() {
+		return (EAttribute) permissionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrix() {
+		return matrixEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrix_Axes() {
+		return (EReference) matrixEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrix_Includes() {
+		return (EReference) matrixEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrix_Excludes() {
+		return (EReference) matrixEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMatrix_FailFast() {
+		return (EAttribute) matrixEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixAxis() {
+		return matrixAxisEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMatrixAxis_Name() {
+		return (EAttribute) matrixAxisEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixAxis_Cells() {
+		return (EReference) matrixAxisEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixCombination() {
+		return matrixCombinationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixCombination_CombinationEntries() {
+		return (EReference) matrixCombinationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getParameter() {
+		return parameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getParameter_Id() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getParameter_Description() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getInput() {
+		return inputEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInput_Type() {
+		return (EAttribute) inputEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInput_DefaultValue() {
+		return (EAttribute) inputEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInput_Required() {
+		return (EAttribute) inputEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOutput() {
+		return outputEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOutput_Value() {
+		return (EReference) outputEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStep() {
+		return stepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConditionalStep() {
+		return conditionalStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_If() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_Then() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_Else() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNonConditionalStep() {
+		return nonConditionalStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNonConditionalStep_Id() {
+		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNonConditionalStep_Name() {
+		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getNonConditionalStep_EnvironmentVariables() {
+		return (EReference) nonConditionalStepEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNonConditionalStep_TimeoutMinutes() {
+		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNonConditionalStep_AllowFailure() {
+		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCommand() {
+		return commandEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getCommand_Program() {
+		return (EAttribute) commandEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getCommand_Args() {
+		return (EAttribute) commandEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPlugin() {
+		return pluginEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPlugin_PluginName() {
+		return (EAttribute) pluginEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPlugin_Version() {
+		return (EAttribute) pluginEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPlugin_Kwargs() {
+		return (EReference) pluginEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCache() {
+		return cacheEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCache_CacheName() {
+		return (EReference) cacheEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCache_Keys() {
+		return (EReference) cacheEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCache_Paths() {
+		return (EReference) cacheEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getArtifact() {
+		return artifactEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArtifact_ArtifactName() {
+		return (EReference) artifactEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArtifact_IncludePaths() {
+		return (EReference) artifactEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArtifact_ExcludePaths() {
+		return (EReference) artifactEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getArtifact_RetentionTime() {
+		return (EReference) artifactEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAssignment() {
+		return assignmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAssignment_Key() {
+		return (EReference) assignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAssignment_Value() {
+		return (EReference) assignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExpression() {
+		return expressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getValue() {
+		return valueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLiteral() {
+		return literalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringLiteral() {
+		return stringLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringLiteral_Value() {
+		return (EAttribute) stringLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNumberLiteral() {
+		return numberLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBooleanLiteral() {
+		return booleanLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariable() {
+		return variableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariable_Name() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEnvironmentVariable() {
+		return environmentVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSecretVariable() {
+		return secretVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBuiltInFunction() {
+		return builtInFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBinaryOp() {
+		return binaryOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBinaryOp_Lhs() {
+		return (EReference) binaryOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBinaryOp_Rhs() {
+		return (EReference) binaryOpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConjuntion() {
+		return conjuntionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDisjunction() {
+		return disjunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAddition() {
+		return additionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSubtraction() {
+		return subtractionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getUnaryOp() {
+		return unaryOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUnaryOp_Rhs() {
+		return (EReference) unaryOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNegation() {
+		return negationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getPermissionType() {
+		return permissionTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getShellType() {
+		return shellTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getInputType() {
+		return inputTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public CICDFactory getCICDFactory() {
 		return (CICDFactory) getEFactoryInstance();
 	}
@@ -666,6 +1769,136 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__REGISTRY_USERNAME);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__REGISTRY_PASSWORD);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__NETWORK);
+
+		triggerEClass = createEClass(TRIGGER);
+		createEAttribute(triggerEClass, TRIGGER__BRANCH_GLOBS);
+
+		pushTriggerEClass = createEClass(PUSH_TRIGGER);
+		createEAttribute(pushTriggerEClass, PUSH_TRIGGER__TAG_GLOBS);
+
+		pullRequestTriggerEClass = createEClass(PULL_REQUEST_TRIGGER);
+
+		manualTriggerEClass = createEClass(MANUAL_TRIGGER);
+
+		scheduledTriggerEClass = createEClass(SCHEDULED_TRIGGER);
+		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRON);
+
+		webhookTriggerEClass = createEClass(WEBHOOK_TRIGGER);
+
+		concurrencyGroupEClass = createEClass(CONCURRENCY_GROUP);
+		createEReference(concurrencyGroupEClass, CONCURRENCY_GROUP__GROUP_ID);
+		createEAttribute(concurrencyGroupEClass, CONCURRENCY_GROUP__CANCEL_IN_PROGRESS);
+
+		permissionEClass = createEClass(PERMISSION);
+		createEAttribute(permissionEClass, PERMISSION__KEY);
+		createEAttribute(permissionEClass, PERMISSION__VALUE);
+
+		matrixEClass = createEClass(MATRIX);
+		createEReference(matrixEClass, MATRIX__AXES);
+		createEReference(matrixEClass, MATRIX__INCLUDES);
+		createEReference(matrixEClass, MATRIX__EXCLUDES);
+		createEAttribute(matrixEClass, MATRIX__FAIL_FAST);
+
+		matrixAxisEClass = createEClass(MATRIX_AXIS);
+		createEAttribute(matrixAxisEClass, MATRIX_AXIS__NAME);
+		createEReference(matrixAxisEClass, MATRIX_AXIS__CELLS);
+
+		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
+		createEReference(matrixCombinationEClass, MATRIX_COMBINATION__COMBINATION_ENTRIES);
+
+		parameterEClass = createEClass(PARAMETER);
+		createEAttribute(parameterEClass, PARAMETER__ID);
+		createEAttribute(parameterEClass, PARAMETER__DESCRIPTION);
+
+		inputEClass = createEClass(INPUT);
+		createEAttribute(inputEClass, INPUT__TYPE);
+		createEAttribute(inputEClass, INPUT__DEFAULT_VALUE);
+		createEAttribute(inputEClass, INPUT__REQUIRED);
+
+		outputEClass = createEClass(OUTPUT);
+		createEReference(outputEClass, OUTPUT__VALUE);
+
+		stepEClass = createEClass(STEP);
+
+		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__IF);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__THEN);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__ELSE);
+
+		nonConditionalStepEClass = createEClass(NON_CONDITIONAL_STEP);
+		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ID);
+		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__NAME);
+		createEReference(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
+		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__TIMEOUT_MINUTES);
+		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ALLOW_FAILURE);
+
+		commandEClass = createEClass(COMMAND);
+		createEAttribute(commandEClass, COMMAND__PROGRAM);
+		createEAttribute(commandEClass, COMMAND__ARGS);
+
+		pluginEClass = createEClass(PLUGIN);
+		createEAttribute(pluginEClass, PLUGIN__PLUGIN_NAME);
+		createEAttribute(pluginEClass, PLUGIN__VERSION);
+		createEReference(pluginEClass, PLUGIN__KWARGS);
+
+		cacheEClass = createEClass(CACHE);
+		createEReference(cacheEClass, CACHE__CACHE_NAME);
+		createEReference(cacheEClass, CACHE__KEYS);
+		createEReference(cacheEClass, CACHE__PATHS);
+
+		artifactEClass = createEClass(ARTIFACT);
+		createEReference(artifactEClass, ARTIFACT__ARTIFACT_NAME);
+		createEReference(artifactEClass, ARTIFACT__INCLUDE_PATHS);
+		createEReference(artifactEClass, ARTIFACT__EXCLUDE_PATHS);
+		createEReference(artifactEClass, ARTIFACT__RETENTION_TIME);
+
+		assignmentEClass = createEClass(ASSIGNMENT);
+		createEReference(assignmentEClass, ASSIGNMENT__KEY);
+		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
+
+		expressionEClass = createEClass(EXPRESSION);
+
+		valueEClass = createEClass(VALUE);
+
+		literalEClass = createEClass(LITERAL);
+
+		stringLiteralEClass = createEClass(STRING_LITERAL);
+		createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
+
+		numberLiteralEClass = createEClass(NUMBER_LITERAL);
+
+		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+
+		variableEClass = createEClass(VARIABLE);
+		createEAttribute(variableEClass, VARIABLE__NAME);
+
+		environmentVariableEClass = createEClass(ENVIRONMENT_VARIABLE);
+
+		secretVariableEClass = createEClass(SECRET_VARIABLE);
+
+		builtInFunctionEClass = createEClass(BUILT_IN_FUNCTION);
+
+		binaryOpEClass = createEClass(BINARY_OP);
+		createEReference(binaryOpEClass, BINARY_OP__LHS);
+		createEReference(binaryOpEClass, BINARY_OP__RHS);
+
+		conjuntionEClass = createEClass(CONJUNTION);
+
+		disjunctionEClass = createEClass(DISJUNCTION);
+
+		additionEClass = createEClass(ADDITION);
+
+		subtractionEClass = createEClass(SUBTRACTION);
+
+		unaryOpEClass = createEClass(UNARY_OP);
+		createEReference(unaryOpEClass, UNARY_OP__RHS);
+
+		negationEClass = createEClass(NEGATION);
+
+		// Create enums
+		permissionTypeEEnum = createEEnum(PERMISSION_TYPE);
+		shellTypeEEnum = createEEnum(SHELL_TYPE);
+		inputTypeEEnum = createEEnum(INPUT_TYPE);
 	}
 
 	/**
@@ -692,27 +1925,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		TriggersPackage theTriggersPackage = (TriggersPackage) EPackage.Registry.INSTANCE
-				.getEPackage(TriggersPackage.eNS_URI);
-		OptionsPackage theOptionsPackage = (OptionsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(OptionsPackage.eNS_URI);
-		MatricesPackage theMatricesPackage = (MatricesPackage) EPackage.Registry.INSTANCE
-				.getEPackage(MatricesPackage.eNS_URI);
-		ParametersPackage theParametersPackage = (ParametersPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ParametersPackage.eNS_URI);
-		StepsPackage theStepsPackage = (StepsPackage) EPackage.Registry.INSTANCE.getEPackage(StepsPackage.eNS_URI);
-		ExpressionsPackage theExpressionsPackage = (ExpressionsPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ExpressionsPackage.eNS_URI);
-
-		// Add subpackages
-		getESubpackages().add(theTriggersPackage);
-		getESubpackages().add(theOptionsPackage);
-		getESubpackages().add(theMatricesPackage);
-		getESubpackages().add(theParametersPackage);
-		getESubpackages().add(theStepsPackage);
-		getESubpackages().add(theExpressionsPackage);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -720,6 +1932,35 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		// Add supertypes to classes
 		pipelineEClass.getESuperTypes().add(this.getPipelineBlock());
 		jobEClass.getESuperTypes().add(this.getPipelineBlock());
+		pushTriggerEClass.getESuperTypes().add(this.getTrigger());
+		pullRequestTriggerEClass.getESuperTypes().add(this.getTrigger());
+		manualTriggerEClass.getESuperTypes().add(this.getTrigger());
+		scheduledTriggerEClass.getESuperTypes().add(this.getTrigger());
+		webhookTriggerEClass.getESuperTypes().add(this.getTrigger());
+		inputEClass.getESuperTypes().add(this.getParameter());
+		outputEClass.getESuperTypes().add(this.getParameter());
+		conditionalStepEClass.getESuperTypes().add(this.getStep());
+		nonConditionalStepEClass.getESuperTypes().add(this.getStep());
+		commandEClass.getESuperTypes().add(this.getNonConditionalStep());
+		pluginEClass.getESuperTypes().add(this.getNonConditionalStep());
+		cacheEClass.getESuperTypes().add(this.getNonConditionalStep());
+		artifactEClass.getESuperTypes().add(this.getNonConditionalStep());
+		valueEClass.getESuperTypes().add(this.getExpression());
+		literalEClass.getESuperTypes().add(this.getValue());
+		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+		numberLiteralEClass.getESuperTypes().add(this.getLiteral());
+		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
+		variableEClass.getESuperTypes().add(this.getValue());
+		environmentVariableEClass.getESuperTypes().add(this.getVariable());
+		secretVariableEClass.getESuperTypes().add(this.getVariable());
+		builtInFunctionEClass.getESuperTypes().add(this.getExpression());
+		binaryOpEClass.getESuperTypes().add(this.getExpression());
+		conjuntionEClass.getESuperTypes().add(this.getBinaryOp());
+		disjunctionEClass.getESuperTypes().add(this.getBinaryOp());
+		additionEClass.getESuperTypes().add(this.getBinaryOp());
+		subtractionEClass.getESuperTypes().add(this.getBinaryOp());
+		unaryOpEClass.getESuperTypes().add(this.getExpression());
+		negationEClass.getESuperTypes().add(this.getUnaryOp());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pipelineBlockEClass, PipelineBlock.class, "PipelineBlock", IS_ABSTRACT, !IS_INTERFACE,
@@ -729,17 +1970,17 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getPipelineBlock_Agent(), this.getAgent(), null, "agent", null, 0, 1, PipelineBlock.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_Inputs(), theParametersPackage.getInput(), null, "inputs", null, 0, -1,
-				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_Outputs(), theParametersPackage.getOutput(), null, "outputs", null, 0, -1,
-				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_EnvironmentVariables(), theExpressionsPackage.getAssignment(), null,
-				"environmentVariables", null, 0, -1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_Permissions(), theOptionsPackage.getPermission(), null, "permissions", null, 0,
-				-1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getPipelineBlock_Inputs(), this.getInput(), null, "inputs", null, 0, -1, PipelineBlock.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineBlock_Outputs(), this.getOutput(), null, "outputs", null, 0, -1, PipelineBlock.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineBlock_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
+				null, 0, -1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineBlock_Permissions(), this.getPermission(), null, "permissions", null, 0, -1,
+				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPipelineBlock_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null, 0,
 				1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -747,18 +1988,17 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getPipelineBlock_WorkingDirectory(), ecorePackage.getEString(), "workingDirectory", null, 0, 1,
 				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_ConcurrencyGroup(), theOptionsPackage.getConcurrencyGroup(), null,
-				"concurrencyGroup", null, 0, 1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPipelineBlock_Shell(), theOptionsPackage.getShellType(), "shell", null, 1, 1,
-				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineBlock_ConcurrencyGroup(), this.getConcurrencyGroup(), null, "concurrencyGroup", null,
+				0, 1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPipelineBlock_Shell(), this.getShellType(), "shell", null, 1, 1, PipelineBlock.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPipeline_Triggers(), theTriggersPackage.getTrigger(), null, "triggers", null, 0, -1,
-				Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPipeline_Jobs(), this.getJob(), null, "jobs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				!IS_ORDERED);
@@ -766,7 +2006,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Id(), ecorePackage.getEString(), "id", null, 1, 1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Steps(), theStepsPackage.getStep(), null, "steps", null, 0, -1, Job.class, !IS_TRANSIENT,
+		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 0, -1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getJob_Services(), this.getDockerContainer(), null, "services", null, 0, -1, Job.class,
@@ -795,30 +2035,277 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getDockerContainer_Label(), ecorePackage.getEString(), "label", null, 0, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_Image(), theExpressionsPackage.getExpression(), null, "image", null, 1, 1,
+		initEReference(getDockerContainer_Image(), this.getExpression(), null, "image", null, 1, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_EnvironmentVariables(), theExpressionsPackage.getAssignment(), null,
-				"environmentVariables", null, 0, -1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_Volumes(), theExpressionsPackage.getExpression(), null, "volumes", null, 0,
-				-1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_Ports(), theExpressionsPackage.getExpression(), null, "ports", null, 0, -1,
+		initEReference(getDockerContainer_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
+				null, 0, -1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Volumes(), this.getExpression(), null, "volumes", null, 0, -1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Ports(), this.getExpression(), null, "ports", null, 0, -1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDockerContainer_Options(), ecorePackage.getEString(), "options", null, 0, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_RegistryUsername(), theExpressionsPackage.getExpression(), null,
-				"registryUsername", null, 1, 1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_RegistryPassword(), theExpressionsPackage.getExpression(), null,
-				"registryPassword", null, 1, 1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_Network(), theExpressionsPackage.getExpression(), null, "network", null, 1, 1,
+		initEReference(getDockerContainer_RegistryUsername(), this.getExpression(), null, "registryUsername", null, 1,
+				1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_RegistryPassword(), this.getExpression(), null, "registryPassword", null, 1,
+				1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Network(), this.getExpression(), null, "network", null, 1, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(triggerEClass, Trigger.class, "Trigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTrigger_BranchGlobs(), ecorePackage.getEString(), "branchGlobs", null, 0, -1, Trigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pushTriggerEClass, PushTrigger.class, "PushTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPushTrigger_TagGlobs(), ecorePackage.getEString(), "tagGlobs", null, 0, -1, PushTrigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pullRequestTriggerEClass, PullRequestTrigger.class, "PullRequestTrigger", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(manualTriggerEClass, ManualTrigger.class, "ManualTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(scheduledTriggerEClass, ScheduledTrigger.class, "ScheduledTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScheduledTrigger_Cron(), ecorePackage.getEString(), "cron", null, 1, -1,
+				ScheduledTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(webhookTriggerEClass, WebhookTrigger.class, "WebhookTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(concurrencyGroupEClass, ConcurrencyGroup.class, "ConcurrencyGroup", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcurrencyGroup_GroupId(), this.getExpression(), null, "groupId", null, 1, 1,
+				ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConcurrencyGroup_CancelInProgress(), ecorePackage.getEBooleanObject(), "cancelInProgress",
+				null, 1, 1, ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(permissionEClass, Map.Entry.class, "Permission", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPermission_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPermission_Value(), this.getPermissionType(), "value", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 1, -1, Matrix.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getMatrix_Includes(), this.getMatrixCombination(), null, "includes", null, 0, -1, Matrix.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrix_Excludes(), this.getMatrixCombination(), null, "excludes", null, 0, -1, Matrix.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMatrix_FailFast(), ecorePackage.getEBooleanObject(), "failFast", "true", 1, 1, Matrix.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixAxisEClass, MatrixAxis.class, "MatrixAxis", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMatrixAxis_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixAxis_Cells(), this.getExpression(), null, "cells", null, 1, -1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixCombinationEClass, MatrixCombination.class, "MatrixCombination", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatrixCombination_CombinationEntries(), this.getAssignment(), null, "combinationEntries",
+				null, 1, -1, MatrixCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameter_Id(), ecorePackage.getEString(), "id", null, 1, 1, Parameter.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Description(), ecorePackage.getEString(), "description", null, 0, 1,
+				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInput_Type(), this.getInputType(), "type", null, 1, 1, Input.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInput_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Input.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInput_Required(), ecorePackage.getEBooleanObject(), "required", null, 1, 1, Input.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOutput_Value(), this.getValue(), null, "value", null, 1, 1, Output.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConditionalStep_If(), this.getExpression(), null, "if", null, 1, 1, ConditionalStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_Then(), this.getStep(), null, "then", null, 1, -1, ConditionalStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_Else(), this.getStep(), null, "else", null, 0, -1, ConditionalStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nonConditionalStepEClass, NonConditionalStep.class, "NonConditionalStep", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNonConditionalStep_Id(), ecorePackage.getEString(), "id", null, 0, 1,
+				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNonConditionalStep_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getNonConditionalStep_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
+				null, 0, -1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNonConditionalStep_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null,
+				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNonConditionalStep_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", "false", 1, 1,
+				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCommand_Program(), ecorePackage.getEString(), "program", null, 1, 1, Command.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCommand_Args(), ecorePackage.getEString(), "args", null, 0, 1, Command.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPlugin_PluginName(), ecorePackage.getEString(), "pluginName", null, 1, 1, Plugin.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlugin_Version(), ecorePackage.getEString(), "version", null, 1, 1, Plugin.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlugin_Kwargs(), this.getAssignment(), null, "kwargs", null, 0, -1, Plugin.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cacheEClass, Cache.class, "Cache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCache_CacheName(), this.getExpression(), null, "cacheName", null, 1, 1, Cache.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCache_Keys(), this.getExpression(), null, "keys", null, 1, -1, Cache.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getCache_Paths(), this.getExpression(), null, "paths", null, 1, -1, Cache.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(artifactEClass, Artifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getArtifact_ArtifactName(), this.getExpression(), null, "artifactName", null, 1, 1,
+				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArtifact_IncludePaths(), this.getExpression(), null, "includePaths", null, 1, -1,
+				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArtifact_ExcludePaths(), this.getExpression(), null, "excludePaths", null, 1, -1,
+				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getArtifact_RetentionTime(), this.getExpression(), null, "retentionTime", null, 0, 1,
+				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAssignment_Key(), this.getEnvironmentVariable(), null, "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringLiteral.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(numberLiteralEClass, NumberLiteral.class, "NumberLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(environmentVariableEClass, EnvironmentVariable.class, "EnvironmentVariable", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(secretVariableEClass, SecretVariable.class, "SecretVariable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(builtInFunctionEClass, BuiltInFunction.class, "BuiltInFunction", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBinaryOp_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getBinaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(conjuntionEClass, Conjuntion.class, "Conjuntion", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(disjunctionEClass, Disjunction.class, "Disjunction", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(additionEClass, Addition.class, "Addition", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(subtractionEClass, Subtraction.class, "Subtraction", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(unaryOpEClass, UnaryOp.class, "UnaryOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, UnaryOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(negationEClass, Negation.class, "Negation", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(permissionTypeEEnum, PermissionType.class, "PermissionType");
+		addEEnumLiteral(permissionTypeEEnum, PermissionType.READ);
+		addEEnumLiteral(permissionTypeEEnum, PermissionType.WRITE);
+		addEEnumLiteral(permissionTypeEEnum, PermissionType.NONE);
+
+		initEEnum(shellTypeEEnum, ShellType.class, "ShellType");
+		addEEnumLiteral(shellTypeEEnum, ShellType.BASH);
+
+		initEEnum(inputTypeEEnum, InputType.class, "InputType");
+		addEEnumLiteral(inputTypeEEnum, InputType.STRING);
+		addEEnumLiteral(inputTypeEEnum, InputType.NUMBER);
+		addEEnumLiteral(inputTypeEEnum, InputType.BOOLEAN);
+		addEEnumLiteral(inputTypeEEnum, InputType.SECRET);
+		addEEnumLiteral(inputTypeEEnum, InputType.CHOICE);
 
 		// Create resource
 		createResource(eNS_URI);

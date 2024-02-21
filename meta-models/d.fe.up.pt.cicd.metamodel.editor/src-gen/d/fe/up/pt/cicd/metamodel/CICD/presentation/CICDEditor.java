@@ -155,30 +155,6 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import d.fe.up.pt.cicd.metamodel.CICD.provider.CICDItemProviderAdapterFactory;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.BinaryOperations.provider.BinaryOperationsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.BuiltInFunctions.provider.BuiltInFunctionsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.UnaryOperations.provider.UnaryOperationsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Literals.provider.LiteralsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.provider.VariablesItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.provider.ValuesItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.provider.ExpressionsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Matrices.provider.MatricesItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.provider.OptionsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.provider.ParametersItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Steps.provider.StepsItemProviderAdapterFactory;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Triggers.provider.TriggersItemProviderAdapterFactory;
-
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -710,18 +686,6 @@ public class CICDEditor extends MultiPageEditorPart
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CICDItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new TriggersItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new OptionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new MatricesItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ParametersItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new StepsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ExpressionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ValuesItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new LiteralsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new VariablesItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BuiltInFunctionsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new BinaryOperationsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new UnaryOperationsItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

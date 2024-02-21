@@ -2,17 +2,6 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.ConcurrencyGroup;
-import d.fe.up.pt.cicd.metamodel.CICD.Options.PermissionType;
-import d.fe.up.pt.cicd.metamodel.CICD.Options.ShellType;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.Input;
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.Output;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
@@ -90,7 +79,7 @@ public interface PipelineBlock extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Parameters.Input}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Input}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inputs</em>' reference list.
@@ -102,7 +91,7 @@ public interface PipelineBlock extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Outputs</b></em>' reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Parameters.Output}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Output}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outputs</em>' reference list.
@@ -114,13 +103,13 @@ public interface PipelineBlock extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable},
-	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable},
+	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Expressions.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
 	EMap<EnvironmentVariable, Expression> getEnvironmentVariables();
@@ -128,12 +117,12 @@ public interface PipelineBlock extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Permissions</b></em>' map.
 	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Options.PermissionType},
+	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.PermissionType},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Permissions</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Permissions()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Options.Permission&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.metamodel.CICD.Options.PermissionType&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Permission&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.metamodel.CICD.PermissionType&gt;"
 	 * @generated
 	 */
 	EMap<String, PermissionType> getPermissions();
@@ -206,11 +195,11 @@ public interface PipelineBlock extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Shell</b></em>' attribute.
-	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.Options.ShellType}.
+	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.ShellType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Shell</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Options.ShellType
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
 	 * @see #setShell(ShellType)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Shell()
 	 * @model required="true"
@@ -223,7 +212,7 @@ public interface PipelineBlock extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Shell</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Options.ShellType
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
 	 * @see #getShell()
 	 * @generated
 	 */

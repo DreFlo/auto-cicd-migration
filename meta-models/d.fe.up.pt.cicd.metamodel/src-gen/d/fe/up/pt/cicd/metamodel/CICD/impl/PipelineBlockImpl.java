@@ -4,25 +4,14 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.Agent;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Expression;
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.ExpressionsPackage;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.Values.Variables.EnvironmentVariable;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Expressions.impl.AssignmentImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.ConcurrencyGroup;
-import d.fe.up.pt.cicd.metamodel.CICD.Options.OptionsPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.Options.PermissionType;
-import d.fe.up.pt.cicd.metamodel.CICD.Options.ShellType;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Options.impl.PermissionImpl;
-
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.Input;
-import d.fe.up.pt.cicd.metamodel.CICD.Parameters.Output;
-
+import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
+import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
+import d.fe.up.pt.cicd.metamodel.CICD.Input;
+import d.fe.up.pt.cicd.metamodel.CICD.Output;
+import d.fe.up.pt.cicd.metamodel.CICD.PermissionType;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
+import d.fe.up.pt.cicd.metamodel.CICD.ShellType;
 
 import java.util.Collection;
 
@@ -334,9 +323,8 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public EMap<EnvironmentVariable, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(
-					ExpressionsPackage.Literals.ASSIGNMENT, AssignmentImpl.class, this,
-					CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}
@@ -349,8 +337,8 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public EMap<String, PermissionType> getPermissions() {
 		if (permissions == null) {
-			permissions = new EcoreEMap<String, PermissionType>(OptionsPackage.Literals.PERMISSION,
-					PermissionImpl.class, this, CICDPackage.PIPELINE_BLOCK__PERMISSIONS);
+			permissions = new EcoreEMap<String, PermissionType>(CICDPackage.Literals.PERMISSION, PermissionImpl.class,
+					this, CICDPackage.PIPELINE_BLOCK__PERMISSIONS);
 		}
 		return permissions;
 	}

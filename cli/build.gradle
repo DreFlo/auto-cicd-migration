@@ -38,20 +38,7 @@ sourceSets {
 		java {
 		   srcDir 'src'               
 		}
-       resources {
-           srcDir 'src'       }
    }
-	
-   test {
-      java {
-         srcDir 'test'
-      }
-	  
-	  resources {
-		srcDir 'test'
-	  }
-   }
-    
 }
 
 mainClassName = 'cli.Main'

@@ -3,7 +3,6 @@ package cli;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
 import cli.parsers.*;
 import cli.parsers.exceptions.*;
 import cli.transformers.toTIM.GHA2CICDTransformer;
@@ -30,8 +29,8 @@ public class Main {
 			System.out.println("Usage: java -jar <jarfile> <inputfile>");
 			System.exit(1);
 		}
-		
-		try {
+
+        try {
 			Workflow workflow = parser.parse(Files.readString(Path.of(args[0])));
 
 			Pipeline pipeline = new GHA2CICDTransformer(getResourceSet()).transform(workflow);
@@ -42,7 +41,7 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
+    }
 
 	public static ResourceSet getResourceSet() {
 		return resourceSet;

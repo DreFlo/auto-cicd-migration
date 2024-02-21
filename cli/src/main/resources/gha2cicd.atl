@@ -1,0 +1,34 @@
+-- @path GHA=/d.fe.up.pt.cicd.gha.metamodel/model/GHA.ecore
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module gha2cicd;
+create OUT : CICD from IN : GHA;
+
+rule Workflow2Pipeline {
+	from
+		workflow: GHA!Workflow
+	to
+		pipeline: CICD!Pipeline (
+			name <- workflow.name.expressionToString()
+		)
+}
+
+
+helper context GHA!Expression def: expressionToString() : String = 'EXPRESSION';
+
+helper context GHA!Literal def : expressionToString() : String = 'LITERAL';
+
+helper context GHA!StringLiteral def : expressionToString() : String = self.value;
+
+helper context GHA!IntegerLiteral def : expressionToString() : String = self.value.toString();
+
+helper context GHA!DoubleLiteral def : expressionToString() : String = self.value.toString();
+
+helper context GHA!BooleanLiteral def : expressionToString() : String = self.value.toString();
+
+helper context GHA!Concat def : expressionToString() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | expr.expressionToString()).toString() in
+	exprStrings->iterate(exprString; joinedString: String = '' |
+		joinedString.concat(exprString)
+	);

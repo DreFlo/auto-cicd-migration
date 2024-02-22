@@ -2,9 +2,7 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -26,15 +24,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MatrixCombination extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Combination Entries</b></em>' reference list.
-	 * The list contents are of type {@link java.util.Map.Entry}<code>&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;</code>.
+	 * Returns the value of the '<em><b>Combination Entries</b></em>' map.
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable},
+	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Combination Entries</em>' reference list.
+	 * @return the value of the '<em>Combination Entries</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getMatrixCombination_CombinationEntries()
 	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EList<Map.Entry<EnvironmentVariable, Expression>> getCombinationEntries();
+	EMap<EnvironmentVariable, Expression> getCombinationEntries();
 
 } // MatrixCombination

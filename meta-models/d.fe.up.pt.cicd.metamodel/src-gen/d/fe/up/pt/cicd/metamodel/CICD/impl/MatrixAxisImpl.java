@@ -9,15 +9,18 @@ import d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,7 +58,7 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCells() <em>Cells</em>}' reference list.
+	 * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCells()
@@ -114,9 +117,23 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	@Override
 	public EList<Expression> getCells() {
 		if (cells == null) {
-			cells = new EObjectResolvingEList<Expression>(Expression.class, this, CICDPackage.MATRIX_AXIS__CELLS);
+			cells = new EObjectContainmentEList<Expression>(Expression.class, this, CICDPackage.MATRIX_AXIS__CELLS);
 		}
 		return cells;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.MATRIX_AXIS__CELLS:
+			return ((InternalEList<?>) getCells()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

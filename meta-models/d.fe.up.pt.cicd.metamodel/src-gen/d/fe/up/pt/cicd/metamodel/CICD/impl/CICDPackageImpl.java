@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.Addition;
 import d.fe.up.pt.cicd.metamodel.CICD.Agent;
+import d.fe.up.pt.cicd.metamodel.CICD.And;
 import d.fe.up.pt.cicd.metamodel.CICD.Artifact;
 import d.fe.up.pt.cicd.metamodel.CICD.BinaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.BooleanLiteral;
@@ -12,27 +13,29 @@ import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Cache;
 import d.fe.up.pt.cicd.metamodel.CICD.Command;
+import d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp;
+import d.fe.up.pt.cicd.metamodel.CICD.Concat;
 import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
 import d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep;
-import d.fe.up.pt.cicd.metamodel.CICD.Conjuntion;
-import d.fe.up.pt.cicd.metamodel.CICD.Disjunction;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
+import d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
+import d.fe.up.pt.cicd.metamodel.CICD.EqualityOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
-import d.fe.up.pt.cicd.metamodel.CICD.InputType;
+import d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
 import d.fe.up.pt.cicd.metamodel.CICD.Literal;
+import d.fe.up.pt.cicd.metamodel.CICD.LogicalOp;
 import d.fe.up.pt.cicd.metamodel.CICD.ManualTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
 import d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis;
 import d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination;
 import d.fe.up.pt.cicd.metamodel.CICD.Negation;
 import d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep;
-import d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral;
+import d.fe.up.pt.cicd.metamodel.CICD.Or;
 import d.fe.up.pt.cicd.metamodel.CICD.Output;
 import d.fe.up.pt.cicd.metamodel.CICD.Parameter;
-import d.fe.up.pt.cicd.metamodel.CICD.PermissionType;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
 import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
@@ -40,7 +43,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.PullRequestTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.PushTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
-import d.fe.up.pt.cicd.metamodel.CICD.ShellType;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
 import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.Subtraction;
@@ -268,6 +270,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass concatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass valueEClass = null;
 
 	/**
@@ -289,7 +298,14 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass numberLiteralEClass = null;
+	private EClass integerLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass doubleLiteralEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -338,14 +354,35 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass conjuntionEClass = null;
+	private EClass equalityOpEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass disjunctionEClass = null;
+	private EClass comparisonOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass logicalOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -380,21 +417,35 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum permissionTypeEEnum = null;
+	private EEnum permissioN_TYPEEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum shellTypeEEnum = null;
+	private EEnum shelL_TYPEEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum inputTypeEEnum = null;
+	private EEnum inpuT_TYPEEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum equalitY_OPSEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum comparisoN_OPSEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1276,18 +1327,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCommand_Program() {
-		return (EAttribute) commandEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCommand_Args() {
-		return (EAttribute) commandEClass.getEStructuralFeatures().get(1);
+	public EReference getCommand_Program() {
+		return (EReference) commandEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1466,6 +1507,26 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getConcat() {
+		return concatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcat_Expressions() {
+		return (EReference) concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getValue() {
 		return valueEClass;
 	}
@@ -1506,8 +1567,38 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getNumberLiteral() {
-		return numberLiteralEClass;
+	public EClass getIntegerLiteral() {
+		return integerLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntegerLiteral_Value() {
+		return (EAttribute) integerLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDoubleLiteral() {
+		return doubleLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoubleLiteral_Value() {
+		return (EAttribute) doubleLiteralEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1518,6 +1609,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EClass getBooleanLiteral() {
 		return booleanLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBooleanLiteral_Value() {
+		return (EAttribute) booleanLiteralEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1606,8 +1707,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getConjuntion() {
-		return conjuntionEClass;
+	public EClass getEqualityOp() {
+		return equalityOpEClass;
 	}
 
 	/**
@@ -1616,8 +1717,58 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getDisjunction() {
-		return disjunctionEClass;
+	public EAttribute getEqualityOp_Op() {
+		return (EAttribute) equalityOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getComparisonOp() {
+		return comparisonOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComparisonOp_Op() {
+		return (EAttribute) comparisonOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLogicalOp() {
+		return logicalOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAnd() {
+		return andEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOr() {
+		return orEClass;
 	}
 
 	/**
@@ -1676,8 +1827,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getPermissionType() {
-		return permissionTypeEEnum;
+	public EEnum getPERMISSION_TYPE() {
+		return permissioN_TYPEEEnum;
 	}
 
 	/**
@@ -1686,8 +1837,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getShellType() {
-		return shellTypeEEnum;
+	public EEnum getSHELL_TYPE() {
+		return shelL_TYPEEEnum;
 	}
 
 	/**
@@ -1696,8 +1847,28 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getInputType() {
-		return inputTypeEEnum;
+	public EEnum getINPUT_TYPE() {
+		return inpuT_TYPEEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getEQUALITY_OPS() {
+		return equalitY_OPSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getCOMPARISON_OPS() {
+		return comparisoN_OPSEEnum;
 	}
 
 	/**
@@ -1833,8 +2004,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ALLOW_FAILURE);
 
 		commandEClass = createEClass(COMMAND);
-		createEAttribute(commandEClass, COMMAND__PROGRAM);
-		createEAttribute(commandEClass, COMMAND__ARGS);
+		createEReference(commandEClass, COMMAND__PROGRAM);
 
 		pluginEClass = createEClass(PLUGIN);
 		createEAttribute(pluginEClass, PLUGIN__PLUGIN_NAME);
@@ -1858,6 +2028,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		expressionEClass = createEClass(EXPRESSION);
 
+		concatEClass = createEClass(CONCAT);
+		createEReference(concatEClass, CONCAT__EXPRESSIONS);
+
 		valueEClass = createEClass(VALUE);
 
 		literalEClass = createEClass(LITERAL);
@@ -1865,9 +2038,14 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		stringLiteralEClass = createEClass(STRING_LITERAL);
 		createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
 
-		numberLiteralEClass = createEClass(NUMBER_LITERAL);
+		integerLiteralEClass = createEClass(INTEGER_LITERAL);
+		createEAttribute(integerLiteralEClass, INTEGER_LITERAL__VALUE);
+
+		doubleLiteralEClass = createEClass(DOUBLE_LITERAL);
+		createEAttribute(doubleLiteralEClass, DOUBLE_LITERAL__VALUE);
 
 		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
@@ -1882,9 +2060,17 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(binaryOpEClass, BINARY_OP__LHS);
 		createEReference(binaryOpEClass, BINARY_OP__RHS);
 
-		conjuntionEClass = createEClass(CONJUNTION);
+		equalityOpEClass = createEClass(EQUALITY_OP);
+		createEAttribute(equalityOpEClass, EQUALITY_OP__OP);
 
-		disjunctionEClass = createEClass(DISJUNCTION);
+		comparisonOpEClass = createEClass(COMPARISON_OP);
+		createEAttribute(comparisonOpEClass, COMPARISON_OP__OP);
+
+		logicalOpEClass = createEClass(LOGICAL_OP);
+
+		andEClass = createEClass(AND);
+
+		orEClass = createEClass(OR);
 
 		additionEClass = createEClass(ADDITION);
 
@@ -1896,9 +2082,11 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		negationEClass = createEClass(NEGATION);
 
 		// Create enums
-		permissionTypeEEnum = createEEnum(PERMISSION_TYPE);
-		shellTypeEEnum = createEEnum(SHELL_TYPE);
-		inputTypeEEnum = createEEnum(INPUT_TYPE);
+		permissioN_TYPEEEnum = createEEnum(PERMISSION_TYPE);
+		shelL_TYPEEEnum = createEEnum(SHELL_TYPE);
+		inpuT_TYPEEEnum = createEEnum(INPUT_TYPE);
+		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
+		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
 	}
 
 	/**
@@ -1945,18 +2133,23 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		pluginEClass.getESuperTypes().add(this.getNonConditionalStep());
 		cacheEClass.getESuperTypes().add(this.getNonConditionalStep());
 		artifactEClass.getESuperTypes().add(this.getNonConditionalStep());
+		concatEClass.getESuperTypes().add(this.getExpression());
 		valueEClass.getESuperTypes().add(this.getExpression());
 		literalEClass.getESuperTypes().add(this.getValue());
 		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
-		numberLiteralEClass.getESuperTypes().add(this.getLiteral());
+		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
+		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 		variableEClass.getESuperTypes().add(this.getValue());
 		environmentVariableEClass.getESuperTypes().add(this.getVariable());
 		secretVariableEClass.getESuperTypes().add(this.getVariable());
 		builtInFunctionEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
-		conjuntionEClass.getESuperTypes().add(this.getBinaryOp());
-		disjunctionEClass.getESuperTypes().add(this.getBinaryOp());
+		equalityOpEClass.getESuperTypes().add(this.getBinaryOp());
+		comparisonOpEClass.getESuperTypes().add(this.getBinaryOp());
+		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
+		andEClass.getESuperTypes().add(this.getLogicalOp());
+		orEClass.getESuperTypes().add(this.getLogicalOp());
 		additionEClass.getESuperTypes().add(this.getBinaryOp());
 		subtractionEClass.getESuperTypes().add(this.getBinaryOp());
 		unaryOpEClass.getESuperTypes().add(this.getExpression());
@@ -1971,10 +2164,10 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPipelineBlock_Inputs(), this.getInput(), null, "inputs", null, 0, -1, PipelineBlock.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPipelineBlock_Outputs(), this.getOutput(), null, "outputs", null, 0, -1, PipelineBlock.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPipelineBlock_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
 				null, 0, -1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
@@ -1989,9 +2182,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEReference(getPipelineBlock_ConcurrencyGroup(), this.getConcurrencyGroup(), null, "concurrencyGroup", null,
-				0, 1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPipelineBlock_Shell(), this.getShellType(), "shell", null, 1, 1, PipelineBlock.class,
+				0, 1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPipelineBlock_Shell(), this.getSHELL_TYPE(), "shell", null, 1, 1, PipelineBlock.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2010,7 +2203,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getJob_Services(), this.getDockerContainer(), null, "services", null, 0, -1, Job.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_DependsOn(), this.getJob(), this.getJob_NecessaryFor(), "dependsOn", null, 0, -1,
 				Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
@@ -2036,16 +2229,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEReference(getDockerContainer_Image(), this.getExpression(), null, "image", null, 1, 1,
-				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDockerContainer_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
 				null, 0, -1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDockerContainer_Volumes(), this.getExpression(), null, "volumes", null, 0, -1,
-				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDockerContainer_Ports(), this.getExpression(), null, "ports", null, 0, -1,
-				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDockerContainer_Options(), ecorePackage.getEString(), "options", null, 0, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -2087,7 +2280,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEClass(concurrencyGroupEClass, ConcurrencyGroup.class, "ConcurrencyGroup", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcurrencyGroup_GroupId(), this.getExpression(), null, "groupId", null, 1, 1,
-				ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConcurrencyGroup_CancelInProgress(), ecorePackage.getEBooleanObject(), "cancelInProgress",
 				null, 1, 1, ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
@@ -2097,7 +2290,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPermission_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPermission_Value(), this.getPermissionType(), "value", null, 1, 1, Map.Entry.class,
+		initEAttribute(getPermission_Value(), this.getPERMISSION_TYPE(), "value", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2105,10 +2298,10 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getMatrix_Includes(), this.getMatrixCombination(), null, "includes", null, 0, -1, Matrix.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMatrix_Excludes(), this.getMatrixCombination(), null, "excludes", null, 0, -1, Matrix.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMatrix_FailFast(), ecorePackage.getEBooleanObject(), "failFast", "true", 1, 1, Matrix.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2118,14 +2311,14 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getMatrixAxis_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixAxis.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMatrixAxis_Cells(), this.getExpression(), null, "cells", null, 1, -1, MatrixAxis.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matrixCombinationEClass, MatrixCombination.class, "MatrixCombination", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMatrixCombination_CombinationEntries(), this.getAssignment(), null, "combinationEntries",
-				null, 1, -1, MatrixCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				null, 1, -1, MatrixCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2136,7 +2329,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInput_Type(), this.getInputType(), "type", null, 1, 1, Input.class, !IS_TRANSIENT,
+		initEAttribute(getInput_Type(), this.getINPUT_TYPE(), "type", null, 1, 1, Input.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInput_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Input.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2145,7 +2338,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutput_Value(), this.getValue(), null, "value", null, 1, 1, Output.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2171,8 +2364,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEReference(getNonConditionalStep_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
-				null, 0, -1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				null, 0, -1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNonConditionalStep_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null,
 				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2181,10 +2374,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCommand_Program(), ecorePackage.getEString(), "program", null, 1, 1, Command.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCommand_Args(), ecorePackage.getEString(), "args", null, 0, 1, Command.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommand_Program(), this.getExpression(), null, "program", null, 1, 1, Command.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPlugin_PluginName(), ecorePackage.getEString(), "pluginName", null, 1, 1, Plugin.class,
@@ -2192,7 +2384,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getPlugin_Version(), ecorePackage.getEString(), "version", null, 1, 1, Plugin.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlugin_Kwargs(), this.getAssignment(), null, "kwargs", null, 0, -1, Plugin.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cacheEClass, Cache.class, "Cache", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2227,11 +2419,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcat_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Concat.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2242,11 +2439,23 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringLiteral.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(numberLiteralEClass, NumberLiteral.class, "NumberLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntegerLiteral_Value(), ecorePackage.getEIntegerObject(), "value", null, 1, 1,
+				IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(doubleLiteralEClass, DoubleLiteral.class, "DoubleLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDoubleLiteral_Value(), ecorePackage.getEDoubleObject(), "value", null, 1, 1,
+				DoubleLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBooleanObject(), "value", null, 1, 1,
+				BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2262,20 +2471,30 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEClass(builtInFunctionEClass, BuiltInFunction.class, "BuiltInFunction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBinaryOp_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getBinaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(conjuntionEClass, Conjuntion.class, "Conjuntion", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(equalityOpEClass, EqualityOp.class, "EqualityOp", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEqualityOp_Op(), this.getEQUALITY_OPS(), "op", null, 1, 1, EqualityOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(comparisonOpEClass, ComparisonOp.class, "ComparisonOp", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComparisonOp_Op(), this.getCOMPARISON_OPS(), "op", null, 1, 1, ComparisonOp.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(logicalOpEClass, LogicalOp.class, "LogicalOp", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(disjunctionEClass, Disjunction.class, "Disjunction", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(additionEClass, Addition.class, "Addition", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2285,27 +2504,37 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(unaryOpEClass, UnaryOp.class, "UnaryOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, UnaryOp.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
 		initEClass(negationEClass, Negation.class, "Negation", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
-		initEEnum(permissionTypeEEnum, PermissionType.class, "PermissionType");
-		addEEnumLiteral(permissionTypeEEnum, PermissionType.READ);
-		addEEnumLiteral(permissionTypeEEnum, PermissionType.WRITE);
-		addEEnumLiteral(permissionTypeEEnum, PermissionType.NONE);
+		initEEnum(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.class, "PERMISSION_TYPE");
+		addEEnumLiteral(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.READ);
+		addEEnumLiteral(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.WRITE);
+		addEEnumLiteral(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.NONE);
 
-		initEEnum(shellTypeEEnum, ShellType.class, "ShellType");
-		addEEnumLiteral(shellTypeEEnum, ShellType.BASH);
+		initEEnum(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.class, "SHELL_TYPE");
+		addEEnumLiteral(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.BASH);
 
-		initEEnum(inputTypeEEnum, InputType.class, "InputType");
-		addEEnumLiteral(inputTypeEEnum, InputType.STRING);
-		addEEnumLiteral(inputTypeEEnum, InputType.NUMBER);
-		addEEnumLiteral(inputTypeEEnum, InputType.BOOLEAN);
-		addEEnumLiteral(inputTypeEEnum, InputType.SECRET);
-		addEEnumLiteral(inputTypeEEnum, InputType.CHOICE);
+		initEEnum(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.class, "INPUT_TYPE");
+		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.STRING);
+		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.NUMBER);
+		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.BOOLEAN);
+		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.SECRET);
+		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.CHOICE);
+
+		initEEnum(equalitY_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS.class, "EQUALITY_OPS");
+		addEEnumLiteral(equalitY_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS.EQUALS);
+		addEEnumLiteral(equalitY_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS.NOT_EQUALS);
+
+		initEEnum(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.class, "COMPARISON_OPS");
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.GT);
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.GTE);
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.LT);
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.LTE);
 
 		// Create resource
 		createResource(eNS_URI);

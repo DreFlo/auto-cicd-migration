@@ -3,8 +3,8 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
-import d.fe.up.pt.cicd.metamodel.CICD.InputType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -36,7 +36,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final InputType TYPE_EDEFAULT = InputType.STRING;
+	protected static final INPUT_TYPE TYPE_EDEFAULT = INPUT_TYPE.STRING;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -46,7 +46,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 * @ordered
 	 */
-	protected InputType type = TYPE_EDEFAULT;
+	protected INPUT_TYPE type = TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
@@ -113,7 +113,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 */
 	@Override
-	public InputType getType() {
+	public INPUT_TYPE getType() {
 		return type;
 	}
 
@@ -123,8 +123,8 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 */
 	@Override
-	public void setType(InputType newType) {
-		InputType oldType = type;
+	public void setType(INPUT_TYPE newType) {
+		INPUT_TYPE oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.INPUT__TYPE, oldType, type));
@@ -204,7 +204,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case CICDPackage.INPUT__TYPE:
-			setType((InputType) newValue);
+			setType((INPUT_TYPE) newValue);
 			return;
 		case CICDPackage.INPUT__DEFAULT_VALUE:
 			setDefaultValue((String) newValue);

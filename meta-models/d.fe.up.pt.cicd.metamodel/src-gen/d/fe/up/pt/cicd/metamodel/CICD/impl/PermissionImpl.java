@@ -3,7 +3,7 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.PermissionType;
+import d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class PermissionImpl extends MinimalEObjectImpl.Container implements BasicEMap.Entry<String, PermissionType> {
+public class PermissionImpl extends MinimalEObjectImpl.Container implements BasicEMap.Entry<String, PERMISSION_TYPE> {
 	/**
 	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final PermissionType VALUE_EDEFAULT = PermissionType.READ;
+	protected static final PERMISSION_TYPE VALUE_EDEFAULT = PERMISSION_TYPE.READ;
 
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' attribute.
@@ -69,7 +69,7 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * @generated
 	 * @ordered
 	 */
-	protected PermissionType value = VALUE_EDEFAULT;
+	protected PERMISSION_TYPE value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PermissionType getTypedValue() {
+	public PERMISSION_TYPE getTypedValue() {
 		return value;
 	}
 
@@ -125,8 +125,8 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedValue(PermissionType newValue) {
-		PermissionType oldValue = value;
+	public void setTypedValue(PERMISSION_TYPE newValue) {
+		PERMISSION_TYPE oldValue = value;
 		value = newValue == null ? VALUE_EDEFAULT : newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PERMISSION__VALUE, oldValue, value));
@@ -160,7 +160,7 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 			setTypedKey((String) newValue);
 			return;
 		case CICDPackage.PERMISSION__VALUE:
-			setTypedValue((PermissionType) newValue);
+			setTypedValue((PERMISSION_TYPE) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,7 +276,7 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * @generated
 	 */
 	@Override
-	public PermissionType getValue() {
+	public PERMISSION_TYPE getValue() {
 		return getTypedValue();
 	}
 
@@ -286,8 +286,8 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * @generated
 	 */
 	@Override
-	public PermissionType setValue(PermissionType value) {
-		PermissionType oldValue = getValue();
+	public PERMISSION_TYPE setValue(PERMISSION_TYPE value) {
+		PERMISSION_TYPE oldValue = getValue();
 		setTypedValue(value);
 		return oldValue;
 	}
@@ -298,9 +298,9 @@ public class PermissionImpl extends MinimalEObjectImpl.Container implements Basi
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<String, PermissionType> getEMap() {
+	public EMap<String, PERMISSION_TYPE> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, PermissionType>) container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, PERMISSION_TYPE>) container.eGet(eContainmentFeature());
 	}
 
 } //PermissionImpl

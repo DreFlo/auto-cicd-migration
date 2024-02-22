@@ -9,9 +9,9 @@ import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 import d.fe.up.pt.cicd.metamodel.CICD.Output;
-import d.fe.up.pt.cicd.metamodel.CICD.PermissionType;
+import d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
-import d.fe.up.pt.cicd.metamodel.CICD.ShellType;
+import d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE;
 
 import java.util.Collection;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -86,7 +86,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	protected Agent agent;
 
 	/**
-	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' reference list.
+	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInputs()
@@ -96,7 +96,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	protected EList<Input> inputs;
 
 	/**
-	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' reference list.
+	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOutputs()
@@ -123,7 +123,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, PermissionType> permissions;
+	protected EMap<String, PERMISSION_TYPE> permissions;
 
 	/**
 	 * The default value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' attribute.
@@ -166,7 +166,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	protected String workingDirectory = WORKING_DIRECTORY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getConcurrencyGroup() <em>Concurrency Group</em>}' reference.
+	 * The cached value of the '{@link #getConcurrencyGroup() <em>Concurrency Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getConcurrencyGroup()
@@ -183,7 +183,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ShellType SHELL_EDEFAULT = ShellType.BASH;
+	protected static final SHELL_TYPE SHELL_EDEFAULT = SHELL_TYPE.BASH;
 
 	/**
 	 * The cached value of the '{@link #getShell() <em>Shell</em>}' attribute.
@@ -193,7 +193,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected ShellType shell = SHELL_EDEFAULT;
+	protected SHELL_TYPE shell = SHELL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -297,7 +297,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public EList<Input> getInputs() {
 		if (inputs == null) {
-			inputs = new EObjectResolvingEList<Input>(Input.class, this, CICDPackage.PIPELINE_BLOCK__INPUTS);
+			inputs = new EObjectContainmentEList<Input>(Input.class, this, CICDPackage.PIPELINE_BLOCK__INPUTS);
 		}
 		return inputs;
 	}
@@ -310,7 +310,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public EList<Output> getOutputs() {
 		if (outputs == null) {
-			outputs = new EObjectResolvingEList<Output>(Output.class, this, CICDPackage.PIPELINE_BLOCK__OUTPUTS);
+			outputs = new EObjectContainmentEList<Output>(Output.class, this, CICDPackage.PIPELINE_BLOCK__OUTPUTS);
 		}
 		return outputs;
 	}
@@ -335,9 +335,9 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public EMap<String, PermissionType> getPermissions() {
+	public EMap<String, PERMISSION_TYPE> getPermissions() {
 		if (permissions == null) {
-			permissions = new EcoreEMap<String, PermissionType>(CICDPackage.Literals.PERMISSION, PermissionImpl.class,
+			permissions = new EcoreEMap<String, PERMISSION_TYPE>(CICDPackage.Literals.PERMISSION, PermissionImpl.class,
 					this, CICDPackage.PIPELINE_BLOCK__PERMISSIONS);
 		}
 		return permissions;
@@ -398,15 +398,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 */
 	@Override
 	public ConcurrencyGroup getConcurrencyGroup() {
-		if (concurrencyGroup != null && concurrencyGroup.eIsProxy()) {
-			InternalEObject oldConcurrencyGroup = (InternalEObject) concurrencyGroup;
-			concurrencyGroup = (ConcurrencyGroup) eResolveProxy(oldConcurrencyGroup);
-			if (concurrencyGroup != oldConcurrencyGroup) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP, oldConcurrencyGroup, concurrencyGroup));
-			}
-		}
 		return concurrencyGroup;
 	}
 
@@ -415,8 +406,18 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConcurrencyGroup basicGetConcurrencyGroup() {
-		return concurrencyGroup;
+	public NotificationChain basicSetConcurrencyGroup(ConcurrencyGroup newConcurrencyGroup, NotificationChain msgs) {
+		ConcurrencyGroup oldConcurrencyGroup = concurrencyGroup;
+		concurrencyGroup = newConcurrencyGroup;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP, oldConcurrencyGroup, newConcurrencyGroup);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -426,11 +427,20 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 */
 	@Override
 	public void setConcurrencyGroup(ConcurrencyGroup newConcurrencyGroup) {
-		ConcurrencyGroup oldConcurrencyGroup = concurrencyGroup;
-		concurrencyGroup = newConcurrencyGroup;
-		if (eNotificationRequired())
+		if (newConcurrencyGroup != concurrencyGroup) {
+			NotificationChain msgs = null;
+			if (concurrencyGroup != null)
+				msgs = ((InternalEObject) concurrencyGroup).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP, null, msgs);
+			if (newConcurrencyGroup != null)
+				msgs = ((InternalEObject) newConcurrencyGroup).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP, null, msgs);
+			msgs = basicSetConcurrencyGroup(newConcurrencyGroup, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP,
-					oldConcurrencyGroup, concurrencyGroup));
+					newConcurrencyGroup, newConcurrencyGroup));
 	}
 
 	/**
@@ -439,7 +449,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public ShellType getShell() {
+	public SHELL_TYPE getShell() {
 		return shell;
 	}
 
@@ -449,8 +459,8 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public void setShell(ShellType newShell) {
-		ShellType oldShell = shell;
+	public void setShell(SHELL_TYPE newShell) {
+		SHELL_TYPE oldShell = shell;
 		shell = newShell == null ? SHELL_EDEFAULT : newShell;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PIPELINE_BLOCK__SHELL, oldShell, shell));
@@ -466,10 +476,16 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 		switch (featureID) {
 		case CICDPackage.PIPELINE_BLOCK__AGENT:
 			return basicSetAgent(null, msgs);
+		case CICDPackage.PIPELINE_BLOCK__INPUTS:
+			return ((InternalEList<?>) getInputs()).basicRemove(otherEnd, msgs);
+		case CICDPackage.PIPELINE_BLOCK__OUTPUTS:
+			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
 			return ((InternalEList<?>) getPermissions()).basicRemove(otherEnd, msgs);
+		case CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP:
+			return basicSetConcurrencyGroup(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -505,9 +521,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 		case CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY:
 			return getWorkingDirectory();
 		case CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP:
-			if (resolve)
-				return getConcurrencyGroup();
-			return basicGetConcurrencyGroup();
+			return getConcurrencyGroup();
 		case CICDPackage.PIPELINE_BLOCK__SHELL:
 			return getShell();
 		}
@@ -553,7 +567,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			setConcurrencyGroup((ConcurrencyGroup) newValue);
 			return;
 		case CICDPackage.PIPELINE_BLOCK__SHELL:
-			setShell((ShellType) newValue);
+			setShell((SHELL_TYPE) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

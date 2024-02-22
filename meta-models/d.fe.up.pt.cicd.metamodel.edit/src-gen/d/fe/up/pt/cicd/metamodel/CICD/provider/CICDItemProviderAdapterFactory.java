@@ -579,6 +579,29 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Concat} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConcatItemProvider concatItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Concat}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConcatAdapter() {
+		if (concatItemProvider == null) {
+			concatItemProvider = new ConcatItemProvider(this);
+		}
+
+		return concatItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Value} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -648,26 +671,49 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected NumberLiteralItemProvider numberLiteralItemProvider;
+	protected IntegerLiteralItemProvider integerLiteralItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createNumberLiteralAdapter() {
-		if (numberLiteralItemProvider == null) {
-			numberLiteralItemProvider = new NumberLiteralItemProvider(this);
+	public Adapter createIntegerLiteralAdapter() {
+		if (integerLiteralItemProvider == null) {
+			integerLiteralItemProvider = new IntegerLiteralItemProvider(this);
 		}
 
-		return numberLiteralItemProvider;
+		return integerLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DoubleLiteralItemProvider doubleLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDoubleLiteralAdapter() {
+		if (doubleLiteralItemProvider == null) {
+			doubleLiteralItemProvider = new DoubleLiteralItemProvider(this);
+		}
+
+		return doubleLiteralItemProvider;
 	}
 
 	/**
@@ -786,72 +832,95 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.EqualityOp} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BinaryOpItemProvider binaryOpItemProvider;
+	protected EqualityOpItemProvider equalityOpItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.EqualityOp}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBinaryOpAdapter() {
-		if (binaryOpItemProvider == null) {
-			binaryOpItemProvider = new BinaryOpItemProvider(this);
+	public Adapter createEqualityOpAdapter() {
+		if (equalityOpItemProvider == null) {
+			equalityOpItemProvider = new EqualityOpItemProvider(this);
 		}
 
-		return binaryOpItemProvider;
+		return equalityOpItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Conjuntion} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConjuntionItemProvider conjuntionItemProvider;
+	protected ComparisonOpItemProvider comparisonOpItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Conjuntion}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConjuntionAdapter() {
-		if (conjuntionItemProvider == null) {
-			conjuntionItemProvider = new ConjuntionItemProvider(this);
+	public Adapter createComparisonOpAdapter() {
+		if (comparisonOpItemProvider == null) {
+			comparisonOpItemProvider = new ComparisonOpItemProvider(this);
 		}
 
-		return conjuntionItemProvider;
+		return comparisonOpItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Disjunction} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.And} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DisjunctionItemProvider disjunctionItemProvider;
+	protected AndItemProvider andItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Disjunction}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.And}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDisjunctionAdapter() {
-		if (disjunctionItemProvider == null) {
-			disjunctionItemProvider = new DisjunctionItemProvider(this);
+	public Adapter createAndAdapter() {
+		if (andItemProvider == null) {
+			andItemProvider = new AndItemProvider(this);
 		}
 
-		return disjunctionItemProvider;
+		return andItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Or} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrItemProvider orItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Or}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrAdapter() {
+		if (orItemProvider == null) {
+			orItemProvider = new OrItemProvider(this);
+		}
+
+		return orItemProvider;
 	}
 
 	/**
@@ -1095,14 +1164,18 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			artifactItemProvider.dispose();
 		if (assignmentItemProvider != null)
 			assignmentItemProvider.dispose();
+		if (concatItemProvider != null)
+			concatItemProvider.dispose();
 		if (valueItemProvider != null)
 			valueItemProvider.dispose();
 		if (literalItemProvider != null)
 			literalItemProvider.dispose();
 		if (stringLiteralItemProvider != null)
 			stringLiteralItemProvider.dispose();
-		if (numberLiteralItemProvider != null)
-			numberLiteralItemProvider.dispose();
+		if (integerLiteralItemProvider != null)
+			integerLiteralItemProvider.dispose();
+		if (doubleLiteralItemProvider != null)
+			doubleLiteralItemProvider.dispose();
 		if (booleanLiteralItemProvider != null)
 			booleanLiteralItemProvider.dispose();
 		if (variableItemProvider != null)
@@ -1113,12 +1186,14 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			secretVariableItemProvider.dispose();
 		if (builtInFunctionItemProvider != null)
 			builtInFunctionItemProvider.dispose();
-		if (binaryOpItemProvider != null)
-			binaryOpItemProvider.dispose();
-		if (conjuntionItemProvider != null)
-			conjuntionItemProvider.dispose();
-		if (disjunctionItemProvider != null)
-			disjunctionItemProvider.dispose();
+		if (equalityOpItemProvider != null)
+			equalityOpItemProvider.dispose();
+		if (comparisonOpItemProvider != null)
+			comparisonOpItemProvider.dispose();
+		if (andItemProvider != null)
+			andItemProvider.dispose();
+		if (orItemProvider != null)
+			orItemProvider.dispose();
 		if (additionItemProvider != null)
 			additionItemProvider.dispose();
 		if (subtractionItemProvider != null)

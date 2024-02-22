@@ -7,6 +7,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Output;
 import d.fe.up.pt.cicd.metamodel.CICD.Value;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class OutputImpl extends ParameterImpl implements Output {
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' reference.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
@@ -63,15 +64,6 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 */
 	@Override
 	public Value getValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject) value;
-			value = (Value) eResolveProxy(oldValue);
-			if (value != oldValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.OUTPUT__VALUE, oldValue,
-							value));
-			}
-		}
 		return value;
 	}
 
@@ -80,8 +72,18 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Value basicGetValue() {
-		return value;
+	public NotificationChain basicSetValue(Value newValue, NotificationChain msgs) {
+		Value oldValue = value;
+		value = newValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.OUTPUT__VALUE,
+					oldValue, newValue);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -91,10 +93,33 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 */
 	@Override
 	public void setValue(Value newValue) {
-		Value oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.OUTPUT__VALUE, oldValue, value));
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.OUTPUT__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject) newValue).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.OUTPUT__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.OUTPUT__VALUE, newValue, newValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.OUTPUT__VALUE:
+			return basicSetValue(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -106,9 +131,7 @@ public class OutputImpl extends ParameterImpl implements Output {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.OUTPUT__VALUE:
-			if (resolve)
-				return getValue();
-			return basicGetValue();
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

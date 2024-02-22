@@ -2,9 +2,7 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,16 +70,17 @@ public interface NonConditionalStep extends Step {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Environment Variables</b></em>' reference list.
-	 * The list contents are of type {@link java.util.Map.Entry}<code>&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;</code>.
+	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable},
+	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Environment Variables</em>' reference list.
+	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep_EnvironmentVariables()
 	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EList<Map.Entry<EnvironmentVariable, Expression>> getEnvironmentVariables();
+	EMap<EnvironmentVariable, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Timeout Minutes</b></em>' attribute.

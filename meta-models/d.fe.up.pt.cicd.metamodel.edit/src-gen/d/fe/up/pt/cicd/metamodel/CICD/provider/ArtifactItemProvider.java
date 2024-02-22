@@ -150,6 +150,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
+				CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
 				CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
@@ -159,7 +162,10 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createNumberLiteral()));
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -177,13 +183,16 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createBinaryOp()));
+				CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createConjuntion()));
+				CICDFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createDisjunction()));
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
 				CICDFactory.eINSTANCE.createAddition()));
@@ -198,6 +207,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
+				CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
@@ -207,7 +219,10 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createNumberLiteral()));
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -225,13 +240,16 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createBinaryOp()));
+				CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createConjuntion()));
+				CICDFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createDisjunction()));
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createAddition()));
@@ -246,6 +264,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
+				CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
@@ -255,7 +276,10 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createNumberLiteral()));
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -273,13 +297,16 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createBinaryOp()));
+				CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createConjuntion()));
+				CICDFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createDisjunction()));
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createAddition()));
@@ -294,6 +321,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
+				CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
@@ -303,7 +333,10 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createNumberLiteral()));
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -321,13 +354,16 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createBinaryOp()));
+				CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createConjuntion()));
+				CICDFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createDisjunction()));
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createAddition()));

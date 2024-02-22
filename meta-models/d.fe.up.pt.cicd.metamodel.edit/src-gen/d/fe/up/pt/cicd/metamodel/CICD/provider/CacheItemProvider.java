@@ -147,6 +147,9 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createConcat()));
+
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createValue()));
 
@@ -157,7 +160,10 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
-				CICDFactory.eINSTANCE.createNumberLiteral()));
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -175,13 +181,16 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createBinaryOp()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createConjuntion()));
+				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
-				CICDFactory.eINSTANCE.createDisjunction()));
+				CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createAddition()));
@@ -196,6 +205,9 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors
@@ -205,7 +217,10 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createNumberLiteral()));
+				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -223,13 +238,16 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createBinaryOp()));
+				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createComparisonOp()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createConjuntion()));
+				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createAnd()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createDisjunction()));
+				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createAddition()));
@@ -244,6 +262,9 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors
@@ -253,7 +274,10 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createNumberLiteral()));
+				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -271,13 +295,16 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createBinaryOp()));
-
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createConjuntion()));
+				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createDisjunction()));
+				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createAddition()));

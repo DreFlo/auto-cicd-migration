@@ -4,10 +4,13 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Command;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -20,51 +23,20 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CommandImpl#getProgram <em>Program</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CommandImpl#getArgs <em>Args</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CommandImpl extends NonConditionalStepImpl implements Command {
 	/**
-	 * The default value of the '{@link #getProgram() <em>Program</em>}' attribute.
+	 * The cached value of the '{@link #getProgram() <em>Program</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProgram()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PROGRAM_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getProgram() <em>Program</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProgram()
-	 * @generated
-	 * @ordered
-	 */
-	protected String program = PROGRAM_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getArgs() <em>Args</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getArgs()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ARGS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getArgs() <em>Args</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getArgs()
-	 * @generated
-	 * @ordered
-	 */
-	protected String args = ARGS_EDEFAULT;
+	protected Expression program;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,7 +63,7 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	 * @generated
 	 */
 	@Override
-	public String getProgram() {
+	public Expression getProgram() {
 		return program;
 	}
 
@@ -100,12 +72,18 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setProgram(String newProgram) {
-		String oldProgram = program;
+	public NotificationChain basicSetProgram(Expression newProgram, NotificationChain msgs) {
+		Expression oldProgram = program;
 		program = newProgram;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.COMMAND__PROGRAM, oldProgram, program));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.COMMAND__PROGRAM,
+					oldProgram, newProgram);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -114,8 +92,21 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	 * @generated
 	 */
 	@Override
-	public String getArgs() {
-		return args;
+	public void setProgram(Expression newProgram) {
+		if (newProgram != program) {
+			NotificationChain msgs = null;
+			if (program != null)
+				msgs = ((InternalEObject) program).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.COMMAND__PROGRAM, null, msgs);
+			if (newProgram != null)
+				msgs = ((InternalEObject) newProgram).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.COMMAND__PROGRAM, null, msgs);
+			msgs = basicSetProgram(newProgram, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.COMMAND__PROGRAM, newProgram,
+					newProgram));
 	}
 
 	/**
@@ -124,11 +115,12 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	 * @generated
 	 */
 	@Override
-	public void setArgs(String newArgs) {
-		String oldArgs = args;
-		args = newArgs;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.COMMAND__ARGS, oldArgs, args));
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.COMMAND__PROGRAM:
+			return basicSetProgram(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -141,8 +133,6 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
 			return getProgram();
-		case CICDPackage.COMMAND__ARGS:
-			return getArgs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -156,10 +146,7 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
-			setProgram((String) newValue);
-			return;
-		case CICDPackage.COMMAND__ARGS:
-			setArgs((String) newValue);
+			setProgram((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -174,10 +161,7 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
-			setProgram(PROGRAM_EDEFAULT);
-			return;
-		case CICDPackage.COMMAND__ARGS:
-			setArgs(ARGS_EDEFAULT);
+			setProgram((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -192,30 +176,9 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
-			return PROGRAM_EDEFAULT == null ? program != null : !PROGRAM_EDEFAULT.equals(program);
-		case CICDPackage.COMMAND__ARGS:
-			return ARGS_EDEFAULT == null ? args != null : !ARGS_EDEFAULT.equals(args);
+			return program != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (program: ");
-		result.append(program);
-		result.append(", args: ");
-		result.append(args);
-		result.append(')');
-		return result.toString();
 	}
 
 } //CommandImpl

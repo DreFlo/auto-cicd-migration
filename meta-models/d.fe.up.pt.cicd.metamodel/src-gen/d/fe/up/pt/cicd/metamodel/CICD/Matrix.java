@@ -39,25 +39,25 @@ public interface Matrix extends EObject {
 	EList<MatrixAxis> getAxes();
 
 	/**
-	 * Returns the value of the '<em><b>Includes</b></em>' reference list.
+	 * Returns the value of the '<em><b>Includes</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Includes</em>' reference list.
+	 * @return the value of the '<em>Includes</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getMatrix_Includes()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<MatrixCombination> getIncludes();
 
 	/**
-	 * Returns the value of the '<em><b>Excludes</b></em>' reference list.
+	 * Returns the value of the '<em><b>Excludes</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Excludes</em>' reference list.
+	 * @return the value of the '<em>Excludes</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getMatrix_Excludes()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<MatrixCombination> getExcludes();

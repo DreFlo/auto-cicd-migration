@@ -12,7 +12,6 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getProgram <em>Program</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getArgs <em>Args</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getCommand()
@@ -21,47 +20,25 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  */
 public interface Command extends NonConditionalStep {
 	/**
-	 * Returns the value of the '<em><b>Program</b></em>' attribute.
+	 * Returns the value of the '<em><b>Program</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Program</em>' attribute.
-	 * @see #setProgram(String)
+	 * @return the value of the '<em>Program</em>' containment reference.
+	 * @see #setProgram(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getCommand_Program()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getProgram();
+	Expression getProgram();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getProgram <em>Program</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getProgram <em>Program</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Program</em>' attribute.
+	 * @param value the new value of the '<em>Program</em>' containment reference.
 	 * @see #getProgram()
 	 * @generated
 	 */
-	void setProgram(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Args</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Args</em>' attribute.
-	 * @see #setArgs(String)
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getCommand_Args()
-	 * @model
-	 * @generated
-	 */
-	String getArgs();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getArgs <em>Args</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Args</em>' attribute.
-	 * @see #getArgs()
-	 * @generated
-	 */
-	void setArgs(String value);
+	void setProgram(Expression value);
 
 } // Command

@@ -7,18 +7,18 @@ import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination;
 
-import java.util.Collection;
-import java.util.Map;
+import org.eclipse.emf.common.notify.NotificationChain;
 
-import java.util.Map.Entry;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,14 +35,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implements MatrixCombination {
 	/**
-	 * The cached value of the '{@link #getCombinationEntries() <em>Combination Entries</em>}' reference list.
+	 * The cached value of the '{@link #getCombinationEntries() <em>Combination Entries</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCombinationEntries()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Map.Entry<EnvironmentVariable, Expression>> combinationEntries;
+	protected EMap<EnvironmentVariable, Expression> combinationEntries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,12 +69,26 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EList<Map.Entry<EnvironmentVariable, Expression>> getCombinationEntries() {
+	public EMap<EnvironmentVariable, Expression> getCombinationEntries() {
 		if (combinationEntries == null) {
-			combinationEntries = new EObjectResolvingEList<Map.Entry<EnvironmentVariable, Expression>>(Entry.class,
-					this, CICDPackage.MATRIX_COMBINATION__COMBINATION_ENTRIES);
+			combinationEntries = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, CICDPackage.MATRIX_COMBINATION__COMBINATION_ENTRIES);
 		}
 		return combinationEntries;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.MATRIX_COMBINATION__COMBINATION_ENTRIES:
+			return ((InternalEList<?>) getCombinationEntries()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -86,7 +100,10 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.MATRIX_COMBINATION__COMBINATION_ENTRIES:
-			return getCombinationEntries();
+			if (coreType)
+				return getCombinationEntries();
+			else
+				return getCombinationEntries().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -96,13 +113,11 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case CICDPackage.MATRIX_COMBINATION__COMBINATION_ENTRIES:
-			getCombinationEntries().clear();
-			getCombinationEntries().addAll((Collection<? extends Map.Entry<EnvironmentVariable, Expression>>) newValue);
+			((EStructuralFeature.Setting) getCombinationEntries()).set(newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

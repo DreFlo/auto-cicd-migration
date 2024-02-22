@@ -20,22 +20,22 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  */
 public interface Output extends Parameter {
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' reference.
+	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(Value)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getOutput_Value()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Value getValue();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Output#getValue <em>Value</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Output#getValue <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' reference.
+	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
 	 */

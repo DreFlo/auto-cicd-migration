@@ -7,6 +7,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class UnaryOpImpl extends ExpressionImpl implements UnaryOp {
 	/**
-	 * The cached value of the '{@link #getRhs() <em>Rhs</em>}' reference.
+	 * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRhs()
@@ -63,14 +64,6 @@ public class UnaryOpImpl extends ExpressionImpl implements UnaryOp {
 	 */
 	@Override
 	public Expression getRhs() {
-		if (rhs != null && rhs.eIsProxy()) {
-			InternalEObject oldRhs = (InternalEObject) rhs;
-			rhs = (Expression) eResolveProxy(oldRhs);
-			if (rhs != oldRhs) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.UNARY_OP__RHS, oldRhs, rhs));
-			}
-		}
 		return rhs;
 	}
 
@@ -79,8 +72,18 @@ public class UnaryOpImpl extends ExpressionImpl implements UnaryOp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetRhs() {
-		return rhs;
+	public NotificationChain basicSetRhs(Expression newRhs, NotificationChain msgs) {
+		Expression oldRhs = rhs;
+		rhs = newRhs;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.UNARY_OP__RHS,
+					oldRhs, newRhs);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -90,10 +93,33 @@ public class UnaryOpImpl extends ExpressionImpl implements UnaryOp {
 	 */
 	@Override
 	public void setRhs(Expression newRhs) {
-		Expression oldRhs = rhs;
-		rhs = newRhs;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.UNARY_OP__RHS, oldRhs, rhs));
+		if (newRhs != rhs) {
+			NotificationChain msgs = null;
+			if (rhs != null)
+				msgs = ((InternalEObject) rhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CICDPackage.UNARY_OP__RHS,
+						null, msgs);
+			if (newRhs != null)
+				msgs = ((InternalEObject) newRhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CICDPackage.UNARY_OP__RHS,
+						null, msgs);
+			msgs = basicSetRhs(newRhs, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.UNARY_OP__RHS, newRhs, newRhs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.UNARY_OP__RHS:
+			return basicSetRhs(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -105,9 +131,7 @@ public class UnaryOpImpl extends ExpressionImpl implements UnaryOp {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.UNARY_OP__RHS:
-			if (resolve)
-				return getRhs();
-			return basicGetRhs();
+			return getRhs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -47,13 +47,13 @@ public interface MatrixAxis extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cells</b></em>' reference list.
+	 * Returns the value of the '<em><b>Cells</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cells</em>' reference list.
+	 * @return the value of the '<em>Cells</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getMatrixAxis_Cells()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Expression> getCells();

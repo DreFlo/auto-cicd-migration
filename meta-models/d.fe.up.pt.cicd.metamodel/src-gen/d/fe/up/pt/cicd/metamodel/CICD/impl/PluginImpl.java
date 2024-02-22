@@ -7,20 +7,19 @@ import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
 
-import java.util.Collection;
-import java.util.Map;
-
-import java.util.Map.Entry;
-
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,14 +78,14 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 	protected String version = VERSION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getKwargs() <em>Kwargs</em>}' reference list.
+	 * The cached value of the '{@link #getKwargs() <em>Kwargs</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getKwargs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Map.Entry<EnvironmentVariable, Expression>> kwargs;
+	protected EMap<EnvironmentVariable, Expression> kwargs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,12 +159,26 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 	 * @generated
 	 */
 	@Override
-	public EList<Map.Entry<EnvironmentVariable, Expression>> getKwargs() {
+	public EMap<EnvironmentVariable, Expression> getKwargs() {
 		if (kwargs == null) {
-			kwargs = new EObjectResolvingEList<Map.Entry<EnvironmentVariable, Expression>>(Entry.class, this,
-					CICDPackage.PLUGIN__KWARGS);
+			kwargs = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, CICDPackage.PLUGIN__KWARGS);
 		}
 		return kwargs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.PLUGIN__KWARGS:
+			return ((InternalEList<?>) getKwargs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -181,7 +194,10 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 		case CICDPackage.PLUGIN__VERSION:
 			return getVersion();
 		case CICDPackage.PLUGIN__KWARGS:
-			return getKwargs();
+			if (coreType)
+				return getKwargs();
+			else
+				return getKwargs().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -191,7 +207,6 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -202,8 +217,7 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 			setVersion((String) newValue);
 			return;
 		case CICDPackage.PLUGIN__KWARGS:
-			getKwargs().clear();
-			getKwargs().addAll((Collection<? extends Map.Entry<EnvironmentVariable, Expression>>) newValue);
+			((EStructuralFeature.Setting) getKwargs()).set(newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

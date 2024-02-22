@@ -102,14 +102,18 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createArtifact();
 		case CICDPackage.ASSIGNMENT:
 			return (EObject) createAssignment();
+		case CICDPackage.CONCAT:
+			return createConcat();
 		case CICDPackage.VALUE:
 			return createValue();
 		case CICDPackage.LITERAL:
 			return createLiteral();
 		case CICDPackage.STRING_LITERAL:
 			return createStringLiteral();
-		case CICDPackage.NUMBER_LITERAL:
-			return createNumberLiteral();
+		case CICDPackage.INTEGER_LITERAL:
+			return createIntegerLiteral();
+		case CICDPackage.DOUBLE_LITERAL:
+			return createDoubleLiteral();
 		case CICDPackage.BOOLEAN_LITERAL:
 			return createBooleanLiteral();
 		case CICDPackage.VARIABLE:
@@ -120,12 +124,14 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createSecretVariable();
 		case CICDPackage.BUILT_IN_FUNCTION:
 			return createBuiltInFunction();
-		case CICDPackage.BINARY_OP:
-			return createBinaryOp();
-		case CICDPackage.CONJUNTION:
-			return createConjuntion();
-		case CICDPackage.DISJUNCTION:
-			return createDisjunction();
+		case CICDPackage.EQUALITY_OP:
+			return createEqualityOp();
+		case CICDPackage.COMPARISON_OP:
+			return createComparisonOp();
+		case CICDPackage.AND:
+			return createAnd();
+		case CICDPackage.OR:
+			return createOr();
 		case CICDPackage.ADDITION:
 			return createAddition();
 		case CICDPackage.SUBTRACTION:
@@ -148,11 +154,15 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 		case CICDPackage.PERMISSION_TYPE:
-			return createPermissionTypeFromString(eDataType, initialValue);
+			return createPERMISSION_TYPEFromString(eDataType, initialValue);
 		case CICDPackage.SHELL_TYPE:
-			return createShellTypeFromString(eDataType, initialValue);
+			return createSHELL_TYPEFromString(eDataType, initialValue);
 		case CICDPackage.INPUT_TYPE:
-			return createInputTypeFromString(eDataType, initialValue);
+			return createINPUT_TYPEFromString(eDataType, initialValue);
+		case CICDPackage.EQUALITY_OPS:
+			return createEQUALITY_OPSFromString(eDataType, initialValue);
+		case CICDPackage.COMPARISON_OPS:
+			return createCOMPARISON_OPSFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -167,11 +177,15 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 		case CICDPackage.PERMISSION_TYPE:
-			return convertPermissionTypeToString(eDataType, instanceValue);
+			return convertPERMISSION_TYPEToString(eDataType, instanceValue);
 		case CICDPackage.SHELL_TYPE:
-			return convertShellTypeToString(eDataType, instanceValue);
+			return convertSHELL_TYPEToString(eDataType, instanceValue);
 		case CICDPackage.INPUT_TYPE:
-			return convertInputTypeToString(eDataType, instanceValue);
+			return convertINPUT_TYPEToString(eDataType, instanceValue);
+		case CICDPackage.EQUALITY_OPS:
+			return convertEQUALITY_OPSToString(eDataType, instanceValue);
+		case CICDPackage.COMPARISON_OPS:
+			return convertCOMPARISON_OPSToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -292,7 +306,7 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, PermissionType> createPermission() {
+	public Map.Entry<String, PERMISSION_TYPE> createPermission() {
 		PermissionImpl permission = new PermissionImpl();
 		return permission;
 	}
@@ -423,6 +437,17 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
+	public Concat createConcat() {
+		ConcatImpl concat = new ConcatImpl();
+		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Value createValue() {
 		ValueImpl value = new ValueImpl();
 		return value;
@@ -456,9 +481,20 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public NumberLiteral createNumberLiteral() {
-		NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
-		return numberLiteral;
+	public IntegerLiteral createIntegerLiteral() {
+		IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
+		return integerLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DoubleLiteral createDoubleLiteral() {
+		DoubleLiteralImpl doubleLiteral = new DoubleLiteralImpl();
+		return doubleLiteral;
 	}
 
 	/**
@@ -522,9 +558,9 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public BinaryOp createBinaryOp() {
-		BinaryOpImpl binaryOp = new BinaryOpImpl();
-		return binaryOp;
+	public EqualityOp createEqualityOp() {
+		EqualityOpImpl equalityOp = new EqualityOpImpl();
+		return equalityOp;
 	}
 
 	/**
@@ -533,9 +569,9 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public Conjuntion createConjuntion() {
-		ConjuntionImpl conjuntion = new ConjuntionImpl();
-		return conjuntion;
+	public ComparisonOp createComparisonOp() {
+		ComparisonOpImpl comparisonOp = new ComparisonOpImpl();
+		return comparisonOp;
 	}
 
 	/**
@@ -544,9 +580,20 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public Disjunction createDisjunction() {
-		DisjunctionImpl disjunction = new DisjunctionImpl();
-		return disjunction;
+	public And createAnd() {
+		AndImpl and = new AndImpl();
+		return and;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Or createOr() {
+		OrImpl or = new OrImpl();
+		return or;
 	}
 
 	/**
@@ -598,8 +645,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PermissionType createPermissionTypeFromString(EDataType eDataType, String initialValue) {
-		PermissionType result = PermissionType.get(initialValue);
+	public PERMISSION_TYPE createPERMISSION_TYPEFromString(EDataType eDataType, String initialValue) {
+		PERMISSION_TYPE result = PERMISSION_TYPE.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -611,7 +658,7 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPermissionTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertPERMISSION_TYPEToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -620,8 +667,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ShellType createShellTypeFromString(EDataType eDataType, String initialValue) {
-		ShellType result = ShellType.get(initialValue);
+	public SHELL_TYPE createSHELL_TYPEFromString(EDataType eDataType, String initialValue) {
+		SHELL_TYPE result = SHELL_TYPE.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -633,7 +680,7 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertShellTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertSHELL_TYPEToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -642,8 +689,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InputType createInputTypeFromString(EDataType eDataType, String initialValue) {
-		InputType result = InputType.get(initialValue);
+	public INPUT_TYPE createINPUT_TYPEFromString(EDataType eDataType, String initialValue) {
+		INPUT_TYPE result = INPUT_TYPE.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -655,7 +702,51 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertInputTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertINPUT_TYPEToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EQUALITY_OPS createEQUALITY_OPSFromString(EDataType eDataType, String initialValue) {
+		EQUALITY_OPS result = EQUALITY_OPS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEQUALITY_OPSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public COMPARISON_OPS createCOMPARISON_OPSFromString(EDataType eDataType, String initialValue) {
+		COMPARISON_OPS result = COMPARISON_OPS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCOMPARISON_OPSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

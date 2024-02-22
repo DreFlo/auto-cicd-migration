@@ -202,6 +202,15 @@ public interface CICDFactory extends EFactory {
 	Artifact createArtifact();
 
 	/**
+	 * Returns a new object of class '<em>Concat</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concat</em>'.
+	 * @generated
+	 */
+	Concat createConcat();
+
+	/**
 	 * Returns a new object of class '<em>Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,13 +238,22 @@ public interface CICDFactory extends EFactory {
 	StringLiteral createStringLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Number Literal</em>'.
+	 * Returns a new object of class '<em>Integer Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Number Literal</em>'.
+	 * @return a new object of class '<em>Integer Literal</em>'.
 	 * @generated
 	 */
-	NumberLiteral createNumberLiteral();
+	IntegerLiteral createIntegerLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Double Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Double Literal</em>'.
+	 * @generated
+	 */
+	DoubleLiteral createDoubleLiteral();
 
 	/**
 	 * Returns a new object of class '<em>Boolean Literal</em>'.
@@ -283,31 +301,40 @@ public interface CICDFactory extends EFactory {
 	BuiltInFunction createBuiltInFunction();
 
 	/**
-	 * Returns a new object of class '<em>Binary Op</em>'.
+	 * Returns a new object of class '<em>Equality Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Binary Op</em>'.
+	 * @return a new object of class '<em>Equality Op</em>'.
 	 * @generated
 	 */
-	BinaryOp createBinaryOp();
+	EqualityOp createEqualityOp();
 
 	/**
-	 * Returns a new object of class '<em>Conjuntion</em>'.
+	 * Returns a new object of class '<em>Comparison Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Conjuntion</em>'.
+	 * @return a new object of class '<em>Comparison Op</em>'.
 	 * @generated
 	 */
-	Conjuntion createConjuntion();
+	ComparisonOp createComparisonOp();
 
 	/**
-	 * Returns a new object of class '<em>Disjunction</em>'.
+	 * Returns a new object of class '<em>And</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Disjunction</em>'.
+	 * @return a new object of class '<em>And</em>'.
 	 * @generated
 	 */
-	Disjunction createDisjunction();
+	And createAnd();
+
+	/**
+	 * Returns a new object of class '<em>Or</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Or</em>'.
+	 * @generated
+	 */
+	Or createOr();
 
 	/**
 	 * Returns a new object of class '<em>Addition</em>'.

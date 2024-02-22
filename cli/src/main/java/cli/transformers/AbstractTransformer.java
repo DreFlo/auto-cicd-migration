@@ -55,8 +55,8 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         OutputModel outputModel = deserializeModel(outputModelFilePath);
 
         // Delete model files
-        Files.delete(Path.of(inputModelFilePath));
-        Files.delete(Path.of(outputModelFilePath));
+        //Files.delete(Path.of(inputModelFilePath));
+        //Files.delete(Path.of(outputModelFilePath));
 
         return outputModel;
     }

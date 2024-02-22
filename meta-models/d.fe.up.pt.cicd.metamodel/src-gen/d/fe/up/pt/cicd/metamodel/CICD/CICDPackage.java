@@ -86,7 +86,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_BLOCK__AGENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +95,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_BLOCK__INPUTS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -140,7 +140,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_BLOCK__WORKING_DIRECTORY = 7;
 
 	/**
-	 * The feature id for the '<em><b>Concurrency Group</b></em>' reference.
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -204,7 +204,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__AGENT = PIPELINE_BLOCK__AGENT;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -213,7 +213,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__INPUTS = PIPELINE_BLOCK__INPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -258,7 +258,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__WORKING_DIRECTORY = PIPELINE_BLOCK__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Concurrency Group</b></em>' reference.
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -340,7 +340,7 @@ public interface CICDPackage extends EPackage {
 	int JOB__AGENT = PIPELINE_BLOCK__AGENT;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -349,7 +349,7 @@ public interface CICDPackage extends EPackage {
 	int JOB__INPUTS = PIPELINE_BLOCK__INPUTS;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -394,7 +394,7 @@ public interface CICDPackage extends EPackage {
 	int JOB__WORKING_DIRECTORY = PIPELINE_BLOCK__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Concurrency Group</b></em>' reference.
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -430,7 +430,7 @@ public interface CICDPackage extends EPackage {
 	int JOB__STEPS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Services</b></em>' reference list.
+	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -558,7 +558,7 @@ public interface CICDPackage extends EPackage {
 	int DOCKER_CONTAINER__LABEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Image</b></em>' reference.
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -576,7 +576,7 @@ public interface CICDPackage extends EPackage {
 	int DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Volumes</b></em>' reference list.
+	 * The feature id for the '<em><b>Volumes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -585,7 +585,7 @@ public interface CICDPackage extends EPackage {
 	int DOCKER_CONTAINER__VOLUMES = 3;
 
 	/**
-	 * The feature id for the '<em><b>Ports</b></em>' reference list.
+	 * The feature id for the '<em><b>Ports</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -898,7 +898,7 @@ public interface CICDPackage extends EPackage {
 	int CONCURRENCY_GROUP = 11;
 
 	/**
-	 * The feature id for the '<em><b>Group Id</b></em>' reference.
+	 * The feature id for the '<em><b>Group Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -999,7 +999,7 @@ public interface CICDPackage extends EPackage {
 	int MATRIX__AXES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Includes</b></em>' reference list.
+	 * The feature id for the '<em><b>Includes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1008,7 +1008,7 @@ public interface CICDPackage extends EPackage {
 	int MATRIX__INCLUDES = 1;
 
 	/**
-	 * The feature id for the '<em><b>Excludes</b></em>' reference list.
+	 * The feature id for the '<em><b>Excludes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1063,7 +1063,7 @@ public interface CICDPackage extends EPackage {
 	int MATRIX_AXIS__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Cells</b></em>' reference list.
+	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1100,7 +1100,7 @@ public interface CICDPackage extends EPackage {
 	int MATRIX_COMBINATION = 15;
 
 	/**
-	 * The feature id for the '<em><b>Combination Entries</b></em>' reference list.
+	 * The feature id for the '<em><b>Combination Entries</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1274,7 +1274,7 @@ public interface CICDPackage extends EPackage {
 	int OUTPUT__DESCRIPTION = PARAMETER__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1412,7 +1412,7 @@ public interface CICDPackage extends EPackage {
 	int NON_CONDITIONAL_STEP__NAME = STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1485,7 +1485,7 @@ public interface CICDPackage extends EPackage {
 	int COMMAND__NAME = NON_CONDITIONAL_STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1512,7 +1512,7 @@ public interface CICDPackage extends EPackage {
 	int COMMAND__ALLOW_FAILURE = NON_CONDITIONAL_STEP__ALLOW_FAILURE;
 
 	/**
-	 * The feature id for the '<em><b>Program</b></em>' attribute.
+	 * The feature id for the '<em><b>Program</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1521,22 +1521,13 @@ public interface CICDPackage extends EPackage {
 	int COMMAND__PROGRAM = NON_CONDITIONAL_STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Args</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMAND__ARGS = NON_CONDITIONAL_STEP_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Command</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 2;
+	int COMMAND_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Command</em>' class.
@@ -1576,7 +1567,7 @@ public interface CICDPackage extends EPackage {
 	int PLUGIN__NAME = NON_CONDITIONAL_STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1621,7 +1612,7 @@ public interface CICDPackage extends EPackage {
 	int PLUGIN__VERSION = NON_CONDITIONAL_STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Kwargs</b></em>' reference list.
+	 * The feature id for the '<em><b>Kwargs</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1676,7 +1667,7 @@ public interface CICDPackage extends EPackage {
 	int CACHE__NAME = NON_CONDITIONAL_STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1776,7 +1767,7 @@ public interface CICDPackage extends EPackage {
 	int ARTIFACT__NAME = NON_CONDITIONAL_STEP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1876,7 +1867,7 @@ public interface CICDPackage extends EPackage {
 	int ASSIGNMENT__KEY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1931,6 +1922,43 @@ public interface CICDPackage extends EPackage {
 	int EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConcatImpl <em>Concat</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ConcatImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConcat()
+	 * @generated
+	 */
+	int CONCAT = 28;
+
+	/**
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Concat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Concat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ValueImpl <em>Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1938,7 +1966,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 28;
+	int VALUE = 29;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -1966,7 +1994,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 29;
+	int LITERAL = 30;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -1994,7 +2022,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 30;
+	int STRING_LITERAL = 31;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2024,32 +2052,78 @@ public interface CICDPackage extends EPackage {
 	int STRING_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.NumberLiteralImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNumberLiteral()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.IntegerLiteralImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int NUMBER_LITERAL = 31;
+	int INTEGER_LITERAL = 32;
 
 	/**
-	 * The number of structural features of the '<em>Number Literal</em>' class.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 0;
+	int INTEGER_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Number Literal</em>' class.
+	 * The number of structural features of the '<em>Integer Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NUMBER_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+	int INTEGER_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.DoubleLiteralImpl <em>Double Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.DoubleLiteralImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDoubleLiteral()
+	 * @generated
+	 */
+	int DOUBLE_LITERAL = 33;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Double Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Double Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
@@ -2059,7 +2133,16 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 32;
+	int BOOLEAN_LITERAL = 34;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Boolean Literal</em>' class.
@@ -2068,7 +2151,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 0;
+	int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Boolean Literal</em>' class.
@@ -2087,7 +2170,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 33;
+	int VARIABLE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2124,7 +2207,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEnvironmentVariable()
 	 * @generated
 	 */
-	int ENVIRONMENT_VARIABLE = 34;
+	int ENVIRONMENT_VARIABLE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2161,7 +2244,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSecretVariable()
 	 * @generated
 	 */
-	int SECRET_VARIABLE = 35;
+	int SECRET_VARIABLE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2198,7 +2281,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBuiltInFunction()
 	 * @generated
 	 */
-	int BUILT_IN_FUNCTION = 36;
+	int BUILT_IN_FUNCTION = 38;
 
 	/**
 	 * The number of structural features of the '<em>Built In Function</em>' class.
@@ -2226,10 +2309,10 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 37;
+	int BINARY_OP = 39;
 
 	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' reference.
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2238,7 +2321,7 @@ public interface CICDPackage extends EPackage {
 	int BINARY_OP__LHS = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2265,96 +2348,252 @@ public interface CICDPackage extends EPackage {
 	int BINARY_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConjuntionImpl <em>Conjuntion</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.EqualityOpImpl <em>Equality Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ConjuntionImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConjuntion()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.EqualityOpImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int CONJUNTION = 38;
+	int EQUALITY_OP = 40;
 
 	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' reference.
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONJUNTION__LHS = BINARY_OP__LHS;
+	int EQUALITY_OP__LHS = BINARY_OP__LHS;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONJUNTION__RHS = BINARY_OP__RHS;
+	int EQUALITY_OP__RHS = BINARY_OP__RHS;
 
 	/**
-	 * The number of structural features of the '<em>Conjuntion</em>' class.
+	 * The feature id for the '<em><b>Op</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONJUNTION_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+	int EQUALITY_OP__OP = BINARY_OP_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Conjuntion</em>' class.
+	 * The number of structural features of the '<em>Equality Op</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONJUNTION_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+	int EQUALITY_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.DisjunctionImpl <em>Disjunction</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.DisjunctionImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDisjunction()
-	 * @generated
-	 */
-	int DISJUNCTION = 39;
-
-	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' reference.
+	 * The number of operations of the '<em>Equality Op</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISJUNCTION__LHS = BINARY_OP__LHS;
+	int EQUALITY_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ComparisonOpImpl <em>Comparison Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ComparisonOpImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getComparisonOp()
+	 * @generated
+	 */
+	int COMPARISON_OP = 41;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISJUNCTION__RHS = BINARY_OP__RHS;
+	int COMPARISON_OP__LHS = BINARY_OP__LHS;
 
 	/**
-	 * The number of structural features of the '<em>Disjunction</em>' class.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISJUNCTION_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+	int COMPARISON_OP__RHS = BINARY_OP__RHS;
 
 	/**
-	 * The number of operations of the '<em>Disjunction</em>' class.
+	 * The feature id for the '<em><b>Op</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISJUNCTION_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+	int COMPARISON_OP__OP = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Comparison Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Comparison Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.LogicalOpImpl <em>Logical Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.LogicalOpImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLogicalOp()
+	 * @generated
+	 */
+	int LOGICAL_OP = 42;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP__LHS = BINARY_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP__RHS = BINARY_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Logical Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Logical Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AndImpl <em>And</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.AndImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAnd()
+	 * @generated
+	 */
+	int AND = 43;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__LHS = LOGICAL_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__RHS = LOGICAL_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>And</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_FEATURE_COUNT = LOGICAL_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>And</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_OPERATION_COUNT = LOGICAL_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.OrImpl <em>Or</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.OrImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOr()
+	 * @generated
+	 */
+	int OR = 44;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__LHS = LOGICAL_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__RHS = LOGICAL_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_FEATURE_COUNT = LOGICAL_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_OPERATION_COUNT = LOGICAL_OP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AdditionImpl <em>Addition</em>}' class.
@@ -2364,10 +2603,10 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAddition()
 	 * @generated
 	 */
-	int ADDITION = 40;
+	int ADDITION = 45;
 
 	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' reference.
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2376,7 +2615,7 @@ public interface CICDPackage extends EPackage {
 	int ADDITION__LHS = BINARY_OP__LHS;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2410,10 +2649,10 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSubtraction()
 	 * @generated
 	 */
-	int SUBTRACTION = 41;
+	int SUBTRACTION = 46;
 
 	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' reference.
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2422,7 +2661,7 @@ public interface CICDPackage extends EPackage {
 	int SUBTRACTION__LHS = BINARY_OP__LHS;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2456,10 +2695,10 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 42;
+	int UNARY_OP = 47;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2493,10 +2732,10 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 43;
+	int NEGATION = 48;
 
 	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' reference.
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2523,34 +2762,54 @@ public interface CICDPackage extends EPackage {
 	int NEGATION_OPERATION_COUNT = UNARY_OP_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.PermissionType <em>Permission Type</em>}' enum.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE <em>PERMISSION TYPE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.PermissionType
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPermissionType()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPERMISSION_TYPE()
 	 * @generated
 	 */
-	int PERMISSION_TYPE = 44;
+	int PERMISSION_TYPE = 49;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.ShellType <em>Shell Type</em>}' enum.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getShellType()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 	 * @generated
 	 */
-	int SHELL_TYPE = 45;
+	int SHELL_TYPE = 50;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.InputType <em>Input Type</em>}' enum.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.InputType
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getInputType()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 46;
+	int INPUT_TYPE = 51;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
+	 * @generated
+	 */
+	int EQUALITY_OPS = 52;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
+	 * @generated
+	 */
+	int COMPARISON_OPS = 53;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -2585,10 +2844,10 @@ public interface CICDPackage extends EPackage {
 	EReference getPipelineBlock_Agent();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getInputs <em>Inputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getInputs <em>Inputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Inputs</em>'.
+	 * @return the meta object for the containment reference list '<em>Inputs</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getInputs()
 	 * @see #getPipelineBlock()
 	 * @generated
@@ -2596,10 +2855,10 @@ public interface CICDPackage extends EPackage {
 	EReference getPipelineBlock_Inputs();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getOutputs <em>Outputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Outputs</em>'.
+	 * @return the meta object for the containment reference list '<em>Outputs</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getOutputs()
 	 * @see #getPipelineBlock()
 	 * @generated
@@ -2651,10 +2910,10 @@ public interface CICDPackage extends EPackage {
 	EAttribute getPipelineBlock_WorkingDirectory();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Concurrency Group</em>'.
+	 * @return the meta object for the containment reference '<em>Concurrency Group</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup()
 	 * @see #getPipelineBlock()
 	 * @generated
@@ -2737,10 +2996,10 @@ public interface CICDPackage extends EPackage {
 	EReference getJob_Steps();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Services</em>'.
+	 * @return the meta object for the containment reference list '<em>Services</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getServices()
 	 * @see #getJob()
 	 * @generated
@@ -2845,10 +3104,10 @@ public interface CICDPackage extends EPackage {
 	EAttribute getDockerContainer_Label();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getImage <em>Image</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getImage <em>Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Image</em>'.
+	 * @return the meta object for the containment reference '<em>Image</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getImage()
 	 * @see #getDockerContainer()
 	 * @generated
@@ -2867,10 +3126,10 @@ public interface CICDPackage extends EPackage {
 	EReference getDockerContainer_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getVolumes <em>Volumes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getVolumes <em>Volumes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Volumes</em>'.
+	 * @return the meta object for the containment reference list '<em>Volumes</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getVolumes()
 	 * @see #getDockerContainer()
 	 * @generated
@@ -2878,10 +3137,10 @@ public interface CICDPackage extends EPackage {
 	EReference getDockerContainer_Volumes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getPorts <em>Ports</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getPorts <em>Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Ports</em>'.
+	 * @return the meta object for the containment reference list '<em>Ports</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getPorts()
 	 * @see #getDockerContainer()
 	 * @generated
@@ -3036,10 +3295,10 @@ public interface CICDPackage extends EPackage {
 	EClass getConcurrencyGroup();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup#getGroupId <em>Group Id</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup#getGroupId <em>Group Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Group Id</em>'.
+	 * @return the meta object for the containment reference '<em>Group Id</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup#getGroupId()
 	 * @see #getConcurrencyGroup()
 	 * @generated
@@ -3064,7 +3323,7 @@ public interface CICDPackage extends EPackage {
 	 * @return the meta object for class '<em>Permission</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
-	 *        valueDataType="d.fe.up.pt.cicd.metamodel.CICD.PermissionType" valueRequired="true"
+	 *        valueDataType="d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE" valueRequired="true"
 	 * @generated
 	 */
 	EClass getPermission();
@@ -3113,10 +3372,10 @@ public interface CICDPackage extends EPackage {
 	EReference getMatrix_Axes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Matrix#getIncludes <em>Includes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Matrix#getIncludes <em>Includes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Includes</em>'.
+	 * @return the meta object for the containment reference list '<em>Includes</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Matrix#getIncludes()
 	 * @see #getMatrix()
 	 * @generated
@@ -3124,10 +3383,10 @@ public interface CICDPackage extends EPackage {
 	EReference getMatrix_Includes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Matrix#getExcludes <em>Excludes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Matrix#getExcludes <em>Excludes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Excludes</em>'.
+	 * @return the meta object for the containment reference list '<em>Excludes</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Matrix#getExcludes()
 	 * @see #getMatrix()
 	 * @generated
@@ -3167,10 +3426,10 @@ public interface CICDPackage extends EPackage {
 	EAttribute getMatrixAxis_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis#getCells <em>Cells</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis#getCells <em>Cells</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Cells</em>'.
+	 * @return the meta object for the containment reference list '<em>Cells</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis#getCells()
 	 * @see #getMatrixAxis()
 	 * @generated
@@ -3188,10 +3447,10 @@ public interface CICDPackage extends EPackage {
 	EClass getMatrixCombination();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination#getCombinationEntries <em>Combination Entries</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination#getCombinationEntries <em>Combination Entries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Combination Entries</em>'.
+	 * @return the meta object for the map '<em>Combination Entries</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination#getCombinationEntries()
 	 * @see #getMatrixCombination()
 	 * @generated
@@ -3284,10 +3543,10 @@ public interface CICDPackage extends EPackage {
 	EClass getOutput();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Output#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Output#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Output#getValue()
 	 * @see #getOutput()
 	 * @generated
@@ -3380,10 +3639,10 @@ public interface CICDPackage extends EPackage {
 	EAttribute getNonConditionalStep_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getEnvironmentVariables <em>Environment Variables</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getEnvironmentVariables <em>Environment Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Environment Variables</em>'.
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getEnvironmentVariables()
 	 * @see #getNonConditionalStep()
 	 * @generated
@@ -3423,26 +3682,15 @@ public interface CICDPackage extends EPackage {
 	EClass getCommand();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getProgram <em>Program</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getProgram <em>Program</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Program</em>'.
+	 * @return the meta object for the containment reference '<em>Program</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Command#getProgram()
 	 * @see #getCommand()
 	 * @generated
 	 */
-	EAttribute getCommand_Program();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getArgs <em>Args</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Args</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Command#getArgs()
-	 * @see #getCommand()
-	 * @generated
-	 */
-	EAttribute getCommand_Args();
+	EReference getCommand_Program();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Plugin <em>Plugin</em>}'.
@@ -3477,10 +3725,10 @@ public interface CICDPackage extends EPackage {
 	EAttribute getPlugin_Version();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Plugin#getKwargs <em>Kwargs</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.metamodel.CICD.Plugin#getKwargs <em>Kwargs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Kwargs</em>'.
+	 * @return the meta object for the map '<em>Kwargs</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Plugin#getKwargs()
 	 * @see #getPlugin()
 	 * @generated
@@ -3591,7 +3839,7 @@ public interface CICDPackage extends EPackage {
 	 * @return the meta object for class '<em>Assignment</em>'.
 	 * @see java.util.Map.Entry
 	 * @model keyType="d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable" keyContainment="true" keyRequired="true"
-	 *        valueType="d.fe.up.pt.cicd.metamodel.CICD.Expression" valueRequired="true"
+	 *        valueType="d.fe.up.pt.cicd.metamodel.CICD.Expression" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
 	EClass getAssignment();
@@ -3608,10 +3856,10 @@ public interface CICDPackage extends EPackage {
 	EReference getAssignment_Key();
 
 	/**
-	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getAssignment()
 	 * @generated
@@ -3627,6 +3875,27 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getExpression();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Concat <em>Concat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concat</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Concat
+	 * @generated
+	 */
+	EClass getConcat();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Concat#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Concat#getExpressions()
+	 * @see #getConcat()
+	 * @generated
+	 */
+	EReference getConcat_Expressions();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Value <em>Value</em>}'.
@@ -3670,14 +3939,46 @@ public interface CICDPackage extends EPackage {
 	EAttribute getStringLiteral_Value();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral <em>Number Literal</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral <em>Integer Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Number Literal</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral
+	 * @return the meta object for class '<em>Integer Literal</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral
 	 * @generated
 	 */
-	EClass getNumberLiteral();
+	EClass getIntegerLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral#getValue()
+	 * @see #getIntegerLiteral()
+	 * @generated
+	 */
+	EAttribute getIntegerLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral <em>Double Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Double Literal</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral
+	 * @generated
+	 */
+	EClass getDoubleLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral#getValue()
+	 * @see #getDoubleLiteral()
+	 * @generated
+	 */
+	EAttribute getDoubleLiteral_Value();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.BooleanLiteral <em>Boolean Literal</em>}'.
@@ -3688,6 +3989,17 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getBooleanLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.BooleanLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.BooleanLiteral#getValue()
+	 * @see #getBooleanLiteral()
+	 * @generated
+	 */
+	EAttribute getBooleanLiteral_Value();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Variable <em>Variable</em>}'.
@@ -3751,10 +4063,10 @@ public interface CICDPackage extends EPackage {
 	EClass getBinaryOp();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp#getLhs <em>Lhs</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp#getLhs <em>Lhs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Lhs</em>'.
+	 * @return the meta object for the containment reference '<em>Lhs</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.BinaryOp#getLhs()
 	 * @see #getBinaryOp()
 	 * @generated
@@ -3762,10 +4074,10 @@ public interface CICDPackage extends EPackage {
 	EReference getBinaryOp_Lhs();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp#getRhs <em>Rhs</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp#getRhs <em>Rhs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Rhs</em>'.
+	 * @return the meta object for the containment reference '<em>Rhs</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.BinaryOp#getRhs()
 	 * @see #getBinaryOp()
 	 * @generated
@@ -3773,24 +4085,76 @@ public interface CICDPackage extends EPackage {
 	EReference getBinaryOp_Rhs();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Conjuntion <em>Conjuntion</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.EqualityOp <em>Equality Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Conjuntion</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Conjuntion
+	 * @return the meta object for class '<em>Equality Op</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.EqualityOp
 	 * @generated
 	 */
-	EClass getConjuntion();
+	EClass getEqualityOp();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Disjunction <em>Disjunction</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.EqualityOp#getOp <em>Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Disjunction</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Disjunction
+	 * @return the meta object for the attribute '<em>Op</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.EqualityOp#getOp()
+	 * @see #getEqualityOp()
 	 * @generated
 	 */
-	EClass getDisjunction();
+	EAttribute getEqualityOp_Op();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp <em>Comparison Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Comparison Op</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp
+	 * @generated
+	 */
+	EClass getComparisonOp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp#getOp <em>Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Op</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp#getOp()
+	 * @see #getComparisonOp()
+	 * @generated
+	 */
+	EAttribute getComparisonOp_Op();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.LogicalOp <em>Logical Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical Op</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.LogicalOp
+	 * @generated
+	 */
+	EClass getLogicalOp();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.And <em>And</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.And
+	 * @generated
+	 */
+	EClass getAnd();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Or</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Or
+	 * @generated
+	 */
+	EClass getOr();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Addition <em>Addition</em>}'.
@@ -3823,10 +4187,10 @@ public interface CICDPackage extends EPackage {
 	EClass getUnaryOp();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.UnaryOp#getRhs <em>Rhs</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.UnaryOp#getRhs <em>Rhs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Rhs</em>'.
+	 * @return the meta object for the containment reference '<em>Rhs</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.UnaryOp#getRhs()
 	 * @see #getUnaryOp()
 	 * @generated
@@ -3844,34 +4208,54 @@ public interface CICDPackage extends EPackage {
 	EClass getNegation();
 
 	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.PermissionType <em>Permission Type</em>}'.
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE <em>PERMISSION TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Permission Type</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.PermissionType
+	 * @return the meta object for enum '<em>PERMISSION TYPE</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE
 	 * @generated
 	 */
-	EEnum getPermissionType();
+	EEnum getPERMISSION_TYPE();
 
 	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.ShellType <em>Shell Type</em>}'.
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Shell Type</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
+	 * @return the meta object for enum '<em>SHELL TYPE</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
 	 * @generated
 	 */
-	EEnum getShellType();
+	EEnum getSHELL_TYPE();
 
 	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.InputType <em>Input Type</em>}'.
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Input Type</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.InputType
+	 * @return the meta object for enum '<em>INPUT TYPE</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE
 	 * @generated
 	 */
-	EEnum getInputType();
+	EEnum getINPUT_TYPE();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>EQUALITY OPS</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS
+	 * @generated
+	 */
+	EEnum getEQUALITY_OPS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>COMPARISON OPS</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS
+	 * @generated
+	 */
+	EEnum getCOMPARISON_OPS();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3923,7 +4307,7 @@ public interface CICDPackage extends EPackage {
 		EReference PIPELINE_BLOCK__AGENT = eINSTANCE.getPipelineBlock_Agent();
 
 		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Inputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3931,7 +4315,7 @@ public interface CICDPackage extends EPackage {
 		EReference PIPELINE_BLOCK__INPUTS = eINSTANCE.getPipelineBlock_Inputs();
 
 		/**
-		 * The meta object literal for the '<em><b>Outputs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3971,7 +4355,7 @@ public interface CICDPackage extends EPackage {
 		EAttribute PIPELINE_BLOCK__WORKING_DIRECTORY = eINSTANCE.getPipelineBlock_WorkingDirectory();
 
 		/**
-		 * The meta object literal for the '<em><b>Concurrency Group</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Concurrency Group</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4039,7 +4423,7 @@ public interface CICDPackage extends EPackage {
 		EReference JOB__STEPS = eINSTANCE.getJob_Steps();
 
 		/**
-		 * The meta object literal for the '<em><b>Services</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Services</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4123,7 +4507,7 @@ public interface CICDPackage extends EPackage {
 		EAttribute DOCKER_CONTAINER__LABEL = eINSTANCE.getDockerContainer_Label();
 
 		/**
-		 * The meta object literal for the '<em><b>Image</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Image</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4139,7 +4523,7 @@ public interface CICDPackage extends EPackage {
 		EReference DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = eINSTANCE.getDockerContainer_EnvironmentVariables();
 
 		/**
-		 * The meta object literal for the '<em><b>Volumes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Volumes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4147,7 +4531,7 @@ public interface CICDPackage extends EPackage {
 		EReference DOCKER_CONTAINER__VOLUMES = eINSTANCE.getDockerContainer_Volumes();
 
 		/**
-		 * The meta object literal for the '<em><b>Ports</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4281,7 +4665,7 @@ public interface CICDPackage extends EPackage {
 		EClass CONCURRENCY_GROUP = eINSTANCE.getConcurrencyGroup();
 
 		/**
-		 * The meta object literal for the '<em><b>Group Id</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Group Id</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4341,7 +4725,7 @@ public interface CICDPackage extends EPackage {
 		EReference MATRIX__AXES = eINSTANCE.getMatrix_Axes();
 
 		/**
-		 * The meta object literal for the '<em><b>Includes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Includes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4349,7 +4733,7 @@ public interface CICDPackage extends EPackage {
 		EReference MATRIX__INCLUDES = eINSTANCE.getMatrix_Includes();
 
 		/**
-		 * The meta object literal for the '<em><b>Excludes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Excludes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4383,7 +4767,7 @@ public interface CICDPackage extends EPackage {
 		EAttribute MATRIX_AXIS__NAME = eINSTANCE.getMatrixAxis_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Cells</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4401,7 +4785,7 @@ public interface CICDPackage extends EPackage {
 		EClass MATRIX_COMBINATION = eINSTANCE.getMatrixCombination();
 
 		/**
-		 * The meta object literal for the '<em><b>Combination Entries</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Combination Entries</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4479,7 +4863,7 @@ public interface CICDPackage extends EPackage {
 		EClass OUTPUT = eINSTANCE.getOutput();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4557,7 +4941,7 @@ public interface CICDPackage extends EPackage {
 		EAttribute NON_CONDITIONAL_STEP__NAME = eINSTANCE.getNonConditionalStep_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Environment Variables</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4591,20 +4975,12 @@ public interface CICDPackage extends EPackage {
 		EClass COMMAND = eINSTANCE.getCommand();
 
 		/**
-		 * The meta object literal for the '<em><b>Program</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Program</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMAND__PROGRAM = eINSTANCE.getCommand_Program();
-
-		/**
-		 * The meta object literal for the '<em><b>Args</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMMAND__ARGS = eINSTANCE.getCommand_Args();
+		EReference COMMAND__PROGRAM = eINSTANCE.getCommand_Program();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PluginImpl <em>Plugin</em>}' class.
@@ -4633,7 +5009,7 @@ public interface CICDPackage extends EPackage {
 		EAttribute PLUGIN__VERSION = eINSTANCE.getPlugin_Version();
 
 		/**
-		 * The meta object literal for the '<em><b>Kwargs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Kwargs</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4735,7 +5111,7 @@ public interface CICDPackage extends EPackage {
 		EReference ASSIGNMENT__KEY = eINSTANCE.getAssignment_Key();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4751,6 +5127,24 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConcatImpl <em>Concat</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ConcatImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConcat()
+		 * @generated
+		 */
+		EClass CONCAT = eINSTANCE.getConcat();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCAT__EXPRESSIONS = eINSTANCE.getConcat_Expressions();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ValueImpl <em>Value</em>}' class.
@@ -4791,14 +5185,40 @@ public interface CICDPackage extends EPackage {
 		EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.NumberLiteralImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNumberLiteral()
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.IntegerLiteralImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getIntegerLiteral()
 		 * @generated
 		 */
-		EClass NUMBER_LITERAL = eINSTANCE.getNumberLiteral();
+		EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.DoubleLiteralImpl <em>Double Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.DoubleLiteralImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDoubleLiteral()
+		 * @generated
+		 */
+		EClass DOUBLE_LITERAL = eINSTANCE.getDoubleLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOUBLE_LITERAL__VALUE = eINSTANCE.getDoubleLiteral_Value();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
@@ -4809,6 +5229,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableImpl <em>Variable</em>}' class.
@@ -4869,7 +5297,7 @@ public interface CICDPackage extends EPackage {
 		EClass BINARY_OP = eINSTANCE.getBinaryOp();
 
 		/**
-		 * The meta object literal for the '<em><b>Lhs</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Lhs</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4877,7 +5305,7 @@ public interface CICDPackage extends EPackage {
 		EReference BINARY_OP__LHS = eINSTANCE.getBinaryOp_Lhs();
 
 		/**
-		 * The meta object literal for the '<em><b>Rhs</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4885,24 +5313,70 @@ public interface CICDPackage extends EPackage {
 		EReference BINARY_OP__RHS = eINSTANCE.getBinaryOp_Rhs();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConjuntionImpl <em>Conjuntion</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.EqualityOpImpl <em>Equality Op</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ConjuntionImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConjuntion()
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.EqualityOpImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEqualityOp()
 		 * @generated
 		 */
-		EClass CONJUNTION = eINSTANCE.getConjuntion();
+		EClass EQUALITY_OP = eINSTANCE.getEqualityOp();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.DisjunctionImpl <em>Disjunction</em>}' class.
+		 * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.DisjunctionImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDisjunction()
 		 * @generated
 		 */
-		EClass DISJUNCTION = eINSTANCE.getDisjunction();
+		EAttribute EQUALITY_OP__OP = eINSTANCE.getEqualityOp_Op();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ComparisonOpImpl <em>Comparison Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ComparisonOpImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getComparisonOp()
+		 * @generated
+		 */
+		EClass COMPARISON_OP = eINSTANCE.getComparisonOp();
+
+		/**
+		 * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARISON_OP__OP = eINSTANCE.getComparisonOp_Op();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.LogicalOpImpl <em>Logical Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.LogicalOpImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLogicalOp()
+		 * @generated
+		 */
+		EClass LOGICAL_OP = eINSTANCE.getLogicalOp();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AndImpl <em>And</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.AndImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAnd()
+		 * @generated
+		 */
+		EClass AND = eINSTANCE.getAnd();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.OrImpl <em>Or</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.OrImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOr()
+		 * @generated
+		 */
+		EClass OR = eINSTANCE.getOr();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AdditionImpl <em>Addition</em>}' class.
@@ -4935,7 +5409,7 @@ public interface CICDPackage extends EPackage {
 		EClass UNARY_OP = eINSTANCE.getUnaryOp();
 
 		/**
-		 * The meta object literal for the '<em><b>Rhs</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -4953,34 +5427,54 @@ public interface CICDPackage extends EPackage {
 		EClass NEGATION = eINSTANCE.getNegation();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.PermissionType <em>Permission Type</em>}' enum.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE <em>PERMISSION TYPE</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.PermissionType
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPermissionType()
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPERMISSION_TYPE()
 		 * @generated
 		 */
-		EEnum PERMISSION_TYPE = eINSTANCE.getPermissionType();
+		EEnum PERMISSION_TYPE = eINSTANCE.getPERMISSION_TYPE();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.ShellType <em>Shell Type</em>}' enum.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getShellType()
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 		 * @generated
 		 */
-		EEnum SHELL_TYPE = eINSTANCE.getShellType();
+		EEnum SHELL_TYPE = eINSTANCE.getSHELL_TYPE();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.InputType <em>Input Type</em>}' enum.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.InputType
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getInputType()
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 		 * @generated
 		 */
-		EEnum INPUT_TYPE = eINSTANCE.getInputType();
+		EEnum INPUT_TYPE = eINSTANCE.getINPUT_TYPE();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
+		 * @generated
+		 */
+		EEnum EQUALITY_OPS = eINSTANCE.getEQUALITY_OPS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
+		 * @generated
+		 */
+		EEnum COMPARISON_OPS = eINSTANCE.getCOMPARISON_OPS();
 
 	}
 

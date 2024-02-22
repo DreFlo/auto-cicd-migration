@@ -13,7 +13,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -45,7 +44,6 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addProgramPropertyDescriptor(object);
-			addArgsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -62,23 +60,7 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 						getResourceLocator(), getString("_UI_Command_program_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Command_program_feature",
 								"_UI_Command_type"),
-						CICDPackage.Literals.COMMAND__PROGRAM, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Args feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addArgsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Command_args_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Command_args_feature", "_UI_Command_type"),
-						CICDPackage.Literals.COMMAND__ARGS, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CICDPackage.Literals.COMMAND__PROGRAM, true, false, false, null, null, null));
 	}
 
 	/**
@@ -128,7 +110,6 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 
 		switch (notification.getFeatureID(Command.class)) {
 		case CICDPackage.COMMAND__PROGRAM:
-		case CICDPackage.COMMAND__ARGS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

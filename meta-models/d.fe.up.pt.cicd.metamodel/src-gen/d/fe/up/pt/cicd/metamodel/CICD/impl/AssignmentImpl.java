@@ -46,7 +46,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	protected EnvironmentVariable key;
 
 	/**
-	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' reference.
+	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTypedValue()
@@ -129,15 +129,6 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	public Expression getTypedValue() {
-		if (value != null && value.eIsProxy()) {
-			InternalEObject oldValue = (InternalEObject) value;
-			value = (Expression) eResolveProxy(oldValue);
-			if (value != oldValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.ASSIGNMENT__VALUE, oldValue,
-							value));
-			}
-		}
 		return value;
 	}
 
@@ -146,8 +137,18 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetTypedValue() {
-		return value;
+	public NotificationChain basicSetTypedValue(Expression newValue, NotificationChain msgs) {
+		Expression oldValue = value;
+		value = newValue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.ASSIGNMENT__VALUE, oldValue, newValue);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -156,10 +157,19 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	public void setTypedValue(Expression newValue) {
-		Expression oldValue = value;
-		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.ASSIGNMENT__VALUE, oldValue, value));
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject) value).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.ASSIGNMENT__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject) newValue).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.ASSIGNMENT__VALUE, null, msgs);
+			msgs = basicSetTypedValue(newValue, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.ASSIGNMENT__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -172,6 +182,8 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 		switch (featureID) {
 		case CICDPackage.ASSIGNMENT__KEY:
 			return basicSetTypedKey(null, msgs);
+		case CICDPackage.ASSIGNMENT__VALUE:
+			return basicSetTypedValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,9 +199,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 		case CICDPackage.ASSIGNMENT__KEY:
 			return getTypedKey();
 		case CICDPackage.ASSIGNMENT__VALUE:
-			if (resolve)
-				return getTypedValue();
-			return basicGetTypedValue();
+			return getTypedValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

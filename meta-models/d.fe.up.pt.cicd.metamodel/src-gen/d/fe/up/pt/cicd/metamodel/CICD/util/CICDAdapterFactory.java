@@ -129,7 +129,7 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter casePermission(Map.Entry<String, PermissionType> object) {
+		public Adapter casePermission(Map.Entry<String, PERMISSION_TYPE> object) {
 			return createPermissionAdapter();
 		}
 
@@ -209,6 +209,11 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseConcat(Concat object) {
+			return createConcatAdapter();
+		}
+
+		@Override
 		public Adapter caseValue(Value object) {
 			return createValueAdapter();
 		}
@@ -224,8 +229,13 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseNumberLiteral(NumberLiteral object) {
-			return createNumberLiteralAdapter();
+		public Adapter caseIntegerLiteral(IntegerLiteral object) {
+			return createIntegerLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseDoubleLiteral(DoubleLiteral object) {
+			return createDoubleLiteralAdapter();
 		}
 
 		@Override
@@ -259,13 +269,28 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseConjuntion(Conjuntion object) {
-			return createConjuntionAdapter();
+		public Adapter caseEqualityOp(EqualityOp object) {
+			return createEqualityOpAdapter();
 		}
 
 		@Override
-		public Adapter caseDisjunction(Disjunction object) {
-			return createDisjunctionAdapter();
+		public Adapter caseComparisonOp(ComparisonOp object) {
+			return createComparisonOpAdapter();
+		}
+
+		@Override
+		public Adapter caseLogicalOp(LogicalOp object) {
+			return createLogicalOpAdapter();
+		}
+
+		@Override
+		public Adapter caseAnd(And object) {
+			return createAndAdapter();
+		}
+
+		@Override
+		public Adapter caseOr(Or object) {
+			return createOrAdapter();
 		}
 
 		@Override
@@ -700,6 +725,20 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Concat <em>Concat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Concat
+	 * @generated
+	 */
+	public Adapter createConcatAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Value <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -742,16 +781,30 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral <em>Number Literal</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral <em>Integer Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.NumberLiteral
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral
 	 * @generated
 	 */
-	public Adapter createNumberLiteralAdapter() {
+	public Adapter createIntegerLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral <em>Double Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral
+	 * @generated
+	 */
+	public Adapter createDoubleLiteralAdapter() {
 		return null;
 	}
 
@@ -840,30 +893,72 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Conjuntion <em>Conjuntion</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.EqualityOp <em>Equality Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Conjuntion
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.EqualityOp
 	 * @generated
 	 */
-	public Adapter createConjuntionAdapter() {
+	public Adapter createEqualityOpAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Disjunction <em>Disjunction</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp <em>Comparison Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Disjunction
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp
 	 * @generated
 	 */
-	public Adapter createDisjunctionAdapter() {
+	public Adapter createComparisonOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.LogicalOp <em>Logical Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.LogicalOp
+	 * @generated
+	 */
+	public Adapter createLogicalOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.And <em>And</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.And
+	 * @generated
+	 */
+	public Adapter createAndAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Or
+	 * @generated
+	 */
+	public Adapter createOrAdapter() {
 		return null;
 	}
 

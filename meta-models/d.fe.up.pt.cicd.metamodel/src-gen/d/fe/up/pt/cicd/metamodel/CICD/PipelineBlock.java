@@ -78,25 +78,25 @@ public interface PipelineBlock extends EObject {
 	void setAgent(Agent value);
 
 	/**
-	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
+	 * Returns the value of the '<em><b>Inputs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Input}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inputs</em>' reference list.
+	 * @return the value of the '<em>Inputs</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Inputs()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Input> getInputs();
 
 	/**
-	 * Returns the value of the '<em><b>Outputs</b></em>' reference list.
+	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Output}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outputs</em>' reference list.
+	 * @return the value of the '<em>Outputs</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Outputs()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Output> getOutputs();
@@ -117,15 +117,15 @@ public interface PipelineBlock extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Permissions</b></em>' map.
 	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.PermissionType},
+	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Permissions</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Permissions()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Permission&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.metamodel.CICD.PermissionType&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Permission&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE&gt;"
 	 * @generated
 	 */
-	EMap<String, PermissionType> getPermissions();
+	EMap<String, PERMISSION_TYPE> getPermissions();
 
 	/**
 	 * Returns the value of the '<em><b>Timeout Minutes</b></em>' attribute.
@@ -172,22 +172,22 @@ public interface PipelineBlock extends EObject {
 	void setWorkingDirectory(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Concurrency Group</b></em>' reference.
+	 * Returns the value of the '<em><b>Concurrency Group</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concurrency Group</em>' reference.
+	 * @return the value of the '<em>Concurrency Group</em>' containment reference.
 	 * @see #setConcurrencyGroup(ConcurrencyGroup)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_ConcurrencyGroup()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	ConcurrencyGroup getConcurrencyGroup();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concurrency Group</em>' reference.
+	 * @param value the new value of the '<em>Concurrency Group</em>' containment reference.
 	 * @see #getConcurrencyGroup()
 	 * @generated
 	 */
@@ -195,27 +195,27 @@ public interface PipelineBlock extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Shell</b></em>' attribute.
-	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.ShellType}.
+	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Shell</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
-	 * @see #setShell(ShellType)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
+	 * @see #setShell(SHELL_TYPE)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Shell()
 	 * @model required="true"
 	 * @generated
 	 */
-	ShellType getShell();
+	SHELL_TYPE getShell();
 
 	/**
 	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell <em>Shell</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Shell</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ShellType
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
 	 * @see #getShell()
 	 * @generated
 	 */
-	void setShell(ShellType value);
+	void setShell(SHELL_TYPE value);
 
 } // PipelineBlock

@@ -55,4 +55,4 @@ jobs:
           FIRST_NAME: Mona
           MIDDLE_NAME: The
           LAST_NAME: Octocat
-        run: echo 1
+        run: echo ${{ env.MY_VAR }}

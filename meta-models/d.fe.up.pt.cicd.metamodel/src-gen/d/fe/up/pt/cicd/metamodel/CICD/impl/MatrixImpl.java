@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -52,7 +51,7 @@ public class MatrixImpl extends MinimalEObjectImpl.Container implements Matrix {
 	protected EList<MatrixAxis> axes;
 
 	/**
-	 * The cached value of the '{@link #getIncludes() <em>Includes</em>}' reference list.
+	 * The cached value of the '{@link #getIncludes() <em>Includes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getIncludes()
@@ -62,7 +61,7 @@ public class MatrixImpl extends MinimalEObjectImpl.Container implements Matrix {
 	protected EList<MatrixCombination> includes;
 
 	/**
-	 * The cached value of the '{@link #getExcludes() <em>Excludes</em>}' reference list.
+	 * The cached value of the '{@link #getExcludes() <em>Excludes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExcludes()
@@ -131,7 +130,7 @@ public class MatrixImpl extends MinimalEObjectImpl.Container implements Matrix {
 	@Override
 	public EList<MatrixCombination> getIncludes() {
 		if (includes == null) {
-			includes = new EObjectResolvingEList<MatrixCombination>(MatrixCombination.class, this,
+			includes = new EObjectContainmentEList<MatrixCombination>(MatrixCombination.class, this,
 					CICDPackage.MATRIX__INCLUDES);
 		}
 		return includes;
@@ -145,7 +144,7 @@ public class MatrixImpl extends MinimalEObjectImpl.Container implements Matrix {
 	@Override
 	public EList<MatrixCombination> getExcludes() {
 		if (excludes == null) {
-			excludes = new EObjectResolvingEList<MatrixCombination>(MatrixCombination.class, this,
+			excludes = new EObjectContainmentEList<MatrixCombination>(MatrixCombination.class, this,
 					CICDPackage.MATRIX__EXCLUDES);
 		}
 		return excludes;
@@ -185,6 +184,10 @@ public class MatrixImpl extends MinimalEObjectImpl.Container implements Matrix {
 		switch (featureID) {
 		case CICDPackage.MATRIX__AXES:
 			return ((InternalEList<?>) getAxes()).basicRemove(otherEnd, msgs);
+		case CICDPackage.MATRIX__INCLUDES:
+			return ((InternalEList<?>) getIncludes()).basicRemove(otherEnd, msgs);
+		case CICDPackage.MATRIX__EXCLUDES:
+			return ((InternalEList<?>) getExcludes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

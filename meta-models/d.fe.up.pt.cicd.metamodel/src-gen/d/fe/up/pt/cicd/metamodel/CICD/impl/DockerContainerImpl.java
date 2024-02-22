@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -69,7 +69,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	protected String label = LABEL_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getImage() <em>Image</em>}' reference.
+	 * The cached value of the '{@link #getImage() <em>Image</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getImage()
@@ -89,7 +89,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	protected EMap<EnvironmentVariable, Expression> environmentVariables;
 
 	/**
-	 * The cached value of the '{@link #getVolumes() <em>Volumes</em>}' reference list.
+	 * The cached value of the '{@link #getVolumes() <em>Volumes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getVolumes()
@@ -99,7 +99,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	protected EList<Expression> volumes;
 
 	/**
-	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' reference list.
+	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPorts()
@@ -208,15 +208,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	public Expression getImage() {
-		if (image != null && image.eIsProxy()) {
-			InternalEObject oldImage = (InternalEObject) image;
-			image = (Expression) eResolveProxy(oldImage);
-			if (image != oldImage) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.DOCKER_CONTAINER__IMAGE,
-							oldImage, image));
-			}
-		}
 		return image;
 	}
 
@@ -225,8 +216,18 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetImage() {
-		return image;
+	public NotificationChain basicSetImage(Expression newImage, NotificationChain msgs) {
+		Expression oldImage = image;
+		image = newImage;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.DOCKER_CONTAINER__IMAGE, oldImage, newImage);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -236,11 +237,20 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	public void setImage(Expression newImage) {
-		Expression oldImage = image;
-		image = newImage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.DOCKER_CONTAINER__IMAGE, oldImage,
-					image));
+		if (newImage != image) {
+			NotificationChain msgs = null;
+			if (image != null)
+				msgs = ((InternalEObject) image).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.DOCKER_CONTAINER__IMAGE, null, msgs);
+			if (newImage != null)
+				msgs = ((InternalEObject) newImage).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.DOCKER_CONTAINER__IMAGE, null, msgs);
+			msgs = basicSetImage(newImage, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.DOCKER_CONTAINER__IMAGE, newImage,
+					newImage));
 	}
 
 	/**
@@ -265,7 +275,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public EList<Expression> getVolumes() {
 		if (volumes == null) {
-			volumes = new EObjectResolvingEList<Expression>(Expression.class, this,
+			volumes = new EObjectContainmentEList<Expression>(Expression.class, this,
 					CICDPackage.DOCKER_CONTAINER__VOLUMES);
 		}
 		return volumes;
@@ -279,7 +289,8 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public EList<Expression> getPorts() {
 		if (ports == null) {
-			ports = new EObjectResolvingEList<Expression>(Expression.class, this, CICDPackage.DOCKER_CONTAINER__PORTS);
+			ports = new EObjectContainmentEList<Expression>(Expression.class, this,
+					CICDPackage.DOCKER_CONTAINER__PORTS);
 		}
 		return ports;
 	}
@@ -442,8 +453,14 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case CICDPackage.DOCKER_CONTAINER__IMAGE:
+			return basicSetImage(null, msgs);
 		case CICDPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		case CICDPackage.DOCKER_CONTAINER__VOLUMES:
+			return ((InternalEList<?>) getVolumes()).basicRemove(otherEnd, msgs);
+		case CICDPackage.DOCKER_CONTAINER__PORTS:
+			return ((InternalEList<?>) getPorts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -459,9 +476,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 		case CICDPackage.DOCKER_CONTAINER__LABEL:
 			return getLabel();
 		case CICDPackage.DOCKER_CONTAINER__IMAGE:
-			if (resolve)
-				return getImage();
-			return basicGetImage();
+			return getImage();
 		case CICDPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
 			if (coreType)
 				return getEnvironmentVariables();

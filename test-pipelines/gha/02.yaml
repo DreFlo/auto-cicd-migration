@@ -1,0 +1,14 @@
+name: "Workflow"
+
+on:
+  push:
+    tags:
+      - tag
+
+env:
+  SERVER: production
+
+jobs:
+  my_first_job:
+    steps:
+      - run: echo "Hello World!" 

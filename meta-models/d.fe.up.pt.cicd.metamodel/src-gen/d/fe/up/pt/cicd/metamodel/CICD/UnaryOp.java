@@ -20,22 +20,22 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  */
 public interface UnaryOp extends Expression {
 	/**
-	 * Returns the value of the '<em><b>Rhs</b></em>' reference.
+	 * Returns the value of the '<em><b>Rhs</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rhs</em>' reference.
+	 * @return the value of the '<em>Rhs</em>' containment reference.
 	 * @see #setRhs(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getUnaryOp_Rhs()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Expression getRhs();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.UnaryOp#getRhs <em>Rhs</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.UnaryOp#getRhs <em>Rhs</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rhs</em>' reference.
+	 * @param value the new value of the '<em>Rhs</em>' containment reference.
 	 * @see #getRhs()
 	 * @generated
 	 */

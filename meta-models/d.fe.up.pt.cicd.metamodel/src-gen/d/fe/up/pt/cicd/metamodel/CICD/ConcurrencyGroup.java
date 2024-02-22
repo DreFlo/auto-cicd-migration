@@ -23,22 +23,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ConcurrencyGroup extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Group Id</b></em>' reference.
+	 * Returns the value of the '<em><b>Group Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Group Id</em>' reference.
+	 * @return the value of the '<em>Group Id</em>' containment reference.
 	 * @see #setGroupId(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConcurrencyGroup_GroupId()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Expression getGroupId();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup#getGroupId <em>Group Id</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup#getGroupId <em>Group Id</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Group Id</em>' reference.
+	 * @param value the new value of the '<em>Group Id</em>' containment reference.
 	 * @see #getGroupId()
 	 * @generated
 	 */

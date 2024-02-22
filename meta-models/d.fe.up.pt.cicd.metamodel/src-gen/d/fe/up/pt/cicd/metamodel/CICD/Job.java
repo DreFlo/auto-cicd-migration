@@ -62,13 +62,13 @@ public interface Job extends PipelineBlock {
 	EList<Step> getSteps();
 
 	/**
-	 * Returns the value of the '<em><b>Services</b></em>' reference list.
+	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Services</em>' reference list.
+	 * @return the value of the '<em>Services</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_Services()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<DockerContainer> getServices();

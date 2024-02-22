@@ -1,0 +1,34 @@
+-- @path Jenkins=/d.fe.up.pt.cicd.jenkins.metamodel/model/Jenkins.ecore
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module cicd2jenkins;
+create OUT : Jenkins from IN : CICD;
+
+rule Pipeline2Pipeline {
+	from
+		cicdPipeline : CICD!Pipeline
+	to
+		jenkinsPipeline : Jenkins!Pipeline(
+			stages <- cicdPipeline.jobs
+		)
+}
+
+rule Job2Stage {
+	from
+		job : CICD!Job
+	to
+		stage : Jenkins!Stage(
+			steps <- job.steps	
+		)
+}
+
+rule Step2Step {
+	from
+		cicdStep : CICD!Command
+	to
+		jenkinsStep : Jenkins!Step(
+			command <- cicdStep.program	
+		)
+}
+
+helper context CICD!StringLiteral def : stringLiteral2String() : String = self.value;

@@ -23,28 +23,28 @@ package d.fe.up.pt.cicd.metamodel.CICD;
 public interface Input extends Parameter {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.InputType}.
+	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.InputType
-	 * @see #setType(InputType)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE
+	 * @see #setType(INPUT_TYPE)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getInput_Type()
 	 * @model required="true"
 	 * @generated
 	 */
-	InputType getType();
+	INPUT_TYPE getType();
 
 	/**
 	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.InputType
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(InputType value);
+	void setType(INPUT_TYPE value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' attribute.

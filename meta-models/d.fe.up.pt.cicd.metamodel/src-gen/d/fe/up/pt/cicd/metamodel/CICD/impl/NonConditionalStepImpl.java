@@ -7,20 +7,19 @@ import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep;
 
-import java.util.Collection;
-import java.util.Map;
-
-import java.util.Map.Entry;
-
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,14 +80,14 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' reference list.
+	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEnvironmentVariables()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Map.Entry<EnvironmentVariable, Expression>> environmentVariables;
+	protected EMap<EnvironmentVariable, Expression> environmentVariables;
 
 	/**
 	 * The default value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' attribute.
@@ -202,10 +201,10 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
-	public EList<Map.Entry<EnvironmentVariable, Expression>> getEnvironmentVariables() {
+	public EMap<EnvironmentVariable, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EObjectResolvingEList<Map.Entry<EnvironmentVariable, Expression>>(Entry.class,
-					this, CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}
@@ -264,6 +263,20 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
+			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.NON_CONDITIONAL_STEP__ID:
@@ -271,7 +284,10 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 		case CICDPackage.NON_CONDITIONAL_STEP__NAME:
 			return getName();
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
-			return getEnvironmentVariables();
+			if (coreType)
+				return getEnvironmentVariables();
+			else
+				return getEnvironmentVariables().map();
 		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
 			return getTimeoutMinutes();
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
@@ -285,7 +301,6 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -296,9 +311,7 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 			setName((String) newValue);
 			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
-			getEnvironmentVariables().clear();
-			getEnvironmentVariables()
-					.addAll((Collection<? extends Map.Entry<EnvironmentVariable, Expression>>) newValue);
+			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
 			setTimeoutMinutes((Integer) newValue);

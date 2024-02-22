@@ -42,7 +42,7 @@ public class Main {
         try {
 			Pipeline pipeline = getInputCompiler("gha").compile(Files.readString(Path.of(args[0])));
 
-			System.out.println(pipeline);
+			System.out.println(pipeline.getEnvironmentVariables());
 		} catch (SyntaxException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

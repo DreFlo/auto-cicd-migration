@@ -7,6 +7,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -27,9 +28,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
+public abstract class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	/**
-	 * The cached value of the '{@link #getLhs() <em>Lhs</em>}' reference.
+	 * The cached value of the '{@link #getLhs() <em>Lhs</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLhs()
@@ -39,7 +40,7 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	protected Expression lhs;
 
 	/**
-	 * The cached value of the '{@link #getRhs() <em>Rhs</em>}' reference.
+	 * The cached value of the '{@link #getRhs() <em>Rhs</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRhs()
@@ -74,14 +75,6 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	 */
 	@Override
 	public Expression getLhs() {
-		if (lhs != null && lhs.eIsProxy()) {
-			InternalEObject oldLhs = (InternalEObject) lhs;
-			lhs = (Expression) eResolveProxy(oldLhs);
-			if (lhs != oldLhs) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.BINARY_OP__LHS, oldLhs, lhs));
-			}
-		}
 		return lhs;
 	}
 
@@ -90,8 +83,18 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetLhs() {
-		return lhs;
+	public NotificationChain basicSetLhs(Expression newLhs, NotificationChain msgs) {
+		Expression oldLhs = lhs;
+		lhs = newLhs;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.BINARY_OP__LHS,
+					oldLhs, newLhs);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -101,10 +104,19 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	 */
 	@Override
 	public void setLhs(Expression newLhs) {
-		Expression oldLhs = lhs;
-		lhs = newLhs;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.BINARY_OP__LHS, oldLhs, lhs));
+		if (newLhs != lhs) {
+			NotificationChain msgs = null;
+			if (lhs != null)
+				msgs = ((InternalEObject) lhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CICDPackage.BINARY_OP__LHS,
+						null, msgs);
+			if (newLhs != null)
+				msgs = ((InternalEObject) newLhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CICDPackage.BINARY_OP__LHS,
+						null, msgs);
+			msgs = basicSetLhs(newLhs, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.BINARY_OP__LHS, newLhs, newLhs));
 	}
 
 	/**
@@ -114,14 +126,6 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	 */
 	@Override
 	public Expression getRhs() {
-		if (rhs != null && rhs.eIsProxy()) {
-			InternalEObject oldRhs = (InternalEObject) rhs;
-			rhs = (Expression) eResolveProxy(oldRhs);
-			if (rhs != oldRhs) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.BINARY_OP__RHS, oldRhs, rhs));
-			}
-		}
 		return rhs;
 	}
 
@@ -130,8 +134,18 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetRhs() {
-		return rhs;
+	public NotificationChain basicSetRhs(Expression newRhs, NotificationChain msgs) {
+		Expression oldRhs = rhs;
+		rhs = newRhs;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.BINARY_OP__RHS,
+					oldRhs, newRhs);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -141,10 +155,35 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	 */
 	@Override
 	public void setRhs(Expression newRhs) {
-		Expression oldRhs = rhs;
-		rhs = newRhs;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.BINARY_OP__RHS, oldRhs, rhs));
+		if (newRhs != rhs) {
+			NotificationChain msgs = null;
+			if (rhs != null)
+				msgs = ((InternalEObject) rhs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CICDPackage.BINARY_OP__RHS,
+						null, msgs);
+			if (newRhs != null)
+				msgs = ((InternalEObject) newRhs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CICDPackage.BINARY_OP__RHS,
+						null, msgs);
+			msgs = basicSetRhs(newRhs, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.BINARY_OP__RHS, newRhs, newRhs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.BINARY_OP__LHS:
+			return basicSetLhs(null, msgs);
+		case CICDPackage.BINARY_OP__RHS:
+			return basicSetRhs(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -156,13 +195,9 @@ public class BinaryOpImpl extends ExpressionImpl implements BinaryOp {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.BINARY_OP__LHS:
-			if (resolve)
-				return getLhs();
-			return basicGetLhs();
+			return getLhs();
 		case CICDPackage.BINARY_OP__RHS:
-			if (resolve)
-				return getRhs();
-			return basicGetRhs();
+			return getRhs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

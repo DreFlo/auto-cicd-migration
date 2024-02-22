@@ -7,6 +7,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -30,7 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ConcurrencyGroupImpl extends MinimalEObjectImpl.Container implements ConcurrencyGroup {
 	/**
-	 * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' reference.
+	 * The cached value of the '{@link #getGroupId() <em>Group Id</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGroupId()
@@ -85,15 +86,6 @@ public class ConcurrencyGroupImpl extends MinimalEObjectImpl.Container implement
 	 */
 	@Override
 	public Expression getGroupId() {
-		if (groupId != null && groupId.eIsProxy()) {
-			InternalEObject oldGroupId = (InternalEObject) groupId;
-			groupId = (Expression) eResolveProxy(oldGroupId);
-			if (groupId != oldGroupId) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.CONCURRENCY_GROUP__GROUP_ID,
-							oldGroupId, groupId));
-			}
-		}
 		return groupId;
 	}
 
@@ -102,8 +94,18 @@ public class ConcurrencyGroupImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetGroupId() {
-		return groupId;
+	public NotificationChain basicSetGroupId(Expression newGroupId, NotificationChain msgs) {
+		Expression oldGroupId = groupId;
+		groupId = newGroupId;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.CONCURRENCY_GROUP__GROUP_ID, oldGroupId, newGroupId);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -113,11 +115,20 @@ public class ConcurrencyGroupImpl extends MinimalEObjectImpl.Container implement
 	 */
 	@Override
 	public void setGroupId(Expression newGroupId) {
-		Expression oldGroupId = groupId;
-		groupId = newGroupId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.CONCURRENCY_GROUP__GROUP_ID, oldGroupId,
-					groupId));
+		if (newGroupId != groupId) {
+			NotificationChain msgs = null;
+			if (groupId != null)
+				msgs = ((InternalEObject) groupId).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.CONCURRENCY_GROUP__GROUP_ID, null, msgs);
+			if (newGroupId != null)
+				msgs = ((InternalEObject) newGroupId).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.CONCURRENCY_GROUP__GROUP_ID, null, msgs);
+			msgs = basicSetGroupId(newGroupId, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.CONCURRENCY_GROUP__GROUP_ID, newGroupId,
+					newGroupId));
 	}
 
 	/**
@@ -150,12 +161,24 @@ public class ConcurrencyGroupImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.CONCURRENCY_GROUP__GROUP_ID:
+			return basicSetGroupId(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.CONCURRENCY_GROUP__GROUP_ID:
-			if (resolve)
-				return getGroupId();
-			return basicGetGroupId();
+			return getGroupId();
 		case CICDPackage.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS:
 			return getCancelInProgress();
 		}

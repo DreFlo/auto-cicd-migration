@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -75,7 +74,7 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	protected EList<Step> steps;
 
 	/**
-	 * The cached value of the '{@link #getServices() <em>Services</em>}' reference list.
+	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getServices()
@@ -207,7 +206,7 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	@Override
 	public EList<DockerContainer> getServices() {
 		if (services == null) {
-			services = new EObjectResolvingEList<DockerContainer>(DockerContainer.class, this,
+			services = new EObjectContainmentEList<DockerContainer>(DockerContainer.class, this,
 					CICDPackage.JOB__SERVICES);
 		}
 		return services;
@@ -316,6 +315,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		switch (featureID) {
 		case CICDPackage.JOB__STEPS:
 			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
+		case CICDPackage.JOB__SERVICES:
+			return ((InternalEList<?>) getServices()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__DEPENDS_ON:
 			return ((InternalEList<?>) getDependsOn()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__NECESSARY_FOR:

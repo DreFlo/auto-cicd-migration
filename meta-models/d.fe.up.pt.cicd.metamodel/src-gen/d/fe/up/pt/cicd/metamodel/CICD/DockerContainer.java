@@ -55,22 +55,22 @@ public interface DockerContainer extends EObject {
 	void setLabel(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Image</b></em>' reference.
+	 * Returns the value of the '<em><b>Image</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Image</em>' reference.
+	 * @return the value of the '<em>Image</em>' containment reference.
 	 * @see #setImage(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_Image()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Expression getImage();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getImage <em>Image</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer#getImage <em>Image</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Image</em>' reference.
+	 * @param value the new value of the '<em>Image</em>' containment reference.
 	 * @see #getImage()
 	 * @generated
 	 */
@@ -90,25 +90,25 @@ public interface DockerContainer extends EObject {
 	EMap<EnvironmentVariable, Expression> getEnvironmentVariables();
 
 	/**
-	 * Returns the value of the '<em><b>Volumes</b></em>' reference list.
+	 * Returns the value of the '<em><b>Volumes</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Volumes</em>' reference list.
+	 * @return the value of the '<em>Volumes</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_Volumes()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Expression> getVolumes();
 
 	/**
-	 * Returns the value of the '<em><b>Ports</b></em>' reference list.
+	 * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ports</em>' reference list.
+	 * @return the value of the '<em>Ports</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_Ports()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Expression> getPorts();

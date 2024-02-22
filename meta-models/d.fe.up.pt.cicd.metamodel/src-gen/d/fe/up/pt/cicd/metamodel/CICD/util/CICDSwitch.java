@@ -168,7 +168,7 @@ public class CICDSwitch<T> extends Switch<T> {
 		}
 		case CICDPackage.PERMISSION: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<String, PermissionType> permission = (Map.Entry<String, PermissionType>) theEObject;
+			Map.Entry<String, PERMISSION_TYPE> permission = (Map.Entry<String, PERMISSION_TYPE>) theEObject;
 			T result = casePermission(permission);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -304,6 +304,15 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CICDPackage.CONCAT: {
+			Concat concat = (Concat) theEObject;
+			T result = caseConcat(concat);
+			if (result == null)
+				result = caseExpression(concat);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CICDPackage.VALUE: {
 			Value value = (Value) theEObject;
 			T result = caseValue(value);
@@ -337,15 +346,28 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.NUMBER_LITERAL: {
-			NumberLiteral numberLiteral = (NumberLiteral) theEObject;
-			T result = caseNumberLiteral(numberLiteral);
+		case CICDPackage.INTEGER_LITERAL: {
+			IntegerLiteral integerLiteral = (IntegerLiteral) theEObject;
+			T result = caseIntegerLiteral(integerLiteral);
 			if (result == null)
-				result = caseLiteral(numberLiteral);
+				result = caseLiteral(integerLiteral);
 			if (result == null)
-				result = caseValue(numberLiteral);
+				result = caseValue(integerLiteral);
 			if (result == null)
-				result = caseExpression(numberLiteral);
+				result = caseExpression(integerLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.DOUBLE_LITERAL: {
+			DoubleLiteral doubleLiteral = (DoubleLiteral) theEObject;
+			T result = caseDoubleLiteral(doubleLiteral);
+			if (result == null)
+				result = caseLiteral(doubleLiteral);
+			if (result == null)
+				result = caseValue(doubleLiteral);
+			if (result == null)
+				result = caseExpression(doubleLiteral);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -418,24 +440,61 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.CONJUNTION: {
-			Conjuntion conjuntion = (Conjuntion) theEObject;
-			T result = caseConjuntion(conjuntion);
+		case CICDPackage.EQUALITY_OP: {
+			EqualityOp equalityOp = (EqualityOp) theEObject;
+			T result = caseEqualityOp(equalityOp);
 			if (result == null)
-				result = caseBinaryOp(conjuntion);
+				result = caseBinaryOp(equalityOp);
 			if (result == null)
-				result = caseExpression(conjuntion);
+				result = caseExpression(equalityOp);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.DISJUNCTION: {
-			Disjunction disjunction = (Disjunction) theEObject;
-			T result = caseDisjunction(disjunction);
+		case CICDPackage.COMPARISON_OP: {
+			ComparisonOp comparisonOp = (ComparisonOp) theEObject;
+			T result = caseComparisonOp(comparisonOp);
 			if (result == null)
-				result = caseBinaryOp(disjunction);
+				result = caseBinaryOp(comparisonOp);
 			if (result == null)
-				result = caseExpression(disjunction);
+				result = caseExpression(comparisonOp);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.LOGICAL_OP: {
+			LogicalOp logicalOp = (LogicalOp) theEObject;
+			T result = caseLogicalOp(logicalOp);
+			if (result == null)
+				result = caseBinaryOp(logicalOp);
+			if (result == null)
+				result = caseExpression(logicalOp);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.AND: {
+			And and = (And) theEObject;
+			T result = caseAnd(and);
+			if (result == null)
+				result = caseLogicalOp(and);
+			if (result == null)
+				result = caseBinaryOp(and);
+			if (result == null)
+				result = caseExpression(and);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.OR: {
+			Or or = (Or) theEObject;
+			T result = caseOr(or);
+			if (result == null)
+				result = caseLogicalOp(or);
+			if (result == null)
+				result = caseBinaryOp(or);
+			if (result == null)
+				result = caseExpression(or);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -678,7 +737,7 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePermission(Map.Entry<String, PermissionType> object) {
+	public T casePermission(Map.Entry<String, PERMISSION_TYPE> object) {
 		return null;
 	}
 
@@ -908,6 +967,21 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcat(Concat object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -953,17 +1027,32 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNumberLiteral(NumberLiteral object) {
+	public T caseIntegerLiteral(IntegerLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Double Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Double Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDoubleLiteral(DoubleLiteral object) {
 		return null;
 	}
 
@@ -1058,32 +1147,77 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Conjuntion</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Equality Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Conjuntion</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Equality Op</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConjuntion(Conjuntion object) {
+	public T caseEqualityOp(EqualityOp object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Disjunction</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Comparison Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Disjunction</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Comparison Op</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDisjunction(Disjunction object) {
+	public T caseComparisonOp(ComparisonOp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Op</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogicalOp(LogicalOp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>And</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>And</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnd(And object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Or</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOr(Or object) {
 		return null;
 	}
 

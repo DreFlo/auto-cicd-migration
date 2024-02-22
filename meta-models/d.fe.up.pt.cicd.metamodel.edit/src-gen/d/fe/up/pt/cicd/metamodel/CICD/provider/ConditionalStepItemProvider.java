@@ -146,6 +146,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createValue()));
 
 		newChildDescriptors.add(
@@ -155,7 +158,10 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
-				CICDFactory.eINSTANCE.createNumberLiteral()));
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
@@ -173,13 +179,16 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
-				CICDFactory.eINSTANCE.createBinaryOp()));
+				CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
-				CICDFactory.eINSTANCE.createConjuntion()));
+				CICDFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
-				CICDFactory.eINSTANCE.createDisjunction()));
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
 				CICDFactory.eINSTANCE.createAddition()));

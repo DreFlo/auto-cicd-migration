@@ -1,4 +1,4 @@
-package cli.transformers.toTIM;
+package cli.transformers.exogenous.toTIM;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;

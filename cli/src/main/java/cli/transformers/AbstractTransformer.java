@@ -46,7 +46,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         EMFUtils.registerExtensionToFactoryMap(getResourceSet(), "ecore", new EcoreResourceFactoryImpl());
     }
 
-    public final OutputModel transform(InputModel inputModel) throws IOException {
+    public OutputModel transform(InputModel inputModel) throws IOException {
         String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out";
 

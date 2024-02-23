@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import java.io.IOException;
 
 public abstract class FromTIMAbstractTransformer<OutputModel extends EObject, OutputPackage extends EPackage> extends AbstractTransformer<Pipeline, CICDPackage, OutputModel, OutputPackage> {
-    protected FromTIMAbstractTransformer(ResourceSet resourceSet, OutputPackage outputPackage, String atlFilePath, String outputModelName) throws IOException {
+    protected FromTIMAbstractTransformer(ResourceSet resourceSet, OutputPackage outputPackage, String atlFilePath, String outputModelName) {
         super(resourceSet, CICDPackage.eINSTANCE, outputPackage, atlFilePath, "CICD", outputModelName);
     }
 }

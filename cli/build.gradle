@@ -10,6 +10,12 @@ repositories {
     maven {
         url "https://repo.eclipse.org/content/repositories/atl-releases/"
     }
+    maven {
+        url "https://repo.eclipse.org/content/groups/releases/"
+    }
+    maven {
+        url "https://repo.spring.io/plugins-release/"
+    }
 }
 
 dependencies {
@@ -27,10 +33,26 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.inject/guice
 	implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
     implementation group: 'com.amihaiemil.web', name: 'eo-yaml', version: '7.2.0'
+    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.common
+    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.acceleo.common', version: '3.5.1.201409021433'
+    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.engine
+    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.acceleo.engine', version: '3.5.1.201409021433'
+    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.model
+    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.acceleo.model', version: '3.5.1.201409021433'
+    // https://mvnrepository.com/artifact/org.eclipse.core/runtime
+    implementation group: 'org.eclipse.core', name: 'runtime', version: '3.10.0-v20140318-2214'
+    // https://mvnrepository.com/artifact/org.eclipse.ocl/org.eclipse.ocl.ecore
+    implementation group: 'org.eclipse.ocl', name: 'org.eclipse.ocl.ecore', version: '3.3.0.v20130520-1222'
+    // https://mvnrepository.com/artifact/org.eclipse.ocl/org.eclipse.ocl
+    implementation group: 'org.eclipse.ocl', name: 'org.eclipse.ocl', version: '3.4.2.v20140725-2242'
+    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.ocl.common
+    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.ocl.common', version: '1.2.0.v20140610-0641'
+    // https://mvnrepository.com/artifact/lpg.runtime.java/lpg.runtime.java
+    implementation group: 'lpg.runtime.java', name: 'lpg.runtime.java', version: '2.0.17.v201004271640'
 }
 
 dependencies {
-	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 sourceSets {

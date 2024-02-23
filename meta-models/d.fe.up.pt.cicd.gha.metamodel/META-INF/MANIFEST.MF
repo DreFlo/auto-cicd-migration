@@ -11,6 +11,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: d.fe.up.pt.cicd.gha.metamodel.GHA,
  d.fe.up.pt.cicd.gha.metamodel.GHA.impl,
  d.fe.up.pt.cicd.gha.metamodel.GHA.util
-Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy

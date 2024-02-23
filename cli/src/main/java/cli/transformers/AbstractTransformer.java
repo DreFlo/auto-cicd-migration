@@ -1,5 +1,6 @@
 package cli.transformers;
 
+import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -41,9 +42,8 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     protected final void checkRegistry() {
-        getResourceSet().getPackageRegistry().putIfAbsent(getInputPackage().getNsURI(), getInputPackage());
-        getResourceSet().getPackageRegistry().putIfAbsent(getOutputPackage().getNsURI(), getOutputPackage());
-        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().putIfAbsent("ecore", new EcoreResourceFactoryImpl());
+        EMFUtils.registerPackages(getResourceSet(), getInputPackage(), getOutputPackage());
+        EMFUtils.registerExtensionToFactoryMap(getResourceSet(), "ecore", new EcoreResourceFactoryImpl());
     }
 
     public final OutputModel transform(InputModel inputModel) throws IOException {
@@ -73,37 +73,19 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         return outputPackage;
     }
 
-    private String getRandomName() {
-        int leftLimit = 48; // numeral '0'
-        int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
-        Random random = new Random();
-
-        return random.ints(leftLimit, rightLimit + 1)
-                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-                .limit(targetStringLength)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
-    }
-
     private String serializeModel(InputModel model) throws IOException {
         String tempDir = ".";
-        String randomName = getRandomName() + ".xmi";
+        String randomName = JavaUtils.getRandomName() + ".xmi";
         String filePath = Path.of(tempDir, randomName).toString();
 
-        // Write the parsed model to a file
-        Resource resource = getResourceSet().createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
-        resource.getContents().add(model);
-        resource.save(null);
+        EMFUtils.serializeModel(model, filePath, getResourceSet());
 
         return filePath;
     }
 
     @SuppressWarnings("unchecked")
     private OutputModel deserializeModel(String filePath) throws IOException {
-        Resource resource = getResourceSet().createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
-        resource.load(null);
-        return (OutputModel) resource.getContents().get(0);
+        return (OutputModel) EMFUtils.deserializeModel(filePath, getResourceSet());
     }
 
     private void loadModels(String inputModelFilePath) throws ATLCoreException {

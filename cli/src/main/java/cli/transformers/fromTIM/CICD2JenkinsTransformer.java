@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import java.io.IOException;
 
 public class CICD2JenkinsTransformer extends FromTIMAbstractTransformer<Pipeline, JenkinsPackage> {
-    public CICD2JenkinsTransformer(ResourceSet resourceSet) throws IOException {
+    public CICD2JenkinsTransformer(ResourceSet resourceSet) {
         super(resourceSet, JenkinsPackage.eINSTANCE, "transformations/tim2tsm/cicd2jenkins.asm", "Jenkins");
     }
 }

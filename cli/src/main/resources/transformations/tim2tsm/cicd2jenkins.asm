@@ -96,15 +96,20 @@
 		<constant value="29:3-31:4"/>
 		<constant value="__applyStep2Step"/>
 		<constant value="program"/>
+		<constant value="J.expression2String():J"/>
 		<constant value="command"/>
 		<constant value="30:15-30:23"/>
 		<constant value="30:15-30:31"/>
-		<constant value="30:4-30:31"/>
-		<constant value="stringLiteral2String"/>
+		<constant value="30:15-30:51"/>
+		<constant value="30:4-30:51"/>
+		<constant value="expression2String"/>
+		<constant value="MCICD!Expression;"/>
+		<constant value="EXPRESSION"/>
+		<constant value="34:69-34:81"/>
 		<constant value="MCICD!StringLiteral;"/>
 		<constant value="0"/>
-		<constant value="34:75-34:79"/>
-		<constant value="34:75-34:85"/>
+		<constant value="36:72-36:76"/>
+		<constant value="36:72-36:82"/>
 	</cp>
 	<field name="1" type="2"/>
 	<field name="3" type="4"/>
@@ -493,34 +498,50 @@
 			<getasm/>
 			<load arg="29"/>
 			<get arg="94"/>
+			<call arg="95"/>
 			<call arg="30"/>
-			<set arg="95"/>
+			<set arg="96"/>
 			<pop/>
 		</code>
 		<linenumbertable>
-			<lne id="96" begin="11" end="11"/>
-			<lne id="97" begin="11" end="12"/>
-			<lne id="98" begin="9" end="14"/>
-			<lne id="92" begin="8" end="15"/>
+			<lne id="97" begin="11" end="11"/>
+			<lne id="98" begin="11" end="12"/>
+			<lne id="99" begin="11" end="13"/>
+			<lne id="100" begin="9" end="15"/>
+			<lne id="92" begin="8" end="16"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="3" name="90" begin="7" end="15"/>
-			<lve slot="2" name="89" begin="3" end="15"/>
-			<lve slot="0" name="17" begin="0" end="15"/>
-			<lve slot="1" name="75" begin="0" end="15"/>
+			<lve slot="3" name="90" begin="7" end="16"/>
+			<lve slot="2" name="89" begin="3" end="16"/>
+			<lve slot="0" name="17" begin="0" end="16"/>
+			<lve slot="1" name="75" begin="0" end="16"/>
 		</localvariabletable>
 	</operation>
-	<operation name="99">
-		<context type="100"/>
+	<operation name="101">
+		<context type="102"/>
 		<parameters>
 		</parameters>
 		<code>
-			<load arg="101"/>
+			<push arg="103"/>
+		</code>
+		<linenumbertable>
+			<lne id="104" begin="0" end="0"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="0" name="17" begin="0" end="0"/>
+		</localvariabletable>
+	</operation>
+	<operation name="101">
+		<context type="105"/>
+		<parameters>
+		</parameters>
+		<code>
+			<load arg="106"/>
 			<get arg="34"/>
 		</code>
 		<linenumbertable>
-			<lne id="102" begin="0" end="0"/>
-			<lne id="103" begin="0" end="1"/>
+			<lne id="107" begin="0" end="0"/>
+			<lne id="108" begin="0" end="1"/>
 		</linenumbertable>
 		<localvariabletable>
 			<lve slot="0" name="17" begin="0" end="1"/>

@@ -27,8 +27,10 @@ rule Step2Step {
 		cicdStep : CICD!Command
 	to
 		jenkinsStep : Jenkins!Step(
-			command <- cicdStep.program	
+			command <- cicdStep.program.expression2String()
 		)
 }
 
-helper context CICD!StringLiteral def : stringLiteral2String() : String = self.value;
+helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
+
+helper context CICD!StringLiteral def : expression2String() : String = self.value;

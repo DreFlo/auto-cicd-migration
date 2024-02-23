@@ -10,6 +10,9 @@ import cli.compilers.input.GHAInputCompiler;
 import cli.compilers.input.InputAbstractCompiler;
 import cli.parsers.*;
 import cli.parsers.exceptions.*;
+import cli.transformers.AbstractTransformer;
+import cli.transformers.fromTIM.CICD2JenkinsTransformer;
+import cli.transformers.fromTIM.FromTIMAbstractTransformer;
 import cli.transformers.toTIM.GHA2CICDTransformer;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
@@ -42,7 +45,9 @@ public class Main {
         try {
 			Pipeline pipeline = getInputCompiler("gha").compile(Files.readString(Path.of(args[0])));
 
-			System.out.println(pipeline.getEnvironmentVariables());
+			CICD2JenkinsTransformer transformer = new CICD2JenkinsTransformer(getResourceSet());
+
+			System.out.println(transformer.transform(pipeline));
 		} catch (SyntaxException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

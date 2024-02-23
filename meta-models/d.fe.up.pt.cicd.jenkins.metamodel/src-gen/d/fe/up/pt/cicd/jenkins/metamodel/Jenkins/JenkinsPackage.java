@@ -104,7 +104,7 @@ public interface JenkinsPackage extends EPackage {
 	int STAGE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Steps</b></em>' reference list.
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -199,10 +199,10 @@ public interface JenkinsPackage extends EPackage {
 	EClass getStage();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getSteps <em>Steps</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getSteps <em>Steps</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Steps</em>'.
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getSteps()
 	 * @see #getStage()
 	 * @generated
@@ -282,7 +282,7 @@ public interface JenkinsPackage extends EPackage {
 		EClass STAGE = eINSTANCE.getStage();
 
 		/**
-		 * The meta object literal for the '<em><b>Steps</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.*;
 
 public class EMFUtils {

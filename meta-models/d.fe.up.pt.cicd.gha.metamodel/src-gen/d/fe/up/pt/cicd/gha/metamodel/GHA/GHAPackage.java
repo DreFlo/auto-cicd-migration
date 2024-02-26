@@ -205,13 +205,22 @@ public interface GHAPackage extends EPackage {
 	int JOB__DEPENDS_ON = 3;
 
 	/**
+	 * The feature id for the '<em><b>Necessary For</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__NECESSARY_FOR = 4;
+
+	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__IF_CONDITION = 4;
+	int JOB__IF_CONDITION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
@@ -220,7 +229,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__AGENT = 5;
+	int JOB__AGENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' containment reference.
@@ -229,7 +238,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__CONTAINER = 6;
+	int JOB__CONTAINER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Staging Environment</b></em>' containment reference.
@@ -238,7 +247,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__STAGING_ENVIRONMENT = 7;
+	int JOB__STAGING_ENVIRONMENT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Defaults</b></em>' containment reference.
@@ -247,7 +256,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__DEFAULTS = 8;
+	int JOB__DEFAULTS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -256,7 +265,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__ENVIRONMENT_VARIABLES = 9;
+	int JOB__ENVIRONMENT_VARIABLES = 10;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' map.
@@ -265,7 +274,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__SERVICES = 10;
+	int JOB__SERVICES = 11;
 
 	/**
 	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
@@ -274,7 +283,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__CONCURRENCY_GROUP = 11;
+	int JOB__CONCURRENCY_GROUP = 12;
 
 	/**
 	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
@@ -283,7 +292,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__TIMEOUT_MINUTES = 12;
+	int JOB__TIMEOUT_MINUTES = 13;
 
 	/**
 	 * The feature id for the '<em><b>Continue On Error</b></em>' containment reference.
@@ -292,7 +301,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__CONTINUE_ON_ERROR = 13;
+	int JOB__CONTINUE_ON_ERROR = 14;
 
 	/**
 	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
@@ -301,7 +310,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__STRATEGY = 14;
+	int JOB__STRATEGY = 15;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -310,7 +319,7 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = 15;
+	int JOB_FEATURE_COUNT = 16;
 
 	/**
 	 * The number of operations of the '<em>Job</em>' class.
@@ -366,6 +375,15 @@ public interface GHAPackage extends EPackage {
 	 * @ordered
 	 */
 	int REUSE_WORKFLOW_JOB__DEPENDS_ON = JOB__DEPENDS_ON;
+
+	/**
+	 * The feature id for the '<em><b>Necessary For</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REUSE_WORKFLOW_JOB__NECESSARY_FOR = JOB__NECESSARY_FOR;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -565,6 +583,15 @@ public interface GHAPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCRIPT_JOB__DEPENDS_ON = JOB__DEPENDS_ON;
+
+	/**
+	 * The feature id for the '<em><b>Necessary For</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__NECESSARY_FOR = JOB__NECESSARY_FOR;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -3986,6 +4013,17 @@ public interface GHAPackage extends EPackage {
 	EReference getJob_DependsOn();
 
 	/**
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getNecessaryFor <em>Necessary For</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Necessary For</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getNecessaryFor()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_NecessaryFor();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getIfCondition <em>If Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6024,6 +6062,14 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JOB__DEPENDS_ON = eINSTANCE.getJob_DependsOn();
+
+		/**
+		 * The meta object literal for the '<em><b>Necessary For</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB__NECESSARY_FOR = eINSTANCE.getJob_NecessaryFor();
 
 		/**
 		 * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.

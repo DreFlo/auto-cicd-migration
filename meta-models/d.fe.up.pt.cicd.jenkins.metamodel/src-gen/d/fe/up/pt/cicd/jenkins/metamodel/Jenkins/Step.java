@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Step</b></em>'.
@@ -20,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Step extends EObject {
+public interface Step extends AbstractPipelineExecutionBlock {
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' attribute.
 	 * <!-- begin-user-doc -->

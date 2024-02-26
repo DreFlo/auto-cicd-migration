@@ -2,6 +2,8 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getLabels <em>Labels</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}</li>
  * </ul>
  *
@@ -23,26 +25,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Agent extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Labels</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getAgent_Name()
-	 * @model
+	 * @return the value of the '<em>Labels</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getAgent_Labels()
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
+	EList<Expression> getLabels();
 
 	/**
 	 * Returns the value of the '<em><b>Container</b></em>' containment reference.

@@ -647,7 +647,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Jobs() {
+	public EReference getPipeline_JobStreams() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -697,7 +697,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_DependsOn() {
+	public EReference getJob_Previous() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -707,7 +707,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_NecessaryFor() {
+	public EReference getJob_Next() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -747,8 +747,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAgent_Name() {
-		return (EAttribute) agentEClass.getEStructuralFeatures().get(0);
+	public EReference getAgent_Labels() {
+		return (EReference) agentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1915,19 +1915,19 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		pipelineEClass = createEClass(PIPELINE);
 		createEReference(pipelineEClass, PIPELINE__TRIGGERS);
-		createEReference(pipelineEClass, PIPELINE__JOBS);
+		createEReference(pipelineEClass, PIPELINE__JOB_STREAMS);
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__ID);
 		createEReference(jobEClass, JOB__STEPS);
 		createEReference(jobEClass, JOB__SERVICES);
-		createEReference(jobEClass, JOB__DEPENDS_ON);
-		createEReference(jobEClass, JOB__NECESSARY_FOR);
+		createEReference(jobEClass, JOB__PREVIOUS);
+		createEReference(jobEClass, JOB__NEXT);
 		createEAttribute(jobEClass, JOB__MAX_ATTEMPTS);
 		createEAttribute(jobEClass, JOB__ALLOW_FAILURE);
 
 		agentEClass = createEClass(AGENT);
-		createEAttribute(agentEClass, AGENT__NAME);
+		createEReference(agentEClass, AGENT__LABELS);
 		createEReference(agentEClass, AGENT__CONTAINER);
 
 		dockerContainerEClass = createEClass(DOCKER_CONTAINER);
@@ -2192,9 +2192,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Jobs(), this.getJob(), null, "jobs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				!IS_ORDERED);
+		initEReference(getPipeline_JobStreams(), this.getJob(), null, "jobStreams", null, 0, -1, Pipeline.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Id(), ecorePackage.getEString(), "id", null, 1, 1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -2205,20 +2205,21 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getJob_Services(), this.getDockerContainer(), null, "services", null, 0, -1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_DependsOn(), this.getJob(), this.getJob_NecessaryFor(), "dependsOn", null, 0, -1,
-				Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_NecessaryFor(), this.getJob(), this.getJob_DependsOn(), "necessaryFor", null, 0, -1,
-				Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_Previous(), this.getJob(), this.getJob_Next(), "previous", null, 0, -1, Job.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_Next(), this.getJob(), this.getJob_Previous(), "next", null, 0, -1, Job.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_MaxAttempts(), ecorePackage.getEIntegerObject(), "maxAttempts", "1", 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", "false", 1, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(agentEClass, Agent.class, "Agent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAgent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Agent.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAgent_Labels(), this.getExpression(), null, "labels", null, 0, -1, Agent.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEReference(getAgent_Container(), this.getDockerContainer(), null, "container", null, 0, 1, Agent.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

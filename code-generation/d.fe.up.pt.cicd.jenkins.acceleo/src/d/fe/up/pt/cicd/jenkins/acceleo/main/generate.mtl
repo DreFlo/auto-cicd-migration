@@ -1,6 +1,7 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/Jenkins')]
 
+[import d::fe::up::pt::cicd::jenkins::acceleo::requests::utils/]
 
 [template public generateElement(pipeline : Pipeline)]
 [comment @main/]
@@ -8,7 +9,7 @@
 pipeline {
 	stages {
 	[for (stage : Stage | pipeline.stages)]
-		stage(\'Stage2\') {
+		stage([quoteString(stage.name)/]) {
 			steps {
 			[for (step : Step | stage.steps)]
 				[step.command/]

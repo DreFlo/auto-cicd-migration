@@ -16,14 +16,12 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -56,24 +54,8 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Agent_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Agent_name_feature", "_UI_Agent_type"),
-						CICDPackage.Literals.AGENT__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -88,6 +70,7 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CICDPackage.Literals.AGENT__LABELS);
 			childrenFeatures.add(CICDPackage.Literals.AGENT__CONTAINER);
 		}
 		return childrenFeatures;
@@ -135,9 +118,7 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Agent) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Agent_type")
-				: getString("_UI_Agent_type") + " " + label;
+		return getString("_UI_Agent_type");
 	}
 
 	/**
@@ -152,9 +133,7 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Agent.class)) {
-		case CICDPackage.AGENT__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+		case CICDPackage.AGENT__LABELS:
 		case CICDPackage.AGENT__CONTAINER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -172,6 +151,63 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createValue()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
+				CICDFactory.eINSTANCE.createEnvironmentVariable()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createSecretVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
+				CICDFactory.eINSTANCE.createBuiltInFunction()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createAddition()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createSubtraction()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createUnaryOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__CONTAINER,
 				CICDFactory.eINSTANCE.createDockerContainer()));

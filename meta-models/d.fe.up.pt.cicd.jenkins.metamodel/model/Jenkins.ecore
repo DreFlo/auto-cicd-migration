@@ -2,15 +2,44 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Jenkins" nsURI="http://d.fe.up.pt/Jenkins" nsPrefix="Jenkins">
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stages" upperBound="-1"
-        eType="#//Stage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="begin" lowerBound="1" eType="#//AbstractStage"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Stage">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//AbstractStage"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="#//AbstractStage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
+        upperBound="-1" eType="#//Stage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stage" eSuperTypes="#//AbstractStage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//Step" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Step">
+  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractPipelineExecutionBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractAgent" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NoneAgent" eSuperTypes="#//AbstractAgent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AnyAgent" eSuperTypes="#//AbstractAgent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OptionedAgent" eSuperTypes="#//AbstractAgent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" lowerBound="1"
+        eType="#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="docker" eType="#//DockerContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customWorkspace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="registryURL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="registryCredentialsId"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
 </ecore:EPackage>

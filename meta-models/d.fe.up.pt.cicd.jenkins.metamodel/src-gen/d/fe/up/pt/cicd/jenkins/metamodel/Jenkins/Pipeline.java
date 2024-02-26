@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +13,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getStages <em>Stages</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getBegin <em>Begin</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline()
@@ -24,15 +23,47 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Pipeline extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Stages</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage}.
+	 * Returns the value of the '<em><b>Begin</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stages</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Stages()
-	 * @model containment="true"
+	 * @return the value of the '<em>Begin</em>' containment reference.
+	 * @see #setBegin(AbstractStage)
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Begin()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Stage> getStages();
+	AbstractStage getBegin();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getBegin <em>Begin</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Begin</em>' containment reference.
+	 * @see #getBegin()
+	 * @generated
+	 */
+	void setBegin(AbstractStage value);
+
+	/**
+	 * Returns the value of the '<em><b>Agent</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Agent</em>' reference.
+	 * @see #setAgent(AbstractAgent)
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Agent()
+	 * @model required="true"
+	 * @generated
+	 */
+	AbstractAgent getAgent();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Agent</em>' reference.
+	 * @see #getAgent()
+	 * @generated
+	 */
+	void setAgent(AbstractAgent value);
 
 } // Pipeline

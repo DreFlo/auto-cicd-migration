@@ -22,8 +22,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline" eSuperTypes="#//PipelineBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
         eType="#//Trigger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" ordered="false" upperBound="-1"
-        eType="#//Job" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobStreams" ordered="false"
+        upperBound="-1" eType="#//Job" transient="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="#//PipelineBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,17 +31,18 @@
         eType="#//Step" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
         eType="#//DockerContainer" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dependsOn" upperBound="-1"
-        eType="#//Job" eOpposite="#//Job/necessaryFor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="necessaryFor" upperBound="-1"
-        eType="#//Job" eOpposite="#//Job/dependsOn"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previous" upperBound="-1"
+        eType="#//Job" eOpposite="#//Job/next"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//Job"
+        eOpposite="#//Job/previous"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAttempts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Agent">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
+        eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"
         containment="true"/>
   </eClassifiers>

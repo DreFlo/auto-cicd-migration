@@ -72,6 +72,21 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseAbstractPipelineExecutionBlock(AbstractPipelineExecutionBlock object) {
+			return createAbstractPipelineExecutionBlockAdapter();
+		}
+
+		@Override
+		public Adapter caseAbstractStage(AbstractStage object) {
+			return createAbstractStageAdapter();
+		}
+
+		@Override
+		public Adapter caseParallel(Parallel object) {
+			return createParallelAdapter();
+		}
+
+		@Override
 		public Adapter caseStage(Stage object) {
 			return createStageAdapter();
 		}
@@ -79,6 +94,36 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseStep(Step object) {
 			return createStepAdapter();
+		}
+
+		@Override
+		public Adapter caseAbstractAgent(AbstractAgent object) {
+			return createAbstractAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseNoneAgent(NoneAgent object) {
+			return createNoneAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseAnyAgent(AnyAgent object) {
+			return createAnyAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseOptionedAgent(OptionedAgent object) {
+			return createOptionedAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseDockerContainer(DockerContainer object) {
+			return createDockerContainerAdapter();
+		}
+
+		@Override
+		public Adapter caseExpression(Expression object) {
+			return createExpressionAdapter();
 		}
 
 		@Override
@@ -115,6 +160,48 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractPipelineExecutionBlock <em>Abstract Pipeline Execution Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractPipelineExecutionBlock
+	 * @generated
+	 */
+	public Adapter createAbstractPipelineExecutionBlockAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage <em>Abstract Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage
+	 * @generated
+	 */
+	public Adapter createAbstractStageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel <em>Parallel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel
+	 * @generated
+	 */
+	public Adapter createParallelAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage <em>Stage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -139,6 +226,90 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent <em>Abstract Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent
+	 * @generated
+	 */
+	public Adapter createAbstractAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent <em>None Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent
+	 * @generated
+	 */
+	public Adapter createNoneAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent <em>Any Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent
+	 * @generated
+	 */
+	public Adapter createAnyAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent <em>Optioned Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent
+	 * @generated
+	 */
+	public Adapter createOptionedAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer <em>Docker Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer
+	 * @generated
+	 */
+	public Adapter createDockerContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression
+	 * @generated
+	 */
+	public Adapter createExpressionAdapter() {
 		return null;
 	}
 

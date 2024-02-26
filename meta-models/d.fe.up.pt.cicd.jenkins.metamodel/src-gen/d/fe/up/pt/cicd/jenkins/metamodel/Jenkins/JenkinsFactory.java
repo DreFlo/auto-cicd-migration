@@ -31,6 +31,15 @@ public interface JenkinsFactory extends EFactory {
 	Pipeline createPipeline();
 
 	/**
+	 * Returns a new object of class '<em>Parallel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Parallel</em>'.
+	 * @generated
+	 */
+	Parallel createParallel();
+
+	/**
 	 * Returns a new object of class '<em>Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,6 +56,51 @@ public interface JenkinsFactory extends EFactory {
 	 * @generated
 	 */
 	Step createStep();
+
+	/**
+	 * Returns a new object of class '<em>None Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>None Agent</em>'.
+	 * @generated
+	 */
+	NoneAgent createNoneAgent();
+
+	/**
+	 * Returns a new object of class '<em>Any Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Any Agent</em>'.
+	 * @generated
+	 */
+	AnyAgent createAnyAgent();
+
+	/**
+	 * Returns a new object of class '<em>Optioned Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Optioned Agent</em>'.
+	 * @generated
+	 */
+	OptionedAgent createOptionedAgent();
+
+	/**
+	 * Returns a new object of class '<em>Docker Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Docker Container</em>'.
+	 * @generated
+	 */
+	DockerContainer createDockerContainer();
+
+	/**
+	 * Returns a new object of class '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expression</em>'.
+	 * @generated
+	 */
+	Expression createExpression();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -127,6 +127,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/jobName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/permissions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/dependsOn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/necessaryFor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/ifCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/agent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/container"/>

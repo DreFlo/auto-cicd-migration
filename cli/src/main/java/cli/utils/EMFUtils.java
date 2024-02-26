@@ -2,11 +2,14 @@ package cli.utils;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.*;
 
 public class EMFUtils {
     public static Object getFeature(EObject obj, int featureID) {
@@ -25,15 +28,49 @@ public class EMFUtils {
 
     public static void serializeModel(EObject model, String filePath, ResourceSet resourceSet) throws IOException {
         // Write the parsed model to a file
-        Resource resource = resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
-        resource.getContents().add(model);
-        resource.save(null);
+        Resource completeResource = resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
+
+        List<EObject> collection = new ArrayList<>();
+        readReferences(model, new HashSet<>(), collection);
+
+        completeResource.getContents().addAll(EcoreUtil.copyAll(collection));
+
+        completeResource.save(null);
+    }
+
+    private static void readReferences(EObject eobject, HashSet<EObject> preventCycles, List<EObject> rootList) {
+        if(preventCycles.contains(eobject)){ // been here get away
+            return;
+        }
+        preventCycles.add(eobject);
+        if(eobject.eContainer() != null){
+            readReferences(eobject.eContainer(), preventCycles, rootList);
+        }else{ // a root object
+            rootList.add(eobject);
+        }
+        for(Object erefObj : eobject.eClass().getEAllReferences()){
+            EReference eref = (EReference)erefObj;
+            final Object value = eobject.eGet(eref);
+            if (value == null) {
+                continue;
+            }
+            if(value instanceof List){
+                for(Object obj : (List<?>)value){
+                    readReferences((EObject)obj, preventCycles, rootList);
+                }
+            }else{ // an eobject
+                readReferences((EObject)value, preventCycles, rootList);
+            }
+        }
     }
 
     public static Object deserializeModel(String filePath, ResourceSet resourceSet) throws IOException {
         // Load the model from a file
         Resource resource = resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
         resource.load(null);
+
+        EcoreUtil.resolveAll(resource);
+
         return resource.getContents().get(0);
     }
 }

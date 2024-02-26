@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getJobName <em>Job Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getPermissions <em>Permissions</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getDependsOn <em>Depends On</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getNecessaryFor <em>Necessary For</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getAgent <em>Agent</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getContainer <em>Container</em>}</li>
@@ -98,14 +99,30 @@ public interface Job extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Depends On</b></em>' reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job}.
+	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getNecessaryFor <em>Necessary For</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Depends On</em>' reference list.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getJob_DependsOn()
-	 * @model
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getNecessaryFor
+	 * @model opposite="necessaryFor"
 	 * @generated
 	 */
 	EList<Job> getDependsOn();
+
+	/**
+	 * Returns the value of the '<em><b>Necessary For</b></em>' reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job}.
+	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getDependsOn <em>Depends On</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Necessary For</em>' reference list.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getJob_NecessaryFor()
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getDependsOn
+	 * @model opposite="dependsOn"
+	 * @generated
+	 */
+	EList<Job> getNecessaryFor();
 
 	/**
 	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.

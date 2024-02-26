@@ -827,7 +827,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_IfCondition() {
+	public EReference getJob_NecessaryFor() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -837,7 +837,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Agent() {
+	public EReference getJob_IfCondition() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -847,7 +847,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Container() {
+	public EReference getJob_Agent() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -857,7 +857,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_StagingEnvironment() {
+	public EReference getJob_Container() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -867,7 +867,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Defaults() {
+	public EReference getJob_StagingEnvironment() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -877,7 +877,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_EnvironmentVariables() {
+	public EReference getJob_Defaults() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -887,7 +887,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Services() {
+	public EReference getJob_EnvironmentVariables() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -897,7 +897,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_ConcurrencyGroup() {
+	public EReference getJob_Services() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -907,7 +907,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_TimeoutMinutes() {
+	public EReference getJob_ConcurrencyGroup() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -917,7 +917,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_ContinueOnError() {
+	public EReference getJob_TimeoutMinutes() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -927,8 +927,18 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Strategy() {
+	public EReference getJob_ContinueOnError() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getJob_Strategy() {
+		return (EReference) jobEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -2656,6 +2666,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(jobEClass, JOB__JOB_NAME);
 		createEReference(jobEClass, JOB__PERMISSIONS);
 		createEReference(jobEClass, JOB__DEPENDS_ON);
+		createEReference(jobEClass, JOB__NECESSARY_FOR);
 		createEReference(jobEClass, JOB__IF_CONDITION);
 		createEReference(jobEClass, JOB__AGENT);
 		createEReference(jobEClass, JOB__CONTAINER);
@@ -3026,9 +3037,12 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getJob_Permissions(), this.getPermission(), null, "permissions", null, 0, -1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_DependsOn(), this.getJob(), null, "dependsOn", null, 0, -1, Job.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getJob_DependsOn(), this.getJob(), this.getJob_NecessaryFor(), "dependsOn", null, 0, -1,
+				Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_NecessaryFor(), this.getJob(), this.getJob_DependsOn(), "necessaryFor", null, 0, -1,
+				Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

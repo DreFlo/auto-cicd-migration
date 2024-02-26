@@ -746,6 +746,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private List<Job> parseDependencies(YamlNode dependenciesNode, Map<String, Job> jobs) throws SyntaxException {
 		List<Job> result = new ArrayList<>();
+		System.out.println(dependenciesNode);
 		if (dependenciesNode.type().equals(Node.SCALAR)) {
 			if (jobs.containsKey(dependenciesNode.asScalar().value())) {
 				result.add(jobs.get(dependenciesNode.asScalar().value()));

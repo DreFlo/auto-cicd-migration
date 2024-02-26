@@ -9,16 +9,67 @@ rule Pipeline2Pipeline {
 		cicdPipeline : CICD!Pipeline
 	to
 		jenkinsPipeline : Jenkins!Pipeline(
-			stages <- cicdPipeline.jobs
+			begin <-
+				if cicdPipeline.jobStreams->size() = 1 then
+					thisModule.Job2Stage(cicdPipeline.jobStreams->first())
+				else
+					thisModule.JobSequence2Parallel(cicdPipeline.jobStreams)
+				endif
 		)
 }
 
-rule Job2Stage {
-	from
-		job : CICD!Job
+rule Job2Stage(job : CICD!Job) {
 	to
-		stage : Jenkins!Stage(
-			steps <- job.steps	
+		abstractStage : Jenkins!Stage(
+			name <- job.name,
+			steps <- job.steps,
+			next <- 
+				if job.next->size() = 1 then
+					thisModule.JobSequence2Stage(job.next)
+				else if job.next->size() > 1 then
+					thisModule.JobSequence2Parallel(job.next)
+				else
+					OclUndefined
+				endif
+				endif
+		)
+}
+
+rule JobSequence2Parallel(jobSequence : Sequence(CICD!Job)) {
+	using {
+		nextJobs : Sequence(CICD!Job) = jobSequence->iterate(job; acc: Set(CICD!Job) = Set{} | acc.union(job.next))->asSequence();
+	}
+	to
+		stage : Jenkins!Parallel(
+			stages <- jobSequence->collect(job | thisModule.Job2Stage(job)),
+			next <-
+				if nextJobs->size() = 1 then
+					thisModule.JobSequence2Stage(nextJobs)
+				else if nextJobs->size() > 1 then
+					thisModule.JobSequence2Parallel(nextJobs)
+				else
+					OclUndefined
+				endif
+				endif
+		)
+}
+
+rule Agent2Agent {
+	from
+		cicdAgent : CICD!Agent
+	to
+		jenkinsAgent : Jenkins!OptionedAgent(
+			label <- cicdAgent.labels.expressionConjunction()
+		)
+}
+
+rule DockerContainer2DockerContainer {
+	from
+		cicdDockerContainer : CICD!DockerContainer
+	to
+		jenkinsDockerContainer : Jenkins!DockerContainer(
+			label <- cicdDockerContainer.image.expression2String(),
+			image <- cicdDockerContainer.image.expression2String()
 		)
 }
 
@@ -31,6 +82,21 @@ rule Step2Step {
 		)
 }
 
+helper def : groupJobs(jobStreams : Sequence(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
+	let next : Sequence(CICD!Job) = 
+		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 
+			acc.append(jobStream.next)
+		).flatten()
+	in 
+	if next.isEmpty() then
+		Sequence{jobStreams}
+	else 
+		thisModule.groupJobs(next).prepend(jobStreams)
+	endif;
+
 helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
 
 helper context CICD!StringLiteral def : expression2String() : String = self.value;
+
+helper def : conjunctExpressions(expressions : Sequence(CICD!Expression)) : Jenkins!Expression = 
+	Jenkins!Expression.newInstance();

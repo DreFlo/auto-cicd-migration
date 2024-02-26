@@ -11,7 +11,7 @@ rule Workflow2Pipeline {
 		pipeline : CICD!Pipeline (
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
-			jobs <- workflow.jobs
+			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs)
 		)
 }
 
@@ -20,7 +20,8 @@ rule ScriptJob2Job {
 		scriptJob : GHA!ScriptJob
 	to
 		job : CICD!Job(
-			steps <- scriptJob.steps	
+			steps <- scriptJob.steps,
+			next <- scriptJob.necessaryFor
 		)
 }
 
@@ -210,6 +211,9 @@ rule Not2Negation extends Expression2Expression {
 }
 
 -- Helpers
+
+helper def : getJobStreamOrigins(jobs : Sequence(GHA!Job)) : Sequence(GHA!Job) = 
+	jobs->select(job | job.dependsOn.isEmpty());
 
 helper context GHA!Expression def : expression2String() : String = 'EXPRESSION';
 

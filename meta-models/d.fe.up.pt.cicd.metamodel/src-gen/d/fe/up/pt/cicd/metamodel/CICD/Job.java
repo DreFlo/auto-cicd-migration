@@ -16,8 +16,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getDependsOn <em>Depends On</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNecessaryFor <em>Necessary For</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNext <em>Next</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMaxAttempts <em>Max Attempts</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#isAllowFailure <em>Allow Failure</em>}</li>
  * </ul>
@@ -74,32 +74,32 @@ public interface Job extends PipelineBlock {
 	EList<DockerContainer> getServices();
 
 	/**
-	 * Returns the value of the '<em><b>Depends On</b></em>' reference list.
+	 * Returns the value of the '<em><b>Previous</b></em>' reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Job}.
-	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNecessaryFor <em>Necessary For</em>}'.
+	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNext <em>Next</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Depends On</em>' reference list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_DependsOn()
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getNecessaryFor
-	 * @model opposite="necessaryFor"
+	 * @return the value of the '<em>Previous</em>' reference list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_Previous()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getNext
+	 * @model opposite="next"
 	 * @generated
 	 */
-	EList<Job> getDependsOn();
+	EList<Job> getPrevious();
 
 	/**
-	 * Returns the value of the '<em><b>Necessary For</b></em>' reference list.
+	 * Returns the value of the '<em><b>Next</b></em>' reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Job}.
-	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getDependsOn <em>Depends On</em>}'.
+	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Necessary For</em>' reference list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_NecessaryFor()
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getDependsOn
-	 * @model opposite="dependsOn"
+	 * @return the value of the '<em>Next</em>' reference list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_Next()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious
+	 * @model opposite="previous"
 	 * @generated
 	 */
-	EList<Job> getNecessaryFor();
+	EList<Job> getNext();
 
 	/**
 	 * Returns the value of the '<em><b>Max Attempts</b></em>' attribute.

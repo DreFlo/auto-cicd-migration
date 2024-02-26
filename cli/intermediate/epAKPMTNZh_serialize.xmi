@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<GHA:Workflow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GHA="http://d.fe.up.pt/GHA">
+  <name xsi:type="GHA:StringLiteral" value="Workflow"/>
+  <triggers xsi:type="GHA:PushTrigger">
+    <tags xsi:type="GHA:StringLiteral" value="tag"/>
+  </triggers>
+  <environmentVariables key="SERVER">
+    <value xsi:type="GHA:StringLiteral" value="production"/>
+  </environmentVariables>
+  <jobs xsi:type="GHA:ScriptJob" name="my_first_job_a">
+    <steps xsi:type="GHA:Command">
+      <command xsi:type="GHA:StringLiteral" value="echo &quot;Hello World!A&quot;"/>
+    </steps>
+  </jobs>
+</GHA:Workflow>

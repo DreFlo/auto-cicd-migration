@@ -58,10 +58,22 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 		switch (eClass.getClassifierID()) {
 		case JenkinsPackage.PIPELINE:
 			return createPipeline();
+		case JenkinsPackage.PARALLEL:
+			return createParallel();
 		case JenkinsPackage.STAGE:
 			return createStage();
 		case JenkinsPackage.STEP:
 			return createStep();
+		case JenkinsPackage.NONE_AGENT:
+			return createNoneAgent();
+		case JenkinsPackage.ANY_AGENT:
+			return createAnyAgent();
+		case JenkinsPackage.OPTIONED_AGENT:
+			return createOptionedAgent();
+		case JenkinsPackage.DOCKER_CONTAINER:
+			return createDockerContainer();
+		case JenkinsPackage.EXPRESSION:
+			return createExpression();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -84,6 +96,17 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
+	public Parallel createParallel() {
+		ParallelImpl parallel = new ParallelImpl();
+		return parallel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Stage createStage() {
 		StageImpl stage = new StageImpl();
 		return stage;
@@ -98,6 +121,61 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public Step createStep() {
 		StepImpl step = new StepImpl();
 		return step;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NoneAgent createNoneAgent() {
+		NoneAgentImpl noneAgent = new NoneAgentImpl();
+		return noneAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AnyAgent createAnyAgent() {
+		AnyAgentImpl anyAgent = new AnyAgentImpl();
+		return anyAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public OptionedAgent createOptionedAgent() {
+		OptionedAgentImpl optionedAgent = new OptionedAgentImpl();
+		return optionedAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DockerContainer createDockerContainer() {
+		DockerContainerImpl dockerContainer = new DockerContainerImpl();
+		return dockerContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression createExpression() {
+		ExpressionImpl expression = new ExpressionImpl();
+		return expression;
 	}
 
 	/**

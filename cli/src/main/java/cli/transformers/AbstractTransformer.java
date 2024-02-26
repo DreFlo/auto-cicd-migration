@@ -50,12 +50,13 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out";
 
+        System.out.println("Transforming (" + getClass().getName() + ")...");
         runATLTransformation(inputModelFilePath, outputModelFilePath);
 
         OutputModel outputModel = deserializeModel(outputModelFilePath);
 
         // Delete model files
-        Files.delete(Path.of(inputModelFilePath));
+//        Files.delete(Path.of(inputModelFilePath));
 //        Files.delete(Path.of(outputModelFilePath));
 
         return outputModel;
@@ -74,8 +75,8 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     private String serializeModel(InputModel model) throws IOException {
-        String tempDir = ".";
-        String randomName = JavaUtils.getRandomName() + ".xmi";
+        String tempDir = "intermediate";
+        String randomName = JavaUtils.getRandomName() + "_serialize.xmi";
         String filePath = Path.of(tempDir, randomName).toString();
 
         EMFUtils.serializeModel(model, filePath, getResourceSet());

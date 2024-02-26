@@ -285,13 +285,13 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__TRIGGERS = PIPELINE_BLOCK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Jobs</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Job Streams</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__JOBS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
+	int PIPELINE__JOB_STREAMS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Pipeline</em>' class.
@@ -439,22 +439,22 @@ public interface CICDPackage extends EPackage {
 	int JOB__SERVICES = PIPELINE_BLOCK_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Depends On</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__DEPENDS_ON = PIPELINE_BLOCK_FEATURE_COUNT + 3;
+	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Necessary For</b></em>' reference list.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__NECESSARY_FOR = PIPELINE_BLOCK_FEATURE_COUNT + 4;
+	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Max Attempts</b></em>' attribute.
@@ -503,13 +503,13 @@ public interface CICDPackage extends EPackage {
 	int AGENT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Labels</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT__NAME = 0;
+	int AGENT__LABELS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Container</b></em>' containment reference.
@@ -2953,15 +2953,15 @@ public interface CICDPackage extends EPackage {
 	EReference getPipeline_Triggers();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs <em>Jobs</em>}'.
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams <em>Job Streams</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Jobs</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs()
+	 * @return the meta object for the reference list '<em>Job Streams</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_Jobs();
+	EReference getPipeline_JobStreams();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Job <em>Job</em>}'.
@@ -3007,26 +3007,26 @@ public interface CICDPackage extends EPackage {
 	EReference getJob_Services();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getDependsOn <em>Depends On</em>}'.
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Depends On</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getDependsOn()
+	 * @return the meta object for the reference list '<em>Previous</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_DependsOn();
+	EReference getJob_Previous();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNecessaryFor <em>Necessary For</em>}'.
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNext <em>Next</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Necessary For</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getNecessaryFor()
+	 * @return the meta object for the reference list '<em>Next</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getNext()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_NecessaryFor();
+	EReference getJob_Next();
 
 	/**
 	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMaxAttempts <em>Max Attempts</em>}'.
@@ -3061,15 +3061,15 @@ public interface CICDPackage extends EPackage {
 	EClass getAgent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getLabels <em>Labels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Agent#getName()
+	 * @return the meta object for the containment reference list '<em>Labels</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Agent#getLabels()
 	 * @see #getAgent()
 	 * @generated
 	 */
-	EAttribute getAgent_Name();
+	EReference getAgent_Labels();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}'.
@@ -4389,12 +4389,12 @@ public interface CICDPackage extends EPackage {
 		EReference PIPELINE__TRIGGERS = eINSTANCE.getPipeline_Triggers();
 
 		/**
-		 * The meta object literal for the '<em><b>Jobs</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Job Streams</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__JOBS = eINSTANCE.getPipeline_Jobs();
+		EReference PIPELINE__JOB_STREAMS = eINSTANCE.getPipeline_JobStreams();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl <em>Job</em>}' class.
@@ -4431,20 +4431,20 @@ public interface CICDPackage extends EPackage {
 		EReference JOB__SERVICES = eINSTANCE.getJob_Services();
 
 		/**
-		 * The meta object literal for the '<em><b>Depends On</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Previous</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__DEPENDS_ON = eINSTANCE.getJob_DependsOn();
+		EReference JOB__PREVIOUS = eINSTANCE.getJob_Previous();
 
 		/**
-		 * The meta object literal for the '<em><b>Necessary For</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Next</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__NECESSARY_FOR = eINSTANCE.getJob_NecessaryFor();
+		EReference JOB__NEXT = eINSTANCE.getJob_Next();
 
 		/**
 		 * The meta object literal for the '<em><b>Max Attempts</b></em>' attribute feature.
@@ -4473,12 +4473,12 @@ public interface CICDPackage extends EPackage {
 		EClass AGENT = eINSTANCE.getAgent();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Labels</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute AGENT__NAME = eINSTANCE.getAgent_Name();
+		EReference AGENT__LABELS = eINSTANCE.getAgent_Labels();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' containment reference feature.

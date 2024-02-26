@@ -16,6 +16,7 @@ import cli.parsers.exceptions.*;
 import cli.transformers.exogenous.fromTIM.CICD2JenkinsTransformer;
 import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
+import cli.utils.JavaUtils;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
@@ -41,6 +42,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		JavaUtils.cleanUp();
+
 		registerPackages();
 		registerInputCompilers();
 		registerOutputCompilers();
@@ -52,6 +55,8 @@ public class Main {
 
         try {
 			Pipeline pipeline = getInputCompiler("gha").compile(Files.readString(Path.of(args[0])));
+
+			System.out.println(pipeline.getJobStreams());
 
 			getOutputCompiler("jenkins").compile(pipeline);
 		} catch (SyntaxException e) {

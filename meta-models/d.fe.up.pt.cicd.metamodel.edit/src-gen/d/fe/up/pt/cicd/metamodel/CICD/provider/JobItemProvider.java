@@ -49,8 +49,6 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 
 			addIdPropertyDescriptor(object);
 			addServicesPropertyDescriptor(object);
-			addDependsOnPropertyDescriptor(object);
-			addNecessaryForPropertyDescriptor(object);
 			addMaxAttemptsPropertyDescriptor(object);
 			addAllowFailurePropertyDescriptor(object);
 		}
@@ -84,34 +82,6 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 						getResourceLocator(), getString("_UI_Job_services_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Job_services_feature", "_UI_Job_type"),
 						CICDPackage.Literals.JOB__SERVICES, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Depends On feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDependsOnPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Job_dependsOn_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Job_dependsOn_feature", "_UI_Job_type"),
-						CICDPackage.Literals.JOB__DEPENDS_ON, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Necessary For feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNecessaryForPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Job_necessaryFor_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Job_necessaryFor_feature", "_UI_Job_type"),
-						CICDPackage.Literals.JOB__NECESSARY_FOR, true, false, true, null, null, null));
 	}
 
 	/**
@@ -157,6 +127,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CICDPackage.Literals.JOB__STEPS);
+			childrenFeatures.add(CICDPackage.Literals.JOB__NEXT);
 		}
 		return childrenFeatures;
 	}
@@ -226,6 +197,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case CICDPackage.JOB__STEPS:
+		case CICDPackage.JOB__NEXT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -257,6 +229,9 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createArtifact()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.JOB__NEXT, CICDFactory.eINSTANCE.createJob()));
 	}
 
 }

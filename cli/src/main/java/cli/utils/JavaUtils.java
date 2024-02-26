@@ -1,6 +1,8 @@
 package cli.utils;
 
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Random;
 
 public class JavaUtils {
@@ -19,5 +21,24 @@ public class JavaUtils {
                 .limit(targetStringLength)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
+    }
+
+    public static void cleanUp() {
+        System.out.println("Cleaning up...");
+        // Delete .xmi and .xmi.out files
+        try {
+            Files.walk(Path.of("."))
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.toString().endsWith(".xmi") || p.toString().endsWith(".xmi.out"))
+                    .forEach(p -> {
+                        try {
+                            Files.delete(p);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

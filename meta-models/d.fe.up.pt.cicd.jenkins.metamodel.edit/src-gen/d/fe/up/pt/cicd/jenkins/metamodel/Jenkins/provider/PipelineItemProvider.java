@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -54,8 +55,24 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addAgentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Agent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAgentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Pipeline_agent_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Pipeline_agent_feature",
+								"_UI_Pipeline_type"),
+						JenkinsPackage.Literals.PIPELINE__AGENT, true, false, true, null, null, null));
 	}
 
 	/**
@@ -70,7 +87,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__STAGES);
+			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__BEGIN);
 		}
 		return childrenFeatures;
 	}
@@ -132,7 +149,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Pipeline.class)) {
-		case JenkinsPackage.PIPELINE__STAGES:
+		case JenkinsPackage.PIPELINE__BEGIN:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -150,8 +167,11 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__BEGIN,
+				JenkinsFactory.eINSTANCE.createParallel()));
+
 		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES, JenkinsFactory.eINSTANCE.createStage()));
+				createChildParameter(JenkinsPackage.Literals.PIPELINE__BEGIN, JenkinsFactory.eINSTANCE.createStage()));
 	}
 
 	/**

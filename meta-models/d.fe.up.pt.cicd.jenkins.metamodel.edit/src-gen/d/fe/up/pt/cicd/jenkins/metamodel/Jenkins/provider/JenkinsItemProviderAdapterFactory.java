@@ -96,6 +96,29 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ParallelItemProvider parallelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createParallelAdapter() {
+		if (parallelItemProvider == null) {
+			parallelItemProvider = new ParallelItemProvider(this);
+		}
+
+		return parallelItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -139,6 +162,121 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 		}
 
 		return stepItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NoneAgentItemProvider noneAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNoneAgentAdapter() {
+		if (noneAgentItemProvider == null) {
+			noneAgentItemProvider = new NoneAgentItemProvider(this);
+		}
+
+		return noneAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnyAgentItemProvider anyAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnyAgentAdapter() {
+		if (anyAgentItemProvider == null) {
+			anyAgentItemProvider = new AnyAgentItemProvider(this);
+		}
+
+		return anyAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OptionedAgentItemProvider optionedAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOptionedAgentAdapter() {
+		if (optionedAgentItemProvider == null) {
+			optionedAgentItemProvider = new OptionedAgentItemProvider(this);
+		}
+
+		return optionedAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DockerContainerItemProvider dockerContainerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDockerContainerAdapter() {
+		if (dockerContainerItemProvider == null) {
+			dockerContainerItemProvider = new DockerContainerItemProvider(this);
+		}
+
+		return dockerContainerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExpressionItemProvider expressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExpressionAdapter() {
+		if (expressionItemProvider == null) {
+			expressionItemProvider = new ExpressionItemProvider(this);
+		}
+
+		return expressionItemProvider;
 	}
 
 	/**
@@ -248,10 +386,22 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	public void dispose() {
 		if (pipelineItemProvider != null)
 			pipelineItemProvider.dispose();
+		if (parallelItemProvider != null)
+			parallelItemProvider.dispose();
 		if (stageItemProvider != null)
 			stageItemProvider.dispose();
 		if (stepItemProvider != null)
 			stepItemProvider.dispose();
+		if (noneAgentItemProvider != null)
+			noneAgentItemProvider.dispose();
+		if (anyAgentItemProvider != null)
+			anyAgentItemProvider.dispose();
+		if (optionedAgentItemProvider != null)
+			optionedAgentItemProvider.dispose();
+		if (dockerContainerItemProvider != null)
+			dockerContainerItemProvider.dispose();
+		if (expressionItemProvider != null)
+			expressionItemProvider.dispose();
 	}
 
 }

@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -44,6 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getJobName <em>Job Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getPermissions <em>Permissions</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getDependsOn <em>Depends On</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getNecessaryFor <em>Necessary For</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getAgent <em>Agent</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getContainer <em>Container</em>}</li>
@@ -109,6 +109,16 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * @ordered
 	 */
 	protected EList<Job> dependsOn;
+
+	/**
+	 * The cached value of the '{@link #getNecessaryFor() <em>Necessary For</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNecessaryFor()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Job> necessaryFor;
 
 	/**
 	 * The cached value of the '{@link #getIfCondition() <em>If Condition</em>}' containment reference.
@@ -335,9 +345,24 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	@Override
 	public EList<Job> getDependsOn() {
 		if (dependsOn == null) {
-			dependsOn = new EObjectResolvingEList<Job>(Job.class, this, GHAPackage.JOB__DEPENDS_ON);
+			dependsOn = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this,
+					GHAPackage.JOB__DEPENDS_ON, GHAPackage.JOB__NECESSARY_FOR);
 		}
 		return dependsOn;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Job> getNecessaryFor() {
+		if (necessaryFor == null) {
+			necessaryFor = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this,
+					GHAPackage.JOB__NECESSARY_FOR, GHAPackage.JOB__DEPENDS_ON);
+		}
+		return necessaryFor;
 	}
 
 	/**
@@ -840,6 +865,23 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case GHAPackage.JOB__DEPENDS_ON:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDependsOn()).basicAdd(otherEnd, msgs);
+		case GHAPackage.JOB__NECESSARY_FOR:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNecessaryFor()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -847,6 +889,10 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return basicSetJobName(null, msgs);
 		case GHAPackage.JOB__PERMISSIONS:
 			return ((InternalEList<?>) getPermissions()).basicRemove(otherEnd, msgs);
+		case GHAPackage.JOB__DEPENDS_ON:
+			return ((InternalEList<?>) getDependsOn()).basicRemove(otherEnd, msgs);
+		case GHAPackage.JOB__NECESSARY_FOR:
+			return ((InternalEList<?>) getNecessaryFor()).basicRemove(otherEnd, msgs);
 		case GHAPackage.JOB__IF_CONDITION:
 			return basicSetIfCondition(null, msgs);
 		case GHAPackage.JOB__AGENT:
@@ -892,6 +938,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 				return getPermissions().map();
 		case GHAPackage.JOB__DEPENDS_ON:
 			return getDependsOn();
+		case GHAPackage.JOB__NECESSARY_FOR:
+			return getNecessaryFor();
 		case GHAPackage.JOB__IF_CONDITION:
 			return getIfCondition();
 		case GHAPackage.JOB__AGENT:
@@ -945,6 +993,10 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 		case GHAPackage.JOB__DEPENDS_ON:
 			getDependsOn().clear();
 			getDependsOn().addAll((Collection<? extends Job>) newValue);
+			return;
+		case GHAPackage.JOB__NECESSARY_FOR:
+			getNecessaryFor().clear();
+			getNecessaryFor().addAll((Collection<? extends Job>) newValue);
 			return;
 		case GHAPackage.JOB__IF_CONDITION:
 			setIfCondition((Expression) newValue);
@@ -1003,6 +1055,9 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 		case GHAPackage.JOB__DEPENDS_ON:
 			getDependsOn().clear();
 			return;
+		case GHAPackage.JOB__NECESSARY_FOR:
+			getNecessaryFor().clear();
+			return;
 		case GHAPackage.JOB__IF_CONDITION:
 			setIfCondition((Expression) null);
 			return;
@@ -1056,6 +1111,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return permissions != null && !permissions.isEmpty();
 		case GHAPackage.JOB__DEPENDS_ON:
 			return dependsOn != null && !dependsOn.isEmpty();
+		case GHAPackage.JOB__NECESSARY_FOR:
+			return necessaryFor != null && !necessaryFor.isEmpty();
 		case GHAPackage.JOB__IF_CONDITION:
 			return ifCondition != null;
 		case GHAPackage.JOB__AGENT:

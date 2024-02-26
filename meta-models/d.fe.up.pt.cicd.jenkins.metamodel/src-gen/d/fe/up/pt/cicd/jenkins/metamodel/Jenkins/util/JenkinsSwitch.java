@@ -73,9 +73,40 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case JenkinsPackage.ABSTRACT_PIPELINE_EXECUTION_BLOCK: {
+			AbstractPipelineExecutionBlock abstractPipelineExecutionBlock = (AbstractPipelineExecutionBlock) theEObject;
+			T result = caseAbstractPipelineExecutionBlock(abstractPipelineExecutionBlock);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.ABSTRACT_STAGE: {
+			AbstractStage abstractStage = (AbstractStage) theEObject;
+			T result = caseAbstractStage(abstractStage);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(abstractStage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.PARALLEL: {
+			Parallel parallel = (Parallel) theEObject;
+			T result = caseParallel(parallel);
+			if (result == null)
+				result = caseAbstractStage(parallel);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(parallel);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case JenkinsPackage.STAGE: {
 			Stage stage = (Stage) theEObject;
 			T result = caseStage(stage);
+			if (result == null)
+				result = caseAbstractStage(stage);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(stage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -83,6 +114,56 @@ public class JenkinsSwitch<T> extends Switch<T> {
 		case JenkinsPackage.STEP: {
 			Step step = (Step) theEObject;
 			T result = caseStep(step);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(step);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.ABSTRACT_AGENT: {
+			AbstractAgent abstractAgent = (AbstractAgent) theEObject;
+			T result = caseAbstractAgent(abstractAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.NONE_AGENT: {
+			NoneAgent noneAgent = (NoneAgent) theEObject;
+			T result = caseNoneAgent(noneAgent);
+			if (result == null)
+				result = caseAbstractAgent(noneAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.ANY_AGENT: {
+			AnyAgent anyAgent = (AnyAgent) theEObject;
+			T result = caseAnyAgent(anyAgent);
+			if (result == null)
+				result = caseAbstractAgent(anyAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.OPTIONED_AGENT: {
+			OptionedAgent optionedAgent = (OptionedAgent) theEObject;
+			T result = caseOptionedAgent(optionedAgent);
+			if (result == null)
+				result = caseAbstractAgent(optionedAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.DOCKER_CONTAINER: {
+			DockerContainer dockerContainer = (DockerContainer) theEObject;
+			T result = caseDockerContainer(dockerContainer);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.EXPRESSION: {
+			Expression expression = (Expression) theEObject;
+			T result = caseExpression(expression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -104,6 +185,51 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePipeline(Pipeline object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Pipeline Execution Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Pipeline Execution Block</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractPipelineExecutionBlock(AbstractPipelineExecutionBlock object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Stage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractStage(AbstractStage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Parallel</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Parallel</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseParallel(Parallel object) {
 		return null;
 	}
 
@@ -134,6 +260,96 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStep(Step object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractAgent(AbstractAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>None Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>None Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNoneAgent(NoneAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Any Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Any Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnyAgent(AnyAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Optioned Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Optioned Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOptionedAgent(OptionedAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Docker Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Docker Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDockerContainer(DockerContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExpression(Expression object) {
 		return null;
 	}
 

@@ -5,15 +5,23 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.Agent;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AgentImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AgentImpl#getLabels <em>Labels</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AgentImpl#getContainer <em>Container</em>}</li>
  * </ul>
  *
@@ -31,24 +39,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getLabels()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected EList<Expression> labels;
 
 	/**
 	 * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
@@ -85,21 +83,11 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	 * @generated
 	 */
 	@Override
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.AGENT__NAME, oldName, name));
+	public EList<Expression> getLabels() {
+		if (labels == null) {
+			labels = new EObjectContainmentEList<Expression>(Expression.class, this, CICDPackage.AGENT__LABELS);
+		}
+		return labels;
 	}
 
 	/**
@@ -162,6 +150,8 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case CICDPackage.AGENT__LABELS:
+			return ((InternalEList<?>) getLabels()).basicRemove(otherEnd, msgs);
 		case CICDPackage.AGENT__CONTAINER:
 			return basicSetContainer(null, msgs);
 		}
@@ -176,8 +166,8 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case CICDPackage.AGENT__NAME:
-			return getName();
+		case CICDPackage.AGENT__LABELS:
+			return getLabels();
 		case CICDPackage.AGENT__CONTAINER:
 			return getContainer();
 		}
@@ -189,11 +179,13 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case CICDPackage.AGENT__NAME:
-			setName((String) newValue);
+		case CICDPackage.AGENT__LABELS:
+			getLabels().clear();
+			getLabels().addAll((Collection<? extends Expression>) newValue);
 			return;
 		case CICDPackage.AGENT__CONTAINER:
 			setContainer((DockerContainer) newValue);
@@ -210,8 +202,8 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case CICDPackage.AGENT__NAME:
-			setName(NAME_EDEFAULT);
+		case CICDPackage.AGENT__LABELS:
+			getLabels().clear();
 			return;
 		case CICDPackage.AGENT__CONTAINER:
 			setContainer((DockerContainer) null);
@@ -228,29 +220,12 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case CICDPackage.AGENT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case CICDPackage.AGENT__LABELS:
+			return labels != null && !labels.isEmpty();
 		case CICDPackage.AGENT__CONTAINER:
 			return container != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //AgentImpl

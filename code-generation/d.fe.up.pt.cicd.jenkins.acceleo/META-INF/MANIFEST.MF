@@ -20,4 +20,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: d.fe.up.pt.cicd.jenkins.acceleo.main
+Automatic-Module-Name: d.fe.up.pt.cicd.jenkins.acceleo
 

@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getServices <em>Services</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getDependsOn <em>Depends On</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getNecessaryFor <em>Necessary For</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getPrevious <em>Previous</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getNext <em>Next</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getMaxAttempts <em>Max Attempts</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#isAllowFailure <em>Allow Failure</em>}</li>
  * </ul>
@@ -84,24 +84,24 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	protected EList<DockerContainer> services;
 
 	/**
-	 * The cached value of the '{@link #getDependsOn() <em>Depends On</em>}' reference list.
+	 * The cached value of the '{@link #getPrevious() <em>Previous</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDependsOn()
+	 * @see #getPrevious()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Job> dependsOn;
+	protected EList<Job> previous;
 
 	/**
-	 * The cached value of the '{@link #getNecessaryFor() <em>Necessary For</em>}' reference list.
+	 * The cached value of the '{@link #getNext() <em>Next</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNecessaryFor()
+	 * @see #getNext()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Job> necessaryFor;
+	protected EList<Job> next;
 
 	/**
 	 * The default value of the '{@link #getMaxAttempts() <em>Max Attempts</em>}' attribute.
@@ -218,12 +218,12 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<Job> getDependsOn() {
-		if (dependsOn == null) {
-			dependsOn = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this,
-					CICDPackage.JOB__DEPENDS_ON, CICDPackage.JOB__NECESSARY_FOR);
+	public EList<Job> getPrevious() {
+		if (previous == null) {
+			previous = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this, CICDPackage.JOB__PREVIOUS,
+					CICDPackage.JOB__NEXT);
 		}
-		return dependsOn;
+		return previous;
 	}
 
 	/**
@@ -232,12 +232,12 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<Job> getNecessaryFor() {
-		if (necessaryFor == null) {
-			necessaryFor = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this,
-					CICDPackage.JOB__NECESSARY_FOR, CICDPackage.JOB__DEPENDS_ON);
+	public EList<Job> getNext() {
+		if (next == null) {
+			next = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this, CICDPackage.JOB__NEXT,
+					CICDPackage.JOB__PREVIOUS);
 		}
-		return necessaryFor;
+		return next;
 	}
 
 	/**
@@ -297,10 +297,10 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case CICDPackage.JOB__DEPENDS_ON:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDependsOn()).basicAdd(otherEnd, msgs);
-		case CICDPackage.JOB__NECESSARY_FOR:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNecessaryFor()).basicAdd(otherEnd, msgs);
+		case CICDPackage.JOB__PREVIOUS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getPrevious()).basicAdd(otherEnd, msgs);
+		case CICDPackage.JOB__NEXT:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getNext()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -317,10 +317,10 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__SERVICES:
 			return ((InternalEList<?>) getServices()).basicRemove(otherEnd, msgs);
-		case CICDPackage.JOB__DEPENDS_ON:
-			return ((InternalEList<?>) getDependsOn()).basicRemove(otherEnd, msgs);
-		case CICDPackage.JOB__NECESSARY_FOR:
-			return ((InternalEList<?>) getNecessaryFor()).basicRemove(otherEnd, msgs);
+		case CICDPackage.JOB__PREVIOUS:
+			return ((InternalEList<?>) getPrevious()).basicRemove(otherEnd, msgs);
+		case CICDPackage.JOB__NEXT:
+			return ((InternalEList<?>) getNext()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -339,10 +339,10 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return getSteps();
 		case CICDPackage.JOB__SERVICES:
 			return getServices();
-		case CICDPackage.JOB__DEPENDS_ON:
-			return getDependsOn();
-		case CICDPackage.JOB__NECESSARY_FOR:
-			return getNecessaryFor();
+		case CICDPackage.JOB__PREVIOUS:
+			return getPrevious();
+		case CICDPackage.JOB__NEXT:
+			return getNext();
 		case CICDPackage.JOB__MAX_ATTEMPTS:
 			return getMaxAttempts();
 		case CICDPackage.JOB__ALLOW_FAILURE:
@@ -371,13 +371,13 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			getServices().clear();
 			getServices().addAll((Collection<? extends DockerContainer>) newValue);
 			return;
-		case CICDPackage.JOB__DEPENDS_ON:
-			getDependsOn().clear();
-			getDependsOn().addAll((Collection<? extends Job>) newValue);
+		case CICDPackage.JOB__PREVIOUS:
+			getPrevious().clear();
+			getPrevious().addAll((Collection<? extends Job>) newValue);
 			return;
-		case CICDPackage.JOB__NECESSARY_FOR:
-			getNecessaryFor().clear();
-			getNecessaryFor().addAll((Collection<? extends Job>) newValue);
+		case CICDPackage.JOB__NEXT:
+			getNext().clear();
+			getNext().addAll((Collection<? extends Job>) newValue);
 			return;
 		case CICDPackage.JOB__MAX_ATTEMPTS:
 			setMaxAttempts((Integer) newValue);
@@ -406,11 +406,11 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__SERVICES:
 			getServices().clear();
 			return;
-		case CICDPackage.JOB__DEPENDS_ON:
-			getDependsOn().clear();
+		case CICDPackage.JOB__PREVIOUS:
+			getPrevious().clear();
 			return;
-		case CICDPackage.JOB__NECESSARY_FOR:
-			getNecessaryFor().clear();
+		case CICDPackage.JOB__NEXT:
+			getNext().clear();
 			return;
 		case CICDPackage.JOB__MAX_ATTEMPTS:
 			setMaxAttempts(MAX_ATTEMPTS_EDEFAULT);
@@ -436,10 +436,10 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return steps != null && !steps.isEmpty();
 		case CICDPackage.JOB__SERVICES:
 			return services != null && !services.isEmpty();
-		case CICDPackage.JOB__DEPENDS_ON:
-			return dependsOn != null && !dependsOn.isEmpty();
-		case CICDPackage.JOB__NECESSARY_FOR:
-			return necessaryFor != null && !necessaryFor.isEmpty();
+		case CICDPackage.JOB__PREVIOUS:
+			return previous != null && !previous.isEmpty();
+		case CICDPackage.JOB__NEXT:
+			return next != null && !next.isEmpty();
 		case CICDPackage.JOB__MAX_ATTEMPTS:
 			return MAX_ATTEMPTS_EDEFAULT == null ? maxAttempts != null : !MAX_ATTEMPTS_EDEFAULT.equals(maxAttempts);
 		case CICDPackage.JOB__ALLOW_FAILURE:

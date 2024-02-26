@@ -9,6 +9,6 @@ env:
   SERVER: production
 
 jobs:
-  my_first_job:
+  my_first_job_a:
     steps:
-      - run: echo "Hello World!" 
+      - run: echo "Hello World!A"

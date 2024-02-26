@@ -58,6 +58,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 			addNamePropertyDescriptor(object);
 			addDependsOnPropertyDescriptor(object);
+			addNecessaryForPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,6 +90,20 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 						getResourceLocator(), getString("_UI_Job_dependsOn_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Job_dependsOn_feature", "_UI_Job_type"),
 						GHAPackage.Literals.JOB__DEPENDS_ON, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Necessary For feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNecessaryForPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Job_necessaryFor_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Job_necessaryFor_feature", "_UI_Job_type"),
+						GHAPackage.Literals.JOB__NECESSARY_FOR, true, false, true, null, null, null));
 	}
 
 	/**

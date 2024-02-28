@@ -42,7 +42,7 @@ public class Generate extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public static final String[] TEMPLATE_NAMES = { "generateElement" };
+    public static final String[] TEMPLATE_NAMES = { "generatePipeline" };
     
     /**
      * The list of properties files from the launch parameters (Launch configuration).
@@ -340,6 +340,9 @@ public class Generate extends AbstractAcceleoGenerator {
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
+        if (!isInWorkspace(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage.class)) {
+            resourceSet.getPackageRegistry().put(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage.eINSTANCE.getNsURI(), d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage.eINSTANCE);
+        }
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"

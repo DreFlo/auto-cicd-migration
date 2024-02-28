@@ -44,9 +44,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
@@ -98,20 +96,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	private EClass jobEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reuseWorkflowJobEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass scriptJobEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -767,7 +751,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflow_Jobs() {
+	public EReference getWorkflow_WorkJobs() {
 		return (EReference) workflowEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -947,68 +931,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getReuseWorkflowJob() {
-		return reuseWorkflowJobEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getReuseWorkflowJob_WorkflowPath() {
-		return (EReference) reuseWorkflowJobEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getReuseWorkflowJob_Args() {
-		return (EReference) reuseWorkflowJobEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getReuseWorkflowJob_Secrets() {
-		return (EReference) reuseWorkflowJobEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getReuseWorkflowJob_InheritSecrets() {
-		return (EAttribute) reuseWorkflowJobEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getScriptJob() {
-		return scriptJobEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getScriptJob_Steps() {
-		return (EReference) scriptJobEClass.getEStructuralFeatures().get(0);
+	public EReference getJob_Steps() {
+		return (EReference) jobEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -2659,7 +2583,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(workflowEClass, WORKFLOW__DEFAULTS);
 		createEReference(workflowEClass, WORKFLOW__ENVIRONMENT_VARIABLES);
 		createEReference(workflowEClass, WORKFLOW__CONCURRENCY_GROUP);
-		createEReference(workflowEClass, WORKFLOW__JOBS);
+		createEReference(workflowEClass, WORKFLOW__WORK_JOBS);
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__NAME);
@@ -2678,15 +2602,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(jobEClass, JOB__TIMEOUT_MINUTES);
 		createEReference(jobEClass, JOB__CONTINUE_ON_ERROR);
 		createEReference(jobEClass, JOB__STRATEGY);
-
-		reuseWorkflowJobEClass = createEClass(REUSE_WORKFLOW_JOB);
-		createEReference(reuseWorkflowJobEClass, REUSE_WORKFLOW_JOB__WORKFLOW_PATH);
-		createEReference(reuseWorkflowJobEClass, REUSE_WORKFLOW_JOB__ARGS);
-		createEReference(reuseWorkflowJobEClass, REUSE_WORKFLOW_JOB__SECRETS);
-		createEAttribute(reuseWorkflowJobEClass, REUSE_WORKFLOW_JOB__INHERIT_SECRETS);
-
-		scriptJobEClass = createEClass(SCRIPT_JOB);
-		createEReference(scriptJobEClass, SCRIPT_JOB__STEPS);
+		createEReference(jobEClass, JOB__STEPS);
 
 		agentEClass = createEClass(AGENT);
 		createEReference(agentEClass, AGENT__GROUP);
@@ -2945,8 +2861,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		reuseWorkflowJobEClass.getESuperTypes().add(this.getJob());
-		scriptJobEClass.getESuperTypes().add(this.getJob());
 		eventTypeTriggerEClass.getESuperTypes().add(this.getTrigger());
 		specifiedBranchesTriggerEClass.getESuperTypes().add(this.getTrigger());
 		specifiedPathsTriggerEClass.getESuperTypes().add(this.getTrigger());
@@ -3024,11 +2938,11 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getWorkflow_ConcurrencyGroup(), this.getConcurrencyGroup(), null, "concurrencyGroup", null, 0, 1,
 				Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_Jobs(), this.getJob(), null, "jobs", null, 1, -1, Workflow.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getWorkflow_WorkJobs(), this.getJob(), null, "workJobs", null, 1, -1, Workflow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(jobEClass, Job.class, "Job", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Name(), ecorePackage.getEString(), "name", null, 1, 1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_JobName(), this.getExpression(), null, "jobName", null, 0, 1, Job.class, !IS_TRANSIENT,
@@ -3076,25 +2990,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getJob_Strategy(), this.getMatrix(), null, "strategy", null, 0, 1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-
-		initEClass(reuseWorkflowJobEClass, ReuseWorkflowJob.class, "ReuseWorkflowJob", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReuseWorkflowJob_WorkflowPath(), this.getExpression(), null, "workflowPath", null, 1, 1,
-				ReuseWorkflowJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReuseWorkflowJob_Args(), this.getVariableAssignment(), null, "args", null, 0, -1,
-				ReuseWorkflowJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReuseWorkflowJob_Secrets(), this.getVariableAssignment(), null, "secrets", null, 0, -1,
-				ReuseWorkflowJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReuseWorkflowJob_InheritSecrets(), ecorePackage.getEBooleanObject(), "inheritSecrets", null,
-				0, 1, ReuseWorkflowJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(scriptJobEClass, ScriptJob.class, "ScriptJob", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScriptJob_Steps(), this.getStep(), null, "steps", null, 1, -1, ScriptJob.class, !IS_TRANSIENT,
+		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 1, -1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
@@ -3637,21 +3533,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		// Create resource
 		createResource(eNS_URI);
-
-		// Create annotations
-		// http://www.eclipse.org/OCL/Import
-		createImportAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";
-		addAnnotation(this, source, new String[] { "ecore", "http://www.eclipse.org/emf/2002/Ecore" });
 	}
 
 } //GHAPackageImpl

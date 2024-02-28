@@ -32,7 +32,7 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "d.fe.up.pt.cicd.gha.dsl.GHA"
-			fileExtensions = "gha"
+			fileExtensions = "ghadsl"
 			referencedResource = "platform:/resource/d.fe.up.pt.cicd.gha.metamodel/model/GHA.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}

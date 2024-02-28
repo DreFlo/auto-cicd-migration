@@ -165,6 +165,29 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConditionalStepItemProvider conditionalStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConditionalStepAdapter() {
+		if (conditionalStepItemProvider == null) {
+			conditionalStepItemProvider = new ConditionalStepItemProvider(this);
+		}
+
+		return conditionalStepItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -392,6 +415,8 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			stageItemProvider.dispose();
 		if (stepItemProvider != null)
 			stepItemProvider.dispose();
+		if (conditionalStepItemProvider != null)
+			conditionalStepItemProvider.dispose();
 		if (noneAgentItemProvider != null)
 			noneAgentItemProvider.dispose();
 		if (anyAgentItemProvider != null)

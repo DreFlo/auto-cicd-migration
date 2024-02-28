@@ -58,6 +58,15 @@ public interface JenkinsFactory extends EFactory {
 	Step createStep();
 
 	/**
+	 * Returns a new object of class '<em>Conditional Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conditional Step</em>'.
+	 * @generated
+	 */
+	ConditionalStep createConditionalStep();
+
+	/**
 	 * Returns a new object of class '<em>None Agent</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

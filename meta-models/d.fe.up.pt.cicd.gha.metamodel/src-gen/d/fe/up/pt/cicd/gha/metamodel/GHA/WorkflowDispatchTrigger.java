@@ -13,5 +13,4 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA;
  * @generated
  */
 public interface WorkflowDispatchTrigger extends InputTrigger {
-
 } // WorkflowDispatchTrigger

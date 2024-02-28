@@ -31,22 +31,13 @@ public interface GHAFactory extends EFactory {
 	Workflow createWorkflow();
 
 	/**
-	 * Returns a new object of class '<em>Reuse Workflow Job</em>'.
+	 * Returns a new object of class '<em>Job</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reuse Workflow Job</em>'.
+	 * @return a new object of class '<em>Job</em>'.
 	 * @generated
 	 */
-	ReuseWorkflowJob createReuseWorkflowJob();
-
-	/**
-	 * Returns a new object of class '<em>Script Job</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Script Job</em>'.
-	 * @generated
-	 */
-	ScriptJob createScriptJob();
+	Job createJob();
 
 	/**
 	 * Returns a new object of class '<em>Agent</em>'.

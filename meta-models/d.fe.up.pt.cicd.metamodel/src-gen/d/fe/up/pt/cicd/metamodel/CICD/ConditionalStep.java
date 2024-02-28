@@ -13,9 +13,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIf <em>If</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getThen <em>Then</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getElse <em>Else</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIfCondition <em>If Condition</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getThenRun <em>Then Run</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getElseRun <em>Else Run</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep()
@@ -24,49 +24,49 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ConditionalStep extends Step {
 	/**
-	 * Returns the value of the '<em><b>If</b></em>' containment reference.
+	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>If</em>' containment reference.
-	 * @see #setIf(Expression)
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep_If()
+	 * @return the value of the '<em>If Condition</em>' containment reference.
+	 * @see #setIfCondition(Expression)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep_IfCondition()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Expression getIf();
+	Expression getIfCondition();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIf <em>If</em>}' containment reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIfCondition <em>If Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>If</em>' containment reference.
-	 * @see #getIf()
+	 * @param value the new value of the '<em>If Condition</em>' containment reference.
+	 * @see #getIfCondition()
 	 * @generated
 	 */
-	void setIf(Expression value);
+	void setIfCondition(Expression value);
 
 	/**
-	 * Returns the value of the '<em><b>Then</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Then Run</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Step}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Then</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep_Then()
+	 * @return the value of the '<em>Then Run</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep_ThenRun()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Step> getThen();
+	EList<Step> getThenRun();
 
 	/**
-	 * Returns the value of the '<em><b>Else</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Else Run</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Step}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Else</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep_Else()
+	 * @return the value of the '<em>Else Run</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getConditionalStep_ElseRun()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Step> getElse();
+	EList<Step> getElseRun();
 
 } // ConditionalStep

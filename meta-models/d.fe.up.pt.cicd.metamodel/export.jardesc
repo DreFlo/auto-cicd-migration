@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/andre/Documents/FEUP/D/auto-cicd-migration/cli/libs/d.fe.up.pt.cicd.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/d.fe.up.pt.cicd.metamodel/export.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="false" exportOutputFolder="true">
+        <folder path="/d.fe.up.pt.cicd.metamodel/META-INF"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.acceleo/build.properties"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.acceleo/.classpath"/>
+        <file path="/d.fe.up.pt.cicd.gha.metamodel/build.properties"/>
+        <folder path="/d.fe.up.pt.cicd.jenkins.acceleo/tasks"/>
+        <folder path="/d.fe.up.pt.cicd.metamodel/model"/>
+        <file path="/d.fe.up.pt.cicd.metamodel/.project"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.metamodel/build.properties"/>
+        <file path="/d.fe.up.pt.cicd.gha.dsl/.gitignore"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.jenkins.metamodel/src-gen"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.project"/>
+        <file path="/d.fe.up.pt.cicd.gha.metamodel/.classpath"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.dsl/xtend-gen"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.jenkins.metamodel/src"/>
+        <file path="/d.fe.up.pt.cicd.metamodel/.gitignore"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.metamodel/src-gen"/>
+        <file path="/d.fe.up.pt.cicd.metamodel/plugin.properties"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.metamodel/src"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.acceleo/.project"/>
+        <file path="/d.fe.up.pt.cicd.gha.dsl/.antlr-generator-3.2.0-patch.jar"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.gitignore"/>
+        <file path="/d.fe.up.pt.cicd.gha.dsl/build.properties"/>
+        <file path="/d.fe.up.pt.cicd.gha.dsl/.classpath"/>
+        <file path="/d.fe.up.pt.cicd.metamodel/build.properties"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.metamodel/plugin.properties"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.dsl/src-gen"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.jenkins.acceleo/src"/>
+        <file path="/d.fe.up.pt.cicd.gha.dsl/.project"/>
+        <folder path="/d.fe.up.pt.cicd.gha.dsl/META-INF"/>
+        <folder path="/d.fe.up.pt.cicd.jenkins.metamodel/META-INF"/>
+        <file path="/d.fe.up.pt.cicd.metamodel/.classpath"/>
+        <folder path="/d.fe.up.pt.cicd.jenkins.acceleo/META-INF"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.metamodel/plugin.xml"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.metamodel/src-gen"/>
+        <folder path="/d.fe.up.pt.cicd.gha.metamodel/model"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.dsl/src"/>
+        <file path="/d.fe.up.pt.cicd.gha.metamodel/plugin.properties"/>
+        <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.classpath"/>
+        <folder path="/d.fe.up.pt.cicd.jenkins.metamodel/model"/>
+        <file path="/d.fe.up.pt.cicd.metamodel/plugin.xml"/>
+        <folder path="/d.fe.up.pt.cicd.gha.metamodel/META-INF"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.metamodel/src"/>
+        <file path="/d.fe.up.pt.cicd.gha.metamodel/.gitignore"/>
+        <file path="/d.fe.up.pt.cicd.gha.metamodel/plugin.xml"/>
+        <file path="/d.fe.up.pt.cicd.gha.metamodel/.project"/>
+    </selectedElements>
+</jardesc>

@@ -22,8 +22,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline" eSuperTypes="#//PipelineBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
         eType="#//Trigger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jobStreams" ordered="false"
-        upperBound="-1" eType="#//Job" transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" ordered="false" upperBound="-1"
+        eType="#//Job" transient="true" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="#//PipelineBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -125,12 +125,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//Step">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="if" lowerBound="1" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="then" lowerBound="1" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenRun" lowerBound="1"
+        upperBound="-1" eType="#//Step" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseRun" upperBound="-1"
         eType="#//Step" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="else" upperBound="-1" eType="#//Step"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NonConditionalStep" abstract="true"
       eSuperTypes="#//Step">

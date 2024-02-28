@@ -62,7 +62,7 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CICDPackage.Literals.PIPELINE__TRIGGERS);
-			childrenFeatures.add(CICDPackage.Literals.PIPELINE__JOB_STREAMS);
+			childrenFeatures.add(CICDPackage.Literals.PIPELINE__JOBS);
 		}
 		return childrenFeatures;
 	}
@@ -127,7 +127,7 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 
 		switch (notification.getFeatureID(Pipeline.class)) {
 		case CICDPackage.PIPELINE__TRIGGERS:
-		case CICDPackage.PIPELINE__JOB_STREAMS:
+		case CICDPackage.PIPELINE__JOBS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -160,8 +160,8 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
 				CICDFactory.eINSTANCE.createWebhookTrigger()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.PIPELINE__JOB_STREAMS, CICDFactory.eINSTANCE.createJob()));
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.PIPELINE__JOBS, CICDFactory.eINSTANCE.createJob()));
 	}
 
 }

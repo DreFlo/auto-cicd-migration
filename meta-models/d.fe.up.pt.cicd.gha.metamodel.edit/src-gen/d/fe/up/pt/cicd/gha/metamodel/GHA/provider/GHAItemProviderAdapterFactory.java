@@ -96,49 +96,26 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ReuseWorkflowJobItemProvider reuseWorkflowJobItemProvider;
+	protected JobItemProvider jobItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createReuseWorkflowJobAdapter() {
-		if (reuseWorkflowJobItemProvider == null) {
-			reuseWorkflowJobItemProvider = new ReuseWorkflowJobItemProvider(this);
+	public Adapter createJobAdapter() {
+		if (jobItemProvider == null) {
+			jobItemProvider = new JobItemProvider(this);
 		}
 
-		return reuseWorkflowJobItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ScriptJobItemProvider scriptJobItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createScriptJobAdapter() {
-		if (scriptJobItemProvider == null) {
-			scriptJobItemProvider = new ScriptJobItemProvider(this);
-		}
-
-		return scriptJobItemProvider;
+		return jobItemProvider;
 	}
 
 	/**
@@ -1352,10 +1329,8 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	public void dispose() {
 		if (workflowItemProvider != null)
 			workflowItemProvider.dispose();
-		if (reuseWorkflowJobItemProvider != null)
-			reuseWorkflowJobItemProvider.dispose();
-		if (scriptJobItemProvider != null)
-			scriptJobItemProvider.dispose();
+		if (jobItemProvider != null)
+			jobItemProvider.dispose();
 		if (agentItemProvider != null)
 			agentItemProvider.dispose();
 		if (containerItemProvider != null)

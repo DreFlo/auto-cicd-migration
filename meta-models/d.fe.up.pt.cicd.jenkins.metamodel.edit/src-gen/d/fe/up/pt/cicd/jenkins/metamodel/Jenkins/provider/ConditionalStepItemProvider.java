@@ -1,10 +1,10 @@
 /**
  */
-package d.fe.up.pt.cicd.gha.metamodel.GHA.provider;
+package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
-import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAFactory;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,19 +18,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ScriptJobItemProvider extends JobItemProvider {
+public class ConditionalStepItemProvider extends AbstractStepItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ScriptJobItemProvider(AdapterFactory adapterFactory) {
+	public ConditionalStepItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,7 +61,9 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GHAPackage.Literals.SCRIPT_JOB__STEPS);
+			childrenFeatures.add(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION);
+			childrenFeatures.add(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN);
+			childrenFeatures.add(JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN);
 		}
 		return childrenFeatures;
 	}
@@ -80,14 +82,14 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	}
 
 	/**
-	 * This returns ScriptJob.gif.
+	 * This returns ConditionalStep.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ScriptJob"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalStep"));
 	}
 
 	/**
@@ -108,9 +110,7 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ScriptJob) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_ScriptJob_type")
-				: getString("_UI_ScriptJob_type") + " " + label;
+		return getString("_UI_ConditionalStep_type");
 	}
 
 	/**
@@ -124,8 +124,10 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ScriptJob.class)) {
-		case GHAPackage.SCRIPT_JOB__STEPS:
+		switch (notification.getFeatureID(ConditionalStep.class)) {
+		case JenkinsPackage.CONDITIONAL_STEP__IF_CONDITION:
+		case JenkinsPackage.CONDITIONAL_STEP__THEN_RUN:
+		case JenkinsPackage.CONDITIONAL_STEP__ELSE_RUN:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -143,11 +145,20 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.SCRIPT_JOB__STEPS, GHAFactory.eINSTANCE.createCommand()));
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.SCRIPT_JOB__STEPS, GHAFactory.eINSTANCE.createPackage()));
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
+				JenkinsFactory.eINSTANCE.createStep()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
+				JenkinsFactory.eINSTANCE.createConditionalStep()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
+				JenkinsFactory.eINSTANCE.createStep()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
+				JenkinsFactory.eINSTANCE.createConditionalStep()));
 	}
 
 	/**
@@ -161,10 +172,8 @@ public class ScriptJobItemProvider extends JobItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == GHAPackage.Literals.JOB__JOB_NAME
-				|| childFeature == GHAPackage.Literals.JOB__IF_CONDITION
-				|| childFeature == GHAPackage.Literals.JOB__TIMEOUT_MINUTES
-				|| childFeature == GHAPackage.Literals.JOB__CONTINUE_ON_ERROR;
+		boolean qualify = childFeature == JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN
+				|| childFeature == JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

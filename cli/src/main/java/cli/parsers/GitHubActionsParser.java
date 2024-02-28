@@ -27,7 +27,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	@Override
 	public Workflow parse(String pipeline) throws SyntaxException {
-        YamlMapping yamlMap = null;
+        YamlMapping yamlMap;
         try {
             yamlMap = Yaml.createYamlInput(pipeline).readYamlMapping();
         } catch (IOException e) {
@@ -71,7 +71,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (yamlMap.value("jobs") != null) {
-			workflow.getJobs().addAll(parseJobs(yamlMap.value("jobs")));
+			workflow.getWorkJobs().addAll(parseJobs(yamlMap.value("jobs")));
 		} else {
 			throw new SyntaxException("Must have jobs");
 		}
@@ -513,31 +513,10 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private Job parseJob(String id, YamlMapping jobMap, Map<String, Job> jobs) throws SyntaxException {
-		Job job;
+		Job job = GHAPackage.eINSTANCE.getGHAFactory().createJob();;
 
 		if (jobMap.value("steps") != null) {
-			job = GHAPackage.eINSTANCE.getGHAFactory().createScriptJob();
-			((ScriptJob) job).getSteps().addAll(parseSteps(jobMap.value("steps")));
-		} else if (jobMap.value("uses") != null) {
-			job = GHAPackage.eINSTANCE.getGHAFactory().createReuseWorkflowJob();
-			((ReuseWorkflowJob) job).setWorkflowPath(parseExpression(jobMap.string("uses")));
-
-			if (jobMap.value("with") != null) {
-				((ReuseWorkflowJob) job).getArgs().putAll(parseVariableAssignments(jobMap.value("with").asMapping()));
-			}
-
-			if (jobMap.value("secrets") != null) {
-				YamlNode secrets = jobMap.value("secrets");
-				if (secrets.type().equals(Node.SCALAR) && secrets.asScalar().value().equals("inherit")) {
-					((ReuseWorkflowJob) job).setInheritSecrets(true);
-				} else if (secrets.type().equals(Node.MAPPING)) {
-					((ReuseWorkflowJob) job).getSecrets().putAll(parseVariableAssignments(secrets.asMapping()));
-				} else {
-					throw new SyntaxException("Invalid secrets");
-				}
-			}
-		} else {
-			throw new SyntaxException("Must have steps or workflow path");
+			job.getSteps().addAll(parseSteps(jobMap.value("steps")));
 		}
 
 		job.setName(id);
@@ -746,7 +725,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private List<Job> parseDependencies(YamlNode dependenciesNode, Map<String, Job> jobs) throws SyntaxException {
 		List<Job> result = new ArrayList<>();
-		System.out.println(dependenciesNode);
 		if (dependenciesNode.type().equals(Node.SCALAR)) {
 			if (jobs.containsKey(dependenciesNode.asScalar().value())) {
 				result.add(jobs.get(dependenciesNode.asScalar().value()));
@@ -789,9 +767,25 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return result;
 	}
 
+//	private AbstractStep parseAbstractStep(YamlMapping stepMap) throws SyntaxException {
+//		AbstractStep step;
+//
+//
+//		if (stepMap.value("if") != null) {
+//			step = GHAPackage.eINSTANCE.getGHAFactory().createIfStep();
+//			BooleanLiteral boolLit = GHAPackage.eINSTANCE.getGHAFactory().createBooleanLiteral();
+//			boolLit.setValue(true);
+//			((IfStep) step).setIfCondition(boolLit);
+//			((IfStep) step).setStep(parseStep(stepMap));
+//		} else {
+//			step = parseStep(stepMap);
+//		}
+//
+//		return step;
+//	}
+
 	private Step parseStep(YamlMapping stepMap) throws SyntaxException {
 		Step step;
-
 		if (stepMap.string("run") != null) {
 			step = GHAPackage.eINSTANCE.getGHAFactory().createCommand();
 
@@ -836,9 +830,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 		if (stepMap.value("env") != null) {
 			step.getEnvironmentVariables().putAll(parseVariableAssignments(stepMap.value("env").asMapping()));
-		}
-		if (stepMap.value("if") != null) {
-			step.setIfCondition(parseExpression(stepMap.string("if")));
 		}
 		if (stepMap.value("timeout-minutes") != null) {
 			step.setTimeoutMinutes(parseExpression(stepMap.string("timeout-minutes")));

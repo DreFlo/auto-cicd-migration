@@ -30,43 +30,43 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConditionalStepImpl#getIf <em>If</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConditionalStepImpl#getThen <em>Then</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConditionalStepImpl#getElse <em>Else</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConditionalStepImpl#getIfCondition <em>If Condition</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConditionalStepImpl#getThenRun <em>Then Run</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ConditionalStepImpl#getElseRun <em>Else Run</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	/**
-	 * The cached value of the '{@link #getIf() <em>If</em>}' containment reference.
+	 * The cached value of the '{@link #getIfCondition() <em>If Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIf()
+	 * @see #getIfCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression if_;
+	protected Expression ifCondition;
 
 	/**
-	 * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference list.
+	 * The cached value of the '{@link #getThenRun() <em>Then Run</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getThen()
+	 * @see #getThenRun()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> then;
+	protected EList<Step> thenRun;
 
 	/**
-	 * The cached value of the '{@link #getElse() <em>Else</em>}' containment reference list.
+	 * The cached value of the '{@link #getElseRun() <em>Else Run</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getElse()
+	 * @see #getElseRun()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> else_;
+	protected EList<Step> elseRun;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,8 +93,8 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	 * @generated
 	 */
 	@Override
-	public Expression getIf() {
-		return if_;
+	public Expression getIfCondition() {
+		return ifCondition;
 	}
 
 	/**
@@ -102,12 +102,12 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIf(Expression newIf, NotificationChain msgs) {
-		Expression oldIf = if_;
-		if_ = newIf;
+	public NotificationChain basicSetIfCondition(Expression newIfCondition, NotificationChain msgs) {
+		Expression oldIfCondition = ifCondition;
+		ifCondition = newIfCondition;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					CICDPackage.CONDITIONAL_STEP__IF, oldIf, newIf);
+					CICDPackage.CONDITIONAL_STEP__IF_CONDITION, oldIfCondition, newIfCondition);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -122,20 +122,21 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	 * @generated
 	 */
 	@Override
-	public void setIf(Expression newIf) {
-		if (newIf != if_) {
+	public void setIfCondition(Expression newIfCondition) {
+		if (newIfCondition != ifCondition) {
 			NotificationChain msgs = null;
-			if (if_ != null)
-				msgs = ((InternalEObject) if_).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - CICDPackage.CONDITIONAL_STEP__IF, null, msgs);
-			if (newIf != null)
-				msgs = ((InternalEObject) newIf).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - CICDPackage.CONDITIONAL_STEP__IF, null, msgs);
-			msgs = basicSetIf(newIf, msgs);
+			if (ifCondition != null)
+				msgs = ((InternalEObject) ifCondition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.CONDITIONAL_STEP__IF_CONDITION, null, msgs);
+			if (newIfCondition != null)
+				msgs = ((InternalEObject) newIfCondition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.CONDITIONAL_STEP__IF_CONDITION, null, msgs);
+			msgs = basicSetIfCondition(newIfCondition, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.CONDITIONAL_STEP__IF, newIf, newIf));
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.CONDITIONAL_STEP__IF_CONDITION,
+					newIfCondition, newIfCondition));
 	}
 
 	/**
@@ -144,11 +145,11 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	 * @generated
 	 */
 	@Override
-	public EList<Step> getThen() {
-		if (then == null) {
-			then = new EObjectContainmentEList<Step>(Step.class, this, CICDPackage.CONDITIONAL_STEP__THEN);
+	public EList<Step> getThenRun() {
+		if (thenRun == null) {
+			thenRun = new EObjectContainmentEList<Step>(Step.class, this, CICDPackage.CONDITIONAL_STEP__THEN_RUN);
 		}
-		return then;
+		return thenRun;
 	}
 
 	/**
@@ -157,11 +158,11 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	 * @generated
 	 */
 	@Override
-	public EList<Step> getElse() {
-		if (else_ == null) {
-			else_ = new EObjectContainmentEList<Step>(Step.class, this, CICDPackage.CONDITIONAL_STEP__ELSE);
+	public EList<Step> getElseRun() {
+		if (elseRun == null) {
+			elseRun = new EObjectContainmentEList<Step>(Step.class, this, CICDPackage.CONDITIONAL_STEP__ELSE_RUN);
 		}
-		return else_;
+		return elseRun;
 	}
 
 	/**
@@ -172,12 +173,12 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case CICDPackage.CONDITIONAL_STEP__IF:
-			return basicSetIf(null, msgs);
-		case CICDPackage.CONDITIONAL_STEP__THEN:
-			return ((InternalEList<?>) getThen()).basicRemove(otherEnd, msgs);
-		case CICDPackage.CONDITIONAL_STEP__ELSE:
-			return ((InternalEList<?>) getElse()).basicRemove(otherEnd, msgs);
+		case CICDPackage.CONDITIONAL_STEP__IF_CONDITION:
+			return basicSetIfCondition(null, msgs);
+		case CICDPackage.CONDITIONAL_STEP__THEN_RUN:
+			return ((InternalEList<?>) getThenRun()).basicRemove(otherEnd, msgs);
+		case CICDPackage.CONDITIONAL_STEP__ELSE_RUN:
+			return ((InternalEList<?>) getElseRun()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -190,12 +191,12 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case CICDPackage.CONDITIONAL_STEP__IF:
-			return getIf();
-		case CICDPackage.CONDITIONAL_STEP__THEN:
-			return getThen();
-		case CICDPackage.CONDITIONAL_STEP__ELSE:
-			return getElse();
+		case CICDPackage.CONDITIONAL_STEP__IF_CONDITION:
+			return getIfCondition();
+		case CICDPackage.CONDITIONAL_STEP__THEN_RUN:
+			return getThenRun();
+		case CICDPackage.CONDITIONAL_STEP__ELSE_RUN:
+			return getElseRun();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,16 +210,16 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case CICDPackage.CONDITIONAL_STEP__IF:
-			setIf((Expression) newValue);
+		case CICDPackage.CONDITIONAL_STEP__IF_CONDITION:
+			setIfCondition((Expression) newValue);
 			return;
-		case CICDPackage.CONDITIONAL_STEP__THEN:
-			getThen().clear();
-			getThen().addAll((Collection<? extends Step>) newValue);
+		case CICDPackage.CONDITIONAL_STEP__THEN_RUN:
+			getThenRun().clear();
+			getThenRun().addAll((Collection<? extends Step>) newValue);
 			return;
-		case CICDPackage.CONDITIONAL_STEP__ELSE:
-			getElse().clear();
-			getElse().addAll((Collection<? extends Step>) newValue);
+		case CICDPackage.CONDITIONAL_STEP__ELSE_RUN:
+			getElseRun().clear();
+			getElseRun().addAll((Collection<? extends Step>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -232,14 +233,14 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case CICDPackage.CONDITIONAL_STEP__IF:
-			setIf((Expression) null);
+		case CICDPackage.CONDITIONAL_STEP__IF_CONDITION:
+			setIfCondition((Expression) null);
 			return;
-		case CICDPackage.CONDITIONAL_STEP__THEN:
-			getThen().clear();
+		case CICDPackage.CONDITIONAL_STEP__THEN_RUN:
+			getThenRun().clear();
 			return;
-		case CICDPackage.CONDITIONAL_STEP__ELSE:
-			getElse().clear();
+		case CICDPackage.CONDITIONAL_STEP__ELSE_RUN:
+			getElseRun().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -253,12 +254,12 @@ public class ConditionalStepImpl extends StepImpl implements ConditionalStep {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case CICDPackage.CONDITIONAL_STEP__IF:
-			return if_ != null;
-		case CICDPackage.CONDITIONAL_STEP__THEN:
-			return then != null && !then.isEmpty();
-		case CICDPackage.CONDITIONAL_STEP__ELSE:
-			return else_ != null && !else_.isEmpty();
+		case CICDPackage.CONDITIONAL_STEP__IF_CONDITION:
+			return ifCondition != null;
+		case CICDPackage.CONDITIONAL_STEP__THEN_RUN:
+			return thenRun != null && !thenRun.isEmpty();
+		case CICDPackage.CONDITIONAL_STEP__ELSE_RUN:
+			return elseRun != null && !elseRun.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -18,7 +18,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  * @model
  * @generated
  */
-public interface Step extends AbstractPipelineExecutionBlock {
+public interface Step extends AbstractStep {
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' attribute.
 	 * <!-- begin-user-doc -->

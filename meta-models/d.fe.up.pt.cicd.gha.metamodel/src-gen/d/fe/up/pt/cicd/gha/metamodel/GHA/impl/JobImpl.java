@@ -12,6 +12,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Step;
 
 import java.util.Collection;
 
@@ -27,6 +28,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -55,11 +58,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getContinueOnError <em>Continue On Error</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getStrategy <em>Strategy</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getSteps <em>Steps</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class JobImpl extends MinimalEObjectImpl.Container implements Job {
+public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -229,6 +233,16 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * @ordered
 	 */
 	protected Matrix strategy;
+
+	/**
+	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSteps()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Step> steps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -865,6 +879,19 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EList<Step> getSteps() {
+		if (steps == null) {
+			steps = new EObjectContainmentEList<Step>(Step.class, this, GHAPackage.JOB__STEPS);
+		}
+		return steps;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -915,6 +942,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return basicSetContinueOnError(null, msgs);
 		case GHAPackage.JOB__STRATEGY:
 			return basicSetStrategy(null, msgs);
+		case GHAPackage.JOB__STEPS:
+			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -968,6 +997,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return getContinueOnError();
 		case GHAPackage.JOB__STRATEGY:
 			return getStrategy();
+		case GHAPackage.JOB__STEPS:
+			return getSteps();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1031,6 +1062,10 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 		case GHAPackage.JOB__STRATEGY:
 			setStrategy((Matrix) newValue);
 			return;
+		case GHAPackage.JOB__STEPS:
+			getSteps().clear();
+			getSteps().addAll((Collection<? extends Step>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1091,6 +1126,9 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 		case GHAPackage.JOB__STRATEGY:
 			setStrategy((Matrix) null);
 			return;
+		case GHAPackage.JOB__STEPS:
+			getSteps().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1135,6 +1173,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return continueOnError != null;
 		case GHAPackage.JOB__STRATEGY:
 			return strategy != null;
+		case GHAPackage.JOB__STEPS:
+			return steps != null && !steps.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

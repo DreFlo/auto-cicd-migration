@@ -64,6 +64,8 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createStage();
 		case JenkinsPackage.STEP:
 			return createStep();
+		case JenkinsPackage.CONDITIONAL_STEP:
+			return createConditionalStep();
 		case JenkinsPackage.NONE_AGENT:
 			return createNoneAgent();
 		case JenkinsPackage.ANY_AGENT:
@@ -121,6 +123,17 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public Step createStep() {
 		StepImpl step = new StepImpl();
 		return step;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConditionalStep createConditionalStep() {
+		ConditionalStepImpl conditionalStep = new ConditionalStepImpl();
+		return conditionalStep;
 	}
 
 	/**

@@ -46,9 +46,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
@@ -142,16 +140,6 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseJob(Job object) {
 			return createJobAdapter();
-		}
-
-		@Override
-		public Adapter caseReuseWorkflowJob(ReuseWorkflowJob object) {
-			return createReuseWorkflowJobAdapter();
-		}
-
-		@Override
-		public Adapter caseScriptJob(ScriptJob object) {
-			return createScriptJobAdapter();
 		}
 
 		@Override
@@ -518,34 +506,6 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJobAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob <em>Reuse Workflow Job</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob
-	 * @generated
-	 */
-	public Adapter createReuseWorkflowJobAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob <em>Script Job</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob
-	 * @generated
-	 */
-	public Adapter createScriptJobAdapter() {
 		return null;
 	}
 

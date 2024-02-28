@@ -1,5 +1,7 @@
 package cli.utils;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -47,9 +49,8 @@ public class EMFUtils {
         }else{ // a root object
             rootList.add(eobject);
         }
-        for(Object erefObj : eobject.eClass().getEAllReferences()){
-            EReference eref = (EReference)erefObj;
-            final Object value = eobject.eGet(eref);
+        for(EReference eRefObj : eobject.eClass().getEAllReferences()){
+            final Object value = eobject.eGet(eRefObj);
             if (value == null) {
                 continue;
             }
@@ -57,7 +58,7 @@ public class EMFUtils {
                 for(Object obj : (List<?>)value){
                     readReferences((EObject)obj, preventCycles, rootList);
                 }
-            }else{ // an eobject
+            }else{ // an EObject
                 readReferences((EObject)value, preventCycles, rootList);
             }
         }
@@ -66,9 +67,14 @@ public class EMFUtils {
     public static Object deserializeModel(String filePath, ResourceSet resourceSet) throws IOException {
         // Load the model from a file
         Resource resource = resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
+
+
+        // Add all referenced resources to the resource set
         resource.load(null);
 
-        EcoreUtil.resolveAll(resource);
+        for (EObject obj : resource.getContents()) {
+            EcoreUtil.resolveAll(obj);
+        }
 
         return resource.getContents().get(0);
     }

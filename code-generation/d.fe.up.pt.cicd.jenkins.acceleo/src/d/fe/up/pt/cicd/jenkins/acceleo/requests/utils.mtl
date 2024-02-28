@@ -1,7 +1,0 @@
-[comment encoding = UTF-8 /]
-[module utils('http://d.fe.up.pt/Jenkins')]
-
-
-[query public quoteString (string : String) : String = 
-	invoke('d.fe.up.pt.cicd.jenkins.services.CICD2Jenkins', 'quoteString(java.lang.String)', Sequence{string})
-/]

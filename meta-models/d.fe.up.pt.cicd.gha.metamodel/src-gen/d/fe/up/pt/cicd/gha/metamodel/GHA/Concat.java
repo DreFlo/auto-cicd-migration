@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Concat extends Expression {
-
 	/**
 	 * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression}.
@@ -33,4 +32,5 @@ public interface Concat extends Expression {
 	 * @generated
 	 */
 	EList<Expression> getExpressions();
+
 } // Concat

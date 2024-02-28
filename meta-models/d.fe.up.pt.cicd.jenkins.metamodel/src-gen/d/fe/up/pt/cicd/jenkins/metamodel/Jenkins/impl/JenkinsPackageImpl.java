@@ -5,7 +5,9 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractPipelineExecutionBlock;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
@@ -71,7 +73,21 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass abstractStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass stepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -295,6 +311,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getAbstractStep() {
+		return abstractStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStep() {
 		return stepEClass;
 	}
@@ -307,6 +333,46 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EAttribute getStep_Command() {
 		return (EAttribute) stepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConditionalStep() {
+		return conditionalStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_IfCondition() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_ThenRun() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_ElseRun() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -495,8 +561,15 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEReference(stageEClass, STAGE__STEPS);
 		createEAttribute(stageEClass, STAGE__NAME);
 
+		abstractStepEClass = createEClass(ABSTRACT_STEP);
+
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__COMMAND);
+
+		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__IF_CONDITION);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__THEN_RUN);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__ELSE_RUN);
 
 		abstractAgentEClass = createEClass(ABSTRACT_AGENT);
 
@@ -551,7 +624,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		abstractStageEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
 		parallelEClass.getESuperTypes().add(this.getAbstractStage());
 		stageEClass.getESuperTypes().add(this.getAbstractStage());
-		stepEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
+		abstractStepEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
+		stepEClass.getESuperTypes().add(this.getAbstractStep());
+		conditionalStepEClass.getESuperTypes().add(this.getAbstractStep());
 		noneAgentEClass.getESuperTypes().add(this.getAbstractAgent());
 		anyAgentEClass.getESuperTypes().add(this.getAbstractAgent());
 		optionedAgentEClass.getESuperTypes().add(this.getAbstractAgent());
@@ -582,15 +657,30 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stageEClass, Stage.class, "Stage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStage_Steps(), this.getStep(), null, "steps", null, 0, -1, Stage.class, !IS_TRANSIENT,
+		initEReference(getStage_Steps(), this.getAbstractStep(), null, "steps", null, 0, -1, Stage.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEAttribute(getStage_Name(), ecorePackage.getEString(), "name", null, 1, 1, Stage.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(abstractStepEClass, AbstractStep.class, "AbstractStep", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Command(), ecorePackage.getEString(), "command", null, 1, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConditionalStep_IfCondition(), this.getExpression(), null, "ifCondition", null, 1, 1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_ThenRun(), this.getAbstractStep(), null, "thenRun", null, 1, -1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_ElseRun(), this.getAbstractStep(), null, "elseRun", null, 0, -1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractAgentEClass, AbstractAgent.class, "AbstractAgent", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

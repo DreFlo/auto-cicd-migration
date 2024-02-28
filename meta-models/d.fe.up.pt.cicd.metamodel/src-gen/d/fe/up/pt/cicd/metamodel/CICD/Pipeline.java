@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getTriggers <em>Triggers</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams <em>Job Streams</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs <em>Jobs</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipeline()
@@ -35,15 +35,15 @@ public interface Pipeline extends PipelineBlock {
 	EList<Trigger> getTriggers();
 
 	/**
-	 * Returns the value of the '<em><b>Job Streams</b></em>' reference list.
+	 * Returns the value of the '<em><b>Jobs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Job}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job Streams</em>' reference list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipeline_JobStreams()
-	 * @model ordered="false"
+	 * @return the value of the '<em>Jobs</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipeline_Jobs()
+	 * @model containment="true" transient="true" ordered="false"
 	 * @generated
 	 */
-	EList<Job> getJobStreams();
+	EList<Job> getJobs();
 
 } // Pipeline

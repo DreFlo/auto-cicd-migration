@@ -43,7 +43,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		JavaUtils.cleanUp();
-
 		registerPackages();
 		registerInputCompilers();
 		registerOutputCompilers();
@@ -55,10 +54,7 @@ public class Main {
 
         try {
 			Pipeline pipeline = getInputCompiler("gha").compile(Files.readString(Path.of(args[0])));
-
-			System.out.println(pipeline.getJobStreams());
-
-			getOutputCompiler("jenkins").compile(pipeline);
+//			getOutputCompiler("jenkins").compile(pipeline);
 		} catch (SyntaxException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -269,6 +269,34 @@ public interface JenkinsPackage extends EPackage {
 	int STAGE_OPERATION_COUNT = ABSTRACT_STAGE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl <em>Abstract Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractStep()
+	 * @generated
+	 */
+	int ABSTRACT_STEP = 5;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STEP_FEATURE_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STEP_OPERATION_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepImpl <em>Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,7 +304,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 5;
+	int STEP = 6;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -285,7 +313,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP__COMMAND = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 0;
+	int STEP__COMMAND = ABSTRACT_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -294,7 +322,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_FEATURE_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 1;
+	int STEP_FEATURE_COUNT = ABSTRACT_STEP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Step</em>' class.
@@ -303,7 +331,62 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_OPERATION_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_OPERATION_COUNT + 0;
+	int STEP_OPERATION_COUNT = ABSTRACT_STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConditionalStepImpl <em>Conditional Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConditionalStepImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConditionalStep()
+	 * @generated
+	 */
+	int CONDITIONAL_STEP = 7;
+
+	/**
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP__IF_CONDITION = ABSTRACT_STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Then Run</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP__THEN_RUN = ABSTRACT_STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Else Run</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP__ELSE_RUN = ABSTRACT_STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Conditional Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP_FEATURE_COUNT = ABSTRACT_STEP_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Conditional Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP_OPERATION_COUNT = ABSTRACT_STEP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractAgentImpl <em>Abstract Agent</em>}' class.
@@ -313,7 +396,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractAgent()
 	 * @generated
 	 */
-	int ABSTRACT_AGENT = 6;
+	int ABSTRACT_AGENT = 8;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Agent</em>' class.
@@ -341,7 +424,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNoneAgent()
 	 * @generated
 	 */
-	int NONE_AGENT = 7;
+	int NONE_AGENT = 9;
 
 	/**
 	 * The number of structural features of the '<em>None Agent</em>' class.
@@ -369,7 +452,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnyAgent()
 	 * @generated
 	 */
-	int ANY_AGENT = 8;
+	int ANY_AGENT = 10;
 
 	/**
 	 * The number of structural features of the '<em>Any Agent</em>' class.
@@ -397,7 +480,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOptionedAgent()
 	 * @generated
 	 */
-	int OPTIONED_AGENT = 9;
+	int OPTIONED_AGENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Labels</b></em>' reference.
@@ -452,7 +535,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDockerContainer()
 	 * @generated
 	 */
-	int DOCKER_CONTAINER = 10;
+	int DOCKER_CONTAINER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Image</b></em>' attribute.
@@ -525,7 +608,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 11;
+	int EXPRESSION = 13;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -662,6 +745,16 @@ public interface JenkinsPackage extends EPackage {
 	EAttribute getStage_Name();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep <em>Abstract Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Step</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep
+	 * @generated
+	 */
+	EClass getAbstractStep();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -681,6 +774,49 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStep_Command();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep <em>Conditional Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conditional Step</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep
+	 * @generated
+	 */
+	EClass getConditionalStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep#getIfCondition <em>If Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>If Condition</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep#getIfCondition()
+	 * @see #getConditionalStep()
+	 * @generated
+	 */
+	EReference getConditionalStep_IfCondition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep#getThenRun <em>Then Run</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Then Run</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep#getThenRun()
+	 * @see #getConditionalStep()
+	 * @generated
+	 */
+	EReference getConditionalStep_ThenRun();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep#getElseRun <em>Else Run</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Else Run</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep#getElseRun()
+	 * @see #getConditionalStep()
+	 * @generated
+	 */
+	EReference getConditionalStep_ElseRun();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent <em>Abstract Agent</em>}'.
@@ -952,6 +1088,16 @@ public interface JenkinsPackage extends EPackage {
 		EAttribute STAGE__NAME = eINSTANCE.getStage_Name();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl <em>Abstract Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractStep()
+		 * @generated
+		 */
+		EClass ABSTRACT_STEP = eINSTANCE.getAbstractStep();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepImpl <em>Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -968,6 +1114,40 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STEP__COMMAND = eINSTANCE.getStep_Command();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConditionalStepImpl <em>Conditional Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConditionalStepImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConditionalStep()
+		 * @generated
+		 */
+		EClass CONDITIONAL_STEP = eINSTANCE.getConditionalStep();
+
+		/**
+		 * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_STEP__IF_CONDITION = eINSTANCE.getConditionalStep_IfCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Then Run</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_STEP__THEN_RUN = eINSTANCE.getConditionalStep_ThenRun();
+
+		/**
+		 * The meta object literal for the '<em><b>Else Run</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_STEP__ELSE_RUN = eINSTANCE.getConditionalStep_ElseRun();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractAgentImpl <em>Abstract Agent</em>}' class.

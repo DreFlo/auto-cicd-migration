@@ -48,7 +48,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
 
     public OutputModel transform(InputModel inputModel) throws IOException {
         String inputModelFilePath = serializeModel(inputModel);
-        String outputModelFilePath = inputModelFilePath + ".out";
+        String outputModelFilePath = inputModelFilePath + ".out.xmi";
 
         System.out.println("Transforming (" + getClass().getName() + ")...");
         runATLTransformation(inputModelFilePath, outputModelFilePath);

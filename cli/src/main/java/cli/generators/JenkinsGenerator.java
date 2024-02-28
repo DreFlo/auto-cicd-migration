@@ -20,7 +20,7 @@ public class JenkinsGenerator extends AbstractGenerator<Pipeline, JenkinsPackage
 
     @Override
     public void generate(Pipeline pipeline, String outputFolder) throws IOException {
-        String tempDir = ".";
+        String tempDir = "intermediate";
         String randomName = JavaUtils.getRandomName() + ".xmi";
         String filePath = Path.of(tempDir, randomName).toString();
         serializeModel(pipeline, filePath, getResourceSet());

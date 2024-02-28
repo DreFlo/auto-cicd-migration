@@ -46,9 +46,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedBranchesTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.SpecifiedPathsTrigger;
@@ -144,24 +142,6 @@ public class GHASwitch<T> extends Switch<T> {
 		case GHAPackage.JOB: {
 			Job job = (Job) theEObject;
 			T result = caseJob(job);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case GHAPackage.REUSE_WORKFLOW_JOB: {
-			ReuseWorkflowJob reuseWorkflowJob = (ReuseWorkflowJob) theEObject;
-			T result = caseReuseWorkflowJob(reuseWorkflowJob);
-			if (result == null)
-				result = caseJob(reuseWorkflowJob);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case GHAPackage.SCRIPT_JOB: {
-			ScriptJob scriptJob = (ScriptJob) theEObject;
-			T result = caseScriptJob(scriptJob);
-			if (result == null)
-				result = caseJob(scriptJob);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -845,36 +825,6 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJob(Job object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Reuse Workflow Job</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Reuse Workflow Job</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseReuseWorkflowJob(ReuseWorkflowJob object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Script Job</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Script Job</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseScriptJob(ScriptJob object) {
 		return null;
 	}
 

@@ -25,8 +25,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/steps"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Stage/name"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStep"/>
     <genClasses ecoreClass="Jenkins.ecore#//Step">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/command"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//ConditionalStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//ConditionalStep/ifCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//ConditionalStep/thenRun"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//ConditionalStep/elseRun"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractAgent"/>
     <genClasses ecoreClass="Jenkins.ecore#//NoneAgent"/>

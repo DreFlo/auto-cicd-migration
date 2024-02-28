@@ -111,11 +111,33 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case JenkinsPackage.ABSTRACT_STEP: {
+			AbstractStep abstractStep = (AbstractStep) theEObject;
+			T result = caseAbstractStep(abstractStep);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(abstractStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case JenkinsPackage.STEP: {
 			Step step = (Step) theEObject;
 			T result = caseStep(step);
 			if (result == null)
+				result = caseAbstractStep(step);
+			if (result == null)
 				result = caseAbstractPipelineExecutionBlock(step);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.CONDITIONAL_STEP: {
+			ConditionalStep conditionalStep = (ConditionalStep) theEObject;
+			T result = caseConditionalStep(conditionalStep);
+			if (result == null)
+				result = caseAbstractStep(conditionalStep);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(conditionalStep);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -249,6 +271,21 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractStep(AbstractStep object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -260,6 +297,21 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStep(Step object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalStep(ConditionalStep object) {
 		return null;
 	}
 

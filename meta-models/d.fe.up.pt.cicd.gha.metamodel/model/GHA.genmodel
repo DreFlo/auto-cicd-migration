@@ -120,7 +120,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/defaults"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/environmentVariables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/concurrencyGroup"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/workJobs"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GHA.ecore#//Job">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Job/name"/>
@@ -139,15 +139,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/timeoutMinutes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/continueOnError"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/strategy"/>
-    </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//ReuseWorkflowJob">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ReuseWorkflowJob/workflowPath"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ReuseWorkflowJob/args"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ReuseWorkflowJob/secrets"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//ReuseWorkflowJob/inheritSecrets"/>
-    </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//ScriptJob">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ScriptJob/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/steps"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Agent">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Agent/group"/>

@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -29,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineImpl#getTriggers <em>Triggers</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineImpl#getJobStreams <em>Job Streams</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineImpl#getJobs <em>Jobs</em>}</li>
  * </ul>
  *
  * @generated
@@ -46,14 +45,14 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 	protected EList<Trigger> triggers;
 
 	/**
-	 * The cached value of the '{@link #getJobStreams() <em>Job Streams</em>}' reference list.
+	 * The cached value of the '{@link #getJobs() <em>Jobs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getJobStreams()
+	 * @see #getJobs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Job> jobStreams;
+	protected EList<Job> jobs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,11 +92,11 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 	 * @generated
 	 */
 	@Override
-	public EList<Job> getJobStreams() {
-		if (jobStreams == null) {
-			jobStreams = new EObjectResolvingEList<Job>(Job.class, this, CICDPackage.PIPELINE__JOB_STREAMS);
+	public EList<Job> getJobs() {
+		if (jobs == null) {
+			jobs = new EObjectContainmentEList<Job>(Job.class, this, CICDPackage.PIPELINE__JOBS);
 		}
-		return jobStreams;
+		return jobs;
 	}
 
 	/**
@@ -110,6 +109,8 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 		switch (featureID) {
 		case CICDPackage.PIPELINE__TRIGGERS:
 			return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd, msgs);
+		case CICDPackage.PIPELINE__JOBS:
+			return ((InternalEList<?>) getJobs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,8 +125,8 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 		switch (featureID) {
 		case CICDPackage.PIPELINE__TRIGGERS:
 			return getTriggers();
-		case CICDPackage.PIPELINE__JOB_STREAMS:
-			return getJobStreams();
+		case CICDPackage.PIPELINE__JOBS:
+			return getJobs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -143,9 +144,9 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 			getTriggers().clear();
 			getTriggers().addAll((Collection<? extends Trigger>) newValue);
 			return;
-		case CICDPackage.PIPELINE__JOB_STREAMS:
-			getJobStreams().clear();
-			getJobStreams().addAll((Collection<? extends Job>) newValue);
+		case CICDPackage.PIPELINE__JOBS:
+			getJobs().clear();
+			getJobs().addAll((Collection<? extends Job>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -162,8 +163,8 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 		case CICDPackage.PIPELINE__TRIGGERS:
 			getTriggers().clear();
 			return;
-		case CICDPackage.PIPELINE__JOB_STREAMS:
-			getJobStreams().clear();
+		case CICDPackage.PIPELINE__JOBS:
+			getJobs().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -179,8 +180,8 @@ public class PipelineImpl extends PipelineBlockImpl implements Pipeline {
 		switch (featureID) {
 		case CICDPackage.PIPELINE__TRIGGERS:
 			return triggers != null && !triggers.isEmpty();
-		case CICDPackage.PIPELINE__JOB_STREAMS:
-			return jobStreams != null && !jobStreams.isEmpty();
+		case CICDPackage.PIPELINE__JOBS:
+			return jobs != null && !jobs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

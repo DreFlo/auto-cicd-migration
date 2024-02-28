@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="GHA" nsURI="http://d.fe.up.pt/GHA" nsPrefix="GHA">
-  <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Workflow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Expression"
         containment="true"/>
@@ -19,10 +16,10 @@
         eType="#//VariableAssignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concurrencyGroup" eType="#//ConcurrencyGroup"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" lowerBound="1" upperBound="-1"
-        eType="#//Job" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workJobs" lowerBound="1"
+        upperBound="-1" eType="#//Job" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Job" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Job">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="jobName" eType="#//Expression"
@@ -55,17 +52,6 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" eType="#//Matrix"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReuseWorkflowJob" eSuperTypes="#//Job">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="workflowPath" lowerBound="1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//VariableAssignment"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="secrets" upperBound="-1"
-        eType="#//VariableAssignment" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inheritSecrets" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ScriptJob" eSuperTypes="#//Job">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" lowerBound="1" upperBound="-1"
         eType="#//Step" containment="true"/>
   </eClassifiers>

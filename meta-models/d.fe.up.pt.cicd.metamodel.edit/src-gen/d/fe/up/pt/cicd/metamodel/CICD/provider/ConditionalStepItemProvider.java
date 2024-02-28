@@ -61,9 +61,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CICDPackage.Literals.CONDITIONAL_STEP__IF);
-			childrenFeatures.add(CICDPackage.Literals.CONDITIONAL_STEP__THEN);
-			childrenFeatures.add(CICDPackage.Literals.CONDITIONAL_STEP__ELSE);
+			childrenFeatures.add(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION);
+			childrenFeatures.add(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN);
+			childrenFeatures.add(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN);
 		}
 		return childrenFeatures;
 	}
@@ -125,9 +125,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ConditionalStep.class)) {
-		case CICDPackage.CONDITIONAL_STEP__IF:
-		case CICDPackage.CONDITIONAL_STEP__THEN:
-		case CICDPackage.CONDITIONAL_STEP__ELSE:
+		case CICDPackage.CONDITIONAL_STEP__IF_CONDITION:
+		case CICDPackage.CONDITIONAL_STEP__THEN_RUN:
+		case CICDPackage.CONDITIONAL_STEP__ELSE_RUN:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -145,91 +145,91 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createConcat()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				CICDFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createValue()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				CICDFactory.eINSTANCE.createValue()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createLiteral()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				CICDFactory.eINSTANCE.createLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createDoubleLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createVariable()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createEnvironmentVariable()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createSecretVariable()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createEqualityOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createAnd()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				CICDFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createOr()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				CICDFactory.eINSTANCE.createOr()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createAddition()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createSubtraction()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF, CICDFactory.eINSTANCE.createUnaryOp()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				CICDFactory.eINSTANCE.createUnaryOp()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createNegation()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				CICDFactory.eINSTANCE.createConditionalStep()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				CICDFactory.eINSTANCE.createCommand()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				CICDFactory.eINSTANCE.createPlugin()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN, CICDFactory.eINSTANCE.createCache()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
+				CICDFactory.eINSTANCE.createCache()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				CICDFactory.eINSTANCE.createArtifact()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
 				CICDFactory.eINSTANCE.createConditionalStep()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
 				CICDFactory.eINSTANCE.createCommand()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
 				CICDFactory.eINSTANCE.createPlugin()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE, CICDFactory.eINSTANCE.createCache()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
+				CICDFactory.eINSTANCE.createCache()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE,
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
 				CICDFactory.eINSTANCE.createArtifact()));
 	}
 
@@ -244,8 +244,8 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == CICDPackage.Literals.CONDITIONAL_STEP__THEN
-				|| childFeature == CICDPackage.Literals.CONDITIONAL_STEP__ELSE;
+		boolean qualify = childFeature == CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN
+				|| childFeature == CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

@@ -647,7 +647,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_JobStreams() {
+	public EReference getPipeline_Jobs() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1227,7 +1227,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getConditionalStep_If() {
+	public EReference getConditionalStep_IfCondition() {
 		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1237,7 +1237,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getConditionalStep_Then() {
+	public EReference getConditionalStep_ThenRun() {
 		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1247,7 +1247,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getConditionalStep_Else() {
+	public EReference getConditionalStep_ElseRun() {
 		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1915,7 +1915,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		pipelineEClass = createEClass(PIPELINE);
 		createEReference(pipelineEClass, PIPELINE__TRIGGERS);
-		createEReference(pipelineEClass, PIPELINE__JOB_STREAMS);
+		createEReference(pipelineEClass, PIPELINE__JOBS);
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__ID);
@@ -1992,9 +1992,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		stepEClass = createEClass(STEP);
 
 		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
-		createEReference(conditionalStepEClass, CONDITIONAL_STEP__IF);
-		createEReference(conditionalStepEClass, CONDITIONAL_STEP__THEN);
-		createEReference(conditionalStepEClass, CONDITIONAL_STEP__ELSE);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__IF_CONDITION);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__THEN_RUN);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__ELSE_RUN);
 
 		nonConditionalStepEClass = createEClass(NON_CONDITIONAL_STEP);
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ID);
@@ -2192,9 +2192,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_JobStreams(), this.getJob(), null, "jobStreams", null, 0, -1, Pipeline.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getPipeline_Jobs(), this.getJob(), null, "jobs", null, 0, -1, Pipeline.class, IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				!IS_ORDERED);
 
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Id(), ecorePackage.getEString(), "id", null, 1, 1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -2346,15 +2346,15 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConditionalStep_If(), this.getExpression(), null, "if", null, 1, 1, ConditionalStep.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditionalStep_Then(), this.getStep(), null, "then", null, 1, -1, ConditionalStep.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditionalStep_Else(), this.getStep(), null, "else", null, 0, -1, ConditionalStep.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_IfCondition(), this.getExpression(), null, "ifCondition", null, 1, 1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_ThenRun(), this.getStep(), null, "thenRun", null, 1, -1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_ElseRun(), this.getStep(), null, "elseRun", null, 0, -1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nonConditionalStepEClass, NonConditionalStep.class, "NonConditionalStep", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

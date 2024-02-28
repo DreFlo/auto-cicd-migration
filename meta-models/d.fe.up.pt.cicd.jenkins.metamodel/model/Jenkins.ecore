@@ -17,12 +17,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stage" eSuperTypes="#//AbstractStage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="#//Step" containment="true"/>
+        eType="#//AbstractStep" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractPipelineExecutionBlock">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractStep" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractStep">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//AbstractStep">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenRun" lowerBound="1"
+        upperBound="-1" eType="#//AbstractStep" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseRun" upperBound="-1"
+        eType="#//AbstractStep" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractAgent" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="NoneAgent" eSuperTypes="#//AbstractAgent"/>

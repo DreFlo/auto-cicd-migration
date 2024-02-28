@@ -131,6 +131,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 			childrenFeatures.add(GHAPackage.Literals.JOB__TIMEOUT_MINUTES);
 			childrenFeatures.add(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR);
 			childrenFeatures.add(GHAPackage.Literals.JOB__STRATEGY);
+			childrenFeatures.add(GHAPackage.Literals.JOB__STEPS);
 		}
 		return childrenFeatures;
 	}
@@ -199,6 +200,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		case GHAPackage.JOB__TIMEOUT_MINUTES:
 		case GHAPackage.JOB__CONTINUE_ON_ERROR:
 		case GHAPackage.JOB__STRATEGY:
+		case GHAPackage.JOB__STEPS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -530,6 +532,12 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__STRATEGY, GHAFactory.eINSTANCE.createMatrix()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createCommand()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createPackage()));
 	}
 
 	/**

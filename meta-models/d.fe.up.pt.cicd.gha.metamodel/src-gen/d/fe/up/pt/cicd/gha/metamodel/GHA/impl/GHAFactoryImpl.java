@@ -30,6 +30,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.INPUT_TYPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Join;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis;
@@ -42,9 +43,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTargetTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PullRequestTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PushTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ReuseWorkflowJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ScheduleTrigger;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
@@ -116,10 +115,8 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 		switch (eClass.getClassifierID()) {
 		case GHAPackage.WORKFLOW:
 			return createWorkflow();
-		case GHAPackage.REUSE_WORKFLOW_JOB:
-			return createReuseWorkflowJob();
-		case GHAPackage.SCRIPT_JOB:
-			return createScriptJob();
+		case GHAPackage.JOB:
+			return createJob();
 		case GHAPackage.AGENT:
 			return createAgent();
 		case GHAPackage.CONTAINER:
@@ -296,20 +293,9 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	 * @generated
 	 */
 	@Override
-	public ReuseWorkflowJob createReuseWorkflowJob() {
-		ReuseWorkflowJobImpl reuseWorkflowJob = new ReuseWorkflowJobImpl();
-		return reuseWorkflowJob;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ScriptJob createScriptJob() {
-		ScriptJobImpl scriptJob = new ScriptJobImpl();
-		return scriptJob;
+	public Job createJob() {
+		JobImpl job = new JobImpl();
+		return job;
 	}
 
 	/**

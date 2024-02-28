@@ -1,21 +1,71 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/Jenkins')]
 
-[import d::fe::up::pt::cicd::jenkins::acceleo::requests::utils/]
+[query public quoteString (string : String) : String = string.replaceAll('^|$', '\'')/]
 
-[template public generateElement(pipeline : Pipeline)]
+[query public getStagesSequence(begin : AbstractStage) : Sequence(AbstractStage) = begin->closure(next)->asSequence()->prepend(begin)/]
+
+[template public generateAbstractStage(abstractStage : AbstractStage)]
+[if (abstractStage.oclIsKindOf(Stage))]
+[generateStage(abstractStage.oclAsType(Stage))/]
+[elseif (abstractStage.oclIsKindOf(Parallel))]
+[generateParallel(abstractStage.oclAsType(Parallel))/]
+[/if]
+[/template]
+
+[template public generateStage(stage : Stage)]
+stage([quoteString(stage.name)/]) {
+	steps {
+	[for (abstractStep : AbstractStep | stage.steps)]
+		[generateAbstractStep(abstractStep)/]
+	[/for]
+	}
+}
+[/template]
+
+[template public generateParallel(parallel : Parallel)]
+parallel {
+[for (abstractStage : AbstractStage | parallel.stages)]
+	[generateAbstractStage(abstractStage)/]
+[/for]
+}
+[/template]
+
+[template public generateAbstractStep(abstractStep : AbstractStep)]
+[if (abstractStep.oclIsKindOf(Step))]
+[generateStep(abstractStep.oclAsType(Step))/]
+[elseif (abstractStep.oclIsKindOf(ConditionalStep))]
+[generateConditionalStep(abstractStep.oclAsType(ConditionalStep))/]
+[/if]
+[/template]
+
+[template public generateStep(step : Step)]
+[step.command/]
+[/template]
+
+[template public generateConditionalStep(conditionalStep : ConditionalStep)]
+if (true) {
+[for (abstractStep : AbstractStep | conditionalStep.thenRun)]
+	[generateAbstractStep(abstractStep)/]
+[/for]
+}
+[if (conditionalStep.thenRun->notEmpty())]
+else {
+[for (abstractStep : AbstractStep | conditionalStep.elseRun)]
+	[generateAbstractStep(abstractStep)/]
+[/for]
+}
+[/if]
+[/template]
+
+[template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('Jenkinsfile', false, 'UTF-8')]
 pipeline {
+	agent any
 	stages {
-	[for (stage : Stage | pipeline.stages)]
-		stage([quoteString(stage.name)/]) {
-			steps {
-			[for (step : Step | stage.steps)]
-				[step.command/]
-			[/for]
-			}
-		}
+	[for (abstractStage : AbstractStage | getStagesSequence(begin))]
+		[generateAbstractStage(abstractStage)/]
 	[/for]
 	}
 }

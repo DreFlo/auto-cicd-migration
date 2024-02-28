@@ -29,7 +29,6 @@ public abstract class FromTIMAbstractTransformer<OutputModel extends EObject, Ou
 
     @Override
     public OutputModel transform(Pipeline pipeline) throws IOException {
-        System.out.println(pipeline.getJobStreams());
         // Apply refinement transformations
         for (EndogenousCICDAbstractTransformer refiner : getRefiners()) {
             pipeline = refiner.transform(pipeline);

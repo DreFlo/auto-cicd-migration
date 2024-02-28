@@ -5,7 +5,9 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EVENTS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StandardEventTrigger;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -106,7 +108,6 @@ public class StandardEventTriggerImpl extends EventTypeTriggerImpl implements St
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

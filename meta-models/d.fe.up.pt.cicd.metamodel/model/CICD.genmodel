@@ -49,7 +49,7 @@
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Pipeline">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Pipeline/triggers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Pipeline/jobStreams"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Pipeline/jobs"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Job">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Job/id"/>
@@ -122,9 +122,9 @@
     </genClasses>
     <genClasses image="false" ecoreClass="CICD.ecore#//Step"/>
     <genClasses ecoreClass="CICD.ecore#//ConditionalStep">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//ConditionalStep/if"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//ConditionalStep/then"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//ConditionalStep/else"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//ConditionalStep/ifCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//ConditionalStep/thenRun"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//ConditionalStep/elseRun"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CICD.ecore#//NonConditionalStep">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/id"/>

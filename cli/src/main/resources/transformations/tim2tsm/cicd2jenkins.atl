@@ -2,6 +2,7 @@
 -- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
 
 module cicd2jenkins;
+
 create OUT : Jenkins from IN : CICD;
 
 rule Pipeline2Pipeline {
@@ -9,8 +10,8 @@ rule Pipeline2Pipeline {
 		cicdPipeline : CICD!Pipeline
 	to
 		jenkinsPipeline : Jenkins!Pipeline(
-			begin <-
-				if cicdPipeline.jobStreams->size() = 1 then
+			begin <- 
+				if cicdPipeline.jobStreams->size() = 1 then 
 					thisModule.Job2Stage(cicdPipeline.jobStreams->first())
 				else
 					thisModule.JobSequence2Parallel(cicdPipeline.jobStreams)
@@ -18,33 +19,19 @@ rule Pipeline2Pipeline {
 		)
 }
 
-rule Job2Stage(job : CICD!Job) {
-	to
-		abstractStage : Jenkins!Stage(
-			name <- job.name,
-			steps <- job.steps,
-			next <- 
-				if job.next->size() = 1 then
-					thisModule.JobSequence2Stage(job.next)
-				else if job.next->size() > 1 then
-					thisModule.JobSequence2Parallel(job.next)
-				else
-					OclUndefined
-				endif
-				endif
-		)
-}
-
-rule JobSequence2Parallel(jobSequence : Sequence(CICD!Job)) {
+lazy rule Job2Stage {
+	from
+		job : CICD!Job
 	using {
-		nextJobs : Sequence(CICD!Job) = jobSequence->iterate(job; acc: Set(CICD!Job) = Set{} | acc.union(job.next))->asSequence();
+		nextJobs : Sequence(CICD!Job) = job.next;
 	}
 	to
-		stage : Jenkins!Parallel(
-			stages <- jobSequence->collect(job | thisModule.Job2Stage(job)),
+		abstractStage : Jenkins!Stage(
+			name <- job.id,
+			steps <- job.steps,
 			next <-
-				if nextJobs->size() = 1 then
-					thisModule.JobSequence2Stage(nextJobs)
+				if nextJobs->size() = 1 then 
+					thisModule.Job2Stage(nextJobs->first())
 				else if nextJobs->size() > 1 then
 					thisModule.JobSequence2Parallel(nextJobs)
 				else
@@ -54,26 +41,52 @@ rule JobSequence2Parallel(jobSequence : Sequence(CICD!Job)) {
 		)
 }
 
-rule Agent2Agent {
+lazy rule JobSequence2Parallel {
 	from
-		cicdAgent : CICD!Agent
+		jobSequence : Sequence(CICD!Job)
+	using {
+		nextJobs : Sequence(CICD!Job) = jobSequence->collect(job | job.next)->flatten()->asSet()->asSequence();
+	}
 	to
-		jenkinsAgent : Jenkins!OptionedAgent(
-			label <- cicdAgent.labels.expressionConjunction()
+		abstractStage : Jenkins!Parallel(
+			stages <- jobSequence->collect(job | thisModule.Job2Stage(job)),
+			next <-
+				if nextJobs->size() = 1 then 
+					thisModule.Job2Stage(nextJobs->first())
+				else if nextJobs->size() > 1 then
+					thisModule.JobSequence2Parallel(nextJobs)
+				else
+					OclUndefined
+				endif
+				endif			
 		)
 }
 
-rule DockerContainer2DockerContainer {
+abstract rule Step2AsbtractStep {
 	from
-		cicdDockerContainer : CICD!DockerContainer
+		cicdStep : CICD!Step
 	to
-		jenkinsDockerContainer : Jenkins!DockerContainer(
-			label <- cicdDockerContainer.image.expression2String(),
-			image <- cicdDockerContainer.image.expression2String()
+		jenkinsStep : Jenkins!AbstractStep
+}
+
+rule ConditionalStep2ConditionalStep extends Step2AsbtractStep {
+	from
+		cicdStep : CICD!ConditionalStep
+	to
+		jenkinsStep : Jenkins!ConditionalStep(
+			thenRun <- cicdStep.thenRun,
+			elseRun <- cicdStep.elseRun
 		)
 }
 
-rule Step2Step {
+abstract rule NonConditionalStep2Step extends Step2AsbtractStep {
+	from
+		cicdStep : CICD!NonConditionalStep
+	to
+		jenkinsStep : Jenkins!Step
+}
+
+rule Command2Step extends NonConditionalStep2Step {
 	from
 		cicdStep : CICD!Command
 	to
@@ -82,21 +95,7 @@ rule Step2Step {
 		)
 }
 
-helper def : groupJobs(jobStreams : Sequence(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
-	let next : Sequence(CICD!Job) = 
-		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 
-			acc.append(jobStream.next)
-		).flatten()
-	in 
-	if next.isEmpty() then
-		Sequence{jobStreams}
-	else 
-		thisModule.groupJobs(next).prepend(jobStreams)
-	endif;
-
 helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
 
 helper context CICD!StringLiteral def : expression2String() : String = self.value;
 
-helper def : conjunctExpressions(expressions : Sequence(CICD!Expression)) : Jenkins!Expression = 
-	Jenkins!Expression.newInstance();

@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Stage extends AbstractStage {
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Steps</em>' containment reference list.
@@ -32,7 +32,7 @@ public interface Stage extends AbstractStage {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Step> getSteps();
+	EList<AbstractStep> getSteps();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

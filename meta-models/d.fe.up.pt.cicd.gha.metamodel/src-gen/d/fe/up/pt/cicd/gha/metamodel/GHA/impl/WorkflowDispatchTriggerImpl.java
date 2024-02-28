@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowDispatchTrigger;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**

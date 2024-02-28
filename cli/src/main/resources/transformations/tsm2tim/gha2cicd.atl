@@ -11,47 +11,31 @@ rule Workflow2Pipeline {
 		pipeline : CICD!Pipeline (
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
-			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs)
+			jobs <- workflow.workJobs->collect(j | thisModule.ScriptJob2Job(j)),
+			workingDirectory <- workflow.defaults.workingDirectory.expression2String()
 		)
 }
 
-rule ScriptJob2Job {
+lazy rule ScriptJob2Job {
 	from
-		scriptJob : GHA!ScriptJob
+		scriptJob : GHA!Job
 	to
 		job : CICD!Job(
-			steps <- scriptJob.steps,
-			next <- scriptJob.necessaryFor
+			id <- scriptJob.name,
+			steps <- scriptJob.steps
 		)
 }
 
-abstract rule Step2Step {
+abstract rule AbstractStep2Step {
 	from
 		ghaStep : GHA!Step
 	to
 		cicdStep : CICD!Step
 }
 
-rule IfStep2ConditionalStep extends Step2Step {
+abstract rule NonIfStep2NonConditionalStep extends AbstractStep2Step {
 	from
-		ghaStep : GHA!Step(
-			not ghaStep.ifCondition.oclIsUndefined()
-		)
-	using {
-		ghaStepNoIf : GHA!Step = ghaStep.refUnsetValue('ifCondition', OclUndefined);
-	}
-	to
-		cicdStep : CICD!ConditionalStep(
-			if <- ghaStep.ifCondition,
-			step <- ghaStepNoIf
-		)
-}
-
-abstract rule NonIfStep2NonConditionalStep extends Step2Step {
-	from
-		ghaStep : GHA!Step(
-			ghaStep.ifCondition.oclIsUndefined()
-		)
+		ghaStep : GHA!Step
 	to
 		cicdStep : CICD!NonConditionalStep(
 			id <- ghaStep.id,
@@ -83,7 +67,7 @@ abstract rule Expression2Expression {
 	from
 		ghaExpression : GHA!Expression
 	to
-		cicdExpression : CICD!Expression()
+		cicdExpression : CICD!Expression
 }
 
 rule Concat2Concat extends Expression2Expression {
@@ -109,21 +93,21 @@ abstract rule LogicalOp2LogicalOp extends BinaryOp2BinaryOp {
 	from
 		ghaExpression : GHA!LogicalOp
 	to
-		cicdExpression : CICD!LogicalOp()
+		cicdExpression : CICD!LogicalOp
 }
 
 rule And2And extends LogicalOp2LogicalOp {
 	from
 		ghaExpression : GHA!And
 	to
-		cicdExpression : CICD!And()
+		cicdExpression : CICD!And
 }
 
 rule Or2Or extends LogicalOp2LogicalOp {
 	from
 		ghaExpression : GHA!Or
 	to
-		cicdExpression : CICD!Or()
+		cicdExpression : CICD!Or
 }
 
 rule Equality2EqualityOp extends BinaryOp2BinaryOp {
@@ -148,14 +132,14 @@ abstract rule Value2Value extends Expression2Expression {
 	from
 		ghaExpression : GHA!Value
 	to
-		cicdExpression : CICD!Value()
+		cicdExpression : CICD!Value
 }
 
 abstract rule Literal2Literal extends Value2Value {
 	from
 		ghaExpression : GHA!Literal
 	to
-		cicdExpression : CICD!Literal()
+		cicdExpression : CICD!Literal
 }
 
 rule StringLiteral2StringLiteral extends Literal2Literal {
@@ -213,7 +197,7 @@ rule Not2Negation extends Expression2Expression {
 -- Helpers
 
 helper def : getJobStreamOrigins(jobs : Sequence(GHA!Job)) : Sequence(GHA!Job) = 
-	jobs->select(job | job.dependsOn.isEmpty());
+	jobs->select(job | job.dependsOn->isEmpty());
 
 helper context GHA!Expression def : expression2String() : String = 'EXPRESSION';
 

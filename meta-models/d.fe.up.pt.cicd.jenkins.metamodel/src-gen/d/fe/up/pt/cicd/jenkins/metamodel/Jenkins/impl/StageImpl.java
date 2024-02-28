@@ -2,10 +2,9 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -42,7 +41,7 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> steps;
+	protected EList<AbstractStep> steps;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -88,9 +87,9 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 	 * @generated
 	 */
 	@Override
-	public EList<Step> getSteps() {
+	public EList<AbstractStep> getSteps() {
 		if (steps == null) {
-			steps = new EObjectContainmentEList<Step>(Step.class, this, JenkinsPackage.STAGE__STEPS);
+			steps = new EObjectContainmentEList<AbstractStep>(AbstractStep.class, this, JenkinsPackage.STAGE__STEPS);
 		}
 		return steps;
 	}
@@ -159,7 +158,7 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 		switch (featureID) {
 		case JenkinsPackage.STAGE__STEPS:
 			getSteps().clear();
-			getSteps().addAll((Collection<? extends Step>) newValue);
+			getSteps().addAll((Collection<? extends AbstractStep>) newValue);
 			return;
 		case JenkinsPackage.STAGE__NAME:
 			setName((String) newValue);

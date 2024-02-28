@@ -18,7 +18,6 @@ public abstract class AbstractGenerator<InputModel extends EObject, InputPackage
         this.resourceSet = resourceSet;
         this.inputPackage = inputPackage;
         registerPackages();
-        registerFactories();
     }
 
     public abstract void generate(InputModel inputModel, String outputFolder) throws IOException;
@@ -40,5 +39,6 @@ public abstract class AbstractGenerator<InputModel extends EObject, InputPackage
     private void registerFactories() {
         EMFUtils.registerExtensionToFactoryMap(getResourceSet(), "xmi", new XMIResourceFactoryImpl());
         EMFUtils.registerExtensionToFactoryMap(getResourceSet(), "out", new XMIResourceFactoryImpl());
+        EMFUtils.registerExtensionToFactoryMap(getResourceSet(), "emtl", new XMIResourceFactoryImpl());
     }
 }

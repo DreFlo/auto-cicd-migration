@@ -285,13 +285,13 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__TRIGGERS = PIPELINE_BLOCK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Job Streams</b></em>' reference list.
+	 * The feature id for the '<em><b>Jobs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__JOB_STREAMS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
+	int PIPELINE__JOBS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Pipeline</em>' class.
@@ -1339,31 +1339,31 @@ public interface CICDPackage extends EPackage {
 	int CONDITIONAL_STEP = 20;
 
 	/**
-	 * The feature id for the '<em><b>If</b></em>' containment reference.
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_STEP__IF = STEP_FEATURE_COUNT + 0;
+	int CONDITIONAL_STEP__IF_CONDITION = STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Then</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Then Run</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_STEP__THEN = STEP_FEATURE_COUNT + 1;
+	int CONDITIONAL_STEP__THEN_RUN = STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Else</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Else Run</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONDITIONAL_STEP__ELSE = STEP_FEATURE_COUNT + 2;
+	int CONDITIONAL_STEP__ELSE_RUN = STEP_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Conditional Step</em>' class.
@@ -2953,15 +2953,15 @@ public interface CICDPackage extends EPackage {
 	EReference getPipeline_Triggers();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams <em>Job Streams</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs <em>Jobs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Job Streams</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams()
+	 * @return the meta object for the containment reference list '<em>Jobs</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_JobStreams();
+	EReference getPipeline_Jobs();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Job <em>Job</em>}'.
@@ -3574,37 +3574,37 @@ public interface CICDPackage extends EPackage {
 	EClass getConditionalStep();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIf <em>If</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIfCondition <em>If Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>If</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIf()
+	 * @return the meta object for the containment reference '<em>If Condition</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getIfCondition()
 	 * @see #getConditionalStep()
 	 * @generated
 	 */
-	EReference getConditionalStep_If();
+	EReference getConditionalStep_IfCondition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getThen <em>Then</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getThenRun <em>Then Run</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Then</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getThen()
+	 * @return the meta object for the containment reference list '<em>Then Run</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getThenRun()
 	 * @see #getConditionalStep()
 	 * @generated
 	 */
-	EReference getConditionalStep_Then();
+	EReference getConditionalStep_ThenRun();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getElse <em>Else</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getElseRun <em>Else Run</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Else</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getElse()
+	 * @return the meta object for the containment reference list '<em>Else Run</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep#getElseRun()
 	 * @see #getConditionalStep()
 	 * @generated
 	 */
-	EReference getConditionalStep_Else();
+	EReference getConditionalStep_ElseRun();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep <em>Non Conditional Step</em>}'.
@@ -4389,12 +4389,12 @@ public interface CICDPackage extends EPackage {
 		EReference PIPELINE__TRIGGERS = eINSTANCE.getPipeline_Triggers();
 
 		/**
-		 * The meta object literal for the '<em><b>Job Streams</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Jobs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__JOB_STREAMS = eINSTANCE.getPipeline_JobStreams();
+		EReference PIPELINE__JOBS = eINSTANCE.getPipeline_Jobs();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl <em>Job</em>}' class.
@@ -4891,28 +4891,28 @@ public interface CICDPackage extends EPackage {
 		EClass CONDITIONAL_STEP = eINSTANCE.getConditionalStep();
 
 		/**
-		 * The meta object literal for the '<em><b>If</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONDITIONAL_STEP__IF = eINSTANCE.getConditionalStep_If();
+		EReference CONDITIONAL_STEP__IF_CONDITION = eINSTANCE.getConditionalStep_IfCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Then</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Then Run</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONDITIONAL_STEP__THEN = eINSTANCE.getConditionalStep_Then();
+		EReference CONDITIONAL_STEP__THEN_RUN = eINSTANCE.getConditionalStep_ThenRun();
 
 		/**
-		 * The meta object literal for the '<em><b>Else</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Else Run</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONDITIONAL_STEP__ELSE = eINSTANCE.getConditionalStep_Else();
+		EReference CONDITIONAL_STEP__ELSE_RUN = eINSTANCE.getConditionalStep_ElseRun();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl <em>Non Conditional Step</em>}' class.

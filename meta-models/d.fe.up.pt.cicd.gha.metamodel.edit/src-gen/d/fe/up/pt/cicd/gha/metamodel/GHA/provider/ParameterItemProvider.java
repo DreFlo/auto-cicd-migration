@@ -169,6 +169,9 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
 				GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION, GHAFactory.eINSTANCE.createOr()));
 

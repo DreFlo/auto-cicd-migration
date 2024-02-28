@@ -158,6 +158,9 @@ public class StagingEnvironmentItemProvider extends ItemProviderAdapter implemen
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
 				GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME, GHAFactory.eINSTANCE.createOr()));
 
@@ -229,6 +232,9 @@ public class StagingEnvironmentItemProvider extends ItemProviderAdapter implemen
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL, GHAFactory.eINSTANCE.createOr()));

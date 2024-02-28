@@ -158,6 +158,9 @@ public class DefaultsItemProvider extends ItemProviderAdapter implements IEditin
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createOr()));
 
@@ -229,6 +232,9 @@ public class DefaultsItemProvider extends ItemProviderAdapter implements IEditin
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY, GHAFactory.eINSTANCE.createOr()));

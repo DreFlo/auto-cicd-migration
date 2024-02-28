@@ -149,6 +149,9 @@ public class CommandItemProvider extends StepItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createOr()));
 

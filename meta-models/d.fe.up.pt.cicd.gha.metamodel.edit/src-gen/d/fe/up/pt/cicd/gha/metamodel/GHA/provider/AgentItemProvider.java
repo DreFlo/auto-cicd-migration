@@ -159,6 +159,9 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -229,6 +232,9 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createOr()));

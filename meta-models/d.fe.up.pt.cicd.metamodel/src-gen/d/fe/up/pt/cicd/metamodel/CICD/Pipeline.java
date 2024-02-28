@@ -41,7 +41,7 @@ public interface Pipeline extends PipelineBlock {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Jobs</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipeline_Jobs()
-	 * @model containment="true" transient="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	EList<Job> getJobs();

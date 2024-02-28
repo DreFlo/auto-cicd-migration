@@ -149,6 +149,9 @@ public class SecretItemProvider extends ParameterItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createOr()));
 

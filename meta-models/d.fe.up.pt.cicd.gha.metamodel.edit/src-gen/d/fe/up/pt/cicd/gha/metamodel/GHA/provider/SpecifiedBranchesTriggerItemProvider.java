@@ -162,6 +162,9 @@ public class SpecifiedBranchesTriggerItemProvider extends TriggerItemProvider {
 				GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
+				GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,

@@ -147,6 +147,9 @@ public class ScheduleTriggerItemProvider extends TriggerItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
 				GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS, GHAFactory.eINSTANCE.createOr()));
 

@@ -147,6 +147,9 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createOr()));
 

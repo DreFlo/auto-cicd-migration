@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class ComparisonImpl extends BinaryOpImpl implements Comparison {
+public class ComparisonImpl extends BinaryOpImpl implements Comparison {
 	/**
 	 * The default value of the '{@link #getOp() <em>Op</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -179,6 +179,9 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
 				GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE, GHAFactory.eINSTANCE.createOr()));
 

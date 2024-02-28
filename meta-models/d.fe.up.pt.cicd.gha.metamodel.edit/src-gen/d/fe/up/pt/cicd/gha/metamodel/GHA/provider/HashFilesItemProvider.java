@@ -147,6 +147,9 @@ public class HashFilesItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createOr()));
 

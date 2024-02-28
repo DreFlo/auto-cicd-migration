@@ -160,6 +160,9 @@ public class SpecifiedPathsTriggerItemProvider extends TriggerItemProvider {
 				GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,

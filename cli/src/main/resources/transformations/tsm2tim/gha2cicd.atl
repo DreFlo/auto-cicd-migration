@@ -11,18 +11,18 @@ rule Workflow2Pipeline {
 		pipeline : CICD!Pipeline (
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
-			jobs <- workflow.workJobs->collect(j | thisModule.ScriptJob2Job(j)),
+			jobs <- workflow.workJobs,
 			workingDirectory <- workflow.defaults.workingDirectory.expression2String()
 		)
 }
 
-lazy rule ScriptJob2Job {
+rule Job2Job {
 	from
-		scriptJob : GHA!Job
+		ghaJob : GHA!Job
 	to
-		job : CICD!Job(
-			id <- scriptJob.name,
-			steps <- scriptJob.steps
+		cicdJob : CICD!Job(
+			id <- ghaJob.name,
+			steps <- ghaJob.steps
 		)
 }
 

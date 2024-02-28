@@ -533,6 +533,29 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Comparison} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComparisonItemProvider comparisonItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Comparison}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComparisonAdapter() {
+		if (comparisonItemProvider == null) {
+			comparisonItemProvider = new ComparisonItemProvider(this);
+		}
+
+		return comparisonItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Or} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1367,6 +1390,8 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 			concatItemProvider.dispose();
 		if (equalityItemProvider != null)
 			equalityItemProvider.dispose();
+		if (comparisonItemProvider != null)
+			comparisonItemProvider.dispose();
 		if (orItemProvider != null)
 			orItemProvider.dispose();
 		if (andItemProvider != null)

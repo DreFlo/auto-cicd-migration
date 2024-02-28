@@ -225,6 +225,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -298,6 +301,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createOr()));
@@ -392,6 +398,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createOr()));
 
@@ -463,6 +472,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR, GHAFactory.eINSTANCE.createOr()));

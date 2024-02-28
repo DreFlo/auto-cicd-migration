@@ -136,6 +136,9 @@ public class UnaryOpItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR, GHAFactory.eINSTANCE.createOr()));
 

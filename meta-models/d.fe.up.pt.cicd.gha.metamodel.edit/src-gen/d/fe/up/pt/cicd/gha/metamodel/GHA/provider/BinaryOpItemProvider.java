@@ -139,6 +139,9 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -209,6 +212,9 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createOr()));

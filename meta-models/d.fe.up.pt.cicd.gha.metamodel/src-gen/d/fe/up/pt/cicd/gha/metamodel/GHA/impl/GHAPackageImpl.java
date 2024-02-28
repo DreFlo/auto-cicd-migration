@@ -3171,7 +3171,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEAttribute(getEquality_Op(), this.getEQUALITY_OPS(), "op", null, 1, 1, Equality.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(comparisonEClass, Comparison.class, "Comparison", IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(comparisonEClass, Comparison.class, "Comparison", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComparison_Op(), this.getCOMPARISON_OPS(), "op", null, 1, 1, Comparison.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

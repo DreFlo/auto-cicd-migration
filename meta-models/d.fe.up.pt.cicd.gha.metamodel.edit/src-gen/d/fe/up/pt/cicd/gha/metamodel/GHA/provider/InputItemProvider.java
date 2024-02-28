@@ -189,6 +189,9 @@ public class InputItemProvider extends ParameterItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createOr()));
 
@@ -260,6 +263,9 @@ public class InputItemProvider extends ParameterItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createOr()));

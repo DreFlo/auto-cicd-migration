@@ -171,6 +171,9 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -241,6 +244,9 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createOr()));

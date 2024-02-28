@@ -10,6 +10,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.COMPARISON_OPS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.CONTEXTS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Cancelled;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Command;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Comparison;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Concat;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
@@ -153,6 +154,8 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 			return createConcat();
 		case GHAPackage.EQUALITY:
 			return createEquality();
+		case GHAPackage.COMPARISON:
+			return createComparison();
 		case GHAPackage.OR:
 			return createOr();
 		case GHAPackage.AND:
@@ -491,6 +494,17 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	public Equality createEquality() {
 		EqualityImpl equality = new EqualityImpl();
 		return equality;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Comparison createComparison() {
+		ComparisonImpl comparison = new ComparisonImpl();
+		return comparison;
 	}
 
 	/**

@@ -155,6 +155,9 @@ public class PackageItemProvider extends StepItemProvider {
 				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -229,6 +232,9 @@ public class PackageItemProvider extends StepItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createOr()));
 
@@ -300,6 +306,9 @@ public class PackageItemProvider extends StepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS, GHAFactory.eINSTANCE.createOr()));

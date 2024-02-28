@@ -180,6 +180,9 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createOr()));
 
@@ -252,6 +255,9 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createAnd()));
@@ -320,6 +326,9 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createOr()));
@@ -393,6 +402,9 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
 				GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR, GHAFactory.eINSTANCE.createOr()));
 
@@ -465,6 +477,9 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -535,6 +550,9 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY, GHAFactory.eINSTANCE.createOr()));

@@ -147,6 +147,9 @@ public class FromJSONItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createOr()));
 

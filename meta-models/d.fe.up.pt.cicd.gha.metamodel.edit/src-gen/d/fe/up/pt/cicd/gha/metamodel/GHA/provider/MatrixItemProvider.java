@@ -173,6 +173,9 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createOr()));
 
@@ -244,6 +247,9 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL, GHAFactory.eINSTANCE.createOr()));

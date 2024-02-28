@@ -168,6 +168,9 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createOr()));
 
@@ -240,6 +243,9 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createOr()));
 
@@ -311,6 +317,9 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createOr()));
@@ -387,6 +396,9 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createOr()));
 
@@ -459,6 +471,9 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createOr()));
 
@@ -530,6 +545,9 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createOr()));

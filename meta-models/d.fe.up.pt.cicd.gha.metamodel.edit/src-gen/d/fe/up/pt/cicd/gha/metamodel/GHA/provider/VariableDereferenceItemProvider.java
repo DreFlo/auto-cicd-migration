@@ -172,6 +172,9 @@ public class VariableDereferenceItemProvider extends ExpressionItemProvider {
 				GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
+				GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
 				GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,

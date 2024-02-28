@@ -150,6 +150,9 @@ public class OutputItemProvider extends ParameterItemProvider {
 				.add(createChildParameter(GHAPackage.Literals.OUTPUT__VALUE, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.OUTPUT__VALUE, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.OUTPUT__VALUE, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors

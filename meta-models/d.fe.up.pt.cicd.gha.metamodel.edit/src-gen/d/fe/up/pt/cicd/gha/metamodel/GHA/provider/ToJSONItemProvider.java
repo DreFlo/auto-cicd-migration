@@ -148,6 +148,9 @@ public class ToJSONItemProvider extends BuiltInFunctionCallItemProvider {
 				.add(createChildParameter(GHAPackage.Literals.TO_JSON__VALUE, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.TO_JSON__VALUE, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.TO_JSON__VALUE, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors

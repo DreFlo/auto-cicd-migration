@@ -149,6 +149,9 @@ public class JoinItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -219,6 +222,9 @@ public class JoinItemProvider extends BuiltInFunctionCallItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createOr()));
 

@@ -175,6 +175,15 @@ public interface GHAFactory extends EFactory {
 	Equality createEquality();
 
 	/**
+	 * Returns a new object of class '<em>Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Comparison</em>'.
+	 * @generated
+	 */
+	Comparison createComparison();
+
+	/**
 	 * Returns a new object of class '<em>Or</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

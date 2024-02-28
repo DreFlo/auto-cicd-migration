@@ -180,6 +180,9 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createOr()));
 

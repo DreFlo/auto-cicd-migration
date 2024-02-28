@@ -192,6 +192,9 @@ public class PullRequestTriggerItemProvider extends EventTypeTriggerItemProvider
 				GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
+				GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
@@ -262,6 +265,9 @@ public class PullRequestTriggerItemProvider extends EventTypeTriggerItemProvider
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createOr()));

@@ -15,7 +15,7 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA;
  * </ul>
  *
  * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getComparison()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface Comparison extends BinaryOp {

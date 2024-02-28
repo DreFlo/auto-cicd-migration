@@ -150,6 +150,9 @@ public class FormatItemProvider extends BuiltInFunctionCallItemProvider {
 				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createEquality()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createComparison()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
@@ -220,6 +223,9 @@ public class FormatItemProvider extends BuiltInFunctionCallItemProvider {
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES, GHAFactory.eINSTANCE.createOr()));

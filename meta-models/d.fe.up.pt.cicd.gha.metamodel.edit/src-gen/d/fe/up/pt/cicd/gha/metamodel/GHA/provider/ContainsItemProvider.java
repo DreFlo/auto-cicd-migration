@@ -149,6 +149,9 @@ public class ContainsItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createOr()));
 
@@ -220,6 +223,9 @@ public class ContainsItemProvider extends BuiltInFunctionCallItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createOr()));

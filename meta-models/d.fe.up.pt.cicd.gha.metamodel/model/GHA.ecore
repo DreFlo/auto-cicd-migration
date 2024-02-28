@@ -174,7 +174,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Equality" eSuperTypes="#//BinaryOp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//EQUALITY_OPS"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Comparison" abstract="true" eSuperTypes="#//BinaryOp">
+  <eClassifiers xsi:type="ecore:EClass" name="Comparison" eSuperTypes="#//BinaryOp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//COMPARISON_OPS"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalOp" abstract="true" eSuperTypes="#//BinaryOp"/>

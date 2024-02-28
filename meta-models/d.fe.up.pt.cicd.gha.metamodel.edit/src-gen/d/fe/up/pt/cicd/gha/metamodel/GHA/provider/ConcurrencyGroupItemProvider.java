@@ -158,6 +158,9 @@ public class ConcurrencyGroupItemProvider extends ItemProviderAdapter implements
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
 				GHAFactory.eINSTANCE.createEquality()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
+				GHAFactory.eINSTANCE.createComparison()));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME, GHAFactory.eINSTANCE.createOr()));
 
@@ -229,6 +232,9 @@ public class ConcurrencyGroupItemProvider extends ItemProviderAdapter implements
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
 				GHAFactory.eINSTANCE.createEquality()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
+				GHAFactory.eINSTANCE.createComparison()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
 				GHAFactory.eINSTANCE.createOr()));

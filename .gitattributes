@@ -1,0 +1,6 @@
+*.emtl          text eol=lf
+*.mtl           text eol=lf
+*.xml           text eol=lf
+*.MF            text eol=lf
+*.atl           text eol=lf
+*.asm           text eol=lf

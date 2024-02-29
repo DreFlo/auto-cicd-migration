@@ -1,11 +1,20 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/Jenkins')]
 
+
 [query public quoteString (string : String) : String = string.replaceAll('^|$', '\'')/]
 
-[query public getStagesSequence(begin : AbstractStage) : Sequence(AbstractStage) = begin->closure(next)->asSequence()->prepend(begin)/]
+[query public getBinaryOperator(binaryOp : BinaryOp) : String =
+	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getBinaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp)', Sequence{binaryOp})
+/]
 
-[template public generateAbstractStage(abstractStage : AbstractStage)]
+[query public getUnaryOperator(unaryOp : UnaryOp) : String =
+	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp)', Sequence{unaryOp})
+/]
+
+
+
+[template public generateAbstractStage(abstractStage : AbstractStage) post (trim())]
 [if (abstractStage.oclIsKindOf(Stage))]
 [generateStage(abstractStage.oclAsType(Stage))/]
 [elseif (abstractStage.oclIsKindOf(Parallel))]
@@ -31,7 +40,7 @@ parallel {
 }
 [/template]
 
-[template public generateAbstractStep(abstractStep : AbstractStep)]
+[template public generateAbstractStep(abstractStep : AbstractStep) post (trim())]
 [if (abstractStep.oclIsKindOf(Step))]
 [generateStep(abstractStep.oclAsType(Step))/]
 [elseif (abstractStep.oclIsKindOf(ConditionalStep))]
@@ -44,12 +53,12 @@ parallel {
 [/template]
 
 [template public generateConditionalStep(conditionalStep : ConditionalStep)]
-if (true) {
+if ([generateExpression(conditionalStep.ifCondition)/]) {
 [for (abstractStep : AbstractStep | conditionalStep.thenRun)]
 	[generateAbstractStep(abstractStep)/]
 [/for]
 }
-[if (conditionalStep.thenRun->notEmpty())]
+[if (conditionalStep.elseRun->notEmpty())]
 else {
 [for (abstractStep : AbstractStep | conditionalStep.elseRun)]
 	[generateAbstractStep(abstractStep)/]
@@ -58,13 +67,48 @@ else {
 [/if]
 [/template]
 
+[template public generateExpression(expression : Expression) post (trim())]
+[if (expression.oclIsKindOf(Variable))]
+[generateVariable(expression.oclAsType(Variable))/]
+[elseif (expression.oclIsKindOf(Literal))]
+[generateLiteral(expression.oclAsType(Literal))/]
+[elseif (expression.oclIsKindOf(BinaryOp))]
+[generateBinaryOp(expression.oclAsType(BinaryOp))/]
+[elseif (expression.oclIsKindOf(UnaryOp))]
+[generateUnaryOp(expression.oclAsType(UnaryOp))/]
+[/if]
+[/template]
+
+[template public generateVariable(variable : Variable)]
+env.[variable.name/]
+[/template]
+
+[template public generateLiteral(literal : Literal)]
+[if (literal.oclIsKindOf(StringLiteral))]
+[quoteString(oclAsType(StringLiteral).value)/]
+[elseif (literal.oclIsKindOf(IntegerLiteral))]
+[oclAsType(IntegerLiteral).value/]
+[elseif (literal.oclIsKindOf(DoubleLiteral))]
+[oclAsType(DoubleLiteral).value/]
+[elseif (literal.oclIsKindOf(BooleanLiteral))]
+[oclAsType(BooleanLiteral).value/]
+[/if]
+[/template]
+
+[template public generateBinaryOp(binaryOp : BinaryOp)]
+[generateExpression(binaryOp.lhs)/] [getBinaryOperator(binaryOp)/] [generateExpression(binaryOp.rhs)/]
+[/template]
+
+[template public generateUnaryOp(unaryOp : UnaryOp)]
+[getUnaryOperator(unaryOp)/] [generateExpression(unaryOp.childExpr)/]
+[/template]
+
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('Jenkinsfile', false, 'UTF-8')]
 pipeline {
-	agent any
 	stages {
-	[for (abstractStage : AbstractStage | getStagesSequence(begin))]
+	[for (abstractStage : AbstractStage | pipeline.stages)]
 		[generateAbstractStage(abstractStage)/]
 	[/for]
 	}

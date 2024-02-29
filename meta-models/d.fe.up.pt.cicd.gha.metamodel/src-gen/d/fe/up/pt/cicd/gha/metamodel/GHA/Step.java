@@ -4,8 +4,6 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA;
 
 import org.eclipse.emf.common.util.EMap;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Step</b></em>'.
@@ -16,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step#getId <em>Id</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step#getContinueOnError <em>Continue On Error</em>}</li>
@@ -29,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Step extends EObject {
+public interface Step extends AbstractStep {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,28 +48,6 @@ public interface Step extends EObject {
 	 * @generated
 	 */
 	void setId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>If Condition</em>' containment reference.
-	 * @see #setIfCondition(Expression)
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getStep_IfCondition()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Expression getIfCondition();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step#getIfCondition <em>If Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>If Condition</em>' containment reference.
-	 * @see #getIfCondition()
-	 * @generated
-	 */
-	void setIfCondition(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.

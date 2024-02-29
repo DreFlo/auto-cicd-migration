@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.util;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -134,6 +135,86 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseExpression(Expression object) {
 			return createExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseLiteral(Literal object) {
+			return createLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseStringLiteral(StringLiteral object) {
+			return createStringLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseIntegerLiteral(IntegerLiteral object) {
+			return createIntegerLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseDoubleLiteral(DoubleLiteral object) {
+			return createDoubleLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseBooleanLiteral(BooleanLiteral object) {
+			return createBooleanLiteralAdapter();
+		}
+
+		@Override
+		public Adapter caseVariable(Variable object) {
+			return createVariableAdapter();
+		}
+
+		@Override
+		public Adapter caseAssignment(Map.Entry<Variable, Expression> object) {
+			return createAssignmentAdapter();
+		}
+
+		@Override
+		public Adapter caseConcat(Concat object) {
+			return createConcatAdapter();
+		}
+
+		@Override
+		public Adapter caseBinaryOp(BinaryOp object) {
+			return createBinaryOpAdapter();
+		}
+
+		@Override
+		public Adapter caseUnaryOp(UnaryOp object) {
+			return createUnaryOpAdapter();
+		}
+
+		@Override
+		public Adapter caseNegation(Negation object) {
+			return createNegationAdapter();
+		}
+
+		@Override
+		public Adapter caseEqualityOp(EqualityOp object) {
+			return createEqualityOpAdapter();
+		}
+
+		@Override
+		public Adapter caseComparisonOp(ComparisonOp object) {
+			return createComparisonOpAdapter();
+		}
+
+		@Override
+		public Adapter caseLogicalOp(LogicalOp object) {
+			return createLogicalOpAdapter();
+		}
+
+		@Override
+		public Adapter caseAnd(And object) {
+			return createAndAdapter();
+		}
+
+		@Override
+		public Adapter caseOr(Or object) {
+			return createOrAdapter();
 		}
 
 		@Override
@@ -348,6 +429,230 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal <em>Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal
+	 * @generated
+	 */
+	public Adapter createLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral <em>String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral
+	 * @generated
+	 */
+	public Adapter createStringLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral <em>Integer Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral
+	 * @generated
+	 */
+	public Adapter createIntegerLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral <em>Double Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral
+	 * @generated
+	 */
+	public Adapter createDoubleLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral <em>Boolean Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral
+	 * @generated
+	 */
+	public Adapter createBooleanLiteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable
+	 * @generated
+	 */
+	public Adapter createVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createAssignmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat <em>Concat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat
+	 * @generated
+	 */
+	public Adapter createConcatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp <em>Binary Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp
+	 * @generated
+	 */
+	public Adapter createBinaryOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp <em>Unary Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp
+	 * @generated
+	 */
+	public Adapter createUnaryOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation <em>Negation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation
+	 * @generated
+	 */
+	public Adapter createNegationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp <em>Equality Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp
+	 * @generated
+	 */
+	public Adapter createEqualityOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp <em>Comparison Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp
+	 * @generated
+	 */
+	public Adapter createComparisonOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp <em>Logical Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp
+	 * @generated
+	 */
+	public Adapter createLogicalOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And <em>And</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And
+	 * @generated
+	 */
+	public Adapter createAndAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or
+	 * @generated
+	 */
+	public Adapter createOrAdapter() {
 		return null;
 	}
 

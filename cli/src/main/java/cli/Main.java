@@ -54,7 +54,7 @@ public class Main {
 
         try {
 			Pipeline pipeline = getInputCompiler("gha").compile(Files.readString(Path.of(args[0])));
-//			getOutputCompiler("jenkins").compile(pipeline);
+			getOutputCompiler("jenkins").compile(pipeline);
 		} catch (SyntaxException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -2,15 +2,12 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Jenkins" nsURI="http://d.fe.up.pt/Jenkins" nsPrefix="Jenkins">
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="begin" lowerBound="1" eType="#//AbstractStage"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
+        upperBound="-1" eType="#//AbstractStage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//AbstractStage"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
   <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="#//AbstractStage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
         upperBound="-1" eType="#//Stage" containment="true"/>
@@ -51,4 +48,60 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" abstract="true" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assignment" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Variable"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Concat" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" lowerBound="1"
+        upperBound="-1" eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" abstract="true" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryOp" abstract="true" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childExpr" lowerBound="1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Negation" eSuperTypes="#//UnaryOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EqualityOp" eSuperTypes="#//BinaryOp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//EQUALITY_OPS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparisonOp" eSuperTypes="#//BinaryOp">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//COMPARISON_OPS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalOp" abstract="true" eSuperTypes="#//BinaryOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//LogicalOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//LogicalOp"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="EQUALITY_OPS">
+    <eLiterals name="EQUALS" literal="=="/>
+    <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="COMPARISON_OPS">
+    <eLiterals name="GT" literal=">"/>
+    <eLiterals name="GTE" value="1" literal=">="/>
+    <eLiterals name="LT" value="2" literal="&lt;"/>
+    <eLiterals name="LTE" value="3" literal="&lt;="/>
+  </eClassifiers>
 </ecore:EPackage>

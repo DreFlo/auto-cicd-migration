@@ -303,6 +303,282 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringLiteralItemProvider stringLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringLiteralAdapter() {
+		if (stringLiteralItemProvider == null) {
+			stringLiteralItemProvider = new StringLiteralItemProvider(this);
+		}
+
+		return stringLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntegerLiteralItemProvider integerLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIntegerLiteralAdapter() {
+		if (integerLiteralItemProvider == null) {
+			integerLiteralItemProvider = new IntegerLiteralItemProvider(this);
+		}
+
+		return integerLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DoubleLiteralItemProvider doubleLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDoubleLiteralAdapter() {
+		if (doubleLiteralItemProvider == null) {
+			doubleLiteralItemProvider = new DoubleLiteralItemProvider(this);
+		}
+
+		return doubleLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BooleanLiteralItemProvider booleanLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBooleanLiteralAdapter() {
+		if (booleanLiteralItemProvider == null) {
+			booleanLiteralItemProvider = new BooleanLiteralItemProvider(this);
+		}
+
+		return booleanLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableItemProvider variableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableAdapter() {
+		if (variableItemProvider == null) {
+			variableItemProvider = new VariableItemProvider(this);
+		}
+
+		return variableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssignmentItemProvider assignmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssignmentAdapter() {
+		if (assignmentItemProvider == null) {
+			assignmentItemProvider = new AssignmentItemProvider(this);
+		}
+
+		return assignmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConcatItemProvider concatItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConcatAdapter() {
+		if (concatItemProvider == null) {
+			concatItemProvider = new ConcatItemProvider(this);
+		}
+
+		return concatItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NegationItemProvider negationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNegationAdapter() {
+		if (negationItemProvider == null) {
+			negationItemProvider = new NegationItemProvider(this);
+		}
+
+		return negationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EqualityOpItemProvider equalityOpItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEqualityOpAdapter() {
+		if (equalityOpItemProvider == null) {
+			equalityOpItemProvider = new EqualityOpItemProvider(this);
+		}
+
+		return equalityOpItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComparisonOpItemProvider comparisonOpItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComparisonOpAdapter() {
+		if (comparisonOpItemProvider == null) {
+			comparisonOpItemProvider = new ComparisonOpItemProvider(this);
+		}
+
+		return comparisonOpItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AndItemProvider andItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAndAdapter() {
+		if (andItemProvider == null) {
+			andItemProvider = new AndItemProvider(this);
+		}
+
+		return andItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrItemProvider orItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrAdapter() {
+		if (orItemProvider == null) {
+			orItemProvider = new OrItemProvider(this);
+		}
+
+		return orItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,6 +703,30 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			dockerContainerItemProvider.dispose();
 		if (expressionItemProvider != null)
 			expressionItemProvider.dispose();
+		if (stringLiteralItemProvider != null)
+			stringLiteralItemProvider.dispose();
+		if (integerLiteralItemProvider != null)
+			integerLiteralItemProvider.dispose();
+		if (doubleLiteralItemProvider != null)
+			doubleLiteralItemProvider.dispose();
+		if (booleanLiteralItemProvider != null)
+			booleanLiteralItemProvider.dispose();
+		if (variableItemProvider != null)
+			variableItemProvider.dispose();
+		if (assignmentItemProvider != null)
+			assignmentItemProvider.dispose();
+		if (concatItemProvider != null)
+			concatItemProvider.dispose();
+		if (negationItemProvider != null)
+			negationItemProvider.dispose();
+		if (equalityOpItemProvider != null)
+			equalityOpItemProvider.dispose();
+		if (comparisonOpItemProvider != null)
+			comparisonOpItemProvider.dispose();
+		if (andItemProvider != null)
+			andItemProvider.dispose();
+		if (orItemProvider != null)
+			orItemProvider.dispose();
 	}
 
 }

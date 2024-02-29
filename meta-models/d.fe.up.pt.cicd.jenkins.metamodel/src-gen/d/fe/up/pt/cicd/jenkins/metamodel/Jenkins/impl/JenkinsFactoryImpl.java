@@ -4,7 +4,9 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -76,8 +78,66 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createDockerContainer();
 		case JenkinsPackage.EXPRESSION:
 			return createExpression();
+		case JenkinsPackage.STRING_LITERAL:
+			return createStringLiteral();
+		case JenkinsPackage.INTEGER_LITERAL:
+			return createIntegerLiteral();
+		case JenkinsPackage.DOUBLE_LITERAL:
+			return createDoubleLiteral();
+		case JenkinsPackage.BOOLEAN_LITERAL:
+			return createBooleanLiteral();
+		case JenkinsPackage.VARIABLE:
+			return createVariable();
+		case JenkinsPackage.ASSIGNMENT:
+			return (EObject) createAssignment();
+		case JenkinsPackage.CONCAT:
+			return createConcat();
+		case JenkinsPackage.NEGATION:
+			return createNegation();
+		case JenkinsPackage.EQUALITY_OP:
+			return createEqualityOp();
+		case JenkinsPackage.COMPARISON_OP:
+			return createComparisonOp();
+		case JenkinsPackage.AND:
+			return createAnd();
+		case JenkinsPackage.OR:
+			return createOr();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+		case JenkinsPackage.EQUALITY_OPS:
+			return createEQUALITY_OPSFromString(eDataType, initialValue);
+		case JenkinsPackage.COMPARISON_OPS:
+			return createCOMPARISON_OPSFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+		case JenkinsPackage.EQUALITY_OPS:
+			return convertEQUALITY_OPSToString(eDataType, instanceValue);
+		case JenkinsPackage.COMPARISON_OPS:
+			return convertCOMPARISON_OPSToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -189,6 +249,181 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public Expression createExpression() {
 		ExpressionImpl expression = new ExpressionImpl();
 		return expression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StringLiteral createStringLiteral() {
+		StringLiteralImpl stringLiteral = new StringLiteralImpl();
+		return stringLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IntegerLiteral createIntegerLiteral() {
+		IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
+		return integerLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DoubleLiteral createDoubleLiteral() {
+		DoubleLiteralImpl doubleLiteral = new DoubleLiteralImpl();
+		return doubleLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BooleanLiteral createBooleanLiteral() {
+		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+		return booleanLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Variable createVariable() {
+		VariableImpl variable = new VariableImpl();
+		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<Variable, Expression> createAssignment() {
+		AssignmentImpl assignment = new AssignmentImpl();
+		return assignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Concat createConcat() {
+		ConcatImpl concat = new ConcatImpl();
+		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Negation createNegation() {
+		NegationImpl negation = new NegationImpl();
+		return negation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EqualityOp createEqualityOp() {
+		EqualityOpImpl equalityOp = new EqualityOpImpl();
+		return equalityOp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ComparisonOp createComparisonOp() {
+		ComparisonOpImpl comparisonOp = new ComparisonOpImpl();
+		return comparisonOp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public And createAnd() {
+		AndImpl and = new AndImpl();
+		return and;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Or createOr() {
+		OrImpl or = new OrImpl();
+		return or;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EQUALITY_OPS createEQUALITY_OPSFromString(EDataType eDataType, String initialValue) {
+		EQUALITY_OPS result = EQUALITY_OPS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEQUALITY_OPSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public COMPARISON_OPS createCOMPARISON_OPSFromString(EDataType eDataType, String initialValue) {
+		COMPARISON_OPS result = COMPARISON_OPS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCOMPARISON_OPSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

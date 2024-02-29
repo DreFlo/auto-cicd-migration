@@ -112,6 +112,105 @@ public interface JenkinsFactory extends EFactory {
 	Expression createExpression();
 
 	/**
+	 * Returns a new object of class '<em>String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Literal</em>'.
+	 * @generated
+	 */
+	StringLiteral createStringLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Integer Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Integer Literal</em>'.
+	 * @generated
+	 */
+	IntegerLiteral createIntegerLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Double Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Double Literal</em>'.
+	 * @generated
+	 */
+	DoubleLiteral createDoubleLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Literal</em>'.
+	 * @generated
+	 */
+	BooleanLiteral createBooleanLiteral();
+
+	/**
+	 * Returns a new object of class '<em>Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
+	Variable createVariable();
+
+	/**
+	 * Returns a new object of class '<em>Concat</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concat</em>'.
+	 * @generated
+	 */
+	Concat createConcat();
+
+	/**
+	 * Returns a new object of class '<em>Negation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Negation</em>'.
+	 * @generated
+	 */
+	Negation createNegation();
+
+	/**
+	 * Returns a new object of class '<em>Equality Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Equality Op</em>'.
+	 * @generated
+	 */
+	EqualityOp createEqualityOp();
+
+	/**
+	 * Returns a new object of class '<em>Comparison Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Comparison Op</em>'.
+	 * @generated
+	 */
+	ComparisonOp createComparisonOp();
+
+	/**
+	 * Returns a new object of class '<em>And</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>And</em>'.
+	 * @generated
+	 */
+	And createAnd();
+
+	/**
+	 * Returns a new object of class '<em>Or</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Or</em>'.
+	 * @generated
+	 */
+	Or createOr();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

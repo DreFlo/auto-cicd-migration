@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.util;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Agent;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Always;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.And;
@@ -27,6 +28,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.FromJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
@@ -734,9 +736,27 @@ public class GHASwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case GHAPackage.ABSTRACT_STEP: {
+			AbstractStep abstractStep = (AbstractStep) theEObject;
+			T result = caseAbstractStep(abstractStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.IF_STEP: {
+			IfStep ifStep = (IfStep) theEObject;
+			T result = caseIfStep(ifStep);
+			if (result == null)
+				result = caseAbstractStep(ifStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case GHAPackage.STEP: {
 			Step step = (Step) theEObject;
 			T result = caseStep(step);
+			if (result == null)
+				result = caseAbstractStep(step);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -747,6 +767,8 @@ public class GHASwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseStep(command);
 			if (result == null)
+				result = caseAbstractStep(command);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -755,6 +777,8 @@ public class GHASwitch<T> extends Switch<T> {
 			T result = casePackage(package_);
 			if (result == null)
 				result = caseStep(package_);
+			if (result == null)
+				result = caseAbstractStep(package_);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1680,6 +1704,36 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMatrixCombination(MatrixCombination object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractStep(AbstractStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>If Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>If Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIfStep(IfStep object) {
 		return null;
 	}
 

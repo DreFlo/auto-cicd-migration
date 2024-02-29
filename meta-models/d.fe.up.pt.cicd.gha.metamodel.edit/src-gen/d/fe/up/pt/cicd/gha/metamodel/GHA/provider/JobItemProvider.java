@@ -546,6 +546,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 				.add(createChildParameter(GHAPackage.Literals.JOB__STRATEGY, GHAFactory.eINSTANCE.createMatrix()));
 
 		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createIfStep()));
+
+		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createCommand()));
 
 		newChildDescriptors

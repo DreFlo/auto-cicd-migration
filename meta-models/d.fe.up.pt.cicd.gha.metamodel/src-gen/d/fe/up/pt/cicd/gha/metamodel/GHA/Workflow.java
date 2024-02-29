@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow#getDefaults <em>Defaults</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow#getConcurrencyGroup <em>Concurrency Group</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow#getWorkJobs <em>Work Jobs</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow#getJobs <em>Jobs</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getWorkflow()
@@ -158,15 +158,15 @@ public interface Workflow extends EObject {
 	void setConcurrencyGroup(ConcurrencyGroup value);
 
 	/**
-	 * Returns the value of the '<em><b>Work Jobs</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Jobs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Work Jobs</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getWorkflow_WorkJobs()
+	 * @return the value of the '<em>Jobs</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getWorkflow_Jobs()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Job> getWorkJobs();
+	EList<Job> getJobs();
 
 } // Workflow

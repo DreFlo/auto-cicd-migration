@@ -6,21 +6,38 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractPipelineExecutionBlock;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -132,6 +149,132 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	private EClass expressionEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass integerLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass doubleLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass booleanLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assignmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass binaryOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unaryOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass negationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass equalityOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass comparisonOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass logicalOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum equalitY_OPSEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum comparisoN_OPSEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -211,7 +354,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Begin() {
+	public EReference getPipeline_Stages() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -243,16 +386,6 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EClass getAbstractStage() {
 		return abstractStageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getAbstractStage_Next() {
-		return (EReference) abstractStageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -521,6 +654,316 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getLiteral() {
+		return literalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringLiteral() {
+		return stringLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringLiteral_Value() {
+		return (EAttribute) stringLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIntegerLiteral() {
+		return integerLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntegerLiteral_Value() {
+		return (EAttribute) integerLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDoubleLiteral() {
+		return doubleLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoubleLiteral_Value() {
+		return (EAttribute) doubleLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBooleanLiteral() {
+		return booleanLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBooleanLiteral_Value() {
+		return (EAttribute) booleanLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariable() {
+		return variableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariable_Name() {
+		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAssignment() {
+		return assignmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAssignment_Key() {
+		return (EReference) assignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAssignment_Value() {
+		return (EReference) assignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConcat() {
+		return concatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcat_Expressions() {
+		return (EReference) concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBinaryOp() {
+		return binaryOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBinaryOp_Lhs() {
+		return (EReference) binaryOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBinaryOp_Rhs() {
+		return (EReference) binaryOpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getUnaryOp() {
+		return unaryOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUnaryOp_ChildExpr() {
+		return (EReference) unaryOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNegation() {
+		return negationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEqualityOp() {
+		return equalityOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEqualityOp_Op() {
+		return (EAttribute) equalityOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getComparisonOp() {
+		return comparisonOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComparisonOp_Op() {
+		return (EAttribute) comparisonOpEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLogicalOp() {
+		return logicalOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAnd() {
+		return andEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOr() {
+		return orEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getEQUALITY_OPS() {
+		return equalitY_OPSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getCOMPARISON_OPS() {
+		return comparisoN_OPSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public JenkinsFactory getJenkinsFactory() {
 		return (JenkinsFactory) getEFactoryInstance();
 	}
@@ -546,13 +989,12 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		// Create classes and their features
 		pipelineEClass = createEClass(PIPELINE);
-		createEReference(pipelineEClass, PIPELINE__BEGIN);
+		createEReference(pipelineEClass, PIPELINE__STAGES);
 		createEReference(pipelineEClass, PIPELINE__AGENT);
 
 		abstractPipelineExecutionBlockEClass = createEClass(ABSTRACT_PIPELINE_EXECUTION_BLOCK);
 
 		abstractStageEClass = createEClass(ABSTRACT_STAGE);
-		createEReference(abstractStageEClass, ABSTRACT_STAGE__NEXT);
 
 		parallelEClass = createEClass(PARALLEL);
 		createEReference(parallelEClass, PARALLEL__STAGES);
@@ -590,6 +1032,55 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEAttribute(dockerContainerEClass, DOCKER_CONTAINER__REGISTRY_CREDENTIALS_ID);
 
 		expressionEClass = createEClass(EXPRESSION);
+
+		literalEClass = createEClass(LITERAL);
+
+		stringLiteralEClass = createEClass(STRING_LITERAL);
+		createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
+
+		integerLiteralEClass = createEClass(INTEGER_LITERAL);
+		createEAttribute(integerLiteralEClass, INTEGER_LITERAL__VALUE);
+
+		doubleLiteralEClass = createEClass(DOUBLE_LITERAL);
+		createEAttribute(doubleLiteralEClass, DOUBLE_LITERAL__VALUE);
+
+		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
+
+		variableEClass = createEClass(VARIABLE);
+		createEAttribute(variableEClass, VARIABLE__NAME);
+
+		assignmentEClass = createEClass(ASSIGNMENT);
+		createEReference(assignmentEClass, ASSIGNMENT__KEY);
+		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
+
+		concatEClass = createEClass(CONCAT);
+		createEReference(concatEClass, CONCAT__EXPRESSIONS);
+
+		binaryOpEClass = createEClass(BINARY_OP);
+		createEReference(binaryOpEClass, BINARY_OP__LHS);
+		createEReference(binaryOpEClass, BINARY_OP__RHS);
+
+		unaryOpEClass = createEClass(UNARY_OP);
+		createEReference(unaryOpEClass, UNARY_OP__CHILD_EXPR);
+
+		negationEClass = createEClass(NEGATION);
+
+		equalityOpEClass = createEClass(EQUALITY_OP);
+		createEAttribute(equalityOpEClass, EQUALITY_OP__OP);
+
+		comparisonOpEClass = createEClass(COMPARISON_OP);
+		createEAttribute(comparisonOpEClass, COMPARISON_OP__OP);
+
+		logicalOpEClass = createEClass(LOGICAL_OP);
+
+		andEClass = createEClass(AND);
+
+		orEClass = createEClass(OR);
+
+		// Create enums
+		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
+		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
 	}
 
 	/**
@@ -630,11 +1121,26 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		noneAgentEClass.getESuperTypes().add(this.getAbstractAgent());
 		anyAgentEClass.getESuperTypes().add(this.getAbstractAgent());
 		optionedAgentEClass.getESuperTypes().add(this.getAbstractAgent());
+		literalEClass.getESuperTypes().add(this.getExpression());
+		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
+		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
+		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
+		variableEClass.getESuperTypes().add(this.getExpression());
+		concatEClass.getESuperTypes().add(this.getExpression());
+		binaryOpEClass.getESuperTypes().add(this.getExpression());
+		unaryOpEClass.getESuperTypes().add(this.getExpression());
+		negationEClass.getESuperTypes().add(this.getUnaryOp());
+		equalityOpEClass.getESuperTypes().add(this.getBinaryOp());
+		comparisonOpEClass.getESuperTypes().add(this.getBinaryOp());
+		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
+		andEClass.getESuperTypes().add(this.getLogicalOp());
+		orEClass.getESuperTypes().add(this.getLogicalOp());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPipeline_Begin(), this.getAbstractStage(), null, "begin", null, 1, 1, Pipeline.class,
+		initEReference(getPipeline_Stages(), this.getAbstractStage(), null, "stages", null, 1, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPipeline_Agent(), this.getAbstractAgent(), null, "agent", null, 1, 1, Pipeline.class,
@@ -646,9 +1152,6 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(abstractStageEClass, AbstractStage.class, "AbstractStage", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAbstractStage_Next(), this.getAbstractStage(), null, "next", null, 0, 1, AbstractStage.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parallelEClass, Parallel.class, "Parallel", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -722,6 +1225,94 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringLiteral.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntegerLiteral_Value(), ecorePackage.getEIntegerObject(), "value", null, 1, 1,
+				IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(doubleLiteralEClass, DoubleLiteral.class, "DoubleLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDoubleLiteral_Value(), ecorePackage.getEDouble(), "value", null, 1, 1, DoubleLiteral.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBooleanObject(), "value", null, 1, 1,
+				BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAssignment_Key(), this.getVariable(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcat_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Concat.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBinaryOp_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getBinaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(unaryOpEClass, UnaryOp.class, "UnaryOp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnaryOp_ChildExpr(), this.getExpression(), null, "childExpr", null, 1, 1, UnaryOp.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(negationEClass, Negation.class, "Negation", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(equalityOpEClass, EqualityOp.class, "EqualityOp", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEqualityOp_Op(), this.getEQUALITY_OPS(), "op", null, 1, 1, EqualityOp.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(comparisonOpEClass, ComparisonOp.class, "ComparisonOp", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getComparisonOp_Op(), this.getCOMPARISON_OPS(), "op", null, 1, 1, ComparisonOp.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(logicalOpEClass, LogicalOp.class, "LogicalOp", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.class, "EQUALITY_OPS");
+		addEEnumLiteral(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.EQUALS);
+		addEEnumLiteral(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.NOT_EQUALS);
+
+		initEEnum(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.class,
+				"COMPARISON_OPS");
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.GT);
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.GTE);
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.LT);
+		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.LTE);
 
 		// Create resource
 		createResource(eNS_URI);

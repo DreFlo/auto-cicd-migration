@@ -409,6 +409,15 @@ public interface GHAFactory extends EFactory {
 	MatrixCombination createMatrixCombination();
 
 	/**
+	 * Returns a new object of class '<em>If Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>If Step</em>'.
+	 * @generated
+	 */
+	IfStep createIfStep();
+
+	/**
 	 * Returns a new object of class '<em>Command</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

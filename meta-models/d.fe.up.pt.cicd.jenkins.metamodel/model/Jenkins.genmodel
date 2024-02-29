@@ -10,14 +10,22 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Jenkins" basePackage="d.fe.up.pt.cicd.jenkins.metamodel" disposableProviderFactory="true"
       ecorePackage="Jenkins.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//EQUALITY_OPS">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//EQUALITY_OPS/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//EQUALITY_OPS/NOT_EQUALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//COMPARISON_OPS">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARISON_OPS/GT"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARISON_OPS/GTE"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARISON_OPS/LT"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARISON_OPS/LTE"/>
+    </genEnums>
     <genClasses ecoreClass="Jenkins.ecore#//Pipeline">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/begin"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/stages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/agent"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractPipelineExecutionBlock"/>
-    <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStage">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//AbstractStage/next"/>
-    </genClasses>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStage"/>
     <genClasses ecoreClass="Jenkins.ecore#//Parallel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Parallel/stages"/>
     </genClasses>
@@ -50,5 +58,45 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//DockerContainer/registryCredentialsId"/>
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//Expression"/>
+    <genClasses ecoreClass="Jenkins.ecore#//Literal"/>
+    <genClasses ecoreClass="Jenkins.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//IntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//DoubleLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Variable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//Assignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Assignment/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Assignment/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//Concat">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Concat/expressions"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//BinaryOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//BinaryOp/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//BinaryOp/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//UnaryOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//UnaryOp/childExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//Negation"/>
+    <genClasses ecoreClass="Jenkins.ecore#//EqualityOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//EqualityOp/op"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//ComparisonOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//ComparisonOp/op"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//LogicalOp"/>
+    <genClasses ecoreClass="Jenkins.ecore#//And"/>
+    <genClasses ecoreClass="Jenkins.ecore#//Or"/>
   </genPackages>
 </genmodel:GenModel>

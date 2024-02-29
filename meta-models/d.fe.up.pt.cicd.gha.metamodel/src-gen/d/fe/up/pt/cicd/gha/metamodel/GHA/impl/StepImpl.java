@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -30,7 +28,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StepImpl#getId <em>Id</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StepImpl#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StepImpl#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StepImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.StepImpl#getContinueOnError <em>Continue On Error</em>}</li>
@@ -41,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class StepImpl extends MinimalEObjectImpl.Container implements Step {
+public abstract class StepImpl extends AbstractStepImpl implements Step {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,16 +58,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getIfCondition() <em>If Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIfCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected Expression ifCondition;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
@@ -172,58 +159,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.STEP__ID, oldId, id));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Expression getIfCondition() {
-		return ifCondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetIfCondition(Expression newIfCondition, NotificationChain msgs) {
-		Expression oldIfCondition = ifCondition;
-		ifCondition = newIfCondition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					GHAPackage.STEP__IF_CONDITION, oldIfCondition, newIfCondition);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setIfCondition(Expression newIfCondition) {
-		if (newIfCondition != ifCondition) {
-			NotificationChain msgs = null;
-			if (ifCondition != null)
-				msgs = ((InternalEObject) ifCondition).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - GHAPackage.STEP__IF_CONDITION, null, msgs);
-			if (newIfCondition != null)
-				msgs = ((InternalEObject) newIfCondition).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - GHAPackage.STEP__IF_CONDITION, null, msgs);
-			msgs = basicSetIfCondition(newIfCondition, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.STEP__IF_CONDITION, newIfCondition,
-					newIfCondition));
 	}
 
 	/**
@@ -506,8 +441,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case GHAPackage.STEP__IF_CONDITION:
-			return basicSetIfCondition(null, msgs);
 		case GHAPackage.STEP__NAME:
 			return basicSetName(null, msgs);
 		case GHAPackage.STEP__TIMEOUT_MINUTES:
@@ -534,8 +467,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 		switch (featureID) {
 		case GHAPackage.STEP__ID:
 			return getId();
-		case GHAPackage.STEP__IF_CONDITION:
-			return getIfCondition();
 		case GHAPackage.STEP__NAME:
 			return getName();
 		case GHAPackage.STEP__TIMEOUT_MINUTES:
@@ -565,9 +496,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 		switch (featureID) {
 		case GHAPackage.STEP__ID:
 			setId((String) newValue);
-			return;
-		case GHAPackage.STEP__IF_CONDITION:
-			setIfCondition((Expression) newValue);
 			return;
 		case GHAPackage.STEP__NAME:
 			setName((Expression) newValue);
@@ -602,9 +530,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 		case GHAPackage.STEP__ID:
 			setId(ID_EDEFAULT);
 			return;
-		case GHAPackage.STEP__IF_CONDITION:
-			setIfCondition((Expression) null);
-			return;
 		case GHAPackage.STEP__NAME:
 			setName((Expression) null);
 			return;
@@ -637,8 +562,6 @@ public abstract class StepImpl extends MinimalEObjectImpl.Container implements S
 		switch (featureID) {
 		case GHAPackage.STEP__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		case GHAPackage.STEP__IF_CONDITION:
-			return ifCondition != null;
 		case GHAPackage.STEP__NAME:
 			return name != null;
 		case GHAPackage.STEP__TIMEOUT_MINUTES:

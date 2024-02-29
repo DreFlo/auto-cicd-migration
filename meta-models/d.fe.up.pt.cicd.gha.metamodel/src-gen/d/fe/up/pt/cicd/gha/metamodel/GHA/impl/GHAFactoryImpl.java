@@ -29,6 +29,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.INPUT_TYPES;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
@@ -206,6 +207,8 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 			return createMatrixAxis();
 		case GHAPackage.MATRIX_COMBINATION:
 			return createMatrixCombination();
+		case GHAPackage.IF_STEP:
+			return createIfStep();
 		case GHAPackage.COMMAND:
 			return createCommand();
 		case GHAPackage.PACKAGE:
@@ -780,6 +783,17 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	public MatrixCombination createMatrixCombination() {
 		MatrixCombinationImpl matrixCombination = new MatrixCombinationImpl();
 		return matrixCombination;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IfStep createIfStep() {
+		IfStepImpl ifStep = new IfStepImpl();
+		return ifStep;
 	}
 
 	/**

@@ -10,12 +10,14 @@ rule Pipeline2Pipeline {
 		cicdPipeline : CICD!Pipeline
 	to
 		jenkinsPipeline : Jenkins!Pipeline(
-			begin <- 
-				if cicdPipeline.jobStreams->size() = 1 then 
-					thisModule.Job2Stage(cicdPipeline.jobStreams->first())
-				else
-					thisModule.JobSequence2Parallel(cicdPipeline.jobStreams)
-				endif
+			stages <- thisModule.groupJobs(cicdPipeline.jobStreams)->collect(
+						jobGroup | if jobGroup->size() = 1 then 
+							thisModule.Job2Stage(jobGroup->first())
+						else
+							thisModule.JobSequence2Parallel(jobGroup)
+						endif
+						)
+				
 		)
 }
 
@@ -28,16 +30,7 @@ lazy rule Job2Stage {
 	to
 		abstractStage : Jenkins!Stage(
 			name <- job.id,
-			steps <- job.steps,
-			next <-
-				if nextJobs->size() = 1 then 
-					thisModule.Job2Stage(nextJobs->first())
-				else if nextJobs->size() > 1 then
-					thisModule.JobSequence2Parallel(nextJobs)
-				else
-					OclUndefined
-				endif
-				endif
+			steps <- job.steps
 		)
 }
 
@@ -49,16 +42,7 @@ lazy rule JobSequence2Parallel {
 	}
 	to
 		abstractStage : Jenkins!Parallel(
-			stages <- jobSequence->collect(job | thisModule.Job2Stage(job)),
-			next <-
-				if nextJobs->size() = 1 then 
-					thisModule.Job2Stage(nextJobs->first())
-				else if nextJobs->size() > 1 then
-					thisModule.JobSequence2Parallel(nextJobs)
-				else
-					OclUndefined
-				endif
-				endif			
+			stages <- jobSequence->collect(job | thisModule.Job2Stage(job))		
 		)
 }
 
@@ -74,6 +58,7 @@ rule ConditionalStep2ConditionalStep extends Step2AsbtractStep {
 		cicdStep : CICD!ConditionalStep
 	to
 		jenkinsStep : Jenkins!ConditionalStep(
+			ifCondition <- cicdStep.ifCondition,
 			thenRun <- cicdStep.thenRun,
 			elseRun <- cicdStep.elseRun
 		)
@@ -95,7 +80,167 @@ rule Command2Step extends NonConditionalStep2Step {
 		)
 }
 
+abstract rule Expression2Expression {
+	from
+		cicdExpression : CICD!Expression
+	to
+		jenkinsExpression : Jenkins!Expression
+}
+
+rule Concat2Concat extends Expression2Expression {
+	from
+		cicdExpression : CICD!Concat
+	to
+		jenkinsExpression : Jenkins!Concat(
+			expressions <- cicdExpression.expressions
+		)
+}
+
+abstract rule BinaryOp2BinaryOp extends Expression2Expression {
+	from
+		cicdExpression : CICD!BinaryOp
+	to
+		jenkinsExpression : Jenkins!BinaryOp(
+			lhs <- cicdExpression.lhs,
+			rhs <- cicdExpression.rhs
+		)
+}
+
+abstract rule UnaryOp2UnaryOp extends Expression2Expression {
+	from
+		cicdExpression : CICD!UnaryOp
+	to
+		jenkinsExpression : Jenkins!UnaryOp(
+			childExpr <- cicdExpression.rhs
+		)
+}
+
+rule Negation2Negation extends UnaryOp2UnaryOp {
+	from
+		cicdExpression : CICD!Negation
+	to
+		jenkinsExpression : Jenkins!Negation
+}
+
+rule ComparisonOp2ComparisonOp extends BinaryOp2BinaryOp {
+	from
+		cicdExpression : CICD!ComparisonOp
+	to
+		jenkinsExpression : Jenkins!ComparisonOp(
+			op <- 
+				if cicdExpression.op = #">" then
+					#">"
+				else if cicdExpression.op = #">=" then
+					#">="
+				else if cicdExpression.op = #"<" then
+					#"<"
+				else
+					#"<="
+				endif
+				endif
+				endif
+		)
+}
+
+rule EqualityOp2EqualityOp extends BinaryOp2BinaryOp {
+	from
+		cicdExpression : CICD!EqualityOp
+	to
+		jenkinsExpression : Jenkins!EqualityOp(
+			op <- 
+				if cicdExpression.op = #"==" then
+					#"=="
+				else
+					#"!="
+				endif
+		)
+}
+
+abstract rule LogicalOp2LogicalOp extends BinaryOp2BinaryOp {
+	from
+		cicdExpression : CICD!LogicalOp
+	to
+		jenkinsExpression : Jenkins!LogicalOp
+}
+
+rule And2And extends LogicalOp2LogicalOp {
+	from
+		cicdExpression : CICD!And
+	to
+		jenkinsExpression : Jenkins!And
+}
+
+rule Or2Or extends LogicalOp2LogicalOp {
+	from
+		cicdExpression : CICD!Or
+	to
+		jenkinsExpression : Jenkins!Or
+}
+
+rule EnvironmentVariable2Variable extends Expression2Expression {
+	from
+		cicdExpression : CICD!EnvironmentVariable
+	to
+		jenkinsExpression : Jenkins!Variable(
+			name <- cicdExpression.name
+		)
+}
+
+abstract rule Literal2Literal extends Expression2Expression {
+	from
+		cicdExpression : CICD!Literal
+	to
+		jenkinsExpression : Jenkins!Literal		
+}
+
+rule StringLiteral2StringLiteral extends Literal2Literal {
+	from
+		cicdExpression : CICD!StringLiteral
+	to
+		jenkinsExpression : Jenkins!StringLiteral(
+			value <- cicdExpression.value
+		)	
+}
+
+rule IntegerLiteral2IntegerLiteral extends Literal2Literal {
+	from
+		cicdExpression : CICD!IntegerLiteral
+	to
+		jenkinsExpression : Jenkins!IntegerLiteral(
+			value <- cicdExpression.value
+		)	
+}
+
+rule DoubleLiteral2DoubleLiteral extends Literal2Literal {
+	from
+		cicdExpression : CICD!DoubleLiteral
+	to
+		jenkinsExpression : Jenkins!DoubleLiteral(
+			value <- cicdExpression.value
+		)	
+}
+
+rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
+	from
+		cicdExpression : CICD!BooleanLiteral
+	to
+		jenkinsExpression : Jenkins!BooleanLiteral(
+			value <- cicdExpression.value
+		)	
+}
+
 helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
 
 helper context CICD!StringLiteral def : expression2String() : String = self.value;
 
+helper def : groupJobs(jobStreams : Sequence(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
+	let next : Sequence(CICD!Job) = 
+		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 
+			acc.append(jobStream.next)
+		).flatten()->asSet()->asSequence()
+	in 
+	if next.isEmpty() then
+		Sequence{jobStreams}
+	else 
+		thisModule.groupJobs(next).prepend(jobStreams)
+	endif;

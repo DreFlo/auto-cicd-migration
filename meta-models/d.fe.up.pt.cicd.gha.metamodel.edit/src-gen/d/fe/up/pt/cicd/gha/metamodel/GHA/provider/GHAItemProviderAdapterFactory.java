@@ -1131,6 +1131,29 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IfStepItemProvider ifStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIfStepAdapter() {
+		if (ifStepItemProvider == null) {
+			ifStepItemProvider = new IfStepItemProvider(this);
+		}
+
+		return ifStepItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Command} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1442,6 +1465,8 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 			matrixAxisItemProvider.dispose();
 		if (matrixCombinationItemProvider != null)
 			matrixCombinationItemProvider.dispose();
+		if (ifStepItemProvider != null)
+			ifStepItemProvider.dispose();
 		if (commandItemProvider != null)
 			commandItemProvider.dispose();
 		if (packageItemProvider != null)

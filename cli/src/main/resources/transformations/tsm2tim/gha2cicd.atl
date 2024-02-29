@@ -11,7 +11,7 @@ rule Workflow2Pipeline {
 		pipeline : CICD!Pipeline (
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
-			jobs <- workflow.workJobs,
+			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
 			workingDirectory <- workflow.defaults.workingDirectory.expression2String()
 		)
 }
@@ -22,18 +22,29 @@ rule Job2Job {
 	to
 		cicdJob : CICD!Job(
 			id <- ghaJob.name,
-			steps <- ghaJob.steps
+			steps <- ghaJob.steps,
+			next <- ghaJob.necessaryFor
 		)
 }
 
 abstract rule AbstractStep2Step {
 	from
-		ghaStep : GHA!Step
+		ghaStep : GHA!AbstractStep
 	to
 		cicdStep : CICD!Step
 }
 
-abstract rule NonIfStep2NonConditionalStep extends AbstractStep2Step {
+rule IfStep2ConditionalStep extends AbstractStep2Step {
+	from
+		ghaStep : GHA!IfStep
+	to
+		cicdStep : CICD!ConditionalStep(
+			ifCondition <- ghaStep.ifCondition,
+			thenRun <- ghaStep.thenRun
+		)
+}
+
+abstract rule Step2NonConditionalStep extends AbstractStep2Step {
 	from
 		ghaStep : GHA!Step
 	to
@@ -44,7 +55,7 @@ abstract rule NonIfStep2NonConditionalStep extends AbstractStep2Step {
 		)
 }
 
-rule Command2Command extends NonIfStep2NonConditionalStep {
+rule Command2Command extends Step2NonConditionalStep {
 	from
 		ghaStep : GHA!Command
 	to
@@ -115,7 +126,7 @@ rule Equality2EqualityOp extends BinaryOp2BinaryOp {
 		ghaExpression : GHA!Equality
 	to
 		cicdExpression : CICD!EqualityOp(
-			op <- ghaExpression.op.EQUALITY_OPS_2_EQUALITY_OPS()
+			op <- ghaExpression.op
 		)
 }
 
@@ -192,6 +203,18 @@ rule Not2Negation extends Expression2Expression {
 		ghaExpression : GHA!Not
 	to
 		cicdExpression : CICD!Negation
+}
+
+rule VariableDereference2Variable extends Expression2Expression {
+	from
+		ghaExpression : GHA!VariableDereference(
+			ghaExpression.variable.oclIsKindOf(GHA!GitHubContext) and
+			ghaExpression.variable.refGetValue('context') = #env
+		)
+	to
+		cicdExpression : CICD!EnvironmentVariable(
+			name <- ghaExpression.property
+		)
 }
 
 -- Helpers

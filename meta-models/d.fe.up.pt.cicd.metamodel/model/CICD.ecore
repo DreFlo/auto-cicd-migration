@@ -22,8 +22,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline" eSuperTypes="#//PipelineBlock">
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
         eType="#//Trigger" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="jobs" ordered="false" upperBound="-1"
-        eType="#//Job" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jobStreams" ordered="false"
+        upperBound="-1" eType="#//Job"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Job" eSuperTypes="#//PipelineBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Agent;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
@@ -12,8 +13,6 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Step;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -242,7 +241,7 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> steps;
+	protected EList<AbstractStep> steps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -880,9 +879,9 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<Step> getSteps() {
+	public EList<AbstractStep> getSteps() {
 		if (steps == null) {
-			steps = new EObjectContainmentEList<Step>(Step.class, this, GHAPackage.JOB__STEPS);
+			steps = new EObjectContainmentEList<AbstractStep>(AbstractStep.class, this, GHAPackage.JOB__STEPS);
 		}
 		return steps;
 	}
@@ -1064,7 +1063,7 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 			return;
 		case GHAPackage.JOB__STEPS:
 			getSteps().clear();
-			getSteps().addAll((Collection<? extends Step>) newValue);
+			getSteps().addAll((Collection<? extends AbstractStep>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

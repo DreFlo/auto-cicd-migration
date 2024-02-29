@@ -285,13 +285,13 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__TRIGGERS = PIPELINE_BLOCK_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Jobs</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Job Streams</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__JOBS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
+	int PIPELINE__JOB_STREAMS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Pipeline</em>' class.
@@ -2953,15 +2953,15 @@ public interface CICDPackage extends EPackage {
 	EReference getPipeline_Triggers();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs <em>Jobs</em>}'.
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams <em>Job Streams</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Jobs</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobs()
+	 * @return the meta object for the reference list '<em>Job Streams</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Pipeline#getJobStreams()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_Jobs();
+	EReference getPipeline_JobStreams();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Job <em>Job</em>}'.
@@ -4389,12 +4389,12 @@ public interface CICDPackage extends EPackage {
 		EReference PIPELINE__TRIGGERS = eINSTANCE.getPipeline_Triggers();
 
 		/**
-		 * The meta object literal for the '<em><b>Jobs</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Job Streams</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__JOBS = eINSTANCE.getPipeline_Jobs();
+		EReference PIPELINE__JOB_STREAMS = eINSTANCE.getPipeline_JobStreams();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl <em>Job</em>}' class.

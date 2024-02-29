@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Agent;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Always;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.And;
@@ -27,6 +28,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAFactory;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
@@ -501,6 +503,20 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass abstractStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ifStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass stepEClass = null;
 
 	/**
@@ -751,7 +767,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflow_WorkJobs() {
+	public EReference getWorkflow_Jobs() {
 		return (EReference) workflowEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -2191,6 +2207,46 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getAbstractStep() {
+		return abstractStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIfStep() {
+		return ifStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIfStep_IfCondition() {
+		return (EReference) ifStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIfStep_ThenRun() {
+		return (EReference) ifStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStep() {
 		return stepEClass;
 	}
@@ -2211,7 +2267,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_IfCondition() {
+	public EReference getStep_Name() {
 		return (EReference) stepEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -2221,7 +2277,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_Name() {
+	public EReference getStep_TimeoutMinutes() {
 		return (EReference) stepEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -2231,7 +2287,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_TimeoutMinutes() {
+	public EReference getStep_ContinueOnError() {
 		return (EReference) stepEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -2241,7 +2297,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_ContinueOnError() {
+	public EReference getStep_Shell() {
 		return (EReference) stepEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -2251,7 +2307,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_Shell() {
+	public EReference getStep_WorkingDirectory() {
 		return (EReference) stepEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -2261,18 +2317,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_WorkingDirectory() {
-		return (EReference) stepEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getStep_EnvironmentVariables() {
-		return (EReference) stepEClass.getEStructuralFeatures().get(7);
+		return (EReference) stepEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -2583,7 +2629,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(workflowEClass, WORKFLOW__DEFAULTS);
 		createEReference(workflowEClass, WORKFLOW__ENVIRONMENT_VARIABLES);
 		createEReference(workflowEClass, WORKFLOW__CONCURRENCY_GROUP);
-		createEReference(workflowEClass, WORKFLOW__WORK_JOBS);
+		createEReference(workflowEClass, WORKFLOW__JOBS);
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__NAME);
@@ -2786,9 +2832,14 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
 		createEReference(matrixCombinationEClass, MATRIX_COMBINATION__ENTRIES);
 
+		abstractStepEClass = createEClass(ABSTRACT_STEP);
+
+		ifStepEClass = createEClass(IF_STEP);
+		createEReference(ifStepEClass, IF_STEP__IF_CONDITION);
+		createEReference(ifStepEClass, IF_STEP__THEN_RUN);
+
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__ID);
-		createEReference(stepEClass, STEP__IF_CONDITION);
 		createEReference(stepEClass, STEP__NAME);
 		createEReference(stepEClass, STEP__TIMEOUT_MINUTES);
 		createEReference(stepEClass, STEP__CONTINUE_ON_ERROR);
@@ -2908,6 +2959,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		variableEClass.getESuperTypes().add(this.getValue());
 		gitHubContextEClass.getESuperTypes().add(this.getValue());
 		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
+		ifStepEClass.getESuperTypes().add(this.getAbstractStep());
+		stepEClass.getESuperTypes().add(this.getAbstractStep());
 		commandEClass.getESuperTypes().add(this.getStep());
 		packageEClass.getESuperTypes().add(this.getStep());
 		inputEClass.getESuperTypes().add(this.getParameter());
@@ -2938,9 +2991,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getWorkflow_ConcurrencyGroup(), this.getConcurrencyGroup(), null, "concurrencyGroup", null, 0, 1,
 				Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_WorkJobs(), this.getJob(), null, "workJobs", null, 1, -1, Workflow.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflow_Jobs(), this.getJob(), null, "jobs", null, 1, -1, Workflow.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Name(), ecorePackage.getEString(), "name", null, 1, 1, Job.class, !IS_TRANSIENT,
@@ -2990,7 +3043,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getJob_Strategy(), this.getMatrix(), null, "strategy", null, 0, 1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 1, -1, Job.class, !IS_TRANSIENT,
+		initEReference(getJob_Steps(), this.getAbstractStep(), null, "steps", null, 1, -1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
@@ -3341,12 +3394,20 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 				MatrixCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(abstractStepEClass, AbstractStep.class, "AbstractStep", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ifStepEClass, IfStep.class, "IfStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIfStep_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, IfStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIfStep_ThenRun(), this.getStep(), null, "thenRun", null, 1, 1, IfStep.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
 		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Id(), ecorePackage.getEString(), "id", null, 0, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, Step.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getStep_Name(), this.getExpression(), null, "name", null, 0, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);

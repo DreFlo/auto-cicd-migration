@@ -148,6 +148,39 @@ public class ConditionalStepItemProvider extends AbstractStepItemProvider {
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				JenkinsFactory.eINSTANCE.createExpression()));
 
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createNegation()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createOr()));
+
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				JenkinsFactory.eINSTANCE.createStep()));
 

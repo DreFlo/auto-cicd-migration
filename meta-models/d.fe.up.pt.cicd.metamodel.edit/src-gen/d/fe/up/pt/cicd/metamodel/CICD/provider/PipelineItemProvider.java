@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -45,8 +46,24 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addJobStreamsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Job Streams feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addJobStreamsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Pipeline_jobStreams_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Pipeline_jobStreams_feature",
+								"_UI_Pipeline_type"),
+						CICDPackage.Literals.PIPELINE__JOB_STREAMS, true, false, true, null, null, null));
 	}
 
 	/**
@@ -62,7 +79,6 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CICDPackage.Literals.PIPELINE__TRIGGERS);
-			childrenFeatures.add(CICDPackage.Literals.PIPELINE__JOBS);
 		}
 		return childrenFeatures;
 	}
@@ -127,7 +143,6 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 
 		switch (notification.getFeatureID(Pipeline.class)) {
 		case CICDPackage.PIPELINE__TRIGGERS:
-		case CICDPackage.PIPELINE__JOBS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -159,9 +174,6 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
 				CICDFactory.eINSTANCE.createWebhookTrigger()));
-
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.PIPELINE__JOBS, CICDFactory.eINSTANCE.createJob()));
 	}
 
 }

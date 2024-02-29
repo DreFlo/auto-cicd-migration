@@ -30,10 +30,10 @@
         <file path="/d.fe.up.pt.cicd.metamodel/plugin.properties"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.metamodel/src"/>
         <file path="/d.fe.up.pt.cicd.jenkins.acceleo/.project"/>
-        <file path="/d.fe.up.pt.cicd.gha.dsl/.antlr-generator-3.2.0-patch.jar"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.gitignore"/>
         <file path="/d.fe.up.pt.cicd.gha.dsl/build.properties"/>
         <file path="/d.fe.up.pt.cicd.gha.dsl/.classpath"/>
+        <file path="/d.fe.up.pt.cicd.gha.dsl/.antlr-generator-3.2.0-patch.jar"/>
         <file path="/d.fe.up.pt.cicd.metamodel/build.properties"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/plugin.properties"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.dsl/src-gen"/>

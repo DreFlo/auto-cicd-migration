@@ -77,7 +77,7 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 			childrenFeatures.add(GHAPackage.Literals.WORKFLOW__DEFAULTS);
 			childrenFeatures.add(GHAPackage.Literals.WORKFLOW__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(GHAPackage.Literals.WORKFLOW__CONCURRENCY_GROUP);
-			childrenFeatures.add(GHAPackage.Literals.WORKFLOW__WORK_JOBS);
+			childrenFeatures.add(GHAPackage.Literals.WORKFLOW__JOBS);
 		}
 		return childrenFeatures;
 	}
@@ -146,7 +146,7 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 		case GHAPackage.WORKFLOW__DEFAULTS:
 		case GHAPackage.WORKFLOW__ENVIRONMENT_VARIABLES:
 		case GHAPackage.WORKFLOW__CONCURRENCY_GROUP:
-		case GHAPackage.WORKFLOW__WORK_JOBS:
+		case GHAPackage.WORKFLOW__JOBS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -351,7 +351,7 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 				GHAFactory.eINSTANCE.createConcurrencyGroup()));
 
 		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__WORK_JOBS, GHAFactory.eINSTANCE.createJob()));
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS, GHAFactory.eINSTANCE.createJob()));
 	}
 
 	/**

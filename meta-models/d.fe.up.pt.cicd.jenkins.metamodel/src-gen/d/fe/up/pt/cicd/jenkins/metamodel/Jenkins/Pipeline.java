@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getBegin <em>Begin</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getStages <em>Stages</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}</li>
  * </ul>
  *
@@ -23,26 +24,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Pipeline extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Begin</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Stages</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Begin</em>' containment reference.
-	 * @see #setBegin(AbstractStage)
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Begin()
+	 * @return the value of the '<em>Stages</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Stages()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	AbstractStage getBegin();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getBegin <em>Begin</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Begin</em>' containment reference.
-	 * @see #getBegin()
-	 * @generated
-	 */
-	void setBegin(AbstractStage value);
+	EList<AbstractStage> getStages();
 
 	/**
 	 * Returns the value of the '<em><b>Agent</b></em>' reference.

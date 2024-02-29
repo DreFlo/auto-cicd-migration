@@ -120,7 +120,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/defaults"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/environmentVariables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/concurrencyGroup"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/workJobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Workflow/jobs"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GHA.ecore#//Job">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Job/name"/>
@@ -305,9 +305,13 @@
     <genClasses ecoreClass="GHA.ecore#//MatrixCombination">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//MatrixCombination/entries"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//AbstractStep"/>
+    <genClasses ecoreClass="GHA.ecore#//IfStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//IfStep/ifCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//IfStep/thenRun"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="GHA.ecore#//Step">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Step/id"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/ifCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/timeoutMinutes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Step/continueOnError"/>

@@ -647,7 +647,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Jobs() {
+	public EReference getPipeline_JobStreams() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1915,7 +1915,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		pipelineEClass = createEClass(PIPELINE);
 		createEReference(pipelineEClass, PIPELINE__TRIGGERS);
-		createEReference(pipelineEClass, PIPELINE__JOBS);
+		createEReference(pipelineEClass, PIPELINE__JOB_STREAMS);
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__ID);
@@ -2192,9 +2192,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Jobs(), this.getJob(), null, "jobs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				!IS_ORDERED);
+		initEReference(getPipeline_JobStreams(), this.getJob(), null, "jobStreams", null, 0, -1, Pipeline.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Id(), ecorePackage.getEString(), "id", null, 1, 1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,

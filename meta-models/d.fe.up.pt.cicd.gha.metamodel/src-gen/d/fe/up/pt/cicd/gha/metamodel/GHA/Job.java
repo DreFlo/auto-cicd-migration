@@ -351,7 +351,7 @@ public interface Job extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Step}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Steps</em>' containment reference list.
@@ -359,6 +359,6 @@ public interface Job extends EObject {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Step> getSteps();
+	EList<AbstractStep> getSteps();
 
 } // Job

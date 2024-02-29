@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.util;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Agent;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Always;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.And;
@@ -27,6 +28,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.FromJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.HashFiles;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.InputTrigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.IntegerLiteral;
@@ -425,6 +427,16 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseMatrixCombination(MatrixCombination object) {
 			return createMatrixCombinationAdapter();
+		}
+
+		@Override
+		public Adapter caseAbstractStep(AbstractStep object) {
+			return createAbstractStepAdapter();
+		}
+
+		@Override
+		public Adapter caseIfStep(IfStep object) {
+			return createIfStepAdapter();
 		}
 
 		@Override
@@ -1304,6 +1316,34 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMatrixCombinationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep <em>Abstract Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep
+	 * @generated
+	 */
+	public Adapter createAbstractStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep <em>If Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.IfStep
+	 * @generated
+	 */
+	public Adapter createIfStepAdapter() {
 		return null;
 	}
 

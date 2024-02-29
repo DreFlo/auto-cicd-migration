@@ -11,20 +11,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -33,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StepItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class StepItemProvider extends AbstractStepItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -88,7 +78,6 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GHAPackage.Literals.STEP__IF_CONDITION);
 			childrenFeatures.add(GHAPackage.Literals.STEP__NAME);
 			childrenFeatures.add(GHAPackage.Literals.STEP__TIMEOUT_MINUTES);
 			childrenFeatures.add(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR);
@@ -150,7 +139,6 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		case GHAPackage.STEP__ID:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case GHAPackage.STEP__IF_CONDITION:
 		case GHAPackage.STEP__NAME:
 		case GHAPackage.STEP__TIMEOUT_MINUTES:
 		case GHAPackage.STEP__CONTINUE_ON_ERROR:
@@ -173,81 +161,6 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createComparison()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createFailure()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION, GHAFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createConcat()));
@@ -635,8 +548,7 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == GHAPackage.Literals.STEP__IF_CONDITION
-				|| childFeature == GHAPackage.Literals.STEP__NAME
+		boolean qualify = childFeature == GHAPackage.Literals.STEP__NAME
 				|| childFeature == GHAPackage.Literals.STEP__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.STEP__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.STEP__SHELL
@@ -647,17 +559,6 @@ public class StepItemProvider extends ItemProviderAdapter implements IEditingDom
 					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return GHAEditPlugin.INSTANCE;
 	}
 
 }

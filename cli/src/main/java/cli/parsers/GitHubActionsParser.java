@@ -71,7 +71,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (yamlMap.value("jobs") != null) {
-			workflow.getWorkJobs().addAll(parseJobs(yamlMap.value("jobs")));
+			workflow.getJobs().addAll(parseJobs(yamlMap.value("jobs")));
 		} else {
 			throw new SyntaxException("Must have jobs");
 		}
@@ -513,10 +513,12 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private Job parseJob(String id, YamlMapping jobMap, Map<String, Job> jobs) throws SyntaxException {
-		Job job = GHAPackage.eINSTANCE.getGHAFactory().createJob();;
+		Job job = GHAPackage.eINSTANCE.getGHAFactory().createJob();
 
 		if (jobMap.value("steps") != null) {
 			job.getSteps().addAll(parseSteps(jobMap.value("steps")));
+		} else {
+			throw new SyntaxException("Must have steps");
 		}
 
 		job.setName(id);
@@ -750,13 +752,13 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return result;
 	}
 
-	private List<Step> parseSteps(YamlNode stepsNode) throws SyntaxException {
-		List<Step> result = new ArrayList<>();
+	private List<AbstractStep> parseSteps(YamlNode stepsNode) throws SyntaxException {
+		List<AbstractStep> result = new ArrayList<>();
 		if (stepsNode.type().equals(Node.SEQUENCE)) {
 			Collection<YamlNode> steps = stepsNode.asSequence().values();
 			for (YamlNode step : steps) {
 				if (step.type().equals(Node.MAPPING)) {
-					result.add(parseStep(step.asMapping()));
+					result.add(parseAbstractStep(step.asMapping()));
 				} else {
 					throw new SyntaxException("Invalid step");
 				}
@@ -767,22 +769,20 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return result;
 	}
 
-//	private AbstractStep parseAbstractStep(YamlMapping stepMap) throws SyntaxException {
-//		AbstractStep step;
-//
-//
-//		if (stepMap.value("if") != null) {
-//			step = GHAPackage.eINSTANCE.getGHAFactory().createIfStep();
-//			BooleanLiteral boolLit = GHAPackage.eINSTANCE.getGHAFactory().createBooleanLiteral();
-//			boolLit.setValue(true);
-//			((IfStep) step).setIfCondition(boolLit);
-//			((IfStep) step).setStep(parseStep(stepMap));
-//		} else {
-//			step = parseStep(stepMap);
-//		}
-//
-//		return step;
-//	}
+	private AbstractStep parseAbstractStep(YamlMapping stepMap) throws SyntaxException {
+		AbstractStep step;
+
+
+		if (stepMap.value("if") != null) {
+			step = GHAPackage.eINSTANCE.getGHAFactory().createIfStep();
+			((IfStep) step).setIfCondition(parseExpression(stepMap.string("if")));
+			((IfStep) step).setThenRun(parseStep(stepMap));
+		} else {
+			step = parseStep(stepMap);
+		}
+
+		return step;
+	}
 
 	private Step parseStep(YamlMapping stepMap) throws SyntaxException {
 		Step step;

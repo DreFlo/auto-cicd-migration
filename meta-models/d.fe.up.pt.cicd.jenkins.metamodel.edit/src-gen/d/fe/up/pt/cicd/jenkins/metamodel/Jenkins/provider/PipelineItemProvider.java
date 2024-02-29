@@ -87,7 +87,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__BEGIN);
+			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__STAGES);
 		}
 		return childrenFeatures;
 	}
@@ -149,7 +149,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Pipeline.class)) {
-		case JenkinsPackage.PIPELINE__BEGIN:
+		case JenkinsPackage.PIPELINE__STAGES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -167,11 +167,11 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__BEGIN,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
 				JenkinsFactory.eINSTANCE.createParallel()));
 
 		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.PIPELINE__BEGIN, JenkinsFactory.eINSTANCE.createStage()));
+				createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES, JenkinsFactory.eINSTANCE.createStage()));
 	}
 
 	/**

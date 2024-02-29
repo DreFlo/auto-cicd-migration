@@ -6,13 +6,17 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getBegin <em>Begin</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getStages <em>Stages</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getAgent <em>Agent</em>}</li>
  * </ul>
  *
@@ -30,14 +34,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeline {
 	/**
-	 * The cached value of the '{@link #getBegin() <em>Begin</em>}' containment reference.
+	 * The cached value of the '{@link #getStages() <em>Stages</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBegin()
+	 * @see #getStages()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractStage begin;
+	protected EList<AbstractStage> stages;
 
 	/**
 	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' reference.
@@ -74,49 +78,12 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @generated
 	 */
 	@Override
-	public AbstractStage getBegin() {
-		return begin;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetBegin(AbstractStage newBegin, NotificationChain msgs) {
-		AbstractStage oldBegin = begin;
-		begin = newBegin;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					JenkinsPackage.PIPELINE__BEGIN, oldBegin, newBegin);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
+	public EList<AbstractStage> getStages() {
+		if (stages == null) {
+			stages = new EObjectContainmentEList<AbstractStage>(AbstractStage.class, this,
+					JenkinsPackage.PIPELINE__STAGES);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setBegin(AbstractStage newBegin) {
-		if (newBegin != begin) {
-			NotificationChain msgs = null;
-			if (begin != null)
-				msgs = ((InternalEObject) begin).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - JenkinsPackage.PIPELINE__BEGIN, null, msgs);
-			if (newBegin != null)
-				msgs = ((InternalEObject) newBegin).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - JenkinsPackage.PIPELINE__BEGIN, null, msgs);
-			msgs = basicSetBegin(newBegin, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.PIPELINE__BEGIN, newBegin, newBegin));
+		return stages;
 	}
 
 	/**
@@ -168,8 +135,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case JenkinsPackage.PIPELINE__BEGIN:
-			return basicSetBegin(null, msgs);
+		case JenkinsPackage.PIPELINE__STAGES:
+			return ((InternalEList<?>) getStages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -182,8 +149,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case JenkinsPackage.PIPELINE__BEGIN:
-			return getBegin();
+		case JenkinsPackage.PIPELINE__STAGES:
+			return getStages();
 		case JenkinsPackage.PIPELINE__AGENT:
 			if (resolve)
 				return getAgent();
@@ -201,8 +168,9 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case JenkinsPackage.PIPELINE__BEGIN:
-			setBegin((AbstractStage) newValue);
+		case JenkinsPackage.PIPELINE__STAGES:
+			getStages().clear();
+			getStages().addAll((Collection<? extends AbstractStage>) newValue);
 			return;
 		case JenkinsPackage.PIPELINE__AGENT:
 			setAgent((AbstractAgent) newValue);
@@ -219,8 +187,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.PIPELINE__BEGIN:
-			setBegin((AbstractStage) null);
+		case JenkinsPackage.PIPELINE__STAGES:
+			getStages().clear();
 			return;
 		case JenkinsPackage.PIPELINE__AGENT:
 			setAgent((AbstractAgent) null);
@@ -237,8 +205,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.PIPELINE__BEGIN:
-			return begin != null;
+		case JenkinsPackage.PIPELINE__STAGES:
+			return stages != null && !stages.isEmpty();
 		case JenkinsPackage.PIPELINE__AGENT:
 			return agent != null;
 		}

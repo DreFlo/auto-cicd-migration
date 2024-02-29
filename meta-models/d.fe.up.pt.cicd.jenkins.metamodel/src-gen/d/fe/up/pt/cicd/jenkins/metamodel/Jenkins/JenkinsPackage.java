@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -67,13 +68,13 @@ public interface JenkinsPackage extends EPackage {
 	int PIPELINE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Begin</b></em>' containment reference.
+	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__BEGIN = 0;
+	int PIPELINE__STAGES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Agent</b></em>' reference.
@@ -141,22 +142,13 @@ public interface JenkinsPackage extends EPackage {
 	int ABSTRACT_STAGE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_STAGE__NEXT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Stage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STAGE_FEATURE_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 1;
+	int ABSTRACT_STAGE_FEATURE_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Abstract Stage</em>' class.
@@ -176,15 +168,6 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	int PARALLEL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Next</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL__NEXT = ABSTRACT_STAGE__NEXT;
 
 	/**
 	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
@@ -222,15 +205,6 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	int STAGE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Next</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAGE__NEXT = ABSTRACT_STAGE__NEXT;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -629,6 +603,690 @@ public interface JenkinsPackage extends EPackage {
 	int EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LiteralImpl <em>Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LiteralImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLiteral()
+	 * @generated
+	 */
+	int LITERAL = 14;
+
+	/**
+	 * The number of structural features of the '<em>Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringLiteralImpl <em>String Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringLiteralImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStringLiteral()
+	 * @generated
+	 */
+	int STRING_LITERAL = 15;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.IntegerLiteralImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getIntegerLiteral()
+	 * @generated
+	 */
+	int INTEGER_LITERAL = 16;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DoubleLiteralImpl <em>Double Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DoubleLiteralImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDoubleLiteral()
+	 * @generated
+	 */
+	int DOUBLE_LITERAL = 17;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Double Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Double Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanLiteralImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBooleanLiteral()
+	 * @generated
+	 */
+	int BOOLEAN_LITERAL = 18;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Boolean Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Boolean Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl <em>Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariable()
+	 * @generated
+	 */
+	int VARIABLE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__NAME = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl <em>Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAssignment()
+	 * @generated
+	 */
+	int ASSIGNMENT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGNMENT__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGNMENT__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGNMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGNMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConcatImpl <em>Concat</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConcatImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConcat()
+	 * @generated
+	 */
+	int CONCAT = 21;
+
+	/**
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Concat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Concat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BinaryOpImpl <em>Binary Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BinaryOpImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBinaryOp()
+	 * @generated
+	 */
+	int BINARY_OP = 22;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP__LHS = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP__RHS = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Binary Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Binary Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UnaryOpImpl <em>Unary Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UnaryOpImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUnaryOp()
+	 * @generated
+	 */
+	int UNARY_OP = 23;
+
+	/**
+	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_OP__CHILD_EXPR = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unary Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_OP_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Unary Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NegationImpl <em>Negation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NegationImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNegation()
+	 * @generated
+	 */
+	int NEGATION = 24;
+
+	/**
+	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEGATION__CHILD_EXPR = UNARY_OP__CHILD_EXPR;
+
+	/**
+	 * The number of structural features of the '<em>Negation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEGATION_FEATURE_COUNT = UNARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Negation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEGATION_OPERATION_COUNT = UNARY_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.EqualityOpImpl <em>Equality Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.EqualityOpImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEqualityOp()
+	 * @generated
+	 */
+	int EQUALITY_OP = 25;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_OP__LHS = BINARY_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_OP__RHS = BINARY_OP__RHS;
+
+	/**
+	 * The feature id for the '<em><b>Op</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_OP__OP = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Equality Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Equality Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ComparisonOpImpl <em>Comparison Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ComparisonOpImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getComparisonOp()
+	 * @generated
+	 */
+	int COMPARISON_OP = 26;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP__LHS = BINARY_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP__RHS = BINARY_OP__RHS;
+
+	/**
+	 * The feature id for the '<em><b>Op</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP__OP = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Comparison Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Comparison Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPARISON_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LogicalOpImpl <em>Logical Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LogicalOpImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLogicalOp()
+	 * @generated
+	 */
+	int LOGICAL_OP = 27;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP__LHS = BINARY_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP__RHS = BINARY_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Logical Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Logical Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AndImpl <em>And</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AndImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnd()
+	 * @generated
+	 */
+	int AND = 28;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__LHS = LOGICAL_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__RHS = LOGICAL_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>And</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_FEATURE_COUNT = LOGICAL_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>And</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_OPERATION_COUNT = LOGICAL_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.OrImpl <em>Or</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.OrImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOr()
+	 * @generated
+	 */
+	int OR = 29;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__LHS = LOGICAL_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__RHS = LOGICAL_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_FEATURE_COUNT = LOGICAL_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_OPERATION_COUNT = LOGICAL_OP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEQUALITY_OPS()
+	 * @generated
+	 */
+	int EQUALITY_OPS = 30;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARISON_OPS()
+	 * @generated
+	 */
+	int COMPARISON_OPS = 31;
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline <em>Pipeline</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -639,15 +1297,15 @@ public interface JenkinsPackage extends EPackage {
 	EClass getPipeline();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getBegin <em>Begin</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getStages <em>Stages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Begin</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getBegin()
+	 * @return the meta object for the containment reference list '<em>Stages</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getStages()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_Begin();
+	EReference getPipeline_Stages();
 
 	/**
 	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}'.
@@ -679,17 +1337,6 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAbstractStage();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getNext <em>Next</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Next</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getNext()
-	 * @see #getAbstractStage()
-	 * @generated
-	 */
-	EReference getAbstractStage_Next();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel <em>Parallel</em>}'.
@@ -967,6 +1614,331 @@ public interface JenkinsPackage extends EPackage {
 	EClass getExpression();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal <em>Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal
+	 * @generated
+	 */
+	EClass getLiteral();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral <em>String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Literal</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral
+	 * @generated
+	 */
+	EClass getStringLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral#getValue()
+	 * @see #getStringLiteral()
+	 * @generated
+	 */
+	EAttribute getStringLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral <em>Integer Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer Literal</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral
+	 * @generated
+	 */
+	EClass getIntegerLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral#getValue()
+	 * @see #getIntegerLiteral()
+	 * @generated
+	 */
+	EAttribute getIntegerLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral <em>Double Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Double Literal</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral
+	 * @generated
+	 */
+	EClass getDoubleLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral#getValue()
+	 * @see #getDoubleLiteral()
+	 * @generated
+	 */
+	EAttribute getDoubleLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral <em>Boolean Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Literal</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral
+	 * @generated
+	 */
+	EClass getBooleanLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral#getValue()
+	 * @see #getBooleanLiteral()
+	 * @generated
+	 */
+	EAttribute getBooleanLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable
+	 * @generated
+	 */
+	EClass getVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable#getName()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EAttribute getVariable_Name();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assignment</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable" keyContainment="true" keyRequired="true"
+	 *        valueType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression" valueContainment="true" valueRequired="true"
+	 * @generated
+	 */
+	EClass getAssignment();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getAssignment()
+	 * @generated
+	 */
+	EReference getAssignment_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getAssignment()
+	 * @generated
+	 */
+	EReference getAssignment_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat <em>Concat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concat</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat
+	 * @generated
+	 */
+	EClass getConcat();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat#getExpressions()
+	 * @see #getConcat()
+	 * @generated
+	 */
+	EReference getConcat_Expressions();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp <em>Binary Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp
+	 * @generated
+	 */
+	EClass getBinaryOp();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp#getLhs <em>Lhs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lhs</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp#getLhs()
+	 * @see #getBinaryOp()
+	 * @generated
+	 */
+	EReference getBinaryOp_Lhs();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp#getRhs <em>Rhs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Rhs</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp#getRhs()
+	 * @see #getBinaryOp()
+	 * @generated
+	 */
+	EReference getBinaryOp_Rhs();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp <em>Unary Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unary Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp
+	 * @generated
+	 */
+	EClass getUnaryOp();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp#getChildExpr <em>Child Expr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Child Expr</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp#getChildExpr()
+	 * @see #getUnaryOp()
+	 * @generated
+	 */
+	EReference getUnaryOp_ChildExpr();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation <em>Negation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Negation</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation
+	 * @generated
+	 */
+	EClass getNegation();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp <em>Equality Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Equality Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp
+	 * @generated
+	 */
+	EClass getEqualityOp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp#getOp <em>Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp#getOp()
+	 * @see #getEqualityOp()
+	 * @generated
+	 */
+	EAttribute getEqualityOp_Op();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp <em>Comparison Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Comparison Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp
+	 * @generated
+	 */
+	EClass getComparisonOp();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp#getOp <em>Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp#getOp()
+	 * @see #getComparisonOp()
+	 * @generated
+	 */
+	EAttribute getComparisonOp_Op();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp <em>Logical Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp
+	 * @generated
+	 */
+	EClass getLogicalOp();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And <em>And</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And
+	 * @generated
+	 */
+	EClass getAnd();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Or</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or
+	 * @generated
+	 */
+	EClass getOr();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>EQUALITY OPS</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS
+	 * @generated
+	 */
+	EEnum getEQUALITY_OPS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS <em>COMPARISON OPS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>COMPARISON OPS</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS
+	 * @generated
+	 */
+	EEnum getCOMPARISON_OPS();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1000,12 +1972,12 @@ public interface JenkinsPackage extends EPackage {
 		EClass PIPELINE = eINSTANCE.getPipeline();
 
 		/**
-		 * The meta object literal for the '<em><b>Begin</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Stages</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__BEGIN = eINSTANCE.getPipeline_Begin();
+		EReference PIPELINE__STAGES = eINSTANCE.getPipeline_Stages();
 
 		/**
 		 * The meta object literal for the '<em><b>Agent</b></em>' reference feature.
@@ -1034,14 +2006,6 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ABSTRACT_STAGE = eINSTANCE.getAbstractStage();
-
-		/**
-		 * The meta object literal for the '<em><b>Next</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_STAGE__NEXT = eINSTANCE.getAbstractStage_Next();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelImpl <em>Parallel</em>}' class.
@@ -1272,6 +2236,290 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LiteralImpl <em>Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LiteralImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLiteral()
+		 * @generated
+		 */
+		EClass LITERAL = eINSTANCE.getLiteral();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringLiteralImpl <em>String Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringLiteralImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStringLiteral()
+		 * @generated
+		 */
+		EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.IntegerLiteralImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getIntegerLiteral()
+		 * @generated
+		 */
+		EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DoubleLiteralImpl <em>Double Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DoubleLiteralImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDoubleLiteral()
+		 * @generated
+		 */
+		EClass DOUBLE_LITERAL = eINSTANCE.getDoubleLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOUBLE_LITERAL__VALUE = eINSTANCE.getDoubleLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanLiteralImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBooleanLiteral()
+		 * @generated
+		 */
+		EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl <em>Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariable()
+		 * @generated
+		 */
+		EClass VARIABLE = eINSTANCE.getVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl <em>Assignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAssignment()
+		 * @generated
+		 */
+		EClass ASSIGNMENT = eINSTANCE.getAssignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSIGNMENT__KEY = eINSTANCE.getAssignment_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASSIGNMENT__VALUE = eINSTANCE.getAssignment_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConcatImpl <em>Concat</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConcatImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConcat()
+		 * @generated
+		 */
+		EClass CONCAT = eINSTANCE.getConcat();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCAT__EXPRESSIONS = eINSTANCE.getConcat_Expressions();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BinaryOpImpl <em>Binary Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BinaryOpImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBinaryOp()
+		 * @generated
+		 */
+		EClass BINARY_OP = eINSTANCE.getBinaryOp();
+
+		/**
+		 * The meta object literal for the '<em><b>Lhs</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINARY_OP__LHS = eINSTANCE.getBinaryOp_Lhs();
+
+		/**
+		 * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINARY_OP__RHS = eINSTANCE.getBinaryOp_Rhs();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UnaryOpImpl <em>Unary Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UnaryOpImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUnaryOp()
+		 * @generated
+		 */
+		EClass UNARY_OP = eINSTANCE.getUnaryOp();
+
+		/**
+		 * The meta object literal for the '<em><b>Child Expr</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNARY_OP__CHILD_EXPR = eINSTANCE.getUnaryOp_ChildExpr();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NegationImpl <em>Negation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NegationImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNegation()
+		 * @generated
+		 */
+		EClass NEGATION = eINSTANCE.getNegation();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.EqualityOpImpl <em>Equality Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.EqualityOpImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEqualityOp()
+		 * @generated
+		 */
+		EClass EQUALITY_OP = eINSTANCE.getEqualityOp();
+
+		/**
+		 * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EQUALITY_OP__OP = eINSTANCE.getEqualityOp_Op();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ComparisonOpImpl <em>Comparison Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ComparisonOpImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getComparisonOp()
+		 * @generated
+		 */
+		EClass COMPARISON_OP = eINSTANCE.getComparisonOp();
+
+		/**
+		 * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPARISON_OP__OP = eINSTANCE.getComparisonOp_Op();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LogicalOpImpl <em>Logical Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LogicalOpImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLogicalOp()
+		 * @generated
+		 */
+		EClass LOGICAL_OP = eINSTANCE.getLogicalOp();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AndImpl <em>And</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AndImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnd()
+		 * @generated
+		 */
+		EClass AND = eINSTANCE.getAnd();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.OrImpl <em>Or</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.OrImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOr()
+		 * @generated
+		 */
+		EClass OR = eINSTANCE.getOr();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEQUALITY_OPS()
+		 * @generated
+		 */
+		EEnum EQUALITY_OPS = eINSTANCE.getEQUALITY_OPS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARISON_OPS()
+		 * @generated
+		 */
+		EEnum COMPARISON_OPS = eINSTANCE.getCOMPARISON_OPS();
 
 	}
 

@@ -46,7 +46,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowImpl#getDefaults <em>Defaults</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowImpl#getConcurrencyGroup <em>Concurrency Group</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowImpl#getWorkJobs <em>Work Jobs</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowImpl#getJobs <em>Jobs</em>}</li>
  * </ul>
  *
  * @generated
@@ -123,14 +123,14 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 	protected ConcurrencyGroup concurrencyGroup;
 
 	/**
-	 * The cached value of the '{@link #getWorkJobs() <em>Work Jobs</em>}' containment reference list.
+	 * The cached value of the '{@link #getJobs() <em>Jobs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWorkJobs()
+	 * @see #getJobs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Job> workJobs;
+	protected EList<Job> jobs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -405,11 +405,11 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 	 * @generated
 	 */
 	@Override
-	public EList<Job> getWorkJobs() {
-		if (workJobs == null) {
-			workJobs = new EObjectContainmentEList<Job>(Job.class, this, GHAPackage.WORKFLOW__WORK_JOBS);
+	public EList<Job> getJobs() {
+		if (jobs == null) {
+			jobs = new EObjectContainmentEList<Job>(Job.class, this, GHAPackage.WORKFLOW__JOBS);
 		}
-		return workJobs;
+		return jobs;
 	}
 
 	/**
@@ -434,8 +434,8 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		case GHAPackage.WORKFLOW__CONCURRENCY_GROUP:
 			return basicSetConcurrencyGroup(null, msgs);
-		case GHAPackage.WORKFLOW__WORK_JOBS:
-			return ((InternalEList<?>) getWorkJobs()).basicRemove(otherEnd, msgs);
+		case GHAPackage.WORKFLOW__JOBS:
+			return ((InternalEList<?>) getJobs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -468,8 +468,8 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 				return getEnvironmentVariables().map();
 		case GHAPackage.WORKFLOW__CONCURRENCY_GROUP:
 			return getConcurrencyGroup();
-		case GHAPackage.WORKFLOW__WORK_JOBS:
-			return getWorkJobs();
+		case GHAPackage.WORKFLOW__JOBS:
+			return getJobs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -505,9 +505,9 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 		case GHAPackage.WORKFLOW__CONCURRENCY_GROUP:
 			setConcurrencyGroup((ConcurrencyGroup) newValue);
 			return;
-		case GHAPackage.WORKFLOW__WORK_JOBS:
-			getWorkJobs().clear();
-			getWorkJobs().addAll((Collection<? extends Job>) newValue);
+		case GHAPackage.WORKFLOW__JOBS:
+			getJobs().clear();
+			getJobs().addAll((Collection<? extends Job>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -542,8 +542,8 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 		case GHAPackage.WORKFLOW__CONCURRENCY_GROUP:
 			setConcurrencyGroup((ConcurrencyGroup) null);
 			return;
-		case GHAPackage.WORKFLOW__WORK_JOBS:
-			getWorkJobs().clear();
+		case GHAPackage.WORKFLOW__JOBS:
+			getJobs().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -571,8 +571,8 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 			return environmentVariables != null && !environmentVariables.isEmpty();
 		case GHAPackage.WORKFLOW__CONCURRENCY_GROUP:
 			return concurrencyGroup != null;
-		case GHAPackage.WORKFLOW__WORK_JOBS:
-			return workJobs != null && !workJobs.isEmpty();
+		case GHAPackage.WORKFLOW__JOBS:
+			return jobs != null && !jobs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

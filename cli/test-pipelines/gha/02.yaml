@@ -34,4 +34,4 @@ jobs:
     needs: my_second_job_b
     steps:
       - run: echo 3
-        if: env.SERVER == 'production'
+        if: ${{env.SERVER == 'production'}}

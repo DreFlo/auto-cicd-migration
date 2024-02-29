@@ -8,5 +8,5 @@ build
 
 .idea
 
-output
+/output
 /intermediate/

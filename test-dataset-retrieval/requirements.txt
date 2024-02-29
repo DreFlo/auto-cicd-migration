@@ -1,4 +1,0 @@
-requests
-pymongo
-pybase64
-futures

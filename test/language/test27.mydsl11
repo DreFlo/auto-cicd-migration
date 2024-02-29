@@ -1,0 +1,39 @@
+---
+- name: Check for latest cert-manager manifest
+  uri:
+    url: https://api.github.com/repos/cert-manager/cert-manager/releases/latest
+    body_format: json
+    return_content: true
+  register: certmanager_latest
+
+- debug:
+    msg: "Latest version of cert-manager is '{{ certmanager_latest.json.tag_name }}'"
+
+- name: "Downloading cert-manager {{ certmanager_latest.json.tag_name }}"
+  loop: "{{ certmanager_latest.json.assets }}"
+  when: "'cert-manager.yaml' in item.name"
+  ansible.builtin.get_url:
+    url: "{{ item.browser_download_url }}"
+    dest: "{{ role_path }}/files/cert-manager.yaml"
+    mode: '0664'
+
+- name: "Deploy cert-manager {{ certmanager_latest.json.tag_name }}"
+  kubernetes.core.k8s:
+    state: present
+    kubeconfig: '{{ KUBECONFIG }}'
+    src: "{{ role_path }}/files/cert-manager.yaml"
+
+- name: Wait for cert-manager pods to be running
+  shell: "kubectl get pods --namespace=cert-manager --output=jsonpath='{.items[*].metadata.name}' --kubeconfig='{{ KUBECONFIG }}'"
+  register: pods_created
+  until: item in pods_created.stdout
+  retries: 10
+  delay: 30
+  with_items:
+    - cert-manager
+  
+- name: Wait for cert-manager pod to become ready
+  shell: "kubectl wait --namespace=cert-manager --for=condition=Ready pods --selector app=cert-manager --timeout=600s --kubeconfig='{{ KUBECONFIG }}'"
+  register: cert_manager_ready
+
+- debug: var=cert_manager_ready.stdout_lines

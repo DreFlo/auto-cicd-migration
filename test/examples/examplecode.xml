@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devops2:Pipeline xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:devops2="http://www.example.org/devops2" Name0="GitLab example1">
+  <when Name4="Push" Trigger="Push"/>
+  <job Name1="install">
+    <step>
+      <command Description="Instal" Parameters="install">
+        <tool href="Yarn.devops2#/"/>
+      </command>
+      <artifact href="Code.devops2#/"/>
+    </step>
+  </job>
+  <job Name1="Test">
+    <step Name2="Test">
+      <command Description="Test" Parameters="test">
+        <tool href="Yarn.devops2#/"/>
+      </command>
+    </step>
+  </job>
+  <job Name1="Build">
+    <step Name2="Build">
+      <command Description="Build" Parameters="build">
+        <tool href="Yarn.devops2#/"/>
+      </command>
+    </step>
+  </job>
+  <job Name1="Deploy">
+    <step>
+      <command Description="Remode add" Parameters="remote add heroku https://heroku:${{ HEROKU_API_KEY }}@git.heroku.com/${{ HEROKU_APP_NAME }}.git">
+        <command_parameter href="HEROKU_API_KEY.devops2#/"/>
+        <command_parameter href="HEROKU_NAME.devops2#/"/>
+        <tool href="Git.devops2#/"/>
+      </command>
+      <command Description="Push" Parameters="push heroku HEAD:master -f">
+        <tool href="Git.devops2#/"/>
+      </command>
+    </step>
+  </job>
+  <pipeline_tool_framework href="Ubuntu.devops2#/"/>
+  <pipeline_tool_framework href="Node.devops2#/"/>
+</devops2:Pipeline>

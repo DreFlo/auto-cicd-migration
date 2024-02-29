@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_on9ywM_REe6l_fqc4UuMSg" selectedViews="_oovO0M_REe6l_fqc4UuMSg _oo9RQM_REe6l_fqc4UuMSg" version="15.0.0.202209061200">
+    <semanticResources>CICD.ecore</semanticResources>
+    <semanticResources>CICD.genmodel</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_oovO0M_REe6l_fqc4UuMSg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_opakQM_REe6l_fqc4UuMSg" name="CICD" repPath="#_opYvEM_REe6l_fqc4UuMSg" changeId="74e0b97b-7346-4d4d-8399-029d0b1dd4d0">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_oo9RQM_REe6l_fqc4UuMSg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_oo_GcM_REe6l_fqc4UuMSg" name="[name + ' package entities'/]" repPath="#_oo94UM_REe6l_fqc4UuMSg" changeId="f87e99ce-a26b-4c4e-8b57-a13198553fca">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_oo94UM_REe6l_fqc4UuMSg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_oo_Gcs_REe6l_fqc4UuMSg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_oo_Gc8_REe6l_fqc4UuMSg" type="Sirius" element="_oo94UM_REe6l_fqc4UuMSg" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_oo_GdM_REe6l_fqc4UuMSg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_oo_tgM_REe6l_fqc4UuMSg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_oo_tgc_REe6l_fqc4UuMSg"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_oo94Uc_REe6l_fqc4UuMSg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_opYvEM_REe6l_fqc4UuMSg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_opakQs_REe6l_fqc4UuMSg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_opakQ8_REe6l_fqc4UuMSg" type="Sirius" element="_opYvEM_REe6l_fqc4UuMSg" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_opakRM_REe6l_fqc4UuMSg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_opgD0M_REe6l_fqc4UuMSg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_opgD0c_REe6l_fqc4UuMSg"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_opZ9MM_REe6l_fqc4UuMSg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
+    <target xmi:type="ecore:EPackage" href="CICD.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

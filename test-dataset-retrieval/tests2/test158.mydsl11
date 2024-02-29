@@ -1,0 +1,167 @@
+name: Run build, test & publish
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  INFURA_API_KEY: ${{ secrets.INFURA_API_KEY }}
+  NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop
+      - main
+      - beta
+      - nightly
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build:
+    if: contains(github.event.pull_request.title, ':tada:') == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-js-workflow
+      - name: Build and check size
+        if: github.event_name == 'pull_request'
+        uses: andresz1/size-limit-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          skip_step: install
+
+      - name: Build
+        if: github.event_name != 'pull_request'
+        run: pnpm build
+
+  test:
+    if: contains(github.event.pull_request.title, ':tada:') == false
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-js-workflow
+      - name: Test
+        run: pnpm test:coverage
+      - uses: codecov/codecov-action@v3
+        with:
+          files: ./internal/helpers/coverage/coverage-final.json,./packages/toolboxes/evm/coverage/coverage-final.json,./packages/swapkit/swapkit-core/coverage/coverage-final.json
+          flags: unittests
+          name: swapkit-codecov
+          fail_ci_if_error: false
+          verbose: true
+
+  lint:
+    if: contains(github.event.pull_request.title, ':tada:') == false
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-js-workflow
+      - name: Lint
+        run: pnpm lint
+
+  publish:
+    if: contains(github.ref_name, 'develop') || contains(github.ref_name, 'main') || contains(github.ref_name, 'nightly') || contains(github.ref_name, 'beta')
+    needs: [build, test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-js-workflow
+      - name: Set job params
+        shell: bash
+        id: deployment-params
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+
+      - name: Copy npmrc config
+        run: cp .npmrc.prod .npmrc
+
+      - name: Change nightly changeset
+        if: contains(github.ref_name, 'nightly')
+        run: |
+          pnpm changeset pre exit
+          pnpm changeset version --snapshot nightly
+
+      - name: Change beta changeset
+        if: contains(github.ref_name, 'beta')
+        run: |
+          echo 'publishName="Beta"' >> $GITHUB_OUTPUT
+          pnpm changeset pre exit
+          pnpm changeset pre enter beta
+
+      - name: Change stable changeset
+        if: contains(github.ref_name, 'main')
+        run: |
+          echo 'publishName="Release"' >> $GITHUB_OUTPUT
+          pnpm changeset pre exit
+
+      - name: Create Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        if: contains(github.ref_name, 'main') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'develop')
+        with:
+          title: ':tada: Publish ${{ steps.deployment-params.outputs.publishName }}'
+          version: pnpm version-bump
+          publish: pnpm publish-packages
+          setupGitUser: false
+
+      - name: Internal Discord Notification
+        if: ${{ steps.changesets.outputs.published == 'true' }}
+        uses: sarisia/actions-status-discord@82409b24a08684f54ea5baa6b376e36dad37fb81
+        with:
+          noprefix: ${{ job.status == 'success' }}
+          avatar_url: https://static.thorswap.net/logo.png
+          color: ${{ contains(github.ref_name, 'main') && '0x00aa00' || '0x3af3f4' }}
+          description: "Internal build ${{ job.status }}: ${{ github.ref_name }}:\n${{ steps.changesets.outputs.publishedPackages }}"
+          status: success
+          url: 'https://github.com/thorswap/swapkit/releases'
+          username: SwapKit - ${{ github.ref_name }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Publish Nightly to npm
+        uses: changesets/action@v1
+        if: contains(github.ref_name, 'nightly')
+        with:
+          title: ':tada: Publish Nightly'
+          version: pnpm version-bump
+          publish: pnpm publish-packages --tag nightly
+          setupGitUser: false
+
+      - name: Revert base changeset
+        if: contains(github.ref_name, 'nightly') || contains(github.ref_name, 'main')
+        run: |
+          pnpm changeset pre enter rc
+
+      - name: Revert changeset beta prelease
+        if: contains(github.ref_name, 'beta')
+        run: |
+          pnpm changeset pre exit
+          pnpm changeset pre enter rc
+
+  deploy-playground:
+    if: contains(github.ref_name, 'develop')
+    needs: [build, test, lint]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-js-workflow
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Build playground
+        run: pnpm build:playground
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './internal/playground/dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

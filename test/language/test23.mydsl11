@@ -1,0 +1,64 @@
+
+
+
+
+name: App CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  
+  
+  build_and_deploy:
+    name: Build and Deploy
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        architecture: [x86, x64]
+        configuration: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Gather environment info
+        run: npx envinfo
+
+      - name: Yarn install
+        run: yarn install
+
+      - name: Build ${{ matrix.architecture }} Debug
+        if: ${{ matrix.configuration == 'Debug' }}
+        run: npx react-native run-windows --no-launch --no-packager --logging --arch ${{ matrix.architecture }}
+
+      - name: Build ${{ matrix.architecture }} Release
+        if: ${{ matrix.configuration == 'Release' }}
+        run: npx react-native run-windows --no-launch --no-packager --logging --release --arch ${{ matrix.architecture }}
+  
+  
+  
+  
+  build:
+    name: Build
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        architecture: [ARM, ARM64]
+        configuration: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Gather environment info
+        run: npx envinfo
+
+      - name: Yarn install
+        run: yarn install
+
+      - name: Build ${{ matrix.architecture }} Debug
+        if: ${{ matrix.configuration == 'Debug' }}
+        run: npx react-native run-windows --no-deploy --no-launch --no-packager --logging --arch ${{ matrix.architecture }}
+
+      - name: Build ${{ matrix.architecture }} Release
+        if: ${{ matrix.configuration == 'Release' }}
+        run: npx react-native run-windows --no-deploy --no-launch --no-packager --logging --release --arch ${{ matrix.architecture }}

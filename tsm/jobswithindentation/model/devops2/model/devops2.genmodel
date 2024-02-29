@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/devops2/src" modelPluginID="devops2" modelName="Devops2"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>devops2.ecore</foreignModel>
+  <genPackages prefix="Devops2" disposableProviderFactory="true" ecorePackage="devops2.ecore#/">
+    <genClasses ecoreClass="devops2.ecore#//Pipeline">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Pipeline/when"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//Pipeline/job"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Pipeline/Name0"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Pipeline/pipeline_tool_framework"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Pipeline/pipeline_envirnonment"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//Job">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Job/Name1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Job/depends"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Job/tool_framework_job"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Job/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//Job/command"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Job/ifthenelse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Job/Allow_faillure"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//Job/input"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Pipeline/pipeline_envirnonment"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//Command">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference devops2.ecore#//Command/tool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Command/Parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//Environment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Environment/Key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Environment/Value"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//When">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//When/Name4"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//When/Trigger"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//When/Timer"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//Artifact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Artifact/Name3"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//Tool_framework">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//Tool_framework/Name5"/>
+    </genClasses>
+    <genClasses ecoreClass="devops2.ecore#//IfThenElse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute devops2.ecore#//IfThenElse/Condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//IfThenElse/if"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//IfThenElse/else"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//IfThenElse/ifelse"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference devops2.ecore#//IfThenElse/elseif"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

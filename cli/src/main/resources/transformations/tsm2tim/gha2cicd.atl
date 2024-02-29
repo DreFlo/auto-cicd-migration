@@ -1,0 +1,269 @@
+-- @path GHA=/d.fe.up.pt.cicd.gha.metamodel/model/GHA.ecore
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module gha2cicd;
+create OUT : CICD from IN : GHA;
+
+rule Workflow2Pipeline {
+	from
+		workflow : GHA!Workflow
+	to
+		pipeline : CICD!Pipeline (
+			name <- workflow.name.expression2String(),
+			environmentVariables <- workflow.environmentVariables,
+			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
+			workingDirectory <- workflow.defaults.workingDirectory.expression2String()
+		)
+}
+
+rule Job2Job {
+	from
+		ghaJob : GHA!Job
+	to
+		cicdJob : CICD!Job(
+			id <- ghaJob.name,
+			steps <- ghaJob.steps,
+			next <- ghaJob.necessaryFor
+		)
+}
+
+abstract rule AbstractStep2Step {
+	from
+		ghaStep : GHA!AbstractStep
+	to
+		cicdStep : CICD!Step
+}
+
+rule IfStep2ConditionalStep extends AbstractStep2Step {
+	from
+		ghaStep : GHA!IfStep
+	to
+		cicdStep : CICD!ConditionalStep(
+			ifCondition <- ghaStep.ifCondition,
+			thenRun <- ghaStep.thenRun
+		)
+}
+
+abstract rule Step2NonConditionalStep extends AbstractStep2Step {
+	from
+		ghaStep : GHA!Step
+	to
+		cicdStep : CICD!NonConditionalStep(
+			id <- ghaStep.id,
+			--timeoutMinutes <- ghaStep.timeoutMinutes.expression2String().stringToInt(),
+			environmentVariables <- ghaStep.environmentVariables
+		)
+}
+
+rule Command2Command extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Command
+	to
+		cicdStep : CICD!Command(
+			program <- ghaStep.command
+		)
+}
+
+rule VariableAssignment2Assigment {
+	from
+		variableAssignment : GHA!VariableAssignment
+	to
+		assignment : CICD!Assignment (
+			key <- variableAssignment.key.string2EnvironmentVariable(),
+			value <- variableAssignment.value
+		)
+}
+
+abstract rule Expression2Expression {
+	from
+		ghaExpression : GHA!Expression
+	to
+		cicdExpression : CICD!Expression
+}
+
+rule Concat2Concat extends Expression2Expression {
+	from
+		ghaExpression : GHA!Concat
+	to
+		cicdExpression : CICD!Concat(
+			expressions <- ghaExpression.expressions	
+		)
+}
+
+abstract rule BinaryOp2BinaryOp extends Expression2Expression {
+	from
+		ghaExpression : GHA!BinaryOp
+	to
+		cicdExpression : CICD!BinaryOp(
+			lhs <- ghaExpression.lhs,
+			rhs <- ghaExpression.rhs
+		)
+}
+
+abstract rule LogicalOp2LogicalOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!LogicalOp
+	to
+		cicdExpression : CICD!LogicalOp
+}
+
+rule And2And extends LogicalOp2LogicalOp {
+	from
+		ghaExpression : GHA!And
+	to
+		cicdExpression : CICD!And
+}
+
+rule Or2Or extends LogicalOp2LogicalOp {
+	from
+		ghaExpression : GHA!Or
+	to
+		cicdExpression : CICD!Or
+}
+
+rule Equality2EqualityOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!Equality
+	to
+		cicdExpression : CICD!EqualityOp(
+			op <- ghaExpression.op
+		)
+}
+
+rule Comparison2ComparisonOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!Comparison
+	to
+		cicdExpression : CICD!ComparisonOp(
+			op <- ghaExpression.op.COMPARISON_OPS_2_COMPARISON_OPS()
+		)
+}
+
+abstract rule Value2Value extends Expression2Expression {
+	from
+		ghaExpression : GHA!Value
+	to
+		cicdExpression : CICD!Value
+}
+
+abstract rule Literal2Literal extends Value2Value {
+	from
+		ghaExpression : GHA!Literal
+	to
+		cicdExpression : CICD!Literal
+}
+
+rule StringLiteral2StringLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!StringLiteral
+	to
+		cicdExpression : CICD!StringLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+rule IntegerLiteral2IntegerLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!IntegerLiteral
+	to
+		cicdExpression : CICD!IntegerLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+rule DoubleLiteral2DoubleLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!DoubleLiteral
+	to
+		cicdExpression : CICD!DoubleLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!BooleanLiteral
+	to
+		cicdExpression : CICD!BooleanLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+abstract rule UnaryOp2UnaryOp extends Expression2Expression {
+	from
+		ghaExpression : GHA!UnaryOp
+	to
+		cicdExpression : CICD!UnaryOp(
+			rhs <- ghaExpression.childExpr
+		)
+}
+
+rule Not2Negation extends Expression2Expression {
+	from
+		ghaExpression : GHA!Not
+	to
+		cicdExpression : CICD!Negation
+}
+
+rule VariableDereference2Variable extends Expression2Expression {
+	from
+		ghaExpression : GHA!VariableDereference(
+			ghaExpression.variable.oclIsKindOf(GHA!GitHubContext) and
+			ghaExpression.variable.refGetValue('context') = #env
+		)
+	to
+		cicdExpression : CICD!EnvironmentVariable(
+			name <- ghaExpression.property
+		)
+}
+
+-- Helpers
+
+helper def : getJobStreamOrigins(jobs : Sequence(GHA!Job)) : Sequence(GHA!Job) = 
+	jobs->select(job | job.dependsOn->isEmpty());
+
+helper context GHA!Expression def : expression2String() : String = 'EXPRESSION';
+
+helper context GHA!Literal def : expression2String() : String = 'LITERAL';
+
+helper context GHA!StringLiteral def : expression2String() : String = self.value;
+
+helper context GHA!IntegerLiteral def : expression2String() : String = self.value.toString();
+
+helper context GHA!DoubleLiteral def : expression2String() : String = self.value.toString();
+
+helper context GHA!BooleanLiteral def : expression2String() : String = self.value.toString();
+
+helper context GHA!Concat def : expression2String() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | expr.expression2String()).toString() in
+		exprStrings->iterate(exprString; joinedString: String = '' |
+			joinedString.concat(exprString)
+		);
+
+helper context String def : string2EnvironmentVariable() : CICD!EnvironmentVariable =
+	let environmentVariable : CICD!EnvironmentVariable = CICD!EnvironmentVariable.newInstance() in
+		environmentVariable.refSetValue('name', self);
+
+helper context String def : string2SecretVariable() : CICD!SecretVariable =
+	let secretVariable : CICD!SecretVariable = CICD!SecretVariable.newInstance() in
+		secretVariable.refSetValue('name', self);
+
+helper context String def : stringToInt() : Integer = Integer.parseInt(self);
+
+helper context GHA!EQUALITY_OPS def : EQUALITY_OPS_2_EQUALITY_OPS() : CICD!EQUALITY_OPS =
+	if self = #EQUALS then #EQUALS else #NOT_EQUALS endif;
+
+helper context GHA!COMPARISON_OPS def : COMPARISON_OPS_2_COMPARISON_OPS() : CICD!COMPARISON_OPS =
+	if self = #GT then 
+		#GT 
+	else if self = #GTE then
+		#GTE
+	else if self = #LT then
+		#LT
+	else
+		#LTE
+	endif
+	endif
+	endif;
+		

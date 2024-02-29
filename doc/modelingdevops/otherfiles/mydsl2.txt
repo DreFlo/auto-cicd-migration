@@ -1,0 +1,85 @@
+grammar org.example.domainmodel.Domainmodel with
+                                      org.eclipse.xtext.common.Terminals
+ 
+generate domainmodel "http://www.example.org/domainmodel/Domainmodel"
+ 
+Domainmodel:
+    (elements+=Element)*;
+ 
+Element:
+   Key | Command | Run | Jobs;
+   
+Key:
+	name=SINGLEKEYWORD":" value=VALUE
+;
+
+
+Run:
+	"- run:" value=VALUE
+;
+
+
+Command:
+	value=VALUE
+;
+
+
+InsideSteps:
+	Run 
+;
+
+InsideJob:
+	Key | Steps
+;
+ 
+
+Names: 
+name=JOBNAME":"
+(BEGIN
+  (namelist+=Names)*
+END)?
+;
+
+Jobs:
+'jobs:'
+(BEGIN
+	 (names=Names)
+END)?
+;
+
+
+Job:
+name=JOBNAME":"
+(BEGIN
+    (insidejob+=InsideJob)*
+END)?
+;
+
+Steps:
+"steps:"(NEWLINE)
+(BEGIN
+    (steps+=InsideSteps)*
+END)?
+;
+
+
+terminal SINGLEKEYWORD: "name" | "run-name" | "on" | "runs-on";
+terminal VALUE: (ALPHANUMERICSPACES)(NEWLINE|EOF);
+
+terminal NEWLINE:
+	('\n'|'\r');
+
+terminal JOBNAME:
+	(ALPHANUMERIC)+
+;
+
+terminal ALPHANUMERIC:
+	(  '$' | '{' | '}' | '0'..'9' | 'A'..'Z' | 'a'..'z')
+;
+
+terminal ALPHANUMERICSPACES:
+	ALPHANUMERIC* (('\t' | ' ')+ ALPHANUMERIC+)*
+;
+
+terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
+terminal END: 'synthetic:END';      // decrease indentation

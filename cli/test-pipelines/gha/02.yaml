@@ -1,0 +1,37 @@
+name: "Workflow"
+
+on:
+  push:
+    tags:
+      - tag
+
+env:
+  SERVER: production
+
+defaults:
+  run:
+    shell: bash
+    working-directory: test-pipelines/gha
+
+jobs:
+  my_first_job_a:
+    steps:
+      - run: echo "Hello World!A"
+  my_first_job_b:
+    steps:
+      - run: echo "Hello World!A"
+  my_second_job_a:
+    needs:
+      - my_first_job_a
+      - my_first_job_b
+    steps:
+      - run: echo 2
+  my_second_job_b:
+    needs: my_first_job_a
+    steps:
+      - run: echo 2
+  my_third_job:
+    needs: my_second_job_b
+    steps:
+      - run: echo 3
+        if: ${{env.SERVER == 'production'}}

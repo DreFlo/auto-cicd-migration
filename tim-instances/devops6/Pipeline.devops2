@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devops2:Pipeline xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:devops2="http://www.example.org/devops2" Name0="Busyboxlatest">
+  <job Name1="before_script">
+    <step>
+      <command Parameters=" &quot;Before script section&quot;">
+        <tool href="Echo.devops2#/"/>
+      </command>
+      <command/>
+      <command/>
+    </step>
+  </job>
+  <job Name1="build1">
+    <step>
+      <command/>
+    </step>
+  </job>
+  <job Name1="test1">
+    <step>
+      <command/>
+      <command/>
+    </step>
+  </job>
+  <job Name1="test2">
+    <step>
+      <command/>
+      <command/>
+    </step>
+  </job>
+  <job Name1="deploy1">
+    <step>
+      <command Parameters="&quot;Do your deploy here&quot;">
+        <command_parameter href="Environment.devops2#/"/>
+        <tool href="Echo.devops2#/"/>
+      </command>
+    </step>
+  </job>
+</devops2:Pipeline>

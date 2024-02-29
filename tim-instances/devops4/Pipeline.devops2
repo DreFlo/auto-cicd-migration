@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devops2:Pipeline xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:devops2="http://www.example.org/devops2">
+  <job Name1="Test">
+    <step>
+      <command Parameters="--version &amp;&amp; cargo --version">
+        <tool href="Rustc.devops2#/"/>
+      </command>
+      <command Parameters="test --workspace --verbose">
+        <tool href="Cargo.devops2#/"/>
+      </command>
+    </step>
+  </job>
+  <job Name1="Deploy">
+    <step>
+      <command Parameters="&quot;Define your deployment script!&quot;">
+        <command_parameter href="Environment.devops2#/"/>
+        <tool href="Echo.devops2#/"/>
+      </command>
+    </step>
+  </job>
+  <pipeline_tool_framework href="Rustlatest.devops2#/"/>
+</devops2:Pipeline>

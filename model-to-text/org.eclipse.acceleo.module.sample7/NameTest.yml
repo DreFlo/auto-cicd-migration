@@ -1,0 +1,62 @@
+NameTest:
+
+env:
+	key : 1111111111111111111
+	aws_password : 11111112222222
+
+
+on: [   push pull ]
+
+jobs:
+	Job1:
+		runs-on: ubuntu-latest
+		
+			if: $envvar
+			steps:
+				- name: long description of files
+				 run: ls  -l 
+			else: 
+			steps:
+				- name: compile code
+				 run: gcc  -o3 
+			
+		
+		steps:
+			- name: Run tests
+			 run: npm  test  2 
+			- name: start
+			 run: invalid 
+		
+		input:
+			test.text
+		
+		
+		with:
+			envtest : dasasdadsa
+		
+	job2:
+		
+		
+		steps:
+		
+		
+		
+		
+	job3:
+		
+		
+		steps:
+		
+		
+		
+		
+	job4:
+		
+		
+		steps:
+		
+		
+		
+		
+
+

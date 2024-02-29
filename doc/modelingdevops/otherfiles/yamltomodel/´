@@ -1,0 +1,21 @@
+import yaml
+import sys
+
+def main():
+    
+    if(len(sys.argv) < 1):
+        print("No file given as input")
+        return
+
+    print(sys.argv[1])
+    f = open(sys.argv[1], "r")
+    print(f)
+    docs = yaml.safe_load_all(f)
+    print(doc)
+    
+
+    print("main")
+
+
+
+main()

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated GHA -->
+      <package
+            uri="http://d.fe.up.pt/GHA"
+            class="d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage"
+            genModel="model/GHA.genmodel"/>
+   </extension>
+
+</plugin>

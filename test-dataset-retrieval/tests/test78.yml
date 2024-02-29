@@ -1,0 +1,119 @@
+name: CI
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+            triplet: x64-windows-release
+          - name: Ubuntu GCC
+            os: ubuntu-latest
+            triplet: x64-linux-release
+          - name: MacOS
+            os: macos-11
+            triplet: x64-osx-release
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+      CMAKE_BUILD_TYPE: "MinSizeRel"
+
+    steps:
+      - name: Setup XCode
+        uses: maxim-lobanov/setup-xcode@v1
+        if: matrix.os == 'macos-11'
+        with:
+          xcode-version: "13.0"
+
+      - uses: actions/checkout@v2
+        name: Checkout
+
+      - uses: lukka/get-cmake@latest
+        name: Get CMake
+
+      - name: Install Deps (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install nasm luarocks
+
+      - name: Use MSVC (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install Deps (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get update && sudo apt-get install nasm libxext-dev libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libegl-dev gperf autoconf-archive luarocks
+
+      - name: Install GCC (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo add-apt-repository ppa:ubuntu-toolchain-r/test && sudo apt-get install g++-10 libstdc++-10-dev && echo "CC=gcc-10" >> $GITHUB_ENV && echo "CXX=g++-10" >> $GITHUB_ENV
+
+      - name: Install Deps (MacOS)
+        if: matrix.os == 'macos-11'
+        run: brew install nasm automake autoconf autoconf-archive luarocks
+
+      - name: Run vcpkg
+        uses: lukka/run-vcpkg@v10
+        with:
+          vcpkgJsonGlob: "**/vcpkg.json"
+          vcpkgDirectory: "${{ github.workspace }}/vcpkg"
+          vcpkgGitCommitId: "5f82fa45df07a446bab57f65479f3d2df797f408"
+          appendedCacheKey: ${{ hashFiles( '**/vcpkg.json' ) }}
+
+      - name: Make build dir
+        run: mkdir build
+
+      - name: Run cmake
+        working-directory: build/
+        run: cmake -GNinja -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET=${{ matrix.triplet }} ..
+
+      - name: Build
+        working-directory: build/
+        run: ninja
+
+      - name: Test
+        run: build/tests/abyss_test
+
+      - name: Package (Windows)
+        if: ${{ matrix.os == 'windows-latest' && github.event_name == 'push' }}
+        working-directory: build/
+        run: cpack -G ZIP -C Debug ./
+
+      - name: Upload Release (Windows)
+        if: ${{ matrix.os == 'windows-latest' && github.event_name == 'push' }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "build/package/abyss-windows.zip"
+          overwrite: true
+          prerelease: true
+          tag: unstable
+          body: "Unstable Release"
+
+      - name: Package (Ubuntu)
+        if: ${{ matrix.os == 'ubuntu-latest' && github.event_name == 'push' }}
+        working-directory: build/
+        run: cpack -G TGZ -C Debug ./
+
+      - name: Package (MacOS)
+        if: ${{ matrix.os == 'macos-11' && github.event_name == 'push' }}
+        working-directory: build/
+        run: cpack -G DragNDrop -C Debug ./
+
+      - name: Upload Release (MacOS)
+        if: ${{ matrix.os == 'macos-11' && github.event_name == 'push' }}
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "build/package/abyss-darwin.dmg"
+          overwrite: true
+          prerelease: true
+          tag: unstable
+          body: "Unstable Release"

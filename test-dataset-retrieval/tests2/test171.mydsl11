@@ -1,0 +1,148 @@
+---
+name: "Build & Test"
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - "main"
+  merge_group:
+    types:
+      - "checks_requested"
+  pull_request:
+    branches:
+      - "*"
+env:
+  GO_VERSION: "~1.20"
+jobs:
+  paths-filter:
+    runs-on: "ubuntu-latest"
+    outputs:
+      codechange: "${{ steps.filter.outputs.codechange }}"
+      graphchange: "${{ steps.graph-filter.outputs.graphchange }}"
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "dorny/paths-filter@v2"
+        id: "filter"
+        with:
+          filters: |
+            codechange:
+              - ".github/workflows/build-test.yaml"
+              - "Dockerfile"
+              - "go.mod"
+              - "go.sum"
+              - "cmd/**"
+              - "pkg/**"
+              - "e2e/**"
+              - "internal/**"
+      - uses: "dorny/paths-filter@v2"
+        id: "graph-filter"
+        with:
+          filters: |
+            graphchange:
+              - "proposed-update-graph.yaml"
+  build:
+    needs: "paths-filter"
+    if: |
+      needs.paths-filter.outputs.codechange == 'true'
+    name: "Build Binary"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+      - uses: "authzed/actions/setup-go@main"
+        with:
+          go-version: "${{ env.GO_VERSION }}"
+      - uses: "authzed/actions/go-build@main"
+
+  image-build:
+    needs: "paths-filter"
+    if: |
+      needs.paths-filter.outputs.codechange == 'true'
+    name: "Build Container Image"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+      - uses: "authzed/actions/setup-go@main"
+        with:
+          go-version: "${{ env.GO_VERSION }}"
+      - uses: "authzed/actions/docker-build@main"
+        with:
+          push: false
+          tags: "authzed/spicedb-operator:ci"
+          buildx: false
+          qemu: false
+
+  unit:
+    needs: "paths-filter"
+    if: |
+      needs.paths-filter.outputs.codechange == 'true'
+    name: "Unit Tests"
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v3"
+        with:
+          submodules: true
+      - uses: "authzed/actions/setup-go@main"
+        with:
+          go-version: "${{ env.GO_VERSION }}"
+      - uses: "docker/setup-qemu-action@v2"
+      - uses: "docker/setup-buildx-action@v2"
+      - name: "Run Unit Tests"
+        uses: "magefile/mage-action@v2"
+        with:
+          version: "latest"
+          args: "test:unit"
+
+  e2e:
+    needs: "paths-filter"
+    if: |
+      needs.paths-filter.outputs.codechange == 'true' ||  needs.paths-filter.outputs.graphchange == 'true'
+    name: "E2E Tests"
+    runs-on: "ubuntu-latest-8-cores"
+    steps:
+      - uses: "actions/checkout@v3"
+        if: |
+          needs.paths-filter.outputs.graphchange == 'true'
+        with:
+          submodules: true
+          token: "${{ secrets.AUTHZED_BOT_PAT }}"
+          repository: "${{ github.event.pull_request.head.repo.full_name }}"
+          ref: "${{ github.event.pull_request.head.ref }}"
+      - uses: "actions/checkout@v3"
+        if: |
+          needs.paths-filter.outputs.graphchange == 'false'
+        with:
+          submodules: true
+      - uses: "authzed/actions/setup-go@main"
+        with:
+          go-version: "${{ env.GO_VERSION }}"
+      - uses: "docker/setup-qemu-action@v2"
+      - uses: "docker/setup-buildx-action@v2"
+      - name: "Run E2E Tests"
+        uses: "magefile/mage-action@v2"
+        with:
+          version: "latest"
+          args: "test:e2e"
+      - name: "Check if validated update graph has changed"
+        if: |
+          needs.paths-filter.outputs.graphchange == 'true'
+        uses: "tj-actions/verify-changed-files@v13"
+        id: "verify-changed-graph"
+        with:
+          files: |
+            validated-update-graph.yaml
+      - name: "Commit validated update graph"
+        uses: "EndBug/add-and-commit@v9"
+        if: |
+          steps.verify-changed-graph.outputs.files_changed == 'true'
+        with:
+          committer_name: "GitHub Actions"
+          committer_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          default_author: "github_actor"
+          message: "update validated graph after successful tests"
+          pathspec_error_handling: "exitImmediately"
+      - uses: "actions/upload-artifact@v2"
+        if: "always()"
+        # this upload step is really flaky, don't fail the job if it fails
+        continue-on-error: true
+        with:
+          name: "cluster-state"
+          path: "e2e/cluster-state"

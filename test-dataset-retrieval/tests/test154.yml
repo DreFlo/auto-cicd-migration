@@ -1,0 +1,201 @@
+name: Test TruffleSqueak
+
+on:
+  push:
+    branches-ignore:
+      - 'experiements/**'
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - gu-catalog.properties
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - gu-catalog.properties
+  workflow_dispatch:
+
+env:
+  VERBOSE_GRAALVM_LAUNCHERS: true
+  MX_GATE_OPTS: '--strict-mode --omit-clean --no-warning-as-error'
+
+jobs:
+  style_and_build_config:
+    name: style and fullbuild
+    timeout-minutes: 15
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Clone TruffleSqueak repository
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    - name: Set up dependencies
+      run: |
+        # Download Eclipse SDK
+        eclipse_tar_path="${RUNNER_TEMP}/eclipse.tar.gz"
+        wget --no-verbose https://archive.eclipse.org/eclipse/downloads/drops4/R-4.26-202211231800/eclipse-SDK-4.26-linux-gtk-x86_64.tar.gz -O ${eclipse_tar_path}
+        tar -xzf ${eclipse_tar_path} -C ${RUNNER_TEMP}
+        echo "ECLIPSE_EXE=${RUNNER_TEMP}/eclipse/eclipse" >> "${GITHUB_ENV}" # required by mx
+        # Set up mx, oracle/graal, and LabsJDK21
+        mx.trufflesqueak/utils.sh "set-up-mx && shallow-clone-graal && set-up-labsjdk labsjdk-ce-21 ~/"
+        # Set up style dependencies
+        sudo apt update && sudo apt install python3-pip python-setuptools
+        jq -r '.pip | to_entries[] | .key+.value' ../graal/common.json | xargs sudo pip install
+    - name: Check style and perform full build
+      run: mx gate ${{ env.MX_GATE_OPTS }} --tags style,fullbuild
+
+  build-jar:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-20.04-aarch64, macos-11, windows-2022]
+        java: [21]
+    env:
+      RUN_WITH_COVERAGE: "${{ matrix.os == 'ubuntu-20.04' }}"
+      MX_ENV: "trufflesqueak-jar"
+      
+    name: jar ${{ matrix.os }} + JDK${{ matrix.java }}
+    timeout-minutes: 60
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Clone TruffleSqueak repository
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    - name: Set up dependencies
+      shell: bash
+      run: mx.trufflesqueak/utils.sh set-up-dependencies java${{ matrix.java }} jar
+    - name: Build GraalVM with TruffleSqueak
+      run: mx.trufflesqueak/utils.sh build-graalvm ${{ matrix.java }}
+      if: ${{ runner.os != 'Windows' }}
+    - name: Build GraalVM with TruffleSqueak via cmd.exe
+      shell: cmd
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        call mx --env ${{ env.MX_ENV }} --no-download-progress build --dependencies GRAALVM_TRUFFLESQUEAK_JAR_JAVA${{ matrix.java }}
+        call mx --env ${{ env.MX_ENV }} graalvm-home > graalvm-home-with-forward-slashes.txt
+        set /p GRAALVM_HOME=<graalvm-home-with-forward-slashes.txt
+        setlocal enabledelayedexpansion
+        set "GRAALVM_HOME=%GRAALVM_HOME:/=\%"
+        echo %GRAALVM_HOME%\bin>>%GITHUB_PATH%
+        echo GRAALVM_HOME=%GRAALVM_HOME%>>%GITHUB_ENV%
+        echo [%GRAALVM_HOME% set as $GRAALVM_HOME]
+      if: ${{ runner.os == 'Windows' }}
+    - name: Run SystemReporter on TruffleSqueak
+      run: 'trufflesqueak --code "(String streamContents: [:s | SystemReporter basicNew reportImage: s; reportVM: s; reportVMParameters: s]) withUnixLineEndings" images/test-64bit.image'
+    - name: Clone Graal.js repository
+      shell: bash
+      run: mx.trufflesqueak/utils.sh shallow-clone-graaljs
+    - name: Run gate with Graal compiler and Graal.js
+      run: mx --disable-polyglot --dy /compiler,/graal-js gate ${{ env.MX_GATE_OPTS }} --tags build,test
+      if: ${{ runner.os != 'Windows' && env.RUN_WITH_COVERAGE != 'true' }}
+    - name: Run gate with Graal.js and code coverage # do not use Graal compiler with JaCoCo code coverage
+      run: mx --disable-polyglot --dy /graal-js gate ${{ env.MX_GATE_OPTS }} --tags build,test --jacocout coverage
+      if: ${{ runner.os != 'Windows' && env.RUN_WITH_COVERAGE == 'true' }}
+    - name: Run gate with Graal compiler and Graal.js via cmd.exe
+      shell: cmd
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        mx --disable-polyglot --dy /compiler,/graal-js gate ${{ env.MX_GATE_OPTS }} --tags build,test
+      if: ${{ runner.os == 'Windows' }}
+    - name: Report code coverage
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      run: |
+        bash <(curl -s https://codecov.io/bash)
+        bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r jacoco.xml
+      if: ${{ env.RUN_WITH_COVERAGE == 'true' && job.status == 'success' }}
+    - name: Zip Graal compiler dumps
+      shell: bash
+      run: "[[ -d graal_dumps ]] && zip -r graal_dumps.zip graal_dumps || true"
+    - name: Upload Graal compiler dumps
+      uses: actions/upload-artifact@v3
+      with:
+        name: graal_dumps
+        path: graal_dumps.zip
+        if-no-files-found: ignore
+        retention-days: 5
+
+  build-standalone:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-20.04-aarch64, windows-2022, macos-11]
+        type: [native, jvm]
+    env:
+      JAVA_VERSION: "21"
+      MX_ENV: "trufflesqueak-${{ matrix.type }}"
+      VERBOSE_GRAALVM_LAUNCHERS: true
+    name: ${{ matrix.type }} ${{ matrix.os }}
+    timeout-minutes: 60
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Clone TruffleSqueak repository
+      uses: actions/checkout@v3
+    - name: Set up Oracle GraalVM
+      uses: graalvm/setup-graalvm@v1
+      with:
+        java-version: ${{ env.JAVA_VERSION }}
+        distribution: 'graalvm'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+      if: ${{ matrix.type == 'native' }}
+    - name: Enable Oracle GraalVM
+      shell: bash
+      run: |
+        echo "EXTRA_GRAALVM_HOME=$JAVA_HOME" >> $GITHUB_ENV
+        cat "${JAVA_HOME}/LICENSE.txt" > "${GITHUB_WORKSPACE}/LICENSE"
+      if: ${{ matrix.type == 'native' }}
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+    - name: Set up dependencies
+      shell: bash
+      run: mx.trufflesqueak/utils.sh set-up-dependencies java${{ env.JAVA_VERSION }} ${{ matrix.type }}
+    - name: Build TruffleSqueak standalone
+      run: mx.trufflesqueak/utils.sh build-standalone ${{ matrix.type }} ${{ env.JAVA_VERSION }}
+      if: ${{ runner.os != 'Windows' }}
+    - name: Build TruffleSqueak standalone via cmd.exe
+      shell: cmd
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+        if ${{ matrix.type }}==native (set "DEPENDENCY_NAME=SMALLTALK_NATIVE_STANDALONE_SVM_JAVA${{ env.JAVA_VERSION }}") else (set "DEPENDENCY_NAME=SMALLTALK_JAVA_STANDALONE_SVM_JAVA${{ env.JAVA_VERSION }}") 
+        call mx --env ${{ env.MX_ENV }} --no-download-progress build --dependencies %DEPENDENCY_NAME%
+        call mx --env ${{ env.MX_ENV }} standalone-home --type ${{ matrix.type }} smalltalk > standalone-home-with-forward-slashes.txt
+        set /p STANDALONE_HOME=<standalone-home-with-forward-slashes.txt
+        setlocal enabledelayedexpansion
+        set "STANDALONE_HOME=%STANDALONE_HOME:/=\%"
+        echo %STANDALONE_HOME%\bin>>%GITHUB_PATH%
+        echo [%STANDALONE_HOME%\bin added to $PATH]
+        call mx --env ${{ env.MX_ENV }} paths %DEPENDENCY_NAME% > standalone-path-with-forward-slashes.txt
+        set /p STANDALONE_PATH=<standalone-path-with-forward-slashes.txt
+        setlocal enabledelayedexpansion
+        set "STANDALONE_PATH=%STANDALONE_PATH:/=\%"
+        copy %STANDALONE_PATH% ${{ env.STANDALONE_TARGET }}
+      if: ${{ runner.os == 'Windows' }}
+    - name: Run SystemReporter on TruffleSqueak standalone
+      run: 'trufflesqueak --code "(String streamContents: [:s | SystemReporter basicNew reportImage: s; reportVM: s; reportVMParameters: s]) withUnixLineEndings" images/test-64bit.image'
+    - name: Upload TruffleSqueak standalone
+      uses: actions/upload-artifact@v3
+      with:
+        name: trufflesqueak-${{ matrix.type }}-${{ matrix.os }}
+        path: ${{ env.STANDALONE_TARGET }}
+        retention-days: 7
+    - name: Deploy TruffleSqueak standalone
+      shell: bash
+      run: mx.trufflesqueak/utils.sh deploy-asset ${{ env.STANDALONE_TARGET }} ${{ secrets.GITHUB_TOKEN }}
+      # GraalVM Native Image does not support AWT on macOS yet (https://github.com/oracle/graal/issues/4921)
+      if: ${{ matrix.type == 'jvm' || runner.os != 'macOS' }}
+    - name: Run Cuis-Smalltalk tests on TruffleSqueak standalone
+      run: |
+        mx.trufflesqueak/utils.sh download-cuis-test-image
+        trufflesqueak --vm.ea --vm.esa --headless --experimental-options --smalltalk.resource-summary=true --compiler.TreatPerformanceWarningsAsErrors=call,instanceof,store,trivial --engine.CompilationFailureAction=ExitVM --engine.CompilationStatistics images/Cuis6.0-????.image -s src/de.hpi.swa.trufflesqueak.test/src/de/hpi/swa/trufflesqueak/test/runCuisTests.st
+      if: ${{ matrix.os == 'ubuntu-20.04' }}

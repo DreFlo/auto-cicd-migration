@@ -1,0 +1,52 @@
+name: Changelog contribution
+on:
+  workflow_dispatch:
+    inputs:
+      log:
+        description: 'Contributed log'
+        required: true
+      small_title:
+        description: 'Small title'
+        required: true
+      reporter:
+        description: 'Who contributed?'
+        required: true
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.0.2
+      - name: Generate branch id
+        id: branch_id
+        run: echo "id=$(date +'%Y-%m-%d-%H%M%S')" >> $GITHUB_OUTPUT
+      - name: Generate folder date
+        id: folder_date
+        run: echo "folder_date=$(date +'%B%Y' | tr A-Z a-z)" >> $GITHUB_OUTPUT
+      - name: Generate today date
+        id: current_date
+        run: echo "current_date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Create MDX file
+        run: |
+          mkdir -p ./changelog/${{ steps.folder_date.outputs.folder_date }}
+          cat <<< "${{ github.event.inputs.log }}" > ./changelog/${{ steps.folder_date.outputs.folder_date }}/${{ steps.current_date.outputs.current_date }}-${{ github.event.inputs.small_title }}.mdx
+      - name: Create pull request towards the main branch
+        uses: peter-evans/create-pull-request@v4.1.1
+        with:
+          token: ${{ secrets.CHANGELOG_CONTRIBUTION_TOKEN }}
+          commit-message: 'feat(changelog): add new entry'
+          committer: Github <noreply@github.com>
+          title: 'feat(changelog): ${{ github.event.inputs.small_title }} ${{ steps.current_date.outputs.current_date }}'
+          body: |
+            Reporter: ${{ github.event.inputs.reporter }}
+
+            This PR is a new changelog contribution. It has been created automatically.
+
+            Make sure to review it carefully before merging it.
+          branch: docs/changelog/${{ steps.branch_id.outputs.id }}
+          delete-branch: true
+          reviewers: bene2k1, nerda-codes, ldecarvalho-doc, RoRoJ, SamyOubouaziz
+          labels: |
+            type: changelog
+          author: Changelog bot <changelog-bot@users.noreply.github.com>

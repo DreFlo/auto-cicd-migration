@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Jenkins -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.presentation.JenkinsModelWizardID"
+            name="%_UI_JenkinsModelWizard_label"
+            class="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.presentation.JenkinsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/JenkinsModelFile.gif">
+         <description>%_UI_JenkinsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Jenkins -->
+      <editor
+            id="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.presentation.JenkinsEditorID"
+            name="%_UI_JenkinsEditor_label"
+            icon="icons/full/obj16/JenkinsModelFile.gif"
+            extensions="jenkins"
+            class="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.presentation.JenkinsEditor"
+            contributorClass="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.presentation.JenkinsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

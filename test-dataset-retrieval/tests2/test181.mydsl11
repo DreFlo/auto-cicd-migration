@@ -1,0 +1,97 @@
+#
+# This workflow builds the debug versions on all platforms and runs tests.
+# Unity builds are only built/tested if the CPP jobs succeed.
+#
+name: build_and_test
+on:
+  # Only trigger manually
+  workflow_dispatch:
+env:
+  BUILD_SCRIPT: "sdk/build/build_cmake_project.py"
+  CPP_SDK_REPO_PATH: "sdk/cpp"
+  UNITY_SDK_REPO_PATH: "sdk/unity"
+  PYTHON_VERSION: 3.7
+  TEST_OPTIONS: >
+    --cmake_configure_args="-DFALKEN_ENABLE_CPP_UNIT_TESTS=ON"
+    --cmake_configure_args="-DFALKEN_ENABLE_CPP_SERVICE_TESTS=OFF"
+    --cmake_configure_args="-DFALKEN_CPP_SDK_BUILD_TESTAPP=OFF"
+    --cmake_configure_args="-DFALKEN_RUN_CSHARP_TESTS=OFF"
+    --cmake_configure_args="-DFALKEN_TESTAPP_ENABLE_TEST=OFF"
+jobs:
+
+  #
+  # C++ SDK builds
+  #
+
+  cpp_sdk_linux:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: ./.github/actions/unix_setup
+      - name: Build debug
+        run: >
+          python3 ./$BUILD_SCRIPT
+          --cmake_source_project_root $CPP_SDK_REPO_PATH
+          --cmake_build_configs Debug
+          --run-tests
+          ${TEST_OPTIONS}
+
+  cpp_sdk_macos:
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: ./.github/actions/unix_setup
+      - name: Build debug
+        run: >
+          python3 ./$BUILD_SCRIPT
+          --cmake_configure_args="-DPYTHON=$(which python3)"
+          --cmake_source_project_root $CPP_SDK_REPO_PATH
+          --cmake_build_configs Debug
+          --run-tests
+          ${TEST_OPTIONS}
+
+  #
+  # Unity SDK builds
+  #
+
+  unity_sdk_linux:
+    needs: cpp_sdk_linux
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: ./.github/actions/unix_setup
+      - name: Build debug
+        run: >
+          python3 ./$BUILD_SCRIPT
+          --cmake_source_project_root $UNITY_SDK_REPO_PATH
+          --cmake_build_configs Debug
+          --run-tests
+          ${TEST_OPTIONS}
+
+  unity_sdk_macos:
+    needs: cpp_sdk_macos
+    runs-on: macos-11
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: ./.github/actions/unix_setup
+      - name: Build debug
+        run: >
+          python3 ./$BUILD_SCRIPT
+          --cmake_configure_args="-DPYTHON=$(which python3)"
+          --cmake_source_project_root $UNITY_SDK_REPO_PATH
+          --cmake_build_configs Debug
+          --run-tests
+          ${TEST_OPTIONS}
+

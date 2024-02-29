@@ -1,0 +1,19 @@
+
+name: CI
+
+on: [push, pull_request]
+      
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    container:
+      image: ballerina/ballerina:2201.4.1
+      options: --user root
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build with Gradle
+        env:
+          JAVA_OPTS: -DBALLERINA_DEV_COMPILE_BALLERINA_ORG=true
+          GRADLE_USER_HOME: ~/.gradle
+        run: |
+          ./gradlew build -Prelease=false -Premote=true

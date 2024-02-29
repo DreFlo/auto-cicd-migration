@@ -1,0 +1,22 @@
+PipelineIfThenElse:
+
+
+
+
+
+jobs:
+	Job1:
+		
+			if: x == 1
+			steps:
+				- name: test
+				 run: echo  test 
+			
+		
+		steps:
+		
+		
+		
+		
+
+

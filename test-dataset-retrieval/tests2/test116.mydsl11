@@ -1,0 +1,32 @@
+name: Docker-Image-Build-CI-DEV
+
+on: push
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Build the tagged Docker image
+        run: docker build . --file Dockerfile --tag cyborgbackup/cyborgbackup:dev-$(echo $GITHUB_SHA | cut -c 1-6)
+      - name: Tag Docker Image to Develop
+        run: docker tag cyborgbackup/cyborgbackup:dev-$(echo $GITHUB_SHA | cut -c 1-6) cyborgbackup/cyborgbackup:develop
+      - name: Push the tagged Docker image
+        run: docker push --all-tags cyborgbackup/cyborgbackup
+
+  debian-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build Debian package
+        uses: dawidd6/action-debian-package@v1.2.0
+        with:
+          artifacts_directory: debian_output
+      - uses: actions/upload-artifact@v1
+        with:
+          name: debian-package
+          path: debian_output

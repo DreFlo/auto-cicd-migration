@@ -1,0 +1,19 @@
+PipelineInput:
+
+
+
+
+
+jobs:
+	Job1:
+		
+		
+		steps:
+		
+		input:
+			Input1
+		
+		
+		
+
+

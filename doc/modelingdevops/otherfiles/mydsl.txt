@@ -1,0 +1,72 @@
+grammar org.example.domainmodel.Domainmodel with
+                                      org.eclipse.xtext.common.Terminals
+ 
+generate domainmodel "http://www.example.org/domainmodel/Domainmodel"
+ 
+Domainmodel:
+    (elements+=Element)*;
+ 
+Element:
+   Key | Jobs;
+
+InsideJob:
+	Key | Steps
+;
+ 
+
+InsideSteps:
+	Run |Name 
+;
+
+Key:
+	name=SINGLEKEYWORD value=VALUE
+;
+
+Jobs:
+'jobs:\n'
+(BEGIN
+    (jobs+=Job)*
+END)?
+;
+
+Job:
+name=ID":\n"
+(BEGIN
+    (insidejobs+=InsideJob)*
+END)?
+;
+
+Steps:
+"steps:\n"
+(BEGIN
+    (steps+=InsideSteps)*
+END)?
+;
+
+Run:
+	"- run:" value=VALUE
+;
+
+Command:
+	value=VALUE
+;
+
+RunName:
+	"run:" "|\n"
+	(BEGIN
+    (commands+=Command)*
+	END)?
+;
+
+Name:
+	"- name:" name=VALUE"\n"
+	(BEGIN
+    insidename=RunName
+	END)?
+;
+
+    
+terminal SINGLEKEYWORD: "name" | "run-name" | "on" | "runs-on";
+terminal VALUE: .*("\n");
+terminal BEGIN: 'synthetic:BEGIN';  // increase indentation
+terminal END: 'synthetic:END';      // decrease indentation

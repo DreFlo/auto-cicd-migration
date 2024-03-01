@@ -22,44 +22,44 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  */
 public interface OptionedAgent extends AbstractAgent {
 	/**
-	 * Returns the value of the '<em><b>Labels</b></em>' reference.
+	 * Returns the value of the '<em><b>Labels</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Labels</em>' reference.
+	 * @return the value of the '<em>Labels</em>' containment reference.
 	 * @see #setLabels(Expression)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getOptionedAgent_Labels()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Expression getLabels();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getLabels <em>Labels</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getLabels <em>Labels</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Labels</em>' reference.
+	 * @param value the new value of the '<em>Labels</em>' containment reference.
 	 * @see #getLabels()
 	 * @generated
 	 */
 	void setLabels(Expression value);
 
 	/**
-	 * Returns the value of the '<em><b>Docker</b></em>' reference.
+	 * Returns the value of the '<em><b>Docker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Docker</em>' reference.
+	 * @return the value of the '<em>Docker</em>' containment reference.
 	 * @see #setDocker(DockerContainer)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getOptionedAgent_Docker()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	DockerContainer getDocker();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getDocker <em>Docker</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getDocker <em>Docker</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Docker</em>' reference.
+	 * @param value the new value of the '<em>Docker</em>' containment reference.
 	 * @see #getDocker()
 	 * @generated
 	 */

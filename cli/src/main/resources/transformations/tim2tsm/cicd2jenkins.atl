@@ -30,6 +30,7 @@ lazy rule Job2Stage {
 	to
 		abstractStage : Jenkins!Stage(
 			name <- job.id,
+			agent <- job.agent,
 			steps <- job.steps
 		)
 }
@@ -227,6 +228,25 @@ rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
 		jenkinsExpression : Jenkins!BooleanLiteral(
 			value <- cicdExpression.value
 		)	
+}
+
+rule Agent2Agent {
+	from
+		cicdAgent : CICD!Agent
+	to
+		jenkinsAgent : Jenkins!OptionedAgent(
+			labels <- cicdAgent.labels->first(),
+			docker <- cicdAgent.container
+		)
+}
+
+rule DockerContainer2DockerContainer {
+	from
+		cicdDockerContainer : CICD!DockerContainer
+	to
+		jenkinsDockerContainer : Jenkins!DockerContainer(
+			image <- cicdDockerContainer.image.expression2String()
+		)
 }
 
 helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';

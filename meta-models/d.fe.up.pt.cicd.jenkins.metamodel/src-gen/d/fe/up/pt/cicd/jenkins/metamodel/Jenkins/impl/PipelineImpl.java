@@ -44,7 +44,7 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	protected EList<AbstractStage> stages;
 
 	/**
-	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' reference.
+	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAgent()
@@ -93,15 +93,6 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 */
 	@Override
 	public AbstractAgent getAgent() {
-		if (agent != null && agent.eIsProxy()) {
-			InternalEObject oldAgent = (InternalEObject) agent;
-			agent = (AbstractAgent) eResolveProxy(oldAgent);
-			if (agent != oldAgent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, JenkinsPackage.PIPELINE__AGENT, oldAgent,
-							agent));
-			}
-		}
 		return agent;
 	}
 
@@ -110,8 +101,18 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractAgent basicGetAgent() {
-		return agent;
+	public NotificationChain basicSetAgent(AbstractAgent newAgent, NotificationChain msgs) {
+		AbstractAgent oldAgent = agent;
+		agent = newAgent;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					JenkinsPackage.PIPELINE__AGENT, oldAgent, newAgent);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -121,10 +122,19 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 */
 	@Override
 	public void setAgent(AbstractAgent newAgent) {
-		AbstractAgent oldAgent = agent;
-		agent = newAgent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.PIPELINE__AGENT, oldAgent, agent));
+		if (newAgent != agent) {
+			NotificationChain msgs = null;
+			if (agent != null)
+				msgs = ((InternalEObject) agent).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.PIPELINE__AGENT, null, msgs);
+			if (newAgent != null)
+				msgs = ((InternalEObject) newAgent).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.PIPELINE__AGENT, null, msgs);
+			msgs = basicSetAgent(newAgent, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.PIPELINE__AGENT, newAgent, newAgent));
 	}
 
 	/**
@@ -137,6 +147,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 		switch (featureID) {
 		case JenkinsPackage.PIPELINE__STAGES:
 			return ((InternalEList<?>) getStages()).basicRemove(otherEnd, msgs);
+		case JenkinsPackage.PIPELINE__AGENT:
+			return basicSetAgent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -152,9 +164,7 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 		case JenkinsPackage.PIPELINE__STAGES:
 			return getStages();
 		case JenkinsPackage.PIPELINE__AGENT:
-			if (resolve)
-				return getAgent();
-			return basicGetAgent();
+			return getAgent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

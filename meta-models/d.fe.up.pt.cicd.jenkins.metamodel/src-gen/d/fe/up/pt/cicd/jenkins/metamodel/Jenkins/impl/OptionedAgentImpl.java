@@ -9,6 +9,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -31,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgent {
 	/**
-	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' reference.
+	 * The cached value of the '{@link #getLabels() <em>Labels</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLabels()
@@ -41,7 +42,7 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	protected Expression labels;
 
 	/**
-	 * The cached value of the '{@link #getDocker() <em>Docker</em>}' reference.
+	 * The cached value of the '{@link #getDocker() <em>Docker</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDocker()
@@ -96,15 +97,6 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 */
 	@Override
 	public Expression getLabels() {
-		if (labels != null && labels.eIsProxy()) {
-			InternalEObject oldLabels = (InternalEObject) labels;
-			labels = (Expression) eResolveProxy(oldLabels);
-			if (labels != oldLabels) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, JenkinsPackage.OPTIONED_AGENT__LABELS,
-							oldLabels, labels));
-			}
-		}
 		return labels;
 	}
 
@@ -113,8 +105,18 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Expression basicGetLabels() {
-		return labels;
+	public NotificationChain basicSetLabels(Expression newLabels, NotificationChain msgs) {
+		Expression oldLabels = labels;
+		labels = newLabels;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					JenkinsPackage.OPTIONED_AGENT__LABELS, oldLabels, newLabels);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -124,11 +126,20 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 */
 	@Override
 	public void setLabels(Expression newLabels) {
-		Expression oldLabels = labels;
-		labels = newLabels;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.OPTIONED_AGENT__LABELS, oldLabels,
-					labels));
+		if (newLabels != labels) {
+			NotificationChain msgs = null;
+			if (labels != null)
+				msgs = ((InternalEObject) labels).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.OPTIONED_AGENT__LABELS, null, msgs);
+			if (newLabels != null)
+				msgs = ((InternalEObject) newLabels).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.OPTIONED_AGENT__LABELS, null, msgs);
+			msgs = basicSetLabels(newLabels, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.OPTIONED_AGENT__LABELS, newLabels,
+					newLabels));
 	}
 
 	/**
@@ -138,15 +149,6 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 */
 	@Override
 	public DockerContainer getDocker() {
-		if (docker != null && docker.eIsProxy()) {
-			InternalEObject oldDocker = (InternalEObject) docker;
-			docker = (DockerContainer) eResolveProxy(oldDocker);
-			if (docker != oldDocker) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, JenkinsPackage.OPTIONED_AGENT__DOCKER,
-							oldDocker, docker));
-			}
-		}
 		return docker;
 	}
 
@@ -155,8 +157,18 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DockerContainer basicGetDocker() {
-		return docker;
+	public NotificationChain basicSetDocker(DockerContainer newDocker, NotificationChain msgs) {
+		DockerContainer oldDocker = docker;
+		docker = newDocker;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					JenkinsPackage.OPTIONED_AGENT__DOCKER, oldDocker, newDocker);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -166,11 +178,20 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 */
 	@Override
 	public void setDocker(DockerContainer newDocker) {
-		DockerContainer oldDocker = docker;
-		docker = newDocker;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.OPTIONED_AGENT__DOCKER, oldDocker,
-					docker));
+		if (newDocker != docker) {
+			NotificationChain msgs = null;
+			if (docker != null)
+				msgs = ((InternalEObject) docker).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.OPTIONED_AGENT__DOCKER, null, msgs);
+			if (newDocker != null)
+				msgs = ((InternalEObject) newDocker).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.OPTIONED_AGENT__DOCKER, null, msgs);
+			msgs = basicSetDocker(newDocker, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.OPTIONED_AGENT__DOCKER, newDocker,
+					newDocker));
 	}
 
 	/**
@@ -203,16 +224,28 @@ public class OptionedAgentImpl extends AbstractAgentImpl implements OptionedAgen
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case JenkinsPackage.OPTIONED_AGENT__LABELS:
+			return basicSetLabels(null, msgs);
+		case JenkinsPackage.OPTIONED_AGENT__DOCKER:
+			return basicSetDocker(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case JenkinsPackage.OPTIONED_AGENT__LABELS:
-			if (resolve)
-				return getLabels();
-			return basicGetLabels();
+			return getLabels();
 		case JenkinsPackage.OPTIONED_AGENT__DOCKER:
-			if (resolve)
-				return getDocker();
-			return basicGetDocker();
+			return getDocker();
 		case JenkinsPackage.OPTIONED_AGENT__CUSTOM_WORKSPACE:
 			return getCustomWorkspace();
 		}

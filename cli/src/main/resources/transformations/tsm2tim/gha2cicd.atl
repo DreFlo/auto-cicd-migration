@@ -22,6 +22,7 @@ rule Job2Job {
 	to
 		cicdJob : CICD!Job(
 			id <- ghaJob.name,
+			agent <- thisModule.getAgentFromJob(ghaJob),
 			steps <- ghaJob.steps,
 			next <- ghaJob.necessaryFor
 		)
@@ -135,7 +136,7 @@ rule Comparison2ComparisonOp extends BinaryOp2BinaryOp {
 		ghaExpression : GHA!Comparison
 	to
 		cicdExpression : CICD!ComparisonOp(
-			op <- ghaExpression.op.COMPARISON_OPS_2_COMPARISON_OPS()
+			op <- ghaExpression.op
 		)
 }
 
@@ -217,6 +218,27 @@ rule VariableDereference2Variable extends Expression2Expression {
 		)
 }
 
+rule Container2DockerContainer {
+	from
+		container : GHA!Container
+	to
+		dockerContainer : CICD!DockerContainer(
+			image <- container.image
+		)
+}
+
+-- Lazy Rules
+
+lazy rule getAgentFromJob {
+	from
+		job : GHA!Job
+	to
+		agent : CICD!Agent(
+			labels <- job.agent.labels,
+			container <- job.container
+		)
+}
+
 -- Helpers
 
 helper def : getJobStreamOrigins(jobs : Sequence(GHA!Job)) : Sequence(GHA!Job) = 
@@ -250,20 +272,4 @@ helper context String def : string2SecretVariable() : CICD!SecretVariable =
 		secretVariable.refSetValue('name', self);
 
 helper context String def : stringToInt() : Integer = Integer.parseInt(self);
-
-helper context GHA!EQUALITY_OPS def : EQUALITY_OPS_2_EQUALITY_OPS() : CICD!EQUALITY_OPS =
-	if self = #EQUALS then #EQUALS else #NOT_EQUALS endif;
-
-helper context GHA!COMPARISON_OPS def : COMPARISON_OPS_2_COMPARISON_OPS() : CICD!COMPARISON_OPS =
-	if self = #GT then 
-		#GT 
-	else if self = #GTE then
-		#GTE
-	else if self = #LT then
-		#LT
-	else
-		#LTE
-	endif
-	endif
-	endif;
 		

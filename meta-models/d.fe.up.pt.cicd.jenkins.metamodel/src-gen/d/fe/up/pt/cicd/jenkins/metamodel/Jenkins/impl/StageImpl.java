@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl#getAgent <em>Agent</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +63,16 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAgent() <em>Agent</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAgent()
+	 * @generated
+	 * @ordered
+	 */
+	protected AbstractAgent agent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,10 +135,63 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 	 * @generated
 	 */
 	@Override
+	public AbstractAgent getAgent() {
+		return agent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAgent(AbstractAgent newAgent, NotificationChain msgs) {
+		AbstractAgent oldAgent = agent;
+		agent = newAgent;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JenkinsPackage.STAGE__AGENT,
+					oldAgent, newAgent);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setAgent(AbstractAgent newAgent) {
+		if (newAgent != agent) {
+			NotificationChain msgs = null;
+			if (agent != null)
+				msgs = ((InternalEObject) agent).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.STAGE__AGENT, null, msgs);
+			if (newAgent != null)
+				msgs = ((InternalEObject) newAgent).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.STAGE__AGENT, null, msgs);
+			msgs = basicSetAgent(newAgent, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.STAGE__AGENT, newAgent, newAgent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case JenkinsPackage.STAGE__STEPS:
 			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
+		case JenkinsPackage.STAGE__AGENT:
+			return basicSetAgent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -143,6 +208,8 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 			return getSteps();
 		case JenkinsPackage.STAGE__NAME:
 			return getName();
+		case JenkinsPackage.STAGE__AGENT:
+			return getAgent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,6 +230,9 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 		case JenkinsPackage.STAGE__NAME:
 			setName((String) newValue);
 			return;
+		case JenkinsPackage.STAGE__AGENT:
+			setAgent((AbstractAgent) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,6 +251,9 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 		case JenkinsPackage.STAGE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
+		case JenkinsPackage.STAGE__AGENT:
+			setAgent((AbstractAgent) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,6 +270,8 @@ public class StageImpl extends AbstractStageImpl implements Stage {
 			return steps != null && !steps.isEmpty();
 		case JenkinsPackage.STAGE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case JenkinsPackage.STAGE__AGENT:
+			return agent != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -45,6 +45,7 @@ public class StageItemProvider extends AbstractStageItemProvider {
 
 			addStepsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addAgentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -76,6 +77,20 @@ public class StageItemProvider extends AbstractStageItemProvider {
 						getString("_UI_PropertyDescriptor_description", "_UI_Stage_name_feature", "_UI_Stage_type"),
 						JenkinsPackage.Literals.STAGE__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Agent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAgentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Stage_agent_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Stage_agent_feature", "_UI_Stage_type"),
+						JenkinsPackage.Literals.STAGE__AGENT, true, false, true, null, null, null));
 	}
 
 	/**

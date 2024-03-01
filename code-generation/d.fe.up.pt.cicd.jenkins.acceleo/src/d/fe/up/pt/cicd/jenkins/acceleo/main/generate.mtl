@@ -24,6 +24,9 @@
 
 [template public generateStage(stage : Stage)]
 stage([quoteString(stage.name)/]) {
+[if (not stage.agent.oclIsUndefined())]
+	[generateAbstractAgent(stage.agent)/]
+[/if]
 	steps {
 	[for (abstractStep : AbstractStep | stage.steps)]
 		[generateAbstractStep(abstractStep)/]
@@ -101,6 +104,23 @@ env.[variable.name/]
 
 [template public generateUnaryOp(unaryOp : UnaryOp)]
 [getUnaryOperator(unaryOp)/] [generateExpression(unaryOp.childExpr)/]
+[/template]
+
+[template public generateAbstractAgent(abstractAgent : AbstractAgent) post (trim())]
+[if (abstractAgent.oclIsKindOf(OptionedAgent))]
+[generateOptionedAgent(abstractAgent.oclAsType(OptionedAgent))/]
+[/if]
+[/template]
+
+[template public generateOptionedAgent(optionedAgent : OptionedAgent)]
+agent {
+	label [generateExpression(optionedAgent.labels)/]
+[if (not optionedAgent.docker.oclIsUndefined())]
+	docker {
+		image [quoteString(optionedAgent.docker.image)/]
+	}
+[/if]
+}
 [/template]
 
 [template public generatePipeline(pipeline : Pipeline)]

@@ -36,22 +36,22 @@ public interface Pipeline extends EObject {
 	EList<AbstractStage> getStages();
 
 	/**
-	 * Returns the value of the '<em><b>Agent</b></em>' reference.
+	 * Returns the value of the '<em><b>Agent</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Agent</em>' reference.
+	 * @return the value of the '<em>Agent</em>' containment reference.
 	 * @see #setAgent(AbstractAgent)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Agent()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	AbstractAgent getAgent();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Agent</em>' reference.
+	 * @param value the new value of the '<em>Agent</em>' containment reference.
 	 * @see #getAgent()
 	 * @generated
 	 */

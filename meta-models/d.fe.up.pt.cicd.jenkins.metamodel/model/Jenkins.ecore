@@ -4,7 +4,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Pipeline">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
         upperBound="-1" eType="#//AbstractStage" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
@@ -16,6 +17,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
         eType="#//AbstractStep" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStep" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractStep">
@@ -35,8 +38,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="AnyAgent" eSuperTypes="#//AbstractAgent"/>
   <eClassifiers xsi:type="ecore:EClass" name="OptionedAgent" eSuperTypes="#//AbstractAgent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="labels" lowerBound="1"
-        eType="#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="docker" eType="#//DockerContainer"/>
+        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="docker" eType="#//DockerContainer"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="customWorkspace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">

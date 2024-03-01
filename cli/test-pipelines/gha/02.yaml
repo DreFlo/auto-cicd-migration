@@ -15,23 +15,30 @@ defaults:
 
 jobs:
   my_first_job_a:
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!A"
   my_first_job_b:
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!A"
   my_second_job_a:
+    runs-on: ubuntu-latest
     needs:
       - my_first_job_a
       - my_first_job_b
     steps:
       - run: echo 2
   my_second_job_b:
+    runs-on: ubuntu-latest
+    container: alpine:3.12
     needs: my_first_job_a
     steps:
       - run: echo 2
   my_third_job:
+    runs-on: ubuntu-latest
     needs: my_second_job_b
     steps:
       - run: echo 3
         if: ${{env.SERVER == 'production'}}
+      - run: cat "one.txt"

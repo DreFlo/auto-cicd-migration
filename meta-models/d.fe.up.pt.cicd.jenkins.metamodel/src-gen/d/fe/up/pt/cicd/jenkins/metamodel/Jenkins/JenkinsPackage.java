@@ -77,7 +77,7 @@ public interface JenkinsPackage extends EPackage {
 	int PIPELINE__STAGES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Agent</b></em>' reference.
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -225,13 +225,22 @@ public interface JenkinsPackage extends EPackage {
 	int STAGE__NAME = ABSTRACT_STAGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAGE__AGENT = ABSTRACT_STAGE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Stage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 2;
+	int STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Stage</em>' class.
@@ -457,7 +466,7 @@ public interface JenkinsPackage extends EPackage {
 	int OPTIONED_AGENT = 11;
 
 	/**
-	 * The feature id for the '<em><b>Labels</b></em>' reference.
+	 * The feature id for the '<em><b>Labels</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -466,7 +475,7 @@ public interface JenkinsPackage extends EPackage {
 	int OPTIONED_AGENT__LABELS = ABSTRACT_AGENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Docker</b></em>' reference.
+	 * The feature id for the '<em><b>Docker</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1308,10 +1317,10 @@ public interface JenkinsPackage extends EPackage {
 	EReference getPipeline_Stages();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Agent</em>'.
+	 * @return the meta object for the containment reference '<em>Agent</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent()
 	 * @see #getPipeline()
 	 * @generated
@@ -1390,6 +1399,17 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStage_Name();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getAgent <em>Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Agent</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getAgent()
+	 * @see #getStage()
+	 * @generated
+	 */
+	EReference getStage_Agent();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep <em>Abstract Step</em>}'.
@@ -1506,10 +1526,10 @@ public interface JenkinsPackage extends EPackage {
 	EClass getOptionedAgent();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getLabels <em>Labels</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getLabels <em>Labels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Labels</em>'.
+	 * @return the meta object for the containment reference '<em>Labels</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getLabels()
 	 * @see #getOptionedAgent()
 	 * @generated
@@ -1517,10 +1537,10 @@ public interface JenkinsPackage extends EPackage {
 	EReference getOptionedAgent_Labels();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getDocker <em>Docker</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getDocker <em>Docker</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Docker</em>'.
+	 * @return the meta object for the containment reference '<em>Docker</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent#getDocker()
 	 * @see #getOptionedAgent()
 	 * @generated
@@ -1980,7 +2000,7 @@ public interface JenkinsPackage extends EPackage {
 		EReference PIPELINE__STAGES = eINSTANCE.getPipeline_Stages();
 
 		/**
-		 * The meta object literal for the '<em><b>Agent</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Agent</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2050,6 +2070,14 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STAGE__NAME = eINSTANCE.getStage_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Agent</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STAGE__AGENT = eINSTANCE.getStage_Agent();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl <em>Abstract Step</em>}' class.
@@ -2154,7 +2182,7 @@ public interface JenkinsPackage extends EPackage {
 		EClass OPTIONED_AGENT = eINSTANCE.getOptionedAgent();
 
 		/**
-		 * The meta object literal for the '<em><b>Labels</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Labels</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2162,7 +2190,7 @@ public interface JenkinsPackage extends EPackage {
 		EReference OPTIONED_AGENT__LABELS = eINSTANCE.getOptionedAgent_Labels();
 
 		/**
-		 * The meta object literal for the '<em><b>Docker</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Docker</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

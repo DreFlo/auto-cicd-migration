@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class JenkinsGenerator extends AbstractGenerator<Pipeline, JenkinsPackage
         String filePath = Path.of(tempDir, randomName).toString();
         serializeModel(pipeline, filePath, getResourceSet());
         Generate.main(List.of(filePath, outputFolder).toArray(String[]::new));
+        Files.delete(Path.of(filePath));
     }
 
     @Override

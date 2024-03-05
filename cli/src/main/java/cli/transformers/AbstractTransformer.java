@@ -30,6 +30,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final String atlFilePath;
     private final String inputModelName;
     private final String outputModelName;
+    private boolean deleteIntermediateFiles = true;
 
     protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName) {
         this.resourceSet = resourceSet;
@@ -56,8 +57,10 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         OutputModel outputModel = deserializeModel(outputModelFilePath);
 
         // Delete model files
-//        Files.delete(Path.of(inputModelFilePath));
-//        Files.delete(Path.of(outputModelFilePath));
+        if (deleteIntermediateFiles) {
+            Files.delete(Path.of(inputModelFilePath));
+            Files.delete(Path.of(outputModelFilePath));
+        }
 
         return outputModel;
     }
@@ -135,5 +138,9 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
 
     protected String getOutModelName() {
         return outputModelName;
+    }
+
+    public void setDeleteIntermediateFiles(boolean deleteIntermediateFiles) {
+        this.deleteIntermediateFiles = deleteIntermediateFiles;
     }
 }

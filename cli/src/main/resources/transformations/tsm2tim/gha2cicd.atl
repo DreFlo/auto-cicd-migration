@@ -258,7 +258,7 @@ helper context GHA!BooleanLiteral def : expression2String() : String = self.valu
 
 helper context GHA!Concat def : expression2String() : String =
 	let exprStrings : Sequence(String) =
-		self.expressions->collect(expr | expr.expression2String()).toString() in
+		self.expressions->collect(expr | expr.expression2String()) in
 		exprStrings->iterate(exprString; joinedString: String = '' |
 			joinedString.concat(exprString)
 		);

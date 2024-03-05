@@ -88,6 +88,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__STAGES);
+			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__ENVIRONMENT_VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -150,6 +151,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 
 		switch (notification.getFeatureID(Pipeline.class)) {
 		case JenkinsPackage.PIPELINE__STAGES:
+		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -172,6 +174,9 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES, JenkinsFactory.eINSTANCE.createStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__ENVIRONMENT_VARIABLES,
+				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
 	}
 
 	/**

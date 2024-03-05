@@ -1,6 +1,7 @@
 package cli.transformers.exogenous.fromTIM;
 
 import cli.transformers.endogenous.CICD.EndogenousCICDAbstractTransformer;
+import cli.transformers.endogenous.CICD.ExtractEnvironmentVariablesFromSteps;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -14,5 +15,6 @@ public class CICD2JenkinsTransformer extends FromTIMAbstractTransformer<Pipeline
 
     @Override
     protected void registerRefiners() {
+        getRefiners().add(new ExtractEnvironmentVariablesFromSteps(getResourceSet()));
     }
 }

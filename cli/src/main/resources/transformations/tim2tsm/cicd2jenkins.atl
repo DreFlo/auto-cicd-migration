@@ -16,8 +16,9 @@ rule Pipeline2Pipeline {
 						else
 							thisModule.JobSequence2Parallel(jobGroup)
 						endif
-						)
-				
+						),
+			agent <- cicdPipeline.agent,
+			environmentVariables <- cicdPipeline.environmentVariables				
 		)
 }
 
@@ -31,7 +32,8 @@ lazy rule Job2Stage {
 		abstractStage : Jenkins!Stage(
 			name <- job.id,
 			agent <- job.agent,
-			steps <- job.steps
+			steps <- job.steps,
+			environmentVariables <- job.environmentVariables
 		)
 }
 
@@ -75,9 +77,13 @@ abstract rule NonConditionalStep2Step extends Step2AsbtractStep {
 rule Command2Step extends NonConditionalStep2Step {
 	from
 		cicdStep : CICD!Command
+	using {
+		commandAndArguments : Sequence(String) = thisModule.splitCommandAndArguments(cicdStep.program.expression2String());
+	}
 	to
 		jenkinsStep : Jenkins!Step(
-			command <- cicdStep.program.expression2String()
+			command <- commandAndArguments->first(),
+			arguments <- commandAndArguments->last()
 		)
 }
 
@@ -249,9 +255,58 @@ rule DockerContainer2DockerContainer {
 		)
 }
 
+rule Assignment2Assignment {
+	from
+		cicdAssignment : CICD!Assignment
+	to
+		jenkinsAssignment : Jenkins!Assignment(
+			key <- cicdAssignment.key,
+			value <- cicdAssignment.value
+		)
+}
+
+-- Helper
+
+helper def : splitCommandAndArguments(commandString : String) : Sequence(String) =
+	let splitString : Sequence(String) = commandString.split('\\s+')
+	in 
+	if splitString->size() > 1 then
+		Sequence{splitString->first(), thisModule.joinStrings(splitString->subSequence(2, splitString->size()), ' ')}
+	else if splitString->size() = 1 then
+		Sequence{splitString, ''}
+	else
+		Sequence{'', ''}
+	endif
+	endif;
+	
+helper def : joinStrings(stringSequence : Sequence(String), sep : String) : String =
+	stringSequence->iterate(string; joinedString : String = '' |
+		if stringSequence->indexOf(string) = stringSequence->size() then
+			joinedString.concat(string)
+		else
+			joinedString.concat(string).concat(sep)
+		endif
+	);
+
 helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
 
 helper context CICD!StringLiteral def : expression2String() : String = self.value;
+
+helper context CICD!IntegerLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!DoubleLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!BooleanLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!Concat def : expression2String() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | expr.expression2String()) in
+		exprStrings->iterate(exprString; joinedString: String = '' |
+			joinedString.concat(exprString)
+		);
+
+helper context CICD!EnvironmentVariable def : expression2String() : String =
+	'$'.concat(self.name);
 
 helper def : groupJobs(jobStreams : Sequence(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
 	let next : Sequence(CICD!Job) = 

@@ -6,6 +6,8 @@
         upperBound="-1" eType="#//AbstractStage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
+        eType="#//Assignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
@@ -19,10 +21,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
+        eType="#//Assignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStep" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractStep">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//AbstractStep">

@@ -1,8 +1,9 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/Jenkins')]
 
-
-[query public quoteString (string : String) : String = string.replaceAll('^|$', '\'')/]
+[query public quoteString (string : String) : String =
+	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'quoteString(java.lang.String)', Sequence{string})
+/]
 
 [query public getBinaryOperator(binaryOp : BinaryOp) : String =
 	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getBinaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp)', Sequence{binaryOp})
@@ -11,8 +12,6 @@
 [query public getUnaryOperator(unaryOp : UnaryOp) : String =
 	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp)', Sequence{unaryOp})
 /]
-
-
 
 [template public generateAbstractStage(abstractStage : AbstractStage) post (trim())]
 [if (abstractStage.oclIsKindOf(Stage))]
@@ -26,6 +25,9 @@
 stage([quoteString(stage.name)/]) {
 [if (not stage.agent.oclIsUndefined())]
 	[generateAbstractAgent(stage.agent)/]
+[/if]
+[if (not stage.environmentVariables->isEmpty())]
+	[generateEnvironment(stage.environmentVariables)/]
 [/if]
 	steps {
 	[for (abstractStep : AbstractStep | stage.steps)]
@@ -52,7 +54,7 @@ parallel {
 [/template]
 
 [template public generateStep(step : Step)]
-[step.command/]
+[step.command/] [quoteString(step.arguments)/]
 [/template]
 
 [template public generateConditionalStep(conditionalStep : ConditionalStep)]
@@ -123,10 +125,25 @@ agent {
 }
 [/template]
 
+[template public generateAssignment(assignment : Assignment)]
+[key.name/] = [generateExpression(assignment.value)/]
+[/template]
+
+[template public generateEnvironment(environmentVariables : OrderedSet(Assignment))]
+environment {
+[for (environmentVariable : Assignment | environmentVariables)]
+	[generateAssignment(environmentVariable)/]
+[/for]
+}
+[/template]
+
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('Jenkinsfile', false, 'UTF-8')]
 pipeline {
+[if (not pipeline.environmentVariables->isEmpty())]
+	[generateEnvironment(pipeline.environmentVariables)/]
+[/if]
 	stages {
 	[for (abstractStage : AbstractStage | pipeline.stages)]
 		[generateAbstractStage(abstractStage)/]

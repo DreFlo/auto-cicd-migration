@@ -9,7 +9,6 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
 
 public class CICD2Jenkins {
-	
 	public String getBinaryOperator(BinaryOp binaryOp) {
 		if (binaryOp instanceof ComparisonOp comparisonOp) {
 			return comparisonOp.getOp().getLiteral();
@@ -31,5 +30,9 @@ public class CICD2Jenkins {
 		else {
 			return "<INVALID OP>";
 		}
+	}
+	
+	public String quoteString(String string) {
+		return string.isEmpty() ? "''" : string.replaceAll("^|$", "\'");
 	}
 }

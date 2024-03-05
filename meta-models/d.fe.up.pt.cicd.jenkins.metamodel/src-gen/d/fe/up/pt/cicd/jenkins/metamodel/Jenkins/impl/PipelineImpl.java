@@ -4,18 +4,23 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -28,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getStages <em>Stages</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getAgent <em>Agent</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,6 +58,16 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @ordered
 	 */
 	protected AbstractAgent agent;
+
+	/**
+	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvironmentVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<Variable, Expression> environmentVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,12 +159,28 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @generated
 	 */
 	@Override
+	public EMap<Variable, Expression> getEnvironmentVariables() {
+		if (environmentVariables == null) {
+			environmentVariables = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES);
+		}
+		return environmentVariables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case JenkinsPackage.PIPELINE__STAGES:
 			return ((InternalEList<?>) getStages()).basicRemove(otherEnd, msgs);
 		case JenkinsPackage.PIPELINE__AGENT:
 			return basicSetAgent(null, msgs);
+		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
+			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -165,6 +197,11 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 			return getStages();
 		case JenkinsPackage.PIPELINE__AGENT:
 			return getAgent();
+		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
+			if (coreType)
+				return getEnvironmentVariables();
+			else
+				return getEnvironmentVariables().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -185,6 +222,9 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 		case JenkinsPackage.PIPELINE__AGENT:
 			setAgent((AbstractAgent) newValue);
 			return;
+		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
+			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -203,6 +243,9 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 		case JenkinsPackage.PIPELINE__AGENT:
 			setAgent((AbstractAgent) null);
 			return;
+		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
+			getEnvironmentVariables().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -219,6 +262,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 			return stages != null && !stages.isEmpty();
 		case JenkinsPackage.PIPELINE__AGENT:
 			return agent != null;
+		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
+			return environmentVariables != null && !environmentVariables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

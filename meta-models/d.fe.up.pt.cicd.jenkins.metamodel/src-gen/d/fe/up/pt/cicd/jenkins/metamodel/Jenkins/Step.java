@@ -12,6 +12,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step#getCommand <em>Command</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getStep()
@@ -40,5 +41,27 @@ public interface Step extends AbstractStep {
 	 * @generated
 	 */
 	void setCommand(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Arguments</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Arguments</em>' attribute.
+	 * @see #setArguments(String)
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getStep_Arguments()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getArguments();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step#getArguments <em>Arguments</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Arguments</em>' attribute.
+	 * @see #getArguments()
+	 * @generated
+	 */
+	void setArguments(String value);
 
 } // Step

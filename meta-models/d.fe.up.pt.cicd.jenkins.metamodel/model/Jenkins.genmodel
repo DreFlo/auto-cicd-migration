@@ -23,6 +23,7 @@
     <genClasses ecoreClass="Jenkins.ecore#//Pipeline">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/stages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/agent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/environmentVariables"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractPipelineExecutionBlock"/>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStage"/>
@@ -33,10 +34,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/steps"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Stage/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/agent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/environmentVariables"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStep"/>
     <genClasses ecoreClass="Jenkins.ecore#//Step">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/command"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/arguments"/>
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//ConditionalStep">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//ConditionalStep/ifCondition"/>

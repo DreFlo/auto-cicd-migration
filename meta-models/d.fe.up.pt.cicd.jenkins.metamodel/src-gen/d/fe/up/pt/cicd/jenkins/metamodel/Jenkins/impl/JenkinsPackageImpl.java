@@ -374,6 +374,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getPipeline_EnvironmentVariables() {
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAbstractPipelineExecutionBlock() {
 		return abstractPipelineExecutionBlockEClass;
 	}
@@ -454,6 +464,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getStage_EnvironmentVariables() {
+		return (EReference) stageEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAbstractStep() {
 		return abstractStepEClass;
 	}
@@ -476,6 +496,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EAttribute getStep_Command() {
 		return (EAttribute) stepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStep_Arguments() {
+		return (EAttribute) stepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1001,6 +1031,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		pipelineEClass = createEClass(PIPELINE);
 		createEReference(pipelineEClass, PIPELINE__STAGES);
 		createEReference(pipelineEClass, PIPELINE__AGENT);
+		createEReference(pipelineEClass, PIPELINE__ENVIRONMENT_VARIABLES);
 
 		abstractPipelineExecutionBlockEClass = createEClass(ABSTRACT_PIPELINE_EXECUTION_BLOCK);
 
@@ -1013,11 +1044,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEReference(stageEClass, STAGE__STEPS);
 		createEAttribute(stageEClass, STAGE__NAME);
 		createEReference(stageEClass, STAGE__AGENT);
+		createEReference(stageEClass, STAGE__ENVIRONMENT_VARIABLES);
 
 		abstractStepEClass = createEClass(ABSTRACT_STEP);
 
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__COMMAND);
+		createEAttribute(stepEClass, STEP__ARGUMENTS);
 
 		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
 		createEReference(conditionalStepEClass, CONDITIONAL_STEP__IF_CONDITION);
@@ -1157,6 +1190,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getPipeline_Agent(), this.getAbstractAgent(), null, "agent", null, 1, 1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables", null, 0,
+				-1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractPipelineExecutionBlockEClass, AbstractPipelineExecutionBlock.class,
 				"AbstractPipelineExecutionBlock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1179,6 +1215,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getStage_Agent(), this.getAbstractAgent(), null, "agent", null, 1, 1, Stage.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getStage_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables", null, 0, -1,
+				Stage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractStepEClass, AbstractStep.class, "AbstractStep", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1186,6 +1225,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Command(), ecorePackage.getEString(), "command", null, 1, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStep_Arguments(), ecorePackage.getEString(), "arguments", null, 1, 1, Step.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

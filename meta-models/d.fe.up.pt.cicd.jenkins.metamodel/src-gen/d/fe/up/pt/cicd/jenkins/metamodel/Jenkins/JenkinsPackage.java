@@ -86,13 +86,22 @@ public interface JenkinsPackage extends EPackage {
 	int PIPELINE__AGENT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE__ENVIRONMENT_VARIABLES = 2;
+
+	/**
 	 * The number of structural features of the '<em>Pipeline</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE_FEATURE_COUNT = 2;
+	int PIPELINE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Pipeline</em>' class.
@@ -234,13 +243,22 @@ public interface JenkinsPackage extends EPackage {
 	int STAGE__AGENT = ABSTRACT_STAGE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_STAGE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Stage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 3;
+	int STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Stage</em>' class.
@@ -299,13 +317,22 @@ public interface JenkinsPackage extends EPackage {
 	int STEP__COMMAND = ABSTRACT_STEP_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP__ARGUMENTS = ABSTRACT_STEP_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STEP_FEATURE_COUNT = ABSTRACT_STEP_FEATURE_COUNT + 1;
+	int STEP_FEATURE_COUNT = ABSTRACT_STEP_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Step</em>' class.
@@ -1328,6 +1355,17 @@ public interface JenkinsPackage extends EPackage {
 	EReference getPipeline_Agent();
 
 	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getEnvironmentVariables <em>Environment Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getEnvironmentVariables()
+	 * @see #getPipeline()
+	 * @generated
+	 */
+	EReference getPipeline_EnvironmentVariables();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractPipelineExecutionBlock <em>Abstract Pipeline Execution Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1412,6 +1450,17 @@ public interface JenkinsPackage extends EPackage {
 	EReference getStage_Agent();
 
 	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getEnvironmentVariables <em>Environment Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getEnvironmentVariables()
+	 * @see #getStage()
+	 * @generated
+	 */
+	EReference getStage_EnvironmentVariables();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep <em>Abstract Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1441,6 +1490,17 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getStep_Command();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step#getArguments <em>Arguments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Arguments</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step#getArguments()
+	 * @see #getStep()
+	 * @generated
+	 */
+	EAttribute getStep_Arguments();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep <em>Conditional Step</em>}'.
@@ -2008,6 +2068,14 @@ public interface JenkinsPackage extends EPackage {
 		EReference PIPELINE__AGENT = eINSTANCE.getPipeline_Agent();
 
 		/**
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PIPELINE__ENVIRONMENT_VARIABLES = eINSTANCE.getPipeline_EnvironmentVariables();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractPipelineExecutionBlockImpl <em>Abstract Pipeline Execution Block</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2080,6 +2148,14 @@ public interface JenkinsPackage extends EPackage {
 		EReference STAGE__AGENT = eINSTANCE.getStage_Agent();
 
 		/**
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STAGE__ENVIRONMENT_VARIABLES = eINSTANCE.getStage_EnvironmentVariables();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl <em>Abstract Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2106,6 +2182,14 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute STEP__COMMAND = eINSTANCE.getStep_Command();
+
+		/**
+		 * The meta object literal for the '<em><b>Arguments</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STEP__ARGUMENTS = eINSTANCE.getStep_Arguments();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ConditionalStepImpl <em>Conditional Step</em>}' class.

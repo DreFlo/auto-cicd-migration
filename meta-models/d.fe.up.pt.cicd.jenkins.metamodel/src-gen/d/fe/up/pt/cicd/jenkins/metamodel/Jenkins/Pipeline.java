@@ -3,6 +3,7 @@
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getStages <em>Stages</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getEnvironmentVariables <em>Environment Variables</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline()
@@ -56,5 +58,18 @@ public interface Pipeline extends EObject {
 	 * @generated
 	 */
 	void setAgent(AbstractAgent value);
+
+	/**
+	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
+	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable},
+	 * and the value is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression},
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Environment Variables</em>' map.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_EnvironmentVariables()
+	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
+	 * @generated
+	 */
+	EMap<Variable, Expression> getEnvironmentVariables();
 
 } // Pipeline

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepImpl#getCommand <em>Command</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,6 +45,26 @@ public class StepImpl extends AbstractStepImpl implements Step {
 	 * @ordered
 	 */
 	protected String command = COMMAND_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getArguments() <em>Arguments</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ARGUMENTS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected String arguments = ARGUMENTS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,10 +114,36 @@ public class StepImpl extends AbstractStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
+	public String getArguments() {
+		return arguments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setArguments(String newArguments) {
+		String oldArguments = arguments;
+		arguments = newArguments;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.STEP__ARGUMENTS, oldArguments,
+					arguments));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case JenkinsPackage.STEP__COMMAND:
 			return getCommand();
+		case JenkinsPackage.STEP__ARGUMENTS:
+			return getArguments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,6 +158,9 @@ public class StepImpl extends AbstractStepImpl implements Step {
 		switch (featureID) {
 		case JenkinsPackage.STEP__COMMAND:
 			setCommand((String) newValue);
+			return;
+		case JenkinsPackage.STEP__ARGUMENTS:
+			setArguments((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -127,6 +177,9 @@ public class StepImpl extends AbstractStepImpl implements Step {
 		case JenkinsPackage.STEP__COMMAND:
 			setCommand(COMMAND_EDEFAULT);
 			return;
+		case JenkinsPackage.STEP__ARGUMENTS:
+			setArguments(ARGUMENTS_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -141,6 +194,8 @@ public class StepImpl extends AbstractStepImpl implements Step {
 		switch (featureID) {
 		case JenkinsPackage.STEP__COMMAND:
 			return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
+		case JenkinsPackage.STEP__ARGUMENTS:
+			return ARGUMENTS_EDEFAULT == null ? arguments != null : !ARGUMENTS_EDEFAULT.equals(arguments);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -158,6 +213,8 @@ public class StepImpl extends AbstractStepImpl implements Step {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (command: ");
 		result.append(command);
+		result.append(", arguments: ");
+		result.append(arguments);
 		result.append(')');
 		return result.toString();
 	}

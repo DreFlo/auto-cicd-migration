@@ -267,7 +267,9 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (trigger instanceof ScheduleTrigger scheduleTrigger) {
-			scheduleTrigger.getCrons().addAll(parseExpressions(options));
+			for (YamlNode cron : options.asSequence().values()) {
+				scheduleTrigger.getCrons().add(parseExpression(cron.asMapping().value("cron").asScalar().value()));
+			}
 		}
 
 		if (trigger instanceof InputTrigger inputTrigger) {

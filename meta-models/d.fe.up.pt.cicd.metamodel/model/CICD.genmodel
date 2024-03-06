@@ -84,7 +84,7 @@
     <genClasses ecoreClass="CICD.ecore#//PullRequestTrigger"/>
     <genClasses ecoreClass="CICD.ecore#//ManualTrigger"/>
     <genClasses ecoreClass="CICD.ecore#//ScheduledTrigger">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ScheduledTrigger/cron"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ScheduledTrigger/crons"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//WebhookTrigger"/>
     <genClasses ecoreClass="CICD.ecore#//ConcurrencyGroup">

@@ -8,6 +8,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//Assignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="#//Trigger"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
@@ -43,8 +45,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="NoneAgent" eSuperTypes="#//AbstractAgent"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnyAgent" eSuperTypes="#//AbstractAgent"/>
   <eClassifiers xsi:type="ecore:EClass" name="OptionedAgent" eSuperTypes="#//AbstractAgent">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" lowerBound="1"
-        eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" eType="#//Expression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="docker" eType="#//DockerContainer"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="customWorkspace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -113,5 +115,9 @@
     <eLiterals name="GTE" value="1" literal=">="/>
     <eLiterals name="LT" value="2" literal="&lt;"/>
     <eLiterals name="LTE" value="3" literal="&lt;="/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Trigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

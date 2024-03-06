@@ -28,10 +28,12 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
 import java.util.Map;
@@ -265,6 +267,20 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass triggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scheduledTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum equalitY_OPSEEnum = null;
 
 	/**
@@ -376,6 +392,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EReference getPipeline_EnvironmentVariables() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPipeline_Triggers() {
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -984,6 +1010,36 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getTrigger() {
+		return triggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScheduledTrigger() {
+		return scheduledTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScheduledTrigger_Cron() {
+		return (EAttribute) scheduledTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getEQUALITY_OPS() {
 		return equalitY_OPSEEnum;
 	}
@@ -1032,6 +1088,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEReference(pipelineEClass, PIPELINE__STAGES);
 		createEReference(pipelineEClass, PIPELINE__AGENT);
 		createEReference(pipelineEClass, PIPELINE__ENVIRONMENT_VARIABLES);
+		createEReference(pipelineEClass, PIPELINE__TRIGGERS);
 
 		abstractPipelineExecutionBlockEClass = createEClass(ABSTRACT_PIPELINE_EXECUTION_BLOCK);
 
@@ -1122,6 +1179,11 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		orEClass = createEClass(OR);
 
+		triggerEClass = createEClass(TRIGGER);
+
+		scheduledTriggerEClass = createEClass(SCHEDULED_TRIGGER);
+		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRON);
+
 		// Create enums
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
 		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
@@ -1180,6 +1242,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
 		andEClass.getESuperTypes().add(this.getLogicalOp());
 		orEClass.getESuperTypes().add(this.getLogicalOp());
+		scheduledTriggerEClass.getESuperTypes().add(this.getTrigger());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1193,6 +1256,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getPipeline_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables", null, 0,
 				-1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractPipelineExecutionBlockEClass, AbstractPipelineExecutionBlock.class,
 				"AbstractPipelineExecutionBlock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1356,6 +1422,14 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(triggerEClass, Trigger.class, "Trigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(scheduledTriggerEClass, ScheduledTrigger.class, "ScheduledTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScheduledTrigger_Cron(), ecorePackage.getEString(), "cron", null, 1, 1,
+				ScheduledTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.class, "EQUALITY_OPS");

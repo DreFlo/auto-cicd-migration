@@ -30,7 +30,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final String atlFilePath;
     private final String inputModelName;
     private final String outputModelName;
-    private boolean deleteIntermediateFiles = true;
+    private boolean deleteIntermediateFiles = false;
 
     protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName) {
         this.resourceSet = resourceSet;

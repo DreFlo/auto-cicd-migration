@@ -824,13 +824,13 @@ public interface CICDPackage extends EPackage {
 	int SCHEDULED_TRIGGER__BRANCH_GLOBS = TRIGGER__BRANCH_GLOBS;
 
 	/**
-	 * The feature id for the '<em><b>Cron</b></em>' attribute list.
+	 * The feature id for the '<em><b>Crons</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEDULED_TRIGGER__CRON = TRIGGER_FEATURE_COUNT + 0;
+	int SCHEDULED_TRIGGER__CRONS = TRIGGER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Scheduled Trigger</em>' class.
@@ -3264,15 +3264,15 @@ public interface CICDPackage extends EPackage {
 	EClass getScheduledTrigger();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger#getCron <em>Cron</em>}'.
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger#getCrons <em>Crons</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Cron</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger#getCron()
+	 * @return the meta object for the attribute list '<em>Crons</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger#getCrons()
 	 * @see #getScheduledTrigger()
 	 * @generated
 	 */
-	EAttribute getScheduledTrigger_Cron();
+	EAttribute getScheduledTrigger_Crons();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger <em>Webhook Trigger</em>}'.
@@ -4637,12 +4637,12 @@ public interface CICDPackage extends EPackage {
 		EClass SCHEDULED_TRIGGER = eINSTANCE.getScheduledTrigger();
 
 		/**
-		 * The meta object literal for the '<em><b>Cron</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Crons</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEDULED_TRIGGER__CRON = eINSTANCE.getScheduledTrigger_Cron();
+		EAttribute SCHEDULED_TRIGGER__CRONS = eINSTANCE.getScheduledTrigger_Crons();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.WebhookTriggerImpl <em>Webhook Trigger</em>}' class.

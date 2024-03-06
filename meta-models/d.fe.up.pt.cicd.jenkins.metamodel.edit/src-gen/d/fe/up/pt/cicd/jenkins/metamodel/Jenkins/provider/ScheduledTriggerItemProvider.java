@@ -1,9 +1,9 @@
 /**
  */
-package d.fe.up.pt.cicd.metamodel.CICD.provider;
+package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
-import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -44,24 +44,24 @@ public class ScheduledTriggerItemProvider extends TriggerItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCronsPropertyDescriptor(object);
+			addCronPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Crons feature.
+	 * This adds a property descriptor for the Cron feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCronsPropertyDescriptor(Object object) {
+	protected void addCronPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ScheduledTrigger_crons_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ScheduledTrigger_crons_feature",
+						getResourceLocator(), getString("_UI_ScheduledTrigger_cron_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ScheduledTrigger_cron_feature",
 								"_UI_ScheduledTrigger_type"),
-						CICDPackage.Literals.SCHEDULED_TRIGGER__CRONS, true, false, false,
+						JenkinsPackage.Literals.SCHEDULED_TRIGGER__CRON, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -94,7 +94,9 @@ public class ScheduledTriggerItemProvider extends TriggerItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ScheduledTrigger_type");
+		String label = ((ScheduledTrigger) object).getCron();
+		return label == null || label.length() == 0 ? getString("_UI_ScheduledTrigger_type")
+				: getString("_UI_ScheduledTrigger_type") + " " + label;
 	}
 
 	/**
@@ -109,7 +111,7 @@ public class ScheduledTriggerItemProvider extends TriggerItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ScheduledTrigger.class)) {
-		case CICDPackage.SCHEDULED_TRIGGER__CRONS:
+		case JenkinsPackage.SCHEDULED_TRIGGER__CRON:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

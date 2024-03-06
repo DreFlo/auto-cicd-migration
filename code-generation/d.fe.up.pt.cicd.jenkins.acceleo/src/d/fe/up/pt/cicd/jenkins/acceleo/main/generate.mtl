@@ -116,7 +116,10 @@ env.[variable.name/]
 
 [template public generateOptionedAgent(optionedAgent : OptionedAgent)]
 agent {
+[if (not optionedAgent.labels.oclIsUndefined())]
+	// label names may not make sense
 	label [generateExpression(optionedAgent.labels)/]
+[/if]
 [if (not optionedAgent.docker.oclIsUndefined())]
 	docker {
 		image [quoteString(optionedAgent.docker.image)/]
@@ -137,12 +140,33 @@ environment {
 }
 [/template]
 
+[template public generateTriggers(triggers : OrderedSet(Trigger))]
+triggers {
+[for (trigger : Trigger | triggers)]
+	[generateTrigger(trigger)/]
+[/for]
+}
+[/template]
+
+[template public generateTrigger(trigger : Trigger) post (trim())]
+[if (trigger.oclIsKindOf(ScheduledTrigger))]
+[generateScheduledTrigger(trigger.oclAsType(ScheduledTrigger))/]
+[/if]
+[/template]
+
+[template public generateScheduledTrigger(scheduledTrigger : ScheduledTrigger)]
+cron([quoteString(scheduledTrigger.cron)/])
+[/template]
+
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('Jenkinsfile', false, 'UTF-8')]
 pipeline {
 [if (not pipeline.environmentVariables->isEmpty())]
 	[generateEnvironment(pipeline.environmentVariables)/]
+[/if]
+[if (not pipeline.triggers->isEmpty())]
+	[generateTriggers(pipeline.triggers)/]
 [/if]
 	stages {
 	[for (abstractStage : AbstractStage | pipeline.stages)]

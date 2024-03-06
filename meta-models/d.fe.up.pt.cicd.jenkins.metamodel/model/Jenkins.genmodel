@@ -24,6 +24,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/stages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/agent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/environmentVariables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/triggers"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractPipelineExecutionBlock"/>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStage"/>
@@ -102,5 +103,9 @@
     <genClasses ecoreClass="Jenkins.ecore#//LogicalOp"/>
     <genClasses ecoreClass="Jenkins.ecore#//And"/>
     <genClasses ecoreClass="Jenkins.ecore#//Or"/>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//Trigger"/>
+    <genClasses ecoreClass="Jenkins.ecore#//ScheduledTrigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//ScheduledTrigger/cron"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

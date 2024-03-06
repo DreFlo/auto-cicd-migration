@@ -12,7 +12,8 @@ rule Workflow2Pipeline {
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
 			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
-			workingDirectory <- workflow.defaults.workingDirectory.expression2String()
+			workingDirectory <- workflow.defaults.workingDirectory.expression2String(),
+			triggers <- workflow.triggers
 		)
 }
 
@@ -224,6 +225,22 @@ rule Container2DockerContainer {
 	to
 		dockerContainer : CICD!DockerContainer(
 			image <- container.image
+		)
+}
+
+abstract rule Trigger2Trigger {
+	from
+		ghaTrigger : GHA!Trigger
+	to
+		cicdTrigger : CICD!Trigger
+}
+
+rule ScheduledTrigger2ScheduledTrigger extends Trigger2Trigger {
+	from
+		ghaTrigger : GHA!ScheduleTrigger
+	to
+		cicdTrigger : CICD!ScheduledTrigger(
+			crons <- ghaTrigger.crons->collect(cron | cron.expression2String())
 		)
 }
 

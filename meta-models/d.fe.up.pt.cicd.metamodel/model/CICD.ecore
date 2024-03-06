@@ -75,7 +75,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PullRequestTrigger" eSuperTypes="#//Trigger"/>
   <eClassifiers xsi:type="ecore:EClass" name="ManualTrigger" eSuperTypes="#//Trigger"/>
   <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="crons" lowerBound="1" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WebhookTrigger" eSuperTypes="#//Trigger"/>

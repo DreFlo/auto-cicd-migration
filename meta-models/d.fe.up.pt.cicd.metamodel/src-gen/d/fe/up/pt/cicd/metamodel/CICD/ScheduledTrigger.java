@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger#getCron <em>Cron</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger#getCrons <em>Crons</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getScheduledTrigger()
@@ -22,15 +22,15 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ScheduledTrigger extends Trigger {
 	/**
-	 * Returns the value of the '<em><b>Cron</b></em>' attribute list.
+	 * Returns the value of the '<em><b>Crons</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cron</em>' attribute list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getScheduledTrigger_Cron()
+	 * @return the value of the '<em>Crons</em>' attribute list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getScheduledTrigger_Crons()
 	 * @model required="true"
 	 * @generated
 	 */
-	EList<String> getCron();
+	EList<String> getCrons();
 
 } // ScheduledTrigger

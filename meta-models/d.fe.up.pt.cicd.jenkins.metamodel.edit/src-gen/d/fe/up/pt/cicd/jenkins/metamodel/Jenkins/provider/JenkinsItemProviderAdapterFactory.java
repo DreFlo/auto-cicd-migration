@@ -579,6 +579,29 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ScheduledTriggerItemProvider scheduledTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScheduledTriggerAdapter() {
+		if (scheduledTriggerItemProvider == null) {
+			scheduledTriggerItemProvider = new ScheduledTriggerItemProvider(this);
+		}
+
+		return scheduledTriggerItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -727,6 +750,8 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			andItemProvider.dispose();
 		if (orItemProvider != null)
 			orItemProvider.dispose();
+		if (scheduledTriggerItemProvider != null)
+			scheduledTriggerItemProvider.dispose();
 	}
 
 }

@@ -937,7 +937,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getScheduledTrigger_Cron() {
+	public EAttribute getScheduledTrigger_Crons() {
 		return (EAttribute) scheduledTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1952,7 +1952,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		manualTriggerEClass = createEClass(MANUAL_TRIGGER);
 
 		scheduledTriggerEClass = createEClass(SCHEDULED_TRIGGER);
-		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRON);
+		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRONS);
 
 		webhookTriggerEClass = createEClass(WEBHOOK_TRIGGER);
 
@@ -2271,7 +2271,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(scheduledTriggerEClass, ScheduledTrigger.class, "ScheduledTrigger", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getScheduledTrigger_Cron(), ecorePackage.getEString(), "cron", null, 1, -1,
+		initEAttribute(getScheduledTrigger_Crons(), ecorePackage.getEString(), "crons", null, 1, -1,
 				ScheduledTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 

@@ -7,6 +7,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getStages <em>Stages</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getAgent <em>Agent</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PipelineImpl#getTriggers <em>Triggers</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +71,16 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @ordered
 	 */
 	protected EMap<Variable, Expression> environmentVariables;
+
+	/**
+	 * The cached value of the '{@link #getTriggers() <em>Triggers</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTriggers()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Trigger> triggers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,6 +186,19 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @generated
 	 */
 	@Override
+	public EList<Trigger> getTriggers() {
+		if (triggers == null) {
+			triggers = new EObjectResolvingEList<Trigger>(Trigger.class, this, JenkinsPackage.PIPELINE__TRIGGERS);
+		}
+		return triggers;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case JenkinsPackage.PIPELINE__STAGES:
@@ -202,6 +228,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 				return getEnvironmentVariables();
 			else
 				return getEnvironmentVariables().map();
+		case JenkinsPackage.PIPELINE__TRIGGERS:
+			return getTriggers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +253,10 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
 			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
+		case JenkinsPackage.PIPELINE__TRIGGERS:
+			getTriggers().clear();
+			getTriggers().addAll((Collection<? extends Trigger>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -246,6 +278,9 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
 			getEnvironmentVariables().clear();
 			return;
+		case JenkinsPackage.PIPELINE__TRIGGERS:
+			getTriggers().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -264,6 +299,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 			return agent != null;
 		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
 			return environmentVariables != null && !environmentVariables.isEmpty();
+		case JenkinsPackage.PIPELINE__TRIGGERS:
+			return triggers != null && !triggers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

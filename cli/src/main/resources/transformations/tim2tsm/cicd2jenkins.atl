@@ -10,7 +10,7 @@ rule Pipeline2Pipeline {
 		cicdPipeline : CICD!Pipeline
 	to
 		jenkinsPipeline : Jenkins!Pipeline(
-			stages <- thisModule.groupJobs(cicdPipeline.jobStreams)->collect(
+			stages <- thisModule.groupJobs(cicdPipeline.jobStreams, Set{})->collect(
 						jobGroup | if jobGroup->size() = 1 then 
 							thisModule.Job2Stage(jobGroup->first())
 						else
@@ -18,7 +18,14 @@ rule Pipeline2Pipeline {
 						endif
 						),
 			agent <- cicdPipeline.agent,
-			environmentVariables <- cicdPipeline.environmentVariables				
+			environmentVariables <- cicdPipeline.environmentVariables,
+			triggers <- cicdPipeline.triggers->collect(trigger |
+				if trigger.oclIsKindOf(CICD!ScheduledTrigger) then
+					trigger.crons->collect(cron | thisModule.Cron2ScheduledTrigger(cron))
+				else
+					trigger
+				endif
+			)->flatten()
 		)
 }
 
@@ -251,7 +258,8 @@ rule DockerContainer2DockerContainer {
 		cicdDockerContainer : CICD!DockerContainer
 	to
 		jenkinsDockerContainer : Jenkins!DockerContainer(
-			image <- cicdDockerContainer.image.expression2String()
+			image <- cicdDockerContainer.image.expression2String(),
+			label <- cicdDockerContainer.label
 		)
 }
 
@@ -262,6 +270,15 @@ rule Assignment2Assignment {
 		jenkinsAssignment : Jenkins!Assignment(
 			key <- cicdAssignment.key,
 			value <- cicdAssignment.value
+		)
+}
+
+lazy rule Cron2ScheduledTrigger {
+	from
+		cron : String
+	to
+		scheduledTrigger : Jenkins!ScheduledTrigger(
+			cron <- cron
 		)
 }
 
@@ -308,14 +325,24 @@ helper context CICD!Concat def : expression2String() : String =
 helper context CICD!EnvironmentVariable def : expression2String() : String =
 	'$'.concat(self.name);
 
-helper def : groupJobs(jobStreams : Sequence(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
+helper def : groupJobs(jobStreams : Sequence(CICD!Job), previous : Set(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
 	let next : Sequence(CICD!Job) = 
 		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 
-			acc.append(jobStream.next)
+			acc.append(jobStream.next->select(nextJob | previous.union(jobStreams).includesAll(nextJob.previous)))
 		).flatten()->asSet()->asSequence()
 	in 
 	if next.isEmpty() then
 		Sequence{jobStreams}
 	else 
-		thisModule.groupJobs(next).prepend(jobStreams)
+		thisModule.groupJobs(next, previous.union(jobStreams)).prepend(jobStreams)
+	endif;
+
+helper def : getAllPreviousJobs(jobs : Set(CICD!Job)) : Set(CICD!Job) =
+	let previous : Set(CICD!Job) = jobs->iterate(job; acc: Set(CICD!Job) = Set{} |
+		acc.union(job.previous)
+	) in
+	if previous.isEmpty() then
+		jobs
+	else
+		thisModule.getAllPreviousJobs(previous).union(jobs)
 	endif;

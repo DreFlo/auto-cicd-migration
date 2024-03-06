@@ -102,6 +102,8 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createAnd();
 		case JenkinsPackage.OR:
 			return createOr();
+		case JenkinsPackage.SCHEDULED_TRIGGER:
+			return createScheduledTrigger();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -380,6 +382,17 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public Or createOr() {
 		OrImpl or = new OrImpl();
 		return or;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ScheduledTrigger createScheduledTrigger() {
+		ScheduledTriggerImpl scheduledTrigger = new ScheduledTriggerImpl();
+		return scheduledTrigger;
 	}
 
 	/**

@@ -56,6 +56,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 			super.getPropertyDescriptors(object);
 
 			addAgentPropertyDescriptor(object);
+			addTriggersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -73,6 +74,21 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 						getString("_UI_PropertyDescriptor_description", "_UI_Pipeline_agent_feature",
 								"_UI_Pipeline_type"),
 						JenkinsPackage.Literals.PIPELINE__AGENT, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Triggers feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTriggersPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Pipeline_triggers_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Pipeline_triggers_feature",
+								"_UI_Pipeline_type"),
+						JenkinsPackage.Literals.PIPELINE__TRIGGERS, true, false, true, null, null, null));
 	}
 
 	/**

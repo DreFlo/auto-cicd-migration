@@ -70,7 +70,7 @@ rule Job extends PipelineBlock {
 						step.thenRun->collect(thenStep | 
 							thenStep.environmentVariables->collect(environmentVariable |
 								thisModule.Assignment(environmentVariable, thisModule.getEnvironmentVariableNames(thenStep.environmentVariables), 
-									'STEP_' + input.steps.indexOf(step).toString().concat('_STEP_').concat(step.thenRun.indexOf(thenStep).toString()).concat('_'),
+									'STEP_' + input.steps.indexOf(step).toString().concat('_THEN_STEP_').concat(step.thenRun.indexOf(thenStep).toString()).concat('_'),
 									true
 								)
 							)
@@ -78,7 +78,7 @@ rule Job extends PipelineBlock {
 							step.elseRun->collect(thenStep | 
 							thenStep.environmentVariables->collect(environmentVariable |
 								thisModule.Assignment(environmentVariable, thisModule.getEnvironmentVariableNames(thenStep.environmentVariables), 
-									'STEP_' + input.steps.indexOf(step).toString().concat('_STEP_').concat(step.elseRun.indexOf(thenStep).toString()).concat('_'),
+									'STEP_' + input.steps.indexOf(step).toString().concat('_ELSE_STEP_').concat(step.elseRun.indexOf(thenStep).toString()).concat('_'),
 									true
 								)
 							)
@@ -498,15 +498,15 @@ lazy rule ConditionalStep {
 				endif,
 			thenRun <- input.thenRun->collect(step | 
 				if step.oclIsKindOf(CICD1!ConditionalStep) then
-					thisModule.ConditionalStep(step, prefix + 'STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
+					thisModule.ConditionalStep(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Command) then
-					thisModule.Command(step, prefix + 'STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
+					thisModule.Command(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Plugin) then
-					thisModule.Plugin(step, prefix + 'STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
+					thisModule.Plugin(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Cache) then
-					thisModule.Cache(step, prefix + 'STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
+					thisModule.Cache(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Artifact) then
-					thisModule.Artifact(step, prefix + 'STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
+					thisModule.Artifact(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
 				else 
 					OclUndefined
 				endif
@@ -517,15 +517,15 @@ lazy rule ConditionalStep {
 			),
 			elseRun <- input.elseRun->collect(step | 
 				if step.oclIsKindOf(CICD1!ConditionalStep) then
-					thisModule.ConditionalStep(step, prefix + 'STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
+					thisModule.ConditionalStep(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Command) then
-					thisModule.Command(step, prefix + 'STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
+					thisModule.Command(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Plugin) then
-					thisModule.Plugin(step, prefix + 'STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
+					thisModule.Plugin(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Cache) then
-					thisModule.Cache(step, prefix + 'STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
+					thisModule.Cache(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
 				else if step.oclIsKindOf(CICD1!Artifact) then
-					thisModule.Artifact(step, prefix + 'STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
+					thisModule.Artifact(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
 				else 
 					OclUndefined
 				endif

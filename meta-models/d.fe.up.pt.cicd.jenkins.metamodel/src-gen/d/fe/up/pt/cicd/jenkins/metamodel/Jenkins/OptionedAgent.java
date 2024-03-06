@@ -28,7 +28,7 @@ public interface OptionedAgent extends AbstractAgent {
 	 * @return the value of the '<em>Labels</em>' containment reference.
 	 * @see #setLabels(Expression)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getOptionedAgent_Labels()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Expression getLabels();

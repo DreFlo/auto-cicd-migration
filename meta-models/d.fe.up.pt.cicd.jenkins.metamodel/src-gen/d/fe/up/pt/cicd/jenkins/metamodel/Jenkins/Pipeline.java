@@ -74,13 +74,13 @@ public interface Pipeline extends EObject {
 	EMap<Variable, Expression> getEnvironmentVariables();
 
 	/**
-	 * Returns the value of the '<em><b>Triggers</b></em>' reference list.
+	 * Returns the value of the '<em><b>Triggers</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Triggers</em>' reference list.
+	 * @return the value of the '<em>Triggers</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Triggers()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Trigger> getTriggers();

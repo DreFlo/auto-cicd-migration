@@ -21,14 +21,14 @@ public abstract class OutputAbstractCompiler<OutputModel extends EObject, Output
         return generator;
     }
 
-    protected Void generate(OutputModel outputModel, String outputFolder) throws Exception {
-        generator.generate(outputModel, outputFolder);
-        return null;
+    protected void generate(OutputModel outputModel, String outputFolder) throws Exception {
+        getGenerator().generate(outputModel, outputFolder);
     }
 
     @Override
     public Void compile(Pipeline pipeline) throws Exception {
         OutputModel outputModel = transform(pipeline);
+        System.out.println("Generating (" + getGenerator().getClass().getName() + ")...");
         generate(outputModel, "./output/");
         return null;
     }

@@ -95,7 +95,7 @@ public interface JenkinsPackage extends EPackage {
 	int PIPELINE__ENVIRONMENT_VARIABLES = 2;
 
 	/**
-	 * The feature id for the '<em><b>Triggers</b></em>' reference list.
+	 * The feature id for the '<em><b>Triggers</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1440,10 +1440,10 @@ public interface JenkinsPackage extends EPackage {
 	EReference getPipeline_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTriggers <em>Triggers</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTriggers <em>Triggers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Triggers</em>'.
+	 * @return the meta object for the containment reference list '<em>Triggers</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTriggers()
 	 * @see #getPipeline()
 	 * @generated
@@ -2192,7 +2192,7 @@ public interface JenkinsPackage extends EPackage {
 		EReference PIPELINE__ENVIRONMENT_VARIABLES = eINSTANCE.getPipeline_EnvironmentVariables();
 
 		/**
-		 * The meta object literal for the '<em><b>Triggers</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Triggers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

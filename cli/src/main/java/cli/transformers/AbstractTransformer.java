@@ -2,11 +2,9 @@ package cli.transformers;
 
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
-
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.m2m.atl.core.*;
@@ -19,7 +17,7 @@ import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.HashMap;
 
 public abstract class AbstractTransformer<InputModel extends EObject, InputPackage extends EPackage, OutputModel extends EObject, OutputPackage extends EPackage> {
     private final ResourceSet resourceSet;
@@ -30,7 +28,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final String atlFilePath;
     private final String inputModelName;
     private final String outputModelName;
-    private boolean deleteIntermediateFiles = false;
+    private boolean deleteIntermediateFiles = true;
 
     protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName) {
         this.resourceSet = resourceSet;
@@ -40,6 +38,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         this.inputModelName = inputModelName;
         this.outputModelName = outputModelName;
         checkRegistry();
+//        setDeleteIntermediateFiles(false);
     }
 
     protected final void checkRegistry() {
@@ -79,7 +78,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
 
     private String serializeModel(InputModel model) throws IOException {
         String tempDir = "intermediate";
-        String randomName = JavaUtils.getRandomName() + "_serialize.xmi";
+        String randomName = JavaUtils.getRandomName() + ".xmi";
         String filePath = Path.of(tempDir, randomName).toString();
 
         EMFUtils.serializeModel(model, filePath, getResourceSet());
@@ -140,6 +139,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         return outputModelName;
     }
 
+    @SuppressWarnings("unused")
     public void setDeleteIntermediateFiles(boolean deleteIntermediateFiles) {
         this.deleteIntermediateFiles = deleteIntermediateFiles;
     }

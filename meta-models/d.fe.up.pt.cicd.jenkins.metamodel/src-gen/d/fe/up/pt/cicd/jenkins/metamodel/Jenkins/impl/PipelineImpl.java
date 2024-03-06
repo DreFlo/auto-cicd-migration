@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -73,7 +72,7 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	protected EMap<Variable, Expression> environmentVariables;
 
 	/**
-	 * The cached value of the '{@link #getTriggers() <em>Triggers</em>}' reference list.
+	 * The cached value of the '{@link #getTriggers() <em>Triggers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTriggers()
@@ -188,7 +187,7 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public EList<Trigger> getTriggers() {
 		if (triggers == null) {
-			triggers = new EObjectResolvingEList<Trigger>(Trigger.class, this, JenkinsPackage.PIPELINE__TRIGGERS);
+			triggers = new EObjectContainmentEList<Trigger>(Trigger.class, this, JenkinsPackage.PIPELINE__TRIGGERS);
 		}
 		return triggers;
 	}
@@ -207,6 +206,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 			return basicSetAgent(null, msgs);
 		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		case JenkinsPackage.PIPELINE__TRIGGERS:
+			return ((InternalEList<?>) getTriggers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

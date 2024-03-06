@@ -1257,7 +1257,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				-1, Pipeline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractPipelineExecutionBlockEClass, AbstractPipelineExecutionBlock.class,
@@ -1317,7 +1317,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(optionedAgentEClass, OptionedAgent.class, "OptionedAgent", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOptionedAgent_Labels(), this.getExpression(), null, "labels", null, 1, 1, OptionedAgent.class,
+		initEReference(getOptionedAgent_Labels(), this.getExpression(), null, "labels", null, 0, 1, OptionedAgent.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOptionedAgent_Docker(), this.getDockerContainer(), null, "docker", null, 0, 1,

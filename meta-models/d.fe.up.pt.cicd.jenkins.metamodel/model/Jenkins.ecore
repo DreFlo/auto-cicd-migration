@@ -9,7 +9,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//Assignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
-        eType="#//Trigger"/>
+        eType="#//Trigger" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>

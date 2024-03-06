@@ -1,7 +1,5 @@
 package cli.utils;
 
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -10,7 +8,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 public class EMFUtils {
     public static Object getFeature(EObject obj, int featureID) {

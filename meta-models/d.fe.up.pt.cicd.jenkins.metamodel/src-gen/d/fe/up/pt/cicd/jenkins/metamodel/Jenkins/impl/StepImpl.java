@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class StepImpl extends AbstractStepImpl implements Step {
+public class StepImpl extends StageChildStepImpl implements Step {
 	/**
 	 * The default value of the '{@link #getCommand() <em>Command</em>}' attribute.
 	 * <!-- begin-user-doc -->

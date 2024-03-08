@@ -148,9 +148,48 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case JenkinsPackage.STAGE_CHILD_STEP: {
+			StageChildStep stageChildStep = (StageChildStep) theEObject;
+			T result = caseStageChildStep(stageChildStep);
+			if (result == null)
+				result = caseAbstractStep(stageChildStep);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(stageChildStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.CONDITIONAL_CHILD_STEP: {
+			ConditionalChildStep conditionalChildStep = (ConditionalChildStep) theEObject;
+			T result = caseConditionalChildStep(conditionalChildStep);
+			if (result == null)
+				result = caseAbstractStep(conditionalChildStep);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(conditionalChildStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.SCRIPTED_BLOCK: {
+			ScriptedBlock scriptedBlock = (ScriptedBlock) theEObject;
+			T result = caseScriptedBlock(scriptedBlock);
+			if (result == null)
+				result = caseStageChildStep(scriptedBlock);
+			if (result == null)
+				result = caseAbstractStep(scriptedBlock);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(scriptedBlock);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case JenkinsPackage.STEP: {
 			Step step = (Step) theEObject;
 			T result = caseStep(step);
+			if (result == null)
+				result = caseStageChildStep(step);
+			if (result == null)
+				result = caseConditionalChildStep(step);
 			if (result == null)
 				result = caseAbstractStep(step);
 			if (result == null)
@@ -162,6 +201,8 @@ public class JenkinsSwitch<T> extends Switch<T> {
 		case JenkinsPackage.CONDITIONAL_STEP: {
 			ConditionalStep conditionalStep = (ConditionalStep) theEObject;
 			T result = caseConditionalStep(conditionalStep);
+			if (result == null)
+				result = caseConditionalChildStep(conditionalStep);
 			if (result == null)
 				result = caseAbstractStep(conditionalStep);
 			if (result == null)
@@ -195,11 +236,33 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case JenkinsPackage.OPTIONED_AGENT: {
-			OptionedAgent optionedAgent = (OptionedAgent) theEObject;
-			T result = caseOptionedAgent(optionedAgent);
+		case JenkinsPackage.LABEL_AGENT: {
+			LabelAgent labelAgent = (LabelAgent) theEObject;
+			T result = caseLabelAgent(labelAgent);
 			if (result == null)
-				result = caseAbstractAgent(optionedAgent);
+				result = caseAbstractAgent(labelAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.NODE_AGENT: {
+			NodeAgent nodeAgent = (NodeAgent) theEObject;
+			T result = caseNodeAgent(nodeAgent);
+			if (result == null)
+				result = caseLabelAgent(nodeAgent);
+			if (result == null)
+				result = caseAbstractAgent(nodeAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.DOCKER_AGENT: {
+			DockerAgent dockerAgent = (DockerAgent) theEObject;
+			T result = caseDockerAgent(dockerAgent);
+			if (result == null)
+				result = caseLabelAgent(dockerAgent);
+			if (result == null)
+				result = caseAbstractAgent(dockerAgent);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -736,6 +799,51 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Stage Child Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Stage Child Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStageChildStep(StageChildStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Child Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Child Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalChildStep(ConditionalChildStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scripted Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scripted Block</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScriptedBlock(ScriptedBlock object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -811,17 +919,47 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Optioned Agent</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Label Agent</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Optioned Agent</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Label Agent</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOptionedAgent(OptionedAgent object) {
+	public T caseLabelAgent(LabelAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Node Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNodeAgent(NodeAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Docker Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Docker Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDockerAgent(DockerAgent object) {
 		return null;
 	}
 

@@ -109,6 +109,21 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseStageChildStep(StageChildStep object) {
+			return createStageChildStepAdapter();
+		}
+
+		@Override
+		public Adapter caseConditionalChildStep(ConditionalChildStep object) {
+			return createConditionalChildStepAdapter();
+		}
+
+		@Override
+		public Adapter caseScriptedBlock(ScriptedBlock object) {
+			return createScriptedBlockAdapter();
+		}
+
+		@Override
 		public Adapter caseStep(Step object) {
 			return createStepAdapter();
 		}
@@ -134,8 +149,18 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseOptionedAgent(OptionedAgent object) {
-			return createOptionedAgentAdapter();
+		public Adapter caseLabelAgent(LabelAgent object) {
+			return createLabelAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseNodeAgent(NodeAgent object) {
+			return createNodeAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseDockerAgent(DockerAgent object) {
+			return createDockerAgentAdapter();
 		}
 
 		@Override
@@ -475,6 +500,48 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StageChildStep <em>Stage Child Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StageChildStep
+	 * @generated
+	 */
+	public Adapter createStageChildStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep <em>Conditional Child Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep
+	 * @generated
+	 */
+	public Adapter createConditionalChildStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock <em>Scripted Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock
+	 * @generated
+	 */
+	public Adapter createScriptedBlockAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -545,16 +612,44 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent <em>Optioned Agent</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent <em>Label Agent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent
 	 * @generated
 	 */
-	public Adapter createOptionedAgentAdapter() {
+	public Adapter createLabelAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent <em>Node Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent
+	 * @generated
+	 */
+	public Adapter createNodeAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent <em>Docker Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent
+	 * @generated
+	 */
+	public Adapter createDockerAgentAdapter() {
 		return null;
 	}
 

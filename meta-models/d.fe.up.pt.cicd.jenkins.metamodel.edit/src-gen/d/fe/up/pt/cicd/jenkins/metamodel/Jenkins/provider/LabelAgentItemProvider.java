@@ -2,9 +2,9 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,19 +18,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConditionalStepItemProvider extends ConditionalChildStepItemProvider {
+public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConditionalStepItemProvider(AdapterFactory adapterFactory) {
+	public LabelAgentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,9 +61,7 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION);
-			childrenFeatures.add(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN);
-			childrenFeatures.add(JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN);
+			childrenFeatures.add(JenkinsPackage.Literals.LABEL_AGENT__LABELS);
 		}
 		return childrenFeatures;
 	}
@@ -82,14 +80,14 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 	}
 
 	/**
-	 * This returns ConditionalStep.gif.
+	 * This returns LabelAgent.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ConditionalStep"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelAgent"));
 	}
 
 	/**
@@ -110,7 +108,7 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_ConditionalStep_type");
+		return getString("_UI_LabelAgent_type");
 	}
 
 	/**
@@ -124,10 +122,8 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ConditionalStep.class)) {
-		case JenkinsPackage.CONDITIONAL_STEP__IF_CONDITION:
-		case JenkinsPackage.CONDITIONAL_STEP__THEN_RUN:
-		case JenkinsPackage.CONDITIONAL_STEP__ELSE_RUN:
+		switch (notification.getFeatureID(LabelAgent.class)) {
+		case JenkinsPackage.LABEL_AGENT__LABELS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -145,74 +141,41 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createStringLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createDoubleLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createVariable()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createEqualityOp()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
-				JenkinsFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
-				JenkinsFactory.eINSTANCE.createStep()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
-				JenkinsFactory.eINSTANCE.createConditionalStep()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
-				JenkinsFactory.eINSTANCE.createStep()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
-				JenkinsFactory.eINSTANCE.createConditionalStep()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN
-				|| childFeature == JenkinsPackage.Literals.CONDITIONAL_STEP__ELSE_RUN;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2",
-					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS, JenkinsFactory.eINSTANCE.createOr()));
 	}
 
 }

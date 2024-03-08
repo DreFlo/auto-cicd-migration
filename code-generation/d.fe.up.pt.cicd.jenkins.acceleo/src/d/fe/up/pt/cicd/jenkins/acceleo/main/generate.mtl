@@ -50,6 +50,8 @@ parallel {
 [generateStep(abstractStep.oclAsType(Step))/]
 [elseif (abstractStep.oclIsKindOf(ConditionalStep))]
 [generateConditionalStep(abstractStep.oclAsType(ConditionalStep))/]
+[elseif (abstractStep.oclIsKindOf(ScriptedBlock))]
+[generateScriptedBlock(abstractStep.oclAsType(ScriptedBlock))/]
 [/if]
 [/template]
 
@@ -70,6 +72,14 @@ else {
 [/for]
 }
 [/if]
+[/template]
+
+[template public generateScriptedBlock(scriptedBlock : ScriptedBlock)]
+script {
+[for (abstractStep : AbstractStep | scriptedBlock.steps)]
+	[generateAbstractStep(abstractStep)/]
+[/for]
+}
 [/template]
 
 [template public generateExpression(expression : Expression) post (trim())]
@@ -109,20 +119,33 @@ env.[variable.name/]
 [/template]
 
 [template public generateAbstractAgent(abstractAgent : AbstractAgent) post (trim())]
-[if (abstractAgent.oclIsKindOf(OptionedAgent))]
-[generateOptionedAgent(abstractAgent.oclAsType(OptionedAgent))/]
+[if (abstractAgent.oclIsKindOf(AnyAgent))]
+agent any
+[elseif (abstractAgent.oclIsTypeOf(LabelAgent))]
+[generateLabelAgent(abstractAgent.oclAsType(LabelAgent))/]
+[elseif (abstractAgent.oclIsTypeOf(DockerAgent))]
+[generateDockerAgent(abstractAgent.oclAsType(DockerAgent))/]
 [/if]
 [/template]
 
-[template public generateOptionedAgent(optionedAgent : OptionedAgent)]
+[template public generateLabelAgent(labelAgent : LabelAgent)]
 agent {
-[if (not optionedAgent.labels.oclIsUndefined())]
+[if (not labelAgent.labels.oclIsUndefined())]
 	// label names may not make sense
-	label [generateExpression(optionedAgent.labels)/]
+	label [generateExpression(labelAgent.labels)/]
 [/if]
-[if (not optionedAgent.docker.oclIsUndefined())]
+}
+[/template]
+
+[template public generateDockerAgent(dockerAgent : DockerAgent)]
+agent {
+[if (not dockerAgent.docker.oclIsUndefined())]
 	docker {
-		image [quoteString(optionedAgent.docker.image)/]
+	[if (not dockerAgent.labels.oclIsUndefined())]
+		// label names may not make sense
+		label [generateExpression(dockerAgent.labels)/]
+	[/if]
+		image [quoteString(dockerAgent.docker.image)/]
 	}
 [/if]
 }
@@ -162,6 +185,7 @@ cron([quoteString(scheduledTrigger.cron)/])
 [comment @main/]
 [file ('Jenkinsfile', false, 'UTF-8')]
 pipeline {
+	[generateAbstractAgent(pipeline.agent)/]
 [if (not pipeline.environmentVariables->isEmpty())]
 	[generateEnvironment(pipeline.environmentVariables)/]
 [/if]

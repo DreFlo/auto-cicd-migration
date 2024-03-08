@@ -199,7 +199,13 @@ public class AbstractStageItemProvider extends AbstractPipelineExecutionBlockIte
 				JenkinsFactory.eINSTANCE.createAnyAgent()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ABSTRACT_STAGE__AGENT,
-				JenkinsFactory.eINSTANCE.createOptionedAgent()));
+				JenkinsFactory.eINSTANCE.createLabelAgent()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ABSTRACT_STAGE__AGENT,
+				JenkinsFactory.eINSTANCE.createNodeAgent()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ABSTRACT_STAGE__AGENT,
+				JenkinsFactory.eINSTANCE.createDockerAgent()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ABSTRACT_STAGE__CONDITIONS,
 				JenkinsFactory.eINSTANCE.createWhenBranch()));

@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ConditionalStep extends AbstractStep {
+public interface ConditionalStep extends ConditionalChildStep {
 	/**
 	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -47,7 +47,7 @@ public interface ConditionalStep extends AbstractStep {
 
 	/**
 	 * Returns the value of the '<em><b>Then Run</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Then Run</em>' containment reference list.
@@ -55,11 +55,11 @@ public interface ConditionalStep extends AbstractStep {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<AbstractStep> getThenRun();
+	EList<ConditionalChildStep> getThenRun();
 
 	/**
 	 * Returns the value of the '<em><b>Else Run</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Else Run</em>' containment reference list.
@@ -67,6 +67,6 @@ public interface ConditionalStep extends AbstractStep {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<AbstractStep> getElseRun();
+	EList<ConditionalChildStep> getElseRun();
 
 } // ConditionalStep

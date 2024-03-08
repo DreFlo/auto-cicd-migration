@@ -72,6 +72,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//StepStage/steps"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStep"/>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//StageChildStep"/>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//ConditionalChildStep"/>
+    <genClasses ecoreClass="Jenkins.ecore#//ScriptedBlock">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//ScriptedBlock/steps"/>
+    </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//Step">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/command"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/arguments"/>
@@ -84,10 +89,14 @@
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractAgent"/>
     <genClasses ecoreClass="Jenkins.ecore#//NoneAgent"/>
     <genClasses ecoreClass="Jenkins.ecore#//AnyAgent"/>
-    <genClasses ecoreClass="Jenkins.ecore#//OptionedAgent">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//OptionedAgent/labels"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//OptionedAgent/docker"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//OptionedAgent/customWorkspace"/>
+    <genClasses ecoreClass="Jenkins.ecore#//LabelAgent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//LabelAgent/labels"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//NodeAgent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//NodeAgent/customWorkspace"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//DockerAgent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//DockerAgent/docker"/>
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//DockerContainer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//DockerContainer/image"/>

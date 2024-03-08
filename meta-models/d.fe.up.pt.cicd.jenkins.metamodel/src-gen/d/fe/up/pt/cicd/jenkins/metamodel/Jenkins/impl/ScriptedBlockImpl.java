@@ -2,52 +2,47 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StageChildStep;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
-
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock;
 import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Step Stage</b></em>'.
+ * An implementation of the model object '<em><b>Scripted Block</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl#getSteps <em>Steps</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ScriptedBlockImpl#getSteps <em>Steps</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StepStageImpl extends AbstractStageImpl implements StepStage {
+public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlock {
 	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
+	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSteps()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<StageChildStep> steps;
+	protected EList<ConditionalChildStep> steps;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StepStageImpl() {
+	protected ScriptedBlockImpl() {
 		super();
 	}
 
@@ -58,7 +53,7 @@ public class StepStageImpl extends AbstractStageImpl implements StepStage {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return JenkinsPackage.Literals.STEP_STAGE;
+		return JenkinsPackage.Literals.SCRIPTED_BLOCK;
 	}
 
 	/**
@@ -67,10 +62,10 @@ public class StepStageImpl extends AbstractStageImpl implements StepStage {
 	 * @generated
 	 */
 	@Override
-	public EList<StageChildStep> getSteps() {
+	public EList<ConditionalChildStep> getSteps() {
 		if (steps == null) {
-			steps = new EObjectContainmentEList<StageChildStep>(StageChildStep.class, this,
-					JenkinsPackage.STEP_STAGE__STEPS);
+			steps = new EObjectResolvingEList<ConditionalChildStep>(ConditionalChildStep.class, this,
+					JenkinsPackage.SCRIPTED_BLOCK__STEPS);
 		}
 		return steps;
 	}
@@ -81,23 +76,9 @@ public class StepStageImpl extends AbstractStageImpl implements StepStage {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case JenkinsPackage.STEP_STAGE__STEPS:
-			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case JenkinsPackage.STEP_STAGE__STEPS:
+		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
 			return getSteps();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,9 +93,9 @@ public class StepStageImpl extends AbstractStageImpl implements StepStage {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case JenkinsPackage.STEP_STAGE__STEPS:
+		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
 			getSteps().clear();
-			getSteps().addAll((Collection<? extends StageChildStep>) newValue);
+			getSteps().addAll((Collection<? extends ConditionalChildStep>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,7 +109,7 @@ public class StepStageImpl extends AbstractStageImpl implements StepStage {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.STEP_STAGE__STEPS:
+		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
 			getSteps().clear();
 			return;
 		}
@@ -143,10 +124,10 @@ public class StepStageImpl extends AbstractStageImpl implements StepStage {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.STEP_STAGE__STEPS:
+		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
 			return steps != null && !steps.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //StepStageImpl
+} //ScriptedBlockImpl

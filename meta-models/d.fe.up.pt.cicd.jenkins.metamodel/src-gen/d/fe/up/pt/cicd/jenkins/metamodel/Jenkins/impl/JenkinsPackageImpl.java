@@ -12,7 +12,9 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp;
@@ -20,21 +22,24 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedWhen;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StageChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral;
@@ -137,6 +142,27 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass stageChildStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalChildStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scriptedBlockEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass stepEClass = null;
 
 	/**
@@ -172,7 +198,21 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass optionedAgentEClass = null;
+	private EClass labelAgentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nodeAgentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dockerAgentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -783,6 +823,46 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getStageChildStep() {
+		return stageChildStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConditionalChildStep() {
+		return conditionalChildStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScriptedBlock() {
+		return scriptedBlockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScriptedBlock_Steps() {
+		return (EReference) scriptedBlockEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStep() {
 		return stepEClass;
 	}
@@ -883,8 +963,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getOptionedAgent() {
-		return optionedAgentEClass;
+	public EClass getLabelAgent() {
+		return labelAgentEClass;
 	}
 
 	/**
@@ -893,8 +973,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOptionedAgent_Labels() {
-		return (EReference) optionedAgentEClass.getEStructuralFeatures().get(0);
+	public EReference getLabelAgent_Labels() {
+		return (EReference) labelAgentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -903,8 +983,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getOptionedAgent_Docker() {
-		return (EReference) optionedAgentEClass.getEStructuralFeatures().get(1);
+	public EClass getNodeAgent() {
+		return nodeAgentEClass;
 	}
 
 	/**
@@ -913,8 +993,28 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOptionedAgent_CustomWorkspace() {
-		return (EAttribute) optionedAgentEClass.getEStructuralFeatures().get(2);
+	public EAttribute getNodeAgent_CustomWorkspace() {
+		return (EAttribute) nodeAgentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDockerAgent() {
+		return dockerAgentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDockerAgent_Docker() {
+		return (EReference) dockerAgentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1806,6 +1906,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		abstractStepEClass = createEClass(ABSTRACT_STEP);
 
+		stageChildStepEClass = createEClass(STAGE_CHILD_STEP);
+
+		conditionalChildStepEClass = createEClass(CONDITIONAL_CHILD_STEP);
+
+		scriptedBlockEClass = createEClass(SCRIPTED_BLOCK);
+		createEReference(scriptedBlockEClass, SCRIPTED_BLOCK__STEPS);
+
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__COMMAND);
 		createEAttribute(stepEClass, STEP__ARGUMENTS);
@@ -1821,10 +1928,14 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		anyAgentEClass = createEClass(ANY_AGENT);
 
-		optionedAgentEClass = createEClass(OPTIONED_AGENT);
-		createEReference(optionedAgentEClass, OPTIONED_AGENT__LABELS);
-		createEReference(optionedAgentEClass, OPTIONED_AGENT__DOCKER);
-		createEAttribute(optionedAgentEClass, OPTIONED_AGENT__CUSTOM_WORKSPACE);
+		labelAgentEClass = createEClass(LABEL_AGENT);
+		createEReference(labelAgentEClass, LABEL_AGENT__LABELS);
+
+		nodeAgentEClass = createEClass(NODE_AGENT);
+		createEAttribute(nodeAgentEClass, NODE_AGENT__CUSTOM_WORKSPACE);
+
+		dockerAgentEClass = createEClass(DOCKER_AGENT);
+		createEReference(dockerAgentEClass, DOCKER_AGENT__DOCKER);
 
 		dockerContainerEClass = createEClass(DOCKER_CONTAINER);
 		createEAttribute(dockerContainerEClass, DOCKER_CONTAINER__IMAGE);
@@ -1988,11 +2099,17 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		sequentialNestedStageEClass.getESuperTypes().add(this.getNestedStage());
 		stepStageEClass.getESuperTypes().add(this.getAbstractStage());
 		abstractStepEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
-		stepEClass.getESuperTypes().add(this.getAbstractStep());
-		conditionalStepEClass.getESuperTypes().add(this.getAbstractStep());
+		stageChildStepEClass.getESuperTypes().add(this.getAbstractStep());
+		conditionalChildStepEClass.getESuperTypes().add(this.getAbstractStep());
+		scriptedBlockEClass.getESuperTypes().add(this.getStageChildStep());
+		stepEClass.getESuperTypes().add(this.getStageChildStep());
+		stepEClass.getESuperTypes().add(this.getConditionalChildStep());
+		conditionalStepEClass.getESuperTypes().add(this.getConditionalChildStep());
 		noneAgentEClass.getESuperTypes().add(this.getAbstractAgent());
 		anyAgentEClass.getESuperTypes().add(this.getAbstractAgent());
-		optionedAgentEClass.getESuperTypes().add(this.getAbstractAgent());
+		labelAgentEClass.getESuperTypes().add(this.getAbstractAgent());
+		nodeAgentEClass.getESuperTypes().add(this.getLabelAgent());
+		dockerAgentEClass.getESuperTypes().add(this.getLabelAgent());
 		literalEClass.getESuperTypes().add(this.getExpression());
 		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -2085,12 +2202,24 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(stepStageEClass, StepStage.class, "StepStage", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStepStage_Steps(), this.getAbstractStep(), null, "steps", null, 0, -1, StepStage.class,
+		initEReference(getStepStage_Steps(), this.getStageChildStep(), null, "steps", null, 0, -1, StepStage.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractStepEClass, AbstractStep.class, "AbstractStep", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stageChildStepEClass, StageChildStep.class, "StageChildStep", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(conditionalChildStepEClass, ConditionalChildStep.class, "ConditionalChildStep", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(scriptedBlockEClass, ScriptedBlock.class, "ScriptedBlock", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScriptedBlock_Steps(), this.getConditionalChildStep(), null, "steps", null, 0, -1,
+				ScriptedBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Command(), ecorePackage.getEString(), "command", null, 1, 1, Step.class, !IS_TRANSIENT,
@@ -2103,10 +2232,10 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getConditionalStep_IfCondition(), this.getExpression(), null, "ifCondition", null, 1, 1,
 				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditionalStep_ThenRun(), this.getAbstractStep(), null, "thenRun", null, 1, -1,
+		initEReference(getConditionalStep_ThenRun(), this.getConditionalChildStep(), null, "thenRun", null, 1, -1,
 				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditionalStep_ElseRun(), this.getAbstractStep(), null, "elseRun", null, 0, -1,
+		initEReference(getConditionalStep_ElseRun(), this.getConditionalChildStep(), null, "elseRun", null, 0, -1,
 				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2119,17 +2248,23 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(anyAgentEClass, AnyAgent.class, "AnyAgent", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(optionedAgentEClass, OptionedAgent.class, "OptionedAgent", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(labelAgentEClass, LabelAgent.class, "LabelAgent", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOptionedAgent_Labels(), this.getExpression(), null, "labels", null, 0, 1, OptionedAgent.class,
+		initEReference(getLabelAgent_Labels(), this.getExpression(), null, "labels", null, 0, 1, LabelAgent.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOptionedAgent_Docker(), this.getDockerContainer(), null, "docker", null, 0, 1,
-				OptionedAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOptionedAgent_CustomWorkspace(), ecorePackage.getEString(), "customWorkspace", null, 0, 1,
-				OptionedAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+
+		initEClass(nodeAgentEClass, NodeAgent.class, "NodeAgent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNodeAgent_CustomWorkspace(), ecorePackage.getEString(), "customWorkspace", null, 0, 1,
+				NodeAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(dockerAgentEClass, DockerAgent.class, "DockerAgent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDockerAgent_Docker(), this.getDockerContainer(), null, "docker", null, 0, 1,
+				DockerAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dockerContainerEClass, DockerContainer.class, "DockerContainer", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

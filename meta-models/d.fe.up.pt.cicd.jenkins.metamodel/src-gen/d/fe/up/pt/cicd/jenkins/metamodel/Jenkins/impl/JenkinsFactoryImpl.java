@@ -69,6 +69,8 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createSequentialNestedStage();
 		case JenkinsPackage.STEP_STAGE:
 			return createStepStage();
+		case JenkinsPackage.SCRIPTED_BLOCK:
+			return createScriptedBlock();
 		case JenkinsPackage.STEP:
 			return createStep();
 		case JenkinsPackage.CONDITIONAL_STEP:
@@ -77,8 +79,12 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createNoneAgent();
 		case JenkinsPackage.ANY_AGENT:
 			return createAnyAgent();
-		case JenkinsPackage.OPTIONED_AGENT:
-			return createOptionedAgent();
+		case JenkinsPackage.LABEL_AGENT:
+			return createLabelAgent();
+		case JenkinsPackage.NODE_AGENT:
+			return createNodeAgent();
+		case JenkinsPackage.DOCKER_AGENT:
+			return createDockerAgent();
 		case JenkinsPackage.DOCKER_CONTAINER:
 			return createDockerContainer();
 		case JenkinsPackage.EXPRESSION:
@@ -261,6 +267,17 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
+	public ScriptedBlock createScriptedBlock() {
+		ScriptedBlockImpl scriptedBlock = new ScriptedBlockImpl();
+		return scriptedBlock;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Step createStep() {
 		StepImpl step = new StepImpl();
 		return step;
@@ -305,9 +322,31 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
-	public OptionedAgent createOptionedAgent() {
-		OptionedAgentImpl optionedAgent = new OptionedAgentImpl();
-		return optionedAgent;
+	public LabelAgent createLabelAgent() {
+		LabelAgentImpl labelAgent = new LabelAgentImpl();
+		return labelAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NodeAgent createNodeAgent() {
+		NodeAgentImpl nodeAgent = new NodeAgentImpl();
+		return nodeAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DockerAgent createDockerAgent() {
+		DockerAgentImpl dockerAgent = new DockerAgentImpl();
+		return dockerAgent;
 	}
 
 	/**

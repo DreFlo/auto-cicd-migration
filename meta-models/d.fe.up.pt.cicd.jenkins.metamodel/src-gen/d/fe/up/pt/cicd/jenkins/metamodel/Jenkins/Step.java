@@ -19,7 +19,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  * @model
  * @generated
  */
-public interface Step extends AbstractStep {
+public interface Step extends StageChildStep, ConditionalChildStep {
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' attribute.
 	 * <!-- begin-user-doc -->

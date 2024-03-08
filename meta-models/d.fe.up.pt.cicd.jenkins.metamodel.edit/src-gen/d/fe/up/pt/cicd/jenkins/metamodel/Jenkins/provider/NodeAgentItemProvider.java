@@ -3,7 +3,7 @@
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,19 +17,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class OptionedAgentItemProvider extends AbstractAgentItemProvider {
+public class NodeAgentItemProvider extends LabelAgentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OptionedAgentItemProvider(AdapterFactory adapterFactory) {
+	public NodeAgentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -44,41 +44,9 @@ public class OptionedAgentItemProvider extends AbstractAgentItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addLabelsPropertyDescriptor(object);
-			addDockerPropertyDescriptor(object);
 			addCustomWorkspacePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Labels feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLabelsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_OptionedAgent_labels_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_OptionedAgent_labels_feature",
-								"_UI_OptionedAgent_type"),
-						JenkinsPackage.Literals.OPTIONED_AGENT__LABELS, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Docker feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDockerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_OptionedAgent_docker_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_OptionedAgent_docker_feature",
-								"_UI_OptionedAgent_type"),
-						JenkinsPackage.Literals.OPTIONED_AGENT__DOCKER, true, false, true, null, null, null));
 	}
 
 	/**
@@ -90,22 +58,22 @@ public class OptionedAgentItemProvider extends AbstractAgentItemProvider {
 	protected void addCustomWorkspacePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_OptionedAgent_customWorkspace_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_OptionedAgent_customWorkspace_feature",
-								"_UI_OptionedAgent_type"),
-						JenkinsPackage.Literals.OPTIONED_AGENT__CUSTOM_WORKSPACE, true, false, false,
+						getResourceLocator(), getString("_UI_NodeAgent_customWorkspace_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_NodeAgent_customWorkspace_feature",
+								"_UI_NodeAgent_type"),
+						JenkinsPackage.Literals.NODE_AGENT__CUSTOM_WORKSPACE, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This returns OptionedAgent.gif.
+	 * This returns NodeAgent.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OptionedAgent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeAgent"));
 	}
 
 	/**
@@ -126,9 +94,9 @@ public class OptionedAgentItemProvider extends AbstractAgentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OptionedAgent) object).getCustomWorkspace();
-		return label == null || label.length() == 0 ? getString("_UI_OptionedAgent_type")
-				: getString("_UI_OptionedAgent_type") + " " + label;
+		String label = ((NodeAgent) object).getCustomWorkspace();
+		return label == null || label.length() == 0 ? getString("_UI_NodeAgent_type")
+				: getString("_UI_NodeAgent_type") + " " + label;
 	}
 
 	/**
@@ -142,8 +110,8 @@ public class OptionedAgentItemProvider extends AbstractAgentItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(OptionedAgent.class)) {
-		case JenkinsPackage.OPTIONED_AGENT__CUSTOM_WORKSPACE:
+		switch (notification.getFeatureID(NodeAgent.class)) {
+		case JenkinsPackage.NODE_AGENT__CUSTOM_WORKSPACE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

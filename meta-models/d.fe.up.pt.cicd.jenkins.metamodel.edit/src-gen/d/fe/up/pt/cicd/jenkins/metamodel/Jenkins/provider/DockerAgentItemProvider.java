@@ -2,9 +2,9 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,19 +18,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StepStageItemProvider extends AbstractStageItemProvider {
+public class DockerAgentItemProvider extends LabelAgentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StepStageItemProvider(AdapterFactory adapterFactory) {
+	public DockerAgentItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,7 +61,7 @@ public class StepStageItemProvider extends AbstractStageItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.STEP_STAGE__STEPS);
+			childrenFeatures.add(JenkinsPackage.Literals.DOCKER_AGENT__DOCKER);
 		}
 		return childrenFeatures;
 	}
@@ -80,14 +80,14 @@ public class StepStageItemProvider extends AbstractStageItemProvider {
 	}
 
 	/**
-	 * This returns StepStage.gif.
+	 * This returns DockerAgent.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StepStage"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DockerAgent"));
 	}
 
 	/**
@@ -108,9 +108,7 @@ public class StepStageItemProvider extends AbstractStageItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StepStage) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_StepStage_type")
-				: getString("_UI_StepStage_type") + " " + label;
+		return getString("_UI_DockerAgent_type");
 	}
 
 	/**
@@ -124,8 +122,8 @@ public class StepStageItemProvider extends AbstractStageItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(StepStage.class)) {
-		case JenkinsPackage.STEP_STAGE__STEPS:
+		switch (notification.getFeatureID(DockerAgent.class)) {
+		case JenkinsPackage.DOCKER_AGENT__DOCKER:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -143,11 +141,8 @@ public class StepStageItemProvider extends AbstractStageItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.STEP_STAGE__STEPS,
-				JenkinsFactory.eINSTANCE.createScriptedBlock()));
-
-		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.STEP_STAGE__STEPS, JenkinsFactory.eINSTANCE.createStep()));
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.DOCKER_AGENT__DOCKER,
+				JenkinsFactory.eINSTANCE.createDockerContainer()));
 	}
 
 }

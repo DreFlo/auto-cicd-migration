@@ -67,6 +67,15 @@ public interface JenkinsFactory extends EFactory {
 	StepStage createStepStage();
 
 	/**
+	 * Returns a new object of class '<em>Scripted Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scripted Block</em>'.
+	 * @generated
+	 */
+	ScriptedBlock createScriptedBlock();
+
+	/**
 	 * Returns a new object of class '<em>Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,13 +112,31 @@ public interface JenkinsFactory extends EFactory {
 	AnyAgent createAnyAgent();
 
 	/**
-	 * Returns a new object of class '<em>Optioned Agent</em>'.
+	 * Returns a new object of class '<em>Label Agent</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Optioned Agent</em>'.
+	 * @return a new object of class '<em>Label Agent</em>'.
 	 * @generated
 	 */
-	OptionedAgent createOptionedAgent();
+	LabelAgent createLabelAgent();
+
+	/**
+	 * Returns a new object of class '<em>Node Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Node Agent</em>'.
+	 * @generated
+	 */
+	NodeAgent createNodeAgent();
+
+	/**
+	 * Returns a new object of class '<em>Docker Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Docker Agent</em>'.
+	 * @generated
+	 */
+	DockerAgent createDockerAgent();
 
 	/**
 	 * Returns a new object of class '<em>Docker Container</em>'.

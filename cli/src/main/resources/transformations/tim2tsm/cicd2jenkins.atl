@@ -17,15 +17,9 @@ rule Pipeline2Pipeline {
 							thisModule.JobSequence2Parallel(jobGroup)
 						endif
 						),
-			agent <- cicdPipeline.agent,
+			agent <- if cicdPipeline.agent.oclIsUndefined() then thisModule.CreateAnyAgent('') else cicdPipeline.agent endif,
 			environmentVariables <- cicdPipeline.environmentVariables,
-			triggers <- cicdPipeline.triggers->collect(trigger |
-				if trigger.oclIsKindOf(CICD!ScheduledTrigger) then
-					trigger.crons->collect(cron | thisModule.Cron2ScheduledTrigger(cron))
-				else
-					trigger
-				endif
-			)->flatten()
+			triggers <- cicdPipeline.triggers
 		)
 }
 
@@ -52,19 +46,21 @@ lazy rule JobSequence2Parallel {
 	}
 	to
 		abstractStage : Jenkins!ParallelNestedStage(
-			name <- jobSequence->iterate(job; name: String = '[' | name + job.name + ',') + ']',
+			name <- thisModule.joinStrings(jobSequence->collect(job | job.id), '||'),
 			stages <- jobSequence->collect(job | thisModule.Job2Stage(job))		
 		)
 }
 
-abstract rule Step2AsbtractStep {
+rule ConditionalStep2ScriptedBlock {
 	from
-		cicdStep : CICD!Step
+		cicdStep : CICD!ConditionalStep
 	to
-		jenkinsStep : Jenkins!AbstractStep
+		jenkinsStep : Jenkins!ScriptedBlock(
+			steps <- thisModule.ConditionalStep2ConditionalStep(cicdStep)
+		)
 }
 
-rule ConditionalStep2ConditionalStep extends Step2AsbtractStep {
+lazy rule ConditionalStep2ConditionalStep {
 	from
 		cicdStep : CICD!ConditionalStep
 	to
@@ -75,23 +71,13 @@ rule ConditionalStep2ConditionalStep extends Step2AsbtractStep {
 		)
 }
 
-abstract rule NonConditionalStep2Step extends Step2AsbtractStep {
-	from
-		cicdStep : CICD!NonConditionalStep
-	to
-		jenkinsStep : Jenkins!Step
-}
-
-rule Command2Step extends NonConditionalStep2Step {
+rule Command2Step {
 	from
 		cicdStep : CICD!Command
-	using {
-		commandAndArguments : Sequence(String) = thisModule.splitCommandAndArguments(cicdStep.program.expression2String());
-	}
 	to
 		jenkinsStep : Jenkins!Step(
-			command <- commandAndArguments->first(),
-			arguments <- commandAndArguments->last()
+			command <- 'sh',
+			arguments <- cicdStep.program.expression2String()
 		)
 }
 
@@ -244,11 +230,31 @@ rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
 		)	
 }
 
-rule Agent2Agent {
+lazy rule CreateAnyAgent {
 	from
-		cicdAgent : CICD!Agent
+		blank : String
 	to
-		jenkinsAgent : Jenkins!OptionedAgent(
+		agent : Jenkins!AnyAgent()
+}
+
+rule Agent2LabelAgent {
+	from
+		cicdAgent : CICD!Agent(
+			cicdAgent.container.oclIsUndefined()
+		)
+	to
+		jenkinsAgent : Jenkins!LabelAgent(
+			labels <- cicdAgent.labels->first()
+		)
+}
+
+rule Agent2DockerAgent {
+	from
+		cicdAgent : CICD!Agent(
+			not cicdAgent.container.oclIsUndefined()
+		)
+	to
+		jenkinsAgent : Jenkins!DockerAgent(
 			labels <- cicdAgent.labels->first(),
 			docker <- cicdAgent.container
 		)
@@ -274,12 +280,12 @@ rule Assignment2Assignment {
 		)
 }
 
-lazy rule Cron2ScheduledTrigger {
+rule ScheduledTrigger2ScheduledTrigger {
 	from
-		cron : String
+		cicdScheduledTrigger : CICD!ScheduledTrigger
 	to
-		scheduledTrigger : Jenkins!ScheduledTrigger(
-			cron <- cron
+		jenkinsScheduledTrigger : Jenkins!ScheduledTrigger(
+			cron <- cicdScheduledTrigger.crons->iterate(cron; acc: String = '' | acc + cron + '\\n')
 		)
 }
 
@@ -336,14 +342,4 @@ helper def : groupJobs(jobStreams : Sequence(CICD!Job), previous : Set(CICD!Job)
 		Sequence{jobStreams}
 	else 
 		thisModule.groupJobs(next, previous.union(jobStreams)).prepend(jobStreams)
-	endif;
-
-helper def : getAllPreviousJobs(jobs : Set(CICD!Job)) : Set(CICD!Job) =
-	let previous : Set(CICD!Job) = jobs->iterate(job; acc: Set(CICD!Job) = Set{} |
-		acc.union(job.previous)
-	) in
-	if previous.isEmpty() then
-		jobs
-	else
-		thisModule.getAllPreviousJobs(previous).union(jobs)
 	endif;

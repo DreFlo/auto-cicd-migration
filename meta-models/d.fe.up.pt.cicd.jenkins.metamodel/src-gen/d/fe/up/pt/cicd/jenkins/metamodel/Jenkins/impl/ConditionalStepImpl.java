@@ -2,7 +2,7 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ConditionalStepImpl extends AbstractStepImpl implements ConditionalStep {
+public class ConditionalStepImpl extends ConditionalChildStepImpl implements ConditionalStep {
 	/**
 	 * The cached value of the '{@link #getIfCondition() <em>If Condition</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -56,7 +56,7 @@ public class ConditionalStepImpl extends AbstractStepImpl implements Conditional
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AbstractStep> thenRun;
+	protected EList<ConditionalChildStep> thenRun;
 
 	/**
 	 * The cached value of the '{@link #getElseRun() <em>Else Run</em>}' containment reference list.
@@ -66,7 +66,7 @@ public class ConditionalStepImpl extends AbstractStepImpl implements Conditional
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AbstractStep> elseRun;
+	protected EList<ConditionalChildStep> elseRun;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,9 +145,9 @@ public class ConditionalStepImpl extends AbstractStepImpl implements Conditional
 	 * @generated
 	 */
 	@Override
-	public EList<AbstractStep> getThenRun() {
+	public EList<ConditionalChildStep> getThenRun() {
 		if (thenRun == null) {
-			thenRun = new EObjectContainmentEList<AbstractStep>(AbstractStep.class, this,
+			thenRun = new EObjectContainmentEList<ConditionalChildStep>(ConditionalChildStep.class, this,
 					JenkinsPackage.CONDITIONAL_STEP__THEN_RUN);
 		}
 		return thenRun;
@@ -159,9 +159,9 @@ public class ConditionalStepImpl extends AbstractStepImpl implements Conditional
 	 * @generated
 	 */
 	@Override
-	public EList<AbstractStep> getElseRun() {
+	public EList<ConditionalChildStep> getElseRun() {
 		if (elseRun == null) {
-			elseRun = new EObjectContainmentEList<AbstractStep>(AbstractStep.class, this,
+			elseRun = new EObjectContainmentEList<ConditionalChildStep>(ConditionalChildStep.class, this,
 					JenkinsPackage.CONDITIONAL_STEP__ELSE_RUN);
 		}
 		return elseRun;
@@ -217,11 +217,11 @@ public class ConditionalStepImpl extends AbstractStepImpl implements Conditional
 			return;
 		case JenkinsPackage.CONDITIONAL_STEP__THEN_RUN:
 			getThenRun().clear();
-			getThenRun().addAll((Collection<? extends AbstractStep>) newValue);
+			getThenRun().addAll((Collection<? extends ConditionalChildStep>) newValue);
 			return;
 		case JenkinsPackage.CONDITIONAL_STEP__ELSE_RUN:
 			getElseRun().clear();
-			getElseRun().addAll((Collection<? extends AbstractStep>) newValue);
+			getElseRun().addAll((Collection<? extends ConditionalChildStep>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

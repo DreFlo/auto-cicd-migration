@@ -35,32 +35,43 @@
   <eClassifiers xsi:type="ecore:EClass" name="SequentialNestedStage" eSuperTypes="#//NestedStage"/>
   <eClassifiers xsi:type="ecore:EClass" name="StepStage" eSuperTypes="#//AbstractStage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="#//AbstractStep" containment="true"/>
+        eType="#//StageChildStep" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStep" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractStep">
+  <eClassifiers xsi:type="ecore:EClass" name="StageChildStep" abstract="true" eSuperTypes="#//AbstractStep"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalChildStep" abstract="true"
+      eSuperTypes="#//AbstractStep"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ScriptedBlock" eSuperTypes="#//StageChildStep">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+        eType="#//ConditionalChildStep"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//StageChildStep #//ConditionalChildStep">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//AbstractStep">
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//ConditionalChildStep">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" lowerBound="1"
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="thenRun" lowerBound="1"
-        upperBound="-1" eType="#//AbstractStep" containment="true"/>
+        upperBound="-1" eType="#//ConditionalChildStep" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elseRun" upperBound="-1"
-        eType="#//AbstractStep" containment="true"/>
+        eType="#//ConditionalChildStep" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractAgent" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="NoneAgent" eSuperTypes="#//AbstractAgent"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnyAgent" eSuperTypes="#//AbstractAgent"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OptionedAgent" eSuperTypes="#//AbstractAgent">
+  <eClassifiers xsi:type="ecore:EClass" name="LabelAgent" eSuperTypes="#//AbstractAgent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="labels" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeAgent" eSuperTypes="#//LabelAgent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customWorkspace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerAgent" eSuperTypes="#//LabelAgent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="docker" eType="#//DockerContainer"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customWorkspace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -188,6 +188,29 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ScriptedBlockItemProvider scriptedBlockItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScriptedBlockAdapter() {
+		if (scriptedBlockItemProvider == null) {
+			scriptedBlockItemProvider = new ScriptedBlockItemProvider(this);
+		}
+
+		return scriptedBlockItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -280,26 +303,72 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OptionedAgentItemProvider optionedAgentItemProvider;
+	protected LabelAgentItemProvider labelAgentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createOptionedAgentAdapter() {
-		if (optionedAgentItemProvider == null) {
-			optionedAgentItemProvider = new OptionedAgentItemProvider(this);
+	public Adapter createLabelAgentAdapter() {
+		if (labelAgentItemProvider == null) {
+			labelAgentItemProvider = new LabelAgentItemProvider(this);
 		}
 
-		return optionedAgentItemProvider;
+		return labelAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NodeAgentItemProvider nodeAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNodeAgentAdapter() {
+		if (nodeAgentItemProvider == null) {
+			nodeAgentItemProvider = new NodeAgentItemProvider(this);
+		}
+
+		return nodeAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DockerAgentItemProvider dockerAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDockerAgentAdapter() {
+		if (dockerAgentItemProvider == null) {
+			dockerAgentItemProvider = new DockerAgentItemProvider(this);
+		}
+
+		return dockerAgentItemProvider;
 	}
 
 	/**
@@ -1176,6 +1245,8 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			sequentialNestedStageItemProvider.dispose();
 		if (stepStageItemProvider != null)
 			stepStageItemProvider.dispose();
+		if (scriptedBlockItemProvider != null)
+			scriptedBlockItemProvider.dispose();
 		if (stepItemProvider != null)
 			stepItemProvider.dispose();
 		if (conditionalStepItemProvider != null)
@@ -1184,8 +1255,12 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			noneAgentItemProvider.dispose();
 		if (anyAgentItemProvider != null)
 			anyAgentItemProvider.dispose();
-		if (optionedAgentItemProvider != null)
-			optionedAgentItemProvider.dispose();
+		if (labelAgentItemProvider != null)
+			labelAgentItemProvider.dispose();
+		if (nodeAgentItemProvider != null)
+			nodeAgentItemProvider.dispose();
+		if (dockerAgentItemProvider != null)
+			dockerAgentItemProvider.dispose();
 		if (dockerContainerItemProvider != null)
 			dockerContainerItemProvider.dispose();
 		if (expressionItemProvider != null)

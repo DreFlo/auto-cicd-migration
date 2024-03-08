@@ -22,21 +22,45 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedWhen;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.OptionedAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
-
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy;
+
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
@@ -78,14 +102,28 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass parallelEClass = null;
+	private EClass nestedStageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stageEClass = null;
+	private EClass parallelNestedStageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sequentialNestedStageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stepStageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -281,6 +319,153 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass pollingTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass upstreamTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass toolEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenComparisonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenBranchEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenChangesetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenTagEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenChangeRequestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenBuildingTagEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenChangelogEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenEqualsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenEnvironmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nestedWhenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass singleNestedWhenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass multipleNestedWhenEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenNotEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenAnyOfEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenAllOfEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenTriggeredByEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum equalitY_OPSEEnum = null;
 
 	/**
@@ -289,6 +474,34 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	private EEnum comparisoN_OPSEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum supporteD_TOOLSEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum comparatorsEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum changE_REQUEST_MATCHEREEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum wheN_EVALUATION_TIMESEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -410,6 +623,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getPipeline_Tools() {
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAbstractPipelineExecutionBlock() {
 		return abstractPipelineExecutionBlockEClass;
 	}
@@ -430,8 +653,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getParallel() {
-		return parallelEClass;
+	public EAttribute getAbstractStage_Name() {
+		return (EAttribute) abstractStageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -440,8 +663,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getParallel_Stages() {
-		return (EReference) parallelEClass.getEStructuralFeatures().get(0);
+	public EReference getAbstractStage_Agent() {
+		return (EReference) abstractStageEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -450,8 +673,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getStage() {
-		return stageEClass;
+	public EReference getAbstractStage_Conditions() {
+		return (EReference) abstractStageEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -460,8 +683,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStage_Steps() {
-		return (EReference) stageEClass.getEStructuralFeatures().get(0);
+	public EReference getAbstractStage_EnvironmentVariables() {
+		return (EReference) abstractStageEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -470,8 +693,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStage_Name() {
-		return (EAttribute) stageEClass.getEStructuralFeatures().get(1);
+	public EReference getAbstractStage_Whens() {
+		return (EReference) abstractStageEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -480,8 +703,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStage_Agent() {
-		return (EReference) stageEClass.getEStructuralFeatures().get(2);
+	public EAttribute getAbstractStage_WhenEvaluationTime() {
+		return (EAttribute) abstractStageEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -490,8 +713,58 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getStage_EnvironmentVariables() {
-		return (EReference) stageEClass.getEStructuralFeatures().get(3);
+	public EClass getNestedStage() {
+		return nestedStageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getNestedStage_Stages() {
+		return (EReference) nestedStageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getParallelNestedStage() {
+		return parallelNestedStageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSequentialNestedStage() {
+		return sequentialNestedStageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStepStage() {
+		return stepStageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getStepStage_Steps() {
+		return (EReference) stepStageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1040,6 +1313,386 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getPollingTrigger() {
+		return pollingTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPollingTrigger_Cron() {
+		return (EAttribute) pollingTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getUpstreamTrigger() {
+		return upstreamTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getUpstreamTrigger_Jobs() {
+		return (EAttribute) upstreamTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTool() {
+		return toolEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTool_Tool() {
+		return (EAttribute) toolEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTool_Version() {
+		return (EAttribute) toolEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhen() {
+		return whenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenComparison() {
+		return whenComparisonEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenComparison_Pattern() {
+		return (EAttribute) whenComparisonEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenComparison_Comparator() {
+		return (EAttribute) whenComparisonEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenComparison_CaseSensitive() {
+		return (EAttribute) whenComparisonEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenBranch() {
+		return whenBranchEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenChangeset() {
+		return whenChangesetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenTag() {
+		return whenTagEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenChangeRequest() {
+		return whenChangeRequestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenChangeRequest_Matcher() {
+		return (EAttribute) whenChangeRequestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenBuildingTag() {
+		return whenBuildingTagEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenChangelog() {
+		return whenChangelogEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenEquals() {
+		return whenEqualsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWhenEquals_Expected() {
+		return (EReference) whenEqualsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWhenEquals_Actual() {
+		return (EReference) whenEqualsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenEnvironment() {
+		return whenEnvironmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenEnvironment_Name() {
+		return (EAttribute) whenEnvironmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenEnvironment_Value() {
+		return (EAttribute) whenEnvironmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenExpression() {
+		return whenExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWhenExpression_Expression() {
+		return (EReference) whenExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNestedWhen() {
+		return nestedWhenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSingleNestedWhen() {
+		return singleNestedWhenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSingleNestedWhen_NestedWhen() {
+		return (EReference) singleNestedWhenEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMultipleNestedWhen() {
+		return multipleNestedWhenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMultipleNestedWhen_NestedWhens() {
+		return (EReference) multipleNestedWhenEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenNot() {
+		return whenNotEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenAnyOf() {
+		return whenAnyOfEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenAllOf() {
+		return whenAllOfEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenTriggeredBy() {
+		return whenTriggeredByEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenTriggeredBy_Cause() {
+		return (EAttribute) whenTriggeredByEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWhenTriggeredBy_Detail() {
+		return (EAttribute) whenTriggeredByEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getEQUALITY_OPS() {
 		return equalitY_OPSEEnum;
 	}
@@ -1052,6 +1705,46 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EEnum getCOMPARISON_OPS() {
 		return comparisoN_OPSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getSUPPORTED_TOOLS() {
+		return supporteD_TOOLSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getCOMPARATORS() {
+		return comparatorsEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getCHANGE_REQUEST_MATCHER() {
+		return changE_REQUEST_MATCHEREEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getWHEN_EVALUATION_TIMES() {
+		return wheN_EVALUATION_TIMESEEnum;
 	}
 
 	/**
@@ -1089,19 +1782,27 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEReference(pipelineEClass, PIPELINE__AGENT);
 		createEReference(pipelineEClass, PIPELINE__ENVIRONMENT_VARIABLES);
 		createEReference(pipelineEClass, PIPELINE__TRIGGERS);
+		createEReference(pipelineEClass, PIPELINE__TOOLS);
 
 		abstractPipelineExecutionBlockEClass = createEClass(ABSTRACT_PIPELINE_EXECUTION_BLOCK);
 
 		abstractStageEClass = createEClass(ABSTRACT_STAGE);
+		createEAttribute(abstractStageEClass, ABSTRACT_STAGE__NAME);
+		createEReference(abstractStageEClass, ABSTRACT_STAGE__AGENT);
+		createEReference(abstractStageEClass, ABSTRACT_STAGE__CONDITIONS);
+		createEReference(abstractStageEClass, ABSTRACT_STAGE__ENVIRONMENT_VARIABLES);
+		createEReference(abstractStageEClass, ABSTRACT_STAGE__WHENS);
+		createEAttribute(abstractStageEClass, ABSTRACT_STAGE__WHEN_EVALUATION_TIME);
 
-		parallelEClass = createEClass(PARALLEL);
-		createEReference(parallelEClass, PARALLEL__STAGES);
+		nestedStageEClass = createEClass(NESTED_STAGE);
+		createEReference(nestedStageEClass, NESTED_STAGE__STAGES);
 
-		stageEClass = createEClass(STAGE);
-		createEReference(stageEClass, STAGE__STEPS);
-		createEAttribute(stageEClass, STAGE__NAME);
-		createEReference(stageEClass, STAGE__AGENT);
-		createEReference(stageEClass, STAGE__ENVIRONMENT_VARIABLES);
+		parallelNestedStageEClass = createEClass(PARALLEL_NESTED_STAGE);
+
+		sequentialNestedStageEClass = createEClass(SEQUENTIAL_NESTED_STAGE);
+
+		stepStageEClass = createEClass(STEP_STAGE);
+		createEReference(stepStageEClass, STEP_STAGE__STEPS);
 
 		abstractStepEClass = createEClass(ABSTRACT_STEP);
 
@@ -1184,9 +1885,72 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		scheduledTriggerEClass = createEClass(SCHEDULED_TRIGGER);
 		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRON);
 
+		pollingTriggerEClass = createEClass(POLLING_TRIGGER);
+		createEAttribute(pollingTriggerEClass, POLLING_TRIGGER__CRON);
+
+		upstreamTriggerEClass = createEClass(UPSTREAM_TRIGGER);
+		createEAttribute(upstreamTriggerEClass, UPSTREAM_TRIGGER__JOBS);
+
+		toolEClass = createEClass(TOOL);
+		createEAttribute(toolEClass, TOOL__TOOL);
+		createEAttribute(toolEClass, TOOL__VERSION);
+
+		whenEClass = createEClass(WHEN);
+
+		whenComparisonEClass = createEClass(WHEN_COMPARISON);
+		createEAttribute(whenComparisonEClass, WHEN_COMPARISON__PATTERN);
+		createEAttribute(whenComparisonEClass, WHEN_COMPARISON__COMPARATOR);
+		createEAttribute(whenComparisonEClass, WHEN_COMPARISON__CASE_SENSITIVE);
+
+		whenBranchEClass = createEClass(WHEN_BRANCH);
+
+		whenChangesetEClass = createEClass(WHEN_CHANGESET);
+
+		whenTagEClass = createEClass(WHEN_TAG);
+
+		whenChangeRequestEClass = createEClass(WHEN_CHANGE_REQUEST);
+		createEAttribute(whenChangeRequestEClass, WHEN_CHANGE_REQUEST__MATCHER);
+
+		whenBuildingTagEClass = createEClass(WHEN_BUILDING_TAG);
+
+		whenChangelogEClass = createEClass(WHEN_CHANGELOG);
+
+		whenEqualsEClass = createEClass(WHEN_EQUALS);
+		createEReference(whenEqualsEClass, WHEN_EQUALS__EXPECTED);
+		createEReference(whenEqualsEClass, WHEN_EQUALS__ACTUAL);
+
+		whenEnvironmentEClass = createEClass(WHEN_ENVIRONMENT);
+		createEAttribute(whenEnvironmentEClass, WHEN_ENVIRONMENT__NAME);
+		createEAttribute(whenEnvironmentEClass, WHEN_ENVIRONMENT__VALUE);
+
+		whenExpressionEClass = createEClass(WHEN_EXPRESSION);
+		createEReference(whenExpressionEClass, WHEN_EXPRESSION__EXPRESSION);
+
+		nestedWhenEClass = createEClass(NESTED_WHEN);
+
+		singleNestedWhenEClass = createEClass(SINGLE_NESTED_WHEN);
+		createEReference(singleNestedWhenEClass, SINGLE_NESTED_WHEN__NESTED_WHEN);
+
+		multipleNestedWhenEClass = createEClass(MULTIPLE_NESTED_WHEN);
+		createEReference(multipleNestedWhenEClass, MULTIPLE_NESTED_WHEN__NESTED_WHENS);
+
+		whenNotEClass = createEClass(WHEN_NOT);
+
+		whenAnyOfEClass = createEClass(WHEN_ANY_OF);
+
+		whenAllOfEClass = createEClass(WHEN_ALL_OF);
+
+		whenTriggeredByEClass = createEClass(WHEN_TRIGGERED_BY);
+		createEAttribute(whenTriggeredByEClass, WHEN_TRIGGERED_BY__CAUSE);
+		createEAttribute(whenTriggeredByEClass, WHEN_TRIGGERED_BY__DETAIL);
+
 		// Create enums
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
 		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
+		supporteD_TOOLSEEnum = createEEnum(SUPPORTED_TOOLS);
+		comparatorsEEnum = createEEnum(COMPARATORS);
+		changE_REQUEST_MATCHEREEnum = createEEnum(CHANGE_REQUEST_MATCHER);
+		wheN_EVALUATION_TIMESEEnum = createEEnum(WHEN_EVALUATION_TIMES);
 	}
 
 	/**
@@ -1219,8 +1983,10 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		// Add supertypes to classes
 		abstractStageEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
-		parallelEClass.getESuperTypes().add(this.getAbstractStage());
-		stageEClass.getESuperTypes().add(this.getAbstractStage());
+		nestedStageEClass.getESuperTypes().add(this.getAbstractStage());
+		parallelNestedStageEClass.getESuperTypes().add(this.getNestedStage());
+		sequentialNestedStageEClass.getESuperTypes().add(this.getNestedStage());
+		stepStageEClass.getESuperTypes().add(this.getAbstractStage());
 		abstractStepEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
 		stepEClass.getESuperTypes().add(this.getAbstractStep());
 		conditionalStepEClass.getESuperTypes().add(this.getAbstractStep());
@@ -1243,6 +2009,25 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		andEClass.getESuperTypes().add(this.getLogicalOp());
 		orEClass.getESuperTypes().add(this.getLogicalOp());
 		scheduledTriggerEClass.getESuperTypes().add(this.getTrigger());
+		pollingTriggerEClass.getESuperTypes().add(this.getTrigger());
+		upstreamTriggerEClass.getESuperTypes().add(this.getTrigger());
+		whenComparisonEClass.getESuperTypes().add(this.getWhen());
+		whenBranchEClass.getESuperTypes().add(this.getWhenComparison());
+		whenChangesetEClass.getESuperTypes().add(this.getWhenComparison());
+		whenTagEClass.getESuperTypes().add(this.getWhenComparison());
+		whenChangeRequestEClass.getESuperTypes().add(this.getWhenComparison());
+		whenBuildingTagEClass.getESuperTypes().add(this.getWhen());
+		whenChangelogEClass.getESuperTypes().add(this.getWhen());
+		whenEqualsEClass.getESuperTypes().add(this.getWhen());
+		whenEnvironmentEClass.getESuperTypes().add(this.getWhen());
+		whenExpressionEClass.getESuperTypes().add(this.getWhen());
+		nestedWhenEClass.getESuperTypes().add(this.getWhen());
+		singleNestedWhenEClass.getESuperTypes().add(this.getNestedWhen());
+		multipleNestedWhenEClass.getESuperTypes().add(this.getNestedWhen());
+		whenNotEClass.getESuperTypes().add(this.getSingleNestedWhen());
+		whenAnyOfEClass.getESuperTypes().add(this.getMultipleNestedWhen());
+		whenAllOfEClass.getESuperTypes().add(this.getMultipleNestedWhen());
+		whenTriggeredByEClass.getESuperTypes().add(this.getWhen());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1259,31 +2044,50 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getPipeline_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Tools(), this.getTool(), null, "tools", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(abstractPipelineExecutionBlockEClass, AbstractPipelineExecutionBlock.class,
 				"AbstractPipelineExecutionBlock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(abstractStageEClass, AbstractStage.class, "AbstractStage", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractStage_Name(), ecorePackage.getEString(), "name", null, 1, 1, AbstractStage.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractStage_Agent(), this.getAbstractAgent(), null, "agent", null, 1, 1,
+				AbstractStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractStage_Conditions(), this.getWhen(), null, "conditions", null, 0, -1,
+				AbstractStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractStage_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
+				null, 0, -1, AbstractStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractStage_Whens(), this.getWhen(), null, "whens", null, 0, -1, AbstractStage.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractStage_WhenEvaluationTime(), this.getWHEN_EVALUATION_TIMES(), "whenEvaluationTime",
+				null, 0, -1, AbstractStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(parallelEClass, Parallel.class, "Parallel", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(nestedStageEClass, NestedStage.class, "NestedStage", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParallel_Stages(), this.getStage(), null, "stages", null, 1, -1, Parallel.class,
+		initEReference(getNestedStage_Stages(), this.getStepStage(), null, "stages", null, 1, -1, NestedStage.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(stageEClass, Stage.class, "Stage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStage_Steps(), this.getAbstractStep(), null, "steps", null, 0, -1, Stage.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getStage_Name(), ecorePackage.getEString(), "name", null, 1, 1, Stage.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStage_Agent(), this.getAbstractAgent(), null, "agent", null, 1, 1, Stage.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getStage_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables", null, 0, -1,
-				Stage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(parallelNestedStageEClass, ParallelNestedStage.class, "ParallelNestedStage", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(sequentialNestedStageEClass, SequentialNestedStage.class, "SequentialNestedStage", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stepStageEClass, StepStage.class, "StepStage", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStepStage_Steps(), this.getAbstractStep(), null, "steps", null, 0, -1, StepStage.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractStepEClass, AbstractStep.class, "AbstractStep", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1431,6 +2235,111 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				ScheduledTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
+		initEClass(pollingTriggerEClass, PollingTrigger.class, "PollingTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPollingTrigger_Cron(), ecorePackage.getEString(), "cron", null, 1, 1, PollingTrigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(upstreamTriggerEClass, UpstreamTrigger.class, "UpstreamTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUpstreamTrigger_Jobs(), ecorePackage.getEString(), "jobs", null, 1, -1, UpstreamTrigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(toolEClass, Tool.class, "Tool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTool_Tool(), this.getSUPPORTED_TOOLS(), "tool", null, 1, 1, Tool.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTool_Version(), ecorePackage.getEString(), "version", null, 1, 1, Tool.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenEClass, When.class, "When", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenComparisonEClass, WhenComparison.class, "WhenComparison", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWhenComparison_Pattern(), ecorePackage.getEString(), "pattern", null, 1, 1,
+				WhenComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWhenComparison_Comparator(), this.getCOMPARATORS(), "comparator", "EQUALS", 1, 1,
+				WhenComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWhenComparison_CaseSensitive(), ecorePackage.getEBooleanObject(), "caseSensitive", "false", 1,
+				1, WhenComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenBranchEClass, WhenBranch.class, "WhenBranch", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenChangesetEClass, WhenChangeset.class, "WhenChangeset", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenTagEClass, WhenTag.class, "WhenTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenChangeRequestEClass, WhenChangeRequest.class, "WhenChangeRequest", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWhenChangeRequest_Matcher(), this.getCHANGE_REQUEST_MATCHER(), "matcher", null, 1, 1,
+				WhenChangeRequest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenBuildingTagEClass, WhenBuildingTag.class, "WhenBuildingTag", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenChangelogEClass, WhenChangelog.class, "WhenChangelog", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenEqualsEClass, WhenEquals.class, "WhenEquals", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWhenEquals_Expected(), this.getLiteral(), null, "expected", null, 1, 1, WhenEquals.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWhenEquals_Actual(), this.getVariable(), null, "actual", null, 1, 1, WhenEquals.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenEnvironmentEClass, WhenEnvironment.class, "WhenEnvironment", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWhenEnvironment_Name(), ecorePackage.getEString(), "name", null, 1, 1, WhenEnvironment.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWhenEnvironment_Value(), ecorePackage.getEString(), "value", null, 1, 1,
+				WhenEnvironment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenExpressionEClass, WhenExpression.class, "WhenExpression", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWhenExpression_Expression(), this.getExpression(), null, "expression", null, 1, 1,
+				WhenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nestedWhenEClass, NestedWhen.class, "NestedWhen", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(singleNestedWhenEClass, SingleNestedWhen.class, "SingleNestedWhen", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSingleNestedWhen_NestedWhen(), this.getWhen(), null, "nestedWhen", null, 1, 1,
+				SingleNestedWhen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(multipleNestedWhenEClass, MultipleNestedWhen.class, "MultipleNestedWhen", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMultipleNestedWhen_NestedWhens(), this.getWhen(), null, "nestedWhens", null, 1, -1,
+				MultipleNestedWhen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenNotEClass, WhenNot.class, "WhenNot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenAnyOfEClass, WhenAnyOf.class, "WhenAnyOf", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenAllOfEClass, WhenAllOf.class, "WhenAllOf", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(whenTriggeredByEClass, WhenTriggeredBy.class, "WhenTriggeredBy", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWhenTriggeredBy_Cause(), ecorePackage.getEString(), "cause", null, 1, 1,
+				WhenTriggeredBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWhenTriggeredBy_Detail(), ecorePackage.getEString(), "detail", null, 0, 1,
+				WhenTriggeredBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.class, "EQUALITY_OPS");
 		addEEnumLiteral(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.EQUALS);
@@ -1442,6 +2351,49 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.GTE);
 		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.LT);
 		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS.LTE);
+
+		initEEnum(supporteD_TOOLSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS.class,
+				"SUPPORTED_TOOLS");
+		addEEnumLiteral(supporteD_TOOLSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS.MAVEN);
+		addEEnumLiteral(supporteD_TOOLSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS.JDK);
+		addEEnumLiteral(supporteD_TOOLSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS.GRADLE);
+
+		initEEnum(comparatorsEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS.class, "COMPARATORS");
+		addEEnumLiteral(comparatorsEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS.EQUALS);
+		addEEnumLiteral(comparatorsEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS.REGEXP);
+		addEEnumLiteral(comparatorsEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS.GLOB);
+
+		initEEnum(changE_REQUEST_MATCHEREEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.class,
+				"CHANGE_REQUEST_MATCHER");
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.ID);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.TARGET);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.BRANCH);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.FORK);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.URL);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.TITLE);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.AUTHOR);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.AUTHOR_DISPLAY_NAME);
+		addEEnumLiteral(changE_REQUEST_MATCHEREEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER.AUTHOR_EMAIL);
+
+		initEEnum(wheN_EVALUATION_TIMESEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.class,
+				"WHEN_EVALUATION_TIMES");
+		addEEnumLiteral(wheN_EVALUATION_TIMESEEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.AFTER);
+		addEEnumLiteral(wheN_EVALUATION_TIMESEEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_AGENT);
+		addEEnumLiteral(wheN_EVALUATION_TIMESEEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_INPUT);
+		addEEnumLiteral(wheN_EVALUATION_TIMESEEnum,
+				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_OPTIONS);
 
 		// Create resource
 		createResource(eNS_URI);

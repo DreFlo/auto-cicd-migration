@@ -14,32 +14,32 @@
 /]
 
 [template public generateAbstractStage(abstractStage : AbstractStage) post (trim())]
-[if (abstractStage.oclIsKindOf(Stage))]
-[generateStage(abstractStage.oclAsType(Stage))/]
-[elseif (abstractStage.oclIsKindOf(Parallel))]
-[generateParallel(abstractStage.oclAsType(Parallel))/]
+stage([quoteString(abstractStage.name)/]) {
+[if (not abstractStage.agent.oclIsUndefined())]
+	[generateAbstractAgent(abstractStage.agent)/]
 [/if]
-[/template]
-
-[template public generateStage(stage : Stage)]
-stage([quoteString(stage.name)/]) {
-[if (not stage.agent.oclIsUndefined())]
-	[generateAbstractAgent(stage.agent)/]
+[if (not abstractStage.environmentVariables->isEmpty())]
+	[generateEnvironment(abstractStage.environmentVariables)/]
 [/if]
-[if (not stage.environmentVariables->isEmpty())]
-	[generateEnvironment(stage.environmentVariables)/]
+[if (abstractStage.oclIsKindOf(StepStage))]
+	[generateStepStage(abstractStage.oclAsType(StepStage))/]
+[elseif (abstractStage.oclIsKindOf(ParallelNestedStage))]
+	[generateParallel(abstractStage.oclAsType(ParallelNestedStage))/]
 [/if]
-	steps {
-	[for (abstractStep : AbstractStep | stage.steps)]
-		[generateAbstractStep(abstractStep)/]
-	[/for]
-	}
 }
 [/template]
 
-[template public generateParallel(parallel : Parallel)]
+[template public generateStepStage(stepStage : StepStage)]
+steps {
+[for (abstractStep : AbstractStep | stepStage.steps)]
+	[generateAbstractStep(abstractStep)/]
+[/for]
+}
+[/template]
+
+[template public generateParallel(parallelNestedStage : ParallelNestedStage)]
 parallel {
-[for (abstractStage : AbstractStage | parallel.stages)]
+[for (abstractStage : AbstractStage | parallelNestedStage.stages)]
 	[generateAbstractStage(abstractStage)/]
 [/for]
 }

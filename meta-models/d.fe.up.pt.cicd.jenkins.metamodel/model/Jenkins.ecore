@@ -10,21 +10,32 @@
         eType="#//Assignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
         eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
+        eType="#//Tool" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPipelineExecutionBlock" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Parallel" eSuperTypes="#//AbstractStage">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
-        upperBound="-1" eType="#//Stage" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Stage" eSuperTypes="#//AbstractStage">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="#//AbstractStep" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractStage" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//AbstractAgent"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
+        eType="#//When" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//Assignment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="whens" upperBound="-1"
+        eType="#//When"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="whenEvaluationTime" upperBound="-1"
+        eType="#//WHEN_EVALUATION_TIMES"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NestedStage" eSuperTypes="#//AbstractStage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
+        upperBound="-1" eType="#//StepStage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelNestedStage" eSuperTypes="#//NestedStage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequentialNestedStage" eSuperTypes="#//NestedStage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StepStage" eSuperTypes="#//AbstractStage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+        eType="#//AbstractStep" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractStep" abstract="true" eSuperTypes="#//AbstractPipelineExecutionBlock"/>
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//AbstractStep">
@@ -106,6 +117,71 @@
   <eClassifiers xsi:type="ecore:EClass" name="LogicalOp" abstract="true" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//LogicalOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//LogicalOp"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Trigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PollingTrigger" eSuperTypes="#//Trigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UpstreamTrigger" eSuperTypes="#//Trigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobs" lowerBound="1" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tool">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tool" lowerBound="1" eType="#//SUPPORTED_TOOLS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="When" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenComparison" abstract="true" eSuperTypes="#//When">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comparator" lowerBound="1"
+        eType="#//COMPARATORS" defaultValueLiteral="EQUALS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="caseSensitive" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenBranch" eSuperTypes="#//WhenComparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenChangeset" eSuperTypes="#//WhenComparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenTag" eSuperTypes="#//WhenComparison"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenChangeRequest" eSuperTypes="#//WhenComparison">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="matcher" lowerBound="1"
+        eType="#//CHANGE_REQUEST_MATCHER"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenBuildingTag" eSuperTypes="#//When"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenChangelog" eSuperTypes="#//When"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenEquals" eSuperTypes="#//When">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expected" lowerBound="1"
+        eType="#//Literal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actual" lowerBound="1"
+        eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenEnvironment" eSuperTypes="#//When">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenExpression" eSuperTypes="#//When">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
+        eType="#//Expression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NestedWhen" abstract="true" eSuperTypes="#//When"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleNestedWhen" eSuperTypes="#//NestedWhen">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedWhen" lowerBound="1"
+        eType="#//When"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultipleNestedWhen" eSuperTypes="#//NestedWhen">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedWhens" lowerBound="1"
+        upperBound="-1" eType="#//When"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenNot" eSuperTypes="#//SingleNestedWhen"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenAnyOf" eSuperTypes="#//MultipleNestedWhen"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenAllOf" eSuperTypes="#//MultipleNestedWhen"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WhenTriggeredBy" eSuperTypes="#//When">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cause" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="detail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EQUALITY_OPS">
     <eLiterals name="EQUALS" literal="=="/>
     <eLiterals name="NOT_EQUALS" value="1" literal="!="/>
@@ -116,8 +192,31 @@
     <eLiterals name="LT" value="2" literal="&lt;"/>
     <eLiterals name="LTE" value="3" literal="&lt;="/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ScheduledTrigger" eSuperTypes="#//Trigger">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cron" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="SUPPORTED_TOOLS">
+    <eLiterals name="MAVEN" literal="maven"/>
+    <eLiterals name="JDK" value="1" literal="jdk"/>
+    <eLiterals name="GRADLE" value="2" literal="gradle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="COMPARATORS">
+    <eLiterals name="EQUALS"/>
+    <eLiterals name="REGEXP" value="1"/>
+    <eLiterals name="GLOB" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CHANGE_REQUEST_MATCHER">
+    <eLiterals name="ID" literal="id"/>
+    <eLiterals name="TARGET" value="1" literal="target"/>
+    <eLiterals name="BRANCH" value="2" literal="branch"/>
+    <eLiterals name="FORK" value="3" literal="fork"/>
+    <eLiterals name="URL" value="4" literal="url"/>
+    <eLiterals name="TITLE" value="5" literal="title"/>
+    <eLiterals name="AUTHOR" value="6" literal="author"/>
+    <eLiterals name="AUTHOR_DISPLAY_NAME" value="7" literal="authorDisplayName"/>
+    <eLiterals name="AUTHOR_EMAIL" value="7" literal="authorEmail"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WHEN_EVALUATION_TIMES">
+    <eLiterals name="AFTER"/>
+    <eLiterals name="BEFORE_AGENT" value="2"/>
+    <eLiterals name="BEFORE_INPUT" value="1"/>
+    <eLiterals name="BEFORE_OPTIONS" value="3"/>
   </eClassifiers>
 </ecore:EPackage>

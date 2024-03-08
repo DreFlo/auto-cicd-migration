@@ -36,7 +36,7 @@ lazy rule Job2Stage {
 		nextJobs : Sequence(CICD!Job) = job.next;
 	}
 	to
-		abstractStage : Jenkins!Stage(
+		abstractStage : Jenkins!StepStage(
 			name <- job.id,
 			agent <- job.agent,
 			steps <- job.steps,
@@ -51,7 +51,8 @@ lazy rule JobSequence2Parallel {
 		nextJobs : Sequence(CICD!Job) = jobSequence->collect(job | job.next)->flatten()->asSet()->asSequence();
 	}
 	to
-		abstractStage : Jenkins!Parallel(
+		abstractStage : Jenkins!ParallelNestedStage(
+			name <- jobSequence->iterate(job; name: String = '[' | name + job.name + ',') + ']',
 			stages <- jobSequence->collect(job | thisModule.Job2Stage(job))		
 		)
 }

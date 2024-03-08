@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -60,10 +61,14 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 		switch (eClass.getClassifierID()) {
 		case JenkinsPackage.PIPELINE:
 			return createPipeline();
-		case JenkinsPackage.PARALLEL:
-			return createParallel();
-		case JenkinsPackage.STAGE:
-			return createStage();
+		case JenkinsPackage.NESTED_STAGE:
+			return createNestedStage();
+		case JenkinsPackage.PARALLEL_NESTED_STAGE:
+			return createParallelNestedStage();
+		case JenkinsPackage.SEQUENTIAL_NESTED_STAGE:
+			return createSequentialNestedStage();
+		case JenkinsPackage.STEP_STAGE:
+			return createStepStage();
 		case JenkinsPackage.STEP:
 			return createStep();
 		case JenkinsPackage.CONDITIONAL_STEP:
@@ -104,6 +109,42 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createOr();
 		case JenkinsPackage.SCHEDULED_TRIGGER:
 			return createScheduledTrigger();
+		case JenkinsPackage.POLLING_TRIGGER:
+			return createPollingTrigger();
+		case JenkinsPackage.UPSTREAM_TRIGGER:
+			return createUpstreamTrigger();
+		case JenkinsPackage.TOOL:
+			return createTool();
+		case JenkinsPackage.WHEN_BRANCH:
+			return createWhenBranch();
+		case JenkinsPackage.WHEN_CHANGESET:
+			return createWhenChangeset();
+		case JenkinsPackage.WHEN_TAG:
+			return createWhenTag();
+		case JenkinsPackage.WHEN_CHANGE_REQUEST:
+			return createWhenChangeRequest();
+		case JenkinsPackage.WHEN_BUILDING_TAG:
+			return createWhenBuildingTag();
+		case JenkinsPackage.WHEN_CHANGELOG:
+			return createWhenChangelog();
+		case JenkinsPackage.WHEN_EQUALS:
+			return createWhenEquals();
+		case JenkinsPackage.WHEN_ENVIRONMENT:
+			return createWhenEnvironment();
+		case JenkinsPackage.WHEN_EXPRESSION:
+			return createWhenExpression();
+		case JenkinsPackage.SINGLE_NESTED_WHEN:
+			return createSingleNestedWhen();
+		case JenkinsPackage.MULTIPLE_NESTED_WHEN:
+			return createMultipleNestedWhen();
+		case JenkinsPackage.WHEN_NOT:
+			return createWhenNot();
+		case JenkinsPackage.WHEN_ANY_OF:
+			return createWhenAnyOf();
+		case JenkinsPackage.WHEN_ALL_OF:
+			return createWhenAllOf();
+		case JenkinsPackage.WHEN_TRIGGERED_BY:
+			return createWhenTriggeredBy();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -121,6 +162,14 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createEQUALITY_OPSFromString(eDataType, initialValue);
 		case JenkinsPackage.COMPARISON_OPS:
 			return createCOMPARISON_OPSFromString(eDataType, initialValue);
+		case JenkinsPackage.SUPPORTED_TOOLS:
+			return createSUPPORTED_TOOLSFromString(eDataType, initialValue);
+		case JenkinsPackage.COMPARATORS:
+			return createCOMPARATORSFromString(eDataType, initialValue);
+		case JenkinsPackage.CHANGE_REQUEST_MATCHER:
+			return createCHANGE_REQUEST_MATCHERFromString(eDataType, initialValue);
+		case JenkinsPackage.WHEN_EVALUATION_TIMES:
+			return createWHEN_EVALUATION_TIMESFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -138,6 +187,14 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return convertEQUALITY_OPSToString(eDataType, instanceValue);
 		case JenkinsPackage.COMPARISON_OPS:
 			return convertCOMPARISON_OPSToString(eDataType, instanceValue);
+		case JenkinsPackage.SUPPORTED_TOOLS:
+			return convertSUPPORTED_TOOLSToString(eDataType, instanceValue);
+		case JenkinsPackage.COMPARATORS:
+			return convertCOMPARATORSToString(eDataType, instanceValue);
+		case JenkinsPackage.CHANGE_REQUEST_MATCHER:
+			return convertCHANGE_REQUEST_MATCHERToString(eDataType, instanceValue);
+		case JenkinsPackage.WHEN_EVALUATION_TIMES:
+			return convertWHEN_EVALUATION_TIMESToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -160,9 +217,9 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
-	public Parallel createParallel() {
-		ParallelImpl parallel = new ParallelImpl();
-		return parallel;
+	public NestedStage createNestedStage() {
+		NestedStageImpl nestedStage = new NestedStageImpl();
+		return nestedStage;
 	}
 
 	/**
@@ -171,9 +228,31 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
-	public Stage createStage() {
-		StageImpl stage = new StageImpl();
-		return stage;
+	public ParallelNestedStage createParallelNestedStage() {
+		ParallelNestedStageImpl parallelNestedStage = new ParallelNestedStageImpl();
+		return parallelNestedStage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SequentialNestedStage createSequentialNestedStage() {
+		SequentialNestedStageImpl sequentialNestedStage = new SequentialNestedStageImpl();
+		return sequentialNestedStage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StepStage createStepStage() {
+		StepStageImpl stepStage = new StepStageImpl();
+		return stepStage;
 	}
 
 	/**
@@ -400,6 +479,204 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public PollingTrigger createPollingTrigger() {
+		PollingTriggerImpl pollingTrigger = new PollingTriggerImpl();
+		return pollingTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public UpstreamTrigger createUpstreamTrigger() {
+		UpstreamTriggerImpl upstreamTrigger = new UpstreamTriggerImpl();
+		return upstreamTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Tool createTool() {
+		ToolImpl tool = new ToolImpl();
+		return tool;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenBranch createWhenBranch() {
+		WhenBranchImpl whenBranch = new WhenBranchImpl();
+		return whenBranch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenChangeset createWhenChangeset() {
+		WhenChangesetImpl whenChangeset = new WhenChangesetImpl();
+		return whenChangeset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenTag createWhenTag() {
+		WhenTagImpl whenTag = new WhenTagImpl();
+		return whenTag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenChangeRequest createWhenChangeRequest() {
+		WhenChangeRequestImpl whenChangeRequest = new WhenChangeRequestImpl();
+		return whenChangeRequest;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenBuildingTag createWhenBuildingTag() {
+		WhenBuildingTagImpl whenBuildingTag = new WhenBuildingTagImpl();
+		return whenBuildingTag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenChangelog createWhenChangelog() {
+		WhenChangelogImpl whenChangelog = new WhenChangelogImpl();
+		return whenChangelog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenEquals createWhenEquals() {
+		WhenEqualsImpl whenEquals = new WhenEqualsImpl();
+		return whenEquals;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenEnvironment createWhenEnvironment() {
+		WhenEnvironmentImpl whenEnvironment = new WhenEnvironmentImpl();
+		return whenEnvironment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenExpression createWhenExpression() {
+		WhenExpressionImpl whenExpression = new WhenExpressionImpl();
+		return whenExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SingleNestedWhen createSingleNestedWhen() {
+		SingleNestedWhenImpl singleNestedWhen = new SingleNestedWhenImpl();
+		return singleNestedWhen;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MultipleNestedWhen createMultipleNestedWhen() {
+		MultipleNestedWhenImpl multipleNestedWhen = new MultipleNestedWhenImpl();
+		return multipleNestedWhen;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenNot createWhenNot() {
+		WhenNotImpl whenNot = new WhenNotImpl();
+		return whenNot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenAnyOf createWhenAnyOf() {
+		WhenAnyOfImpl whenAnyOf = new WhenAnyOfImpl();
+		return whenAnyOf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenAllOf createWhenAllOf() {
+		WhenAllOfImpl whenAllOf = new WhenAllOfImpl();
+		return whenAllOf;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WhenTriggeredBy createWhenTriggeredBy() {
+		WhenTriggeredByImpl whenTriggeredBy = new WhenTriggeredByImpl();
+		return whenTriggeredBy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EQUALITY_OPS createEQUALITY_OPSFromString(EDataType eDataType, String initialValue) {
 		EQUALITY_OPS result = EQUALITY_OPS.get(initialValue);
 		if (result == null)
@@ -436,6 +713,94 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	public String convertCOMPARISON_OPSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SUPPORTED_TOOLS createSUPPORTED_TOOLSFromString(EDataType eDataType, String initialValue) {
+		SUPPORTED_TOOLS result = SUPPORTED_TOOLS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSUPPORTED_TOOLSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public COMPARATORS createCOMPARATORSFromString(EDataType eDataType, String initialValue) {
+		COMPARATORS result = COMPARATORS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCOMPARATORSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CHANGE_REQUEST_MATCHER createCHANGE_REQUEST_MATCHERFromString(EDataType eDataType, String initialValue) {
+		CHANGE_REQUEST_MATCHER result = CHANGE_REQUEST_MATCHER.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCHANGE_REQUEST_MATCHERToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WHEN_EVALUATION_TIMES createWHEN_EVALUATION_TIMESFromString(EDataType eDataType, String initialValue) {
+		WHEN_EVALUATION_TIMES result = WHEN_EVALUATION_TIMES.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertWHEN_EVALUATION_TIMESToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

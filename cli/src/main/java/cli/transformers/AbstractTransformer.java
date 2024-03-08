@@ -28,7 +28,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final String atlFilePath;
     private final String inputModelName;
     private final String outputModelName;
-    private boolean deleteIntermediateFiles = true;
+    private boolean deleteIntermediateFiles = false;
 
     protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName) {
         this.resourceSet = resourceSet;
@@ -50,7 +50,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out.xmi";
 
-        System.out.println("Transforming (" + getClass().getName() + ")...");
+        System.out.println("Transforming\t(" + getClass().getName() + ")...");
         runATLTransformation(inputModelFilePath, outputModelFilePath);
 
         OutputModel outputModel = deserializeModel(outputModelFilePath);

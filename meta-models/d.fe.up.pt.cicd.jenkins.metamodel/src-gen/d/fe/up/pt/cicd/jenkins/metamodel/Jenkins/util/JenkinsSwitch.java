@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.util;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -90,24 +91,50 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case JenkinsPackage.PARALLEL: {
-			Parallel parallel = (Parallel) theEObject;
-			T result = caseParallel(parallel);
+		case JenkinsPackage.NESTED_STAGE: {
+			NestedStage nestedStage = (NestedStage) theEObject;
+			T result = caseNestedStage(nestedStage);
 			if (result == null)
-				result = caseAbstractStage(parallel);
+				result = caseAbstractStage(nestedStage);
 			if (result == null)
-				result = caseAbstractPipelineExecutionBlock(parallel);
+				result = caseAbstractPipelineExecutionBlock(nestedStage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case JenkinsPackage.STAGE: {
-			Stage stage = (Stage) theEObject;
-			T result = caseStage(stage);
+		case JenkinsPackage.PARALLEL_NESTED_STAGE: {
+			ParallelNestedStage parallelNestedStage = (ParallelNestedStage) theEObject;
+			T result = caseParallelNestedStage(parallelNestedStage);
 			if (result == null)
-				result = caseAbstractStage(stage);
+				result = caseNestedStage(parallelNestedStage);
 			if (result == null)
-				result = caseAbstractPipelineExecutionBlock(stage);
+				result = caseAbstractStage(parallelNestedStage);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(parallelNestedStage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.SEQUENTIAL_NESTED_STAGE: {
+			SequentialNestedStage sequentialNestedStage = (SequentialNestedStage) theEObject;
+			T result = caseSequentialNestedStage(sequentialNestedStage);
+			if (result == null)
+				result = caseNestedStage(sequentialNestedStage);
+			if (result == null)
+				result = caseAbstractStage(sequentialNestedStage);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(sequentialNestedStage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.STEP_STAGE: {
+			StepStage stepStage = (StepStage) theEObject;
+			T result = caseStepStage(stepStage);
+			if (result == null)
+				result = caseAbstractStage(stepStage);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(stepStage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -374,6 +401,215 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case JenkinsPackage.POLLING_TRIGGER: {
+			PollingTrigger pollingTrigger = (PollingTrigger) theEObject;
+			T result = casePollingTrigger(pollingTrigger);
+			if (result == null)
+				result = caseTrigger(pollingTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.UPSTREAM_TRIGGER: {
+			UpstreamTrigger upstreamTrigger = (UpstreamTrigger) theEObject;
+			T result = caseUpstreamTrigger(upstreamTrigger);
+			if (result == null)
+				result = caseTrigger(upstreamTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.TOOL: {
+			Tool tool = (Tool) theEObject;
+			T result = caseTool(tool);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN: {
+			When when = (When) theEObject;
+			T result = caseWhen(when);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_COMPARISON: {
+			WhenComparison whenComparison = (WhenComparison) theEObject;
+			T result = caseWhenComparison(whenComparison);
+			if (result == null)
+				result = caseWhen(whenComparison);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_BRANCH: {
+			WhenBranch whenBranch = (WhenBranch) theEObject;
+			T result = caseWhenBranch(whenBranch);
+			if (result == null)
+				result = caseWhenComparison(whenBranch);
+			if (result == null)
+				result = caseWhen(whenBranch);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_CHANGESET: {
+			WhenChangeset whenChangeset = (WhenChangeset) theEObject;
+			T result = caseWhenChangeset(whenChangeset);
+			if (result == null)
+				result = caseWhenComparison(whenChangeset);
+			if (result == null)
+				result = caseWhen(whenChangeset);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_TAG: {
+			WhenTag whenTag = (WhenTag) theEObject;
+			T result = caseWhenTag(whenTag);
+			if (result == null)
+				result = caseWhenComparison(whenTag);
+			if (result == null)
+				result = caseWhen(whenTag);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_CHANGE_REQUEST: {
+			WhenChangeRequest whenChangeRequest = (WhenChangeRequest) theEObject;
+			T result = caseWhenChangeRequest(whenChangeRequest);
+			if (result == null)
+				result = caseWhenComparison(whenChangeRequest);
+			if (result == null)
+				result = caseWhen(whenChangeRequest);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_BUILDING_TAG: {
+			WhenBuildingTag whenBuildingTag = (WhenBuildingTag) theEObject;
+			T result = caseWhenBuildingTag(whenBuildingTag);
+			if (result == null)
+				result = caseWhen(whenBuildingTag);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_CHANGELOG: {
+			WhenChangelog whenChangelog = (WhenChangelog) theEObject;
+			T result = caseWhenChangelog(whenChangelog);
+			if (result == null)
+				result = caseWhen(whenChangelog);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_EQUALS: {
+			WhenEquals whenEquals = (WhenEquals) theEObject;
+			T result = caseWhenEquals(whenEquals);
+			if (result == null)
+				result = caseWhen(whenEquals);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_ENVIRONMENT: {
+			WhenEnvironment whenEnvironment = (WhenEnvironment) theEObject;
+			T result = caseWhenEnvironment(whenEnvironment);
+			if (result == null)
+				result = caseWhen(whenEnvironment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_EXPRESSION: {
+			WhenExpression whenExpression = (WhenExpression) theEObject;
+			T result = caseWhenExpression(whenExpression);
+			if (result == null)
+				result = caseWhen(whenExpression);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.NESTED_WHEN: {
+			NestedWhen nestedWhen = (NestedWhen) theEObject;
+			T result = caseNestedWhen(nestedWhen);
+			if (result == null)
+				result = caseWhen(nestedWhen);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.SINGLE_NESTED_WHEN: {
+			SingleNestedWhen singleNestedWhen = (SingleNestedWhen) theEObject;
+			T result = caseSingleNestedWhen(singleNestedWhen);
+			if (result == null)
+				result = caseNestedWhen(singleNestedWhen);
+			if (result == null)
+				result = caseWhen(singleNestedWhen);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.MULTIPLE_NESTED_WHEN: {
+			MultipleNestedWhen multipleNestedWhen = (MultipleNestedWhen) theEObject;
+			T result = caseMultipleNestedWhen(multipleNestedWhen);
+			if (result == null)
+				result = caseNestedWhen(multipleNestedWhen);
+			if (result == null)
+				result = caseWhen(multipleNestedWhen);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_NOT: {
+			WhenNot whenNot = (WhenNot) theEObject;
+			T result = caseWhenNot(whenNot);
+			if (result == null)
+				result = caseSingleNestedWhen(whenNot);
+			if (result == null)
+				result = caseNestedWhen(whenNot);
+			if (result == null)
+				result = caseWhen(whenNot);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_ANY_OF: {
+			WhenAnyOf whenAnyOf = (WhenAnyOf) theEObject;
+			T result = caseWhenAnyOf(whenAnyOf);
+			if (result == null)
+				result = caseMultipleNestedWhen(whenAnyOf);
+			if (result == null)
+				result = caseNestedWhen(whenAnyOf);
+			if (result == null)
+				result = caseWhen(whenAnyOf);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_ALL_OF: {
+			WhenAllOf whenAllOf = (WhenAllOf) theEObject;
+			T result = caseWhenAllOf(whenAllOf);
+			if (result == null)
+				result = caseMultipleNestedWhen(whenAllOf);
+			if (result == null)
+				result = caseNestedWhen(whenAllOf);
+			if (result == null)
+				result = caseWhen(whenAllOf);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.WHEN_TRIGGERED_BY: {
+			WhenTriggeredBy whenTriggeredBy = (WhenTriggeredBy) theEObject;
+			T result = caseWhenTriggeredBy(whenTriggeredBy);
+			if (result == null)
+				result = caseWhen(whenTriggeredBy);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -425,32 +661,62 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parallel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Nested Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parallel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Nested Stage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseParallel(Parallel object) {
+	public T caseNestedStage(NestedStage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Stage</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Parallel Nested Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Stage</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Parallel Nested Stage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStage(Stage object) {
+	public T caseParallelNestedStage(ParallelNestedStage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sequential Nested Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sequential Nested Stage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSequentialNestedStage(SequentialNestedStage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Step Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Step Stage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStepStage(StepStage object) {
 		return null;
 	}
 
@@ -856,6 +1122,321 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseScheduledTrigger(ScheduledTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Polling Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Polling Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePollingTrigger(PollingTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Upstream Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Upstream Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUpstreamTrigger(UpstreamTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Tool</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTool(Tool object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhen(When object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Comparison</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Comparison</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenComparison(WhenComparison object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Branch</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Branch</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenBranch(WhenBranch object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Changeset</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Changeset</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenChangeset(WhenChangeset object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Tag</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Tag</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenTag(WhenTag object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Change Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Change Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenChangeRequest(WhenChangeRequest object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Building Tag</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Building Tag</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenBuildingTag(WhenBuildingTag object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Changelog</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Changelog</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenChangelog(WhenChangelog object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Equals</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Equals</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenEquals(WhenEquals object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Environment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Environment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenEnvironment(WhenEnvironment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenExpression(WhenExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Nested When</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Nested When</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNestedWhen(NestedWhen object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Single Nested When</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Single Nested When</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSingleNestedWhen(SingleNestedWhen object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Multiple Nested When</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Multiple Nested When</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMultipleNestedWhen(MultipleNestedWhen object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Not</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Not</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenNot(WhenNot object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Any Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Any Of</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenAnyOf(WhenAnyOf object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When All Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When All Of</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenAllOf(WhenAllOf object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Triggered By</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Triggered By</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenTriggeredBy(WhenTriggeredBy object) {
 		return null;
 	}
 

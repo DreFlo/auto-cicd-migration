@@ -20,22 +20,56 @@
       <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARISON_OPS/LT"/>
       <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARISON_OPS/LTE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//SUPPORTED_TOOLS">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//SUPPORTED_TOOLS/MAVEN"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//SUPPORTED_TOOLS/JDK"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//SUPPORTED_TOOLS/GRADLE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//COMPARATORS">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARATORS/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARATORS/REGEXP"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//COMPARATORS/GLOB"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//CHANGE_REQUEST_MATCHER">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/ID"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/TARGET"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/BRANCH"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/FORK"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/URL"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/TITLE"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/AUTHOR"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/AUTHOR_DISPLAY_NAME"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//CHANGE_REQUEST_MATCHER/AUTHOR_EMAIL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//WHEN_EVALUATION_TIMES">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//WHEN_EVALUATION_TIMES/AFTER"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//WHEN_EVALUATION_TIMES/BEFORE_AGENT"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//WHEN_EVALUATION_TIMES/BEFORE_INPUT"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//WHEN_EVALUATION_TIMES/BEFORE_OPTIONS"/>
+    </genEnums>
     <genClasses ecoreClass="Jenkins.ecore#//Pipeline">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/stages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/agent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/environmentVariables"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/triggers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/tools"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractPipelineExecutionBlock"/>
-    <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStage"/>
-    <genClasses ecoreClass="Jenkins.ecore#//Parallel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Parallel/stages"/>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//AbstractStage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//AbstractStage/agent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//AbstractStage/conditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//AbstractStage/environmentVariables"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//AbstractStage/whens"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//AbstractStage/whenEvaluationTime"/>
     </genClasses>
-    <genClasses ecoreClass="Jenkins.ecore#//Stage">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/steps"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Stage/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/agent"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Stage/environmentVariables"/>
+    <genClasses ecoreClass="Jenkins.ecore#//NestedStage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//NestedStage/stages"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//ParallelNestedStage"/>
+    <genClasses ecoreClass="Jenkins.ecore#//SequentialNestedStage"/>
+    <genClasses ecoreClass="Jenkins.ecore#//StepStage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//StepStage/steps"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Jenkins.ecore#//AbstractStep"/>
     <genClasses ecoreClass="Jenkins.ecore#//Step">
@@ -106,6 +140,55 @@
     <genClasses image="false" ecoreClass="Jenkins.ecore#//Trigger"/>
     <genClasses ecoreClass="Jenkins.ecore#//ScheduledTrigger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//ScheduledTrigger/cron"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//PollingTrigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//PollingTrigger/cron"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//UpstreamTrigger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//UpstreamTrigger/jobs"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//Tool">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Tool/tool"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Tool/version"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//When"/>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//WhenComparison">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenComparison/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenComparison/comparator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenComparison/caseSensitive"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenBranch"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenChangeset"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenTag"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenChangeRequest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenChangeRequest/matcher"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenBuildingTag"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenChangelog"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenEquals">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//WhenEquals/expected"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//WhenEquals/actual"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenEnvironment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenEnvironment/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenEnvironment/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//WhenExpression/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//NestedWhen"/>
+    <genClasses ecoreClass="Jenkins.ecore#//SingleNestedWhen">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//SingleNestedWhen/nestedWhen"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//MultipleNestedWhen">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//MultipleNestedWhen/nestedWhens"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenNot"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenAnyOf"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenAllOf"/>
+    <genClasses ecoreClass="Jenkins.ecore#//WhenTriggeredBy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenTriggeredBy/cause"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenTriggeredBy/detail"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -4,33 +4,33 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
 
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StageItemProvider extends AbstractStageItemProvider {
+public class StepStageItemProvider extends AbstractStageItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StageItemProvider(AdapterFactory adapterFactory) {
+	public StepStageItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,54 +45,8 @@ public class StageItemProvider extends AbstractStageItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addStepsPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
-			addAgentPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Steps feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addStepsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Stage_steps_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Stage_steps_feature", "_UI_Stage_type"),
-						JenkinsPackage.Literals.STAGE__STEPS, true, false, true, null, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Stage_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Stage_name_feature", "_UI_Stage_type"),
-						JenkinsPackage.Literals.STAGE__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Agent feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addAgentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Stage_agent_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Stage_agent_feature", "_UI_Stage_type"),
-						JenkinsPackage.Literals.STAGE__AGENT, true, false, true, null, null, null));
 	}
 
 	/**
@@ -107,7 +61,7 @@ public class StageItemProvider extends AbstractStageItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.STAGE__ENVIRONMENT_VARIABLES);
+			childrenFeatures.add(JenkinsPackage.Literals.STEP_STAGE__STEPS);
 		}
 		return childrenFeatures;
 	}
@@ -126,14 +80,14 @@ public class StageItemProvider extends AbstractStageItemProvider {
 	}
 
 	/**
-	 * This returns Stage.gif.
+	 * This returns StepStage.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Stage"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StepStage"));
 	}
 
 	/**
@@ -154,9 +108,9 @@ public class StageItemProvider extends AbstractStageItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Stage) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Stage_type")
-				: getString("_UI_Stage_type") + " " + label;
+		String label = ((StepStage) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_StepStage_type")
+				: getString("_UI_StepStage_type") + " " + label;
 	}
 
 	/**
@@ -170,11 +124,8 @@ public class StageItemProvider extends AbstractStageItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Stage.class)) {
-		case JenkinsPackage.STAGE__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case JenkinsPackage.STAGE__ENVIRONMENT_VARIABLES:
+		switch (notification.getFeatureID(StepStage.class)) {
+		case JenkinsPackage.STEP_STAGE__STEPS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -192,8 +143,11 @@ public class StageItemProvider extends AbstractStageItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.STAGE__ENVIRONMENT_VARIABLES,
-				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.STEP_STAGE__STEPS, JenkinsFactory.eINSTANCE.createStep()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.STEP_STAGE__STEPS,
+				JenkinsFactory.eINSTANCE.createConditionalStep()));
 	}
 
 }

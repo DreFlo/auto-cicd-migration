@@ -96,49 +96,95 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ParallelItemProvider parallelItemProvider;
+	protected NestedStageItemProvider nestedStageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createParallelAdapter() {
-		if (parallelItemProvider == null) {
-			parallelItemProvider = new ParallelItemProvider(this);
+	public Adapter createNestedStageAdapter() {
+		if (nestedStageItemProvider == null) {
+			nestedStageItemProvider = new NestedStageItemProvider(this);
 		}
 
-		return parallelItemProvider;
+		return nestedStageItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StageItemProvider stageItemProvider;
+	protected ParallelNestedStageItemProvider parallelNestedStageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStageAdapter() {
-		if (stageItemProvider == null) {
-			stageItemProvider = new StageItemProvider(this);
+	public Adapter createParallelNestedStageAdapter() {
+		if (parallelNestedStageItemProvider == null) {
+			parallelNestedStageItemProvider = new ParallelNestedStageItemProvider(this);
 		}
 
-		return stageItemProvider;
+		return parallelNestedStageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SequentialNestedStageItemProvider sequentialNestedStageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSequentialNestedStageAdapter() {
+		if (sequentialNestedStageItemProvider == null) {
+			sequentialNestedStageItemProvider = new SequentialNestedStageItemProvider(this);
+		}
+
+		return sequentialNestedStageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StepStageItemProvider stepStageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStepStageAdapter() {
+		if (stepStageItemProvider == null) {
+			stepStageItemProvider = new StepStageItemProvider(this);
+		}
+
+		return stepStageItemProvider;
 	}
 
 	/**
@@ -602,6 +648,420 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PollingTriggerItemProvider pollingTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPollingTriggerAdapter() {
+		if (pollingTriggerItemProvider == null) {
+			pollingTriggerItemProvider = new PollingTriggerItemProvider(this);
+		}
+
+		return pollingTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UpstreamTriggerItemProvider upstreamTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUpstreamTriggerAdapter() {
+		if (upstreamTriggerItemProvider == null) {
+			upstreamTriggerItemProvider = new UpstreamTriggerItemProvider(this);
+		}
+
+		return upstreamTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ToolItemProvider toolItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createToolAdapter() {
+		if (toolItemProvider == null) {
+			toolItemProvider = new ToolItemProvider(this);
+		}
+
+		return toolItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenBranchItemProvider whenBranchItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenBranchAdapter() {
+		if (whenBranchItemProvider == null) {
+			whenBranchItemProvider = new WhenBranchItemProvider(this);
+		}
+
+		return whenBranchItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenChangesetItemProvider whenChangesetItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenChangesetAdapter() {
+		if (whenChangesetItemProvider == null) {
+			whenChangesetItemProvider = new WhenChangesetItemProvider(this);
+		}
+
+		return whenChangesetItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenTagItemProvider whenTagItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenTagAdapter() {
+		if (whenTagItemProvider == null) {
+			whenTagItemProvider = new WhenTagItemProvider(this);
+		}
+
+		return whenTagItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenChangeRequestItemProvider whenChangeRequestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenChangeRequestAdapter() {
+		if (whenChangeRequestItemProvider == null) {
+			whenChangeRequestItemProvider = new WhenChangeRequestItemProvider(this);
+		}
+
+		return whenChangeRequestItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenBuildingTagItemProvider whenBuildingTagItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenBuildingTagAdapter() {
+		if (whenBuildingTagItemProvider == null) {
+			whenBuildingTagItemProvider = new WhenBuildingTagItemProvider(this);
+		}
+
+		return whenBuildingTagItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenChangelogItemProvider whenChangelogItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenChangelogAdapter() {
+		if (whenChangelogItemProvider == null) {
+			whenChangelogItemProvider = new WhenChangelogItemProvider(this);
+		}
+
+		return whenChangelogItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenEqualsItemProvider whenEqualsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenEqualsAdapter() {
+		if (whenEqualsItemProvider == null) {
+			whenEqualsItemProvider = new WhenEqualsItemProvider(this);
+		}
+
+		return whenEqualsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenEnvironmentItemProvider whenEnvironmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenEnvironmentAdapter() {
+		if (whenEnvironmentItemProvider == null) {
+			whenEnvironmentItemProvider = new WhenEnvironmentItemProvider(this);
+		}
+
+		return whenEnvironmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenExpressionItemProvider whenExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenExpressionAdapter() {
+		if (whenExpressionItemProvider == null) {
+			whenExpressionItemProvider = new WhenExpressionItemProvider(this);
+		}
+
+		return whenExpressionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SingleNestedWhenItemProvider singleNestedWhenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSingleNestedWhenAdapter() {
+		if (singleNestedWhenItemProvider == null) {
+			singleNestedWhenItemProvider = new SingleNestedWhenItemProvider(this);
+		}
+
+		return singleNestedWhenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MultipleNestedWhenItemProvider multipleNestedWhenItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMultipleNestedWhenAdapter() {
+		if (multipleNestedWhenItemProvider == null) {
+			multipleNestedWhenItemProvider = new MultipleNestedWhenItemProvider(this);
+		}
+
+		return multipleNestedWhenItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenNotItemProvider whenNotItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenNotAdapter() {
+		if (whenNotItemProvider == null) {
+			whenNotItemProvider = new WhenNotItemProvider(this);
+		}
+
+		return whenNotItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenAnyOfItemProvider whenAnyOfItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenAnyOfAdapter() {
+		if (whenAnyOfItemProvider == null) {
+			whenAnyOfItemProvider = new WhenAnyOfItemProvider(this);
+		}
+
+		return whenAnyOfItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenAllOfItemProvider whenAllOfItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenAllOfAdapter() {
+		if (whenAllOfItemProvider == null) {
+			whenAllOfItemProvider = new WhenAllOfItemProvider(this);
+		}
+
+		return whenAllOfItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhenTriggeredByItemProvider whenTriggeredByItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhenTriggeredByAdapter() {
+		if (whenTriggeredByItemProvider == null) {
+			whenTriggeredByItemProvider = new WhenTriggeredByItemProvider(this);
+		}
+
+		return whenTriggeredByItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -708,10 +1168,14 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	public void dispose() {
 		if (pipelineItemProvider != null)
 			pipelineItemProvider.dispose();
-		if (parallelItemProvider != null)
-			parallelItemProvider.dispose();
-		if (stageItemProvider != null)
-			stageItemProvider.dispose();
+		if (nestedStageItemProvider != null)
+			nestedStageItemProvider.dispose();
+		if (parallelNestedStageItemProvider != null)
+			parallelNestedStageItemProvider.dispose();
+		if (sequentialNestedStageItemProvider != null)
+			sequentialNestedStageItemProvider.dispose();
+		if (stepStageItemProvider != null)
+			stepStageItemProvider.dispose();
 		if (stepItemProvider != null)
 			stepItemProvider.dispose();
 		if (conditionalStepItemProvider != null)
@@ -752,6 +1216,42 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			orItemProvider.dispose();
 		if (scheduledTriggerItemProvider != null)
 			scheduledTriggerItemProvider.dispose();
+		if (pollingTriggerItemProvider != null)
+			pollingTriggerItemProvider.dispose();
+		if (upstreamTriggerItemProvider != null)
+			upstreamTriggerItemProvider.dispose();
+		if (toolItemProvider != null)
+			toolItemProvider.dispose();
+		if (whenBranchItemProvider != null)
+			whenBranchItemProvider.dispose();
+		if (whenChangesetItemProvider != null)
+			whenChangesetItemProvider.dispose();
+		if (whenTagItemProvider != null)
+			whenTagItemProvider.dispose();
+		if (whenChangeRequestItemProvider != null)
+			whenChangeRequestItemProvider.dispose();
+		if (whenBuildingTagItemProvider != null)
+			whenBuildingTagItemProvider.dispose();
+		if (whenChangelogItemProvider != null)
+			whenChangelogItemProvider.dispose();
+		if (whenEqualsItemProvider != null)
+			whenEqualsItemProvider.dispose();
+		if (whenEnvironmentItemProvider != null)
+			whenEnvironmentItemProvider.dispose();
+		if (whenExpressionItemProvider != null)
+			whenExpressionItemProvider.dispose();
+		if (singleNestedWhenItemProvider != null)
+			singleNestedWhenItemProvider.dispose();
+		if (multipleNestedWhenItemProvider != null)
+			multipleNestedWhenItemProvider.dispose();
+		if (whenNotItemProvider != null)
+			whenNotItemProvider.dispose();
+		if (whenAnyOfItemProvider != null)
+			whenAnyOfItemProvider.dispose();
+		if (whenAllOfItemProvider != null)
+			whenAllOfItemProvider.dispose();
+		if (whenTriggeredByItemProvider != null)
+			whenTriggeredByItemProvider.dispose();
 	}
 
 }

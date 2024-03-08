@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.util;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -83,13 +84,23 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseParallel(Parallel object) {
-			return createParallelAdapter();
+		public Adapter caseNestedStage(NestedStage object) {
+			return createNestedStageAdapter();
 		}
 
 		@Override
-		public Adapter caseStage(Stage object) {
-			return createStageAdapter();
+		public Adapter caseParallelNestedStage(ParallelNestedStage object) {
+			return createParallelNestedStageAdapter();
+		}
+
+		@Override
+		public Adapter caseSequentialNestedStage(SequentialNestedStage object) {
+			return createSequentialNestedStageAdapter();
+		}
+
+		@Override
+		public Adapter caseStepStage(StepStage object) {
+			return createStepStageAdapter();
 		}
 
 		@Override
@@ -228,6 +239,111 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter casePollingTrigger(PollingTrigger object) {
+			return createPollingTriggerAdapter();
+		}
+
+		@Override
+		public Adapter caseUpstreamTrigger(UpstreamTrigger object) {
+			return createUpstreamTriggerAdapter();
+		}
+
+		@Override
+		public Adapter caseTool(Tool object) {
+			return createToolAdapter();
+		}
+
+		@Override
+		public Adapter caseWhen(When object) {
+			return createWhenAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenComparison(WhenComparison object) {
+			return createWhenComparisonAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenBranch(WhenBranch object) {
+			return createWhenBranchAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenChangeset(WhenChangeset object) {
+			return createWhenChangesetAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenTag(WhenTag object) {
+			return createWhenTagAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenChangeRequest(WhenChangeRequest object) {
+			return createWhenChangeRequestAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenBuildingTag(WhenBuildingTag object) {
+			return createWhenBuildingTagAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenChangelog(WhenChangelog object) {
+			return createWhenChangelogAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenEquals(WhenEquals object) {
+			return createWhenEqualsAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenEnvironment(WhenEnvironment object) {
+			return createWhenEnvironmentAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenExpression(WhenExpression object) {
+			return createWhenExpressionAdapter();
+		}
+
+		@Override
+		public Adapter caseNestedWhen(NestedWhen object) {
+			return createNestedWhenAdapter();
+		}
+
+		@Override
+		public Adapter caseSingleNestedWhen(SingleNestedWhen object) {
+			return createSingleNestedWhenAdapter();
+		}
+
+		@Override
+		public Adapter caseMultipleNestedWhen(MultipleNestedWhen object) {
+			return createMultipleNestedWhenAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenNot(WhenNot object) {
+			return createWhenNotAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenAnyOf(WhenAnyOf object) {
+			return createWhenAnyOfAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenAllOf(WhenAllOf object) {
+			return createWhenAllOfAdapter();
+		}
+
+		@Override
+		public Adapter caseWhenTriggeredBy(WhenTriggeredBy object) {
+			return createWhenTriggeredByAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -289,30 +405,58 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel <em>Parallel</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage <em>Nested Stage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage
 	 * @generated
 	 */
-	public Adapter createParallelAdapter() {
+	public Adapter createNestedStageAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage <em>Stage</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage <em>Parallel Nested Stage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage
 	 * @generated
 	 */
-	public Adapter createStageAdapter() {
+	public Adapter createParallelNestedStageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage <em>Sequential Nested Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage
+	 * @generated
+	 */
+	public Adapter createSequentialNestedStageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage <em>Step Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage
+	 * @generated
+	 */
+	public Adapter createStepStageAdapter() {
 		return null;
 	}
 
@@ -691,6 +835,300 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createScheduledTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger <em>Polling Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger
+	 * @generated
+	 */
+	public Adapter createPollingTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger <em>Upstream Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger
+	 * @generated
+	 */
+	public Adapter createUpstreamTriggerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool <em>Tool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool
+	 * @generated
+	 */
+	public Adapter createToolAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When <em>When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When
+	 * @generated
+	 */
+	public Adapter createWhenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison <em>When Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison
+	 * @generated
+	 */
+	public Adapter createWhenComparisonAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch <em>When Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch
+	 * @generated
+	 */
+	public Adapter createWhenBranchAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset <em>When Changeset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset
+	 * @generated
+	 */
+	public Adapter createWhenChangesetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag <em>When Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag
+	 * @generated
+	 */
+	public Adapter createWhenTagAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest <em>When Change Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest
+	 * @generated
+	 */
+	public Adapter createWhenChangeRequestAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag <em>When Building Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag
+	 * @generated
+	 */
+	public Adapter createWhenBuildingTagAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog <em>When Changelog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog
+	 * @generated
+	 */
+	public Adapter createWhenChangelogAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals <em>When Equals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals
+	 * @generated
+	 */
+	public Adapter createWhenEqualsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment <em>When Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment
+	 * @generated
+	 */
+	public Adapter createWhenEnvironmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression <em>When Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression
+	 * @generated
+	 */
+	public Adapter createWhenExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedWhen <em>Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedWhen
+	 * @generated
+	 */
+	public Adapter createNestedWhenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen <em>Single Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen
+	 * @generated
+	 */
+	public Adapter createSingleNestedWhenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen <em>Multiple Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen
+	 * @generated
+	 */
+	public Adapter createMultipleNestedWhenAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot <em>When Not</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot
+	 * @generated
+	 */
+	public Adapter createWhenNotAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf <em>When Any Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf
+	 * @generated
+	 */
+	public Adapter createWhenAnyOfAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf <em>When All Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf
+	 * @generated
+	 */
+	public Adapter createWhenAllOfAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy <em>When Triggered By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy
+	 * @generated
+	 */
+	public Adapter createWhenTriggeredByAdapter() {
 		return null;
 	}
 

@@ -26,7 +26,7 @@ public abstract class InputAbstractCompiler<InputModel extends EObject, InputPac
 
     @Override
     public Pipeline compile(String string) throws Exception {
-        System.out.println("Parsing (" + getParser().getClass().getName() + ")...");
+        System.out.println("Parsing\t\t(" + getParser().getClass().getName() + ")...");
         InputModel inputModel = parse(string);
         return transform(inputModel);
     }

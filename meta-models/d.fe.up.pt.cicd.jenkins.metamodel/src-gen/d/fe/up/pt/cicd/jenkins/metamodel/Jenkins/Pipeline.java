@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getAgent <em>Agent</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTriggers <em>Triggers</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTools <em>Tools</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline()
@@ -84,5 +86,17 @@ public interface Pipeline extends EObject {
 	 * @generated
 	 */
 	EList<Trigger> getTriggers();
+
+	/**
+	 * Returns the value of the '<em><b>Tools</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tools</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_Tools()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Tool> getTools();
 
 } // Pipeline

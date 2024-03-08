@@ -2,9 +2,8 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,25 +11,25 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ParallelItemProvider extends AbstractStageItemProvider {
+public class WhenChangeRequestItemProvider extends WhenComparisonItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParallelItemProvider(AdapterFactory adapterFactory) {
+	public WhenChangeRequestItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,49 +44,36 @@ public class ParallelItemProvider extends AbstractStageItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addMatcherPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Matcher feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.PARALLEL__STAGES);
-		}
-		return childrenFeatures;
+	protected void addMatcherPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_WhenChangeRequest_matcher_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_WhenChangeRequest_matcher_feature",
+								"_UI_WhenChangeRequest_type"),
+						JenkinsPackage.Literals.WHEN_CHANGE_REQUEST__MATCHER, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns Parallel.gif.
+	 * This returns WhenChangeRequest.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Parallel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/WhenChangeRequest"));
 	}
 
 	/**
@@ -108,7 +94,9 @@ public class ParallelItemProvider extends AbstractStageItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Parallel_type");
+		String label = ((WhenChangeRequest) object).getPattern();
+		return label == null || label.length() == 0 ? getString("_UI_WhenChangeRequest_type")
+				: getString("_UI_WhenChangeRequest_type") + " " + label;
 	}
 
 	/**
@@ -122,9 +110,9 @@ public class ParallelItemProvider extends AbstractStageItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Parallel.class)) {
-		case JenkinsPackage.PARALLEL__STAGES:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(WhenChangeRequest.class)) {
+		case JenkinsPackage.WHEN_CHANGE_REQUEST__MATCHER:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -140,9 +128,6 @@ public class ParallelItemProvider extends AbstractStageItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.PARALLEL__STAGES, JenkinsFactory.eINSTANCE.createStage()));
 	}
 
 }

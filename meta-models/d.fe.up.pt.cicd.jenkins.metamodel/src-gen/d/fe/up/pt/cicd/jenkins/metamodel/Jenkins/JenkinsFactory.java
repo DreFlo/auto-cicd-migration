@@ -31,22 +31,40 @@ public interface JenkinsFactory extends EFactory {
 	Pipeline createPipeline();
 
 	/**
-	 * Returns a new object of class '<em>Parallel</em>'.
+	 * Returns a new object of class '<em>Nested Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parallel</em>'.
+	 * @return a new object of class '<em>Nested Stage</em>'.
 	 * @generated
 	 */
-	Parallel createParallel();
+	NestedStage createNestedStage();
 
 	/**
-	 * Returns a new object of class '<em>Stage</em>'.
+	 * Returns a new object of class '<em>Parallel Nested Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Stage</em>'.
+	 * @return a new object of class '<em>Parallel Nested Stage</em>'.
 	 * @generated
 	 */
-	Stage createStage();
+	ParallelNestedStage createParallelNestedStage();
+
+	/**
+	 * Returns a new object of class '<em>Sequential Nested Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequential Nested Stage</em>'.
+	 * @generated
+	 */
+	SequentialNestedStage createSequentialNestedStage();
+
+	/**
+	 * Returns a new object of class '<em>Step Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Step Stage</em>'.
+	 * @generated
+	 */
+	StepStage createStepStage();
 
 	/**
 	 * Returns a new object of class '<em>Step</em>'.
@@ -218,6 +236,168 @@ public interface JenkinsFactory extends EFactory {
 	 * @generated
 	 */
 	ScheduledTrigger createScheduledTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Polling Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Polling Trigger</em>'.
+	 * @generated
+	 */
+	PollingTrigger createPollingTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Upstream Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Upstream Trigger</em>'.
+	 * @generated
+	 */
+	UpstreamTrigger createUpstreamTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Tool</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Tool</em>'.
+	 * @generated
+	 */
+	Tool createTool();
+
+	/**
+	 * Returns a new object of class '<em>When Branch</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Branch</em>'.
+	 * @generated
+	 */
+	WhenBranch createWhenBranch();
+
+	/**
+	 * Returns a new object of class '<em>When Changeset</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Changeset</em>'.
+	 * @generated
+	 */
+	WhenChangeset createWhenChangeset();
+
+	/**
+	 * Returns a new object of class '<em>When Tag</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Tag</em>'.
+	 * @generated
+	 */
+	WhenTag createWhenTag();
+
+	/**
+	 * Returns a new object of class '<em>When Change Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Change Request</em>'.
+	 * @generated
+	 */
+	WhenChangeRequest createWhenChangeRequest();
+
+	/**
+	 * Returns a new object of class '<em>When Building Tag</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Building Tag</em>'.
+	 * @generated
+	 */
+	WhenBuildingTag createWhenBuildingTag();
+
+	/**
+	 * Returns a new object of class '<em>When Changelog</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Changelog</em>'.
+	 * @generated
+	 */
+	WhenChangelog createWhenChangelog();
+
+	/**
+	 * Returns a new object of class '<em>When Equals</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Equals</em>'.
+	 * @generated
+	 */
+	WhenEquals createWhenEquals();
+
+	/**
+	 * Returns a new object of class '<em>When Environment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Environment</em>'.
+	 * @generated
+	 */
+	WhenEnvironment createWhenEnvironment();
+
+	/**
+	 * Returns a new object of class '<em>When Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Expression</em>'.
+	 * @generated
+	 */
+	WhenExpression createWhenExpression();
+
+	/**
+	 * Returns a new object of class '<em>Single Nested When</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Single Nested When</em>'.
+	 * @generated
+	 */
+	SingleNestedWhen createSingleNestedWhen();
+
+	/**
+	 * Returns a new object of class '<em>Multiple Nested When</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Multiple Nested When</em>'.
+	 * @generated
+	 */
+	MultipleNestedWhen createMultipleNestedWhen();
+
+	/**
+	 * Returns a new object of class '<em>When Not</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Not</em>'.
+	 * @generated
+	 */
+	WhenNot createWhenNot();
+
+	/**
+	 * Returns a new object of class '<em>When Any Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Any Of</em>'.
+	 * @generated
+	 */
+	WhenAnyOf createWhenAnyOf();
+
+	/**
+	 * Returns a new object of class '<em>When All Of</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When All Of</em>'.
+	 * @generated
+	 */
+	WhenAllOf createWhenAllOf();
+
+	/**
+	 * Returns a new object of class '<em>When Triggered By</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>When Triggered By</em>'.
+	 * @generated
+	 */
+	WhenTriggeredBy createWhenTriggeredBy();
 
 	/**
 	 * Returns the package supported by this factory.

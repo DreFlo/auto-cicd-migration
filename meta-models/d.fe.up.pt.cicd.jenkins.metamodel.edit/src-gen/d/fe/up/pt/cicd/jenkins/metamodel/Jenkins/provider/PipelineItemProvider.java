@@ -105,6 +105,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__STAGES);
 			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__ENVIRONMENT_VARIABLES);
+			childrenFeatures.add(JenkinsPackage.Literals.PIPELINE__TOOLS);
 		}
 		return childrenFeatures;
 	}
@@ -168,6 +169,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 		switch (notification.getFeatureID(Pipeline.class)) {
 		case JenkinsPackage.PIPELINE__STAGES:
 		case JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES:
+		case JenkinsPackage.PIPELINE__TOOLS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -186,13 +188,22 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
-				JenkinsFactory.eINSTANCE.createParallel()));
+				JenkinsFactory.eINSTANCE.createNestedStage()));
 
-		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES, JenkinsFactory.eINSTANCE.createStage()));
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
+				JenkinsFactory.eINSTANCE.createParallelNestedStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
+				JenkinsFactory.eINSTANCE.createSequentialNestedStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
+				JenkinsFactory.eINSTANCE.createStepStage()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__ENVIRONMENT_VARIABLES,
 				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.PIPELINE__TOOLS, JenkinsFactory.eINSTANCE.createTool()));
 	}
 
 	/**

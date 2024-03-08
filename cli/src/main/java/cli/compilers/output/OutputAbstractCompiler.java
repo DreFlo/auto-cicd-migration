@@ -28,7 +28,7 @@ public abstract class OutputAbstractCompiler<OutputModel extends EObject, Output
     @Override
     public Void compile(Pipeline pipeline) throws Exception {
         OutputModel outputModel = transform(pipeline);
-        System.out.println("Generating (" + getGenerator().getClass().getName() + ")...");
+        System.out.println("Generating\t(" + getGenerator().getClass().getName() + ")...");
         generate(outputModel, "./output/");
         return null;
     }

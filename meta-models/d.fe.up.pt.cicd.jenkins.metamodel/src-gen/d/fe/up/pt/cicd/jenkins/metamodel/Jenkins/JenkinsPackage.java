@@ -104,13 +104,22 @@ public interface JenkinsPackage extends EPackage {
 	int PIPELINE__TRIGGERS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Tools</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE__TOOLS = 4;
+
+	/**
 	 * The number of structural features of the '<em>Pipeline</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE_FEATURE_COUNT = 4;
+	int PIPELINE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Pipeline</em>' class.
@@ -160,13 +169,67 @@ public interface JenkinsPackage extends EPackage {
 	int ABSTRACT_STAGE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STAGE__NAME = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STAGE__AGENT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STAGE__CONDITIONS = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STAGE__WHENS = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>When Evaluation Time</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STAGE__WHEN_EVALUATION_TIME = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Stage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STAGE_FEATURE_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 0;
+	int ABSTRACT_STAGE_FEATURE_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Abstract Stage</em>' class.
@@ -178,60 +241,14 @@ public interface JenkinsPackage extends EPackage {
 	int ABSTRACT_STAGE_OPERATION_COUNT = ABSTRACT_PIPELINE_EXECUTION_BLOCK_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelImpl <em>Parallel</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedStageImpl <em>Nested Stage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getParallel()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedStageImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNestedStage()
 	 * @generated
 	 */
-	int PARALLEL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL__STAGES = ABSTRACT_STAGE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Parallel</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Parallel</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARALLEL_OPERATION_COUNT = ABSTRACT_STAGE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl <em>Stage</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStage()
-	 * @generated
-	 */
-	int STAGE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STAGE__STEPS = ABSTRACT_STAGE_FEATURE_COUNT + 0;
+	int NESTED_STAGE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -240,7 +257,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE__NAME = ABSTRACT_STAGE_FEATURE_COUNT + 1;
+	int NESTED_STAGE__NAME = ABSTRACT_STAGE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
@@ -249,7 +266,16 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE__AGENT = ABSTRACT_STAGE_FEATURE_COUNT + 2;
+	int NESTED_STAGE__AGENT = ABSTRACT_STAGE__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_STAGE__CONDITIONS = ABSTRACT_STAGE__CONDITIONS;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -258,25 +284,325 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_STAGE_FEATURE_COUNT + 3;
+	int NESTED_STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_STAGE__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The number of structural features of the '<em>Stage</em>' class.
+	 * The feature id for the '<em><b>Whens</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 4;
+	int NESTED_STAGE__WHENS = ABSTRACT_STAGE__WHENS;
 
 	/**
-	 * The number of operations of the '<em>Stage</em>' class.
+	 * The feature id for the '<em><b>When Evaluation Time</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STAGE_OPERATION_COUNT = ABSTRACT_STAGE_OPERATION_COUNT + 0;
+	int NESTED_STAGE__WHEN_EVALUATION_TIME = ABSTRACT_STAGE__WHEN_EVALUATION_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_STAGE__STAGES = ABSTRACT_STAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Nested Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Nested Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_STAGE_OPERATION_COUNT = ABSTRACT_STAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelNestedStageImpl <em>Parallel Nested Stage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelNestedStageImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getParallelNestedStage()
+	 * @generated
+	 */
+	int PARALLEL_NESTED_STAGE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__NAME = NESTED_STAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__AGENT = NESTED_STAGE__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__CONDITIONS = NESTED_STAGE__CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__ENVIRONMENT_VARIABLES = NESTED_STAGE__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__WHENS = NESTED_STAGE__WHENS;
+
+	/**
+	 * The feature id for the '<em><b>When Evaluation Time</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__WHEN_EVALUATION_TIME = NESTED_STAGE__WHEN_EVALUATION_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE__STAGES = NESTED_STAGE__STAGES;
+
+	/**
+	 * The number of structural features of the '<em>Parallel Nested Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE_FEATURE_COUNT = NESTED_STAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Parallel Nested Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARALLEL_NESTED_STAGE_OPERATION_COUNT = NESTED_STAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SequentialNestedStageImpl <em>Sequential Nested Stage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SequentialNestedStageImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSequentialNestedStage()
+	 * @generated
+	 */
+	int SEQUENTIAL_NESTED_STAGE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__NAME = NESTED_STAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__AGENT = NESTED_STAGE__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__CONDITIONS = NESTED_STAGE__CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__ENVIRONMENT_VARIABLES = NESTED_STAGE__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__WHENS = NESTED_STAGE__WHENS;
+
+	/**
+	 * The feature id for the '<em><b>When Evaluation Time</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__WHEN_EVALUATION_TIME = NESTED_STAGE__WHEN_EVALUATION_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE__STAGES = NESTED_STAGE__STAGES;
+
+	/**
+	 * The number of structural features of the '<em>Sequential Nested Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE_FEATURE_COUNT = NESTED_STAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Sequential Nested Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENTIAL_NESTED_STAGE_OPERATION_COUNT = NESTED_STAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl <em>Step Stage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepStage()
+	 * @generated
+	 */
+	int STEP_STAGE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__NAME = ABSTRACT_STAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__AGENT = ABSTRACT_STAGE__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__CONDITIONS = ABSTRACT_STAGE__CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_STAGE__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__WHENS = ABSTRACT_STAGE__WHENS;
+
+	/**
+	 * The feature id for the '<em><b>When Evaluation Time</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__WHEN_EVALUATION_TIME = ABSTRACT_STAGE__WHEN_EVALUATION_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE__STEPS = ABSTRACT_STAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Step Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE_FEATURE_COUNT = ABSTRACT_STAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Step Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STEP_STAGE_OPERATION_COUNT = ABSTRACT_STAGE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl <em>Abstract Step</em>}' class.
@@ -286,7 +612,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractStep()
 	 * @generated
 	 */
-	int ABSTRACT_STEP = 5;
+	int ABSTRACT_STEP = 7;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Step</em>' class.
@@ -314,7 +640,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 6;
+	int STEP = 8;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -360,7 +686,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConditionalStep()
 	 * @generated
 	 */
-	int CONDITIONAL_STEP = 7;
+	int CONDITIONAL_STEP = 9;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -415,7 +741,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractAgent()
 	 * @generated
 	 */
-	int ABSTRACT_AGENT = 8;
+	int ABSTRACT_AGENT = 10;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Agent</em>' class.
@@ -443,7 +769,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNoneAgent()
 	 * @generated
 	 */
-	int NONE_AGENT = 9;
+	int NONE_AGENT = 11;
 
 	/**
 	 * The number of structural features of the '<em>None Agent</em>' class.
@@ -471,7 +797,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnyAgent()
 	 * @generated
 	 */
-	int ANY_AGENT = 10;
+	int ANY_AGENT = 12;
 
 	/**
 	 * The number of structural features of the '<em>Any Agent</em>' class.
@@ -499,7 +825,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOptionedAgent()
 	 * @generated
 	 */
-	int OPTIONED_AGENT = 11;
+	int OPTIONED_AGENT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Labels</b></em>' containment reference.
@@ -554,7 +880,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDockerContainer()
 	 * @generated
 	 */
-	int DOCKER_CONTAINER = 12;
+	int DOCKER_CONTAINER = 14;
 
 	/**
 	 * The feature id for the '<em><b>Image</b></em>' attribute.
@@ -627,7 +953,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 13;
+	int EXPRESSION = 15;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -655,7 +981,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 14;
+	int LITERAL = 16;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -683,7 +1009,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 15;
+	int STRING_LITERAL = 17;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -720,7 +1046,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 16;
+	int INTEGER_LITERAL = 18;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -757,7 +1083,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 17;
+	int DOUBLE_LITERAL = 19;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -794,7 +1120,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 18;
+	int BOOLEAN_LITERAL = 20;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -831,7 +1157,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 19;
+	int VARIABLE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -868,7 +1194,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAssignment()
 	 * @generated
 	 */
-	int ASSIGNMENT = 20;
+	int ASSIGNMENT = 22;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -914,7 +1240,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 21;
+	int CONCAT = 23;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -951,7 +1277,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 22;
+	int BINARY_OP = 24;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -997,7 +1323,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 23;
+	int UNARY_OP = 25;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1034,7 +1360,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 24;
+	int NEGATION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1071,7 +1397,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 25;
+	int EQUALITY_OP = 27;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1126,7 +1452,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 26;
+	int COMPARISON_OP = 28;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1181,7 +1507,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 27;
+	int LOGICAL_OP = 29;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1227,7 +1553,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 28;
+	int AND = 30;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1273,7 +1599,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 29;
+	int OR = 31;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1319,7 +1645,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 30;
+	int TRIGGER = 32;
 
 	/**
 	 * The number of structural features of the '<em>Trigger</em>' class.
@@ -1347,7 +1673,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getScheduledTrigger()
 	 * @generated
 	 */
-	int SCHEDULED_TRIGGER = 31;
+	int SCHEDULED_TRIGGER = 33;
 
 	/**
 	 * The feature id for the '<em><b>Cron</b></em>' attribute.
@@ -1377,6 +1703,882 @@ public interface JenkinsPackage extends EPackage {
 	int SCHEDULED_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PollingTriggerImpl <em>Polling Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PollingTriggerImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getPollingTrigger()
+	 * @generated
+	 */
+	int POLLING_TRIGGER = 34;
+
+	/**
+	 * The feature id for the '<em><b>Cron</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLLING_TRIGGER__CRON = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Polling Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLLING_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Polling Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POLLING_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UpstreamTriggerImpl <em>Upstream Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UpstreamTriggerImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUpstreamTrigger()
+	 * @generated
+	 */
+	int UPSTREAM_TRIGGER = 35;
+
+	/**
+	 * The feature id for the '<em><b>Jobs</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPSTREAM_TRIGGER__JOBS = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Upstream Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPSTREAM_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Upstream Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UPSTREAM_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ToolImpl <em>Tool</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ToolImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTool()
+	 * @generated
+	 */
+	int TOOL = 36;
+
+	/**
+	 * The feature id for the '<em><b>Tool</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__TOOL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL__VERSION = 1;
+
+	/**
+	 * The number of structural features of the '<em>Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Tool</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOOL_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenImpl <em>When</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhen()
+	 * @generated
+	 */
+	int WHEN = 37;
+
+	/**
+	 * The number of structural features of the '<em>When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenComparisonImpl <em>When Comparison</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenComparisonImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenComparison()
+	 * @generated
+	 */
+	int WHEN_COMPARISON = 38;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_COMPARISON__PATTERN = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Comparator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_COMPARISON__COMPARATOR = WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Case Sensitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_COMPARISON__CASE_SENSITIVE = WHEN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>When Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_COMPARISON_FEATURE_COUNT = WHEN_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>When Comparison</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_COMPARISON_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBranchImpl <em>When Branch</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBranchImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBranch()
+	 * @generated
+	 */
+	int WHEN_BRANCH = 39;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BRANCH__PATTERN = WHEN_COMPARISON__PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Comparator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BRANCH__COMPARATOR = WHEN_COMPARISON__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Case Sensitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BRANCH__CASE_SENSITIVE = WHEN_COMPARISON__CASE_SENSITIVE;
+
+	/**
+	 * The number of structural features of the '<em>When Branch</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BRANCH_FEATURE_COUNT = WHEN_COMPARISON_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Branch</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BRANCH_OPERATION_COUNT = WHEN_COMPARISON_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangesetImpl <em>When Changeset</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangesetImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeset()
+	 * @generated
+	 */
+	int WHEN_CHANGESET = 40;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGESET__PATTERN = WHEN_COMPARISON__PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Comparator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGESET__COMPARATOR = WHEN_COMPARISON__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Case Sensitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGESET__CASE_SENSITIVE = WHEN_COMPARISON__CASE_SENSITIVE;
+
+	/**
+	 * The number of structural features of the '<em>When Changeset</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGESET_FEATURE_COUNT = WHEN_COMPARISON_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Changeset</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGESET_OPERATION_COUNT = WHEN_COMPARISON_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTagImpl <em>When Tag</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTagImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTag()
+	 * @generated
+	 */
+	int WHEN_TAG = 41;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TAG__PATTERN = WHEN_COMPARISON__PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Comparator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TAG__COMPARATOR = WHEN_COMPARISON__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Case Sensitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TAG__CASE_SENSITIVE = WHEN_COMPARISON__CASE_SENSITIVE;
+
+	/**
+	 * The number of structural features of the '<em>When Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TAG_FEATURE_COUNT = WHEN_COMPARISON_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TAG_OPERATION_COUNT = WHEN_COMPARISON_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangeRequestImpl <em>When Change Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangeRequestImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeRequest()
+	 * @generated
+	 */
+	int WHEN_CHANGE_REQUEST = 42;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGE_REQUEST__PATTERN = WHEN_COMPARISON__PATTERN;
+
+	/**
+	 * The feature id for the '<em><b>Comparator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGE_REQUEST__COMPARATOR = WHEN_COMPARISON__COMPARATOR;
+
+	/**
+	 * The feature id for the '<em><b>Case Sensitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGE_REQUEST__CASE_SENSITIVE = WHEN_COMPARISON__CASE_SENSITIVE;
+
+	/**
+	 * The feature id for the '<em><b>Matcher</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGE_REQUEST__MATCHER = WHEN_COMPARISON_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>When Change Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGE_REQUEST_FEATURE_COUNT = WHEN_COMPARISON_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>When Change Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGE_REQUEST_OPERATION_COUNT = WHEN_COMPARISON_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBuildingTagImpl <em>When Building Tag</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBuildingTagImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBuildingTag()
+	 * @generated
+	 */
+	int WHEN_BUILDING_TAG = 43;
+
+	/**
+	 * The number of structural features of the '<em>When Building Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BUILDING_TAG_FEATURE_COUNT = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Building Tag</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_BUILDING_TAG_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangelogImpl <em>When Changelog</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangelogImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangelog()
+	 * @generated
+	 */
+	int WHEN_CHANGELOG = 44;
+
+	/**
+	 * The number of structural features of the '<em>When Changelog</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGELOG_FEATURE_COUNT = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Changelog</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_CHANGELOG_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEqualsImpl <em>When Equals</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEqualsImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEquals()
+	 * @generated
+	 */
+	int WHEN_EQUALS = 45;
+
+	/**
+	 * The feature id for the '<em><b>Expected</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EQUALS__EXPECTED = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Actual</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EQUALS__ACTUAL = WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>When Equals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EQUALS_FEATURE_COUNT = WHEN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>When Equals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EQUALS_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEnvironmentImpl <em>When Environment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEnvironmentImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEnvironment()
+	 * @generated
+	 */
+	int WHEN_ENVIRONMENT = 46;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ENVIRONMENT__NAME = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ENVIRONMENT__VALUE = WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>When Environment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ENVIRONMENT_FEATURE_COUNT = WHEN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>When Environment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ENVIRONMENT_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenExpressionImpl <em>When Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenExpressionImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenExpression()
+	 * @generated
+	 */
+	int WHEN_EXPRESSION = 47;
+
+	/**
+	 * The feature id for the '<em><b>Expression</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EXPRESSION__EXPRESSION = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>When Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EXPRESSION_FEATURE_COUNT = WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>When Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_EXPRESSION_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedWhenImpl <em>Nested When</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedWhenImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNestedWhen()
+	 * @generated
+	 */
+	int NESTED_WHEN = 48;
+
+	/**
+	 * The number of structural features of the '<em>Nested When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_WHEN_FEATURE_COUNT = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Nested When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NESTED_WHEN_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SingleNestedWhenImpl <em>Single Nested When</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SingleNestedWhenImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSingleNestedWhen()
+	 * @generated
+	 */
+	int SINGLE_NESTED_WHEN = 49;
+
+	/**
+	 * The feature id for the '<em><b>Nested When</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_NESTED_WHEN__NESTED_WHEN = NESTED_WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Single Nested When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_NESTED_WHEN_FEATURE_COUNT = NESTED_WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Single Nested When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLE_NESTED_WHEN_OPERATION_COUNT = NESTED_WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MultipleNestedWhenImpl <em>Multiple Nested When</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MultipleNestedWhenImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMultipleNestedWhen()
+	 * @generated
+	 */
+	int MULTIPLE_NESTED_WHEN = 50;
+
+	/**
+	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_NESTED_WHEN__NESTED_WHENS = NESTED_WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Multiple Nested When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_NESTED_WHEN_FEATURE_COUNT = NESTED_WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Multiple Nested When</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTIPLE_NESTED_WHEN_OPERATION_COUNT = NESTED_WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenNotImpl <em>When Not</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenNotImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenNot()
+	 * @generated
+	 */
+	int WHEN_NOT = 51;
+
+	/**
+	 * The feature id for the '<em><b>Nested When</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_NOT__NESTED_WHEN = SINGLE_NESTED_WHEN__NESTED_WHEN;
+
+	/**
+	 * The number of structural features of the '<em>When Not</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_NOT_FEATURE_COUNT = SINGLE_NESTED_WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Not</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_NOT_OPERATION_COUNT = SINGLE_NESTED_WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAnyOfImpl <em>When Any Of</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAnyOfImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAnyOf()
+	 * @generated
+	 */
+	int WHEN_ANY_OF = 52;
+
+	/**
+	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ANY_OF__NESTED_WHENS = MULTIPLE_NESTED_WHEN__NESTED_WHENS;
+
+	/**
+	 * The number of structural features of the '<em>When Any Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ANY_OF_FEATURE_COUNT = MULTIPLE_NESTED_WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Any Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ANY_OF_OPERATION_COUNT = MULTIPLE_NESTED_WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAllOfImpl <em>When All Of</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAllOfImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAllOf()
+	 * @generated
+	 */
+	int WHEN_ALL_OF = 53;
+
+	/**
+	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ALL_OF__NESTED_WHENS = MULTIPLE_NESTED_WHEN__NESTED_WHENS;
+
+	/**
+	 * The number of structural features of the '<em>When All Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ALL_OF_FEATURE_COUNT = MULTIPLE_NESTED_WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When All Of</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_ALL_OF_OPERATION_COUNT = MULTIPLE_NESTED_WHEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTriggeredByImpl <em>When Triggered By</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTriggeredByImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTriggeredBy()
+	 * @generated
+	 */
+	int WHEN_TRIGGERED_BY = 54;
+
+	/**
+	 * The feature id for the '<em><b>Cause</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TRIGGERED_BY__CAUSE = WHEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Detail</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TRIGGERED_BY__DETAIL = WHEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>When Triggered By</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TRIGGERED_BY_FEATURE_COUNT = WHEN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>When Triggered By</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_TRIGGERED_BY_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1384,7 +2586,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 32;
+	int EQUALITY_OPS = 55;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -1394,7 +2596,47 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 33;
+	int COMPARISON_OPS = 56;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS <em>SUPPORTED TOOLS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSUPPORTED_TOOLS()
+	 * @generated
+	 */
+	int SUPPORTED_TOOLS = 57;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS <em>COMPARATORS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARATORS()
+	 * @generated
+	 */
+	int COMPARATORS = 58;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER <em>CHANGE REQUEST MATCHER</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCHANGE_REQUEST_MATCHER()
+	 * @generated
+	 */
+	int CHANGE_REQUEST_MATCHER = 59;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES <em>WHEN EVALUATION TIMES</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWHEN_EVALUATION_TIMES()
+	 * @generated
+	 */
+	int WHEN_EVALUATION_TIMES = 60;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline <em>Pipeline</em>}'.
@@ -1451,6 +2693,17 @@ public interface JenkinsPackage extends EPackage {
 	EReference getPipeline_Triggers();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTools <em>Tools</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tools</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline#getTools()
+	 * @see #getPipeline()
+	 * @generated
+	 */
+	EReference getPipeline_Tools();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractPipelineExecutionBlock <em>Abstract Pipeline Execution Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1471,79 +2724,132 @@ public interface JenkinsPackage extends EPackage {
 	EClass getAbstractStage();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel <em>Parallel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parallel</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel
-	 * @generated
-	 */
-	EClass getParallel();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel#getStages <em>Stages</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Stages</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Parallel#getStages()
-	 * @see #getParallel()
-	 * @generated
-	 */
-	EReference getParallel_Stages();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage <em>Stage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Stage</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage
-	 * @generated
-	 */
-	EClass getStage();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getSteps <em>Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Steps</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getSteps()
-	 * @see #getStage()
-	 * @generated
-	 */
-	EReference getStage_Steps();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getName()
-	 * @see #getStage()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getName()
+	 * @see #getAbstractStage()
 	 * @generated
 	 */
-	EAttribute getStage_Name();
+	EAttribute getAbstractStage_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getAgent <em>Agent</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getAgent <em>Agent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Agent</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getAgent()
-	 * @see #getStage()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getAgent()
+	 * @see #getAbstractStage()
 	 * @generated
 	 */
-	EReference getStage_Agent();
+	EReference getAbstractStage_Agent();
 
 	/**
-	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getEnvironmentVariables <em>Environment Variables</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getConditions <em>Conditions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Conditions</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getConditions()
+	 * @see #getAbstractStage()
+	 * @generated
+	 */
+	EReference getAbstractStage_Conditions();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getEnvironmentVariables <em>Environment Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the map '<em>Environment Variables</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Stage#getEnvironmentVariables()
-	 * @see #getStage()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getEnvironmentVariables()
+	 * @see #getAbstractStage()
 	 * @generated
 	 */
-	EReference getStage_EnvironmentVariables();
+	EReference getAbstractStage_EnvironmentVariables();
+
+	/**
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhens <em>Whens</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Whens</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhens()
+	 * @see #getAbstractStage()
+	 * @generated
+	 */
+	EReference getAbstractStage_Whens();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhenEvaluationTime <em>When Evaluation Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>When Evaluation Time</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhenEvaluationTime()
+	 * @see #getAbstractStage()
+	 * @generated
+	 */
+	EAttribute getAbstractStage_WhenEvaluationTime();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage <em>Nested Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Nested Stage</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage
+	 * @generated
+	 */
+	EClass getNestedStage();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage#getStages <em>Stages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Stages</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage#getStages()
+	 * @see #getNestedStage()
+	 * @generated
+	 */
+	EReference getNestedStage_Stages();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage <em>Parallel Nested Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Parallel Nested Stage</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage
+	 * @generated
+	 */
+	EClass getParallelNestedStage();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage <em>Sequential Nested Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequential Nested Stage</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SequentialNestedStage
+	 * @generated
+	 */
+	EClass getSequentialNestedStage();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage <em>Step Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Step Stage</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage
+	 * @generated
+	 */
+	EClass getStepStage();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage#getSteps <em>Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage#getSteps()
+	 * @see #getStepStage()
+	 * @generated
+	 */
+	EReference getStepStage_Steps();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep <em>Abstract Step</em>}'.
@@ -2115,6 +3421,403 @@ public interface JenkinsPackage extends EPackage {
 	EAttribute getScheduledTrigger_Cron();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger <em>Polling Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Polling Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger
+	 * @generated
+	 */
+	EClass getPollingTrigger();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger#getCron <em>Cron</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cron</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger#getCron()
+	 * @see #getPollingTrigger()
+	 * @generated
+	 */
+	EAttribute getPollingTrigger_Cron();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger <em>Upstream Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Upstream Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger
+	 * @generated
+	 */
+	EClass getUpstreamTrigger();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger#getJobs <em>Jobs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Jobs</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger#getJobs()
+	 * @see #getUpstreamTrigger()
+	 * @generated
+	 */
+	EAttribute getUpstreamTrigger_Jobs();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool <em>Tool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Tool</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool
+	 * @generated
+	 */
+	EClass getTool();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool#getTool <em>Tool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tool</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool#getTool()
+	 * @see #getTool()
+	 * @generated
+	 */
+	EAttribute getTool_Tool();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool#getVersion()
+	 * @see #getTool()
+	 * @generated
+	 */
+	EAttribute getTool_Version();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When <em>When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When
+	 * @generated
+	 */
+	EClass getWhen();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison <em>When Comparison</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Comparison</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison
+	 * @generated
+	 */
+	EClass getWhenComparison();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison#getPattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison#getPattern()
+	 * @see #getWhenComparison()
+	 * @generated
+	 */
+	EAttribute getWhenComparison_Pattern();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison#getComparator <em>Comparator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comparator</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison#getComparator()
+	 * @see #getWhenComparison()
+	 * @generated
+	 */
+	EAttribute getWhenComparison_Comparator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison#getCaseSensitive <em>Case Sensitive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Case Sensitive</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenComparison#getCaseSensitive()
+	 * @see #getWhenComparison()
+	 * @generated
+	 */
+	EAttribute getWhenComparison_CaseSensitive();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch <em>When Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Branch</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBranch
+	 * @generated
+	 */
+	EClass getWhenBranch();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset <em>When Changeset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Changeset</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeset
+	 * @generated
+	 */
+	EClass getWhenChangeset();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag <em>When Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Tag</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTag
+	 * @generated
+	 */
+	EClass getWhenTag();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest <em>When Change Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Change Request</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest
+	 * @generated
+	 */
+	EClass getWhenChangeRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest#getMatcher <em>Matcher</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Matcher</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangeRequest#getMatcher()
+	 * @see #getWhenChangeRequest()
+	 * @generated
+	 */
+	EAttribute getWhenChangeRequest_Matcher();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag <em>When Building Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Building Tag</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenBuildingTag
+	 * @generated
+	 */
+	EClass getWhenBuildingTag();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog <em>When Changelog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Changelog</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenChangelog
+	 * @generated
+	 */
+	EClass getWhenChangelog();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals <em>When Equals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Equals</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals
+	 * @generated
+	 */
+	EClass getWhenEquals();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected <em>Expected</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Expected</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected()
+	 * @see #getWhenEquals()
+	 * @generated
+	 */
+	EReference getWhenEquals_Expected();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual <em>Actual</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Actual</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual()
+	 * @see #getWhenEquals()
+	 * @generated
+	 */
+	EReference getWhenEquals_Actual();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment <em>When Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Environment</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment
+	 * @generated
+	 */
+	EClass getWhenEnvironment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment#getName()
+	 * @see #getWhenEnvironment()
+	 * @generated
+	 */
+	EAttribute getWhenEnvironment_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEnvironment#getValue()
+	 * @see #getWhenEnvironment()
+	 * @generated
+	 */
+	EAttribute getWhenEnvironment_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression <em>When Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Expression</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression
+	 * @generated
+	 */
+	EClass getWhenExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Expression</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression()
+	 * @see #getWhenExpression()
+	 * @generated
+	 */
+	EReference getWhenExpression_Expression();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedWhen <em>Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Nested When</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedWhen
+	 * @generated
+	 */
+	EClass getNestedWhen();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen <em>Single Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Single Nested When</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen
+	 * @generated
+	 */
+	EClass getSingleNestedWhen();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen <em>Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Nested When</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen()
+	 * @see #getSingleNestedWhen()
+	 * @generated
+	 */
+	EReference getSingleNestedWhen_NestedWhen();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen <em>Multiple Nested When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Multiple Nested When</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen
+	 * @generated
+	 */
+	EClass getMultipleNestedWhen();
+
+	/**
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen#getNestedWhens <em>Nested Whens</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Nested Whens</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen#getNestedWhens()
+	 * @see #getMultipleNestedWhen()
+	 * @generated
+	 */
+	EReference getMultipleNestedWhen_NestedWhens();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot <em>When Not</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Not</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenNot
+	 * @generated
+	 */
+	EClass getWhenNot();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf <em>When Any Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Any Of</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf
+	 * @generated
+	 */
+	EClass getWhenAnyOf();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf <em>When All Of</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When All Of</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf
+	 * @generated
+	 */
+	EClass getWhenAllOf();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy <em>When Triggered By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Triggered By</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy
+	 * @generated
+	 */
+	EClass getWhenTriggeredBy();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy#getCause <em>Cause</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cause</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy#getCause()
+	 * @see #getWhenTriggeredBy()
+	 * @generated
+	 */
+	EAttribute getWhenTriggeredBy_Cause();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy#getDetail <em>Detail</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Detail</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenTriggeredBy#getDetail()
+	 * @see #getWhenTriggeredBy()
+	 * @generated
+	 */
+	EAttribute getWhenTriggeredBy_Detail();
+
+	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2133,6 +3836,46 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCOMPARISON_OPS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS <em>SUPPORTED TOOLS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>SUPPORTED TOOLS</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS
+	 * @generated
+	 */
+	EEnum getSUPPORTED_TOOLS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS <em>COMPARATORS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>COMPARATORS</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS
+	 * @generated
+	 */
+	EEnum getCOMPARATORS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER <em>CHANGE REQUEST MATCHER</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>CHANGE REQUEST MATCHER</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER
+	 * @generated
+	 */
+	EEnum getCHANGE_REQUEST_MATCHER();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES <em>WHEN EVALUATION TIMES</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>WHEN EVALUATION TIMES</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES
+	 * @generated
+	 */
+	EEnum getWHEN_EVALUATION_TIMES();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2200,6 +3943,14 @@ public interface JenkinsPackage extends EPackage {
 		EReference PIPELINE__TRIGGERS = eINSTANCE.getPipeline_Triggers();
 
 		/**
+		 * The meta object literal for the '<em><b>Tools</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PIPELINE__TOOLS = eINSTANCE.getPipeline_Tools();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractPipelineExecutionBlockImpl <em>Abstract Pipeline Execution Block</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2220,48 +3971,12 @@ public interface JenkinsPackage extends EPackage {
 		EClass ABSTRACT_STAGE = eINSTANCE.getAbstractStage();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelImpl <em>Parallel</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getParallel()
-		 * @generated
-		 */
-		EClass PARALLEL = eINSTANCE.getParallel();
-
-		/**
-		 * The meta object literal for the '<em><b>Stages</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARALLEL__STAGES = eINSTANCE.getParallel_Stages();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl <em>Stage</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StageImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStage()
-		 * @generated
-		 */
-		EClass STAGE = eINSTANCE.getStage();
-
-		/**
-		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STAGE__STEPS = eINSTANCE.getStage_Steps();
-
-		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STAGE__NAME = eINSTANCE.getStage_Name();
+		EAttribute ABSTRACT_STAGE__NAME = eINSTANCE.getAbstractStage_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Agent</b></em>' containment reference feature.
@@ -2269,7 +3984,15 @@ public interface JenkinsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STAGE__AGENT = eINSTANCE.getStage_Agent();
+		EReference ABSTRACT_STAGE__AGENT = eINSTANCE.getAbstractStage_Agent();
+
+		/**
+		 * The meta object literal for the '<em><b>Conditions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_STAGE__CONDITIONS = eINSTANCE.getAbstractStage_Conditions();
 
 		/**
 		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
@@ -2277,7 +4000,79 @@ public interface JenkinsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STAGE__ENVIRONMENT_VARIABLES = eINSTANCE.getStage_EnvironmentVariables();
+		EReference ABSTRACT_STAGE__ENVIRONMENT_VARIABLES = eINSTANCE.getAbstractStage_EnvironmentVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Whens</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_STAGE__WHENS = eINSTANCE.getAbstractStage_Whens();
+
+		/**
+		 * The meta object literal for the '<em><b>When Evaluation Time</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_STAGE__WHEN_EVALUATION_TIME = eINSTANCE.getAbstractStage_WhenEvaluationTime();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedStageImpl <em>Nested Stage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedStageImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNestedStage()
+		 * @generated
+		 */
+		EClass NESTED_STAGE = eINSTANCE.getNestedStage();
+
+		/**
+		 * The meta object literal for the '<em><b>Stages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NESTED_STAGE__STAGES = eINSTANCE.getNestedStage_Stages();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelNestedStageImpl <em>Parallel Nested Stage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ParallelNestedStageImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getParallelNestedStage()
+		 * @generated
+		 */
+		EClass PARALLEL_NESTED_STAGE = eINSTANCE.getParallelNestedStage();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SequentialNestedStageImpl <em>Sequential Nested Stage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SequentialNestedStageImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSequentialNestedStage()
+		 * @generated
+		 */
+		EClass SEQUENTIAL_NESTED_STAGE = eINSTANCE.getSequentialNestedStage();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl <em>Step Stage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepStage()
+		 * @generated
+		 */
+		EClass STEP_STAGE = eINSTANCE.getStepStage();
+
+		/**
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STEP_STAGE__STEPS = eINSTANCE.getStepStage_Steps();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AbstractStepImpl <em>Abstract Step</em>}' class.
@@ -2766,6 +4561,352 @@ public interface JenkinsPackage extends EPackage {
 		EAttribute SCHEDULED_TRIGGER__CRON = eINSTANCE.getScheduledTrigger_Cron();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PollingTriggerImpl <em>Polling Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PollingTriggerImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getPollingTrigger()
+		 * @generated
+		 */
+		EClass POLLING_TRIGGER = eINSTANCE.getPollingTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Cron</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute POLLING_TRIGGER__CRON = eINSTANCE.getPollingTrigger_Cron();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UpstreamTriggerImpl <em>Upstream Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UpstreamTriggerImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUpstreamTrigger()
+		 * @generated
+		 */
+		EClass UPSTREAM_TRIGGER = eINSTANCE.getUpstreamTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Jobs</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UPSTREAM_TRIGGER__JOBS = eINSTANCE.getUpstreamTrigger_Jobs();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ToolImpl <em>Tool</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ToolImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTool()
+		 * @generated
+		 */
+		EClass TOOL = eINSTANCE.getTool();
+
+		/**
+		 * The meta object literal for the '<em><b>Tool</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOOL__TOOL = eINSTANCE.getTool_Tool();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOOL__VERSION = eINSTANCE.getTool_Version();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenImpl <em>When</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhen()
+		 * @generated
+		 */
+		EClass WHEN = eINSTANCE.getWhen();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenComparisonImpl <em>When Comparison</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenComparisonImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenComparison()
+		 * @generated
+		 */
+		EClass WHEN_COMPARISON = eINSTANCE.getWhenComparison();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_COMPARISON__PATTERN = eINSTANCE.getWhenComparison_Pattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Comparator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_COMPARISON__COMPARATOR = eINSTANCE.getWhenComparison_Comparator();
+
+		/**
+		 * The meta object literal for the '<em><b>Case Sensitive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_COMPARISON__CASE_SENSITIVE = eINSTANCE.getWhenComparison_CaseSensitive();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBranchImpl <em>When Branch</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBranchImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBranch()
+		 * @generated
+		 */
+		EClass WHEN_BRANCH = eINSTANCE.getWhenBranch();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangesetImpl <em>When Changeset</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangesetImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeset()
+		 * @generated
+		 */
+		EClass WHEN_CHANGESET = eINSTANCE.getWhenChangeset();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTagImpl <em>When Tag</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTagImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTag()
+		 * @generated
+		 */
+		EClass WHEN_TAG = eINSTANCE.getWhenTag();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangeRequestImpl <em>When Change Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangeRequestImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeRequest()
+		 * @generated
+		 */
+		EClass WHEN_CHANGE_REQUEST = eINSTANCE.getWhenChangeRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Matcher</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_CHANGE_REQUEST__MATCHER = eINSTANCE.getWhenChangeRequest_Matcher();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBuildingTagImpl <em>When Building Tag</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenBuildingTagImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBuildingTag()
+		 * @generated
+		 */
+		EClass WHEN_BUILDING_TAG = eINSTANCE.getWhenBuildingTag();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangelogImpl <em>When Changelog</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenChangelogImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangelog()
+		 * @generated
+		 */
+		EClass WHEN_CHANGELOG = eINSTANCE.getWhenChangelog();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEqualsImpl <em>When Equals</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEqualsImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEquals()
+		 * @generated
+		 */
+		EClass WHEN_EQUALS = eINSTANCE.getWhenEquals();
+
+		/**
+		 * The meta object literal for the '<em><b>Expected</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WHEN_EQUALS__EXPECTED = eINSTANCE.getWhenEquals_Expected();
+
+		/**
+		 * The meta object literal for the '<em><b>Actual</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WHEN_EQUALS__ACTUAL = eINSTANCE.getWhenEquals_Actual();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEnvironmentImpl <em>When Environment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenEnvironmentImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEnvironment()
+		 * @generated
+		 */
+		EClass WHEN_ENVIRONMENT = eINSTANCE.getWhenEnvironment();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_ENVIRONMENT__NAME = eINSTANCE.getWhenEnvironment_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_ENVIRONMENT__VALUE = eINSTANCE.getWhenEnvironment_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenExpressionImpl <em>When Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenExpressionImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenExpression()
+		 * @generated
+		 */
+		EClass WHEN_EXPRESSION = eINSTANCE.getWhenExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Expression</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WHEN_EXPRESSION__EXPRESSION = eINSTANCE.getWhenExpression_Expression();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedWhenImpl <em>Nested When</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.NestedWhenImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNestedWhen()
+		 * @generated
+		 */
+		EClass NESTED_WHEN = eINSTANCE.getNestedWhen();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SingleNestedWhenImpl <em>Single Nested When</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.SingleNestedWhenImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSingleNestedWhen()
+		 * @generated
+		 */
+		EClass SINGLE_NESTED_WHEN = eINSTANCE.getSingleNestedWhen();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested When</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLE_NESTED_WHEN__NESTED_WHEN = eINSTANCE.getSingleNestedWhen_NestedWhen();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MultipleNestedWhenImpl <em>Multiple Nested When</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MultipleNestedWhenImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMultipleNestedWhen()
+		 * @generated
+		 */
+		EClass MULTIPLE_NESTED_WHEN = eINSTANCE.getMultipleNestedWhen();
+
+		/**
+		 * The meta object literal for the '<em><b>Nested Whens</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MULTIPLE_NESTED_WHEN__NESTED_WHENS = eINSTANCE.getMultipleNestedWhen_NestedWhens();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenNotImpl <em>When Not</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenNotImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenNot()
+		 * @generated
+		 */
+		EClass WHEN_NOT = eINSTANCE.getWhenNot();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAnyOfImpl <em>When Any Of</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAnyOfImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAnyOf()
+		 * @generated
+		 */
+		EClass WHEN_ANY_OF = eINSTANCE.getWhenAnyOf();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAllOfImpl <em>When All Of</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenAllOfImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAllOf()
+		 * @generated
+		 */
+		EClass WHEN_ALL_OF = eINSTANCE.getWhenAllOf();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTriggeredByImpl <em>When Triggered By</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.WhenTriggeredByImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTriggeredBy()
+		 * @generated
+		 */
+		EClass WHEN_TRIGGERED_BY = eINSTANCE.getWhenTriggeredBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Cause</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_TRIGGERED_BY__CAUSE = eINSTANCE.getWhenTriggeredBy_Cause();
+
+		/**
+		 * The meta object literal for the '<em><b>Detail</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WHEN_TRIGGERED_BY__DETAIL = eINSTANCE.getWhenTriggeredBy_Detail();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2784,6 +4925,46 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COMPARISON_OPS = eINSTANCE.getCOMPARISON_OPS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS <em>SUPPORTED TOOLS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSUPPORTED_TOOLS()
+		 * @generated
+		 */
+		EEnum SUPPORTED_TOOLS = eINSTANCE.getSUPPORTED_TOOLS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS <em>COMPARATORS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARATORS()
+		 * @generated
+		 */
+		EEnum COMPARATORS = eINSTANCE.getCOMPARATORS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER <em>CHANGE REQUEST MATCHER</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCHANGE_REQUEST_MATCHER()
+		 * @generated
+		 */
+		EEnum CHANGE_REQUEST_MATCHER = eINSTANCE.getCHANGE_REQUEST_MATCHER();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES <em>WHEN EVALUATION TIMES</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWHEN_EVALUATION_TIMES()
+		 * @generated
+		 */
+		EEnum WHEN_EVALUATION_TIMES = eINSTANCE.getWHEN_EVALUATION_TIMES();
 
 	}
 

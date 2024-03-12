@@ -167,15 +167,25 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private List<Trigger> parseWorkflowTriggers(YamlNode triggers) throws SyntaxException {
 		List<Trigger> result = new ArrayList<>();
-		if (triggers.type().equals(Node.SCALAR)) {
+		if (triggers.type().equals(Node.SCALAR) && !triggers.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$")) {
 			result.add(parseSimpleTrigger(triggers.asScalar().value()));
-		} else if (triggers.type().equals(Node.SEQUENCE)) {
-			Collection<YamlNode> triggerList = triggers.asSequence().values();
-			for (YamlNode trigger : triggerList) {
-				if (trigger.type().equals(Node.SCALAR)) {
-					result.add(parseSimpleTrigger(trigger.asScalar().value()));
-				} else {
-					throw new SyntaxException("Invalid trigger");
+		} else if (triggers.type().equals(Node.SEQUENCE) ||
+			(triggers.type().equals(Node.SCALAR) && triggers.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$")))
+		{
+			if (triggers.type().equals(Node.SCALAR) && triggers.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)]*$")) {
+				List<String> triggerStrings = new ArrayList<>(Arrays.asList(triggers.asScalar().value().substring(1, triggers.asScalar().value().length() - 1).split(",")));
+				for (String trigger : triggerStrings) {
+					result.add(parseSimpleTrigger(trigger.trim()));
+				}
+			}
+			else {
+				Collection<YamlNode> triggerList = triggers.asSequence().values();
+				for (YamlNode trigger : triggerList) {
+					if (trigger.type().equals(Node.SCALAR)) {
+						result.add(parseSimpleTrigger(trigger.asScalar().value()));
+					} else {
+						throw new SyntaxException("Invalid trigger");
+					}
 				}
 			}
 		} else if (triggers.type().equals(Node.MAPPING)) {
@@ -194,14 +204,25 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private List<WEBHOOK_ACTIVITY_TYPES> parseEventTypes(YamlNode types) throws SyntaxException {
-		if (types.type().equals(Node.SCALAR)) {
+		if (types.type().equals(Node.SCALAR)  && !types.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$")) {
 			return List.of(WEBHOOK_ACTIVITY_TYPES.get(types.asScalar().value()));
-		} else if (types.type().equals(Node.SEQUENCE)) {
-			List<WEBHOOK_ACTIVITY_TYPES> result = new ArrayList<>();
-			for (YamlNode type : types.asSequence().values()) {
-				result.add(WEBHOOK_ACTIVITY_TYPES.get(type.asScalar().value()));
+		} else if (types.type().equals(Node.SEQUENCE)  ||
+				(types.type().equals(Node.SCALAR) && types.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$"))) {
+			if (types.type().equals(Node.SCALAR) && types.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$")) {
+				List<String> typeStrings = new ArrayList<>(Arrays.asList(types.asScalar().value().substring(1, types.asScalar().value().length() - 1).split(",")));
+				List<WEBHOOK_ACTIVITY_TYPES> result = new ArrayList<>();
+				for (String type : typeStrings) {
+					result.add(WEBHOOK_ACTIVITY_TYPES.get(type.trim()));
+				}
+				return result;
 			}
-			return result;
+			else {
+				List<WEBHOOK_ACTIVITY_TYPES> result = new ArrayList<>();
+				for (YamlNode type : types.asSequence().values()) {
+					result.add(WEBHOOK_ACTIVITY_TYPES.get(type.asScalar().value()));
+				}
+				return result;
+			}
 		} else {
 			throw new SyntaxException("Invalid event type");
 		}
@@ -729,26 +750,41 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private List<Job> parseDependencies(YamlNode dependenciesNode, Map<String, Job> jobs) throws SyntaxException {
 		List<Job> result = new ArrayList<>();
-		if (dependenciesNode.type().equals(Node.SCALAR)) {
+		if (dependenciesNode.type().equals(Node.SCALAR) && !dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$")) {
 			if (jobs.containsKey(dependenciesNode.asScalar().value())) {
 				result.add(jobs.get(dependenciesNode.asScalar().value()));
 			} else {
 				throw new SyntaxException("Invalid dependency");
 			}
-		} else if (dependenciesNode.type().equals(Node.SEQUENCE)) {
-			Collection<YamlNode> dependencies = dependenciesNode.asSequence().values();
-			for (YamlNode dependency : dependencies) {
-				if (dependency.type().equals(Node.SCALAR)) {
-					if (jobs.containsKey(dependency.asScalar().value())) {
-						result.add(jobs.get(dependency.asScalar().value()));
+		} else if (dependenciesNode.type().equals(Node.SEQUENCE)  ||
+				(dependenciesNode.type().equals(Node.SCALAR) && dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$"))
+		) {
+			if (dependenciesNode.type().equals(Node.SCALAR) && dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)*]$")) {
+				List<String> jobStrings = new ArrayList<>(Arrays.asList(dependenciesNode.asScalar().value().substring(1, dependenciesNode.asScalar().value().length() - 1).split(",")));
+				for (String job : jobStrings) {
+					if (jobs.containsKey(job.trim())) {
+						result.add(jobs.get(job.trim()));
 					} else {
 						throw new SyntaxException("Invalid dependency");
 					}
-				} else {
-					throw new SyntaxException("Invalid dependency");
+				}
+			}
+			else {
+				Collection<YamlNode> dependencies = dependenciesNode.asSequence().values();
+				for (YamlNode dependency : dependencies) {
+					if (dependency.type().equals(Node.SCALAR)) {
+						if (jobs.containsKey(dependency.asScalar().value())) {
+							result.add(jobs.get(dependency.asScalar().value()));
+						} else {
+							throw new SyntaxException("Invalid dependency");
+						}
+					} else {
+						throw new SyntaxException("Invalid dependency");
+					}
 				}
 			}
 		} else {
+			System.out.println(dependenciesNode.type());
 			throw new SyntaxException("Invalid dependency");
 		}
 		return result;

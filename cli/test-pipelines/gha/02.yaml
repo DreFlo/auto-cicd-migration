@@ -24,9 +24,7 @@ jobs:
       - run: echo "Hello World!A"
   my_second_job_a:
     runs-on: ubuntu-latest
-    needs:
-      - my_first_job_a
-      - my_first_job_b
+    needs: [my_first_job_a, my_first_job_b]
     steps:
       - run: echo 2
   my_second_job_b:

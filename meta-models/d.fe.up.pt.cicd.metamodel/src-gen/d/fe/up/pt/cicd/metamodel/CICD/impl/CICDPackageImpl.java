@@ -704,7 +704,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Previous() {
+	public EReference getJob_Matrix() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -714,7 +714,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Next() {
+	public EReference getJob_Previous() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -724,8 +724,18 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getJob_Next() {
+		return (EReference) jobEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getJob_MaxAttempts() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) jobEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -735,7 +745,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EAttribute getJob_AllowFailure() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) jobEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1968,6 +1978,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEAttribute(jobEClass, JOB__ID);
 		createEReference(jobEClass, JOB__STEPS);
 		createEReference(jobEClass, JOB__SERVICES);
+		createEReference(jobEClass, JOB__MATRIX);
 		createEReference(jobEClass, JOB__PREVIOUS);
 		createEReference(jobEClass, JOB__NEXT);
 		createEAttribute(jobEClass, JOB__MAX_ATTEMPTS);
@@ -2256,6 +2267,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getJob_Services(), this.getDockerContainer(), null, "services", null, 0, -1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_Matrix(), this.getMatrix(), null, "matrix", null, 0, 1, Job.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 		initEReference(getJob_Previous(), this.getJob(), this.getJob_Next(), "previous", null, 0, -1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

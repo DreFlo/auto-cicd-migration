@@ -12,7 +12,11 @@ rule Pipeline2Pipeline {
 		jenkinsPipeline : Jenkins!Pipeline(
 			stages <- thisModule.groupJobs(cicdPipeline.jobStreams, Set{})->collect(
 						jobGroup | if jobGroup->size() = 1 then 
-							thisModule.Job2Stage(jobGroup->first())
+							if jobGroup->first().matrix.oclIsUndefined() then
+								thisModule.Job2StepStage(jobGroup->first())
+							else
+								thisModule.Job2MatrixStage(jobGroup->first())
+							endif
 						else
 							thisModule.JobSequence2Parallel(jobGroup)
 						endif
@@ -23,31 +27,58 @@ rule Pipeline2Pipeline {
 		)
 }
 
-lazy rule Job2Stage {
+lazy rule Job2StepStage {
 	from
 		job : CICD!Job
-	using {
-		nextJobs : Sequence(CICD!Job) = job.next;
-	}
 	to
-		abstractStage : Jenkins!StepStage(
+		stage : Jenkins!StepStage(
 			name <- job.id,
 			agent <- job.agent,
-			steps <- job.steps,
-			environmentVariables <- job.environmentVariables
+			environmentVariables <- job.environmentVariables,
+			steps <- job.steps
+		)
+}
+
+lazy rule Job2MatrixStage {
+	from
+		job : CICD!Job
+	to
+		stage : Jenkins!MatrixStage(
+			name <- (job.id + '_matrix'),
+			axes <- job.matrix.axes,
+			includes <- job.matrix.includes,
+			excludes <- job.matrix.excludes,
+			failFast <- job.matrix.failFast,
+			stages <- Sequence{thisModule.Job2StepStage(job)}
+		)
+}
+
+rule MatrixAxis2MatrixAxis {
+	from
+		cicdAxis : CICD!MatrixAxis
+	to
+		jenkinsAxis : Jenkins!MatrixAxis(
+			name <- cicdAxis.name,
+			cells <- cicdAxis.cells
+		)
+}
+
+rule MatrixCombination2MatrixCombination {
+	from
+		cicdCombination : CICD!MatrixCombination
+	to
+		jenkinsCombination : Jenkins!MatrixCombination(
+			entries <- cicdCombination.combinationEntries
 		)
 }
 
 lazy rule JobSequence2Parallel {
 	from
 		jobSequence : Sequence(CICD!Job)
-	using {
-		nextJobs : Sequence(CICD!Job) = jobSequence->collect(job | job.next)->flatten()->asSet()->asSequence();
-	}
 	to
 		abstractStage : Jenkins!ParallelNestedStage(
 			name <- thisModule.joinStrings(jobSequence->collect(job | job.id), '||'),
-			stages <- jobSequence->collect(job | thisModule.Job2Stage(job))		
+			stages <- jobSequence->collect(job | thisModule.Job2StepStage(job))		
 		)
 }
 
@@ -365,6 +396,20 @@ helper context CICD!Concat def : expression2String() : String =
 
 helper context CICD!Variable def : expression2String() : String =
 	'$'.concat(self.name);
+
+helper context CICD!VariableContext def : expression2String() : String =
+	self.context.toString();
+
+helper context CICD!VariableDereference def : expression2String() : String =
+	if self.variable.oclIsTypeOf(CICD!VariableContext) then
+		if self.variable.context = #ENV then
+			'$' + self.property
+		else
+			self.property
+		endif
+	else
+		self.variable.expression2String() + '.' + self.property
+	endif;
 
 helper def : groupJobs(jobStreams : Sequence(CICD!Job), previous : Set(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
 	let next : Sequence(CICD!Job) = 

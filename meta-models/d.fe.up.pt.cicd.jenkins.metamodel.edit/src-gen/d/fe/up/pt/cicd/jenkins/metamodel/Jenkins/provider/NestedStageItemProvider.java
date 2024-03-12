@@ -144,6 +144,18 @@ public class NestedStageItemProvider extends AbstractStageItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.NESTED_STAGE__STAGES,
+				JenkinsFactory.eINSTANCE.createNestedStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.NESTED_STAGE__STAGES,
+				JenkinsFactory.eINSTANCE.createParallelNestedStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.NESTED_STAGE__STAGES,
+				JenkinsFactory.eINSTANCE.createSequentialNestedStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.NESTED_STAGE__STAGES,
+				JenkinsFactory.eINSTANCE.createMatrixStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.NESTED_STAGE__STAGES,
 				JenkinsFactory.eINSTANCE.createStepStage()));
 	}
 

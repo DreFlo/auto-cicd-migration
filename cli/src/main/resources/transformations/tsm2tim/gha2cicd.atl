@@ -24,6 +24,7 @@ rule Job2Job {
 		cicdJob : CICD!Job(
 			id <- ghaJob.name,
 			agent <- thisModule.getAgentFromJob(ghaJob),
+			matrix <- ghaJob.strategy,
 			steps <- ghaJob.steps,
 			next <- ghaJob.necessaryFor
 		)
@@ -259,6 +260,37 @@ rule ScheduledTrigger2ScheduledTrigger extends Trigger2Trigger {
 		)
 }
 
+rule Matrix2Matrix {
+	from
+		ghaMatrix : GHA!Matrix
+	to
+		cicdMatrix : CICD!Matrix(
+			axes <- ghaMatrix.axes,
+			includes <- ghaMatrix.includes,
+			excludes <- ghaMatrix.excludes,
+			failFast <- ghaMatrix.failFast.expression2Boolean()
+		)
+}
+
+rule MatrixAxis2MatrixAxis {
+	from
+		ghaAxis : GHA!MatrixAxis
+	to
+		cicdAxis : CICD!MatrixAxis(
+			name <- ghaAxis.name,
+			cells <- ghaAxis.cells
+		)
+}
+
+rule MatrixCombination2MatrixCombination {
+	from
+		ghaCombination : GHA!MatrixCombination
+	to
+		cicdCombination : CICD!MatrixCombination(
+			combinationEntries <- ghaCombination.entries
+		)
+}
+
 -- Lazy Rules
 
 lazy rule getAgentFromJob {
@@ -288,12 +320,42 @@ helper context GHA!DoubleLiteral def : expression2String() : String = self.value
 
 helper context GHA!BooleanLiteral def : expression2String() : String = self.value.toString();
 
+helper context OclAny def : expression2String() : String = OclUndefined;
+
 helper context GHA!Concat def : expression2String() : String =
 	let exprStrings : Sequence(String) =
 		self.expressions->collect(expr | expr.expression2String()) in
 		exprStrings->iterate(exprString; joinedString: String = '' |
 			joinedString.concat(exprString)
 		);
+
+
+helper context GHA!Expression def : expression2Boolean() : Boolean = false;
+
+helper context GHA!BooleanLiteral def : expression2Boolean() : Boolean = self.value;
+
+helper context GHA!IntegerLiteral def : expression2Boolean() : Boolean =
+	if self.value = 0 then
+		false
+	else
+		true
+	endif;
+
+helper context GHA!DoubleLiteral def : expression2Boolean() : Boolean =
+	if self.value = 0.0 then
+		false
+	else
+		true
+	endif;
+
+helper context GHA!StringLiteral def : expression2Boolean() : Boolean =
+	if self.value = 'false' then
+		false
+	else
+		true
+	endif;
+
+helper context OclAny def : expression2Boolean() : String = OclUndefined;
 
 helper context String def : string2Variable() : CICD!EnvironmentVariable =
 	let environmentVariable : CICD!Variable = CICD!Variable.newInstance() in

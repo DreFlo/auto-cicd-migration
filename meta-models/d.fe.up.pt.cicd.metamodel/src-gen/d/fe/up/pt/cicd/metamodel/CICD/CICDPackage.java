@@ -439,13 +439,22 @@ public interface CICDPackage extends EPackage {
 	int JOB__SERVICES = PIPELINE_BLOCK_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__MATRIX = PIPELINE_BLOCK_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Previous</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 3;
+	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Next</b></em>' reference list.
@@ -454,7 +463,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 4;
+	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Max Attempts</b></em>' attribute.
@@ -463,7 +472,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__MAX_ATTEMPTS = PIPELINE_BLOCK_FEATURE_COUNT + 5;
+	int JOB__MAX_ATTEMPTS = PIPELINE_BLOCK_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
@@ -472,7 +481,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__ALLOW_FAILURE = PIPELINE_BLOCK_FEATURE_COUNT + 6;
+	int JOB__ALLOW_FAILURE = PIPELINE_BLOCK_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -481,7 +490,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = PIPELINE_BLOCK_FEATURE_COUNT + 7;
+	int JOB_FEATURE_COUNT = PIPELINE_BLOCK_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of operations of the '<em>Job</em>' class.
@@ -3026,6 +3035,17 @@ public interface CICDPackage extends EPackage {
 	EReference getJob_Services();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMatrix <em>Matrix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Matrix</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getMatrix()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_Matrix();
+
+	/**
 	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4491,6 +4511,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EReference JOB__SERVICES = eINSTANCE.getJob_Services();
+
+		/**
+		 * The meta object literal for the '<em><b>Matrix</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB__MATRIX = eINSTANCE.getJob_Matrix();
 
 		/**
 		 * The meta object literal for the '<em><b>Previous</b></em>' reference list feature.

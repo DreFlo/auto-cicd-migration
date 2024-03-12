@@ -127,6 +127,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CICDPackage.Literals.JOB__STEPS);
+			childrenFeatures.add(CICDPackage.Literals.JOB__MATRIX);
 			childrenFeatures.add(CICDPackage.Literals.JOB__NEXT);
 		}
 		return childrenFeatures;
@@ -197,6 +198,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case CICDPackage.JOB__STEPS:
+		case CICDPackage.JOB__MATRIX:
 		case CICDPackage.JOB__NEXT:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -229,6 +231,9 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createArtifact()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.JOB__MATRIX, CICDFactory.eINSTANCE.createMatrix()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.JOB__NEXT, CICDFactory.eINSTANCE.createJob()));

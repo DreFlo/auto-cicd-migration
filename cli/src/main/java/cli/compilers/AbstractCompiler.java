@@ -16,7 +16,7 @@ public abstract class AbstractCompiler<InputModel extends EObject, InputPackage 
     }
 
     protected OutputModel transform(InputModel inputModel) throws Exception {
-        return transformer.transform(inputModel);
+        return getTransformer().transform(inputModel);
     }
 
     public abstract Output compile(Input input) throws Exception;

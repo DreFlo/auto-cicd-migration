@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMatrix <em>Matrix</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNext <em>Next</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMaxAttempts <em>Max Attempts</em>}</li>
@@ -72,6 +73,28 @@ public interface Job extends PipelineBlock {
 	 * @generated
 	 */
 	EList<DockerContainer> getServices();
+
+	/**
+	 * Returns the value of the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Matrix</em>' containment reference.
+	 * @see #setMatrix(Matrix)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_Matrix()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Matrix getMatrix();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMatrix <em>Matrix</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Matrix</em>' containment reference.
+	 * @see #getMatrix()
+	 * @generated
+	 */
+	void setMatrix(Matrix value);
 
 	/**
 	 * Returns the value of the '<em><b>Previous</b></em>' reference list.

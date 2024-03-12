@@ -59,6 +59,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Job/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/steps"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/services"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/matrix"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//Job/previous"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/next"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Job/maxAttempts"/>

@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
+import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
 
 import java.util.Collection;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getServices <em>Services</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getMatrix <em>Matrix</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getPrevious <em>Previous</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getNext <em>Next</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getMaxAttempts <em>Max Attempts</em>}</li>
@@ -82,6 +84,16 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @ordered
 	 */
 	protected EList<DockerContainer> services;
+
+	/**
+	 * The cached value of the '{@link #getMatrix() <em>Matrix</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMatrix()
+	 * @generated
+	 * @ordered
+	 */
+	protected Matrix matrix;
 
 	/**
 	 * The cached value of the '{@link #getPrevious() <em>Previous</em>}' reference list.
@@ -218,6 +230,57 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @generated
 	 */
 	@Override
+	public Matrix getMatrix() {
+		return matrix;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMatrix(Matrix newMatrix, NotificationChain msgs) {
+		Matrix oldMatrix = matrix;
+		matrix = newMatrix;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.JOB__MATRIX,
+					oldMatrix, newMatrix);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMatrix(Matrix newMatrix) {
+		if (newMatrix != matrix) {
+			NotificationChain msgs = null;
+			if (matrix != null)
+				msgs = ((InternalEObject) matrix).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CICDPackage.JOB__MATRIX,
+						null, msgs);
+			if (newMatrix != null)
+				msgs = ((InternalEObject) newMatrix).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CICDPackage.JOB__MATRIX,
+						null, msgs);
+			msgs = basicSetMatrix(newMatrix, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.JOB__MATRIX, newMatrix, newMatrix));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<Job> getPrevious() {
 		if (previous == null) {
 			previous = new EObjectWithInverseResolvingEList.ManyInverse<Job>(Job.class, this, CICDPackage.JOB__PREVIOUS,
@@ -317,6 +380,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__SERVICES:
 			return ((InternalEList<?>) getServices()).basicRemove(otherEnd, msgs);
+		case CICDPackage.JOB__MATRIX:
+			return basicSetMatrix(null, msgs);
 		case CICDPackage.JOB__PREVIOUS:
 			return ((InternalEList<?>) getPrevious()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__NEXT:
@@ -339,6 +404,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return getSteps();
 		case CICDPackage.JOB__SERVICES:
 			return getServices();
+		case CICDPackage.JOB__MATRIX:
+			return getMatrix();
 		case CICDPackage.JOB__PREVIOUS:
 			return getPrevious();
 		case CICDPackage.JOB__NEXT:
@@ -370,6 +437,9 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__SERVICES:
 			getServices().clear();
 			getServices().addAll((Collection<? extends DockerContainer>) newValue);
+			return;
+		case CICDPackage.JOB__MATRIX:
+			setMatrix((Matrix) newValue);
 			return;
 		case CICDPackage.JOB__PREVIOUS:
 			getPrevious().clear();
@@ -406,6 +476,9 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__SERVICES:
 			getServices().clear();
 			return;
+		case CICDPackage.JOB__MATRIX:
+			setMatrix((Matrix) null);
+			return;
 		case CICDPackage.JOB__PREVIOUS:
 			getPrevious().clear();
 			return;
@@ -436,6 +509,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return steps != null && !steps.isEmpty();
 		case CICDPackage.JOB__SERVICES:
 			return services != null && !services.isEmpty();
+		case CICDPackage.JOB__MATRIX:
+			return matrix != null;
 		case CICDPackage.JOB__PREVIOUS:
 			return previous != null && !previous.isEmpty();
 		case CICDPackage.JOB__NEXT:

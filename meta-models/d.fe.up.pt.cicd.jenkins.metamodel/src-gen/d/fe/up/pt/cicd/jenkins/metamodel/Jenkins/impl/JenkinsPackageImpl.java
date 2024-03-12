@@ -2442,7 +2442,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(nestedStageEClass, NestedStage.class, "NestedStage", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNestedStage_Stages(), this.getStepStage(), null, "stages", null, 1, -1, NestedStage.class,
+		initEReference(getNestedStage_Stages(), this.getAbstractStage(), null, "stages", null, 1, -1, NestedStage.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

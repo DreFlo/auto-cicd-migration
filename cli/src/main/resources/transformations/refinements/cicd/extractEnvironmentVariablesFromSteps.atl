@@ -58,6 +58,7 @@ rule Job extends PipelineBlock {
 				endif
 			),
 			services <- input.services,
+			matrix <- input.matrix,
 			next <- input.next,
 			previous <- input.previous,
 			maxAttempts <- input.maxAttempts,
@@ -1300,7 +1301,12 @@ lazy rule VariableDereference {from
 				endif
 				endif
 				endif,
-			property <- input.property
+			property <-
+				if stepEnvironmentVariableNames.includes(input.property) then
+					prefix.concat(input.property)
+				else
+					input.property
+				endif
 		)
 }
 

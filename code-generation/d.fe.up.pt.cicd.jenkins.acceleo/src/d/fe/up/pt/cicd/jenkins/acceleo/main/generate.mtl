@@ -23,10 +23,50 @@ stage([quoteString(abstractStage.name)/]) {
 [/if]
 [if (abstractStage.oclIsKindOf(StepStage))]
 	[generateStepStage(abstractStage.oclAsType(StepStage))/]
+[elseif (abstractStage.oclIsKindOf(MatrixStage))]
+	[generateMatrixStage(abstractStage.oclAsType(MatrixStage))/]
 [elseif (abstractStage.oclIsKindOf(ParallelNestedStage))]
 	[generateParallel(abstractStage.oclAsType(ParallelNestedStage))/]
 [/if]
 }
+[/template]
+
+[template public generateMatrixStage(matrixStage : MatrixStage)]
+axes {
+[for (axis : MatrixAxis | matrixStage.axes)]
+	[generateMatrixAxis(axis)/]
+[/for]
+}
+[if (not matrixStage.excludes->isEmpty())]
+excludes {
+[for (exclude : MatrixCombination | matrixStage.excludes)]
+	exclude {
+		[generateMatrixCombination(exclude)/]
+	}
+[/for]
+}
+[/if]
+stages {
+[for (abstractStage : AbstractStage | matrixStage.stages)]
+	[generateAbstractStage(abstractStage)/]
+[/for]
+}
+[/template]
+
+[template public generateMatrixAxis(axis : MatrixAxis) post (trim())]
+axis {
+	name [quoteString(axis.name)/]
+	values [for (cell : Expression | axis.cells)][generateExpression(cell)/][if (axis.cells->indexOf(cell) <> axis.cells->size())], [/if][/for]
+}
+[/template]
+
+[template public generateMatrixCombination(combination : MatrixCombination) post (trim())]
+[for (assignment : Assignment | entries)]
+axis {
+	name [quoteString(assignment.key.name)/]
+	values [generateExpression(assignment.value)/]
+}
+[/for]
 [/template]
 
 [template public generateStepStage(stepStage : StepStage)]

@@ -31,6 +31,8 @@
         eType="#//Step" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"
         eType="#//DockerContainer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="matrix" eType="#//Matrix"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="previous" upperBound="-1"
         eType="#//Job" eOpposite="#//Job/next"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//Job"

@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface NestedStage extends AbstractStage {
 	/**
 	 * Returns the value of the '<em><b>Stages</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Stages</em>' containment reference list.
@@ -31,6 +31,6 @@ public interface NestedStage extends AbstractStage {
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<StepStage> getStages();
+	EList<AbstractStage> getStages();
 
 } // NestedStage

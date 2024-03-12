@@ -22,13 +22,13 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface MultipleNestedWhen extends NestedWhen {
 	/**
-	 * Returns the value of the '<em><b>Nested Whens</b></em>' reference list.
+	 * Returns the value of the '<em><b>Nested Whens</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nested Whens</em>' reference list.
+	 * @return the value of the '<em>Nested Whens</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getMultipleNestedWhen_NestedWhens()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<When> getNestedWhens();

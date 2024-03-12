@@ -8,11 +8,14 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class MultipleNestedWhenImpl extends NestedWhenImpl implements MultipleNestedWhen {
 	/**
-	 * The cached value of the '{@link #getNestedWhens() <em>Nested Whens</em>}' reference list.
+	 * The cached value of the '{@link #getNestedWhens() <em>Nested Whens</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNestedWhens()
@@ -65,10 +68,24 @@ public class MultipleNestedWhenImpl extends NestedWhenImpl implements MultipleNe
 	@Override
 	public EList<When> getNestedWhens() {
 		if (nestedWhens == null) {
-			nestedWhens = new EObjectResolvingEList<When>(When.class, this,
+			nestedWhens = new EObjectContainmentEList<When>(When.class, this,
 					JenkinsPackage.MULTIPLE_NESTED_WHEN__NESTED_WHENS);
 		}
 		return nestedWhens;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case JenkinsPackage.MULTIPLE_NESTED_WHEN__NESTED_WHENS:
+			return ((InternalEList<?>) getNestedWhens()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

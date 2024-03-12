@@ -24,6 +24,7 @@ rule Job2Job {
 		cicdJob : CICD!Job(
 			id <- ghaJob.name,
 			agent <- thisModule.getAgentFromJob(ghaJob),
+			ifCondition <- ghaJob.ifCondition,
 			matrix <- ghaJob.strategy,
 			steps <- ghaJob.steps,
 			next <- ghaJob.necessaryFor

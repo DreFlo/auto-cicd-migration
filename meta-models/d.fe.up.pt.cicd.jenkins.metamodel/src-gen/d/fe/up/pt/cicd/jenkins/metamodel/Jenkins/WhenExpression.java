@@ -20,22 +20,22 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  */
 public interface WhenExpression extends When {
 	/**
-	 * Returns the value of the '<em><b>Expression</b></em>' reference.
+	 * Returns the value of the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expression</em>' reference.
+	 * @return the value of the '<em>Expression</em>' containment reference.
 	 * @see #setExpression(Expression)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getWhenExpression_Expression()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Expression getExpression();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression <em>Expression</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression <em>Expression</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expression</em>' reference.
+	 * @param value the new value of the '<em>Expression</em>' containment reference.
 	 * @see #getExpression()
 	 * @generated
 	 */

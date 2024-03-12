@@ -23,7 +23,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//Assignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="whens" upperBound="-1"
-        eType="#//When"/>
+        eType="#//When" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="whenEvaluationTime" upperBound="-1"
         eType="#//WHEN_EVALUATION_TIMES"/>
   </eClassifiers>
@@ -193,9 +193,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="WhenChangelog" eSuperTypes="#//When"/>
   <eClassifiers xsi:type="ecore:EClass" name="WhenEquals" eSuperTypes="#//When">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expected" lowerBound="1"
-        eType="#//Literal"/>
+        eType="#//Literal" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actual" lowerBound="1"
-        eType="#//Variable"/>
+        eType="#//Variable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WhenEnvironment" eSuperTypes="#//When">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -203,16 +203,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WhenExpression" eSuperTypes="#//When">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1"
-        eType="#//Expression"/>
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NestedWhen" abstract="true" eSuperTypes="#//When"/>
   <eClassifiers xsi:type="ecore:EClass" name="SingleNestedWhen" eSuperTypes="#//NestedWhen">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedWhen" lowerBound="1"
-        eType="#//When"/>
+        eType="#//When" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MultipleNestedWhen" eSuperTypes="#//NestedWhen">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nestedWhens" lowerBound="1"
-        upperBound="-1" eType="#//When"/>
+        upperBound="-1" eType="#//When" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WhenNot" eSuperTypes="#//SingleNestedWhen"/>
   <eClassifiers xsi:type="ecore:EClass" name="WhenAnyOf" eSuperTypes="#//MultipleNestedWhen"/>

@@ -57,6 +57,33 @@ rule Job extends PipelineBlock {
 				endif
 				endif
 			),
+			ifCondition <-  
+				if input.ifCondition.oclIsKindOf(CICD1!Concat) then
+					thisModule.Concat(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!ComparisonOp) then
+					thisModule.ComparisonOp(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!EqualityOp) then
+					thisModule.EqualityOp(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!And) then
+					thisModule.And(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!Or) then
+					thisModule.Or(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!Variable) then
+					thisModule.Variable(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!Negation) then
+					thisModule.Negation(input.ifCondition, Sequence{}, '')
+				else if input.ifCondition.oclIsKindOf(CICD1!VariableDereference) then
+					thisModule.VariableDereference(input.ifCondition, Sequence{}, '')
+				else
+					input.ifCondition
+				endif
+				endif
+				endif
+				endif
+				endif
+				endif
+				endif
+				endif,
 			services <- input.services,
 			matrix <- input.matrix,
 			next <- input.next,

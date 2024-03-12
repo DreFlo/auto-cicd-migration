@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
 import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getId <em>Id</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getServices <em>Services</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getMatrix <em>Matrix</em>}</li>
@@ -64,6 +66,16 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getIfCondition() <em>If Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIfCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression ifCondition;
 
 	/**
 	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
@@ -195,6 +207,58 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.JOB__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression getIfCondition() {
+		return ifCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIfCondition(Expression newIfCondition, NotificationChain msgs) {
+		Expression oldIfCondition = ifCondition;
+		ifCondition = newIfCondition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.JOB__IF_CONDITION, oldIfCondition, newIfCondition);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIfCondition(Expression newIfCondition) {
+		if (newIfCondition != ifCondition) {
+			NotificationChain msgs = null;
+			if (ifCondition != null)
+				msgs = ((InternalEObject) ifCondition).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.JOB__IF_CONDITION, null, msgs);
+			if (newIfCondition != null)
+				msgs = ((InternalEObject) newIfCondition).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.JOB__IF_CONDITION, null, msgs);
+			msgs = basicSetIfCondition(newIfCondition, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.JOB__IF_CONDITION, newIfCondition,
+					newIfCondition));
 	}
 
 	/**
@@ -376,6 +440,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case CICDPackage.JOB__IF_CONDITION:
+			return basicSetIfCondition(null, msgs);
 		case CICDPackage.JOB__STEPS:
 			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__SERVICES:
@@ -400,6 +466,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		switch (featureID) {
 		case CICDPackage.JOB__ID:
 			return getId();
+		case CICDPackage.JOB__IF_CONDITION:
+			return getIfCondition();
 		case CICDPackage.JOB__STEPS:
 			return getSteps();
 		case CICDPackage.JOB__SERVICES:
@@ -429,6 +497,9 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		switch (featureID) {
 		case CICDPackage.JOB__ID:
 			setId((String) newValue);
+			return;
+		case CICDPackage.JOB__IF_CONDITION:
+			setIfCondition((Expression) newValue);
 			return;
 		case CICDPackage.JOB__STEPS:
 			getSteps().clear();
@@ -470,6 +541,9 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__ID:
 			setId(ID_EDEFAULT);
 			return;
+		case CICDPackage.JOB__IF_CONDITION:
+			setIfCondition((Expression) null);
+			return;
 		case CICDPackage.JOB__STEPS:
 			getSteps().clear();
 			return;
@@ -505,6 +579,8 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		switch (featureID) {
 		case CICDPackage.JOB__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case CICDPackage.JOB__IF_CONDITION:
+			return ifCondition != null;
 		case CICDPackage.JOB__STEPS:
 			return steps != null && !steps.isEmpty();
 		case CICDPackage.JOB__SERVICES:

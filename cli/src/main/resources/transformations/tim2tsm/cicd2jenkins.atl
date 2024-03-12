@@ -35,7 +35,22 @@ lazy rule Job2StepStage {
 			name <- job.id,
 			agent <- job.agent,
 			environmentVariables <- job.environmentVariables,
-			steps <- job.steps
+			steps <- job.steps,
+			whens <- 
+				if not job.ifCondition.oclIsUndefined() then
+					Sequence{thisModule.Expression2WhenExpression(job.ifCondition)}
+				else
+					OclUndefined
+				endif
+		)
+}
+
+lazy rule Expression2WhenExpression {
+	from
+		expression : CICD!Expression
+	to 
+		when : Jenkins!WhenExpression (
+			expression <- expression
 		)
 }
 

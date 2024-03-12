@@ -15,6 +15,7 @@ defaults:
 
 jobs:
   my_first_job_a:
+    if: ${{ true }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!A"

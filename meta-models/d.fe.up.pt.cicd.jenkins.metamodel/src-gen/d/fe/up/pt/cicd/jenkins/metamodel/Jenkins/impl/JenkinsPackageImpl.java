@@ -2434,7 +2434,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				null, 0, -1, AbstractStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAbstractStage_Whens(), this.getWhen(), null, "whens", null, 0, -1, AbstractStage.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractStage_WhenEvaluationTime(), this.getWHEN_EVALUATION_TIMES(), "whenEvaluationTime",
 				null, 0, -1, AbstractStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
@@ -2442,7 +2442,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(nestedStageEClass, NestedStage.class, "NestedStage", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNestedStage_Stages(), this.getAbstractStage(), null, "stages", null, 1, -1, NestedStage.class,
+		initEReference(getNestedStage_Stages(), this.getStepStage(), null, "stages", null, 1, -1, NestedStage.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2720,10 +2720,10 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(whenEqualsEClass, WhenEquals.class, "WhenEquals", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWhenEquals_Expected(), this.getLiteral(), null, "expected", null, 1, 1, WhenEquals.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWhenEquals_Actual(), this.getVariable(), null, "actual", null, 1, 1, WhenEquals.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(whenEnvironmentEClass, WhenEnvironment.class, "WhenEnvironment", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2737,7 +2737,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(whenExpressionEClass, WhenExpression.class, "WhenExpression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWhenExpression_Expression(), this.getExpression(), null, "expression", null, 1, 1,
-				WhenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				WhenExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nestedWhenEClass, NestedWhen.class, "NestedWhen", IS_ABSTRACT, !IS_INTERFACE,
@@ -2746,13 +2746,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(singleNestedWhenEClass, SingleNestedWhen.class, "SingleNestedWhen", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingleNestedWhen_NestedWhen(), this.getWhen(), null, "nestedWhen", null, 1, 1,
-				SingleNestedWhen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				SingleNestedWhen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(multipleNestedWhenEClass, MultipleNestedWhen.class, "MultipleNestedWhen", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMultipleNestedWhen_NestedWhens(), this.getWhen(), null, "nestedWhens", null, 1, -1,
-				MultipleNestedWhen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				MultipleNestedWhen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(whenNotEClass, WhenNot.class, "WhenNot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

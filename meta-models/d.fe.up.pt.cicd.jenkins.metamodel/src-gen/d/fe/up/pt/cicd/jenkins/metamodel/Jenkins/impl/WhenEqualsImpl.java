@@ -9,6 +9,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -30,7 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	/**
-	 * The cached value of the '{@link #getExpected() <em>Expected</em>}' reference.
+	 * The cached value of the '{@link #getExpected() <em>Expected</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExpected()
@@ -40,7 +41,7 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	protected Literal expected;
 
 	/**
-	 * The cached value of the '{@link #getActual() <em>Actual</em>}' reference.
+	 * The cached value of the '{@link #getActual() <em>Actual</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getActual()
@@ -75,15 +76,6 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 */
 	@Override
 	public Literal getExpected() {
-		if (expected != null && expected.eIsProxy()) {
-			InternalEObject oldExpected = (InternalEObject) expected;
-			expected = (Literal) eResolveProxy(oldExpected);
-			if (expected != oldExpected) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, JenkinsPackage.WHEN_EQUALS__EXPECTED,
-							oldExpected, expected));
-			}
-		}
 		return expected;
 	}
 
@@ -92,8 +84,18 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Literal basicGetExpected() {
-		return expected;
+	public NotificationChain basicSetExpected(Literal newExpected, NotificationChain msgs) {
+		Literal oldExpected = expected;
+		expected = newExpected;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					JenkinsPackage.WHEN_EQUALS__EXPECTED, oldExpected, newExpected);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -103,11 +105,20 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 */
 	@Override
 	public void setExpected(Literal newExpected) {
-		Literal oldExpected = expected;
-		expected = newExpected;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.WHEN_EQUALS__EXPECTED, oldExpected,
-					expected));
+		if (newExpected != expected) {
+			NotificationChain msgs = null;
+			if (expected != null)
+				msgs = ((InternalEObject) expected).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.WHEN_EQUALS__EXPECTED, null, msgs);
+			if (newExpected != null)
+				msgs = ((InternalEObject) newExpected).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.WHEN_EQUALS__EXPECTED, null, msgs);
+			msgs = basicSetExpected(newExpected, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.WHEN_EQUALS__EXPECTED, newExpected,
+					newExpected));
 	}
 
 	/**
@@ -117,15 +128,6 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 */
 	@Override
 	public Variable getActual() {
-		if (actual != null && actual.eIsProxy()) {
-			InternalEObject oldActual = (InternalEObject) actual;
-			actual = (Variable) eResolveProxy(oldActual);
-			if (actual != oldActual) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, JenkinsPackage.WHEN_EQUALS__ACTUAL,
-							oldActual, actual));
-			}
-		}
 		return actual;
 	}
 
@@ -134,8 +136,18 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variable basicGetActual() {
-		return actual;
+	public NotificationChain basicSetActual(Variable newActual, NotificationChain msgs) {
+		Variable oldActual = actual;
+		actual = newActual;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					JenkinsPackage.WHEN_EQUALS__ACTUAL, oldActual, newActual);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -145,11 +157,36 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 */
 	@Override
 	public void setActual(Variable newActual) {
-		Variable oldActual = actual;
-		actual = newActual;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.WHEN_EQUALS__ACTUAL, oldActual,
-					actual));
+		if (newActual != actual) {
+			NotificationChain msgs = null;
+			if (actual != null)
+				msgs = ((InternalEObject) actual).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.WHEN_EQUALS__ACTUAL, null, msgs);
+			if (newActual != null)
+				msgs = ((InternalEObject) newActual).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.WHEN_EQUALS__ACTUAL, null, msgs);
+			msgs = basicSetActual(newActual, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.WHEN_EQUALS__ACTUAL, newActual,
+					newActual));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case JenkinsPackage.WHEN_EQUALS__EXPECTED:
+			return basicSetExpected(null, msgs);
+		case JenkinsPackage.WHEN_EQUALS__ACTUAL:
+			return basicSetActual(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -161,13 +198,9 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case JenkinsPackage.WHEN_EQUALS__EXPECTED:
-			if (resolve)
-				return getExpected();
-			return basicGetExpected();
+			return getExpected();
 		case JenkinsPackage.WHEN_EQUALS__ACTUAL:
-			if (resolve)
-				return getActual();
-			return basicGetActual();
+			return getActual();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

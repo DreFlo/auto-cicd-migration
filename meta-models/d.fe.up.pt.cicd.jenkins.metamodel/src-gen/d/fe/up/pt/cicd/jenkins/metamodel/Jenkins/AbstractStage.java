@@ -97,13 +97,13 @@ public interface AbstractStage extends AbstractPipelineExecutionBlock {
 	EMap<Variable, Expression> getEnvironmentVariables();
 
 	/**
-	 * Returns the value of the '<em><b>Whens</b></em>' reference list.
+	 * Returns the value of the '<em><b>Whens</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Whens</em>' reference list.
+	 * @return the value of the '<em>Whens</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getAbstractStage_Whens()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<When> getWhens();

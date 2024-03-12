@@ -205,7 +205,7 @@ public interface JenkinsPackage extends EPackage {
 	int ABSTRACT_STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_PIPELINE_EXECUTION_BLOCK_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -287,7 +287,7 @@ public interface JenkinsPackage extends EPackage {
 	int NESTED_STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_STAGE__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -378,7 +378,7 @@ public interface JenkinsPackage extends EPackage {
 	int PARALLEL_NESTED_STAGE__ENVIRONMENT_VARIABLES = NESTED_STAGE__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -469,7 +469,7 @@ public interface JenkinsPackage extends EPackage {
 	int SEQUENTIAL_NESTED_STAGE__ENVIRONMENT_VARIABLES = NESTED_STAGE__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -560,7 +560,7 @@ public interface JenkinsPackage extends EPackage {
 	int MATRIX_STAGE__ENVIRONMENT_VARIABLES = SEQUENTIAL_NESTED_STAGE__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -770,7 +770,7 @@ public interface JenkinsPackage extends EPackage {
 	int STEP_STAGE__ENVIRONMENT_VARIABLES = ABSTRACT_STAGE__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2689,7 +2689,7 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_EQUALS = 56;
 
 	/**
-	 * The feature id for the '<em><b>Expected</b></em>' reference.
+	 * The feature id for the '<em><b>Expected</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2698,7 +2698,7 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_EQUALS__EXPECTED = WHEN_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Actual</b></em>' reference.
+	 * The feature id for the '<em><b>Actual</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2781,7 +2781,7 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_EXPRESSION = 58;
 
 	/**
-	 * The feature id for the '<em><b>Expression</b></em>' reference.
+	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2846,7 +2846,7 @@ public interface JenkinsPackage extends EPackage {
 	int SINGLE_NESTED_WHEN = 60;
 
 	/**
-	 * The feature id for the '<em><b>Nested When</b></em>' reference.
+	 * The feature id for the '<em><b>Nested When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2883,7 +2883,7 @@ public interface JenkinsPackage extends EPackage {
 	int MULTIPLE_NESTED_WHEN = 61;
 
 	/**
-	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Nested Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2920,7 +2920,7 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_NOT = 62;
 
 	/**
-	 * The feature id for the '<em><b>Nested When</b></em>' reference.
+	 * The feature id for the '<em><b>Nested When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2957,7 +2957,7 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_ANY_OF = 63;
 
 	/**
-	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Nested Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2994,7 +2994,7 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_ALL_OF = 64;
 
 	/**
-	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
+	 * The feature id for the '<em><b>Nested Whens</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3266,10 +3266,10 @@ public interface JenkinsPackage extends EPackage {
 	EReference getAbstractStage_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhens <em>Whens</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhens <em>Whens</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Whens</em>'.
+	 * @return the meta object for the containment reference list '<em>Whens</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage#getWhens()
 	 * @see #getAbstractStage()
 	 * @generated
@@ -4358,10 +4358,10 @@ public interface JenkinsPackage extends EPackage {
 	EClass getWhenEquals();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected <em>Expected</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected <em>Expected</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Expected</em>'.
+	 * @return the meta object for the containment reference '<em>Expected</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected()
 	 * @see #getWhenEquals()
 	 * @generated
@@ -4369,10 +4369,10 @@ public interface JenkinsPackage extends EPackage {
 	EReference getWhenEquals_Expected();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual <em>Actual</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual <em>Actual</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Actual</em>'.
+	 * @return the meta object for the containment reference '<em>Actual</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual()
 	 * @see #getWhenEquals()
 	 * @generated
@@ -4422,10 +4422,10 @@ public interface JenkinsPackage extends EPackage {
 	EClass getWhenExpression();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression <em>Expression</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Expression</em>'.
+	 * @return the meta object for the containment reference '<em>Expression</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression#getExpression()
 	 * @see #getWhenExpression()
 	 * @generated
@@ -4453,10 +4453,10 @@ public interface JenkinsPackage extends EPackage {
 	EClass getSingleNestedWhen();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen <em>Nested When</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen <em>Nested When</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Nested When</em>'.
+	 * @return the meta object for the containment reference '<em>Nested When</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen()
 	 * @see #getSingleNestedWhen()
 	 * @generated
@@ -4474,10 +4474,10 @@ public interface JenkinsPackage extends EPackage {
 	EClass getMultipleNestedWhen();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen#getNestedWhens <em>Nested Whens</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen#getNestedWhens <em>Nested Whens</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Nested Whens</em>'.
+	 * @return the meta object for the containment reference list '<em>Nested Whens</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen#getNestedWhens()
 	 * @see #getMultipleNestedWhen()
 	 * @generated
@@ -4742,7 +4742,7 @@ public interface JenkinsPackage extends EPackage {
 		EReference ABSTRACT_STAGE__ENVIRONMENT_VARIABLES = eINSTANCE.getAbstractStage_EnvironmentVariables();
 
 		/**
-		 * The meta object literal for the '<em><b>Whens</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Whens</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5682,7 +5682,7 @@ public interface JenkinsPackage extends EPackage {
 		EClass WHEN_EQUALS = eINSTANCE.getWhenEquals();
 
 		/**
-		 * The meta object literal for the '<em><b>Expected</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Expected</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5690,7 +5690,7 @@ public interface JenkinsPackage extends EPackage {
 		EReference WHEN_EQUALS__EXPECTED = eINSTANCE.getWhenEquals_Expected();
 
 		/**
-		 * The meta object literal for the '<em><b>Actual</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Actual</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5734,7 +5734,7 @@ public interface JenkinsPackage extends EPackage {
 		EClass WHEN_EXPRESSION = eINSTANCE.getWhenExpression();
 
 		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5762,7 +5762,7 @@ public interface JenkinsPackage extends EPackage {
 		EClass SINGLE_NESTED_WHEN = eINSTANCE.getSingleNestedWhen();
 
 		/**
-		 * The meta object literal for the '<em><b>Nested When</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Nested When</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -5780,7 +5780,7 @@ public interface JenkinsPackage extends EPackage {
 		EClass MULTIPLE_NESTED_WHEN = eINSTANCE.getMultipleNestedWhen();
 
 		/**
-		 * The meta object literal for the '<em><b>Nested Whens</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Nested Whens</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

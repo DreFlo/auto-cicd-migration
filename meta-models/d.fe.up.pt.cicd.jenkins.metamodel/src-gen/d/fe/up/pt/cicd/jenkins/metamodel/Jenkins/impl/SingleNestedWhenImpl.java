@@ -8,6 +8,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class SingleNestedWhenImpl extends NestedWhenImpl implements SingleNestedWhen {
 	/**
-	 * The cached value of the '{@link #getNestedWhen() <em>Nested When</em>}' reference.
+	 * The cached value of the '{@link #getNestedWhen() <em>Nested When</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNestedWhen()
@@ -63,15 +64,6 @@ public class SingleNestedWhenImpl extends NestedWhenImpl implements SingleNested
 	 */
 	@Override
 	public When getNestedWhen() {
-		if (nestedWhen != null && nestedWhen.eIsProxy()) {
-			InternalEObject oldNestedWhen = (InternalEObject) nestedWhen;
-			nestedWhen = (When) eResolveProxy(oldNestedWhen);
-			if (nestedWhen != oldNestedWhen) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN, oldNestedWhen, nestedWhen));
-			}
-		}
 		return nestedWhen;
 	}
 
@@ -80,8 +72,18 @@ public class SingleNestedWhenImpl extends NestedWhenImpl implements SingleNested
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public When basicGetNestedWhen() {
-		return nestedWhen;
+	public NotificationChain basicSetNestedWhen(When newNestedWhen, NotificationChain msgs) {
+		When oldNestedWhen = nestedWhen;
+		nestedWhen = newNestedWhen;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN, oldNestedWhen, newNestedWhen);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -91,11 +93,34 @@ public class SingleNestedWhenImpl extends NestedWhenImpl implements SingleNested
 	 */
 	@Override
 	public void setNestedWhen(When newNestedWhen) {
-		When oldNestedWhen = nestedWhen;
-		nestedWhen = newNestedWhen;
-		if (eNotificationRequired())
+		if (newNestedWhen != nestedWhen) {
+			NotificationChain msgs = null;
+			if (nestedWhen != null)
+				msgs = ((InternalEObject) nestedWhen).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN, null, msgs);
+			if (newNestedWhen != null)
+				msgs = ((InternalEObject) newNestedWhen).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN, null, msgs);
+			msgs = basicSetNestedWhen(newNestedWhen, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN,
-					oldNestedWhen, nestedWhen));
+					newNestedWhen, newNestedWhen));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN:
+			return basicSetNestedWhen(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -107,9 +132,7 @@ public class SingleNestedWhenImpl extends NestedWhenImpl implements SingleNested
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case JenkinsPackage.SINGLE_NESTED_WHEN__NESTED_WHEN:
-			if (resolve)
-				return getNestedWhen();
-			return basicGetNestedWhen();
+			return getNestedWhen();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

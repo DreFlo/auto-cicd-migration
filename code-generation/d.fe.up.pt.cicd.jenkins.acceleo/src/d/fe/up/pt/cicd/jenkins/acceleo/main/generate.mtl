@@ -18,6 +18,13 @@ stage([quoteString(abstractStage.name)/]) {
 [if (not abstractStage.agent.oclIsUndefined())]
 	[generateAbstractAgent(abstractStage.agent)/]
 [/if]
+[if (not abstractStage.whens->isEmpty())]
+	when {
+	[for (when : When | abstractStage.whens)]
+		[generateWhen(when)/]
+	[/for]
+	}
+[/if]
 [if (not abstractStage.environmentVariables->isEmpty())]
 	[generateEnvironment(abstractStage.environmentVariables)/]
 [/if]
@@ -32,24 +39,26 @@ stage([quoteString(abstractStage.name)/]) {
 [/template]
 
 [template public generateMatrixStage(matrixStage : MatrixStage)]
-axes {
-[for (axis : MatrixAxis | matrixStage.axes)]
-	[generateMatrixAxis(axis)/]
-[/for]
-}
-[if (not matrixStage.excludes->isEmpty())]
-excludes {
-[for (exclude : MatrixCombination | matrixStage.excludes)]
-	exclude {
-		[generateMatrixCombination(exclude)/]
+matrix {
+	axes {
+	[for (axis : MatrixAxis | matrixStage.axes)]
+		[generateMatrixAxis(axis)/]
+	[/for]
 	}
-[/for]
-}
-[/if]
-stages {
-[for (abstractStage : AbstractStage | matrixStage.stages)]
-	[generateAbstractStage(abstractStage)/]
-[/for]
+	[if (not matrixStage.excludes->isEmpty())]
+	excludes {
+	[for (exclude : MatrixCombination | matrixStage.excludes)]
+		exclude {
+			[generateMatrixCombination(exclude)/]
+		}
+	[/for]
+	}
+	[/if]
+	stages {
+	[for (abstractStage : AbstractStage | matrixStage.stages)]
+		[generateAbstractStage(abstractStage)/]
+	[/for]
+	}
 }
 [/template]
 
@@ -231,6 +240,18 @@ triggers {
 
 [template public generateScheduledTrigger(scheduledTrigger : ScheduledTrigger)]
 cron([quoteString(scheduledTrigger.cron)/])
+[/template]
+
+[template public generateWhen(when : When) post (trim())]
+[if (when.oclIsTypeOf(WhenExpression))]
+[generateWhenExpression(when.oclAsType(WhenExpression))/]
+[/if]
+[/template]
+
+[template public generateWhenExpression(when : WhenExpression)]
+expression {
+	[generateExpression(when.expression)/]
+}
 [/template]
 
 [template public generatePipeline(pipeline : Pipeline)]

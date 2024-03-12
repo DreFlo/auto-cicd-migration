@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getId <em>Id</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getIfCondition <em>If Condition</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMatrix <em>Matrix</em>}</li>
@@ -49,6 +50,28 @@ public interface Job extends PipelineBlock {
 	 * @generated
 	 */
 	void setId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>If Condition</em>' containment reference.
+	 * @see #setIfCondition(Expression)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_IfCondition()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Expression getIfCondition();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getIfCondition <em>If Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>If Condition</em>' containment reference.
+	 * @see #getIfCondition()
+	 * @generated
+	 */
+	void setIfCondition(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.

@@ -21,44 +21,44 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  */
 public interface WhenEquals extends When {
 	/**
-	 * Returns the value of the '<em><b>Expected</b></em>' reference.
+	 * Returns the value of the '<em><b>Expected</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expected</em>' reference.
+	 * @return the value of the '<em>Expected</em>' containment reference.
 	 * @see #setExpected(Literal)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getWhenEquals_Expected()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Literal getExpected();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected <em>Expected</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getExpected <em>Expected</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expected</em>' reference.
+	 * @param value the new value of the '<em>Expected</em>' containment reference.
 	 * @see #getExpected()
 	 * @generated
 	 */
 	void setExpected(Literal value);
 
 	/**
-	 * Returns the value of the '<em><b>Actual</b></em>' reference.
+	 * Returns the value of the '<em><b>Actual</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Actual</em>' reference.
+	 * @return the value of the '<em>Actual</em>' containment reference.
 	 * @see #setActual(Variable)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getWhenEquals_Actual()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Variable getActual();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual <em>Actual</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual <em>Actual</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Actual</em>' reference.
+	 * @param value the new value of the '<em>Actual</em>' containment reference.
 	 * @see #getActual()
 	 * @generated
 	 */

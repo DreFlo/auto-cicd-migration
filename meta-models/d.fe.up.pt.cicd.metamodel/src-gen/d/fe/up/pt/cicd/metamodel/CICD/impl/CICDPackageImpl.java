@@ -684,7 +684,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Steps() {
+	public EReference getJob_IfCondition() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -694,7 +694,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Services() {
+	public EReference getJob_Steps() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -704,7 +704,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Matrix() {
+	public EReference getJob_Services() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -714,7 +714,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Previous() {
+	public EReference getJob_Matrix() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -724,7 +724,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Next() {
+	public EReference getJob_Previous() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -734,8 +734,18 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getJob_Next() {
+		return (EReference) jobEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getJob_MaxAttempts() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) jobEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -745,7 +755,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EAttribute getJob_AllowFailure() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) jobEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1976,6 +1986,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__ID);
+		createEReference(jobEClass, JOB__IF_CONDITION);
 		createEReference(jobEClass, JOB__STEPS);
 		createEReference(jobEClass, JOB__SERVICES);
 		createEReference(jobEClass, JOB__MATRIX);
@@ -2261,6 +2272,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Id(), ecorePackage.getEString(), "id", null, 1, 1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, Job.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 0, -1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);

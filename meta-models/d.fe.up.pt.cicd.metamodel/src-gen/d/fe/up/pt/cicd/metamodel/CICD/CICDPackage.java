@@ -421,13 +421,22 @@ public interface CICDPackage extends EPackage {
 	int JOB__ID = PIPELINE_BLOCK_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOB__IF_CONDITION = PIPELINE_BLOCK_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__STEPS = PIPELINE_BLOCK_FEATURE_COUNT + 1;
+	int JOB__STEPS = PIPELINE_BLOCK_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
@@ -436,7 +445,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__SERVICES = PIPELINE_BLOCK_FEATURE_COUNT + 2;
+	int JOB__SERVICES = PIPELINE_BLOCK_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
@@ -445,7 +454,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__MATRIX = PIPELINE_BLOCK_FEATURE_COUNT + 3;
+	int JOB__MATRIX = PIPELINE_BLOCK_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Previous</b></em>' reference list.
@@ -454,7 +463,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 4;
+	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Next</b></em>' reference list.
@@ -463,7 +472,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 5;
+	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Max Attempts</b></em>' attribute.
@@ -472,7 +481,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__MAX_ATTEMPTS = PIPELINE_BLOCK_FEATURE_COUNT + 6;
+	int JOB__MAX_ATTEMPTS = PIPELINE_BLOCK_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
@@ -481,7 +490,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__ALLOW_FAILURE = PIPELINE_BLOCK_FEATURE_COUNT + 7;
+	int JOB__ALLOW_FAILURE = PIPELINE_BLOCK_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -490,7 +499,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = PIPELINE_BLOCK_FEATURE_COUNT + 8;
+	int JOB_FEATURE_COUNT = PIPELINE_BLOCK_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of operations of the '<em>Job</em>' class.
@@ -3013,6 +3022,17 @@ public interface CICDPackage extends EPackage {
 	EAttribute getJob_Id();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getIfCondition <em>If Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>If Condition</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getIfCondition()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_IfCondition();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps <em>Steps</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4495,6 +4515,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOB__ID = eINSTANCE.getJob_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB__IF_CONDITION = eINSTANCE.getJob_IfCondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.

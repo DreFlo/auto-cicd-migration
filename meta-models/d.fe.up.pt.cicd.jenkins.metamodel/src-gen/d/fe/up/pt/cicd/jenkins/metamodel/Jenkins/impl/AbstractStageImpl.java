@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -100,7 +99,7 @@ public abstract class AbstractStageImpl extends AbstractPipelineExecutionBlockIm
 	protected EMap<Variable, Expression> environmentVariables;
 
 	/**
-	 * The cached value of the '{@link #getWhens() <em>Whens</em>}' reference list.
+	 * The cached value of the '{@link #getWhens() <em>Whens</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getWhens()
@@ -248,7 +247,7 @@ public abstract class AbstractStageImpl extends AbstractPipelineExecutionBlockIm
 	@Override
 	public EList<When> getWhens() {
 		if (whens == null) {
-			whens = new EObjectResolvingEList<When>(When.class, this, JenkinsPackage.ABSTRACT_STAGE__WHENS);
+			whens = new EObjectContainmentEList<When>(When.class, this, JenkinsPackage.ABSTRACT_STAGE__WHENS);
 		}
 		return whens;
 	}
@@ -281,6 +280,8 @@ public abstract class AbstractStageImpl extends AbstractPipelineExecutionBlockIm
 			return ((InternalEList<?>) getConditions()).basicRemove(otherEnd, msgs);
 		case JenkinsPackage.ABSTRACT_STAGE__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		case JenkinsPackage.ABSTRACT_STAGE__WHENS:
+			return ((InternalEList<?>) getWhens()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

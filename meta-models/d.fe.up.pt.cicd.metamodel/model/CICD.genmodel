@@ -57,6 +57,7 @@
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Job">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Job/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/ifCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/steps"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/services"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Job/matrix"/>

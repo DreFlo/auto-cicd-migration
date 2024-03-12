@@ -20,22 +20,22 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  */
 public interface SingleNestedWhen extends NestedWhen {
 	/**
-	 * Returns the value of the '<em><b>Nested When</b></em>' reference.
+	 * Returns the value of the '<em><b>Nested When</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nested When</em>' reference.
+	 * @return the value of the '<em>Nested When</em>' containment reference.
 	 * @see #setNestedWhen(When)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getSingleNestedWhen_NestedWhen()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	When getNestedWhen();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen <em>Nested When</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen#getNestedWhen <em>Nested When</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Nested When</em>' reference.
+	 * @param value the new value of the '<em>Nested When</em>' containment reference.
 	 * @see #getNestedWhen()
 	 * @generated
 	 */

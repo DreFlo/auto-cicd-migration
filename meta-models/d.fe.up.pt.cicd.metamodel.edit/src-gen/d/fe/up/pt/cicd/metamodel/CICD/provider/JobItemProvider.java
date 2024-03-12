@@ -126,6 +126,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CICDPackage.Literals.JOB__IF_CONDITION);
 			childrenFeatures.add(CICDPackage.Literals.JOB__STEPS);
 			childrenFeatures.add(CICDPackage.Literals.JOB__MATRIX);
 			childrenFeatures.add(CICDPackage.Literals.JOB__NEXT);
@@ -197,6 +198,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 		case CICDPackage.JOB__ALLOW_FAILURE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case CICDPackage.JOB__IF_CONDITION:
 		case CICDPackage.JOB__STEPS:
 		case CICDPackage.JOB__MATRIX:
 		case CICDPackage.JOB__NEXT:
@@ -216,6 +218,63 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createValue()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createVariableContext()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createBuiltInFunction()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createAddition()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
+				CICDFactory.eINSTANCE.createSubtraction()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createUnaryOp()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.JOB__STEPS, CICDFactory.eINSTANCE.createConditionalStep()));

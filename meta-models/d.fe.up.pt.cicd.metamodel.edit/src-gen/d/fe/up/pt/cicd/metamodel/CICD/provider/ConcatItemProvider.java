@@ -166,10 +166,10 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 				createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS, CICDFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
-				CICDFactory.eINSTANCE.createEnvironmentVariable()));
+				CICDFactory.eINSTANCE.createVariableContext()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
-				CICDFactory.eINSTANCE.createSecretVariable()));
+				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));

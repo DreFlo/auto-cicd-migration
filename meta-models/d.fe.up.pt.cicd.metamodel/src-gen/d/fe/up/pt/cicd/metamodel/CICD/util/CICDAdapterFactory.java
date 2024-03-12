@@ -199,7 +199,7 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAssignment(Map.Entry<EnvironmentVariable, Expression> object) {
+		public Adapter caseAssignment(Map.Entry<Variable, Expression> object) {
 			return createAssignmentAdapter();
 		}
 
@@ -249,13 +249,13 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseEnvironmentVariable(EnvironmentVariable object) {
-			return createEnvironmentVariableAdapter();
+		public Adapter caseVariableContext(VariableContext object) {
+			return createVariableContextAdapter();
 		}
 
 		@Override
-		public Adapter caseSecretVariable(SecretVariable object) {
-			return createSecretVariableAdapter();
+		public Adapter caseVariableDereference(VariableDereference object) {
+			return createVariableDereferenceAdapter();
 		}
 
 		@Override
@@ -837,30 +837,30 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable <em>Environment Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext <em>Variable Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableContext
 	 * @generated
 	 */
-	public Adapter createEnvironmentVariableAdapter() {
+	public Adapter createVariableContextAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable <em>Secret Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference <em>Variable Dereference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SecretVariable
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableDereference
 	 * @generated
 	 */
-	public Adapter createSecretVariableAdapter() {
+	public Adapter createVariableDereferenceAdapter() {
 		return null;
 	}
 

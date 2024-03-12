@@ -274,22 +274,22 @@ public interface CICDFactory extends EFactory {
 	Variable createVariable();
 
 	/**
-	 * Returns a new object of class '<em>Environment Variable</em>'.
+	 * Returns a new object of class '<em>Variable Context</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Environment Variable</em>'.
+	 * @return a new object of class '<em>Variable Context</em>'.
 	 * @generated
 	 */
-	EnvironmentVariable createEnvironmentVariable();
+	VariableContext createVariableContext();
 
 	/**
-	 * Returns a new object of class '<em>Secret Variable</em>'.
+	 * Returns a new object of class '<em>Variable Dereference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Secret Variable</em>'.
+	 * @return a new object of class '<em>Variable Dereference</em>'.
 	 * @generated
 	 */
-	SecretVariable createSecretVariable();
+	VariableDereference createVariableDereference();
 
 	/**
 	 * Returns a new object of class '<em>Built In Function</em>'.

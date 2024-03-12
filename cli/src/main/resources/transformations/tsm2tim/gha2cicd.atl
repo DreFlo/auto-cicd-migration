@@ -71,7 +71,7 @@ rule VariableAssignment2Assigment {
 		variableAssignment : GHA!VariableAssignment
 	to
 		assignment : CICD!Assignment (
-			key <- variableAssignment.key.string2EnvironmentVariable(),
+			key <- variableAssignment.key.string2Variable(),
 			value <- variableAssignment.value
 		)
 }
@@ -207,15 +207,30 @@ rule Not2Negation extends Expression2Expression {
 		cicdExpression : CICD!Negation
 }
 
-rule VariableDereference2Variable extends Expression2Expression {
+rule VariableDereference2VariableDereference extends Expression2Expression {
 	from
-		ghaExpression : GHA!VariableDereference(
-			ghaExpression.variable.oclIsKindOf(GHA!GitHubContext) and
-			ghaExpression.variable.refGetValue('context') = #env
-		)
+		ghaExpression : GHA!VariableDereference
 	to
-		cicdExpression : CICD!EnvironmentVariable(
-			name <- ghaExpression.property
+		cicdExpression : CICD!VariableDereference(
+			variable <- ghaExpression.variable,
+			property <- ghaExpression.property
+		)
+}
+
+rule GitHubContext2VariableContext extends Value2Value {
+	from
+		ghaExpression : GHA!GitHubContext
+	to
+		cicdExpression : CICD!VariableContext(
+			context <-
+				if ghaExpression.context = #env then
+					#ENV
+				else if ghaExpression.context = #inputs then
+					#PARAMS
+				else
+					#""
+				endif
+				endif
 		)
 }
 
@@ -280,13 +295,9 @@ helper context GHA!Concat def : expression2String() : String =
 			joinedString.concat(exprString)
 		);
 
-helper context String def : string2EnvironmentVariable() : CICD!EnvironmentVariable =
-	let environmentVariable : CICD!EnvironmentVariable = CICD!EnvironmentVariable.newInstance() in
+helper context String def : string2Variable() : CICD!EnvironmentVariable =
+	let environmentVariable : CICD!Variable = CICD!Variable.newInstance() in
 		environmentVariable.refSetValue('name', self);
-
-helper context String def : string2SecretVariable() : CICD!SecretVariable =
-	let secretVariable : CICD!SecretVariable = CICD!SecretVariable.newInstance() in
-		secretVariable.refSetValue('name', self);
 
 helper context String def : stringToInt() : Integer = Integer.parseInt(self);
 		

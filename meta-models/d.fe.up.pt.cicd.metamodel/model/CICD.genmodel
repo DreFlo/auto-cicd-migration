@@ -35,6 +35,10 @@
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//COMPARISON_OPS/LT"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//COMPARISON_OPS/LTE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//VARIABLE_CONTEXTS">
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/ENV"/>
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/PARAMS"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="CICD.ecore#//PipelineBlock">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/agent"/>
@@ -177,8 +181,13 @@
     <genClasses ecoreClass="CICD.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Variable/name"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//EnvironmentVariable"/>
-    <genClasses ecoreClass="CICD.ecore#//SecretVariable"/>
+    <genClasses ecoreClass="CICD.ecore#//VariableContext">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableContext/context"/>
+    </genClasses>
+    <genClasses ecoreClass="CICD.ecore#//VariableDereference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//VariableDereference/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableDereference/property"/>
+    </genClasses>
     <genClasses ecoreClass="CICD.ecore#//BuiltInFunction"/>
     <genClasses ecoreClass="CICD.ecore#//BinaryOp">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//BinaryOp/lhs"/>

@@ -291,7 +291,7 @@ public class CICDSwitch<T> extends Switch<T> {
 		}
 		case CICDPackage.ASSIGNMENT: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<EnvironmentVariable, Expression> assignment = (Map.Entry<EnvironmentVariable, Expression>) theEObject;
+			Map.Entry<Variable, Expression> assignment = (Map.Entry<Variable, Expression>) theEObject;
 			T result = caseAssignment(assignment);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -396,28 +396,22 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.ENVIRONMENT_VARIABLE: {
-			EnvironmentVariable environmentVariable = (EnvironmentVariable) theEObject;
-			T result = caseEnvironmentVariable(environmentVariable);
+		case CICDPackage.VARIABLE_CONTEXT: {
+			VariableContext variableContext = (VariableContext) theEObject;
+			T result = caseVariableContext(variableContext);
 			if (result == null)
-				result = caseVariable(environmentVariable);
+				result = caseValue(variableContext);
 			if (result == null)
-				result = caseValue(environmentVariable);
-			if (result == null)
-				result = caseExpression(environmentVariable);
+				result = caseExpression(variableContext);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.SECRET_VARIABLE: {
-			SecretVariable secretVariable = (SecretVariable) theEObject;
-			T result = caseSecretVariable(secretVariable);
+		case CICDPackage.VARIABLE_DEREFERENCE: {
+			VariableDereference variableDereference = (VariableDereference) theEObject;
+			T result = caseVariableDereference(variableDereference);
 			if (result == null)
-				result = caseVariable(secretVariable);
-			if (result == null)
-				result = caseValue(secretVariable);
-			if (result == null)
-				result = caseExpression(secretVariable);
+				result = caseExpression(variableDereference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -947,7 +941,7 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAssignment(Map.Entry<EnvironmentVariable, Expression> object) {
+	public T caseAssignment(Map.Entry<Variable, Expression> object) {
 		return null;
 	}
 
@@ -1087,32 +1081,32 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Environment Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Context</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Environment Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Context</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEnvironmentVariable(EnvironmentVariable object) {
+	public T caseVariableContext(VariableContext object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Secret Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Secret Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSecretVariable(SecretVariable object) {
+	public T caseVariableDereference(VariableDereference object) {
 		return null;
 	}
 

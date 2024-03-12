@@ -2200,78 +2200,87 @@ public interface CICDPackage extends EPackage {
 	int VARIABLE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl <em>Variable Context</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.EnvironmentVariableImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEnvironmentVariable()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableContext()
 	 * @generated
 	 */
-	int ENVIRONMENT_VARIABLE = 36;
+	int VARIABLE_CONTEXT = 36;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Context</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE__NAME = VARIABLE__NAME;
+	int VARIABLE_CONTEXT__CONTEXT = VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Environment Variable</em>' class.
+	 * The number of structural features of the '<em>Variable Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
+	int VARIABLE_CONTEXT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Environment Variable</em>' class.
+	 * The number of operations of the '<em>Variable Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENVIRONMENT_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
+	int VARIABLE_CONTEXT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.SecretVariableImpl <em>Secret Variable</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.SecretVariableImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSecretVariable()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.VariableDereferenceImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableDereference()
 	 * @generated
 	 */
-	int SECRET_VARIABLE = 37;
+	int VARIABLE_DEREFERENCE = 37;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SECRET_VARIABLE__NAME = VARIABLE__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Secret Variable</em>' class.
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECRET_VARIABLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
+	int VARIABLE_DEREFERENCE__VARIABLE = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Secret Variable</em>' class.
+	 * The feature id for the '<em><b>Property</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SECRET_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
+	int VARIABLE_DEREFERENCE__PROPERTY = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Variable Dereference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Variable Dereference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.
@@ -2810,6 +2819,16 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	int COMPARISON_OPS = 53;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
+	 * @generated
+	 */
+	int VARIABLE_CONTEXTS = 54;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -3838,7 +3857,7 @@ public interface CICDPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Assignment</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyType="d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable" keyContainment="true" keyRequired="true"
+	 * @model keyType="d.fe.up.pt.cicd.metamodel.CICD.Variable" keyContainment="true" keyRequired="true"
 	 *        valueType="d.fe.up.pt.cicd.metamodel.CICD.Expression" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
@@ -4023,24 +4042,57 @@ public interface CICDPackage extends EPackage {
 	EAttribute getVariable_Name();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable <em>Environment Variable</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext <em>Variable Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Environment Variable</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable
+	 * @return the meta object for class '<em>Variable Context</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableContext
 	 * @generated
 	 */
-	EClass getEnvironmentVariable();
+	EClass getVariableContext();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable <em>Secret Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext#getContext <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Secret Variable</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SecretVariable
+	 * @return the meta object for the attribute '<em>Context</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableContext#getContext()
+	 * @see #getVariableContext()
 	 * @generated
 	 */
-	EClass getSecretVariable();
+	EAttribute getVariableContext_Context();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference <em>Variable Dereference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Dereference</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableDereference
+	 * @generated
+	 */
+	EClass getVariableDereference();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableDereference#getVariable()
+	 * @see #getVariableDereference()
+	 * @generated
+	 */
+	EReference getVariableDereference_Variable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Property</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableDereference#getProperty()
+	 * @see #getVariableDereference()
+	 * @generated
+	 */
+	EAttribute getVariableDereference_Property();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction <em>Built In Function</em>}'.
@@ -4256,6 +4308,16 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCOMPARISON_OPS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>VARIABLE CONTEXTS</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS
+	 * @generated
+	 */
+	EEnum getVARIABLE_CONTEXTS();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -5257,24 +5319,48 @@ public interface CICDPackage extends EPackage {
 		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.EnvironmentVariableImpl <em>Environment Variable</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl <em>Variable Context</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.EnvironmentVariableImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEnvironmentVariable()
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableContext()
 		 * @generated
 		 */
-		EClass ENVIRONMENT_VARIABLE = eINSTANCE.getEnvironmentVariable();
+		EClass VARIABLE_CONTEXT = eINSTANCE.getVariableContext();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.SecretVariableImpl <em>Secret Variable</em>}' class.
+		 * The meta object literal for the '<em><b>Context</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.SecretVariableImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSecretVariable()
 		 * @generated
 		 */
-		EClass SECRET_VARIABLE = eINSTANCE.getSecretVariable();
+		EAttribute VARIABLE_CONTEXT__CONTEXT = eINSTANCE.getVariableContext_Context();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.VariableDereferenceImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableDereference()
+		 * @generated
+		 */
+		EClass VARIABLE_DEREFERENCE = eINSTANCE.getVariableDereference();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE_DEREFERENCE__VARIABLE = eINSTANCE.getVariableDereference_Variable();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_DEREFERENCE__PROPERTY = eINSTANCE.getVariableDereference_Property();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.
@@ -5475,6 +5561,16 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COMPARISON_OPS = eINSTANCE.getCOMPARISON_OPS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
+		 * @generated
+		 */
+		EEnum VARIABLE_CONTEXTS = eINSTANCE.getVARIABLE_CONTEXTS();
 
 	}
 

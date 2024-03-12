@@ -161,6 +161,12 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
 				JenkinsFactory.eINSTANCE.createVariable()));
 
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
+				JenkinsFactory.eINSTANCE.createJenkinsContext()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
+				JenkinsFactory.eINSTANCE.createVariableDereference()));
+
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS, JenkinsFactory.eINSTANCE.createConcat()));
 
@@ -196,6 +202,12 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
 				JenkinsFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
+				JenkinsFactory.eINSTANCE.createJenkinsContext()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
+				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS, JenkinsFactory.eINSTANCE.createConcat()));

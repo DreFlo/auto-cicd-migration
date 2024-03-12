@@ -178,16 +178,50 @@ rule Or2Or extends LogicalOp2LogicalOp {
 		jenkinsExpression : Jenkins!Or
 }
 
-rule EnvironmentVariable2Variable extends Expression2Expression {
+rule VariableDereference2VariableDereference extends Expression2Expression {
 	from
-		cicdExpression : CICD!EnvironmentVariable
+		cicdExpression : CICD!VariableDereference
+	to
+		jenkinsExpression : Jenkins!VariableDereference(
+			variable <- cicdExpression.variable,
+			property <- cicdExpression.property
+		)
+}
+
+abstract rule Value2Value extends Expression2Expression {
+	from
+		cicdExpression : CICD!Value
+	to
+		jenkinsExpression : Jenkins!Value
+}
+
+rule Variable2Variable extends Value2Value {
+	from
+		cicdExpression : CICD!Variable
 	to
 		jenkinsExpression : Jenkins!Variable(
 			name <- cicdExpression.name
 		)
 }
 
-abstract rule Literal2Literal extends Expression2Expression {
+rule VariableContext2JenkinsContext extends Value2Value {
+	from
+		cicdExpression : CICD!VariableContext
+	to
+		jenkinsExpression : Jenkins!JenkinsContext(
+			name <- 
+				if cicdExpression.context = #ENV then
+					#env
+				else if cicdExpression.context = #PARAMS then
+					#params
+				else
+					#""
+				endif
+				endif
+		)
+}
+
+abstract rule Literal2Literal extends Value2Value {
 	from
 		cicdExpression : CICD!Literal
 	to
@@ -329,7 +363,7 @@ helper context CICD!Concat def : expression2String() : String =
 			joinedString.concat(exprString)
 		);
 
-helper context CICD!EnvironmentVariable def : expression2String() : String =
+helper context CICD!Variable def : expression2String() : String =
 	'$'.concat(self.name);
 
 helper def : groupJobs(jobStreams : Sequence(CICD!Job), previous : Set(CICD!Job)) : Sequence(Sequence(CICD!Job)) =

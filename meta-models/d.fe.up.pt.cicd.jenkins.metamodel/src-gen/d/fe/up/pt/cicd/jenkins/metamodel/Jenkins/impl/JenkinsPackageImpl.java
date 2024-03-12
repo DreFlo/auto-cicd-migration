@@ -20,11 +20,15 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LogicalOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MultipleNestedWhen;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage;
@@ -47,7 +51,9 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf;
@@ -122,6 +128,27 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	private EClass sequentialNestedStageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixStageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixAxisEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixCombinationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -233,6 +260,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass valueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass literalEClass = null;
 
 	/**
@@ -269,6 +303,20 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	private EClass variableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jenkinsContextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableDereferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -544,6 +592,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	private EEnum wheN_EVALUATION_TIMESEEnum = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum jenkinS_CONTEXTSEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -785,6 +840,106 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EClass getSequentialNestedStage() {
 		return sequentialNestedStageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixStage() {
+		return matrixStageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixStage_Axes() {
+		return (EReference) matrixStageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixStage_Includes() {
+		return (EReference) matrixStageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixStage_Excludes() {
+		return (EReference) matrixStageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMatrixStage_FailFast() {
+		return (EAttribute) matrixStageEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixAxis() {
+		return matrixAxisEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMatrixAxis_Name() {
+		return (EAttribute) matrixAxisEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixAxis_Cells() {
+		return (EReference) matrixAxisEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixCombination() {
+		return matrixCombinationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixCombination_Entries() {
+		return (EReference) matrixCombinationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1093,6 +1248,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getValue() {
+		return valueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getLiteral() {
 		return literalEClass;
 	}
@@ -1195,6 +1360,56 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EAttribute getVariable_Name() {
 		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getJenkinsContext() {
+		return jenkinsContextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getJenkinsContext_Name() {
+		return (EAttribute) jenkinsContextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariableDereference() {
+		return variableDereferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getVariableDereference_Variable() {
+		return (EReference) variableDereferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariableDereference_Property() {
+		return (EAttribute) variableDereferenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1853,6 +2068,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EEnum getJENKINS_CONTEXTS() {
+		return jenkinS_CONTEXTSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public JenkinsFactory getJenkinsFactory() {
 		return (JenkinsFactory) getEFactoryInstance();
 	}
@@ -1901,6 +2126,19 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		sequentialNestedStageEClass = createEClass(SEQUENTIAL_NESTED_STAGE);
 
+		matrixStageEClass = createEClass(MATRIX_STAGE);
+		createEReference(matrixStageEClass, MATRIX_STAGE__AXES);
+		createEReference(matrixStageEClass, MATRIX_STAGE__INCLUDES);
+		createEReference(matrixStageEClass, MATRIX_STAGE__EXCLUDES);
+		createEAttribute(matrixStageEClass, MATRIX_STAGE__FAIL_FAST);
+
+		matrixAxisEClass = createEClass(MATRIX_AXIS);
+		createEAttribute(matrixAxisEClass, MATRIX_AXIS__NAME);
+		createEReference(matrixAxisEClass, MATRIX_AXIS__CELLS);
+
+		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
+		createEReference(matrixCombinationEClass, MATRIX_COMBINATION__ENTRIES);
+
 		stepStageEClass = createEClass(STEP_STAGE);
 		createEReference(stepStageEClass, STEP_STAGE__STEPS);
 
@@ -1946,6 +2184,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		expressionEClass = createEClass(EXPRESSION);
 
+		valueEClass = createEClass(VALUE);
+
 		literalEClass = createEClass(LITERAL);
 
 		stringLiteralEClass = createEClass(STRING_LITERAL);
@@ -1962,6 +2202,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
+
+		jenkinsContextEClass = createEClass(JENKINS_CONTEXT);
+		createEAttribute(jenkinsContextEClass, JENKINS_CONTEXT__NAME);
+
+		variableDereferenceEClass = createEClass(VARIABLE_DEREFERENCE);
+		createEReference(variableDereferenceEClass, VARIABLE_DEREFERENCE__VARIABLE);
+		createEAttribute(variableDereferenceEClass, VARIABLE_DEREFERENCE__PROPERTY);
 
 		assignmentEClass = createEClass(ASSIGNMENT);
 		createEReference(assignmentEClass, ASSIGNMENT__KEY);
@@ -2062,6 +2309,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		comparatorsEEnum = createEEnum(COMPARATORS);
 		changE_REQUEST_MATCHEREEnum = createEEnum(CHANGE_REQUEST_MATCHER);
 		wheN_EVALUATION_TIMESEEnum = createEEnum(WHEN_EVALUATION_TIMES);
+		jenkinS_CONTEXTSEEnum = createEEnum(JENKINS_CONTEXTS);
 	}
 
 	/**
@@ -2097,6 +2345,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		nestedStageEClass.getESuperTypes().add(this.getAbstractStage());
 		parallelNestedStageEClass.getESuperTypes().add(this.getNestedStage());
 		sequentialNestedStageEClass.getESuperTypes().add(this.getNestedStage());
+		matrixStageEClass.getESuperTypes().add(this.getSequentialNestedStage());
 		stepStageEClass.getESuperTypes().add(this.getAbstractStage());
 		abstractStepEClass.getESuperTypes().add(this.getAbstractPipelineExecutionBlock());
 		stageChildStepEClass.getESuperTypes().add(this.getAbstractStep());
@@ -2110,12 +2359,15 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		labelAgentEClass.getESuperTypes().add(this.getAbstractAgent());
 		nodeAgentEClass.getESuperTypes().add(this.getLabelAgent());
 		dockerAgentEClass.getESuperTypes().add(this.getLabelAgent());
-		literalEClass.getESuperTypes().add(this.getExpression());
+		valueEClass.getESuperTypes().add(this.getExpression());
+		literalEClass.getESuperTypes().add(this.getValue());
 		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
-		variableEClass.getESuperTypes().add(this.getExpression());
+		variableEClass.getESuperTypes().add(this.getValue());
+		jenkinsContextEClass.getESuperTypes().add(this.getValue());
+		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
 		concatEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		unaryOpEClass.getESuperTypes().add(this.getExpression());
@@ -2199,6 +2451,35 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(sequentialNestedStageEClass, SequentialNestedStage.class, "SequentialNestedStage", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(matrixStageEClass, MatrixStage.class, "MatrixStage", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatrixStage_Axes(), this.getMatrixAxis(), null, "axes", null, 1, -1, MatrixStage.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixStage_Includes(), this.getMatrixCombination(), null, "includes", null, 0, -1,
+				MatrixStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixStage_Excludes(), this.getMatrixCombination(), null, "excludes", null, 0, -1,
+				MatrixStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMatrixStage_FailFast(), ecorePackage.getEBooleanObject(), "failFast", null, 0, 1,
+				MatrixStage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixAxisEClass, MatrixAxis.class, "MatrixAxis", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMatrixAxis_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixAxis_Cells(), this.getExpression(), null, "cells", null, 1, -1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixCombinationEClass, MatrixCombination.class, "MatrixCombination", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatrixCombination_Entries(), this.getAssignment(), null, "entries", null, 0, -1,
+				MatrixCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepStageEClass, StepStage.class, "StepStage", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2286,6 +2567,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2314,6 +2597,20 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(jenkinsContextEClass, JenkinsContext.class, "JenkinsContext", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getJenkinsContext_Name(), this.getJENKINS_CONTEXTS(), "name", null, 1, 1, JenkinsContext.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableDereferenceEClass, VariableDereference.class, "VariableDereference", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariableDereference_Variable(), this.getExpression(), null, "variable", null, 1, 1,
+				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableDereference_Property(), ecorePackage.getEString(), "property", null, 1, 1,
+				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
@@ -2529,6 +2826,11 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_INPUT);
 		addEEnumLiteral(wheN_EVALUATION_TIMESEEnum,
 				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_OPTIONS);
+
+		initEEnum(jenkinS_CONTEXTSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS.class,
+				"JENKINS_CONTEXTS");
+		addEEnumLiteral(jenkinS_CONTEXTSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS.ENV);
+		addEEnumLiteral(jenkinS_CONTEXTSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS.PARAMS);
 
 		// Create resource
 		createResource(eNS_URI);

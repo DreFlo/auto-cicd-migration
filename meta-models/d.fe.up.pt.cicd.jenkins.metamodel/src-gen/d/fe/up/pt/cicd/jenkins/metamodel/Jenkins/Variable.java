@@ -18,7 +18,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  * @model
  * @generated
  */
-public interface Variable extends Expression {
+public interface Variable extends Value {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

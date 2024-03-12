@@ -514,6 +514,216 @@ public interface JenkinsPackage extends EPackage {
 	int SEQUENTIAL_NESTED_STAGE_OPERATION_COUNT = NESTED_STAGE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixStageImpl <em>Matrix Stage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixStageImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMatrixStage()
+	 * @generated
+	 */
+	int MATRIX_STAGE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__NAME = SEQUENTIAL_NESTED_STAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__AGENT = SEQUENTIAL_NESTED_STAGE__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__CONDITIONS = SEQUENTIAL_NESTED_STAGE__CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__ENVIRONMENT_VARIABLES = SEQUENTIAL_NESTED_STAGE__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Whens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__WHENS = SEQUENTIAL_NESTED_STAGE__WHENS;
+
+	/**
+	 * The feature id for the '<em><b>When Evaluation Time</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__WHEN_EVALUATION_TIME = SEQUENTIAL_NESTED_STAGE__WHEN_EVALUATION_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Stages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__STAGES = SEQUENTIAL_NESTED_STAGE__STAGES;
+
+	/**
+	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__AXES = SEQUENTIAL_NESTED_STAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Includes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__INCLUDES = SEQUENTIAL_NESTED_STAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Excludes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__EXCLUDES = SEQUENTIAL_NESTED_STAGE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Fail Fast</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE__FAIL_FAST = SEQUENTIAL_NESTED_STAGE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Matrix Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE_FEATURE_COUNT = SEQUENTIAL_NESTED_STAGE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Matrix Stage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_STAGE_OPERATION_COUNT = SEQUENTIAL_NESTED_STAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixAxisImpl <em>Matrix Axis</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixAxisImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMatrixAxis()
+	 * @generated
+	 */
+	int MATRIX_AXIS = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_AXIS__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_AXIS__CELLS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Matrix Axis</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_AXIS_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Matrix Axis</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_AXIS_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixCombinationImpl <em>Matrix Combination</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixCombinationImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMatrixCombination()
+	 * @generated
+	 */
+	int MATRIX_COMBINATION = 8;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_COMBINATION__ENTRIES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Matrix Combination</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_COMBINATION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Matrix Combination</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_COMBINATION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl <em>Step Stage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -521,7 +731,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepStage()
 	 * @generated
 	 */
-	int STEP_STAGE = 6;
+	int STEP_STAGE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -612,7 +822,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractStep()
 	 * @generated
 	 */
-	int ABSTRACT_STEP = 7;
+	int ABSTRACT_STEP = 10;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Step</em>' class.
@@ -640,7 +850,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStageChildStep()
 	 * @generated
 	 */
-	int STAGE_CHILD_STEP = 8;
+	int STAGE_CHILD_STEP = 11;
 
 	/**
 	 * The number of structural features of the '<em>Stage Child Step</em>' class.
@@ -668,7 +878,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConditionalChildStep()
 	 * @generated
 	 */
-	int CONDITIONAL_CHILD_STEP = 9;
+	int CONDITIONAL_CHILD_STEP = 12;
 
 	/**
 	 * The number of structural features of the '<em>Conditional Child Step</em>' class.
@@ -696,7 +906,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getScriptedBlock()
 	 * @generated
 	 */
-	int SCRIPTED_BLOCK = 10;
+	int SCRIPTED_BLOCK = 13;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' reference list.
@@ -733,7 +943,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 11;
+	int STEP = 14;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' attribute.
@@ -779,7 +989,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConditionalStep()
 	 * @generated
 	 */
-	int CONDITIONAL_STEP = 12;
+	int CONDITIONAL_STEP = 15;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -834,7 +1044,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAbstractAgent()
 	 * @generated
 	 */
-	int ABSTRACT_AGENT = 13;
+	int ABSTRACT_AGENT = 16;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Agent</em>' class.
@@ -862,7 +1072,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNoneAgent()
 	 * @generated
 	 */
-	int NONE_AGENT = 14;
+	int NONE_AGENT = 17;
 
 	/**
 	 * The number of structural features of the '<em>None Agent</em>' class.
@@ -890,7 +1100,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnyAgent()
 	 * @generated
 	 */
-	int ANY_AGENT = 15;
+	int ANY_AGENT = 18;
 
 	/**
 	 * The number of structural features of the '<em>Any Agent</em>' class.
@@ -918,7 +1128,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLabelAgent()
 	 * @generated
 	 */
-	int LABEL_AGENT = 16;
+	int LABEL_AGENT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Labels</b></em>' containment reference.
@@ -955,7 +1165,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNodeAgent()
 	 * @generated
 	 */
-	int NODE_AGENT = 17;
+	int NODE_AGENT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Labels</b></em>' containment reference.
@@ -1001,7 +1211,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDockerAgent()
 	 * @generated
 	 */
-	int DOCKER_AGENT = 18;
+	int DOCKER_AGENT = 21;
 
 	/**
 	 * The feature id for the '<em><b>Labels</b></em>' containment reference.
@@ -1047,7 +1257,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDockerContainer()
 	 * @generated
 	 */
-	int DOCKER_CONTAINER = 19;
+	int DOCKER_CONTAINER = 22;
 
 	/**
 	 * The feature id for the '<em><b>Image</b></em>' attribute.
@@ -1120,7 +1330,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 20;
+	int EXPRESSION = 23;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -1141,6 +1351,34 @@ public interface JenkinsPackage extends EPackage {
 	int EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ValueImpl <em>Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ValueImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getValue()
+	 * @generated
+	 */
+	int VALUE = 24;
+
+	/**
+	 * The number of structural features of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LiteralImpl <em>Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1148,7 +1386,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 21;
+	int LITERAL = 25;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -1157,7 +1395,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+	int LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Literal</em>' class.
@@ -1166,7 +1404,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+	int LITERAL_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringLiteralImpl <em>String Literal</em>}' class.
@@ -1176,7 +1414,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 22;
+	int STRING_LITERAL = 26;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1213,7 +1451,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 23;
+	int INTEGER_LITERAL = 27;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1250,7 +1488,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 24;
+	int DOUBLE_LITERAL = 28;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1287,7 +1525,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 25;
+	int BOOLEAN_LITERAL = 29;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1324,7 +1562,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 26;
+	int VARIABLE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1333,7 +1571,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__NAME = EXPRESSION_FEATURE_COUNT + 0;
+	int VARIABLE__NAME = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
@@ -1342,7 +1580,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+	int VARIABLE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Variable</em>' class.
@@ -1351,7 +1589,90 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+	int VARIABLE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl <em>Context</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJenkinsContext()
+	 * @generated
+	 */
+	int JENKINS_CONTEXT = 31;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JENKINS_CONTEXT__NAME = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JENKINS_CONTEXT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JENKINS_CONTEXT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableDereference()
+	 * @generated
+	 */
+	int VARIABLE_DEREFERENCE = 32;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE__VARIABLE = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE__PROPERTY = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Variable Dereference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Variable Dereference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -1361,7 +1682,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAssignment()
 	 * @generated
 	 */
-	int ASSIGNMENT = 27;
+	int ASSIGNMENT = 33;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -1407,7 +1728,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 28;
+	int CONCAT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -1444,7 +1765,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 29;
+	int BINARY_OP = 35;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1490,7 +1811,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 30;
+	int UNARY_OP = 36;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1527,7 +1848,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 31;
+	int NEGATION = 37;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1564,7 +1885,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 32;
+	int EQUALITY_OP = 38;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1619,7 +1940,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 33;
+	int COMPARISON_OP = 39;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1674,7 +1995,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 34;
+	int LOGICAL_OP = 40;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1720,7 +2041,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 35;
+	int AND = 41;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1766,7 +2087,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 36;
+	int OR = 42;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1812,7 +2133,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 37;
+	int TRIGGER = 43;
 
 	/**
 	 * The number of structural features of the '<em>Trigger</em>' class.
@@ -1840,7 +2161,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getScheduledTrigger()
 	 * @generated
 	 */
-	int SCHEDULED_TRIGGER = 38;
+	int SCHEDULED_TRIGGER = 44;
 
 	/**
 	 * The feature id for the '<em><b>Cron</b></em>' attribute.
@@ -1877,7 +2198,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getPollingTrigger()
 	 * @generated
 	 */
-	int POLLING_TRIGGER = 39;
+	int POLLING_TRIGGER = 45;
 
 	/**
 	 * The feature id for the '<em><b>Cron</b></em>' attribute.
@@ -1914,7 +2235,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUpstreamTrigger()
 	 * @generated
 	 */
-	int UPSTREAM_TRIGGER = 40;
+	int UPSTREAM_TRIGGER = 46;
 
 	/**
 	 * The feature id for the '<em><b>Jobs</b></em>' attribute list.
@@ -1951,7 +2272,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTool()
 	 * @generated
 	 */
-	int TOOL = 41;
+	int TOOL = 47;
 
 	/**
 	 * The feature id for the '<em><b>Tool</b></em>' attribute.
@@ -1997,7 +2318,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhen()
 	 * @generated
 	 */
-	int WHEN = 42;
+	int WHEN = 48;
 
 	/**
 	 * The number of structural features of the '<em>When</em>' class.
@@ -2025,7 +2346,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenComparison()
 	 * @generated
 	 */
-	int WHEN_COMPARISON = 43;
+	int WHEN_COMPARISON = 49;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2080,7 +2401,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBranch()
 	 * @generated
 	 */
-	int WHEN_BRANCH = 44;
+	int WHEN_BRANCH = 50;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2135,7 +2456,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeset()
 	 * @generated
 	 */
-	int WHEN_CHANGESET = 45;
+	int WHEN_CHANGESET = 51;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2190,7 +2511,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTag()
 	 * @generated
 	 */
-	int WHEN_TAG = 46;
+	int WHEN_TAG = 52;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2245,7 +2566,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeRequest()
 	 * @generated
 	 */
-	int WHEN_CHANGE_REQUEST = 47;
+	int WHEN_CHANGE_REQUEST = 53;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2309,7 +2630,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBuildingTag()
 	 * @generated
 	 */
-	int WHEN_BUILDING_TAG = 48;
+	int WHEN_BUILDING_TAG = 54;
 
 	/**
 	 * The number of structural features of the '<em>When Building Tag</em>' class.
@@ -2337,7 +2658,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangelog()
 	 * @generated
 	 */
-	int WHEN_CHANGELOG = 49;
+	int WHEN_CHANGELOG = 55;
 
 	/**
 	 * The number of structural features of the '<em>When Changelog</em>' class.
@@ -2365,7 +2686,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEquals()
 	 * @generated
 	 */
-	int WHEN_EQUALS = 50;
+	int WHEN_EQUALS = 56;
 
 	/**
 	 * The feature id for the '<em><b>Expected</b></em>' reference.
@@ -2411,7 +2732,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEnvironment()
 	 * @generated
 	 */
-	int WHEN_ENVIRONMENT = 51;
+	int WHEN_ENVIRONMENT = 57;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2457,7 +2778,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenExpression()
 	 * @generated
 	 */
-	int WHEN_EXPRESSION = 52;
+	int WHEN_EXPRESSION = 58;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' reference.
@@ -2494,7 +2815,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNestedWhen()
 	 * @generated
 	 */
-	int NESTED_WHEN = 53;
+	int NESTED_WHEN = 59;
 
 	/**
 	 * The number of structural features of the '<em>Nested When</em>' class.
@@ -2522,7 +2843,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSingleNestedWhen()
 	 * @generated
 	 */
-	int SINGLE_NESTED_WHEN = 54;
+	int SINGLE_NESTED_WHEN = 60;
 
 	/**
 	 * The feature id for the '<em><b>Nested When</b></em>' reference.
@@ -2559,7 +2880,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMultipleNestedWhen()
 	 * @generated
 	 */
-	int MULTIPLE_NESTED_WHEN = 55;
+	int MULTIPLE_NESTED_WHEN = 61;
 
 	/**
 	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
@@ -2596,7 +2917,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenNot()
 	 * @generated
 	 */
-	int WHEN_NOT = 56;
+	int WHEN_NOT = 62;
 
 	/**
 	 * The feature id for the '<em><b>Nested When</b></em>' reference.
@@ -2633,7 +2954,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAnyOf()
 	 * @generated
 	 */
-	int WHEN_ANY_OF = 57;
+	int WHEN_ANY_OF = 63;
 
 	/**
 	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
@@ -2670,7 +2991,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAllOf()
 	 * @generated
 	 */
-	int WHEN_ALL_OF = 58;
+	int WHEN_ALL_OF = 64;
 
 	/**
 	 * The feature id for the '<em><b>Nested Whens</b></em>' reference list.
@@ -2707,7 +3028,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTriggeredBy()
 	 * @generated
 	 */
-	int WHEN_TRIGGERED_BY = 59;
+	int WHEN_TRIGGERED_BY = 65;
 
 	/**
 	 * The feature id for the '<em><b>Cause</b></em>' attribute.
@@ -2753,7 +3074,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 60;
+	int EQUALITY_OPS = 66;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -2763,7 +3084,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 61;
+	int COMPARISON_OPS = 67;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS <em>SUPPORTED TOOLS</em>}' enum.
@@ -2773,7 +3094,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSUPPORTED_TOOLS()
 	 * @generated
 	 */
-	int SUPPORTED_TOOLS = 62;
+	int SUPPORTED_TOOLS = 68;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS <em>COMPARATORS</em>}' enum.
@@ -2783,7 +3104,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARATORS()
 	 * @generated
 	 */
-	int COMPARATORS = 63;
+	int COMPARATORS = 69;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER <em>CHANGE REQUEST MATCHER</em>}' enum.
@@ -2793,7 +3114,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCHANGE_REQUEST_MATCHER()
 	 * @generated
 	 */
-	int CHANGE_REQUEST_MATCHER = 64;
+	int CHANGE_REQUEST_MATCHER = 70;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES <em>WHEN EVALUATION TIMES</em>}' enum.
@@ -2803,7 +3124,17 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWHEN_EVALUATION_TIMES()
 	 * @generated
 	 */
-	int WHEN_EVALUATION_TIMES = 65;
+	int WHEN_EVALUATION_TIMES = 71;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJENKINS_CONTEXTS()
+	 * @generated
+	 */
+	int JENKINS_CONTEXTS = 72;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline <em>Pipeline</em>}'.
@@ -2996,6 +3327,113 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSequentialNestedStage();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage <em>Matrix Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matrix Stage</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage
+	 * @generated
+	 */
+	EClass getMatrixStage();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getAxes <em>Axes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Axes</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getAxes()
+	 * @see #getMatrixStage()
+	 * @generated
+	 */
+	EReference getMatrixStage_Axes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getIncludes <em>Includes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Includes</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getIncludes()
+	 * @see #getMatrixStage()
+	 * @generated
+	 */
+	EReference getMatrixStage_Includes();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getExcludes <em>Excludes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Excludes</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getExcludes()
+	 * @see #getMatrixStage()
+	 * @generated
+	 */
+	EReference getMatrixStage_Excludes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getFailFast <em>Fail Fast</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fail Fast</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage#getFailFast()
+	 * @see #getMatrixStage()
+	 * @generated
+	 */
+	EAttribute getMatrixStage_FailFast();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis <em>Matrix Axis</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matrix Axis</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis
+	 * @generated
+	 */
+	EClass getMatrixAxis();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getName()
+	 * @see #getMatrixAxis()
+	 * @generated
+	 */
+	EAttribute getMatrixAxis_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getCells <em>Cells</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Cells</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getCells()
+	 * @see #getMatrixAxis()
+	 * @generated
+	 */
+	EReference getMatrixAxis_Cells();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination <em>Matrix Combination</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matrix Combination</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination
+	 * @generated
+	 */
+	EClass getMatrixCombination();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Entries</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination#getEntries()
+	 * @see #getMatrixCombination()
+	 * @generated
+	 */
+	EReference getMatrixCombination_Entries();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage <em>Step Stage</em>}'.
@@ -3313,6 +3751,16 @@ public interface JenkinsPackage extends EPackage {
 	EClass getExpression();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value
+	 * @generated
+	 */
+	EClass getValue();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3426,6 +3874,59 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVariable_Name();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Context</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext
+	 * @generated
+	 */
+	EClass getJenkinsContext();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext#getName()
+	 * @see #getJenkinsContext()
+	 * @generated
+	 */
+	EAttribute getJenkinsContext_Name();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference <em>Variable Dereference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Dereference</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference
+	 * @generated
+	 */
+	EClass getVariableDereference();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getVariable()
+	 * @see #getVariableDereference()
+	 * @generated
+	 */
+	EReference getVariableDereference_Variable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Property</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getProperty()
+	 * @see #getVariableDereference()
+	 * @generated
+	 */
+	EAttribute getVariableDereference_Property();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Assignment</em>}'.
@@ -4106,6 +4607,16 @@ public interface JenkinsPackage extends EPackage {
 	EEnum getWHEN_EVALUATION_TIMES();
 
 	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>JENKINS CONTEXTS</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS
+	 * @generated
+	 */
+	EEnum getJENKINS_CONTEXTS();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4283,6 +4794,92 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SEQUENTIAL_NESTED_STAGE = eINSTANCE.getSequentialNestedStage();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixStageImpl <em>Matrix Stage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixStageImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMatrixStage()
+		 * @generated
+		 */
+		EClass MATRIX_STAGE = eINSTANCE.getMatrixStage();
+
+		/**
+		 * The meta object literal for the '<em><b>Axes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_STAGE__AXES = eINSTANCE.getMatrixStage_Axes();
+
+		/**
+		 * The meta object literal for the '<em><b>Includes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_STAGE__INCLUDES = eINSTANCE.getMatrixStage_Includes();
+
+		/**
+		 * The meta object literal for the '<em><b>Excludes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_STAGE__EXCLUDES = eINSTANCE.getMatrixStage_Excludes();
+
+		/**
+		 * The meta object literal for the '<em><b>Fail Fast</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MATRIX_STAGE__FAIL_FAST = eINSTANCE.getMatrixStage_FailFast();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixAxisImpl <em>Matrix Axis</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixAxisImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMatrixAxis()
+		 * @generated
+		 */
+		EClass MATRIX_AXIS = eINSTANCE.getMatrixAxis();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MATRIX_AXIS__NAME = eINSTANCE.getMatrixAxis_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_AXIS__CELLS = eINSTANCE.getMatrixAxis_Cells();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixCombinationImpl <em>Matrix Combination</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.MatrixCombinationImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMatrixCombination()
+		 * @generated
+		 */
+		EClass MATRIX_COMBINATION = eINSTANCE.getMatrixCombination();
+
+		/**
+		 * The meta object literal for the '<em><b>Entries</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_COMBINATION__ENTRIES = eINSTANCE.getMatrixCombination_Entries();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepStageImpl <em>Step Stage</em>}' class.
@@ -4555,6 +5152,16 @@ public interface JenkinsPackage extends EPackage {
 		EClass EXPRESSION = eINSTANCE.getExpression();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ValueImpl <em>Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ValueImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getValue()
+		 * @generated
+		 */
+		EClass VALUE = eINSTANCE.getValue();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.LiteralImpl <em>Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4653,6 +5260,50 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl <em>Context</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJenkinsContext()
+		 * @generated
+		 */
+		EClass JENKINS_CONTEXT = eINSTANCE.getJenkinsContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute JENKINS_CONTEXT__NAME = eINSTANCE.getJenkinsContext_Name();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableDereference()
+		 * @generated
+		 */
+		EClass VARIABLE_DEREFERENCE = eINSTANCE.getVariableDereference();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE_DEREFERENCE__VARIABLE = eINSTANCE.getVariableDereference_Variable();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_DEREFERENCE__PROPERTY = eINSTANCE.getVariableDereference_Property();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -5251,6 +5902,16 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum WHEN_EVALUATION_TIMES = eINSTANCE.getWHEN_EVALUATION_TIMES();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJENKINS_CONTEXTS()
+		 * @generated
+		 */
+		EEnum JENKINS_CONTEXTS = eINSTANCE.getJENKINS_CONTEXTS();
 
 	}
 

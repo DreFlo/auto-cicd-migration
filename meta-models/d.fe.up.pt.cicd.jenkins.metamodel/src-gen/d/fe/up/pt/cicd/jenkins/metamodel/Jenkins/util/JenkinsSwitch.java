@@ -128,6 +128,35 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case JenkinsPackage.MATRIX_STAGE: {
+			MatrixStage matrixStage = (MatrixStage) theEObject;
+			T result = caseMatrixStage(matrixStage);
+			if (result == null)
+				result = caseSequentialNestedStage(matrixStage);
+			if (result == null)
+				result = caseNestedStage(matrixStage);
+			if (result == null)
+				result = caseAbstractStage(matrixStage);
+			if (result == null)
+				result = caseAbstractPipelineExecutionBlock(matrixStage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.MATRIX_AXIS: {
+			MatrixAxis matrixAxis = (MatrixAxis) theEObject;
+			T result = caseMatrixAxis(matrixAxis);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.MATRIX_COMBINATION: {
+			MatrixCombination matrixCombination = (MatrixCombination) theEObject;
+			T result = caseMatrixCombination(matrixCombination);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case JenkinsPackage.STEP_STAGE: {
 			StepStage stepStage = (StepStage) theEObject;
 			T result = caseStepStage(stepStage);
@@ -281,9 +310,20 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case JenkinsPackage.VALUE: {
+			Value value = (Value) theEObject;
+			T result = caseValue(value);
+			if (result == null)
+				result = caseExpression(value);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case JenkinsPackage.LITERAL: {
 			Literal literal = (Literal) theEObject;
 			T result = caseLiteral(literal);
+			if (result == null)
+				result = caseValue(literal);
 			if (result == null)
 				result = caseExpression(literal);
 			if (result == null)
@@ -296,6 +336,8 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseLiteral(stringLiteral);
 			if (result == null)
+				result = caseValue(stringLiteral);
+			if (result == null)
 				result = caseExpression(stringLiteral);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -306,6 +348,8 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			T result = caseIntegerLiteral(integerLiteral);
 			if (result == null)
 				result = caseLiteral(integerLiteral);
+			if (result == null)
+				result = caseValue(integerLiteral);
 			if (result == null)
 				result = caseExpression(integerLiteral);
 			if (result == null)
@@ -318,6 +362,8 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseLiteral(doubleLiteral);
 			if (result == null)
+				result = caseValue(doubleLiteral);
+			if (result == null)
 				result = caseExpression(doubleLiteral);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -329,6 +375,8 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseLiteral(booleanLiteral);
 			if (result == null)
+				result = caseValue(booleanLiteral);
+			if (result == null)
 				result = caseExpression(booleanLiteral);
 			if (result == null)
 				result = defaultCase(theEObject);
@@ -338,7 +386,29 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			Variable variable = (Variable) theEObject;
 			T result = caseVariable(variable);
 			if (result == null)
+				result = caseValue(variable);
+			if (result == null)
 				result = caseExpression(variable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.JENKINS_CONTEXT: {
+			JenkinsContext jenkinsContext = (JenkinsContext) theEObject;
+			T result = caseJenkinsContext(jenkinsContext);
+			if (result == null)
+				result = caseValue(jenkinsContext);
+			if (result == null)
+				result = caseExpression(jenkinsContext);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.VARIABLE_DEREFERENCE: {
+			VariableDereference variableDereference = (VariableDereference) theEObject;
+			T result = caseVariableDereference(variableDereference);
+			if (result == null)
+				result = caseExpression(variableDereference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -769,6 +839,51 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matrix Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matrix Stage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatrixStage(MatrixStage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matrix Axis</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matrix Axis</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatrixAxis(MatrixAxis object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matrix Combination</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matrix Combination</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatrixCombination(MatrixCombination object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Step Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -994,6 +1109,21 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValue(Value object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1080,6 +1210,36 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariable(Variable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Context</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJenkinsContext(JenkinsContext object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableDereference(VariableDereference object) {
 		return null;
 	}
 

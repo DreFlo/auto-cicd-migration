@@ -22,7 +22,8 @@ public abstract class AbstractParser<T extends EObject> {
 		
 		injector.injectMembers(this);
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	public T parse(String pipeline) throws SyntaxException {
 		var result = parser.parse(new StringReader(pipeline));
 

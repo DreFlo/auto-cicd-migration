@@ -172,10 +172,10 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
-				CICDFactory.eINSTANCE.createEnvironmentVariable()));
+				CICDFactory.eINSTANCE.createVariableContext()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
-				CICDFactory.eINSTANCE.createSecretVariable()));
+				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
@@ -228,11 +228,11 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createVariable()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS,
-				CICDFactory.eINSTANCE.createEnvironmentVariable()));
-
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createSecretVariable()));
+				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createVariableContext()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS,
+				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createBuiltInFunction()));
@@ -285,11 +285,11 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createVariable()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS,
-				CICDFactory.eINSTANCE.createEnvironmentVariable()));
-
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createSecretVariable()));
+				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createVariableContext()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS,
+				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createBuiltInFunction()));

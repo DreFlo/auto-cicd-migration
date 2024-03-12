@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface MatrixCombination extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Combination Entries</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Variable},
 	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Combination Entries</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getMatrixCombination_CombinationEntries()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Variable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EMap<EnvironmentVariable, Expression> getCombinationEntries();
+	EMap<Variable, Expression> getCombinationEntries();
 
 } // MatrixCombination

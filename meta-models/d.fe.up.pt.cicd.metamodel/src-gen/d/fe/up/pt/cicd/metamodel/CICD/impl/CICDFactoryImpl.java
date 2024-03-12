@@ -118,10 +118,10 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createBooleanLiteral();
 		case CICDPackage.VARIABLE:
 			return createVariable();
-		case CICDPackage.ENVIRONMENT_VARIABLE:
-			return createEnvironmentVariable();
-		case CICDPackage.SECRET_VARIABLE:
-			return createSecretVariable();
+		case CICDPackage.VARIABLE_CONTEXT:
+			return createVariableContext();
+		case CICDPackage.VARIABLE_DEREFERENCE:
+			return createVariableDereference();
 		case CICDPackage.BUILT_IN_FUNCTION:
 			return createBuiltInFunction();
 		case CICDPackage.EQUALITY_OP:
@@ -163,6 +163,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createEQUALITY_OPSFromString(eDataType, initialValue);
 		case CICDPackage.COMPARISON_OPS:
 			return createCOMPARISON_OPSFromString(eDataType, initialValue);
+		case CICDPackage.VARIABLE_CONTEXTS:
+			return createVARIABLE_CONTEXTSFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -186,6 +188,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return convertEQUALITY_OPSToString(eDataType, instanceValue);
 		case CICDPackage.COMPARISON_OPS:
 			return convertCOMPARISON_OPSToString(eDataType, instanceValue);
+		case CICDPackage.VARIABLE_CONTEXTS:
+			return convertVARIABLE_CONTEXTSToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -426,7 +430,7 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<EnvironmentVariable, Expression> createAssignment() {
+	public Map.Entry<Variable, Expression> createAssignment() {
 		AssignmentImpl assignment = new AssignmentImpl();
 		return assignment;
 	}
@@ -525,9 +529,9 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public EnvironmentVariable createEnvironmentVariable() {
-		EnvironmentVariableImpl environmentVariable = new EnvironmentVariableImpl();
-		return environmentVariable;
+	public VariableContext createVariableContext() {
+		VariableContextImpl variableContext = new VariableContextImpl();
+		return variableContext;
 	}
 
 	/**
@@ -536,9 +540,9 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public SecretVariable createSecretVariable() {
-		SecretVariableImpl secretVariable = new SecretVariableImpl();
-		return secretVariable;
+	public VariableDereference createVariableDereference() {
+		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
+		return variableDereference;
 	}
 
 	/**
@@ -747,6 +751,28 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	public String convertCOMPARISON_OPSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VARIABLE_CONTEXTS createVARIABLE_CONTEXTSFromString(EDataType eDataType, String initialValue) {
+		VARIABLE_CONTEXTS result = VARIABLE_CONTEXTS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVARIABLE_CONTEXTSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -71,16 +71,16 @@ public interface NonConditionalStep extends Step {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Variable},
 	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Variable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EMap<EnvironmentVariable, Expression> getEnvironmentVariables();
+	EMap<Variable, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Timeout Minutes</b></em>' attribute.

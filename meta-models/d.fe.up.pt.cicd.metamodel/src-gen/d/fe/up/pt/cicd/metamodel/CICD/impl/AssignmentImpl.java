@@ -3,8 +3,8 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
+import d.fe.up.pt.cicd.metamodel.CICD.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -33,8 +33,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class AssignmentImpl extends MinimalEObjectImpl.Container
-		implements BasicEMap.Entry<EnvironmentVariable, Expression> {
+public class AssignmentImpl extends MinimalEObjectImpl.Container implements BasicEMap.Entry<Variable, Expression> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -43,7 +42,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 * @ordered
 	 */
-	protected EnvironmentVariable key;
+	protected Variable key;
 
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
@@ -79,7 +78,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EnvironmentVariable getTypedKey() {
+	public Variable getTypedKey() {
 		return key;
 	}
 
@@ -88,8 +87,8 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedKey(EnvironmentVariable newKey, NotificationChain msgs) {
-		EnvironmentVariable oldKey = key;
+	public NotificationChain basicSetTypedKey(Variable newKey, NotificationChain msgs) {
+		Variable oldKey = key;
 		key = newKey;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.ASSIGNMENT__KEY,
@@ -107,7 +106,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedKey(EnvironmentVariable newKey) {
+	public void setTypedKey(Variable newKey) {
 		if (newKey != key) {
 			NotificationChain msgs = null;
 			if (key != null)
@@ -213,7 +212,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case CICDPackage.ASSIGNMENT__KEY:
-			setTypedKey((EnvironmentVariable) newValue);
+			setTypedKey((Variable) newValue);
 			return;
 		case CICDPackage.ASSIGNMENT__VALUE:
 			setTypedValue((Expression) newValue);
@@ -231,7 +230,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case CICDPackage.ASSIGNMENT__KEY:
-			setTypedKey((EnvironmentVariable) null);
+			setTypedKey((Variable) null);
 			return;
 		case CICDPackage.ASSIGNMENT__VALUE:
 			setTypedValue((Expression) null);
@@ -293,7 +292,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
-	public EnvironmentVariable getKey() {
+	public Variable getKey() {
 		return getTypedKey();
 	}
 
@@ -303,7 +302,7 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
-	public void setKey(EnvironmentVariable key) {
+	public void setKey(Variable key) {
 		setTypedKey(key);
 	}
 
@@ -335,9 +334,9 @@ public class AssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<EnvironmentVariable, Expression> getEMap() {
+	public EMap<Variable, Expression> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<EnvironmentVariable, Expression>) container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<Variable, Expression>) container.eGet(eContainmentFeature());
 	}
 
 } //AssignmentImpl

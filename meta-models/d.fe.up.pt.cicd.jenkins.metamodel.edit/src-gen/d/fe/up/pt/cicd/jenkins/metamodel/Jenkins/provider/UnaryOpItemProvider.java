@@ -160,6 +160,12 @@ public class UnaryOpItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createJenkinsContext()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
 				JenkinsFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,

@@ -5,13 +5,13 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.Agent;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
-import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 import d.fe.up.pt.cicd.metamodel.CICD.Output;
 import d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
 import d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE;
+import d.fe.up.pt.cicd.metamodel.CICD.Variable;
 
 import java.util.Collection;
 
@@ -113,7 +113,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<EnvironmentVariable, Expression> environmentVariables;
+	protected EMap<Variable, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getPermissions() <em>Permissions</em>}' map.
@@ -321,9 +321,9 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public EMap<EnvironmentVariable, Expression> getEnvironmentVariables() {
+	public EMap<Variable, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+			environmentVariables = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;

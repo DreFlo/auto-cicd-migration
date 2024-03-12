@@ -85,6 +85,10 @@ script {
 [template public generateExpression(expression : Expression) post (trim())]
 [if (expression.oclIsKindOf(Variable))]
 [generateVariable(expression.oclAsType(Variable))/]
+[elseif (expression.oclIsKindOf(JenkinsContext))]
+[generateJekinsContext(expression.oclAsType(JenkinsContext))/]
+[elseif (expression.oclIsKindOf(VariableDereference))]
+[generateVariableDereference(expression.oclAsType(VariableDereference))/]
 [elseif (expression.oclIsKindOf(Literal))]
 [generateLiteral(expression.oclAsType(Literal))/]
 [elseif (expression.oclIsKindOf(BinaryOp))]
@@ -95,7 +99,15 @@ script {
 [/template]
 
 [template public generateVariable(variable : Variable)]
-env.[variable.name/]
+[variable.name/]
+[/template]
+
+[template public generateJekinsContext(jenkinsContext : JenkinsContext)]
+[jenkinsContext.name/]
+[/template]
+
+[template public generateVariableDereference(variableDereference : VariableDereference)]
+[generateExpression(variableDereference.variable)/].[variableDereference.property/]
 [/template]
 
 [template public generateLiteral(literal : Literal)]

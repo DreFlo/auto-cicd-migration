@@ -3,9 +3,9 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.MatrixCombination;
+import d.fe.up.pt.cicd.metamodel.CICD.Variable;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -42,7 +42,7 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<EnvironmentVariable, Expression> combinationEntries;
+	protected EMap<Variable, Expression> combinationEntries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,9 +69,9 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EMap<EnvironmentVariable, Expression> getCombinationEntries() {
+	public EMap<Variable, Expression> getCombinationEntries() {
 		if (combinationEntries == null) {
-			combinationEntries = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+			combinationEntries = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, CICDPackage.MATRIX_COMBINATION__COMBINATION_ENTRIES);
 		}
 		return combinationEntries;

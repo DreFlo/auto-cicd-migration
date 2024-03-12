@@ -160,6 +160,12 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONCAT__EXPRESSIONS,
+				JenkinsFactory.eINSTANCE.createJenkinsContext()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONCAT__EXPRESSIONS,
+				JenkinsFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONCAT__EXPRESSIONS,
 				JenkinsFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONCAT__EXPRESSIONS,

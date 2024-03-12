@@ -67,6 +67,12 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createParallelNestedStage();
 		case JenkinsPackage.SEQUENTIAL_NESTED_STAGE:
 			return createSequentialNestedStage();
+		case JenkinsPackage.MATRIX_STAGE:
+			return createMatrixStage();
+		case JenkinsPackage.MATRIX_AXIS:
+			return createMatrixAxis();
+		case JenkinsPackage.MATRIX_COMBINATION:
+			return createMatrixCombination();
 		case JenkinsPackage.STEP_STAGE:
 			return createStepStage();
 		case JenkinsPackage.SCRIPTED_BLOCK:
@@ -99,6 +105,10 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createBooleanLiteral();
 		case JenkinsPackage.VARIABLE:
 			return createVariable();
+		case JenkinsPackage.JENKINS_CONTEXT:
+			return createJenkinsContext();
+		case JenkinsPackage.VARIABLE_DEREFERENCE:
+			return createVariableDereference();
 		case JenkinsPackage.ASSIGNMENT:
 			return (EObject) createAssignment();
 		case JenkinsPackage.CONCAT:
@@ -176,6 +186,8 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createCHANGE_REQUEST_MATCHERFromString(eDataType, initialValue);
 		case JenkinsPackage.WHEN_EVALUATION_TIMES:
 			return createWHEN_EVALUATION_TIMESFromString(eDataType, initialValue);
+		case JenkinsPackage.JENKINS_CONTEXTS:
+			return createJENKINS_CONTEXTSFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -201,6 +213,8 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return convertCHANGE_REQUEST_MATCHERToString(eDataType, instanceValue);
 		case JenkinsPackage.WHEN_EVALUATION_TIMES:
 			return convertWHEN_EVALUATION_TIMESToString(eDataType, instanceValue);
+		case JenkinsPackage.JENKINS_CONTEXTS:
+			return convertJENKINS_CONTEXTSToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -248,6 +262,39 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public SequentialNestedStage createSequentialNestedStage() {
 		SequentialNestedStageImpl sequentialNestedStage = new SequentialNestedStageImpl();
 		return sequentialNestedStage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MatrixStage createMatrixStage() {
+		MatrixStageImpl matrixStage = new MatrixStageImpl();
+		return matrixStage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MatrixAxis createMatrixAxis() {
+		MatrixAxisImpl matrixAxis = new MatrixAxisImpl();
+		return matrixAxis;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MatrixCombination createMatrixCombination() {
+		MatrixCombinationImpl matrixCombination = new MatrixCombinationImpl();
+		return matrixCombination;
 	}
 
 	/**
@@ -424,6 +471,28 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public Variable createVariable() {
 		VariableImpl variable = new VariableImpl();
 		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public JenkinsContext createJenkinsContext() {
+		JenkinsContextImpl jenkinsContext = new JenkinsContextImpl();
+		return jenkinsContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public VariableDereference createVariableDereference() {
+		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
+		return variableDereference;
 	}
 
 	/**
@@ -840,6 +909,28 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	public String convertWHEN_EVALUATION_TIMESToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JENKINS_CONTEXTS createJENKINS_CONTEXTSFromString(EDataType eDataType, String initialValue) {
+		JENKINS_CONTEXTS result = JENKINS_CONTEXTS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJENKINS_CONTEXTSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

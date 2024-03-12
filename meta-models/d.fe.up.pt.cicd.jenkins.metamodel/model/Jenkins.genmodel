@@ -47,6 +47,10 @@
       <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//WHEN_EVALUATION_TIMES/BEFORE_INPUT"/>
       <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//WHEN_EVALUATION_TIMES/BEFORE_OPTIONS"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Jenkins.ecore#//JENKINS_CONTEXTS">
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//JENKINS_CONTEXTS/ENV"/>
+      <genEnumLiterals ecoreEnumLiteral="Jenkins.ecore#//JENKINS_CONTEXTS/PARAMS"/>
+    </genEnums>
     <genClasses ecoreClass="Jenkins.ecore#//Pipeline">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/stages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Pipeline/agent"/>
@@ -68,6 +72,19 @@
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//ParallelNestedStage"/>
     <genClasses ecoreClass="Jenkins.ecore#//SequentialNestedStage"/>
+    <genClasses ecoreClass="Jenkins.ecore#//MatrixStage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//MatrixStage/axes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//MatrixStage/includes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//MatrixStage/excludes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//MatrixStage/failFast"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//MatrixAxis">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//MatrixAxis/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//MatrixAxis/cells"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//MatrixCombination">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//MatrixCombination/entries"/>
+    </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//StepStage">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//StepStage/steps"/>
     </genClasses>
@@ -106,6 +123,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//DockerContainer/registryCredentialsId"/>
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//Expression"/>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//Value"/>
     <genClasses ecoreClass="Jenkins.ecore#//Literal"/>
     <genClasses ecoreClass="Jenkins.ecore#//StringLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//StringLiteral/value"/>
@@ -121,6 +139,13 @@
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Variable/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//JenkinsContext">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//JenkinsContext/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//VariableDereference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//VariableDereference/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//VariableDereference/property"/>
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//Assignment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Assignment/key"/>

@@ -3,9 +3,9 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
+import d.fe.up.pt.cicd.metamodel.CICD.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -85,7 +85,7 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<EnvironmentVariable, Expression> kwargs;
+	protected EMap<Variable, Expression> kwargs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,10 +159,10 @@ public class PluginImpl extends NonConditionalStepImpl implements Plugin {
 	 * @generated
 	 */
 	@Override
-	public EMap<EnvironmentVariable, Expression> getKwargs() {
+	public EMap<Variable, Expression> getKwargs() {
 		if (kwargs == null) {
-			kwargs = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
-					AssignmentImpl.class, this, CICDPackage.PLUGIN__KWARGS);
+			kwargs = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT, AssignmentImpl.class, this,
+					CICDPackage.PLUGIN__KWARGS);
 		}
 		return kwargs;
 	}

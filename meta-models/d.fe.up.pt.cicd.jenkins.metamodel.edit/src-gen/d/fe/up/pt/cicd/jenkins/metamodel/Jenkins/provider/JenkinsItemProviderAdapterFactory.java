@@ -165,6 +165,75 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatrixStageItemProvider matrixStageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatrixStageAdapter() {
+		if (matrixStageItemProvider == null) {
+			matrixStageItemProvider = new MatrixStageItemProvider(this);
+		}
+
+		return matrixStageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatrixAxisItemProvider matrixAxisItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatrixAxisAdapter() {
+		if (matrixAxisItemProvider == null) {
+			matrixAxisItemProvider = new MatrixAxisItemProvider(this);
+		}
+
+		return matrixAxisItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MatrixCombinationItemProvider matrixCombinationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMatrixCombinationAdapter() {
+		if (matrixCombinationItemProvider == null) {
+			matrixCombinationItemProvider = new MatrixCombinationItemProvider(this);
+		}
+
+		return matrixCombinationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -530,6 +599,52 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 		}
 
 		return variableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JenkinsContextItemProvider jenkinsContextItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJenkinsContextAdapter() {
+		if (jenkinsContextItemProvider == null) {
+			jenkinsContextItemProvider = new JenkinsContextItemProvider(this);
+		}
+
+		return jenkinsContextItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableDereferenceAdapter() {
+		if (variableDereferenceItemProvider == null) {
+			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
+		}
+
+		return variableDereferenceItemProvider;
 	}
 
 	/**
@@ -1243,6 +1358,12 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			parallelNestedStageItemProvider.dispose();
 		if (sequentialNestedStageItemProvider != null)
 			sequentialNestedStageItemProvider.dispose();
+		if (matrixStageItemProvider != null)
+			matrixStageItemProvider.dispose();
+		if (matrixAxisItemProvider != null)
+			matrixAxisItemProvider.dispose();
+		if (matrixCombinationItemProvider != null)
+			matrixCombinationItemProvider.dispose();
 		if (stepStageItemProvider != null)
 			stepStageItemProvider.dispose();
 		if (scriptedBlockItemProvider != null)
@@ -1275,6 +1396,10 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			booleanLiteralItemProvider.dispose();
 		if (variableItemProvider != null)
 			variableItemProvider.dispose();
+		if (jenkinsContextItemProvider != null)
+			jenkinsContextItemProvider.dispose();
+		if (variableDereferenceItemProvider != null)
+			variableDereferenceItemProvider.dispose();
 		if (assignmentItemProvider != null)
 			assignmentItemProvider.dispose();
 		if (concatItemProvider != null)

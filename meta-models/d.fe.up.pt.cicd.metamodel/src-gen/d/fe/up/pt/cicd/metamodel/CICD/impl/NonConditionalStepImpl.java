@@ -3,9 +3,9 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep;
+import d.fe.up.pt.cicd.metamodel.CICD.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -87,7 +87,7 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<EnvironmentVariable, Expression> environmentVariables;
+	protected EMap<Variable, Expression> environmentVariables;
 
 	/**
 	 * The default value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' attribute.
@@ -201,9 +201,9 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
-	public EMap<EnvironmentVariable, Expression> getEnvironmentVariables() {
+	public EMap<Variable, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<EnvironmentVariable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+			environmentVariables = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;

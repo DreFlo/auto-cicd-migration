@@ -99,6 +99,21 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseMatrixStage(MatrixStage object) {
+			return createMatrixStageAdapter();
+		}
+
+		@Override
+		public Adapter caseMatrixAxis(MatrixAxis object) {
+			return createMatrixAxisAdapter();
+		}
+
+		@Override
+		public Adapter caseMatrixCombination(MatrixCombination object) {
+			return createMatrixCombinationAdapter();
+		}
+
+		@Override
 		public Adapter caseStepStage(StepStage object) {
 			return createStepStageAdapter();
 		}
@@ -174,6 +189,11 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseValue(Value object) {
+			return createValueAdapter();
+		}
+
+		@Override
 		public Adapter caseLiteral(Literal object) {
 			return createLiteralAdapter();
 		}
@@ -201,6 +221,16 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseVariable(Variable object) {
 			return createVariableAdapter();
+		}
+
+		@Override
+		public Adapter caseJenkinsContext(JenkinsContext object) {
+			return createJenkinsContextAdapter();
+		}
+
+		@Override
+		public Adapter caseVariableDereference(VariableDereference object) {
+			return createVariableDereferenceAdapter();
 		}
 
 		@Override
@@ -472,6 +502,48 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage <em>Matrix Stage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixStage
+	 * @generated
+	 */
+	public Adapter createMatrixStageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis <em>Matrix Axis</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis
+	 * @generated
+	 */
+	public Adapter createMatrixAxisAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination <em>Matrix Combination</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination
+	 * @generated
+	 */
+	public Adapter createMatrixCombinationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage <em>Step Stage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -682,6 +754,20 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value
+	 * @generated
+	 */
+	public Adapter createValueAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -762,6 +848,34 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext
+	 * @generated
+	 */
+	public Adapter createJenkinsContextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference <em>Variable Dereference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference
+	 * @generated
+	 */
+	public Adapter createVariableDereferenceAdapter() {
 		return null;
 	}
 

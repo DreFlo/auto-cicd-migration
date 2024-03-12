@@ -58,6 +58,33 @@ public interface JenkinsFactory extends EFactory {
 	SequentialNestedStage createSequentialNestedStage();
 
 	/**
+	 * Returns a new object of class '<em>Matrix Stage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matrix Stage</em>'.
+	 * @generated
+	 */
+	MatrixStage createMatrixStage();
+
+	/**
+	 * Returns a new object of class '<em>Matrix Axis</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matrix Axis</em>'.
+	 * @generated
+	 */
+	MatrixAxis createMatrixAxis();
+
+	/**
+	 * Returns a new object of class '<em>Matrix Combination</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Matrix Combination</em>'.
+	 * @generated
+	 */
+	MatrixCombination createMatrixCombination();
+
+	/**
 	 * Returns a new object of class '<em>Step Stage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -200,6 +227,24 @@ public interface JenkinsFactory extends EFactory {
 	 * @generated
 	 */
 	Variable createVariable();
+
+	/**
+	 * Returns a new object of class '<em>Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Context</em>'.
+	 * @generated
+	 */
+	JenkinsContext createJenkinsContext();
+
+	/**
+	 * Returns a new object of class '<em>Variable Dereference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Dereference</em>'.
+	 * @generated
+	 */
+	VariableDereference createVariableDereference();
 
 	/**
 	 * Returns a new object of class '<em>Concat</em>'.

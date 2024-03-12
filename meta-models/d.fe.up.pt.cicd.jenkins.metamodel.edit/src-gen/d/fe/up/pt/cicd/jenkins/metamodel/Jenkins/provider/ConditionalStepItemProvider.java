@@ -164,6 +164,12 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 				JenkinsFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createJenkinsContext()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				JenkinsFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,

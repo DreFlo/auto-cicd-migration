@@ -763,49 +763,49 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EnvironmentVariableItemProvider environmentVariableItemProvider;
+	protected VariableContextItemProvider variableContextItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEnvironmentVariableAdapter() {
-		if (environmentVariableItemProvider == null) {
-			environmentVariableItemProvider = new EnvironmentVariableItemProvider(this);
+	public Adapter createVariableContextAdapter() {
+		if (variableContextItemProvider == null) {
+			variableContextItemProvider = new VariableContextItemProvider(this);
 		}
 
-		return environmentVariableItemProvider;
+		return variableContextItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SecretVariableItemProvider secretVariableItemProvider;
+	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSecretVariableAdapter() {
-		if (secretVariableItemProvider == null) {
-			secretVariableItemProvider = new SecretVariableItemProvider(this);
+	public Adapter createVariableDereferenceAdapter() {
+		if (variableDereferenceItemProvider == null) {
+			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
 		}
 
-		return secretVariableItemProvider;
+		return variableDereferenceItemProvider;
 	}
 
 	/**
@@ -1180,10 +1180,10 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			booleanLiteralItemProvider.dispose();
 		if (variableItemProvider != null)
 			variableItemProvider.dispose();
-		if (environmentVariableItemProvider != null)
-			environmentVariableItemProvider.dispose();
-		if (secretVariableItemProvider != null)
-			secretVariableItemProvider.dispose();
+		if (variableContextItemProvider != null)
+			variableContextItemProvider.dispose();
+		if (variableDereferenceItemProvider != null)
+			variableDereferenceItemProvider.dispose();
 		if (builtInFunctionItemProvider != null)
 			builtInFunctionItemProvider.dispose();
 		if (equalityOpItemProvider != null)

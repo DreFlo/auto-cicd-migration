@@ -197,6 +197,9 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 				JenkinsFactory.eINSTANCE.createSequentialNestedStage()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
+				JenkinsFactory.eINSTANCE.createMatrixStage()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__STAGES,
 				JenkinsFactory.eINSTANCE.createStepStage()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.PIPELINE__ENVIRONMENT_VARIABLES,

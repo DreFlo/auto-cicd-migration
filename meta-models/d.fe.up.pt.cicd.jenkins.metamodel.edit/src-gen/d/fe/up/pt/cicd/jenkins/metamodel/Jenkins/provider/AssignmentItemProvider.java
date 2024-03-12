@@ -175,6 +175,12 @@ public class AssignmentItemProvider extends ItemProviderAdapter implements IEdit
 				JenkinsFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createJenkinsContext()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
 				JenkinsFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,

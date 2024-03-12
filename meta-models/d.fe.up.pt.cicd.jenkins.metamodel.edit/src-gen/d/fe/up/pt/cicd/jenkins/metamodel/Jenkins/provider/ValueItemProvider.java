@@ -1,8 +1,6 @@
 /**
  */
-package d.fe.up.pt.cicd.metamodel.CICD.provider;
-
-import d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable;
+package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,19 +11,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.EnvironmentVariable} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EnvironmentVariableItemProvider extends VariableItemProvider {
+public class ValueItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EnvironmentVariableItemProvider(AdapterFactory adapterFactory) {
+	public ValueItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -42,17 +40,6 @@ public class EnvironmentVariableItemProvider extends VariableItemProvider {
 
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This returns EnvironmentVariable.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EnvironmentVariable"));
 	}
 
 	/**
@@ -73,9 +60,7 @@ public class EnvironmentVariableItemProvider extends VariableItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EnvironmentVariable) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_EnvironmentVariable_type")
-				: getString("_UI_EnvironmentVariable_type") + " " + label;
+		return getString("_UI_Value_type");
 	}
 
 	/**

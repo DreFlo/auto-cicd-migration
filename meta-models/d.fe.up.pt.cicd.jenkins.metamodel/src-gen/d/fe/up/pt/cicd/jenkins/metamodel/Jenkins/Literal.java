@@ -12,5 +12,5 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
  * @model abstract="true"
  * @generated
  */
-public interface Literal extends Expression {
+public interface Literal extends Value {
 } // Literal

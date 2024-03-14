@@ -38,7 +38,7 @@ public abstract class OutputAbstractCompiler<OutputModel extends EObject, Output
     @Override
     public String compile(Pipeline pipeline) throws Exception {
         OutputModel outputModel = transform(pipeline);
-        System.out.println("Generating\t(" + getGenerator().getClass().getName() + ")...");
+//        System.out.println("Generating\t(" + getGenerator().getClass().getName() + ")...");
         generate(outputModel, "./output/");
         String outputFile = Files.readString(Path.of("./output", getOutputFileName()));
         Files.delete(Path.of("./output", getOutputFileName()));

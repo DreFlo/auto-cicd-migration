@@ -1,0 +1,6 @@
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+-- @path CircleCI=/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.ecore
+
+module circleci2cicd;
+create OUT : CICD from IN : CircleCI;
+

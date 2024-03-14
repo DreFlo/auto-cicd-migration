@@ -115,7 +115,7 @@ public class Main {
 
 		if (commandLine.hasOption("o")) {
 			try {
-				Files.writeString(Path.of(commandLine.getOptionValue("of")), outputScript);
+				Files.writeString(Path.of(commandLine.getOptionValue("o")), outputScript);
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}

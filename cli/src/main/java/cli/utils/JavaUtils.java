@@ -24,7 +24,7 @@ public class JavaUtils {
     }
 
     public static void cleanUp() {
-        System.out.println("Cleaning up...");
+        // System.out.println("Cleaning up...");
         // Delete .xmi and .xmi.out files
         try {
             Files.walk(Path.of("./intermediate"))

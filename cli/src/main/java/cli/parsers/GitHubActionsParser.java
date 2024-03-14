@@ -716,13 +716,13 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			if (containerMap.string("options") != null) {
 				container.setOptions(parseExpression(containerMap.string("options")));
 			}
-			if (containerMap.string("env") != null) {
+			if (containerMap.value("env") != null) {
 				container.getEnvironmentVariables().putAll(parseVariableAssignments(containerMap.value("env").asMapping()));
 			}
-			if (containerMap.string("ports") != null) {
+			if (containerMap.value("ports") != null) {
 				container.getPorts().addAll(parseExpressions(containerMap.value("ports")));
 			}
-			if (containerMap.string("volumes") != null) {
+			if (containerMap.value("volumes") != null) {
 				container.getVolumes().addAll(parseExpressions(containerMap.value("volumes")));
 			}
 			if (containerMap.yamlMapping("credentials") != null) {

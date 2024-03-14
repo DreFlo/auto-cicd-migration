@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_hUUrgOHkEe6sJbNurxFpUA" selectedViews="_hiH28OHkEe6sJbNurxFpUA _hilxAOHkEe6sJbNurxFpUA" version="15.0.0.202209061200">
+    <semanticResources>CircleCI.ecore</semanticResources>
+    <semanticResources>CircleCI.genmodel</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_hiH28OHkEe6sJbNurxFpUA">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hln24OHkEe6sJbNurxFpUA" name="CircleCI" repPath="#_hlbCkOHkEe6sJbNurxFpUA" changeId="dd71be4d-10dd-4d0c-a96d-ddb7d1f7d0b2">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="CircleCI.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_hilxAOHkEe6sJbNurxFpUA">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_hjnEsOHkEe6sJbNurxFpUA" name="[name + ' package entities'/]" repPath="#_hjJKoOHkEe6sJbNurxFpUA" changeId="a2087901-5640-4c2e-83e0-2eeddda8c821">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="CircleCI.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_hjJKoOHkEe6sJbNurxFpUA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hj9C8OHkEe6sJbNurxFpUA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_hj9C8eHkEe6sJbNurxFpUA" type="Sirius" element="_hjJKoOHkEe6sJbNurxFpUA" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_hj9C8uHkEe6sJbNurxFpUA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hkGz8OHkEe6sJbNurxFpUA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_hkGz8eHkEe6sJbNurxFpUA"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_hjRGcOHkEe6sJbNurxFpUA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <target xmi:type="ecore:EPackage" href="CircleCI.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_hlbCkOHkEe6sJbNurxFpUA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hln24uHkEe6sJbNurxFpUA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_hlod8OHkEe6sJbNurxFpUA" type="Sirius" element="_hlbCkOHkEe6sJbNurxFpUA" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_hlod8eHkEe6sJbNurxFpUA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_hmuDEOHkEe6sJbNurxFpUA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_hmuDEeHkEe6sJbNurxFpUA"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_hlmowOHkEe6sJbNurxFpUA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
+    <target xmi:type="ecore:EPackage" href="CircleCI.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

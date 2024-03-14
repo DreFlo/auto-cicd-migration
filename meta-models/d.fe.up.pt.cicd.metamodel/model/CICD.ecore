@@ -204,6 +204,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecretVariable" eSuperTypes="#//Variable"/>
   <eClassifiers xsi:type="ecore:EClass" name="VariableContext" eSuperTypes="#//Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" lowerBound="1"
         eType="#//VARIABLE_CONTEXTS"/>
@@ -265,5 +266,6 @@
   <eClassifiers xsi:type="ecore:EEnum" name="VARIABLE_CONTEXTS">
     <eLiterals name="ENV"/>
     <eLiterals name="PARAMS" value="1"/>
+    <eLiterals name="SECRETS" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

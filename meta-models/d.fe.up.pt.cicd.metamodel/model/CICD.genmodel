@@ -38,6 +38,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//VARIABLE_CONTEXTS">
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/ENV"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/PARAMS"/>
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/SECRETS"/>
     </genEnums>
     <genClasses image="false" ecoreClass="CICD.ecore#//PipelineBlock">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/name"/>
@@ -183,6 +184,7 @@
     <genClasses ecoreClass="CICD.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Variable/name"/>
     </genClasses>
+    <genClasses ecoreClass="CICD.ecore#//SecretVariable"/>
     <genClasses ecoreClass="CICD.ecore#//VariableContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableContext/context"/>
     </genClasses>

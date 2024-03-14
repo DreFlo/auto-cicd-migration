@@ -1380,7 +1380,7 @@ rule BooleanLiteral extends Literal {
 		)
 }
 
-rule VariableContext2VariableContext {
+rule VariableContext {
 	from
 		input : CICD1!VariableContext
 	to
@@ -1394,6 +1394,15 @@ rule VariableContext2VariableContext {
 					#""
 				endif
 				endif
+		)
+}
+
+rule SecretVariable {
+	from
+		input : CICD1!SecretVariable
+	to
+		output : CICD2!SecretVariable(
+			name <- input.name
 		)
 }
 

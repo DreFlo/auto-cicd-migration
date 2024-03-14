@@ -170,6 +170,9 @@ public class AssignmentItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.ASSIGNMENT__KEY, CICDFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ASSIGNMENT__KEY,
+				CICDFactory.eINSTANCE.createSecretVariable()));
 	}
 
 	/**

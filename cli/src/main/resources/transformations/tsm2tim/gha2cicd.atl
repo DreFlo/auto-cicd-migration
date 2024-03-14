@@ -13,7 +13,13 @@ rule Workflow2Pipeline {
 			environmentVariables <- workflow.environmentVariables,
 			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
 			workingDirectory <- workflow.defaults.workingDirectory.expression2String(),
-			triggers <- workflow.triggers
+			triggers <- workflow.triggers,
+			workingDirectory <-
+				if not workflow.defaults.oclIsUndefined() then
+					workflow.defaults.workingDirectory.expression2String()
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -27,7 +33,13 @@ rule Job2Job {
 			ifCondition <- ghaJob.ifCondition,
 			matrix <- ghaJob.strategy,
 			steps <- ghaJob.steps,
-			next <- ghaJob.necessaryFor
+			next <- ghaJob.necessaryFor,
+			workingDirectory <-
+				if not ghaJob.defaults.oclIsUndefined() then
+					ghaJob.defaults.workingDirectory.expression2String()
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -241,7 +253,13 @@ rule Container2DockerContainer {
 		container : GHA!Container
 	to
 		dockerContainer : CICD!DockerContainer(
-			image <- container.image
+			image <- container.image,
+			environmentVariables <- container.environmentVariables,
+			ports <- container.ports,
+			volumes <- container.volumes,
+			registryUsername <- container.username,
+			registryPassword <- container.password,
+			options <- container.options.expression2String()
 		)
 }
 

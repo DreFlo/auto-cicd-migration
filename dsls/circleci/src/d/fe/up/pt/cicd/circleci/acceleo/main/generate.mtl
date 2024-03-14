@@ -1,0 +1,342 @@
+[comment encoding = UTF-8 /]
+[module generate('http://d.fe.up.pt/CircleCI')]
+
+
+[template public generatePipeline(aPipeline : Pipeline)]
+[comment @main/]
+[file ('CircleCI' + '.yml', false, 'UTF-8')]
+version: [aPipeline.version/]
+
+[generateOrbs(aPipeline)/]
+[generateCommands(aPipeline)/]
+[generateExecutors(aPipeline)/]
+[generateJobs(aPipeline)/]
+[generateWorkflows(aPipeline)/]
+[/file]
+[/template]
+
+
+[template public generateOrbs(aPipeline : Pipeline)]
+[if (aPipeline.orb->notEmpty()) ]
+orbs:
+[for (o: Orb | aPipeline.orb)]
+  [o.key/]: [o.value/]
+[/for]
+[/if]
+[/template]
+
+[template public generateCommands(aPipeline : Pipeline)]
+[if (aPipeline.command->notEmpty()) ]
+commands:
+[if (aPipeline.command.name->notEmpty())]
+  [aPipeline.command.name/]:
+[/if]
+  [if (aPipeline.command.description->notEmpty())]
+    description: [aPipeline.command.description/]
+  [/if]
+  [if (aPipeline.command.command_params->notEmpty())]
+    parameters: 
+      to:
+        type: [aPipeline.command.command_params.type/]
+        default: [aPipeline.command.command_params.default/]
+  [/if]
+    steps:
+    [for (s: Step | aPipeline.command.step)]
+      [generateStep(s)/]
+    [/for]
+[/if]
+[/template]
+
+[comment: Execution Environment for Docker, Windows, Linux and MacOs/]
+[template public generateExecutors(aPipeline : Pipeline)]
+executors:
+[for (e: Execution_Env | aPipeline.job.execution_env)]
+  [e.name/]:
+    [if (e.oclIsKindOf(Docker))]
+    [generateDockerExecEnv(oclAsType(Docker))/]
+    [/if]
+    [if (e.oclIsKindOf(WindowsOrb))]
+    [generateWinExecEnv(oclAsType(WindowsOrb))/]
+    [/if]
+    [if (e.oclIsKindOf(Linux))]
+    [generateLinuxExecEnv(oclAsType(Linux))/]
+    [/if]
+    [if (e.oclIsKindOf(MacOs))]
+    [generateMacExecEnv(oclAsType(MacOs))/]
+    [/if]
+[/for]
+[/template]
+
+[template public generateDockerExecEnv(docker : Docker)]
+docker:
+  - image: [docker.image/]
+[/template]
+
+[template public generateWinExecEnv(win : WindowsOrb)]
+executor: [win.executor/]
+[/template]
+
+
+[template public generateLinuxExecEnv(linux : Linux)]
+machine:
+  image: [linux.image/]
+[/template]
+
+
+[template public generateMacExecEnv(mac : MacOs)]
+macos:
+  xcode: [mac.xcode/]
+[/template]
+
+
+
+[template public generateJobs(aPipeline : Pipeline)]
+[if (aPipeline.job->notEmpty()) ]
+jobs:
+[for (j: Job | aPipeline.job)]
+  [generateJob(j)/]
+[/for]
+[/if]
+[/template]
+
+
+[template public generateJob(aJob : Job)]
+[if (aJob.name->notEmpty())]
+[aJob.name/]:
+[/if]
+[if (aJob.name->isEmpty())]
+build:
+[/if]
+  [generateJobExecutor(aJob)/]
+  [generateEnvironment(aJob)/]
+  [generateParallelism(aJob)/]
+  [generateSteps(aJob)/]
+  [generateWhen(aJob)/]
+  [generateArtifacts(aJob)/]
+[/template]
+
+
+[template public generateJobExecutor(aJob : Job)]
+[for (e: Execution_Env | aJob.execution_env)]
+[e.name/]:
+  [if (e.oclIsKindOf(Docker))]
+  [generateDockerExec(oclAsType(Docker))/]
+  [/if]
+  [if (e.oclIsKindOf(WindowsOrb))]
+  [generateWinExec(oclAsType(WindowsOrb))/]
+  [/if]
+  [if (e.oclIsKindOf(Linux))]
+  [generateLinuxExec(oclAsType(Linux))/]
+  [/if]
+  [if (e.oclIsKindOf(MacOs))]
+  [generateMacExec(oclAsType(MacOs))/]
+  [/if]
+  [generateExecEnvironment(aJob)/]
+[/for]
+[/template]
+
+[template public generateDockerExec(docker : Docker)]
+docker:
+  - image: [docker.image/]
+
+steps:
+  - run: ['|'/]
+[for (s: Step | docker.step)]
+  [generateExecutorSteps(s)/]
+[/for]
+[/template]
+
+[template public generateWinExec(win : WindowsOrb)]
+executor: [win.executor/]
+
+steps:
+[for (s: Step | win.step)]
+  [generateExecutorSteps(s)/]
+[/for]
+[/template]
+
+
+[template public generateLinuxExec(linux : Linux)]
+machine:
+  image: [linux.image/]
+
+steps:
+[for (s: Step | linux.step)]
+  [generateExecutorSteps(s)/]
+[/for]
+[/template]
+
+[template public generateMacExec(mac : MacOs)]
+macos:
+  xcode: [mac.xcode/]
+
+steps:
+[for (s: Step | mac.step)]
+  [generateExecutorSteps(s)/]
+[/for]
+[/template]
+
+
+[template public generateExecutorSteps(aStep: Step)]
+    [aStep.tool_framework.name/][generateParameters(aStep)/]
+[/template]
+
+[template public generateExecEnvironment(aJob : Job)]
+[if (aJob.execution_env.environment->notEmpty()) ]
+environment:
+[for (e: Environment | aJob.execution_env.environment)]
+  [generateKeyValue(e)/]
+[/for]
+[/if]
+[/template]
+
+
+[template public generateEnvironment(aJob : Job)]
+[if (aJob.environment->notEmpty()) ]
+environment:
+[for (e: Environment | aJob.environment)]
+  [generateKeyValue(e)/]
+[/for]
+[/if]
+[/template]
+
+[template public generateKeyValue(aEnv : Environment)]
+[aEnv.key/]: [aEnv.value/]
+[/template]
+
+
+[template public generateParallelism(aJob : Job)]
+[if (aJob.parallelism <> 0) ]
+parallelism: [aJob.parallelism/]
+[/if]
+[/template]
+
+
+[template public generateSteps(aJob: Job)]
+steps:
+[for (s: Step | aJob.step)]
+  [generateStep(s)/]
+[/for]
+  [generateWhen(aJob)/]
+[/template]
+
+
+
+[template public generateStep(aStep: Step)]
+- run:
+    [if (aStep.name->notEmpty())]name: [aStep.name/][/if]
+    command: ['|'/]
+	    [aStep.tool_framework.name/][generateParameters(aStep)/]
+    [generateWhenAttribute(aStep)/]
+[/template]
+
+[template public generateParameters(aStep: Step)]
+[for (p: Parameters | aStep.parameters)] [p.parameter/] [/for]
+[/template]
+
+[template public generateWhenAttribute(aStep: Step)]
+[if (aStep.when_attribute->notEmpty()) ]
+when: [aStep.when_attribute.when_type/]
+[/if]
+[/template]
+
+
+[template public generateWhen(aJob: Job)]
+[if (aJob.when_unless->notEmpty()) ]
+  - when:
+	  condition: [aJob.when_unless.condition/]
+	  steps:
+	  [for (s: Step | aJob.when_unless.when_step)]
+        [generateStep(s)/]
+      [/for]
+  [if (aJob.when_unless.unless_step->notEmpty())]
+  - unless:
+	  condition: [aJob.when_unless.condition/]
+	  steps:
+	  [for (s: Step | aJob.when_unless.unless_step)]
+        [generateStep(s)/]
+      [/for]
+  [/if]
+[/if]
+[/template]
+
+
+[template public generateArtifacts(aJob : Job)]
+[if (aJob.store_artifact->notEmpty())]
+- store_artifacts:
+    path:
+    [for (s: Store_Artifact | aJob.store_artifact)] 
+	  - [s.path/]
+	[/for]
+    [if (aJob.store_artifact.destination->notEmpty())]
+    destination: [aJob.store_artifact.destination/]
+    [/if]
+[/if]
+[/template]
+
+
+
+[template public generateWorkflows(aPipeline : Pipeline)]
+[if (aPipeline.job->notEmpty() and aPipeline.job->size() > 1) ]
+workflows:
+  version: [aPipeline.workflow.version/]
+  [if (aPipeline.workflow.name->notEmpty()) ]
+  workflow_Name: [aPipeline.workflow.name/]
+  [/if]
+    [generateTriggers(aPipeline.workflow)/]
+    [generateWorkflowWhen(aPipeline.workflow)/]
+    jobs:
+	[for (j: Job | aPipeline.job)]
+	  - [j.name/]
+	[/for]
+[/if]
+[/template]
+
+
+[template public generateTriggers(aWorkflow: Workflow)]
+[if (aWorkflow.trigger->notEmpty() and aWorkflow.branch->notEmpty())]
+[generateAuxTriggers(aWorkflow)/]
+      [generateFilters(aWorkflow)/]
+[/if]
+[if (aWorkflow.trigger->isEmpty() and aWorkflow.branch->notEmpty())]
+[generateFilters(aWorkflow)/]
+[/if]
+[if (aWorkflow.trigger->notEmpty() and aWorkflow.branch->isEmpty())]
+[generateTriggers(aWorkflow)/]
+[/if]
+[/template]
+
+[comment Auxiliary filters section/]
+[template public generateFilters(aWorkflow: Workflow)]
+filters:
+  branches:
+    only:
+    [for (b: Branch | aWorkflow.branch->select(branch | branch.branch_type.toString() = 'only'))]
+      - [b.name/]
+    [/for]
+    [if (aWorkflow.branch->exists(branch | branch.branch_type.toString() = 'ignore'))]
+    ignore:
+    [for (b: Branch | aWorkflow.branch->select(branch | branch.branch_type.toString() = 'ignore'))]
+      - [b.name/]
+    [/for]
+    [/if]
+[/template]
+
+[comment Auxiliary triggers section/]
+[template public generateAuxTriggers(aWorkflow: Workflow)]
+triggers:
+  - schedule:
+      cron: [aWorkflow.trigger.cron/]
+[/template]
+
+
+[template public generateWorkflowWhen(aWorkflow: Workflow)]
+[if (aWorkflow.when_unless->notEmpty())]
+when:
+  condition: [aWorkflow.when_unless.condition/]
+[if (aWorkflow.when_unless.unless_step->notEmpty())]
+unless:
+  condition: [aWorkflow.when_unless.condition/]
+[/if]
+[/if]
+[/template]

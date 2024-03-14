@@ -190,6 +190,9 @@ public class VariableDereferenceItemProvider extends ExpressionItemProvider {
 				CICDFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
+				CICDFactory.eINSTANCE.createSecretVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
 				CICDFactory.eINSTANCE.createVariableContext()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,

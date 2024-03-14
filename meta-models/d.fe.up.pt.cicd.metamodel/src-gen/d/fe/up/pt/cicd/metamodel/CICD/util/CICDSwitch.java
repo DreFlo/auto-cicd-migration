@@ -396,6 +396,19 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CICDPackage.SECRET_VARIABLE: {
+			SecretVariable secretVariable = (SecretVariable) theEObject;
+			T result = caseSecretVariable(secretVariable);
+			if (result == null)
+				result = caseVariable(secretVariable);
+			if (result == null)
+				result = caseValue(secretVariable);
+			if (result == null)
+				result = caseExpression(secretVariable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CICDPackage.VARIABLE_CONTEXT: {
 			VariableContext variableContext = (VariableContext) theEObject;
 			T result = caseVariableContext(variableContext);
@@ -1077,6 +1090,21 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariable(Variable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Secret Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Secret Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSecretVariable(SecretVariable object) {
 		return null;
 	}
 

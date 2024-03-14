@@ -274,6 +274,15 @@ public interface CICDFactory extends EFactory {
 	Variable createVariable();
 
 	/**
+	 * Returns a new object of class '<em>Secret Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Secret Variable</em>'.
+	 * @generated
+	 */
+	SecretVariable createSecretVariable();
+
+	/**
 	 * Returns a new object of class '<em>Variable Context</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

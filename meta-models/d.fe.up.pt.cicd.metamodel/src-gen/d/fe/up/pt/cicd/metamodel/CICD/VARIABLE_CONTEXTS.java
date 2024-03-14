@@ -36,7 +36,16 @@ public enum VARIABLE_CONTEXTS implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PARAMS(1, "PARAMS", "PARAMS");
+	PARAMS(1, "PARAMS", "PARAMS"),
+	/**
+	 * The '<em><b>SECRETS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	 * @see #SECRETS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SECRETS(2, "SECRETS", "SECRETS");
 
 	/**
 	 * The '<em><b>ENV</b></em>' literal value.
@@ -61,12 +70,23 @@ public enum VARIABLE_CONTEXTS implements Enumerator {
 	public static final int PARAMS_VALUE = 1;
 
 	/**
+	 * The '<em><b>SECRETS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SECRETS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SECRETS_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>VARIABLE CONTEXTS</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final VARIABLE_CONTEXTS[] VALUES_ARRAY = new VARIABLE_CONTEXTS[] { ENV, PARAMS, };
+	private static final VARIABLE_CONTEXTS[] VALUES_ARRAY = new VARIABLE_CONTEXTS[] { ENV, PARAMS, SECRETS, };
 
 	/**
 	 * A public read-only list of all the '<em><b>VARIABLE CONTEXTS</b></em>' enumerators.
@@ -126,6 +146,8 @@ public enum VARIABLE_CONTEXTS implements Enumerator {
 			return ENV;
 		case PARAMS_VALUE:
 			return PARAMS;
+		case SECRETS_VALUE:
+			return SECRETS;
 		}
 		return null;
 	}

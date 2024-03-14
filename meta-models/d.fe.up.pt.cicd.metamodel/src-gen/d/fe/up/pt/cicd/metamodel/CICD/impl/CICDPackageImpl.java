@@ -41,6 +41,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
 import d.fe.up.pt.cicd.metamodel.CICD.PullRequestTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.PushTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
 import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.Subtraction;
@@ -320,6 +321,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass variableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass secretVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1674,6 +1682,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getSecretVariable() {
+		return secretVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getVariableContext() {
 		return variableContextEClass;
 	}
@@ -2119,6 +2137,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		variableEClass = createEClass(VARIABLE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
 
+		secretVariableEClass = createEClass(SECRET_VARIABLE);
+
 		variableContextEClass = createEClass(VARIABLE_CONTEXT);
 		createEAttribute(variableContextEClass, VARIABLE_CONTEXT__CONTEXT);
 
@@ -2214,6 +2234,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 		variableEClass.getESuperTypes().add(this.getValue());
+		secretVariableEClass.getESuperTypes().add(this.getVariable());
 		variableContextEClass.getESuperTypes().add(this.getValue());
 		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
 		builtInFunctionEClass.getESuperTypes().add(this.getExpression());
@@ -2542,6 +2563,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(secretVariableEClass, SecretVariable.class, "SecretVariable", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(variableContextEClass, VariableContext.class, "VariableContext", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableContext_Context(), this.getVARIABLE_CONTEXTS(), "context", null, 1, 1,
@@ -2628,6 +2652,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEEnum(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.class, "VARIABLE_CONTEXTS");
 		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.ENV);
 		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.PARAMS);
+		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.SECRETS);
 
 		// Create resource
 		createResource(eNS_URI);

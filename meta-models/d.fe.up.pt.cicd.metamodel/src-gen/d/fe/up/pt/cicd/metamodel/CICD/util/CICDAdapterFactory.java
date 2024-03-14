@@ -249,6 +249,11 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseSecretVariable(SecretVariable object) {
+			return createSecretVariableAdapter();
+		}
+
+		@Override
 		public Adapter caseVariableContext(VariableContext object) {
 			return createVariableContextAdapter();
 		}
@@ -833,6 +838,20 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable <em>Secret Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.SecretVariable
+	 * @generated
+	 */
+	public Adapter createSecretVariableAdapter() {
 		return null;
 	}
 

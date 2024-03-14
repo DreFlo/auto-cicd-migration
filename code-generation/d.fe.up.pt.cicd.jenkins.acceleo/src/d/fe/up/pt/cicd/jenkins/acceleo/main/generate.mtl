@@ -184,6 +184,8 @@ script {
 agent any
 [elseif (abstractAgent.oclIsTypeOf(LabelAgent))]
 [generateLabelAgent(abstractAgent.oclAsType(LabelAgent))/]
+[elseif (abstractAgent.oclIsTypeOf(NodeAgent))]
+[generateNodeAgent(abstractAgent.oclAsType(NodeAgent))/]
 [elseif (abstractAgent.oclIsTypeOf(DockerAgent))]
 [generateDockerAgent(abstractAgent.oclAsType(DockerAgent))/]
 [/if]
@@ -207,8 +209,25 @@ agent {
 		label [generateExpression(dockerAgent.labels)/]
 	[/if]
 		image [quoteString(dockerAgent.docker.image)/]
+	[if (not docker.args.oclIsUndefined() and docker.args <> '')]
+		args [quoteString(docker.args.trim())/]
+	[/if]
 	}
 [/if]
+}
+[/template]
+
+[template public generateNodeAgent(nodeAgent : NodeAgent)]
+agent {
+	node {
+	[if (not nodeAgent.labels.oclIsUndefined())]
+		// label names may not make sense
+		label [generateExpression(nodeAgent.labels)/]
+	[/if]
+	[if (not nodeAgent.customWorkspace.oclIsUndefined())]
+		customWorkspace [quoteString(nodeAgent.customWorkspace)/]
+	[/if]
+	}
 }
 [/template]
 

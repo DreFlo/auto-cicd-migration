@@ -1,0 +1,7 @@
+-- @path GHA=/d.fe.up.pt.cicd.gha.metamodel/model/GHA.ecore
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module cicd2gha;
+
+create OUT : GHA from IN : CICD;
+

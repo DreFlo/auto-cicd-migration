@@ -763,6 +763,29 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SecretVariableItemProvider secretVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSecretVariableAdapter() {
+		if (secretVariableItemProvider == null) {
+			secretVariableItemProvider = new SecretVariableItemProvider(this);
+		}
+
+		return secretVariableItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1180,6 +1203,8 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			booleanLiteralItemProvider.dispose();
 		if (variableItemProvider != null)
 			variableItemProvider.dispose();
+		if (secretVariableItemProvider != null)
+			secretVariableItemProvider.dispose();
 		if (variableContextItemProvider != null)
 			variableContextItemProvider.dispose();
 		if (variableDereferenceItemProvider != null)

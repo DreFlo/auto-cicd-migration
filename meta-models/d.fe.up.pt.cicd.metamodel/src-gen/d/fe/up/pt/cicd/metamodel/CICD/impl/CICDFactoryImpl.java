@@ -118,6 +118,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createBooleanLiteral();
 		case CICDPackage.VARIABLE:
 			return createVariable();
+		case CICDPackage.SECRET_VARIABLE:
+			return createSecretVariable();
 		case CICDPackage.VARIABLE_CONTEXT:
 			return createVariableContext();
 		case CICDPackage.VARIABLE_DEREFERENCE:
@@ -521,6 +523,17 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Variable createVariable() {
 		VariableImpl variable = new VariableImpl();
 		return variable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SecretVariable createSecretVariable() {
+		SecretVariableImpl secretVariable = new SecretVariableImpl();
+		return secretVariable;
 	}
 
 	/**

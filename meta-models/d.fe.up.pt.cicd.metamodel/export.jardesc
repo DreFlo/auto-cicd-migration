@@ -11,6 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="false" exportJavaFiles="false" exportOutputFolder="true">
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.circleci.acceleo"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.circleci.metamodel"/>
         <folder path="/d.fe.up.pt.cicd.metamodel/META-INF"/>
         <file path="/d.fe.up.pt.cicd.jenkins.acceleo/build.properties"/>
         <file path="/d.fe.up.pt.cicd.jenkins.acceleo/.classpath"/>
@@ -54,6 +56,7 @@
         <folder path="/d.fe.up.pt.cicd.gha.metamodel/META-INF"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.metamodel/src"/>
         <file path="/d.fe.up.pt.cicd.gha.metamodel/.gitignore"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.acceleo"/>
         <file path="/d.fe.up.pt.cicd.gha.metamodel/plugin.xml"/>
         <file path="/d.fe.up.pt.cicd.gha.metamodel/.project"/>
     </selectedElements>

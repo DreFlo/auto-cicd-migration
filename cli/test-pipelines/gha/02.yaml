@@ -17,6 +17,10 @@ jobs:
   my_first_job_a:
     if: ${{ true }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: test-pipelines/gha
     steps:
       - run: echo "Hello World!A"
   my_first_job_b:
@@ -30,7 +34,15 @@ jobs:
       - run: echo 2
   my_second_job_b:
     runs-on: ubuntu-latest
-    container: alpine:3.12
+    container:
+      image: alpine:3.12
+      ports:
+        - 80:80
+      env:
+        TWO: 2
+      volumes:
+        - /tmp:/tmp
+      options: --name myContainer
     needs: my_first_job_a
     steps:
       - run: echo ${{ env.TWO }}

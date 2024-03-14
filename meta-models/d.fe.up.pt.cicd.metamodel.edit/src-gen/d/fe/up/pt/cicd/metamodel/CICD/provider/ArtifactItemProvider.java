@@ -174,6 +174,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
+				CICDFactory.eINSTANCE.createSecretVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
 				CICDFactory.eINSTANCE.createVariableContext()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
@@ -229,6 +232,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
+				CICDFactory.eINSTANCE.createSecretVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createVariableContext()));
@@ -288,6 +294,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
+				CICDFactory.eINSTANCE.createSecretVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createVariableContext()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
@@ -343,6 +352,9 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
+				CICDFactory.eINSTANCE.createSecretVariable()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createVariableContext()));

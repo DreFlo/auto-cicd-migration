@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.14.0'
+    implementation 'commons-cli:commons-cli:1.4'
+
 
     implementation group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.32.0'
 
@@ -35,13 +37,6 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.inject/guice
 	implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
     implementation group: 'com.amihaiemil.web', name: 'eo-yaml', version: '7.2.0'
-
-//    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.common
-//    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.acceleo.common', version: '3.5.1.201409021433'
-//    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.engine
-//    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.acceleo.engine', version: '3.5.1.201409021433'
-//    // https://mvnrepository.com/artifact/org.eclipse.acceleo/org.eclipse.acceleo.model
-//    implementation group: 'org.eclipse.acceleo', name: 'org.eclipse.acceleo.model', version: '3.5.1.201409021433'
 
     // https://mvnrepository.com/artifact/org.eclipse.platform/org.eclipse.core.runtime
     implementation group: 'org.eclipse.platform', name: 'org.eclipse.core.runtime', version: '3.30.0'

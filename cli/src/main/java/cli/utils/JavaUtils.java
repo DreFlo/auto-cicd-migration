@@ -27,7 +27,7 @@ public class JavaUtils {
         System.out.println("Cleaning up...");
         // Delete .xmi and .xmi.out files
         try {
-            Files.walk(Path.of("."))
+            Files.walk(Path.of("./intermediate"))
                     .filter(Files::isRegularFile)
                     .filter(p -> p.toString().endsWith(".xmi") || p.toString().endsWith(".xmi.out"))
                     .forEach(p -> {

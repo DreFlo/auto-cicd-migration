@@ -50,7 +50,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out.xmi";
 
-        // System.out.println("Transforming\t(" + getClass().getName() + ")...");
+        System.out.println("Transforming\t(" + getClass().getName() + ")...");
         runATLTransformation(inputModelFilePath, outputModelFilePath);
 
         OutputModel outputModel = deserializeModel(outputModelFilePath);

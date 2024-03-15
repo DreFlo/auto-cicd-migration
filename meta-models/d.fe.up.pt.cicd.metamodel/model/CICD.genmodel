@@ -40,6 +40,11 @@
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/PARAMS"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/SECRETS"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//CACHE_MODE">
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//CACHE_MODE/STORE"/>
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//CACHE_MODE/LOAD"/>
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//CACHE_MODE/BOTH"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="CICD.ecore#//PipelineBlock">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/agent"/>
@@ -152,12 +157,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Cache/cacheName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Cache/keys"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Cache/paths"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Cache/store"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Artifact">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Artifact/artifactName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Artifact/includePaths"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Artifact/excludePaths"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Artifact/retentionTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Artifact/store"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Assignment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Assignment/key"/>

@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
+Automatic-Module-Name: d.fe.up.pt.cicd.circleci.acceleo
 Bundle-Name: Acceleo Acceleo Module Runtime Plug-in
 Bundle-SymbolicName: d.fe.up.pt.cicd.circleci.acceleo
 Bundle-Version: 1.0.0.qualifier

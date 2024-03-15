@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Cache#getCacheName <em>Cache Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Cache#getKeys <em>Keys</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Cache#getPaths <em>Paths</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Cache#getStore <em>Store</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getCache()
@@ -68,5 +69,30 @@ public interface Cache extends NonConditionalStep {
 	 * @generated
 	 */
 	EList<Expression> getPaths();
+
+	/**
+	 * Returns the value of the '<em><b>Store</b></em>' attribute.
+	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Store</em>' attribute.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE
+	 * @see #setStore(CACHE_MODE)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getCache_Store()
+	 * @model required="true"
+	 * @generated
+	 */
+	CACHE_MODE getStore();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Cache#getStore <em>Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Store</em>' attribute.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE
+	 * @see #getStore()
+	 * @generated
+	 */
+	void setStore(CACHE_MODE value);
 
 } // Cache

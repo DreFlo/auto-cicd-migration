@@ -167,6 +167,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createCOMPARISON_OPSFromString(eDataType, initialValue);
 		case CICDPackage.VARIABLE_CONTEXTS:
 			return createVARIABLE_CONTEXTSFromString(eDataType, initialValue);
+		case CICDPackage.CACHE_MODE:
+			return createCACHE_MODEFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -192,6 +194,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return convertCOMPARISON_OPSToString(eDataType, instanceValue);
 		case CICDPackage.VARIABLE_CONTEXTS:
 			return convertVARIABLE_CONTEXTSToString(eDataType, instanceValue);
+		case CICDPackage.CACHE_MODE:
+			return convertCACHE_MODEToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -786,6 +790,28 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	public String convertVARIABLE_CONTEXTSToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CACHE_MODE createCACHE_MODEFromString(EDataType eDataType, String initialValue) {
+		CACHE_MODE result = CACHE_MODE.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCACHE_MODEToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -8,15 +8,22 @@ rule Workflow2Pipeline {
 	from
 		workflow : GHA!Workflow
 	to
-		pipeline : CICD!Pipeline (
+		pipeline : CICD!Pipeline(
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
 			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
-			workingDirectory <- workflow.defaults.workingDirectory.expression2String(),
 			triggers <- workflow.triggers,
 			workingDirectory <-
 				if not workflow.defaults.oclIsUndefined() then
 					workflow.defaults.workingDirectory.expression2String()
+				else
+					OclUndefined
+				endif,
+			concurrencyGroup <- workflow.concurrencyGroup,
+			permissions <- workflow.permissions,
+			shell <-
+				if not workflow.defaults.oclIsUndefined() then
+					workflow.defaults.shell.expression2String().getShell()
 				else
 					OclUndefined
 				endif
@@ -29,7 +36,7 @@ rule Job2Job {
 	to
 		cicdJob : CICD!Job(
 			id <- ghaJob.name,
-			agent <- thisModule.getAgentFromJob(ghaJob),
+			agent <- thisModule.GetAgentFromJob(ghaJob),
 			ifCondition <- ghaJob.ifCondition,
 			matrix <- ghaJob.strategy,
 			steps <- ghaJob.steps,
@@ -39,7 +46,18 @@ rule Job2Job {
 					ghaJob.defaults.workingDirectory.expression2String()
 				else
 					OclUndefined
-				endif
+				endif,
+			allowFailure <- ghaJob.continueOnError.expression2Boolean(),
+			permissions <- ghaJob.permissions,
+			shell <-
+				if not ghaJob.defaults.oclIsUndefined() then
+					ghaJob.defaults.shell.expression2String().getShell()
+				else
+					OclUndefined
+				endif,
+			concurrencyGroup <- ghaJob.concurrencyGroup,
+			name <- ghaJob.jobName.expression2String(),
+			services <- ghaJob.services
 		)
 }
 
@@ -66,8 +84,15 @@ abstract rule Step2NonConditionalStep extends AbstractStep2Step {
 	to
 		cicdStep : CICD!NonConditionalStep(
 			id <- ghaStep.id,
-			--timeoutMinutes <- ghaStep.timeoutMinutes.expression2String().stringToInt(),
-			environmentVariables <- ghaStep.environmentVariables
+			timeoutMinutes <- 
+				if not ghaStep.timeoutMinutes.oclIsUndefined() then
+					ghaStep.timeoutMinutes.expression2String().stringToInt()
+				else
+					OclUndefined
+				endif,
+			environmentVariables <- ghaStep.environmentVariables,
+			allowFailure <- ghaStep.continueOnError,
+			name <- ghaStep.name.expression2String()
 		)
 }
 
@@ -77,6 +102,61 @@ rule Command2Command extends Step2NonConditionalStep {
 	to
 		cicdStep : CICD!Command(
 			program <- ghaStep.command
+		)
+}
+
+rule Package2Plugin extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Package(
+			not ghaStep.uses.expression2String().startsWith('actions/cache') and
+			not ghaStep.uses.expression2String().startsWith('actions/upload-artifact') and
+			not ghaStep.uses.expression2String().startsWith('actions/download-artifact')
+		)
+	using {
+		plugin : String = ghaStep.uses.expression2String().split('@')->first();
+		version : String = ghaStep.uses.expression2String().split('@')->last();
+	}
+	to
+		cicdStep : CICD!Plugin(
+			pluginName <- plugin,
+			version <- version,
+			kwargs <- ghaStep.args
+		)
+}
+
+rule Package2Cache extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Package(
+			ghaStep.uses.expression2String().startsWith('actions/cache')
+		)
+	to
+		cicdStep : CICD!Cache(
+			keys <- thisModule.getVariable(ghaStep.args, 'key'),
+			paths <- thisModule.getVariable(ghaStep.args, 'path'),
+			store <-
+				if ghaStep.uses.expression2String().startsWith('actions/cache/restore') then
+					#LOAD
+				else if ghaStep.uses.expression2String().startsWith('actions/cache/save') then
+					#STORE
+				else
+					#BOTH
+				endif
+				endif
+		)
+}
+
+rule Package2Artifact extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Package(
+			ghaStep.uses.expression2String().startsWith('actions/upload-artifact') or
+			ghaStep.uses.expression2String().startsWith('actions/download-artifact')
+		)
+	to
+		cicdStep : CICD!Artifact(
+			artifactName <- thisModule.getVariable(ghaStep.args, 'name'),
+			includePaths <- thisModule.getVariable(ghaStep.args, 'path'),
+			retentionTime <- thisModule.getVariable(ghaStep.args, 'retention-days'),
+			store <- ghaStep.uses.expression2String().startsWith('actions/upload-artifact')
 		)
 }
 
@@ -142,7 +222,12 @@ rule Equality2EqualityOp extends BinaryOp2BinaryOp {
 		ghaExpression : GHA!Equality
 	to
 		cicdExpression : CICD!EqualityOp(
-			op <- ghaExpression.op
+			op <-
+				if ghaExpression.op = #"==" then
+					#"=="
+				else
+					#"!="
+				endif
 		)
 }
 
@@ -151,7 +236,18 @@ rule Comparison2ComparisonOp extends BinaryOp2BinaryOp {
 		ghaExpression : GHA!Comparison
 	to
 		cicdExpression : CICD!ComparisonOp(
-			op <- ghaExpression.op
+			op <-
+				if ghaExpression.op = #">" then
+					#">"
+				else if ghaExpression.op = #">=" then
+					#">="
+				else if ghaExpression.op = #"<" then
+					#"<"
+				else
+					#"<="
+				endif
+				endif
+				endif
 		)
 }
 
@@ -263,6 +359,25 @@ rule Container2DockerContainer {
 		)
 }
 
+rule Service2DockerContainer {
+	from
+		service : GHA!Service
+	using {
+		container : GHA!Container = service.value;
+	}
+	to
+		dockerContainer : CICD!DockerContainer(
+			label <- service.key,
+			image <- container.image,
+			environmentVariables <- container.environmentVariables,
+			ports <- container.ports,
+			volumes <- container.volumes,
+			registryUsername <- container.username,
+			registryPassword <- container.password,
+			options <- container.options.expression2String()
+		)
+}
+
 abstract rule Trigger2Trigger {
 	from
 		ghaTrigger : GHA!Trigger
@@ -277,6 +392,40 @@ rule ScheduledTrigger2ScheduledTrigger extends Trigger2Trigger {
 		cicdTrigger : CICD!ScheduledTrigger(
 			crons <- ghaTrigger.crons->collect(cron | cron.expression2String())
 		)
+}
+
+rule PushTrigger2PushTrigger extends Trigger2Trigger {
+	from
+		ghaTrigger : GHA!PushTrigger
+	to
+		cicdTrigger : CICD!PushTrigger(
+			tagGlobs <- 
+				if not ghaTrigger.ignoreSpecifiedTags then
+					ghaTrigger.tags->collect(tag | tag.expression2String())
+				else
+					Sequence{'*'}->union(ghaTrigger.tags->collect(tag | tag.negationString()))
+				endif,
+			branchGlobs <- 
+				if not ghaTrigger.ignoreSpecifiedBranches then
+					ghaTrigger.branches->collect(branch | branch.expression2String())
+				else
+					Sequence{'*'}->union(ghaTrigger.branches->collect(branch | branch.negationString()))
+				endif
+		)		
+}
+
+rule PullRequestTrigger2PullRequestTrigger extends Trigger2Trigger {
+	from
+		ghaTrigger : GHA!PullRequestTrigger
+	to
+		cicdTrigger : CICD!PullRequestTrigger(
+			branchGlobs <- 
+				if not ghaTrigger.ignoreSpecifiedBranches then
+					ghaTrigger.branches->collect(branch | branch.expression2String())
+				else
+					Sequence{'*'}->union(ghaTrigger.branches->collect(branch | branch.negationString()))
+				endif
+		)	
 }
 
 rule Matrix2Matrix {
@@ -310,15 +459,61 @@ rule MatrixCombination2MatrixCombination {
 		)
 }
 
+rule ConcurrencyGroup2ConcurrencyGroup {
+	from
+		ghaGroup : GHA!ConcurrencyGroup
+	to
+		cicdGroup : CICD!ConcurrencyGroup(
+			groupId <- ghaGroup.name,
+			cancelInProgress <- ghaGroup.cancelInProgress.expression2Boolean()
+		)
+}
+
+rule Permission2Permission {
+	from
+		ghaPermission : GHA!Permission
+	to
+		cicdPermission : CICD!Permission(
+			key <- ghaPermission.key,
+			value <-
+				if ghaPermission.value = #read then
+					#READ
+				else if ghaPermission.value = #write then
+					#WRITE
+				else
+					#NONE
+				endif
+				endif
+		)
+}
+
 -- Lazy Rules
 
-lazy rule getAgentFromJob {
+lazy rule GetAgentFromJob {
 	from
 		job : GHA!Job
 	to
 		agent : CICD!Agent(
 			labels <- job.agent.labels,
 			container <- job.container
+		)
+}
+
+lazy rule NegateExpression {
+	from
+		expression : GHA!Expression
+	to
+		negatedExpression : CICD!Negation(
+			rhs <- expression
+		)
+}
+
+lazy rule String2StringLiteral {
+	from
+		string : String
+	to
+		stringLiteral : CICD!StringLiteral(
+			value <- string
 		)
 }
 
@@ -348,6 +543,19 @@ helper context GHA!Concat def : expression2String() : String =
 			joinedString.concat(exprString)
 		);
 
+helper context GHA!Not def : expression2String() : String = 
+	if self.childExpr.oclIsKindOf(GHA!Value) then
+		'!' + self.childExpr.expression2String()
+	else
+		'!(' + self.childExpr.expression2String() + ')'
+	endif;
+
+helper context GHA!Expression def : negationString() : String =
+	if self.oclIsKindOf(GHA!Value) then
+		'!' + self.expression2String()
+	else
+		'!(' + self.expression2String() + ')'
+	endif;
 
 helper context GHA!Expression def : expression2Boolean() : Boolean = false;
 
@@ -381,4 +589,15 @@ helper context String def : string2Variable() : CICD!EnvironmentVariable =
 		environmentVariable.refSetValue('name', self);
 
 helper context String def : stringToInt() : Integer = Integer.parseInt(self);
-		
+
+helper context String def : getShell() : CICD!SHELL_TYPE = #BASH;
+
+helper def : getVariable(map : Sequence(GHA!VariableAssignment), key : String) : GHA!Expression =
+	let matching : Sequence(GHA!VariableAssignment) = 
+		map->select(assignment | assignment.key = key)
+	in
+	if matching->size() < 1 then
+		matching->first().value
+	else
+		OclUndefined
+	endif;

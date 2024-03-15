@@ -184,12 +184,17 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 					if (trigger.type().equals(Node.SCALAR)) {
 						result.add(parseSimpleTrigger(trigger.asScalar().value()));
 					} else {
-						throw new SyntaxException("Invalid trigger");
+						parseTriggerMap(result, trigger);
 					}
 				}
 			}
-		} else if (triggers.type().equals(Node.MAPPING)) {
-			YamlMapping triggerMap = triggers.asMapping();
+		} else parseTriggerMap(result, triggers);
+		return result;
+	}
+
+	private void parseTriggerMap(List<Trigger> result, YamlNode trigger) throws SyntaxException {
+		if (trigger.type().equals(Node.MAPPING)) {
+			YamlMapping triggerMap = trigger.asMapping();
 			for (YamlNode key : triggerMap.keys()) {
 				if (key.type().equals(Node.SCALAR)) {
 					result.add(parseOptionedTrigger(key.asScalar().value(), triggerMap.value(key.asScalar().value())));
@@ -200,7 +205,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		} else {
 			throw new SyntaxException("Invalid trigger");
 		}
-		return result;
 	}
 
 	private List<WEBHOOK_ACTIVITY_TYPES> parseEventTypes(YamlNode types) throws SyntaxException {

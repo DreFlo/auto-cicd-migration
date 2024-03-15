@@ -1739,13 +1739,22 @@ public interface CICDPackage extends EPackage {
 	int CACHE__PATHS = NON_CONDITIONAL_STEP_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__STORE = NON_CONDITIONAL_STEP_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Cache</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CACHE_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 3;
+	int CACHE_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Cache</em>' class.
@@ -1848,13 +1857,22 @@ public interface CICDPackage extends EPackage {
 	int ARTIFACT__RETENTION_TIME = NON_CONDITIONAL_STEP_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__STORE = NON_CONDITIONAL_STEP_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Artifact</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARTIFACT_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 4;
+	int ARTIFACT_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Artifact</em>' class.
@@ -2886,6 +2904,16 @@ public interface CICDPackage extends EPackage {
 	int VARIABLE_CONTEXTS = 55;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
+	 * @generated
+	 */
+	int CACHE_MODE = 56;
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3875,6 +3903,17 @@ public interface CICDPackage extends EPackage {
 	EReference getCache_Paths();
 
 	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Cache#getStore <em>Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Store</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Cache#getStore()
+	 * @see #getCache()
+	 * @generated
+	 */
+	EAttribute getCache_Store();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact <em>Artifact</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3927,6 +3966,17 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getArtifact_RetentionTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact#getStore <em>Store</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Store</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Artifact#getStore()
+	 * @see #getArtifact()
+	 * @generated
+	 */
+	EAttribute getArtifact_Store();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Assignment</em>}'.
@@ -4405,6 +4455,16 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getVARIABLE_CONTEXTS();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>CACHE MODE</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE
+	 * @generated
+	 */
+	EEnum getCACHE_MODE();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -5216,6 +5276,14 @@ public interface CICDPackage extends EPackage {
 		EReference CACHE__PATHS = eINSTANCE.getCache_Paths();
 
 		/**
+		 * The meta object literal for the '<em><b>Store</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CACHE__STORE = eINSTANCE.getCache_Store();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ArtifactImpl <em>Artifact</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5256,6 +5324,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ARTIFACT__RETENTION_TIME = eINSTANCE.getArtifact_RetentionTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Store</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARTIFACT__STORE = eINSTANCE.getArtifact_Store();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -5684,6 +5760,16 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum VARIABLE_CONTEXTS = eINSTANCE.getVARIABLE_CONTEXTS();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
+		 * @generated
+		 */
+		EEnum CACHE_MODE = eINSTANCE.getCACHE_MODE();
 
 	}
 

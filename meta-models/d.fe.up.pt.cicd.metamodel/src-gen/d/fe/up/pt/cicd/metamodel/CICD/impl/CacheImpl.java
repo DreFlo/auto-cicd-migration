@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
+import d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Cache;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CacheImpl#getCacheName <em>Cache Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CacheImpl#getKeys <em>Keys</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CacheImpl#getPaths <em>Paths</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CacheImpl#getStore <em>Store</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +68,26 @@ public class CacheImpl extends NonConditionalStepImpl implements Cache {
 	 * @ordered
 	 */
 	protected EList<Expression> paths;
+
+	/**
+	 * The default value of the '{@link #getStore() <em>Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final CACHE_MODE STORE_EDEFAULT = CACHE_MODE.STORE;
+
+	/**
+	 * The cached value of the '{@link #getStore() <em>Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected CACHE_MODE store = STORE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,6 +192,29 @@ public class CacheImpl extends NonConditionalStepImpl implements Cache {
 	 * @generated
 	 */
 	@Override
+	public CACHE_MODE getStore() {
+		return store;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStore(CACHE_MODE newStore) {
+		CACHE_MODE oldStore = store;
+		store = newStore == null ? STORE_EDEFAULT : newStore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.CACHE__STORE, oldStore, store));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case CICDPackage.CACHE__CACHE_NAME:
@@ -196,6 +241,8 @@ public class CacheImpl extends NonConditionalStepImpl implements Cache {
 			return getKeys();
 		case CICDPackage.CACHE__PATHS:
 			return getPaths();
+		case CICDPackage.CACHE__STORE:
+			return getStore();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -220,6 +267,9 @@ public class CacheImpl extends NonConditionalStepImpl implements Cache {
 			getPaths().clear();
 			getPaths().addAll((Collection<? extends Expression>) newValue);
 			return;
+		case CICDPackage.CACHE__STORE:
+			setStore((CACHE_MODE) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -241,6 +291,9 @@ public class CacheImpl extends NonConditionalStepImpl implements Cache {
 		case CICDPackage.CACHE__PATHS:
 			getPaths().clear();
 			return;
+		case CICDPackage.CACHE__STORE:
+			setStore(STORE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -259,8 +312,27 @@ public class CacheImpl extends NonConditionalStepImpl implements Cache {
 			return keys != null && !keys.isEmpty();
 		case CICDPackage.CACHE__PATHS:
 			return paths != null && !paths.isEmpty();
+		case CICDPackage.CACHE__STORE:
+			return store != STORE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (store: ");
+		result.append(store);
+		result.append(')');
+		return result.toString();
 	}
 
 } //CacheImpl

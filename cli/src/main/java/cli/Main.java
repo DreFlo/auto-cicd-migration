@@ -10,11 +10,14 @@ import java.util.Scanner;
 
 import cli.compilers.input.GHAInputCompiler;
 import cli.compilers.input.InputAbstractCompiler;
+import cli.compilers.output.GHAOutputCompiler;
 import cli.compilers.output.JenkinsOutputCompiler;
 import cli.compilers.output.OutputAbstractCompiler;
+import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
 import cli.parsers.*;
 import cli.parsers.exceptions.*;
+import cli.transformers.exogenous.fromTIM.CICD2GHATransformer;
 import cli.transformers.exogenous.fromTIM.CICD2JenkinsTransformer;
 import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
@@ -51,6 +54,7 @@ public class Main {
 
 	private static void registerOutputCompilers() {
 		outputCompilers.put("jenkins", new JenkinsOutputCompiler(new CICD2JenkinsTransformer(getResourceSet()), new JenkinsGenerator(getResourceSet())));
+		outputCompilers.put("gha", new GHAOutputCompiler(new CICD2GHATransformer(getResourceSet()), new GHAGenerator(getResourceSet())));
 	}
 
 	private static Options getCommandLineOptions() {

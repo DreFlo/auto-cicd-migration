@@ -5,3 +5,555 @@ module cicd2gha;
 
 create OUT : GHA from IN : CICD;
 
+rule Pipeline2Workflow {
+	from
+		pipeline : CICD!Pipeline
+	to
+		workflow : GHA!Workflow(
+			concurrencyGroup <- pipeline.concurrencyGroup,
+			defaults <- thisModule.Defaults(pipeline.shell, pipeline.workingDirectory),
+			environmentVariables <- pipeline.environmentVariables,
+			jobs <- thisModule.getAllJobs(pipeline.jobStreams),
+			name <- thisModule.String2StringLiteral(pipeline.name),
+			permissions <- pipeline.permissions,
+			runName <- thisModule.String2StringLiteral(pipeline.name),
+			triggers <- pipeline.triggers
+		)
+}
+
+rule Job2Job {
+	from
+		cicdJob : CICD!Job
+	to
+		ghaJob : GHA!Job(
+			agent <- thisModule.Agent2Agent(cicdJob.agent),
+			concurrencyGroup <- cicdJob.concurrencyGroup,
+			container <- 
+				if cicdJob.agent.oclIsUndefined() then
+					OclUndefined
+				else
+					cicdJob.agent.container
+				endif,
+			continueOnError <- thisModule.Boolean2BooleanLiteral(cicdJob.allowFailure),
+			defaults <- thisModule.Defaults(cicdJob.shell, cicdJob.workingDirectory),
+			dependsOn <- cicdJob.previous,
+			environmentVariables <- cicdJob.environmentVariables,
+			ifCondition <- cicdJob.ifCondition,
+			jobName <- thisModule.String2StringLiteral(cicdJob.name),
+			name <- cicdJob.id,
+			permissions <- cicdJob.permissions,
+			services <- cicdJob.services->collect(service | thisModule.DockerContainer2Service(service)),
+			steps <- cicdJob.steps,
+			strategy <- cicdJob.matrix,
+			timeoutMinutes <- thisModule.Integer2IntegerLiteral(cicdJob.timeoutMinutes)
+		)
+}
+
+abstract rule Step2AbstractStep {
+	from
+		cicdStep : CICD!Step
+	to
+		ghaStep : GHA!AbstractStep
+}
+
+rule ConditionalStep2IfStep extends Step2AbstractStep {
+	from
+		cicdStep : CICD!ConditionalStep
+	to
+		ghaStep : GHA!IfStep(
+			ifCondition <- cicdStep.ifCondition,
+			thenRun <- cicdStep.thenRun->first()
+		)
+}
+
+abstract rule NonConditionalStep2Step extends Step2AbstractStep {
+	from
+		cicdStep : CICD!NonConditionalStep
+	to
+		ghaStep : GHA!Step(
+			continueOnError <- thisModule.Boolean2BooleanLiteral(cicdStep.allowFailure),
+			environmentVariables <- cicdStep.environmentVariables,			
+			id <- cicdStep.id,
+			name <- thisModule.String2StringLiteral(cicdStep.name),
+			timeoutMinutes <- thisModule.Integer2IntegerLiteral(cicdStep.timeoutMinutes)
+		)
+}
+
+rule Command2Command extends NonConditionalStep2Step {
+	from
+		cicdStep : CICD!Command
+	to
+		ghaStep : GHA!Command(
+			command <- cicdStep.program
+		)
+}
+
+rule Plugin2Package extends NonConditionalStep2Step {
+	from
+		cicdStep : CICD!Plugin
+	to
+		ghaStep : GHA!Package(
+			uses <- thisModule.String2StringLiteral(cicdStep.pluginName + '@' + cicdStep.version),
+			args <- cicdStep.kwargs
+		)
+}
+
+rule Cache2Package extends NonConditionalStep2Step {
+	from
+		cicdStep : CICD!Cache
+	to
+		ghaStep : GHA!Package(
+			uses <- thisModule.String2StringLiteral(
+					if cicdStep.store = #STORE then
+						'actions/cache/save@v4'
+					else if cicdStep.store = #LOAD then
+						'actions/cache/restore@v4'
+					else
+						'actions/cache@v4'
+					endif
+					endif
+				),
+			args <- Sequence{
+					thisModule.VariableAssignment('key', cicdStep.keys->first()),
+					thisModule.VariableAssignment('path', cicdStep.paths->first())
+				}					
+		)
+}
+
+rule Artifact2Package extends NonConditionalStep2Step {
+	from
+		cicdStep : CICD!Artifact
+	to
+		ghaStep : GHA!Package(
+			uses <- thisModule.String2StringLiteral(
+					if cicdStep.store then
+						'actions/download-artifact@v4'
+					else
+						'actions/upload-artifact@v4'
+					endif
+				),
+			args <- Sequence{
+					thisModule.VariableAssignment('name', cicdStep.artifactName),
+					thisModule.VariableAssignment('path', cicdStep.includePaths->first()),
+					thisModule.VariableAssignment('retention-days', cicdStep.retentionTime)					
+				}
+		)
+}
+
+rule Permission2Permission {
+	from
+		cicdPermission : CICD!Permission
+	to
+		ghaPermission : GHA!Permission(
+			key <- cicdPermission.key.getPermissionScope(),
+			value <-
+				if ghaPermission.value = #READ then
+					#read
+				else if ghaPermission.value = #WRITE then
+					#write
+				else
+					#none
+				endif
+				endif
+		)
+}
+
+rule DockerContainer2Container {
+	from
+		dockerContainer : CICD!DockerContainer
+	to
+		container : GHA!Container(
+			environmentVariables <- dockerContainer.environmentVariables,
+			image <- dockerContainer.image,
+			options <- thisModule.String2StringLiteral(dockerContainer.options),
+			password <- dockerContainer.registryPassword,
+			ports <- dockerContainer.ports,
+			username <- dockerContainer.registryUsername,
+			volumes <- dockerContainer.volumes
+		)
+}
+
+rule ConcurrencyGroup2ConcurrencyGroup {
+	from
+		cicdGroup : CICD!ConcurrencyGroup
+	to
+		ghaGroup : GHA!ConcurrencyGroup(
+			name <- cicdGroup.groupId,
+			cancelInProgress <- thisModule.Boolean2BooleanLiteral(cicdGroup.cancelInProgress)
+		)
+}
+
+abstract rule Trigger2Trigger {
+	from
+		cicdTrigger : CICD!Trigger
+	to
+		ghaTrigger : GHA!Trigger
+}
+
+rule ScheduledTrigger2ScheduledTrigger extends Trigger2Trigger {
+	from
+		cicdTrigger : CICD!ScheduledTrigger
+	to
+		ghaTrigger : GHA!ScheduleTrigger(
+			crons <- cicdTrigger.crons->collect(cron | thisModule.String2StringLiteral(cron))
+		)
+}
+
+rule PullRequestTrigger2PullRequestTrigger extends Trigger2Trigger {
+	from
+		cicdTrigger : CICD!PullRequestTrigger
+	to
+		ghaTrigger : GHA!PullRequestTrigger(
+			branches <- cicdTrigger.branchGlobs->collect(glob | thisModule.String2StringLiteral(glob))
+		)
+}
+
+rule PushTrigger2PushTrigger extends Trigger2Trigger {
+	from
+		cicdTrigger : CICD!PushTrigger
+	to
+		ghaTrigger : GHA!PushTrigger(
+			branches <- cicdTrigger.branchGlobs->collect(glob | thisModule.String2StringLiteral(glob)),
+			paths <- cicdTrigger.tagGlobs->collect(glob | thisModule.String2StringLiteral(glob))
+		)
+}
+
+rule Matrix2Matrix {
+	from
+		cicdMatrix : CICD!Matrix
+	to
+		ghaMatrix : GHA!Matrix(
+			axes <- cicdMatrix.axes,
+			excludes <- cicdMatrix.excludes,
+			failFast <- thisModule.Boolean2BooleanLiteral(cicdMatrix.failFast),
+			includes <- cicdMatrix.includes
+		)
+}
+
+rule MatrixAxis2MatrixAxis {
+	from
+		cicdAxis : CICD!MatrixAxis
+	to
+		ghaAxis : GHA!MatrixAxis(
+			cells <- cicdAxis.cells,
+			name <- cicdAxis.name
+		)
+}
+
+rule MatrixCombination2MatrixCombination {
+	from
+		cicdComb : CICD!MatrixCombination
+	to
+		ghaComb : GHA!MatrixCombination(
+			entries <- cicdComb.combinationEntries
+		)
+}
+
+rule Assignment2VariableAssignment {
+	from
+		assignment : CICD!Assignment
+	to
+		variableAssignment : GHA!VariableAssignment(
+			key <- assignment.key.name,
+			value <- assignment.value
+		)
+}
+
+abstract rule Expression2Expression {
+	from
+		input : CICD!Expression
+	to
+		output : GHA!Expression
+}
+
+rule Concat2Concat extends Expression2Expression {
+	from
+		input : CICD!Concat
+	to
+		output : GHA!Concat(
+			expressions <- input.expressions
+		)
+}
+
+abstract rule BinaryOp2BinaryOp extends Expression2Expression {
+	from
+		input : CICD!BinaryOp
+	to
+		output : GHA!BinaryOp(
+			lhs <- input.lhs,
+			rhs <- input.rhs
+		)
+}
+
+abstract rule LogicalOp2LogicalOp extends BinaryOp2BinaryOp {
+	from
+		input : CICD!LogicalOp
+	to
+		output : GHA!LogicalOp
+}
+
+rule And2And extends LogicalOp2LogicalOp {
+	from
+		input : CICD!And
+	to
+		output : GHA!And
+}
+
+rule Or2Or extends LogicalOp2LogicalOp {
+	from
+		input : CICD!Or
+	to
+		output : GHA!Or
+}
+
+rule EqualityOp2Equality extends BinaryOp2BinaryOp {
+	from
+		input : CICD!EqualityOp
+	to
+		output : GHA!Equality(
+			op <-
+				if input.op = #"==" then
+					#"=="
+				else
+					#"!="
+				endif
+		)
+}
+
+rule ComparisonOp2Comparison extends BinaryOp2BinaryOp {
+	from
+		input : CICD!ComparisonOp
+	to
+		output : GHA!Comparison(
+			op <- 
+				if input.op = #">" then
+					#">"
+				else if input.op = #">=" then
+					#">="
+				else if input.op = #"<" then
+					#"<"
+				else
+					#"<="
+				endif
+				endif
+				endif
+		)
+}
+
+abstract rule Value2Value extends Expression2Expression {
+	from
+		input : CICD!Value
+	to
+		output : GHA!Value
+}
+
+abstract rule Literal2Literal extends Value2Value {
+	from
+		input : CICD!Literal
+	to
+		output : GHA!Literal
+}
+
+rule StringLiteral2StringLiteral extends Literal2Literal {
+	from
+		input : CICD!StringLiteral
+	to
+		output : GHA!StringLiteral(
+			value <- input.value
+		)
+}
+
+rule IntegerLiteral2IntegerLiteral extends Literal2Literal {
+	from
+		input : CICD!IntegerLiteral
+	to
+		output : GHA!IntegerLiteral(
+			value <- input.value
+		)
+}
+
+rule DoubleLiteral2DoubleLiteral extends Literal2Literal {
+	from
+		input : CICD!DoubleLiteral
+	to
+		output : GHA!DoubleLiteral(
+			value <- input.value
+		)
+}
+
+rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
+	from
+		input : CICD!BooleanLiteral
+	to
+		output : GHA!BooleanLiteral(
+			value <- input.value
+		)
+}
+
+abstract rule UnaryOp2UnaryOp extends Expression2Expression {
+	from
+		input : CICD!UnaryOp
+	to
+		output: GHA!UnaryOp(
+			childExpr <- input.rhs
+		)
+}
+
+rule Negation2Not extends UnaryOp2UnaryOp {
+	from
+		input : CICD!Negation
+	to
+		output : GHA!Not
+}
+
+rule VariableDereference2VariableDereference extends Expression2Expression {
+	from
+		input : CICD!VariableDereference
+	to
+		output : GHA!VariableDereference(
+			property <- input.property,
+			variable <- input.variable
+		)
+}
+
+rule VariableContext2GitHubContext extends Value2Value {
+	from
+		input : CICD!VariableContext
+	to
+		output : GHA!GitHubContext(
+			context <-
+				if input.context = #ENV then
+					#env
+				else if input.context = #PARAMS then
+					#inputs
+				else
+					#""
+				endif
+				endif
+		)
+}
+
+lazy rule DockerContainer2Service {
+	from
+		dockerContainer : CICD!DockerContainer
+	to
+		service : GHA!Service(
+			key <- dockerContainer.label,
+			value <- dockerContainer
+		)
+}
+
+lazy rule VariableAssignment {
+	from
+		key : String,
+		value : CICD!Expression
+	to
+		assignment : GHA!VariableAssignment(
+			key <- key,
+			value <- value
+		)
+}
+
+lazy rule Defaults {
+	from
+		shell : CICD!SHELL_TYPE,
+		workingDirectory : String
+	to
+		defaults : GHA!Defaults(
+			shell <-
+				if shell = #BASH then
+					thisModule.String2StringLiteral('bash')
+				else
+					OclUndefined
+				endif,
+			workingDirectory <- thisModule.String2StringLiteral(workingDirectory)
+		)
+}
+
+lazy rule Agent2Agent {
+	from
+		cicdAgent : CICD!Agent
+	to
+		ghaAgent : GHA!Agent(
+			labels <- cicdAgent.labels
+		)
+}
+
+lazy rule String2StringLiteral {
+	from
+		string : String
+	to
+		stringLiteral : GHA!StringLiteral(
+			value <- string
+		)
+}
+
+lazy rule Boolean2BooleanLiteral {
+	from
+		boolean : Boolean
+	to
+		booleanLiteral : GHA!BooleanLiteral(
+			value <- boolean
+		)
+}
+
+lazy rule Integer2IntegerLiteral {
+	from
+		integer : Integer
+	to
+		integerLiteral : GHA!IntegerLiteral(
+			value <- integer
+		)
+}
+
+helper def : getAllJobs(jobStreams : Sequence(CICD!Job)) : Sequence(CICD!Job) =
+	let next : Sequence(CICD!Job) = 
+		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 
+			acc.append(jobStream.next)
+		).flatten()->asSet()->asSequence()
+	in 
+	if next.isEmpty() then
+		Sequence{jobStreams}
+	else 
+		thisModule.getAllJobs(next).prepend(jobStreams)
+	endif;
+	
+helper context String def : getPermissionScope() : CICD!PERMISSION_SCOPES =
+	if self = 'actions' then
+		#actions
+	else if self = 'checks' then
+		#checks
+	else if self = 'contents' then
+		#contents
+	else if self = 'deployments' then
+		#deployments
+	else if self = 'discussions' then
+		#discussions
+	else if self = 'id-token' then
+		#"id-token"
+	else if self = 'issues' then
+		#issues
+	else if self = 'packages' then
+		#packages
+	else if self = 'pages' then
+		#pages
+	else if self = 'pull-requests' then
+		#"pull-requests"
+	else if self = 'repository-projects' then
+		#"repository-projects"
+	else if self = 'security-events' then
+		#"security-events"
+	else
+		#statuses
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif	
+	endif
+	endif
+	endif;

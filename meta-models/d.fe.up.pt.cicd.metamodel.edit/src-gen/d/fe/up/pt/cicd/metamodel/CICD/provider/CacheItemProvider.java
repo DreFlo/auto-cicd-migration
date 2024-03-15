@@ -14,7 +14,9 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -45,8 +47,24 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addStorePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Store feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStorePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Cache_store_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Cache_store_feature", "_UI_Cache_type"),
+						CICDPackage.Literals.CACHE__STORE, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -127,6 +145,9 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Cache.class)) {
+		case CICDPackage.CACHE__STORE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		case CICDPackage.CACHE__CACHE_NAME:
 		case CICDPackage.CACHE__KEYS:
 		case CICDPackage.CACHE__PATHS:

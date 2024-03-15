@@ -165,6 +165,7 @@
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paths" lowerBound="1" upperBound="-1"
         eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="store" lowerBound="1" eType="#//CACHE_MODE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Artifact" eSuperTypes="#//NonConditionalStep">
     <eStructuralFeatures xsi:type="ecore:EReference" name="artifactName" lowerBound="1"
@@ -175,6 +176,7 @@
         upperBound="-1" eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="retentionTime" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="store" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Assignment" instanceClassName="java.util.Map$Entry">
     <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Variable"
@@ -267,5 +269,10 @@
     <eLiterals name="ENV"/>
     <eLiterals name="PARAMS" value="1"/>
     <eLiterals name="SECRETS" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CACHE_MODE">
+    <eLiterals name="STORE"/>
+    <eLiterals name="LOAD" value="1"/>
+    <eLiterals name="BOTH" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

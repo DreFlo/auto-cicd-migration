@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact#getIncludePaths <em>Include Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact#getExcludePaths <em>Exclude Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact#getRetentionTime <em>Retention Time</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact#getStore <em>Store</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getArtifact()
@@ -91,5 +92,27 @@ public interface Artifact extends NonConditionalStep {
 	 * @generated
 	 */
 	void setRetentionTime(Expression value);
+
+	/**
+	 * Returns the value of the '<em><b>Store</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Store</em>' attribute.
+	 * @see #setStore(Boolean)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getArtifact_Store()
+	 * @model required="true"
+	 * @generated
+	 */
+	Boolean getStore();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Artifact#getStore <em>Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Store</em>' attribute.
+	 * @see #getStore()
+	 * @generated
+	 */
+	void setStore(Boolean value);
 
 } // Artifact

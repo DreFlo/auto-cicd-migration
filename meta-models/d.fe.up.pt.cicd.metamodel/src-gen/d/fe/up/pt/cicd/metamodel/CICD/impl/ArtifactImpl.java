@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ArtifactImpl#getIncludePaths <em>Include Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ArtifactImpl#getExcludePaths <em>Exclude Paths</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ArtifactImpl#getRetentionTime <em>Retention Time</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ArtifactImpl#getStore <em>Store</em>}</li>
  * </ul>
  *
  * @generated
@@ -77,6 +78,26 @@ public class ArtifactImpl extends NonConditionalStepImpl implements Artifact {
 	 * @ordered
 	 */
 	protected Expression retentionTime;
+
+	/**
+	 * The default value of the '{@link #getStore() <em>Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Boolean STORE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getStore() <em>Store</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStore()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean store = STORE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -235,6 +256,29 @@ public class ArtifactImpl extends NonConditionalStepImpl implements Artifact {
 	 * @generated
 	 */
 	@Override
+	public Boolean getStore() {
+		return store;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStore(Boolean newStore) {
+		Boolean oldStore = store;
+		store = newStore;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.ARTIFACT__STORE, oldStore, store));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case CICDPackage.ARTIFACT__ARTIFACT_NAME:
@@ -265,6 +309,8 @@ public class ArtifactImpl extends NonConditionalStepImpl implements Artifact {
 			return getExcludePaths();
 		case CICDPackage.ARTIFACT__RETENTION_TIME:
 			return getRetentionTime();
+		case CICDPackage.ARTIFACT__STORE:
+			return getStore();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -292,6 +338,9 @@ public class ArtifactImpl extends NonConditionalStepImpl implements Artifact {
 		case CICDPackage.ARTIFACT__RETENTION_TIME:
 			setRetentionTime((Expression) newValue);
 			return;
+		case CICDPackage.ARTIFACT__STORE:
+			setStore((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -316,6 +365,9 @@ public class ArtifactImpl extends NonConditionalStepImpl implements Artifact {
 		case CICDPackage.ARTIFACT__RETENTION_TIME:
 			setRetentionTime((Expression) null);
 			return;
+		case CICDPackage.ARTIFACT__STORE:
+			setStore(STORE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -336,8 +388,27 @@ public class ArtifactImpl extends NonConditionalStepImpl implements Artifact {
 			return excludePaths != null && !excludePaths.isEmpty();
 		case CICDPackage.ARTIFACT__RETENTION_TIME:
 			return retentionTime != null;
+		case CICDPackage.ARTIFACT__STORE:
+			return STORE_EDEFAULT == null ? store != null : !STORE_EDEFAULT.equals(store);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (store: ");
+		result.append(store);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ArtifactImpl

@@ -463,6 +463,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	private EEnum variablE_CONTEXTSEEnum = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum cachE_MODEEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -1452,6 +1459,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getCache_Store() {
+		return (EAttribute) cacheEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getArtifact() {
 		return artifactEClass;
 	}
@@ -1494,6 +1511,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EReference getArtifact_RetentionTime() {
 		return (EReference) artifactEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getArtifact_Store() {
+		return (EAttribute) artifactEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1962,6 +1989,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EEnum getCACHE_MODE() {
+		return cachE_MODEEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public CICDFactory getCICDFactory() {
 		return (CICDFactory) getEFactoryInstance();
 	}
@@ -2102,12 +2139,14 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(cacheEClass, CACHE__CACHE_NAME);
 		createEReference(cacheEClass, CACHE__KEYS);
 		createEReference(cacheEClass, CACHE__PATHS);
+		createEAttribute(cacheEClass, CACHE__STORE);
 
 		artifactEClass = createEClass(ARTIFACT);
 		createEReference(artifactEClass, ARTIFACT__ARTIFACT_NAME);
 		createEReference(artifactEClass, ARTIFACT__INCLUDE_PATHS);
 		createEReference(artifactEClass, ARTIFACT__EXCLUDE_PATHS);
 		createEReference(artifactEClass, ARTIFACT__RETENTION_TIME);
+		createEAttribute(artifactEClass, ARTIFACT__STORE);
 
 		assignmentEClass = createEClass(ASSIGNMENT);
 		createEReference(assignmentEClass, ASSIGNMENT__KEY);
@@ -2180,6 +2219,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
 		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
 		variablE_CONTEXTSEEnum = createEEnum(VARIABLE_CONTEXTS);
+		cachE_MODEEEnum = createEEnum(CACHE_MODE);
 	}
 
 	/**
@@ -2498,6 +2538,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getCache_Paths(), this.getExpression(), null, "paths", null, 1, -1, Cache.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getCache_Store(), this.getCACHE_MODE(), "store", null, 1, 1, Cache.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(artifactEClass, Artifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2513,6 +2555,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getArtifact_RetentionTime(), this.getExpression(), null, "retentionTime", null, 0, 1,
 				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getArtifact_Store(), ecorePackage.getEBooleanObject(), "store", null, 1, 1, Artifact.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
@@ -2653,6 +2697,11 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.ENV);
 		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.PARAMS);
 		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.SECRETS);
+
+		initEEnum(cachE_MODEEEnum, d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE.class, "CACHE_MODE");
+		addEEnumLiteral(cachE_MODEEEnum, d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE.STORE);
+		addEEnumLiteral(cachE_MODEEEnum, d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE.LOAD);
+		addEEnumLiteral(cachE_MODEEEnum, d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE.BOTH);
 
 		// Create resource
 		createResource(eNS_URI);

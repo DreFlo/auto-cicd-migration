@@ -1,10 +1,155 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/GHA')]
 
+[query public getBinaryOperator(binaryOp : BinaryOp) : String =
+	invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2Jenkins', 'getBinaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.BinaryOp)', Sequence{binaryOp})
+/]
 
-[template public generateWorkflow(aWorkflow : Workflow)]
+[query public getUnaryOperator(unaryOp : UnaryOp) : String =
+	invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp)', Sequence{unaryOp})
+/]
+
+[template public generateExpression(expression : Expression) post (trim())]
+[if (expression.oclIsKindOf(Literal))]
+[generateLiteral(expression.oclAsType(Literal))/]
+[elseif (expression.oclIsKindOf(Variable))]
+[expression.oclAsType(Variable).name/]
+[elseif (expression.oclIsKindOf(GitHubContext))]
+[expression.oclAsType(GitHubContext)._context/]
+[elseif (expression.oclIsKindOf(BinaryOp))]
+[elseif (expression.oclIsKindOf(VariableDereference))]
+[generateVariableDereference(expression.oclAsType(VariableDereference))/]
+[generateBinaryOp(expression.oclAsType(BinaryOp))/]
+[elseif (expression.oclIsKindOf(UnaryOp))]
+[generateUnaryOp(expression.oclAsType(UnaryOp))/]
+[/if]
+[/template]
+
+[template public generateLiteral(literal : Literal)]
+[if (literal.oclIsKindOf(StringLiteral))]
+[literal.oclAsType(StringLiteral).value/]
+[elseif (literal.oclIsKindOf(IntegerLiteral))]
+[literal.oclAsType(IntegerLiteral).value/]
+[elseif (literal.oclIsKindOf(DoubleLiteral))]
+[literal.oclAsType(DoubleLiteral).value/]
+[elseif (literal.oclIsKindOf(BooleanLiteral))]
+[literal.oclAsType(BooleanLiteral).value/]
+[/if]
+[/template]
+
+[template public generateVariableDereference(variableDereference : VariableDereference)]
+[generateExpression(variable)/].[property/]
+[/template]
+
+[template public generateBinaryOp(binaryOp : BinaryOp)]
+[generateExpression(lhs)/] [getBinaryOperator(binaryOp)/] [generateExpression(rhs)/]
+[/template]
+
+[template public generateUnaryOp(unaryOp : UnaryOp)]
+[getUnaryOperator(unaryOp)/] [generateExpression(childExpr)/]
+[/template]
+
+[template public generateDefaults(defaults : Defaults) post (trim())]
+run:
+	shell: [generateExpression(shell)/]
+	[if (not workingDirectory.oclIsUndefined())]
+	working-directory: [generateExpression(workingDirectory)/]
+[/if]
+[/template]
+
+[template public generateTrigger(trigger : Trigger) post (trim())]
+[if (trigger.oclIsTypeOf(StandardEventTrigger))]
+[generateStandardEventTrigger(trigger.oclAsType(StandardEventTrigger))/]
+[elseif (trigger.oclIsTypeOf(WorkflowRunTrigger))]
+[generateWorkflowRunTrigger(trigger.oclAsType(WorkflowRunTrigger))/]
+[elseif (trigger.oclIsKindOf(PullRequestTrigger))]
+[elseif (trigger.oclIsTypeOf(PushTrigger))]
+[elseif (trigger.oclIsTypeOf(ScheduleTrigger))]
+[elseif (trigger.oclIsTypeOf(WorkflowCallTrigger))]
+[elseif (trigger.oclIsTypeOf(WorkflowDispatchTrigger))]
+[/if]
+[/template]
+
+[template public generateStandardEventTrigger(trigger : StandardEventTrigger)]
+[if (eventTypes->isEmpty())]
+[event/]
+[else]
+[event/]:
+	[generateEventTypesList(eventTypes)/]
+[/if]
+[/template]
+
+[template public generateWorkflowRunTrigger(trigger : WorkflowRunTrigger)]
+[if (branches->isEmpty())]
+workflow_run
+[else]
+workflow_run:
+	[generateBranchesList(branches, ignoreSpecifiedBranches)/]
+[/if]
+[/template]
+
+[template public generatePullRequestTrigger(trigger : PullRequestTrigger)]
+[if (eventTypes->isEmpty() and branches->isEmpty() and paths->isEmpty())]
+[if (trigger.oclIsTypeOf(PullRequestTargetTrigger))]
+pull_request_target
+[else]
+pull_request
+[/if]
+[else]
+[if (trigger.oclIsTypeOf(PullRequestTargetTrigger))]
+pull_request_target:
+[else]
+pull_request:
+[/if]
+[if (eventTypes->notEmpty())]
+	[generateEventTypesList(eventTypes)/]
+[/if]
+[if (branches->notEmpty())]
+	[generateBranchesList(branches, ignoreSpecifiedBranches)/]
+[/if]
+[/if]
+[/template]
+
+[template public generateEventTypesList(eventTypes : OrderedSet(WEBHOOK_ACTIVITY_TYPES))]
+types:
+[for (eventType : WEBHOOK_ACTIVITY_TYPES | eventTypes)]
+	- [eventType/]
+[/for]
+[/template]
+
+[template public generateBranchesList(branches : OrderedSet(Expression), ignoreSpecifiedBranches : Boolean)]
+[if (ignoreSpecifiedBranches)]
+branches-ignore:
+[else]
+branches:
+[/if]
+[for (branch : Expression | branches)]
+	[generateExpression(branch)/]
+[/for]
+[/template]
+
+[template public generateWorkflow(workflow : Workflow)]
 [comment @main/]
-[file ('wrk.yaml', false, 'UTF-8')]
+[file ('workflow.yaml', false, 'UTF-8')]
+[if (not name.oclIsUndefined())]
+name: [generateExpression(name)/]
 
+[/if]
+[if (not runName.oclIsUndefined())]
+run-name: [generateExpression(runName)/]
+
+[/if]
+[if (triggers->notEmpty())]
+on:
+[for (trigger : Trigger | triggers)]
+	- [generateTrigger(trigger)/]
+[/for]
+
+[/if]
+[if (not defaults.oclIsUndefined())]
+defaults:
+	[generateDefaults(defaults)/]
+
+[/if]
 [/file]
 [/template]

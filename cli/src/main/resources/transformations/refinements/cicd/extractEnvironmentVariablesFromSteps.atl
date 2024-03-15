@@ -755,7 +755,8 @@ lazy rule Cache {
 				endif
 				endif
 				endif
-			)
+			),
+			store <- input.store
 		)
 }
 
@@ -882,7 +883,8 @@ lazy rule Artifact {
 				endif
 				endif
 				endif
-				endif
+				endif,
+			store <- input.store
 		)
 }
 

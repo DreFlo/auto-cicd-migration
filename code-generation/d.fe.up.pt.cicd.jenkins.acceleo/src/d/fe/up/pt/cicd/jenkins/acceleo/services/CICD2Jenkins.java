@@ -33,6 +33,10 @@ public class CICD2Jenkins {
 	}
 	
 	public String quoteString(String string) {
-		return string.isEmpty() ? "''" : string.replaceAll("^|$", "\'");
+		if (string.matches("^\"(?:\\.|[^\\\"])*\"$") || string.matches("^'(?:\\.|[^\\'])*'$")) {
+			return string;
+		} else {
+			return "'" + string + "'";
+		}
 	}
 }

@@ -31,4 +31,12 @@ public class CICD2GHA {
 			return "<INVALID OP>";
 		}
 	}
+	
+	public String quoteString(String string) {
+		if (string.matches("^\"(?:\\.|[^\\\"])*\"$") || string.matches("^'(?:\\.|[^\\'])*'$")) {
+			return string;
+		} else {
+			return "\"" + string + "\"";
+		}
+	}
 }

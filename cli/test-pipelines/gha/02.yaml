@@ -10,7 +10,10 @@ on:
       - master
 
 env:
-  SERVER: production
+  SERVER: production${{ env.SERVER }}
+
+permissions:
+  checks: write
 
 defaults:
   run:

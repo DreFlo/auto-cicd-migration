@@ -2,14 +2,28 @@
 [module generate('http://d.fe.up.pt/GHA')]
 
 [query public getBinaryOperator(binaryOp : BinaryOp) : String =
-	invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2Jenkins', 'getBinaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.BinaryOp)', Sequence{binaryOp})
+  invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'getBinaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.BinaryOp)', Sequence{binaryOp})
 /]
 
 [query public getUnaryOperator(unaryOp : UnaryOp) : String =
-	invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp)', Sequence{unaryOp})
+  invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'getUnaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp)', Sequence{unaryOp})
 /]
 
-[template public generateExpression(expression : Expression) post (trim())]
+[query public quoteString(string : String) : String =
+  invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'quoteString(java.lang.String)', Sequence{string})
+/]
+
+[template public generateExpression(expression : Expression)post (trim())]
+[if (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))]
+[_generateExpression(expression)/]
+[elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(VariableDereference) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))]
+[_generateExpression(expression)/]
+[else]
+${{ [_generateExpression(expression)/] }}
+[/if]
+[/template]
+
+[template public _generateExpression(expression : Expression) post (trim())]
 [if (expression.oclIsKindOf(Literal))]
 [generateLiteral(expression.oclAsType(Literal))/]
 [elseif (expression.oclIsKindOf(Variable))]
@@ -17,17 +31,33 @@
 [elseif (expression.oclIsKindOf(GitHubContext))]
 [expression.oclAsType(GitHubContext)._context/]
 [elseif (expression.oclIsKindOf(BinaryOp))]
+[generateBinaryOp(expression.oclAsType(BinaryOp))/]
 [elseif (expression.oclIsKindOf(VariableDereference))]
 [generateVariableDereference(expression.oclAsType(VariableDereference))/]
-[generateBinaryOp(expression.oclAsType(BinaryOp))/]
 [elseif (expression.oclIsKindOf(UnaryOp))]
 [generateUnaryOp(expression.oclAsType(UnaryOp))/]
+[elseif (expression.oclIsKindOf(Concat))]
+[generateConcat(expression.oclAsType(Concat))/]
 [/if]
+[/template]
+
+[template public generateConcat(concat : Concat)]
+[for (expression : Expression | expressions) separator ('')][generateExpression(expression)/][/for]
 [/template]
 
 [template public generateLiteral(literal : Literal)]
 [if (literal.oclIsKindOf(StringLiteral))]
+[if (
+	literal.eContainer().oclIsKindOf(BinaryOp) or 
+	literal.eContainer().oclIsKindOf(UnaryOp) or 
+	literal.eContainer().oclIsKindOf(BuiltInFunctionCall) or
+	literal.eContainer().oclIsKindOf(Trigger) or
+	literal.oclAsType(StringLiteral).value.contains('*')
+)]
+[quoteString(literal.oclAsType(StringLiteral).value)/]
+[else]
 [literal.oclAsType(StringLiteral).value/]
+[/if]
 [elseif (literal.oclIsKindOf(IntegerLiteral))]
 [literal.oclAsType(IntegerLiteral).value/]
 [elseif (literal.oclIsKindOf(DoubleLiteral))]
@@ -46,14 +76,14 @@
 [/template]
 
 [template public generateUnaryOp(unaryOp : UnaryOp)]
-[getUnaryOperator(unaryOp)/] [generateExpression(childExpr)/]
+[getUnaryOperator(unaryOp)/][generateExpression(childExpr)/]
 [/template]
 
 [template public generateDefaults(defaults : Defaults) post (trim())]
 run:
-	shell: [generateExpression(shell)/]
-	[if (not workingDirectory.oclIsUndefined())]
-	working-directory: [generateExpression(workingDirectory)/]
+  shell: [generateExpression(shell)/]
+[if (not workingDirectory.oclIsUndefined())]
+  working-directory: [generateExpression(workingDirectory)/]
 [/if]
 [/template]
 
@@ -62,70 +92,196 @@ run:
 [generateStandardEventTrigger(trigger.oclAsType(StandardEventTrigger))/]
 [elseif (trigger.oclIsTypeOf(WorkflowRunTrigger))]
 [generateWorkflowRunTrigger(trigger.oclAsType(WorkflowRunTrigger))/]
-[elseif (trigger.oclIsKindOf(PullRequestTrigger))]
+[elseif (trigger.oclIsTypeOf(PullRequestTrigger))]
+[generatePullRequestTrigger(trigger.oclAsType(PullRequestTrigger))/]
+[elseif (trigger.oclIsTypeOf(PullRequestTargetTrigger))]
+[generatePullRequestTargetTrigger(trigger.oclAsType(PullRequestTargetTrigger))/]
 [elseif (trigger.oclIsTypeOf(PushTrigger))]
+[generatePushTrigger(trigger.oclAsType(PushTrigger))/]
 [elseif (trigger.oclIsTypeOf(ScheduleTrigger))]
+[generateScheduleTrigger(trigger.oclAsType(ScheduleTrigger))/]
 [elseif (trigger.oclIsTypeOf(WorkflowCallTrigger))]
+[generateWorkflowCallTrigger(trigger.oclAsType(WorkflowCallTrigger))/]
 [elseif (trigger.oclIsTypeOf(WorkflowDispatchTrigger))]
+[generateWorkflowDispatchTrigger(trigger.oclAsType(WorkflowDispatchTrigger))/]
 [/if]
 [/template]
 
 [template public generateStandardEventTrigger(trigger : StandardEventTrigger)]
-[if (eventTypes->isEmpty())]
-[event/]
-[else]
 [event/]:
-	[generateEventTypesList(eventTypes)/]
-[/if]
+  [generateEventTypesList(eventTypes)/]
 [/template]
 
 [template public generateWorkflowRunTrigger(trigger : WorkflowRunTrigger)]
-[if (branches->isEmpty())]
-workflow_run
-[else]
 workflow_run:
-	[generateBranchesList(branches, ignoreSpecifiedBranches)/]
-[/if]
+  [generateExpressionList(branches, 'branches-ignore', 'branches', ignoreSpecifiedBranches)/]
 [/template]
 
 [template public generatePullRequestTrigger(trigger : PullRequestTrigger)]
-[if (eventTypes->isEmpty() and branches->isEmpty() and paths->isEmpty())]
-[if (trigger.oclIsTypeOf(PullRequestTargetTrigger))]
-pull_request_target
-[else]
-pull_request
-[/if]
-[else]
-[if (trigger.oclIsTypeOf(PullRequestTargetTrigger))]
-pull_request_target:
-[else]
 pull_request:
-[/if]
 [if (eventTypes->notEmpty())]
-	[generateEventTypesList(eventTypes)/]
+  [generateEventTypesList(eventTypes)/]
 [/if]
 [if (branches->notEmpty())]
-	[generateBranchesList(branches, ignoreSpecifiedBranches)/]
+  [generateExpressionList(branches, 'branches-ignore', 'branches', ignoreSpecifiedBranches)/]
 [/if]
+[if (paths->notEmpty())]
+  [generateExpressionList(paths, 'paths-ignore', 'paths', ignoreSpecifiedPaths)/]
+[/if]
+[/template]
+
+[template public generatePullRequestTargetTrigger(trigger : PullRequestTargetTrigger)]
+pull_request_target:
+[if (eventTypes->notEmpty())]
+  [generateEventTypesList(eventTypes)/]
+[/if]
+[if (branches->notEmpty())]
+  [generateExpressionList(branches, 'branches-ignore', 'branches', ignoreSpecifiedBranches)/]
+[/if]
+[if (paths->notEmpty())]
+  [generateExpressionList(paths, 'paths-ignore', 'paths', ignoreSpecifiedPaths)/]
+[/if]
+[/template]
+
+[template public generatePushTrigger(trigger : PushTrigger)]
+push:
+[if (branches->notEmpty())]
+  [generateExpressionList(branches, 'branches-ignore', 'branches', ignoreSpecifiedBranches)/]
+[/if]
+[if (paths->notEmpty())]
+  [generateExpressionList(paths, 'paths-ignore', 'paths', ignoreSpecifiedPaths)/]
+[/if]
+[if (tags->notEmpty())]
+  [generateExpressionList(tags, 'tags-ignore', 'tags', ignoreSpecifiedTags)/]
+[/if]
+[/template]
+
+[template public generateScheduleTrigger(trigger : ScheduleTrigger)]
+schedule:
+[for (cron : Expression | crons)]
+  - cron: [quoteString(generateExpression(cron))/]
+[/for]
+[/template]
+
+[template public generateWorkflowCallTrigger(trigger : WorkflowCallTrigger)]
+workflow_call:
+[if (inputs->notEmpty())]
+  inputs:
+  [for (input : Input | inputs)]
+    [generateInput(input)/]
+  [/for]
+[/if]
+[if (outputs->notEmpty())]
+  outputs:
+  [for (output : Output | outputs)]
+    [generateOutput(output)/]
+  [/for]
+[/if]
+[if (secrets->notEmpty())]
+  secrets:
+  [for (secret : Secret | secrets)]
+    [generateSecret(secret)/]
+  [/for]
+[/if]
+[/template]
+
+[template public generateWorkflowDispatchTrigger(trigger : WorkflowDispatchTrigger)]
+workflow_dispatch:
+[if (inputs->notEmpty())]
+  inputs:
+  [for (input : Input | inputs)]
+    [generateInput(input)/]
+  [/for]
 [/if]
 [/template]
 
 [template public generateEventTypesList(eventTypes : OrderedSet(WEBHOOK_ACTIVITY_TYPES))]
 types:
 [for (eventType : WEBHOOK_ACTIVITY_TYPES | eventTypes)]
-	- [eventType/]
+  - [eventType/]
 [/for]
 [/template]
 
-[template public generateBranchesList(branches : OrderedSet(Expression), ignoreSpecifiedBranches : Boolean)]
-[if (ignoreSpecifiedBranches)]
-branches-ignore:
+[template public generateExpressionList(expressions : OrderedSet(Expression), name1 : String, name2 : String, useName1 : Boolean) post (trim())]
+[if (useName1)]
+[name1/]:
 [else]
-branches:
+[name2/]:
 [/if]
-[for (branch : Expression | branches)]
-	[generateExpression(branch)/]
+[for (expression : Expression | expressions)]
+  - [generateExpression(expression)/]
 [/for]
+[/template]
+
+[template public generateInput(input : Input) post (trim())]
+[id/]:
+  type: [type/]
+[if (not description.oclIsUndefined())]
+  description: [generateExpression(description)/]
+[/if]
+[if (not isRequired.oclIsUndefined())]
+  required: [generateExpression(isRequired)/]
+[/if]
+[if (not default.oclIsUndefined())]
+  default: [generateExpression(default)/]
+[/if]
+[if (options->notEmpty())]
+  options:
+  [for (option : String | options)]
+    - [option/]
+  [/for]
+[/if]
+[/template]
+
+[template public generateOutput(output : Output) post (trim())]
+[id/]:
+[if (not description.oclIsUndefined())]
+  description: [generateExpression(description)/]
+[/if]
+  value: [generateExpression(value)/]
+[/template]
+
+[template public generateSecret(secret : Secret) post (trim())]
+[id/]:
+[if (not description.oclIsUndefined())]
+  description: [generateExpression(description)/]
+[/if]
+[if (not isRequired.oclIsUndefined())]
+  required: [generateExpression(isRequired)/]
+[/if]
+[/template]
+
+[template public generatePermission(permission : Permission) post (trim())]
+[key/]: [value/]
+[/template]
+
+[template public generateVariableAssignment(variableAssignment : VariableAssignment) post (trim())]
+[key/]: [generateExpression(value)/]
+[/template]
+
+[template public generateConcurrencyGroup(concurrencyGroup : ConcurrencyGroup) post (trim())]
+group: [generateExpression(name)/]
+[if (not cancelInProgress.oclIsUndefined())]
+cancel-in-progress: [generateExpression(cancelInProgress)/]
+[/if]
+[/template]
+
+[template public generateJob(job : Job) post (trim())]
+[name/]:
+  [generateAgent(agent)/]
+  steps:
+[/template]
+
+[template public generateAgent(agent : Agent) post (trim())]
+[if (group.oclIsUndefined())]
+[generateExpressionList(labels, 'runs-on', '', true)/]
+[else]
+runs-on:
+  group: [generateExpression(group)/]
+[if (labels->notEmpty())]
+  [generateExpressionList(labels, 'labels', '', true)/]
+[/if]
+[/if]
 [/template]
 
 [template public generateWorkflow(workflow : Workflow)]
@@ -142,14 +298,36 @@ run-name: [generateExpression(runName)/]
 [if (triggers->notEmpty())]
 on:
 [for (trigger : Trigger | triggers)]
-	- [generateTrigger(trigger)/]
+  [generateTrigger(trigger)/]
+[/for]
+
+[/if]
+[if (permissions->notEmpty())]
+permissions:
+[for (permission : Permission | permissions)]
+  [generatePermission(permission)/]
 [/for]
 
 [/if]
 [if (not defaults.oclIsUndefined())]
 defaults:
-	[generateDefaults(defaults)/]
+  [generateDefaults(defaults)/]
 
 [/if]
+[if (not concurrencyGroup.oclIsUndefined())]
+concurency:
+  [generateConcurrencyGroup(concurrencyGroup)/]
+[/if]
+[if (environmentVariables->notEmpty())]
+env:
+[for (variableAssignment : VariableAssignment | environmentVariables)]
+  [generateVariableAssignment(variableAssignment)/]
+[/for]
+
+[/if]
+jobs:
+[for (job : Job | jobs)]
+  [generateJob(job)/]
+[/for]
 [/file]
 [/template]

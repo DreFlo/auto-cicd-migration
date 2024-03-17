@@ -478,14 +478,14 @@
 		<constant value="148:11-148:29"/>
 		<constant value="148:11-148:50"/>
 		<constant value="148:4-148:50"/>
-		<constant value="150:8-150:21"/>
-		<constant value="150:8-150:27"/>
-		<constant value="150:30-150:35"/>
-		<constant value="150:8-150:35"/>
-		<constant value="152:13-152:26"/>
-		<constant value="152:13-152:32"/>
-		<constant value="152:35-152:41"/>
-		<constant value="152:13-152:41"/>
+		<constant value="150:8-150:22"/>
+		<constant value="150:8-150:28"/>
+		<constant value="150:31-150:36"/>
+		<constant value="150:8-150:36"/>
+		<constant value="152:13-152:27"/>
+		<constant value="152:13-152:33"/>
+		<constant value="152:36-152:42"/>
+		<constant value="152:13-152:42"/>
 		<constant value="155:6-155:11"/>
 		<constant value="153:6-153:12"/>
 		<constant value="152:10-156:10"/>
@@ -2821,7 +2821,7 @@
 			<set arg="389"/>
 			<dup/>
 			<getasm/>
-			<load arg="149"/>
+			<load arg="29"/>
 			<get arg="34"/>
 			<push arg="380"/>
 			<push arg="8"/>
@@ -2831,7 +2831,7 @@
 			<set arg="38"/>
 			<call arg="382"/>
 			<if arg="465"/>
-			<load arg="149"/>
+			<load arg="29"/>
 			<get arg="34"/>
 			<push arg="380"/>
 			<push arg="8"/>

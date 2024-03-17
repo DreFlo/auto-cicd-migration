@@ -147,9 +147,9 @@ rule Permission2Permission {
 		ghaPermission : GHA!Permission(
 			key <- cicdPermission.key.getPermissionScope(),
 			value <-
-				if ghaPermission.value = #READ then
+				if cicdPermission.value = #READ then
 					#read
-				else if ghaPermission.value = #WRITE then
+				else if cicdPermission.value = #WRITE then
 					#write
 				else
 					#none

@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Export-Package: d.fe.up.pt.cicd.gha.acceleo.main
+Export-Package: d.fe.up.pt.cicd.gha.acceleo.main,
+ d.fe.up.pt.cicd.gha.acceleo.services
 Automatic-Module-Name: d.fe.up.pt.cicd.gha.acceleo
 Import-Package: d.fe.up.pt.cicd.gha.metamodel.GHA
 

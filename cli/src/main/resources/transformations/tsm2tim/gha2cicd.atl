@@ -474,7 +474,7 @@ rule Permission2Permission {
 		ghaPermission : GHA!Permission
 	to
 		cicdPermission : CICD!Permission(
-			key <- ghaPermission.key,
+			key <- ghaPermission.key.toString(),
 			value <-
 				if ghaPermission.value = #read then
 					#READ

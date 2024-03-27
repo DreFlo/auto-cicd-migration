@@ -57,7 +57,7 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addVersionPropertyDescriptor(object);
+			addIsWhenPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -79,18 +79,18 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 	}
 
 	/**
-	 * This adds a property descriptor for the Version feature.
+	 * This adds a property descriptor for the Is When feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVersionPropertyDescriptor(Object object) {
+	protected void addIsWhenPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Workflow_version_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Workflow_version_feature",
+						getResourceLocator(), getString("_UI_Workflow_isWhen_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Workflow_isWhen_feature",
 								"_UI_Workflow_type"),
-						CircleCIPackage.Literals.WORKFLOW__VERSION, true, false, false,
+						CircleCIPackage.Literals.WORKFLOW__IS_WHEN, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -106,9 +106,9 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW__TRIGGER);
-			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW__WHEN_UNLESS);
-			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW__BRANCH);
+			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW__TRIGGERS);
+			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW__CONDITION);
+			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW__JOBS);
 		}
 		return childrenFeatures;
 	}
@@ -173,12 +173,12 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 
 		switch (notification.getFeatureID(Workflow.class)) {
 		case CircleCIPackage.WORKFLOW__NAME:
-		case CircleCIPackage.WORKFLOW__VERSION:
+		case CircleCIPackage.WORKFLOW__IS_WHEN:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case CircleCIPackage.WORKFLOW__TRIGGER:
-		case CircleCIPackage.WORKFLOW__WHEN_UNLESS:
-		case CircleCIPackage.WORKFLOW__BRANCH:
+		case CircleCIPackage.WORKFLOW__TRIGGERS:
+		case CircleCIPackage.WORKFLOW__CONDITION:
+		case CircleCIPackage.WORKFLOW__JOBS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -196,14 +196,47 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__TRIGGER,
-				CircleCIFactory.eINSTANCE.createTrigger()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__TRIGGERS,
+				CircleCIFactory.eINSTANCE.createScheduleTrigger()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__WHEN_UNLESS,
-				CircleCIFactory.eINSTANCE.createWhen_Unless()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createAnd()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__BRANCH,
-				CircleCIFactory.eINSTANCE.createBranch()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createEquals()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createNot()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createMatches()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__JOBS,
+				CircleCIFactory.eINSTANCE.createWorkflowDefinedJobConfiguration()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__JOBS,
+				CircleCIFactory.eINSTANCE.createWorkflowApprovalJobConfiguration()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__JOBS,
+				CircleCIFactory.eINSTANCE.createWorkflowOrbJobConfiguration()));
 	}
 
 	/**

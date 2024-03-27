@@ -1,342 +1,642 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/CircleCI')]
 
-
-[template public generatePipeline(aPipeline : Pipeline)]
+[template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
-[file ('CircleCI' + '.yml', false, 'UTF-8')]
-version: [aPipeline.version/]
+[file ('circleci.yml', false, 'UTF-8')]
+version: [version/]
 
-[generateOrbs(aPipeline)/]
-[generateCommands(aPipeline)/]
-[generateExecutors(aPipeline)/]
-[generateJobs(aPipeline)/]
-[generateWorkflows(aPipeline)/]
+[if (not setup.oclIsUndefined())]
+setup: [setup/] 
+
+[/if]
+[if (orbs->notEmpty())]
+orbs:
+[for (orb : Orb | orbs)]
+  [generateOrb(orb)/]
+[/for]
+
+[/if]
+[if (commands->notEmpty())]
+commands:
+[for (command : Command | commands)]
+  [generateCommand(command)/]
+[/for]
+
+[/if]
+[if (executors->notEmpty())]
+executors:
+[for (executor : Executor | executors)]
+  [generateNamedExecutor(executor)/]
+[/for]
+
+[/if]
+[if (jobs->notEmpty())]
+jobs:
+[for (jobs : Job | jobs)]
+  [generateJob(jobs)/]
+[/for]
+
+[/if]
+[if (workflows->notEmpty())]
+workflows:
+  version: [version/]
+[for (workflow : Workflow | workflows)]
+  [generateWorkflow(workflow)/]
+[/for]
+
+[/if]
 [/file]
 [/template]
 
 
-[template public generateOrbs(aPipeline : Pipeline)]
-[if (aPipeline.orb->notEmpty()) ]
-orbs:
-[for (o: Orb | aPipeline.orb)]
-  [o.key/]: [o.value/]
-[/for]
+[template public generateOrb(orb : Orb) post (trim())]
+[if (orb.oclIsTypeOf(OrbReference))]
+[let orbReference : OrbReference = orb.oclAsType(OrbReference)]
+[name/]: [orbReference.reference/]
+[/let]
+[elseif (orb.oclIsTypeOf(OrbDefinition))]
+[let orbDefinition : OrbDefinition = orb.oclAsType(OrbDefinition)]
+[name/]:
+[if (orbDefinition.commands->notEmpty())]
+  commands:
+  [for (command : Command | orbDefinition.commands)]
+    [generateCommand(command)/]
+  [/for]
+[/if]
+[if (orbDefinition.executors->notEmpty())]
+  executors:
+  [for (executor : Executor | orbDefinition.executors)]
+    [generateNamedExecutor(executor)/]
+  [/for]
+[/if]
+[if (orbDefinition.jobs->notEmpty())]
+  jobs:
+  [for (jobs : Job | orbDefinition.jobs)]
+    [generateJob(jobs)/]
+  [/for]
+[/if]
+[/let]
 [/if]
 [/template]
 
-[template public generateCommands(aPipeline : Pipeline)]
-[if (aPipeline.command->notEmpty()) ]
-commands:
-[if (aPipeline.command.name->notEmpty())]
-  [aPipeline.command.name/]:
+[template public generateCommand(command : Command) post (trim())]
+[name/]:
+[if (not description.oclIsUndefined())]
+  description: [description/]
 [/if]
-  [if (aPipeline.command.description->notEmpty())]
-    description: [aPipeline.command.description/]
-  [/if]
-  [if (aPipeline.command.command_params->notEmpty())]
-    parameters: 
-      to:
-        type: [aPipeline.command.command_params.type/]
-        default: [aPipeline.command.command_params.default/]
-  [/if]
-    steps:
-    [for (s: Step | aPipeline.command.step)]
-      [generateStep(s)/]
-    [/for]
+[if (parameters->notEmpty())]
+  parameters: 
+  [for (parameter : Parameter | parameters)]
+    [generateParameter(parameter)/]
+  [/for]
 [/if]
+  steps:
+  [for (step : Step | steps)]
+    [generateStep(step)/]
+  [/for]
 [/template]
 
-[comment: Execution Environment for Docker, Windows, Linux and MacOs/]
-[template public generateExecutors(aPipeline : Pipeline)]
-executors:
-[for (e: Execution_Env | aPipeline.job.execution_env)]
-  [e.name/]:
-    [if (e.oclIsKindOf(Docker))]
-    [generateDockerExecEnv(oclAsType(Docker))/]
-    [/if]
-    [if (e.oclIsKindOf(WindowsOrb))]
-    [generateWinExecEnv(oclAsType(WindowsOrb))/]
-    [/if]
-    [if (e.oclIsKindOf(Linux))]
-    [generateLinuxExecEnv(oclAsType(Linux))/]
-    [/if]
-    [if (e.oclIsKindOf(MacOs))]
-    [generateMacExecEnv(oclAsType(MacOs))/]
-    [/if]
-[/for]
+[template public generateNamedExecutor(executor : Executor) post (trim())]
+[name/]:
+  [generateExecutor(executor)/]
 [/template]
 
-[template public generateDockerExecEnv(docker : Docker)]
-docker:
-  - image: [docker.image/]
-[/template]
-
-[template public generateWinExecEnv(win : WindowsOrb)]
-executor: [win.executor/]
-[/template]
-
-
-[template public generateLinuxExecEnv(linux : Linux)]
-machine:
-  image: [linux.image/]
-[/template]
-
-
-[template public generateMacExecEnv(mac : MacOs)]
-macos:
-  xcode: [mac.xcode/]
-[/template]
-
-
-
-[template public generateJobs(aPipeline : Pipeline)]
-[if (aPipeline.job->notEmpty()) ]
-jobs:
-[for (j: Job | aPipeline.job)]
-  [generateJob(j)/]
-[/for]
+[template public generateExecutor(executor : Executor) post (trim())]
+[if (not resourceClass.oclIsUndefined())]
+resource_class: [generateExpression(resourceClass)/]
 [/if]
-[/template]
-
-
-[template public generateJob(aJob : Job)]
-[if (aJob.name->notEmpty())]
-[aJob.name/]:
+[if (not shell.oclIsUndefined())]
+shell: [generateExpression(shell)/]
 [/if]
-[if (aJob.name->isEmpty())]
-build:
+[if (not workingDirectory.oclIsUndefined())]
+working_directory: [generateExpression(workingDirectory)/]
 [/if]
-  [generateJobExecutor(aJob)/]
-  [generateEnvironment(aJob)/]
-  [generateParallelism(aJob)/]
-  [generateSteps(aJob)/]
-  [generateWhen(aJob)/]
-  [generateArtifacts(aJob)/]
-[/template]
-
-
-[template public generateJobExecutor(aJob : Job)]
-[for (e: Execution_Env | aJob.execution_env)]
-[e.name/]:
-  [if (e.oclIsKindOf(Docker))]
-  [generateDockerExec(oclAsType(Docker))/]
-  [/if]
-  [if (e.oclIsKindOf(WindowsOrb))]
-  [generateWinExec(oclAsType(WindowsOrb))/]
-  [/if]
-  [if (e.oclIsKindOf(Linux))]
-  [generateLinuxExec(oclAsType(Linux))/]
-  [/if]
-  [if (e.oclIsKindOf(MacOs))]
-  [generateMacExec(oclAsType(MacOs))/]
-  [/if]
-  [generateExecEnvironment(aJob)/]
-[/for]
-[/template]
-
-[template public generateDockerExec(docker : Docker)]
-docker:
-  - image: [docker.image/]
-
-steps:
-  - run: ['|'/]
-[for (s: Step | docker.step)]
-  [generateExecutorSteps(s)/]
-[/for]
-[/template]
-
-[template public generateWinExec(win : WindowsOrb)]
-executor: [win.executor/]
-
-steps:
-[for (s: Step | win.step)]
-  [generateExecutorSteps(s)/]
-[/for]
-[/template]
-
-
-[template public generateLinuxExec(linux : Linux)]
-machine:
-  image: [linux.image/]
-
-steps:
-[for (s: Step | linux.step)]
-  [generateExecutorSteps(s)/]
-[/for]
-[/template]
-
-[template public generateMacExec(mac : MacOs)]
-macos:
-  xcode: [mac.xcode/]
-
-steps:
-[for (s: Step | mac.step)]
-  [generateExecutorSteps(s)/]
-[/for]
-[/template]
-
-
-[template public generateExecutorSteps(aStep: Step)]
-    [aStep.tool_framework.name/][generateParameters(aStep)/]
-[/template]
-
-[template public generateExecEnvironment(aJob : Job)]
-[if (aJob.execution_env.environment->notEmpty()) ]
+[if (environmentVariables->notEmpty())]
 environment:
-[for (e: Environment | aJob.execution_env.environment)]
-  [generateKeyValue(e)/]
+[for (variableAssignment : VariableAssignment | environmentVariables)]
+  [generateVariableAssignment(variableAssignment)/]
 [/for]
+[/if]
+[if (executor.oclIsKindOf(DockerExecutor))]
+[generateDockerExecutor(oclAsType(DockerExecutor))/] 
+[elseif (executor.oclIsKindOf(WindowsOrbExecutor))]
+[generateWindowsOrbExecutor(oclAsType(WindowsOrbExecutor))/] 
+[elseif (executor.oclIsKindOf(MachineExecutor))]
+[generateMachineExecutor(oclAsType(MachineExecutor))/] 
+[elseif (executor.oclIsKindOf(MacOSExecutor))]
+[generateMacOSExecutor(oclAsType(MacOSExecutor))/]
+[/if]
+[/template]
+
+[template public generateDockerExecutor(executor : DockerExecutor) post (trim())]
+docker:
+[for (dockerContainer : DockerContainer | containers)]
+  [generateDockerContainer(dockerContainer)/]
+[/for]
+[/template]
+
+[template public generateWindowsOrbExecutor(executor : WindowsOrbExecutor) post (trim())]
+TODO
+[/template]
+
+
+[template public generateMachineExecutor(executor : MachineExecutor) post (trim())]
+machine:
+  image: [generateExpression(image)/]
+[if (not dockerLayerCaching.oclIsUndefined())]
+  docker_layer_caching: [generateExpression(dockerLayerCaching)/]
 [/if]
 [/template]
 
 
-[template public generateEnvironment(aJob : Job)]
-[if (aJob.environment->notEmpty()) ]
-environment:
-[for (e: Environment | aJob.environment)]
-  [generateKeyValue(e)/]
-[/for]
+[template public generateMacOSExecutor(executor : MacOSExecutor) post (trim())]
+macos:
+  xcode: [generateExpression(xcode)/]
+[/template]
+
+[template public generateJob(job : Job) post (trim())]
+[name/]:
+  [generateExecutor(executor)/]
+[if (parameters->notEmpty())]
+  parameters: 
+  [for (parameter : Parameter | parameters)]
+    [generateParameter(parameter)/]
+  [/for]
+[/if]
+[if (environmentVariables->notEmpty())]
+  environment:
+  [for (variableAssignment : VariableAssignment | environmentVariables)]
+    [generateVariableAssignment(variableAssignment)/]
+  [/for]
+[/if]
+[if (not parallelism.oclIsUndefined())]
+  parallelism: [generateExpression(parallelism)/]
+[/if]
+[if (not circleCIIPRanges.oclIsUndefined())]
+  circleci_ip_ranges: [generateExpression(circleCIIPRanges)/]
+[/if]
+  steps:
+  [for (step : Step | steps)]
+    [generateStep(step)/]
+  [/for]
+[/template]
+
+[template public generateDockerContainer(dockerContainer : DockerContainer) post (trim())]
+- image: [generateExpression(image)/]
+[if (not name.oclIsUndefined())]
+  name: [generateExpression(name)/]
+[/if]
+[if (not user.oclIsUndefined())]
+  user: [generateExpression(user)/]
+[/if]
+[if (entrypoint->notEmpty())]
+  entrypoint: [for (_entrypoint : Expression | entrypoint) before ('[') separator (', ') after (']')][generateExpression(_entrypoint)/][/for]
+[/if]
+[if (command->notEmpty())]
+  command: [for (_command : Expression | command) before ('[') separator (', ') after (']')][generateExpression(_command)/][/for]
+[/if]
+[if (not username.oclIsUndefined() or not password.oclIsUndefined())]
+  auth:
+  [if (not username.oclIsUndefined())]
+    username: [generateExpression(username)/]
+  [/if]
+  [if (not password.oclIsUndefined())]
+    password: [generateExpression(password)/]
+  [/if]
+[/if]
+[if (not awsAccessKeyID.oclIsUndefined() or not awsSecretAccessKey.oclIsUndefined() or not oidc.oclIsUndefined())]
+  aws_auth:
+  [if (not awsAccessKeyID.oclIsUndefined())]
+    aws_access_key_id: [generateExpression(awsAccessKeyID)/]
+  [/if]
+  [if (not awsSecretAccessKey.oclIsUndefined())]
+    aws_secret_access_key: [generateExpression(awsSecretAccessKey)/]
+  [/if]
+  [if (not oidc.oclIsUndefined())]
+    oidc_role_arn: [generateExpression(oidc)/]
+  [/if]
 [/if]
 [/template]
 
-[template public generateKeyValue(aEnv : Environment)]
-[aEnv.key/]: [aEnv.value/]
+[template public generateVariableAssignment(variableAssignment : VariableAssignment) post (trim())]
+[key/]: [generateExpression(value)/]
 [/template]
 
-
-[template public generateParallelism(aJob : Job)]
-[if (aJob.parallelism <> 0) ]
-parallelism: [aJob.parallelism/]
+[template public generateStep(step : Step) post (trim())]
+[if (step.oclIsTypeOf(RunStep))]
+[generateRunStep(step.oclAsType(RunStep))/]
+[elseif (step.oclIsKindOf(ConditionalStep))]
+[generateConditionalStep(step)/]
+[elseif (step.oclIsKindOf(CheckoutStep))]
+[generateCheckoutStep(step.oclAsType(CheckoutStep))/]
+[elseif (step.oclIsKindOf(SetupRemoteDockerStep))]
+[generateSetupRemoteDockerStep(step.oclAsType(SetupRemoteDockerStep))/]
+[elseif (step.oclIsKindOf(SaveCacheStep))]
+[generateSaveCacheStep(step.oclAsType(SaveCacheStep))/]
+[elseif (step.oclIsKindOf(RestoreCacheStep))]
+[generateRestoreCacheStep(step.oclAsType(RestoreCacheStep))/]
+[elseif (step.oclIsKindOf(StoreArtifactsStep))]
+[generateStoreArtifactsStep(step.oclAsType(StoreArtifactsStep))/]
+[elseif (step.oclIsKindOf(StoreTestResultsStep))]
+[generateStoreTestResultsStep(step.oclAsType(StoreTestResultsStep))/]
+[elseif (step.oclIsKindOf(PersistToWorkspaceStep))]
+[generatePersistToWorkspaceStep(step.oclAsType(PersistToWorkspaceStep))/]
+[elseif (step.oclIsKindOf(AttachWorkspaceStep))]
+[generateAttachWorkspaceStep(step.oclAsType(AttachWorkspaceStep))/]
 [/if]
 [/template]
 
-
-[template public generateSteps(aJob: Job)]
-steps:
-[for (s: Step | aJob.step)]
-  [generateStep(s)/]
-[/for]
-  [generateWhen(aJob)/]
-[/template]
-
-
-
-[template public generateStep(aStep: Step)]
+[template public generateRunStep(step : RunStep) post (trim())]
 - run:
-    [if (aStep.name->notEmpty())]name: [aStep.name/][/if]
-    command: ['|'/]
-	    [aStep.tool_framework.name/][generateParameters(aStep)/]
-    [generateWhenAttribute(aStep)/]
-[/template]
-
-[template public generateParameters(aStep: Step)]
-[for (p: Parameters | aStep.parameters)] [p.parameter/] [/for]
-[/template]
-
-[template public generateWhenAttribute(aStep: Step)]
-[if (aStep.when_attribute->notEmpty()) ]
-when: [aStep.when_attribute.when_type/]
+[if (not name.oclIsUndefined())]
+    name: [generateExpression(name)/]
+[/if]
+    command: [generateExpression(command)/]
+[if (not background.oclIsUndefined())]
+	background: [generateExpression(background)/]
+[/if]
+[if (not shell.oclIsUndefined())]
+	shell: [generateExpression(shell)/]
+[/if]
+[if (not workingDirectory.oclIsUndefined())]
+	working_directory: [generateExpression(workingDirectory)/]
+[/if]
+[if (not noOutputTimeout.oclIsUndefined())]
+	no_output_timeout: [generateExpression(noOutputTimeout)/]
+[/if]
+[if (not when.oclIsUndefined())]
+	when: [when/]
+[/if]
+[if (environmentVariables->notEmpty())]
+	environment:
+    [for (variableAssignment : VariableAssignment | environmentVariables)]
+      [generateVariableAssignment(variableAssignment)/]
+    [/for]
 [/if]
 [/template]
 
-
-[template public generateWhen(aJob: Job)]
-[if (aJob.when_unless->notEmpty()) ]
-  - when:
-	  condition: [aJob.when_unless.condition/]
-	  steps:
-	  [for (s: Step | aJob.when_unless.when_step)]
-        [generateStep(s)/]
-      [/for]
-  [if (aJob.when_unless.unless_step->notEmpty())]
-  - unless:
-	  condition: [aJob.when_unless.condition/]
-	  steps:
-	  [for (s: Step | aJob.when_unless.unless_step)]
-        [generateStep(s)/]
-      [/for]
-  [/if]
+[template public generateConditionalStep(step : Step) post (trim())]
+[if (step.oclIsKindOf(ConditionalStep))]
+[if (step.oclIsTypeOf(WhenStep))]
+- when:
+[elseif (step.oclIsTypeOf(UnlessStep))]
+- unless:
+[/if]
+[let conditionalStep : ConditionalStep = step.oclAsType(ConditionalStep)]
+    condition:
+      [generateLogic(conditionalStep.condition, false)/]
+    steps:
+    [for (step : Step | conditionalStep.steps)]
+      [generateStep(step)/]
+    [/for]
+[/let]
 [/if]
 [/template]
 
+[template public generateCheckoutStep(step : CheckoutStep) post (trim())]
+[if (not path.oclIsUndefined())]
+- checkout:
+    path: [generateExpression(path)/]
+[else]
+- checkout
+[/if]
+[/template]
 
-[template public generateArtifacts(aJob : Job)]
-[if (aJob.store_artifact->notEmpty())]
+[template public generateSetupRemoteDockerStep(step : SetupRemoteDockerStep) post (trim())]
+[if (dockerLayerCaching.oclIsUndefined() and version.oclIsUndefined())]
+- setup_remote_docker
+[else]
+- setup_remote_docker:
+[if (not dockerLayerCaching.oclIsUndefined())]
+    docker_layer_caching: [generateExpression(dockerLayerCaching)/]
+[/if]
+[if (not version.oclIsUndefined())]
+    version: [generateExpression(version)/]
+[/if]
+[/if]
+[/template]
+
+[template public generateSaveCacheStep(step : SaveCacheStep) post (trim())]
+- save_cache:
+    key: [generateExpression(key)/]
+    paths:
+    [for (path : Expression | paths)]
+      - [generateExpression(path)/]
+    [/for]
+[if (not name.oclIsUndefined())]
+    name: [generateExpression(name)/]
+[/if]
+[if (not when.oclIsUndefined())]
+    when: [when/]
+[/if]
+[/template]
+
+[template public generateRestoreCacheStep(step : RestoreCacheStep) post (trim())]
+- restore_cache:
+    keys:
+    [for (key : Expression | keys)]
+    	- [generateExpression(key)/]
+    [/for]
+[if (not name.oclIsUndefined())]
+	name: [generateExpression(name)/]
+[/if]
+[/template]
+
+[template public generateStoreArtifactsStep(step : StoreArtifactsStep) post (trim())]
 - store_artifacts:
-    path:
-    [for (s: Store_Artifact | aJob.store_artifact)] 
-	  - [s.path/]
-	[/for]
-    [if (aJob.store_artifact.destination->notEmpty())]
-    destination: [aJob.store_artifact.destination/]
+    path: [generateExpression(path)/]
+[if (not destination.oclIsUndefined())]
+    destination: [generateExpression(destination)/]
+[/if]
+[/template]
+
+[template public generateStoreTestResultsStep(step : StoreTestResultsStep) post (trim())]
+- store_test_results:
+    path: [generateExpression(path)/]
+[/template]
+
+[template public generatePersistToWorkspaceStep(step : PersistToWorkspaceStep) post (trim())]
+- persist_to_workspace:
+    root: [generateExpression(root)/]
+    paths:
+    [for (path : Expression | paths)]
+      - [generateExpression(path)/]
+    [/for]
+[/template]
+
+[template public generateAttachWorkspaceStep(step : AttachWorkspaceStep) post (trim())]
+- attach_workspace:
+    at: [generateExpression(at)/]
+[/template]
+
+[template public generateAddSSHKeysStep(step : AddSSHKeysStep) post (trim())]
+[if (fingerprints->notEmpty())]
+- add_ssh_keys:
+    fingerprnts:
+    [for (fingerprint : Expression | fingerprints)]
+      - [generateExpression(fingerprint)/]
+    [/for]
+[/if]
+[/template]
+
+[template public generateParameter(parameter: Parameter) post (trim())]
+[name/]:
+  type: [type/]
+[if (type = PARAMETER_TYPES::ENUM and enumValues->notEmpty())]
+  enum:
+  [for (enumValue : String | enumValues)]
+    - [enumValue/]
+  [/for]
+[/if]
+[if (not description.oclIsUndefined())]
+  description: [description/]
+[/if]
+[if (not default.oclIsUndefined())]
+  default: [generateLiteral(default)/]
+[/if]
+[/template]
+
+[template public generateWorkflow(workflow : Workflow) post (trim())]
+[name/]:
+[if (not condition.oclIsUndefined())]
+[if (isWhen)]
+  when:
+[else]
+  unless:
+[/if]
+    [generateLogic(condition, false)/]
+[/if]
+[if (triggers->notEmpty())]
+  triggers:
+  [for (trigger : Trigger | triggers)]
+    [generateTrigger(trigger)/]
+  [/for]
+[/if]
+[if (jobs->notEmpty())]
+  jobs:
+  [for (job : WorkflowJobConfiguration | jobs)]
+    [generateWorkflowJobConfiguration(job)/]
+  [/for]
+[/if]
+[/template]
+
+
+[template public generateTrigger(trigger : Trigger) post (trim())]
+[if (trigger.oclIsTypeOf(ScheduleTrigger))]
+[generateScheduleTrigger(trigger.oclAsType(ScheduleTrigger))/]
+[/if]
+[/template]
+
+[template public generateScheduleTrigger(trigger : ScheduleTrigger) post (trim())]
+- schedule:
+    cron: [cron/]
+[if (branches->notEmpty())]
+    branches:
+    [if (ignoreSpecifiedBranches)]
+      ignore:
+    [else]
+      only:
+    [/if]
+    [for (branch : Expression | branches)]
+        - [generateExpression(branch)/]
+    [/for]
+[/if]
+[/template]
+
+[template public generateWorkflowJobConfiguration(job : WorkflowJobConfiguration)]
+[if (job.oclIsTypeOf(WorkflowDefinedJobConfiguration))]
+- [job.oclAsType(WorkflowDefinedJobConfiguration).job.name/]:
+[elseif (job.oclIsTypeOf(WorkflowApprovalJobConfiguration))]
+- [job.oclAsType(WorkflowApprovalJobConfiguration).name/]:
+    type: approval
+[elseif (job.oclIsTypeOf(WorkflowOrbJobConfiguration))]
+[let orbConfiguration : WorkflowOrbJobConfiguration = job.oclAsType(WorkflowOrbJobConfiguration)]
+- [orbConfiguration.orb.name/]/[orbConfiguration.jobName/]:
+[/let]
+[/if]
+[if (requires->notEmpty())]
+    requires:
+    [for (job : WorkflowJobConfiguration | requires)]
+      - [generateExpression(job.name)/]
+    [/for]
+[/if]
+[if (branches->notEmpty() or not tags->notEmpty())]
+    filters:
+    [if (branches->notEmpty())]
+      branches:
+      [if (ignoreSpecifiedBranches)]
+        ignore:
+      [else]
+        only:
+      [/if]
+      [for (branch : Expression | branches)]
+          - [generateExpression(branch)/]
+      [/for]
+    [/if]
+    [if (tags->notEmpty())]
+      tags:
+      [if (ignoreSpecifiedTags)]
+        ignore:
+      [else]
+        only:
+      [/if]
+      [for (tag : Expression | tags)]
+          - [generateExpression(tag)/]
+      [/for]
     [/if]
 [/if]
-[/template]
-
-
-
-[template public generateWorkflows(aPipeline : Pipeline)]
-[if (aPipeline.job->notEmpty() and aPipeline.job->size() > 1) ]
-workflows:
-  version: [aPipeline.workflow.version/]
-  [if (aPipeline.workflow.name->notEmpty()) ]
-  workflow_Name: [aPipeline.workflow.name/]
-  [/if]
-    [generateTriggers(aPipeline.workflow)/]
-    [generateWorkflowWhen(aPipeline.workflow)/]
-    jobs:
-	[for (j: Job | aPipeline.job)]
-	  - [j.name/]
-	[/for]
-[/if]
-[/template]
-
-
-[template public generateTriggers(aWorkflow: Workflow)]
-[if (aWorkflow.trigger->notEmpty() and aWorkflow.branch->notEmpty())]
-[generateAuxTriggers(aWorkflow)/]
-      [generateFilters(aWorkflow)/]
-[/if]
-[if (aWorkflow.trigger->isEmpty() and aWorkflow.branch->notEmpty())]
-[generateFilters(aWorkflow)/]
-[/if]
-[if (aWorkflow.trigger->notEmpty() and aWorkflow.branch->isEmpty())]
-[generateTriggers(aWorkflow)/]
-[/if]
-[/template]
-
-[comment Auxiliary filters section/]
-[template public generateFilters(aWorkflow: Workflow)]
-filters:
-  branches:
-    only:
-    [for (b: Branch | aWorkflow.branch->select(branch | branch.branch_type.toString() = 'only'))]
-      - [b.name/]
-    [/for]
-    [if (aWorkflow.branch->exists(branch | branch.branch_type.toString() = 'ignore'))]
-    ignore:
-    [for (b: Branch | aWorkflow.branch->select(branch | branch.branch_type.toString() = 'ignore'))]
-      - [b.name/]
-    [/for]
+[if (not matrix.oclIsUndefined())]
+    matrix:
+      parameters:
+      [for (parameter : MatrixParameter | matrix.parameters)]
+        [generateMatrixParameter(parameter)/]
+      [/for]
+    [if (matrix.excludes->notEmpty())]
+      exclude:
+      [for (combination : MatrixCombination | matrix.excludes)]
+        [generateMatrixCombination(combination)/]
+      [/for]
     [/if]
-[/template]
-
-[comment Auxiliary triggers section/]
-[template public generateAuxTriggers(aWorkflow: Workflow)]
-triggers:
-  - schedule:
-      cron: [aWorkflow.trigger.cron/]
-[/template]
-
-
-[template public generateWorkflowWhen(aWorkflow: Workflow)]
-[if (aWorkflow.when_unless->notEmpty())]
-when:
-  condition: [aWorkflow.when_unless.condition/]
-[if (aWorkflow.when_unless.unless_step->notEmpty())]
-unless:
-  condition: [aWorkflow.when_unless.condition/]
+    [if (not matrix.alias.oclIsUndefined())]
+      alias: [generateExpression(matrix.alias)/]
+    [/if]
 [/if]
+[if (preSteps->notEmpty())]
+    pre-steps:
+    [for (step : Step | preSteps)]
+      [generateStep(step)/]
+    [/for]
+[/if]
+[if (postSteps->notEmpty())]
+    post-steps:
+    [for (step : Step | postSteps)]
+      [generateStep(step)/]
+    [/for]
+[/if]
+[/template]
+
+[template public generateMatrixParameter(parameter : MatrixParameter)]
+[name/]: [for (cell : Expression | cells) before ('[') separator (', ') after (']')][generateExpression(cell)/][/for]
+[/template]
+
+[template public generateMatrixCombination(combination : MatrixCombination)]
+- [generateVariableAssignment(entries->first())/]
+[for (variableAssignment : VariableAssignment | entries->select(entry | entry <> entries->first()))]
+  [generateVariableAssignment(variableAssignment)/]
+[/for]
+[/template]
+
+[template public generateExpression(expression : Expression)]
+[if (expression.oclIsTypeOf(Literal))]
+[generateLiteral(expression.oclAsType(Literal))/]
+[elseif (expression.oclIsTypeOf(Concat))]
+[generateConcat(expression.oclAsType(Concat))/]
+[elseif (expression.oclIsTypeOf(VariableDereference))]
+[generateVariableDereference(expression.oclAsType(VariableDereference))/]
+[/if]
+[/template]
+
+[template public generateConcat(concat : Concat) post (trim())]
+[for (expression : Expression | expressions) separator ('')][generateExpression(expression)/][/for]
+[/template]
+
+[template public generateLogic(logic : Logic, addDash : Boolean) post (trim())]
+[if (logic.oclIsTypeOf(Literal))]
+[if (addDash)]
+- [generateLiteral(logic.oclAsType(Literal))/]
+[else]
+[generateLiteral(logic.oclAsType(Literal))/]
+[/if]
+[elseif (logic.oclIsTypeOf(VariableDereference))]
+[if (addDash)]
+- [generateVariableDereference(logic.oclAsType(VariableDereference))/]
+[else]
+[generateVariableDereference(logic.oclAsType(VariableDereference))/]
+[/if]
+[elseif (logic.oclIsKindOf(InfinitaryOperator))]
+[generateInfinitaryOperator(logic, addDash)/]
+[elseif (logic.oclIsTypeOf(Matches))]
+[generateMatches(logic.oclAsType(Matches), addDash)/]	
+[/if]
+[/template]
+
+[template public generateInfinitaryOperator(logic : Logic, addDash : Boolean) post (trim())]
+[if (logic.oclIsKindOf(InfinitaryOperator))]
+[if (addDash)]
+[if (logic.oclIsTypeOf(And))]
+- and:
+[elseif (logic.oclIsTypeOf(Or))]
+- or:
+[elseif (logic.oclIsTypeOf(Equals))]
+- equals:
+[/if]
+[else]
+[if (logic.oclIsTypeOf(And))]
+and:
+[elseif (logic.oclIsTypeOf(Or))]
+or:
+[elseif (logic.oclIsTypeOf(Equals))]
+equals:
+[/if]
+[/if]
+[let infinitaryOperator : InfinitaryOperator = logic.oclAsType(InfinitaryOperator)]
+[for (operand : Logic | infinitaryOperator.operands)]
+[if (addDash)]
+    [generateLogic(operand, true)/]
+[else]
+  [generateLogic(operand, true)/]
+[/if]
+[/for]
+[/let]
+[/if]
+[/template]
+
+[template public generateUnaryOperator(logic : Logic, addDash : Boolean) post (trim())]
+[if (logic.oclIsKindOf(UnaryOperator))]
+[if (addDash)]
+[if (logic.oclIsTypeOf(Not))]
+- not:
+[/if]
+[else]
+[if (logic.oclIsTypeOf(Not))]
+not:
+[/if]
+[/if]
+[let unaryOperator : UnaryOperator = logic.oclAsType(UnaryOperator)]
+[if (addDash)]
+  [generateLogic(unaryOperator.operand, false)/]
+[else]
+    [generateLogic(unaryOperator.operand, false)/]
+[/if]
+[/let]
+[/if]
+[/template]
+
+[template public generateMatches(matches : Matches, addDash : Boolean)]
+[if (addDash)]
+- matches:
+    pattern: [generateExpression(pattern)/]
+    value: [generateExpression(value)/]
+[else]
+matches:
+  pattern: [generateExpression(pattern)/]
+  value: [generateExpression(value)/]
+[/if]
+[/template]
+
+[template public generateVariableDereference(variableDerenference : VariableDereference) post (trim())]
+[for (name : String | names) before ('<< ') separator ('.') after (' >>')][name/][/for]
+[/template]
+
+[template public generateLiteral(literal : Literal) post (trim())]
+[if (literal.oclIsTypeOf(StringLiteral))]
+[literal.oclAsType(StringLiteral).value/]
+[elseif (literal.oclIsTypeOf(IntegerLiteral))]
+[literal.oclAsType(IntegerLiteral).value/]
+[elseif (literal.oclIsTypeOf(DoubleLiteral))]
+[literal.oclAsType(DoubleLiteral).value/]
+[elseif (literal.oclIsTypeOf(BooleanLiteral))]
+[literal.oclAsType(BooleanLiteral).value/]
 [/if]
 [/template]

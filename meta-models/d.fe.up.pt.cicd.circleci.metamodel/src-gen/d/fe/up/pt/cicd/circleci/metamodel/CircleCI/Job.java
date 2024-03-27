@@ -3,6 +3,7 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,12 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecutor <em>Executor</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism <em>Parallelism</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getStore_artifact <em>Store artifact</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getWhen_unless <em>When unless</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecution_env <em>Execution env</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironment <em>Environment</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getStep <em>Step</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironmentVariables <em>Environment Variables</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getCircleCIIPRanges <em>Circle CIIP Ranges</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob()
@@ -36,7 +37,7 @@ public interface Job extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Name()
-	 * @model
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getName();
@@ -52,105 +53,106 @@ public interface Job extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Parallelism</b></em>' attribute.
+	 * Returns the value of the '<em><b>Executor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parallelism</em>' attribute.
-	 * @see #setParallelism(short)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Parallelism()
-	 * @model
-	 * @generated
-	 */
-	short getParallelism();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism <em>Parallelism</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parallelism</em>' attribute.
-	 * @see #getParallelism()
-	 * @generated
-	 */
-	void setParallelism(short value);
-
-	/**
-	 * Returns the value of the '<em><b>Store artifact</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Store artifact</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Store_artifact()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Store_Artifact> getStore_artifact();
-
-	/**
-	 * Returns the value of the '<em><b>When unless</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>When unless</em>' containment reference.
-	 * @see #setWhen_unless(When_Unless)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_When_unless()
-	 * @model containment="true"
-	 * @generated
-	 */
-	When_Unless getWhen_unless();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getWhen_unless <em>When unless</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>When unless</em>' containment reference.
-	 * @see #getWhen_unless()
-	 * @generated
-	 */
-	void setWhen_unless(When_Unless value);
-
-	/**
-	 * Returns the value of the '<em><b>Execution env</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Execution env</em>' containment reference.
-	 * @see #setExecution_env(Execution_Env)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Execution_env()
+	 * @return the value of the '<em>Executor</em>' containment reference.
+	 * @see #setExecutor(Executor)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Executor()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Execution_Env getExecution_env();
+	Executor getExecutor();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecution_env <em>Execution env</em>}' containment reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecutor <em>Executor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Execution env</em>' containment reference.
-	 * @see #getExecution_env()
+	 * @param value the new value of the '<em>Executor</em>' containment reference.
+	 * @see #getExecutor()
 	 * @generated
 	 */
-	void setExecution_env(Execution_Env value);
+	void setExecutor(Executor value);
 
 	/**
-	 * Returns the value of the '<em><b>Environment</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment}.
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Environment</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Environment()
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Parameters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Environment> getEnvironment();
+	EList<Parameter> getParameters();
 
 	/**
-	 * Returns the value of the '<em><b>Step</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Step</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Step()
+	 * @return the value of the '<em>Steps</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Steps()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Step> getStep();
+	EList<Step> getSteps();
+
+	/**
+	 * Returns the value of the '<em><b>Parallelism</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parallelism</em>' containment reference.
+	 * @see #setParallelism(Expression)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Parallelism()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Expression getParallelism();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism <em>Parallelism</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parallelism</em>' containment reference.
+	 * @see #getParallelism()
+	 * @generated
+	 */
+	void setParallelism(Expression value);
+
+	/**
+	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Environment Variables</em>' map.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_EnvironmentVariables()
+	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
+	 * @generated
+	 */
+	EMap<String, Expression> getEnvironmentVariables();
+
+	/**
+	 * Returns the value of the '<em><b>Circle CIIP Ranges</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Circle CIIP Ranges</em>' containment reference.
+	 * @see #setCircleCIIPRanges(Expression)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_CircleCIIPRanges()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Expression getCircleCIIPRanges();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getCircleCIIPRanges <em>Circle CIIP Ranges</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Circle CIIP Ranges</em>' containment reference.
+	 * @see #getCircleCIIPRanges()
+	 * @generated
+	 */
+	void setCircleCIIPRanges(Expression value);
 
 } // Job

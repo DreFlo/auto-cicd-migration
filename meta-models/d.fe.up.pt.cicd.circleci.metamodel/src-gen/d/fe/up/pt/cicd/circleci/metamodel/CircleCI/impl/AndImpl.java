@@ -1,0 +1,37 @@
+/**
+ */
+package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
+
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.And;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+
+import org.eclipse.emf.ecore.EClass;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>And</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * @generated
+ */
+public class AndImpl extends InfinitaryOperatorImpl implements And {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AndImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return CircleCIPackage.Literals.AND;
+	}
+
+} //AndImpl

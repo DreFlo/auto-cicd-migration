@@ -2,14 +2,22 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreEMap;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,24 +55,14 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	protected String command = COMMAND_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getArguments() <em>Arguments</em>}' attribute.
+	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getArguments()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ARGUMENTS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getArguments()
-	 * @generated
-	 * @ordered
-	 */
-	protected String arguments = ARGUMENTS_EDEFAULT;
+	protected EMap<Variable, Expression> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,7 +112,11 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
-	public String getArguments() {
+	public EMap<Variable, Expression> getArguments() {
+		if (arguments == null) {
+			arguments = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT, AssignmentImpl.class,
+					this, JenkinsPackage.STEP__ARGUMENTS);
+		}
 		return arguments;
 	}
 
@@ -124,12 +126,12 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
-	public void setArguments(String newArguments) {
-		String oldArguments = arguments;
-		arguments = newArguments;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.STEP__ARGUMENTS, oldArguments,
-					arguments));
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case JenkinsPackage.STEP__ARGUMENTS:
+			return ((InternalEList<?>) getArguments()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -143,7 +145,10 @@ public class StepImpl extends StageChildStepImpl implements Step {
 		case JenkinsPackage.STEP__COMMAND:
 			return getCommand();
 		case JenkinsPackage.STEP__ARGUMENTS:
-			return getArguments();
+			if (coreType)
+				return getArguments();
+			else
+				return getArguments().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,7 +165,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 			setCommand((String) newValue);
 			return;
 		case JenkinsPackage.STEP__ARGUMENTS:
-			setArguments((String) newValue);
+			((EStructuralFeature.Setting) getArguments()).set(newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -178,7 +183,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 			setCommand(COMMAND_EDEFAULT);
 			return;
 		case JenkinsPackage.STEP__ARGUMENTS:
-			setArguments(ARGUMENTS_EDEFAULT);
+			getArguments().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -195,7 +200,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 		case JenkinsPackage.STEP__COMMAND:
 			return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
 		case JenkinsPackage.STEP__ARGUMENTS:
-			return ARGUMENTS_EDEFAULT == null ? arguments != null : !ARGUMENTS_EDEFAULT.equals(arguments);
+			return arguments != null && !arguments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -213,8 +218,6 @@ public class StepImpl extends StageChildStepImpl implements Step {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (command: ");
 		result.append(command);
-		result.append(", arguments: ");
-		result.append(arguments);
 		result.append(')');
 		return result.toString();
 	}

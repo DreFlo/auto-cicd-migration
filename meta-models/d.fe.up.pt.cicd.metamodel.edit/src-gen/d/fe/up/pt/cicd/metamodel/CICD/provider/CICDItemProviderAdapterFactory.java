@@ -96,26 +96,49 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Job} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.ScriptJob} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected JobItemProvider jobItemProvider;
+	protected ScriptJobItemProvider scriptJobItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Job}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.ScriptJob}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createJobAdapter() {
-		if (jobItemProvider == null) {
-			jobItemProvider = new JobItemProvider(this);
+	public Adapter createScriptJobAdapter() {
+		if (scriptJobItemProvider == null) {
+			scriptJobItemProvider = new ScriptJobItemProvider(this);
 		}
 
-		return jobItemProvider;
+		return scriptJobItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PipelineCallJobItemProvider pipelineCallJobItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPipelineCallJobAdapter() {
+		if (pipelineCallJobItemProvider == null) {
+			pipelineCallJobItemProvider = new PipelineCallJobItemProvider(this);
+		}
+
+		return pipelineCallJobItemProvider;
 	}
 
 	/**
@@ -1145,8 +1168,10 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	public void dispose() {
 		if (pipelineItemProvider != null)
 			pipelineItemProvider.dispose();
-		if (jobItemProvider != null)
-			jobItemProvider.dispose();
+		if (scriptJobItemProvider != null)
+			scriptJobItemProvider.dispose();
+		if (pipelineCallJobItemProvider != null)
+			pipelineCallJobItemProvider.dispose();
 		if (agentItemProvider != null)
 			agentItemProvider.dispose();
 		if (dockerContainerItemProvider != null)

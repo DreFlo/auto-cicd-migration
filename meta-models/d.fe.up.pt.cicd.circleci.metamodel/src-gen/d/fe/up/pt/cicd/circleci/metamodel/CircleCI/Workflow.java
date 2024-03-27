@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getName <em>Name</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getVersion <em>Version</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getTrigger <em>Trigger</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getWhen_unless <em>When unless</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getBranch <em>Branch</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getTriggers <em>Triggers</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getCondition <em>Condition</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getIsWhen <em>Is When</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getJobs <em>Jobs</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow()
@@ -34,7 +34,7 @@ public interface Workflow extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -50,71 +50,71 @@ public interface Workflow extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Version</em>' attribute.
-	 * @see #setVersion(String)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Version()
-	 * @model
-	 * @generated
-	 */
-	String getVersion();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getVersion <em>Version</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Version</em>' attribute.
-	 * @see #getVersion()
-	 * @generated
-	 */
-	void setVersion(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Trigger</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Triggers</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trigger</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Trigger()
+	 * @return the value of the '<em>Triggers</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Triggers()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Trigger> getTrigger();
+	EList<Trigger> getTriggers();
 
 	/**
-	 * Returns the value of the '<em><b>When unless</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>When unless</em>' containment reference.
-	 * @see #setWhen_unless(When_Unless)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_When_unless()
+	 * @return the value of the '<em>Condition</em>' containment reference.
+	 * @see #setCondition(Logic)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Condition()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Logic getCondition();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getCondition <em>Condition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Condition</em>' containment reference.
+	 * @see #getCondition()
+	 * @generated
+	 */
+	void setCondition(Logic value);
+
+	/**
+	 * Returns the value of the '<em><b>Is When</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is When</em>' attribute.
+	 * @see #setIsWhen(Boolean)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_IsWhen()
+	 * @model
+	 * @generated
+	 */
+	Boolean getIsWhen();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getIsWhen <em>Is When</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is When</em>' attribute.
+	 * @see #getIsWhen()
+	 * @generated
+	 */
+	void setIsWhen(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Jobs</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Jobs</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Jobs()
 	 * @model containment="true"
 	 * @generated
 	 */
-	When_Unless getWhen_unless();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getWhen_unless <em>When unless</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>When unless</em>' containment reference.
-	 * @see #getWhen_unless()
-	 * @generated
-	 */
-	void setWhen_unless(When_Unless value);
-
-	/**
-	 * Returns the value of the '<em><b>Branch</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Branch</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflow_Branch()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Branch> getBranch();
+	EList<WorkflowJobConfiguration> getJobs();
 
 } // Workflow

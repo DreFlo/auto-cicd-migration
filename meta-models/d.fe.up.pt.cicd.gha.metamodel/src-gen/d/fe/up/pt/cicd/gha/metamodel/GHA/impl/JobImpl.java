@@ -2,7 +2,6 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
-import d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Agent;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
@@ -10,6 +9,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -57,12 +56,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getContinueOnError <em>Continue On Error</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getStrategy <em>Strategy</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getSteps <em>Steps</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.JobImpl#getOutputs <em>Outputs</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class JobImpl extends MinimalEObjectImpl.Container implements Job {
+public abstract class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -234,14 +233,14 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	protected Matrix strategy;
 
 	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
+	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSteps()
+	 * @see #getOutputs()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AbstractStep> steps;
+	protected EList<Output> outputs;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -879,11 +878,11 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<AbstractStep> getSteps() {
-		if (steps == null) {
-			steps = new EObjectContainmentEList<AbstractStep>(AbstractStep.class, this, GHAPackage.JOB__STEPS);
+	public EList<Output> getOutputs() {
+		if (outputs == null) {
+			outputs = new EObjectResolvingEList<Output>(Output.class, this, GHAPackage.JOB__OUTPUTS);
 		}
-		return steps;
+		return outputs;
 	}
 
 	/**
@@ -941,8 +940,6 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 			return basicSetContinueOnError(null, msgs);
 		case GHAPackage.JOB__STRATEGY:
 			return basicSetStrategy(null, msgs);
-		case GHAPackage.JOB__STEPS:
-			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -996,8 +993,8 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 			return getContinueOnError();
 		case GHAPackage.JOB__STRATEGY:
 			return getStrategy();
-		case GHAPackage.JOB__STEPS:
-			return getSteps();
+		case GHAPackage.JOB__OUTPUTS:
+			return getOutputs();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1061,9 +1058,9 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 		case GHAPackage.JOB__STRATEGY:
 			setStrategy((Matrix) newValue);
 			return;
-		case GHAPackage.JOB__STEPS:
-			getSteps().clear();
-			getSteps().addAll((Collection<? extends AbstractStep>) newValue);
+		case GHAPackage.JOB__OUTPUTS:
+			getOutputs().clear();
+			getOutputs().addAll((Collection<? extends Output>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -1125,8 +1122,8 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 		case GHAPackage.JOB__STRATEGY:
 			setStrategy((Matrix) null);
 			return;
-		case GHAPackage.JOB__STEPS:
-			getSteps().clear();
+		case GHAPackage.JOB__OUTPUTS:
+			getOutputs().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -1172,8 +1169,8 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 			return continueOnError != null;
 		case GHAPackage.JOB__STRATEGY:
 			return strategy != null;
-		case GHAPackage.JOB__STEPS:
-			return steps != null && !steps.isEmpty();
+		case GHAPackage.JOB__OUTPUTS:
+			return outputs != null && !outputs.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

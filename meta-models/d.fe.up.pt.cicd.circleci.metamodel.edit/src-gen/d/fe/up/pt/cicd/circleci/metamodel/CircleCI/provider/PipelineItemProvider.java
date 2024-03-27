@@ -57,6 +57,7 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 			super.getPropertyDescriptors(object);
 
 			addVersionPropertyDescriptor(object);
+			addSetupPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -78,6 +79,22 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	}
 
 	/**
+	 * This adds a property descriptor for the Setup feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSetupPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Pipeline_setup_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Pipeline_setup_feature",
+								"_UI_Pipeline_type"),
+						CircleCIPackage.Literals.PIPELINE__SETUP, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -89,10 +106,12 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__ORB);
-			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__COMMAND);
-			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__WORKFLOW);
-			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__JOB);
+			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__ORBS);
+			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__COMMANDS);
+			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__PARAMETERS);
+			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__EXECUTORS);
+			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__JOBS);
+			childrenFeatures.add(CircleCIPackage.Literals.PIPELINE__WORKFLOWS);
 		}
 		return childrenFeatures;
 	}
@@ -157,12 +176,15 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 
 		switch (notification.getFeatureID(Pipeline.class)) {
 		case CircleCIPackage.PIPELINE__VERSION:
+		case CircleCIPackage.PIPELINE__SETUP:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case CircleCIPackage.PIPELINE__ORB:
-		case CircleCIPackage.PIPELINE__COMMAND:
-		case CircleCIPackage.PIPELINE__WORKFLOW:
-		case CircleCIPackage.PIPELINE__JOB:
+		case CircleCIPackage.PIPELINE__ORBS:
+		case CircleCIPackage.PIPELINE__COMMANDS:
+		case CircleCIPackage.PIPELINE__PARAMETERS:
+		case CircleCIPackage.PIPELINE__EXECUTORS:
+		case CircleCIPackage.PIPELINE__JOBS:
+		case CircleCIPackage.PIPELINE__WORKFLOWS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -180,17 +202,41 @@ public class PipelineItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(CircleCIPackage.Literals.PIPELINE__ORB, CircleCIFactory.eINSTANCE.createOrb()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__ORBS,
+				CircleCIFactory.eINSTANCE.createOrbReference()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__COMMAND,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__ORBS,
+				CircleCIFactory.eINSTANCE.createOrbDefinition()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__COMMANDS,
 				CircleCIFactory.eINSTANCE.createCommand()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__WORKFLOW,
-				CircleCIFactory.eINSTANCE.createWorkflow()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__PARAMETERS,
+				CircleCIFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__EXECUTORS,
+				CircleCIFactory.eINSTANCE.createDockerExecutor()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__EXECUTORS,
+				CircleCIFactory.eINSTANCE.createMachineExecutor()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__EXECUTORS,
+				CircleCIFactory.eINSTANCE.createMacOSExecutor()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__EXECUTORS,
+				CircleCIFactory.eINSTANCE.createWindowsOrbExecutor()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__EXECUTORS,
+				CircleCIFactory.eINSTANCE.createExecutorReferenceExecutor()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__EXECUTORS,
+				CircleCIFactory.eINSTANCE.createOrbReferenceExecutor()));
 
 		newChildDescriptors.add(
-				createChildParameter(CircleCIPackage.Literals.PIPELINE__JOB, CircleCIFactory.eINSTANCE.createJob()));
+				createChildParameter(CircleCIPackage.Literals.PIPELINE__JOBS, CircleCIFactory.eINSTANCE.createJob()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PIPELINE__WORKFLOWS,
+				CircleCIFactory.eINSTANCE.createWorkflow()));
 	}
 
 	/**

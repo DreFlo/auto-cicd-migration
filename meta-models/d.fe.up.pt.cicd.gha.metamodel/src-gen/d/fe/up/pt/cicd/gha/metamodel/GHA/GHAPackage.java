@@ -312,13 +312,13 @@ public interface GHAPackage extends EPackage {
 	int JOB__STRATEGY = 15;
 
 	/**
-	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__STEPS = 16;
+	int JOB__OUTPUTS = 16;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -339,6 +339,413 @@ public interface GHAPackage extends EPackage {
 	int JOB_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ScriptJobImpl <em>Script Job</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ScriptJobImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getScriptJob()
+	 * @generated
+	 */
+	int SCRIPT_JOB = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__NAME = JOB__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__JOB_NAME = JOB__JOB_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Permissions</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__PERMISSIONS = JOB__PERMISSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Depends On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__DEPENDS_ON = JOB__DEPENDS_ON;
+
+	/**
+	 * The feature id for the '<em><b>Necessary For</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__NECESSARY_FOR = JOB__NECESSARY_FOR;
+
+	/**
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__IF_CONDITION = JOB__IF_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__AGENT = JOB__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__CONTAINER = JOB__CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Staging Environment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__STAGING_ENVIRONMENT = JOB__STAGING_ENVIRONMENT;
+
+	/**
+	 * The feature id for the '<em><b>Defaults</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__DEFAULTS = JOB__DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__ENVIRONMENT_VARIABLES = JOB__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__SERVICES = JOB__SERVICES;
+
+	/**
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__CONCURRENCY_GROUP = JOB__CONCURRENCY_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__TIMEOUT_MINUTES = JOB__TIMEOUT_MINUTES;
+
+	/**
+	 * The feature id for the '<em><b>Continue On Error</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__CONTINUE_ON_ERROR = JOB__CONTINUE_ON_ERROR;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__STRATEGY = JOB__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__OUTPUTS = JOB__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__STEPS = JOB_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Script Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB_FEATURE_COUNT = JOB_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Script Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB_OPERATION_COUNT = JOB_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallJobImpl <em>Workflow Call Job</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallJobImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowCallJob()
+	 * @generated
+	 */
+	int WORKFLOW_CALL_JOB = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__NAME = JOB__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__JOB_NAME = JOB__JOB_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Permissions</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__PERMISSIONS = JOB__PERMISSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Depends On</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__DEPENDS_ON = JOB__DEPENDS_ON;
+
+	/**
+	 * The feature id for the '<em><b>Necessary For</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__NECESSARY_FOR = JOB__NECESSARY_FOR;
+
+	/**
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__IF_CONDITION = JOB__IF_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__AGENT = JOB__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__CONTAINER = JOB__CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Staging Environment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__STAGING_ENVIRONMENT = JOB__STAGING_ENVIRONMENT;
+
+	/**
+	 * The feature id for the '<em><b>Defaults</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__DEFAULTS = JOB__DEFAULTS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__ENVIRONMENT_VARIABLES = JOB__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__SERVICES = JOB__SERVICES;
+
+	/**
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__CONCURRENCY_GROUP = JOB__CONCURRENCY_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__TIMEOUT_MINUTES = JOB__TIMEOUT_MINUTES;
+
+	/**
+	 * The feature id for the '<em><b>Continue On Error</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__CONTINUE_ON_ERROR = JOB__CONTINUE_ON_ERROR;
+
+	/**
+	 * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__STRATEGY = JOB__STRATEGY;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__OUTPUTS = JOB__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Uses</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__USES = JOB_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Args</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__ARGS = JOB_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Secrets</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__SECRETS = JOB_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Inherit Secrets</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB__INHERIT_SECRETS = JOB_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Workflow Call Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB_FEATURE_COUNT = JOB_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Workflow Call Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_CALL_JOB_OPERATION_COUNT = JOB_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.AgentImpl <em>Agent</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -346,7 +753,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAgent()
 	 * @generated
 	 */
-	int AGENT = 2;
+	int AGENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Group</b></em>' containment reference.
@@ -392,7 +799,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getContainer()
 	 * @generated
 	 */
-	int CONTAINER = 3;
+	int CONTAINER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Image</b></em>' containment reference.
@@ -483,7 +890,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getService()
 	 * @generated
 	 */
-	int SERVICE = 4;
+	int SERVICE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -529,7 +936,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStagingEnvironment()
 	 * @generated
 	 */
-	int STAGING_ENVIRONMENT = 5;
+	int STAGING_ENVIRONMENT = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -575,7 +982,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 6;
+	int TRIGGER = 8;
 
 	/**
 	 * The number of structural features of the '<em>Trigger</em>' class.
@@ -603,7 +1010,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEventTypeTrigger()
 	 * @generated
 	 */
-	int EVENT_TYPE_TRIGGER = 7;
+	int EVENT_TYPE_TRIGGER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
@@ -640,7 +1047,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSpecifiedBranchesTrigger()
 	 * @generated
 	 */
-	int SPECIFIED_BRANCHES_TRIGGER = 8;
+	int SPECIFIED_BRANCHES_TRIGGER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -686,7 +1093,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSpecifiedPathsTrigger()
 	 * @generated
 	 */
-	int SPECIFIED_PATHS_TRIGGER = 9;
+	int SPECIFIED_PATHS_TRIGGER = 11;
 
 	/**
 	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
@@ -732,7 +1139,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStandardEventTrigger()
 	 * @generated
 	 */
-	int STANDARD_EVENT_TRIGGER = 10;
+	int STANDARD_EVENT_TRIGGER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
@@ -778,7 +1185,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getInputTrigger()
 	 * @generated
 	 */
-	int INPUT_TRIGGER = 11;
+	int INPUT_TRIGGER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -815,7 +1222,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowRunTrigger()
 	 * @generated
 	 */
-	int WORKFLOW_RUN_TRIGGER = 12;
+	int WORKFLOW_RUN_TRIGGER = 14;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -861,7 +1268,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPullRequestTrigger()
 	 * @generated
 	 */
-	int PULL_REQUEST_TRIGGER = 13;
+	int PULL_REQUEST_TRIGGER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
@@ -934,7 +1341,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPullRequestTargetTrigger()
 	 * @generated
 	 */
-	int PULL_REQUEST_TARGET_TRIGGER = 14;
+	int PULL_REQUEST_TARGET_TRIGGER = 16;
 
 	/**
 	 * The feature id for the '<em><b>Event Types</b></em>' attribute list.
@@ -1007,7 +1414,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPushTrigger()
 	 * @generated
 	 */
-	int PUSH_TRIGGER = 15;
+	int PUSH_TRIGGER = 17;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -1089,7 +1496,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getScheduleTrigger()
 	 * @generated
 	 */
-	int SCHEDULE_TRIGGER = 16;
+	int SCHEDULE_TRIGGER = 18;
 
 	/**
 	 * The feature id for the '<em><b>Crons</b></em>' containment reference list.
@@ -1126,7 +1533,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowCallTrigger()
 	 * @generated
 	 */
-	int WORKFLOW_CALL_TRIGGER = 17;
+	int WORKFLOW_CALL_TRIGGER = 19;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1181,7 +1588,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowDispatchTrigger()
 	 * @generated
 	 */
-	int WORKFLOW_DISPATCH_TRIGGER = 18;
+	int WORKFLOW_DISPATCH_TRIGGER = 20;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1218,7 +1625,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPermission()
 	 * @generated
 	 */
-	int PERMISSION = 19;
+	int PERMISSION = 21;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1264,7 +1671,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getConcurrencyGroup()
 	 * @generated
 	 */
-	int CONCURRENCY_GROUP = 20;
+	int CONCURRENCY_GROUP = 22;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -1310,7 +1717,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDefaults()
 	 * @generated
 	 */
-	int DEFAULTS = 21;
+	int DEFAULTS = 23;
 
 	/**
 	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
@@ -1356,7 +1763,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableAssignment()
 	 * @generated
 	 */
-	int VARIABLE_ASSIGNMENT = 22;
+	int VARIABLE_ASSIGNMENT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1402,7 +1809,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 23;
+	int EXPRESSION = 25;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -1430,7 +1837,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 24;
+	int BINARY_OP = 26;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1476,7 +1883,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 25;
+	int CONCAT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -1513,7 +1920,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEquality()
 	 * @generated
 	 */
-	int EQUALITY = 26;
+	int EQUALITY = 28;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1568,7 +1975,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getComparison()
 	 * @generated
 	 */
-	int COMPARISON = 27;
+	int COMPARISON = 29;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1623,7 +2030,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 28;
+	int LOGICAL_OP = 30;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1669,7 +2076,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 29;
+	int OR = 31;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1715,7 +2122,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 30;
+	int AND = 32;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1761,7 +2168,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 31;
+	int UNARY_OP = 33;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1798,7 +2205,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 32;
+	int NOT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1835,7 +2242,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBuiltInFunctionCall()
 	 * @generated
 	 */
-	int BUILT_IN_FUNCTION_CALL = 33;
+	int BUILT_IN_FUNCTION_CALL = 35;
 
 	/**
 	 * The number of structural features of the '<em>Built In Function Call</em>' class.
@@ -1863,7 +2270,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 34;
+	int CONTAINS = 36;
 
 	/**
 	 * The feature id for the '<em><b>Search</b></em>' containment reference.
@@ -1909,7 +2316,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStartsWith()
 	 * @generated
 	 */
-	int STARTS_WITH = 35;
+	int STARTS_WITH = 37;
 
 	/**
 	 * The feature id for the '<em><b>Search String</b></em>' containment reference.
@@ -1955,7 +2362,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEndsWith()
 	 * @generated
 	 */
-	int ENDS_WITH = 36;
+	int ENDS_WITH = 38;
 
 	/**
 	 * The feature id for the '<em><b>Search String</b></em>' containment reference.
@@ -2001,7 +2408,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFormat()
 	 * @generated
 	 */
-	int FORMAT = 37;
+	int FORMAT = 39;
 
 	/**
 	 * The feature id for the '<em><b>String</b></em>' containment reference.
@@ -2047,7 +2454,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getJoin()
 	 * @generated
 	 */
-	int JOIN = 38;
+	int JOIN = 40;
 
 	/**
 	 * The feature id for the '<em><b>Array</b></em>' containment reference.
@@ -2093,7 +2500,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getToJSON()
 	 * @generated
 	 */
-	int TO_JSON = 39;
+	int TO_JSON = 41;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2130,7 +2537,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFromJSON()
 	 * @generated
 	 */
-	int FROM_JSON = 40;
+	int FROM_JSON = 42;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2167,7 +2574,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getHashFiles()
 	 * @generated
 	 */
-	int HASH_FILES = 41;
+	int HASH_FILES = 43;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -2204,7 +2611,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStatusCheck()
 	 * @generated
 	 */
-	int STATUS_CHECK = 42;
+	int STATUS_CHECK = 44;
 
 	/**
 	 * The number of structural features of the '<em>Status Check</em>' class.
@@ -2232,7 +2639,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAlways()
 	 * @generated
 	 */
-	int ALWAYS = 43;
+	int ALWAYS = 45;
 
 	/**
 	 * The number of structural features of the '<em>Always</em>' class.
@@ -2260,7 +2667,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSuccess()
 	 * @generated
 	 */
-	int SUCCESS = 44;
+	int SUCCESS = 46;
 
 	/**
 	 * The number of structural features of the '<em>Success</em>' class.
@@ -2288,7 +2695,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCancelled()
 	 * @generated
 	 */
-	int CANCELLED = 45;
+	int CANCELLED = 47;
 
 	/**
 	 * The number of structural features of the '<em>Cancelled</em>' class.
@@ -2316,7 +2723,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFailure()
 	 * @generated
 	 */
-	int FAILURE = 46;
+	int FAILURE = 48;
 
 	/**
 	 * The number of structural features of the '<em>Failure</em>' class.
@@ -2344,7 +2751,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 47;
+	int VALUE = 49;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -2372,7 +2779,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 48;
+	int LITERAL = 50;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -2400,7 +2807,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 49;
+	int STRING_LITERAL = 51;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2437,7 +2844,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 50;
+	int INTEGER_LITERAL = 52;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2474,7 +2881,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 51;
+	int DOUBLE_LITERAL = 53;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2511,7 +2918,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 52;
+	int BOOLEAN_LITERAL = 54;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2548,7 +2955,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 53;
+	int VARIABLE = 55;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2585,7 +2992,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getGitHubContext()
 	 * @generated
 	 */
-	int GIT_HUB_CONTEXT = 54;
+	int GIT_HUB_CONTEXT = 56;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' attribute.
@@ -2622,7 +3029,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableDereference()
 	 * @generated
 	 */
-	int VARIABLE_DEREFERENCE = 55;
+	int VARIABLE_DEREFERENCE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -2668,7 +3075,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 56;
+	int MATRIX = 58;
 
 	/**
 	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
@@ -2741,7 +3148,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrixAxis()
 	 * @generated
 	 */
-	int MATRIX_AXIS = 57;
+	int MATRIX_AXIS = 59;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2787,7 +3194,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 58;
+	int MATRIX_COMBINATION = 60;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' map.
@@ -2824,7 +3231,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAbstractStep()
 	 * @generated
 	 */
-	int ABSTRACT_STEP = 59;
+	int ABSTRACT_STEP = 61;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Step</em>' class.
@@ -2852,7 +3259,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getIfStep()
 	 * @generated
 	 */
-	int IF_STEP = 60;
+	int IF_STEP = 62;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -2898,7 +3305,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 61;
+	int STEP = 63;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2989,7 +3396,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 62;
+	int COMMAND = 64;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3089,7 +3496,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPackage()
 	 * @generated
 	 */
-	int PACKAGE = 63;
+	int PACKAGE = 65;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3216,7 +3623,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 64;
+	int PARAMETER = 66;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3262,7 +3669,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 65;
+	int INPUT = 67;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3344,7 +3751,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSecret()
 	 * @generated
 	 */
-	int SECRET = 66;
+	int SECRET = 68;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3399,7 +3806,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 67;
+	int OUTPUT = 69;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3454,7 +3861,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEVENTS()
 	 * @generated
 	 */
-	int EVENTS = 68;
+	int EVENTS = 70;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES <em>WEBHOOK ACTIVITY TYPES</em>}' enum.
@@ -3464,7 +3871,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWEBHOOK_ACTIVITY_TYPES()
 	 * @generated
 	 */
-	int WEBHOOK_ACTIVITY_TYPES = 69;
+	int WEBHOOK_ACTIVITY_TYPES = 71;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES <em>PERMISSION SCOPES</em>}' enum.
@@ -3474,7 +3881,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPERMISSION_SCOPES()
 	 * @generated
 	 */
-	int PERMISSION_SCOPES = 70;
+	int PERMISSION_SCOPES = 72;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS <em>PERMISSIONS</em>}' enum.
@@ -3484,7 +3891,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPERMISSIONS()
 	 * @generated
 	 */
-	int PERMISSIONS = 71;
+	int PERMISSIONS = 73;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3494,7 +3901,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 72;
+	int EQUALITY_OPS = 74;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3504,7 +3911,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 73;
+	int COMPARISON_OPS = 75;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.CONTEXTS <em>CONTEXTS</em>}' enum.
@@ -3514,7 +3921,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCONTEXTS()
 	 * @generated
 	 */
-	int CONTEXTS = 74;
+	int CONTEXTS = 76;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.INPUT_TYPES <em>INPUT TYPES</em>}' enum.
@@ -3524,7 +3931,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getINPUT_TYPES()
 	 * @generated
 	 */
-	int INPUT_TYPES = 75;
+	int INPUT_TYPES = 77;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow <em>Workflow</em>}'.
@@ -3811,15 +4218,90 @@ public interface GHAPackage extends EPackage {
 	EReference getJob_Strategy();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getSteps <em>Steps</em>}'.
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Steps</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getSteps()
+	 * @return the meta object for the reference list '<em>Outputs</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getOutputs()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_Steps();
+	EReference getJob_Outputs();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob <em>Script Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Script Job</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob
+	 * @generated
+	 */
+	EClass getScriptJob();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob#getSteps <em>Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob#getSteps()
+	 * @see #getScriptJob()
+	 * @generated
+	 */
+	EReference getScriptJob_Steps();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob <em>Workflow Call Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workflow Call Job</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob
+	 * @generated
+	 */
+	EClass getWorkflowCallJob();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getUses <em>Uses</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Uses</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getUses()
+	 * @see #getWorkflowCallJob()
+	 * @generated
+	 */
+	EReference getWorkflowCallJob_Uses();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getArgs <em>Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Args</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getArgs()
+	 * @see #getWorkflowCallJob()
+	 * @generated
+	 */
+	EReference getWorkflowCallJob_Args();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getSecrets <em>Secrets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Secrets</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getSecrets()
+	 * @see #getWorkflowCallJob()
+	 * @generated
+	 */
+	EReference getWorkflowCallJob_Secrets();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getInheritSecrets <em>Inherit Secrets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Inherit Secrets</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob#getInheritSecrets()
+	 * @see #getWorkflowCallJob()
+	 * @generated
+	 */
+	EAttribute getWorkflowCallJob_InheritSecrets();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Agent <em>Agent</em>}'.
@@ -5793,12 +6275,72 @@ public interface GHAPackage extends EPackage {
 		EReference JOB__STRATEGY = eINSTANCE.getJob_Strategy();
 
 		/**
+		 * The meta object literal for the '<em><b>Outputs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference JOB__OUTPUTS = eINSTANCE.getJob_Outputs();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ScriptJobImpl <em>Script Job</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ScriptJobImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getScriptJob()
+		 * @generated
+		 */
+		EClass SCRIPT_JOB = eINSTANCE.getScriptJob();
+
+		/**
 		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__STEPS = eINSTANCE.getJob_Steps();
+		EReference SCRIPT_JOB__STEPS = eINSTANCE.getScriptJob_Steps();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallJobImpl <em>Workflow Call Job</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.WorkflowCallJobImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWorkflowCallJob()
+		 * @generated
+		 */
+		EClass WORKFLOW_CALL_JOB = eINSTANCE.getWorkflowCallJob();
+
+		/**
+		 * The meta object literal for the '<em><b>Uses</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_CALL_JOB__USES = eINSTANCE.getWorkflowCallJob_Uses();
+
+		/**
+		 * The meta object literal for the '<em><b>Args</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_CALL_JOB__ARGS = eINSTANCE.getWorkflowCallJob_Args();
+
+		/**
+		 * The meta object literal for the '<em><b>Secrets</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_CALL_JOB__SECRETS = eINSTANCE.getWorkflowCallJob_Secrets();
+
+		/**
+		 * The meta object literal for the '<em><b>Inherit Secrets</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW_CALL_JOB__INHERIT_SECRETS = eINSTANCE.getWorkflowCallJob_InheritSecrets();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.AgentImpl <em>Agent</em>}' class.

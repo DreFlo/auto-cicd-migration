@@ -93,6 +93,28 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CICDPackage.SCRIPT_JOB: {
+			ScriptJob scriptJob = (ScriptJob) theEObject;
+			T result = caseScriptJob(scriptJob);
+			if (result == null)
+				result = caseJob(scriptJob);
+			if (result == null)
+				result = casePipelineBlock(scriptJob);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.PIPELINE_CALL_JOB: {
+			PipelineCallJob pipelineCallJob = (PipelineCallJob) theEObject;
+			T result = casePipelineCallJob(pipelineCallJob);
+			if (result == null)
+				result = caseJob(pipelineCallJob);
+			if (result == null)
+				result = casePipelineBlock(pipelineCallJob);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CICDPackage.AGENT: {
 			Agent agent = (Agent) theEObject;
 			T result = caseAgent(agent);
@@ -595,6 +617,36 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseJob(Job object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Script Job</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Script Job</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScriptJob(ScriptJob object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pipeline Call Job</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pipeline Call Job</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePipelineCallJob(PipelineCallJob object) {
 		return null;
 	}
 

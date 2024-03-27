@@ -96,26 +96,49 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected JobItemProvider jobItemProvider;
+	protected ScriptJobItemProvider scriptJobItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createJobAdapter() {
-		if (jobItemProvider == null) {
-			jobItemProvider = new JobItemProvider(this);
+	public Adapter createScriptJobAdapter() {
+		if (scriptJobItemProvider == null) {
+			scriptJobItemProvider = new ScriptJobItemProvider(this);
 		}
 
-		return jobItemProvider;
+		return scriptJobItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WorkflowCallJobItemProvider workflowCallJobItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWorkflowCallJobAdapter() {
+		if (workflowCallJobItemProvider == null) {
+			workflowCallJobItemProvider = new WorkflowCallJobItemProvider(this);
+		}
+
+		return workflowCallJobItemProvider;
 	}
 
 	/**
@@ -1375,8 +1398,10 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	public void dispose() {
 		if (workflowItemProvider != null)
 			workflowItemProvider.dispose();
-		if (jobItemProvider != null)
-			jobItemProvider.dispose();
+		if (scriptJobItemProvider != null)
+			scriptJobItemProvider.dispose();
+		if (workflowCallJobItemProvider != null)
+			workflowCallJobItemProvider.dispose();
 		if (agentItemProvider != null)
 			agentItemProvider.dispose();
 		if (containerItemProvider != null)

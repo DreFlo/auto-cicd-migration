@@ -105,7 +105,7 @@ parallel {
 [/template]
 
 [template public generateStep(step : Step)]
-[step.command/] [quoteString(step.arguments)/]
+[step.command/] [for (argument : Assignment | arguments) separator (', ')][argument.key.name/]: [generateExpression(argument.value)/][/for]
 [/template]
 
 [template public generateConditionalStep(conditionalStep : ConditionalStep)]

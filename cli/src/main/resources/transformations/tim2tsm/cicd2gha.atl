@@ -14,14 +14,24 @@ rule Pipeline2Workflow {
 			defaults <- thisModule.Defaults(pipeline.shell, pipeline.workingDirectory),
 			environmentVariables <- pipeline.environmentVariables,
 			jobs <- thisModule.getAllJobs(pipeline.jobStreams),
-			name <- thisModule.String2StringLiteral(pipeline.name),
+			name <- 
+				if not pipeline.name.oclIsUndefined() then
+					thisModule.String2StringLiteral(pipeline.name)
+				else
+					OclUndefined
+				endif,
 			permissions <- pipeline.permissions,
-			runName <- thisModule.String2StringLiteral(pipeline.name),
+			runName <- 
+				if not pipeline.name.oclIsUndefined() then
+					thisModule.String2StringLiteral(pipeline.name)
+				else
+					OclUndefined
+				endif,
 			triggers <- pipeline.triggers
 		)
 }
 
-rule Job2Job {
+abstract rule Job2Job {
 	from
 		cicdJob : CICD!Job
 	to
@@ -34,18 +44,51 @@ rule Job2Job {
 				else
 					cicdJob.agent.container
 				endif,
-			continueOnError <- thisModule.Boolean2BooleanLiteral(cicdJob.allowFailure),
+			continueOnError <- 
+				if not cicdJob.allowFailure then
+					thisModule.Boolean2BooleanLiteral(cicdJob.allowFailure)
+				else
+					OclUndefined
+				endif,
 			defaults <- thisModule.Defaults(cicdJob.shell, cicdJob.workingDirectory),
 			dependsOn <- cicdJob.previous,
 			environmentVariables <- cicdJob.environmentVariables,
 			ifCondition <- cicdJob.ifCondition,
-			jobName <- thisModule.String2StringLiteral(cicdJob.name),
+			jobName <-
+				if not cicdJob.name.oclIsUndefined() then
+					thisModule.String2StringLiteral(cicdJob.name)
+				else
+					OclUndefined
+				endif,
 			name <- cicdJob.id,
 			permissions <- cicdJob.permissions,
 			services <- cicdJob.services->collect(service | thisModule.DockerContainer2Service(service)),
-			steps <- cicdJob.steps,
 			strategy <- cicdJob.matrix,
-			timeoutMinutes <- thisModule.Integer2IntegerLiteral(cicdJob.timeoutMinutes)
+			timeoutMinutes <- 
+				if not cicdJob.timeoutMinutes.oclIsUndefined() then
+					thisModule.Integer2IntegerLiteral(cicdJob.timeoutMinutes)
+				else
+					OclUndefined
+				endif
+		)
+}
+
+rule ScriptJob2ScriptJob extends Job2Job {
+	from
+		cicdJob : CICD!ScriptJob
+	to
+		ghaJob : GHA!ScriptJob(
+			steps <- cicdJob.steps
+		)
+}
+
+rule PipelineCallJob2WorkflowCallJob extends Job2Job {
+	from
+		cicdJob : CICD!PipelineCallJob
+	to
+		ghaJob : GHA!WorkflowCallJob(
+			uses <- cicdJob.pipelinePath,
+			args <- cicdJob.args
 		)
 }
 
@@ -71,11 +114,26 @@ abstract rule NonConditionalStep2Step extends Step2AbstractStep {
 		cicdStep : CICD!NonConditionalStep
 	to
 		ghaStep : GHA!Step(
-			continueOnError <- thisModule.Boolean2BooleanLiteral(cicdStep.allowFailure),
+			continueOnError <- 
+				if not cicdStep.allowFailure.oclIsUndefined() then
+					thisModule.Boolean2BooleanLiteral(cicdStep.allowFailure)
+				else
+					OclUndefined
+				endif,
 			environmentVariables <- cicdStep.environmentVariables,			
 			id <- cicdStep.id,
-			name <- thisModule.String2StringLiteral(cicdStep.name),
-			timeoutMinutes <- thisModule.Integer2IntegerLiteral(cicdStep.timeoutMinutes)
+			name <- 
+				if not cicdStep.name.oclIsUndefined() then
+					thisModule.String2StringLiteral(cicdStep.name)
+				else
+					OclUndefined
+				endif,
+			timeoutMinutes <- 
+				if not cicdStep.timeoutMinutes.oclIsUndefined() then
+					thisModule.Integer2IntegerLiteral(cicdStep.timeoutMinutes)
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -165,7 +223,12 @@ rule DockerContainer2Container {
 		container : GHA!Container(
 			environmentVariables <- dockerContainer.environmentVariables,
 			image <- dockerContainer.image,
-			options <- thisModule.String2StringLiteral(dockerContainer.options),
+			options <- 
+				if not dockerContainer.options.oclIsUndefined() then
+					thisModule.String2StringLiteral(dockerContainer.options)
+				else
+					OclUndefined
+				endif,
 			password <- dockerContainer.registryPassword,
 			ports <- dockerContainer.ports,
 			username <- dockerContainer.registryUsername,
@@ -179,7 +242,12 @@ rule ConcurrencyGroup2ConcurrencyGroup {
 	to
 		ghaGroup : GHA!ConcurrencyGroup(
 			name <- cicdGroup.groupId,
-			cancelInProgress <- thisModule.Boolean2BooleanLiteral(cicdGroup.cancelInProgress)
+			cancelInProgress <- 
+				if not cicdGroup.cancelInProgress.oclIsUndefined() then
+					thisModule.Boolean2BooleanLiteral(cicdGroup.cancelInProgress)
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -225,7 +293,12 @@ rule Matrix2Matrix {
 		ghaMatrix : GHA!Matrix(
 			axes <- cicdMatrix.axes,
 			excludes <- cicdMatrix.excludes,
-			failFast <- thisModule.Boolean2BooleanLiteral(cicdMatrix.failFast),
+			failFast <- 
+				if not cicdMatrix.failFast.oclIsUndefined() then
+					thisModule.Boolean2BooleanLiteral(cicdMatrix.failFast)
+				else
+					OclUndefined
+				endif,
 			includes <- cicdMatrix.includes
 		)
 }
@@ -466,7 +539,12 @@ lazy rule Defaults {
 				else
 					OclUndefined
 				endif,
-			workingDirectory <- thisModule.String2StringLiteral(workingDirectory)
+			workingDirectory <- 
+				if not workingDirectory.oclIsUndefined() then
+					thisModule.String2StringLiteral(workingDirectory)
+				else
+					OclUndefined
+				endif
 		)
 }
 

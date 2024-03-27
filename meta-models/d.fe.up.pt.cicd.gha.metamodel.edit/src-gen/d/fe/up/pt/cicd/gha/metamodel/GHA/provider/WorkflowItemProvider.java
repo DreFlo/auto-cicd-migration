@@ -351,7 +351,10 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 				GHAFactory.eINSTANCE.createConcurrencyGroup()));
 
 		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS, GHAFactory.eINSTANCE.createJob()));
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS, GHAFactory.eINSTANCE.createScriptJob()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.WORKFLOW__JOBS, GHAFactory.eINSTANCE.createWorkflowCallJob()));
 	}
 
 	/**

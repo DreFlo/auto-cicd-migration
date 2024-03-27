@@ -21,6 +21,8 @@ public abstract class InputAbstractCompiler<InputModel extends EObject, InputPac
     }
 
     protected InputModel parse(String input) throws Exception {
+        if (getParser() == null)
+            throw new Exception("Parser not set");
         return getParser().parse(input);
     }
 

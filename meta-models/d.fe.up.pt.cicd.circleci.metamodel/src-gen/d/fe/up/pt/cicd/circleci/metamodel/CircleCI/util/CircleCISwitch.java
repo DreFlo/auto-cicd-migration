@@ -4,6 +4,8 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.util;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.*;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -73,59 +75,27 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.STEP: {
-			Step step = (Step) theEObject;
-			T result = caseStep(step);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CircleCIPackage.EXECUTION_ENV: {
-			Execution_Env execution_Env = (Execution_Env) theEObject;
-			T result = caseExecution_Env(execution_Env);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CircleCIPackage.DOCKER: {
-			Docker docker = (Docker) theEObject;
-			T result = caseDocker(docker);
-			if (result == null)
-				result = caseExecution_Env(docker);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CircleCIPackage.LINUX: {
-			Linux linux = (Linux) theEObject;
-			T result = caseLinux(linux);
-			if (result == null)
-				result = caseExecution_Env(linux);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CircleCIPackage.MAC_OS: {
-			MacOs macOs = (MacOs) theEObject;
-			T result = caseMacOs(macOs);
-			if (result == null)
-				result = caseExecution_Env(macOs);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CircleCIPackage.WINDOWS_ORB: {
-			WindowsOrb windowsOrb = (WindowsOrb) theEObject;
-			T result = caseWindowsOrb(windowsOrb);
-			if (result == null)
-				result = caseExecution_Env(windowsOrb);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case CircleCIPackage.ORB: {
 			Orb orb = (Orb) theEObject;
 			T result = caseOrb(orb);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.ORB_REFERENCE: {
+			OrbReference orbReference = (OrbReference) theEObject;
+			T result = caseOrbReference(orbReference);
+			if (result == null)
+				result = caseOrb(orbReference);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.ORB_DEFINITION: {
+			OrbDefinition orbDefinition = (OrbDefinition) theEObject;
+			T result = caseOrbDefinition(orbDefinition);
+			if (result == null)
+				result = caseOrb(orbDefinition);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -137,58 +107,90 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.WORKFLOW: {
-			Workflow workflow = (Workflow) theEObject;
-			T result = caseWorkflow(workflow);
+		case CircleCIPackage.PARAMETER: {
+			Parameter parameter = (Parameter) theEObject;
+			T result = caseParameter(parameter);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.ENVIRONMENT: {
-			Environment environment = (Environment) theEObject;
-			T result = caseEnvironment(environment);
+		case CircleCIPackage.EXECUTOR: {
+			Executor executor = (Executor) theEObject;
+			T result = caseExecutor(executor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.PARAMETERS: {
-			Parameters parameters = (Parameters) theEObject;
-			T result = caseParameters(parameters);
+		case CircleCIPackage.DOCKER_EXECUTOR: {
+			DockerExecutor dockerExecutor = (DockerExecutor) theEObject;
+			T result = caseDockerExecutor(dockerExecutor);
+			if (result == null)
+				result = caseExecutor(dockerExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.TOOL_FRAMEWORK: {
-			Tool_Framework tool_Framework = (Tool_Framework) theEObject;
-			T result = caseTool_Framework(tool_Framework);
+		case CircleCIPackage.DOCKER_CONTAINER: {
+			DockerContainer dockerContainer = (DockerContainer) theEObject;
+			T result = caseDockerContainer(dockerContainer);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.WHEN_UNLESS: {
-			When_Unless when_Unless = (When_Unless) theEObject;
-			T result = caseWhen_Unless(when_Unless);
+		case CircleCIPackage.MACHINE_EXECUTOR: {
+			MachineExecutor machineExecutor = (MachineExecutor) theEObject;
+			T result = caseMachineExecutor(machineExecutor);
+			if (result == null)
+				result = caseExecutor(machineExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.WHEN_ATTRIBUTE: {
-			When_Attribute when_Attribute = (When_Attribute) theEObject;
-			T result = caseWhen_Attribute(when_Attribute);
+		case CircleCIPackage.MAC_OS_EXECUTOR: {
+			MacOSExecutor macOSExecutor = (MacOSExecutor) theEObject;
+			T result = caseMacOSExecutor(macOSExecutor);
+			if (result == null)
+				result = caseExecutor(macOSExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.TRIGGER: {
-			Trigger trigger = (Trigger) theEObject;
-			T result = caseTrigger(trigger);
+		case CircleCIPackage.WINDOWS_ORB_EXECUTOR: {
+			WindowsOrbExecutor windowsOrbExecutor = (WindowsOrbExecutor) theEObject;
+			T result = caseWindowsOrbExecutor(windowsOrbExecutor);
+			if (result == null)
+				result = caseExecutor(windowsOrbExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.BRANCH: {
-			Branch branch = (Branch) theEObject;
-			T result = caseBranch(branch);
+		case CircleCIPackage.REFERENCE_EXECUTOR: {
+			ReferenceExecutor referenceExecutor = (ReferenceExecutor) theEObject;
+			T result = caseReferenceExecutor(referenceExecutor);
+			if (result == null)
+				result = caseExecutor(referenceExecutor);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.EXECUTOR_REFERENCE_EXECUTOR: {
+			ExecutorReferenceExecutor executorReferenceExecutor = (ExecutorReferenceExecutor) theEObject;
+			T result = caseExecutorReferenceExecutor(executorReferenceExecutor);
+			if (result == null)
+				result = caseReferenceExecutor(executorReferenceExecutor);
+			if (result == null)
+				result = caseExecutor(executorReferenceExecutor);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.ORB_REFERENCE_EXECUTOR: {
+			OrbReferenceExecutor orbReferenceExecutor = (OrbReferenceExecutor) theEObject;
+			T result = caseOrbReferenceExecutor(orbReferenceExecutor);
+			if (result == null)
+				result = caseReferenceExecutor(orbReferenceExecutor);
+			if (result == null)
+				result = caseExecutor(orbReferenceExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -200,16 +202,418 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.STORE_ARTIFACT: {
-			Store_Artifact store_Artifact = (Store_Artifact) theEObject;
-			T result = caseStore_Artifact(store_Artifact);
+		case CircleCIPackage.STEP: {
+			Step step = (Step) theEObject;
+			T result = caseStep(step);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.COMMAND_PARAMS: {
-			Command_Params command_Params = (Command_Params) theEObject;
-			T result = caseCommand_Params(command_Params);
+		case CircleCIPackage.RUN_STEP: {
+			RunStep runStep = (RunStep) theEObject;
+			T result = caseRunStep(runStep);
+			if (result == null)
+				result = caseStep(runStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.CONDITIONAL_STEP: {
+			ConditionalStep conditionalStep = (ConditionalStep) theEObject;
+			T result = caseConditionalStep(conditionalStep);
+			if (result == null)
+				result = caseStep(conditionalStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.WHEN_STEP: {
+			WhenStep whenStep = (WhenStep) theEObject;
+			T result = caseWhenStep(whenStep);
+			if (result == null)
+				result = caseConditionalStep(whenStep);
+			if (result == null)
+				result = caseStep(whenStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.UNLESS_STEP: {
+			UnlessStep unlessStep = (UnlessStep) theEObject;
+			T result = caseUnlessStep(unlessStep);
+			if (result == null)
+				result = caseConditionalStep(unlessStep);
+			if (result == null)
+				result = caseStep(unlessStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.CHECKOUT_STEP: {
+			CheckoutStep checkoutStep = (CheckoutStep) theEObject;
+			T result = caseCheckoutStep(checkoutStep);
+			if (result == null)
+				result = caseStep(checkoutStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.SETUP_REMOTE_DOCKER_STEP: {
+			SetupRemoteDockerStep setupRemoteDockerStep = (SetupRemoteDockerStep) theEObject;
+			T result = caseSetupRemoteDockerStep(setupRemoteDockerStep);
+			if (result == null)
+				result = caseStep(setupRemoteDockerStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.SAVE_CACHE_STEP: {
+			SaveCacheStep saveCacheStep = (SaveCacheStep) theEObject;
+			T result = caseSaveCacheStep(saveCacheStep);
+			if (result == null)
+				result = caseStep(saveCacheStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.RESTORE_CACHE_STEP: {
+			RestoreCacheStep restoreCacheStep = (RestoreCacheStep) theEObject;
+			T result = caseRestoreCacheStep(restoreCacheStep);
+			if (result == null)
+				result = caseStep(restoreCacheStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.STORE_ARTIFACTS_STEP: {
+			StoreArtifactsStep storeArtifactsStep = (StoreArtifactsStep) theEObject;
+			T result = caseStoreArtifactsStep(storeArtifactsStep);
+			if (result == null)
+				result = caseStep(storeArtifactsStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.STORE_TEST_RESULTS_STEP: {
+			StoreTestResultsStep storeTestResultsStep = (StoreTestResultsStep) theEObject;
+			T result = caseStoreTestResultsStep(storeTestResultsStep);
+			if (result == null)
+				result = caseStep(storeTestResultsStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.PERSIST_TO_WORKSPACE_STEP: {
+			PersistToWorkspaceStep persistToWorkspaceStep = (PersistToWorkspaceStep) theEObject;
+			T result = casePersistToWorkspaceStep(persistToWorkspaceStep);
+			if (result == null)
+				result = caseStep(persistToWorkspaceStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.ATTACH_WORKSPACE_STEP: {
+			AttachWorkspaceStep attachWorkspaceStep = (AttachWorkspaceStep) theEObject;
+			T result = caseAttachWorkspaceStep(attachWorkspaceStep);
+			if (result == null)
+				result = caseStep(attachWorkspaceStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.ADD_SSH_KEYS_STEP: {
+			AddSSHKeysStep addSSHKeysStep = (AddSSHKeysStep) theEObject;
+			T result = caseAddSSHKeysStep(addSSHKeysStep);
+			if (result == null)
+				result = caseStep(addSSHKeysStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.VARIABLE_ASSIGNMENT: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<String, Expression> variableAssignment = (Map.Entry<String, Expression>) theEObject;
+			T result = caseVariableAssignment(variableAssignment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.WORKFLOW: {
+			Workflow workflow = (Workflow) theEObject;
+			T result = caseWorkflow(workflow);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.TRIGGER: {
+			Trigger trigger = (Trigger) theEObject;
+			T result = caseTrigger(trigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.SCHEDULE_TRIGGER: {
+			ScheduleTrigger scheduleTrigger = (ScheduleTrigger) theEObject;
+			T result = caseScheduleTrigger(scheduleTrigger);
+			if (result == null)
+				result = caseTrigger(scheduleTrigger);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION: {
+			WorkflowJobConfiguration workflowJobConfiguration = (WorkflowJobConfiguration) theEObject;
+			T result = caseWorkflowJobConfiguration(workflowJobConfiguration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.WORKFLOW_DEFINED_JOB_CONFIGURATION: {
+			WorkflowDefinedJobConfiguration workflowDefinedJobConfiguration = (WorkflowDefinedJobConfiguration) theEObject;
+			T result = caseWorkflowDefinedJobConfiguration(workflowDefinedJobConfiguration);
+			if (result == null)
+				result = caseWorkflowJobConfiguration(workflowDefinedJobConfiguration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.WORKFLOW_APPROVAL_JOB_CONFIGURATION: {
+			WorkflowApprovalJobConfiguration workflowApprovalJobConfiguration = (WorkflowApprovalJobConfiguration) theEObject;
+			T result = caseWorkflowApprovalJobConfiguration(workflowApprovalJobConfiguration);
+			if (result == null)
+				result = caseWorkflowJobConfiguration(workflowApprovalJobConfiguration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION: {
+			WorkflowOrbJobConfiguration workflowOrbJobConfiguration = (WorkflowOrbJobConfiguration) theEObject;
+			T result = caseWorkflowOrbJobConfiguration(workflowOrbJobConfiguration);
+			if (result == null)
+				result = caseWorkflowJobConfiguration(workflowOrbJobConfiguration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.MATRIX: {
+			Matrix matrix = (Matrix) theEObject;
+			T result = caseMatrix(matrix);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.MATRIX_PARAMETER: {
+			MatrixParameter matrixParameter = (MatrixParameter) theEObject;
+			T result = caseMatrixParameter(matrixParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.MATRIX_COMBINATION: {
+			MatrixCombination matrixCombination = (MatrixCombination) theEObject;
+			T result = caseMatrixCombination(matrixCombination);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.EXPRESSION: {
+			Expression expression = (Expression) theEObject;
+			T result = caseExpression(expression);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.CONCAT: {
+			Concat concat = (Concat) theEObject;
+			T result = caseConcat(concat);
+			if (result == null)
+				result = caseExpression(concat);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.LOGIC: {
+			Logic logic = (Logic) theEObject;
+			T result = caseLogic(logic);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.INFINITARY_OPERATOR: {
+			InfinitaryOperator infinitaryOperator = (InfinitaryOperator) theEObject;
+			T result = caseInfinitaryOperator(infinitaryOperator);
+			if (result == null)
+				result = caseLogic(infinitaryOperator);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.AND: {
+			And and = (And) theEObject;
+			T result = caseAnd(and);
+			if (result == null)
+				result = caseInfinitaryOperator(and);
+			if (result == null)
+				result = caseLogic(and);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.OR: {
+			Or or = (Or) theEObject;
+			T result = caseOr(or);
+			if (result == null)
+				result = caseInfinitaryOperator(or);
+			if (result == null)
+				result = caseLogic(or);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.EQUALS: {
+			Equals equals = (Equals) theEObject;
+			T result = caseEquals(equals);
+			if (result == null)
+				result = caseInfinitaryOperator(equals);
+			if (result == null)
+				result = caseLogic(equals);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.UNARY_OPERATOR: {
+			UnaryOperator unaryOperator = (UnaryOperator) theEObject;
+			T result = caseUnaryOperator(unaryOperator);
+			if (result == null)
+				result = caseLogic(unaryOperator);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.NOT: {
+			Not not = (Not) theEObject;
+			T result = caseNot(not);
+			if (result == null)
+				result = caseUnaryOperator(not);
+			if (result == null)
+				result = caseLogic(not);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.LOGIC_FUNCTION: {
+			LogicFunction logicFunction = (LogicFunction) theEObject;
+			T result = caseLogicFunction(logicFunction);
+			if (result == null)
+				result = caseLogic(logicFunction);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.MATCHES: {
+			Matches matches = (Matches) theEObject;
+			T result = caseMatches(matches);
+			if (result == null)
+				result = caseLogicFunction(matches);
+			if (result == null)
+				result = caseLogic(matches);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.VALUE: {
+			Value value = (Value) theEObject;
+			T result = caseValue(value);
+			if (result == null)
+				result = caseExpression(value);
+			if (result == null)
+				result = caseLogic(value);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.LITERAL: {
+			Literal literal = (Literal) theEObject;
+			T result = caseLiteral(literal);
+			if (result == null)
+				result = caseValue(literal);
+			if (result == null)
+				result = caseExpression(literal);
+			if (result == null)
+				result = caseLogic(literal);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.STRING_LITERAL: {
+			StringLiteral stringLiteral = (StringLiteral) theEObject;
+			T result = caseStringLiteral(stringLiteral);
+			if (result == null)
+				result = caseLiteral(stringLiteral);
+			if (result == null)
+				result = caseValue(stringLiteral);
+			if (result == null)
+				result = caseExpression(stringLiteral);
+			if (result == null)
+				result = caseLogic(stringLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.INTEGER_LITERAL: {
+			IntegerLiteral integerLiteral = (IntegerLiteral) theEObject;
+			T result = caseIntegerLiteral(integerLiteral);
+			if (result == null)
+				result = caseLiteral(integerLiteral);
+			if (result == null)
+				result = caseValue(integerLiteral);
+			if (result == null)
+				result = caseExpression(integerLiteral);
+			if (result == null)
+				result = caseLogic(integerLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.DOUBLE_LITERAL: {
+			DoubleLiteral doubleLiteral = (DoubleLiteral) theEObject;
+			T result = caseDoubleLiteral(doubleLiteral);
+			if (result == null)
+				result = caseLiteral(doubleLiteral);
+			if (result == null)
+				result = caseValue(doubleLiteral);
+			if (result == null)
+				result = caseExpression(doubleLiteral);
+			if (result == null)
+				result = caseLogic(doubleLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.BOOLEAN_LITERAL: {
+			BooleanLiteral booleanLiteral = (BooleanLiteral) theEObject;
+			T result = caseBooleanLiteral(booleanLiteral);
+			if (result == null)
+				result = caseLiteral(booleanLiteral);
+			if (result == null)
+				result = caseValue(booleanLiteral);
+			if (result == null)
+				result = caseExpression(booleanLiteral);
+			if (result == null)
+				result = caseLogic(booleanLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.VARIABLE_DEREFERENCE: {
+			VariableDereference variableDereference = (VariableDereference) theEObject;
+			T result = caseVariableDereference(variableDereference);
+			if (result == null)
+				result = caseValue(variableDereference);
+			if (result == null)
+				result = caseExpression(variableDereference);
+			if (result == null)
+				result = caseLogic(variableDereference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -235,96 +639,6 @@ public class CircleCISwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Step</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Step</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStep(Step object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Execution Env</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Execution Env</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExecution_Env(Execution_Env object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Docker</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Docker</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDocker(Docker object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Linux</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Linux</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLinux(Linux object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Mac Os</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Mac Os</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMacOs(MacOs object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Windows Orb</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Windows Orb</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWindowsOrb(WindowsOrb object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Orb</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -336,6 +650,36 @@ public class CircleCISwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOrb(Orb object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Orb Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Orb Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrbReference(OrbReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Orb Definition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Orb Definition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrbDefinition(OrbDefinition object) {
 		return null;
 	}
 
@@ -355,122 +699,152 @@ public class CircleCISwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Workflow</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Workflow</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWorkflow(Workflow object) {
+	public T caseParameter(Parameter object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Environment</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Environment</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Executor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEnvironment(Environment object) {
+	public T caseExecutor(Executor object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parameters</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Docker Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parameters</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Docker Executor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseParameters(Parameters object) {
+	public T caseDockerExecutor(DockerExecutor object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Tool Framework</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Docker Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Tool Framework</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Docker Container</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTool_Framework(Tool_Framework object) {
+	public T caseDockerContainer(DockerContainer object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>When Unless</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Machine Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>When Unless</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Machine Executor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWhen_Unless(When_Unless object) {
+	public T caseMachineExecutor(MachineExecutor object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>When Attribute</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Mac OS Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>When Attribute</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Mac OS Executor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseWhen_Attribute(When_Attribute object) {
+	public T caseMacOSExecutor(MacOSExecutor object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Trigger</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Windows Orb Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Trigger</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Windows Orb Executor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTrigger(Trigger object) {
+	public T caseWindowsOrbExecutor(WindowsOrbExecutor object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Branch</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Reference Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Branch</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Reference Executor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBranch(Branch object) {
+	public T caseReferenceExecutor(ReferenceExecutor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Executor Reference Executor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Executor Reference Executor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExecutorReferenceExecutor(ExecutorReferenceExecutor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Orb Reference Executor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Orb Reference Executor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrbReferenceExecutor(OrbReferenceExecutor object) {
 		return null;
 	}
 
@@ -490,32 +864,647 @@ public class CircleCISwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Store Artifact</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Store Artifact</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Step</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStore_Artifact(Store_Artifact object) {
+	public T caseStep(Step object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Command Params</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Run Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Command Params</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Run Step</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCommand_Params(Command_Params object) {
+	public T caseRunStep(RunStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalStep(ConditionalStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>When Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>When Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhenStep(WhenStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unless Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unless Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnlessStep(UnlessStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Checkout Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Checkout Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCheckoutStep(CheckoutStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Setup Remote Docker Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Setup Remote Docker Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSetupRemoteDockerStep(SetupRemoteDockerStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Save Cache Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Save Cache Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSaveCacheStep(SaveCacheStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Restore Cache Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Restore Cache Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRestoreCacheStep(RestoreCacheStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Store Artifacts Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Store Artifacts Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStoreArtifactsStep(StoreArtifactsStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Store Test Results Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Store Test Results Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStoreTestResultsStep(StoreTestResultsStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Persist To Workspace Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Persist To Workspace Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePersistToWorkspaceStep(PersistToWorkspaceStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Attach Workspace Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Attach Workspace Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAttachWorkspaceStep(AttachWorkspaceStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add SSH Keys Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add SSH Keys Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddSSHKeysStep(AddSSHKeysStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableAssignment(Map.Entry<String, Expression> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workflow</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workflow</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkflow(Workflow object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTrigger(Trigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Schedule Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Schedule Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScheduleTrigger(ScheduleTrigger object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workflow Job Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workflow Job Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkflowJobConfiguration(WorkflowJobConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workflow Defined Job Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workflow Defined Job Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkflowDefinedJobConfiguration(WorkflowDefinedJobConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workflow Approval Job Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workflow Approval Job Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkflowApprovalJobConfiguration(WorkflowApprovalJobConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Workflow Orb Job Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Workflow Orb Job Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWorkflowOrbJobConfiguration(WorkflowOrbJobConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matrix</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matrix</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatrix(Matrix object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matrix Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matrix Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatrixParameter(MatrixParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matrix Combination</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matrix Combination</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatrixCombination(MatrixCombination object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExpression(Expression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcat(Concat object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logic</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logic</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogic(Logic object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Infinitary Operator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Infinitary Operator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInfinitaryOperator(InfinitaryOperator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>And</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>And</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnd(And object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Or</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOr(Or object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Equals</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Equals</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEquals(Equals object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unary Operator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unary Operator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnaryOperator(UnaryOperator object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Not</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Not</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNot(Not object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logic Function</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logic Function</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogicFunction(LogicFunction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Matches</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Matches</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMatches(Matches object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValue(Value object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteral(Literal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringLiteral(StringLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerLiteral(IntegerLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Double Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Double Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDoubleLiteral(DoubleLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBooleanLiteral(BooleanLiteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableDereference(VariableDereference object) {
 		return null;
 	}
 

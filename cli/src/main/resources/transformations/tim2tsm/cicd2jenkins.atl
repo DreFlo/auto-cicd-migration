@@ -13,7 +13,14 @@ rule Pipeline2Pipeline {
 			stages <- thisModule.groupJobs(cicdPipeline.jobStreams, Set{})->collect(
 						jobGroup | if jobGroup->size() = 1 then 
 							if jobGroup->first().matrix.oclIsUndefined() then
-								thisModule.Job2StepStage(jobGroup->first())
+								if jobGroup->first().oclIsTypeOf(CICD!ScriptJob) then
+									thisModule.ScriptJob2StepStage(jobGroup->first())
+								else if jobGroup->first().oclIsTypeOf(CICD!PipelineCallJob) then
+									thisModule.PipelineCallJob2StepStage(jobGroup->first())
+								else
+									jobGroup->first()
+								endif
+								endif
 							else
 								thisModule.Job2MatrixStage(jobGroup->first())
 							endif
@@ -37,9 +44,9 @@ rule Pipeline2Pipeline {
 	}
 }
 
-lazy rule Job2StepStage {
+lazy rule ScriptJob2StepStage {
 	from
-		job : CICD!Job
+		job : CICD!ScriptJob
 	to
 		stage : Jenkins!StepStage(
 			name <- job.id,
@@ -58,6 +65,41 @@ lazy rule Job2StepStage {
 			stage.agent.customWorkspace <- job.workingDirectory;
 		}
 	}
+}
+
+lazy rule PipelineCallJob2StepStage {
+	from
+		job : CICD!PipelineCallJob
+	to
+		stage : Jenkins!StepStage(
+			name <- job.id,
+			agent <- job.agent,
+			environmentVariables <- job.environmentVariables,
+			steps <- Sequence{thisModule.CreateBuildStep(job)},
+			whens <- 
+				if not job.ifCondition.oclIsUndefined() then
+					Sequence{thisModule.Expression2WhenExpression(job.ifCondition)}
+				else
+					OclUndefined
+				endif
+		)
+	do {
+		if (stage.agent.oclIsTypeOf(Jenkins!NodeAgent) and not job.workingDirectory.oclIsUndefined()) {
+			stage.agent.customWorkspace <- job.workingDirectory;
+		}
+	}
+}
+
+lazy rule CreateBuildStep {
+	from
+		job : CICD!PipelineCallJob
+	to
+		step : Jenkins!Step(
+			command <- 'build',
+			arguments <- Sequence{
+				thisModule.CreateAssignment('job', job.pipelinePath)
+			}
+		)
 }
 
 lazy rule Expression2WhenExpression {
@@ -79,7 +121,16 @@ lazy rule Job2MatrixStage {
 			includes <- job.matrix.includes,
 			excludes <- job.matrix.excludes,
 			failFast <- job.matrix.failFast,
-			stages <- Sequence{thisModule.Job2StepStage(job)}
+			stages <- Sequence{
+				if job.oclIsTypeOf(CICD!ScriptJob) then
+					thisModule.ScriptJob2StepStage(job)
+				else if job.oclIsTypeOf(CICD!PipelineCallJob) then
+					thisModule.PipelineCallJob2StepStage(job)
+				else
+					job
+				endif
+				endif
+			}
 		)
 }
 
@@ -108,7 +159,16 @@ lazy rule JobSequence2Parallel {
 	to
 		abstractStage : Jenkins!ParallelNestedStage(
 			name <- thisModule.joinStrings(jobSequence->collect(job | job.id), '||'),
-			stages <- jobSequence->collect(job | thisModule.Job2StepStage(job))		
+			stages <- jobSequence->collect(job | 
+				if job.oclIsTypeOf(CICD!ScriptJob) then
+					thisModule.ScriptJob2StepStage(job)
+				else if job.oclIsTypeOf(CICD!PipelineCallJob) then
+					thisModule.PipelineCallJob2StepStage(job)
+				else
+					job
+				endif
+				endif
+			)		
 		)
 }
 
@@ -138,7 +198,37 @@ rule Command2Step {
 	to
 		jenkinsStep : Jenkins!Step(
 			command <- 'sh',
-			arguments <- cicdStep.program.expression2String()
+			arguments <- thisModule.CreateAssignment('script', cicdStep.program)
+		)
+}
+
+lazy rule CreateAssignment {
+	from
+		string : String,
+		expression : CICD!Expression
+	to
+		assignment : Jenkins!Assignment(
+			key <- thisModule.String2Variable(string),
+			value <- expression
+		)
+}
+
+lazy rule String2Variable {
+	from
+		string : String
+	to
+		variable : Jenkins!Variable(
+			name <- string
+		)
+}
+
+rule Plugin2Step {
+	from
+		cicdStep : CICD!Plugin
+	to
+		jenkinsStep : Jenkins!Step(
+			command <- cicdStep.pluginName,
+			arguments <- cicdStep.kwargs
 		)
 }
 

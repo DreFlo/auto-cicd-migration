@@ -37,10 +37,12 @@ import d.fe.up.pt.cicd.metamodel.CICD.Output;
 import d.fe.up.pt.cicd.metamodel.CICD.Parameter;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
+import d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob;
 import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
 import d.fe.up.pt.cicd.metamodel.CICD.PullRequestTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.PushTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.ScriptJob;
 import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
 import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
@@ -90,6 +92,20 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass jobEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scriptJobEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pipelineCallJobEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -709,7 +725,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Steps() {
+	public EReference getJob_Services() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -719,7 +735,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Services() {
+	public EReference getJob_Matrix() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -729,7 +745,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Matrix() {
+	public EReference getJob_Previous() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -739,7 +755,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Previous() {
+	public EReference getJob_Next() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -749,18 +765,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Next() {
-		return (EReference) jobEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getJob_MaxAttempts() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) jobEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -770,7 +776,57 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EAttribute getJob_AllowFailure() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) jobEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScriptJob() {
+		return scriptJobEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScriptJob_Steps() {
+		return (EReference) scriptJobEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPipelineCallJob() {
+		return pipelineCallJobEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPipelineCallJob_PipelinePath() {
+		return (EReference) pipelineCallJobEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPipelineCallJob_Args() {
+		return (EReference) pipelineCallJobEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2042,13 +2098,19 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__ID);
 		createEReference(jobEClass, JOB__IF_CONDITION);
-		createEReference(jobEClass, JOB__STEPS);
 		createEReference(jobEClass, JOB__SERVICES);
 		createEReference(jobEClass, JOB__MATRIX);
 		createEReference(jobEClass, JOB__PREVIOUS);
 		createEReference(jobEClass, JOB__NEXT);
 		createEAttribute(jobEClass, JOB__MAX_ATTEMPTS);
 		createEAttribute(jobEClass, JOB__ALLOW_FAILURE);
+
+		scriptJobEClass = createEClass(SCRIPT_JOB);
+		createEReference(scriptJobEClass, SCRIPT_JOB__STEPS);
+
+		pipelineCallJobEClass = createEClass(PIPELINE_CALL_JOB);
+		createEReference(pipelineCallJobEClass, PIPELINE_CALL_JOB__PIPELINE_PATH);
+		createEReference(pipelineCallJobEClass, PIPELINE_CALL_JOB__ARGS);
 
 		agentEClass = createEClass(AGENT);
 		createEReference(agentEClass, AGENT__LABELS);
@@ -2253,6 +2315,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		// Add supertypes to classes
 		pipelineEClass.getESuperTypes().add(this.getPipelineBlock());
 		jobEClass.getESuperTypes().add(this.getPipelineBlock());
+		scriptJobEClass.getESuperTypes().add(this.getJob());
+		pipelineCallJobEClass.getESuperTypes().add(this.getJob());
 		pushTriggerEClass.getESuperTypes().add(this.getTrigger());
 		pullRequestTriggerEClass.getESuperTypes().add(this.getTrigger());
 		manualTriggerEClass.getESuperTypes().add(this.getTrigger());
@@ -2330,15 +2394,12 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 
-		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(jobEClass, Job.class, "Job", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Id(), ecorePackage.getEString(), "id", null, 1, 1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_IfCondition(), this.getExpression(), null, "ifCondition", null, 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 0, -1, Job.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 		initEReference(getJob_Services(), this.getDockerContainer(), null, "services", null, 0, -1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2355,6 +2416,21 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", "false", 1, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scriptJobEClass, ScriptJob.class, "ScriptJob", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScriptJob_Steps(), this.getStep(), null, "steps", null, 0, -1, ScriptJob.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(pipelineCallJobEClass, PipelineCallJob.class, "PipelineCallJob", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPipelineCallJob_PipelinePath(), this.getExpression(), null, "pipelinePath", null, 1, 1,
+				PipelineCallJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineCallJob_Args(), this.getAssignment(), null, "args", null, 0, -1,
+				PipelineCallJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(agentEClass, Agent.class, "Agent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAgent_Labels(), this.getExpression(), null, "labels", null, 0, -1, Agent.class, !IS_TRANSIENT,

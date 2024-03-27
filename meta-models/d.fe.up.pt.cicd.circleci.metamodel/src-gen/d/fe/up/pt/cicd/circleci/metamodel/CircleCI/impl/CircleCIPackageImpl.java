@@ -2,28 +2,68 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.And;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BooleanLiteral;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIFactory;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Docker;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DoubleLiteral;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Equals;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ExecutorReferenceExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.InfinitaryOperator;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.IntegerLiteral;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Linux;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOs;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Literal;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Logic;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.LogicFunction;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOSExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Not;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Or;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameters;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReference;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ReferenceExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ScheduleTrigger;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Tool_Framework;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreTestResultsStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StringLiteral;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Attribute;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrb;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnaryOperator;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnlessStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Value;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WhenStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowApprovalJobConfiguration;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowDefinedJobConfiguration;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration;
+
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -52,49 +92,21 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stepEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass execution_EnvEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass dockerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass linuxEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass macOsEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass windowsOrbEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass orbEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orbReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orbDefinitionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,56 +120,70 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass workflowEClass = null;
+	private EClass parameterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass environmentEClass = null;
+	private EClass executorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass parametersEClass = null;
+	private EClass dockerExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass tool_FrameworkEClass = null;
+	private EClass dockerContainerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass when_UnlessEClass = null;
+	private EClass machineExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass when_AttributeEClass = null;
+	private EClass macOSExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass triggerEClass = null;
+	private EClass windowsOrbExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass branchEClass = null;
+	private EClass referenceExecutorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass executorReferenceExecutorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orbReferenceExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,14 +197,308 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass store_ArtifactEClass = null;
+	private EClass stepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass command_ParamsEClass = null;
+	private EClass runStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whenStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unlessStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass checkoutStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass setupRemoteDockerStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass saveCacheStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass restoreCacheStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass storeArtifactsStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass storeTestResultsStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass persistToWorkspaceStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass attachWorkspaceStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addSSHKeysStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableAssignmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workflowEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass triggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scheduleTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workflowJobConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workflowDefinedJobConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workflowApprovalJobConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass workflowOrbJobConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matrixCombinationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass logicEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass infinitaryOperatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass equalsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unaryOperatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass notEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass logicFunctionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass matchesEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass valueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass integerLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass doubleLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass booleanLiteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableDereferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum parameteR_TYPESEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,13 +506,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	private EEnum wheN_TYPEEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum brancH_TYPEEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -284,8 +597,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Orb() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(1);
+	public EAttribute getPipeline_Setup() {
+		return (EAttribute) pipelineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -294,7 +607,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Command() {
+	public EReference getPipeline_Orbs() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -304,7 +617,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Workflow() {
+	public EReference getPipeline_Commands() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -314,7 +627,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Job() {
+	public EReference getPipeline_Parameters() {
 		return (EReference) pipelineEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -324,8 +637,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getStep() {
-		return stepEClass;
+	public EReference getPipeline_Executors() {
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -334,8 +647,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getStep_Parameters() {
-		return (EReference) stepEClass.getEStructuralFeatures().get(0);
+	public EReference getPipeline_Jobs() {
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -344,148 +657,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStep_Name() {
-		return (EAttribute) stepEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getStep_When_attribute() {
-		return (EReference) stepEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getStep_Tool_framework() {
-		return (EReference) stepEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getExecution_Env() {
-		return execution_EnvEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getExecution_Env_Environment() {
-		return (EReference) execution_EnvEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getExecution_Env_Step() {
-		return (EReference) execution_EnvEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getExecution_Env_Name() {
-		return (EAttribute) execution_EnvEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getDocker() {
-		return dockerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDocker_Image() {
-		return (EAttribute) dockerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getLinux() {
-		return linuxEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getLinux_Image() {
-		return (EAttribute) linuxEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getMacOs() {
-		return macOsEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMacOs_Xcode() {
-		return (EAttribute) macOsEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getWindowsOrb() {
-		return windowsOrbEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getWindowsOrb_Executor() {
-		return (EAttribute) windowsOrbEClass.getEStructuralFeatures().get(0);
+	public EReference getPipeline_Workflows() {
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -504,7 +677,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOrb_Key() {
+	public EAttribute getOrb_Name() {
 		return (EAttribute) orbEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -514,8 +687,68 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getOrb_Value() {
-		return (EAttribute) orbEClass.getEStructuralFeatures().get(1);
+	public EClass getOrbReference() {
+		return orbReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOrbReference_Reference() {
+		return (EAttribute) orbReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOrbDefinition() {
+		return orbDefinitionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbDefinition_Orbs() {
+		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbDefinition_Commands() {
+		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbDefinition_Executors() {
+		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbDefinition_Jobs() {
+		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -544,7 +777,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getCommand_Step() {
+	public EReference getCommand_Steps() {
 		return (EReference) commandEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -554,7 +787,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getCommand_Command_params() {
+	public EReference getCommand_Parameters() {
 		return (EReference) commandEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -574,8 +807,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getWorkflow() {
-		return workflowEClass;
+	public EClass getParameter() {
+		return parameterEClass;
 	}
 
 	/**
@@ -584,8 +817,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getWorkflow_Name() {
-		return (EAttribute) workflowEClass.getEStructuralFeatures().get(0);
+	public EAttribute getParameter_Name() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -594,8 +827,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getWorkflow_Version() {
-		return (EAttribute) workflowEClass.getEStructuralFeatures().get(1);
+	public EAttribute getParameter_Type() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -604,8 +837,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflow_Trigger() {
-		return (EReference) workflowEClass.getEStructuralFeatures().get(2);
+	public EAttribute getParameter_EnumValues() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -614,8 +847,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflow_When_unless() {
-		return (EReference) workflowEClass.getEStructuralFeatures().get(3);
+	public EReference getParameter_Default() {
+		return (EReference) parameterEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -624,8 +857,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflow_Branch() {
-		return (EReference) workflowEClass.getEStructuralFeatures().get(4);
+	public EAttribute getParameter_Description() {
+		return (EAttribute) parameterEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -634,8 +867,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getEnvironment() {
-		return environmentEClass;
+	public EClass getExecutor() {
+		return executorEClass;
 	}
 
 	/**
@@ -644,8 +877,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEnvironment_Key() {
-		return (EAttribute) environmentEClass.getEStructuralFeatures().get(0);
+	public EAttribute getExecutor_Name() {
+		return (EAttribute) executorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -654,8 +887,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEnvironment_Value() {
-		return (EAttribute) environmentEClass.getEStructuralFeatures().get(1);
+	public EReference getExecutor_ResourceClass() {
+		return (EReference) executorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -664,8 +897,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getParameters() {
-		return parametersEClass;
+	public EReference getExecutor_Shell() {
+		return (EReference) executorEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -674,8 +907,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameters_Parameter() {
-		return (EAttribute) parametersEClass.getEStructuralFeatures().get(0);
+	public EReference getExecutor_WorkingDirectory() {
+		return (EReference) executorEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -684,8 +917,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getTool_Framework() {
-		return tool_FrameworkEClass;
+	public EReference getExecutor_EnvironmentVariables() {
+		return (EReference) executorEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -694,8 +927,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTool_Framework_Name() {
-		return (EAttribute) tool_FrameworkEClass.getEStructuralFeatures().get(0);
+	public EClass getDockerExecutor() {
+		return dockerExecutorEClass;
 	}
 
 	/**
@@ -704,8 +937,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getWhen_Unless() {
-		return when_UnlessEClass;
+	public EReference getDockerExecutor_Containers() {
+		return (EReference) dockerExecutorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -714,8 +947,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getWhen_Unless_Condition() {
-		return (EAttribute) when_UnlessEClass.getEStructuralFeatures().get(0);
+	public EClass getDockerContainer() {
+		return dockerContainerEClass;
 	}
 
 	/**
@@ -724,8 +957,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getWhen_Unless_When_step() {
-		return (EReference) when_UnlessEClass.getEStructuralFeatures().get(1);
+	public EReference getDockerContainer_Image() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -734,8 +967,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getWhen_Unless_Unless_step() {
-		return (EReference) when_UnlessEClass.getEStructuralFeatures().get(2);
+	public EReference getDockerContainer_Name() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -744,8 +977,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getWhen_Attribute() {
-		return when_AttributeEClass;
+	public EReference getDockerContainer_Entrypoint() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -754,8 +987,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getWhen_Attribute_When_type() {
-		return (EAttribute) when_AttributeEClass.getEStructuralFeatures().get(0);
+	public EReference getDockerContainer_Command() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -764,8 +997,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getTrigger() {
-		return triggerEClass;
+	public EReference getDockerContainer_User() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -774,8 +1007,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTrigger_Cron() {
-		return (EAttribute) triggerEClass.getEStructuralFeatures().get(0);
+	public EReference getDockerContainer_EnvironmentVariables() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -784,8 +1017,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getBranch() {
-		return branchEClass;
+	public EReference getDockerContainer_Username() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -794,8 +1027,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBranch_Name() {
-		return (EAttribute) branchEClass.getEStructuralFeatures().get(0);
+	public EReference getDockerContainer_Password() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -804,8 +1037,158 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getBranch_Branch_type() {
-		return (EAttribute) branchEClass.getEStructuralFeatures().get(1);
+	public EReference getDockerContainer_Oidc() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDockerContainer_AwsAccessKeyID() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDockerContainer_AwsSecretAccessKey() {
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMachineExecutor() {
+		return machineExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMachineExecutor_Image() {
+		return (EReference) machineExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMachineExecutor_DockerLayerCaching() {
+		return (EReference) machineExecutorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMacOSExecutor() {
+		return macOSExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMacOSExecutor_Xcode() {
+		return (EReference) macOSExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWindowsOrbExecutor() {
+		return windowsOrbExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWindowsOrbExecutor_Executor() {
+		return (EReference) windowsOrbExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getReferenceExecutor() {
+		return referenceExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExecutorReferenceExecutor() {
+		return executorReferenceExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getExecutorReferenceExecutor_Executor() {
+		return (EReference) executorReferenceExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOrbReferenceExecutor() {
+		return orbReferenceExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbReferenceExecutor_Orb() {
+		return (EReference) orbReferenceExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOrbReferenceExecutor_OrbExecutorName() {
+		return (EAttribute) orbReferenceExecutorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -834,8 +1217,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getJob_Parallelism() {
-		return (EAttribute) jobEClass.getEStructuralFeatures().get(1);
+	public EReference getJob_Executor() {
+		return (EReference) jobEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -844,7 +1227,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Store_artifact() {
+	public EReference getJob_Parameters() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -854,7 +1237,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_When_unless() {
+	public EReference getJob_Steps() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -864,7 +1247,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Execution_env() {
+	public EReference getJob_Parallelism() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -874,7 +1257,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Environment() {
+	public EReference getJob_EnvironmentVariables() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -884,7 +1267,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Step() {
+	public EReference getJob_CircleCIIPRanges() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -894,8 +1277,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getStore_Artifact() {
-		return store_ArtifactEClass;
+	public EClass getStep() {
+		return stepEClass;
 	}
 
 	/**
@@ -904,8 +1287,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStore_Artifact_Path() {
-		return (EAttribute) store_ArtifactEClass.getEStructuralFeatures().get(0);
+	public EClass getRunStep() {
+		return runStepEClass;
 	}
 
 	/**
@@ -914,8 +1297,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStore_Artifact_Destination() {
-		return (EAttribute) store_ArtifactEClass.getEStructuralFeatures().get(1);
+	public EReference getRunStep_Command() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -924,8 +1307,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getCommand_Params() {
-		return command_ParamsEClass;
+	public EReference getRunStep_Name() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -934,8 +1317,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCommand_Params_Type() {
-		return (EAttribute) command_ParamsEClass.getEStructuralFeatures().get(0);
+	public EReference getRunStep_Shell() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -944,8 +1327,1038 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCommand_Params_Default() {
-		return (EAttribute) command_ParamsEClass.getEStructuralFeatures().get(1);
+	public EReference getRunStep_EnvironmentVariables() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRunStep_Background() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRunStep_WorkingDirectory() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRunStep_NoOutputTimeout() {
+		return (EReference) runStepEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRunStep_When() {
+		return (EAttribute) runStepEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConditionalStep() {
+		return conditionalStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_Condition() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConditionalStep_Steps() {
+		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWhenStep() {
+		return whenStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getUnlessStep() {
+		return unlessStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCheckoutStep() {
+		return checkoutStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCheckoutStep_Path() {
+		return (EReference) checkoutStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSetupRemoteDockerStep() {
+		return setupRemoteDockerStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSetupRemoteDockerStep_Version() {
+		return (EReference) setupRemoteDockerStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSetupRemoteDockerStep_DockerLayerCaching() {
+		return (EReference) setupRemoteDockerStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSaveCacheStep() {
+		return saveCacheStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSaveCacheStep_Paths() {
+		return (EReference) saveCacheStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSaveCacheStep_Key() {
+		return (EReference) saveCacheStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSaveCacheStep_Name() {
+		return (EReference) saveCacheStepEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSaveCacheStep_When() {
+		return (EAttribute) saveCacheStepEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRestoreCacheStep() {
+		return restoreCacheStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRestoreCacheStep_Keys() {
+		return (EReference) restoreCacheStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getRestoreCacheStep_Name() {
+		return (EReference) restoreCacheStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStoreArtifactsStep() {
+		return storeArtifactsStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getStoreArtifactsStep_Path() {
+		return (EReference) storeArtifactsStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getStoreArtifactsStep_Destination() {
+		return (EReference) storeArtifactsStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStoreTestResultsStep() {
+		return storeTestResultsStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getStoreTestResultsStep_Path() {
+		return (EReference) storeTestResultsStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPersistToWorkspaceStep() {
+		return persistToWorkspaceStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPersistToWorkspaceStep_Root() {
+		return (EReference) persistToWorkspaceStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPersistToWorkspaceStep_Paths() {
+		return (EReference) persistToWorkspaceStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAttachWorkspaceStep() {
+		return attachWorkspaceStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAttachWorkspaceStep_At() {
+		return (EReference) attachWorkspaceStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAddSSHKeysStep() {
+		return addSSHKeysStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAddSSHKeysStep_Fingerprints() {
+		return (EReference) addSSHKeysStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariableAssignment() {
+		return variableAssignmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariableAssignment_Key() {
+		return (EAttribute) variableAssignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getVariableAssignment_Value() {
+		return (EReference) variableAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWorkflow() {
+		return workflowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWorkflow_Name() {
+		return (EAttribute) workflowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflow_Triggers() {
+		return (EReference) workflowEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflow_Condition() {
+		return (EReference) workflowEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWorkflow_IsWhen() {
+		return (EAttribute) workflowEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflow_Jobs() {
+		return (EReference) workflowEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTrigger() {
+		return triggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTrigger_Branches() {
+		return (EReference) triggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTrigger_IgnoreSpecifiedBranches() {
+		return (EAttribute) triggerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScheduleTrigger() {
+		return scheduleTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScheduleTrigger_Cron() {
+		return (EAttribute) scheduleTriggerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWorkflowJobConfiguration() {
+		return workflowJobConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_Requires() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWorkflowJobConfiguration_Name() {
+		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_Contexts() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_Branches() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWorkflowJobConfiguration_IgnoreSpecifiedBranches() {
+		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_Tags() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWorkflowJobConfiguration_IgnoreSpecifiedTags() {
+		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_Matrix() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_PreSteps() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_PostSteps() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWorkflowDefinedJobConfiguration() {
+		return workflowDefinedJobConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowDefinedJobConfiguration_Job() {
+		return (EReference) workflowDefinedJobConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWorkflowApprovalJobConfiguration() {
+		return workflowApprovalJobConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWorkflowOrbJobConfiguration() {
+		return workflowOrbJobConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowOrbJobConfiguration_Orb() {
+		return (EReference) workflowOrbJobConfigurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getWorkflowOrbJobConfiguration_JobName() {
+		return (EAttribute) workflowOrbJobConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrix() {
+		return matrixEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrix_Parameters() {
+		return (EReference) matrixEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrix_Excludes() {
+		return (EReference) matrixEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrix_Alias() {
+		return (EReference) matrixEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixParameter() {
+		return matrixParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMatrixParameter_Name() {
+		return (EAttribute) matrixParameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixParameter_Cells() {
+		return (EReference) matrixParameterEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatrixCombination() {
+		return matrixCombinationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatrixCombination_Entries() {
+		return (EReference) matrixCombinationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getExpression() {
+		return expressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConcat() {
+		return concatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcat_Expressions() {
+		return (EReference) concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLogic() {
+		return logicEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getInfinitaryOperator() {
+		return infinitaryOperatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInfinitaryOperator_Operands() {
+		return (EReference) infinitaryOperatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAnd() {
+		return andEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOr() {
+		return orEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEquals() {
+		return equalsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getUnaryOperator() {
+		return unaryOperatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUnaryOperator_Operand() {
+		return (EReference) unaryOperatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNot() {
+		return notEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLogicFunction() {
+		return logicFunctionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMatches() {
+		return matchesEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatches_Pattern() {
+		return (EReference) matchesEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMatches_Value() {
+		return (EReference) matchesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getValue() {
+		return valueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLiteral() {
+		return literalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringLiteral() {
+		return stringLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringLiteral_Value() {
+		return (EAttribute) stringLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIntegerLiteral() {
+		return integerLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntegerLiteral_Value() {
+		return (EAttribute) integerLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDoubleLiteral() {
+		return doubleLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDoubleLiteral_Value() {
+		return (EAttribute) doubleLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBooleanLiteral() {
+		return booleanLiteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBooleanLiteral_Value() {
+		return (EAttribute) booleanLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariableDereference() {
+		return variableDereferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariableDereference_Names() {
+		return (EAttribute) variableDereferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getPARAMETER_TYPES() {
+		return parameteR_TYPESEEnum;
 	}
 
 	/**
@@ -956,16 +2369,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	@Override
 	public EEnum getWHEN_TYPE() {
 		return wheN_TYPEEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getBRANCH_TYPE() {
-		return brancH_TYPEEEnum;
 	}
 
 	/**
@@ -1000,96 +2403,244 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		// Create classes and their features
 		pipelineEClass = createEClass(PIPELINE);
 		createEAttribute(pipelineEClass, PIPELINE__VERSION);
-		createEReference(pipelineEClass, PIPELINE__ORB);
-		createEReference(pipelineEClass, PIPELINE__COMMAND);
-		createEReference(pipelineEClass, PIPELINE__WORKFLOW);
-		createEReference(pipelineEClass, PIPELINE__JOB);
-
-		stepEClass = createEClass(STEP);
-		createEReference(stepEClass, STEP__PARAMETERS);
-		createEAttribute(stepEClass, STEP__NAME);
-		createEReference(stepEClass, STEP__WHEN_ATTRIBUTE);
-		createEReference(stepEClass, STEP__TOOL_FRAMEWORK);
-
-		execution_EnvEClass = createEClass(EXECUTION_ENV);
-		createEReference(execution_EnvEClass, EXECUTION_ENV__ENVIRONMENT);
-		createEReference(execution_EnvEClass, EXECUTION_ENV__STEP);
-		createEAttribute(execution_EnvEClass, EXECUTION_ENV__NAME);
-
-		dockerEClass = createEClass(DOCKER);
-		createEAttribute(dockerEClass, DOCKER__IMAGE);
-
-		linuxEClass = createEClass(LINUX);
-		createEAttribute(linuxEClass, LINUX__IMAGE);
-
-		macOsEClass = createEClass(MAC_OS);
-		createEAttribute(macOsEClass, MAC_OS__XCODE);
-
-		windowsOrbEClass = createEClass(WINDOWS_ORB);
-		createEAttribute(windowsOrbEClass, WINDOWS_ORB__EXECUTOR);
+		createEAttribute(pipelineEClass, PIPELINE__SETUP);
+		createEReference(pipelineEClass, PIPELINE__ORBS);
+		createEReference(pipelineEClass, PIPELINE__COMMANDS);
+		createEReference(pipelineEClass, PIPELINE__PARAMETERS);
+		createEReference(pipelineEClass, PIPELINE__EXECUTORS);
+		createEReference(pipelineEClass, PIPELINE__JOBS);
+		createEReference(pipelineEClass, PIPELINE__WORKFLOWS);
 
 		orbEClass = createEClass(ORB);
-		createEAttribute(orbEClass, ORB__KEY);
-		createEAttribute(orbEClass, ORB__VALUE);
+		createEAttribute(orbEClass, ORB__NAME);
+
+		orbReferenceEClass = createEClass(ORB_REFERENCE);
+		createEAttribute(orbReferenceEClass, ORB_REFERENCE__REFERENCE);
+
+		orbDefinitionEClass = createEClass(ORB_DEFINITION);
+		createEReference(orbDefinitionEClass, ORB_DEFINITION__ORBS);
+		createEReference(orbDefinitionEClass, ORB_DEFINITION__COMMANDS);
+		createEReference(orbDefinitionEClass, ORB_DEFINITION__EXECUTORS);
+		createEReference(orbDefinitionEClass, ORB_DEFINITION__JOBS);
 
 		commandEClass = createEClass(COMMAND);
 		createEAttribute(commandEClass, COMMAND__NAME);
-		createEReference(commandEClass, COMMAND__STEP);
-		createEReference(commandEClass, COMMAND__COMMAND_PARAMS);
+		createEReference(commandEClass, COMMAND__STEPS);
+		createEReference(commandEClass, COMMAND__PARAMETERS);
 		createEAttribute(commandEClass, COMMAND__DESCRIPTION);
 
-		workflowEClass = createEClass(WORKFLOW);
-		createEAttribute(workflowEClass, WORKFLOW__NAME);
-		createEAttribute(workflowEClass, WORKFLOW__VERSION);
-		createEReference(workflowEClass, WORKFLOW__TRIGGER);
-		createEReference(workflowEClass, WORKFLOW__WHEN_UNLESS);
-		createEReference(workflowEClass, WORKFLOW__BRANCH);
+		parameterEClass = createEClass(PARAMETER);
+		createEAttribute(parameterEClass, PARAMETER__NAME);
+		createEAttribute(parameterEClass, PARAMETER__TYPE);
+		createEAttribute(parameterEClass, PARAMETER__ENUM_VALUES);
+		createEReference(parameterEClass, PARAMETER__DEFAULT);
+		createEAttribute(parameterEClass, PARAMETER__DESCRIPTION);
 
-		environmentEClass = createEClass(ENVIRONMENT);
-		createEAttribute(environmentEClass, ENVIRONMENT__KEY);
-		createEAttribute(environmentEClass, ENVIRONMENT__VALUE);
+		executorEClass = createEClass(EXECUTOR);
+		createEAttribute(executorEClass, EXECUTOR__NAME);
+		createEReference(executorEClass, EXECUTOR__RESOURCE_CLASS);
+		createEReference(executorEClass, EXECUTOR__SHELL);
+		createEReference(executorEClass, EXECUTOR__WORKING_DIRECTORY);
+		createEReference(executorEClass, EXECUTOR__ENVIRONMENT_VARIABLES);
 
-		parametersEClass = createEClass(PARAMETERS);
-		createEAttribute(parametersEClass, PARAMETERS__PARAMETER);
+		dockerExecutorEClass = createEClass(DOCKER_EXECUTOR);
+		createEReference(dockerExecutorEClass, DOCKER_EXECUTOR__CONTAINERS);
 
-		tool_FrameworkEClass = createEClass(TOOL_FRAMEWORK);
-		createEAttribute(tool_FrameworkEClass, TOOL_FRAMEWORK__NAME);
+		dockerContainerEClass = createEClass(DOCKER_CONTAINER);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__IMAGE);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__NAME);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__ENTRYPOINT);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__COMMAND);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__USER);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__USERNAME);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__PASSWORD);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__OIDC);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__AWS_ACCESS_KEY_ID);
+		createEReference(dockerContainerEClass, DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY);
 
-		when_UnlessEClass = createEClass(WHEN_UNLESS);
-		createEAttribute(when_UnlessEClass, WHEN_UNLESS__CONDITION);
-		createEReference(when_UnlessEClass, WHEN_UNLESS__WHEN_STEP);
-		createEReference(when_UnlessEClass, WHEN_UNLESS__UNLESS_STEP);
+		machineExecutorEClass = createEClass(MACHINE_EXECUTOR);
+		createEReference(machineExecutorEClass, MACHINE_EXECUTOR__IMAGE);
+		createEReference(machineExecutorEClass, MACHINE_EXECUTOR__DOCKER_LAYER_CACHING);
 
-		when_AttributeEClass = createEClass(WHEN_ATTRIBUTE);
-		createEAttribute(when_AttributeEClass, WHEN_ATTRIBUTE__WHEN_TYPE);
+		macOSExecutorEClass = createEClass(MAC_OS_EXECUTOR);
+		createEReference(macOSExecutorEClass, MAC_OS_EXECUTOR__XCODE);
 
-		triggerEClass = createEClass(TRIGGER);
-		createEAttribute(triggerEClass, TRIGGER__CRON);
+		windowsOrbExecutorEClass = createEClass(WINDOWS_ORB_EXECUTOR);
+		createEReference(windowsOrbExecutorEClass, WINDOWS_ORB_EXECUTOR__EXECUTOR);
 
-		branchEClass = createEClass(BRANCH);
-		createEAttribute(branchEClass, BRANCH__NAME);
-		createEAttribute(branchEClass, BRANCH__BRANCH_TYPE);
+		referenceExecutorEClass = createEClass(REFERENCE_EXECUTOR);
+
+		executorReferenceExecutorEClass = createEClass(EXECUTOR_REFERENCE_EXECUTOR);
+		createEReference(executorReferenceExecutorEClass, EXECUTOR_REFERENCE_EXECUTOR__EXECUTOR);
+
+		orbReferenceExecutorEClass = createEClass(ORB_REFERENCE_EXECUTOR);
+		createEReference(orbReferenceExecutorEClass, ORB_REFERENCE_EXECUTOR__ORB);
+		createEAttribute(orbReferenceExecutorEClass, ORB_REFERENCE_EXECUTOR__ORB_EXECUTOR_NAME);
 
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__NAME);
-		createEAttribute(jobEClass, JOB__PARALLELISM);
-		createEReference(jobEClass, JOB__STORE_ARTIFACT);
-		createEReference(jobEClass, JOB__WHEN_UNLESS);
-		createEReference(jobEClass, JOB__EXECUTION_ENV);
-		createEReference(jobEClass, JOB__ENVIRONMENT);
-		createEReference(jobEClass, JOB__STEP);
+		createEReference(jobEClass, JOB__EXECUTOR);
+		createEReference(jobEClass, JOB__PARAMETERS);
+		createEReference(jobEClass, JOB__STEPS);
+		createEReference(jobEClass, JOB__PARALLELISM);
+		createEReference(jobEClass, JOB__ENVIRONMENT_VARIABLES);
+		createEReference(jobEClass, JOB__CIRCLE_CIIP_RANGES);
 
-		store_ArtifactEClass = createEClass(STORE_ARTIFACT);
-		createEAttribute(store_ArtifactEClass, STORE_ARTIFACT__PATH);
-		createEAttribute(store_ArtifactEClass, STORE_ARTIFACT__DESTINATION);
+		stepEClass = createEClass(STEP);
 
-		command_ParamsEClass = createEClass(COMMAND_PARAMS);
-		createEAttribute(command_ParamsEClass, COMMAND_PARAMS__TYPE);
-		createEAttribute(command_ParamsEClass, COMMAND_PARAMS__DEFAULT);
+		runStepEClass = createEClass(RUN_STEP);
+		createEReference(runStepEClass, RUN_STEP__COMMAND);
+		createEReference(runStepEClass, RUN_STEP__NAME);
+		createEReference(runStepEClass, RUN_STEP__SHELL);
+		createEReference(runStepEClass, RUN_STEP__ENVIRONMENT_VARIABLES);
+		createEReference(runStepEClass, RUN_STEP__BACKGROUND);
+		createEReference(runStepEClass, RUN_STEP__WORKING_DIRECTORY);
+		createEReference(runStepEClass, RUN_STEP__NO_OUTPUT_TIMEOUT);
+		createEAttribute(runStepEClass, RUN_STEP__WHEN);
+
+		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__CONDITION);
+		createEReference(conditionalStepEClass, CONDITIONAL_STEP__STEPS);
+
+		whenStepEClass = createEClass(WHEN_STEP);
+
+		unlessStepEClass = createEClass(UNLESS_STEP);
+
+		checkoutStepEClass = createEClass(CHECKOUT_STEP);
+		createEReference(checkoutStepEClass, CHECKOUT_STEP__PATH);
+
+		setupRemoteDockerStepEClass = createEClass(SETUP_REMOTE_DOCKER_STEP);
+		createEReference(setupRemoteDockerStepEClass, SETUP_REMOTE_DOCKER_STEP__VERSION);
+		createEReference(setupRemoteDockerStepEClass, SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING);
+
+		saveCacheStepEClass = createEClass(SAVE_CACHE_STEP);
+		createEReference(saveCacheStepEClass, SAVE_CACHE_STEP__PATHS);
+		createEReference(saveCacheStepEClass, SAVE_CACHE_STEP__KEY);
+		createEReference(saveCacheStepEClass, SAVE_CACHE_STEP__NAME);
+		createEAttribute(saveCacheStepEClass, SAVE_CACHE_STEP__WHEN);
+
+		restoreCacheStepEClass = createEClass(RESTORE_CACHE_STEP);
+		createEReference(restoreCacheStepEClass, RESTORE_CACHE_STEP__KEYS);
+		createEReference(restoreCacheStepEClass, RESTORE_CACHE_STEP__NAME);
+
+		storeArtifactsStepEClass = createEClass(STORE_ARTIFACTS_STEP);
+		createEReference(storeArtifactsStepEClass, STORE_ARTIFACTS_STEP__PATH);
+		createEReference(storeArtifactsStepEClass, STORE_ARTIFACTS_STEP__DESTINATION);
+
+		storeTestResultsStepEClass = createEClass(STORE_TEST_RESULTS_STEP);
+		createEReference(storeTestResultsStepEClass, STORE_TEST_RESULTS_STEP__PATH);
+
+		persistToWorkspaceStepEClass = createEClass(PERSIST_TO_WORKSPACE_STEP);
+		createEReference(persistToWorkspaceStepEClass, PERSIST_TO_WORKSPACE_STEP__ROOT);
+		createEReference(persistToWorkspaceStepEClass, PERSIST_TO_WORKSPACE_STEP__PATHS);
+
+		attachWorkspaceStepEClass = createEClass(ATTACH_WORKSPACE_STEP);
+		createEReference(attachWorkspaceStepEClass, ATTACH_WORKSPACE_STEP__AT);
+
+		addSSHKeysStepEClass = createEClass(ADD_SSH_KEYS_STEP);
+		createEReference(addSSHKeysStepEClass, ADD_SSH_KEYS_STEP__FINGERPRINTS);
+
+		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
+		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
+		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VALUE);
+
+		workflowEClass = createEClass(WORKFLOW);
+		createEAttribute(workflowEClass, WORKFLOW__NAME);
+		createEReference(workflowEClass, WORKFLOW__TRIGGERS);
+		createEReference(workflowEClass, WORKFLOW__CONDITION);
+		createEAttribute(workflowEClass, WORKFLOW__IS_WHEN);
+		createEReference(workflowEClass, WORKFLOW__JOBS);
+
+		triggerEClass = createEClass(TRIGGER);
+		createEReference(triggerEClass, TRIGGER__BRANCHES);
+		createEAttribute(triggerEClass, TRIGGER__IGNORE_SPECIFIED_BRANCHES);
+
+		scheduleTriggerEClass = createEClass(SCHEDULE_TRIGGER);
+		createEAttribute(scheduleTriggerEClass, SCHEDULE_TRIGGER__CRON);
+
+		workflowJobConfigurationEClass = createEClass(WORKFLOW_JOB_CONFIGURATION);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__REQUIRES);
+		createEAttribute(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__NAME);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__CONTEXTS);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__BRANCHES);
+		createEAttribute(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__TAGS);
+		createEAttribute(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__MATRIX);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__PRE_STEPS);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__POST_STEPS);
+
+		workflowDefinedJobConfigurationEClass = createEClass(WORKFLOW_DEFINED_JOB_CONFIGURATION);
+		createEReference(workflowDefinedJobConfigurationEClass, WORKFLOW_DEFINED_JOB_CONFIGURATION__JOB);
+
+		workflowApprovalJobConfigurationEClass = createEClass(WORKFLOW_APPROVAL_JOB_CONFIGURATION);
+
+		workflowOrbJobConfigurationEClass = createEClass(WORKFLOW_ORB_JOB_CONFIGURATION);
+		createEReference(workflowOrbJobConfigurationEClass, WORKFLOW_ORB_JOB_CONFIGURATION__ORB);
+		createEAttribute(workflowOrbJobConfigurationEClass, WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME);
+
+		matrixEClass = createEClass(MATRIX);
+		createEReference(matrixEClass, MATRIX__PARAMETERS);
+		createEReference(matrixEClass, MATRIX__EXCLUDES);
+		createEReference(matrixEClass, MATRIX__ALIAS);
+
+		matrixParameterEClass = createEClass(MATRIX_PARAMETER);
+		createEAttribute(matrixParameterEClass, MATRIX_PARAMETER__NAME);
+		createEReference(matrixParameterEClass, MATRIX_PARAMETER__CELLS);
+
+		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
+		createEReference(matrixCombinationEClass, MATRIX_COMBINATION__ENTRIES);
+
+		expressionEClass = createEClass(EXPRESSION);
+
+		concatEClass = createEClass(CONCAT);
+		createEReference(concatEClass, CONCAT__EXPRESSIONS);
+
+		logicEClass = createEClass(LOGIC);
+
+		infinitaryOperatorEClass = createEClass(INFINITARY_OPERATOR);
+		createEReference(infinitaryOperatorEClass, INFINITARY_OPERATOR__OPERANDS);
+
+		andEClass = createEClass(AND);
+
+		orEClass = createEClass(OR);
+
+		equalsEClass = createEClass(EQUALS);
+
+		unaryOperatorEClass = createEClass(UNARY_OPERATOR);
+		createEReference(unaryOperatorEClass, UNARY_OPERATOR__OPERAND);
+
+		notEClass = createEClass(NOT);
+
+		logicFunctionEClass = createEClass(LOGIC_FUNCTION);
+
+		matchesEClass = createEClass(MATCHES);
+		createEReference(matchesEClass, MATCHES__PATTERN);
+		createEReference(matchesEClass, MATCHES__VALUE);
+
+		valueEClass = createEClass(VALUE);
+
+		literalEClass = createEClass(LITERAL);
+
+		stringLiteralEClass = createEClass(STRING_LITERAL);
+		createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
+
+		integerLiteralEClass = createEClass(INTEGER_LITERAL);
+		createEAttribute(integerLiteralEClass, INTEGER_LITERAL__VALUE);
+
+		doubleLiteralEClass = createEClass(DOUBLE_LITERAL);
+		createEAttribute(doubleLiteralEClass, DOUBLE_LITERAL__VALUE);
+
+		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
+
+		variableDereferenceEClass = createEClass(VARIABLE_DEREFERENCE);
+		createEAttribute(variableDereferenceEClass, VARIABLE_DEREFERENCE__NAMES);
 
 		// Create enums
+		parameteR_TYPESEEnum = createEEnum(PARAMETER_TYPES);
 		wheN_TYPEEEnum = createEEnum(WHEN_TYPE);
-		brancH_TYPEEEnum = createEEnum(BRANCH_TYPE);
 	}
 
 	/**
@@ -1121,194 +2672,566 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		dockerEClass.getESuperTypes().add(this.getExecution_Env());
-		linuxEClass.getESuperTypes().add(this.getExecution_Env());
-		macOsEClass.getESuperTypes().add(this.getExecution_Env());
-		windowsOrbEClass.getESuperTypes().add(this.getExecution_Env());
+		orbReferenceEClass.getESuperTypes().add(this.getOrb());
+		orbDefinitionEClass.getESuperTypes().add(this.getOrb());
+		dockerExecutorEClass.getESuperTypes().add(this.getExecutor());
+		machineExecutorEClass.getESuperTypes().add(this.getExecutor());
+		macOSExecutorEClass.getESuperTypes().add(this.getExecutor());
+		windowsOrbExecutorEClass.getESuperTypes().add(this.getExecutor());
+		referenceExecutorEClass.getESuperTypes().add(this.getExecutor());
+		executorReferenceExecutorEClass.getESuperTypes().add(this.getReferenceExecutor());
+		orbReferenceExecutorEClass.getESuperTypes().add(this.getReferenceExecutor());
+		runStepEClass.getESuperTypes().add(this.getStep());
+		conditionalStepEClass.getESuperTypes().add(this.getStep());
+		whenStepEClass.getESuperTypes().add(this.getConditionalStep());
+		unlessStepEClass.getESuperTypes().add(this.getConditionalStep());
+		checkoutStepEClass.getESuperTypes().add(this.getStep());
+		setupRemoteDockerStepEClass.getESuperTypes().add(this.getStep());
+		saveCacheStepEClass.getESuperTypes().add(this.getStep());
+		restoreCacheStepEClass.getESuperTypes().add(this.getStep());
+		storeArtifactsStepEClass.getESuperTypes().add(this.getStep());
+		storeTestResultsStepEClass.getESuperTypes().add(this.getStep());
+		persistToWorkspaceStepEClass.getESuperTypes().add(this.getStep());
+		attachWorkspaceStepEClass.getESuperTypes().add(this.getStep());
+		addSSHKeysStepEClass.getESuperTypes().add(this.getStep());
+		scheduleTriggerEClass.getESuperTypes().add(this.getTrigger());
+		workflowDefinedJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
+		workflowApprovalJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
+		workflowOrbJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
+		concatEClass.getESuperTypes().add(this.getExpression());
+		infinitaryOperatorEClass.getESuperTypes().add(this.getLogic());
+		andEClass.getESuperTypes().add(this.getInfinitaryOperator());
+		orEClass.getESuperTypes().add(this.getInfinitaryOperator());
+		equalsEClass.getESuperTypes().add(this.getInfinitaryOperator());
+		unaryOperatorEClass.getESuperTypes().add(this.getLogic());
+		notEClass.getESuperTypes().add(this.getUnaryOperator());
+		logicFunctionEClass.getESuperTypes().add(this.getLogic());
+		matchesEClass.getESuperTypes().add(this.getLogicFunction());
+		valueEClass.getESuperTypes().add(this.getExpression());
+		valueEClass.getESuperTypes().add(this.getLogic());
+		literalEClass.getESuperTypes().add(this.getValue());
+		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
+		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
+		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
+		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
+		variableDereferenceEClass.getESuperTypes().add(this.getValue());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPipeline_Version(), ecorePackage.getEString(), "version", null, 0, 1, Pipeline.class,
+		initEAttribute(getPipeline_Version(), ecorePackage.getEString(), "version", null, 1, 1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Orb(), this.getOrb(), null, "orb", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
+		initEAttribute(getPipeline_Setup(), ecorePackage.getEBooleanObject(), "setup", null, 0, 1, Pipeline.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Orbs(), this.getOrb(), null, "orbs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getPipeline_Command(), this.getCommand(), null, "command", null, 0, -1, Pipeline.class,
+		initEReference(getPipeline_Commands(), this.getCommand(), null, "commands", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Workflow(), this.getWorkflow(), null, "workflow", null, 0, 1, Pipeline.class,
+		initEReference(getPipeline_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Job(), this.getJob(), null, "job", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
+		initEReference(getPipeline_Executors(), this.getExecutor(), null, "executors", null, 0, -1, Pipeline.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipeline_Jobs(), this.getJob(), null, "jobs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-
-		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getStep_Parameters(), this.getParameters(), null, "parameters", null, 0, -1, Step.class,
+		initEReference(getPipeline_Workflows(), this.getWorkflow(), null, "workflows", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStep_Name(), ecorePackage.getEString(), "name", null, 0, 1, Step.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_When_attribute(), this.getWhen_Attribute(), null, "when_attribute", null, 0, 1,
-				Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_Tool_framework(), this.getTool_Framework(), null, "tool_framework", null, 0, -1,
-				Step.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(execution_EnvEClass, Execution_Env.class, "Execution_Env", IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(orbEClass, Orb.class, "Orb", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOrb_Name(), ecorePackage.getEString(), "name", null, 1, 1, Orb.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orbReferenceEClass, OrbReference.class, "OrbReference", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecution_Env_Environment(), this.getEnvironment(), null, "environment", null, 0, -1,
-				Execution_Env.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecution_Env_Step(), this.getStep(), null, "step", null, 0, -1, Execution_Env.class,
+		initEAttribute(getOrbReference_Reference(), ecorePackage.getEString(), "reference", null, 1, 1,
+				OrbReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(orbDefinitionEClass, OrbDefinition.class, "OrbDefinition", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOrbDefinition_Orbs(), this.getOrb(), null, "orbs", null, 0, -1, OrbDefinition.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExecution_Env_Name(), ecorePackage.getEString(), "name", null, 0, 1, Execution_Env.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(dockerEClass, Docker.class, "Docker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDocker_Image(), ecorePackage.getEString(), "image", null, 0, 1, Docker.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(linuxEClass, Linux.class, "Linux", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLinux_Image(), ecorePackage.getEString(), "image", null, 0, 1, Linux.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(macOsEClass, MacOs.class, "MacOs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMacOs_Xcode(), ecorePackage.getEString(), "xcode", null, 0, 1, MacOs.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(windowsOrbEClass, WindowsOrb.class, "WindowsOrb", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWindowsOrb_Executor(), ecorePackage.getEString(), "executor", null, 0, 1, WindowsOrb.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(orbEClass, Orb.class, "Orb", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOrb_Key(), ecorePackage.getEString(), "key", null, 0, 1, Orb.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOrb_Value(), ecorePackage.getEString(), "value", null, 0, 1, Orb.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrbDefinition_Commands(), this.getCommand(), null, "commands", null, 0, -1,
+				OrbDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrbDefinition_Executors(), this.getExecutor(), null, "executors", null, 0, -1,
+				OrbDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOrbDefinition_Jobs(), this.getJob(), null, "jobs", null, 0, -1, OrbDefinition.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCommand_Name(), ecorePackage.getEString(), "name", null, 0, 1, Command.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCommand_Step(), this.getStep(), null, "step", null, 0, -1, Command.class, !IS_TRANSIENT,
+		initEAttribute(getCommand_Name(), ecorePackage.getEString(), "name", null, 1, 1, Command.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommand_Steps(), this.getStep(), null, "steps", null, 0, -1, Command.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getCommand_Command_params(), this.getCommand_Params(), null, "command_params", null, 0, 1,
-				Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommand_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Command.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCommand_Description(), ecorePackage.getEString(), "description", null, 0, 1, Command.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(workflowEClass, Workflow.class, "Workflow", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWorkflow_Name(), ecorePackage.getEString(), "name", null, 0, 1, Workflow.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWorkflow_Version(), ecorePackage.getEString(), "version", null, 0, 1, Workflow.class,
+		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Type(), this.getPARAMETER_TYPES(), "type", null, 1, 1, Parameter.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_Trigger(), this.getTrigger(), null, "trigger", null, 0, -1, Workflow.class,
+		initEAttribute(getParameter_EnumValues(), ecorePackage.getEString(), "enumValues", null, 0, -1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Default(), this.getExpression(), null, "default", null, 0, 1, Parameter.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_When_unless(), this.getWhen_Unless(), null, "when_unless", null, 0, 1,
-				Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWorkflow_Branch(), this.getBranch(), null, "branch", null, 0, -1, Workflow.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEnvironment_Key(), ecorePackage.getEString(), "key", null, 0, 1, Environment.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnvironment_Value(), ecorePackage.getEString(), "value", null, 0, 1, Environment.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(parametersEClass, Parameters.class, "Parameters", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameters_Parameter(), ecorePackage.getEString(), "parameter", null, 0, 1, Parameters.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tool_FrameworkEClass, Tool_Framework.class, "Tool_Framework", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTool_Framework_Name(), ecorePackage.getEString(), "name", null, 0, 1, Tool_Framework.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(when_UnlessEClass, When_Unless.class, "When_Unless", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWhen_Unless_Condition(), ecorePackage.getEString(), "condition", null, 0, 1,
-				When_Unless.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getWhen_Unless_When_step(), this.getStep(), null, "when_step", null, 0, -1, When_Unless.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWhen_Unless_Unless_step(), this.getStep(), null, "unless_step", null, 0, -1,
-				When_Unless.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(when_AttributeEClass, When_Attribute.class, "When_Attribute", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getWhen_Attribute_When_type(), this.getWHEN_TYPE(), "when_type", null, 0, 1,
-				When_Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getParameter_Description(), ecorePackage.getEString(), "description", null, 0, 1,
+				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTrigger_Cron(), ecorePackage.getEString(), "cron", null, 0, 1, Trigger.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(executorEClass, Executor.class, "Executor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExecutor_Name(), ecorePackage.getEString(), "name", null, 0, 1, Executor.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutor_ResourceClass(), this.getExpression(), null, "resourceClass", null, 0, 1,
+				Executor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutor_Shell(), this.getExpression(), null, "shell", null, 0, 1, Executor.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutor_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null, 0, 1,
+				Executor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecutor_EnvironmentVariables(), this.getVariableAssignment(), null, "environmentVariables",
+				null, 0, -1, Executor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(branchEClass, Branch.class, "Branch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBranch_Name(), ecorePackage.getEString(), "name", null, 0, 1, Branch.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBranch_Branch_type(), this.getBRANCH_TYPE(), "branch_type", null, 0, 1, Branch.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dockerExecutorEClass, DockerExecutor.class, "DockerExecutor", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDockerExecutor_Containers(), this.getDockerContainer(), null, "containers", null, 0, -1,
+				DockerExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dockerContainerEClass, DockerContainer.class, "DockerContainer", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDockerContainer_Image(), this.getExpression(), null, "image", null, 1, 1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Name(), this.getExpression(), null, "name", null, 0, 1, DockerContainer.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Entrypoint(), this.getExpression(), null, "entrypoint", null, 0, -1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Command(), this.getExpression(), null, "command", null, 0, -1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_User(), this.getExpression(), null, "user", null, 0, 1, DockerContainer.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_EnvironmentVariables(), this.getVariableAssignment(), null,
+				"environmentVariables", null, 0, -1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Username(), this.getExpression(), null, "username", null, 0, 1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Password(), this.getExpression(), null, "password", null, 0, 1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_Oidc(), this.getExpression(), null, "oidc", null, 0, 1, DockerContainer.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_AwsAccessKeyID(), this.getExpression(), null, "awsAccessKeyID", null, 0, 1,
+				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDockerContainer_AwsSecretAccessKey(), this.getExpression(), null, "awsSecretAccessKey", null,
+				0, 1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(machineExecutorEClass, MachineExecutor.class, "MachineExecutor", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMachineExecutor_Image(), this.getExpression(), null, "image", null, 1, 1,
+				MachineExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMachineExecutor_DockerLayerCaching(), this.getExpression(), null, "dockerLayerCaching", null,
+				0, 1, MachineExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(macOSExecutorEClass, MacOSExecutor.class, "MacOSExecutor", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMacOSExecutor_Xcode(), this.getExpression(), null, "xcode", null, 1, 1, MacOSExecutor.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(windowsOrbExecutorEClass, WindowsOrbExecutor.class, "WindowsOrbExecutor", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWindowsOrbExecutor_Executor(), this.getExpression(), null, "executor", null, 1, 1,
+				WindowsOrbExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(referenceExecutorEClass, ReferenceExecutor.class, "ReferenceExecutor", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(executorReferenceExecutorEClass, ExecutorReferenceExecutor.class, "ExecutorReferenceExecutor",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExecutorReferenceExecutor_Executor(), this.getExecutor(), null, "executor", null, 1, 1,
+				ExecutorReferenceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orbReferenceExecutorEClass, OrbReferenceExecutor.class, "OrbReferenceExecutor", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOrbReferenceExecutor_Orb(), this.getOrb(), null, "orb", null, 1, 1,
+				OrbReferenceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrbReferenceExecutor_OrbExecutorName(), ecorePackage.getEString(), "orbExecutorName", null, 1,
+				1, OrbReferenceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJob_Name(), ecorePackage.getEString(), "name", null, 0, 1, Job.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJob_Parallelism(), ecorePackage.getEShort(), "parallelism", null, 0, 1, Job.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Store_artifact(), this.getStore_Artifact(), null, "store_artifact", null, 0, -1,
-				Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEAttribute(getJob_Name(), ecorePackage.getEString(), "name", null, 1, 1, Job.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_Executor(), this.getExecutor(), null, "executor", null, 1, 1, Job.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getJob_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Job.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 0, -1, Job.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getJob_Parallelism(), this.getExpression(), null, "parallelism", null, 0, 1, Job.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getJob_EnvironmentVariables(), this.getVariableAssignment(), null, "environmentVariables", null,
+				0, -1, Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_When_unless(), this.getWhen_Unless(), null, "when_unless", null, 0, 1, Job.class,
+		initEReference(getJob_CircleCIIPRanges(), this.getExpression(), null, "circleCIIPRanges", null, 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Execution_env(), this.getExecution_Env(), null, "execution_env", null, 1, 1, Job.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Environment(), this.getEnvironment(), null, "environment", null, 0, -1, Job.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Step(), this.getStep(), null, "step", null, 0, -1, Job.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(store_ArtifactEClass, Store_Artifact.class, "Store_Artifact", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(stepEClass, Step.class, "Step", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(runStepEClass, RunStep.class, "RunStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRunStep_Command(), this.getExpression(), null, "command", null, 1, 1, RunStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunStep_Name(), this.getExpression(), null, "name", null, 0, 1, RunStep.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getRunStep_Shell(), this.getExpression(), null, "shell", null, 0, 1, RunStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunStep_EnvironmentVariables(), this.getVariableAssignment(), null, "environmentVariables",
+				null, 0, -1, RunStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunStep_Background(), this.getExpression(), null, "background", null, 1, 1, RunStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunStep_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null, 0, 1,
+				RunStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunStep_NoOutputTimeout(), this.getExpression(), null, "noOutputTimeout", null, 0, 1,
+				RunStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRunStep_When(), this.getWHEN_TYPE(), "when", "on_success", 1, 1, RunStep.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStore_Artifact_Path(), ecorePackage.getEString(), "path", null, 0, 1, Store_Artifact.class,
+		initEReference(getConditionalStep_Condition(), this.getLogic(), null, "condition", null, 1, 1,
+				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConditionalStep_Steps(), this.getStep(), null, "steps", null, 1, -1, ConditionalStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(whenStepEClass, WhenStep.class, "WhenStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(unlessStepEClass, UnlessStep.class, "UnlessStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(checkoutStepEClass, CheckoutStep.class, "CheckoutStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCheckoutStep_Path(), this.getExpression(), null, "path", null, 0, 1, CheckoutStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(setupRemoteDockerStepEClass, SetupRemoteDockerStep.class, "SetupRemoteDockerStep", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSetupRemoteDockerStep_Version(), this.getExpression(), null, "version", null, 0, 1,
+				SetupRemoteDockerStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSetupRemoteDockerStep_DockerLayerCaching(), this.getExpression(), null, "dockerLayerCaching",
+				null, 0, 1, SetupRemoteDockerStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(saveCacheStepEClass, SaveCacheStep.class, "SaveCacheStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSaveCacheStep_Paths(), this.getExpression(), null, "paths", null, 1, -1, SaveCacheStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSaveCacheStep_Key(), this.getExpression(), null, "key", null, 1, 1, SaveCacheStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSaveCacheStep_Name(), this.getExpression(), null, "name", null, 0, 1, SaveCacheStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSaveCacheStep_When(), this.getWHEN_TYPE(), "when", "on_success", 1, 1, SaveCacheStep.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStore_Artifact_Destination(), ecorePackage.getEString(), "destination", null, 0, 1,
-				Store_Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+
+		initEClass(restoreCacheStepEClass, RestoreCacheStep.class, "RestoreCacheStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRestoreCacheStep_Keys(), this.getExpression(), null, "keys", null, 1, -1,
+				RestoreCacheStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRestoreCacheStep_Name(), this.getExpression(), null, "name", null, 0, 1,
+				RestoreCacheStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(storeArtifactsStepEClass, StoreArtifactsStep.class, "StoreArtifactsStep", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStoreArtifactsStep_Path(), this.getExpression(), null, "path", null, 1, 1,
+				StoreArtifactsStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStoreArtifactsStep_Destination(), this.getExpression(), null, "destination", null, 0, 1,
+				StoreArtifactsStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(storeTestResultsStepEClass, StoreTestResultsStep.class, "StoreTestResultsStep", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStoreTestResultsStep_Path(), this.getExpression(), null, "path", null, 1, 1,
+				StoreTestResultsStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(persistToWorkspaceStepEClass, PersistToWorkspaceStep.class, "PersistToWorkspaceStep", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPersistToWorkspaceStep_Root(), this.getExpression(), null, "root", null, 1, 1,
+				PersistToWorkspaceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPersistToWorkspaceStep_Paths(), this.getExpression(), null, "paths", null, 1, -1,
+				PersistToWorkspaceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(attachWorkspaceStepEClass, AttachWorkspaceStep.class, "AttachWorkspaceStep", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAttachWorkspaceStep_At(), this.getExpression(), null, "at", null, 1, 1,
+				AttachWorkspaceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(addSSHKeysStepEClass, AddSSHKeysStep.class, "AddSSHKeysStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAddSSHKeysStep_Fingerprints(), this.getExpression(), null, "fingerprints", null, 0, -1,
+				AddSSHKeysStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableAssignmentEClass, Map.Entry.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableAssignment_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(workflowEClass, Workflow.class, "Workflow", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getWorkflow_Name(), ecorePackage.getEString(), "name", null, 1, 1, Workflow.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflow_Triggers(), this.getTrigger(), null, "triggers", null, 0, -1, Workflow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflow_Condition(), this.getLogic(), null, "condition", null, 1, 1, Workflow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkflow_IsWhen(), ecorePackage.getEBooleanObject(), "isWhen", null, 0, 1, Workflow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflow_Jobs(), this.getWorkflowJobConfiguration(), null, "jobs", null, 0, -1,
+				Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(triggerEClass, Trigger.class, "Trigger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTrigger_Branches(), this.getExpression(), null, "branches", null, 0, -1, Trigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_IgnoreSpecifiedBranches(), ecorePackage.getEBooleanObject(),
+				"ignoreSpecifiedBranches", "false", 1, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scheduleTriggerEClass, ScheduleTrigger.class, "ScheduleTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScheduleTrigger_Cron(), ecorePackage.getEString(), "cron", null, 0, 1, ScheduleTrigger.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(workflowJobConfigurationEClass, WorkflowJobConfiguration.class, "WorkflowJobConfiguration",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWorkflowJobConfiguration_Requires(), this.getWorkflowJobConfiguration(), null, "requires",
+				null, 0, -1, WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkflowJobConfiguration_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_Contexts(), this.getExpression(), null, "contexts", null, 0, -1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_Branches(), this.getExpression(), null, "branches", null, 0, -1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkflowJobConfiguration_IgnoreSpecifiedBranches(), ecorePackage.getEBooleanObject(),
+				"ignoreSpecifiedBranches", null, 0, 1, WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_Tags(), this.getExpression(), null, "tags", null, 0, -1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkflowJobConfiguration_IgnoreSpecifiedTags(), ecorePackage.getEBooleanObject(),
+				"ignoreSpecifiedTags", null, 0, 1, WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_Matrix(), this.getMatrix(), null, "matrix", null, 0, 1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_PreSteps(), this.getStep(), null, "preSteps", null, 0, -1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_PostSteps(), this.getStep(), null, "postSteps", null, 0, -1,
+				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(workflowDefinedJobConfigurationEClass, WorkflowDefinedJobConfiguration.class,
+				"WorkflowDefinedJobConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWorkflowDefinedJobConfiguration_Job(), this.getJob(), null, "job", null, 1, 1,
+				WorkflowDefinedJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(workflowApprovalJobConfigurationEClass, WorkflowApprovalJobConfiguration.class,
+				"WorkflowApprovalJobConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(workflowOrbJobConfigurationEClass, WorkflowOrbJobConfiguration.class, "WorkflowOrbJobConfiguration",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWorkflowOrbJobConfiguration_Orb(), this.getOrb(), null, "orb", null, 1, 1,
+				WorkflowOrbJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkflowOrbJobConfiguration_JobName(), ecorePackage.getEString(), "jobName", null, 0, 1,
+				WorkflowOrbJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatrix_Parameters(), this.getMatrixParameter(), null, "parameters", null, 1, -1, Matrix.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrix_Excludes(), this.getMatrixCombination(), null, "excludes", null, 0, -1, Matrix.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrix_Alias(), this.getExpression(), null, "alias", null, 0, 1, Matrix.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(matrixParameterEClass, MatrixParameter.class, "MatrixParameter", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMatrixParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixParameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixParameter_Cells(), this.getExpression(), null, "cells", null, 1, -1,
+				MatrixParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(matrixCombinationEClass, MatrixCombination.class, "MatrixCombination", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatrixCombination_Entries(), this.getVariableAssignment(), null, "entries", null, 1, -1,
+				MatrixCombination.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcat_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Concat.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(logicEClass, Logic.class, "Logic", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(infinitaryOperatorEClass, InfinitaryOperator.class, "InfinitaryOperator", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInfinitaryOperator_Operands(), this.getLogic(), null, "operands", null, 1, -1,
+				InfinitaryOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(equalsEClass, Equals.class, "Equals", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(unaryOperatorEClass, UnaryOperator.class, "UnaryOperator", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnaryOperator_Operand(), this.getLogic(), null, "operand", null, 1, 1, UnaryOperator.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(logicFunctionEClass, LogicFunction.class, "LogicFunction", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(matchesEClass, Matches.class, "Matches", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMatches_Pattern(), this.getExpression(), null, "pattern", null, 1, 1, Matches.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatches_Value(), this.getExpression(), null, "value", null, 1, 1, Matches.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 1, 1, StringLiteral.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntegerLiteral_Value(), ecorePackage.getEIntegerObject(), "value", null, 1, 1,
+				IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(command_ParamsEClass, Command_Params.class, "Command_Params", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(doubleLiteralEClass, DoubleLiteral.class, "DoubleLiteral", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCommand_Params_Type(), ecorePackage.getEString(), "type", null, 0, 1, Command_Params.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCommand_Params_Default(), ecorePackage.getEString(), "default", null, 0, 1,
-				Command_Params.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+		initEAttribute(getDoubleLiteral_Value(), ecorePackage.getEDoubleObject(), "value", null, 1, 1,
+				DoubleLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBooleanObject(), "value", null, 1, 1,
+				BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableDereferenceEClass, VariableDereference.class, "VariableDereference", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableDereference_Names(), ecorePackage.getEString(), "names", null, 1, -1,
+				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.class,
+				"PARAMETER_TYPES");
+		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.STRING);
+		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.BOOLEAN);
+		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.INTEGER);
+		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.ENUM);
+		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.EXECUTOR);
+		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.STEPS);
+		addEEnumLiteral(parameteR_TYPESEEnum,
+				d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.ENVIRONMENT_VARIABLE_NAME);
+
 		initEEnum(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.class, "WHEN_TYPE");
 		addEEnumLiteral(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.ON_SUCCESS);
 		addEEnumLiteral(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.ALWAYS);
 		addEEnumLiteral(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.ON_FAIL);
-
-		initEEnum(brancH_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE.class, "BRANCH_TYPE");
-		addEEnumLiteral(brancH_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE.ONLY);
-		addEEnumLiteral(brancH_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE.IGNORE);
 
 		// Create resource
 		createResource(eNS_URI);

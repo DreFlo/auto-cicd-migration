@@ -48,11 +48,14 @@ ${{ [_generateExpression(expression)/] }}
 [template public generateLiteral(literal : Literal)]
 [if (literal.oclIsKindOf(StringLiteral))]
 [if (
-	literal.eContainer().oclIsKindOf(BinaryOp) or 
-	literal.eContainer().oclIsKindOf(UnaryOp) or 
-	literal.eContainer().oclIsKindOf(BuiltInFunctionCall) or
-	literal.eContainer().oclIsKindOf(Trigger) or
-	literal.oclAsType(StringLiteral).value.contains('*')
+  literal.eContainer().oclIsKindOf(BinaryOp) or 
+  literal.eContainer().oclIsKindOf(UnaryOp) or 
+  literal.eContainer().oclIsKindOf(BuiltInFunctionCall) or
+  literal.eContainer().oclIsKindOf(Trigger) or
+  (
+    (not literal.oclAsType(StringLiteral).value.oclIsUndefined()) and
+    literal.oclAsType(StringLiteral).value.contains('*')
+  )
 )]
 [quoteString(literal.oclAsType(StringLiteral).value)/]
 [else]
@@ -268,8 +271,182 @@ cancel-in-progress: [generateExpression(cancelInProgress)/]
 
 [template public generateJob(job : Job) post (trim())]
 [name/]:
+[if (not jobName.oclIsUndefined())]
+  name: [generateExpression(jobName)/]
+[/if]
+[if (permissions->notEmpty())]
+  permissions:
+  [for (permission : Permission | permissions)]
+    [generatePermission(permission)/]
+  [/for]
+[/if]
+[if (dependsOn->notEmpty())]
+  needs:
+  [for (job : Job | dependsOn)]
+    - [job.name/]
+  [/for]
+[/if]
+[if (not ifCondition.oclIsUndefined())]
+  if: [generateExpression(ifCondition)/]
+[/if]
   [generateAgent(agent)/]
+[if (not stagingEnvironment.oclIsUndefined())]
+  [generateStagingEnvironment(stagingEnvironment)/]
+[/if]
+[if (not concurrencyGroup.oclIsUndefined())]
+  concurency:
+    [generateConcurrencyGroup(concurrencyGroup)/]
+[/if]
+[if (outputs->notEmpty())]
+  outputs:
+  [for (output : Output | outputs)]
+    [output.id/]: [generateExpression(output.value)/]
+  [/for]
+[/if]
+[if (environmentVariables->notEmpty())]
+  env:
+  [for (variableAssignment : VariableAssignment | environmentVariables)]
+    [generateVariableAssignment(variableAssignment)/]
+  [/for]
+[/if]
+[if (not defaults.oclIsUndefined())]
+  defaults:
+    [generateDefaults(defaults)/]
+[/if]
+[if (not strategy.oclIsUndefined())]
+  strategy:
+    matrix:
+    [for (axis : MatrixAxis | strategy.axes)]
+      [generateExpressionList(axis.cells, axis.name, '', true)/]
+    [/for]
+    [if (strategy.includes->notEmpty())]
+      include:
+      [for (combination : MatrixCombination | strategy.includes)]
+        - [generateMatrixCombination(combination)/]
+      [/for]
+    [/if]
+    [if (strategy.excludes->notEmpty())]
+      exclude:
+      [for (combination : MatrixCombination | strategy.excludes)]
+        - [generateMatrixCombination(combination)/]
+      [/for]
+    [/if]
+  [if (not strategy.failFast.oclIsUndefined())]
+    fail-fast: [generateExpression(strategy.failFast)/]
+  [/if]
+  [if (not strategy.maxParallel.oclIsUndefined())]
+    max-parallel: [generateExpression(strategy.maxParallel)/]
+  [/if]
+[/if]
+[if (not continueOnError.oclIsUndefined())]
+  continue-on-error: [generateExpression(continueOnError)/]
+[/if]
+[if (not container.oclIsUndefined())]
+  container:
+    [generateContainer(container)/]
+[/if]
+[if (services->notEmpty())]
+  services:
+  [for (service : Service | services)]
+    [service.key/]:
+      [generateContainer(service.value)/]
+  [/for]
+[/if]
+[if (job.oclIsTypeOf(ScriptJob))]
   steps:
+  [for (abstractStep : AbstractStep | job.oclAsType(ScriptJob).steps)]
+    [generateAbstractStep(abstractStep)/]
+  [/for]
+[elseif (job.oclIsTypeOf(WorkflowCallJob))]
+  [generateWorkflowCallJob(job.oclAsType(WorkflowCallJob))/]
+[/if]
+[/template]
+
+[template public generateAbstractStep(abstractStep : AbstractStep) post (trim())]
+[if (abstractStep.oclIsTypeOf(IfStep))]
+[generateIfStep(abstractStep.oclAsType(IfStep))/]
+[else]
+[generateStep(abstractStep.oclAsType(Step), true)/]
+[/if]
+[/template]
+
+[template public generateIfStep(step : IfStep)]
+- if: [generateExpression(ifCondition)/]
+  [generateStep(thenRun, false).replaceAll('\n  ', '\n')/]
+[/template]
+
+[template public generateStep(step : Step, addDash : Boolean)]
+[if (step.oclIsTypeOf(Command))]
+[let command : Command = step.oclAsType(Command)]
+[if (addDash)]
+- run: [generateExpression(command.command)/]
+[else]
+run: [generateExpression(command.command)/]
+[/if]
+[/let]
+[elseif (step.oclIsTypeOf(Package))]
+[let _package : Package = step.oclAsType(Package)]
+[if (addDash)]
+- uses: [generateExpression(_package.uses)/]
+[else]
+uses: [generateExpression(_package.uses)/]
+[/if]
+[if (_package.args->notEmpty() or not _package.entrypoint.oclIsUndefined() or not _package.containerArgs.oclIsUndefined())]
+  with:
+  [for (variableAssignment : VariableAssignment | _package.args)]
+    [generateVariableAssignment(variableAssignment)/]
+  [/for]
+  [if (not _package.entrypoint.oclIsUndefined())]
+  	entrypoint: [generateExpression(_package.entrypoint)/]
+  [/if]
+  [if (not _package.containerArgs.oclIsUndefined())]
+  	args: [generateExpression(_package.containerArgs)/]
+  [/if]
+[/if]
+[/let]
+[/if]
+[if (not id.oclIsUndefined())]
+  id: [quoteString(id)/]
+[/if]
+[if (not name.oclIsUndefined())]
+  name: [generateExpression(name)/]
+[/if]
+[if (not timeoutMinutes.oclIsUndefined())]
+  timeout-minutes: [generateExpression(timeoutMinutes)/]
+[/if]
+[if (not continueOnError.oclIsUndefined())]
+  continue-on-error: [generateExpression(continueOnError)/]
+[/if]
+[if (not shell.oclIsUndefined())]
+  shell: [generateExpression(shell)/]
+[/if]
+[if (not workingDirectory.oclIsUndefined())]
+  working-directory: [generateExpression(workingDirectory)/]
+[/if]
+[if (environmentVariables->notEmpty())]
+  env:
+  [for (variableAssignment : VariableAssignment | environmentVariables)]
+    [generateVariableAssignment(variableAssignment)/]
+  [/for]
+[/if]
+[/template]
+
+[template public generateWorkflowCallJob(workflowCallJob : WorkflowCallJob)]
+uses: [generateExpression(uses)/]
+[if (args->notEmpty())]
+with:
+[for (variableAssignment : VariableAssignment | args)]
+  [generateVariableAssignment(variableAssignment)/]
+[/for]
+[if (inheritSecrets)]
+secrets: inherit
+[elseif (secrets->notEmpty())]
+secrets:
+[for (variableAssignment : VariableAssignment | secrets)]
+  [generateVariableAssignment(variableAssignment)/]
+[/for]
+[/if]
+[/if]
 [/template]
 
 [template public generateAgent(agent : Agent) post (trim())]
@@ -281,6 +458,56 @@ runs-on:
 [if (labels->notEmpty())]
   [generateExpressionList(labels, 'labels', '', true)/]
 [/if]
+[/if]
+[/template]
+
+[template public generateStagingEnvironment(stagingEnvironment : StagingEnvironment) post (trim())]
+[if (url.oclIsUndefined())]
+environment: [generateExpression(name)/]
+[else]
+environment:
+  name: [generateExpression(name)/]
+  url: [generateExpression(url)/]
+[/if]
+[/template]
+
+[template public generateMatrixCombination(combination : MatrixCombination) post (trim())]
+[for (entry : VariableAssignment | entries) separator ('  ')]
+[generateVariableAssignment(entry)/]
+[/for]
+[/template]
+
+[template public generateContainer(container : Container) post (trim())]
+image: [generateExpression(image)/]
+[if (not username.oclIsUndefined() or not password.oclIsUndefined())]
+credentials:
+  [if (not username.oclIsUndefined())]
+    username: [generateExpression(username)/]
+  [/if]
+  [if (not password.oclIsUndefined())]
+    password: [generateExpression(password)/]
+  [/if]
+[/if]
+[if (environmentVariables->notEmpty())]
+env:
+[for (variableAssignment : VariableAssignment | environmentVariables)]
+  [generateVariableAssignment(variableAssignment)/]
+[/for]
+[/if]
+[if (ports->notEmpty())]
+ports:
+[for (port : Expression | ports)]
+  - [generateExpression(port)/]
+[/for]
+[/if]
+[if (volumes->notEmpty())]
+volumes:
+[for (volume : Expression | volumes)]
+  - [generateExpression(volume)/]
+[/for]
+[/if]
+[if (not options.oclIsUndefined())]
+options: [generateExpression(options)/]
 [/if]
 [/template]
 
@@ -317,6 +544,7 @@ defaults:
 [if (not concurrencyGroup.oclIsUndefined())]
 concurency:
   [generateConcurrencyGroup(concurrencyGroup)/]
+
 [/if]
 [if (environmentVariables->notEmpty())]
 env:

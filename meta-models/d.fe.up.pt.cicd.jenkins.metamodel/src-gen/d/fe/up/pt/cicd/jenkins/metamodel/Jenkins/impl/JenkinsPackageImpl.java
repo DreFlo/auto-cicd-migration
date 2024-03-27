@@ -1038,8 +1038,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStep_Arguments() {
-		return (EAttribute) stepEClass.getEStructuralFeatures().get(1);
+	public EReference getStep_Arguments() {
+		return (EReference) stepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2153,7 +2153,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		stepEClass = createEClass(STEP);
 		createEAttribute(stepEClass, STEP__COMMAND);
-		createEAttribute(stepEClass, STEP__ARGUMENTS);
+		createEReference(stepEClass, STEP__ARGUMENTS);
 
 		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
 		createEReference(conditionalStepEClass, CONDITIONAL_STEP__IF_CONDITION);
@@ -2505,8 +2505,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Command(), ecorePackage.getEString(), "command", null, 1, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStep_Arguments(), ecorePackage.getEString(), "arguments", null, 1, 1, Step.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStep_Arguments(), this.getAssignment(), null, "arguments", null, 0, -1, Step.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

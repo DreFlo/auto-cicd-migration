@@ -14,6 +14,8 @@ import java.io.StringReader;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
+
+// TODO Add Outputs to jobs
 public class GitHubActionsParser extends AbstractParser<Workflow> {
 	@Override
 	protected Injector getInjector() {
@@ -540,10 +542,26 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private Job parseJob(String id, YamlMapping jobMap, Map<String, Job> jobs) throws SyntaxException {
-		Job job = GHAPackage.eINSTANCE.getGHAFactory().createJob();
+		Job job;
 
 		if (jobMap.value("steps") != null) {
-			job.getSteps().addAll(parseSteps(jobMap.value("steps")));
+			job = GHAPackage.eINSTANCE.getGHAFactory().createScriptJob();
+			((ScriptJob) job).getSteps().addAll(parseSteps(jobMap.value("steps")));
+		} else if (jobMap.value("uses") != null) {
+			job = GHAPackage.eINSTANCE.getGHAFactory().createWorkflowCallJob();
+			((WorkflowCallJob) job).setUses(parseExpression(jobMap.string("uses")));
+			if (jobMap.value("with") != null) {
+				((WorkflowCallJob) job).getArgs().putAll(parseVariableAssignments(jobMap.value("with").asMapping()));
+			}
+			if (jobMap.value("secrets") != null) {
+				if (jobMap.value("secrets").type().equals(Node.SCALAR) && jobMap.string("secrets").equals("inherit")) {
+					((WorkflowCallJob) job).setInheritSecrets(true);
+				} else if (jobMap.value("secrets").type().equals(Node.MAPPING)) {
+					((WorkflowCallJob) job).getSecrets().putAll(parseVariableAssignments(jobMap.value("secrets").asMapping()));
+				} else {
+					throw new SyntaxException("Invalid secrets");
+				}
+			}
 		} else {
 			throw new SyntaxException("Must have steps");
 		}

@@ -105,8 +105,8 @@ public class CommandItemProvider extends ItemProviderAdapter implements IEditing
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CircleCIPackage.Literals.COMMAND__STEP);
-			childrenFeatures.add(CircleCIPackage.Literals.COMMAND__COMMAND_PARAMS);
+			childrenFeatures.add(CircleCIPackage.Literals.COMMAND__STEPS);
+			childrenFeatures.add(CircleCIPackage.Literals.COMMAND__PARAMETERS);
 		}
 		return childrenFeatures;
 	}
@@ -174,8 +174,8 @@ public class CommandItemProvider extends ItemProviderAdapter implements IEditing
 		case CircleCIPackage.COMMAND__DESCRIPTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case CircleCIPackage.COMMAND__STEP:
-		case CircleCIPackage.COMMAND__COMMAND_PARAMS:
+		case CircleCIPackage.COMMAND__STEPS:
+		case CircleCIPackage.COMMAND__PARAMETERS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -193,11 +193,44 @@ public class CommandItemProvider extends ItemProviderAdapter implements IEditing
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(CircleCIPackage.Literals.COMMAND__STEP, CircleCIFactory.eINSTANCE.createStep()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createRunStep()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__COMMAND_PARAMS,
-				CircleCIFactory.eINSTANCE.createCommand_Params()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createWhenStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createUnlessStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createCheckoutStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createSetupRemoteDockerStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createSaveCacheStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createRestoreCacheStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createStoreArtifactsStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createStoreTestResultsStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createPersistToWorkspaceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createAttachWorkspaceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__PARAMETERS,
+				CircleCIFactory.eINSTANCE.createParameter()));
 	}
 
 	/**

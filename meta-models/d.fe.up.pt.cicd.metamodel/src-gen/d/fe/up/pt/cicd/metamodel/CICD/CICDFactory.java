@@ -31,13 +31,22 @@ public interface CICDFactory extends EFactory {
 	Pipeline createPipeline();
 
 	/**
-	 * Returns a new object of class '<em>Job</em>'.
+	 * Returns a new object of class '<em>Script Job</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Job</em>'.
+	 * @return a new object of class '<em>Script Job</em>'.
 	 * @generated
 	 */
-	Job createJob();
+	ScriptJob createScriptJob();
+
+	/**
+	 * Returns a new object of class '<em>Pipeline Call Job</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pipeline Call Job</em>'.
+	 * @generated
+	 */
+	PipelineCallJob createPipelineCallJob();
 
 	/**
 	 * Returns a new object of class '<em>Agent</em>'.

@@ -66,8 +66,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//StageChildStep #//ConditionalChildStep">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arguments" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+        eType="#//Assignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//ConditionalChildStep">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" lowerBound="1"

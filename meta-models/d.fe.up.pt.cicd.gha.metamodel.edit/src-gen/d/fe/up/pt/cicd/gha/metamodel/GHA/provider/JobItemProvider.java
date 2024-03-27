@@ -59,6 +59,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 			addNamePropertyDescriptor(object);
 			addDependsOnPropertyDescriptor(object);
 			addNecessaryForPropertyDescriptor(object);
+			addOutputsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -107,6 +108,20 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 	}
 
 	/**
+	 * This adds a property descriptor for the Outputs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutputsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Job_outputs_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Job_outputs_feature", "_UI_Job_type"),
+						GHAPackage.Literals.JOB__OUTPUTS, true, false, true, null, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -131,7 +146,6 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 			childrenFeatures.add(GHAPackage.Literals.JOB__TIMEOUT_MINUTES);
 			childrenFeatures.add(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR);
 			childrenFeatures.add(GHAPackage.Literals.JOB__STRATEGY);
-			childrenFeatures.add(GHAPackage.Literals.JOB__STEPS);
 		}
 		return childrenFeatures;
 	}
@@ -200,7 +214,6 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		case GHAPackage.JOB__TIMEOUT_MINUTES:
 		case GHAPackage.JOB__CONTINUE_ON_ERROR:
 		case GHAPackage.JOB__STRATEGY:
-		case GHAPackage.JOB__STEPS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -544,15 +557,6 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__STRATEGY, GHAFactory.eINSTANCE.createMatrix()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createIfStep()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createCommand()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__STEPS, GHAFactory.eINSTANCE.createPackage()));
 	}
 
 	/**

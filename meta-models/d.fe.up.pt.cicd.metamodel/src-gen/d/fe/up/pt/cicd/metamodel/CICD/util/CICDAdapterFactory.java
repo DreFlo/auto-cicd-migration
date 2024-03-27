@@ -84,6 +84,16 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseScriptJob(ScriptJob object) {
+			return createScriptJobAdapter();
+		}
+
+		@Override
+		public Adapter casePipelineCallJob(PipelineCallJob object) {
+			return createPipelineCallJobAdapter();
+		}
+
+		@Override
 		public Adapter caseAgent(Agent object) {
 			return createAgentAdapter();
 		}
@@ -376,6 +386,34 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createJobAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.ScriptJob <em>Script Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ScriptJob
+	 * @generated
+	 */
+	public Adapter createScriptJobAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob <em>Pipeline Call Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob
+	 * @generated
+	 */
+	public Adapter createPipelineCallJobAdapter() {
 		return null;
 	}
 

@@ -430,22 +430,13 @@ public interface CICDPackage extends EPackage {
 	int JOB__IF_CONDITION = PIPELINE_BLOCK_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOB__STEPS = PIPELINE_BLOCK_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__SERVICES = PIPELINE_BLOCK_FEATURE_COUNT + 3;
+	int JOB__SERVICES = PIPELINE_BLOCK_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
@@ -454,7 +445,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__MATRIX = PIPELINE_BLOCK_FEATURE_COUNT + 4;
+	int JOB__MATRIX = PIPELINE_BLOCK_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Previous</b></em>' reference list.
@@ -463,7 +454,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 5;
+	int JOB__PREVIOUS = PIPELINE_BLOCK_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Next</b></em>' reference list.
@@ -472,7 +463,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 6;
+	int JOB__NEXT = PIPELINE_BLOCK_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Max Attempts</b></em>' attribute.
@@ -481,7 +472,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__MAX_ATTEMPTS = PIPELINE_BLOCK_FEATURE_COUNT + 7;
+	int JOB__MAX_ATTEMPTS = PIPELINE_BLOCK_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
@@ -490,7 +481,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__ALLOW_FAILURE = PIPELINE_BLOCK_FEATURE_COUNT + 8;
+	int JOB__ALLOW_FAILURE = PIPELINE_BLOCK_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -499,7 +490,7 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOB_FEATURE_COUNT = PIPELINE_BLOCK_FEATURE_COUNT + 9;
+	int JOB_FEATURE_COUNT = PIPELINE_BLOCK_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of operations of the '<em>Job</em>' class.
@@ -511,6 +502,413 @@ public interface CICDPackage extends EPackage {
 	int JOB_OPERATION_COUNT = PIPELINE_BLOCK_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ScriptJobImpl <em>Script Job</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ScriptJobImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getScriptJob()
+	 * @generated
+	 */
+	int SCRIPT_JOB = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__NAME = JOB__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__AGENT = JOB__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__INPUTS = JOB__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__OUTPUTS = JOB__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__ENVIRONMENT_VARIABLES = JOB__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Permissions</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__PERMISSIONS = JOB__PERMISSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__TIMEOUT_MINUTES = JOB__TIMEOUT_MINUTES;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__WORKING_DIRECTORY = JOB__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__CONCURRENCY_GROUP = JOB__CONCURRENCY_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__SHELL = JOB__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__ID = JOB__ID;
+
+	/**
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__IF_CONDITION = JOB__IF_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__SERVICES = JOB__SERVICES;
+
+	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__MATRIX = JOB__MATRIX;
+
+	/**
+	 * The feature id for the '<em><b>Previous</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__PREVIOUS = JOB__PREVIOUS;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__NEXT = JOB__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Max Attempts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__MAX_ATTEMPTS = JOB__MAX_ATTEMPTS;
+
+	/**
+	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__ALLOW_FAILURE = JOB__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB__STEPS = JOB_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Script Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB_FEATURE_COUNT = JOB_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Script Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCRIPT_JOB_OPERATION_COUNT = JOB_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineCallJobImpl <em>Pipeline Call Job</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineCallJobImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPipelineCallJob()
+	 * @generated
+	 */
+	int PIPELINE_CALL_JOB = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__NAME = JOB__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__AGENT = JOB__AGENT;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__INPUTS = JOB__INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__OUTPUTS = JOB__OUTPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__ENVIRONMENT_VARIABLES = JOB__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Permissions</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__PERMISSIONS = JOB__PERMISSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__TIMEOUT_MINUTES = JOB__TIMEOUT_MINUTES;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__WORKING_DIRECTORY = JOB__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Concurrency Group</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__CONCURRENCY_GROUP = JOB__CONCURRENCY_GROUP;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__SHELL = JOB__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__ID = JOB__ID;
+
+	/**
+	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__IF_CONDITION = JOB__IF_CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Services</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__SERVICES = JOB__SERVICES;
+
+	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__MATRIX = JOB__MATRIX;
+
+	/**
+	 * The feature id for the '<em><b>Previous</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__PREVIOUS = JOB__PREVIOUS;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__NEXT = JOB__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Max Attempts</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__MAX_ATTEMPTS = JOB__MAX_ATTEMPTS;
+
+	/**
+	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__ALLOW_FAILURE = JOB__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Pipeline Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__PIPELINE_PATH = JOB_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Args</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB__ARGS = JOB_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Pipeline Call Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB_FEATURE_COUNT = JOB_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Pipeline Call Job</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE_CALL_JOB_OPERATION_COUNT = JOB_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AgentImpl <em>Agent</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -518,7 +916,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAgent()
 	 * @generated
 	 */
-	int AGENT = 3;
+	int AGENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -564,7 +962,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDockerContainer()
 	 * @generated
 	 */
-	int DOCKER_CONTAINER = 4;
+	int DOCKER_CONTAINER = 6;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -673,7 +1071,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 5;
+	int TRIGGER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -710,7 +1108,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPushTrigger()
 	 * @generated
 	 */
-	int PUSH_TRIGGER = 6;
+	int PUSH_TRIGGER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -756,7 +1154,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPullRequestTrigger()
 	 * @generated
 	 */
-	int PULL_REQUEST_TRIGGER = 7;
+	int PULL_REQUEST_TRIGGER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -793,7 +1191,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getManualTrigger()
 	 * @generated
 	 */
-	int MANUAL_TRIGGER = 8;
+	int MANUAL_TRIGGER = 10;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -830,7 +1228,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getScheduledTrigger()
 	 * @generated
 	 */
-	int SCHEDULED_TRIGGER = 9;
+	int SCHEDULED_TRIGGER = 11;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -876,7 +1274,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getWebhookTrigger()
 	 * @generated
 	 */
-	int WEBHOOK_TRIGGER = 10;
+	int WEBHOOK_TRIGGER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -913,7 +1311,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConcurrencyGroup()
 	 * @generated
 	 */
-	int CONCURRENCY_GROUP = 11;
+	int CONCURRENCY_GROUP = 13;
 
 	/**
 	 * The feature id for the '<em><b>Group Id</b></em>' containment reference.
@@ -959,7 +1357,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPermission()
 	 * @generated
 	 */
-	int PERMISSION = 12;
+	int PERMISSION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -1005,7 +1403,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 13;
+	int MATRIX = 15;
 
 	/**
 	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
@@ -1069,7 +1467,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrixAxis()
 	 * @generated
 	 */
-	int MATRIX_AXIS = 14;
+	int MATRIX_AXIS = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1115,7 +1513,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 15;
+	int MATRIX_COMBINATION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Combination Entries</b></em>' map.
@@ -1152,7 +1550,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 16;
+	int PARAMETER = 18;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1198,7 +1596,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 17;
+	int INPUT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1271,7 +1669,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 18;
+	int OUTPUT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1326,7 +1724,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 19;
+	int STEP = 21;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -1354,7 +1752,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConditionalStep()
 	 * @generated
 	 */
-	int CONDITIONAL_STEP = 20;
+	int CONDITIONAL_STEP = 22;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -1409,7 +1807,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNonConditionalStep()
 	 * @generated
 	 */
-	int NON_CONDITIONAL_STEP = 21;
+	int NON_CONDITIONAL_STEP = 23;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1482,7 +1880,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 22;
+	int COMMAND = 24;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1564,7 +1962,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPlugin()
 	 * @generated
 	 */
-	int PLUGIN = 23;
+	int PLUGIN = 25;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1664,7 +2062,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCache()
 	 * @generated
 	 */
-	int CACHE = 24;
+	int CACHE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1773,7 +2171,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 25;
+	int ARTIFACT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1891,7 +2289,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAssignment()
 	 * @generated
 	 */
-	int ASSIGNMENT = 26;
+	int ASSIGNMENT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -1937,7 +2335,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 27;
+	int EXPRESSION = 29;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -1965,7 +2363,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 28;
+	int CONCAT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2002,7 +2400,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 29;
+	int VALUE = 31;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -2030,7 +2428,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 30;
+	int LITERAL = 32;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -2058,7 +2456,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 31;
+	int STRING_LITERAL = 33;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2095,7 +2493,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 32;
+	int INTEGER_LITERAL = 34;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2132,7 +2530,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 33;
+	int DOUBLE_LITERAL = 35;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2169,7 +2567,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 34;
+	int BOOLEAN_LITERAL = 36;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2206,7 +2604,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariable()
 	 * @generated
 	 */
-	int VARIABLE = 35;
+	int VARIABLE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2243,7 +2641,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSecretVariable()
 	 * @generated
 	 */
-	int SECRET_VARIABLE = 36;
+	int SECRET_VARIABLE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2280,7 +2678,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableContext()
 	 * @generated
 	 */
-	int VARIABLE_CONTEXT = 37;
+	int VARIABLE_CONTEXT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' attribute.
@@ -2317,7 +2715,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableDereference()
 	 * @generated
 	 */
-	int VARIABLE_DEREFERENCE = 38;
+	int VARIABLE_DEREFERENCE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -2363,7 +2761,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBuiltInFunction()
 	 * @generated
 	 */
-	int BUILT_IN_FUNCTION = 39;
+	int BUILT_IN_FUNCTION = 41;
 
 	/**
 	 * The number of structural features of the '<em>Built In Function</em>' class.
@@ -2391,7 +2789,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 40;
+	int BINARY_OP = 42;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2437,7 +2835,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 41;
+	int EQUALITY_OP = 43;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2492,7 +2890,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 42;
+	int COMPARISON_OP = 44;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2547,7 +2945,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 43;
+	int LOGICAL_OP = 45;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2593,7 +2991,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 44;
+	int AND = 46;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2639,7 +3037,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 45;
+	int OR = 47;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2685,7 +3083,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAddition()
 	 * @generated
 	 */
-	int ADDITION = 46;
+	int ADDITION = 48;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2731,7 +3129,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSubtraction()
 	 * @generated
 	 */
-	int SUBTRACTION = 47;
+	int SUBTRACTION = 49;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2777,7 +3175,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 48;
+	int UNARY_OP = 50;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -2814,7 +3212,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 49;
+	int NEGATION = 51;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -2851,7 +3249,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPERMISSION_TYPE()
 	 * @generated
 	 */
-	int PERMISSION_TYPE = 50;
+	int PERMISSION_TYPE = 52;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}' enum.
@@ -2861,7 +3259,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 	 * @generated
 	 */
-	int SHELL_TYPE = 51;
+	int SHELL_TYPE = 53;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
@@ -2871,7 +3269,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 52;
+	int INPUT_TYPE = 54;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -2881,7 +3279,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 53;
+	int EQUALITY_OPS = 55;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -2891,7 +3289,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 54;
+	int COMPARISON_OPS = 56;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
@@ -2901,7 +3299,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
 	 * @generated
 	 */
-	int VARIABLE_CONTEXTS = 55;
+	int VARIABLE_CONTEXTS = 57;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
@@ -2911,7 +3309,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
 	 * @generated
 	 */
-	int CACHE_MODE = 56;
+	int CACHE_MODE = 58;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -3098,17 +3496,6 @@ public interface CICDPackage extends EPackage {
 	EReference getJob_IfCondition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps <em>Steps</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Steps</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps()
-	 * @see #getJob()
-	 * @generated
-	 */
-	EReference getJob_Steps();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3173,6 +3560,59 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getJob_AllowFailure();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.ScriptJob <em>Script Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Script Job</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ScriptJob
+	 * @generated
+	 */
+	EClass getScriptJob();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.ScriptJob#getSteps <em>Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.ScriptJob#getSteps()
+	 * @see #getScriptJob()
+	 * @generated
+	 */
+	EReference getScriptJob_Steps();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob <em>Pipeline Call Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pipeline Call Job</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob
+	 * @generated
+	 */
+	EClass getPipelineCallJob();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob#getPipelinePath <em>Pipeline Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Pipeline Path</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob#getPipelinePath()
+	 * @see #getPipelineCallJob()
+	 * @generated
+	 */
+	EReference getPipelineCallJob_PipelinePath();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob#getArgs <em>Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Args</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob#getArgs()
+	 * @see #getPipelineCallJob()
+	 * @generated
+	 */
+	EReference getPipelineCallJob_Args();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent <em>Agent</em>}'.
@@ -4632,14 +5072,6 @@ public interface CICDPackage extends EPackage {
 		EReference JOB__IF_CONDITION = eINSTANCE.getJob_IfCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOB__STEPS = eINSTANCE.getJob_Steps();
-
-		/**
 		 * The meta object literal for the '<em><b>Services</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4686,6 +5118,50 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute JOB__ALLOW_FAILURE = eINSTANCE.getJob_AllowFailure();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ScriptJobImpl <em>Script Job</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.ScriptJobImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getScriptJob()
+		 * @generated
+		 */
+		EClass SCRIPT_JOB = eINSTANCE.getScriptJob();
+
+		/**
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCRIPT_JOB__STEPS = eINSTANCE.getScriptJob_Steps();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineCallJobImpl <em>Pipeline Call Job</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineCallJobImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPipelineCallJob()
+		 * @generated
+		 */
+		EClass PIPELINE_CALL_JOB = eINSTANCE.getPipelineCallJob();
+
+		/**
+		 * The meta object literal for the '<em><b>Pipeline Path</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PIPELINE_CALL_JOB__PIPELINE_PATH = eINSTANCE.getPipelineCallJob_PipelinePath();
+
+		/**
+		 * The meta object literal for the '<em><b>Args</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PIPELINE_CALL_JOB__ARGS = eINSTANCE.getPipelineCallJob_Args();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AgentImpl <em>Agent</em>}' class.

@@ -76,8 +76,7 @@ public class StepItemProvider extends StageChildStepItemProvider {
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 						getResourceLocator(), getString("_UI_Step_arguments_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Step_arguments_feature", "_UI_Step_type"),
-						JenkinsPackage.Literals.STEP__ARGUMENTS, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						JenkinsPackage.Literals.STEP__ARGUMENTS, true, false, false, null, null, null));
 	}
 
 	/**

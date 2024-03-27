@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.provider;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIFactory;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger;
 
@@ -12,6 +13,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -53,24 +56,55 @@ public class TriggerItemProvider extends ItemProviderAdapter implements IEditing
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addCronPropertyDescriptor(object);
+			addIgnoreSpecifiedBranchesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Cron feature.
+	 * This adds a property descriptor for the Ignore Specified Branches feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCronPropertyDescriptor(Object object) {
+	protected void addIgnoreSpecifiedBranchesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Trigger_cron_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Trigger_cron_feature", "_UI_Trigger_type"),
-						CircleCIPackage.Literals.TRIGGER__CRON, true, false, false,
+						getResourceLocator(), getString("_UI_Trigger_ignoreSpecifiedBranches_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Trigger_ignoreSpecifiedBranches_feature",
+								"_UI_Trigger_type"),
+						CircleCIPackage.Literals.TRIGGER__IGNORE_SPECIFIED_BRANCHES, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(CircleCIPackage.Literals.TRIGGER__BRANCHES);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -102,7 +136,8 @@ public class TriggerItemProvider extends ItemProviderAdapter implements IEditing
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Trigger) object).getCron();
+		Boolean labelValue = ((Trigger) object).getIgnoreSpecifiedBranches();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Trigger_type")
 				: getString("_UI_Trigger_type") + " " + label;
 	}
@@ -119,8 +154,11 @@ public class TriggerItemProvider extends ItemProviderAdapter implements IEditing
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Trigger.class)) {
-		case CircleCIPackage.TRIGGER__CRON:
+		case CircleCIPackage.TRIGGER__IGNORE_SPECIFIED_BRANCHES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case CircleCIPackage.TRIGGER__BRANCHES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -136,6 +174,24 @@ public class TriggerItemProvider extends ItemProviderAdapter implements IEditing
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

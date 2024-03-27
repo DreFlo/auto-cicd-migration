@@ -139,7 +139,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/timeoutMinutes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/continueOnError"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/strategy"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/steps"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//Job/outputs"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//ScriptJob">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//ScriptJob/steps"/>
+    </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//WorkflowCallJob">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallJob/uses"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallJob/args"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//WorkflowCallJob/secrets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//WorkflowCallJob/inheritSecrets"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Agent">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Agent/group"/>

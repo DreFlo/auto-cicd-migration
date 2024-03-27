@@ -60,8 +60,10 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 		switch (eClass.getClassifierID()) {
 		case CICDPackage.PIPELINE:
 			return createPipeline();
-		case CICDPackage.JOB:
-			return createJob();
+		case CICDPackage.SCRIPT_JOB:
+			return createScriptJob();
+		case CICDPackage.PIPELINE_CALL_JOB:
+			return createPipelineCallJob();
 		case CICDPackage.AGENT:
 			return createAgent();
 		case CICDPackage.DOCKER_CONTAINER:
@@ -218,9 +220,20 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public Job createJob() {
-		JobImpl job = new JobImpl();
-		return job;
+	public ScriptJob createScriptJob() {
+		ScriptJobImpl scriptJob = new ScriptJobImpl();
+		return scriptJob;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PipelineCallJob createPipelineCallJob() {
+		PipelineCallJobImpl pipelineCallJob = new PipelineCallJobImpl();
+		return pipelineCallJob;
 	}
 
 	/**

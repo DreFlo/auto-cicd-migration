@@ -4,6 +4,8 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.*;
 
+import java.util.Map;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -59,42 +61,94 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 		switch (eClass.getClassifierID()) {
 		case CircleCIPackage.PIPELINE:
 			return createPipeline();
-		case CircleCIPackage.STEP:
-			return createStep();
-		case CircleCIPackage.DOCKER:
-			return createDocker();
-		case CircleCIPackage.LINUX:
-			return createLinux();
-		case CircleCIPackage.MAC_OS:
-			return createMacOs();
-		case CircleCIPackage.WINDOWS_ORB:
-			return createWindowsOrb();
-		case CircleCIPackage.ORB:
-			return createOrb();
+		case CircleCIPackage.ORB_REFERENCE:
+			return createOrbReference();
+		case CircleCIPackage.ORB_DEFINITION:
+			return createOrbDefinition();
 		case CircleCIPackage.COMMAND:
 			return createCommand();
-		case CircleCIPackage.WORKFLOW:
-			return createWorkflow();
-		case CircleCIPackage.ENVIRONMENT:
-			return createEnvironment();
-		case CircleCIPackage.PARAMETERS:
-			return createParameters();
-		case CircleCIPackage.TOOL_FRAMEWORK:
-			return createTool_Framework();
-		case CircleCIPackage.WHEN_UNLESS:
-			return createWhen_Unless();
-		case CircleCIPackage.WHEN_ATTRIBUTE:
-			return createWhen_Attribute();
-		case CircleCIPackage.TRIGGER:
-			return createTrigger();
-		case CircleCIPackage.BRANCH:
-			return createBranch();
+		case CircleCIPackage.PARAMETER:
+			return createParameter();
+		case CircleCIPackage.DOCKER_EXECUTOR:
+			return createDockerExecutor();
+		case CircleCIPackage.DOCKER_CONTAINER:
+			return createDockerContainer();
+		case CircleCIPackage.MACHINE_EXECUTOR:
+			return createMachineExecutor();
+		case CircleCIPackage.MAC_OS_EXECUTOR:
+			return createMacOSExecutor();
+		case CircleCIPackage.WINDOWS_ORB_EXECUTOR:
+			return createWindowsOrbExecutor();
+		case CircleCIPackage.EXECUTOR_REFERENCE_EXECUTOR:
+			return createExecutorReferenceExecutor();
+		case CircleCIPackage.ORB_REFERENCE_EXECUTOR:
+			return createOrbReferenceExecutor();
 		case CircleCIPackage.JOB:
 			return createJob();
-		case CircleCIPackage.STORE_ARTIFACT:
-			return createStore_Artifact();
-		case CircleCIPackage.COMMAND_PARAMS:
-			return createCommand_Params();
+		case CircleCIPackage.RUN_STEP:
+			return createRunStep();
+		case CircleCIPackage.WHEN_STEP:
+			return createWhenStep();
+		case CircleCIPackage.UNLESS_STEP:
+			return createUnlessStep();
+		case CircleCIPackage.CHECKOUT_STEP:
+			return createCheckoutStep();
+		case CircleCIPackage.SETUP_REMOTE_DOCKER_STEP:
+			return createSetupRemoteDockerStep();
+		case CircleCIPackage.SAVE_CACHE_STEP:
+			return createSaveCacheStep();
+		case CircleCIPackage.RESTORE_CACHE_STEP:
+			return createRestoreCacheStep();
+		case CircleCIPackage.STORE_ARTIFACTS_STEP:
+			return createStoreArtifactsStep();
+		case CircleCIPackage.STORE_TEST_RESULTS_STEP:
+			return createStoreTestResultsStep();
+		case CircleCIPackage.PERSIST_TO_WORKSPACE_STEP:
+			return createPersistToWorkspaceStep();
+		case CircleCIPackage.ATTACH_WORKSPACE_STEP:
+			return createAttachWorkspaceStep();
+		case CircleCIPackage.ADD_SSH_KEYS_STEP:
+			return createAddSSHKeysStep();
+		case CircleCIPackage.VARIABLE_ASSIGNMENT:
+			return (EObject) createVariableAssignment();
+		case CircleCIPackage.WORKFLOW:
+			return createWorkflow();
+		case CircleCIPackage.SCHEDULE_TRIGGER:
+			return createScheduleTrigger();
+		case CircleCIPackage.WORKFLOW_DEFINED_JOB_CONFIGURATION:
+			return createWorkflowDefinedJobConfiguration();
+		case CircleCIPackage.WORKFLOW_APPROVAL_JOB_CONFIGURATION:
+			return createWorkflowApprovalJobConfiguration();
+		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION:
+			return createWorkflowOrbJobConfiguration();
+		case CircleCIPackage.MATRIX:
+			return createMatrix();
+		case CircleCIPackage.MATRIX_PARAMETER:
+			return createMatrixParameter();
+		case CircleCIPackage.MATRIX_COMBINATION:
+			return createMatrixCombination();
+		case CircleCIPackage.CONCAT:
+			return createConcat();
+		case CircleCIPackage.AND:
+			return createAnd();
+		case CircleCIPackage.OR:
+			return createOr();
+		case CircleCIPackage.EQUALS:
+			return createEquals();
+		case CircleCIPackage.NOT:
+			return createNot();
+		case CircleCIPackage.MATCHES:
+			return createMatches();
+		case CircleCIPackage.STRING_LITERAL:
+			return createStringLiteral();
+		case CircleCIPackage.INTEGER_LITERAL:
+			return createIntegerLiteral();
+		case CircleCIPackage.DOUBLE_LITERAL:
+			return createDoubleLiteral();
+		case CircleCIPackage.BOOLEAN_LITERAL:
+			return createBooleanLiteral();
+		case CircleCIPackage.VARIABLE_DEREFERENCE:
+			return createVariableDereference();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -108,10 +162,10 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+		case CircleCIPackage.PARAMETER_TYPES:
+			return createPARAMETER_TYPESFromString(eDataType, initialValue);
 		case CircleCIPackage.WHEN_TYPE:
 			return createWHEN_TYPEFromString(eDataType, initialValue);
-		case CircleCIPackage.BRANCH_TYPE:
-			return createBRANCH_TYPEFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -125,10 +179,10 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+		case CircleCIPackage.PARAMETER_TYPES:
+			return convertPARAMETER_TYPESToString(eDataType, instanceValue);
 		case CircleCIPackage.WHEN_TYPE:
 			return convertWHEN_TYPEToString(eDataType, instanceValue);
-		case CircleCIPackage.BRANCH_TYPE:
-			return convertBRANCH_TYPEToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -151,9 +205,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Step createStep() {
-		StepImpl step = new StepImpl();
-		return step;
+	public OrbReference createOrbReference() {
+		OrbReferenceImpl orbReference = new OrbReferenceImpl();
+		return orbReference;
 	}
 
 	/**
@@ -162,53 +216,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Docker createDocker() {
-		DockerImpl docker = new DockerImpl();
-		return docker;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Linux createLinux() {
-		LinuxImpl linux = new LinuxImpl();
-		return linux;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public MacOs createMacOs() {
-		MacOsImpl macOs = new MacOsImpl();
-		return macOs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public WindowsOrb createWindowsOrb() {
-		WindowsOrbImpl windowsOrb = new WindowsOrbImpl();
-		return windowsOrb;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Orb createOrb() {
-		OrbImpl orb = new OrbImpl();
-		return orb;
+	public OrbDefinition createOrbDefinition() {
+		OrbDefinitionImpl orbDefinition = new OrbDefinitionImpl();
+		return orbDefinition;
 	}
 
 	/**
@@ -228,9 +238,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Workflow createWorkflow() {
-		WorkflowImpl workflow = new WorkflowImpl();
-		return workflow;
+	public Parameter createParameter() {
+		ParameterImpl parameter = new ParameterImpl();
+		return parameter;
 	}
 
 	/**
@@ -239,9 +249,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Environment createEnvironment() {
-		EnvironmentImpl environment = new EnvironmentImpl();
-		return environment;
+	public DockerExecutor createDockerExecutor() {
+		DockerExecutorImpl dockerExecutor = new DockerExecutorImpl();
+		return dockerExecutor;
 	}
 
 	/**
@@ -250,9 +260,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Parameters createParameters() {
-		ParametersImpl parameters = new ParametersImpl();
-		return parameters;
+	public DockerContainer createDockerContainer() {
+		DockerContainerImpl dockerContainer = new DockerContainerImpl();
+		return dockerContainer;
 	}
 
 	/**
@@ -261,9 +271,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Tool_Framework createTool_Framework() {
-		Tool_FrameworkImpl tool_Framework = new Tool_FrameworkImpl();
-		return tool_Framework;
+	public MachineExecutor createMachineExecutor() {
+		MachineExecutorImpl machineExecutor = new MachineExecutorImpl();
+		return machineExecutor;
 	}
 
 	/**
@@ -272,9 +282,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public When_Unless createWhen_Unless() {
-		When_UnlessImpl when_Unless = new When_UnlessImpl();
-		return when_Unless;
+	public MacOSExecutor createMacOSExecutor() {
+		MacOSExecutorImpl macOSExecutor = new MacOSExecutorImpl();
+		return macOSExecutor;
 	}
 
 	/**
@@ -283,9 +293,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public When_Attribute createWhen_Attribute() {
-		When_AttributeImpl when_Attribute = new When_AttributeImpl();
-		return when_Attribute;
+	public WindowsOrbExecutor createWindowsOrbExecutor() {
+		WindowsOrbExecutorImpl windowsOrbExecutor = new WindowsOrbExecutorImpl();
+		return windowsOrbExecutor;
 	}
 
 	/**
@@ -294,9 +304,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Trigger createTrigger() {
-		TriggerImpl trigger = new TriggerImpl();
-		return trigger;
+	public ExecutorReferenceExecutor createExecutorReferenceExecutor() {
+		ExecutorReferenceExecutorImpl executorReferenceExecutor = new ExecutorReferenceExecutorImpl();
+		return executorReferenceExecutor;
 	}
 
 	/**
@@ -305,9 +315,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Branch createBranch() {
-		BranchImpl branch = new BranchImpl();
-		return branch;
+	public OrbReferenceExecutor createOrbReferenceExecutor() {
+		OrbReferenceExecutorImpl orbReferenceExecutor = new OrbReferenceExecutorImpl();
+		return orbReferenceExecutor;
 	}
 
 	/**
@@ -327,9 +337,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Store_Artifact createStore_Artifact() {
-		Store_ArtifactImpl store_Artifact = new Store_ArtifactImpl();
-		return store_Artifact;
+	public RunStep createRunStep() {
+		RunStepImpl runStep = new RunStepImpl();
+		return runStep;
 	}
 
 	/**
@@ -338,9 +348,360 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public Command_Params createCommand_Params() {
-		Command_ParamsImpl command_Params = new Command_ParamsImpl();
-		return command_Params;
+	public WhenStep createWhenStep() {
+		WhenStepImpl whenStep = new WhenStepImpl();
+		return whenStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public UnlessStep createUnlessStep() {
+		UnlessStepImpl unlessStep = new UnlessStepImpl();
+		return unlessStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CheckoutStep createCheckoutStep() {
+		CheckoutStepImpl checkoutStep = new CheckoutStepImpl();
+		return checkoutStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SetupRemoteDockerStep createSetupRemoteDockerStep() {
+		SetupRemoteDockerStepImpl setupRemoteDockerStep = new SetupRemoteDockerStepImpl();
+		return setupRemoteDockerStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SaveCacheStep createSaveCacheStep() {
+		SaveCacheStepImpl saveCacheStep = new SaveCacheStepImpl();
+		return saveCacheStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public RestoreCacheStep createRestoreCacheStep() {
+		RestoreCacheStepImpl restoreCacheStep = new RestoreCacheStepImpl();
+		return restoreCacheStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StoreArtifactsStep createStoreArtifactsStep() {
+		StoreArtifactsStepImpl storeArtifactsStep = new StoreArtifactsStepImpl();
+		return storeArtifactsStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StoreTestResultsStep createStoreTestResultsStep() {
+		StoreTestResultsStepImpl storeTestResultsStep = new StoreTestResultsStepImpl();
+		return storeTestResultsStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PersistToWorkspaceStep createPersistToWorkspaceStep() {
+		PersistToWorkspaceStepImpl persistToWorkspaceStep = new PersistToWorkspaceStepImpl();
+		return persistToWorkspaceStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AttachWorkspaceStep createAttachWorkspaceStep() {
+		AttachWorkspaceStepImpl attachWorkspaceStep = new AttachWorkspaceStepImpl();
+		return attachWorkspaceStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AddSSHKeysStep createAddSSHKeysStep() {
+		AddSSHKeysStepImpl addSSHKeysStep = new AddSSHKeysStepImpl();
+		return addSSHKeysStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<String, Expression> createVariableAssignment() {
+		VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
+		return variableAssignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Workflow createWorkflow() {
+		WorkflowImpl workflow = new WorkflowImpl();
+		return workflow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ScheduleTrigger createScheduleTrigger() {
+		ScheduleTriggerImpl scheduleTrigger = new ScheduleTriggerImpl();
+		return scheduleTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WorkflowDefinedJobConfiguration createWorkflowDefinedJobConfiguration() {
+		WorkflowDefinedJobConfigurationImpl workflowDefinedJobConfiguration = new WorkflowDefinedJobConfigurationImpl();
+		return workflowDefinedJobConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WorkflowApprovalJobConfiguration createWorkflowApprovalJobConfiguration() {
+		WorkflowApprovalJobConfigurationImpl workflowApprovalJobConfiguration = new WorkflowApprovalJobConfigurationImpl();
+		return workflowApprovalJobConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WorkflowOrbJobConfiguration createWorkflowOrbJobConfiguration() {
+		WorkflowOrbJobConfigurationImpl workflowOrbJobConfiguration = new WorkflowOrbJobConfigurationImpl();
+		return workflowOrbJobConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Matrix createMatrix() {
+		MatrixImpl matrix = new MatrixImpl();
+		return matrix;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MatrixParameter createMatrixParameter() {
+		MatrixParameterImpl matrixParameter = new MatrixParameterImpl();
+		return matrixParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MatrixCombination createMatrixCombination() {
+		MatrixCombinationImpl matrixCombination = new MatrixCombinationImpl();
+		return matrixCombination;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Concat createConcat() {
+		ConcatImpl concat = new ConcatImpl();
+		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public And createAnd() {
+		AndImpl and = new AndImpl();
+		return and;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Or createOr() {
+		OrImpl or = new OrImpl();
+		return or;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Equals createEquals() {
+		EqualsImpl equals = new EqualsImpl();
+		return equals;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Not createNot() {
+		NotImpl not = new NotImpl();
+		return not;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Matches createMatches() {
+		MatchesImpl matches = new MatchesImpl();
+		return matches;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StringLiteral createStringLiteral() {
+		StringLiteralImpl stringLiteral = new StringLiteralImpl();
+		return stringLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IntegerLiteral createIntegerLiteral() {
+		IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
+		return integerLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DoubleLiteral createDoubleLiteral() {
+		DoubleLiteralImpl doubleLiteral = new DoubleLiteralImpl();
+		return doubleLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BooleanLiteral createBooleanLiteral() {
+		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+		return booleanLiteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public VariableDereference createVariableDereference() {
+		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
+		return variableDereference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PARAMETER_TYPES createPARAMETER_TYPESFromString(EDataType eDataType, String initialValue) {
+		PARAMETER_TYPES result = PARAMETER_TYPES.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPARAMETER_TYPESToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
@@ -362,28 +723,6 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	public String convertWHEN_TYPEToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BRANCH_TYPE createBRANCH_TYPEFromString(EDataType eDataType, String initialValue) {
-		BRANCH_TYPE result = BRANCH_TYPE.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException(
-					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertBRANCH_TYPEToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

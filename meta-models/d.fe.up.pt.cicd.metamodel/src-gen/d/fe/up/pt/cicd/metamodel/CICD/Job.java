@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getIfCondition <em>If Condition</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getServices <em>Services</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMatrix <em>Matrix</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}</li>
@@ -25,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Job extends PipelineBlock {
@@ -72,18 +71,6 @@ public interface Job extends PipelineBlock {
 	 * @generated
 	 */
 	void setIfCondition(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.metamodel.CICD.Step}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Steps</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_Steps()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Step> getSteps();
 
 	/**
 	 * Returns the value of the '<em><b>Services</b></em>' containment reference list.

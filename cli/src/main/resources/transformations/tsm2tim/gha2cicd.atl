@@ -30,7 +30,7 @@ rule Workflow2Pipeline {
 		)
 }
 
-rule Job2Job {
+abstract rule Job2Job {
 	from
 		ghaJob : GHA!Job
 	to
@@ -39,7 +39,6 @@ rule Job2Job {
 			agent <- thisModule.GetAgentFromJob(ghaJob),
 			ifCondition <- ghaJob.ifCondition,
 			matrix <- ghaJob.strategy,
-			steps <- ghaJob.steps,
 			next <- ghaJob.necessaryFor,
 			workingDirectory <-
 				if not ghaJob.defaults.oclIsUndefined() then
@@ -58,6 +57,25 @@ rule Job2Job {
 			concurrencyGroup <- ghaJob.concurrencyGroup,
 			name <- ghaJob.jobName.expression2String(),
 			services <- ghaJob.services
+		)
+}
+
+rule ScriptJob2ScriptJob extends Job2Job {
+	from
+		ghaJob : GHA!ScriptJob
+	to
+		cicdJob : CICD!ScriptJob(
+			steps <- ghaJob.steps
+		)
+}
+
+rule WorkflowCallJob2PipelineCallJob extends Job2Job {
+	from
+		ghaJob : GHA!WorkflowCallJob
+	to
+		cicdJob : CICD!PipelineCallJob(
+			pipelinePath <- ghaJob.uses,
+			args <- ghaJob.args.union(ghaJob.secrets)
 		)
 }
 

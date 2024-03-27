@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import cli.compilers.input.CircleCIInputCompiler;
 import cli.compilers.input.GHAInputCompiler;
 import cli.compilers.input.InputAbstractCompiler;
 import cli.compilers.output.GHAOutputCompiler;
@@ -50,6 +51,7 @@ public class Main {
 
 	private static void registerInputCompilers() {
 		inputCompilers.put("gha", new GHAInputCompiler(new GHA2CICDTransformer(getResourceSet()), new GitHubActionsParser()));
+		inputCompilers.put("circleci", new CircleCIInputCompiler(null, new CircleCIParser()));
 	}
 
 	private static void registerOutputCompilers() {

@@ -19,67 +19,67 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum WHEN_TYPE implements Enumerator {
 	/**
-	 * The '<em><b>On success</b></em>' literal object.
+	 * The '<em><b>ON SUCCESS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ON_SUCCESS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ON_SUCCESS(0, "on_success", "on_success"),
+	ON_SUCCESS(0, "ON_SUCCESS", "on_success"),
 
 	/**
-	 * The '<em><b>Always</b></em>' literal object.
+	 * The '<em><b>ALWAYS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ALWAYS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ALWAYS(1, "always", "always"),
+	ALWAYS(1, "ALWAYS", "always"),
 
 	/**
-	 * The '<em><b>On fail</b></em>' literal object.
+	 * The '<em><b>ON FAIL</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ON_FAIL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ON_FAIL(0, "on_fail", "on_fail");
+	ON_FAIL(2, "ON_FAIL", "on_fail");
 
 	/**
-	 * The '<em><b>On success</b></em>' literal value.
+	 * The '<em><b>ON SUCCESS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ON_SUCCESS
-	 * @model name="on_success"
+	 * @model literal="on_success"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int ON_SUCCESS_VALUE = 0;
 
 	/**
-	 * The '<em><b>Always</b></em>' literal value.
+	 * The '<em><b>ALWAYS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ALWAYS
-	 * @model name="always"
+	 * @model literal="always"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int ALWAYS_VALUE = 1;
 
 	/**
-	 * The '<em><b>On fail</b></em>' literal value.
+	 * The '<em><b>ON FAIL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ON_FAIL
-	 * @model name="on_fail"
+	 * @model literal="on_fail"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ON_FAIL_VALUE = 0;
+	public static final int ON_FAIL_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>WHEN TYPE</b></em>' enumerators.
@@ -147,6 +147,8 @@ public enum WHEN_TYPE implements Enumerator {
 			return ON_SUCCESS;
 		case ALWAYS_VALUE:
 			return ALWAYS;
+		case ON_FAIL_VALUE:
+			return ON_FAIL;
 		}
 		return null;
 	}

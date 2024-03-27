@@ -77,40 +77,67 @@ public interface CircleCIPackage extends EPackage {
 	int PIPELINE__VERSION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Orb</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Setup</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__ORB = 1;
+	int PIPELINE__SETUP = 1;
 
 	/**
-	 * The feature id for the '<em><b>Command</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Orbs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__COMMAND = 2;
+	int PIPELINE__ORBS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Workflow</b></em>' containment reference.
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__WORKFLOW = 3;
+	int PIPELINE__COMMANDS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Job</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE__JOB = 4;
+	int PIPELINE__PARAMETERS = 4;
+
+	/**
+	 * The feature id for the '<em><b>Executors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE__EXECUTORS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Jobs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE__JOBS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Workflows</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIPELINE__WORKFLOWS = 7;
 
 	/**
 	 * The number of structural features of the '<em>Pipeline</em>' class.
@@ -119,7 +146,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PIPELINE_FEATURE_COUNT = 5;
+	int PIPELINE_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Pipeline</em>' class.
@@ -131,381 +158,6 @@ public interface CircleCIPackage extends EPackage {
 	int PIPELINE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl <em>Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStep()
-	 * @generated
-	 */
-	int STEP = 1;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__PARAMETERS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>When attribute</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__WHEN_ATTRIBUTE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Tool framework</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP__TOOL_FRAMEWORK = 3;
-
-	/**
-	 * The number of structural features of the '<em>Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_FEATURE_COUNT = 4;
-
-	/**
-	 * The number of operations of the '<em>Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Execution_EnvImpl <em>Execution Env</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Execution_EnvImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecution_Env()
-	 * @generated
-	 */
-	int EXECUTION_ENV = 2;
-
-	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENV__ENVIRONMENT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENV__STEP = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENV__NAME = 2;
-
-	/**
-	 * The number of structural features of the '<em>Execution Env</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENV_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Execution Env</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_ENV_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerImpl <em>Docker</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDocker()
-	 * @generated
-	 */
-	int DOCKER = 3;
-
-	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER__ENVIRONMENT = EXECUTION_ENV__ENVIRONMENT;
-
-	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER__STEP = EXECUTION_ENV__STEP;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER__NAME = EXECUTION_ENV__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Image</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER__IMAGE = EXECUTION_ENV_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Docker</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER_FEATURE_COUNT = EXECUTION_ENV_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Docker</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER_OPERATION_COUNT = EXECUTION_ENV_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LinuxImpl <em>Linux</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LinuxImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLinux()
-	 * @generated
-	 */
-	int LINUX = 4;
-
-	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINUX__ENVIRONMENT = EXECUTION_ENV__ENVIRONMENT;
-
-	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINUX__STEP = EXECUTION_ENV__STEP;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINUX__NAME = EXECUTION_ENV__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Image</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINUX__IMAGE = EXECUTION_ENV_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Linux</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINUX_FEATURE_COUNT = EXECUTION_ENV_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Linux</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LINUX_OPERATION_COUNT = EXECUTION_ENV_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOsImpl <em>Mac Os</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOsImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMacOs()
-	 * @generated
-	 */
-	int MAC_OS = 5;
-
-	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS__ENVIRONMENT = EXECUTION_ENV__ENVIRONMENT;
-
-	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS__STEP = EXECUTION_ENV__STEP;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS__NAME = EXECUTION_ENV__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Xcode</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS__XCODE = EXECUTION_ENV_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Mac Os</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS_FEATURE_COUNT = EXECUTION_ENV_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Mac Os</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS_OPERATION_COUNT = EXECUTION_ENV_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbImpl <em>Windows Orb</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWindowsOrb()
-	 * @generated
-	 */
-	int WINDOWS_ORB = 6;
-
-	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB__ENVIRONMENT = EXECUTION_ENV__ENVIRONMENT;
-
-	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB__STEP = EXECUTION_ENV__STEP;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB__NAME = EXECUTION_ENV__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Executor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB__EXECUTOR = EXECUTION_ENV_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Windows Orb</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_FEATURE_COUNT = EXECUTION_ENV_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Windows Orb</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_OPERATION_COUNT = EXECUTION_ENV_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbImpl <em>Orb</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -513,25 +165,16 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrb()
 	 * @generated
 	 */
-	int ORB = 7;
+	int ORB = 1;
 
 	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ORB__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORB__VALUE = 1;
+	int ORB__NAME = 0;
 
 	/**
 	 * The number of structural features of the '<em>Orb</em>' class.
@@ -540,7 +183,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ORB_FEATURE_COUNT = 2;
+	int ORB_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Orb</em>' class.
@@ -552,6 +195,125 @@ public interface CircleCIPackage extends EPackage {
 	int ORB_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceImpl <em>Orb Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReference()
+	 * @generated
+	 */
+	int ORB_REFERENCE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE__NAME = ORB__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE__REFERENCE = ORB_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Orb Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_FEATURE_COUNT = ORB_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Orb Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_OPERATION_COUNT = ORB_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbDefinitionImpl <em>Orb Definition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbDefinitionImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbDefinition()
+	 * @generated
+	 */
+	int ORB_DEFINITION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION__NAME = ORB__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Orbs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION__ORBS = ORB_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Commands</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION__COMMANDS = ORB_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Executors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION__EXECUTORS = ORB_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Jobs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION__JOBS = ORB_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Orb Definition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION_FEATURE_COUNT = ORB_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Orb Definition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_DEFINITION_OPERATION_COUNT = ORB_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CommandImpl <em>Command</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -559,7 +321,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 8;
+	int COMMAND = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -571,22 +333,22 @@ public interface CircleCIPackage extends EPackage {
 	int COMMAND__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND__STEP = 1;
+	int COMMAND__STEPS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Command params</b></em>' containment reference.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND__COMMAND_PARAMS = 2;
+	int COMMAND__PARAMETERS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -616,14 +378,14 @@ public interface CircleCIPackage extends EPackage {
 	int COMMAND_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl <em>Workflow</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParameterImpl <em>Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflow()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParameterImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getParameter()
 	 * @generated
 	 */
-	int WORKFLOW = 9;
+	int PARAMETER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -632,154 +394,71 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__NAME = 0;
+	int PARAMETER__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__VERSION = 1;
+	int PARAMETER__TYPE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Trigger</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Enum Values</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__TRIGGER = 2;
+	int PARAMETER__ENUM_VALUES = 2;
 
 	/**
-	 * The feature id for the '<em><b>When unless</b></em>' containment reference.
+	 * The feature id for the '<em><b>Default</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__WHEN_UNLESS = 3;
+	int PARAMETER__DEFAULT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Branch</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW__BRANCH = 4;
+	int PARAMETER__DESCRIPTION = 4;
 
 	/**
-	 * The number of structural features of the '<em>Workflow</em>' class.
+	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_FEATURE_COUNT = 5;
+	int PARAMETER_FEATURE_COUNT = 5;
 
 	/**
-	 * The number of operations of the '<em>Workflow</em>' class.
+	 * The number of operations of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_OPERATION_COUNT = 0;
+	int PARAMETER_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EnvironmentImpl <em>Environment</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl <em>Executor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EnvironmentImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getEnvironment()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecutor()
 	 * @generated
 	 */
-	int ENVIRONMENT = 10;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Environment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Environment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENVIRONMENT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParametersImpl <em>Parameters</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParametersImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getParameters()
-	 * @generated
-	 */
-	int PARAMETERS = 11;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERS__PARAMETER = 0;
-
-	/**
-	 * The number of structural features of the '<em>Parameters</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERS_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Parameters</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERS_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Tool_FrameworkImpl <em>Tool Framework</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Tool_FrameworkImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTool_Framework()
-	 * @generated
-	 */
-	int TOOL_FRAMEWORK = 12;
+	int EXECUTOR = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -788,164 +467,71 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL_FRAMEWORK__NAME = 0;
+	int EXECUTOR__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Tool Framework</em>' class.
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL_FRAMEWORK_FEATURE_COUNT = 1;
+	int EXECUTOR__RESOURCE_CLASS = 1;
 
 	/**
-	 * The number of operations of the '<em>Tool Framework</em>' class.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOOL_FRAMEWORK_OPERATION_COUNT = 0;
+	int EXECUTOR__SHELL = 2;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_UnlessImpl <em>When Unless</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_UnlessImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhen_Unless()
-	 * @generated
-	 */
-	int WHEN_UNLESS = 13;
-
-	/**
-	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_UNLESS__CONDITION = 0;
+	int EXECUTOR__WORKING_DIRECTORY = 3;
 
 	/**
-	 * The feature id for the '<em><b>When step</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_UNLESS__WHEN_STEP = 1;
+	int EXECUTOR__ENVIRONMENT_VARIABLES = 4;
 
 	/**
-	 * The feature id for the '<em><b>Unless step</b></em>' containment reference list.
+	 * The number of structural features of the '<em>Executor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_UNLESS__UNLESS_STEP = 2;
+	int EXECUTOR_FEATURE_COUNT = 5;
 
 	/**
-	 * The number of structural features of the '<em>When Unless</em>' class.
+	 * The number of operations of the '<em>Executor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WHEN_UNLESS_FEATURE_COUNT = 3;
+	int EXECUTOR_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>When Unless</em>' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerExecutorImpl <em>Docker Executor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_UNLESS_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_AttributeImpl <em>When Attribute</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_AttributeImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhen_Attribute()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDockerExecutor()
 	 * @generated
 	 */
-	int WHEN_ATTRIBUTE = 14;
-
-	/**
-	 * The feature id for the '<em><b>When type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_ATTRIBUTE__WHEN_TYPE = 0;
-
-	/**
-	 * The number of structural features of the '<em>When Attribute</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_ATTRIBUTE_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>When Attribute</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WHEN_ATTRIBUTE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl <em>Trigger</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTrigger()
-	 * @generated
-	 */
-	int TRIGGER = 15;
-
-	/**
-	 * The feature id for the '<em><b>Cron</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER__CRON = 0;
-
-	/**
-	 * The number of structural features of the '<em>Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BranchImpl <em>Branch</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BranchImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBranch()
-	 * @generated
-	 */
-	int BRANCH = 16;
+	int DOCKER_EXECUTOR = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -954,34 +540,698 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BRANCH__NAME = 0;
+	int DOCKER_EXECUTOR__NAME = EXECUTOR__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Branch type</b></em>' attribute.
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BRANCH__BRANCH_TYPE = 1;
+	int DOCKER_EXECUTOR__RESOURCE_CLASS = EXECUTOR__RESOURCE_CLASS;
 
 	/**
-	 * The number of structural features of the '<em>Branch</em>' class.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BRANCH_FEATURE_COUNT = 2;
+	int DOCKER_EXECUTOR__SHELL = EXECUTOR__SHELL;
 
 	/**
-	 * The number of operations of the '<em>Branch</em>' class.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BRANCH_OPERATION_COUNT = 0;
+	int DOCKER_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Containers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_EXECUTOR__CONTAINERS = EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Docker Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_EXECUTOR_FEATURE_COUNT = EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Docker Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl <em>Docker Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDockerContainer()
+	 * @generated
+	 */
+	int DOCKER_CONTAINER = 8;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__IMAGE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Entrypoint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__ENTRYPOINT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Command</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__COMMAND = 3;
+
+	/**
+	 * The feature id for the '<em><b>User</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__USER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = 5;
+
+	/**
+	 * The feature id for the '<em><b>Username</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__USERNAME = 6;
+
+	/**
+	 * The feature id for the '<em><b>Password</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__PASSWORD = 7;
+
+	/**
+	 * The feature id for the '<em><b>Oidc</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__OIDC = 8;
+
+	/**
+	 * The feature id for the '<em><b>Aws Access Key ID</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__AWS_ACCESS_KEY_ID = 9;
+
+	/**
+	 * The feature id for the '<em><b>Aws Secret Access Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY = 10;
+
+	/**
+	 * The number of structural features of the '<em>Docker Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER_FEATURE_COUNT = 11;
+
+	/**
+	 * The number of operations of the '<em>Docker Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MachineExecutorImpl <em>Machine Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MachineExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMachineExecutor()
+	 * @generated
+	 */
+	int MACHINE_EXECUTOR = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__NAME = EXECUTOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__RESOURCE_CLASS = EXECUTOR__RESOURCE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__SHELL = EXECUTOR__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__IMAGE = EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Docker Layer Caching</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__DOCKER_LAYER_CACHING = EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Machine Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR_FEATURE_COUNT = EXECUTOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Machine Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOSExecutorImpl <em>Mac OS Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOSExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMacOSExecutor()
+	 * @generated
+	 */
+	int MAC_OS_EXECUTOR = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__NAME = EXECUTOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__RESOURCE_CLASS = EXECUTOR__RESOURCE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__SHELL = EXECUTOR__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Xcode</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__XCODE = EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Mac OS Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR_FEATURE_COUNT = EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Mac OS Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl <em>Windows Orb Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWindowsOrbExecutor()
+	 * @generated
+	 */
+	int WINDOWS_ORB_EXECUTOR = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__NAME = EXECUTOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__RESOURCE_CLASS = EXECUTOR__RESOURCE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__SHELL = EXECUTOR__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Executor</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__EXECUTOR = EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Windows Orb Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR_FEATURE_COUNT = EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Windows Orb Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ReferenceExecutorImpl <em>Reference Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ReferenceExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getReferenceExecutor()
+	 * @generated
+	 */
+	int REFERENCE_EXECUTOR = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR__NAME = EXECUTOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR__RESOURCE_CLASS = EXECUTOR__RESOURCE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR__SHELL = EXECUTOR__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The number of structural features of the '<em>Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR_FEATURE_COUNT = EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorReferenceExecutorImpl <em>Executor Reference Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorReferenceExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecutorReferenceExecutor()
+	 * @generated
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__NAME = REFERENCE_EXECUTOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__RESOURCE_CLASS = REFERENCE_EXECUTOR__RESOURCE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__SHELL = REFERENCE_EXECUTOR__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__WORKING_DIRECTORY = REFERENCE_EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Executor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__EXECUTOR = REFERENCE_EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Executor Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR_FEATURE_COUNT = REFERENCE_EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Executor Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR_OPERATION_COUNT = REFERENCE_EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceExecutorImpl <em>Orb Reference Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceExecutorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReferenceExecutor()
+	 * @generated
+	 */
+	int ORB_REFERENCE_EXECUTOR = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__NAME = REFERENCE_EXECUTOR__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__RESOURCE_CLASS = REFERENCE_EXECUTOR__RESOURCE_CLASS;
+
+	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__SHELL = REFERENCE_EXECUTOR__SHELL;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__WORKING_DIRECTORY = REFERENCE_EXECUTOR__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
+	 * The feature id for the '<em><b>Orb</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__ORB = REFERENCE_EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Orb Executor Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__ORB_EXECUTOR_NAME = REFERENCE_EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Orb Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR_FEATURE_COUNT = REFERENCE_EXECUTOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Orb Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR_OPERATION_COUNT = REFERENCE_EXECUTOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl <em>Job</em>}' class.
@@ -991,7 +1241,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getJob()
 	 * @generated
 	 */
-	int JOB = 17;
+	int JOB = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1003,58 +1253,58 @@ public interface CircleCIPackage extends EPackage {
 	int JOB__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Parallelism</b></em>' attribute.
+	 * The feature id for the '<em><b>Executor</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__PARALLELISM = 1;
+	int JOB__EXECUTOR = 1;
 
 	/**
-	 * The feature id for the '<em><b>Store artifact</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__STORE_ARTIFACT = 2;
+	int JOB__PARAMETERS = 2;
 
 	/**
-	 * The feature id for the '<em><b>When unless</b></em>' containment reference.
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__WHEN_UNLESS = 3;
+	int JOB__STEPS = 3;
 
 	/**
-	 * The feature id for the '<em><b>Execution env</b></em>' containment reference.
+	 * The feature id for the '<em><b>Parallelism</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__EXECUTION_ENV = 4;
+	int JOB__PARALLELISM = 4;
 
 	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__ENVIRONMENT = 5;
+	int JOB__ENVIRONMENT_VARIABLES = 5;
 
 	/**
-	 * The feature id for the '<em><b>Step</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Circle CIIP Ranges</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOB__STEP = 6;
+	int JOB__CIRCLE_CIIP_RANGES = 6;
 
 	/**
 	 * The number of structural features of the '<em>Job</em>' class.
@@ -1075,96 +1325,2163 @@ public interface CircleCIPackage extends EPackage {
 	int JOB_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Store_ArtifactImpl <em>Store Artifact</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl <em>Step</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Store_ArtifactImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStore_Artifact()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStep()
 	 * @generated
 	 */
-	int STORE_ARTIFACT = 18;
+	int STEP = 16;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * The number of structural features of the '<em>Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE_ARTIFACT__PATH = 0;
+	int STEP_FEATURE_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Destination</b></em>' attribute.
+	 * The number of operations of the '<em>Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE_ARTIFACT__DESTINATION = 1;
+	int STEP_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Store Artifact</em>' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl <em>Run Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getRunStep()
+	 * @generated
+	 */
+	int RUN_STEP = 17;
+
+	/**
+	 * The feature id for the '<em><b>Command</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE_ARTIFACT_FEATURE_COUNT = 2;
+	int RUN_STEP__COMMAND = STEP_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Store Artifact</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STORE_ARTIFACT_OPERATION_COUNT = 0;
+	int RUN_STEP__NAME = STEP_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Command_ParamsImpl <em>Command Params</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Command_ParamsImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCommand_Params()
-	 * @generated
-	 */
-	int COMMAND_PARAMS = 19;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_PARAMS__TYPE = 0;
+	int RUN_STEP__SHELL = STEP_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Default</b></em>' attribute.
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_PARAMS__DEFAULT = 1;
+	int RUN_STEP__ENVIRONMENT_VARIABLES = STEP_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Command Params</em>' class.
+	 * The feature id for the '<em><b>Background</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_PARAMS_FEATURE_COUNT = 2;
+	int RUN_STEP__BACKGROUND = STEP_FEATURE_COUNT + 4;
 
 	/**
-	 * The number of operations of the '<em>Command Params</em>' class.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_PARAMS_OPERATION_COUNT = 0;
+	int RUN_STEP__WORKING_DIRECTORY = STEP_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>No Output Timeout</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUN_STEP__NO_OUTPUT_TIMEOUT = STEP_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>When</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUN_STEP__WHEN = STEP_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of structural features of the '<em>Run Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUN_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of operations of the '<em>Run Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUN_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConditionalStepImpl <em>Conditional Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConditionalStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConditionalStep()
+	 * @generated
+	 */
+	int CONDITIONAL_STEP = 18;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP__CONDITION = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP__STEPS = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Conditional Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Conditional Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WhenStepImpl <em>When Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WhenStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhenStep()
+	 * @generated
+	 */
+	int WHEN_STEP = 19;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_STEP__CONDITION = CONDITIONAL_STEP__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_STEP__STEPS = CONDITIONAL_STEP__STEPS;
+
+	/**
+	 * The number of structural features of the '<em>When Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_STEP_FEATURE_COUNT = CONDITIONAL_STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>When Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHEN_STEP_OPERATION_COUNT = CONDITIONAL_STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnlessStepImpl <em>Unless Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnlessStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnlessStep()
+	 * @generated
+	 */
+	int UNLESS_STEP = 20;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLESS_STEP__CONDITION = CONDITIONAL_STEP__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLESS_STEP__STEPS = CONDITIONAL_STEP__STEPS;
+
+	/**
+	 * The number of structural features of the '<em>Unless Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLESS_STEP_FEATURE_COUNT = CONDITIONAL_STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Unless Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNLESS_STEP_OPERATION_COUNT = CONDITIONAL_STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CheckoutStepImpl <em>Checkout Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CheckoutStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCheckoutStep()
+	 * @generated
+	 */
+	int CHECKOUT_STEP = 21;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKOUT_STEP__PATH = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Checkout Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKOUT_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Checkout Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKOUT_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SetupRemoteDockerStepImpl <em>Setup Remote Docker Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SetupRemoteDockerStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getSetupRemoteDockerStep()
+	 * @generated
+	 */
+	int SETUP_REMOTE_DOCKER_STEP = 22;
+
+	/**
+	 * The feature id for the '<em><b>Version</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETUP_REMOTE_DOCKER_STEP__VERSION = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Docker Layer Caching</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Setup Remote Docker Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETUP_REMOTE_DOCKER_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Setup Remote Docker Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SETUP_REMOTE_DOCKER_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SaveCacheStepImpl <em>Save Cache Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SaveCacheStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getSaveCacheStep()
+	 * @generated
+	 */
+	int SAVE_CACHE_STEP = 23;
+
+	/**
+	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_CACHE_STEP__PATHS = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_CACHE_STEP__KEY = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_CACHE_STEP__NAME = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>When</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_CACHE_STEP__WHEN = STEP_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Save Cache Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_CACHE_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Save Cache Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SAVE_CACHE_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RestoreCacheStepImpl <em>Restore Cache Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RestoreCacheStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getRestoreCacheStep()
+	 * @generated
+	 */
+	int RESTORE_CACHE_STEP = 24;
+
+	/**
+	 * The feature id for the '<em><b>Keys</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_CACHE_STEP__KEYS = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_CACHE_STEP__NAME = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Restore Cache Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_CACHE_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Restore Cache Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTORE_CACHE_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreArtifactsStepImpl <em>Store Artifacts Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreArtifactsStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStoreArtifactsStep()
+	 * @generated
+	 */
+	int STORE_ARTIFACTS_STEP = 25;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_ARTIFACTS_STEP__PATH = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Destination</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_ARTIFACTS_STEP__DESTINATION = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Store Artifacts Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_ARTIFACTS_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Store Artifacts Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_ARTIFACTS_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreTestResultsStepImpl <em>Store Test Results Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreTestResultsStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStoreTestResultsStep()
+	 * @generated
+	 */
+	int STORE_TEST_RESULTS_STEP = 26;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_TEST_RESULTS_STEP__PATH = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Store Test Results Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_TEST_RESULTS_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Store Test Results Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORE_TEST_RESULTS_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PersistToWorkspaceStepImpl <em>Persist To Workspace Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PersistToWorkspaceStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPersistToWorkspaceStep()
+	 * @generated
+	 */
+	int PERSIST_TO_WORKSPACE_STEP = 27;
+
+	/**
+	 * The feature id for the '<em><b>Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSIST_TO_WORKSPACE_STEP__ROOT = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSIST_TO_WORKSPACE_STEP__PATHS = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Persist To Workspace Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSIST_TO_WORKSPACE_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Persist To Workspace Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSIST_TO_WORKSPACE_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AttachWorkspaceStepImpl <em>Attach Workspace Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AttachWorkspaceStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAttachWorkspaceStep()
+	 * @generated
+	 */
+	int ATTACH_WORKSPACE_STEP = 28;
+
+	/**
+	 * The feature id for the '<em><b>At</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACH_WORKSPACE_STEP__AT = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Attach Workspace Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACH_WORKSPACE_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Attach Workspace Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTACH_WORKSPACE_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AddSSHKeysStepImpl <em>Add SSH Keys Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AddSSHKeysStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAddSSHKeysStep()
+	 * @generated
+	 */
+	int ADD_SSH_KEYS_STEP = 29;
+
+	/**
+	 * The feature id for the '<em><b>Fingerprints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_SSH_KEYS_STEP__FINGERPRINTS = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Add SSH Keys Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_SSH_KEYS_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Add SSH Keys Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_SSH_KEYS_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableAssignmentImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableAssignment()
+	 * @generated
+	 */
+	int VARIABLE_ASSIGNMENT = 30;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Variable Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Variable Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl <em>Workflow</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflow()
+	 * @generated
+	 */
+	int WORKFLOW = 31;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Triggers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__TRIGGERS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__CONDITION = 2;
+
+	/**
+	 * The feature id for the '<em><b>Is When</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__IS_WHEN = 3;
+
+	/**
+	 * The feature id for the '<em><b>Jobs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW__JOBS = 4;
+
+	/**
+	 * The number of structural features of the '<em>Workflow</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Workflow</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl <em>Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTrigger()
+	 * @generated
+	 */
+	int TRIGGER = 32;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__BRANCHES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER__IGNORE_SPECIFIED_BRANCHES = 1;
+
+	/**
+	 * The number of structural features of the '<em>Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ScheduleTriggerImpl <em>Schedule Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ScheduleTriggerImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getScheduleTrigger()
+	 * @generated
+	 */
+	int SCHEDULE_TRIGGER = 33;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_TRIGGER__BRANCHES = TRIGGER__BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_TRIGGER__IGNORE_SPECIFIED_BRANCHES = TRIGGER__IGNORE_SPECIFIED_BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Cron</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_TRIGGER__CRON = TRIGGER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Schedule Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Schedule Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEDULE_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl <em>Workflow Job Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	int WORKFLOW_JOB_CONFIGURATION = 34;
+
+	/**
+	 * The feature id for the '<em><b>Requires</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__REQUIRES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Contexts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__CONTEXTS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__BRANCHES = 3;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES = 4;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__TAGS = 5;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Tags</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__MATRIX = 7;
+
+	/**
+	 * The feature id for the '<em><b>Pre Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__PRE_STEPS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Post Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION__POST_STEPS = 9;
+
+	/**
+	 * The number of structural features of the '<em>Workflow Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT = 10;
+
+	/**
+	 * The number of operations of the '<em>Workflow Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_JOB_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowDefinedJobConfigurationImpl <em>Workflow Defined Job Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowDefinedJobConfigurationImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowDefinedJobConfiguration()
+	 * @generated
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION = 35;
+
+	/**
+	 * The feature id for the '<em><b>Requires</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__REQUIRES = WORKFLOW_JOB_CONFIGURATION__REQUIRES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__NAME = WORKFLOW_JOB_CONFIGURATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Contexts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__CONTEXTS = WORKFLOW_JOB_CONFIGURATION__CONTEXTS;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__BRANCHES = WORKFLOW_JOB_CONFIGURATION__BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES = WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__TAGS = WORKFLOW_JOB_CONFIGURATION__TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Tags</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS = WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__MATRIX = WORKFLOW_JOB_CONFIGURATION__MATRIX;
+
+	/**
+	 * The feature id for the '<em><b>Pre Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__PRE_STEPS = WORKFLOW_JOB_CONFIGURATION__PRE_STEPS;
+
+	/**
+	 * The feature id for the '<em><b>Post Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__POST_STEPS = WORKFLOW_JOB_CONFIGURATION__POST_STEPS;
+
+	/**
+	 * The feature id for the '<em><b>Job</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION__JOB = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Workflow Defined Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION_FEATURE_COUNT = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Workflow Defined Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION_OPERATION_COUNT = WORKFLOW_JOB_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowApprovalJobConfigurationImpl <em>Workflow Approval Job Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowApprovalJobConfigurationImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowApprovalJobConfiguration()
+	 * @generated
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION = 36;
+
+	/**
+	 * The feature id for the '<em><b>Requires</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__REQUIRES = WORKFLOW_JOB_CONFIGURATION__REQUIRES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__NAME = WORKFLOW_JOB_CONFIGURATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Contexts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__CONTEXTS = WORKFLOW_JOB_CONFIGURATION__CONTEXTS;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__BRANCHES = WORKFLOW_JOB_CONFIGURATION__BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES = WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__TAGS = WORKFLOW_JOB_CONFIGURATION__TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Tags</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS = WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__MATRIX = WORKFLOW_JOB_CONFIGURATION__MATRIX;
+
+	/**
+	 * The feature id for the '<em><b>Pre Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__PRE_STEPS = WORKFLOW_JOB_CONFIGURATION__PRE_STEPS;
+
+	/**
+	 * The feature id for the '<em><b>Post Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION__POST_STEPS = WORKFLOW_JOB_CONFIGURATION__POST_STEPS;
+
+	/**
+	 * The number of structural features of the '<em>Workflow Approval Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION_FEATURE_COUNT = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Workflow Approval Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION_OPERATION_COUNT = WORKFLOW_JOB_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl <em>Workflow Orb Job Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowOrbJobConfiguration()
+	 * @generated
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION = 37;
+
+	/**
+	 * The feature id for the '<em><b>Requires</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__REQUIRES = WORKFLOW_JOB_CONFIGURATION__REQUIRES;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__NAME = WORKFLOW_JOB_CONFIGURATION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Contexts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__CONTEXTS = WORKFLOW_JOB_CONFIGURATION__CONTEXTS;
+
+	/**
+	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__BRANCHES = WORKFLOW_JOB_CONFIGURATION__BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Branches</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES = WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES;
+
+	/**
+	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__TAGS = WORKFLOW_JOB_CONFIGURATION__TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Ignore Specified Tags</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS = WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS;
+
+	/**
+	 * The feature id for the '<em><b>Matrix</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__MATRIX = WORKFLOW_JOB_CONFIGURATION__MATRIX;
+
+	/**
+	 * The feature id for the '<em><b>Pre Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__PRE_STEPS = WORKFLOW_JOB_CONFIGURATION__PRE_STEPS;
+
+	/**
+	 * The feature id for the '<em><b>Post Steps</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__POST_STEPS = WORKFLOW_JOB_CONFIGURATION__POST_STEPS;
+
+	/**
+	 * The feature id for the '<em><b>Orb</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__ORB = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Workflow Orb Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION_FEATURE_COUNT = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Workflow Orb Job Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION_OPERATION_COUNT = WORKFLOW_JOB_CONFIGURATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixImpl <em>Matrix</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrix()
+	 * @generated
+	 */
+	int MATRIX = 38;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX__PARAMETERS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Excludes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX__EXCLUDES = 1;
+
+	/**
+	 * The feature id for the '<em><b>Alias</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX__ALIAS = 2;
+
+	/**
+	 * The number of structural features of the '<em>Matrix</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Matrix</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixParameterImpl <em>Matrix Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixParameterImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixParameter()
+	 * @generated
+	 */
+	int MATRIX_PARAMETER = 39;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_PARAMETER__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_PARAMETER__CELLS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Matrix Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_PARAMETER_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Matrix Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_PARAMETER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixCombinationImpl <em>Matrix Combination</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixCombinationImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixCombination()
+	 * @generated
+	 */
+	int MATRIX_COMBINATION = 40;
+
+	/**
+	 * The feature id for the '<em><b>Entries</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_COMBINATION__ENTRIES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Matrix Combination</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_COMBINATION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Matrix Combination</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATRIX_COMBINATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExpressionImpl <em>Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExpressionImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExpression()
+	 * @generated
+	 */
+	int EXPRESSION = 41;
+
+	/**
+	 * The number of structural features of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConcatImpl <em>Concat</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConcatImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConcat()
+	 * @generated
+	 */
+	int CONCAT = 42;
+
+	/**
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT__EXPRESSIONS = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Concat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Concat</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCAT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicImpl <em>Logic</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogic()
+	 * @generated
+	 */
+	int LOGIC = 43;
+
+	/**
+	 * The number of structural features of the '<em>Logic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGIC_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Logic</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGIC_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.InfinitaryOperatorImpl <em>Infinitary Operator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.InfinitaryOperatorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getInfinitaryOperator()
+	 * @generated
+	 */
+	int INFINITARY_OPERATOR = 44;
+
+	/**
+	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFINITARY_OPERATOR__OPERANDS = LOGIC_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Infinitary Operator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFINITARY_OPERATOR_FEATURE_COUNT = LOGIC_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Infinitary Operator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFINITARY_OPERATOR_OPERATION_COUNT = LOGIC_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AndImpl <em>And</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AndImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAnd()
+	 * @generated
+	 */
+	int AND = 45;
+
+	/**
+	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND__OPERANDS = INFINITARY_OPERATOR__OPERANDS;
+
+	/**
+	 * The number of structural features of the '<em>And</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_FEATURE_COUNT = INFINITARY_OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>And</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_OPERATION_COUNT = INFINITARY_OPERATOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrImpl <em>Or</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOr()
+	 * @generated
+	 */
+	int OR = 46;
+
+	/**
+	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR__OPERANDS = INFINITARY_OPERATOR__OPERANDS;
+
+	/**
+	 * The number of structural features of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_FEATURE_COUNT = INFINITARY_OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Or</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_OPERATION_COUNT = INFINITARY_OPERATOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EqualsImpl <em>Equals</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EqualsImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getEquals()
+	 * @generated
+	 */
+	int EQUALS = 47;
+
+	/**
+	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS__OPERANDS = INFINITARY_OPERATOR__OPERANDS;
+
+	/**
+	 * The number of structural features of the '<em>Equals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_FEATURE_COUNT = INFINITARY_OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Equals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_OPERATION_COUNT = INFINITARY_OPERATOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnaryOperatorImpl <em>Unary Operator</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnaryOperatorImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnaryOperator()
+	 * @generated
+	 */
+	int UNARY_OPERATOR = 48;
+
+	/**
+	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_OPERATOR__OPERAND = LOGIC_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unary Operator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_OPERATOR_FEATURE_COUNT = LOGIC_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Unary Operator</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_OPERATOR_OPERATION_COUNT = LOGIC_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NotImpl <em>Not</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NotImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNot()
+	 * @generated
+	 */
+	int NOT = 49;
+
+	/**
+	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT__OPERAND = UNARY_OPERATOR__OPERAND;
+
+	/**
+	 * The number of structural features of the '<em>Not</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_FEATURE_COUNT = UNARY_OPERATOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Not</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_OPERATION_COUNT = UNARY_OPERATOR_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicFunctionImpl <em>Logic Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicFunctionImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogicFunction()
+	 * @generated
+	 */
+	int LOGIC_FUNCTION = 50;
+
+	/**
+	 * The number of structural features of the '<em>Logic Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGIC_FUNCTION_FEATURE_COUNT = LOGIC_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Logic Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGIC_FUNCTION_OPERATION_COUNT = LOGIC_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatchesImpl <em>Matches</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatchesImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatches()
+	 * @generated
+	 */
+	int MATCHES = 51;
+
+	/**
+	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCHES__PATTERN = LOGIC_FUNCTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCHES__VALUE = LOGIC_FUNCTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Matches</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCHES_FEATURE_COUNT = LOGIC_FUNCTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Matches</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MATCHES_OPERATION_COUNT = LOGIC_FUNCTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ValueImpl <em>Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ValueImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getValue()
+	 * @generated
+	 */
+	int VALUE = 52;
+
+	/**
+	 * The number of structural features of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LiteralImpl <em>Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LiteralImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLiteral()
+	 * @generated
+	 */
+	int LITERAL = 53;
+
+	/**
+	 * The number of structural features of the '<em>Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StringLiteralImpl <em>String Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StringLiteralImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStringLiteral()
+	 * @generated
+	 */
+	int STRING_LITERAL = 54;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>String Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.IntegerLiteralImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getIntegerLiteral()
+	 * @generated
+	 */
+	int INTEGER_LITERAL = 55;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Integer Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DoubleLiteralImpl <em>Double Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DoubleLiteralImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDoubleLiteral()
+	 * @generated
+	 */
+	int DOUBLE_LITERAL = 56;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Double Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Double Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BooleanLiteralImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBooleanLiteral()
+	 * @generated
+	 */
+	int BOOLEAN_LITERAL = 57;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Boolean Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Boolean Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableDereferenceImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableDereference()
+	 * @generated
+	 */
+	int VARIABLE_DEREFERENCE = 58;
+
+	/**
+	 * The feature id for the '<em><b>Names</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE__NAMES = VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Variable Dereference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Variable Dereference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DEREFERENCE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES <em>PARAMETER TYPES</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPARAMETER_TYPES()
+	 * @generated
+	 */
+	int PARAMETER_TYPES = 59;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}' enum.
@@ -1174,17 +3491,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWHEN_TYPE()
 	 * @generated
 	 */
-	int WHEN_TYPE = 20;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE <em>BRANCH TYPE</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBRANCH_TYPE()
-	 * @generated
-	 */
-	int BRANCH_TYPE = 21;
+	int WHEN_TYPE = 60;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline <em>Pipeline</em>}'.
@@ -1208,229 +3515,81 @@ public interface CircleCIPackage extends EPackage {
 	EAttribute getPipeline_Version();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getOrb <em>Orb</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getSetup <em>Setup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Orb</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getOrb()
+	 * @return the meta object for the attribute '<em>Setup</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getSetup()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_Orb();
+	EAttribute getPipeline_Setup();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getCommand <em>Command</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getOrbs <em>Orbs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Command</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getCommand()
+	 * @return the meta object for the containment reference list '<em>Orbs</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getOrbs()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_Command();
+	EReference getPipeline_Orbs();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflow <em>Workflow</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getCommands <em>Commands</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Workflow</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflow()
+	 * @return the meta object for the containment reference list '<em>Commands</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getCommands()
 	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getPipeline_Workflow();
+	EReference getPipeline_Commands();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getJob <em>Job</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Job</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getJob()
-	 * @see #getPipeline()
-	 * @generated
-	 */
-	EReference getPipeline_Job();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step <em>Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Step</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step
-	 * @generated
-	 */
-	EClass getStep();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getParameters()
-	 * @see #getStep()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getParameters()
+	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getStep_Parameters();
+	EReference getPipeline_Parameters();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getExecutors <em>Executors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getName()
-	 * @see #getStep()
+	 * @return the meta object for the containment reference list '<em>Executors</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getExecutors()
+	 * @see #getPipeline()
 	 * @generated
 	 */
-	EAttribute getStep_Name();
+	EReference getPipeline_Executors();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getWhen_attribute <em>When attribute</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getJobs <em>Jobs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>When attribute</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getWhen_attribute()
-	 * @see #getStep()
+	 * @return the meta object for the containment reference list '<em>Jobs</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getJobs()
+	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getStep_When_attribute();
+	EReference getPipeline_Jobs();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getTool_framework <em>Tool framework</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflows <em>Workflows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Tool framework</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step#getTool_framework()
-	 * @see #getStep()
+	 * @return the meta object for the containment reference list '<em>Workflows</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflows()
+	 * @see #getPipeline()
 	 * @generated
 	 */
-	EReference getStep_Tool_framework();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env <em>Execution Env</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Execution Env</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env
-	 * @generated
-	 */
-	EClass getExecution_Env();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env#getEnvironment <em>Environment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Environment</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env#getEnvironment()
-	 * @see #getExecution_Env()
-	 * @generated
-	 */
-	EReference getExecution_Env_Environment();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env#getStep <em>Step</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Step</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env#getStep()
-	 * @see #getExecution_Env()
-	 * @generated
-	 */
-	EReference getExecution_Env_Step();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Execution_Env#getName()
-	 * @see #getExecution_Env()
-	 * @generated
-	 */
-	EAttribute getExecution_Env_Name();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Docker <em>Docker</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Docker</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Docker
-	 * @generated
-	 */
-	EClass getDocker();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Docker#getImage <em>Image</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Image</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Docker#getImage()
-	 * @see #getDocker()
-	 * @generated
-	 */
-	EAttribute getDocker_Image();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Linux <em>Linux</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Linux</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Linux
-	 * @generated
-	 */
-	EClass getLinux();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Linux#getImage <em>Image</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Image</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Linux#getImage()
-	 * @see #getLinux()
-	 * @generated
-	 */
-	EAttribute getLinux_Image();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOs <em>Mac Os</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Mac Os</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOs
-	 * @generated
-	 */
-	EClass getMacOs();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOs#getXcode <em>Xcode</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Xcode</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOs#getXcode()
-	 * @see #getMacOs()
-	 * @generated
-	 */
-	EAttribute getMacOs_Xcode();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrb <em>Windows Orb</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Windows Orb</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrb
-	 * @generated
-	 */
-	EClass getWindowsOrb();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrb#getExecutor <em>Executor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Executor</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrb#getExecutor()
-	 * @see #getWindowsOrb()
-	 * @generated
-	 */
-	EAttribute getWindowsOrb_Executor();
+	EReference getPipeline_Workflows();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb <em>Orb</em>}'.
@@ -1443,26 +3602,90 @@ public interface CircleCIPackage extends EPackage {
 	EClass getOrb();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb#getKey <em>Key</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb#getKey()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb#getName()
 	 * @see #getOrb()
 	 * @generated
 	 */
-	EAttribute getOrb_Key();
+	EAttribute getOrb_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb#getValue <em>Value</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReference <em>Orb Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb#getValue()
-	 * @see #getOrb()
+	 * @return the meta object for class '<em>Orb Reference</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReference
 	 * @generated
 	 */
-	EAttribute getOrb_Value();
+	EClass getOrbReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReference#getReference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reference</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReference#getReference()
+	 * @see #getOrbReference()
+	 * @generated
+	 */
+	EAttribute getOrbReference_Reference();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition <em>Orb Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Orb Definition</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition
+	 * @generated
+	 */
+	EClass getOrbDefinition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getOrbs <em>Orbs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Orbs</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getOrbs()
+	 * @see #getOrbDefinition()
+	 * @generated
+	 */
+	EReference getOrbDefinition_Orbs();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getCommands <em>Commands</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Commands</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getCommands()
+	 * @see #getOrbDefinition()
+	 * @generated
+	 */
+	EReference getOrbDefinition_Commands();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getExecutors <em>Executors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Executors</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getExecutors()
+	 * @see #getOrbDefinition()
+	 * @generated
+	 */
+	EReference getOrbDefinition_Executors();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getJobs <em>Jobs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Jobs</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition#getJobs()
+	 * @see #getOrbDefinition()
+	 * @generated
+	 */
+	EReference getOrbDefinition_Jobs();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command <em>Command</em>}'.
@@ -1486,26 +3709,26 @@ public interface CircleCIPackage extends EPackage {
 	EAttribute getCommand_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getStep <em>Step</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getSteps <em>Steps</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Step</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getStep()
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getSteps()
 	 * @see #getCommand()
 	 * @generated
 	 */
-	EReference getCommand_Step();
+	EReference getCommand_Steps();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getCommand_params <em>Command params</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Command params</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getCommand_params()
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getParameters()
 	 * @see #getCommand()
 	 * @generated
 	 */
-	EReference getCommand_Command_params();
+	EReference getCommand_Parameters();
 
 	/**
 	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command#getDescription <em>Description</em>}'.
@@ -1519,260 +3742,423 @@ public interface CircleCIPackage extends EPackage {
 	EAttribute getCommand_Description();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow <em>Workflow</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Workflow</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow
+	 * @return the meta object for class '<em>Parameter</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter
 	 * @generated
 	 */
-	EClass getWorkflow();
+	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getName()
-	 * @see #getWorkflow()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getName()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getWorkflow_Name();
+	EAttribute getParameter_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getVersion <em>Version</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Version</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getVersion()
-	 * @see #getWorkflow()
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getType()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getWorkflow_Version();
+	EAttribute getParameter_Type();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getTrigger <em>Trigger</em>}'.
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getEnumValues <em>Enum Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Trigger</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getTrigger()
-	 * @see #getWorkflow()
+	 * @return the meta object for the attribute list '<em>Enum Values</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getEnumValues()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EReference getWorkflow_Trigger();
+	EAttribute getParameter_EnumValues();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getWhen_unless <em>When unless</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getDefault <em>Default</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>When unless</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getWhen_unless()
-	 * @see #getWorkflow()
+	 * @return the meta object for the containment reference '<em>Default</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getDefault()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EReference getWorkflow_When_unless();
+	EReference getParameter_Default();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getBranch <em>Branch</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Branch</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getBranch()
-	 * @see #getWorkflow()
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter#getDescription()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EReference getWorkflow_Branch();
+	EAttribute getParameter_Description();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment <em>Environment</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor <em>Executor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Environment</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment
+	 * @return the meta object for class '<em>Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor
 	 * @generated
 	 */
-	EClass getEnvironment();
+	EClass getExecutor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment#getKey <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment#getKey()
-	 * @see #getEnvironment()
-	 * @generated
-	 */
-	EAttribute getEnvironment_Key();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment#getValue()
-	 * @see #getEnvironment()
-	 * @generated
-	 */
-	EAttribute getEnvironment_Value();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameters <em>Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Parameters</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameters
-	 * @generated
-	 */
-	EClass getParameters();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameters#getParameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameters#getParameter()
-	 * @see #getParameters()
-	 * @generated
-	 */
-	EAttribute getParameters_Parameter();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Tool_Framework <em>Tool Framework</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Tool Framework</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Tool_Framework
-	 * @generated
-	 */
-	EClass getTool_Framework();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Tool_Framework#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Tool_Framework#getName()
-	 * @see #getTool_Framework()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getName()
+	 * @see #getExecutor()
 	 * @generated
 	 */
-	EAttribute getTool_Framework_Name();
+	EAttribute getExecutor_Name();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless <em>When Unless</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getResourceClass <em>Resource Class</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>When Unless</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless
+	 * @return the meta object for the containment reference '<em>Resource Class</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getResourceClass()
+	 * @see #getExecutor()
 	 * @generated
 	 */
-	EClass getWhen_Unless();
+	EReference getExecutor_ResourceClass();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless#getCondition <em>Condition</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getShell <em>Shell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Condition</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless#getCondition()
-	 * @see #getWhen_Unless()
+	 * @return the meta object for the containment reference '<em>Shell</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getShell()
+	 * @see #getExecutor()
 	 * @generated
 	 */
-	EAttribute getWhen_Unless_Condition();
+	EReference getExecutor_Shell();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless#getWhen_step <em>When step</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getWorkingDirectory <em>Working Directory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>When step</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless#getWhen_step()
-	 * @see #getWhen_Unless()
+	 * @return the meta object for the containment reference '<em>Working Directory</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getWorkingDirectory()
+	 * @see #getExecutor()
 	 * @generated
 	 */
-	EReference getWhen_Unless_When_step();
+	EReference getExecutor_WorkingDirectory();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless#getUnless_step <em>Unless step</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getEnvironmentVariables <em>Environment Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Unless step</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Unless#getUnless_step()
-	 * @see #getWhen_Unless()
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getEnvironmentVariables()
+	 * @see #getExecutor()
 	 * @generated
 	 */
-	EReference getWhen_Unless_Unless_step();
+	EReference getExecutor_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Attribute <em>When Attribute</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor <em>Docker Executor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>When Attribute</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Attribute
+	 * @return the meta object for class '<em>Docker Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor
 	 * @generated
 	 */
-	EClass getWhen_Attribute();
+	EClass getDockerExecutor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Attribute#getWhen_type <em>When type</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor#getContainers <em>Containers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>When type</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.When_Attribute#getWhen_type()
-	 * @see #getWhen_Attribute()
+	 * @return the meta object for the containment reference list '<em>Containers</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor#getContainers()
+	 * @see #getDockerExecutor()
 	 * @generated
 	 */
-	EAttribute getWhen_Attribute_When_type();
+	EReference getDockerExecutor_Containers();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger <em>Trigger</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer <em>Docker Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Trigger</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger
+	 * @return the meta object for class '<em>Docker Container</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer
 	 * @generated
 	 */
-	EClass getTrigger();
+	EClass getDockerContainer();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger#getCron <em>Cron</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getImage <em>Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cron</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger#getCron()
-	 * @see #getTrigger()
+	 * @return the meta object for the containment reference '<em>Image</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getImage()
+	 * @see #getDockerContainer()
 	 * @generated
 	 */
-	EAttribute getTrigger_Cron();
+	EReference getDockerContainer_Image();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch <em>Branch</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Branch</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch
+	 * @return the meta object for the containment reference '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getName()
+	 * @see #getDockerContainer()
 	 * @generated
 	 */
-	EClass getBranch();
+	EReference getDockerContainer_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEntrypoint <em>Entrypoint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch#getName()
-	 * @see #getBranch()
+	 * @return the meta object for the containment reference list '<em>Entrypoint</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEntrypoint()
+	 * @see #getDockerContainer()
 	 * @generated
 	 */
-	EAttribute getBranch_Name();
+	EReference getDockerContainer_Entrypoint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch#getBranch_type <em>Branch type</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getCommand <em>Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Branch type</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Branch#getBranch_type()
-	 * @see #getBranch()
+	 * @return the meta object for the containment reference list '<em>Command</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getCommand()
+	 * @see #getDockerContainer()
 	 * @generated
 	 */
-	EAttribute getBranch_Branch_type();
+	EReference getDockerContainer_Command();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUser <em>User</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>User</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUser()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_User();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEnvironmentVariables <em>Environment Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEnvironmentVariables()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_EnvironmentVariables();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUsername <em>Username</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Username</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUsername()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_Username();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getPassword <em>Password</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Password</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getPassword()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_Password();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getOidc <em>Oidc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Oidc</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getOidc()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_Oidc();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getAwsAccessKeyID <em>Aws Access Key ID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Aws Access Key ID</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getAwsAccessKeyID()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_AwsAccessKeyID();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getAwsSecretAccessKey <em>Aws Secret Access Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Aws Secret Access Key</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getAwsSecretAccessKey()
+	 * @see #getDockerContainer()
+	 * @generated
+	 */
+	EReference getDockerContainer_AwsSecretAccessKey();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor <em>Machine Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Machine Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor
+	 * @generated
+	 */
+	EClass getMachineExecutor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Image</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor#getImage()
+	 * @see #getMachineExecutor()
+	 * @generated
+	 */
+	EReference getMachineExecutor_Image();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor#getDockerLayerCaching <em>Docker Layer Caching</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Docker Layer Caching</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MachineExecutor#getDockerLayerCaching()
+	 * @see #getMachineExecutor()
+	 * @generated
+	 */
+	EReference getMachineExecutor_DockerLayerCaching();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOSExecutor <em>Mac OS Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mac OS Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOSExecutor
+	 * @generated
+	 */
+	EClass getMacOSExecutor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOSExecutor#getXcode <em>Xcode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Xcode</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MacOSExecutor#getXcode()
+	 * @see #getMacOSExecutor()
+	 * @generated
+	 */
+	EReference getMacOSExecutor_Xcode();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor <em>Windows Orb Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Windows Orb Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor
+	 * @generated
+	 */
+	EClass getWindowsOrbExecutor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor#getExecutor <em>Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor#getExecutor()
+	 * @see #getWindowsOrbExecutor()
+	 * @generated
+	 */
+	EReference getWindowsOrbExecutor_Executor();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ReferenceExecutor <em>Reference Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reference Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ReferenceExecutor
+	 * @generated
+	 */
+	EClass getReferenceExecutor();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ExecutorReferenceExecutor <em>Executor Reference Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Executor Reference Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ExecutorReferenceExecutor
+	 * @generated
+	 */
+	EClass getExecutorReferenceExecutor();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ExecutorReferenceExecutor#getExecutor <em>Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ExecutorReferenceExecutor#getExecutor()
+	 * @see #getExecutorReferenceExecutor()
+	 * @generated
+	 */
+	EReference getExecutorReferenceExecutor_Executor();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor <em>Orb Reference Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Orb Reference Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor
+	 * @generated
+	 */
+	EClass getOrbReferenceExecutor();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor#getOrb <em>Orb</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Orb</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor#getOrb()
+	 * @see #getOrbReferenceExecutor()
+	 * @generated
+	 */
+	EReference getOrbReferenceExecutor_Orb();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor#getOrbExecutorName <em>Orb Executor Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Orb Executor Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor#getOrbExecutorName()
+	 * @see #getOrbReferenceExecutor()
+	 * @generated
+	 */
+	EAttribute getOrbReferenceExecutor_OrbExecutorName();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job <em>Job</em>}'.
@@ -1796,134 +4182,1227 @@ public interface CircleCIPackage extends EPackage {
 	EAttribute getJob_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism <em>Parallelism</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecutor <em>Executor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Parallelism</em>'.
+	 * @return the meta object for the containment reference '<em>Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecutor()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_Executor();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParameters()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_Parameters();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getSteps <em>Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getSteps()
+	 * @see #getJob()
+	 * @generated
+	 */
+	EReference getJob_Steps();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism <em>Parallelism</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Parallelism</em>'.
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EAttribute getJob_Parallelism();
+	EReference getJob_Parallelism();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getStore_artifact <em>Store artifact</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironmentVariables <em>Environment Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Store artifact</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getStore_artifact()
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironmentVariables()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_Store_artifact();
+	EReference getJob_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getWhen_unless <em>When unless</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getCircleCIIPRanges <em>Circle CIIP Ranges</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>When unless</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getWhen_unless()
+	 * @return the meta object for the containment reference '<em>Circle CIIP Ranges</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getCircleCIIPRanges()
 	 * @see #getJob()
 	 * @generated
 	 */
-	EReference getJob_When_unless();
+	EReference getJob_CircleCIIPRanges();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecution_env <em>Execution env</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Execution env</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecution_env()
-	 * @see #getJob()
+	 * @return the meta object for class '<em>Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step
 	 * @generated
 	 */
-	EReference getJob_Execution_env();
+	EClass getStep();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironment <em>Environment</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep <em>Run Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Environment</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironment()
-	 * @see #getJob()
+	 * @return the meta object for class '<em>Run Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep
 	 * @generated
 	 */
-	EReference getJob_Environment();
+	EClass getRunStep();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getStep <em>Step</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getCommand <em>Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Step</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getStep()
-	 * @see #getJob()
+	 * @return the meta object for the containment reference '<em>Command</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getCommand()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EReference getJob_Step();
+	EReference getRunStep_Command();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact <em>Store Artifact</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Store Artifact</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact
+	 * @return the meta object for the containment reference '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getName()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EClass getStore_Artifact();
+	EReference getRunStep_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact#getPath <em>Path</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getShell <em>Shell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Path</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact#getPath()
-	 * @see #getStore_Artifact()
+	 * @return the meta object for the containment reference '<em>Shell</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getShell()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EAttribute getStore_Artifact_Path();
+	EReference getRunStep_Shell();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact#getDestination <em>Destination</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getEnvironmentVariables <em>Environment Variables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Destination</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Store_Artifact#getDestination()
-	 * @see #getStore_Artifact()
+	 * @return the meta object for the map '<em>Environment Variables</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getEnvironmentVariables()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EAttribute getStore_Artifact_Destination();
+	EReference getRunStep_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params <em>Command Params</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getBackground <em>Background</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Command Params</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params
+	 * @return the meta object for the containment reference '<em>Background</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getBackground()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EClass getCommand_Params();
+	EReference getRunStep_Background();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getWorkingDirectory <em>Working Directory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params#getType()
-	 * @see #getCommand_Params()
+	 * @return the meta object for the containment reference '<em>Working Directory</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getWorkingDirectory()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EAttribute getCommand_Params_Type();
+	EReference getRunStep_WorkingDirectory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params#getDefault <em>Default</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getNoOutputTimeout <em>No Output Timeout</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command_Params#getDefault()
-	 * @see #getCommand_Params()
+	 * @return the meta object for the containment reference '<em>No Output Timeout</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getNoOutputTimeout()
+	 * @see #getRunStep()
 	 * @generated
 	 */
-	EAttribute getCommand_Params_Default();
+	EReference getRunStep_NoOutputTimeout();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getWhen <em>When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>When</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getWhen()
+	 * @see #getRunStep()
+	 * @generated
+	 */
+	EAttribute getRunStep_When();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep <em>Conditional Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conditional Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep
+	 * @generated
+	 */
+	EClass getConditionalStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Condition</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep#getCondition()
+	 * @see #getConditionalStep()
+	 * @generated
+	 */
+	EReference getConditionalStep_Condition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep#getSteps <em>Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Steps</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep#getSteps()
+	 * @see #getConditionalStep()
+	 * @generated
+	 */
+	EReference getConditionalStep_Steps();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WhenStep <em>When Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>When Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WhenStep
+	 * @generated
+	 */
+	EClass getWhenStep();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnlessStep <em>Unless Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unless Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnlessStep
+	 * @generated
+	 */
+	EClass getUnlessStep();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep <em>Checkout Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Checkout Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep
+	 * @generated
+	 */
+	EClass getCheckoutStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Path</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep#getPath()
+	 * @see #getCheckoutStep()
+	 * @generated
+	 */
+	EReference getCheckoutStep_Path();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep <em>Setup Remote Docker Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Setup Remote Docker Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep
+	 * @generated
+	 */
+	EClass getSetupRemoteDockerStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Version</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep#getVersion()
+	 * @see #getSetupRemoteDockerStep()
+	 * @generated
+	 */
+	EReference getSetupRemoteDockerStep_Version();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep#getDockerLayerCaching <em>Docker Layer Caching</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Docker Layer Caching</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep#getDockerLayerCaching()
+	 * @see #getSetupRemoteDockerStep()
+	 * @generated
+	 */
+	EReference getSetupRemoteDockerStep_DockerLayerCaching();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep <em>Save Cache Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Save Cache Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep
+	 * @generated
+	 */
+	EClass getSaveCacheStep();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getPaths <em>Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Paths</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getPaths()
+	 * @see #getSaveCacheStep()
+	 * @generated
+	 */
+	EReference getSaveCacheStep_Paths();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Key</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getKey()
+	 * @see #getSaveCacheStep()
+	 * @generated
+	 */
+	EReference getSaveCacheStep_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getName()
+	 * @see #getSaveCacheStep()
+	 * @generated
+	 */
+	EReference getSaveCacheStep_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getWhen <em>When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>When</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep#getWhen()
+	 * @see #getSaveCacheStep()
+	 * @generated
+	 */
+	EAttribute getSaveCacheStep_When();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep <em>Restore Cache Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Restore Cache Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep
+	 * @generated
+	 */
+	EClass getRestoreCacheStep();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep#getKeys <em>Keys</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Keys</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep#getKeys()
+	 * @see #getRestoreCacheStep()
+	 * @generated
+	 */
+	EReference getRestoreCacheStep_Keys();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep#getName()
+	 * @see #getRestoreCacheStep()
+	 * @generated
+	 */
+	EReference getRestoreCacheStep_Name();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep <em>Store Artifacts Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Store Artifacts Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep
+	 * @generated
+	 */
+	EClass getStoreArtifactsStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Path</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep#getPath()
+	 * @see #getStoreArtifactsStep()
+	 * @generated
+	 */
+	EReference getStoreArtifactsStep_Path();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep#getDestination <em>Destination</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Destination</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep#getDestination()
+	 * @see #getStoreArtifactsStep()
+	 * @generated
+	 */
+	EReference getStoreArtifactsStep_Destination();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreTestResultsStep <em>Store Test Results Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Store Test Results Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreTestResultsStep
+	 * @generated
+	 */
+	EClass getStoreTestResultsStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreTestResultsStep#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Path</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreTestResultsStep#getPath()
+	 * @see #getStoreTestResultsStep()
+	 * @generated
+	 */
+	EReference getStoreTestResultsStep_Path();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep <em>Persist To Workspace Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Persist To Workspace Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep
+	 * @generated
+	 */
+	EClass getPersistToWorkspaceStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep#getRoot <em>Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Root</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep#getRoot()
+	 * @see #getPersistToWorkspaceStep()
+	 * @generated
+	 */
+	EReference getPersistToWorkspaceStep_Root();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep#getPaths <em>Paths</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Paths</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep#getPaths()
+	 * @see #getPersistToWorkspaceStep()
+	 * @generated
+	 */
+	EReference getPersistToWorkspaceStep_Paths();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep <em>Attach Workspace Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Attach Workspace Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep
+	 * @generated
+	 */
+	EClass getAttachWorkspaceStep();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep#getAt <em>At</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>At</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep#getAt()
+	 * @see #getAttachWorkspaceStep()
+	 * @generated
+	 */
+	EReference getAttachWorkspaceStep_At();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep <em>Add SSH Keys Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Add SSH Keys Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep
+	 * @generated
+	 */
+	EClass getAddSSHKeysStep();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep#getFingerprints <em>Fingerprints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Fingerprints</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep#getFingerprints()
+	 * @see #getAddSSHKeysStep()
+	 * @generated
+	 */
+	EReference getAddSSHKeysStep_Fingerprints();
+
+	/**
+	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Variable Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Assignment</em>'.
+	 * @see java.util.Map.Entry
+	 * @model keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
+	 *        valueType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression" valueContainment="true" valueRequired="true"
+	 * @generated
+	 */
+	EClass getVariableAssignment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getVariableAssignment()
+	 * @generated
+	 */
+	EAttribute getVariableAssignment_Key();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see java.util.Map.Entry
+	 * @see #getVariableAssignment()
+	 * @generated
+	 */
+	EReference getVariableAssignment_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow <em>Workflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workflow</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow
+	 * @generated
+	 */
+	EClass getWorkflow();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getName()
+	 * @see #getWorkflow()
+	 * @generated
+	 */
+	EAttribute getWorkflow_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getTriggers <em>Triggers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Triggers</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getTriggers()
+	 * @see #getWorkflow()
+	 * @generated
+	 */
+	EReference getWorkflow_Triggers();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Condition</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getCondition()
+	 * @see #getWorkflow()
+	 * @generated
+	 */
+	EReference getWorkflow_Condition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getIsWhen <em>Is When</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is When</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getIsWhen()
+	 * @see #getWorkflow()
+	 * @generated
+	 */
+	EAttribute getWorkflow_IsWhen();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getJobs <em>Jobs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Jobs</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow#getJobs()
+	 * @see #getWorkflow()
+	 * @generated
+	 */
+	EReference getWorkflow_Jobs();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger <em>Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger
+	 * @generated
+	 */
+	EClass getTrigger();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger#getBranches <em>Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Branches</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger#getBranches()
+	 * @see #getTrigger()
+	 * @generated
+	 */
+	EReference getTrigger_Branches();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger#getIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Specified Branches</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger#getIgnoreSpecifiedBranches()
+	 * @see #getTrigger()
+	 * @generated
+	 */
+	EAttribute getTrigger_IgnoreSpecifiedBranches();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ScheduleTrigger <em>Schedule Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Schedule Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ScheduleTrigger
+	 * @generated
+	 */
+	EClass getScheduleTrigger();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ScheduleTrigger#getCron <em>Cron</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cron</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ScheduleTrigger#getCron()
+	 * @see #getScheduleTrigger()
+	 * @generated
+	 */
+	EAttribute getScheduleTrigger_Cron();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration <em>Workflow Job Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workflow Job Configuration</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration
+	 * @generated
+	 */
+	EClass getWorkflowJobConfiguration();
+
+	/**
+	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequires <em>Requires</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Requires</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequires()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_Requires();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getName()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EAttribute getWorkflowJobConfiguration_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getContexts <em>Contexts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Contexts</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getContexts()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_Contexts();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getBranches <em>Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Branches</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getBranches()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_Branches();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getIgnoreSpecifiedBranches <em>Ignore Specified Branches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Specified Branches</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getIgnoreSpecifiedBranches()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EAttribute getWorkflowJobConfiguration_IgnoreSpecifiedBranches();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getTags <em>Tags</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tags</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getTags()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_Tags();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getIgnoreSpecifiedTags <em>Ignore Specified Tags</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ignore Specified Tags</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getIgnoreSpecifiedTags()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EAttribute getWorkflowJobConfiguration_IgnoreSpecifiedTags();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getMatrix <em>Matrix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Matrix</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getMatrix()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_Matrix();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getPreSteps <em>Pre Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Pre Steps</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getPreSteps()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_PreSteps();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getPostSteps <em>Post Steps</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Post Steps</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getPostSteps()
+	 * @see #getWorkflowJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowJobConfiguration_PostSteps();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowDefinedJobConfiguration <em>Workflow Defined Job Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workflow Defined Job Configuration</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowDefinedJobConfiguration
+	 * @generated
+	 */
+	EClass getWorkflowDefinedJobConfiguration();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowDefinedJobConfiguration#getJob <em>Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Job</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowDefinedJobConfiguration#getJob()
+	 * @see #getWorkflowDefinedJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowDefinedJobConfiguration_Job();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowApprovalJobConfiguration <em>Workflow Approval Job Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workflow Approval Job Configuration</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowApprovalJobConfiguration
+	 * @generated
+	 */
+	EClass getWorkflowApprovalJobConfiguration();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration <em>Workflow Orb Job Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Workflow Orb Job Configuration</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration
+	 * @generated
+	 */
+	EClass getWorkflowOrbJobConfiguration();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getOrb <em>Orb</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Orb</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getOrb()
+	 * @see #getWorkflowOrbJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowOrbJobConfiguration_Orb();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getJobName <em>Job Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getJobName()
+	 * @see #getWorkflowOrbJobConfiguration()
+	 * @generated
+	 */
+	EAttribute getWorkflowOrbJobConfiguration_JobName();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix <em>Matrix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matrix</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix
+	 * @generated
+	 */
+	EClass getMatrix();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix#getParameters <em>Parameters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix#getParameters()
+	 * @see #getMatrix()
+	 * @generated
+	 */
+	EReference getMatrix_Parameters();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix#getExcludes <em>Excludes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Excludes</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix#getExcludes()
+	 * @see #getMatrix()
+	 * @generated
+	 */
+	EReference getMatrix_Excludes();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix#getAlias <em>Alias</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Alias</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix#getAlias()
+	 * @see #getMatrix()
+	 * @generated
+	 */
+	EReference getMatrix_Alias();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter <em>Matrix Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matrix Parameter</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter
+	 * @generated
+	 */
+	EClass getMatrixParameter();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter#getName()
+	 * @see #getMatrixParameter()
+	 * @generated
+	 */
+	EAttribute getMatrixParameter_Name();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter#getCells <em>Cells</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Cells</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter#getCells()
+	 * @see #getMatrixParameter()
+	 * @generated
+	 */
+	EReference getMatrixParameter_Cells();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination <em>Matrix Combination</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matrix Combination</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination
+	 * @generated
+	 */
+	EClass getMatrixCombination();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination#getEntries <em>Entries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Entries</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination#getEntries()
+	 * @see #getMatrixCombination()
+	 * @generated
+	 */
+	EReference getMatrixCombination_Entries();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression
+	 * @generated
+	 */
+	EClass getExpression();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat <em>Concat</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concat</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat
+	 * @generated
+	 */
+	EClass getConcat();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat#getExpressions <em>Expressions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat#getExpressions()
+	 * @see #getConcat()
+	 * @generated
+	 */
+	EReference getConcat_Expressions();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Logic <em>Logic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logic</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Logic
+	 * @generated
+	 */
+	EClass getLogic();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.InfinitaryOperator <em>Infinitary Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Infinitary Operator</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.InfinitaryOperator
+	 * @generated
+	 */
+	EClass getInfinitaryOperator();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.InfinitaryOperator#getOperands <em>Operands</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Operands</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.InfinitaryOperator#getOperands()
+	 * @see #getInfinitaryOperator()
+	 * @generated
+	 */
+	EReference getInfinitaryOperator_Operands();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.And <em>And</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.And
+	 * @generated
+	 */
+	EClass getAnd();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Or <em>Or</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Or</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Or
+	 * @generated
+	 */
+	EClass getOr();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Equals <em>Equals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Equals</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Equals
+	 * @generated
+	 */
+	EClass getEquals();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnaryOperator <em>Unary Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unary Operator</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnaryOperator
+	 * @generated
+	 */
+	EClass getUnaryOperator();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnaryOperator#getOperand <em>Operand</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Operand</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnaryOperator#getOperand()
+	 * @see #getUnaryOperator()
+	 * @generated
+	 */
+	EReference getUnaryOperator_Operand();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Not <em>Not</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Not</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Not
+	 * @generated
+	 */
+	EClass getNot();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.LogicFunction <em>Logic Function</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logic Function</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.LogicFunction
+	 * @generated
+	 */
+	EClass getLogicFunction();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches <em>Matches</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Matches</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches
+	 * @generated
+	 */
+	EClass getMatches();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches#getPattern <em>Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Pattern</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches#getPattern()
+	 * @see #getMatches()
+	 * @generated
+	 */
+	EReference getMatches_Pattern();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matches#getValue()
+	 * @see #getMatches()
+	 * @generated
+	 */
+	EReference getMatches_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Value <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Value
+	 * @generated
+	 */
+	EClass getValue();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Literal <em>Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Literal
+	 * @generated
+	 */
+	EClass getLiteral();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StringLiteral <em>String Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Literal</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StringLiteral
+	 * @generated
+	 */
+	EClass getStringLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StringLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StringLiteral#getValue()
+	 * @see #getStringLiteral()
+	 * @generated
+	 */
+	EAttribute getStringLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.IntegerLiteral <em>Integer Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer Literal</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.IntegerLiteral
+	 * @generated
+	 */
+	EClass getIntegerLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.IntegerLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.IntegerLiteral#getValue()
+	 * @see #getIntegerLiteral()
+	 * @generated
+	 */
+	EAttribute getIntegerLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DoubleLiteral <em>Double Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Double Literal</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DoubleLiteral
+	 * @generated
+	 */
+	EClass getDoubleLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DoubleLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DoubleLiteral#getValue()
+	 * @see #getDoubleLiteral()
+	 * @generated
+	 */
+	EAttribute getDoubleLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BooleanLiteral <em>Boolean Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Literal</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BooleanLiteral
+	 * @generated
+	 */
+	EClass getBooleanLiteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BooleanLiteral#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BooleanLiteral#getValue()
+	 * @see #getBooleanLiteral()
+	 * @generated
+	 */
+	EAttribute getBooleanLiteral_Value();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference <em>Variable Dereference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Dereference</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference
+	 * @generated
+	 */
+	EClass getVariableDereference();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference#getNames <em>Names</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Names</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference#getNames()
+	 * @see #getVariableDereference()
+	 * @generated
+	 */
+	EAttribute getVariableDereference_Names();
+
+	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES <em>PARAMETER TYPES</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>PARAMETER TYPES</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES
+	 * @generated
+	 */
+	EEnum getPARAMETER_TYPES();
 
 	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}'.
@@ -1934,16 +5413,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getWHEN_TYPE();
-
-	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE <em>BRANCH TYPE</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>BRANCH TYPE</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE
-	 * @generated
-	 */
-	EEnum getBRANCH_TYPE();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1987,46 +5456,28 @@ public interface CircleCIPackage extends EPackage {
 		EAttribute PIPELINE__VERSION = eINSTANCE.getPipeline_Version();
 
 		/**
-		 * The meta object literal for the '<em><b>Orb</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Setup</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__ORB = eINSTANCE.getPipeline_Orb();
+		EAttribute PIPELINE__SETUP = eINSTANCE.getPipeline_Setup();
 
 		/**
-		 * The meta object literal for the '<em><b>Command</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Orbs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__COMMAND = eINSTANCE.getPipeline_Command();
+		EReference PIPELINE__ORBS = eINSTANCE.getPipeline_Orbs();
 
 		/**
-		 * The meta object literal for the '<em><b>Workflow</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PIPELINE__WORKFLOW = eINSTANCE.getPipeline_Workflow();
-
-		/**
-		 * The meta object literal for the '<em><b>Job</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PIPELINE__JOB = eINSTANCE.getPipeline_Job();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl <em>Step</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStep()
-		 * @generated
-		 */
-		EClass STEP = eINSTANCE.getStep();
+		EReference PIPELINE__COMMANDS = eINSTANCE.getPipeline_Commands();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -2034,137 +5485,31 @@ public interface CircleCIPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__PARAMETERS = eINSTANCE.getStep_Parameters();
+		EReference PIPELINE__PARAMETERS = eINSTANCE.getPipeline_Parameters();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Executors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STEP__NAME = eINSTANCE.getStep_Name();
+		EReference PIPELINE__EXECUTORS = eINSTANCE.getPipeline_Executors();
 
 		/**
-		 * The meta object literal for the '<em><b>When attribute</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Jobs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__WHEN_ATTRIBUTE = eINSTANCE.getStep_When_attribute();
+		EReference PIPELINE__JOBS = eINSTANCE.getPipeline_Jobs();
 
 		/**
-		 * The meta object literal for the '<em><b>Tool framework</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Workflows</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STEP__TOOL_FRAMEWORK = eINSTANCE.getStep_Tool_framework();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Execution_EnvImpl <em>Execution Env</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Execution_EnvImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecution_Env()
-		 * @generated
-		 */
-		EClass EXECUTION_ENV = eINSTANCE.getExecution_Env();
-
-		/**
-		 * The meta object literal for the '<em><b>Environment</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXECUTION_ENV__ENVIRONMENT = eINSTANCE.getExecution_Env_Environment();
-
-		/**
-		 * The meta object literal for the '<em><b>Step</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXECUTION_ENV__STEP = eINSTANCE.getExecution_Env_Step();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EXECUTION_ENV__NAME = eINSTANCE.getExecution_Env_Name();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerImpl <em>Docker</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDocker()
-		 * @generated
-		 */
-		EClass DOCKER = eINSTANCE.getDocker();
-
-		/**
-		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DOCKER__IMAGE = eINSTANCE.getDocker_Image();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LinuxImpl <em>Linux</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LinuxImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLinux()
-		 * @generated
-		 */
-		EClass LINUX = eINSTANCE.getLinux();
-
-		/**
-		 * The meta object literal for the '<em><b>Image</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LINUX__IMAGE = eINSTANCE.getLinux_Image();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOsImpl <em>Mac Os</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOsImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMacOs()
-		 * @generated
-		 */
-		EClass MAC_OS = eINSTANCE.getMacOs();
-
-		/**
-		 * The meta object literal for the '<em><b>Xcode</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MAC_OS__XCODE = eINSTANCE.getMacOs_Xcode();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbImpl <em>Windows Orb</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWindowsOrb()
-		 * @generated
-		 */
-		EClass WINDOWS_ORB = eINSTANCE.getWindowsOrb();
-
-		/**
-		 * The meta object literal for the '<em><b>Executor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute WINDOWS_ORB__EXECUTOR = eINSTANCE.getWindowsOrb_Executor();
+		EReference PIPELINE__WORKFLOWS = eINSTANCE.getPipeline_Workflows();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbImpl <em>Orb</em>}' class.
@@ -2177,20 +5522,72 @@ public interface CircleCIPackage extends EPackage {
 		EClass ORB = eINSTANCE.getOrb();
 
 		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ORB__KEY = eINSTANCE.getOrb_Key();
+		EAttribute ORB__NAME = eINSTANCE.getOrb_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceImpl <em>Orb Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReference()
+		 * @generated
+		 */
+		EClass ORB_REFERENCE = eINSTANCE.getOrbReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ORB__VALUE = eINSTANCE.getOrb_Value();
+		EAttribute ORB_REFERENCE__REFERENCE = eINSTANCE.getOrbReference_Reference();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbDefinitionImpl <em>Orb Definition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbDefinitionImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbDefinition()
+		 * @generated
+		 */
+		EClass ORB_DEFINITION = eINSTANCE.getOrbDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Orbs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_DEFINITION__ORBS = eINSTANCE.getOrbDefinition_Orbs();
+
+		/**
+		 * The meta object literal for the '<em><b>Commands</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_DEFINITION__COMMANDS = eINSTANCE.getOrbDefinition_Commands();
+
+		/**
+		 * The meta object literal for the '<em><b>Executors</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_DEFINITION__EXECUTORS = eINSTANCE.getOrbDefinition_Executors();
+
+		/**
+		 * The meta object literal for the '<em><b>Jobs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_DEFINITION__JOBS = eINSTANCE.getOrbDefinition_Jobs();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CommandImpl <em>Command</em>}' class.
@@ -2211,20 +5608,20 @@ public interface CircleCIPackage extends EPackage {
 		EAttribute COMMAND__NAME = eINSTANCE.getCommand_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Step</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMMAND__STEP = eINSTANCE.getCommand_Step();
+		EReference COMMAND__STEPS = eINSTANCE.getCommand_Steps();
 
 		/**
-		 * The meta object literal for the '<em><b>Command params</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMMAND__COMMAND_PARAMS = eINSTANCE.getCommand_Command_params();
+		EReference COMMAND__PARAMETERS = eINSTANCE.getCommand_Parameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
@@ -2235,14 +5632,14 @@ public interface CircleCIPackage extends EPackage {
 		EAttribute COMMAND__DESCRIPTION = eINSTANCE.getCommand_Description();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl <em>Workflow</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParameterImpl <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflow()
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParameterImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getParameter()
 		 * @generated
 		 */
-		EClass WORKFLOW = eINSTANCE.getWorkflow();
+		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2250,93 +5647,49 @@ public interface CircleCIPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORKFLOW__NAME = eINSTANCE.getWorkflow_Name();
+		EAttribute PARAMETER__NAME = eINSTANCE.getParameter_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORKFLOW__VERSION = eINSTANCE.getWorkflow_Version();
+		EAttribute PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Trigger</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Enum Values</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKFLOW__TRIGGER = eINSTANCE.getWorkflow_Trigger();
+		EAttribute PARAMETER__ENUM_VALUES = eINSTANCE.getParameter_EnumValues();
 
 		/**
-		 * The meta object literal for the '<em><b>When unless</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKFLOW__WHEN_UNLESS = eINSTANCE.getWorkflow_When_unless();
+		EReference PARAMETER__DEFAULT = eINSTANCE.getParameter_Default();
 
 		/**
-		 * The meta object literal for the '<em><b>Branch</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORKFLOW__BRANCH = eINSTANCE.getWorkflow_Branch();
+		EAttribute PARAMETER__DESCRIPTION = eINSTANCE.getParameter_Description();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EnvironmentImpl <em>Environment</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl <em>Executor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EnvironmentImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getEnvironment()
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecutor()
 		 * @generated
 		 */
-		EClass ENVIRONMENT = eINSTANCE.getEnvironment();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENVIRONMENT__KEY = eINSTANCE.getEnvironment_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENVIRONMENT__VALUE = eINSTANCE.getEnvironment_Value();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParametersImpl <em>Parameters</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ParametersImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getParameters()
-		 * @generated
-		 */
-		EClass PARAMETERS = eINSTANCE.getParameters();
-
-		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETERS__PARAMETER = eINSTANCE.getParameters_Parameter();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Tool_FrameworkImpl <em>Tool Framework</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Tool_FrameworkImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTool_Framework()
-		 * @generated
-		 */
-		EClass TOOL_FRAMEWORK = eINSTANCE.getTool_Framework();
+		EClass EXECUTOR = eINSTANCE.getExecutor();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2344,103 +5697,271 @@ public interface CircleCIPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TOOL_FRAMEWORK__NAME = eINSTANCE.getTool_Framework_Name();
+		EAttribute EXECUTOR__NAME = eINSTANCE.getExecutor_Name();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_UnlessImpl <em>When Unless</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_UnlessImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhen_Unless()
-		 * @generated
-		 */
-		EClass WHEN_UNLESS = eINSTANCE.getWhen_Unless();
-
-		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Resource Class</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WHEN_UNLESS__CONDITION = eINSTANCE.getWhen_Unless_Condition();
+		EReference EXECUTOR__RESOURCE_CLASS = eINSTANCE.getExecutor_ResourceClass();
 
 		/**
-		 * The meta object literal for the '<em><b>When step</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Shell</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WHEN_UNLESS__WHEN_STEP = eINSTANCE.getWhen_Unless_When_step();
+		EReference EXECUTOR__SHELL = eINSTANCE.getExecutor_Shell();
 
 		/**
-		 * The meta object literal for the '<em><b>Unless step</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Working Directory</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WHEN_UNLESS__UNLESS_STEP = eINSTANCE.getWhen_Unless_Unless_step();
+		EReference EXECUTOR__WORKING_DIRECTORY = eINSTANCE.getExecutor_WorkingDirectory();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_AttributeImpl <em>When Attribute</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.When_AttributeImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhen_Attribute()
-		 * @generated
-		 */
-		EClass WHEN_ATTRIBUTE = eINSTANCE.getWhen_Attribute();
-
-		/**
-		 * The meta object literal for the '<em><b>When type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WHEN_ATTRIBUTE__WHEN_TYPE = eINSTANCE.getWhen_Attribute_When_type();
+		EReference EXECUTOR__ENVIRONMENT_VARIABLES = eINSTANCE.getExecutor_EnvironmentVariables();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl <em>Trigger</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerExecutorImpl <em>Docker Executor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTrigger()
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDockerExecutor()
 		 * @generated
 		 */
-		EClass TRIGGER = eINSTANCE.getTrigger();
+		EClass DOCKER_EXECUTOR = eINSTANCE.getDockerExecutor();
 
 		/**
-		 * The meta object literal for the '<em><b>Cron</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRIGGER__CRON = eINSTANCE.getTrigger_Cron();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BranchImpl <em>Branch</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BranchImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBranch()
-		 * @generated
-		 */
-		EClass BRANCH = eINSTANCE.getBranch();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Containers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BRANCH__NAME = eINSTANCE.getBranch_Name();
+		EReference DOCKER_EXECUTOR__CONTAINERS = eINSTANCE.getDockerExecutor_Containers();
 
 		/**
-		 * The meta object literal for the '<em><b>Branch type</b></em>' attribute feature.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl <em>Docker Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDockerContainer()
+		 * @generated
+		 */
+		EClass DOCKER_CONTAINER = eINSTANCE.getDockerContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BRANCH__BRANCH_TYPE = eINSTANCE.getBranch_Branch_type();
+		EReference DOCKER_CONTAINER__IMAGE = eINSTANCE.getDockerContainer_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__NAME = eINSTANCE.getDockerContainer_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Entrypoint</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__ENTRYPOINT = eINSTANCE.getDockerContainer_Entrypoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Command</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__COMMAND = eINSTANCE.getDockerContainer_Command();
+
+		/**
+		 * The meta object literal for the '<em><b>User</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__USER = eINSTANCE.getDockerContainer_User();
+
+		/**
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = eINSTANCE.getDockerContainer_EnvironmentVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Username</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__USERNAME = eINSTANCE.getDockerContainer_Username();
+
+		/**
+		 * The meta object literal for the '<em><b>Password</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__PASSWORD = eINSTANCE.getDockerContainer_Password();
+
+		/**
+		 * The meta object literal for the '<em><b>Oidc</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__OIDC = eINSTANCE.getDockerContainer_Oidc();
+
+		/**
+		 * The meta object literal for the '<em><b>Aws Access Key ID</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__AWS_ACCESS_KEY_ID = eINSTANCE.getDockerContainer_AwsAccessKeyID();
+
+		/**
+		 * The meta object literal for the '<em><b>Aws Secret Access Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY = eINSTANCE.getDockerContainer_AwsSecretAccessKey();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MachineExecutorImpl <em>Machine Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MachineExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMachineExecutor()
+		 * @generated
+		 */
+		EClass MACHINE_EXECUTOR = eINSTANCE.getMachineExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MACHINE_EXECUTOR__IMAGE = eINSTANCE.getMachineExecutor_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Docker Layer Caching</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MACHINE_EXECUTOR__DOCKER_LAYER_CACHING = eINSTANCE.getMachineExecutor_DockerLayerCaching();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOSExecutorImpl <em>Mac OS Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MacOSExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMacOSExecutor()
+		 * @generated
+		 */
+		EClass MAC_OS_EXECUTOR = eINSTANCE.getMacOSExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Xcode</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAC_OS_EXECUTOR__XCODE = eINSTANCE.getMacOSExecutor_Xcode();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl <em>Windows Orb Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWindowsOrbExecutor()
+		 * @generated
+		 */
+		EClass WINDOWS_ORB_EXECUTOR = eINSTANCE.getWindowsOrbExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Executor</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WINDOWS_ORB_EXECUTOR__EXECUTOR = eINSTANCE.getWindowsOrbExecutor_Executor();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ReferenceExecutorImpl <em>Reference Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ReferenceExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getReferenceExecutor()
+		 * @generated
+		 */
+		EClass REFERENCE_EXECUTOR = eINSTANCE.getReferenceExecutor();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorReferenceExecutorImpl <em>Executor Reference Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorReferenceExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecutorReferenceExecutor()
+		 * @generated
+		 */
+		EClass EXECUTOR_REFERENCE_EXECUTOR = eINSTANCE.getExecutorReferenceExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Executor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXECUTOR_REFERENCE_EXECUTOR__EXECUTOR = eINSTANCE.getExecutorReferenceExecutor_Executor();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceExecutorImpl <em>Orb Reference Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceExecutorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReferenceExecutor()
+		 * @generated
+		 */
+		EClass ORB_REFERENCE_EXECUTOR = eINSTANCE.getOrbReferenceExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Orb</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_REFERENCE_EXECUTOR__ORB = eINSTANCE.getOrbReferenceExecutor_Orb();
+
+		/**
+		 * The meta object literal for the '<em><b>Orb Executor Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORB_REFERENCE_EXECUTOR__ORB_EXECUTOR_NAME = eINSTANCE.getOrbReferenceExecutor_OrbExecutorName();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl <em>Job</em>}' class.
@@ -2461,104 +5982,1015 @@ public interface CircleCIPackage extends EPackage {
 		EAttribute JOB__NAME = eINSTANCE.getJob_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Parallelism</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Executor</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute JOB__PARALLELISM = eINSTANCE.getJob_Parallelism();
+		EReference JOB__EXECUTOR = eINSTANCE.getJob_Executor();
 
 		/**
-		 * The meta object literal for the '<em><b>Store artifact</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__STORE_ARTIFACT = eINSTANCE.getJob_Store_artifact();
+		EReference JOB__PARAMETERS = eINSTANCE.getJob_Parameters();
 
 		/**
-		 * The meta object literal for the '<em><b>When unless</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__WHEN_UNLESS = eINSTANCE.getJob_When_unless();
+		EReference JOB__STEPS = eINSTANCE.getJob_Steps();
 
 		/**
-		 * The meta object literal for the '<em><b>Execution env</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Parallelism</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__EXECUTION_ENV = eINSTANCE.getJob_Execution_env();
+		EReference JOB__PARALLELISM = eINSTANCE.getJob_Parallelism();
 
 		/**
-		 * The meta object literal for the '<em><b>Environment</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__ENVIRONMENT = eINSTANCE.getJob_Environment();
+		EReference JOB__ENVIRONMENT_VARIABLES = eINSTANCE.getJob_EnvironmentVariables();
 
 		/**
-		 * The meta object literal for the '<em><b>Step</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Circle CIIP Ranges</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference JOB__STEP = eINSTANCE.getJob_Step();
+		EReference JOB__CIRCLE_CIIP_RANGES = eINSTANCE.getJob_CircleCIIPRanges();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Store_ArtifactImpl <em>Store Artifact</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl <em>Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Store_ArtifactImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStore_Artifact()
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStep()
 		 * @generated
 		 */
-		EClass STORE_ARTIFACT = eINSTANCE.getStore_Artifact();
+		EClass STEP = eINSTANCE.getStep();
 
 		/**
-		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl <em>Run Step</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getRunStep()
 		 * @generated
 		 */
-		EAttribute STORE_ARTIFACT__PATH = eINSTANCE.getStore_Artifact_Path();
+		EClass RUN_STEP = eINSTANCE.getRunStep();
 
 		/**
-		 * The meta object literal for the '<em><b>Destination</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Command</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STORE_ARTIFACT__DESTINATION = eINSTANCE.getStore_Artifact_Destination();
+		EReference RUN_STEP__COMMAND = eINSTANCE.getRunStep_Command();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Command_ParamsImpl <em>Command Params</em>}' class.
+		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.Command_ParamsImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCommand_Params()
 		 * @generated
 		 */
-		EClass COMMAND_PARAMS = eINSTANCE.getCommand_Params();
+		EReference RUN_STEP__NAME = eINSTANCE.getRunStep_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Shell</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMAND_PARAMS__TYPE = eINSTANCE.getCommand_Params_Type();
+		EReference RUN_STEP__SHELL = eINSTANCE.getRunStep_Shell();
 
 		/**
-		 * The meta object literal for the '<em><b>Default</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMAND_PARAMS__DEFAULT = eINSTANCE.getCommand_Params_Default();
+		EReference RUN_STEP__ENVIRONMENT_VARIABLES = eINSTANCE.getRunStep_EnvironmentVariables();
+
+		/**
+		 * The meta object literal for the '<em><b>Background</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RUN_STEP__BACKGROUND = eINSTANCE.getRunStep_Background();
+
+		/**
+		 * The meta object literal for the '<em><b>Working Directory</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RUN_STEP__WORKING_DIRECTORY = eINSTANCE.getRunStep_WorkingDirectory();
+
+		/**
+		 * The meta object literal for the '<em><b>No Output Timeout</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RUN_STEP__NO_OUTPUT_TIMEOUT = eINSTANCE.getRunStep_NoOutputTimeout();
+
+		/**
+		 * The meta object literal for the '<em><b>When</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RUN_STEP__WHEN = eINSTANCE.getRunStep_When();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConditionalStepImpl <em>Conditional Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConditionalStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConditionalStep()
+		 * @generated
+		 */
+		EClass CONDITIONAL_STEP = eINSTANCE.getConditionalStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_STEP__CONDITION = eINSTANCE.getConditionalStep_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Steps</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONDITIONAL_STEP__STEPS = eINSTANCE.getConditionalStep_Steps();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WhenStepImpl <em>When Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WhenStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhenStep()
+		 * @generated
+		 */
+		EClass WHEN_STEP = eINSTANCE.getWhenStep();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnlessStepImpl <em>Unless Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnlessStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnlessStep()
+		 * @generated
+		 */
+		EClass UNLESS_STEP = eINSTANCE.getUnlessStep();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CheckoutStepImpl <em>Checkout Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CheckoutStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCheckoutStep()
+		 * @generated
+		 */
+		EClass CHECKOUT_STEP = eINSTANCE.getCheckoutStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHECKOUT_STEP__PATH = eINSTANCE.getCheckoutStep_Path();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SetupRemoteDockerStepImpl <em>Setup Remote Docker Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SetupRemoteDockerStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getSetupRemoteDockerStep()
+		 * @generated
+		 */
+		EClass SETUP_REMOTE_DOCKER_STEP = eINSTANCE.getSetupRemoteDockerStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SETUP_REMOTE_DOCKER_STEP__VERSION = eINSTANCE.getSetupRemoteDockerStep_Version();
+
+		/**
+		 * The meta object literal for the '<em><b>Docker Layer Caching</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING = eINSTANCE
+				.getSetupRemoteDockerStep_DockerLayerCaching();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SaveCacheStepImpl <em>Save Cache Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.SaveCacheStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getSaveCacheStep()
+		 * @generated
+		 */
+		EClass SAVE_CACHE_STEP = eINSTANCE.getSaveCacheStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Paths</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SAVE_CACHE_STEP__PATHS = eINSTANCE.getSaveCacheStep_Paths();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SAVE_CACHE_STEP__KEY = eINSTANCE.getSaveCacheStep_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SAVE_CACHE_STEP__NAME = eINSTANCE.getSaveCacheStep_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>When</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SAVE_CACHE_STEP__WHEN = eINSTANCE.getSaveCacheStep_When();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RestoreCacheStepImpl <em>Restore Cache Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RestoreCacheStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getRestoreCacheStep()
+		 * @generated
+		 */
+		EClass RESTORE_CACHE_STEP = eINSTANCE.getRestoreCacheStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Keys</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESTORE_CACHE_STEP__KEYS = eINSTANCE.getRestoreCacheStep_Keys();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESTORE_CACHE_STEP__NAME = eINSTANCE.getRestoreCacheStep_Name();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreArtifactsStepImpl <em>Store Artifacts Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreArtifactsStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStoreArtifactsStep()
+		 * @generated
+		 */
+		EClass STORE_ARTIFACTS_STEP = eINSTANCE.getStoreArtifactsStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STORE_ARTIFACTS_STEP__PATH = eINSTANCE.getStoreArtifactsStep_Path();
+
+		/**
+		 * The meta object literal for the '<em><b>Destination</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STORE_ARTIFACTS_STEP__DESTINATION = eINSTANCE.getStoreArtifactsStep_Destination();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreTestResultsStepImpl <em>Store Test Results Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StoreTestResultsStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStoreTestResultsStep()
+		 * @generated
+		 */
+		EClass STORE_TEST_RESULTS_STEP = eINSTANCE.getStoreTestResultsStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STORE_TEST_RESULTS_STEP__PATH = eINSTANCE.getStoreTestResultsStep_Path();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PersistToWorkspaceStepImpl <em>Persist To Workspace Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PersistToWorkspaceStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPersistToWorkspaceStep()
+		 * @generated
+		 */
+		EClass PERSIST_TO_WORKSPACE_STEP = eINSTANCE.getPersistToWorkspaceStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSIST_TO_WORKSPACE_STEP__ROOT = eINSTANCE.getPersistToWorkspaceStep_Root();
+
+		/**
+		 * The meta object literal for the '<em><b>Paths</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSIST_TO_WORKSPACE_STEP__PATHS = eINSTANCE.getPersistToWorkspaceStep_Paths();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AttachWorkspaceStepImpl <em>Attach Workspace Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AttachWorkspaceStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAttachWorkspaceStep()
+		 * @generated
+		 */
+		EClass ATTACH_WORKSPACE_STEP = eINSTANCE.getAttachWorkspaceStep();
+
+		/**
+		 * The meta object literal for the '<em><b>At</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATTACH_WORKSPACE_STEP__AT = eINSTANCE.getAttachWorkspaceStep_At();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AddSSHKeysStepImpl <em>Add SSH Keys Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AddSSHKeysStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAddSSHKeysStep()
+		 * @generated
+		 */
+		EClass ADD_SSH_KEYS_STEP = eINSTANCE.getAddSSHKeysStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Fingerprints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD_SSH_KEYS_STEP__FINGERPRINTS = eINSTANCE.getAddSSHKeysStep_Fingerprints();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableAssignmentImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableAssignment()
+		 * @generated
+		 */
+		EClass VARIABLE_ASSIGNMENT = eINSTANCE.getVariableAssignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_ASSIGNMENT__KEY = eINSTANCE.getVariableAssignment_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE_ASSIGNMENT__VALUE = eINSTANCE.getVariableAssignment_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl <em>Workflow</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflow()
+		 * @generated
+		 */
+		EClass WORKFLOW = eINSTANCE.getWorkflow();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW__NAME = eINSTANCE.getWorkflow_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Triggers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW__TRIGGERS = eINSTANCE.getWorkflow_Triggers();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW__CONDITION = eINSTANCE.getWorkflow_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Is When</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW__IS_WHEN = eINSTANCE.getWorkflow_IsWhen();
+
+		/**
+		 * The meta object literal for the '<em><b>Jobs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW__JOBS = eINSTANCE.getWorkflow_Jobs();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl <em>Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.TriggerImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTrigger()
+		 * @generated
+		 */
+		EClass TRIGGER = eINSTANCE.getTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRIGGER__BRANCHES = eINSTANCE.getTrigger_Branches();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Specified Branches</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRIGGER__IGNORE_SPECIFIED_BRANCHES = eINSTANCE.getTrigger_IgnoreSpecifiedBranches();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ScheduleTriggerImpl <em>Schedule Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ScheduleTriggerImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getScheduleTrigger()
+		 * @generated
+		 */
+		EClass SCHEDULE_TRIGGER = eINSTANCE.getScheduleTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Cron</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHEDULE_TRIGGER__CRON = eINSTANCE.getScheduleTrigger_Cron();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl <em>Workflow Job Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowJobConfiguration()
+		 * @generated
+		 */
+		EClass WORKFLOW_JOB_CONFIGURATION = eINSTANCE.getWorkflowJobConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Requires</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__REQUIRES = eINSTANCE.getWorkflowJobConfiguration_Requires();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW_JOB_CONFIGURATION__NAME = eINSTANCE.getWorkflowJobConfiguration_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Contexts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__CONTEXTS = eINSTANCE.getWorkflowJobConfiguration_Contexts();
+
+		/**
+		 * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__BRANCHES = eINSTANCE.getWorkflowJobConfiguration_Branches();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Specified Branches</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_BRANCHES = eINSTANCE
+				.getWorkflowJobConfiguration_IgnoreSpecifiedBranches();
+
+		/**
+		 * The meta object literal for the '<em><b>Tags</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__TAGS = eINSTANCE.getWorkflowJobConfiguration_Tags();
+
+		/**
+		 * The meta object literal for the '<em><b>Ignore Specified Tags</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW_JOB_CONFIGURATION__IGNORE_SPECIFIED_TAGS = eINSTANCE
+				.getWorkflowJobConfiguration_IgnoreSpecifiedTags();
+
+		/**
+		 * The meta object literal for the '<em><b>Matrix</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__MATRIX = eINSTANCE.getWorkflowJobConfiguration_Matrix();
+
+		/**
+		 * The meta object literal for the '<em><b>Pre Steps</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__PRE_STEPS = eINSTANCE.getWorkflowJobConfiguration_PreSteps();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Steps</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_JOB_CONFIGURATION__POST_STEPS = eINSTANCE.getWorkflowJobConfiguration_PostSteps();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowDefinedJobConfigurationImpl <em>Workflow Defined Job Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowDefinedJobConfigurationImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowDefinedJobConfiguration()
+		 * @generated
+		 */
+		EClass WORKFLOW_DEFINED_JOB_CONFIGURATION = eINSTANCE.getWorkflowDefinedJobConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Job</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_DEFINED_JOB_CONFIGURATION__JOB = eINSTANCE.getWorkflowDefinedJobConfiguration_Job();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowApprovalJobConfigurationImpl <em>Workflow Approval Job Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowApprovalJobConfigurationImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowApprovalJobConfiguration()
+		 * @generated
+		 */
+		EClass WORKFLOW_APPROVAL_JOB_CONFIGURATION = eINSTANCE.getWorkflowApprovalJobConfiguration();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl <em>Workflow Orb Job Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowOrbJobConfiguration()
+		 * @generated
+		 */
+		EClass WORKFLOW_ORB_JOB_CONFIGURATION = eINSTANCE.getWorkflowOrbJobConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Orb</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_ORB_JOB_CONFIGURATION__ORB = eINSTANCE.getWorkflowOrbJobConfiguration_Orb();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME = eINSTANCE.getWorkflowOrbJobConfiguration_JobName();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixImpl <em>Matrix</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrix()
+		 * @generated
+		 */
+		EClass MATRIX = eINSTANCE.getMatrix();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX__PARAMETERS = eINSTANCE.getMatrix_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Excludes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX__EXCLUDES = eINSTANCE.getMatrix_Excludes();
+
+		/**
+		 * The meta object literal for the '<em><b>Alias</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX__ALIAS = eINSTANCE.getMatrix_Alias();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixParameterImpl <em>Matrix Parameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixParameterImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixParameter()
+		 * @generated
+		 */
+		EClass MATRIX_PARAMETER = eINSTANCE.getMatrixParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MATRIX_PARAMETER__NAME = eINSTANCE.getMatrixParameter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_PARAMETER__CELLS = eINSTANCE.getMatrixParameter_Cells();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixCombinationImpl <em>Matrix Combination</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatrixCombinationImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixCombination()
+		 * @generated
+		 */
+		EClass MATRIX_COMBINATION = eINSTANCE.getMatrixCombination();
+
+		/**
+		 * The meta object literal for the '<em><b>Entries</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATRIX_COMBINATION__ENTRIES = eINSTANCE.getMatrixCombination_Entries();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExpressionImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExpression()
+		 * @generated
+		 */
+		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConcatImpl <em>Concat</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ConcatImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConcat()
+		 * @generated
+		 */
+		EClass CONCAT = eINSTANCE.getConcat();
+
+		/**
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCAT__EXPRESSIONS = eINSTANCE.getConcat_Expressions();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicImpl <em>Logic</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogic()
+		 * @generated
+		 */
+		EClass LOGIC = eINSTANCE.getLogic();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.InfinitaryOperatorImpl <em>Infinitary Operator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.InfinitaryOperatorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getInfinitaryOperator()
+		 * @generated
+		 */
+		EClass INFINITARY_OPERATOR = eINSTANCE.getInfinitaryOperator();
+
+		/**
+		 * The meta object literal for the '<em><b>Operands</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INFINITARY_OPERATOR__OPERANDS = eINSTANCE.getInfinitaryOperator_Operands();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AndImpl <em>And</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AndImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAnd()
+		 * @generated
+		 */
+		EClass AND = eINSTANCE.getAnd();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrImpl <em>Or</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOr()
+		 * @generated
+		 */
+		EClass OR = eINSTANCE.getOr();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EqualsImpl <em>Equals</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.EqualsImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getEquals()
+		 * @generated
+		 */
+		EClass EQUALS = eINSTANCE.getEquals();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnaryOperatorImpl <em>Unary Operator</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.UnaryOperatorImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnaryOperator()
+		 * @generated
+		 */
+		EClass UNARY_OPERATOR = eINSTANCE.getUnaryOperator();
+
+		/**
+		 * The meta object literal for the '<em><b>Operand</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNARY_OPERATOR__OPERAND = eINSTANCE.getUnaryOperator_Operand();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NotImpl <em>Not</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NotImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNot()
+		 * @generated
+		 */
+		EClass NOT = eINSTANCE.getNot();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicFunctionImpl <em>Logic Function</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LogicFunctionImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogicFunction()
+		 * @generated
+		 */
+		EClass LOGIC_FUNCTION = eINSTANCE.getLogicFunction();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatchesImpl <em>Matches</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MatchesImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatches()
+		 * @generated
+		 */
+		EClass MATCHES = eINSTANCE.getMatches();
+
+		/**
+		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATCHES__PATTERN = eINSTANCE.getMatches_Pattern();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MATCHES__VALUE = eINSTANCE.getMatches_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ValueImpl <em>Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ValueImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getValue()
+		 * @generated
+		 */
+		EClass VALUE = eINSTANCE.getValue();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LiteralImpl <em>Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.LiteralImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLiteral()
+		 * @generated
+		 */
+		EClass LITERAL = eINSTANCE.getLiteral();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StringLiteralImpl <em>String Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.StringLiteralImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStringLiteral()
+		 * @generated
+		 */
+		EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.IntegerLiteralImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getIntegerLiteral()
+		 * @generated
+		 */
+		EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DoubleLiteralImpl <em>Double Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DoubleLiteralImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDoubleLiteral()
+		 * @generated
+		 */
+		EClass DOUBLE_LITERAL = eINSTANCE.getDoubleLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOUBLE_LITERAL__VALUE = eINSTANCE.getDoubleLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.BooleanLiteralImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBooleanLiteral()
+		 * @generated
+		 */
+		EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableDereferenceImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableDereference()
+		 * @generated
+		 */
+		EClass VARIABLE_DEREFERENCE = eINSTANCE.getVariableDereference();
+
+		/**
+		 * The meta object literal for the '<em><b>Names</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_DEREFERENCE__NAMES = eINSTANCE.getVariableDereference_Names();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES <em>PARAMETER TYPES</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPARAMETER_TYPES()
+		 * @generated
+		 */
+		EEnum PARAMETER_TYPES = eINSTANCE.getPARAMETER_TYPES();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}' enum.
@@ -2569,16 +7001,6 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum WHEN_TYPE = eINSTANCE.getWHEN_TYPE();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE <em>BRANCH TYPE</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BRANCH_TYPE
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBRANCH_TYPE()
-		 * @generated
-		 */
-		EEnum BRANCH_TYPE = eINSTANCE.getBRANCH_TYPE();
 
 	}
 

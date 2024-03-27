@@ -2,6 +2,8 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
+import org.eclipse.emf.common.util.EMap;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Step</b></em>'.
@@ -43,25 +45,16 @@ public interface Step extends StageChildStep, ConditionalChildStep {
 	void setCommand(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Arguments</b></em>' attribute.
+	 * Returns the value of the '<em><b>Arguments</b></em>' map.
+	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable},
+	 * and the value is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Arguments</em>' attribute.
-	 * @see #setArguments(String)
+	 * @return the value of the '<em>Arguments</em>' map.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getStep_Arguments()
-	 * @model required="true"
+	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
 	 * @generated
 	 */
-	String getArguments();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step#getArguments <em>Arguments</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Arguments</em>' attribute.
-	 * @see #getArguments()
-	 * @generated
-	 */
-	void setArguments(String value);
+	EMap<Variable, Expression> getArguments();
 
 } // Step

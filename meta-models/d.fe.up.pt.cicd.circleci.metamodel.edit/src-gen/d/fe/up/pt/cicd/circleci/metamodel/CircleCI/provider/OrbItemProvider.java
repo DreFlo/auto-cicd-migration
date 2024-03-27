@@ -53,39 +53,23 @@ public class OrbItemProvider extends ItemProviderAdapter implements IEditingDoma
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addKeyPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Key feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addKeyPropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Orb_key_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Orb_key_feature", "_UI_Orb_type"),
-						CircleCIPackage.Literals.ORB__KEY, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Orb_value_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Orb_value_feature", "_UI_Orb_type"),
-						CircleCIPackage.Literals.ORB__VALUE, true, false, false,
+						getResourceLocator(), getString("_UI_Orb_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Orb_name_feature", "_UI_Orb_type"),
+						CircleCIPackage.Literals.ORB__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -118,7 +102,7 @@ public class OrbItemProvider extends ItemProviderAdapter implements IEditingDoma
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Orb) object).getKey();
+		String label = ((Orb) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_Orb_type")
 				: getString("_UI_Orb_type") + " " + label;
 	}
@@ -135,8 +119,7 @@ public class OrbItemProvider extends ItemProviderAdapter implements IEditingDoma
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Orb.class)) {
-		case CircleCIPackage.ORB__KEY:
-		case CircleCIPackage.ORB__VALUE:
+		case CircleCIPackage.ORB__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

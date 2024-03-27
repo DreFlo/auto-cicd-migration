@@ -88,8 +88,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 						getResourceLocator(), getString("_UI_Job_parallelism_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Job_parallelism_feature", "_UI_Job_type"),
-						CircleCIPackage.Literals.JOB__PARALLELISM, true, false, false,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+						CircleCIPackage.Literals.JOB__PARALLELISM, true, false, false, null, null, null));
 	}
 
 	/**
@@ -104,11 +103,11 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__STORE_ARTIFACT);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__WHEN_UNLESS);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__EXECUTION_ENV);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__ENVIRONMENT);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__STEP);
+			childrenFeatures.add(CircleCIPackage.Literals.JOB__EXECUTOR);
+			childrenFeatures.add(CircleCIPackage.Literals.JOB__PARAMETERS);
+			childrenFeatures.add(CircleCIPackage.Literals.JOB__STEPS);
+			childrenFeatures.add(CircleCIPackage.Literals.JOB__ENVIRONMENT_VARIABLES);
+			childrenFeatures.add(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES);
 		}
 		return childrenFeatures;
 	}
@@ -176,11 +175,11 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		case CircleCIPackage.JOB__PARALLELISM:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case CircleCIPackage.JOB__STORE_ARTIFACT:
-		case CircleCIPackage.JOB__WHEN_UNLESS:
-		case CircleCIPackage.JOB__EXECUTION_ENV:
-		case CircleCIPackage.JOB__ENVIRONMENT:
-		case CircleCIPackage.JOB__STEP:
+		case CircleCIPackage.JOB__EXECUTOR:
+		case CircleCIPackage.JOB__PARAMETERS:
+		case CircleCIPackage.JOB__STEPS:
+		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
+		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -198,29 +197,83 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STORE_ARTIFACT,
-				CircleCIFactory.eINSTANCE.createStore_Artifact()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createDockerExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__WHEN_UNLESS,
-				CircleCIFactory.eINSTANCE.createWhen_Unless()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createMachineExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTION_ENV,
-				CircleCIFactory.eINSTANCE.createDocker()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createMacOSExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTION_ENV,
-				CircleCIFactory.eINSTANCE.createLinux()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createWindowsOrbExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTION_ENV,
-				CircleCIFactory.eINSTANCE.createMacOs()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createExecutorReferenceExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTION_ENV,
-				CircleCIFactory.eINSTANCE.createWindowsOrb()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createOrbReferenceExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__ENVIRONMENT,
-				CircleCIFactory.eINSTANCE.createEnvironment()));
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__PARAMETERS,
+				CircleCIFactory.eINSTANCE.createParameter()));
 
-		newChildDescriptors
-				.add(createChildParameter(CircleCIPackage.Literals.JOB__STEP, CircleCIFactory.eINSTANCE.createStep()));
+		newChildDescriptors.add(
+				createChildParameter(CircleCIPackage.Literals.JOB__STEPS, CircleCIFactory.eINSTANCE.createRunStep()));
+
+		newChildDescriptors.add(
+				createChildParameter(CircleCIPackage.Literals.JOB__STEPS, CircleCIFactory.eINSTANCE.createWhenStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createUnlessStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createCheckoutStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createSetupRemoteDockerStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createSaveCacheStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createRestoreCacheStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createStoreArtifactsStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createStoreTestResultsStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createPersistToWorkspaceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createAttachWorkspaceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__ENVIRONMENT_VARIABLES,
+				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

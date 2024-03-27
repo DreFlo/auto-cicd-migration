@@ -32,11 +32,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getContinueOnError <em>Continue On Error</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getStrategy <em>Strategy</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getSteps <em>Steps</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getOutputs <em>Outputs</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getJob()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Job extends EObject {
@@ -350,15 +350,15 @@ public interface Job extends EObject {
 	void setStrategy(Matrix value);
 
 	/**
-	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.AbstractStep}.
+	 * Returns the value of the '<em><b>Outputs</b></em>' reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Output}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Steps</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getJob_Steps()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Outputs</em>' reference list.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getJob_Outputs()
+	 * @model
 	 * @generated
 	 */
-	EList<AbstractStep> getSteps();
+	EList<Output> getOutputs();
 
 } // Job

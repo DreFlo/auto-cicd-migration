@@ -10,7 +10,7 @@ on:
       - master
 
 env:
-  SERVER: production${{ env.SERVER }}
+  SERVER: production
 
 permissions:
   checks: write
@@ -74,6 +74,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         exclude:
           - os: windows-latest
+            version: 2022
     needs:
       - my_third_job
       - my_second_job_a
@@ -83,3 +84,7 @@ jobs:
         env:
           TWO: 2
       - run: echo "one.txt"
+  my_call_job:
+    runs-on: ubuntu-latest
+    needs: my_fourth_job
+    uses: actions/checkout@v

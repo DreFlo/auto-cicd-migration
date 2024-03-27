@@ -32,31 +32,12 @@ rule Pipeline extends PipelineBlock {
 		)
 }
 
-rule Job extends PipelineBlock {
+abstract rule Job extends PipelineBlock {
 	from
 		input : CICD1!Job
 	to
 		output : CICD2!Job(
 			id <- input.id,
-			steps <- input.steps->collect(step | 
-				if step.oclIsKindOf(CICD1!ConditionalStep) then
-					thisModule.ConditionalStep(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Command) then
-					thisModule.Command(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Plugin) then
-					thisModule.Plugin(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Cache) then
-					thisModule.Cache(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Artifact) then
-					thisModule.Artifact(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-				else 
-					OclUndefined
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
 			ifCondition <-  
 				if input.ifCondition.oclIsKindOf(CICD1!Concat) then
 					thisModule.Concat(input.ifCondition, Sequence{}, '')
@@ -93,6 +74,36 @@ rule Job extends PipelineBlock {
 			environmentVariables <- 
 				input.environmentVariables
 				->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
+		)
+}
+
+rule ScriptJob extends Job {
+	from
+		input: CICD1!ScriptJob
+	to
+		output: CICD2!ScriptJob(
+			steps <- input.steps->collect(step | 
+					if step.oclIsKindOf(CICD1!ConditionalStep) then
+						thisModule.ConditionalStep(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
+					else if step.oclIsKindOf(CICD1!Command) then
+						thisModule.Command(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
+					else if step.oclIsKindOf(CICD1!Plugin) then
+						thisModule.Plugin(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
+					else if step.oclIsKindOf(CICD1!Cache) then
+						thisModule.Cache(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
+					else if step.oclIsKindOf(CICD1!Artifact) then
+						thisModule.Artifact(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
+					else 
+						OclUndefined
+					endif
+					endif
+					endif
+					endif
+					endif
+				),			
+			environmentVariables <- 
+				input.environmentVariables
+				->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
 				->union(input.steps->collect(step |
 					if step.oclIsKindOf(CICD1!ConditionalStep) then
 						step.thenRun->collect(thenStep | 
@@ -119,6 +130,42 @@ rule Job extends PipelineBlock {
 					endif
 					)->flatten()
 				)
+		)
+}
+
+rule PipelineCallJob extends Job {
+	from
+		input: CICD1!PipelineCallJob
+	to
+		output: CICD2!PipelineCallJob(
+			pipelinePath <- 
+				if input.pipelinePath.oclIsKindOf(CICD1!Concat) then
+					thisModule.Concat(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!ComparisonOp) then
+					thisModule.ComparisonOp(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!EqualityOp) then
+					thisModule.EqualityOp(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!And) then
+					thisModule.And(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!Or) then
+					thisModule.Or(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!Variable) then
+					thisModule.Variable(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!Negation) then
+					thisModule.Negation(input.pipelinePath, Sequence{}, '')
+				else if input.pipelinePath.oclIsKindOf(CICD1!VariableDereference) then
+					thisModule.VariableDereference(input.pipelinePath, Sequence{}, '')
+				else
+					input.pipelinePath
+				endif
+				endif
+				endif
+				endif
+				endif
+				endif
+				endif
+				endif,
+			args <- input.args->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
 		)
 }
 

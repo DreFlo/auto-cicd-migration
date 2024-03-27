@@ -7,8 +7,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
 import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
-import d.fe.up.pt.cicd.metamodel.CICD.Step;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -35,7 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getIfCondition <em>If Condition</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getServices <em>Services</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getMatrix <em>Matrix</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getPrevious <em>Previous</em>}</li>
@@ -46,7 +43,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class JobImpl extends PipelineBlockImpl implements Job {
+public abstract class JobImpl extends PipelineBlockImpl implements Job {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -76,16 +73,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @ordered
 	 */
 	protected Expression ifCondition;
-
-	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSteps()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Step> steps;
 
 	/**
 	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
@@ -267,19 +254,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<Step> getSteps() {
-		if (steps == null) {
-			steps = new EObjectContainmentEList<Step>(Step.class, this, CICDPackage.JOB__STEPS);
-		}
-		return steps;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<DockerContainer> getServices() {
 		if (services == null) {
 			services = new EObjectContainmentEList<DockerContainer>(DockerContainer.class, this,
@@ -442,8 +416,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		switch (featureID) {
 		case CICDPackage.JOB__IF_CONDITION:
 			return basicSetIfCondition(null, msgs);
-		case CICDPackage.JOB__STEPS:
-			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__SERVICES:
 			return ((InternalEList<?>) getServices()).basicRemove(otherEnd, msgs);
 		case CICDPackage.JOB__MATRIX:
@@ -468,8 +440,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return getId();
 		case CICDPackage.JOB__IF_CONDITION:
 			return getIfCondition();
-		case CICDPackage.JOB__STEPS:
-			return getSteps();
 		case CICDPackage.JOB__SERVICES:
 			return getServices();
 		case CICDPackage.JOB__MATRIX:
@@ -500,10 +470,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return;
 		case CICDPackage.JOB__IF_CONDITION:
 			setIfCondition((Expression) newValue);
-			return;
-		case CICDPackage.JOB__STEPS:
-			getSteps().clear();
-			getSteps().addAll((Collection<? extends Step>) newValue);
 			return;
 		case CICDPackage.JOB__SERVICES:
 			getServices().clear();
@@ -544,9 +510,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__IF_CONDITION:
 			setIfCondition((Expression) null);
 			return;
-		case CICDPackage.JOB__STEPS:
-			getSteps().clear();
-			return;
 		case CICDPackage.JOB__SERVICES:
 			getServices().clear();
 			return;
@@ -581,8 +544,6 @@ public class JobImpl extends PipelineBlockImpl implements Job {
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case CICDPackage.JOB__IF_CONDITION:
 			return ifCondition != null;
-		case CICDPackage.JOB__STEPS:
-			return steps != null && !steps.isEmpty();
 		case CICDPackage.JOB__SERVICES:
 			return services != null && !services.isEmpty();
 		case CICDPackage.JOB__MATRIX:

@@ -16,10 +16,13 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getVersion <em>Version</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getOrb <em>Orb</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getCommand <em>Command</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflow <em>Workflow</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getJob <em>Job</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getSetup <em>Setup</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getOrbs <em>Orbs</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getCommands <em>Commands</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getExecutors <em>Executors</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getJobs <em>Jobs</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflows <em>Workflows</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline()
@@ -34,7 +37,7 @@ public interface Pipeline extends EObject {
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Version()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getVersion();
@@ -50,61 +53,97 @@ public interface Pipeline extends EObject {
 	void setVersion(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Orb</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Setup</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Setup</em>' attribute.
+	 * @see #setSetup(Boolean)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Setup()
+	 * @model
+	 * @generated
+	 */
+	Boolean getSetup();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getSetup <em>Setup</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Setup</em>' attribute.
+	 * @see #getSetup()
+	 * @generated
+	 */
+	void setSetup(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Orbs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Orb</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Orb()
+	 * @return the value of the '<em>Orbs</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Orbs()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Orb> getOrb();
+	EList<Orb> getOrbs();
 
 	/**
-	 * Returns the value of the '<em><b>Command</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Commands</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Command</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Command()
+	 * @return the value of the '<em>Commands</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Commands()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Command> getCommand();
+	EList<Command> getCommands();
 
 	/**
-	 * Returns the value of the '<em><b>Workflow</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Workflow</em>' containment reference.
-	 * @see #setWorkflow(Workflow)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Workflow()
+	 * @return the value of the '<em>Parameters</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Parameters()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Workflow getWorkflow();
+	EList<Parameter> getParameters();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline#getWorkflow <em>Workflow</em>}' containment reference.
+	 * Returns the value of the '<em><b>Executors</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Workflow</em>' containment reference.
-	 * @see #getWorkflow()
+	 * @return the value of the '<em>Executors</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Executors()
+	 * @model containment="true"
 	 * @generated
 	 */
-	void setWorkflow(Workflow value);
+	EList<Executor> getExecutors();
 
 	/**
-	 * Returns the value of the '<em><b>Job</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Jobs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Job</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Job()
+	 * @return the value of the '<em>Jobs</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Jobs()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Job> getJob();
+	EList<Job> getJobs();
+
+	/**
+	 * Returns the value of the '<em><b>Workflows</b></em>' containment reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Workflows</em>' containment reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getPipeline_Workflows()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Workflow> getWorkflows();
 
 } // Pipeline

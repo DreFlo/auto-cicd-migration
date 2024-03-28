@@ -166,9 +166,6 @@ public class UnaryOpItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
-				JenkinsFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
@@ -182,6 +179,24 @@ public class UnaryOpItemProvider extends ExpressionItemProvider {
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
 				JenkinsFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.UNARY_OP__CHILD_EXPR,
+				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
 	}
 
 }

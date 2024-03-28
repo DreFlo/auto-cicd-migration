@@ -96,7 +96,7 @@
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//Step">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/command"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//Step/arguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference Jenkins.ecore#//Step/arguments"/>
     </genClasses>
     <genClasses ecoreClass="Jenkins.ecore#//ConditionalStep">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//ConditionalStep/ifCondition"/>
@@ -151,9 +151,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Assignment/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Assignment/value"/>
     </genClasses>
-    <genClasses ecoreClass="Jenkins.ecore#//Concat">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//Concat/expressions"/>
+    <genClasses ecoreClass="Jenkins.ecore#//StepArgument">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//StepArgument/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//StepArgument/value"/>
     </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//StepSingleArgument"/>
+    <genClasses ecoreClass="Jenkins.ecore#//StepListArgument"/>
     <genClasses ecoreClass="Jenkins.ecore#//BinaryOp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//BinaryOp/lhs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//BinaryOp/rhs"/>
@@ -224,5 +227,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenTriggeredBy/cause"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Jenkins.ecore#//WhenTriggeredBy/detail"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="Jenkins.ecore#//BuildStepParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//BuildStepParameter/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Jenkins.ecore#//BuildStepParameter/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Jenkins.ecore#//StringBuildStepParameter"/>
+    <genClasses ecoreClass="Jenkins.ecore#//CredentialsBuildStepParameter"/>
+    <genClasses ecoreClass="Jenkins.ecore#//PasswordBuildStepParameter"/>
+    <genClasses ecoreClass="Jenkins.ecore#//BooleanBuildStepParameter"/>
+    <genClasses ecoreClass="Jenkins.ecore#//TextBuildStepParameter"/>
+    <genClasses ecoreClass="Jenkins.ecore#//ChoiceBuildStepParameter"/>
   </genPackages>
 </genmodel:GenModel>

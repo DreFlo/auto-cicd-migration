@@ -97,8 +97,57 @@ lazy rule CreateBuildStep {
 		step : Jenkins!Step(
 			command <- 'build',
 			arguments <- Sequence{
-				thisModule.CreateAssignment('job', job.pipelinePath)
+				thisModule.CreateStepSingleArgument('job', Sequence{job.pipelinePath}),
+				thisModule.CreateStepListArgument('parameters', job.args->collect(arg | thisModule.assignment2BuildStepParameterHelper(arg)))
 			}
+		)
+}
+
+lazy rule Assignment2StringBuildStepParameter {
+	from
+		assignment : CICD!Assignment
+	to
+		buildStepParameter : Jenkins!StringBuildStepParameter(
+			name <- thisModule.String2StringLiteral(assignment.key.name),
+			value <- thisModule.String2StringLiteral(assignment.value.value)
+		)
+}
+
+lazy rule Assignment2CredentialsBuildStepParameter {
+	from
+		assignment : CICD!Assignment
+	to
+		buildStepParameter : Jenkins!CredentialsBuildStepParameter(
+			name <- thisModule.String2StringLiteral(assignment.key.name),
+			value <- thisModule.String2StringLiteral(assignment.value.expression2String())
+		)
+}
+
+lazy rule Assignment2BooleanBuildStepParameter {
+	from
+		assignment : CICD!Assignment
+	to
+		buildStepParameter : Jenkins!BooleanBuildStepParameter(
+			name <- thisModule.String2StringLiteral(assignment.key.name),
+			value <- thisModule.Boolean2BooleanLiteral(assignment.value.value)
+		)
+}
+
+lazy rule String2StringLiteral {
+	from
+		string : String
+	to
+		stringLiteral : Jenkins!StringLiteral(
+			value <- string
+		)
+}
+
+lazy rule Boolean2BooleanLiteral {
+	from
+		boolean : Boolean
+	to
+		booleanLiteral : Jenkins!BooleanLiteral(
+			value <- boolean
 		)
 }
 
@@ -198,18 +247,29 @@ rule Command2Step {
 	to
 		jenkinsStep : Jenkins!Step(
 			command <- 'sh',
-			arguments <- thisModule.CreateAssignment('script', cicdStep.program)
+			arguments <- thisModule.CreateStepSingleArgument('script', Sequence{cicdStep.program})
 		)
 }
 
-lazy rule CreateAssignment {
+lazy rule CreateStepSingleArgument {
 	from
 		string : String,
-		expression : CICD!Expression
+		expressions : Sequence(CICD!Expression)
 	to
-		assignment : Jenkins!Assignment(
+		assignment : Jenkins!StepSingleArgument(
 			key <- thisModule.String2Variable(string),
-			value <- expression
+			value <- expressions
+		)
+}
+
+lazy rule CreateStepListArgument {
+	from
+		string : String,
+		expressions : Sequence(CICD!Expression)
+	to
+		assignment : Jenkins!StepListArgument(
+			key <- thisModule.String2Variable(string),
+			value <- expressions
 		)
 }
 
@@ -239,12 +299,12 @@ abstract rule Expression2Expression {
 		jenkinsExpression : Jenkins!Expression
 }
 
-rule Concat2Concat extends Expression2Expression {
+rule Concat2StringLiteral extends Expression2Expression {
 	from
 		cicdExpression : CICD!Concat
 	to
-		jenkinsExpression : Jenkins!Concat(
-			expressions <- cicdExpression.expressions
+		jenkinsExpression : Jenkins!StringLiteral(
+			value <- cicdExpression.expression2String()
 		)
 }
 
@@ -360,15 +420,7 @@ rule VariableContext2JenkinsContext extends Value2Value {
 		cicdExpression : CICD!VariableContext
 	to
 		jenkinsExpression : Jenkins!JenkinsContext(
-			name <- 
-				if cicdExpression.context = #ENV then
-					#env
-				else if cicdExpression.context = #PARAMS then
-					#params
-				else
-					#""
-				endif
-				endif
+			name <- thisModule.variableContext2JenkinsContext(cicdExpression.context)
 		)
 }
 
@@ -440,6 +492,7 @@ rule Agent2DockerAgent {
 		)
 	to
 		jenkinsAgent : Jenkins!DockerAgent(
+--- Conjunction
 			labels <- cicdAgent.labels->first(),
 			docker <- cicdAgent.container
 		)
@@ -450,7 +503,7 @@ rule DockerContainer2DockerContainer {
 		cicdDockerContainer : CICD!DockerContainer
 	to
 		jenkinsDockerContainer : Jenkins!DockerContainer(
-			image <- cicdDockerContainer.image.expression2String(),
+			image <- if not cicdDockerContainer.image.oclIsUndefined() then cicdDockerContainer.image.expression2String() else OclUndefined endif,
 			label <- cicdDockerContainer.label,
 			args <- 
 				thisModule.getDockerArguments(
@@ -517,7 +570,7 @@ helper context CICD!BooleanLiteral def : expression2String() : String = self.val
 
 helper context CICD!Concat def : expression2String() : String =
 	let exprStrings : Sequence(String) =
-		self.expressions->collect(expr | expr.expression2String()) in
+		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
 		exprStrings->iterate(exprString; joinedString: String = '' |
 			joinedString.concat(exprString)
 		);
@@ -526,18 +579,10 @@ helper context CICD!Variable def : expression2String() : String =
 	'$'.concat(self.name);
 
 helper context CICD!VariableContext def : expression2String() : String =
-	self.context.toString();
+	thisModule.variableContext2JenkinsContext(self.context).toString();
 
 helper context CICD!VariableDereference def : expression2String() : String =
-	if self.variable.oclIsTypeOf(CICD!VariableContext) then
-		if self.variable.context = #ENV then
-			'$' + self.property
-		else
-			self.property
-		endif
-	else
-		self.variable.expression2String() + '.' + self.property
-	endif;
+	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;
 
 helper def : groupJobs(jobStreams : Sequence(CICD!Job), previous : Set(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
 	let next : Sequence(CICD!Job) = 
@@ -585,7 +630,7 @@ helper def : environmentVariables2String(environmentVariables : Sequence(CICD!As
 	).toString().trim();
 
 helper def : environmentVariable2String(environmentVariable : CICD!Assignment) : String =
-	'-e ' + environmentVariable.key.name + '=\\\'' + environmentVariable.value.expression2String() + '\\\'';
+	'-e ' + environmentVariable.key.name + '=\\\'' + if not environmentVariable.value.oclIsUndefined() then environmentVariable.value.expression2String() else 'OclUndefined' endif + '\\\'';
 
 helper def : ports2String(ports : Sequence(CICD!Expression)) : String =
 	ports->iterate(port; acc : String = '' |
@@ -596,3 +641,29 @@ helper def : volumes2String(volumes : Sequence(CICD!Expression)) : String =
 	volumes->iterate(volume; acc : String = '' |
 		acc + ' ' + '-v ' + volume.expression2String()
 	).toString().trim();
+
+helper def : variableContext2JenkinsContext(variableContext : CICD!VARIABLE_CONTEXTS) : Jenkins!JENKINS_CONTEXTS =
+	if variableContext = #ENV then
+		#env
+	else if variableContext = #PARAMS then
+		#params
+	else
+		#""
+	endif
+	endif;
+
+helper def : assignment2BuildStepParameterHelper(assignment : CICD!Assignment) : Jenkins!BuildStepParameter =
+	if assignment.oclIsUndefined() then
+		OclUndefined
+	else if assignment.key.oclIsTypeOf(CICD!SecretVariable) then
+		thisModule.Assignment2CredentialsBuildStepParameter(assignment)
+	else if assignment.value.oclIsTypeOf(CICD!StringLiteral) or assignment.value.oclIsTypeOf(CICD!Concat) then
+		thisModule.Assignment2StringBuildStepParameter(assignment)
+	else if assignment.value.oclIsTypeOf(CICD!BooleanLiteral) then
+		thisModule.Assignment2BooleanBuildStepParameter(assignment)
+	else
+		OclUndefined
+	endif
+	endif
+	endif
+	endif;

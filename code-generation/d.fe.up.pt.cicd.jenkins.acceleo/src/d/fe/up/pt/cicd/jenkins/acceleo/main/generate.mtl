@@ -13,6 +13,11 @@
 	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp)', Sequence{unaryOp})
 /]
 
+[query public getBuildStepParameterName(buildStepParameter : BuildStepParameter) : String =
+	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getBuildStepParameterName(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter)', Sequence{buildStepParameter})
+/]
+
+
 [template public generateAbstractStage(abstractStage : AbstractStage) post (trim())]
 stage([quoteString(abstractStage.name)/]) {
 [if (not abstractStage.agent.oclIsUndefined())]
@@ -105,7 +110,15 @@ parallel {
 [/template]
 
 [template public generateStep(step : Step)]
-[step.command/] [for (argument : Assignment | arguments) separator (', ')][argument.key.name/]: [generateExpression(argument.value)/][/for]
+[step.command/] [for (argument : StepArgument | arguments) separator (', ')][generateStepArgument(argument)/][/for]
+[/template]
+
+[template public generateStepArgument(stepArgument : StepArgument) post (trim())]
+[if (stepArgument.oclIsTypeOf(StepSingleArgument))]
+[key.name/]: [generateExpression(value->first())/]
+[elseif (stepArgument.oclIsTypeOf(StepListArgument))]
+[key.name/]: [for (expression : Expression | value) before ('[') separator (', ') after (']')][generateExpression(expression)/][/for]
+[/if]
 [/template]
 
 [template public generateConditionalStep(conditionalStep : ConditionalStep)]
@@ -144,6 +157,8 @@ script {
 [generateBinaryOp(expression.oclAsType(BinaryOp))/]
 [elseif (expression.oclIsKindOf(UnaryOp))]
 [generateUnaryOp(expression.oclAsType(UnaryOp))/]
+[elseif (expression.oclIsKindOf(BuildStepParameter))]
+[generateBuildStepParameter(expression.oclAsType(BuildStepParameter))/]
 [/if]
 [/template]
 
@@ -177,6 +192,10 @@ script {
 
 [template public generateUnaryOp(unaryOp : UnaryOp)]
 [getUnaryOperator(unaryOp)/] [generateExpression(unaryOp.childExpr)/]
+[/template]
+
+[template public generateBuildStepParameter(buildStepParameter : BuildStepParameter)]
+[getBuildStepParameterName(buildStepParameter)/](name: [generateExpression(name)/], value: [generateExpression(value)/])
 [/template]
 
 [template public generateAbstractAgent(abstractAgent : AbstractAgent) post (trim())]

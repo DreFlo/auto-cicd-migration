@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -239,8 +240,18 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseConcat(Concat object) {
-			return createConcatAdapter();
+		public Adapter caseStepArgument(Map.Entry<Variable, EList<Expression>> object) {
+			return createStepArgumentAdapter();
+		}
+
+		@Override
+		public Adapter caseStepSingleArgument(Map.Entry<Variable, EList<Expression>> object) {
+			return createStepSingleArgumentAdapter();
+		}
+
+		@Override
+		public Adapter caseStepListArgument(Map.Entry<Variable, EList<Expression>> object) {
+			return createStepListArgumentAdapter();
 		}
 
 		@Override
@@ -396,6 +407,41 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseWhenTriggeredBy(WhenTriggeredBy object) {
 			return createWhenTriggeredByAdapter();
+		}
+
+		@Override
+		public Adapter caseBuildStepParameter(BuildStepParameter object) {
+			return createBuildStepParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseStringBuildStepParameter(StringBuildStepParameter object) {
+			return createStringBuildStepParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseCredentialsBuildStepParameter(CredentialsBuildStepParameter object) {
+			return createCredentialsBuildStepParameterAdapter();
+		}
+
+		@Override
+		public Adapter casePasswordBuildStepParameter(PasswordBuildStepParameter object) {
+			return createPasswordBuildStepParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseBooleanBuildStepParameter(BooleanBuildStepParameter object) {
+			return createBooleanBuildStepParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseTextBuildStepParameter(TextBuildStepParameter object) {
+			return createTextBuildStepParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseChoiceBuildStepParameter(ChoiceBuildStepParameter object) {
+			return createChoiceBuildStepParameterAdapter();
 		}
 
 		@Override
@@ -894,16 +940,44 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat <em>Concat</em>}'.
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Step Argument</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat
+	 * @see java.util.Map.Entry
 	 * @generated
 	 */
-	public Adapter createConcatAdapter() {
+	public Adapter createStepArgumentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Step Single Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createStepSingleArgumentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Step List Argument</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createStepListArgumentAdapter() {
 		return null;
 	}
 
@@ -1338,6 +1412,104 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWhenTriggeredByAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter <em>Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter
+	 * @generated
+	 */
+	public Adapter createBuildStepParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter <em>String Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter
+	 * @generated
+	 */
+	public Adapter createStringBuildStepParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter <em>Credentials Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter
+	 * @generated
+	 */
+	public Adapter createCredentialsBuildStepParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter <em>Password Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter
+	 * @generated
+	 */
+	public Adapter createPasswordBuildStepParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter <em>Boolean Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter
+	 * @generated
+	 */
+	public Adapter createBooleanBuildStepParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter <em>Text Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter
+	 * @generated
+	 */
+	public Adapter createTextBuildStepParameterAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter <em>Choice Build Step Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter
+	 * @generated
+	 */
+	public Adapter createChoiceBuildStepParameterAdapter() {
 		return null;
 	}
 

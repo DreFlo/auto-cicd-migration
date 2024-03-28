@@ -5,17 +5,20 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
-
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -62,7 +65,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> arguments;
+	protected EMap<Variable, EList<Expression>> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,10 +115,10 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getArguments() {
+	public EMap<Variable, EList<Expression>> getArguments() {
 		if (arguments == null) {
-			arguments = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT, AssignmentImpl.class,
-					this, JenkinsPackage.STEP__ARGUMENTS);
+			arguments = new EcoreEMap<Variable, EList<Expression>>(JenkinsPackage.Literals.STEP_ARGUMENT,
+					StepArgumentImpl.class, this, JenkinsPackage.STEP__ARGUMENTS);
 		}
 		return arguments;
 	}

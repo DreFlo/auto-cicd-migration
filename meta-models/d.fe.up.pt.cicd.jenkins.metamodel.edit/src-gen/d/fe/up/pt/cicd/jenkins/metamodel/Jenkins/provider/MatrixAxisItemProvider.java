@@ -199,9 +199,6 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
-				JenkinsFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
@@ -215,6 +212,24 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS, JenkinsFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
+				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
+				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
+				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
+				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
+				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.MATRIX_AXIS__CELLS,
+				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
 	}
 
 	/**

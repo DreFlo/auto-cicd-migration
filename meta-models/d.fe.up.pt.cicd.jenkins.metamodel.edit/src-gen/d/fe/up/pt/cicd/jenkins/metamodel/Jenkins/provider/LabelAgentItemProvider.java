@@ -166,9 +166,6 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
@@ -182,6 +179,24 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS, JenkinsFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
 	}
 
 }

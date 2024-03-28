@@ -247,15 +247,6 @@ public interface JenkinsFactory extends EFactory {
 	VariableDereference createVariableDereference();
 
 	/**
-	 * Returns a new object of class '<em>Concat</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Concat</em>'.
-	 * @generated
-	 */
-	Concat createConcat();
-
-	/**
 	 * Returns a new object of class '<em>Negation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +461,60 @@ public interface JenkinsFactory extends EFactory {
 	 * @generated
 	 */
 	WhenTriggeredBy createWhenTriggeredBy();
+
+	/**
+	 * Returns a new object of class '<em>String Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Build Step Parameter</em>'.
+	 * @generated
+	 */
+	StringBuildStepParameter createStringBuildStepParameter();
+
+	/**
+	 * Returns a new object of class '<em>Credentials Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Credentials Build Step Parameter</em>'.
+	 * @generated
+	 */
+	CredentialsBuildStepParameter createCredentialsBuildStepParameter();
+
+	/**
+	 * Returns a new object of class '<em>Password Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Password Build Step Parameter</em>'.
+	 * @generated
+	 */
+	PasswordBuildStepParameter createPasswordBuildStepParameter();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Build Step Parameter</em>'.
+	 * @generated
+	 */
+	BooleanBuildStepParameter createBooleanBuildStepParameter();
+
+	/**
+	 * Returns a new object of class '<em>Text Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Text Build Step Parameter</em>'.
+	 * @generated
+	 */
+	TextBuildStepParameter createTextBuildStepParameter();
+
+	/**
+	 * Returns a new object of class '<em>Choice Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Choice Build Step Parameter</em>'.
+	 * @generated
+	 */
+	ChoiceBuildStepParameter createChoiceBuildStepParameter();
 
 	/**
 	 * Returns the package supported by this factory.

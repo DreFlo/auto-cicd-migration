@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -111,8 +112,10 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createVariableDereference();
 		case JenkinsPackage.ASSIGNMENT:
 			return (EObject) createAssignment();
-		case JenkinsPackage.CONCAT:
-			return createConcat();
+		case JenkinsPackage.STEP_SINGLE_ARGUMENT:
+			return (EObject) createStepSingleArgument();
+		case JenkinsPackage.STEP_LIST_ARGUMENT:
+			return (EObject) createStepListArgument();
 		case JenkinsPackage.NEGATION:
 			return createNegation();
 		case JenkinsPackage.EQUALITY_OP:
@@ -161,6 +164,18 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createWhenAllOf();
 		case JenkinsPackage.WHEN_TRIGGERED_BY:
 			return createWhenTriggeredBy();
+		case JenkinsPackage.STRING_BUILD_STEP_PARAMETER:
+			return createStringBuildStepParameter();
+		case JenkinsPackage.CREDENTIALS_BUILD_STEP_PARAMETER:
+			return createCredentialsBuildStepParameter();
+		case JenkinsPackage.PASSWORD_BUILD_STEP_PARAMETER:
+			return createPasswordBuildStepParameter();
+		case JenkinsPackage.BOOLEAN_BUILD_STEP_PARAMETER:
+			return createBooleanBuildStepParameter();
+		case JenkinsPackage.TEXT_BUILD_STEP_PARAMETER:
+			return createTextBuildStepParameter();
+		case JenkinsPackage.CHOICE_BUILD_STEP_PARAMETER:
+			return createChoiceBuildStepParameter();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -510,10 +525,19 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Concat createConcat() {
-		ConcatImpl concat = new ConcatImpl();
-		return concat;
+	public Map.Entry<Variable, EList<Expression>> createStepSingleArgument() {
+		StepSingleArgumentImpl stepSingleArgument = new StepSingleArgumentImpl();
+		return stepSingleArgument;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<Variable, EList<Expression>> createStepListArgument() {
+		StepListArgumentImpl stepListArgument = new StepListArgumentImpl();
+		return stepListArgument;
 	}
 
 	/**
@@ -778,6 +802,72 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	public WhenTriggeredBy createWhenTriggeredBy() {
 		WhenTriggeredByImpl whenTriggeredBy = new WhenTriggeredByImpl();
 		return whenTriggeredBy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StringBuildStepParameter createStringBuildStepParameter() {
+		StringBuildStepParameterImpl stringBuildStepParameter = new StringBuildStepParameterImpl();
+		return stringBuildStepParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CredentialsBuildStepParameter createCredentialsBuildStepParameter() {
+		CredentialsBuildStepParameterImpl credentialsBuildStepParameter = new CredentialsBuildStepParameterImpl();
+		return credentialsBuildStepParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PasswordBuildStepParameter createPasswordBuildStepParameter() {
+		PasswordBuildStepParameterImpl passwordBuildStepParameter = new PasswordBuildStepParameterImpl();
+		return passwordBuildStepParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BooleanBuildStepParameter createBooleanBuildStepParameter() {
+		BooleanBuildStepParameterImpl booleanBuildStepParameter = new BooleanBuildStepParameterImpl();
+		return booleanBuildStepParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TextBuildStepParameter createTextBuildStepParameter() {
+		TextBuildStepParameterImpl textBuildStepParameter = new TextBuildStepParameterImpl();
+		return textBuildStepParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ChoiceBuildStepParameter createChoiceBuildStepParameter() {
+		ChoiceBuildStepParameterImpl choiceBuildStepParameter = new ChoiceBuildStepParameterImpl();
+		return choiceBuildStepParameter;
 	}
 
 	/**

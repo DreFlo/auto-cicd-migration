@@ -7,8 +7,8 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenExpression;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 

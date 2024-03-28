@@ -38,42 +38,14 @@ abstract rule Job extends PipelineBlock {
 	to
 		output : CICD2!Job(
 			id <- input.id,
-			ifCondition <-  
-				if input.ifCondition.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.ifCondition, Sequence{}, '')
-				else
-					input.ifCondition
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			ifCondition <- if not input.ifCondition.oclIsUndefined() then input.ifCondition.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
 			services <- input.services,
 			matrix <- input.matrix,
 			next <- input.next,
 			previous <- input.previous,
 			maxAttempts <- input.maxAttempts,
 			allowFailure <- input.allowFailure,
-			environmentVariables <- 
-				input.environmentVariables
-				->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
+			environmentVariables <- input.environmentVariables->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
 		)
 }
 
@@ -82,25 +54,7 @@ rule ScriptJob extends Job {
 		input: CICD1!ScriptJob
 	to
 		output: CICD2!ScriptJob(
-			steps <- input.steps->collect(step | 
-					if step.oclIsKindOf(CICD1!ConditionalStep) then
-						thisModule.ConditionalStep(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-					else if step.oclIsKindOf(CICD1!Command) then
-						thisModule.Command(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-					else if step.oclIsKindOf(CICD1!Plugin) then
-						thisModule.Plugin(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-					else if step.oclIsKindOf(CICD1!Cache) then
-						thisModule.Cache(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-					else if step.oclIsKindOf(CICD1!Artifact) then
-						thisModule.Artifact(step, 'STEP_' + input.steps.indexOf(step).toString().concat('_'))
-					else 
-						OclUndefined
-					endif
-					endif
-					endif
-					endif
-					endif
-				),			
+			steps <- input.steps->collect(step | step.step2StepHelper('STEP_' + input.steps.indexOf(step).toString().concat('_'))),			
 			environmentVariables <- 
 				input.environmentVariables
 				->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
@@ -138,33 +92,7 @@ rule PipelineCallJob extends Job {
 		input: CICD1!PipelineCallJob
 	to
 		output: CICD2!PipelineCallJob(
-			pipelinePath <- 
-				if input.pipelinePath.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.pipelinePath, Sequence{}, '')
-				else if input.pipelinePath.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.pipelinePath, Sequence{}, '')
-				else
-					input.pipelinePath
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			pipelinePath <- if not input.pipelinePath.oclIsUndefined() then input.pipelinePath.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
 			args <- input.args->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
 		)
 }
@@ -174,34 +102,7 @@ rule Agent {
 		input : CICD1!Agent
 	to
 		output : CICD2!Agent(
-			labels <- input.labels->collect(label |
-				if label.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!And) then
-					thisModule.And(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(label, Sequence{}, '')
-				else if label.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(label, Sequence{}, '')
-				else
-					label
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
+			labels <- input.labels->collect(label | label.expression2ExpressionHelper(Sequence{}, '')),
 			container <- input.container
 		)
 }
@@ -212,172 +113,14 @@ rule DockerContainer {
 	to
 		output : CICD2!DockerContainer(
 			label <- input.label,
-			image <- 
-				if input.image.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.image, Sequence{}, '')
-				else if input.image.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.image, Sequence{}, '')
-				else
-					input.image
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			image <- if not input.image.oclIsUndefined() then input.image.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
 			environmentVariables <- input.environmentVariables->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false)),
-			volumes <- input.volumes->collect(volume |
-				if volume.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!And) then
-					thisModule.And(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(volume, Sequence{}, '')
-				else if volume.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(volume, Sequence{}, '')
-				else
-					volume
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
-			ports <- input.ports->collect(port |
-				if port.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!And) then
-					thisModule.And(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(port, Sequence{}, '')
-				else if port.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(port, Sequence{}, '')
-				else
-					port
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
+			volumes <- input.volumes->collect(volume | volume.expression2ExpressionHelper(Sequence{}, '')),
+			ports <- input.ports->collect(port | port.expression2ExpressionHelper(Sequence{}, '')),
 			options <- input.options,
-			registryUsername <- 
-				if input.registryUsername.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.registryUsername, Sequence{}, '')
-				else if input.registryUsername.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.registryUsername, Sequence{}, '')
-				else
-					input.registryUsername
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			registryPassword <-  
-				if input.registryPassword.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.registryPassword, Sequence{}, '')
-				else if input.registryPassword.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.registryPassword, Sequence{}, '')
-				else
-					input.registryPassword
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			network <-  
-				if input.network.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.network, Sequence{}, '')
-				else if input.network.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.network, Sequence{}, '')
-				else
-					input.network
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
+			registryUsername <- if not input.registryUsername.oclIsUndefined() then input.registryUsername.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
+			registryPassword <- if not input.registryPassword.oclIsUndefined() then input.registryPassword.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
+			network <- if not input.network.oclIsUndefined() then input.network.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif
 		)
 }
 
@@ -435,33 +178,7 @@ rule ConcurrencyGroup {
 	to
 		output : CICD2!ConcurrencyGroup(
 			cancelInProgress <- input.cancelInProgress,
-			groupId <-  
-				if input.groupId.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.groupId, Sequence{}, '')
-				else if input.groupId.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.groupId, Sequence{}, '')
-				else
-					input.groupId
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
+			groupId <- if not input.groupId.oclIsUndefined() then input.groupId.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif
 		)
 }
 
@@ -493,34 +210,7 @@ rule MatrixAxis {
 	to
 		output : CICD2!MatrixAxis(
 			name <- input.name,
-			cells <- input.cells->collect(cell |
-				if cell.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!And) then
-					thisModule.And(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(cell, Sequence{}, '')
-				else if cell.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(cell, Sequence{}, '')
-				else
-					cell
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			)
+			cells <- input.cells->collect(cell | cell.expression2ExpressionHelper(Sequence{}, ''))
 		)
 }
 
@@ -574,71 +264,9 @@ lazy rule ConditionalStep {
 		prefix : String
 	to
 		output : CICD2!ConditionalStep(
-			ifCondition <-
-				if input.ifCondition.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.ifCondition, Sequence{}, '')
-				else if input.ifCondition.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.ifCondition, Sequence{}, '')
-				else
-					input.ifCondition
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			thenRun <- input.thenRun->collect(step | 
-				if step.oclIsKindOf(CICD1!ConditionalStep) then
-					thisModule.ConditionalStep(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Command) then
-					thisModule.Command(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Plugin) then
-					thisModule.Plugin(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Cache) then
-					thisModule.Cache(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Artifact) then
-					thisModule.Artifact(step, prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))
-				else 
-					OclUndefined
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
-			elseRun <- input.elseRun->collect(step | 
-				if step.oclIsKindOf(CICD1!ConditionalStep) then
-					thisModule.ConditionalStep(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Command) then
-					thisModule.Command(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Plugin) then
-					thisModule.Plugin(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Cache) then
-					thisModule.Cache(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
-				else if step.oclIsKindOf(CICD1!Artifact) then
-					thisModule.Artifact(step, prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_'))
-				else 
-					OclUndefined
-				endif
-				endif
-				endif
-				endif
-				endif
-			)
+			ifCondition <- if not input.ifCondition.oclIsUndefined() then input.ifCondition.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
+			thenRun <- input.thenRun->collect(step | step.step2StepHelper(prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))),
+			elseRun <- input.elseRun->collect(step | step.step2StepHelper(prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_')))
 		)
 }
 
@@ -656,33 +284,7 @@ lazy rule Command {
 			allowFailure <- input.allowFailure,
 			timeoutMinutes <- input.timeoutMinutes,
 			environmentVariables <- Sequence{},
-			program <-
-				if input.program.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.program, environmentVariableNames, prefix)
-				else if input.program.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.program, environmentVariableNames, prefix)
-				else
-					input.program
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif	
+			program <- if not input.program.oclIsUndefined() then input.program.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif
 		)
 }
 
@@ -720,89 +322,9 @@ lazy rule Cache {
 			allowFailure <- input.allowFailure,
 			timeoutMinutes <- input.timeoutMinutes,
 			environmentVariables <- Sequence{},
-			cacheName <- 
-				if input.cacheName.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.cacheName, environmentVariableNames, prefix)
-				else if input.cacheName.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.cacheName, environmentVariableNames, prefix)
-				else
-					input.cacheName
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			keys <- input.keys->collect(key |
-				if key.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!And) then
-					thisModule.And(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(key, environmentVariableNames, prefix)
-				else if key.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(key, environmentVariableNames, prefix)
-				else
-					key
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
-			paths <- input.paths->collect(path |
-				if path.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!And) then
-					thisModule.And(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(path, environmentVariableNames, prefix)
-				else if path.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(path, environmentVariableNames, prefix)
-				else
-					path
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
+			cacheName <- if not input.cacheName.oclIsUndefined() then input.cacheName.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif,
+			keys <- input.keys->collect(key | key.expression2ExpressionHelper(environmentVariableNames, prefix)),
+			paths <- input.paths->collect(path | path.expression2ExpressionHelper(environmentVariableNames, prefix)),
 			store <- input.store
 		)
 }
@@ -821,116 +343,10 @@ lazy rule Artifact {
 			allowFailure <- input.allowFailure,
 			timeoutMinutes <- input.timeoutMinutes,
 			environmentVariables <- Sequence{},
-			artifactName <-
-				if input.artifactName.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.artifactName, environmentVariableNames, prefix)
-				else if input.artifactName.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.artifactName, environmentVariableNames, prefix)
-				else
-					input.artifactName
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			includePaths <- input.includePaths->collect(includePath |
-				if includePath.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!And) then
-					thisModule.And(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(includePath, environmentVariableNames, prefix)
-				else if includePath.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(includePath, environmentVariableNames, prefix)
-				else
-					includePath
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
-			excludePaths <- input.excludePaths->collect(excludePath |
-				if excludePath.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!And) then
-					thisModule.And(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(excludePath, environmentVariableNames, prefix)
-				else if excludePath.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(excludePath, environmentVariableNames, prefix)
-				else
-					excludePath
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			),
-			retentionTime <-
-				if input.retentionTime.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.retentionTime, environmentVariableNames, prefix)
-				else if input.retentionTime.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.retentionTime, environmentVariableNames, prefix)
-				else
-					input.retentionTime
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			artifactName <- if not input.artifactName.oclIsUndefined() then input.artifactName.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif,
+			includePaths <- input.includePaths->collect(includePath | includePath.expression2ExpressionHelper(environmentVariableNames, prefix)),
+			excludePaths <- input.excludePaths->collect(excludePath | excludePath.expression2ExpressionHelper(environmentVariableNames, prefix)),
+			retentionTime <- if not input.retentionTime.oclIsUndefined() then input.retentionTime.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif,
 			store <- input.store
 		)
 }
@@ -949,33 +365,7 @@ lazy rule Assignment {
 				else
 					thisModule.Variable(input.key, Sequence{}, '')
 				endif,
-			value <-
-				if input.value.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.value, stepEnvironmentVariableNames, prefix)
-				else if input.value.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.value, stepEnvironmentVariableNames, prefix)
-				else
-					input.value
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
+			value <- if not input.value.oclIsUndefined() then input.value.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
 		)
 }
 
@@ -1002,34 +392,7 @@ lazy rule Concat {
 		prefix : String
 	to
 		output : CICD2!Concat(
-			expressions <- input.expressions->collect(expression |
-				if expression.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!And) then
-					thisModule.And(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(expression, stepEnvironmentVariableNames, prefix)
-				else if expression.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(expression, stepEnvironmentVariableNames, prefix)
-				else
-					expression
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-			)
+			expressions <- input.expressions->collect(expression | expression.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix))
 		)
 }
 
@@ -1040,60 +403,8 @@ lazy rule EqualityOp {
 		prefix : String
 	to
 		output : CICD2!EqualityOp(
-			lhs <-
-				if input.lhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.lhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.lhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			rhs <-
-				if input.rhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.rhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.rhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
+			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
 			op <-
 				if input.op = #"==" then
 					#"=="
@@ -1110,60 +421,8 @@ lazy rule ComparisonOp {
 		prefix : String
 	to
 		output : CICD2!ComparisonOp(
-			lhs <-
-				if input.lhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.lhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.lhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			rhs <-
-				if input.rhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.rhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.rhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
+			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
 			op <-
 				if input.op = #">" then
 					#">"
@@ -1186,60 +445,8 @@ lazy rule And {
 		prefix : String
 	to
 		output : CICD2!And(
-			lhs <-
-				if input.lhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.lhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.lhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			rhs <-
-				if input.rhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.rhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.rhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
+			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
+			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
 		)
 }
 
@@ -1250,60 +457,8 @@ lazy rule Or {
 		prefix : String
 	to
 		output : CICD2!Or(
-			lhs <-
-				if input.lhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.lhs, stepEnvironmentVariableNames, prefix)
-				else if input.lhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.lhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.lhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
-			rhs <-
-				if input.rhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.rhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.rhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
+			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
+			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
 		)
 }
 
@@ -1314,33 +469,7 @@ lazy rule Negation {
 		prefix : String
 	to
 		output : CICD2!Negation(
-			rhs <-
-				if input.rhs.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.rhs, stepEnvironmentVariableNames, prefix)
-				else if input.rhs.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.rhs, stepEnvironmentVariableNames, prefix)
-				else
-					input.rhs
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
+			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
 		)
 }
 
@@ -1350,33 +479,7 @@ lazy rule VariableDereference {from
 		prefix : String
 	to
 		output : CICD2!VariableDereference(
-			variable <-
-				if input.variable.oclIsKindOf(CICD1!Concat) then
-					thisModule.Concat(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!ComparisonOp) then
-					thisModule.ComparisonOp(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!EqualityOp) then
-					thisModule.EqualityOp(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!And) then
-					thisModule.And(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!Or) then
-					thisModule.Or(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!Negation) then
-					thisModule.Negation(input.variable, stepEnvironmentVariableNames, prefix)
-				else if input.variable.oclIsKindOf(CICD1!VariableDereference) then
-					thisModule.VariableDereference(input.variable, stepEnvironmentVariableNames, prefix)
-				else
-					input.variable
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif
-				endif,
+			variable <- if not input.variable.oclIsUndefined() then input.variable.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
 			property <-
 				if stepEnvironmentVariableNames.includes(input.property) then
 					prefix.concat(input.property)
@@ -1466,3 +569,50 @@ helper def : extractEnvironmentVariables(steps : Sequence(CICD1!Step)) : Sequenc
 
 helper def : getEnvironmentVariableNames(environmentVariables : Sequence(CICD1!Assignment)) : Sequence(String) =
 	environmentVariables->collect(environmentVariable | environmentVariable.key.name);
+
+helper context CICD1!Expression def : expression2ExpressionHelper(stepEnvironmentVariableNames : Sequence(String), prefix : String) : CICD2!Expression =
+	if self.oclIsKindOf(CICD1!Concat) then
+		thisModule.Concat(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!ComparisonOp) then
+		thisModule.ComparisonOp(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!EqualityOp) then
+		thisModule.EqualityOp(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!And) then
+		thisModule.And(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!Or) then
+		thisModule.Or(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!Variable) then
+		thisModule.Variable(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!Negation) then
+		thisModule.Negation(self, stepEnvironmentVariableNames, prefix)
+	else if self.oclIsKindOf(CICD1!VariableDereference) then
+		thisModule.VariableDereference(self, stepEnvironmentVariableNames, prefix)
+	else
+		self
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif;
+
+helper context CICD1!Step def : step2StepHelper(prefix : String) : CICD2!Step =
+	if self.oclIsKindOf(CICD1!ConditionalStep) then
+		thisModule.ConditionalStep(self, prefix)
+	else if self.oclIsKindOf(CICD1!Command) then
+		thisModule.Command(self, prefix)
+	else if self.oclIsKindOf(CICD1!Plugin) then
+		thisModule.Plugin(self, prefix)
+	else if self.oclIsKindOf(CICD1!Cache) then
+		thisModule.Cache(self, prefix)
+	else if self.oclIsKindOf(CICD1!Artifact) then
+		thisModule.Artifact(self, prefix)
+	else 
+		OclUndefined
+	endif
+	endif
+	endif
+	endif
+	endif;

@@ -9,11 +9,14 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AnyAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Concat;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral;
@@ -37,6 +40,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NodeAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NoneAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ParallelNestedStage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PollingTrigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScheduledTrigger;
@@ -46,7 +50,9 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SingleNestedWhen;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StageChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringLiteral;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
@@ -330,7 +336,21 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass concatEClass = null;
+	private EClass stepArgumentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stepSingleArgumentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stepListArgumentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -548,6 +568,55 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	private EClass whenTriggeredByEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass buildStepParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringBuildStepParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass credentialsBuildStepParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass passwordBuildStepParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass booleanBuildStepParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass textBuildStepParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass choiceBuildStepParameterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1448,8 +1517,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getConcat() {
-		return concatEClass;
+	public EClass getStepArgument() {
+		return stepArgumentEClass;
 	}
 
 	/**
@@ -1458,8 +1527,38 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getConcat_Expressions() {
-		return (EReference) concatEClass.getEStructuralFeatures().get(0);
+	public EReference getStepArgument_Key() {
+		return (EReference) stepArgumentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getStepArgument_Value() {
+		return (EReference) stepArgumentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStepSingleArgument() {
+		return stepSingleArgumentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStepListArgument() {
+		return stepListArgumentEClass;
 	}
 
 	/**
@@ -2008,6 +2107,96 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getBuildStepParameter() {
+		return buildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBuildStepParameter_Name() {
+		return (EReference) buildStepParameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBuildStepParameter_Value() {
+		return (EReference) buildStepParameterEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringBuildStepParameter() {
+		return stringBuildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCredentialsBuildStepParameter() {
+		return credentialsBuildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPasswordBuildStepParameter() {
+		return passwordBuildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBooleanBuildStepParameter() {
+		return booleanBuildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTextBuildStepParameter() {
+		return textBuildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getChoiceBuildStepParameter() {
+		return choiceBuildStepParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getEQUALITY_OPS() {
 		return equalitY_OPSEEnum;
 	}
@@ -2214,8 +2403,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEReference(assignmentEClass, ASSIGNMENT__KEY);
 		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
 
-		concatEClass = createEClass(CONCAT);
-		createEReference(concatEClass, CONCAT__EXPRESSIONS);
+		stepArgumentEClass = createEClass(STEP_ARGUMENT);
+		createEReference(stepArgumentEClass, STEP_ARGUMENT__KEY);
+		createEReference(stepArgumentEClass, STEP_ARGUMENT__VALUE);
+
+		stepSingleArgumentEClass = createEClass(STEP_SINGLE_ARGUMENT);
+
+		stepListArgumentEClass = createEClass(STEP_LIST_ARGUMENT);
 
 		binaryOpEClass = createEClass(BINARY_OP);
 		createEReference(binaryOpEClass, BINARY_OP__LHS);
@@ -2302,6 +2496,22 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEAttribute(whenTriggeredByEClass, WHEN_TRIGGERED_BY__CAUSE);
 		createEAttribute(whenTriggeredByEClass, WHEN_TRIGGERED_BY__DETAIL);
 
+		buildStepParameterEClass = createEClass(BUILD_STEP_PARAMETER);
+		createEReference(buildStepParameterEClass, BUILD_STEP_PARAMETER__NAME);
+		createEReference(buildStepParameterEClass, BUILD_STEP_PARAMETER__VALUE);
+
+		stringBuildStepParameterEClass = createEClass(STRING_BUILD_STEP_PARAMETER);
+
+		credentialsBuildStepParameterEClass = createEClass(CREDENTIALS_BUILD_STEP_PARAMETER);
+
+		passwordBuildStepParameterEClass = createEClass(PASSWORD_BUILD_STEP_PARAMETER);
+
+		booleanBuildStepParameterEClass = createEClass(BOOLEAN_BUILD_STEP_PARAMETER);
+
+		textBuildStepParameterEClass = createEClass(TEXT_BUILD_STEP_PARAMETER);
+
+		choiceBuildStepParameterEClass = createEClass(CHOICE_BUILD_STEP_PARAMETER);
+
 		// Create enums
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
 		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
@@ -2368,7 +2578,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		variableEClass.getESuperTypes().add(this.getValue());
 		jenkinsContextEClass.getESuperTypes().add(this.getValue());
 		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
-		concatEClass.getESuperTypes().add(this.getExpression());
+		stepSingleArgumentEClass.getESuperTypes().add(this.getStepArgument());
+		stepListArgumentEClass.getESuperTypes().add(this.getStepArgument());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		unaryOpEClass.getESuperTypes().add(this.getExpression());
 		negationEClass.getESuperTypes().add(this.getUnaryOp());
@@ -2397,6 +2608,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		whenAnyOfEClass.getESuperTypes().add(this.getMultipleNestedWhen());
 		whenAllOfEClass.getESuperTypes().add(this.getMultipleNestedWhen());
 		whenTriggeredByEClass.getESuperTypes().add(this.getWhen());
+		buildStepParameterEClass.getESuperTypes().add(this.getExpression());
+		stringBuildStepParameterEClass.getESuperTypes().add(this.getBuildStepParameter());
+		credentialsBuildStepParameterEClass.getESuperTypes().add(this.getBuildStepParameter());
+		passwordBuildStepParameterEClass.getESuperTypes().add(this.getBuildStepParameter());
+		booleanBuildStepParameterEClass.getESuperTypes().add(this.getBuildStepParameter());
+		textBuildStepParameterEClass.getESuperTypes().add(this.getBuildStepParameter());
+		choiceBuildStepParameterEClass.getESuperTypes().add(this.getBuildStepParameter());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2499,13 +2717,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEClass(scriptedBlockEClass, ScriptedBlock.class, "ScriptedBlock", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScriptedBlock_Steps(), this.getConditionalChildStep(), null, "steps", null, 0, -1,
-				ScriptedBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				ScriptedBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStep_Command(), ecorePackage.getEString(), "command", null, 1, 1, Step.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getStep_Arguments(), this.getAssignment(), null, "arguments", null, 0, -1, Step.class,
+		initEReference(getStep_Arguments(), this.getStepArgument(), null, "arguments", null, 0, -1, Step.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2622,10 +2840,20 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(concatEClass, Concat.class, "Concat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConcat_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Concat.class,
+		initEClass(stepArgumentEClass, Map.Entry.class, "StepArgument", IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStepArgument_Key(), this.getVariable(), null, "key", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStepArgument_Value(), this.getExpression(), null, "value", null, 1, -1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stepSingleArgumentEClass, Map.Entry.class, "StepSingleArgument", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(stepListArgumentEClass, Map.Entry.class, "StepListArgument", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBinaryOp_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
@@ -2772,6 +3000,33 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEAttribute(getWhenTriggeredBy_Detail(), ecorePackage.getEString(), "detail", null, 0, 1,
 				WhenTriggeredBy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(buildStepParameterEClass, BuildStepParameter.class, "BuildStepParameter", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBuildStepParameter_Name(), this.getExpression(), null, "name", null, 1, 1,
+				BuildStepParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBuildStepParameter_Value(), this.getExpression(), null, "value", null, 1, 1,
+				BuildStepParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stringBuildStepParameterEClass, StringBuildStepParameter.class, "StringBuildStepParameter",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(credentialsBuildStepParameterEClass, CredentialsBuildStepParameter.class,
+				"CredentialsBuildStepParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(passwordBuildStepParameterEClass, PasswordBuildStepParameter.class, "PasswordBuildStepParameter",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(booleanBuildStepParameterEClass, BooleanBuildStepParameter.class, "BooleanBuildStepParameter",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(textBuildStepParameterEClass, TextBuildStepParameter.class, "TextBuildStepParameter", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(choiceBuildStepParameterEClass, ChoiceBuildStepParameter.class, "ChoiceBuildStepParameter",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(equalitY_OPSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS.class, "EQUALITY_OPS");

@@ -170,9 +170,6 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
-				JenkinsFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
@@ -186,6 +183,24 @@ public class ConditionalStepItemProvider extends ConditionalChildStepItemProvide
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				JenkinsFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
+				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				JenkinsFactory.eINSTANCE.createStep()));

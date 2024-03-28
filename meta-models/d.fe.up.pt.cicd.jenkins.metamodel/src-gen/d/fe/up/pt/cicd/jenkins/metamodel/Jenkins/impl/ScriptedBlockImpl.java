@@ -5,13 +5,17 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock;
+
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlock {
 	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' reference list.
+	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSteps()
@@ -64,10 +68,24 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	@Override
 	public EList<ConditionalChildStep> getSteps() {
 		if (steps == null) {
-			steps = new EObjectResolvingEList<ConditionalChildStep>(ConditionalChildStep.class, this,
+			steps = new EObjectContainmentEList<ConditionalChildStep>(ConditionalChildStep.class, this,
 					JenkinsPackage.SCRIPTED_BLOCK__STEPS);
 		}
 		return steps;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
+			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

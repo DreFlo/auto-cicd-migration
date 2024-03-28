@@ -181,9 +181,6 @@ public class AssignmentItemProvider extends ItemProviderAdapter implements IEdit
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
@@ -197,6 +194,24 @@ public class AssignmentItemProvider extends ItemProviderAdapter implements IEdit
 
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE, JenkinsFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
 	}
 
 	/**

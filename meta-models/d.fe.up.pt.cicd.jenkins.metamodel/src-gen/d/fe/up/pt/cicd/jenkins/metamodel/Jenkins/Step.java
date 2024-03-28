@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 
 /**
@@ -47,14 +48,14 @@ public interface Step extends StageChildStep, ConditionalChildStep {
 	/**
 	 * Returns the value of the '<em><b>Arguments</b></em>' map.
 	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable},
-	 * and the value is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression},
+	 * and the value is of type list of {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Arguments</em>' map.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getStep_Arguments()
-	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepArgument&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
 	 * @generated
 	 */
-	EMap<Variable, Expression> getArguments();
+	EMap<Variable, EList<Expression>> getArguments();
 
 } // Step

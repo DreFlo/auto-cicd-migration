@@ -88,3 +88,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: my_fourth_job
     uses: actions/checkout@v
+    with:
+      ref: i will never understand this

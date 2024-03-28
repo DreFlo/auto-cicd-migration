@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.*;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -421,11 +422,30 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case JenkinsPackage.CONCAT: {
-			Concat concat = (Concat) theEObject;
-			T result = caseConcat(concat);
+		case JenkinsPackage.STEP_ARGUMENT: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<Variable, EList<Expression>> stepArgument = (Map.Entry<Variable, EList<Expression>>) theEObject;
+			T result = caseStepArgument(stepArgument);
 			if (result == null)
-				result = caseExpression(concat);
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.STEP_SINGLE_ARGUMENT: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<Variable, EList<Expression>> stepSingleArgument = (Map.Entry<Variable, EList<Expression>>) theEObject;
+			T result = caseStepSingleArgument(stepSingleArgument);
+			if (result == null)
+				result = caseStepArgument((Map.Entry<Variable, EList<Expression>>) stepSingleArgument);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.STEP_LIST_ARGUMENT: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<Variable, EList<Expression>> stepListArgument = (Map.Entry<Variable, EList<Expression>>) theEObject;
+			T result = caseStepListArgument(stepListArgument);
+			if (result == null)
+				result = caseStepArgument((Map.Entry<Variable, EList<Expression>>) stepListArgument);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -739,6 +759,81 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			T result = caseWhenTriggeredBy(whenTriggeredBy);
 			if (result == null)
 				result = caseWhen(whenTriggeredBy);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.BUILD_STEP_PARAMETER: {
+			BuildStepParameter buildStepParameter = (BuildStepParameter) theEObject;
+			T result = caseBuildStepParameter(buildStepParameter);
+			if (result == null)
+				result = caseExpression(buildStepParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.STRING_BUILD_STEP_PARAMETER: {
+			StringBuildStepParameter stringBuildStepParameter = (StringBuildStepParameter) theEObject;
+			T result = caseStringBuildStepParameter(stringBuildStepParameter);
+			if (result == null)
+				result = caseBuildStepParameter(stringBuildStepParameter);
+			if (result == null)
+				result = caseExpression(stringBuildStepParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.CREDENTIALS_BUILD_STEP_PARAMETER: {
+			CredentialsBuildStepParameter credentialsBuildStepParameter = (CredentialsBuildStepParameter) theEObject;
+			T result = caseCredentialsBuildStepParameter(credentialsBuildStepParameter);
+			if (result == null)
+				result = caseBuildStepParameter(credentialsBuildStepParameter);
+			if (result == null)
+				result = caseExpression(credentialsBuildStepParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.PASSWORD_BUILD_STEP_PARAMETER: {
+			PasswordBuildStepParameter passwordBuildStepParameter = (PasswordBuildStepParameter) theEObject;
+			T result = casePasswordBuildStepParameter(passwordBuildStepParameter);
+			if (result == null)
+				result = caseBuildStepParameter(passwordBuildStepParameter);
+			if (result == null)
+				result = caseExpression(passwordBuildStepParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.BOOLEAN_BUILD_STEP_PARAMETER: {
+			BooleanBuildStepParameter booleanBuildStepParameter = (BooleanBuildStepParameter) theEObject;
+			T result = caseBooleanBuildStepParameter(booleanBuildStepParameter);
+			if (result == null)
+				result = caseBuildStepParameter(booleanBuildStepParameter);
+			if (result == null)
+				result = caseExpression(booleanBuildStepParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.TEXT_BUILD_STEP_PARAMETER: {
+			TextBuildStepParameter textBuildStepParameter = (TextBuildStepParameter) theEObject;
+			T result = caseTextBuildStepParameter(textBuildStepParameter);
+			if (result == null)
+				result = caseBuildStepParameter(textBuildStepParameter);
+			if (result == null)
+				result = caseExpression(textBuildStepParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.CHOICE_BUILD_STEP_PARAMETER: {
+			ChoiceBuildStepParameter choiceBuildStepParameter = (ChoiceBuildStepParameter) theEObject;
+			T result = caseChoiceBuildStepParameter(choiceBuildStepParameter);
+			if (result == null)
+				result = caseBuildStepParameter(choiceBuildStepParameter);
+			if (result == null)
+				result = caseExpression(choiceBuildStepParameter);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1259,17 +1354,47 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Step Argument</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Concat</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Step Argument</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConcat(Concat object) {
+	public T caseStepArgument(Map.Entry<Variable, EList<Expression>> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Step Single Argument</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Step Single Argument</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStepSingleArgument(Map.Entry<Variable, EList<Expression>> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Step List Argument</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Step List Argument</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStepListArgument(Map.Entry<Variable, EList<Expression>> object) {
 		return null;
 	}
 
@@ -1735,6 +1860,111 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWhenTriggeredBy(WhenTriggeredBy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBuildStepParameter(BuildStepParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringBuildStepParameter(StringBuildStepParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Credentials Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Credentials Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCredentialsBuildStepParameter(CredentialsBuildStepParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Password Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Password Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePasswordBuildStepParameter(PasswordBuildStepParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBooleanBuildStepParameter(BooleanBuildStepParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Text Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Text Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTextBuildStepParameter(TextBuildStepParameter object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Choice Build Step Parameter</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Choice Build Step Parameter</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChoiceBuildStepParameter(ChoiceBuildStepParameter object) {
 		return null;
 	}
 

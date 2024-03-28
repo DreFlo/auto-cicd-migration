@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.NestedStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepStage;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;

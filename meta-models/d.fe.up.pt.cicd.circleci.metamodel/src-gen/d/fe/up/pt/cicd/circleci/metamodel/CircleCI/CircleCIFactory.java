@@ -247,6 +247,15 @@ public interface CircleCIFactory extends EFactory {
 	AddSSHKeysStep createAddSSHKeysStep();
 
 	/**
+	 * Returns a new object of class '<em>Orb Reference Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Orb Reference Step</em>'.
+	 * @generated
+	 */
+	OrbReferenceStep createOrbReferenceStep();
+
+	/**
 	 * Returns a new object of class '<em>Workflow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -1987,6 +1987,61 @@ public interface CircleCIPackage extends EPackage {
 	int ADD_SSH_KEYS_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceStepImpl <em>Orb Reference Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceStepImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReferenceStep()
+	 * @generated
+	 */
+	int ORB_REFERENCE_STEP = 30;
+
+	/**
+	 * The feature id for the '<em><b>Orb</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_STEP__ORB = STEP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_STEP__JOB_NAME = STEP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Arguments</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_STEP__ARGUMENTS = STEP_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Orb Reference Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Orb Reference Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_STEP_OPERATION_COUNT = STEP_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1994,7 +2049,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableAssignment()
 	 * @generated
 	 */
-	int VARIABLE_ASSIGNMENT = 30;
+	int VARIABLE_ASSIGNMENT = 31;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -2040,7 +2095,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflow()
 	 * @generated
 	 */
-	int WORKFLOW = 31;
+	int WORKFLOW = 32;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2113,7 +2168,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 32;
+	int TRIGGER = 33;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -2159,7 +2214,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getScheduleTrigger()
 	 * @generated
 	 */
-	int SCHEDULE_TRIGGER = 33;
+	int SCHEDULE_TRIGGER = 34;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -2214,7 +2269,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_JOB_CONFIGURATION = 34;
+	int WORKFLOW_JOB_CONFIGURATION = 35;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2332,7 +2387,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowDefinedJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_DEFINED_JOB_CONFIGURATION = 35;
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION = 36;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2459,7 +2514,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowApprovalJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_APPROVAL_JOB_CONFIGURATION = 36;
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION = 37;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2577,7 +2632,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowOrbJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_ORB_JOB_CONFIGURATION = 37;
+	int WORKFLOW_ORB_JOB_CONFIGURATION = 38;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2713,7 +2768,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 38;
+	int MATRIX = 39;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -2768,7 +2823,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixParameter()
 	 * @generated
 	 */
-	int MATRIX_PARAMETER = 39;
+	int MATRIX_PARAMETER = 40;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2814,7 +2869,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 40;
+	int MATRIX_COMBINATION = 41;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' map.
@@ -2851,7 +2906,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 41;
+	int EXPRESSION = 42;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -2879,7 +2934,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 42;
+	int CONCAT = 43;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2916,7 +2971,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogic()
 	 * @generated
 	 */
-	int LOGIC = 43;
+	int LOGIC = 44;
 
 	/**
 	 * The number of structural features of the '<em>Logic</em>' class.
@@ -2944,7 +2999,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getInfinitaryOperator()
 	 * @generated
 	 */
-	int INFINITARY_OPERATOR = 44;
+	int INFINITARY_OPERATOR = 45;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -2981,7 +3036,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 45;
+	int AND = 46;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3018,7 +3073,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 46;
+	int OR = 47;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3055,7 +3110,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getEquals()
 	 * @generated
 	 */
-	int EQUALS = 47;
+	int EQUALS = 48;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3092,7 +3147,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnaryOperator()
 	 * @generated
 	 */
-	int UNARY_OPERATOR = 48;
+	int UNARY_OPERATOR = 49;
 
 	/**
 	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -3129,7 +3184,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 49;
+	int NOT = 50;
 
 	/**
 	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -3166,7 +3221,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogicFunction()
 	 * @generated
 	 */
-	int LOGIC_FUNCTION = 50;
+	int LOGIC_FUNCTION = 51;
 
 	/**
 	 * The number of structural features of the '<em>Logic Function</em>' class.
@@ -3194,7 +3249,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatches()
 	 * @generated
 	 */
-	int MATCHES = 51;
+	int MATCHES = 52;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
@@ -3240,7 +3295,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 52;
+	int VALUE = 53;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -3268,7 +3323,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 53;
+	int LITERAL = 54;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -3296,7 +3351,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 54;
+	int STRING_LITERAL = 55;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3333,7 +3388,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 55;
+	int INTEGER_LITERAL = 56;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3370,7 +3425,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 56;
+	int DOUBLE_LITERAL = 57;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3407,7 +3462,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 57;
+	int BOOLEAN_LITERAL = 58;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3444,7 +3499,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableDereference()
 	 * @generated
 	 */
-	int VARIABLE_DEREFERENCE = 58;
+	int VARIABLE_DEREFERENCE = 59;
 
 	/**
 	 * The feature id for the '<em><b>Names</b></em>' attribute list.
@@ -3481,7 +3536,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPARAMETER_TYPES()
 	 * @generated
 	 */
-	int PARAMETER_TYPES = 59;
+	int PARAMETER_TYPES = 60;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}' enum.
@@ -3491,7 +3546,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWHEN_TYPE()
 	 * @generated
 	 */
-	int WHEN_TYPE = 60;
+	int WHEN_TYPE = 61;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline <em>Pipeline</em>}'.
@@ -4672,6 +4727,49 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAddSSHKeysStep_Fingerprints();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep <em>Orb Reference Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Orb Reference Step</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep
+	 * @generated
+	 */
+	EClass getOrbReferenceStep();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep#getOrb <em>Orb</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Orb</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep#getOrb()
+	 * @see #getOrbReferenceStep()
+	 * @generated
+	 */
+	EReference getOrbReferenceStep_Orb();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep#getJobName <em>Job Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job Name</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep#getJobName()
+	 * @see #getOrbReferenceStep()
+	 * @generated
+	 */
+	EAttribute getOrbReferenceStep_JobName();
+
+	/**
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep#getArguments <em>Arguments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the map '<em>Arguments</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep#getArguments()
+	 * @see #getOrbReferenceStep()
+	 * @generated
+	 */
+	EReference getOrbReferenceStep_Arguments();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Variable Assignment</em>}'.
@@ -6377,6 +6475,40 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ADD_SSH_KEYS_STEP__FINGERPRINTS = eINSTANCE.getAddSSHKeysStep_Fingerprints();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceStepImpl <em>Orb Reference Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.OrbReferenceStepImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReferenceStep()
+		 * @generated
+		 */
+		EClass ORB_REFERENCE_STEP = eINSTANCE.getOrbReferenceStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Orb</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_REFERENCE_STEP__ORB = eINSTANCE.getOrbReferenceStep_Orb();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ORB_REFERENCE_STEP__JOB_NAME = eINSTANCE.getOrbReferenceStep_JobName();
+
+		/**
+		 * The meta object literal for the '<em><b>Arguments</b></em>' map feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ORB_REFERENCE_STEP__ARGUMENTS = eINSTANCE.getOrbReferenceStep_Arguments();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.

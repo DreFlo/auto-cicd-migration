@@ -254,6 +254,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
 				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
 
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
+				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
+
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__ENVIRONMENT_VARIABLES,
 				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
 

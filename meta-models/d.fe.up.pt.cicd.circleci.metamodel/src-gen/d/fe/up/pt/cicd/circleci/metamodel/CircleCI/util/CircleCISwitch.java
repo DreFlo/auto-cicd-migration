@@ -330,6 +330,15 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CircleCIPackage.ORB_REFERENCE_STEP: {
+			OrbReferenceStep orbReferenceStep = (OrbReferenceStep) theEObject;
+			T result = caseOrbReferenceStep(orbReferenceStep);
+			if (result == null)
+				result = caseStep(orbReferenceStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CircleCIPackage.VARIABLE_ASSIGNMENT: {
 			@SuppressWarnings("unchecked")
 			Map.Entry<String, Expression> variableAssignment = (Map.Entry<String, Expression>) theEObject;
@@ -1070,6 +1079,21 @@ public class CircleCISwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAddSSHKeysStep(AddSSHKeysStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Orb Reference Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Orb Reference Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrbReferenceStep(OrbReferenceStep object) {
 		return null;
 	}
 

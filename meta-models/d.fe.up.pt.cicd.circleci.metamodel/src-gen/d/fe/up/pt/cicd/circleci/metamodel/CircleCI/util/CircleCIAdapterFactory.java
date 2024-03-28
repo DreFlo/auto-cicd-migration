@@ -219,6 +219,11 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseOrbReferenceStep(OrbReferenceStep object) {
+			return createOrbReferenceStepAdapter();
+		}
+
+		@Override
 		public Adapter caseVariableAssignment(Map.Entry<String, Expression> object) {
 			return createVariableAssignmentAdapter();
 		}
@@ -799,6 +804,20 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAddSSHKeysStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep <em>Orb Reference Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep
+	 * @generated
+	 */
+	public Adapter createOrbReferenceStepAdapter() {
 		return null;
 	}
 

@@ -160,6 +160,11 @@
     <genClasses ecoreClass="CircleCI.ecore#//AddSSHKeysStep">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//AddSSHKeysStep/fingerprints"/>
     </genClasses>
+    <genClasses ecoreClass="CircleCI.ecore#//OrbReferenceStep">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbReferenceStep/orb"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//OrbReferenceStep/jobName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbReferenceStep/arguments"/>
+    </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//VariableAssignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//VariableAssignment/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//VariableAssignment/value"/>

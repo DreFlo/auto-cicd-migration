@@ -37,6 +37,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReference;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbReferenceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PersistToWorkspaceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline;
@@ -289,6 +290,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	private EClass addSSHKeysStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orbReferenceStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1677,6 +1685,46 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getOrbReferenceStep() {
+		return orbReferenceStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbReferenceStep_Orb() {
+		return (EReference) orbReferenceStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOrbReferenceStep_JobName() {
+		return (EAttribute) orbReferenceStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getOrbReferenceStep_Arguments() {
+		return (EReference) orbReferenceStepEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getVariableAssignment() {
 		return variableAssignmentEClass;
 	}
@@ -2541,6 +2589,11 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		addSSHKeysStepEClass = createEClass(ADD_SSH_KEYS_STEP);
 		createEReference(addSSHKeysStepEClass, ADD_SSH_KEYS_STEP__FINGERPRINTS);
 
+		orbReferenceStepEClass = createEClass(ORB_REFERENCE_STEP);
+		createEReference(orbReferenceStepEClass, ORB_REFERENCE_STEP__ORB);
+		createEAttribute(orbReferenceStepEClass, ORB_REFERENCE_STEP__JOB_NAME);
+		createEReference(orbReferenceStepEClass, ORB_REFERENCE_STEP__ARGUMENTS);
+
 		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
 		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
 		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VALUE);
@@ -2694,6 +2747,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		persistToWorkspaceStepEClass.getESuperTypes().add(this.getStep());
 		attachWorkspaceStepEClass.getESuperTypes().add(this.getStep());
 		addSSHKeysStepEClass.getESuperTypes().add(this.getStep());
+		orbReferenceStepEClass.getESuperTypes().add(this.getStep());
 		scheduleTriggerEClass.getESuperTypes().add(this.getTrigger());
 		workflowDefinedJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
 		workflowApprovalJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
@@ -3027,6 +3081,18 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAddSSHKeysStep_Fingerprints(), this.getExpression(), null, "fingerprints", null, 0, -1,
 				AddSSHKeysStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orbReferenceStepEClass, OrbReferenceStep.class, "OrbReferenceStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOrbReferenceStep_Orb(), this.getOrb(), null, "orb", null, 1, 1, OrbReferenceStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrbReferenceStep_JobName(), ecorePackage.getEString(), "jobName", null, 0, 1,
+				OrbReferenceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getOrbReferenceStep_Arguments(), this.getVariableAssignment(), null, "arguments", null, 0, -1,
+				OrbReferenceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableAssignmentEClass, Map.Entry.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE,

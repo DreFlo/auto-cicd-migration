@@ -308,6 +308,9 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__PRE_STEPS,
 				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
 
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__PRE_STEPS,
+				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
+
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS,
 				CircleCIFactory.eINSTANCE.createRunStep()));
 
@@ -343,6 +346,9 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS,
 				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS,
+				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
 	}
 
 	/**

@@ -229,6 +229,9 @@ public class CommandItemProvider extends ItemProviderAdapter implements IEditing
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
 				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
 
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__STEPS,
+				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
+
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.COMMAND__PARAMETERS,
 				CircleCIFactory.eINSTANCE.createParameter()));
 	}

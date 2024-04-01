@@ -57,6 +57,7 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 			super.getPropertyDescriptors(object);
 
 			addRequiresPropertyDescriptor(object);
+			addRequiredByPropertyDescriptor(object);
 			addIgnoreSpecifiedBranchesPropertyDescriptor(object);
 			addIgnoreSpecifiedTagsPropertyDescriptor(object);
 		}
@@ -76,6 +77,21 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 				getString("_UI_PropertyDescriptor_description", "_UI_WorkflowJobConfiguration_requires_feature",
 						"_UI_WorkflowJobConfiguration_type"),
 				CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__REQUIRES, true, false, true, null, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Required By feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRequiredByPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_WorkflowJobConfiguration_requiredBy_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_WorkflowJobConfiguration_requiredBy_feature",
+						"_UI_WorkflowJobConfiguration_type"),
+				CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY, true, false, true, null, null, null));
 	}
 
 	/**
@@ -131,6 +147,7 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__MATRIX);
 			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__PRE_STEPS);
 			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS);
+			childrenFeatures.add(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -193,6 +210,7 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__MATRIX:
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__PRE_STEPS:
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__POST_STEPS:
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__NAME:
@@ -311,6 +329,9 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__PRE_STEPS,
 				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
 
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__PRE_STEPS,
+				CircleCIFactory.eINSTANCE.createCommandReferenceStep()));
+
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS,
 				CircleCIFactory.eINSTANCE.createRunStep()));
 
@@ -349,6 +370,12 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS,
 				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__POST_STEPS,
+				CircleCIFactory.eINSTANCE.createCommandReferenceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS,
+				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
 	}
 
 	/**

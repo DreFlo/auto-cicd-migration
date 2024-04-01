@@ -671,6 +671,29 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CommandReferenceStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CommandReferenceStepItemProvider commandReferenceStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CommandReferenceStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCommandReferenceStepAdapter() {
+		if (commandReferenceStepItemProvider == null) {
+			commandReferenceStepItemProvider = new CommandReferenceStepItemProvider(this);
+		}
+
+		return commandReferenceStepItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1287,6 +1310,8 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 			addSSHKeysStepItemProvider.dispose();
 		if (orbReferenceStepItemProvider != null)
 			orbReferenceStepItemProvider.dispose();
+		if (commandReferenceStepItemProvider != null)
+			commandReferenceStepItemProvider.dispose();
 		if (variableAssignmentItemProvider != null)
 			variableAssignmentItemProvider.dispose();
 		if (workflowItemProvider != null)

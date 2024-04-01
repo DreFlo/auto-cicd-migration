@@ -200,6 +200,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
 				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
+				CircleCIFactory.eINSTANCE.createCommandReferenceStep()));
 	}
 
 }

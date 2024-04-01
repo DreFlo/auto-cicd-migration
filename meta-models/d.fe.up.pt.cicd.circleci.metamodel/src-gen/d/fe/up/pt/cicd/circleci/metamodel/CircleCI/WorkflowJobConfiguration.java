@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequires <em>Requires</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequiredBy <em>Required By</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getContexts <em>Contexts</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getBranches <em>Branches</em>}</li>
@@ -25,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getMatrix <em>Matrix</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getPreSteps <em>Pre Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getPostSteps <em>Post Steps</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflowJobConfiguration()
@@ -35,14 +38,30 @@ public interface WorkflowJobConfiguration extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Requires</b></em>' reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration}.
+	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequiredBy <em>Required By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Requires</em>' reference list.
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflowJobConfiguration_Requires()
-	 * @model
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequiredBy
+	 * @model opposite="requiredBy"
 	 * @generated
 	 */
 	EList<WorkflowJobConfiguration> getRequires();
+
+	/**
+	 * Returns the value of the '<em><b>Required By</b></em>' reference list.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration}.
+	 * It is bidirectional and its opposite is '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequires <em>Requires</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Required By</em>' reference list.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflowJobConfiguration_RequiredBy()
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration#getRequires
+	 * @model opposite="requires"
+	 * @generated
+	 */
+	EList<WorkflowJobConfiguration> getRequiredBy();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -191,5 +210,18 @@ public interface WorkflowJobConfiguration extends EObject {
 	 * @generated
 	 */
 	EList<Step> getPostSteps();
+
+	/**
+	 * Returns the value of the '<em><b>Arguments</b></em>' map.
+	 * The key is of type {@link java.lang.String},
+	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Arguments</em>' map.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflowJobConfiguration_Arguments()
+	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
+	 * @generated
+	 */
+	EMap<String, Expression> getArguments();
 
 } // WorkflowJobConfiguration

@@ -256,6 +256,15 @@ public interface CircleCIFactory extends EFactory {
 	OrbReferenceStep createOrbReferenceStep();
 
 	/**
+	 * Returns a new object of class '<em>Command Reference Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Command Reference Step</em>'.
+	 * @generated
+	 */
+	CommandReferenceStep createCommandReferenceStep();
+
+	/**
 	 * Returns a new object of class '<em>Workflow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

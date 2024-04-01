@@ -111,6 +111,8 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 			return createAddSSHKeysStep();
 		case CircleCIPackage.ORB_REFERENCE_STEP:
 			return createOrbReferenceStep();
+		case CircleCIPackage.COMMAND_REFERENCE_STEP:
+			return createCommandReferenceStep();
 		case CircleCIPackage.VARIABLE_ASSIGNMENT:
 			return (EObject) createVariableAssignment();
 		case CircleCIPackage.WORKFLOW:
@@ -474,6 +476,17 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	public OrbReferenceStep createOrbReferenceStep() {
 		OrbReferenceStepImpl orbReferenceStep = new OrbReferenceStepImpl();
 		return orbReferenceStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CommandReferenceStep createCommandReferenceStep() {
+		CommandReferenceStepImpl commandReferenceStep = new CommandReferenceStepImpl();
+		return commandReferenceStep;
 	}
 
 	/**

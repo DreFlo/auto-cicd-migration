@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// TODO Parse Job Arguments
 public class CircleCIParser extends AbstractParser<Pipeline> {
     @Override
     protected Injector getInjector() {
@@ -324,7 +325,6 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         return steps;
     }
 
-    // TODO CommandStep
     private Step parseStep(YamlNode yamlNode, Map<String, Orb> orbsTable, Map<String, Command> commandsTable) throws SyntaxException {
         String key;
 
@@ -389,6 +389,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             return parseAddSSHKeysStep(yamlNode);
         } else if (orbsTable.containsKey(key.split("/")[0])) {
             return parseOrbReferenceStep(yamlNode, orbsTable);
+        } else if (commandsTable.containsKey(key)) {
+            return parseCommandStep(yamlNode, commandsTable);
         } else {
             throw new SyntaxException("Invalid step");
         }
@@ -807,6 +809,38 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
 
         return orbReferenceStep;
+    }
+
+    private CommandReferenceStep parseCommandStep(YamlNode yamlNode, Map<String, Command> commandsTable) throws SyntaxException {
+        CommandReferenceStep commandReferenceStep = CircleCIPackage.eINSTANCE.getCircleCIFactory().createCommandReferenceStep();
+
+        if (yamlNode.type().equals(Node.SCALAR)) {
+            String command = yamlNode.asScalar().value();
+
+            if (commandsTable.containsKey(command)) {
+                commandReferenceStep.setCommand(commandsTable.get(command));
+            } else {
+                throw new SyntaxException("Invalid command reference step");
+            }
+        } else if (yamlNode.type().equals(Node.MAPPING)) {
+            YamlMapping yamlMapping = yamlNode.asMapping();
+
+            String command = yamlMapping.keys().iterator().next().asScalar().value();
+
+            if (commandsTable.containsKey(command)) {
+                commandReferenceStep.setCommand(commandsTable.get(command));
+            } else {
+                throw new SyntaxException("Invalid command reference step");
+            }
+
+            if (yamlMapping.yamlMapping(command) != null) {
+                commandReferenceStep.getArguments().putAll(parseVariableAssignments(yamlMapping.yamlMapping(command)));
+            }
+        } else {
+            throw new SyntaxException("Invalid command reference step");
+        }
+
+        return commandReferenceStep;
     }
 
     private List<Executor> parseExecutors(YamlMapping yamlMapping, Map<String, Executor> executorsTable, Map<String, Orb> orbsTable) throws SyntaxException {

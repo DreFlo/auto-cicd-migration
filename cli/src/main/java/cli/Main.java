@@ -20,6 +20,7 @@ import cli.parsers.*;
 import cli.parsers.exceptions.*;
 import cli.transformers.exogenous.fromTIM.CICD2GHATransformer;
 import cli.transformers.exogenous.fromTIM.CICD2JenkinsTransformer;
+import cli.transformers.exogenous.toTIM.CircleCI2CICDTransformer;
 import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
@@ -51,7 +52,7 @@ public class Main {
 
 	private static void registerInputCompilers() {
 		inputCompilers.put("gha", new GHAInputCompiler(new GHA2CICDTransformer(getResourceSet()), new GitHubActionsParser()));
-		inputCompilers.put("circleci", new CircleCIInputCompiler(null, new CircleCIParser()));
+		inputCompilers.put("circleci", new CircleCIInputCompiler(new CircleCI2CICDTransformer(getResourceSet()), new CircleCIParser()));
 	}
 
 	private static void registerOutputCompilers() {

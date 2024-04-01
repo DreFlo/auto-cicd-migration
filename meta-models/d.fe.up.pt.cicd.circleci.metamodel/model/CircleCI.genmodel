@@ -165,6 +165,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//OrbReferenceStep/jobName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbReferenceStep/arguments"/>
     </genClasses>
+    <genClasses ecoreClass="CircleCI.ecore#//CommandReferenceStep">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//CommandReferenceStep/command"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//CommandReferenceStep/arguments"/>
+    </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//VariableAssignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//VariableAssignment/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//VariableAssignment/value"/>
@@ -185,6 +189,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="CircleCI.ecore#//WorkflowJobConfiguration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/requires"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/requiredBy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute CircleCI.ecore#//WorkflowJobConfiguration/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/contexts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/branches"/>
@@ -194,6 +199,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/matrix"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/preSteps"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/postSteps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/arguments"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//WorkflowDefinedJobConfiguration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowDefinedJobConfiguration/job"/>

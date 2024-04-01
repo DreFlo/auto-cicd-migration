@@ -10,6 +10,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIFactory;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CommandReferenceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
@@ -297,6 +298,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	private EClass orbReferenceStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass commandReferenceStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1725,6 +1733,36 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getCommandReferenceStep() {
+		return commandReferenceStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCommandReferenceStep_Command() {
+		return (EReference) commandReferenceStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCommandReferenceStep_Arguments() {
+		return (EReference) commandReferenceStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getVariableAssignment() {
 		return variableAssignmentEClass;
 	}
@@ -1885,8 +1923,18 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getWorkflowJobConfiguration_RequiredBy() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getWorkflowJobConfiguration_Name() {
-		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1896,16 +1944,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 */
 	@Override
 	public EReference getWorkflowJobConfiguration_Contexts() {
-		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getWorkflowJobConfiguration_Branches() {
 		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1915,8 +1953,18 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getWorkflowJobConfiguration_Branches() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getWorkflowJobConfiguration_IgnoreSpecifiedBranches() {
-		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1926,7 +1974,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 */
 	@Override
 	public EReference getWorkflowJobConfiguration_Tags() {
-		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(5);
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1936,7 +1984,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 */
 	@Override
 	public EAttribute getWorkflowJobConfiguration_IgnoreSpecifiedTags() {
-		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) workflowJobConfigurationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1946,16 +1994,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 */
 	@Override
 	public EReference getWorkflowJobConfiguration_Matrix() {
-		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getWorkflowJobConfiguration_PreSteps() {
 		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1965,8 +2003,28 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getWorkflowJobConfiguration_PostSteps() {
+	public EReference getWorkflowJobConfiguration_PreSteps() {
 		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_PostSteps() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getWorkflowJobConfiguration_Arguments() {
+		return (EReference) workflowJobConfigurationEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -2594,6 +2652,10 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEAttribute(orbReferenceStepEClass, ORB_REFERENCE_STEP__JOB_NAME);
 		createEReference(orbReferenceStepEClass, ORB_REFERENCE_STEP__ARGUMENTS);
 
+		commandReferenceStepEClass = createEClass(COMMAND_REFERENCE_STEP);
+		createEReference(commandReferenceStepEClass, COMMAND_REFERENCE_STEP__COMMAND);
+		createEReference(commandReferenceStepEClass, COMMAND_REFERENCE_STEP__ARGUMENTS);
+
 		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
 		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
 		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VALUE);
@@ -2614,6 +2676,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		workflowJobConfigurationEClass = createEClass(WORKFLOW_JOB_CONFIGURATION);
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__REQUIRES);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY);
 		createEAttribute(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__NAME);
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__CONTEXTS);
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__BRANCHES);
@@ -2623,6 +2686,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__MATRIX);
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__PRE_STEPS);
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__POST_STEPS);
+		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__ARGUMENTS);
 
 		workflowDefinedJobConfigurationEClass = createEClass(WORKFLOW_DEFINED_JOB_CONFIGURATION);
 		createEReference(workflowDefinedJobConfigurationEClass, WORKFLOW_DEFINED_JOB_CONFIGURATION__JOB);
@@ -2748,6 +2812,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		attachWorkspaceStepEClass.getESuperTypes().add(this.getStep());
 		addSSHKeysStepEClass.getESuperTypes().add(this.getStep());
 		orbReferenceStepEClass.getESuperTypes().add(this.getStep());
+		commandReferenceStepEClass.getESuperTypes().add(this.getStep());
 		scheduleTriggerEClass.getESuperTypes().add(this.getTrigger());
 		workflowDefinedJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
 		workflowApprovalJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
@@ -3095,6 +3160,15 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 				OrbReferenceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(commandReferenceStepEClass, CommandReferenceStep.class, "CommandReferenceStep", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCommandReferenceStep_Command(), this.getCommand(), null, "command", null, 1, 1,
+				CommandReferenceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommandReferenceStep_Arguments(), this.getVariableAssignment(), null, "arguments", null, 0,
+				-1, CommandReferenceStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(variableAssignmentEClass, Map.Entry.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableAssignment_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
@@ -3134,9 +3208,14 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(workflowJobConfigurationEClass, WorkflowJobConfiguration.class, "WorkflowJobConfiguration",
 				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWorkflowJobConfiguration_Requires(), this.getWorkflowJobConfiguration(), null, "requires",
-				null, 0, -1, WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_Requires(), this.getWorkflowJobConfiguration(),
+				this.getWorkflowJobConfiguration_RequiredBy(), "requires", null, 0, -1, WorkflowJobConfiguration.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_RequiredBy(), this.getWorkflowJobConfiguration(),
+				this.getWorkflowJobConfiguration_Requires(), "requiredBy", null, 0, -1, WorkflowJobConfiguration.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkflowJobConfiguration_Name(), ecorePackage.getEString(), "name", null, 0, 1,
 				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3163,6 +3242,9 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkflowJobConfiguration_PostSteps(), this.getStep(), null, "postSteps", null, 0, -1,
 				WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowJobConfiguration_Arguments(), this.getVariableAssignment(), null, "arguments", null,
+				0, -1, WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workflowDefinedJobConfigurationEClass, WorkflowDefinedJobConfiguration.class,

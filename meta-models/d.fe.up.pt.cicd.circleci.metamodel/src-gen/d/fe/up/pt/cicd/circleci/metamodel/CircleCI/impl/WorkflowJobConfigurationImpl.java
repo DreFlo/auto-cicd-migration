@@ -15,14 +15,17 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -34,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getRequires <em>Requires</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getRequiredBy <em>Required By</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getContexts <em>Contexts</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getBranches <em>Branches</em>}</li>
@@ -43,6 +47,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getMatrix <em>Matrix</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getPreSteps <em>Pre Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getPostSteps <em>Post Steps</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowJobConfigurationImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +63,16 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 	 * @ordered
 	 */
 	protected EList<WorkflowJobConfiguration> requires;
+
+	/**
+	 * The cached value of the '{@link #getRequiredBy() <em>Required By</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequiredBy()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<WorkflowJobConfiguration> requiredBy;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -180,6 +195,16 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 	protected EList<Step> postSteps;
 
 	/**
+	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArguments()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<String, Expression> arguments;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -206,10 +231,26 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 	@Override
 	public EList<WorkflowJobConfiguration> getRequires() {
 		if (requires == null) {
-			requires = new EObjectResolvingEList<WorkflowJobConfiguration>(WorkflowJobConfiguration.class, this,
-					CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES);
+			requires = new EObjectWithInverseResolvingEList.ManyInverse<WorkflowJobConfiguration>(
+					WorkflowJobConfiguration.class, this, CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES,
+					CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY);
 		}
 		return requires;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<WorkflowJobConfiguration> getRequiredBy() {
+		if (requiredBy == null) {
+			requiredBy = new EObjectWithInverseResolvingEList.ManyInverse<WorkflowJobConfiguration>(
+					WorkflowJobConfiguration.class, this, CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY,
+					CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES);
+		}
+		return requiredBy;
 	}
 
 	/**
@@ -414,8 +455,43 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 	 * @generated
 	 */
 	@Override
+	public EMap<String, Expression> getArguments() {
+		if (arguments == null) {
+			arguments = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
+					VariableAssignmentImpl.class, this, CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS);
+		}
+		return arguments;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRequires()).basicAdd(otherEnd, msgs);
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getRequiredBy()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES:
+			return ((InternalEList<?>) getRequires()).basicRemove(otherEnd, msgs);
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY:
+			return ((InternalEList<?>) getRequiredBy()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__CONTEXTS:
 			return ((InternalEList<?>) getContexts()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__BRANCHES:
@@ -428,6 +504,8 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 			return ((InternalEList<?>) getPreSteps()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__POST_STEPS:
 			return ((InternalEList<?>) getPostSteps()).basicRemove(otherEnd, msgs);
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS:
+			return ((InternalEList<?>) getArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -442,6 +520,8 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 		switch (featureID) {
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES:
 			return getRequires();
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY:
+			return getRequiredBy();
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__NAME:
 			return getName();
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__CONTEXTS:
@@ -460,6 +540,11 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 			return getPreSteps();
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__POST_STEPS:
 			return getPostSteps();
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS:
+			if (coreType)
+				return getArguments();
+			else
+				return getArguments().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -476,6 +561,10 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES:
 			getRequires().clear();
 			getRequires().addAll((Collection<? extends WorkflowJobConfiguration>) newValue);
+			return;
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY:
+			getRequiredBy().clear();
+			getRequiredBy().addAll((Collection<? extends WorkflowJobConfiguration>) newValue);
 			return;
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__NAME:
 			setName((String) newValue);
@@ -509,6 +598,9 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 			getPostSteps().clear();
 			getPostSteps().addAll((Collection<? extends Step>) newValue);
 			return;
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS:
+			((EStructuralFeature.Setting) getArguments()).set(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -523,6 +615,9 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 		switch (featureID) {
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES:
 			getRequires().clear();
+			return;
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY:
+			getRequiredBy().clear();
 			return;
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__NAME:
 			setName(NAME_EDEFAULT);
@@ -551,6 +646,9 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__POST_STEPS:
 			getPostSteps().clear();
 			return;
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS:
+			getArguments().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -565,6 +663,8 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 		switch (featureID) {
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRES:
 			return requires != null && !requires.isEmpty();
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__REQUIRED_BY:
+			return requiredBy != null && !requiredBy.isEmpty();
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__CONTEXTS:
@@ -585,6 +685,8 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 			return preSteps != null && !preSteps.isEmpty();
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__POST_STEPS:
 			return postSteps != null && !postSteps.isEmpty();
+		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS:
+			return arguments != null && !arguments.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

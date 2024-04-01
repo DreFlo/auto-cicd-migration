@@ -4,3 +4,557 @@
 module circleci2cicd;
 create OUT : CICD from IN : CircleCI;
 
+rule Workflow2Pipeline {
+	from
+		input : CircleCI!Workflow
+	to
+		output : CICD!Pipeline(
+			inputs <- input.refImmediateComposite().parameters,
+			jobStreams <- thisModule.getJobStreamOrigins(input.jobs),
+			name <- input.name
+		)
+}
+
+rule Parameter2Input {
+	from
+		input : CircleCI!Parameter
+	to
+		output : CICD!Input(
+			defaultValue <- if not input.default.oclIsUndefined() then input.default.expression2String() else OclUndefined endif,
+			description <- input.description,
+			id <- input.name,
+			required <- not input.default.oclIsUndefined(),
+			type <- thisModule.PARAMETER_TYPE_2_INPUT_TYPE(input.type)
+		)
+}
+
+-- TODO: ifCondition
+-- TODO: Arguments
+abstract rule WorkflowJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowJobConfiguration
+	to
+		output : CICD!Job(
+			id <- input.name,
+			matrix <- input.matrix,
+			name <- input.name,
+			previous <- input.requires
+		)
+}
+
+rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowDefinedJobConfiguration
+	to
+		output : CICD!ScriptJob(
+			agent <- input.job.executor.executor2AgentHelper(),
+			environmentVariables <- input.job.environmentVariables,
+			inputs <- input.job.parameters,
+			services <- 
+				if input.job.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
+					if input.job.executor.containers->size() > 1 then
+						input.job.executor.containers->subSequence(2, input.job.executor.containers->size())
+					else
+						Sequence{}
+					endif
+				else
+					Sequence{}
+				endif,
+			shell <- 
+				if not input.job.executor.shell.oclIsUndefined() then
+					let shellString : String = input.job.executor.shell.expression2String() in 
+					if shellString = 'shell' then
+						#BASH
+					else
+						#BASH
+					endif
+				else
+					OclUndefined
+				endif,
+			steps <- input.preSteps->union(input.job.steps)->union(input.postSteps),
+			workingDirectory <- input.job.executor.workingDirectory			
+		)
+}
+
+abstract rule WorkflowOrbJobConfiguration2Job extends WorkflowJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowOrbJobConfiguration
+	to
+		output : CICD!Job
+}
+
+rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowOrbJobConfiguration(
+			input.orb.oclIsTypeOf(CircleCI!OrbReference) and
+			not input.orb.reference.startsWith('circleci/continuation@')
+		)
+	to
+		output : CICD!ScriptJob(
+			steps <- input.preSteps->union(thisModule.OrbReference2Plugin(input.orb, input.arguments))->union(input.postSteps)
+		)
+}
+
+rule OrbReferenceWorkflowOrbJobConfiguration2PipelineCallJob extends WorkflowOrbJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowOrbJobConfiguration(
+			input.orb.oclIsTypeOf(CircleCI!OrbReference) and
+			input.orb.reference.startsWith('circleci/continuation@')
+		)
+	to
+		output : CICD!PipelineCallJob(
+			pipelinePath <- thisModule.getVariableValue(input.arguments, 'configuration_path'),
+			args <- input.arguments->collect(arg | arg.key <> 'configuration_path')
+		)
+}
+
+rule OrbDefinitionWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowOrbJobConfiguration(
+			input.orb.oclIsTypeOf(CircleCI!OrbDefinition)
+		)
+	to
+		output : CICD!ScriptJob(
+			steps <- input.preSteps->union(thisModule.orbDefinitionReference2StepsHelper(input.orb, input.jobName))->union(input.postSteps)
+		)
+}
+
+rule WorkflowApprovalJobConfiguration2ScriptJob extends WorkflowJobConfiguration2Job {
+	from
+		input : CircleCI!WorkflowApprovalJobConfiguration
+	to
+		output : CICD!ScriptJob
+}
+
+lazy rule OrbReference2Plugin {
+	from
+		input : CircleCI!OrbReference,
+		arguments : Sequence(CircleCI!VariableAssignment)
+	to
+		output : CICD!Plugin(
+			pluginName <- input.reference.split('@')->at(1),
+			version <- input.reference.split('@')->at(2),
+			kwargs <- arguments
+		)
+}
+
+lazy rule DockerExecutor2Agent {
+	from
+		input : CircleCI!DockerExecutor
+	to
+		output : CICD!Agent(
+			labels <- Sequence{thisModule.String2StringLiteral(input.name)},
+			container <- if input.containers->notEmpty() then input.containers->first() else OclUndefined endif
+		)
+}
+
+rule DockerContainer2DockerContainer {
+	from
+		input : CircleCI!DockerContainer
+	to
+		output : CICD!DockerContainer(
+			environmentVariables <- input.environmentVariables,
+			image <- input.image,
+			label <- if input.name.oclIsUndefined() then input.image.expression2String() else input.name.expression2String() endif,
+			registryPassword <- input.password,
+			registryUsername <- input.username
+		)
+}
+
+lazy rule MachineExecutor2Agent {
+	from
+		input : CircleCI!MachineExecutor
+	to
+		output : CICD!Agent(
+			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('linux')},
+			container <- thisModule.MachineExecutor2DockerContainer(input)
+		)
+}
+
+lazy rule MachineExecutor2DockerContainer {
+	from
+		input : CircleCI!MachineExecutor
+	to
+		output : CICD!DockerContainer(
+			image <- input.image
+		)
+}
+
+lazy rule MacOSExecutor2Agent {
+	from
+		input : CircleCI!MacOSExecutor
+	to
+		output : CICD!Agent(
+			labels <- Sequence{thisModule.String2StringLiteral('macos')}
+		)
+}
+
+lazy rule WindowsOrbExecutor2Agent {
+	from
+		input : CircleCI!WindowsOrbExecutor
+	to
+		output : CICD!Agent(
+			labels <- Sequence{thisModule.String2StringLiteral('windows')}
+		)
+}
+
+lazy rule Labels2Agent {
+	from
+		input : Sequence(String)
+	to
+		output : CICD!Agent(
+			labels <- input->collect(string | thisModule.String2StringLiteral(string))
+		)
+}
+
+lazy rule String2StringLiteral {
+	from
+		input : String
+	to
+		outptu : CICD!StringLiteral(
+			value <- if input.oclIsUndefined() then '' else input endif
+		)
+}
+
+abstract rule Expression2Expression {
+	from
+		input : CircleCI!Expression
+	to
+		output : CICD!Expression
+}
+
+rule Concat2Concat extends Expression2Expression {
+	from
+		input : CircleCI!Concat
+	to
+		output : CICD!Concat(
+			expressions <- input.expressions
+		)
+}
+
+abstract rule Value2Value {
+	from
+		input : CircleCI!Value
+	to
+		output : CICD!Value
+}
+
+-- TODO Variable
+rule VariableDereference2VariableDereference extends Value2Value {
+	from
+		input : CircleCI!VariableDereference
+	to
+		output : CICD!VariableDereference(
+			property <- input.names->last()
+		)
+}
+
+abstract rule Literal2Literal extends Value2Value {
+	from
+		input : CircleCI!Literal
+	to
+		output : CICD!Literal
+}
+
+rule StringLiteral2StringLiteral extends Literal2Literal {
+	from
+		input : CircleCI!StringLiteral
+	to
+		output : CICD!StringLiteral(
+			value <- input.value
+		)
+}
+
+rule IntegerLiteral2IntegerLiteral extends Literal2Literal {
+	from
+		input : CircleCI!IntegerLiteral
+	to
+		output : CICD!IntegerLiteral(
+			value <- input.value
+		)
+}
+
+rule DoubleLiteral2DoubleLiteral extends Literal2Literal {
+	from
+		input : CircleCI!DoubleLiteral
+	to
+		output : CICD!DoubleLiteral(
+			value <- input.value
+		)
+}
+
+rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
+	from
+		input : CircleCI!BooleanLiteral
+	to
+		output : CICD!BooleanLiteral(
+			value <- input.value
+		)
+}
+
+abstract rule Logic2Expression {
+	from
+		input : CircleCI!Logic
+	to
+		output : CICD!Expression
+}
+
+abstract rule InfinitaryOperator2Expression extends Logic2Expression {
+	from
+		input : CircleCI!InfinitaryOperator
+	to
+		output : CICD!Expression
+}
+
+rule ConcreteInfinitaryOperator2Expression extends InfinitaryOperator2Expression {
+	from
+		input : CircleCI!InfinitaryOperator(
+			input.operands->size() = 1
+		)
+	to
+		output : CICD!And
+	do {
+		output <- input.operands->first();
+	}
+}
+
+rule And2And extends InfinitaryOperator2Expression {
+	from
+		input : CircleCI!And(
+			input.operands->size() > 1
+		)
+	to
+		output : CICD!And(
+			lhs <- 
+				if input.operands->size() = 2 then
+					input.operands->first()
+				else
+					thisModule.LazyAnd2And(input.operands->subSequence(1, input.operands->size() - 1))
+				endif,
+			rhs <- input.operands->last()
+		)
+}
+
+lazy rule LazyAnd2And {
+	from
+		input : Sequence(CircleCI!Logic)
+	to
+		output : CICD!And(
+			lhs <- 
+				if input->size() = 2 then
+					input->first()
+				else
+					thisModule.LazyAnd2And(input->subSequence(1, input->size() - 1))
+				endif,
+			rhs <- input->last()
+		)
+}
+
+rule Or2Or extends InfinitaryOperator2Expression {
+	from
+		input : CircleCI!Or(
+			input.operands->size() > 1
+		)
+	to
+		output : CICD!Or(
+			lhs <- 
+				if input.operands->size() = 2 then
+					input.operands->first()
+				else
+					thisModule.LazyAnd2And(input.operands->subSequence(1, input.operands->size() - 1))
+				endif,
+			rhs <- input.operands->last()
+		)
+}
+
+lazy rule LazyOr2Or {
+	from
+		input : Sequence(CircleCI!Logic)
+	to
+		output : CICD!Or(
+			lhs <- 
+				if input->size() = 2 then
+					input->first()
+				else
+					thisModule.LazyOr2Or(input->subSequence(1, input->size() - 1))
+				endif,
+			rhs <- input->last()
+		)
+}
+
+rule Equals2EqualityOp extends InfinitaryOperator2Expression {
+	from
+		input : CircleCI!Equals(
+			input.operands->size() = 2
+		)
+	to
+		output : CICD!EqualityOp(
+			lhs <- input.operands->first(),
+			op <- #"==",
+			rhs <- input.operands->last()
+		)
+}
+
+rule Equals2And extends InfinitaryOperator2Expression {
+	from
+		input : CircleCI!Equals(
+			input.operands->size() > 2
+		)
+	to
+		output : CICD!And(
+			lhs <- 
+				if input.operands->size() = 3 then
+					thisModule.CreateEquals(input.operands->first(), input.operands->at(2))
+				else
+					thisModule.LazyEquals2And(input.operands->subSequence(1, input.operands->size() - 1))
+				endif,
+			rhs <- thisModule.CreateEquals(input.operands->first(), input.operands->last())
+		)
+}
+
+lazy rule LazyEquals2And {
+	from
+		input : Sequence(CircleCI!Logic)
+	to
+		output : CICD!And(
+			lhs <-
+				if input->size() = 3 then
+					thisModule.CreateEquals(input->first(), input->at(2))
+				else
+					thisModule.LazyEquals2And(input->subSequence(1, input->size() - 1))
+				endif,
+			rhs <- thisModule.CreateEquals(input->first(), input->last())
+		)
+}
+
+lazy rule CreateEquals {
+	from
+		lhs : CircleCI!Expression,
+		rhs : CircleCI!Expression
+	to
+		output : CICD!EqualityOp(
+			lhs <- lhs,
+			op <- #"==",
+			rhs <- rhs
+		)
+}
+
+abstract rule UnaryOperator2UnaryOp extends Logic2Expression {
+	from
+		input : CircleCI!UnaryOperator
+	to
+		output : CICD!UnaryOp(
+			rhs <- input.operand
+		)
+}
+
+rule Not2Negation extends UnaryOperator2UnaryOp {
+	from
+		input : CircleCI!Not
+	to
+		output : CICD!Negation
+}
+
+--- Helpers
+
+helper def : orbDefinitionReference2StepsHelper(orbDefinition : CircleCI!OrbDefinition, jobName : String) : Sequence(CircleCI!Step) =
+	if orbDefinition.commands->collect(command | command.name = jobName)->notEmpty() then
+		orbDefinition.commands->collect(command | command.name = jobName)->first().steps
+	else if orbDefinition.jobs->collect(job | job.name = jobName)->notEmpty() then
+		orbDefinition.jobs->collect(job | job.name = jobName)->first().steps
+	else
+		Sequence{}
+	endif
+	endif;
+
+helper def : getVariableValue(variables : Sequence(CircleCI!VariableAssignment), name : String) : CircleCI!Expression =
+	let variableSequence : Sequence(CircleCI!VariableAssignment) = variables->collect(variable | variable.key = name) in
+	if variableSequence->isEmpty() then OclUndefined else variableSequence->first().value endif;
+
+helper context CircleCI!Executor def : executor2AgentHelper() : CICD!Agent =
+	if self.oclIsTypeOf(CircleCI!DockerExecutor) then
+		thisModule.DockerExecutor2Agent(self)
+	else if self.oclIsTypeOf(CircleCI!MachineExecutor) then
+		thisModule.MachineExecutor2Agent(self)
+	else if self.oclIsTypeOf(CircleCI!MacOSExecutor) then
+		thisModule.MacOSExecutor2Agent(self)
+	else if self.oclIsTypeOf(CircleCI!WindowsOrbExecutor) then
+		thisModule.WindowsOrbExecutor2Agent(self)
+	else if self.oclIsTypeOf(CircleCI!ExecutorReferenceExecutor) then
+		self.executor.executor2AgentHelper()
+	else if self.oclIsTypeOf(CircleCI!OrbReferenceExecutor) and self.orb.oclIsTypeOf(CircleCI!OrbDefinition) then
+		let executor : CircleCI!Executor = self.orb.getExecutorByName(self.orbExecutorName) in
+		if executor.oclIsUndefined() then
+			OclUndefined
+		else
+			executor.executor2AgentHelper()
+		endif
+	else if self.oclIsTypeOf(CircleCI!OrbReferenceExecutor) and self.orb.oclIsTypeOf(CircleCI!OrbReference) then
+		thisModule.Labels2Agent(Sequence{self.orb.name + '/' + self.orbExecutorName})
+	else
+		OclUndefined
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif
+	endif;
+
+helper context CircleCI!OrbDefinition def : getExecutorByName(name : String) : CircleCI!Executor =
+	let executors : Sequence(CircleCI!Executor) = self.executors->select(executor | executor.name = name) in
+	if executors->isEmpty() then
+		OclUndefined
+	else
+		executors->first()
+	endif;
+
+helper context CircleCI!Expression def : expression2String() : String =
+	'EXPRESSION';
+
+helper context CircleCI!Concat def : expression2String() : String =
+	self.expressions->iterate(expression; acc : String = '' |
+		acc + expression.expression2String()
+	);
+
+helper context CircleCI!Value def : expression2String() : String =
+	'VALUE';
+
+helper context CircleCI!Literal def : expression2String() : String =
+	'LITERAL';
+
+helper context CircleCI!StringLiteral def : expression2String() : String =
+	self.value;
+
+helper context CircleCI!IntegerLiteral def : expression2String() : String =
+	self.value.toString();
+
+helper context CircleCI!DoubleLiteral def : expression2String() : String =
+	self.value.toString();
+
+helper context CircleCI!BooleanLiteral def : expression2String() : String =
+	self.value.toString();
+
+helper context CircleCI!VariableDereference def : expression2String() : String =
+	self.names->iterate(name; acc : String = '' |
+		acc + name + if self.names->indexOf(name) <> self.names->size() then '.' else '' endif
+	);
+
+helper def : getJobStreamOrigins(jobs : Sequence(CircleCI!WorkflowJobConfiguration)) : Sequence(CircleCI!WorkflowJobConfiguration) =
+	jobs->select(job | job.requires->isEmpty());
+
+helper def : PARAMETER_TYPE_2_INPUT_TYPE(parameterType : CircleCI!PARAMETER_TYPES) : CICD!INPUT_TYPE =
+	if parameterType = #string then
+		#STRING
+	else if parameterType = #boolean then
+		#BOOLEAN
+	else if parameterType = #integer then
+		#NUMBER
+	else if parameterType = #enum then
+		#CHOICE
+	else
+		#STRING
+	endif
+	endif
+	endif
+	endif;

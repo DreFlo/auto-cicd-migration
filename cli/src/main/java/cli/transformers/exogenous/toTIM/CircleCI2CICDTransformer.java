@@ -6,6 +6,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 public class CircleCI2CICDTransformer extends ToTIMAbstractTransformer<Pipeline, CircleCIPackage> {
     public CircleCI2CICDTransformer(ResourceSet resourceSet) {
-        super(resourceSet, CircleCIPackage.eINSTANCE, "transformations/tsm2tim/circleci2cicd.asm", "CircleCI");
+        super(resourceSet, CircleCIPackage.eINSTANCE, "transformations/tsm2tim/circleci2cicd.asm", "CircleCI", null);
     }
 }

@@ -12,6 +12,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Cache;
+import d.fe.up.pt.cicd.metamodel.CICD.Checkout;
 import d.fe.up.pt.cicd.metamodel.CICD.Command;
 import d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Concat;
@@ -267,6 +268,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass artifactEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass checkoutEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1585,6 +1593,26 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getCheckout() {
+		return checkoutEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCheckout_Path() {
+		return (EReference) checkoutEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAssignment() {
 		return assignmentEClass;
 	}
@@ -2210,6 +2238,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(artifactEClass, ARTIFACT__RETENTION_TIME);
 		createEAttribute(artifactEClass, ARTIFACT__STORE);
 
+		checkoutEClass = createEClass(CHECKOUT);
+		createEReference(checkoutEClass, CHECKOUT__PATH);
+
 		assignmentEClass = createEClass(ASSIGNMENT);
 		createEReference(assignmentEClass, ASSIGNMENT__KEY);
 		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
@@ -2330,6 +2361,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		pluginEClass.getESuperTypes().add(this.getNonConditionalStep());
 		cacheEClass.getESuperTypes().add(this.getNonConditionalStep());
 		artifactEClass.getESuperTypes().add(this.getNonConditionalStep());
+		checkoutEClass.getESuperTypes().add(this.getNonConditionalStep());
 		concatEClass.getESuperTypes().add(this.getExpression());
 		valueEClass.getESuperTypes().add(this.getExpression());
 		literalEClass.getESuperTypes().add(this.getValue());
@@ -2633,6 +2665,12 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getArtifact_Store(), ecorePackage.getEBooleanObject(), "store", null, 1, 1, Artifact.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCheckout_Path(), this.getExpression(), null, "path", null, 1, 1, Checkout.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);

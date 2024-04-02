@@ -7,6 +7,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 public abstract class EndogenousAbstractTransformer<Model extends EObject, Package extends EPackage> extends AbstractTransformer<Model, Package, Model, Package> {
     protected EndogenousAbstractTransformer(ResourceSet resourceSet, Package aPackage, String atlFilePath, String inputModelName, String outputModelName) {
-        super(resourceSet, aPackage, aPackage, atlFilePath, inputModelName, outputModelName);
+        super(resourceSet, aPackage, aPackage, atlFilePath, inputModelName, outputModelName, null);
     }
 }

@@ -579,6 +579,29 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Checkout} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CheckoutItemProvider checkoutItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Checkout}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCheckoutAdapter() {
+		if (checkoutItemProvider == null) {
+			checkoutItemProvider = new CheckoutItemProvider(this);
+		}
+
+		return checkoutItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1210,6 +1233,8 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			cacheItemProvider.dispose();
 		if (artifactItemProvider != null)
 			artifactItemProvider.dispose();
+		if (checkoutItemProvider != null)
+			checkoutItemProvider.dispose();
 		if (assignmentItemProvider != null)
 			assignmentItemProvider.dispose();
 		if (concatItemProvider != null)

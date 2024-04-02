@@ -2,6 +2,7 @@ package cli.transformers.exogenous.fromTIM;
 
 import cli.transformers.AbstractTransformer;
 import cli.transformers.endogenous.CICD.EndogenousCICDAbstractTransformer;
+import cli.validators.AbstractValidator;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.eclipse.emf.ecore.EObject;
@@ -15,8 +16,8 @@ import java.util.List;
 public abstract class FromTIMAbstractTransformer<OutputModel extends EObject, OutputPackage extends EPackage> extends AbstractTransformer<Pipeline, CICDPackage, OutputModel, OutputPackage> {
     private final List<EndogenousCICDAbstractTransformer> refiners;
 
-    protected FromTIMAbstractTransformer(ResourceSet resourceSet, OutputPackage outputPackage, String atlFilePath, String outputModelName) {
-        super(resourceSet, CICDPackage.eINSTANCE, outputPackage, atlFilePath, "CICD", outputModelName);
+    protected FromTIMAbstractTransformer(ResourceSet resourceSet, OutputPackage outputPackage, String atlFilePath, String outputModelName, AbstractValidator<Pipeline, CICDPackage> validator) {
+        super(resourceSet, CICDPackage.eINSTANCE, outputPackage, atlFilePath, "CICD", outputModelName, validator);
         this.refiners = new ArrayList<>();
         registerRefiners();
     }

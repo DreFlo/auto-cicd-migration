@@ -35,7 +35,7 @@ rule Pipeline2Pipeline {
 					cicdPipeline.agent 
 				endif,
 			environmentVariables <- cicdPipeline.environmentVariables,
-			triggers <- cicdPipeline.triggers
+			triggers <- cicdPipeline.triggers->select(trigger | trigger.oclIsTypeOf(CICD!ScheduledTrigger))
 		)
 	do {
 		if (jenkinsPipeline.agent.oclIsTypeOf(Jenkins!NodeAgent) and not cicdPipeline.workingDirectory.oclIsUndefined()) {

@@ -4,7 +4,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.ScriptJob;
+import d.fe.up.pt.cicd.metamodel.CICD.Checkout;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,19 +18,19 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.ScriptJob} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Checkout} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ScriptJobItemProvider extends JobItemProvider {
+public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ScriptJobItemProvider(AdapterFactory adapterFactory) {
+	public CheckoutItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,7 +61,7 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CICDPackage.Literals.SCRIPT_JOB__STEPS);
+			childrenFeatures.add(CICDPackage.Literals.CHECKOUT__PATH);
 		}
 		return childrenFeatures;
 	}
@@ -80,14 +80,14 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	}
 
 	/**
-	 * This returns ScriptJob.gif.
+	 * This returns Checkout.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ScriptJob"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Checkout"));
 	}
 
 	/**
@@ -108,9 +108,9 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ScriptJob) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_ScriptJob_type")
-				: getString("_UI_ScriptJob_type") + " " + label;
+		String label = ((Checkout) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Checkout_type")
+				: getString("_UI_Checkout_type") + " " + label;
 	}
 
 	/**
@@ -124,8 +124,8 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ScriptJob.class)) {
-		case CICDPackage.SCRIPT_JOB__STEPS:
+		switch (notification.getFeatureID(Checkout.class)) {
+		case CICDPackage.CHECKOUT__PATH:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -143,23 +143,65 @@ public class ScriptJobItemProvider extends JobItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.SCRIPT_JOB__STEPS,
-				CICDFactory.eINSTANCE.createConditionalStep()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.SCRIPT_JOB__STEPS, CICDFactory.eINSTANCE.createCommand()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.SCRIPT_JOB__STEPS, CICDFactory.eINSTANCE.createPlugin()));
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.SCRIPT_JOB__STEPS, CICDFactory.eINSTANCE.createCache()));
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createValue()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createLiteral()));
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.SCRIPT_JOB__STEPS, CICDFactory.eINSTANCE.createArtifact()));
+				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
 
 		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.SCRIPT_JOB__STEPS, CICDFactory.eINSTANCE.createCheckout()));
+				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.createSecretVariable()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.createVariableContext()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.createVariableDereference()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.createBuiltInFunction()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createAddition()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createSubtraction()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createUnaryOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createNegation()));
 	}
 
 }

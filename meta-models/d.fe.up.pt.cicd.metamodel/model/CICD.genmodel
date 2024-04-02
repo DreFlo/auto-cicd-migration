@@ -172,6 +172,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Artifact/retentionTime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Artifact/store"/>
     </genClasses>
+    <genClasses ecoreClass="CICD.ecore#//Checkout">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Checkout/path"/>
+    </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Assignment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Assignment/key"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Assignment/value"/>

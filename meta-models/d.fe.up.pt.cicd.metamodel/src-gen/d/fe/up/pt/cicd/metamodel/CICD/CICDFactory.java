@@ -211,6 +211,15 @@ public interface CICDFactory extends EFactory {
 	Artifact createArtifact();
 
 	/**
+	 * Returns a new object of class '<em>Checkout</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Checkout</em>'.
+	 * @generated
+	 */
+	Checkout createCheckout();
+
+	/**
 	 * Returns a new object of class '<em>Concat</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

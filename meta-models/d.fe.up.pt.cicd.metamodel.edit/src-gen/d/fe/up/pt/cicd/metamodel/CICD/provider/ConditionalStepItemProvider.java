@@ -220,6 +220,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
 				CICDFactory.eINSTANCE.createArtifact()));
 
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__THEN_RUN,
+				CICDFactory.eINSTANCE.createCheckout()));
+
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
 				CICDFactory.eINSTANCE.createConditionalStep()));
 
@@ -234,6 +237,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
 				CICDFactory.eINSTANCE.createArtifact()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__ELSE_RUN,
+				CICDFactory.eINSTANCE.createCheckout()));
 	}
 
 	/**

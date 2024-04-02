@@ -1,0 +1,18 @@
+import 'platform:/resource/d.fe.up.pt.cicd.metamodel/model/CICD.ecore'
+
+package CICD
+
+context Step
+--
+-- example invariant with a custom error message to verify that
+-- the 'name' property of all 'CICD::PipelineBlock' instances is non-null
+--
+inv noPluginSteps:
+	not Step.allInstances()->exists(step | step.oclIsTypeOf(Plugin))
+	
+context Trigger
+
+inv onlyScheduledTrigger:
+	not Trigger.allInstances()->exists(trigger | not trigger.oclIsTypeOf(ScheduledTrigger))
+
+endpackage

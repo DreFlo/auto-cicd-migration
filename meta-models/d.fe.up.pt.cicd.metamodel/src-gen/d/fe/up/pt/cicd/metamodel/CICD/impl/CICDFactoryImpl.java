@@ -102,6 +102,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createCache();
 		case CICDPackage.ARTIFACT:
 			return createArtifact();
+		case CICDPackage.CHECKOUT:
+			return createCheckout();
 		case CICDPackage.ASSIGNMENT:
 			return (EObject) createAssignment();
 		case CICDPackage.CONCAT:
@@ -442,6 +444,17 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Artifact createArtifact() {
 		ArtifactImpl artifact = new ArtifactImpl();
 		return artifact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Checkout createCheckout() {
+		CheckoutImpl checkout = new CheckoutImpl();
+		return checkout;
 	}
 
 	/**

@@ -2,6 +2,7 @@ package cli.transformers;
 
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
+import cli.validators.AbstractValidator;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -29,14 +30,16 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final String inputModelName;
     private final String outputModelName;
     private boolean deleteIntermediateFiles = false;
+    private final AbstractValidator<InputModel, InputPackage> validator;
 
-    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName) {
+    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) {
         this.resourceSet = resourceSet;
         this.inputPackage = inputPackage;
         this.outputPackage = outputPackage;
         this.atlFilePath = atlFilePath;
         this.inputModelName = inputModelName;
         this.outputModelName = outputModelName;
+        this.validator = validator;
         checkRegistry();
 //        setDeleteIntermediateFiles(false);
     }
@@ -47,6 +50,9 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     public OutputModel transform(InputModel inputModel) throws IOException {
+        if (validator != null) {
+            validator.validate(inputModel);
+        }
         String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out.xmi";
 

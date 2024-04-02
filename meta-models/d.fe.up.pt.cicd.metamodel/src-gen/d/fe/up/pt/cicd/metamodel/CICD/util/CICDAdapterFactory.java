@@ -209,6 +209,11 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseCheckout(Checkout object) {
+			return createCheckoutAdapter();
+		}
+
+		@Override
 		public Adapter caseAssignment(Map.Entry<Variable, Expression> object) {
 			return createAssignmentAdapter();
 		}
@@ -736,6 +741,20 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createArtifactAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Checkout <em>Checkout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Checkout
+	 * @generated
+	 */
+	public Adapter createCheckoutAdapter() {
 		return null;
 	}
 

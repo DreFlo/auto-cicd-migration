@@ -311,6 +311,17 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CICDPackage.CHECKOUT: {
+			Checkout checkout = (Checkout) theEObject;
+			T result = caseCheckout(checkout);
+			if (result == null)
+				result = caseNonConditionalStep(checkout);
+			if (result == null)
+				result = caseStep(checkout);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CICDPackage.ASSIGNMENT: {
 			@SuppressWarnings("unchecked")
 			Map.Entry<Variable, Expression> assignment = (Map.Entry<Variable, Expression>) theEObject;
@@ -992,6 +1003,21 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseArtifact(Artifact object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Checkout</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Checkout</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCheckout(Checkout object) {
 		return null;
 	}
 

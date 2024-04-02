@@ -455,6 +455,251 @@ rule Not2Negation extends UnaryOperator2UnaryOp {
 		output : CICD!Negation
 }
 
+rule VariableAssignment2Assignment {
+	from
+		input : CircleCI!VariableAssignment
+	to
+		output : CICD!Assignment(
+			key <- thisModule.String2Variable(input.key),
+			value <- input.value
+		)
+}
+
+lazy rule String2Variable {
+	from
+		string : String
+	to
+		variable : CICD!Variable(
+			name <- string
+		)
+}
+
+rule Matrix2Matrix {
+	from
+		input : CircleCI!Matrix
+	to
+		output : CICD!Matrix(
+			axes <- input.parameters,
+			excludes <- input.excludes
+		)
+}
+
+rule MatrixParameter2MatrixAxis {
+	from
+		input : CircleCI!MatrixParameter
+	to
+		output : CICD!MatrixAxis(
+			name <- input.name,
+			cells <- input.cells
+		)
+}
+
+rule MatrixCombination2MatrixCombination {
+	from
+		input : CircleCI!MatrixCombination
+	to
+		output : CICD!MatrixCombination(
+			combinationEntries <- input.entries
+		)
+}
+
+abstract rule ConditionalStep2ConditionalStep {
+	from
+		input : CircleCI!ConditionalStep
+	to
+		output : CICD!ConditionalStep(
+			thenRun <- input.steps
+		)
+}
+
+rule WhenStep2ConditionalStep extends ConditionalStep2ConditionalStep {
+	from
+		input : CircleCI!WhenStep
+	to
+		output : CICD!ConditionalStep(
+			ifCondition <- input.condition
+		)
+}
+
+rule UnlessStep2ConditionalStep extends ConditionalStep2ConditionalStep {
+	from
+		input : CircleCI!UnlessStep
+	to
+		output : CICD!ConditionalStep(
+			ifCondition <- thisModule.Negate(input.condition)
+		)
+}
+
+lazy rule Negate {
+	from
+		input : CircleCI!Logic
+	to
+		output : CICD!Negation(
+			rhs <- input
+		)
+}
+
+rule RunStep2Command {
+	from
+		input : CircleCI!RunStep
+	to
+		ouptut : CICD!Command(
+			environmentVariables <- input.environmentVariables,
+			name <- if input.name.oclIsUndefined() then OclUndefined else input.name.expression2String() endif,
+			program <- input.command
+		)
+}
+
+rule CheckoutStep2Checkout {
+	from
+		input : CircleCI!CheckoutStep
+	to
+		output : CICD!Checkout(
+			path <- input.path
+		)
+}
+
+rule SetupRemoteDockerStep2Plugin {
+	from
+		input : CircleCI!SetupRemoteDockerStep
+	to
+		output : CICD!Plugin(
+			pluginName <- 'setup-remote-docker',
+			version <- if input.version.oclIsUndefined() then '' else input.version.expression2String() endif,
+			kwargs <- 
+				if input.dockerLayerCaching.oclIsUndefined() then 
+					Sequence{} 
+				else 
+					Sequence{thisModule.CreateVariableAssignment('docker-layer-caching', input.dockerLayerCaching)} 
+				endif
+		)
+}
+
+lazy rule CreateVariableAssignment {
+	from
+		key : String,
+		value : CircleCI!Expression
+	to
+		assignment : CICD!Assignment(
+			key <- thisModule.String2Variable(key),
+			value <- value
+		)
+}
+
+rule SaveCacheStep2Cache {
+	from
+		input : CircleCI!SaveCacheStep
+	to
+		output : CICD!Cache(
+			cacheName <- input.name,
+			keys <- input.key,
+			paths <- input.paths,
+			store <- true
+		)
+}
+
+rule RestoreCacheStep2Cache {
+	from
+		input : CircleCI!RestoreCacheStep
+	to
+		output : CICD!Cache(
+			cacheName <- input.name,
+			keys <- input.keys,
+			store <- false
+		)
+}
+
+rule StoreArtifactsStep2Artifact {
+	from
+		input : CircleCI!StoreArtifactsStep
+	to
+		output : CICD!Artifact(
+			artifactName <- 
+				thisModule.String2StringLiteral(
+					'artifact_' + input.path.expression2String()
+				),
+			includePaths <- Sequence{input.path},
+			store <- true
+		)
+}
+
+rule StoreTestResultsStep2Plugin {
+	from
+		input : CircleCI!StoreTestResultsStep
+	to
+		output : CICD!Plugin(
+			pluginName <- 'store-test-results',
+			kwargs <- Sequence{thisModule.CreateVariableAssignment('path', input.path)}
+		)
+}
+
+rule PersistToWorkspaceStep2Plugin {
+	from
+		input : CircleCI!PersistToWorkspaceStep
+	to
+		output : CICD!Plugin(
+			pluginName <- 'persist-to-workspace',
+			kwargs <- Sequence{thisModule.CreateVariableAssignment('root', input.root), thisModule.CreateVariableAssignment('paths', thisModule.ExpressionSequence2Concat(input.paths))}
+		)
+}
+
+lazy rule ExpressionSequence2Concat {
+	from
+		input : Sequence(CircleCI!Expression)
+	to
+		output : CICD!Concat(
+			expressions <- input
+		)
+}
+
+rule Attach2WorkspaceStep2Plugin {
+	from
+		input : CircleCI!AttachWorkspaceStep
+	to
+		output : CICD!Plugin(
+			pluginName <- 'attach-to-workspace',
+			kwargs <- Sequence{thisModule.CreateVariableAssignment('at', input.at)}
+		)
+}
+
+rule AddSSHKeysStep2Plugin {
+	from
+		input : CircleCI!AddSSHKeysStep
+	to
+		output : CICD!Plugin(
+			pluginName <- 'add-ssh-keys',
+			kwargs <- Sequence{thisModule.CreateVariableAssignment('fingerprints', input.fingerprints)}
+		)
+}
+
+rule OrbReferenceOrbReferenceStep2Plugin {
+	from
+		input : CircleCI!OrbReferenceStep(
+			input.orb.oclIsTypeOf(CircleCI!OrbReference)
+		)
+	to
+		output : CICD!Plugin(
+			pluginName <- input.orb.name + '/' + input.jobName,
+			kwargs <- input.arguments
+		)
+}
+
+-- TODO Not Working
+--rule OrbDefinitionOrbReferenceStep2Steps {
+	--from
+		--input : CircleCI!OrbReferenceStep(
+			--input.orb.oclIsTypeOf(CircleCI!OrbDefinition)
+		--)
+	--using {
+		--steps : Sequence(CircleCI!Step) = thisModule.orbDefinitionReference2StepsHelper(input.orb, input.jobName);
+	--}
+	--to
+		--output : Sequence(CICD!Step)
+	--do {
+		--output <- steps;
+	--}
+--}
+
 --- Helpers
 
 helper def : orbDefinitionReference2StepsHelper(orbDefinition : CircleCI!OrbDefinition, jobName : String) : Sequence(CircleCI!Step) =

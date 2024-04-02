@@ -178,6 +178,17 @@ rule Package2Artifact extends Step2NonConditionalStep {
 		)
 }
 
+rule Package2Checkout extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Package(
+			ghaStep.uses.expression2String().startsWith('actions/checkout')
+		)
+	to
+		cicdStep : CICD!Checkout(
+			path <- thisModule.getVariable(ghaStep.args, 'path')
+		)
+}
+
 rule VariableAssignment2Assigment {
 	from
 		variableAssignment : GHA!VariableAssignment

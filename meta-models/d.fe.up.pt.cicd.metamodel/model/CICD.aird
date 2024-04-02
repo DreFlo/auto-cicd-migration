@@ -3,6 +3,11 @@
   <viewpoint:DAnalysis uid="_on9ywM_REe6l_fqc4UuMSg" selectedViews="_oovO0M_REe6l_fqc4UuMSg _oo9RQM_REe6l_fqc4UuMSg" version="15.0.0.202209061200">
     <semanticResources>CICD.ecore</semanticResources>
     <semanticResources>CICD.genmodel</semanticResources>
+    <semanticResources>preJenkinsTransformation.ocl</semanticResources>
+    <semanticResources>preJenkinsTransformation.ocl.oclas</semanticResources>
+    <semanticResources>CICD.ecore.oclas</semanticResources>
+    <semanticResources>http://www.eclipse.org/ocl/2015/Orphanage.oclas</semanticResources>
+    <semanticResources>http://www.eclipse.org/emf/2002/Ecore.oclas</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_oovO0M_REe6l_fqc4UuMSg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_opakQM_REe6l_fqc4UuMSg" name="CICD" repPath="#_opYvEM_REe6l_fqc4UuMSg" changeId="74e0b97b-7346-4d4d-8399-029d0b1dd4d0">

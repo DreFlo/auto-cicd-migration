@@ -327,6 +327,8 @@ public class CICDSwitch<T> extends Switch<T> {
 			Map.Entry<Variable, Expression> assignment = (Map.Entry<Variable, Expression>) theEObject;
 			T result = caseAssignment(assignment);
 			if (result == null)
+				result = caseExpression((Expression) assignment);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}

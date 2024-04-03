@@ -2362,6 +2362,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		cacheEClass.getESuperTypes().add(this.getNonConditionalStep());
 		artifactEClass.getESuperTypes().add(this.getNonConditionalStep());
 		checkoutEClass.getESuperTypes().add(this.getNonConditionalStep());
+		assignmentEClass.getESuperTypes().add(this.getExpression());
 		concatEClass.getESuperTypes().add(this.getExpression());
 		valueEClass.getESuperTypes().add(this.getExpression());
 		literalEClass.getESuperTypes().add(this.getValue());

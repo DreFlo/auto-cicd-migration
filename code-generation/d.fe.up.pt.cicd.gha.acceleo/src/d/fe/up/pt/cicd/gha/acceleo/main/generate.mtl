@@ -14,7 +14,9 @@
 /]
 
 [template public generateExpression(expression : Expression)post (trim())]
-[if (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))]
+[if (expression.oclIsUndefined())]
+OclUndefined
+[elseif (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))]
 [_generateExpression(expression)/]
 [elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(VariableDereference) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))]
 [_generateExpression(expression)/]

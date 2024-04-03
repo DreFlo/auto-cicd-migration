@@ -3,8 +3,8 @@
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Step;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,38 +23,38 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Step</b></em>'.
+ * An implementation of the model object '<em><b>Function</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepImpl#getCommand <em>Command</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepImpl#getArguments <em>Arguments</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.FunctionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.FunctionImpl#getArguments <em>Arguments</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StepImpl extends StageChildStepImpl implements Step {
+public class FunctionImpl extends ExpressionImpl implements Function {
 	/**
-	 * The default value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommand()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String COMMAND_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCommand() <em>Command</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommand()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String command = COMMAND_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getArguments() <em>Arguments</em>}' map.
@@ -71,7 +71,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StepImpl() {
+	protected FunctionImpl() {
 		super();
 	}
 
@@ -82,7 +82,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return JenkinsPackage.Literals.STEP;
+		return JenkinsPackage.Literals.FUNCTION;
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
-	public String getCommand() {
-		return command;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -101,11 +101,11 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
-	public void setCommand(String newCommand) {
-		String oldCommand = command;
-		command = newCommand;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.STEP__COMMAND, oldCommand, command));
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.FUNCTION__NAME, oldName, name));
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	public EMap<Variable, Expression> getArguments() {
 		if (arguments == null) {
 			arguments = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT, AssignmentImpl.class,
-					this, JenkinsPackage.STEP__ARGUMENTS);
+					this, JenkinsPackage.FUNCTION__ARGUMENTS);
 		}
 		return arguments;
 	}
@@ -130,7 +130,7 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case JenkinsPackage.STEP__ARGUMENTS:
+		case JenkinsPackage.FUNCTION__ARGUMENTS:
 			return ((InternalEList<?>) getArguments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -144,9 +144,9 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case JenkinsPackage.STEP__COMMAND:
-			return getCommand();
-		case JenkinsPackage.STEP__ARGUMENTS:
+		case JenkinsPackage.FUNCTION__NAME:
+			return getName();
+		case JenkinsPackage.FUNCTION__ARGUMENTS:
 			if (coreType)
 				return getArguments();
 			else
@@ -163,10 +163,10 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case JenkinsPackage.STEP__COMMAND:
-			setCommand((String) newValue);
+		case JenkinsPackage.FUNCTION__NAME:
+			setName((String) newValue);
 			return;
-		case JenkinsPackage.STEP__ARGUMENTS:
+		case JenkinsPackage.FUNCTION__ARGUMENTS:
 			((EStructuralFeature.Setting) getArguments()).set(newValue);
 			return;
 		}
@@ -181,10 +181,10 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.STEP__COMMAND:
-			setCommand(COMMAND_EDEFAULT);
+		case JenkinsPackage.FUNCTION__NAME:
+			setName(NAME_EDEFAULT);
 			return;
-		case JenkinsPackage.STEP__ARGUMENTS:
+		case JenkinsPackage.FUNCTION__ARGUMENTS:
 			getArguments().clear();
 			return;
 		}
@@ -199,9 +199,9 @@ public class StepImpl extends StageChildStepImpl implements Step {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.STEP__COMMAND:
-			return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
-		case JenkinsPackage.STEP__ARGUMENTS:
+		case JenkinsPackage.FUNCTION__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case JenkinsPackage.FUNCTION__ARGUMENTS:
 			return arguments != null && !arguments.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -218,10 +218,10 @@ public class StepImpl extends StageChildStepImpl implements Step {
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (command: ");
-		result.append(command);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //StepImpl
+} //FunctionImpl

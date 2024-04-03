@@ -1691,7 +1691,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGNMENT__KEY = 0;
+	int ASSIGNMENT__KEY = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1700,7 +1700,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGNMENT__VALUE = 1;
+	int ASSIGNMENT__VALUE = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Assignment</em>' class.
@@ -1709,7 +1709,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGNMENT_FEATURE_COUNT = 2;
+	int ASSIGNMENT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Assignment</em>' class.
@@ -1718,145 +1718,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGNMENT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepArgumentImpl <em>Step Argument</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepArgumentImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepArgument()
-	 * @generated
-	 */
-	int STEP_ARGUMENT = 34;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_ARGUMENT__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_ARGUMENT__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Step Argument</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_ARGUMENT_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Step Argument</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_ARGUMENT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepSingleArgumentImpl <em>Step Single Argument</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepSingleArgumentImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepSingleArgument()
-	 * @generated
-	 */
-	int STEP_SINGLE_ARGUMENT = 35;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_SINGLE_ARGUMENT__KEY = STEP_ARGUMENT__KEY;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_SINGLE_ARGUMENT__VALUE = STEP_ARGUMENT__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Step Single Argument</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_SINGLE_ARGUMENT_FEATURE_COUNT = STEP_ARGUMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Step Single Argument</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_SINGLE_ARGUMENT_OPERATION_COUNT = STEP_ARGUMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepListArgumentImpl <em>Step List Argument</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepListArgumentImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepListArgument()
-	 * @generated
-	 */
-	int STEP_LIST_ARGUMENT = 36;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_LIST_ARGUMENT__KEY = STEP_ARGUMENT__KEY;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_LIST_ARGUMENT__VALUE = STEP_ARGUMENT__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Step List Argument</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_LIST_ARGUMENT_FEATURE_COUNT = STEP_ARGUMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Step List Argument</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STEP_LIST_ARGUMENT_OPERATION_COUNT = STEP_ARGUMENT_OPERATION_COUNT + 0;
+	int ASSIGNMENT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BinaryOpImpl <em>Binary Op</em>}' class.
@@ -1866,7 +1728,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 37;
+	int BINARY_OP = 34;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1905,6 +1767,43 @@ public interface JenkinsPackage extends EPackage {
 	int BINARY_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl <em>Array</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getArray()
+	 * @generated
+	 */
+	int ARRAY = 35;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY__VALUES = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Array</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Array</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UnaryOpImpl <em>Unary Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1912,7 +1811,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 38;
+	int UNARY_OP = 36;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1949,7 +1848,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 39;
+	int NEGATION = 37;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -1986,7 +1885,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 40;
+	int EQUALITY_OP = 38;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2041,7 +1940,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 41;
+	int COMPARISON_OP = 39;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2096,7 +1995,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 42;
+	int LOGICAL_OP = 40;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2142,7 +2041,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 43;
+	int AND = 41;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2188,7 +2087,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 44;
+	int OR = 42;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2234,7 +2133,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 45;
+	int TRIGGER = 43;
 
 	/**
 	 * The number of structural features of the '<em>Trigger</em>' class.
@@ -2262,7 +2161,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getScheduledTrigger()
 	 * @generated
 	 */
-	int SCHEDULED_TRIGGER = 46;
+	int SCHEDULED_TRIGGER = 44;
 
 	/**
 	 * The feature id for the '<em><b>Cron</b></em>' attribute.
@@ -2299,7 +2198,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getPollingTrigger()
 	 * @generated
 	 */
-	int POLLING_TRIGGER = 47;
+	int POLLING_TRIGGER = 45;
 
 	/**
 	 * The feature id for the '<em><b>Cron</b></em>' attribute.
@@ -2336,7 +2235,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getUpstreamTrigger()
 	 * @generated
 	 */
-	int UPSTREAM_TRIGGER = 48;
+	int UPSTREAM_TRIGGER = 46;
 
 	/**
 	 * The feature id for the '<em><b>Jobs</b></em>' attribute list.
@@ -2373,7 +2272,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTool()
 	 * @generated
 	 */
-	int TOOL = 49;
+	int TOOL = 47;
 
 	/**
 	 * The feature id for the '<em><b>Tool</b></em>' attribute.
@@ -2419,7 +2318,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhen()
 	 * @generated
 	 */
-	int WHEN = 50;
+	int WHEN = 48;
 
 	/**
 	 * The number of structural features of the '<em>When</em>' class.
@@ -2447,7 +2346,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenComparison()
 	 * @generated
 	 */
-	int WHEN_COMPARISON = 51;
+	int WHEN_COMPARISON = 49;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2502,7 +2401,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBranch()
 	 * @generated
 	 */
-	int WHEN_BRANCH = 52;
+	int WHEN_BRANCH = 50;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2557,7 +2456,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeset()
 	 * @generated
 	 */
-	int WHEN_CHANGESET = 53;
+	int WHEN_CHANGESET = 51;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2612,7 +2511,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTag()
 	 * @generated
 	 */
-	int WHEN_TAG = 54;
+	int WHEN_TAG = 52;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2667,7 +2566,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangeRequest()
 	 * @generated
 	 */
-	int WHEN_CHANGE_REQUEST = 55;
+	int WHEN_CHANGE_REQUEST = 53;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -2731,7 +2630,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenBuildingTag()
 	 * @generated
 	 */
-	int WHEN_BUILDING_TAG = 56;
+	int WHEN_BUILDING_TAG = 54;
 
 	/**
 	 * The number of structural features of the '<em>When Building Tag</em>' class.
@@ -2759,7 +2658,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenChangelog()
 	 * @generated
 	 */
-	int WHEN_CHANGELOG = 57;
+	int WHEN_CHANGELOG = 55;
 
 	/**
 	 * The number of structural features of the '<em>When Changelog</em>' class.
@@ -2787,7 +2686,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEquals()
 	 * @generated
 	 */
-	int WHEN_EQUALS = 58;
+	int WHEN_EQUALS = 56;
 
 	/**
 	 * The feature id for the '<em><b>Expected</b></em>' containment reference.
@@ -2833,7 +2732,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenEnvironment()
 	 * @generated
 	 */
-	int WHEN_ENVIRONMENT = 59;
+	int WHEN_ENVIRONMENT = 57;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2879,7 +2778,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenExpression()
 	 * @generated
 	 */
-	int WHEN_EXPRESSION = 60;
+	int WHEN_EXPRESSION = 58;
 
 	/**
 	 * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2916,7 +2815,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getNestedWhen()
 	 * @generated
 	 */
-	int NESTED_WHEN = 61;
+	int NESTED_WHEN = 59;
 
 	/**
 	 * The number of structural features of the '<em>Nested When</em>' class.
@@ -2944,7 +2843,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSingleNestedWhen()
 	 * @generated
 	 */
-	int SINGLE_NESTED_WHEN = 62;
+	int SINGLE_NESTED_WHEN = 60;
 
 	/**
 	 * The feature id for the '<em><b>Nested When</b></em>' containment reference.
@@ -2981,7 +2880,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getMultipleNestedWhen()
 	 * @generated
 	 */
-	int MULTIPLE_NESTED_WHEN = 63;
+	int MULTIPLE_NESTED_WHEN = 61;
 
 	/**
 	 * The feature id for the '<em><b>Nested Whens</b></em>' containment reference list.
@@ -3018,7 +2917,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenNot()
 	 * @generated
 	 */
-	int WHEN_NOT = 64;
+	int WHEN_NOT = 62;
 
 	/**
 	 * The feature id for the '<em><b>Nested When</b></em>' containment reference.
@@ -3055,7 +2954,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAnyOf()
 	 * @generated
 	 */
-	int WHEN_ANY_OF = 65;
+	int WHEN_ANY_OF = 63;
 
 	/**
 	 * The feature id for the '<em><b>Nested Whens</b></em>' containment reference list.
@@ -3092,7 +2991,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenAllOf()
 	 * @generated
 	 */
-	int WHEN_ALL_OF = 66;
+	int WHEN_ALL_OF = 64;
 
 	/**
 	 * The feature id for the '<em><b>Nested Whens</b></em>' containment reference list.
@@ -3129,7 +3028,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWhenTriggeredBy()
 	 * @generated
 	 */
-	int WHEN_TRIGGERED_BY = 67;
+	int WHEN_TRIGGERED_BY = 65;
 
 	/**
 	 * The feature id for the '<em><b>Cause</b></em>' attribute.
@@ -3168,326 +3067,50 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_TRIGGERED_BY_OPERATION_COUNT = WHEN_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BuildStepParameterImpl <em>Build Step Parameter</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.FunctionImpl <em>Function</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBuildStepParameter()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.FunctionImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getFunction()
 	 * @generated
 	 */
-	int BUILD_STEP_PARAMETER = 68;
+	int FUNCTION = 66;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_STEP_PARAMETER__NAME = EXPRESSION_FEATURE_COUNT + 0;
+	int FUNCTION__NAME = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * The feature id for the '<em><b>Arguments</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_STEP_PARAMETER__VALUE = EXPRESSION_FEATURE_COUNT + 1;
+	int FUNCTION__ARGUMENTS = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Build Step Parameter</em>' class.
+	 * The number of structural features of the '<em>Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_STEP_PARAMETER_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+	int FUNCTION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Build Step Parameter</em>' class.
+	 * The number of operations of the '<em>Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUILD_STEP_PARAMETER_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringBuildStepParameterImpl <em>String Build Step Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringBuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStringBuildStepParameter()
-	 * @generated
-	 */
-	int STRING_BUILD_STEP_PARAMETER = 69;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_BUILD_STEP_PARAMETER__NAME = BUILD_STEP_PARAMETER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_BUILD_STEP_PARAMETER__VALUE = BUILD_STEP_PARAMETER__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>String Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_BUILD_STEP_PARAMETER_FEATURE_COUNT = BUILD_STEP_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>String Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_BUILD_STEP_PARAMETER_OPERATION_COUNT = BUILD_STEP_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.CredentialsBuildStepParameterImpl <em>Credentials Build Step Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.CredentialsBuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCredentialsBuildStepParameter()
-	 * @generated
-	 */
-	int CREDENTIALS_BUILD_STEP_PARAMETER = 70;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS_BUILD_STEP_PARAMETER__NAME = BUILD_STEP_PARAMETER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS_BUILD_STEP_PARAMETER__VALUE = BUILD_STEP_PARAMETER__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Credentials Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS_BUILD_STEP_PARAMETER_FEATURE_COUNT = BUILD_STEP_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Credentials Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CREDENTIALS_BUILD_STEP_PARAMETER_OPERATION_COUNT = BUILD_STEP_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PasswordBuildStepParameterImpl <em>Password Build Step Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PasswordBuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getPasswordBuildStepParameter()
-	 * @generated
-	 */
-	int PASSWORD_BUILD_STEP_PARAMETER = 71;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSWORD_BUILD_STEP_PARAMETER__NAME = BUILD_STEP_PARAMETER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSWORD_BUILD_STEP_PARAMETER__VALUE = BUILD_STEP_PARAMETER__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Password Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSWORD_BUILD_STEP_PARAMETER_FEATURE_COUNT = BUILD_STEP_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Password Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PASSWORD_BUILD_STEP_PARAMETER_OPERATION_COUNT = BUILD_STEP_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanBuildStepParameterImpl <em>Boolean Build Step Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanBuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBooleanBuildStepParameter()
-	 * @generated
-	 */
-	int BOOLEAN_BUILD_STEP_PARAMETER = 72;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUILD_STEP_PARAMETER__NAME = BUILD_STEP_PARAMETER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUILD_STEP_PARAMETER__VALUE = BUILD_STEP_PARAMETER__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Boolean Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUILD_STEP_PARAMETER_FEATURE_COUNT = BUILD_STEP_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Boolean Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUILD_STEP_PARAMETER_OPERATION_COUNT = BUILD_STEP_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.TextBuildStepParameterImpl <em>Text Build Step Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.TextBuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTextBuildStepParameter()
-	 * @generated
-	 */
-	int TEXT_BUILD_STEP_PARAMETER = 73;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_BUILD_STEP_PARAMETER__NAME = BUILD_STEP_PARAMETER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_BUILD_STEP_PARAMETER__VALUE = BUILD_STEP_PARAMETER__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Text Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_BUILD_STEP_PARAMETER_FEATURE_COUNT = BUILD_STEP_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Text Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_BUILD_STEP_PARAMETER_OPERATION_COUNT = BUILD_STEP_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ChoiceBuildStepParameterImpl <em>Choice Build Step Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ChoiceBuildStepParameterImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getChoiceBuildStepParameter()
-	 * @generated
-	 */
-	int CHOICE_BUILD_STEP_PARAMETER = 74;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE_BUILD_STEP_PARAMETER__NAME = BUILD_STEP_PARAMETER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE_BUILD_STEP_PARAMETER__VALUE = BUILD_STEP_PARAMETER__VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Choice Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE_BUILD_STEP_PARAMETER_FEATURE_COUNT = BUILD_STEP_PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Choice Build Step Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE_BUILD_STEP_PARAMETER_OPERATION_COUNT = BUILD_STEP_PARAMETER_OPERATION_COUNT + 0;
+	int FUNCTION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3497,7 +3120,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 75;
+	int EQUALITY_OPS = 67;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3507,7 +3130,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 76;
+	int COMPARISON_OPS = 68;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.SUPPORTED_TOOLS <em>SUPPORTED TOOLS</em>}' enum.
@@ -3517,7 +3140,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getSUPPORTED_TOOLS()
 	 * @generated
 	 */
-	int SUPPORTED_TOOLS = 77;
+	int SUPPORTED_TOOLS = 69;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.COMPARATORS <em>COMPARATORS</em>}' enum.
@@ -3527,7 +3150,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCOMPARATORS()
 	 * @generated
 	 */
-	int COMPARATORS = 78;
+	int COMPARATORS = 70;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CHANGE_REQUEST_MATCHER <em>CHANGE REQUEST MATCHER</em>}' enum.
@@ -3537,7 +3160,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCHANGE_REQUEST_MATCHER()
 	 * @generated
 	 */
-	int CHANGE_REQUEST_MATCHER = 79;
+	int CHANGE_REQUEST_MATCHER = 71;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES <em>WHEN EVALUATION TIMES</em>}' enum.
@@ -3547,7 +3170,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getWHEN_EVALUATION_TIMES()
 	 * @generated
 	 */
-	int WHEN_EVALUATION_TIMES = 80;
+	int WHEN_EVALUATION_TIMES = 72;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}' enum.
@@ -3557,7 +3180,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJENKINS_CONTEXTS()
 	 * @generated
 	 */
-	int JENKINS_CONTEXTS = 81;
+	int JENKINS_CONTEXTS = 73;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline <em>Pipeline</em>}'.
@@ -4386,62 +4009,6 @@ public interface JenkinsPackage extends EPackage {
 	EReference getAssignment_Value();
 
 	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Step Argument</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Step Argument</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable" keyContainment="true" keyRequired="true"
-	 *        valueType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression" valueContainment="true" valueRequired="true" valueMany="true"
-	 * @generated
-	 */
-	EClass getStepArgument();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getStepArgument()
-	 * @generated
-	 */
-	EReference getStepArgument_Key();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getStepArgument()
-	 * @generated
-	 */
-	EReference getStepArgument_Value();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Step Single Argument</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Step Single Argument</em>'.
-	 * @see java.util.Map.Entry
-	 * @model features="" superTypes="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepArgument"
-	 * @generated
-	 */
-	EClass getStepSingleArgument();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Step List Argument</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Step List Argument</em>'.
-	 * @see java.util.Map.Entry
-	 * @model features="" superTypes="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StepArgument"
-	 * @generated
-	 */
-	EClass getStepListArgument();
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp <em>Binary Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4472,6 +4039,27 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBinaryOp_Rhs();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array <em>Array</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Array</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array
+	 * @generated
+	 */
+	EClass getArray();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Values</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array#getValues()
+	 * @see #getArray()
+	 * @generated
+	 */
+	EReference getArray_Values();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp <em>Unary Op</em>}'.
@@ -5005,96 +4593,36 @@ public interface JenkinsPackage extends EPackage {
 	EAttribute getWhenTriggeredBy_Detail();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter <em>Build Step Parameter</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function <em>Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter
+	 * @return the meta object for class '<em>Function</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function
 	 * @generated
 	 */
-	EClass getBuildStepParameter();
+	EClass getFunction();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter#getName()
-	 * @see #getBuildStepParameter()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function#getName()
+	 * @see #getFunction()
 	 * @generated
 	 */
-	EReference getBuildStepParameter_Name();
+	EAttribute getFunction_Name();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter#getValue <em>Value</em>}'.
+	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function#getArguments <em>Arguments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter#getValue()
-	 * @see #getBuildStepParameter()
+	 * @return the meta object for the map '<em>Arguments</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function#getArguments()
+	 * @see #getFunction()
 	 * @generated
 	 */
-	EReference getBuildStepParameter_Value();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter <em>String Build Step Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>String Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter
-	 * @generated
-	 */
-	EClass getStringBuildStepParameter();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter <em>Credentials Build Step Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Credentials Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter
-	 * @generated
-	 */
-	EClass getCredentialsBuildStepParameter();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter <em>Password Build Step Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Password Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter
-	 * @generated
-	 */
-	EClass getPasswordBuildStepParameter();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter <em>Boolean Build Step Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter
-	 * @generated
-	 */
-	EClass getBooleanBuildStepParameter();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter <em>Text Build Step Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Text Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter
-	 * @generated
-	 */
-	EClass getTextBuildStepParameter();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter <em>Choice Build Step Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Choice Build Step Parameter</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter
-	 * @generated
-	 */
-	EClass getChoiceBuildStepParameter();
+	EReference getFunction_Arguments();
 
 	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}'.
@@ -5882,52 +5410,6 @@ public interface JenkinsPackage extends EPackage {
 		EReference ASSIGNMENT__VALUE = eINSTANCE.getAssignment_Value();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepArgumentImpl <em>Step Argument</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepArgumentImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepArgument()
-		 * @generated
-		 */
-		EClass STEP_ARGUMENT = eINSTANCE.getStepArgument();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STEP_ARGUMENT__KEY = eINSTANCE.getStepArgument_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STEP_ARGUMENT__VALUE = eINSTANCE.getStepArgument_Value();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepSingleArgumentImpl <em>Step Single Argument</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepSingleArgumentImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepSingleArgument()
-		 * @generated
-		 */
-		EClass STEP_SINGLE_ARGUMENT = eINSTANCE.getStepSingleArgument();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepListArgumentImpl <em>Step List Argument</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StepListArgumentImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStepListArgument()
-		 * @generated
-		 */
-		EClass STEP_LIST_ARGUMENT = eINSTANCE.getStepListArgument();
-
-		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BinaryOpImpl <em>Binary Op</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5952,6 +5434,24 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINARY_OP__RHS = eINSTANCE.getBinaryOp_Rhs();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl <em>Array</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getArray()
+		 * @generated
+		 */
+		EClass ARRAY = eINSTANCE.getArray();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ARRAY__VALUES = eINSTANCE.getArray_Values();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.UnaryOpImpl <em>Unary Op</em>}' class.
@@ -6422,90 +5922,30 @@ public interface JenkinsPackage extends EPackage {
 		EAttribute WHEN_TRIGGERED_BY__DETAIL = eINSTANCE.getWhenTriggeredBy_Detail();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BuildStepParameterImpl <em>Build Step Parameter</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.FunctionImpl <em>Function</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBuildStepParameter()
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.FunctionImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getFunction()
 		 * @generated
 		 */
-		EClass BUILD_STEP_PARAMETER = eINSTANCE.getBuildStepParameter();
+		EClass FUNCTION = eINSTANCE.getFunction();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BUILD_STEP_PARAMETER__NAME = eINSTANCE.getBuildStepParameter_Name();
+		EAttribute FUNCTION__NAME = eINSTANCE.getFunction_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Arguments</b></em>' map feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BUILD_STEP_PARAMETER__VALUE = eINSTANCE.getBuildStepParameter_Value();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringBuildStepParameterImpl <em>String Build Step Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.StringBuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getStringBuildStepParameter()
-		 * @generated
-		 */
-		EClass STRING_BUILD_STEP_PARAMETER = eINSTANCE.getStringBuildStepParameter();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.CredentialsBuildStepParameterImpl <em>Credentials Build Step Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.CredentialsBuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getCredentialsBuildStepParameter()
-		 * @generated
-		 */
-		EClass CREDENTIALS_BUILD_STEP_PARAMETER = eINSTANCE.getCredentialsBuildStepParameter();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PasswordBuildStepParameterImpl <em>Password Build Step Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.PasswordBuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getPasswordBuildStepParameter()
-		 * @generated
-		 */
-		EClass PASSWORD_BUILD_STEP_PARAMETER = eINSTANCE.getPasswordBuildStepParameter();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanBuildStepParameterImpl <em>Boolean Build Step Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.BooleanBuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBooleanBuildStepParameter()
-		 * @generated
-		 */
-		EClass BOOLEAN_BUILD_STEP_PARAMETER = eINSTANCE.getBooleanBuildStepParameter();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.TextBuildStepParameterImpl <em>Text Build Step Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.TextBuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getTextBuildStepParameter()
-		 * @generated
-		 */
-		EClass TEXT_BUILD_STEP_PARAMETER = eINSTANCE.getTextBuildStepParameter();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ChoiceBuildStepParameterImpl <em>Choice Build Step Parameter</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ChoiceBuildStepParameterImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getChoiceBuildStepParameter()
-		 * @generated
-		 */
-		EClass CHOICE_BUILD_STEP_PARAMETER = eINSTANCE.getChoiceBuildStepParameter();
+		EReference FUNCTION__ARGUMENTS = eINSTANCE.getFunction_Arguments();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.

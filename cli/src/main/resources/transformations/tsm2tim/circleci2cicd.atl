@@ -594,7 +594,7 @@ rule SaveCacheStep2Cache {
 			cacheName <- input.name,
 			keys <- input.key,
 			paths <- input.paths,
-			store <- true
+			store <- #STORE
 		)
 }
 
@@ -605,7 +605,7 @@ rule RestoreCacheStep2Cache {
 		output : CICD!Cache(
 			cacheName <- input.name,
 			keys <- input.keys,
-			store <- false
+			store <- #LOAD
 		)
 }
 

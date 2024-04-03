@@ -2,33 +2,35 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link java.util.Map.Entry} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AssignmentItemProvider extends ExpressionItemProvider {
+public class ArrayItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AssignmentItemProvider(AdapterFactory adapterFactory) {
+	public ArrayItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,8 +61,7 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.ASSIGNMENT__KEY);
-			childrenFeatures.add(JenkinsPackage.Literals.ASSIGNMENT__VALUE);
+			childrenFeatures.add(JenkinsPackage.Literals.ARRAY__VALUES);
 		}
 		return childrenFeatures;
 	}
@@ -79,14 +80,14 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 	}
 
 	/**
-	 * This returns Assignment.gif.
+	 * This returns Array.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Assignment"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Array"));
 	}
 
 	/**
@@ -107,8 +108,7 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> assignment = (Map.Entry<?, ?>) object;
-		return "" + assignment.getKey() + " -> " + assignment.getValue();
+		return getString("_UI_Array_type");
 	}
 
 	/**
@@ -122,9 +122,8 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class)) {
-		case JenkinsPackage.ASSIGNMENT__KEY:
-		case JenkinsPackage.ASSIGNMENT__VALUE:
+		switch (notification.getFeatureID(Array.class)) {
+		case JenkinsPackage.ARRAY__VALUES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -142,77 +141,53 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__KEY,
-				JenkinsFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createExpression()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createStringLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createDoubleLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createVariable()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createJenkinsContext()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createArray()));
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createArray()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createNegation()));
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createNegation()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createEqualityOp()));
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createComparisonOp()));
 
-		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE, JenkinsFactory.eINSTANCE.createAnd()));
+		newChildDescriptors
+				.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE, JenkinsFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createFunction()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == JenkinsPackage.Literals.ASSIGNMENT__KEY
-				|| childFeature == JenkinsPackage.Literals.ASSIGNMENT__VALUE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2",
-					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
+				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createFunction()));
 	}
 
 }

@@ -1,13 +1,5 @@
 package cli;
 
-import java.io.IOException;
-import java.io.StringBufferInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
 import cli.compilers.input.CircleCIInputCompiler;
 import cli.compilers.input.GHAInputCompiler;
 import cli.compilers.input.InputAbstractCompiler;
@@ -16,14 +8,16 @@ import cli.compilers.output.JenkinsOutputCompiler;
 import cli.compilers.output.OutputAbstractCompiler;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
-import cli.parsers.*;
-import cli.parsers.exceptions.*;
+import cli.parsers.CircleCIParser;
+import cli.parsers.GitHubActionsParser;
+import cli.parsers.exceptions.SyntaxException;
 import cli.transformers.exogenous.fromTIM.CICD2GHATransformer;
 import cli.transformers.exogenous.fromTIM.CICD2JenkinsTransformer;
 import cli.transformers.exogenous.toTIM.CircleCI2CICDTransformer;
 import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
+import cli.utils.LoggerUtils;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
@@ -32,14 +26,22 @@ import org.apache.commons.cli.*;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+
 public class Main {
 	final private static ResourceSet resourceSet = new ResourceSetImpl();
 	final private static Map<String, InputAbstractCompiler<?, ?>> inputCompilers = new HashMap<>();
 	final private static Map<String, OutputAbstractCompiler<?, ?, ?>> outputCompilers = new HashMap<>();
 
-	private static CommandLine commandLine = null;
-
-	static {
+    static {
 		JavaUtils.cleanUp();
 		registerPackages();
 		registerInputCompilers();
@@ -67,6 +69,8 @@ public class Main {
 		options.addRequiredOption("ol", "output-language", true, "Output language (required)");
 		options.addOption("i", "input-file", true, "Input file path");
 		options.addOption("o", "output-file", true, "Output file path");
+		options.addOption("v", "verbose", false, "Verbose mode");
+		options.addOption("lf", "log-file", true, "Log file path");
 
 		return options;
 	}
@@ -75,6 +79,7 @@ public class Main {
 		Options options = getCommandLineOptions();
 		CommandLineParser commandLineParser = new DefaultParser();
 
+        CommandLine commandLine;
         try {
             commandLine = commandLineParser.parse(options, args);
         } catch (ParseException e) {
@@ -104,6 +109,21 @@ public class Main {
 			// Read from stdin
 			inputScript = new Scanner(System.in).useDelimiter("\\A").next();
 		}
+
+		if (commandLine.hasOption("v")) {
+			LoggerUtils.getLogger().setLevel(Level.INFO);
+		} else {
+			LoggerUtils.getLogger().setLevel(Level.SEVERE);
+		}
+
+		if (commandLine.hasOption("lf")) {
+			try {
+				Handler fileHandler = new FileHandler(commandLine.getOptionValue("lf"));
+				LoggerUtils.getLogger().addHandler(fileHandler);
+			} catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 		String outputScript = null;
 

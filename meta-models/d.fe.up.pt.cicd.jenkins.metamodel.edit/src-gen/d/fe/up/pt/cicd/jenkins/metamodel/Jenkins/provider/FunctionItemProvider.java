@@ -2,9 +2,9 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,23 +14,25 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LabelAgentItemProvider extends AbstractAgentItemProvider {
+public class FunctionItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelAgentItemProvider(AdapterFactory adapterFactory) {
+	public FunctionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,8 +47,25 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Function_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Function_name_feature",
+								"_UI_Function_type"),
+						JenkinsPackage.Literals.FUNCTION__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -61,7 +80,7 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(JenkinsPackage.Literals.LABEL_AGENT__LABELS);
+			childrenFeatures.add(JenkinsPackage.Literals.FUNCTION__ARGUMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -80,14 +99,14 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 	}
 
 	/**
-	 * This returns LabelAgent.gif.
+	 * This returns Function.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LabelAgent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Function"));
 	}
 
 	/**
@@ -108,7 +127,9 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_LabelAgent_type");
+		String label = ((Function) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Function_type")
+				: getString("_UI_Function_type") + " " + label;
 	}
 
 	/**
@@ -122,8 +143,11 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LabelAgent.class)) {
-		case JenkinsPackage.LABEL_AGENT__LABELS:
+		switch (notification.getFeatureID(Function.class)) {
+		case JenkinsPackage.FUNCTION__NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case JenkinsPackage.FUNCTION__ARGUMENTS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -141,53 +165,8 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createExpression()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createJenkinsContext()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.FUNCTION__ARGUMENTS,
 				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createArray()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createNegation()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createEqualityOp()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createComparisonOp()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS, JenkinsFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createFunction()));
 	}
 
 }

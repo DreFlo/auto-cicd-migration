@@ -11,23 +11,23 @@ rule Pipeline2Pipeline {
 	to
 		jenkinsPipeline : Jenkins!Pipeline(
 			stages <- thisModule.groupJobs(cicdPipeline.jobStreams, Set{})->collect(
-						jobGroup | if jobGroup->size() = 1 then 
-							if jobGroup->first().matrix.oclIsUndefined() then
-								if jobGroup->first().oclIsTypeOf(CICD!ScriptJob) then
-									thisModule.ScriptJob2StepStage(jobGroup->first())
-								else if jobGroup->first().oclIsTypeOf(CICD!PipelineCallJob) then
-									thisModule.PipelineCallJob2StepStage(jobGroup->first())
-								else
-									jobGroup->first()
-								endif
-								endif
-							else
-								thisModule.Job2MatrixStage(jobGroup->first())
-							endif
+				jobGroup | if jobGroup->size() = 1 then 
+					if jobGroup->first().matrix.oclIsUndefined() then
+						if jobGroup->first().oclIsTypeOf(CICD!ScriptJob) then
+							thisModule.ScriptJob2StepStage(jobGroup->first())
+						else if jobGroup->first().oclIsTypeOf(CICD!PipelineCallJob) then
+							thisModule.PipelineCallJob2StepStage(jobGroup->first())
 						else
-							thisModule.JobSequence2Parallel(jobGroup)
+							jobGroup->first()
 						endif
-						),
+						endif
+					else
+						thisModule.Job2MatrixStage(jobGroup->first())
+					endif
+				else
+					thisModule.JobSequence2Parallel(jobGroup)
+				endif
+			),
 			agent <- 
 				if cicdPipeline.agent.oclIsUndefined() then 
 					thisModule.CreateAnyAgent('') 
@@ -97,39 +97,49 @@ lazy rule CreateBuildStep {
 		step : Jenkins!Step(
 			command <- 'build',
 			arguments <- Sequence{
-				thisModule.CreateStepSingleArgument('job', Sequence{job.pipelinePath}),
-				thisModule.CreateStepListArgument('parameters', job.args->collect(arg | thisModule.assignment2BuildStepParameterHelper(arg)))
+				thisModule.CreateAssignment('job', job.pipelinePath),
+				thisModule.CreateAssignment('parameters', thisModule.CreateArray(
+					job.args->collect(arg | 
+						thisModule.Assignment2Function(
+							if arg.key.oclIsTypeOf(CICD!SecretVariable) then
+								'credentials'
+							else if arg.value.oclIsTypeOf(CICD!StringLiteral) or arg.value.oclIsTypeOf(CICD!Concat) then
+								'string'
+							else if arg.value.oclIsTypeOf(CICD!BooleanLiteral) then
+								'boolean'
+							else
+								'OclUndefined'
+							endif
+							endif
+							endif,
+							arg
+						)
+					)
+				))
 			}
 		)
 }
 
-lazy rule Assignment2StringBuildStepParameter {
+lazy rule CreateArray {
 	from
-		assignment : CICD!Assignment
+		expressionSequence : Sequence(CICD!Expression)
 	to
-		buildStepParameter : Jenkins!StringBuildStepParameter(
-			name <- thisModule.String2StringLiteral(assignment.key.name),
-			value <- thisModule.String2StringLiteral(assignment.value.value)
+		array : Jenkins!Array(
+			values <- expressionSequence
 		)
 }
 
-lazy rule Assignment2CredentialsBuildStepParameter {
+lazy rule Assignment2Function {
 	from
+		functionName : String,
 		assignment : CICD!Assignment
 	to
-		buildStepParameter : Jenkins!CredentialsBuildStepParameter(
-			name <- thisModule.String2StringLiteral(assignment.key.name),
-			value <- thisModule.String2StringLiteral(assignment.value.expression2String())
-		)
-}
-
-lazy rule Assignment2BooleanBuildStepParameter {
-	from
-		assignment : CICD!Assignment
-	to
-		buildStepParameter : Jenkins!BooleanBuildStepParameter(
-			name <- thisModule.String2StringLiteral(assignment.key.name),
-			value <- thisModule.Boolean2BooleanLiteral(assignment.value.value)
+		buildStepParameter : Jenkins!Function(
+			name <- functionName,
+			arguments <- Sequence{
+				thisModule.CreateAssignment('name', thisModule.String2StringLiteral(assignment.key.name)),
+				thisModule.CreateAssignment('value', thisModule.String2StringLiteral(assignment.value.expression2String()))
+			}
 		)
 }
 
@@ -247,29 +257,18 @@ rule Command2Step {
 	to
 		jenkinsStep : Jenkins!Step(
 			command <- 'sh',
-			arguments <- thisModule.CreateStepSingleArgument('script', Sequence{cicdStep.program})
+			arguments <- Sequence{thisModule.CreateAssignment('script', cicdStep.program)}
 		)
 }
 
-lazy rule CreateStepSingleArgument {
+lazy rule CreateAssignment {
 	from
 		string : String,
-		expressions : Sequence(CICD!Expression)
+		expression : CICD!Expression
 	to
-		assignment : Jenkins!StepSingleArgument(
+		assignment : Jenkins!Assignment(
 			key <- thisModule.String2Variable(string),
-			value <- expressions
-		)
-}
-
-lazy rule CreateStepListArgument {
-	from
-		string : String,
-		expressions : Sequence(CICD!Expression)
-	to
-		assignment : Jenkins!StepListArgument(
-			key <- thisModule.String2Variable(string),
-			value <- expressions
+			value <- expression
 		)
 }
 
@@ -289,6 +288,45 @@ rule Plugin2Step {
 		jenkinsStep : Jenkins!Step(
 			command <- cicdStep.pluginName,
 			arguments <- cicdStep.kwargs
+		)
+}
+
+rule Cache2Step {
+	from
+		cicdStep : CICD!Cache
+	to
+		jenkinsStep : Jenkins!Step(
+			command <- 'cache',
+			arguments <- Sequence{
+				thisModule.CreateAssignment('skipSave', thisModule.Boolean2BooleanLiteral(cicdStep.store = #LOAD)),
+				thisModule.CreateAssignment('skipRestore', thisModule.Boolean2BooleanLiteral(cicdStep.store = #STORE)),
+				thisModule.CreateAssignment(
+					'caches', 
+					thisModule.CreateArray(
+						Sequence{
+							thisModule.CreateFunction(
+								'arbitraryFileCache', 
+								Sequence{
+									thisModule.CreateAssignment('includes', thisModule.CreateArray(cicdStep.paths)),
+									thisModule.CreateAssignment('cacheName', cicdStep),
+									thisModule.CreateAssignment('path', thisModule.String2StringLiteral('.'))
+								}
+							)
+						}
+					)
+				)
+			}
+		)
+}
+
+lazy rule CreateFunction {
+	from
+		name : String,
+		arguments : Sequence(CICD!Expression)
+	to
+		funtion : Jenkins!Function(
+			name <- name,
+			arguments <- arguments
 		)
 }
 
@@ -481,7 +519,15 @@ rule Agent2NodeAgent {
 		)
 	to
 		jenkinsAgent : Jenkins!NodeAgent(
-			labels <- cicdAgent.labels->first()
+			labels <- 
+				if cicdAgent.labels->size() > 1 then 
+					thisModule.ExpressionSequence2Conjuntion(cicdAgent.labels) 
+				else if cicdAgent.labels->size() = 1 then
+					cicdAgent.labels->first()
+				else
+					OclUndefined
+				endif
+				endif
 		)
 }
 
@@ -492,9 +538,31 @@ rule Agent2DockerAgent {
 		)
 	to
 		jenkinsAgent : Jenkins!DockerAgent(
---- Conjunction
-			labels <- cicdAgent.labels->first(),
+			labels <- 
+				if cicdAgent.labels->size() > 1 then 
+					thisModule.ExpressionSequence2Conjuntion(cicdAgent.labels) 
+				else if cicdAgent.labels->size() = 1 then
+					cicdAgent.labels->first()
+				else
+					OclUndefined
+				endif
+				endif,
 			docker <- cicdAgent.container
+		)
+}
+
+lazy rule ExpressionSequence2Conjuntion {
+	from
+		expressionSequence : Sequence(CICD!Expression)
+	to
+		conjunction : Jenkins!And(
+			lhs <- 
+				if expressionSequence->size() = 2 then
+					expressionSequence->first()
+				else
+					thisModule.ExpressionSequence2Conjuntion(expressionSequence->subSequence(1, expressionSequence->size() - 1))
+				endif,
+			rhs <- expressionSequence->last()
 		)
 }
 

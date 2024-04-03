@@ -2,16 +2,10 @@ package d.fe.up.pt.cicd.jenkins.acceleo.services;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.And;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BinaryOp;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ComparisonOp;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Negation;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Or;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
 
 public class CICD2Jenkins {
@@ -43,22 +37,6 @@ public class CICD2Jenkins {
 			return string;
 		} else {
 			return "'" + string + "'";
-		}
-	}
-	
-	public String getBuildStepParameterName(BuildStepParameter buildStepParameter) {
-		if (buildStepParameter instanceof StringBuildStepParameter) {
-			return "string";
-		} else if (buildStepParameter instanceof TextBuildStepParameter) {
-			return "text";
-		} else if (buildStepParameter instanceof BooleanBuildStepParameter) {
-			return "boolean";
-		} else if (buildStepParameter instanceof CredentialsBuildStepParameter) {
-			return "credentials";
-		} else if (buildStepParameter instanceof PasswordBuildStepParameter) {
-			return "password";
-		} else {
-			return "buildStepParameter";
 		}
 	}
 }

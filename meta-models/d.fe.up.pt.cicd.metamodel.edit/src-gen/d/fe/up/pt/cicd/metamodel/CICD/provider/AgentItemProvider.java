@@ -152,6 +152,9 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createConcat()));
 

@@ -168,6 +168,12 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
+				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS, JenkinsFactory.eINSTANCE.createArray()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
@@ -183,22 +189,7 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 				.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS, JenkinsFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
-				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
-				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
-				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
-				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
-				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__LHS,
-				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
+				JenkinsFactory.eINSTANCE.createFunction()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
 				JenkinsFactory.eINSTANCE.createExpression()));
@@ -225,6 +216,12 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
+				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS, JenkinsFactory.eINSTANCE.createArray()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
@@ -240,22 +237,7 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 				.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS, JenkinsFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
-				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
-				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
-				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
-				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
-				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.BINARY_OP__RHS,
-				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
+				JenkinsFactory.eINSTANCE.createFunction()));
 	}
 
 	/**

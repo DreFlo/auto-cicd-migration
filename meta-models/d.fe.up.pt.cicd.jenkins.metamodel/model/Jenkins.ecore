@@ -67,7 +67,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="command" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
-        eType="#//StepArgument" containment="true"/>
+        eType="#//Assignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStep" eSuperTypes="#//ConditionalChildStep">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" lowerBound="1"
@@ -126,28 +126,22 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Assignment" instanceClassName="java.util.Map$Entry">
+  <eClassifiers xsi:type="ecore:EClass" name="Assignment" instanceClassName="java.util.Map$Entry"
+      eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StepArgument" instanceClassName="java.util.Map$Entry"
-      abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Variable"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" upperBound="-1"
-        eType="#//Expression" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StepSingleArgument" instanceClassName="java.util.Map$Entry"
-      eSuperTypes="#//StepArgument"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StepListArgument" instanceClassName="java.util.Map$Entry"
-      eSuperTypes="#//StepArgument"/>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" abstract="true" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Array" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryOp" abstract="true" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="childExpr" lowerBound="1"
@@ -228,19 +222,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cause" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="detail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BuildStepParameter" abstract="true"
-      eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+        eType="#//Assignment" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringBuildStepParameter" eSuperTypes="#//BuildStepParameter"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CredentialsBuildStepParameter" eSuperTypes="#//BuildStepParameter"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PasswordBuildStepParameter" eSuperTypes="#//BuildStepParameter"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanBuildStepParameter" eSuperTypes="#//BuildStepParameter"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TextBuildStepParameter" eSuperTypes="#//BuildStepParameter"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ChoiceBuildStepParameter" eSuperTypes="#//BuildStepParameter"/>
   <eClassifiers xsi:type="ecore:EEnum" name="EQUALITY_OPS">
     <eLiterals name="EQUALS" literal="=="/>
     <eLiterals name="NOT_EQUALS" value="1" literal="!="/>

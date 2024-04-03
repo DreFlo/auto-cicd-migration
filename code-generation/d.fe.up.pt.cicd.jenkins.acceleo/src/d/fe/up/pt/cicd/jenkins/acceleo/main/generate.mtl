@@ -13,10 +13,6 @@
 	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp)', Sequence{unaryOp})
 /]
 
-[query public getBuildStepParameterName(buildStepParameter : BuildStepParameter) : String =
-	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getBuildStepParameterName(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BuildStepParameter)', Sequence{buildStepParameter})
-/]
-
 
 [template public generateAbstractStage(abstractStage : AbstractStage) post (trim())]
 stage([quoteString(abstractStage.name)/]) {
@@ -110,15 +106,7 @@ parallel {
 [/template]
 
 [template public generateStep(step : Step)]
-[step.command/] [for (argument : StepArgument | arguments) separator (', ')][generateStepArgument(argument)/][/for]
-[/template]
-
-[template public generateStepArgument(stepArgument : StepArgument) post (trim())]
-[if (stepArgument.oclIsTypeOf(StepSingleArgument))]
-[key.name/]: [generateExpression(value->first())/]
-[elseif (stepArgument.oclIsTypeOf(StepListArgument))]
-[key.name/]: [for (expression : Expression | value) before ('[') separator (', ') after (']')][generateExpression(expression)/][/for]
-[/if]
+[step.command/] [for (argument : Assignment | arguments) separator (', ')][generateAssignment(argument, ':')/][/for]
 [/template]
 
 [template public generateConditionalStep(conditionalStep : ConditionalStep)]
@@ -145,7 +133,9 @@ script {
 [/template]
 
 [template public generateExpression(expression : Expression) post (trim())]
-[if (expression.oclIsKindOf(Variable))]
+[if (expression.oclIsUndefined())]
+OclUndefined
+[elseif (expression.oclIsKindOf(Variable))]
 [generateVariable(expression.oclAsType(Variable))/]
 [elseif (expression.oclIsKindOf(JenkinsContext))]
 [generateJekinsContext(expression.oclAsType(JenkinsContext))/]
@@ -157,8 +147,12 @@ script {
 [generateBinaryOp(expression.oclAsType(BinaryOp))/]
 [elseif (expression.oclIsKindOf(UnaryOp))]
 [generateUnaryOp(expression.oclAsType(UnaryOp))/]
-[elseif (expression.oclIsKindOf(BuildStepParameter))]
-[generateBuildStepParameter(expression.oclAsType(BuildStepParameter))/]
+[elseif (expression.oclIsKindOf(Function))]
+[generateFuntion(expression.oclAsType(Function))/]
+[elseif (expression.oclIsTypeOf(Assignment))]
+[generateAssignment(expression.oclAsType(Assignment), ':')/]
+[elseif (expression.oclIsTypeOf(Array))]
+[generateArray(expression.oclAsType(Array))/]
 [/if]
 [/template]
 
@@ -194,8 +188,12 @@ script {
 [getUnaryOperator(unaryOp)/] [generateExpression(unaryOp.childExpr)/]
 [/template]
 
-[template public generateBuildStepParameter(buildStepParameter : BuildStepParameter)]
-[getBuildStepParameterName(buildStepParameter)/](name: [generateExpression(name)/], value: [generateExpression(value)/])
+[template public generateFuntion(function : Function)]
+[name/][for (expression : Expression | arguments) before ('(') separator (', ') after (')')][generateExpression(expression)/][/for])
+[/template]
+
+[template public generateArray(array : Array)]
+[for (expression : Expression | values) before ('[') separator (', ') after(']')][generateExpression(expression)/][/for]
 [/template]
 
 [template public generateAbstractAgent(abstractAgent : AbstractAgent) post (trim())]
@@ -225,7 +223,7 @@ agent {
 	docker {
 	[if (not dockerAgent.labels.oclIsUndefined())]
 		// label names may not make sense
-		label [generateExpression(dockerAgent.labels)/]
+		label [quoteString(generateExpression(dockerAgent.labels).replaceAll('\'', ''))/]
 	[/if]
 		image [quoteString(dockerAgent.docker.image)/]
 	[if (not docker.args.oclIsUndefined() and docker.args <> '')]
@@ -241,7 +239,7 @@ agent {
 	node {
 	[if (not nodeAgent.labels.oclIsUndefined())]
 		// label names may not make sense
-		label [generateExpression(nodeAgent.labels)/]
+		label [quoteString(generateExpression(nodeAgent.labels).replaceAll('\'', ''))/]
 	[/if]
 	[if (not nodeAgent.customWorkspace.oclIsUndefined())]
 		customWorkspace [quoteString(nodeAgent.customWorkspace)/]
@@ -250,14 +248,14 @@ agent {
 }
 [/template]
 
-[template public generateAssignment(assignment : Assignment)]
-[key.name/] = [generateExpression(assignment.value)/]
+[template public generateAssignment(assignment : Assignment, sep : String)]
+[key.name/] [sep/] [generateExpression(assignment.value)/]
 [/template]
 
 [template public generateEnvironment(environmentVariables : OrderedSet(Assignment))]
 environment {
 [for (environmentVariable : Assignment | environmentVariables)]
-	[generateAssignment(environmentVariable)/]
+	[generateAssignment(environmentVariable, '=')/]
 [/for]
 }
 [/template]

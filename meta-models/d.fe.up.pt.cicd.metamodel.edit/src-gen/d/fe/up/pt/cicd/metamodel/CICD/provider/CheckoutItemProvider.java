@@ -143,6 +143,9 @@ public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createConcat()));
 

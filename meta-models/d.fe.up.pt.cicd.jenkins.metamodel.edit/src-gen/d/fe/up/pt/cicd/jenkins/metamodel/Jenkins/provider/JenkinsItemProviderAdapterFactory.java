@@ -671,49 +671,26 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StepSingleArgumentItemProvider stepSingleArgumentItemProvider;
+	protected ArrayItemProvider arrayItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStepSingleArgumentAdapter() {
-		if (stepSingleArgumentItemProvider == null) {
-			stepSingleArgumentItemProvider = new StepSingleArgumentItemProvider(this);
+	public Adapter createArrayAdapter() {
+		if (arrayItemProvider == null) {
+			arrayItemProvider = new ArrayItemProvider(this);
 		}
 
-		return stepSingleArgumentItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected StepListArgumentItemProvider stepListArgumentItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createStepListArgumentAdapter() {
-		if (stepListArgumentItemProvider == null) {
-			stepListArgumentItemProvider = new StepListArgumentItemProvider(this);
-		}
-
-		return stepListArgumentItemProvider;
+		return arrayItemProvider;
 	}
 
 	/**
@@ -1269,141 +1246,26 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringBuildStepParameterItemProvider stringBuildStepParameterItemProvider;
+	protected FunctionItemProvider functionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.StringBuildStepParameter}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStringBuildStepParameterAdapter() {
-		if (stringBuildStepParameterItemProvider == null) {
-			stringBuildStepParameterItemProvider = new StringBuildStepParameterItemProvider(this);
+	public Adapter createFunctionAdapter() {
+		if (functionItemProvider == null) {
+			functionItemProvider = new FunctionItemProvider(this);
 		}
 
-		return stringBuildStepParameterItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CredentialsBuildStepParameterItemProvider credentialsBuildStepParameterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.CredentialsBuildStepParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCredentialsBuildStepParameterAdapter() {
-		if (credentialsBuildStepParameterItemProvider == null) {
-			credentialsBuildStepParameterItemProvider = new CredentialsBuildStepParameterItemProvider(this);
-		}
-
-		return credentialsBuildStepParameterItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PasswordBuildStepParameterItemProvider passwordBuildStepParameterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.PasswordBuildStepParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPasswordBuildStepParameterAdapter() {
-		if (passwordBuildStepParameterItemProvider == null) {
-			passwordBuildStepParameterItemProvider = new PasswordBuildStepParameterItemProvider(this);
-		}
-
-		return passwordBuildStepParameterItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BooleanBuildStepParameterItemProvider booleanBuildStepParameterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.BooleanBuildStepParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBooleanBuildStepParameterAdapter() {
-		if (booleanBuildStepParameterItemProvider == null) {
-			booleanBuildStepParameterItemProvider = new BooleanBuildStepParameterItemProvider(this);
-		}
-
-		return booleanBuildStepParameterItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TextBuildStepParameterItemProvider textBuildStepParameterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.TextBuildStepParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTextBuildStepParameterAdapter() {
-		if (textBuildStepParameterItemProvider == null) {
-			textBuildStepParameterItemProvider = new TextBuildStepParameterItemProvider(this);
-		}
-
-		return textBuildStepParameterItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ChoiceBuildStepParameterItemProvider choiceBuildStepParameterItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ChoiceBuildStepParameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createChoiceBuildStepParameterAdapter() {
-		if (choiceBuildStepParameterItemProvider == null) {
-			choiceBuildStepParameterItemProvider = new ChoiceBuildStepParameterItemProvider(this);
-		}
-
-		return choiceBuildStepParameterItemProvider;
+		return functionItemProvider;
 	}
 
 	/**
@@ -1563,10 +1425,8 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			variableDereferenceItemProvider.dispose();
 		if (assignmentItemProvider != null)
 			assignmentItemProvider.dispose();
-		if (stepSingleArgumentItemProvider != null)
-			stepSingleArgumentItemProvider.dispose();
-		if (stepListArgumentItemProvider != null)
-			stepListArgumentItemProvider.dispose();
+		if (arrayItemProvider != null)
+			arrayItemProvider.dispose();
 		if (negationItemProvider != null)
 			negationItemProvider.dispose();
 		if (equalityOpItemProvider != null)
@@ -1615,18 +1475,8 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			whenAllOfItemProvider.dispose();
 		if (whenTriggeredByItemProvider != null)
 			whenTriggeredByItemProvider.dispose();
-		if (stringBuildStepParameterItemProvider != null)
-			stringBuildStepParameterItemProvider.dispose();
-		if (credentialsBuildStepParameterItemProvider != null)
-			credentialsBuildStepParameterItemProvider.dispose();
-		if (passwordBuildStepParameterItemProvider != null)
-			passwordBuildStepParameterItemProvider.dispose();
-		if (booleanBuildStepParameterItemProvider != null)
-			booleanBuildStepParameterItemProvider.dispose();
-		if (textBuildStepParameterItemProvider != null)
-			textBuildStepParameterItemProvider.dispose();
-		if (choiceBuildStepParameterItemProvider != null)
-			choiceBuildStepParameterItemProvider.dispose();
+		if (functionItemProvider != null)
+			functionItemProvider.dispose();
 	}
 
 }

@@ -2,9 +2,9 @@
  */
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ScriptedBlock;
 
 import java.util.Collection;
 
@@ -20,34 +20,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Scripted Block</b></em>'.
+ * An implementation of the model object '<em><b>Array</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ScriptedBlockImpl#getSteps <em>Steps</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl#getValues <em>Values</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlock {
+public class ArrayImpl extends ExpressionImpl implements Array {
 	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
+	 * The cached value of the '{@link #getValues() <em>Values</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSteps()
+	 * @see #getValues()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ConditionalChildStep> steps;
+	protected EList<Expression> values;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ScriptedBlockImpl() {
+	protected ArrayImpl() {
 		super();
 	}
 
@@ -58,7 +58,7 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return JenkinsPackage.Literals.SCRIPTED_BLOCK;
+		return JenkinsPackage.Literals.ARRAY;
 	}
 
 	/**
@@ -67,12 +67,11 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	 * @generated
 	 */
 	@Override
-	public EList<ConditionalChildStep> getSteps() {
-		if (steps == null) {
-			steps = new EObjectContainmentEList<ConditionalChildStep>(ConditionalChildStep.class, this,
-					JenkinsPackage.SCRIPTED_BLOCK__STEPS);
+	public EList<Expression> getValues() {
+		if (values == null) {
+			values = new EObjectContainmentEList<Expression>(Expression.class, this, JenkinsPackage.ARRAY__VALUES);
 		}
-		return steps;
+		return values;
 	}
 
 	/**
@@ -83,8 +82,8 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
-			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
+		case JenkinsPackage.ARRAY__VALUES:
+			return ((InternalEList<?>) getValues()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -97,8 +96,8 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
-			return getSteps();
+		case JenkinsPackage.ARRAY__VALUES:
+			return getValues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -112,9 +111,9 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
-			getSteps().clear();
-			getSteps().addAll((Collection<? extends ConditionalChildStep>) newValue);
+		case JenkinsPackage.ARRAY__VALUES:
+			getValues().clear();
+			getValues().addAll((Collection<? extends Expression>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,8 +127,8 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
-			getSteps().clear();
+		case JenkinsPackage.ARRAY__VALUES:
+			getValues().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -143,10 +142,10 @@ public class ScriptedBlockImpl extends StageChildStepImpl implements ScriptedBlo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.SCRIPTED_BLOCK__STEPS:
-			return steps != null && !steps.isEmpty();
+		case JenkinsPackage.ARRAY__VALUES:
+			return values != null && !values.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ScriptedBlockImpl
+} //ArrayImpl

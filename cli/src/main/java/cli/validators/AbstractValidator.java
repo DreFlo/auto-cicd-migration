@@ -2,6 +2,7 @@ package cli.validators;
 
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
+import cli.utils.LoggerUtils;
 import org.eclipse.emf.ecore.*;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.ocl.OCLInput;
@@ -14,6 +15,7 @@ import org.eclipse.ocl.helper.OCLHelper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class AbstractValidator<Model extends EObject, Package extends EPackage> {
     private final OCL ocl;
@@ -66,10 +68,10 @@ public class AbstractValidator<Model extends EObject, Package extends EPackage> 
 
             if (result instanceof Boolean boolResult) {
                 if (!boolResult) {
-                    System.out.println("WARNING: Constraint " + entry.getKey() + " failed");
+                    LoggerUtils.log(Level.WARNING, "Constraint " + entry.getKey() + " failed");
                 }
             } else if (result == null) {
-                throw new RuntimeException("ERROR: Constraint " + entry.getKey() + " did not return a boolean");
+                LoggerUtils.log(Level.SEVERE, "Constraint " + entry.getKey() + " failed");
             }
         }
     }

@@ -2,6 +2,7 @@ package cli.transformers;
 
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
+import cli.utils.LoggerUtils;
 import cli.validators.AbstractValidator;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 public abstract class AbstractTransformer<InputModel extends EObject, InputPackage extends EPackage, OutputModel extends EObject, OutputPackage extends EPackage> {
     private final ResourceSet resourceSet;
@@ -56,7 +58,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out.xmi";
 
-        System.out.println("Transforming\t(" + getClass().getName() + ")...");
+        LoggerUtils.log(Level.INFO, "Transforming (" + getClass().getName() + ")...");
         runATLTransformation(inputModelFilePath, outputModelFilePath);
 
         OutputModel outputModel = deserializeModel(outputModelFilePath);

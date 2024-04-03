@@ -23,7 +23,9 @@ defaults:
 jobs:
   my_first_job_a:
     if: ${{ true }}
-    runs-on: ubuntu-latest
+    runs-on:
+      - ubuntu-latest
+      - second-label
     defaults:
       run:
         shell: bash

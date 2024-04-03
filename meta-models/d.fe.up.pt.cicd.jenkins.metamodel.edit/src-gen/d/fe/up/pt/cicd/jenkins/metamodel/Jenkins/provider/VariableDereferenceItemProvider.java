@@ -190,6 +190,12 @@ public class VariableDereferenceItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
+				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
+				JenkinsFactory.eINSTANCE.createArray()));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
 				JenkinsFactory.eINSTANCE.createNegation()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
@@ -205,22 +211,7 @@ public class VariableDereferenceItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
-				JenkinsFactory.eINSTANCE.createStringBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
-				JenkinsFactory.eINSTANCE.createCredentialsBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
-				JenkinsFactory.eINSTANCE.createPasswordBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
-				JenkinsFactory.eINSTANCE.createBooleanBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
-				JenkinsFactory.eINSTANCE.createTextBuildStepParameter()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.VARIABLE_DEREFERENCE__VARIABLE,
-				JenkinsFactory.eINSTANCE.createChoiceBuildStepParameter()));
+				JenkinsFactory.eINSTANCE.createFunction()));
 	}
 
 }

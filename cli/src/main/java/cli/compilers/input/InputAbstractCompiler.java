@@ -3,10 +3,13 @@ package cli.compilers.input;
 import cli.compilers.AbstractCompiler;
 import cli.parsers.AbstractParser;
 import cli.transformers.AbstractTransformer;
+import cli.utils.LoggerUtils;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
+import java.util.logging.Level;
 
 public abstract class InputAbstractCompiler<InputModel extends EObject, InputPackage extends EPackage> extends AbstractCompiler<InputModel, InputPackage, Pipeline, CICDPackage, String, Pipeline> {
     private final AbstractParser<InputModel> parser;
@@ -28,7 +31,7 @@ public abstract class InputAbstractCompiler<InputModel extends EObject, InputPac
 
     @Override
     public Pipeline compile(String string) throws Exception {
-        System.out.println("Parsing\t\t(" + getParser().getClass().getName() + ")...");
+        LoggerUtils.log(Level.INFO, "Parsing (" + getParser().getClass().getName() + ")...");
         InputModel inputModel = parse(string);
         return transform(inputModel);
     }

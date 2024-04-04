@@ -176,12 +176,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="store" lowerBound="1" eType="#//CACHE_MODE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Artifact" eSuperTypes="#//NonConditionalStep">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="artifactName" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="artifactName" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includePaths" upperBound="-1"
         eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="includePaths" lowerBound="1"
-        upperBound="-1" eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="excludePaths" lowerBound="1"
-        upperBound="-1" eType="#//Expression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="excludePaths" upperBound="-1"
+        eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="retentionTime" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="store" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>

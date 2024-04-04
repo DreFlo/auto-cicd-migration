@@ -308,13 +308,112 @@ rule Cache2Step {
 								'arbitraryFileCache', 
 								Sequence{
 									thisModule.CreateAssignment('includes', thisModule.CreateArray(cicdStep.paths)),
-									thisModule.CreateAssignment('cacheName', cicdStep),
+									thisModule.CreateAssignment('cacheName', if not cicdStep.cacheName.oclIsUndefined() then cicdStep.cacheName else thisModule.String2StringLiteral('CACHE_NAME') endif),
 									thisModule.CreateAssignment('path', thisModule.String2StringLiteral('.'))
 								}
 							)
 						}
 					)
 				)
+			}
+		)
+}
+
+rule StoreArtifact2Step {
+	from
+		cicdStep : CICD!Artifact(
+			cicdStep.store
+		)
+	to
+		jenkinsStep : Jenkins!Step(
+			command <- 'archiveArtifacts',
+			arguments <- Sequence{
+				thisModule.CreateAssignment(
+					'artifacts', 
+					thisModule.String2StringLiteral(
+						thisModule.joinStrings(
+							cicdStep.includePaths->collect(expr | expr.expression2String())
+							, ', '
+						)						
+					)
+				)
+			}->union(
+				if cicdStep.excludePaths->notEmpty() then
+					Sequence{
+						thisModule.CreateAssignment(
+							'excludes',
+							thisModule.String2StringLiteral(
+								thisModule.joinStrings(
+									cicdStep.excludePaths->collect(expr | expr.expression2String())
+									, ', '
+								)
+							)
+						)
+					}
+				else
+					Sequence{}
+				endif
+			)
+		)
+}
+
+rule LoadArtifact2Step {
+	from
+		cicdStep : CICD!Artifact(
+			not cicdStep.store
+		)
+	to
+		jenkinsStep : Jenkins!Step(
+			command <- 'copyArtifacts',
+			arguments <- Sequence{
+				thisModule.CreateAssignment(
+					'projectName', 
+					cicdStep.artifactName
+				)
+			}->union(
+				if cicdStep.includePaths->notEmpty() then
+					Sequence{
+						thisModule.CreateAssignment(
+							'filter', 
+							thisModule.String2StringLiteral(
+								thisModule.joinStrings(
+									cicdStep.includePaths->collect(expr | expr.expression2String())
+									, ', '
+								)						
+							)
+						)
+					}
+				else
+					Sequence{}
+				endif
+			)->union(
+				if cicdStep.excludePaths->notEmpty() then
+					Sequence{
+						thisModule.CreateAssignment(
+							'excludes',
+							thisModule.String2StringLiteral(
+								thisModule.joinStrings(
+									cicdStep.excludePaths->collect(expr | expr.expression2String())
+									, ', '
+								)
+							)
+						)
+					}
+				else
+					Sequence{}
+				endif
+			)
+		)
+}
+
+rule Checkout2Step {
+	from
+		cicdStep : CICD!Checkout
+	to
+		jenkinsStep : Jenkins!Step(
+			command <- 'git',
+			arguments <- Sequence{
+				thisModule.CreateAssignment('url', thisModule.String2StringLiteral('REPO_URL'))
 			}
 		)
 }

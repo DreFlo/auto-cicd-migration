@@ -2652,13 +2652,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(artifactEClass, Artifact.class, "Artifact", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getArtifact_ArtifactName(), this.getExpression(), null, "artifactName", null, 1, 1,
+		initEReference(getArtifact_ArtifactName(), this.getExpression(), null, "artifactName", null, 0, 1,
 				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getArtifact_IncludePaths(), this.getExpression(), null, "includePaths", null, 1, -1,
+		initEReference(getArtifact_IncludePaths(), this.getExpression(), null, "includePaths", null, 0, -1,
 				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getArtifact_ExcludePaths(), this.getExpression(), null, "excludePaths", null, 1, -1,
+		initEReference(getArtifact_ExcludePaths(), this.getExpression(), null, "excludePaths", null, 0, -1,
 				Artifact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getArtifact_RetentionTime(), this.getExpression(), null, "retentionTime", null, 0, 1,

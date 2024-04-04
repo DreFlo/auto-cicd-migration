@@ -2,7 +2,7 @@
 [module generate('http://d.fe.up.pt/Jenkins')]
 
 [query public quoteString (string : String) : String =
-	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'quoteString(java.lang.String)', Sequence{string})
+	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'quoteString(java.lang.String)', Sequence{string}).oclAsType(String)
 /]
 
 [query public getBinaryOperator(binaryOp : BinaryOp) : String =

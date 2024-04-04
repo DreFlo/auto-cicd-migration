@@ -128,7 +128,8 @@ rule Package2Plugin extends Step2NonConditionalStep {
 		ghaStep : GHA!Package(
 			not ghaStep.uses.expression2String().startsWith('actions/cache') and
 			not ghaStep.uses.expression2String().startsWith('actions/upload-artifact') and
-			not ghaStep.uses.expression2String().startsWith('actions/download-artifact')
+			not ghaStep.uses.expression2String().startsWith('actions/download-artifact') and
+			not ghaStep.uses.expression2String().startsWith('actions/checkout')
 		)
 	using {
 		plugin : String = ghaStep.uses.expression2String().split('@')->first();
@@ -625,7 +626,7 @@ helper def : getVariable(map : Sequence(GHA!VariableAssignment), key : String) :
 	let matching : Sequence(GHA!VariableAssignment) = 
 		map->select(assignment | assignment.key = key)
 	in
-	if matching->size() < 1 then
+	if matching->size() >= 1 then
 		matching->first().value
 	else
 		OclUndefined

@@ -198,6 +198,23 @@ rule Artifact2Package extends NonConditionalStep2Step {
 		)
 }
 
+rule Checkout2Package extends NonConditionalStep2Step {
+	from
+		cicdStep : CICD!Checkout
+	to
+		ghaStep : GHA!Package(
+			uses <- thisModule.String2StringLiteral('actions/checkout@v4'),
+			args <-
+				if not cicdStep.path.oclIsUndefined() then
+					Sequence{
+						thisModule.VariableAssignment('path', cicdStep.path)
+					}
+				else
+					Sequence{}
+				endif
+		)
+}
+
 rule Permission2Permission {
 	from
 		cicdPermission : CICD!Permission

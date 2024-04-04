@@ -32,7 +32,7 @@ public interface Artifact extends NonConditionalStep {
 	 * @return the value of the '<em>Artifact Name</em>' containment reference.
 	 * @see #setArtifactName(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getArtifact_ArtifactName()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Expression getArtifactName();
@@ -54,7 +54,7 @@ public interface Artifact extends NonConditionalStep {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Include Paths</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getArtifact_IncludePaths()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Expression> getIncludePaths();
@@ -66,7 +66,7 @@ public interface Artifact extends NonConditionalStep {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Exclude Paths</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getArtifact_ExcludePaths()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Expression> getExcludePaths();

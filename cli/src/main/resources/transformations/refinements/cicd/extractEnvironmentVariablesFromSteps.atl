@@ -351,6 +351,24 @@ lazy rule Artifact {
 		)
 }
 
+lazy rule Checkout {
+	from
+		input : CICD1!Checkout,
+		prefix : String
+	using {
+		environmentVariableNames : Sequence(String) = thisModule.getEnvironmentVariableNames(input.environmentVariables);
+	}
+	to
+		output : CICD2!Checkout(
+			allowFailure <- input.allowFailure,
+			environmentVariables <- Sequence{},
+			id <- input.id,
+			name <- input.name,
+			path <- input.path,
+			timeoutMinutes <- input.timeoutMinutes
+		)
+}
+
 lazy rule Assignment {
 	from
 		input : CICD1!Assignment,
@@ -609,8 +627,11 @@ helper context CICD1!Step def : step2StepHelper(prefix : String) : CICD2!Step =
 		thisModule.Cache(self, prefix)
 	else if self.oclIsKindOf(CICD1!Artifact) then
 		thisModule.Artifact(self, prefix)
+	else if self.oclIsKindOf(CICD1!Checkout) then
+		thisModule.Checkout(self, prefix)
 	else 
 		OclUndefined
+	endif
 	endif
 	endif
 	endif

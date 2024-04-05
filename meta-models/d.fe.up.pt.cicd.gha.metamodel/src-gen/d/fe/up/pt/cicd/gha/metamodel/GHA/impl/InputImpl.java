@@ -59,14 +59,24 @@ public class InputImpl extends ParameterImpl implements Input {
 	protected INPUT_TYPES type = TYPE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getIsRequired() <em>Is Required</em>}' containment reference.
+	 * The default value of the '{@link #getIsRequired() <em>Is Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getIsRequired()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression isRequired;
+	protected static final Boolean IS_REQUIRED_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIsRequired() <em>Is Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIsRequired()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean isRequired = IS_REQUIRED_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDefault() <em>Default</em>}' containment reference.
@@ -136,7 +146,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 */
 	@Override
-	public Expression getIsRequired() {
+	public Boolean getIsRequired() {
 		return isRequired;
 	}
 
@@ -145,41 +155,13 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIsRequired(Expression newIsRequired, NotificationChain msgs) {
-		Expression oldIsRequired = isRequired;
-		isRequired = newIsRequired;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					GHAPackage.INPUT__IS_REQUIRED, oldIsRequired, newIsRequired);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public void setIsRequired(Expression newIsRequired) {
-		if (newIsRequired != isRequired) {
-			NotificationChain msgs = null;
-			if (isRequired != null)
-				msgs = ((InternalEObject) isRequired).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - GHAPackage.INPUT__IS_REQUIRED, null, msgs);
-			if (newIsRequired != null)
-				msgs = ((InternalEObject) newIsRequired).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - GHAPackage.INPUT__IS_REQUIRED, null, msgs);
-			msgs = basicSetIsRequired(newIsRequired, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.INPUT__IS_REQUIRED, newIsRequired,
-					newIsRequired));
+	public void setIsRequired(Boolean newIsRequired) {
+		Boolean oldIsRequired = isRequired;
+		isRequired = newIsRequired;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.INPUT__IS_REQUIRED, oldIsRequired,
+					isRequired));
 	}
 
 	/**
@@ -254,8 +236,6 @@ public class InputImpl extends ParameterImpl implements Input {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case GHAPackage.INPUT__IS_REQUIRED:
-			return basicSetIsRequired(null, msgs);
 		case GHAPackage.INPUT__DEFAULT:
 			return basicSetDefault(null, msgs);
 		}
@@ -295,7 +275,7 @@ public class InputImpl extends ParameterImpl implements Input {
 			setType((INPUT_TYPES) newValue);
 			return;
 		case GHAPackage.INPUT__IS_REQUIRED:
-			setIsRequired((Expression) newValue);
+			setIsRequired((Boolean) newValue);
 			return;
 		case GHAPackage.INPUT__DEFAULT:
 			setDefault((Expression) newValue);
@@ -320,7 +300,7 @@ public class InputImpl extends ParameterImpl implements Input {
 			setType(TYPE_EDEFAULT);
 			return;
 		case GHAPackage.INPUT__IS_REQUIRED:
-			setIsRequired((Expression) null);
+			setIsRequired(IS_REQUIRED_EDEFAULT);
 			return;
 		case GHAPackage.INPUT__DEFAULT:
 			setDefault((Expression) null);
@@ -343,7 +323,7 @@ public class InputImpl extends ParameterImpl implements Input {
 		case GHAPackage.INPUT__TYPE:
 			return type != TYPE_EDEFAULT;
 		case GHAPackage.INPUT__IS_REQUIRED:
-			return isRequired != null;
+			return IS_REQUIRED_EDEFAULT == null ? isRequired != null : !IS_REQUIRED_EDEFAULT.equals(isRequired);
 		case GHAPackage.INPUT__DEFAULT:
 			return default_ != null;
 		case GHAPackage.INPUT__OPTIONS:
@@ -365,6 +345,8 @@ public class InputImpl extends ParameterImpl implements Input {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (type: ");
 		result.append(type);
+		result.append(", isRequired: ");
+		result.append(isRequired);
 		result.append(", options: ");
 		result.append(options);
 		result.append(')');

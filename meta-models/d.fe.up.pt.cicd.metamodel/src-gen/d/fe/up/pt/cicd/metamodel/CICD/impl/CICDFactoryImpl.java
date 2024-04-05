@@ -138,10 +138,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createAnd();
 		case CICDPackage.OR:
 			return createOr();
-		case CICDPackage.ADDITION:
-			return createAddition();
-		case CICDPackage.SUBTRACTION:
-			return createSubtraction();
 		case CICDPackage.UNARY_OP:
 			return createUnaryOp();
 		case CICDPackage.NEGATION:
@@ -641,28 +637,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Or createOr() {
 		OrImpl or = new OrImpl();
 		return or;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Addition createAddition() {
-		AdditionImpl addition = new AdditionImpl();
-		return addition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Subtraction createSubtraction() {
-		SubtractionImpl subtraction = new SubtractionImpl();
-		return subtraction;
 	}
 
 	/**

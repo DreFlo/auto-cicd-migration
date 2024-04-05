@@ -223,12 +223,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createSubtraction()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
 				CICDFactory.eINSTANCE.createUnaryOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
@@ -284,12 +278,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS, CICDFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createSubtraction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createUnaryOp()));
@@ -349,12 +337,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createSubtraction()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createUnaryOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
@@ -410,12 +392,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME, CICDFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createSubtraction()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createUnaryOp()));

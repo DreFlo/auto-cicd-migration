@@ -7,6 +7,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
 import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;

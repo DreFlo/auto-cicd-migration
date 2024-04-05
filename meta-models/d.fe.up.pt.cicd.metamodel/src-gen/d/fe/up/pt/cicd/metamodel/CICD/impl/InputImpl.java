@@ -3,14 +3,23 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.InputImpl#getType <em>Type</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.InputImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.InputImpl#getRequired <em>Required</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.InputImpl#getChoices <em>Choices</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,24 +59,14 @@ public class InputImpl extends ParameterImpl implements Input {
 	protected INPUT_TYPE type = TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDefaultValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DEFAULT_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String defaultValue = DEFAULT_VALUE_EDEFAULT;
+	protected Expression defaultValue;
 
 	/**
 	 * The default value of the '{@link #getRequired() <em>Required</em>}' attribute.
@@ -87,6 +87,16 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @ordered
 	 */
 	protected Boolean required = REQUIRED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getChoices() <em>Choices</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChoices()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> choices;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -136,7 +146,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 */
 	@Override
-	public String getDefaultValue() {
+	public Expression getDefaultValue() {
 		return defaultValue;
 	}
 
@@ -145,13 +155,41 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setDefaultValue(String newDefaultValue) {
-		String oldDefaultValue = defaultValue;
+	public NotificationChain basicSetDefaultValue(Expression newDefaultValue, NotificationChain msgs) {
+		Expression oldDefaultValue = defaultValue;
 		defaultValue = newDefaultValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.INPUT__DEFAULT_VALUE, oldDefaultValue,
-					defaultValue));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.INPUT__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDefaultValue(Expression newDefaultValue) {
+		if (newDefaultValue != defaultValue) {
+			NotificationChain msgs = null;
+			if (defaultValue != null)
+				msgs = ((InternalEObject) defaultValue).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.INPUT__DEFAULT_VALUE, null, msgs);
+			if (newDefaultValue != null)
+				msgs = ((InternalEObject) newDefaultValue).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.INPUT__DEFAULT_VALUE, null, msgs);
+			msgs = basicSetDefaultValue(newDefaultValue, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.INPUT__DEFAULT_VALUE, newDefaultValue,
+					newDefaultValue));
 	}
 
 	/**
@@ -183,6 +221,33 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * @generated
 	 */
 	@Override
+	public EList<String> getChoices() {
+		if (choices == null) {
+			choices = new EDataTypeUniqueEList<String>(String.class, this, CICDPackage.INPUT__CHOICES);
+		}
+		return choices;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.INPUT__DEFAULT_VALUE:
+			return basicSetDefaultValue(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.INPUT__TYPE:
@@ -191,6 +256,8 @@ public class InputImpl extends ParameterImpl implements Input {
 			return getDefaultValue();
 		case CICDPackage.INPUT__REQUIRED:
 			return getRequired();
+		case CICDPackage.INPUT__CHOICES:
+			return getChoices();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -200,6 +267,7 @@ public class InputImpl extends ParameterImpl implements Input {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -207,10 +275,14 @@ public class InputImpl extends ParameterImpl implements Input {
 			setType((INPUT_TYPE) newValue);
 			return;
 		case CICDPackage.INPUT__DEFAULT_VALUE:
-			setDefaultValue((String) newValue);
+			setDefaultValue((Expression) newValue);
 			return;
 		case CICDPackage.INPUT__REQUIRED:
 			setRequired((Boolean) newValue);
+			return;
+		case CICDPackage.INPUT__CHOICES:
+			getChoices().clear();
+			getChoices().addAll((Collection<? extends String>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -228,10 +300,13 @@ public class InputImpl extends ParameterImpl implements Input {
 			setType(TYPE_EDEFAULT);
 			return;
 		case CICDPackage.INPUT__DEFAULT_VALUE:
-			setDefaultValue(DEFAULT_VALUE_EDEFAULT);
+			setDefaultValue((Expression) null);
 			return;
 		case CICDPackage.INPUT__REQUIRED:
 			setRequired(REQUIRED_EDEFAULT);
+			return;
+		case CICDPackage.INPUT__CHOICES:
+			getChoices().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -248,9 +323,11 @@ public class InputImpl extends ParameterImpl implements Input {
 		case CICDPackage.INPUT__TYPE:
 			return type != TYPE_EDEFAULT;
 		case CICDPackage.INPUT__DEFAULT_VALUE:
-			return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null : !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
+			return defaultValue != null;
 		case CICDPackage.INPUT__REQUIRED:
 			return REQUIRED_EDEFAULT == null ? required != null : !REQUIRED_EDEFAULT.equals(required);
+		case CICDPackage.INPUT__CHOICES:
+			return choices != null && !choices.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -268,10 +345,10 @@ public class InputImpl extends ParameterImpl implements Input {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (type: ");
 		result.append(type);
-		result.append(", defaultValue: ");
-		result.append(defaultValue);
 		result.append(", required: ");
 		result.append(required);
+		result.append(", choices: ");
+		result.append(choices);
 		result.append(')');
 		return result.toString();
 	}

@@ -14,6 +14,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -183,80 +185,8 @@ public class InputItemProvider extends ParameterItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createComparison()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createFailure()));
-
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED, GHAFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+				EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EBOOLEAN_OBJECT, "false")));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createConcat()));
@@ -346,7 +276,6 @@ public class InputItemProvider extends ParameterItemProvider {
 		Object childObject = child;
 
 		boolean qualify = childFeature == GHAPackage.Literals.PARAMETER__DESCRIPTION
-				|| childFeature == GHAPackage.Literals.INPUT__IS_REQUIRED
 				|| childFeature == GHAPackage.Literals.INPUT__DEFAULT;
 
 		if (qualify) {

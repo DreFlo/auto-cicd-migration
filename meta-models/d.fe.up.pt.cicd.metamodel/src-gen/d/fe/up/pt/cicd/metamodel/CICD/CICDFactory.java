@@ -364,24 +364,6 @@ public interface CICDFactory extends EFactory {
 	Or createOr();
 
 	/**
-	 * Returns a new object of class '<em>Addition</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Addition</em>'.
-	 * @generated
-	 */
-	Addition createAddition();
-
-	/**
-	 * Returns a new object of class '<em>Subtraction</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Subtraction</em>'.
-	 * @generated
-	 */
-	Subtraction createSubtraction();
-
-	/**
 	 * Returns a new object of class '<em>Unary Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

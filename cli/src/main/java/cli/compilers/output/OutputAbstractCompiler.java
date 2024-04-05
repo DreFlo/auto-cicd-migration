@@ -30,6 +30,10 @@ public abstract class OutputAbstractCompiler<OutputModel extends EObject, Output
     }
 
     protected void generate(OutputModel outputModel, String outputFolder) throws Exception {
+        if (getGenerator() == null) {
+            LoggerUtils.log(Level.SEVERE, "No generator found for the compiler.");
+            return;
+        }
         getGenerator().generate(outputModel, outputFolder);
     }
 

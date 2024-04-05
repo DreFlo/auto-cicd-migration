@@ -1,0 +1,6 @@
+-- @path CICD1=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+-- @path CICD2=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module changeJobInputIds;
+create OUT : CICD2 from IN : CICD1;
+

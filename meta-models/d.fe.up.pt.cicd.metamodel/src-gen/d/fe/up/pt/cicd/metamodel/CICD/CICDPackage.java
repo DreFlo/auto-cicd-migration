@@ -1562,7 +1562,7 @@ public interface CICDPackage extends EPackage {
 	int PARAMETER__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1608,7 +1608,7 @@ public interface CICDPackage extends EPackage {
 	int INPUT__ID = PARAMETER__ID;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1626,7 +1626,7 @@ public interface CICDPackage extends EPackage {
 	int INPUT__TYPE = PARAMETER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Default Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1644,13 +1644,22 @@ public interface CICDPackage extends EPackage {
 	int INPUT__REQUIRED = PARAMETER_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Choices</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT__CHOICES = PARAMETER_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Input</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INPUT_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 3;
+	int INPUT_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Input</em>' class.
@@ -1681,7 +1690,7 @@ public interface CICDPackage extends EPackage {
 	int OUTPUT__ID = PARAMETER__ID;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2364,16 +2373,6 @@ public interface CICDPackage extends EPackage {
 	int CHECKOUT_OPERATION_COUNT = NON_CONDITIONAL_STEP_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AssignmentImpl <em>Assignment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.AssignmentImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAssignment()
-	 * @generated
-	 */
-	int ASSIGNMENT = 29;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.ExpressionImpl <em>Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2400,6 +2399,16 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXPRESSION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AssignmentImpl <em>Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.AssignmentImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAssignment()
+	 * @generated
+	 */
+	int ASSIGNMENT = 29;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -3158,98 +3167,6 @@ public interface CICDPackage extends EPackage {
 	int OR_OPERATION_COUNT = LOGICAL_OP_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AdditionImpl <em>Addition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.AdditionImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAddition()
-	 * @generated
-	 */
-	int ADDITION = 49;
-
-	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDITION__LHS = BINARY_OP__LHS;
-
-	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDITION__RHS = BINARY_OP__RHS;
-
-	/**
-	 * The number of structural features of the '<em>Addition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDITION_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Addition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDITION_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.SubtractionImpl <em>Subtraction</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.SubtractionImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSubtraction()
-	 * @generated
-	 */
-	int SUBTRACTION = 50;
-
-	/**
-	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTRACTION__LHS = BINARY_OP__LHS;
-
-	/**
-	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTRACTION__RHS = BINARY_OP__RHS;
-
-	/**
-	 * The number of structural features of the '<em>Subtraction</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTRACTION_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Subtraction</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUBTRACTION_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.UnaryOpImpl <em>Unary Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3257,7 +3174,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 51;
+	int UNARY_OP = 49;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3294,7 +3211,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 52;
+	int NEGATION = 50;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3331,7 +3248,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPERMISSION_TYPE()
 	 * @generated
 	 */
-	int PERMISSION_TYPE = 53;
+	int PERMISSION_TYPE = 51;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}' enum.
@@ -3341,7 +3258,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 	 * @generated
 	 */
-	int SHELL_TYPE = 54;
+	int SHELL_TYPE = 52;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
@@ -3351,7 +3268,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 55;
+	int INPUT_TYPE = 53;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3361,7 +3278,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 56;
+	int EQUALITY_OPS = 54;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3371,7 +3288,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 57;
+	int COMPARISON_OPS = 55;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
@@ -3381,7 +3298,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
 	 * @generated
 	 */
-	int VARIABLE_CONTEXTS = 58;
+	int VARIABLE_CONTEXTS = 56;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
@@ -3391,7 +3308,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
 	 * @generated
 	 */
-	int CACHE_MODE = 59;
+	int CACHE_MODE = 57;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -4125,15 +4042,15 @@ public interface CICDPackage extends EPackage {
 	EAttribute getParameter_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Parameter#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Parameter#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @return the meta object for the containment reference '<em>Description</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Parameter#getDescription()
 	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameter_Description();
+	EReference getParameter_Description();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Input <em>Input</em>}'.
@@ -4157,15 +4074,15 @@ public interface CICDPackage extends EPackage {
 	EAttribute getInput_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getDefaultValue <em>Default Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getDefaultValue <em>Default Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Default Value</em>'.
+	 * @return the meta object for the containment reference '<em>Default Value</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Input#getDefaultValue()
 	 * @see #getInput()
 	 * @generated
 	 */
-	EAttribute getInput_DefaultValue();
+	EReference getInput_DefaultValue();
 
 	/**
 	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getRequired <em>Required</em>}'.
@@ -4177,6 +4094,17 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getInput_Required();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getChoices <em>Choices</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Choices</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Input#getChoices()
+	 * @see #getInput()
+	 * @generated
+	 */
+	EAttribute getInput_Choices();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Output <em>Output</em>}'.
@@ -4889,26 +4817,6 @@ public interface CICDPackage extends EPackage {
 	EClass getOr();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Addition <em>Addition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Addition</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Addition
-	 * @generated
-	 */
-	EClass getAddition();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Subtraction <em>Subtraction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Subtraction</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Subtraction
-	 * @generated
-	 */
-	EClass getSubtraction();
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.UnaryOp <em>Unary Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5615,12 +5523,12 @@ public interface CICDPackage extends EPackage {
 		EAttribute PARAMETER__ID = eINSTANCE.getParameter_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Description</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER__DESCRIPTION = eINSTANCE.getParameter_Description();
+		EReference PARAMETER__DESCRIPTION = eINSTANCE.getParameter_Description();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.InputImpl <em>Input</em>}' class.
@@ -5641,12 +5549,12 @@ public interface CICDPackage extends EPackage {
 		EAttribute INPUT__TYPE = eINSTANCE.getInput_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Default Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute INPUT__DEFAULT_VALUE = eINSTANCE.getInput_DefaultValue();
+		EReference INPUT__DEFAULT_VALUE = eINSTANCE.getInput_DefaultValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Required</b></em>' attribute feature.
@@ -5655,6 +5563,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INPUT__REQUIRED = eINSTANCE.getInput_Required();
+
+		/**
+		 * The meta object literal for the '<em><b>Choices</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INPUT__CHOICES = eINSTANCE.getInput_Choices();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.OutputImpl <em>Output</em>}' class.
@@ -6249,26 +6165,6 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OR = eINSTANCE.getOr();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.AdditionImpl <em>Addition</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.AdditionImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAddition()
-		 * @generated
-		 */
-		EClass ADDITION = eINSTANCE.getAddition();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.SubtractionImpl <em>Subtraction</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.SubtractionImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSubtraction()
-		 * @generated
-		 */
-		EClass SUBTRACTION = eINSTANCE.getSubtraction();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.UnaryOpImpl <em>Unary Op</em>}' class.

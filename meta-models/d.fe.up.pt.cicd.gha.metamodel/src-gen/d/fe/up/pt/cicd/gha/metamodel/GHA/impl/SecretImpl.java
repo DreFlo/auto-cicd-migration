@@ -2,16 +2,11 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -29,14 +24,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class SecretImpl extends ParameterImpl implements Secret {
 	/**
-	 * The cached value of the '{@link #getIsRequired() <em>Is Required</em>}' containment reference.
+	 * The default value of the '{@link #getIsRequired() <em>Is Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getIsRequired()
 	 * @generated
 	 * @ordered
 	 */
-	protected Expression isRequired;
+	protected static final Boolean IS_REQUIRED_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getIsRequired() <em>Is Required</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIsRequired()
+	 * @generated
+	 * @ordered
+	 */
+	protected Boolean isRequired = IS_REQUIRED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,7 +67,7 @@ public class SecretImpl extends ParameterImpl implements Secret {
 	 * @generated
 	 */
 	@Override
-	public Expression getIsRequired() {
+	public Boolean getIsRequired() {
 		return isRequired;
 	}
 
@@ -72,55 +76,13 @@ public class SecretImpl extends ParameterImpl implements Secret {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIsRequired(Expression newIsRequired, NotificationChain msgs) {
-		Expression oldIsRequired = isRequired;
+	@Override
+	public void setIsRequired(Boolean newIsRequired) {
+		Boolean oldIsRequired = isRequired;
 		isRequired = newIsRequired;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					GHAPackage.SECRET__IS_REQUIRED, oldIsRequired, newIsRequired);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setIsRequired(Expression newIsRequired) {
-		if (newIsRequired != isRequired) {
-			NotificationChain msgs = null;
-			if (isRequired != null)
-				msgs = ((InternalEObject) isRequired).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - GHAPackage.SECRET__IS_REQUIRED, null, msgs);
-			if (newIsRequired != null)
-				msgs = ((InternalEObject) newIsRequired).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - GHAPackage.SECRET__IS_REQUIRED, null, msgs);
-			msgs = basicSetIsRequired(newIsRequired, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.SECRET__IS_REQUIRED, newIsRequired,
-					newIsRequired));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-		case GHAPackage.SECRET__IS_REQUIRED:
-			return basicSetIsRequired(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.SECRET__IS_REQUIRED, oldIsRequired,
+					isRequired));
 	}
 
 	/**
@@ -146,7 +108,7 @@ public class SecretImpl extends ParameterImpl implements Secret {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case GHAPackage.SECRET__IS_REQUIRED:
-			setIsRequired((Expression) newValue);
+			setIsRequired((Boolean) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,7 +123,7 @@ public class SecretImpl extends ParameterImpl implements Secret {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case GHAPackage.SECRET__IS_REQUIRED:
-			setIsRequired((Expression) null);
+			setIsRequired(IS_REQUIRED_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -176,9 +138,26 @@ public class SecretImpl extends ParameterImpl implements Secret {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case GHAPackage.SECRET__IS_REQUIRED:
-			return isRequired != null;
+			return IS_REQUIRED_EDEFAULT == null ? isRequired != null : !IS_REQUIRED_EDEFAULT.equals(isRequired);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (isRequired: ");
+		result.append(isRequired);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SecretImpl

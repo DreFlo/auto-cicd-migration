@@ -225,7 +225,7 @@ types:
   description: [generateExpression(description)/]
 [/if]
 [if (not isRequired.oclIsUndefined())]
-  required: [generateExpression(isRequired)/]
+  required: [isRequired/]
 [/if]
 [if (not default.oclIsUndefined())]
   default: [generateExpression(default)/]
@@ -252,7 +252,7 @@ types:
   description: [generateExpression(description)/]
 [/if]
 [if (not isRequired.oclIsUndefined())]
-  required: [generateExpression(isRequired)/]
+  required: [isRequired/]
 [/if]
 [/template]
 

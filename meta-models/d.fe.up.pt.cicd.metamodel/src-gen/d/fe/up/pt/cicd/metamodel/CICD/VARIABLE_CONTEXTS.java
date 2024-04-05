@@ -37,10 +37,11 @@ public enum VARIABLE_CONTEXTS implements Enumerator {
 	 * @ordered
 	 */
 	PARAMS(1, "PARAMS", "PARAMS"),
+
 	/**
 	 * The '<em><b>SECRETS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-	* <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #SECRETS_VALUE
 	 * @generated
 	 * @ordered

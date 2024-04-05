@@ -343,16 +343,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//INPUT_TYPES"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="isRequired" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="default" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Secret" eSuperTypes="#//Parameter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="isRequired" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRequired" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//Parameter">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"

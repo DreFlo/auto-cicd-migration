@@ -204,12 +204,6 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createSubtraction()));
-
-		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createUnaryOp()));
 
 		newChildDescriptors

@@ -3,11 +3,14 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Parameter;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -48,24 +51,14 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected String description = DESCRIPTION_EDEFAULT;
+	protected Expression description;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,7 +108,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public String getDescription() {
+	public Expression getDescription() {
 		return description;
 	}
 
@@ -124,13 +117,55 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setDescription(String newDescription) {
-		String oldDescription = description;
+	public NotificationChain basicSetDescription(Expression newDescription, NotificationChain msgs) {
+		Expression oldDescription = description;
 		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PARAMETER__DESCRIPTION, oldDescription,
-					description));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.PARAMETER__DESCRIPTION, oldDescription, newDescription);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(Expression newDescription) {
+		if (newDescription != description) {
+			NotificationChain msgs = null;
+			if (description != null)
+				msgs = ((InternalEObject) description).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PARAMETER__DESCRIPTION, null, msgs);
+			if (newDescription != null)
+				msgs = ((InternalEObject) newDescription).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PARAMETER__DESCRIPTION, null, msgs);
+			msgs = basicSetDescription(newDescription, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PARAMETER__DESCRIPTION, newDescription,
+					newDescription));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.PARAMETER__DESCRIPTION:
+			return basicSetDescription(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -161,7 +196,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 			setId((String) newValue);
 			return;
 		case CICDPackage.PARAMETER__DESCRIPTION:
-			setDescription((String) newValue);
+			setDescription((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -179,7 +214,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 			setId(ID_EDEFAULT);
 			return;
 		case CICDPackage.PARAMETER__DESCRIPTION:
-			setDescription(DESCRIPTION_EDEFAULT);
+			setDescription((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -196,7 +231,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 		case CICDPackage.PARAMETER__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case CICDPackage.PARAMETER__DESCRIPTION:
-			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			return description != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,8 +249,6 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (id: ");
 		result.append(id);
-		result.append(", description: ");
-		result.append(description);
 		result.append(')');
 		return result.toString();
 	}

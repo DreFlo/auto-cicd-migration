@@ -3699,7 +3699,7 @@ public interface GHAPackage extends EPackage {
 	int INPUT__TYPE = PARAMETER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Is Required</b></em>' containment reference.
+	 * The feature id for the '<em><b>Is Required</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3772,7 +3772,7 @@ public interface GHAPackage extends EPackage {
 	int SECRET__DESCRIPTION = PARAMETER__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Is Required</b></em>' containment reference.
+	 * The feature id for the '<em><b>Is Required</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5885,15 +5885,15 @@ public interface GHAPackage extends EPackage {
 	EAttribute getInput_Type();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Input#getIsRequired <em>Is Required</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Input#getIsRequired <em>Is Required</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Is Required</em>'.
+	 * @return the meta object for the attribute '<em>Is Required</em>'.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Input#getIsRequired()
 	 * @see #getInput()
 	 * @generated
 	 */
-	EReference getInput_IsRequired();
+	EAttribute getInput_IsRequired();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Input#getDefault <em>Default</em>}'.
@@ -5928,15 +5928,15 @@ public interface GHAPackage extends EPackage {
 	EClass getSecret();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Secret#getIsRequired <em>Is Required</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Secret#getIsRequired <em>Is Required</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Is Required</em>'.
+	 * @return the meta object for the attribute '<em>Is Required</em>'.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Secret#getIsRequired()
 	 * @see #getSecret()
 	 * @generated
 	 */
-	EReference getSecret_IsRequired();
+	EAttribute getSecret_IsRequired();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Output <em>Output</em>}'.
@@ -7665,12 +7665,12 @@ public interface GHAPackage extends EPackage {
 		EAttribute INPUT__TYPE = eINSTANCE.getInput_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Required</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Is Required</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INPUT__IS_REQUIRED = eINSTANCE.getInput_IsRequired();
+		EAttribute INPUT__IS_REQUIRED = eINSTANCE.getInput_IsRequired();
 
 		/**
 		 * The meta object literal for the '<em><b>Default</b></em>' containment reference feature.
@@ -7699,12 +7699,12 @@ public interface GHAPackage extends EPackage {
 		EClass SECRET = eINSTANCE.getSecret();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Required</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Is Required</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SECRET__IS_REQUIRED = eINSTANCE.getSecret_IsRequired();
+		EAttribute SECRET__IS_REQUIRED = eINSTANCE.getSecret_IsRequired();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.OutputImpl <em>Output</em>}' class.

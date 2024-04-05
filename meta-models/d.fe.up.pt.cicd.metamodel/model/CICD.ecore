@@ -123,16 +123,20 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Input" eSuperTypes="#//Parameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//INPUT_TYPE"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" eType="#//Expression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="choices" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Output" eSuperTypes="#//Parameter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Step" abstract="true"/>
@@ -246,8 +250,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="LogicalOp" abstract="true" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//LogicalOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//LogicalOp"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Addition" eSuperTypes="#//BinaryOp"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Subtraction" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="UnaryOp" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" eType="#//Expression"
         containment="true"/>

@@ -3,8 +3,8 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Output;
-import d.fe.up.pt.cicd.metamodel.CICD.Value;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -36,7 +36,7 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 * @generated
 	 * @ordered
 	 */
-	protected Value value;
+	protected Expression value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,7 +63,7 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 * @generated
 	 */
 	@Override
-	public Value getValue() {
+	public Expression getValue() {
 		return value;
 	}
 
@@ -72,8 +72,8 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetValue(Value newValue, NotificationChain msgs) {
-		Value oldValue = value;
+	public NotificationChain basicSetValue(Expression newValue, NotificationChain msgs) {
+		Expression oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.OUTPUT__VALUE,
@@ -92,7 +92,7 @@ public class OutputImpl extends ParameterImpl implements Output {
 	 * @generated
 	 */
 	@Override
-	public void setValue(Value newValue) {
+	public void setValue(Expression newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
@@ -145,7 +145,7 @@ public class OutputImpl extends ParameterImpl implements Output {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case CICDPackage.OUTPUT__VALUE:
-			setValue((Value) newValue);
+			setValue((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -160,7 +160,7 @@ public class OutputImpl extends ParameterImpl implements Output {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case CICDPackage.OUTPUT__VALUE:
-			setValue((Value) null);
+			setValue((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);

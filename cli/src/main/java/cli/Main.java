@@ -3,14 +3,17 @@ package cli;
 import cli.compilers.input.CircleCIInputCompiler;
 import cli.compilers.input.GHAInputCompiler;
 import cli.compilers.input.InputAbstractCompiler;
+import cli.compilers.output.CircleCIOutputCompiler;
 import cli.compilers.output.GHAOutputCompiler;
 import cli.compilers.output.JenkinsOutputCompiler;
 import cli.compilers.output.OutputAbstractCompiler;
+import cli.generators.CircleCIGenerator;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
 import cli.parsers.CircleCIParser;
 import cli.parsers.GitHubActionsParser;
 import cli.parsers.exceptions.SyntaxException;
+import cli.transformers.exogenous.fromTIM.CICD2CircleCITransformer;
 import cli.transformers.exogenous.fromTIM.CICD2GHATransformer;
 import cli.transformers.exogenous.fromTIM.CICD2JenkinsTransformer;
 import cli.transformers.exogenous.toTIM.CircleCI2CICDTransformer;
@@ -18,6 +21,7 @@ import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 import cli.utils.LoggerUtils;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
@@ -49,7 +53,7 @@ public class Main {
 	}
 
 	private static void registerPackages() {
-		EMFUtils.registerPackages(getResourceSet(), CICDPackage.eINSTANCE, GHAPackage.eINSTANCE, JenkinsPackage.eINSTANCE);
+		EMFUtils.registerPackages(getResourceSet(), CICDPackage.eINSTANCE, GHAPackage.eINSTANCE, JenkinsPackage.eINSTANCE, CircleCIPackage.eINSTANCE);
 	}
 
 	private static void registerInputCompilers() {
@@ -60,6 +64,7 @@ public class Main {
 	private static void registerOutputCompilers() {
 		outputCompilers.put("jenkins", new JenkinsOutputCompiler(new CICD2JenkinsTransformer(getResourceSet()), new JenkinsGenerator(getResourceSet())));
 		outputCompilers.put("gha", new GHAOutputCompiler(new CICD2GHATransformer(getResourceSet()), new GHAGenerator(getResourceSet())));
+		outputCompilers.put("circleci", new CircleCIOutputCompiler(new CICD2CircleCITransformer(getResourceSet()), null));
 	}
 
 	private static Options getCommandLineOptions() {

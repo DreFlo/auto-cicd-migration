@@ -195,12 +195,6 @@ public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createSubtraction()));
-
-		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createUnaryOp()));
 
 		newChildDescriptors

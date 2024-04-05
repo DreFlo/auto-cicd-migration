@@ -2,6 +2,8 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Input</b></em>'.
@@ -14,6 +16,7 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getType <em>Type</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getRequired <em>Required</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getChoices <em>Choices</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getInput()
@@ -47,26 +50,26 @@ public interface Input extends Parameter {
 	void setType(INPUT_TYPE value);
 
 	/**
-	 * Returns the value of the '<em><b>Default Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Default Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default Value</em>' attribute.
-	 * @see #setDefaultValue(String)
+	 * @return the value of the '<em>Default Value</em>' containment reference.
+	 * @see #setDefaultValue(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getInput_DefaultValue()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getDefaultValue();
+	Expression getDefaultValue();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getDefaultValue <em>Default Value</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Input#getDefaultValue <em>Default Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Default Value</em>' attribute.
+	 * @param value the new value of the '<em>Default Value</em>' containment reference.
 	 * @see #getDefaultValue()
 	 * @generated
 	 */
-	void setDefaultValue(String value);
+	void setDefaultValue(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Required</b></em>' attribute.
@@ -89,5 +92,17 @@ public interface Input extends Parameter {
 	 * @generated
 	 */
 	void setRequired(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Choices</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Choices</em>' attribute list.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getInput_Choices()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getChoices();
 
 } // Input

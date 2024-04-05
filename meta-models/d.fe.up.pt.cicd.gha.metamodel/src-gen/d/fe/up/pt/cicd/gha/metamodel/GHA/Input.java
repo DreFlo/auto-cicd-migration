@@ -50,26 +50,26 @@ public interface Input extends Parameter {
 	void setType(INPUT_TYPES value);
 
 	/**
-	 * Returns the value of the '<em><b>Is Required</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Is Required</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Required</em>' containment reference.
-	 * @see #setIsRequired(Expression)
+	 * @return the value of the '<em>Is Required</em>' attribute.
+	 * @see #setIsRequired(Boolean)
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getInput_IsRequired()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
-	Expression getIsRequired();
+	Boolean getIsRequired();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Input#getIsRequired <em>Is Required</em>}' containment reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Input#getIsRequired <em>Is Required</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Required</em>' containment reference.
+	 * @param value the new value of the '<em>Is Required</em>' attribute.
 	 * @see #getIsRequired()
 	 * @generated
 	 */
-	void setIsRequired(Expression value);
+	void setIsRequired(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Default</b></em>' containment reference.

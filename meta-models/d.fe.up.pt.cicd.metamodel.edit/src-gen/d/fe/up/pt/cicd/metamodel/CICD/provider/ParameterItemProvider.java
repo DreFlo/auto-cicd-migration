@@ -87,8 +87,7 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 						getResourceLocator(), getString("_UI_Parameter_description_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_description_feature",
 								"_UI_Parameter_type"),
-						CICDPackage.Literals.PARAMETER__DESCRIPTION, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CICDPackage.Literals.PARAMETER__DESCRIPTION, true, false, false, null, null, null));
 	}
 
 	/**

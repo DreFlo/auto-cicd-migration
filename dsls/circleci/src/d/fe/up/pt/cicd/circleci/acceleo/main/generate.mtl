@@ -3,7 +3,7 @@
 
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
-[file ('circleci.yml', false, 'UTF-8')]
+[file ('config.yml', false, 'UTF-8')]
 version: [version/]
 
 [if (not setup.oclIsUndefined())]
@@ -393,7 +393,7 @@ macos:
   description: [description/]
 [/if]
 [if (not default.oclIsUndefined())]
-  default: [generateLiteral(default)/]
+  default: [generateLiteral(default.oclAsType(Literal))/]
 [/if]
 [/template]
 
@@ -458,7 +458,7 @@ macos:
 [if (requires->notEmpty())]
     requires:
     [for (job : WorkflowJobConfiguration | requires)]
-      - [generateExpression(job.name)/]
+      - [job.name/]
     [/for]
 [/if]
 [if (branches->notEmpty() or not tags->notEmpty())]

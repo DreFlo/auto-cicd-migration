@@ -2,7 +2,6 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
-import d.fe.up.pt.cicd.metamodel.CICD.Addition;
 import d.fe.up.pt.cicd.metamodel.CICD.Agent;
 import d.fe.up.pt.cicd.metamodel.CICD.And;
 import d.fe.up.pt.cicd.metamodel.CICD.Artifact;
@@ -47,7 +46,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.ScriptJob;
 import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
 import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
-import d.fe.up.pt.cicd.metamodel.CICD.Subtraction;
 import d.fe.up.pt.cicd.metamodel.CICD.Trigger;
 import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Value;
@@ -415,20 +413,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass orEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass additionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass subtractionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1243,8 +1227,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameter_Description() {
-		return (EAttribute) parameterEClass.getEStructuralFeatures().get(1);
+	public EReference getParameter_Description() {
+		return (EReference) parameterEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1273,8 +1257,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInput_DefaultValue() {
-		return (EAttribute) inputEClass.getEStructuralFeatures().get(1);
+	public EReference getInput_DefaultValue() {
+		return (EReference) inputEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1285,6 +1269,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EAttribute getInput_Required() {
 		return (EAttribute) inputEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInput_Choices() {
+		return (EAttribute) inputEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1963,26 +1957,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getAddition() {
-		return additionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getSubtraction() {
-		return subtractionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getUnaryOp() {
 		return unaryOpEClass;
 	}
@@ -2193,12 +2167,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		parameterEClass = createEClass(PARAMETER);
 		createEAttribute(parameterEClass, PARAMETER__ID);
-		createEAttribute(parameterEClass, PARAMETER__DESCRIPTION);
+		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
 
 		inputEClass = createEClass(INPUT);
 		createEAttribute(inputEClass, INPUT__TYPE);
-		createEAttribute(inputEClass, INPUT__DEFAULT_VALUE);
+		createEReference(inputEClass, INPUT__DEFAULT_VALUE);
 		createEAttribute(inputEClass, INPUT__REQUIRED);
+		createEAttribute(inputEClass, INPUT__CHOICES);
 
 		outputEClass = createEClass(OUTPUT);
 		createEReference(outputEClass, OUTPUT__VALUE);
@@ -2296,10 +2271,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		orEClass = createEClass(OR);
 
-		additionEClass = createEClass(ADDITION);
-
-		subtractionEClass = createEClass(SUBTRACTION);
-
 		unaryOpEClass = createEClass(UNARY_OP);
 		createEReference(unaryOpEClass, UNARY_OP__RHS);
 
@@ -2381,8 +2352,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
 		andEClass.getESuperTypes().add(this.getLogicalOp());
 		orEClass.getESuperTypes().add(this.getLogicalOp());
-		additionEClass.getESuperTypes().add(this.getBinaryOp());
-		subtractionEClass.getESuperTypes().add(this.getBinaryOp());
 		unaryOpEClass.getESuperTypes().add(this.getExpression());
 		negationEClass.getESuperTypes().add(this.getUnaryOp());
 
@@ -2574,20 +2543,23 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameter_Id(), ecorePackage.getEString(), "id", null, 1, 1, Parameter.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_Description(), ecorePackage.getEString(), "description", null, 0, 1,
-				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Description(), this.getExpression(), null, "description", null, 0, 1,
+				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInput_Type(), this.getINPUT_TYPE(), "type", null, 1, 1, Input.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInput_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Input.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInput_DefaultValue(), this.getExpression(), null, "defaultValue", null, 0, 1, Input.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInput_Required(), ecorePackage.getEBooleanObject(), "required", null, 1, 1, Input.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInput_Choices(), ecorePackage.getEString(), "choices", null, 0, -1, Input.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOutput_Value(), this.getValue(), null, "value", null, 1, 1, Output.class, !IS_TRANSIENT,
+		initEReference(getOutput_Value(), this.getExpression(), null, "value", null, 1, 1, Output.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
@@ -2767,12 +2739,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(additionEClass, Addition.class, "Addition", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(subtractionEClass, Subtraction.class, "Subtraction", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(unaryOpEClass, UnaryOp.class, "UnaryOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, UnaryOp.class, !IS_TRANSIENT,

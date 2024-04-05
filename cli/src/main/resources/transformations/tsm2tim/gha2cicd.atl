@@ -11,8 +11,11 @@ rule Workflow2Pipeline {
 		pipeline : CICD!Pipeline(
 			name <- workflow.name.expression2String(),
 			environmentVariables <- workflow.environmentVariables,
+			inputs <- workflow.triggers->collect(
+				trigger | trigger.oclIsKindOf(GHA!InputTrigger)
+			)->collect(trigger | trigger.inputs),
 			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
-			triggers <- workflow.triggers,
+			triggers <- workflow.triggers->collect(trigger | not trigger.oclIsKindOf(GHA!InputTrigger)),
 			workingDirectory <-
 				if not workflow.defaults.oclIsUndefined() then
 					workflow.defaults.workingDirectory.expression2String()
@@ -27,6 +30,51 @@ rule Workflow2Pipeline {
 				else
 					OclUndefined
 				endif
+		)
+}
+
+abstract rule Parameter2Parameter {
+	from
+		input : GHA!Parameter
+	to
+		output : CICD!Parameter(
+			description <- input.description,
+			id <- input.id
+		)
+}
+
+rule Input2Input extends Parameter2Parameter {
+	from
+		input : GHA!Input
+	to
+		output : CICD!Input(
+			choices <- input.options,
+			defaultValue <- input.default,
+			required <- input.isRequired,
+			type <-
+				if input.type = #STRING then
+					#STRING
+				else if input.type = #NUMBER then
+					#NUMBER
+				else if input.type = #BOOLEAN then
+					#BOOLEAN
+				else if input.type = #CHOICE then
+					#CHOICE
+				else
+					#STRING
+				endif
+				endif
+				endif
+				endif
+		)
+}
+
+rule Output2Output extends Parameter2Parameter {
+	from
+		input : GHA!Output
+	to
+		output : CICD!Output(
+			value <- input.value
 		)
 }
 

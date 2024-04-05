@@ -2,7 +2,6 @@
  */
 package d.fe.up.pt.cicd.gha.metamodel.GHA.provider;
 
-import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAFactory;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 
@@ -14,6 +13,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -143,101 +144,8 @@ public class SecretItemProvider extends ParameterItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createEquality()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createComparison()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createOr()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createAnd()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createNot()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createStartsWith()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createEndsWith()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createFormat()));
-
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createJoin()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createToJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createFromJSON()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createHashFiles()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createAlways()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createSuccess()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createCancelled()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createFailure()));
-
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED, GHAFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SECRET__IS_REQUIRED,
-				GHAFactory.eINSTANCE.createVariableDereference()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == GHAPackage.Literals.PARAMETER__DESCRIPTION
-				|| childFeature == GHAPackage.Literals.SECRET__IS_REQUIRED;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2",
-					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
+				EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EBOOLEAN_OBJECT, "false")));
 	}
 
 }

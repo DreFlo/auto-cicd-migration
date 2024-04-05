@@ -24,12 +24,12 @@ public interface Output extends Parameter {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
-	 * @see #setValue(Value)
+	 * @see #setValue(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getOutput_Value()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Value getValue();
+	Expression getValue();
 
 	/**
 	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Output#getValue <em>Value</em>}' containment reference.
@@ -39,6 +39,6 @@ public interface Output extends Parameter {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(Value value);
+	void setValue(Expression value);
 
 } // Output

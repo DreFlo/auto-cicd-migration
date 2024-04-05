@@ -1,0 +1,375 @@
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+-- @path CircleCI=/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.ecore
+
+module cicd2circleci;
+create OUT : CircleCI from IN : CICD;
+
+rule Pipeline2Pipeline {
+	from
+		input : CICD!Pipeline
+	to
+		output : CircleCI!Pipeline(
+			jobs <- thisModule.getAllJobs(input.jobStreams)->collect(job | thisModule.Job2Job(job)),
+			orbs <- 
+				thisModule.getAllJobs(input.jobStreams)
+					->collect(job | job.steps)
+					->flatten()
+					->select(step | step.oclIsTypeOf(CICD!Plugin))
+					->collect(step | thisModule.Plugin2OrbReference(step)),
+			workflows <- Sequence{thisModule.Pipeline2Workflow(input)}
+		)
+}
+
+lazy rule Pipeline2Workflow {
+	from
+		input : CICD!Pipeline
+	using {
+		conditions : Sequence(CICD!Expression) = input.jobStreams->collect(jobStream | jobStream.ifCondition);
+	}
+	to
+		output : CircleCI!Workflow(
+			condition <-
+				if conditions->size() = 1 then
+					thisModule.expression2LogicHelper(conditions->first())
+				else if conditions->size() > 1 then
+					thisModule.ConjunctExpressions(conditions)
+				else
+					OclUndefined
+				endif
+				endif,
+			isWhen <-
+				if conditions->notEmpty() then
+					true
+				else
+					OclUndefined
+				endif,
+			jobs <- thisModule.getAllJobs(input.jobStreams)->collect(job | thisModule.Job2WorkflowDefinedJobConfiguration(job)),
+			name <- input.name,
+			triggers <- input.triggers->collect(trigger | trigger.oclIsTypeOf(CICD!ScheduledTrigger))
+		)
+}
+
+lazy rule Job2WorkflowDefinedJobConfiguration {
+	from
+		input : CICD!Job
+	to
+		output : CircleCI!WorkflowDefinedJobConfiguration(
+			job <- thisModule.Job2Job(input),
+			matrix <- input.matrix
+		)
+}
+
+lazy rule Job2Job {
+	from
+		input : CICD!Job
+	to
+		output : CircleCI!Job(
+			environmentVariables <- input.environmentVariables,
+			executor <- thisModule.job2ExecutorHelper(input),
+			name <- input.name,
+			parameters <- input.inputs
+		)
+}
+
+lazy rule ScriptJob2Job {
+	from
+		input : CICD!ScriptJob
+	to
+		output : CircleCI!Job(
+			steps <- input.steps->collect(step | thisModule.step2StepHelper(step))
+		)
+}
+
+lazy rule ConditionalStep2WhenStep {
+	from
+		input : CICD!ConditionalStep
+	to
+		output : CircleCI!WhenStep(
+			condition <- input.ifCondition,
+			steps <- input.thenRun
+		)
+}
+
+lazy rule ConditionalStep2UnlessStep {
+	from
+		input : CICD!ConditionalStep
+	to
+		output : CircleCI!UnlessStep(
+			condition <- input.ifCondition,
+			steps <- input.elseRun
+		)
+}
+
+lazy rule Command2RunStep {
+	from
+		input : CICD!Command
+	to
+		output : CircleCI!RunStep(
+			command <- input.program,
+			environmentVariables <- input.environmentVariables,
+			name <- input.name
+		)
+}
+
+lazy rule Plugin2OrbReferenceStep {
+	from
+		input : CICD!Plugin
+	to
+		output : CircleCI!OrbReferenceStep(
+			arguments <- input.kwargs,
+			jobName <- input.pluginName.split('/')->last(),
+			orb <- thisModule.Plugin2OrbReference(input)
+		)
+}
+
+lazy rule Job2DockerExecutor {
+	from
+		agent : CICD!Agent,
+		services : Sequence(CICD!DockerContainer)
+	to
+		output : CircleCI!DockerExecutor(
+			
+		)
+}
+
+lazy rule Plugin2OrbReference {
+	from
+		input : CICD!Plugin
+	to
+		output : CircleCI!OrbReference(
+			name <-
+				if input.name.oclIsUndefined() then
+					input.pluginName.split('/')->first()
+				else
+					input.name
+				endif,
+			reference <- input.pluginName.split('/')->first() + '@' + input.version
+		)
+}
+
+rule Matrix2Matrix {
+	from
+		input : CICD!Matrix
+	to
+		output : CircleCI!Matrix(
+			parameters <- input.axes,
+			excludes <- input.excludes
+		)
+}
+
+rule MatrixAxis2MatrixParameter {
+	from
+		input : CICD!MatrixAxis
+	to
+		output : CircleCI!MatrixParameter(
+			cells <- input.cells->collect(cell | thisModule.expression2ExpressionHelper(cell)),
+			name <- input.name
+		)
+}
+
+rule MatrixCombination2MatrixCombination {
+	from
+		input : CICD!MatrixCombination
+	to
+		output : CircleCI!MatrixCombination(
+			entries <- input.combinationEntries
+		)
+}
+
+rule Assignment2VariableAssignment {
+	from
+		input : CICD!Assignment
+	to
+		output : CircleCI!VariableAssignment(
+			key <- input.key.name,
+			value <- thisModule.expression2ExpressionHelper(input.value)
+		)
+}
+
+lazy rule ConjunctExpressions {
+	from
+		input : Sequence(CICD!Expression)
+	to
+		output : CircleCI!And(
+			operands <- input->collect(expression | thisModule.expression2LogicHelper(expression))
+		)
+}
+
+lazy rule And2And {
+	from
+		input : CICD!And
+	to
+		output : CircleCI!And(
+			operands <- Sequence{input.lhs, input.rhs}->collect(expression | thisModule.expression2LogicHelper(expression))
+		)
+}
+
+lazy rule Or2Or {
+	from
+		input : CICD!Or
+	to
+		output : CircleCI!Or(
+			operands <- Sequence{input.lhs, input.rhs}->collect(expression | thisModule.expression2LogicHelper(expression))
+		)
+}
+
+lazy rule EqualsEqualityOp2Equals {
+	from
+		input : CICD!EqualityOp
+	to
+		output : CircleCI!Equals(
+			operands <- Sequence{input.lhs, input.rhs}->collect(expression | thisModule.expression2LogicHelper(expression))
+		)
+}
+
+lazy rule NotEqualsEqualityOp2Not {
+	from
+		input : CICD!EqualityOp
+	to
+		output : CircleCI!Not(
+			operand <- thisModule.EqualsEqualityOp2Equals(input)
+		)
+}
+
+lazy rule Concat2Concat {
+	from
+		input : CICD!Concat
+	to
+		output : CircleCI!Concat(
+			expressions <- input.expressions->collect(expression | thisModule.expression2ExpressionHelper(expression))
+		)
+}
+
+abstract rule Value2Value {
+	from
+		input : CICD!Value
+	to
+		output : CircleCI!Value
+}
+
+abstract rule Literal2Literal extends Value2Value {
+	from
+		input : CICD!Literal
+	to
+		output : CICD!Literal
+}
+
+rule StringLiteral extends Literal2Literal {
+	from
+		input : CICD!StringLiteral
+	to
+		output : CircleCI!StringLiteral(
+			value <- input.value
+		)
+}
+
+rule IntegerLiteral extends Literal2Literal {
+	from
+		input : CICD!IntegerLiteral
+	to
+		output : CircleCI!IntegerLiteral(
+			value <- input.value
+		)
+}
+
+rule DoubleLiteral extends Literal2Literal {
+	from
+		input : CICD!DoubleLiteral
+	to
+		output : CircleCI!DoubleLiteral(
+			value <- input.value
+		)
+}
+
+rule BooleanLiteral extends Literal2Literal {
+	from
+		input : CICD!BooleanLiteral
+	to
+		output : CircleCI!BooleanLiteral(
+			value <- input.value
+		)
+}
+
+rule VariableDereference2VariableDereference extends Value2Value {
+	from
+		output : CICD!VariableDereference
+	to
+		input : CircleCI!VariableDereference(
+			names <- thisModule.getVariableDereferenceNames(output)
+		)
+}
+
+helper def : expression2LogicHelper(expression : CICD!Expression) : CircleCI!Logic =
+	if expression.oclIsTypeOf(CICD!And) then
+		thisModule.And2And(expression)
+	else if expression.oclIsTypeOf(CICD!Or) then
+		thisModule.Or2Or(expression)
+	else if expression.oclIsTypeOf(CICD!EqualityOp) then
+		if expression.op = #"==" then
+			thisModule.EqualsEqualityOp2Equals(expression)
+		else
+			thisModule.NotEqualsEqualityOp2Not(expression)
+		endif
+	else
+		expression
+	endif
+	endif
+	endif;
+
+helper def : expression2ExpressionHelper(expression : CICD!Expression) : CircleCI!Expression =
+	if expression.oclIsTypeOf(CICD!Concat) then
+		thisModule.Concat2Concat(expression)
+	else
+		expression
+	endif;
+
+helper def : step2StepHelper(step : CICD!Step) : Sequence(CircleCI!Step) =
+	if step.oclIsTypeOf(CICD!ConditionalStep) then
+		Sequence{thisModule.ConditionalStep2WhenStep(step)}->union(
+			if step.elseRun->notEmpty() then
+				Sequence{thisModule.ConditionalStep2UnlessStep(step)} 
+			else 
+				Sequence{} 
+			endif
+		)
+	else if step.oclIsTypeOf(CICD!Command) then
+		Sequence{thisModule.Command2RunStep(step)}
+	else if step.oclIsTypeOf(CICD!Plugin) then
+		Sequence{thisModule.Plugin2OrbReferenceStep(step)}
+	else
+		OclUndefined
+	endif
+	endif
+	endif;
+
+helper def : job2ExecutorHelper(job : CICD!Job) : CircleCI!Executor =
+	if not job.agent.container.oclIsUndefined() then
+		thisModule.Job2DockerExecutor(job)
+	else
+		OclUndefined
+	endif;
+
+helper def : getVariableDereferenceNames(variableDereference : CICD!VariableDereference) : Sequence(String) =
+	if variableDereference.variable.oclIsTypeOf(CICD!VariableContext) then
+		Sequence{variableDereference.variable.context.toString(), variableDereference.property}	
+	else if variableDereference.variable.oclIsTypeOf(CICD!Variable) then
+		Sequence{variableDereference.variable.name, variableDereference.property}	
+	else if variableDereference.variable.oclIsTypeOf(CICD!VariableDereference) then 
+		thisModule.getVariableDereferenceNames(variableDereference.variable)->append(variableDereference.property)
+	else
+		Sequence{variableDereference.property}
+	endif
+	endif
+	endif;
+	
+helper def : getAllJobs(jobStreams : Sequence(CICD!Job)) : Sequence(CICD!Job) =
+	let next : Sequence(CICD!Job) = 
+		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 
+			acc.append(jobStream.next)
+		)->flatten()->asSet()->asSequence()
+	in 
+	if next.isEmpty() then
+		jobStreams
+	else 
+		thisModule.getAllJobs(next)->prepend(jobStreams)->flatten()
+	endif;

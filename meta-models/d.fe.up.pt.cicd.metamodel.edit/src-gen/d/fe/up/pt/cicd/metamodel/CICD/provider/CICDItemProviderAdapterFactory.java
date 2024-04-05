@@ -993,52 +993,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Addition} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AdditionItemProvider additionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Addition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAdditionAdapter() {
-		if (additionItemProvider == null) {
-			additionItemProvider = new AdditionItemProvider(this);
-		}
-
-		return additionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Subtraction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SubtractionItemProvider subtractionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Subtraction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSubtractionAdapter() {
-		if (subtractionItemProvider == null) {
-			subtractionItemProvider = new SubtractionItemProvider(this);
-		}
-
-		return subtractionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.UnaryOp} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1269,10 +1223,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			andItemProvider.dispose();
 		if (orItemProvider != null)
 			orItemProvider.dispose();
-		if (additionItemProvider != null)
-			additionItemProvider.dispose();
-		if (subtractionItemProvider != null)
-			subtractionItemProvider.dispose();
 		if (unaryOpItemProvider != null)
 			unaryOpItemProvider.dispose();
 		if (negationItemProvider != null)

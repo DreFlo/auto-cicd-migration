@@ -45,25 +45,25 @@ public interface Parameter extends EObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * Returns the value of the '<em><b>Description</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Description</em>' attribute.
-	 * @see #setDescription(String)
+	 * @return the value of the '<em>Description</em>' containment reference.
+	 * @see #setDescription(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getParameter_Description()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getDescription();
+	Expression getDescription();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Parameter#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Parameter#getDescription <em>Description</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @param value the new value of the '<em>Description</em>' containment reference.
 	 * @see #getDescription()
 	 * @generated
 	 */
-	void setDescription(String value);
+	void setDescription(Expression value);
 
 } // Parameter

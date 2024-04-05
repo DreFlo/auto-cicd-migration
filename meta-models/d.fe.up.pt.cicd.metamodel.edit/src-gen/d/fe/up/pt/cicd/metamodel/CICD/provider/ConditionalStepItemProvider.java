@@ -197,12 +197,6 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 				CICDFactory.eINSTANCE.createOr()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
-				CICDFactory.eINSTANCE.createAddition()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
-				CICDFactory.eINSTANCE.createSubtraction()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,
 				CICDFactory.eINSTANCE.createUnaryOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONDITIONAL_STEP__IF_CONDITION,

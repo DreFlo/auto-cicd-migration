@@ -47,6 +47,7 @@ public class InputItemProvider extends ParameterItemProvider {
 			addTypePropertyDescriptor(object);
 			addDefaultValuePropertyDescriptor(object);
 			addRequiredPropertyDescriptor(object);
+			addChoicesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -78,8 +79,7 @@ public class InputItemProvider extends ParameterItemProvider {
 						getResourceLocator(), getString("_UI_Input_defaultValue_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Input_defaultValue_feature",
 								"_UI_Input_type"),
-						CICDPackage.Literals.INPUT__DEFAULT_VALUE, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CICDPackage.Literals.INPUT__DEFAULT_VALUE, true, false, false, null, null, null));
 	}
 
 	/**
@@ -94,6 +94,21 @@ public class InputItemProvider extends ParameterItemProvider {
 						getResourceLocator(), getString("_UI_Input_required_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Input_required_feature", "_UI_Input_type"),
 						CICDPackage.Literals.INPUT__REQUIRED, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Choices feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChoicesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Input_choices_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Input_choices_feature", "_UI_Input_type"),
+						CICDPackage.Literals.INPUT__CHOICES, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -146,6 +161,7 @@ public class InputItemProvider extends ParameterItemProvider {
 		case CICDPackage.INPUT__TYPE:
 		case CICDPackage.INPUT__DEFAULT_VALUE:
 		case CICDPackage.INPUT__REQUIRED:
+		case CICDPackage.INPUT__CHOICES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

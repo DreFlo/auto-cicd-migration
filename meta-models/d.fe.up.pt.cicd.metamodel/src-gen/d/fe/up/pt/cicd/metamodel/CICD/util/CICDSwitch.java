@@ -541,28 +541,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.ADDITION: {
-			Addition addition = (Addition) theEObject;
-			T result = caseAddition(addition);
-			if (result == null)
-				result = caseBinaryOp(addition);
-			if (result == null)
-				result = caseExpression(addition);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CICDPackage.SUBTRACTION: {
-			Subtraction subtraction = (Subtraction) theEObject;
-			T result = caseSubtraction(subtraction);
-			if (result == null)
-				result = caseBinaryOp(subtraction);
-			if (result == null)
-				result = caseExpression(subtraction);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case CICDPackage.UNARY_OP: {
 			UnaryOp unaryOp = (UnaryOp) theEObject;
 			T result = caseUnaryOp(unaryOp);
@@ -1320,36 +1298,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOr(Or object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Addition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Addition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAddition(Addition object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Subtraction</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Subtraction</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSubtraction(Subtraction object) {
 		return null;
 	}
 

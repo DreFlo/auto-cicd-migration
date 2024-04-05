@@ -2533,8 +2533,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getInput_IsRequired() {
-		return (EReference) inputEClass.getEStructuralFeatures().get(1);
+	public EAttribute getInput_IsRequired() {
+		return (EAttribute) inputEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2573,8 +2573,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getSecret_IsRequired() {
-		return (EReference) secretEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSecret_IsRequired() {
+		return (EAttribute) secretEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2957,12 +2957,12 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		inputEClass = createEClass(INPUT);
 		createEAttribute(inputEClass, INPUT__TYPE);
-		createEReference(inputEClass, INPUT__IS_REQUIRED);
+		createEAttribute(inputEClass, INPUT__IS_REQUIRED);
 		createEReference(inputEClass, INPUT__DEFAULT);
 		createEAttribute(inputEClass, INPUT__OPTIONS);
 
 		secretEClass = createEClass(SECRET);
-		createEReference(secretEClass, SECRET__IS_REQUIRED);
+		createEAttribute(secretEClass, SECRET__IS_REQUIRED);
 
 		outputEClass = createEClass(OUTPUT);
 		createEReference(outputEClass, OUTPUT__VALUE);
@@ -3576,9 +3576,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInput_Type(), this.getINPUT_TYPES(), "type", null, 1, 1, Input.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInput_IsRequired(), this.getExpression(), null, "isRequired", null, 0, 1, Input.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInput_IsRequired(), ecorePackage.getEBooleanObject(), "isRequired", null, 0, 1, Input.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInput_Default(), this.getExpression(), null, "default", null, 0, 1, Input.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3586,9 +3585,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(secretEClass, Secret.class, "Secret", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSecret_IsRequired(), this.getExpression(), null, "isRequired", null, 0, 1, Secret.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSecret_IsRequired(), ecorePackage.getEBooleanObject(), "isRequired", null, 0, 1, Secret.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOutput_Value(), this.getExpression(), null, "value", null, 1, 1, Output.class, !IS_TRANSIENT,

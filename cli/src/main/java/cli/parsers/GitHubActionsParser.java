@@ -360,7 +360,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			input.setDescription(parseExpression(inputMap.string("description")));
 		}
 		if (inputMap.string("required") != null) {
-			input.setIsRequired(parseExpression(inputMap.string("required")));
+			input.setIsRequired(Boolean.parseBoolean(inputMap.string("required")));
 		}
 		if (inputMap.string("default") != null) {
 			input.setDefault(parseExpression(inputMap.string("default")));
@@ -427,7 +427,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			secret.setDescription(parseExpression(secretMap.string("description")));
 		}
 		if (secretMap.string("required") != null) {
-			secret.setIsRequired(parseExpression(secretMap.string("required")));
+			secret.setIsRequired(Boolean.parseBoolean(secretMap.string("required")));
 		}
 		return secret;
 	}

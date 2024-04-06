@@ -47,6 +47,7 @@ public class OrbReferenceExecutorImpl extends ReferenceExecutorImpl implements O
 	 * @ordered
 	 */
 	protected static final String ORB_EXECUTOR_NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getOrbExecutorName() <em>Orb Executor Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

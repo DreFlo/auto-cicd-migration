@@ -3,8 +3,8 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**

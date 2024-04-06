@@ -715,7 +715,7 @@ lazy rule ExpressionSequence2Concat {
 		)
 }
 
-rule Attach2WorkspaceStep2Plugin {
+rule AttachToWorkspaceStep2Plugin {
 	from
 		input : CircleCI!AttachWorkspaceStep
 	to
@@ -731,7 +731,7 @@ rule AddSSHKeysStep2Plugin {
 	to
 		output : CICD!Plugin(
 			pluginName <- 'add_ssh_keys',
-			kwargs <- Sequence{thisModule.CreateVariableAssignment('fingerprints', input.fingerprints)}
+			kwargs <- Sequence{thisModule.CreateVariableAssignment('fingerprints', thisModule.ExpressionSequence2Concat(input.fingerprints))}
 		)
 }
 

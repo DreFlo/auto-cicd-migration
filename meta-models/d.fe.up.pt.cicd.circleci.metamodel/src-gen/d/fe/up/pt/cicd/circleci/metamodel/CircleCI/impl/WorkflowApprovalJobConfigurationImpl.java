@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowApprovalJobConfiguration;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**

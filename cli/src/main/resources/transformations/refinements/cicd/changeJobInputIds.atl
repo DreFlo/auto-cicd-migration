@@ -4,3 +4,11 @@
 module changeJobInputIds;
 create OUT : CICD2 from IN : CICD1;
 
+rule Pipeline {
+	from
+		input : CICD1!Pipeline
+	to
+		output : CICD2!Pipeline(
+			agent <- input.agent
+		)
+}

@@ -6,8 +6,8 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Logic;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow;
-
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;

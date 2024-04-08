@@ -29,8 +29,10 @@ import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.apache.commons.cli.*;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.m2m.atl.engine.compiler.AtlCompiler;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -81,7 +83,14 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		Options options = getCommandLineOptions();
+//        try {
+//			System.out.println("Compiling ASM...");
+//            AtlCompiler.compile(new InputStreamReader(JavaUtils.getResourceAsStream("transformations/tsm2tim/circleci2cicd.atl")), "./ASM.asm");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        Options options = getCommandLineOptions();
 		CommandLineParser commandLineParser = new DefaultParser();
 
         CommandLine commandLine;

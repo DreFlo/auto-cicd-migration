@@ -51,6 +51,14 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         EMFUtils.registerExtensionToFactoryMap(getResourceSet(), "ecore", new EcoreResourceFactoryImpl());
     }
 
+    public IModel getInputModel() {
+        return inputModel;
+    }
+
+    public IModel getOutputModel() {
+        return outputModel;
+    }
+
     public OutputModel transform(InputModel inputModel) throws IOException {
         if (validator != null) {
             validator.validate(inputModel);
@@ -99,7 +107,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         return (OutputModel) EMFUtils.deserializeModel(filePath, getResourceSet());
     }
 
-    private void loadModels(String inputModelFilePath) throws ATLCoreException {
+    protected void loadModels(String inputModelFilePath) throws ATLCoreException {
         ModelFactory modelFactory = new EMFModelFactory();
         EMFInjector injector = new EMFInjector();
 
@@ -110,7 +118,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         injector.inject(outputMetamodel, getOutputPackage().eResource());
 
         inputModel = modelFactory.newModel(inputMetamodel);
-        injector.inject(inputModel, inputModelFilePath);
+        injector.inject(getInputModel(), inputModelFilePath);
 
         outputModel = modelFactory.newModel(outputMetamodel);
     }
@@ -121,15 +129,15 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
 
             ILauncher launcher = new EMFVMLauncher();
             launcher.initialize(new HashMap<>());
-            launcher.addInModel(inputModel, "IN", getInModelName());
-            launcher.addOutModel(outputModel, "OUT", getOutModelName());
+            launcher.addInModel(getInputModel(), "IN", getInModelName());
+            launcher.addOutModel(getOutputModel(), "OUT", getOutModelName());
 
             String atlFilePath = getATLFilePath();
 
             launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), JavaUtils.getResourceAsStream(atlFilePath));
 
             IExtractor extractor = new EMFExtractor();
-            extractor.extract(outputModel, outputModelFilePath);
+            extractor.extract(getOutputModel(), outputModelFilePath);
         } catch (ATLCoreException e) {
             throw new IOException(e);
         }

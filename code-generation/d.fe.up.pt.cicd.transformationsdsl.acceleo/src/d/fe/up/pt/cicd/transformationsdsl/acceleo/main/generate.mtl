@@ -1,0 +1,82 @@
+[comment encoding = UTF-8 /]
+[module generate('http://d.fe.up.pt/Transformations')]
+
+[query public generateATLFileName(transformation : Transformation, index : Integer) : String = generateIndexString(index) + '_' + model + '.atl'/]
+
+[query public generateIndexString(index : Integer) : String = 
+	if index < 10 then 
+		'00' + index.toString() 
+	else if index < 100 then
+		'0' + index.toString()
+	else
+		index.toString()
+	endif
+	endif
+/]
+
+
+[template public generateTransformationFiles(transformationSet : TransformationSet)]
+[comment @main/]
+[for (transformation : Transformation | transformations)]
+[file (generateATLFileName(transformation, transformationSet.transformations->indexOf(transformation)), false, 'UTF-8')]
+[if (model = MODEL_NAMES::CICD)]
+[generateCICDRefinement(transformation)/]
+[elseif (model = MODEL_NAMES::GHA)]
+[elseif (model = MODEL_NAMES::CircleCI)]
+[else]
+ERROR
+[/if]
+[/file]
+[/for]
+[/template]
+
+[template public generateCICDRefinement(transformation : Transformation)]
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module cicdRefinement;
+create OUT : CICD refining IN : CICD;
+
+[if (transformation.oclIsTypeOf(ChangePluginTransformation))]
+[generateChangePluginTransformation(transformation.oclAsType(ChangePluginTransformation))/]
+[/if]
+[/template]
+
+[template public generateChangePluginTransformation(transformation : ChangePluginTransformation)]
+rule Plugin {
+	from
+		input : CICD!Plugin (
+			input.pluginName = '[name.key/]'
+		)
+	to 
+		output : CICD!Plugin (
+			allowFailure <- input.allowFailure,
+			environmentVariables <- input.environmentVariables,
+			id <- input.id,
+			kwargs <- input.kwargs,
+			name <- input.name,
+			pluginName <- '[name.value/]',
+			timeoutMinutes <- input.timeoutMinutes,
+			version <- '[version/]'
+		)
+}
+
+[for (arg : StringToStringMapEntry | args)]
+[generateAssignmentTransformation(arg, transformation.args->indexOf(arg))/]
+[/for]
+[/template]
+
+[template public generateAssignmentTransformation(assignment : StringToStringMapEntry, index : Integer)]
+rule Assignment[index/] {
+	from
+		input : CICD!Assignment(
+			input.refImmediateComposite().oclIsTypeOf(CICD!Plugin) and
+			input.refImmediateComposite().kwargs->includes(input) and
+			input.key.name = '[key/]'
+		)
+	to 
+		output : CICD!Assignment (
+			key <- input.key.refSetValue('name', '[value/]'),
+			value <- input.value
+		)
+}
+[/template]

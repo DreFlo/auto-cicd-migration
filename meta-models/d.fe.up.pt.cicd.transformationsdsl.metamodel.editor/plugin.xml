@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated Transformations -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.presentation.TransformationsModelWizardID"
+            name="%_UI_TransformationsModelWizard_label"
+            class="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.presentation.TransformationsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TransformationsModelFile.gif">
+         <description>%_UI_TransformationsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated Transformations -->
+      <editor
+            id="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.presentation.TransformationsEditorID"
+            name="%_UI_TransformationsEditor_label"
+            icon="icons/full/obj16/TransformationsModelFile.gif"
+            extensions="transformations"
+            class="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.presentation.TransformationsEditor"
+            contributorClass="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.presentation.TransformationsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

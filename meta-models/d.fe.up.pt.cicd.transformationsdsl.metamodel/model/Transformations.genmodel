@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/d.fe.up.pt.cicd.transformationsdsl.metamodel/src-gen"
+    creationIcons="false" editDirectory="/d.fe.up.pt.cicd.transformationsdsl.metamodel.edit/src-gen"
+    editorDirectory="/d.fe.up.pt.cicd.transformationsdsl.metamodel.editor/src-gen"
+    modelPluginID="d.fe.up.pt.cicd.transformationsdsl.metamodel" modelName="Transformations"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Transformations.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Transformations" basePackage="d.fe.up.pt.cicd.transformationsdsl.metamodel"
+      disposableProviderFactory="true" ecorePackage="Transformations.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Transformations.ecore#//MODEL_NAMES">
+      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/CICD"/>
+      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/GHA"/>
+      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/CircleCI"/>
+    </genEnums>
+    <genClasses ecoreClass="Transformations.ecore#//TransformationSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//TransformationSet/transformations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//Transformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//Transformation/model"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//ChangePluginTransformation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePluginTransformation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangePluginTransformation/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePluginTransformation/args"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//StringToStringMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

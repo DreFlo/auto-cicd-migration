@@ -1,13 +1,21 @@
 package cli.utils;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 import java.util.Random;
 
 public class JavaUtils {
     public static InputStream getResourceAsStream(String path) {
         return JavaUtils.class.getClassLoader().getResourceAsStream(path);
+    }
+
+    public static String getResourcePath(String path) {
+        return Objects.requireNonNull(JavaUtils.class.getClassLoader().getResource(path)).getPath();
     }
 
     public static String getRandomName() {
@@ -29,7 +37,7 @@ public class JavaUtils {
         try {
             Files.walk(Path.of("./intermediate"))
                     .filter(Files::isRegularFile)
-                    .filter(p -> p.toString().endsWith(".xmi") || p.toString().endsWith(".xmi.out"))
+//                    .filter(p -> p.toString().endsWith(".xmi") || p.toString().endsWith(".xmi.out"))
                     .forEach(p -> {
                         try {
                             Files.delete(p);
@@ -40,5 +48,12 @@ public class JavaUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String storeAsFile(String filePath, InputStream inputStream) throws IOException {
+        // Store the file
+        Path path = Paths.get(filePath);
+        Files.copy(inputStream, path, StandardCopyOption.REPLACE_EXISTING);
+        return path.toString();
     }
 }

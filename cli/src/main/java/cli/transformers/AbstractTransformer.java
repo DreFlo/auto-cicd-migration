@@ -17,6 +17,7 @@ import org.eclipse.m2m.atl.core.launch.ILauncher;
 import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -28,22 +29,26 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final OutputPackage outputPackage;
     private IModel inputModel;
     private IModel outputModel;
-    private final String atlFilePath;
+    private final InputStream atlFileStream;
     private final String inputModelName;
     private final String outputModelName;
     private boolean deleteIntermediateFiles = false;
     private final AbstractValidator<InputModel, InputPackage> validator;
 
-    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) {
+    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, InputStream atlFileStream, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) {
         this.resourceSet = resourceSet;
         this.inputPackage = inputPackage;
         this.outputPackage = outputPackage;
-        this.atlFilePath = atlFilePath;
+        this.atlFileStream = atlFileStream;
         this.inputModelName = inputModelName;
         this.outputModelName = outputModelName;
         this.validator = validator;
         checkRegistry();
 //        setDeleteIntermediateFiles(false);
+    }
+
+    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) {
+        this(resourceSet, inputPackage, outputPackage, JavaUtils.getResourceAsStream(atlFilePath), inputModelName, outputModelName, validator);
     }
 
     protected final void checkRegistry() {
@@ -132,9 +137,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
             launcher.addInModel(getInputModel(), "IN", getInModelName());
             launcher.addOutModel(getOutputModel(), "OUT", getOutModelName());
 
-            String atlFilePath = getATLFilePath();
-
-            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), JavaUtils.getResourceAsStream(atlFilePath));
+            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), getATLFileStream());
 
             IExtractor extractor = new EMFExtractor();
             extractor.extract(getOutputModel(), outputModelFilePath);
@@ -143,8 +146,8 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         }
     }
 
-    protected String getATLFilePath() {
-        return atlFilePath;
+    protected InputStream getATLFileStream() {
+        return atlFileStream;
     }
 
     protected String getInModelName() {

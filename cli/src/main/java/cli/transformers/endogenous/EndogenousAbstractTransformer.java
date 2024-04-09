@@ -1,7 +1,6 @@
 package cli.transformers.endogenous;
 
 import cli.transformers.AbstractTransformer;
-import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -13,26 +12,23 @@ import org.eclipse.m2m.atl.core.emf.EMFExtractor;
 import org.eclipse.m2m.atl.core.emf.EMFInjector;
 import org.eclipse.m2m.atl.core.emf.EMFModelFactory;
 import org.eclipse.m2m.atl.core.launch.ILauncher;
-import org.eclipse.m2m.atl.core.service.CoreService;
 import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
-import org.reflections.Reflections;
-import org.reflections.util.ConfigurationBuilder;
-import org.reflections.util.FilterBuilder;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
-
-import static org.reflections.scanners.Scanners.Resources;
 
 public abstract class EndogenousAbstractTransformer<Model extends EObject, Package extends EPackage> extends AbstractTransformer<Model, Package, Model, Package> {
     private final Boolean refiner;
 
     protected EndogenousAbstractTransformer(ResourceSet resourceSet, Package aPackage, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) {
         super(resourceSet, aPackage, aPackage, atlFilePath, inputModelName, outputModelName, null);
+        this.refiner = refiner;
+    }
+
+    protected EndogenousAbstractTransformer(ResourceSet resourceSet, Package aPackage, InputStream atlFileStream, String inputModelName, String outputModelName, Boolean refiner) {
+        super(resourceSet, aPackage, aPackage, atlFileStream, inputModelName, outputModelName, null);
         this.refiner = refiner;
     }
 
@@ -56,9 +52,7 @@ public abstract class EndogenousAbstractTransformer<Model extends EObject, Packa
                 launcher.addOutModel(getInputModel(), "OUT", getOutModelName());
             }
 
-            String atlFilePath = getATLFilePath();
-
-            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), JavaUtils.getResourceAsStream(atlFilePath));
+            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), getATLFileStream());
 
             IExtractor extractor = new EMFExtractor();
             extractor.extract(refiner ? getInputModel() : getOutputModel(), outputModelFilePath);

@@ -15,6 +15,7 @@
         <file path="/d.fe.up.pt.cicd.circleci.acceleo/build.properties"/>
         <file path="/d.fe.up.pt.cicd.circleci.acceleo/.classpath"/>
         <file path="/d.fe.up.pt.cicd.gha.metamodel/build.properties"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.transformationsdsl.metamodel"/>
         <folder path="/d.fe.up.pt.cicd.circleci.acceleo/tasks"/>
         <file path="/d.fe.up.pt.cicd.metamodel/.project"/>
         <file path="/d.fe.up.pt.cicd.gha.dsl/.gitignore"/>
@@ -63,6 +64,7 @@
         <file path="/d.fe.up.pt.cicd.gha.metamodel/.gitignore"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.acceleo"/>
         <file path="/d.fe.up.pt.cicd.gha.metamodel/plugin.xml"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.transformationsdsl.acceleo"/>
         <file path="/d.fe.up.pt.cicd.gha.metamodel/.project"/>
     </selectedElements>
 </jardesc>

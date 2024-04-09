@@ -24,6 +24,7 @@
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.jenkins.metamodel/src"/>
         <file path="/d.fe.up.pt.cicd.metamodel/.gitignore"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.gitignore"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.transformationsdsl.dsl"/>
         <file path="/d.fe.up.pt.cicd.metamodel/build.properties"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.jenkins.acceleo/src"/>
         <file path="/d.fe.up.pt.cicd.gha.dsl/.project"/>
@@ -32,18 +33,18 @@
         <file path="/d.fe.up.pt.cicd.metamodel/.classpath"/>
         <folder path="/d.fe.up.pt.cicd.jenkins.acceleo/META-INF"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/plugin.xml"/>
-        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.metamodel/src-gen"/>
         <folder path="/d.fe.up.pt.cicd.gha.metamodel/model"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.metamodel/src-gen"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.classpath"/>
-        <javaElement handleIdentifier="=d.fe.up.pt.cicd.circleci.acceleo/src"/>
         <folder path="/d.fe.up.pt.cicd.jenkins.metamodel/model"/>
+        <javaElement handleIdentifier="=d.fe.up.pt.cicd.circleci.acceleo/src"/>
         <file path="/d.fe.up.pt.cicd.metamodel/plugin.xml"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.metamodel/src"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.circleci.metamodel"/>
         <file path="/d.fe.up.pt.cicd.jenkins.acceleo/build.properties"/>
         <file path="/d.fe.up.pt.cicd.jenkins.acceleo/.classpath"/>
-        <folder path="/d.fe.up.pt.cicd.jenkins.acceleo/tasks"/>
         <folder path="/d.fe.up.pt.cicd.metamodel/model"/>
+        <folder path="/d.fe.up.pt.cicd.jenkins.acceleo/tasks"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/build.properties"/>
         <file path="/d.fe.up.pt.cicd.jenkins.metamodel/.project"/>
         <javaElement handleIdentifier="=d.fe.up.pt.cicd.gha.dsl/xtend-gen"/>

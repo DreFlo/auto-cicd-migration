@@ -22,7 +22,7 @@ import java.util.HashMap;
 public abstract class EndogenousAbstractTransformer<Model extends EObject, Package extends EPackage> extends AbstractTransformer<Model, Package, Model, Package> {
     private final Boolean refiner;
 
-    protected EndogenousAbstractTransformer(ResourceSet resourceSet, Package aPackage, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) {
+    protected EndogenousAbstractTransformer(ResourceSet resourceSet, Package aPackage, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) throws IOException {
         super(resourceSet, aPackage, aPackage, atlFilePath, inputModelName, outputModelName, null);
         this.refiner = refiner;
     }

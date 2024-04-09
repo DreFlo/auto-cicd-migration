@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: d.fe.up.pt.cicd.transformationsdsl.dsl
+Bundle-ManifestVersion: 2
+Bundle-Name: d.fe.up.pt.cicd.transformationsdsl.dsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: d.fe.up.pt.cicd.transformationsdsl.dsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: d.fe.up.pt.cicd.transformationsdsl.metamodel,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.16.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: d.fe.up.pt.cicd.transformationsdsl.dsl.validation,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.scoping,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.formatting2,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.parser.antlr,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.services,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.parser.antlr.internal,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.serializer,
+ d.fe.up.pt.cicd.transformationsdsl.dsl.generator,
+ d.fe.up.pt.cicd.transformationsdsl.dsl
+Import-Package: org.apache.log4j

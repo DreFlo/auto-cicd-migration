@@ -18,6 +18,7 @@ import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -44,11 +45,22 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         this.outputModelName = outputModelName;
         this.validator = validator;
         checkRegistry();
-//        setDeleteIntermediateFiles(false);
     }
 
-    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) {
-        this(resourceSet, inputPackage, outputPackage, JavaUtils.getResourceAsStream(atlFilePath), inputModelName, outputModelName, validator);
+    protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, String atlFilePath, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) throws IOException {
+        this.resourceSet = resourceSet;
+        this.inputPackage = inputPackage;
+        this.outputPackage = outputPackage;
+        Path path = Path.of(atlFilePath);
+        if (path.toFile().exists()) {
+            this.atlFileStream = path.toUri().toURL().openStream();
+        } else {
+            this.atlFileStream = JavaUtils.getResourceAsStream(atlFilePath);
+        }
+        this.inputModelName = inputModelName;
+        this.outputModelName = outputModelName;
+        this.validator = validator;
+        checkRegistry();
     }
 
     protected final void checkRegistry() {
@@ -147,6 +159,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     protected InputStream getATLFileStream() {
+        System.out.println(atlFileStream);
         return atlFileStream;
     }
 

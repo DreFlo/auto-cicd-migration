@@ -5,10 +5,11 @@ import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public abstract class EndogenousCICDAbstractTransformer extends EndogenousAbstractTransformer<Pipeline, CICDPackage> {
-    public EndogenousCICDAbstractTransformer(ResourceSet resourceSet, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) {
+    public EndogenousCICDAbstractTransformer(ResourceSet resourceSet, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) throws IOException {
         super(resourceSet, CICDPackage.eINSTANCE, atlFilePath, inputModelName, outputModelName, refiner);
     }
 

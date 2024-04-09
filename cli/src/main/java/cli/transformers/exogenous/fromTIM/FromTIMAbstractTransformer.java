@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class FromTIMAbstractTransformer<OutputModel extends EObject, OutputPackage extends EPackage> extends AbstractTransformer<Pipeline, CICDPackage, OutputModel, OutputPackage> {
     private final List<EndogenousCICDAbstractTransformer> refiners;
 
-    protected FromTIMAbstractTransformer(ResourceSet resourceSet, OutputPackage outputPackage, String atlFilePath, String outputModelName, AbstractValidator<Pipeline, CICDPackage> validator) {
+    protected FromTIMAbstractTransformer(ResourceSet resourceSet, OutputPackage outputPackage, String atlFilePath, String outputModelName, AbstractValidator<Pipeline, CICDPackage> validator) throws IOException {
         super(resourceSet, CICDPackage.eINSTANCE, outputPackage, atlFilePath, "CICD", outputModelName, validator);
         this.refiners = new ArrayList<>();
         registerRefiners();

@@ -3,6 +3,8 @@ package cli.engineers.forwardEngineers;
 import cli.engineers.AbstractEngineer;
 import cli.generators.AbstractGenerator;
 import cli.transformers.AbstractTransformer;
+import cli.transformers.endogenous.CICD.CICDRefiner;
+import cli.transformers.endogenous.EndogenousAbstractTransformer;
 import cli.utils.LoggerUtils;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
@@ -10,8 +12,11 @@ import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 public abstract class AbstractForwardEngineer<OutputModel extends EObject, OutputPackage extends EPackage, AcceleoGenerator extends AbstractAcceleoGenerator> extends AbstractEngineer<Pipeline, CICDPackage, OutputModel, OutputPackage, Pipeline, String> {
@@ -42,8 +47,23 @@ public abstract class AbstractForwardEngineer<OutputModel extends EObject, Outpu
     }
 
     @Override
-    public String compile(Pipeline pipeline) throws Exception {
-        OutputModel outputModel = transform(pipeline);
+    protected final List<EndogenousAbstractTransformer<Pipeline, CICDPackage>> getInputRefiners(List<String> inputRefinerPaths) {
+        List<EndogenousAbstractTransformer<Pipeline, CICDPackage>> inputRefiners = new ArrayList<>();
+
+        for (String inputRefinerPath : inputRefinerPaths) {
+            try {
+                inputRefiners.add(new CICDRefiner(getTransformer().getResourceSet(), inputRefinerPath));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return inputRefiners;
+    }
+
+    @Override
+    public String transform(Pipeline pipeline, List<String> inputRefinerPaths, List<String> outputRefinerPaths) throws Exception {
+        OutputModel outputModel = this.callTransformer(pipeline, inputRefinerPaths, outputRefinerPaths);
         LoggerUtils.log(Level.INFO, "Generating (" + getGenerator().getClass().getName() + ")...");
         generate(outputModel, "./output/");
         String outputFile = Files.readString(Path.of("./output", getOutputFileName()));

@@ -1,6 +1,6 @@
-package cli.compilers.output;
+package cli.engineers.forwardEngineers;
 
-import cli.compilers.AbstractCompiler;
+import cli.engineers.AbstractEngineer;
 import cli.generators.AbstractGenerator;
 import cli.transformers.AbstractTransformer;
 import cli.utils.LoggerUtils;
@@ -14,12 +14,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.logging.Level;
 
-public abstract class OutputAbstractCompiler<OutputModel extends EObject, OutputPackage extends EPackage, AcceleoGenerator extends AbstractAcceleoGenerator> extends AbstractCompiler<Pipeline, CICDPackage, OutputModel, OutputPackage, Pipeline, String> {
+public abstract class AbstractForwardEngineer<OutputModel extends EObject, OutputPackage extends EPackage, AcceleoGenerator extends AbstractAcceleoGenerator> extends AbstractEngineer<Pipeline, CICDPackage, OutputModel, OutputPackage, Pipeline, String> {
     private final AbstractGenerator<OutputModel, OutputPackage, AcceleoGenerator> generator;
 
     private final String outputFileName;
 
-    public OutputAbstractCompiler(AbstractTransformer<Pipeline, CICDPackage, OutputModel, OutputPackage> transformer, AbstractGenerator<OutputModel, OutputPackage, AcceleoGenerator> generator, String outputFileName) {
+    public AbstractForwardEngineer(AbstractTransformer<Pipeline, CICDPackage, OutputModel, OutputPackage> transformer, AbstractGenerator<OutputModel, OutputPackage, AcceleoGenerator> generator, String outputFileName) {
         super(transformer);
         this.generator = generator;
         this.outputFileName = outputFileName;

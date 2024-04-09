@@ -1,6 +1,6 @@
-package cli.compilers.input;
+package cli.engineers.reverseEngineers;
 
-import cli.compilers.AbstractCompiler;
+import cli.engineers.AbstractEngineer;
 import cli.parsers.AbstractParser;
 import cli.transformers.AbstractTransformer;
 import cli.utils.LoggerUtils;
@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EPackage;
 
 import java.util.logging.Level;
 
-public abstract class InputAbstractCompiler<InputModel extends EObject, InputPackage extends EPackage> extends AbstractCompiler<InputModel, InputPackage, Pipeline, CICDPackage, String, Pipeline> {
+public abstract class AbstractReverseEngineer<InputModel extends EObject, InputPackage extends EPackage> extends AbstractEngineer<InputModel, InputPackage, Pipeline, CICDPackage, String, Pipeline> {
     private final AbstractParser<InputModel> parser;
 
-    public InputAbstractCompiler(AbstractTransformer<InputModel, InputPackage, Pipeline, CICDPackage> transformer, AbstractParser<InputModel> parser) {
+    public AbstractReverseEngineer(AbstractTransformer<InputModel, InputPackage, Pipeline, CICDPackage> transformer, AbstractParser<InputModel> parser) {
         super(transformer);
         this.parser = parser;
     }

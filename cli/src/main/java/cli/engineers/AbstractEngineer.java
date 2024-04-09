@@ -1,4 +1,4 @@
-package cli.compilers;
+package cli.engineers;
 
 import cli.transformers.AbstractTransformer;
 import cli.utils.EMFUtils;
@@ -9,10 +9,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import java.nio.file.Path;
 
-public abstract class AbstractCompiler<InputModel extends EObject, InputPackage extends EPackage, OutputModel extends EObject, OutputPackage extends EPackage, Input, Output> {
+public abstract class AbstractEngineer<InputModel extends EObject, InputPackage extends EPackage, OutputModel extends EObject, OutputPackage extends EPackage, Input, Output> {
     private final AbstractTransformer<InputModel, InputPackage, OutputModel, OutputPackage> transformer;
 
-    public AbstractCompiler(AbstractTransformer<InputModel, InputPackage, OutputModel, OutputPackage> transformer) {
+    public AbstractEngineer(AbstractTransformer<InputModel, InputPackage, OutputModel, OutputPackage> transformer) {
         this.transformer = transformer;
     }
 

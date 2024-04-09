@@ -1,13 +1,12 @@
 package cli;
 
-import cli.compilers.input.CircleCIInputCompiler;
-import cli.compilers.input.GHAInputCompiler;
-import cli.compilers.input.InputAbstractCompiler;
-import cli.compilers.output.CircleCIOutputCompiler;
-import cli.compilers.output.GHAOutputCompiler;
-import cli.compilers.output.JenkinsOutputCompiler;
-import cli.compilers.output.OutputAbstractCompiler;
-import cli.generators.CircleCIGenerator;
+import cli.engineers.reverseEngineers.CircleCIReverseEngineer;
+import cli.engineers.reverseEngineers.GHAReverseEngineer;
+import cli.engineers.reverseEngineers.AbstractReverseEngineer;
+import cli.engineers.forwardEngineers.CircleCIForwardEngineer;
+import cli.engineers.forwardEngineers.GHAForwardEngineer;
+import cli.engineers.forwardEngineers.JenkinsForwardEngineer;
+import cli.engineers.forwardEngineers.AbstractForwardEngineer;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
 import cli.parsers.CircleCIParser;
@@ -29,10 +28,8 @@ import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.apache.commons.cli.*;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.m2m.atl.engine.compiler.AtlCompiler;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -44,8 +41,8 @@ import java.util.logging.Level;
 
 public class Main {
 	final private static ResourceSet resourceSet = new ResourceSetImpl();
-	final private static Map<String, InputAbstractCompiler<?, ?>> inputCompilers = new HashMap<>();
-	final private static Map<String, OutputAbstractCompiler<?, ?, ?>> outputCompilers = new HashMap<>();
+	final private static Map<String, AbstractReverseEngineer<?, ?>> inputCompilers = new HashMap<>();
+	final private static Map<String, AbstractForwardEngineer<?, ?, ?>> outputCompilers = new HashMap<>();
 
     static {
 		JavaUtils.cleanUp();
@@ -59,14 +56,14 @@ public class Main {
 	}
 
 	private static void registerInputCompilers() {
-		inputCompilers.put("gha", new GHAInputCompiler(new GHA2CICDTransformer(getResourceSet()), new GitHubActionsParser()));
-		inputCompilers.put("circleci", new CircleCIInputCompiler(new CircleCI2CICDTransformer(getResourceSet()), new CircleCIParser()));
+		inputCompilers.put("gha", new GHAReverseEngineer(new GHA2CICDTransformer(getResourceSet()), new GitHubActionsParser()));
+		inputCompilers.put("circleci", new CircleCIReverseEngineer(new CircleCI2CICDTransformer(getResourceSet()), new CircleCIParser()));
 	}
 
 	private static void registerOutputCompilers() {
-		outputCompilers.put("jenkins", new JenkinsOutputCompiler(new CICD2JenkinsTransformer(getResourceSet()), new JenkinsGenerator(getResourceSet())));
-		outputCompilers.put("gha", new GHAOutputCompiler(new CICD2GHATransformer(getResourceSet()), new GHAGenerator(getResourceSet())));
-		outputCompilers.put("circleci", new CircleCIOutputCompiler(new CICD2CircleCITransformer(getResourceSet()), null));
+		outputCompilers.put("jenkins", new JenkinsForwardEngineer(new CICD2JenkinsTransformer(getResourceSet()), new JenkinsGenerator(getResourceSet())));
+		outputCompilers.put("gha", new GHAForwardEngineer(new CICD2GHATransformer(getResourceSet()), new GHAGenerator(getResourceSet())));
+		outputCompilers.put("circleci", new CircleCIForwardEngineer(new CICD2CircleCITransformer(getResourceSet()), null));
 	}
 
 	private static Options getCommandLineOptions() {
@@ -100,8 +97,8 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-		InputAbstractCompiler<?, ?> inputCompiler = getInputCompiler(commandLine.getOptionValue("il"));
-		OutputAbstractCompiler<?, ?, ?> outputCompiler = getOutputCompiler(commandLine.getOptionValue("ol"));
+		AbstractReverseEngineer<?, ?> inputCompiler = getInputCompiler(commandLine.getOptionValue("il"));
+		AbstractForwardEngineer<?, ?, ?> outputCompiler = getOutputCompiler(commandLine.getOptionValue("ol"));
 
 		if (inputCompiler == null) {
 			throw new RuntimeException("Input language not supported");
@@ -169,19 +166,19 @@ public class Main {
 		return resourceSet;
 	}
 
-	public static Map<String, InputAbstractCompiler<?, ?>> getInputCompilers() {
+	public static Map<String, AbstractReverseEngineer<?, ?>> getInputCompilers() {
 		return inputCompilers;
 	}
 
-	public static InputAbstractCompiler<?, ?> getInputCompiler(String inputType) {
+	public static AbstractReverseEngineer<?, ?> getInputCompiler(String inputType) {
 		return inputCompilers.get(inputType);
 	}
 
-	public static Map<String, OutputAbstractCompiler<?, ?, ?>> getOutputCompilers() {
+	public static Map<String, AbstractForwardEngineer<?, ?, ?>> getOutputCompilers() {
 		return outputCompilers;
 	}
 
-	public static OutputAbstractCompiler<?, ?, ?> getOutputCompiler(String outputType) {
+	public static AbstractForwardEngineer<?, ?, ?> getOutputCompiler(String outputType) {
 		return outputCompilers.get(outputType);
 	}
 }

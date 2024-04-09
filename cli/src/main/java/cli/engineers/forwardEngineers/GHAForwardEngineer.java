@@ -1,4 +1,4 @@
-package cli.compilers.output;
+package cli.engineers.forwardEngineers;
 
 import cli.generators.AbstractGenerator;
 import cli.transformers.AbstractTransformer;
@@ -8,8 +8,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 
-public class GHAOutputCompiler extends OutputAbstractCompiler<Workflow, GHAPackage, Generate> {
-    public GHAOutputCompiler(AbstractTransformer<Pipeline, CICDPackage, Workflow, GHAPackage> transformer, AbstractGenerator<Workflow, GHAPackage, Generate> generator) {
+public class GHAForwardEngineer extends AbstractForwardEngineer<Workflow, GHAPackage, Generate> {
+    public GHAForwardEngineer(AbstractTransformer<Pipeline, CICDPackage, Workflow, GHAPackage> transformer, AbstractGenerator<Workflow, GHAPackage, Generate> generator) {
         super(transformer, generator, "workflow.yaml");
     }
 }

@@ -1,6 +1,14 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/CircleCI')]
 
+[query public splitString(string : String, regex : String) : Sequence(String) = 
+	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'splitString(java.lang.String, java.lang.String)', Sequence{string, regex})
+/]
+
+[query public log(string : String) : Sequence(String) = 
+	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'logString(java.lang.String)', Sequence{string})
+/]
+
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('config.yml', false, 'UTF-8')]
@@ -14,6 +22,13 @@ setup: [setup/]
 orbs:
 [for (orb : Orb | orbs)]
   [generateOrb(orb)/]
+[/for]
+
+[/if]
+[if (parameters->notEmpty())]
+parameters: 
+[for (parameter : Parameter | parameters)]
+  [generateParameter(parameter)/]
 [/for]
 
 [/if]
@@ -103,6 +118,9 @@ workflows:
 [/template]
 
 [template public generateExecutor(executor : Executor) post (trim())]
+[if (executor.oclIsUndefined())]
+OclUndefined
+[else]
 [if (not resourceClass.oclIsUndefined())]
 resource_class: [generateExpression(resourceClass)/]
 [/if]
@@ -126,6 +144,7 @@ environment:
 [generateMachineExecutor(oclAsType(MachineExecutor))/] 
 [elseif (executor.oclIsKindOf(MacOSExecutor))]
 [generateMacOSExecutor(oclAsType(MacOSExecutor))/]
+[/if]
 [/if]
 [/template]
 
@@ -252,24 +271,33 @@ macos:
 [if (not name.oclIsUndefined())]
     name: [generateExpression(name)/]
 [/if]
-    command: [generateExpression(command)/]
+[let commandString : String = generateExpression(command)]
+[if (commandString.contains('\n'))]
+    command: |
+    [for (commandPart : String | splitString(commandString, '\n'))]
+      [commandPart.trim()/]
+    [/for]
+[else]
+    command: [commandString/]
+[/if]
+[/let]
 [if (not background.oclIsUndefined())]
-	background: [generateExpression(background)/]
+    background: [generateExpression(background)/]
 [/if]
 [if (not shell.oclIsUndefined())]
-	shell: [generateExpression(shell)/]
+    shell: [generateExpression(shell)/]
 [/if]
 [if (not workingDirectory.oclIsUndefined())]
-	working_directory: [generateExpression(workingDirectory)/]
+    working_directory: [generateExpression(workingDirectory)/]
 [/if]
 [if (not noOutputTimeout.oclIsUndefined())]
-	no_output_timeout: [generateExpression(noOutputTimeout)/]
+    no_output_timeout: [generateExpression(noOutputTimeout)/]
 [/if]
 [if (not when.oclIsUndefined())]
-	when: [when/]
+    when: [when/]
 [/if]
 [if (environmentVariables->notEmpty())]
-	environment:
+    environment:
     [for (variableAssignment : VariableAssignment | environmentVariables)]
       [generateVariableAssignment(variableAssignment)/]
     [/for]
@@ -528,13 +556,7 @@ macos:
 [/template]
 
 [template public generateExpression(expression : Expression)]
-[if (expression.oclIsTypeOf(Literal))]
-[generateLiteral(expression.oclAsType(Literal))/]
-[elseif (expression.oclIsTypeOf(Concat))]
-[generateConcat(expression.oclAsType(Concat))/]
-[elseif (expression.oclIsTypeOf(VariableDereference))]
-[generateVariableDereference(expression.oclAsType(VariableDereference))/]
-[/if]
+[if (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableDereference))][generateVariableDereference(expression.oclAsType(VariableDereference))/][/if]
 [/template]
 
 [template public generateConcat(concat : Concat) post (trim())]
@@ -629,14 +651,6 @@ matches:
 [for (name : String | names) before ('<< ') separator ('.') after (' >>')][name/][/for]
 [/template]
 
-[template public generateLiteral(literal : Literal) post (trim())]
-[if (literal.oclIsTypeOf(StringLiteral))]
-[literal.oclAsType(StringLiteral).value/]
-[elseif (literal.oclIsTypeOf(IntegerLiteral))]
-[literal.oclAsType(IntegerLiteral).value/]
-[elseif (literal.oclIsTypeOf(DoubleLiteral))]
-[literal.oclAsType(DoubleLiteral).value/]
-[elseif (literal.oclIsTypeOf(BooleanLiteral))]
-[literal.oclAsType(BooleanLiteral).value/]
-[/if]
+[template public generateLiteral(literal : Literal)]
+[if (literal.oclIsTypeOf(StringLiteral))][log(literal.oclAsType(StringLiteral).value)/][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
 [/template]

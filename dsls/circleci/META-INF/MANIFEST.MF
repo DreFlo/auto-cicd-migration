@@ -20,5 +20,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Export-Package: d.fe.up.pt.cicd.circleci.acceleo.main
+Export-Package: d.fe.up.pt.cicd.circleci.acceleo.main,
+  d.fe.up.pt.cicd.circleci.acceleo.services
 

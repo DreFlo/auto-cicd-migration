@@ -8,6 +8,7 @@ import cli.engineers.forwardEngineers.CircleCIForwardEngineer;
 import cli.engineers.forwardEngineers.GHAForwardEngineer;
 import cli.engineers.forwardEngineers.JenkinsForwardEngineer;
 import cli.engineers.forwardEngineers.AbstractForwardEngineer;
+import cli.generators.CircleCIGenerator;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
 import cli.parsers.CircleCIParser;
@@ -75,7 +76,7 @@ public class Main {
 	private static void registerOutputCompilers() throws IOException {
 		outputCompilers.put("jenkins", new JenkinsForwardEngineer(new CICD2JenkinsTransformer(getResourceSet()), new JenkinsGenerator(getResourceSet())));
 		outputCompilers.put("gha", new GHAForwardEngineer(new CICD2GHATransformer(getResourceSet()), new GHAGenerator(getResourceSet())));
-		outputCompilers.put("circleci", new CircleCIForwardEngineer(new CICD2CircleCITransformer(getResourceSet()), null));
+		outputCompilers.put("circleci", new CircleCIForwardEngineer(new CICD2CircleCITransformer(getResourceSet()), new CircleCIGenerator(getResourceSet())));
 	}
 
 	private static Options getCommandLineOptions() {

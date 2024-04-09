@@ -54,7 +54,12 @@ rule Parameter2Input {
 	to
 		output : CICD!Input(
 			defaultValue <- input.default,
-			description <- thisModule.String2StringLiteral(input.description),
+			description <- 
+				if not input.description.oclIsUndefined() then
+					thisModule.String2StringLiteral(input.description)
+				else
+					OclUndefined
+				endif,
 			id <- input.name,
 			required <- not input.default.oclIsUndefined(),
 			type <- thisModule.PARAMETER_TYPE_2_INPUT_TYPE(input.type)

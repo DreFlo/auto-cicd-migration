@@ -55,7 +55,6 @@ public class TransformationsDSLToATLASMCompiler {
                 LoggerUtils.log(Level.INFO,"Compiling " + file.getName() + " to ATL ASM...");
                 String asmPath = Path.of("intermediate", "atl", file.getName().replace(".atl", ".asm")).toAbsolutePath().toString();
                 AtlCompiler.compile(new InputStreamReader(file.toURI().toURL().openStream()), asmPath);
-                System.out.println(asmPath);
                 asmFilePaths.add(asmPath);
             }
         }

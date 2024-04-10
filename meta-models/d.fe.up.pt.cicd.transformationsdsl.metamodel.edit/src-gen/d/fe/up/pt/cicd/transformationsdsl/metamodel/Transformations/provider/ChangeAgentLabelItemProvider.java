@@ -2,7 +2,7 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
@@ -15,25 +15,23 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChangePluginTransformationItemProvider extends TransformationItemProvider {
+public class ChangeAgentLabelItemProvider extends TransformationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChangePluginTransformationItemProvider(AdapterFactory adapterFactory) {
+	public ChangeAgentLabelItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -48,25 +46,8 @@ public class ChangePluginTransformationItemProvider extends TransformationItemPr
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Version feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ChangePluginTransformation_version_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ChangePluginTransformation_version_feature",
-						"_UI_ChangePluginTransformation_type"),
-				TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__VERSION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -81,8 +62,7 @@ public class ChangePluginTransformationItemProvider extends TransformationItemPr
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__NAME);
-			childrenFeatures.add(TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__ARGS);
+			childrenFeatures.add(TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME);
 		}
 		return childrenFeatures;
 	}
@@ -101,14 +81,14 @@ public class ChangePluginTransformationItemProvider extends TransformationItemPr
 	}
 
 	/**
-	 * This returns ChangePluginTransformation.gif.
+	 * This returns ChangeAgentLabel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChangePluginTransformation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChangeAgentLabel"));
 	}
 
 	/**
@@ -129,10 +109,10 @@ public class ChangePluginTransformationItemProvider extends TransformationItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((ChangePluginTransformation) object).getModel();
+		MODEL_NAMES labelValue = ((ChangeAgentLabel) object).getModel();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_ChangePluginTransformation_type")
-				: getString("_UI_ChangePluginTransformation_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_ChangeAgentLabel_type")
+				: getString("_UI_ChangeAgentLabel_type") + " " + label;
 	}
 
 	/**
@@ -146,12 +126,8 @@ public class ChangePluginTransformationItemProvider extends TransformationItemPr
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ChangePluginTransformation.class)) {
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__VERSION:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME:
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS:
+		switch (notification.getFeatureID(ChangeAgentLabel.class)) {
+		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -169,32 +145,8 @@ public class ChangePluginTransformationItemProvider extends TransformationItemPr
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__NAME,
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME,
 				TransformationsFactory.eINSTANCE.create(TransformationsPackage.Literals.STRING_TO_STRING_MAP_ENTRY)));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__ARGS,
-				TransformationsFactory.eINSTANCE.create(TransformationsPackage.Literals.STRING_TO_STRING_MAP_ENTRY)));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__NAME
-				|| childFeature == TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION__ARGS;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2",
-					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

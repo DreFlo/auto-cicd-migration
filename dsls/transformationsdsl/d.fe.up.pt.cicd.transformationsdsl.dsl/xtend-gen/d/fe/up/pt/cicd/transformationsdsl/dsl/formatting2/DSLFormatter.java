@@ -5,13 +5,10 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl.formatting2;
 
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import java.util.Arrays;
-import java.util.Map;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
@@ -31,36 +28,25 @@ public class DSLFormatter extends AbstractFormatter2 {
     }
   }
 
-  protected void _format(final ChangePluginTransformation changePluginTransformation, @Extension final IFormattableDocument document) {
-    document.<Map.Entry<String, String>>format(changePluginTransformation.getName());
-    EMap<String, String> _args = changePluginTransformation.getArgs();
-    for (final Map.Entry<String, String> stringToStringMapEntry : _args) {
-      document.<Map.Entry<String, String>>format(stringToStringMapEntry);
-    }
-  }
-
-  public void format(final Object changePluginTransformation, final IFormattableDocument document) {
-    if (changePluginTransformation instanceof XtextResource) {
-      _format((XtextResource)changePluginTransformation, document);
+  public void format(final Object transformationSet, final IFormattableDocument document) {
+    if (transformationSet instanceof XtextResource) {
+      _format((XtextResource)transformationSet, document);
       return;
-    } else if (changePluginTransformation instanceof ChangePluginTransformation) {
-      _format((ChangePluginTransformation)changePluginTransformation, document);
+    } else if (transformationSet instanceof TransformationSet) {
+      _format((TransformationSet)transformationSet, document);
       return;
-    } else if (changePluginTransformation instanceof TransformationSet) {
-      _format((TransformationSet)changePluginTransformation, document);
+    } else if (transformationSet instanceof EObject) {
+      _format((EObject)transformationSet, document);
       return;
-    } else if (changePluginTransformation instanceof EObject) {
-      _format((EObject)changePluginTransformation, document);
-      return;
-    } else if (changePluginTransformation == null) {
+    } else if (transformationSet == null) {
       _format((Void)null, document);
       return;
-    } else if (changePluginTransformation != null) {
-      _format(changePluginTransformation, document);
+    } else if (transformationSet != null) {
+      _format(transformationSet, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(changePluginTransformation, document).toString());
+        Arrays.<Object>asList(transformationSet, document).toString());
     }
   }
 }

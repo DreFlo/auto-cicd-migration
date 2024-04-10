@@ -69,6 +69,11 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected TransformationsSwitch<Adapter> modelSwitch = new TransformationsSwitch<Adapter>() {
 		@Override
+		public Adapter caseStringToStringMapEntry(Map.Entry<String, String> object) {
+			return createStringToStringMapEntryAdapter();
+		}
+
+		@Override
 		public Adapter caseTransformationSet(TransformationSet object) {
 			return createTransformationSetAdapter();
 		}
@@ -79,13 +84,18 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseChangePluginTransformation(ChangePluginTransformation object) {
-			return createChangePluginTransformationAdapter();
+		public Adapter caseChangePlugin(ChangePlugin object) {
+			return createChangePluginAdapter();
 		}
 
 		@Override
-		public Adapter caseStringToStringMapEntry(Map.Entry<String, String> object) {
-			return createStringToStringMapEntryAdapter();
+		public Adapter caseATLScript(ATLScript object) {
+			return createATLScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseChangeAgentLabel(ChangeAgentLabel object) {
+			return createChangeAgentLabelAdapter();
 		}
 
 		@Override
@@ -105,6 +115,20 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createStringToStringMapEntryAdapter() {
+		return null;
 	}
 
 	/**
@@ -136,30 +160,44 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation <em>Change Plugin Transformation</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin <em>Change Plugin</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin
 	 * @generated
 	 */
-	public Adapter createChangePluginTransformationAdapter() {
+	public Adapter createChangePluginAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript <em>ATL Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see java.util.Map.Entry
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript
 	 * @generated
 	 */
-	public Adapter createStringToStringMapEntryAdapter() {
+	public Adapter createATLScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel <em>Change Agent Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel
+	 * @generated
+	 */
+	public Adapter createChangeAgentLabelAdapter() {
 		return null;
 	}
 

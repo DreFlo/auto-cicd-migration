@@ -5,7 +5,6 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl.formatting2
 
 import com.google.inject.Inject
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
@@ -18,14 +17,6 @@ class DSLFormatter extends AbstractFormatter2 {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		for (transformation : transformationSet.transformations) {
 			transformation.format
-		}
-	}
-
-	def dispatch void format(ChangePluginTransformation changePluginTransformation, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		changePluginTransformation.name.format
-		for (stringToStringMapEntry : changePluginTransformation.args) {
-			stringToStringMapEntry.format
 		}
 	}
 	

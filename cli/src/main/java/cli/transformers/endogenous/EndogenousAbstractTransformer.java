@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public abstract class EndogenousAbstractTransformer<Model extends EObject, Package extends EPackage> extends AbstractTransformer<Model, Package, Model, Package> {
     private final Boolean refiner;
@@ -52,7 +53,11 @@ public abstract class EndogenousAbstractTransformer<Model extends EObject, Packa
                 launcher.addOutModel(getInputModel(), "OUT", getOutModelName());
             }
 
-            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), getATLFileStream());
+            Map<String, Object> options = new HashMap<>();
+
+            options.put("showSummary", "true");
+
+            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), options, getATLFileStream());
 
             IExtractor extractor = new EMFExtractor();
             extractor.extract(refiner ? getInputModel() : getOutputModel(), outputModelFilePath);

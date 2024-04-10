@@ -12,19 +12,33 @@ TransformationSet returns TransformationSet:
 	'}';
 
 Transformation returns Transformation:
-	ChangePluginTransformation;
+	ChangePlugin | ATLScript | ChangeAgentLabel;
 
 
 enum MODEL_NAMES returns MODEL_NAMES:
 				CICD = 'CICD' | GHA = 'GHA' | CircleCI = 'CircleCI';
 
-ChangePluginTransformation returns ChangePluginTransformation:
-	'ChangePluginTransformation'
+ChangePlugin returns ChangePlugin:
+	'ChangePlugin'
 	'{'
 		'model' model=MODEL_NAMES
 		'version' version=EString
 		'name' name=StringToStringMapEntry
 		('args' '{' args+=StringToStringMapEntry ( "," args+=StringToStringMapEntry)* '}' )?
+	'}';
+
+ATLScript returns ATLScript:
+	'ATLScript'
+	'{'
+		'model' model=MODEL_NAMES
+		'script' script=EString 
+	'}';
+	
+ChangeAgentLabel returns ChangeAgentLabel:
+	'ChangeAgentLabel'
+	'{'
+		'model' model=MODEL_NAMES
+		'name' name=StringToStringMapEntry
 	'}';
 
 StringToStringMapEntry returns StringToStringMapEntry:

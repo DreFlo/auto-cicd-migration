@@ -8,37 +8,37 @@ import org.eclipse.emf.common.util.EMap;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Change Plugin Transformation</b></em>'.
+ * A representation of the model object '<em><b>Change Plugin</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation#getName <em>Name</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation#getVersion <em>Version</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation#getArgs <em>Args</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin#getVersion <em>Version</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin#getArgs <em>Args</em>}</li>
  * </ul>
  *
- * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePluginTransformation()
+ * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePlugin()
  * @model
  * @generated
  */
-public interface ChangePluginTransformation extends Transformation {
+public interface ChangePlugin extends Transformation {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' map.
 	 * @see #setName(Map.Entry)
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePluginTransformation_Name()
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePlugin_Name()
 	 * @model mapType="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.StringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
 	Map.Entry<String, String> getName();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation#getName <em>Name</em>}' map.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin#getName <em>Name</em>}' map.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' map.
@@ -53,14 +53,14 @@ public interface ChangePluginTransformation extends Transformation {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePluginTransformation_Version()
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePlugin_Version()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getVersion();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation#getVersion <em>Version</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin#getVersion <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Version</em>' attribute.
@@ -76,10 +76,10 @@ public interface ChangePluginTransformation extends Transformation {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Args</em>' map.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePluginTransformation_Args()
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getChangePlugin_Args()
 	 * @model mapType="d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.StringToStringMapEntry&lt;org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString&gt;"
 	 * @generated
 	 */
 	EMap<String, String> getArgs();
 
-} // ChangePluginTransformation
+} // ChangePlugin

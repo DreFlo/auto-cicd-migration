@@ -1,0 +1,42 @@
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module refinementExample;
+create OUT : CICD refining IN : CICD;
+
+rule Agent {
+	from
+		input : CICD!Expression(
+			input.refImmediateComposite().oclIsTypeOf(CICD!Agent) and
+			input.expression2String() = ''
+		)
+	to
+		output : CICD!StringLiteral(
+			value <- ''
+		)
+}
+
+helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
+
+helper context CICD!StringLiteral def : expression2String() : String = self.value;
+
+helper context CICD!IntegerLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!DoubleLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!BooleanLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!Concat def : expression2String() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
+		exprStrings->iterate(exprString; joinedString: String = '' |
+			joinedString.concat(exprString)
+		);
+
+helper context CICD!Variable def : expression2String() : String =
+	'$'.concat(self.name);
+
+helper context CICD!VariableContext def : expression2String() : String =
+	thisModule.variableContext2JenkinsContext(self.context).toString();
+
+helper context CICD!VariableDereference def : expression2String() : String =
+	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;

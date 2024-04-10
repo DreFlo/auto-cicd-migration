@@ -159,7 +159,6 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     protected InputStream getATLFileStream() {
-        System.out.println(atlFileStream);
         return atlFileStream;
     }
 

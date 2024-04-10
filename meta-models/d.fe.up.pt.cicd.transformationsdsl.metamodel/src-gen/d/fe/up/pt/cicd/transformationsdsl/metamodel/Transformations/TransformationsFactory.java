@@ -32,13 +32,31 @@ public interface TransformationsFactory extends EFactory {
 	TransformationSet createTransformationSet();
 
 	/**
-	 * Returns a new object of class '<em>Change Plugin Transformation</em>'.
+	 * Returns a new object of class '<em>Change Plugin</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Change Plugin Transformation</em>'.
+	 * @return a new object of class '<em>Change Plugin</em>'.
 	 * @generated
 	 */
-	ChangePluginTransformation createChangePluginTransformation();
+	ChangePlugin createChangePlugin();
+
+	/**
+	 * Returns a new object of class '<em>ATL Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>ATL Script</em>'.
+	 * @generated
+	 */
+	ATLScript createATLScript();
+
+	/**
+	 * Returns a new object of class '<em>Change Agent Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Change Agent Label</em>'.
+	 * @generated
+	 */
+	ChangeAgentLabel createChangeAgentLabel();
 
 	/**
 	 * Returns the package supported by this factory.

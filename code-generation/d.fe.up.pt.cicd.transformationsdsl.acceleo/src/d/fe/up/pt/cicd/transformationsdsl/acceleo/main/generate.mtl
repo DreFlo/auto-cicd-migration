@@ -19,7 +19,9 @@
 [comment @main/]
 [for (transformation : Transformation | transformations)]
 [file (generateATLFileName(transformation, transformationSet.transformations->indexOf(transformation)), false, 'UTF-8')]
-[if (model = MODEL_NAMES::CICD)]
+[if (transformation.oclIsTypeOf(ATLScript))]
+[generateATLScript(transformation.oclAsType(ATLScript))/]
+[elseif (model = MODEL_NAMES::CICD)]
 [generateCICDRefinement(transformation)/]
 [elseif (model = MODEL_NAMES::GHA)]
 [elseif (model = MODEL_NAMES::CircleCI)]
@@ -36,12 +38,14 @@ ERROR
 module cicdRefinement;
 create OUT : CICD refining IN : CICD;
 
-[if (transformation.oclIsTypeOf(ChangePluginTransformation))]
-[generateChangePluginTransformation(transformation.oclAsType(ChangePluginTransformation))/]
+[if (transformation.oclIsTypeOf(ChangePlugin))]
+[generateChangePlugin(transformation.oclAsType(ChangePlugin))/]
+[elseif (transformation.oclIsTypeOf(ChangeAgentLabel))]
+[generateChangeAgentLabel(transformation.oclAsType(ChangeAgentLabel))/]
 [/if]
 [/template]
 
-[template public generateChangePluginTransformation(transformation : ChangePluginTransformation)]
+[template public generateChangePlugin(transformation : ChangePlugin)]
 rule Plugin {
 	from
 		input : CICD!Plugin (
@@ -61,11 +65,11 @@ rule Plugin {
 }
 
 [for (arg : StringToStringMapEntry | args)]
-[generateAssignmentTransformation(arg, transformation.args->indexOf(arg))/]
+[generateAssignment(arg, transformation.args->indexOf(arg))/]
 [/for]
 [/template]
 
-[template public generateAssignmentTransformation(assignment : StringToStringMapEntry, index : Integer)]
+[template public generateAssignment(assignment : StringToStringMapEntry, index : Integer)]
 rule Assignment[index/] {
 	from
 		input : CICD!Assignment(
@@ -79,4 +83,51 @@ rule Assignment[index/] {
 			value <- input.value
 		)
 }
+[/template]
+
+[template public generateChangeAgentLabel(transformation : ChangeAgentLabel)]
+rule Expression {
+	from
+		input : CICD!Expression(
+			input.refImmediateComposite().oclIsTypeOf(CICD!Agent) and
+			input.expression2String() = '[name.key/]'
+		)
+	to
+		output : CICD!StringLiteral(
+			value <- '[name.value/]'
+		)
+}
+[generateExpression2StringHelpers()/]
+[/template]
+
+[template public generateATLScript(transformation : ATLScript)]
+[script/]
+[/template]
+
+[template public generateExpression2StringHelpers(traceabilityContext : OclAny)]
+helper context CICD!Expression def : expression2String() : String = 'EXPRESSION';
+
+helper context CICD!StringLiteral def : expression2String() : String = self.value;
+
+helper context CICD!IntegerLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!DoubleLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!BooleanLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD!Concat def : expression2String() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
+		exprStrings->iterate(exprString; joinedString: String = '' |
+			joinedString.concat(exprString)
+		);
+
+helper context CICD!Variable def : expression2String() : String =
+	'$'.concat(self.name);
+
+helper context CICD!VariableContext def : expression2String() : String =
+	self.context.toString();
+
+helper context CICD!VariableDereference def : expression2String() : String =
+	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;
 [/template]

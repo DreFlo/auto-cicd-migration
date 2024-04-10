@@ -8,20 +8,19 @@ apply plugin: 'java'
 repositories {
     mavenCentral()
     maven {
-        url "https://repo.eclipse.org/content/repositories/atl-releases/"
-    }
-    maven {
         url "https://repo.eclipse.org/content/groups/releases/"
     }
     maven {
         url "https://repo.spring.io/plugins-release/"
+    }
+    maven {
+        url "https://repo.eclipse.org/content/groups/atl"
     }
 }
 
 dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.14.0'
     implementation 'commons-cli:commons-cli:1.4'
-    implementation 'org.reflections:reflections:0.10.2'
 
     implementation group: 'org.eclipse.xtext', name: 'org.eclipse.xtext', version: '2.32.0'
 
@@ -84,7 +83,7 @@ jar {
     }
 }
 
-// MAKE PLATFORM INDEPENDENT, REPLACE CLASSPATH WITH *
+// TODO MAKE PLATFORM INDEPENDENT, REPLACE CLASSPATH WITH *
 startScripts {
     doLast {
         def windowsScriptFile = file getWindowsScript()

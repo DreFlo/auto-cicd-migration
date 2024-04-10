@@ -31,22 +31,29 @@ public class DSLParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DSLGrammarAccess grammarAccess) {
+			builder.put(grammarAccess.getTransformationAccess().getAlternatives(), "rule__Transformation__Alternatives");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getMODEL_NAMESAccess().getAlternatives(), "rule__MODEL_NAMES__Alternatives");
 			builder.put(grammarAccess.getTransformationSetAccess().getGroup(), "rule__TransformationSet__Group__0");
 			builder.put(grammarAccess.getTransformationSetAccess().getGroup_3(), "rule__TransformationSet__Group_3__0");
 			builder.put(grammarAccess.getTransformationSetAccess().getGroup_3_3(), "rule__TransformationSet__Group_3_3__0");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getGroup(), "rule__ChangePluginTransformation__Group__0");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getGroup_8(), "rule__ChangePluginTransformation__Group_8__0");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getGroup_8_3(), "rule__ChangePluginTransformation__Group_8_3__0");
+			builder.put(grammarAccess.getChangePluginAccess().getGroup(), "rule__ChangePlugin__Group__0");
+			builder.put(grammarAccess.getChangePluginAccess().getGroup_8(), "rule__ChangePlugin__Group_8__0");
+			builder.put(grammarAccess.getChangePluginAccess().getGroup_8_3(), "rule__ChangePlugin__Group_8_3__0");
+			builder.put(grammarAccess.getATLScriptAccess().getGroup(), "rule__ATLScript__Group__0");
+			builder.put(grammarAccess.getChangeAgentLabelAccess().getGroup(), "rule__ChangeAgentLabel__Group__0");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getGroup(), "rule__StringToStringMapEntry__Group__0");
 			builder.put(grammarAccess.getTransformationSetAccess().getTransformationsAssignment_3_2(), "rule__TransformationSet__TransformationsAssignment_3_2");
 			builder.put(grammarAccess.getTransformationSetAccess().getTransformationsAssignment_3_3_1(), "rule__TransformationSet__TransformationsAssignment_3_3_1");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getModelAssignment_3(), "rule__ChangePluginTransformation__ModelAssignment_3");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getVersionAssignment_5(), "rule__ChangePluginTransformation__VersionAssignment_5");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getNameAssignment_7(), "rule__ChangePluginTransformation__NameAssignment_7");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getArgsAssignment_8_2(), "rule__ChangePluginTransformation__ArgsAssignment_8_2");
-			builder.put(grammarAccess.getChangePluginTransformationAccess().getArgsAssignment_8_3_1(), "rule__ChangePluginTransformation__ArgsAssignment_8_3_1");
+			builder.put(grammarAccess.getChangePluginAccess().getModelAssignment_3(), "rule__ChangePlugin__ModelAssignment_3");
+			builder.put(grammarAccess.getChangePluginAccess().getVersionAssignment_5(), "rule__ChangePlugin__VersionAssignment_5");
+			builder.put(grammarAccess.getChangePluginAccess().getNameAssignment_7(), "rule__ChangePlugin__NameAssignment_7");
+			builder.put(grammarAccess.getChangePluginAccess().getArgsAssignment_8_2(), "rule__ChangePlugin__ArgsAssignment_8_2");
+			builder.put(grammarAccess.getChangePluginAccess().getArgsAssignment_8_3_1(), "rule__ChangePlugin__ArgsAssignment_8_3_1");
+			builder.put(grammarAccess.getATLScriptAccess().getModelAssignment_3(), "rule__ATLScript__ModelAssignment_3");
+			builder.put(grammarAccess.getATLScriptAccess().getScriptAssignment_5(), "rule__ATLScript__ScriptAssignment_5");
+			builder.put(grammarAccess.getChangeAgentLabelAccess().getModelAssignment_3(), "rule__ChangeAgentLabel__ModelAssignment_3");
+			builder.put(grammarAccess.getChangeAgentLabelAccess().getNameAssignment_5(), "rule__ChangeAgentLabel__NameAssignment_5");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getKeyAssignment_3(), "rule__StringToStringMapEntry__KeyAssignment_3");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getValueAssignment_5(), "rule__StringToStringMapEntry__ValueAssignment_5");
 		}

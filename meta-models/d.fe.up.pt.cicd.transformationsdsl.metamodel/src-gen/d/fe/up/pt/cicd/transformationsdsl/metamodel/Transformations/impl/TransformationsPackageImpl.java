@@ -2,7 +2,9 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
@@ -30,6 +32,13 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass stringToStringMapEntryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass transformationSetEClass = null;
 
 	/**
@@ -44,14 +53,21 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass changePluginTransformationEClass = null;
+	private EClass changePluginEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stringToStringMapEntryEClass = null;
+	private EClass atlScriptEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass changeAgentLabelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,6 +146,36 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public EClass getStringToStringMapEntry() {
+		return stringToStringMapEntryEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringToStringMapEntry_Key() {
+		return (EAttribute) stringToStringMapEntryEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringToStringMapEntry_Value() {
+		return (EAttribute) stringToStringMapEntryEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTransformationSet() {
 		return transformationSetEClass;
 	}
@@ -170,8 +216,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EClass getChangePluginTransformation() {
-		return changePluginTransformationEClass;
+	public EClass getChangePlugin() {
+		return changePluginEClass;
 	}
 
 	/**
@@ -180,8 +226,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EReference getChangePluginTransformation_Name() {
-		return (EReference) changePluginTransformationEClass.getEStructuralFeatures().get(0);
+	public EReference getChangePlugin_Name() {
+		return (EReference) changePluginEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -190,8 +236,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getChangePluginTransformation_Version() {
-		return (EAttribute) changePluginTransformationEClass.getEStructuralFeatures().get(1);
+	public EAttribute getChangePlugin_Version() {
+		return (EAttribute) changePluginEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -200,8 +246,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EReference getChangePluginTransformation_Args() {
-		return (EReference) changePluginTransformationEClass.getEStructuralFeatures().get(2);
+	public EReference getChangePlugin_Args() {
+		return (EReference) changePluginEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -210,8 +256,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EClass getStringToStringMapEntry() {
-		return stringToStringMapEntryEClass;
+	public EClass getATLScript() {
+		return atlScriptEClass;
 	}
 
 	/**
@@ -220,8 +266,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStringToStringMapEntry_Key() {
-		return (EAttribute) stringToStringMapEntryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getATLScript_Script() {
+		return (EAttribute) atlScriptEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -230,8 +276,18 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getStringToStringMapEntry_Value() {
-		return (EAttribute) stringToStringMapEntryEClass.getEStructuralFeatures().get(1);
+	public EClass getChangeAgentLabel() {
+		return changeAgentLabelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChangeAgentLabel_Name() {
+		return (EReference) changeAgentLabelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -274,20 +330,26 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		isCreated = true;
 
 		// Create classes and their features
+		stringToStringMapEntryEClass = createEClass(STRING_TO_STRING_MAP_ENTRY);
+		createEAttribute(stringToStringMapEntryEClass, STRING_TO_STRING_MAP_ENTRY__KEY);
+		createEAttribute(stringToStringMapEntryEClass, STRING_TO_STRING_MAP_ENTRY__VALUE);
+
 		transformationSetEClass = createEClass(TRANSFORMATION_SET);
 		createEReference(transformationSetEClass, TRANSFORMATION_SET__TRANSFORMATIONS);
 
 		transformationEClass = createEClass(TRANSFORMATION);
 		createEAttribute(transformationEClass, TRANSFORMATION__MODEL);
 
-		changePluginTransformationEClass = createEClass(CHANGE_PLUGIN_TRANSFORMATION);
-		createEReference(changePluginTransformationEClass, CHANGE_PLUGIN_TRANSFORMATION__NAME);
-		createEAttribute(changePluginTransformationEClass, CHANGE_PLUGIN_TRANSFORMATION__VERSION);
-		createEReference(changePluginTransformationEClass, CHANGE_PLUGIN_TRANSFORMATION__ARGS);
+		changePluginEClass = createEClass(CHANGE_PLUGIN);
+		createEReference(changePluginEClass, CHANGE_PLUGIN__NAME);
+		createEAttribute(changePluginEClass, CHANGE_PLUGIN__VERSION);
+		createEReference(changePluginEClass, CHANGE_PLUGIN__ARGS);
 
-		stringToStringMapEntryEClass = createEClass(STRING_TO_STRING_MAP_ENTRY);
-		createEAttribute(stringToStringMapEntryEClass, STRING_TO_STRING_MAP_ENTRY__KEY);
-		createEAttribute(stringToStringMapEntryEClass, STRING_TO_STRING_MAP_ENTRY__VALUE);
+		atlScriptEClass = createEClass(ATL_SCRIPT);
+		createEAttribute(atlScriptEClass, ATL_SCRIPT__SCRIPT);
+
+		changeAgentLabelEClass = createEClass(CHANGE_AGENT_LABEL);
+		createEReference(changeAgentLabelEClass, CHANGE_AGENT_LABEL__NAME);
 
 		// Create enums
 		modeL_NAMESEEnum = createEEnum(MODEL_NAMES);
@@ -322,9 +384,19 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		changePluginTransformationEClass.getESuperTypes().add(this.getTransformation());
+		changePluginEClass.getESuperTypes().add(this.getTransformation());
+		atlScriptEClass.getESuperTypes().add(this.getTransformation());
+		changeAgentLabelEClass.getESuperTypes().add(this.getTransformation());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringToStringMapEntry_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringToStringMapEntry_Value(), ecorePackage.getEString(), "value", null, 1, 1,
+				Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
 		initEClass(transformationSetEClass, TransformationSet.class, "TransformationSet", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransformationSet_Transformations(), this.getTransformation(), null, "transformations", null,
@@ -336,25 +408,27 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		initEAttribute(getTransformation_Model(), this.getMODEL_NAMES(), "model", null, 1, 1, Transformation.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(changePluginTransformationEClass, ChangePluginTransformation.class, "ChangePluginTransformation",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChangePluginTransformation_Name(), this.getStringToStringMapEntry(), null, "name", null, 1, 1,
-				ChangePluginTransformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getChangePluginTransformation_Version(), ecorePackage.getEString(), "version", null, 1, 1,
-				ChangePluginTransformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChangePluginTransformation_Args(), this.getStringToStringMapEntry(), null, "args", null, 0,
-				-1, ChangePluginTransformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
-				!IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringToStringMapEntry_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
+		initEClass(changePluginEClass, ChangePlugin.class, "ChangePlugin", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChangePlugin_Name(), this.getStringToStringMapEntry(), null, "name", null, 1, 1,
+				ChangePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getChangePlugin_Version(), ecorePackage.getEString(), "version", null, 1, 1, ChangePlugin.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStringToStringMapEntry_Value(), ecorePackage.getEString(), "value", null, 1, 1,
-				Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getChangePlugin_Args(), this.getStringToStringMapEntry(), null, "args", null, 0, -1,
+				ChangePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(atlScriptEClass, ATLScript.class, "ATLScript", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getATLScript_Script(), ecorePackage.getEString(), "script", null, 1, 1, ATLScript.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(changeAgentLabelEClass, ChangeAgentLabel.class, "ChangeAgentLabel", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChangeAgentLabel_Name(), this.getStringToStringMapEntry(), null, "name", null, 1, 1,
+				ChangeAgentLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(modeL_NAMESEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES.class,

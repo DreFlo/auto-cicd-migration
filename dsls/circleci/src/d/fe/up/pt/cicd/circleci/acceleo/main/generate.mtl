@@ -263,6 +263,10 @@ macos:
 [generatePersistToWorkspaceStep(step.oclAsType(PersistToWorkspaceStep))/]
 [elseif (step.oclIsKindOf(AttachWorkspaceStep))]
 [generateAttachWorkspaceStep(step.oclAsType(AttachWorkspaceStep))/]
+[elseif (step.oclIsKindOf(OrbReferenceStep))]
+[generateOrbReferenceStep(step.oclAsType(OrbReferenceStep))/]
+[elseif (step.oclIsKindOf(CommandReferenceStep))]
+[generateCommandReferenceStep(step.oclAsType(CommandReferenceStep))/]
 [/if]
 [/template]
 
@@ -408,6 +412,28 @@ macos:
 [/if]
 [/template]
 
+[template public generateOrbReferenceStep(step : OrbReferenceStep)]
+[if (arguments->isEmpty())]
+- [orb.name/]/[jobName/]
+[else]
+- [orb.name/]/[jobName/]:
+[for (variableAssignment : VariableAssignment | arguments)]
+    [generateVariableAssignment(variableAssignment)/]
+[/for]
+[/if]
+[/template]
+
+[template public generateCommandReferenceStep(step : CommandReferenceStep)]
+[if (arguments->isEmpty())]
+- [command.name/]
+[else]
+- [command.name/]:
+[for (variableAssignment : VariableAssignment | arguments)]
+    [generateVariableAssignment(variableAssignment)/]
+[/for]
+[/if]
+[/template]
+
 [template public generateParameter(parameter: Parameter) post (trim())]
 [name/]:
   type: [type/]
@@ -472,7 +498,7 @@ macos:
 [/if]
 [/template]
 
-[template public generateWorkflowJobConfiguration(job : WorkflowJobConfiguration)]
+[template public generateWorkflowJobConfiguration(job : WorkflowJobConfiguration) post(trim())]
 [if (job.oclIsTypeOf(WorkflowDefinedJobConfiguration))]
 - [job.oclAsType(WorkflowDefinedJobConfiguration).job.name/]:
 [elseif (job.oclIsTypeOf(WorkflowApprovalJobConfiguration))]
@@ -489,7 +515,7 @@ macos:
       - [job.name/]
     [/for]
 [/if]
-[if (branches->notEmpty() or not tags->notEmpty())]
+[if (branches->notEmpty() or tags->notEmpty())]
     filters:
     [if (branches->notEmpty())]
       branches:
@@ -556,7 +582,7 @@ macos:
 [/template]
 
 [template public generateExpression(expression : Expression)]
-[if (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableDereference))][generateVariableDereference(expression.oclAsType(VariableDereference))/][/if]
+[if (expression.oclIsUndefined())]OclUndefined[elseif (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableDereference))][generateVariableDereference(expression.oclAsType(VariableDereference))/][/if]
 [/template]
 
 [template public generateConcat(concat : Concat) post (trim())]
@@ -652,5 +678,5 @@ matches:
 [/template]
 
 [template public generateLiteral(literal : Literal)]
-[if (literal.oclIsTypeOf(StringLiteral))][log(literal.oclAsType(StringLiteral).value)/][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
+[if (literal.oclIsTypeOf(StringLiteral))][literal.oclAsType(StringLiteral).value/][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
 [/template]

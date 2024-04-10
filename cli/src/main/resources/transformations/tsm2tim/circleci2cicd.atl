@@ -118,7 +118,12 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 					OclUndefined
 				endif,
 			steps <- input.preSteps->union(input.job.steps)->union(input.postSteps),
-			workingDirectory <- input.job.executor.workingDirectory			
+			workingDirectory <- 
+				if not input.job.executor.workingDirectory.oclIsUndefined() then
+					input.job.executor.workingDirectory.expression2String()
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -163,8 +168,8 @@ lazy rule OrbReference2Plugin {
 	to
 		output : CICD!Plugin(
 			name <- input.name,
-			pluginName <- input.reference.split('@')->at(1),
-			version <- input.reference.split('@')->at(2),
+			pluginName <- input.reference.split('@')->first(),
+			version <- input.reference.split('@')->last(),
 			kwargs <- arguments
 		)
 }
@@ -197,7 +202,7 @@ lazy rule MachineExecutor2Agent {
 		input : CircleCI!MachineExecutor
 	to
 		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('linux')},
+			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('machine')},
 			container <- thisModule.MachineExecutor2DockerContainer(input)
 		)
 }
@@ -747,7 +752,9 @@ rule OrbReferenceOrbReferenceStep2Plugin {
 		)
 	to
 		output : CICD!Plugin(
-			pluginName <- input.orb.name + '/' + input.jobName,
+			name <- input.orb.name,
+			pluginName <- input.orb.reference.split('@')->first() + '/' + input.jobName,
+			version <- input.orb.reference.split('@')->last(),
 			kwargs <- input.arguments
 		)
 }
@@ -787,7 +794,7 @@ helper context CircleCI!Executor def : executor2AgentHelper() : CICD!Agent =
 			executor.executor2AgentHelper()
 		endif
 	else if self.oclIsTypeOf(CircleCI!OrbReferenceExecutor) and self.orb.oclIsTypeOf(CircleCI!OrbReference) then
-		thisModule.Labels2Agent(Sequence{self.orb.name + '/' + self.orbExecutorName})
+		thisModule.Labels2Agent(Sequence{self.orb.reference + '/' + self.orbExecutorName})
 	else
 		OclUndefined
 	endif

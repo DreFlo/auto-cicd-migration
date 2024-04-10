@@ -1,17 +1,21 @@
 TransformationSet {
     transformations {
-        ChangePluginTransformation {
+        ChangePlugin {
             model CICD
             version "8"
             name StringToStringMapEntry {key "persist_to_workspace" value "ptw"}
         },
-        ChangePluginTransformation {
+        ChangePlugin {
             model CICD
             version "7"
             name StringToStringMapEntry {key "ptw" value "ptw____"}
             args {
                 StringToStringMapEntry {key "root" value "boot"}
             }
+        },
+        ChangeAgentLabel {
+            model CICD
+            name StringToStringMapEntry {key "machine" value "ubuntu"}
         }
     }
 }

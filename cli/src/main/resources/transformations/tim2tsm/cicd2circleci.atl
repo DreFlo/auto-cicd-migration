@@ -16,7 +16,7 @@ rule Pipeline2Pipeline {
 					->flatten()
 					->select(step | step.oclIsTypeOf(CICD!Plugin))
 					->select(step | step.checkIfOrb())
-					->collect(step | thisModule.Plugin2OrbReference(step)),
+					->collect(step | thisModule.Plugin2OrbReference(step.getReference(), step)),
 			parameters <- input.inputs,
 			workflows <- Sequence{thisModule.Pipeline2Workflow(input)}
 		)
@@ -54,11 +54,20 @@ lazy rule Pipeline2Workflow {
 unique lazy rule Job2WorkflowDefinedJobConfiguration {
 	from
 		input : CICD!Job
+	using {
+		job : CircleCI!Job = input.job2JobHelper();
+	}
 	to
 		output : CircleCI!WorkflowDefinedJobConfiguration(
-			job <- input.job2JobHelper(),
+			job <- job,
 			matrix <- input.matrix,
-			requires <- input.previous->collect(job | thisModule.Job2WorkflowDefinedJobConfiguration(job))
+			name <-
+				if not job.oclIsUndefined() then
+					job.name
+				else
+					OclUndefined
+				endif,
+			requires <- input.previous->collect(j | thisModule.Job2WorkflowDefinedJobConfiguration(j))
 		)
 }
 
@@ -176,11 +185,14 @@ lazy rule Command2RunStep {
 lazy rule Plugin2OrbReferenceStep {
 	from
 		input : CICD!Plugin
+	using {
+		reference : String = input.getReference();
+	}
 	to
 		output : CircleCI!OrbReferenceStep(
 			arguments <- input.kwargs,
 			jobName <- input.pluginName.split('/')->last(),
-			orb <- thisModule.Plugin2OrbReference(input)
+			orb <- thisModule.Plugin2OrbReference(reference, input)
 		)
 }
 
@@ -344,6 +356,7 @@ lazy rule Plugin2AddSSHKeysStep {
 
 unique lazy rule Plugin2OrbReference {
 	from
+		reference : String,
 		input : CICD!Plugin
 	to
 		output : CircleCI!OrbReference(
@@ -353,7 +366,7 @@ unique lazy rule Plugin2OrbReference {
 				else
 					input.name
 				endif,
-			reference <- input.pluginName.split('/')->first() + '@' + input.version
+			reference <- reference
 		)
 }
 
@@ -403,6 +416,38 @@ unique lazy rule Job2DockerExecutor {
 		)
 }
 
+unique lazy rule Job2MacOSExecutor {
+	from
+		input : CICD!Job
+	to
+		output : CircleCI!MacOSExecutor
+}
+
+unique lazy rule Job2WindowsOrbExecutor {
+	from
+		input : CICD!Job
+	to
+		output : CircleCI!WindowsOrbExecutor
+}
+
+unique lazy rule Job2MachineExecutor {
+	from
+		input : CICD!Job
+	to
+		output : CircleCI!MachineExecutor(
+			image <-
+				if not input.agent.container.oclIsUndefined() then
+					if not input.agent.container.image.oclIsUndefined() then
+						input.agent.container.image.expression2ExpressionHelper()
+					else
+						OclUndefined
+					endif
+				else
+					OclUndefined
+				endif
+		)
+}
+
 lazy rule DockerContainer2DockerContainer {
 	from
 		input : CICD!DockerContainer
@@ -431,7 +476,12 @@ rule Assignment2VariableAssignment {
 		input : CICD!Assignment
 	to
 		output : CircleCI!VariableAssignment(
-			key <- input.key.name,
+			key <-
+				if not input.key.oclIsUndefined() then
+					input.key.name
+				else
+					OclUndefined
+				endif,
 			value <-
 				if not input.value.oclIsUndefined() then
 					input.value.expression2ExpressionHelper()
@@ -640,10 +690,19 @@ helper context CICD!Job def : job2JobHelper() : CircleCI!Job =
 
 -- TODO IDK
 helper def : job2ExecutorHelper(job : CICD!Job) : CircleCI!Executor =
-	if not job.agent.container.oclIsUndefined() then
+	if job.agent.labels->size() = 1 and job.agent.labels->first().expression2String() = 'macos' then
+		thisModule.Job2MacOSExecutor(job)
+	else if job.agent.labels->size() = 1 and job.agent.labels->first().expression2String() = 'windows' then
+		thisModule.Job2WindowsOrbExecutor(job)
+	else if job.agent.labels->size() = 1 and job.agent.labels->first().expression2String() = 'machine' then
+		thisModule.Job2MachineExecutor(job)
+	else if not job.agent.container.oclIsUndefined() then
 		thisModule.Job2DockerExecutor(job)
 	else
 		OclUndefined
+	endif
+	endif
+	endif
 	endif;
 	
 helper def : getAllJobs(jobStreams : Sequence(CICD!Job)) : Sequence(CICD!Job) =
@@ -748,3 +807,14 @@ helper def : joinStrings(stringSequence : Sequence(String), sep : String) : Stri
 			joinedString.concat(string).concat(sep)
 		endif
 	);
+
+helper context CICD!Plugin def : getReference() : String =
+	let pluginNameParts : Sequence(String) = self.pluginName.split('/') in
+	thisModule.joinStrings(
+		if pluginNameParts->size() = 1 then 
+			pluginNameParts 
+		else 
+			pluginNameParts->subSequence(1, pluginNameParts->size() - 1) 
+		endif, 
+		'/'
+	) + '@' + self.version;

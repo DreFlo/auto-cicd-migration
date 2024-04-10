@@ -2,7 +2,7 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import java.util.Map;
@@ -23,20 +23,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Change Plugin Transformation</b></em>'.
+ * An implementation of the model object '<em><b>Change Plugin</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangePluginTransformationImpl#getName <em>Name</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangePluginTransformationImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangePluginTransformationImpl#getArgs <em>Args</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangePluginImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangePluginImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangePluginImpl#getArgs <em>Args</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ChangePluginTransformationImpl extends TransformationImpl implements ChangePluginTransformation {
+public class ChangePluginImpl extends TransformationImpl implements ChangePlugin {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' map.
 	 * <!-- begin-user-doc -->
@@ -82,7 +82,7 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChangePluginTransformationImpl() {
+	protected ChangePluginImpl() {
 		super();
 	}
 
@@ -93,7 +93,7 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TransformationsPackage.Literals.CHANGE_PLUGIN_TRANSFORMATION;
+		return TransformationsPackage.Literals.CHANGE_PLUGIN;
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 		name = newName;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME, oldName, newName);
+					TransformationsPackage.CHANGE_PLUGIN__NAME, oldName, newName);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -136,16 +136,16 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 			NotificationChain msgs = null;
 			if (name != null)
 				msgs = ((InternalEObject) name).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME, null, msgs);
+						EOPPOSITE_FEATURE_BASE - TransformationsPackage.CHANGE_PLUGIN__NAME, null, msgs);
 			if (newName != null)
 				msgs = ((InternalEObject) newName).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME, null, msgs);
+						EOPPOSITE_FEATURE_BASE - TransformationsPackage.CHANGE_PLUGIN__NAME, null, msgs);
 			msgs = basicSetName(newName, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME, newName, newName));
+			eNotify(new ENotificationImpl(this, Notification.SET, TransformationsPackage.CHANGE_PLUGIN__NAME, newName,
+					newName));
 	}
 
 	/**
@@ -168,8 +168,8 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 		String oldVersion = version;
 		version = newVersion;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__VERSION, oldVersion, version));
+			eNotify(new ENotificationImpl(this, Notification.SET, TransformationsPackage.CHANGE_PLUGIN__VERSION,
+					oldVersion, version));
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	public EMap<String, String> getArgs() {
 		if (args == null) {
 			args = new EcoreEMap<String, String>(TransformationsPackage.Literals.STRING_TO_STRING_MAP_ENTRY,
-					StringToStringMapEntryImpl.class, this, TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS);
+					StringToStringMapEntryImpl.class, this, TransformationsPackage.CHANGE_PLUGIN__ARGS);
 		}
 		return args;
 	}
@@ -194,9 +194,9 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME:
+		case TransformationsPackage.CHANGE_PLUGIN__NAME:
 			return basicSetName(null, msgs);
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS:
+		case TransformationsPackage.CHANGE_PLUGIN__ARGS:
 			return ((InternalEList<?>) getArgs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -210,11 +210,11 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME:
+		case TransformationsPackage.CHANGE_PLUGIN__NAME:
 			return getName();
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__VERSION:
+		case TransformationsPackage.CHANGE_PLUGIN__VERSION:
 			return getVersion();
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS:
+		case TransformationsPackage.CHANGE_PLUGIN__ARGS:
 			if (coreType)
 				return getArgs();
 			else
@@ -232,13 +232,13 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME:
+		case TransformationsPackage.CHANGE_PLUGIN__NAME:
 			setName((Map.Entry<String, String>) newValue);
 			return;
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__VERSION:
+		case TransformationsPackage.CHANGE_PLUGIN__VERSION:
 			setVersion((String) newValue);
 			return;
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS:
+		case TransformationsPackage.CHANGE_PLUGIN__ARGS:
 			((EStructuralFeature.Setting) getArgs()).set(newValue);
 			return;
 		}
@@ -253,13 +253,13 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME:
+		case TransformationsPackage.CHANGE_PLUGIN__NAME:
 			setName((Map.Entry<String, String>) null);
 			return;
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__VERSION:
+		case TransformationsPackage.CHANGE_PLUGIN__VERSION:
 			setVersion(VERSION_EDEFAULT);
 			return;
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS:
+		case TransformationsPackage.CHANGE_PLUGIN__ARGS:
 			getArgs().clear();
 			return;
 		}
@@ -274,11 +274,11 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__NAME:
+		case TransformationsPackage.CHANGE_PLUGIN__NAME:
 			return name != null;
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__VERSION:
+		case TransformationsPackage.CHANGE_PLUGIN__VERSION:
 			return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION__ARGS:
+		case TransformationsPackage.CHANGE_PLUGIN__ARGS:
 			return args != null && !args.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -301,4 +301,4 @@ public class ChangePluginTransformationImpl extends TransformationImpl implement
 		return result.toString();
 	}
 
-} //ChangePluginTransformationImpl
+} //ChangePluginImpl

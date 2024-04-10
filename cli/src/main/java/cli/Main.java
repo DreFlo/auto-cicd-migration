@@ -14,8 +14,6 @@ import cli.generators.JenkinsGenerator;
 import cli.parsers.CircleCIParser;
 import cli.parsers.GitHubActionsParser;
 import cli.parsers.exceptions.SyntaxException;
-import cli.transformers.endogenous.CICD.EndogenousCICDAbstractTransformer;
-import cli.transformers.endogenous.EndogenousAbstractTransformer;
 import cli.transformers.exogenous.fromTIM.CICD2CircleCITransformer;
 import cli.transformers.exogenous.fromTIM.CICD2GHATransformer;
 import cli.transformers.exogenous.fromTIM.CICD2JenkinsTransformer;
@@ -104,6 +102,14 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+		// Create intermediate folder if it does not exist
+		Path intermediateFolder = Path.of("intermediate");
+		if (!intermediateFolder.toFile().exists()) {
+			if (!intermediateFolder.toFile().mkdirs()) {
+				throw new RuntimeException("Could not create intermediate folder");
+			}
+		}
+
 		AbstractReverseEngineer<?, ?> inputEngineer = getInputCompiler(commandLine.getOptionValue("il"));
 		AbstractForwardEngineer<?, ?, ?> outputEngineer = getOutputCompiler(commandLine.getOptionValue("ol"));
 
@@ -169,6 +175,10 @@ public class Main {
 				cicdRefinerPaths.add(refinerPath);
 			}
 		}
+
+//		inputRefinerPaths.clear();
+//		outputRefinerPaths.clear();
+//		cicdRefinerPaths.clear();
 
         try {
 			Pipeline pipeline = inputEngineer.transform(inputScript, inputRefinerPaths, new ArrayList<>());

@@ -73,6 +73,29 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringToStringMapEntryItemProvider stringToStringMapEntryItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringToStringMapEntryAdapter() {
+		if (stringToStringMapEntryItemProvider == null) {
+			stringToStringMapEntryItemProvider = new StringToStringMapEntryItemProvider(this);
+		}
+
+		return stringToStringMapEntryItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,49 +119,72 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChangePluginTransformationItemProvider changePluginTransformationItemProvider;
+	protected ChangePluginItemProvider changePluginItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePluginTransformation}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createChangePluginTransformationAdapter() {
-		if (changePluginTransformationItemProvider == null) {
-			changePluginTransformationItemProvider = new ChangePluginTransformationItemProvider(this);
+	public Adapter createChangePluginAdapter() {
+		if (changePluginItemProvider == null) {
+			changePluginItemProvider = new ChangePluginItemProvider(this);
 		}
 
-		return changePluginTransformationItemProvider;
+		return changePluginItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringToStringMapEntryItemProvider stringToStringMapEntryItemProvider;
+	protected ATLScriptItemProvider atlScriptItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createStringToStringMapEntryAdapter() {
-		if (stringToStringMapEntryItemProvider == null) {
-			stringToStringMapEntryItemProvider = new StringToStringMapEntryItemProvider(this);
+	public Adapter createATLScriptAdapter() {
+		if (atlScriptItemProvider == null) {
+			atlScriptItemProvider = new ATLScriptItemProvider(this);
 		}
 
-		return stringToStringMapEntryItemProvider;
+		return atlScriptItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChangeAgentLabelItemProvider changeAgentLabelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChangeAgentLabelAdapter() {
+		if (changeAgentLabelItemProvider == null) {
+			changeAgentLabelItemProvider = new ChangeAgentLabelItemProvider(this);
+		}
+
+		return changeAgentLabelItemProvider;
 	}
 
 	/**
@@ -246,12 +292,16 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	 */
 	@Override
 	public void dispose() {
-		if (transformationSetItemProvider != null)
-			transformationSetItemProvider.dispose();
-		if (changePluginTransformationItemProvider != null)
-			changePluginTransformationItemProvider.dispose();
 		if (stringToStringMapEntryItemProvider != null)
 			stringToStringMapEntryItemProvider.dispose();
+		if (transformationSetItemProvider != null)
+			transformationSetItemProvider.dispose();
+		if (changePluginItemProvider != null)
+			changePluginItemProvider.dispose();
+		if (atlScriptItemProvider != null)
+			atlScriptItemProvider.dispose();
+		if (changeAgentLabelItemProvider != null)
+			changeAgentLabelItemProvider.dispose();
 	}
 
 }

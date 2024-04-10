@@ -68,6 +68,14 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+		case TransformationsPackage.STRING_TO_STRING_MAP_ENTRY: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<String, String> stringToStringMapEntry = (Map.Entry<String, String>) theEObject;
+			T result = caseStringToStringMapEntry(stringToStringMapEntry);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case TransformationsPackage.TRANSFORMATION_SET: {
 			TransformationSet transformationSet = (TransformationSet) theEObject;
 			T result = caseTransformationSet(transformationSet);
@@ -82,19 +90,29 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION: {
-			ChangePluginTransformation changePluginTransformation = (ChangePluginTransformation) theEObject;
-			T result = caseChangePluginTransformation(changePluginTransformation);
+		case TransformationsPackage.CHANGE_PLUGIN: {
+			ChangePlugin changePlugin = (ChangePlugin) theEObject;
+			T result = caseChangePlugin(changePlugin);
 			if (result == null)
-				result = caseTransformation(changePluginTransformation);
+				result = caseTransformation(changePlugin);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.STRING_TO_STRING_MAP_ENTRY: {
-			@SuppressWarnings("unchecked")
-			Map.Entry<String, String> stringToStringMapEntry = (Map.Entry<String, String>) theEObject;
-			T result = caseStringToStringMapEntry(stringToStringMapEntry);
+		case TransformationsPackage.ATL_SCRIPT: {
+			ATLScript atlScript = (ATLScript) theEObject;
+			T result = caseATLScript(atlScript);
+			if (result == null)
+				result = caseTransformation(atlScript);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.CHANGE_AGENT_LABEL: {
+			ChangeAgentLabel changeAgentLabel = (ChangeAgentLabel) theEObject;
+			T result = caseChangeAgentLabel(changeAgentLabel);
+			if (result == null)
+				result = caseTransformation(changeAgentLabel);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -102,6 +120,21 @@ public class TransformationsSwitch<T> extends Switch<T> {
 		default:
 			return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringToStringMapEntry(Map.Entry<String, String> object) {
+		return null;
 	}
 
 	/**
@@ -135,32 +168,47 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Change Plugin Transformation</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Change Plugin</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Change Plugin Transformation</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Change Plugin</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChangePluginTransformation(ChangePluginTransformation object) {
+	public T caseChangePlugin(ChangePlugin object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ATL Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String To String Map Entry</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ATL Script</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseStringToStringMapEntry(Map.Entry<String, String> object) {
+	public T caseATLScript(ATLScript object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangeAgentLabel(ChangeAgentLabel object) {
 		return null;
 	}
 

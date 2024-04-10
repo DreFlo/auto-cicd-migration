@@ -59,12 +59,16 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case TransformationsPackage.TRANSFORMATION_SET:
-			return createTransformationSet();
-		case TransformationsPackage.CHANGE_PLUGIN_TRANSFORMATION:
-			return createChangePluginTransformation();
 		case TransformationsPackage.STRING_TO_STRING_MAP_ENTRY:
 			return (EObject) createStringToStringMapEntry();
+		case TransformationsPackage.TRANSFORMATION_SET:
+			return createTransformationSet();
+		case TransformationsPackage.CHANGE_PLUGIN:
+			return createChangePlugin();
+		case TransformationsPackage.ATL_SCRIPT:
+			return createATLScript();
+		case TransformationsPackage.CHANGE_AGENT_LABEL:
+			return createChangeAgentLabel();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -105,6 +109,16 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Map.Entry<String, String> createStringToStringMapEntry() {
+		StringToStringMapEntryImpl stringToStringMapEntry = new StringToStringMapEntryImpl();
+		return stringToStringMapEntry;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public TransformationSet createTransformationSet() {
 		TransformationSetImpl transformationSet = new TransformationSetImpl();
@@ -117,9 +131,9 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public ChangePluginTransformation createChangePluginTransformation() {
-		ChangePluginTransformationImpl changePluginTransformation = new ChangePluginTransformationImpl();
-		return changePluginTransformation;
+	public ChangePlugin createChangePlugin() {
+		ChangePluginImpl changePlugin = new ChangePluginImpl();
+		return changePlugin;
 	}
 
 	/**
@@ -127,9 +141,21 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, String> createStringToStringMapEntry() {
-		StringToStringMapEntryImpl stringToStringMapEntry = new StringToStringMapEntryImpl();
-		return stringToStringMapEntry;
+	@Override
+	public ATLScript createATLScript() {
+		ATLScriptImpl atlScript = new ATLScriptImpl();
+		return atlScript;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ChangeAgentLabel createChangeAgentLabel() {
+		ChangeAgentLabelImpl changeAgentLabel = new ChangeAgentLabelImpl();
+		return changeAgentLabel;
 	}
 
 	/**

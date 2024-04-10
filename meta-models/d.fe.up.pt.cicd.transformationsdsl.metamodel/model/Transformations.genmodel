@@ -17,20 +17,26 @@
       <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/GHA"/>
       <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/CircleCI"/>
     </genEnums>
+    <genClasses ecoreClass="Transformations.ecore#//StringToStringMapEntry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/value"/>
+    </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//TransformationSet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//TransformationSet/transformations"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Transformations.ecore#//Transformation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//Transformation/model"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//ChangePluginTransformation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePluginTransformation/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangePluginTransformation/version"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePluginTransformation/args"/>
+    <genClasses ecoreClass="Transformations.ecore#//ChangePlugin">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePlugin/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangePlugin/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePlugin/args"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//StringToStringMapEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/value"/>
+    <genClasses ecoreClass="Transformations.ecore#//ATLScript">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLScript/script"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//ChangeAgentLabel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangeAgentLabel/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

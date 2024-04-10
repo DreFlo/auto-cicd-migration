@@ -11,6 +11,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,18 +37,8 @@ public abstract class AbstractReverseEngineer<InputModel extends EObject, InputP
     }
 
     @Override
-    protected final List<EndogenousAbstractTransformer<Pipeline, CICDPackage>> getOutputRefiners(List<String> outputRefinerPaths) {
-        List<EndogenousAbstractTransformer<Pipeline, CICDPackage>> outputRefiners = new ArrayList<>();
-
-        for (String outputRefinerPath : outputRefinerPaths) {
-            try {
-                outputRefiners.add(new CICDRefiner(getTransformer().getResourceSet(), outputRefinerPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return outputRefiners;
+    protected EndogenousAbstractTransformer<Pipeline, CICDPackage> getOutputRefiner(ResourceSet resourceSet, String outputRefinerPath, String inputModelName, String outputModelName, Boolean isRefinement) throws IOException {
+        return new CICDRefiner(resourceSet, outputRefinerPath, inputModelName, outputModelName, isRefinement);
     }
 
     @Override

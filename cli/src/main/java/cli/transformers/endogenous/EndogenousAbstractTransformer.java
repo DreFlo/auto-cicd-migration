@@ -55,7 +55,7 @@ public abstract class EndogenousAbstractTransformer<Model extends EObject, Packa
 
             Map<String, Object> options = new HashMap<>();
 
-            options.put("showSummary", "true");
+//            options.put("showSummary", "true");
 
             launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), options, getATLFileStream());
 

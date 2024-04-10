@@ -11,6 +11,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -47,18 +48,8 @@ public abstract class AbstractForwardEngineer<OutputModel extends EObject, Outpu
     }
 
     @Override
-    protected final List<EndogenousAbstractTransformer<Pipeline, CICDPackage>> getInputRefiners(List<String> inputRefinerPaths) {
-        List<EndogenousAbstractTransformer<Pipeline, CICDPackage>> inputRefiners = new ArrayList<>();
-
-        for (String inputRefinerPath : inputRefinerPaths) {
-            try {
-                inputRefiners.add(new CICDRefiner(getTransformer().getResourceSet(), inputRefinerPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return inputRefiners;
+    protected EndogenousAbstractTransformer<Pipeline, CICDPackage> getInputRefiner(ResourceSet resourceSet, String inputRefinerPath, String inputModelName, String outputModelName, Boolean isRefinement) throws IOException {
+        return new CICDRefiner(resourceSet, inputRefinerPath, inputModelName, outputModelName, isRefinement);
     }
 
     @Override

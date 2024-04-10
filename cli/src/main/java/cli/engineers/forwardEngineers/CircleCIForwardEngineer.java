@@ -8,6 +8,7 @@ import d.fe.up.pt.cicd.circleci.acceleo.main.Generate;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,17 +20,7 @@ public class CircleCIForwardEngineer extends AbstractForwardEngineer<Pipeline, C
     }
 
     @Override
-    protected List<EndogenousAbstractTransformer<Pipeline, CircleCIPackage>> getOutputRefiners(List<String> outputRefinerPaths) {
-        List<EndogenousAbstractTransformer<Pipeline, CircleCIPackage>> outputRefiners = new ArrayList<>();
-
-        for (String outputRefinerPath : outputRefinerPaths) {
-            try {
-                outputRefiners.add(new CircleCIRefiner(getTransformer().getResourceSet(), outputRefinerPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return outputRefiners;
+    protected EndogenousAbstractTransformer<Pipeline, CircleCIPackage> getOutputRefiner(ResourceSet resourceSet, String outputRefinerPath, String inputModelName, String outputModelName, Boolean isRefinement) throws IOException {
+        return new CircleCIRefiner(resourceSet, outputRefinerPath, inputModelName, outputModelName, isRefinement);
     }
 }

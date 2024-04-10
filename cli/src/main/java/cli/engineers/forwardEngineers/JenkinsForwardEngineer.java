@@ -8,6 +8,7 @@ import d.fe.up.pt.cicd.jenkins.acceleo.main.Generate;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,17 +20,7 @@ public class JenkinsForwardEngineer extends AbstractForwardEngineer<Pipeline, Je
     }
 
     @Override
-    protected List<EndogenousAbstractTransformer<Pipeline, JenkinsPackage>> getOutputRefiners(List<String> outputRefinerPaths) {
-        List<EndogenousAbstractTransformer<Pipeline, JenkinsPackage>> outputRefiners = new ArrayList<>();
-
-        for (String outputRefinerPath : outputRefinerPaths) {
-            try {
-                outputRefiners.add(new JenkinsRefiner(getTransformer().getResourceSet(), outputRefinerPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return outputRefiners;
+    protected EndogenousAbstractTransformer<Pipeline, JenkinsPackage> getOutputRefiner(ResourceSet resourceSet, String outputRefinerPath, String inputModelName, String outputModelName, Boolean isRefinement) throws IOException {
+        return new JenkinsRefiner(resourceSet, outputRefinerPath, inputModelName, outputModelName, isRefinement);
     }
 }

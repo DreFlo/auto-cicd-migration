@@ -9,6 +9,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,17 +21,7 @@ public class GHAForwardEngineer extends AbstractForwardEngineer<Workflow, GHAPac
     }
 
     @Override
-    protected List<EndogenousAbstractTransformer<Workflow, GHAPackage>> getOutputRefiners(List<String> outputRefinerPaths) {
-        List<EndogenousAbstractTransformer<Workflow, GHAPackage>> outputRefiners = new ArrayList<>();
-
-        for (String outputRefinerPath : outputRefinerPaths) {
-            try {
-                outputRefiners.add(new GHARefiner(getTransformer().getResourceSet(), outputRefinerPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return outputRefiners;
+    protected EndogenousAbstractTransformer<Workflow, GHAPackage> getOutputRefiner(ResourceSet resourceSet, String outputRefinerPath, String inputModelName, String outputModelName, Boolean isRefinement) throws IOException {
+        return new GHARefiner(resourceSet, outputRefinerPath, inputModelName, outputModelName, isRefinement);
     }
 }

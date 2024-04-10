@@ -10,6 +10,10 @@ public class GHARefiner extends EndogenousGHAAbstractTransformer{
         super(resourceSet, atlFilePath, "GHA", "GHA", true);
     }
 
+    public GHARefiner(ResourceSet resourceSet, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) throws IOException {
+        super(resourceSet, atlFilePath, inputModelName, outputModelName, refiner);
+    }
+
     public GHARefiner(ResourceSet resourceSet, InputStream atlFileStream) {
         super(resourceSet, atlFileStream, "GHA", "GHA", true);
     }

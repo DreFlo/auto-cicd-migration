@@ -10,6 +10,10 @@ public class CircleCIRefiner extends EndogenousCircleCIAbstractTransformer{
         super(resourceSet, atlFilePath, "CircleCI", "CircleCI", true);
     }
 
+    public CircleCIRefiner(ResourceSet resourceSet, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) throws IOException {
+        super(resourceSet, atlFilePath, inputModelName, outputModelName, refiner);
+    }
+
     public CircleCIRefiner(ResourceSet resourceSet, InputStream atlFileStream) {
         super(resourceSet, atlFileStream, "CircleCI", "CircleCI", true);
     }

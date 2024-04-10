@@ -7,6 +7,7 @@ import cli.transformers.endogenous.EndogenousAbstractTransformer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,17 +19,7 @@ public class CircleCIReverseEngineer extends AbstractReverseEngineer<Pipeline, C
     }
 
     @Override
-    protected List<EndogenousAbstractTransformer<Pipeline, CircleCIPackage>> getInputRefiners(List<String> inputRefinerPaths) {
-        List<EndogenousAbstractTransformer<Pipeline, CircleCIPackage>> inputRefiners = new ArrayList<>();
-
-        for (String inputRefinerPath : inputRefinerPaths) {
-            try {
-                inputRefiners.add(new CircleCIRefiner(getTransformer().getResourceSet(), inputRefinerPath));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return inputRefiners;
+    protected EndogenousAbstractTransformer<Pipeline, CircleCIPackage> getInputRefiner(ResourceSet resourceSet, String inputRefinerPath, String inputModelName, String outputModelName, Boolean isRefinement) throws IOException {
+        return new CircleCIRefiner(resourceSet, inputRefinerPath, inputModelName, outputModelName, isRefinement);
     }
 }

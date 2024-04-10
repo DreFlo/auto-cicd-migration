@@ -10,6 +10,10 @@ public class CICDRefiner extends EndogenousCICDAbstractTransformer{
         super(resourceSet, atlFilePath, "CICD", "CICD", true);
     }
 
+    public CICDRefiner(ResourceSet resourceSet, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) throws IOException {
+        super(resourceSet, atlFilePath, inputModelName, outputModelName, refiner);
+    }
+
     public CICDRefiner(ResourceSet resourceSet, InputStream atlFileStream) {
         super(resourceSet, atlFileStream, "CICD", "CICD", true);
     }

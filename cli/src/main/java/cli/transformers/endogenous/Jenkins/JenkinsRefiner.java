@@ -10,6 +10,10 @@ public class JenkinsRefiner extends EndogenousJenkinsAbstractTransformer{
         super(resourceSet, atlFilePath, "Jenkins", "Jenkins", true);
     }
 
+    public JenkinsRefiner(ResourceSet resourceSet, String atlFilePath, String inputModelName, String outputModelName, Boolean refiner) throws IOException {
+        super(resourceSet, atlFilePath, inputModelName, outputModelName, refiner);
+    }
+
     public JenkinsRefiner(ResourceSet resourceSet, InputStream atlFileStream) {
         super(resourceSet, atlFileStream, "Jenkins", "Jenkins", true);
     }

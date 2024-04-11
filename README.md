@@ -1,15 +1,14 @@
-# modeling DevOps
+# CICD Language Transpiler
 
-## Creating a domain-agnostic approach to model DevOps
+## Project Structure
 
+- [cli](./cli/) - Contains the source code for the command line interface and the logic to integrate the various modeling projects into one cohesive program
+- [meta-models](./meta-models/) - Contains the meta-models that serve as the basis for the program
+- [dsls](./dsls/) - Contains the Xtext projects for T2M transformations (where applicable)
+- [code-generation](./code-generation/) - Contains the Acceleo projects for M2T transformations
+- [transformations](./cli/src/main/resources/transformations/) - Contains the ATL files used in M2M transformations
+- [validations](./cli/src/main/resources/validations/) - Contains the OCL files used for validating models
 
-### Folders:
+## Building and Running
 
-*EmfModels* In this folder, we include our metamodels for creating DevOps pipelines. The folder devops2 contains the most recent metamodel.
-
-*ModelInstances* contains instances of models created with the devops2 metamodel in folder EmfModels
-
-
-*xtextgrammar* contains the xtext grammars created from the devops2 metamodel
-
-*TestingModel* contains the files used to test the grammar created from the metamodel
+See [CLI README](./cli/README.MD).

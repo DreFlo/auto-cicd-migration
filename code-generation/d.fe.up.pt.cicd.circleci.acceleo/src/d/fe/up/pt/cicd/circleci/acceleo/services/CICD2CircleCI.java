@@ -8,9 +8,7 @@ public class CICD2CircleCI {
 	}
 	
 	public String logString(String string) {
-		System.out.println("STRING");
 		System.out.println(string);
-		System.out.println("ENDSTRING");
 		return string;
 	}
 }

@@ -1,6 +1,5 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Automatic-Module-Name: d.fe.up.pt.cicd.circleci.acceleo
 Bundle-Name: Acceleo Acceleo Module Runtime Plug-in
 Bundle-SymbolicName: d.fe.up.pt.cicd.circleci.acceleo
 Bundle-Version: 1.0.0.qualifier
@@ -20,6 +19,5 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
-Export-Package: d.fe.up.pt.cicd.circleci.acceleo.main,
-  d.fe.up.pt.cicd.circleci.acceleo.services
+Export-Package: d.fe.up.pt.cicd.circleci.acceleo.main
 

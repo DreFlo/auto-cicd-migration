@@ -65,10 +65,14 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 			return createTransformationSet();
 		case TransformationsPackage.CHANGE_PLUGIN:
 			return createChangePlugin();
-		case TransformationsPackage.ATL_SCRIPT:
-			return createATLScript();
+		case TransformationsPackage.ATL_REFINING_SCRIPT:
+			return createATLRefiningScript();
 		case TransformationsPackage.CHANGE_AGENT_LABEL:
 			return createChangeAgentLabel();
+		case TransformationsPackage.OUTPLACE_TRANSFORMATION:
+			return createOutplaceTransformation();
+		case TransformationsPackage.REPLACE_AGENT_LABELS:
+			return createReplaceAgentLabels();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -142,9 +146,9 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public ATLScript createATLScript() {
-		ATLScriptImpl atlScript = new ATLScriptImpl();
-		return atlScript;
+	public ATLRefiningScript createATLRefiningScript() {
+		ATLRefiningScriptImpl atlRefiningScript = new ATLRefiningScriptImpl();
+		return atlRefiningScript;
 	}
 
 	/**
@@ -156,6 +160,28 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	public ChangeAgentLabel createChangeAgentLabel() {
 		ChangeAgentLabelImpl changeAgentLabel = new ChangeAgentLabelImpl();
 		return changeAgentLabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public OutplaceTransformation createOutplaceTransformation() {
+		OutplaceTransformationImpl outplaceTransformation = new OutplaceTransformationImpl();
+		return outplaceTransformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ReplaceAgentLabels createReplaceAgentLabels() {
+		ReplaceAgentLabelsImpl replaceAgentLabels = new ReplaceAgentLabelsImpl();
+		return replaceAgentLabels;
 	}
 
 	/**

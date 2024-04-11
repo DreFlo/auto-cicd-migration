@@ -9,7 +9,7 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  *
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getLiteral()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Literal extends Value {

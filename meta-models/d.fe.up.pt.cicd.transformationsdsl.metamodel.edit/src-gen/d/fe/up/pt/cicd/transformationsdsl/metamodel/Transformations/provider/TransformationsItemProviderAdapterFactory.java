@@ -142,26 +142,26 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ATLScriptItemProvider atlScriptItemProvider;
+	protected ATLRefiningScriptItemProvider atlRefiningScriptItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createATLScriptAdapter() {
-		if (atlScriptItemProvider == null) {
-			atlScriptItemProvider = new ATLScriptItemProvider(this);
+	public Adapter createATLRefiningScriptAdapter() {
+		if (atlRefiningScriptItemProvider == null) {
+			atlRefiningScriptItemProvider = new ATLRefiningScriptItemProvider(this);
 		}
 
-		return atlScriptItemProvider;
+		return atlRefiningScriptItemProvider;
 	}
 
 	/**
@@ -185,6 +185,52 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 		}
 
 		return changeAgentLabelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OutplaceTransformationItemProvider outplaceTransformationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOutplaceTransformationAdapter() {
+		if (outplaceTransformationItemProvider == null) {
+			outplaceTransformationItemProvider = new OutplaceTransformationItemProvider(this);
+		}
+
+		return outplaceTransformationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReplaceAgentLabelsItemProvider replaceAgentLabelsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReplaceAgentLabelsAdapter() {
+		if (replaceAgentLabelsItemProvider == null) {
+			replaceAgentLabelsItemProvider = new ReplaceAgentLabelsItemProvider(this);
+		}
+
+		return replaceAgentLabelsItemProvider;
 	}
 
 	/**
@@ -298,10 +344,14 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 			transformationSetItemProvider.dispose();
 		if (changePluginItemProvider != null)
 			changePluginItemProvider.dispose();
-		if (atlScriptItemProvider != null)
-			atlScriptItemProvider.dispose();
+		if (atlRefiningScriptItemProvider != null)
+			atlRefiningScriptItemProvider.dispose();
 		if (changeAgentLabelItemProvider != null)
 			changeAgentLabelItemProvider.dispose();
+		if (outplaceTransformationItemProvider != null)
+			outplaceTransformationItemProvider.dispose();
+		if (replaceAgentLabelsItemProvider != null)
+			replaceAgentLabelsItemProvider.dispose();
 	}
 
 }

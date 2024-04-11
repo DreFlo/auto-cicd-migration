@@ -1,14 +1,465 @@
 -- @path CICD1=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
 -- @path CICD2=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
 
-module changeJobInputIds;
+module cicdRefinement;
 create OUT : CICD2 from IN : CICD1;
 
+rule ReplaceAgentLabels extends Agent {
+	from
+		input : CICD1!Agent(
+			input.labels->exists(label | label.expression2String() = 'macos')
+		)
+	to
+		output : CICD2!Agent(
+			labels <- Sequence{
+				'macos-latest'
+			}->collect(label | thisModule.String2StringLiteral(label))
+		)
+}
+
+lazy rule String2StringLiteral {
+	from
+		input : String
+	to
+		output : CICD2!StringLiteral(
+			value <- input
+		)
+}
+rule Agent {
+	from
+		input : CICD1!Agent
+	to
+		output : CICD2!Agent(
+			container <- input.container,
+			labels <- input.labels
+		)
+}
+rule DockerContainer {
+	from
+		input : CICD1!DockerContainer
+	to
+		output : CICD2!DockerContainer(
+			environmentVariables <- input.environmentVariables,
+			image <- input.image,
+			label <- input.label,
+			network <- input.network,
+			options <- input.options,
+			ports <- input.ports,
+			registryPassword <- input.registryPassword,
+			registryUsername <- input.registryUsername,
+			volumes <- input.volumes
+		)
+}
+abstract rule Expression {
+	from
+		input : CICD1!Expression
+	to
+		output : CICD2!Expression()
+}
+
+rule Concat extends Expression {
+	from
+		input : CICD1!Concat
+	to
+		output : CICD2!Concat(
+			expressions <- input.expressions
+		)
+}
+
+rule Assignment extends Expression {
+	from
+		input : CICD1!Assignment
+	to
+		output : CICD2!Assignment(
+			key <- input.key,
+			value <- input.value
+		)
+}
+
+rule Value extends Expression {
+	from
+		input : CICD1!Value
+	to
+		output : CICD2!Value
+}
+
+rule Literal extends Expression {
+	from
+		input : CICD1!Literal
+	to
+		output : CICD2!Literal
+}
+
+rule StringLiteral extends Literal {
+	from
+		input : CICD1!StringLiteral
+	to
+		output : CICD2!StringLiteral(
+			value <- input.value
+		)
+}
+
+rule IntegerLiteral extends Literal {
+	from
+		input : CICD1!IntegerLiteral
+	to
+		output : CICD2!IntegerLiteral(
+			value <- input.value
+		)
+}
+
+rule DoubleLiteral extends Literal {
+	from
+		input : CICD1!DoubleLiteral
+	to
+		output : CICD2!DoubleLiteral(
+			value <- input.value
+		)
+}
+
+rule BooleanLiteral extends Literal {
+	from
+		input : CICD1!BooleanLiteral
+	to
+		output : CICD2!BooleanLiteral(
+			value <- input.value
+		)
+}
+
+rule Variable extends Value {
+	from
+		input : CICD1!Variable
+	to
+		output : CICD2!Variable(
+			name <- input.name
+		)
+}
+
+rule SecretVariable extends Variable {
+	from
+		input : CICD1!SecretVariable
+	to
+		output : CICD2!SecretVariable
+}
+
+rule VariableContext extends Value {
+	from
+		input : CICD1!VariableContext
+	to
+		output : CICD2!VariableContext(
+			context <- input.context
+		)
+}
+
+rule VariableDereference extends Expression {
+	from
+		input : CICD1!VariableDereference
+	to
+		output : CICD2!VariableDereference(
+			property <- input.property,
+			variable <- input.variable
+		)
+}
+
+rule BuiltInFunction extends Expression {
+	from
+		input : CICD1!BuiltInFunction
+	to
+		output : CICD2!BuiltInFunction
+}
+
+abstract rule BinaryOp extends Expression {
+	from
+		input : CICD1!BinaryOp
+	to
+		output : CICD2!BinaryOp(
+			lhs <- input.lhs,
+			rhs <- input.rhs
+		)
+}
+
+rule EqualityOp extends BinaryOp {
+	from
+		input : CICD1!EqualityOp
+	to
+		output : CICD2!EqualityOp(
+			op <- input.op
+		)
+}
+
+rule ComparisonOp extends BinaryOp {
+	from
+		input : CICD1!ComparisonOp
+	to
+		output : CICD2!ComparisonOp(
+			op <- input.op
+		)
+}
+
+abstract rule LogicalOp extends BinaryOp {
+	from
+		input : CICD1!LogicalOp
+	to
+		output : CICD2!LogicalOp
+}
+
+rule Or extends LogicalOp {
+	from
+		input : CICD1!Or
+	to
+		output : CICD2!Or
+}
+
+rule And extends LogicalOp {
+	from
+		input : CICD1!And
+	to
+		output : CICD2!And
+}
+
+abstract rule UnaryOp extends Expression {
+	from
+		input : CICD1!UnaryOp
+	to
+		output : CICD2!UnaryOp(
+			rhs <- input.rhs
+		)
+}
+
+rule Negation extends UnaryOp {
+	from
+		input : CICD1!Negation
+	to
+		output : CICD2!Negation
+}
+abstract rule Job {
+	from
+		input : CICD1!Job
+	to
+		output : CICD2!Job(
+			agent <- input.agent,
+			allowFailure <- input.allowFailure,
+			environmentVariables <- input.environmentVariables,
+			id <- input.id,
+			ifCondition <- input.ifCondition,
+			inputs <- input.inputs,
+			matrix <- input.matrix,
+			maxAttempts <- input.maxAttempts,
+			name <- input.name,
+			next <- input.next,
+			outputs <- input.outputs,
+			services <- input.services,
+			shell <- input.shell,
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
+		)
+}
+
+rule ScriptJob extends Job {
+	from
+		input : CICD1!ScriptJob
+	to
+		output : CICD2!ScriptJob(
+			steps <- input.steps
+		)
+}
+
+rule PipelineCallJob extends Job {
+	from
+		input : CICD1!PipelineCallJob
+	to
+		output : CICD2!PipelineCallJob(
+			args <- input.args,
+			pipelinePath <- input.pipelinePath
+		)
+}
+rule Matrix {
+	from
+		input : CICD1!Matrix
+	to
+		output : CICD2!Matrix(
+			axes <- input.axes,
+			excludes <- input.excludes,
+			failFast <- input.failFast,
+			includes <- input.includes
+		)
+}
+
+rule MatrixAxis {
+	from
+		input : CICD1!MatrixAxis
+	to
+		output : CICD2!MatrixAxis(
+			cells <- input.cells,
+			name <- input.name
+		)
+}
+
+rule MatrixCombination {
+	from
+		input : CICD1!MatrixCombination
+	to
+		output : CICD2!MatrixCombination(
+			combinationEntries <- input.combinationEntries
+		)
+}
+abstract rule Parameter {
+	from
+		input : CICD1!Parameter
+	to
+		output : CICD2!Parameter(
+			description <- input.description,
+			id <- input.id
+		)
+}
+
+rule Input extends Parameter {
+	from
+		input : CICD1!Input
+	to
+		output : CICD2!Input(
+			choices <- input.choices,
+			defaultValue <- input.defaultValue,
+			description <- input.description,
+			id <- input.id,
+			required <- input.required,
+			type <- input.type
+		)
+}
+
+rule Output extends Parameter {
+	from
+		input : CICD1!Output
+	to
+		output : CICD2!Output(
+			value <- input.value
+		)
+}
 rule Pipeline {
 	from
 		input : CICD1!Pipeline
 	to
 		output : CICD2!Pipeline(
-			agent <- input.agent
+			agent <- input.agent,
+			concurrencyGroup <- input.concurrencyGroup,
+			environmentVariables <- input.environmentVariables,
+			inputs <- input.inputs,
+			jobStreams <- input.jobStreams,
+			name <- input.name,
+			outputs <- input.outputs,
+			permissions <- input.permissions,
+			shell <- input.shell,
+			timeoutMinutes <- input.timeoutMinutes,
+			triggers <- input.triggers,
+			workingDirectory <- input.workingDirectory
 		)
 }
+abstract rule Step {
+	from
+		input : CICD1!Step
+	to
+		output : CICD2!Step()
+}
+
+abstract rule NonConditionalStep extends Step {
+	from
+		input : CICD1!NonConditionalStep
+	to
+		output : CICD2!NonConditionalStep(
+			allowFailure <- input.allowFailure,
+			environmentVariables <- input.environmentVariables,
+			id <- input.id,
+			name <- input.name,
+			timeoutMinutes <- input.timeoutMinutes
+		)
+}
+
+rule ConditionalStep extends Step {
+	from
+		input : CICD1!ConditionalStep
+	to
+		output : CICD2!ConditionalStep(
+			elseRun <- input.elseRun,
+			ifCondition <- input.ifCondition,
+			thenRun <- input.thenRun
+		)
+}
+
+rule Command extends NonConditionalStep {
+	from
+		input : CICD1!Command
+	to
+		output : CICD2!Command(
+			program <- input.program
+		)
+}
+
+rule Plugin extends NonConditionalStep {
+	from
+		input : CICD1!Plugin
+	to
+		output : CICD2!Plugin(
+			kwargs <- input.kwargs,
+			pluginName <- input.pluginName,
+			version <- input.version
+		)
+}
+
+rule Artifact extends NonConditionalStep {
+	from
+		input : CICD1!Artifact
+	to
+		output : CICD2!Artifact(
+			artifactName <- input.artifactName,
+			excludePaths <- input.excludePaths,
+			includePaths <- input.includePaths,
+			store <- input.store
+		)
+}
+
+rule Cache extends NonConditionalStep {
+	from
+		input : CICD1!Cache
+	to
+		output : CICD2!Cache(
+			cacheName <- input.cacheName,
+			keys <- input.keys,
+			paths <- input.paths,
+			store <- input.store
+		)
+}
+
+rule Checkout extends NonConditionalStep {
+	from
+		input : CICD1!Checkout
+	to
+		output : CICD2!Checkout(
+			path <- input.path
+		)
+}
+helper context CICD1!Expression def : expression2String() : String = 'EXPRESSION';
+
+helper context CICD1!StringLiteral def : expression2String() : String = self.value;
+
+helper context CICD1!IntegerLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD1!DoubleLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD1!BooleanLiteral def : expression2String() : String = self.value.toString();
+
+helper context CICD1!Concat def : expression2String() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD1!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
+		exprStrings->iterate(exprString; joinedString: String = '' |
+			joinedString.concat(exprString)
+		);
+
+helper context CICD1!Variable def : expression2String() : String =
+	'$'.concat(self.name);
+
+helper context CICD1!VariableContext def : expression2String() : String =
+	self.context.toString();
+
+helper context CICD1!VariableDereference def : expression2String() : String =
+	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;
+

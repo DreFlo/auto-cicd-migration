@@ -229,24 +229,6 @@ public interface CICDFactory extends EFactory {
 	Concat createConcat();
 
 	/**
-	 * Returns a new object of class '<em>Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Value</em>'.
-	 * @generated
-	 */
-	Value createValue();
-
-	/**
-	 * Returns a new object of class '<em>Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal</em>'.
-	 * @generated
-	 */
-	Literal createLiteral();
-
-	/**
 	 * Returns a new object of class '<em>String Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -2,7 +2,7 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -13,18 +13,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>ATL Script</b></em>'.
+ * An implementation of the model object '<em><b>ATL Refining Script</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl#getScript <em>Script</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLRefiningScriptImpl#getScript <em>Script</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ATLScriptImpl extends TransformationImpl implements ATLScript {
+public class ATLRefiningScriptImpl extends RefiningTransformationImpl implements ATLRefiningScript {
 	/**
 	 * The default value of the '{@link #getScript() <em>Script</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,7 +50,7 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ATLScriptImpl() {
+	protected ATLRefiningScriptImpl() {
 		super();
 	}
 
@@ -61,7 +61,7 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TransformationsPackage.Literals.ATL_SCRIPT;
+		return TransformationsPackage.Literals.ATL_REFINING_SCRIPT;
 	}
 
 	/**
@@ -84,8 +84,8 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 		String oldScript = script;
 		script = newScript;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TransformationsPackage.ATL_SCRIPT__SCRIPT, oldScript,
-					script));
+			eNotify(new ENotificationImpl(this, Notification.SET, TransformationsPackage.ATL_REFINING_SCRIPT__SCRIPT,
+					oldScript, script));
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TransformationsPackage.ATL_SCRIPT__SCRIPT:
+		case TransformationsPackage.ATL_REFINING_SCRIPT__SCRIPT:
 			return getScript();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -110,7 +110,7 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TransformationsPackage.ATL_SCRIPT__SCRIPT:
+		case TransformationsPackage.ATL_REFINING_SCRIPT__SCRIPT:
 			setScript((String) newValue);
 			return;
 		}
@@ -125,7 +125,7 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TransformationsPackage.ATL_SCRIPT__SCRIPT:
+		case TransformationsPackage.ATL_REFINING_SCRIPT__SCRIPT:
 			setScript(SCRIPT_EDEFAULT);
 			return;
 		}
@@ -140,7 +140,7 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TransformationsPackage.ATL_SCRIPT__SCRIPT:
+		case TransformationsPackage.ATL_REFINING_SCRIPT__SCRIPT:
 			return SCRIPT_EDEFAULT == null ? script != null : !SCRIPT_EDEFAULT.equals(script);
 		}
 		return super.eIsSet(featureID);
@@ -163,4 +163,4 @@ public class ATLScriptImpl extends TransformationImpl implements ATLScript {
 		return result.toString();
 	}
 
-} //ATLScriptImpl
+} //ATLRefiningScriptImpl

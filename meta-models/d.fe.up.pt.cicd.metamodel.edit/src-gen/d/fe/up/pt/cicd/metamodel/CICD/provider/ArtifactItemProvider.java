@@ -178,12 +178,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
-				CICDFactory.eINSTANCE.createLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME,
@@ -233,12 +227,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createStringLiteral()));
@@ -292,12 +280,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 				CICDFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
-				CICDFactory.eINSTANCE.createLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS,
@@ -347,12 +329,6 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
-				CICDFactory.eINSTANCE.createLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ARTIFACT__RETENTION_TIME,
 				CICDFactory.eINSTANCE.createStringLiteral()));

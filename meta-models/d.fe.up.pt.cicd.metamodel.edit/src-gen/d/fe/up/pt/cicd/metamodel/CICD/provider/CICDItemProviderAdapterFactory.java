@@ -648,52 +648,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Value} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ValueItemProvider valueItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Value}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createValueAdapter() {
-		if (valueItemProvider == null) {
-			valueItemProvider = new ValueItemProvider(this);
-		}
-
-		return valueItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Literal} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LiteralItemProvider literalItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Literal}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLiteralAdapter() {
-		if (literalItemProvider == null) {
-			literalItemProvider = new LiteralItemProvider(this);
-		}
-
-		return literalItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.StringLiteral} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1193,10 +1147,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			assignmentItemProvider.dispose();
 		if (concatItemProvider != null)
 			concatItemProvider.dispose();
-		if (valueItemProvider != null)
-			valueItemProvider.dispose();
-		if (literalItemProvider != null)
-			literalItemProvider.dispose();
 		if (stringLiteralItemProvider != null)
 			stringLiteralItemProvider.dispose();
 		if (integerLiteralItemProvider != null)

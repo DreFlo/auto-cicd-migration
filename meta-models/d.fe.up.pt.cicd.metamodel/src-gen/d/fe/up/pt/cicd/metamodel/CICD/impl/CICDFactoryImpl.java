@@ -108,10 +108,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return (EObject) createAssignment();
 		case CICDPackage.CONCAT:
 			return createConcat();
-		case CICDPackage.VALUE:
-			return createValue();
-		case CICDPackage.LITERAL:
-			return createLiteral();
 		case CICDPackage.STRING_LITERAL:
 			return createStringLiteral();
 		case CICDPackage.INTEGER_LITERAL:
@@ -472,28 +468,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
 		return concat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Value createValue() {
-		ValueImpl value = new ValueImpl();
-		return value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Literal createLiteral() {
-		LiteralImpl literal = new LiteralImpl();
-		return literal;
 	}
 
 	/**

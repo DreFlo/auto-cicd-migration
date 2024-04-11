@@ -41,13 +41,13 @@ public interface TransformationsFactory extends EFactory {
 	ChangePlugin createChangePlugin();
 
 	/**
-	 * Returns a new object of class '<em>ATL Script</em>'.
+	 * Returns a new object of class '<em>ATL Refining Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ATL Script</em>'.
+	 * @return a new object of class '<em>ATL Refining Script</em>'.
 	 * @generated
 	 */
-	ATLScript createATLScript();
+	ATLRefiningScript createATLRefiningScript();
 
 	/**
 	 * Returns a new object of class '<em>Change Agent Label</em>'.
@@ -57,6 +57,24 @@ public interface TransformationsFactory extends EFactory {
 	 * @generated
 	 */
 	ChangeAgentLabel createChangeAgentLabel();
+
+	/**
+	 * Returns a new object of class '<em>Outplace Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Outplace Transformation</em>'.
+	 * @generated
+	 */
+	OutplaceTransformation createOutplaceTransformation();
+
+	/**
+	 * Returns a new object of class '<em>Replace Agent Labels</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Replace Agent Labels</em>'.
+	 * @generated
+	 */
+	ReplaceAgentLabels createReplaceAgentLabels();
 
 	/**
 	 * Returns the package supported by this factory.

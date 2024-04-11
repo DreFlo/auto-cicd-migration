@@ -32,11 +32,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangePlugin/version"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePlugin/args"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//ATLScript">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLScript/script"/>
+    <genClasses ecoreClass="Transformations.ecore#//ATLRefiningScript">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLRefiningScript/script"/>
     </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//ChangeAgentLabel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangeAgentLabel/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//RefiningTransformation"/>
+    <genClasses ecoreClass="Transformations.ecore#//OutplaceTransformation"/>
+    <genClasses ecoreClass="Transformations.ecore#//ReplaceAgentLabels">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/condition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/labels"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -104,24 +104,28 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.Transformation");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cChangePluginParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cATLScriptParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cATLRefiningScriptParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cChangeAgentLabelParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cReplaceAgentLabelsParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Transformation returns Transformation:
-		//    ChangePlugin | ATLScript | ChangeAgentLabel;
+		//    ChangePlugin | ATLRefiningScript | ChangeAgentLabel | ReplaceAgentLabels;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ChangePlugin | ATLScript | ChangeAgentLabel
+		//ChangePlugin | ATLRefiningScript | ChangeAgentLabel | ReplaceAgentLabels
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ChangePlugin
 		public RuleCall getChangePluginParserRuleCall_0() { return cChangePluginParserRuleCall_0; }
 		
-		//ATLScript
-		public RuleCall getATLScriptParserRuleCall_1() { return cATLScriptParserRuleCall_1; }
+		//ATLRefiningScript
+		public RuleCall getATLRefiningScriptParserRuleCall_1() { return cATLRefiningScriptParserRuleCall_1; }
 		
 		//ChangeAgentLabel
 		public RuleCall getChangeAgentLabelParserRuleCall_2() { return cChangeAgentLabelParserRuleCall_2; }
+		
+		//ReplaceAgentLabels
+		public RuleCall getReplaceAgentLabelsParserRuleCall_3() { return cReplaceAgentLabelsParserRuleCall_3; }
 	}
 	public class ChangePluginElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ChangePlugin");
@@ -234,10 +238,10 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 	}
-	public class ATLScriptElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ATLScript");
+	public class ATLRefiningScriptElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ATLRefiningScript");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cATLScriptKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cATLRefiningScriptKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cModelKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -247,23 +251,23 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cScriptEStringParserRuleCall_5_0 = (RuleCall)cScriptAssignment_5.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//ATLScript returns ATLScript:
-		//    'ATLScript'
+		//ATLRefiningScript returns ATLRefiningScript:
+		//    'ATLRefiningScript'
 		//    '{'
 		//        'model' model=MODEL_NAMES
 		//        'script' script=EString
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'ATLScript'
+		//'ATLRefiningScript'
 		//'{'
 		//    'model' model=MODEL_NAMES
 		//    'script' script=EString
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//'ATLScript'
-		public Keyword getATLScriptKeyword_0() { return cATLScriptKeyword_0; }
+		//'ATLRefiningScript'
+		public Keyword getATLRefiningScriptKeyword_0() { return cATLRefiningScriptKeyword_0; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
@@ -343,6 +347,92 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+	}
+	public class ReplaceAgentLabelsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ReplaceAgentLabels");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cReplaceAgentLabelsKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cModelKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cModelMODEL_NAMESEnumRuleCall_3_0 = (RuleCall)cModelAssignment_3.eContents().get(0);
+		private final Keyword cConditionKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cConditionAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cConditionEStringParserRuleCall_5_0 = (RuleCall)cConditionAssignment_5.eContents().get(0);
+		private final Keyword cLabelsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cLabelsAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cLabelsEStringParserRuleCall_7_0 = (RuleCall)cLabelsAssignment_7.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final Keyword cCommaKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Assignment cLabelsAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cLabelsEStringParserRuleCall_8_1_0 = (RuleCall)cLabelsAssignment_8_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		
+		//ReplaceAgentLabels returns ReplaceAgentLabels:
+		//    'ReplaceAgentLabels'
+		//    '{'
+		//        'model' model=MODEL_NAMES
+		//        'condition' condition=EString
+		//        'labels' labels+=EString (',' labels+=EString)*
+		//    '}'
+		//    ;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'ReplaceAgentLabels'
+		//'{'
+		//    'model' model=MODEL_NAMES
+		//    'condition' condition=EString
+		//    'labels' labels+=EString (',' labels+=EString)*
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'ReplaceAgentLabels'
+		public Keyword getReplaceAgentLabelsKeyword_0() { return cReplaceAgentLabelsKeyword_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//'model'
+		public Keyword getModelKeyword_2() { return cModelKeyword_2; }
+		
+		//model=MODEL_NAMES
+		public Assignment getModelAssignment_3() { return cModelAssignment_3; }
+		
+		//MODEL_NAMES
+		public RuleCall getModelMODEL_NAMESEnumRuleCall_3_0() { return cModelMODEL_NAMESEnumRuleCall_3_0; }
+		
+		//'condition'
+		public Keyword getConditionKeyword_4() { return cConditionKeyword_4; }
+		
+		//condition=EString
+		public Assignment getConditionAssignment_5() { return cConditionAssignment_5; }
+		
+		//EString
+		public RuleCall getConditionEStringParserRuleCall_5_0() { return cConditionEStringParserRuleCall_5_0; }
+		
+		//'labels'
+		public Keyword getLabelsKeyword_6() { return cLabelsKeyword_6; }
+		
+		//labels+=EString
+		public Assignment getLabelsAssignment_7() { return cLabelsAssignment_7; }
+		
+		//EString
+		public RuleCall getLabelsEStringParserRuleCall_7_0() { return cLabelsEStringParserRuleCall_7_0; }
+		
+		//(',' labels+=EString)*
+		public Group getGroup_8() { return cGroup_8; }
+		
+		//','
+		public Keyword getCommaKeyword_8_0() { return cCommaKeyword_8_0; }
+		
+		//labels+=EString
+		public Assignment getLabelsAssignment_8_1() { return cLabelsAssignment_8_1; }
+		
+		//EString
+		public RuleCall getLabelsEStringParserRuleCall_8_1_0() { return cLabelsEStringParserRuleCall_8_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 	}
 	public class StringToStringMapEntryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.StringToStringMapEntry");
@@ -459,8 +549,9 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final TransformationElements pTransformation;
 	private final MODEL_NAMESElements eMODEL_NAMES;
 	private final ChangePluginElements pChangePlugin;
-	private final ATLScriptElements pATLScript;
+	private final ATLRefiningScriptElements pATLRefiningScript;
 	private final ChangeAgentLabelElements pChangeAgentLabel;
+	private final ReplaceAgentLabelsElements pReplaceAgentLabels;
 	private final StringToStringMapEntryElements pStringToStringMapEntry;
 	private final EStringElements pEString;
 	
@@ -477,8 +568,9 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pTransformation = new TransformationElements();
 		this.eMODEL_NAMES = new MODEL_NAMESElements();
 		this.pChangePlugin = new ChangePluginElements();
-		this.pATLScript = new ATLScriptElements();
+		this.pATLRefiningScript = new ATLRefiningScriptElements();
 		this.pChangeAgentLabel = new ChangeAgentLabelElements();
+		this.pReplaceAgentLabels = new ReplaceAgentLabelsElements();
 		this.pStringToStringMapEntry = new StringToStringMapEntryElements();
 		this.pEString = new EStringElements();
 	}
@@ -525,7 +617,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//Transformation returns Transformation:
-	//    ChangePlugin | ATLScript | ChangeAgentLabel;
+	//    ChangePlugin | ATLRefiningScript | ChangeAgentLabel | ReplaceAgentLabels;
 	public TransformationElements getTransformationAccess() {
 		return pTransformation;
 	}
@@ -560,18 +652,18 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getChangePluginAccess().getRule();
 	}
 	
-	//ATLScript returns ATLScript:
-	//    'ATLScript'
+	//ATLRefiningScript returns ATLRefiningScript:
+	//    'ATLRefiningScript'
 	//    '{'
 	//        'model' model=MODEL_NAMES
 	//        'script' script=EString
 	//    '}';
-	public ATLScriptElements getATLScriptAccess() {
-		return pATLScript;
+	public ATLRefiningScriptElements getATLRefiningScriptAccess() {
+		return pATLRefiningScript;
 	}
 	
-	public ParserRule getATLScriptRule() {
-		return getATLScriptAccess().getRule();
+	public ParserRule getATLRefiningScriptRule() {
+		return getATLRefiningScriptAccess().getRule();
 	}
 	
 	//ChangeAgentLabel returns ChangeAgentLabel:
@@ -586,6 +678,22 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	public ParserRule getChangeAgentLabelRule() {
 		return getChangeAgentLabelAccess().getRule();
+	}
+	
+	//ReplaceAgentLabels returns ReplaceAgentLabels:
+	//    'ReplaceAgentLabels'
+	//    '{'
+	//        'model' model=MODEL_NAMES
+	//        'condition' condition=EString
+	//        'labels' labels+=EString (',' labels+=EString)*
+	//    '}'
+	//    ;
+	public ReplaceAgentLabelsElements getReplaceAgentLabelsAccess() {
+		return pReplaceAgentLabels;
+	}
+	
+	public ParserRule getReplaceAgentLabelsRule() {
+		return getReplaceAgentLabelsAccess().getRule();
 	}
 	
 	//StringToStringMapEntry returns StringToStringMapEntry:

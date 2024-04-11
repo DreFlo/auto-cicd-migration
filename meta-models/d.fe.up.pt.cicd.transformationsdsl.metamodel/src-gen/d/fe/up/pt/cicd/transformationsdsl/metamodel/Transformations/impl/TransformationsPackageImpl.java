@@ -2,9 +2,12 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.RefiningTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
@@ -60,7 +63,7 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass atlScriptEClass = null;
+	private EClass atlRefiningScriptEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,6 +71,27 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	private EClass changeAgentLabelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass refiningTransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass outplaceTransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass replaceAgentLabelsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,8 +280,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EClass getATLScript() {
-		return atlScriptEClass;
+	public EClass getATLRefiningScript() {
+		return atlRefiningScriptEClass;
 	}
 
 	/**
@@ -266,8 +290,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getATLScript_Script() {
-		return (EAttribute) atlScriptEClass.getEStructuralFeatures().get(0);
+	public EAttribute getATLRefiningScript_Script() {
+		return (EAttribute) atlRefiningScriptEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -288,6 +312,56 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	@Override
 	public EReference getChangeAgentLabel_Name() {
 		return (EReference) changeAgentLabelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRefiningTransformation() {
+		return refiningTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOutplaceTransformation() {
+		return outplaceTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getReplaceAgentLabels() {
+		return replaceAgentLabelsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReplaceAgentLabels_Condition() {
+		return (EAttribute) replaceAgentLabelsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReplaceAgentLabels_Labels() {
+		return (EAttribute) replaceAgentLabelsEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -345,11 +419,19 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		createEAttribute(changePluginEClass, CHANGE_PLUGIN__VERSION);
 		createEReference(changePluginEClass, CHANGE_PLUGIN__ARGS);
 
-		atlScriptEClass = createEClass(ATL_SCRIPT);
-		createEAttribute(atlScriptEClass, ATL_SCRIPT__SCRIPT);
+		atlRefiningScriptEClass = createEClass(ATL_REFINING_SCRIPT);
+		createEAttribute(atlRefiningScriptEClass, ATL_REFINING_SCRIPT__SCRIPT);
 
 		changeAgentLabelEClass = createEClass(CHANGE_AGENT_LABEL);
 		createEReference(changeAgentLabelEClass, CHANGE_AGENT_LABEL__NAME);
+
+		refiningTransformationEClass = createEClass(REFINING_TRANSFORMATION);
+
+		outplaceTransformationEClass = createEClass(OUTPLACE_TRANSFORMATION);
+
+		replaceAgentLabelsEClass = createEClass(REPLACE_AGENT_LABELS);
+		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__CONDITION);
+		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__LABELS);
 
 		// Create enums
 		modeL_NAMESEEnum = createEEnum(MODEL_NAMES);
@@ -384,9 +466,12 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		changePluginEClass.getESuperTypes().add(this.getTransformation());
-		atlScriptEClass.getESuperTypes().add(this.getTransformation());
-		changeAgentLabelEClass.getESuperTypes().add(this.getTransformation());
+		changePluginEClass.getESuperTypes().add(this.getRefiningTransformation());
+		atlRefiningScriptEClass.getESuperTypes().add(this.getRefiningTransformation());
+		changeAgentLabelEClass.getESuperTypes().add(this.getRefiningTransformation());
+		refiningTransformationEClass.getESuperTypes().add(this.getTransformation());
+		outplaceTransformationEClass.getESuperTypes().add(this.getTransformation());
+		replaceAgentLabelsEClass.getESuperTypes().add(this.getOutplaceTransformation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
@@ -419,16 +504,32 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 				ChangePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(atlScriptEClass, ATLScript.class, "ATLScript", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(atlRefiningScriptEClass, ATLRefiningScript.class, "ATLRefiningScript", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getATLScript_Script(), ecorePackage.getEString(), "script", null, 1, 1, ATLScript.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getATLRefiningScript_Script(), ecorePackage.getEString(), "script", null, 1, 1,
+				ATLRefiningScript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(changeAgentLabelEClass, ChangeAgentLabel.class, "ChangeAgentLabel", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChangeAgentLabel_Name(), this.getStringToStringMapEntry(), null, "name", null, 1, 1,
 				ChangeAgentLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(refiningTransformationEClass, RefiningTransformation.class, "RefiningTransformation", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(outplaceTransformationEClass, OutplaceTransformation.class, "OutplaceTransformation", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(replaceAgentLabelsEClass, ReplaceAgentLabels.class, "ReplaceAgentLabels", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReplaceAgentLabels_Condition(), ecorePackage.getEString(), "condition", null, 1, 1,
+				ReplaceAgentLabels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReplaceAgentLabels_Labels(), ecorePackage.getEString(), "labels", null, 0, -1,
+				ReplaceAgentLabels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(modeL_NAMESEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES.class,

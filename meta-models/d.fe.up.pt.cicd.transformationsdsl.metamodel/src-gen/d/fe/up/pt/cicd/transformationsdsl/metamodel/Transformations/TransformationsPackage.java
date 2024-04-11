@@ -189,13 +189,50 @@ public interface TransformationsPackage extends EPackage {
 	int CHANGE_PLUGIN = 3;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.RefiningTransformationImpl <em>Refining Transformation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.RefiningTransformationImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getRefiningTransformation()
+	 * @generated
+	 */
+	int REFINING_TRANSFORMATION = 6;
+
+	/**
 	 * The feature id for the '<em><b>Model</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PLUGIN__MODEL = TRANSFORMATION__MODEL;
+	int REFINING_TRANSFORMATION__MODEL = TRANSFORMATION__MODEL;
+
+	/**
+	 * The number of structural features of the '<em>Refining Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFINING_TRANSFORMATION_FEATURE_COUNT = TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Refining Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFINING_TRANSFORMATION_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_PLUGIN__MODEL = REFINING_TRANSFORMATION__MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' map.
@@ -204,7 +241,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PLUGIN__NAME = TRANSFORMATION_FEATURE_COUNT + 0;
+	int CHANGE_PLUGIN__NAME = REFINING_TRANSFORMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -213,7 +250,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PLUGIN__VERSION = TRANSFORMATION_FEATURE_COUNT + 1;
+	int CHANGE_PLUGIN__VERSION = REFINING_TRANSFORMATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Args</b></em>' map.
@@ -222,7 +259,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PLUGIN__ARGS = TRANSFORMATION_FEATURE_COUNT + 2;
+	int CHANGE_PLUGIN__ARGS = REFINING_TRANSFORMATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Change Plugin</em>' class.
@@ -231,7 +268,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PLUGIN_FEATURE_COUNT = TRANSFORMATION_FEATURE_COUNT + 3;
+	int CHANGE_PLUGIN_FEATURE_COUNT = REFINING_TRANSFORMATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Change Plugin</em>' class.
@@ -240,17 +277,17 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_PLUGIN_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
+	int CHANGE_PLUGIN_OPERATION_COUNT = REFINING_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl <em>ATL Script</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLRefiningScriptImpl <em>ATL Refining Script</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getATLScript()
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLRefiningScriptImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getATLRefiningScript()
 	 * @generated
 	 */
-	int ATL_SCRIPT = 4;
+	int ATL_REFINING_SCRIPT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' attribute.
@@ -259,7 +296,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATL_SCRIPT__MODEL = TRANSFORMATION__MODEL;
+	int ATL_REFINING_SCRIPT__MODEL = REFINING_TRANSFORMATION__MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Script</b></em>' attribute.
@@ -268,25 +305,25 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATL_SCRIPT__SCRIPT = TRANSFORMATION_FEATURE_COUNT + 0;
+	int ATL_REFINING_SCRIPT__SCRIPT = REFINING_TRANSFORMATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>ATL Script</em>' class.
+	 * The number of structural features of the '<em>ATL Refining Script</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATL_SCRIPT_FEATURE_COUNT = TRANSFORMATION_FEATURE_COUNT + 1;
+	int ATL_REFINING_SCRIPT_FEATURE_COUNT = REFINING_TRANSFORMATION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>ATL Script</em>' class.
+	 * The number of operations of the '<em>ATL Refining Script</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATL_SCRIPT_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
+	int ATL_REFINING_SCRIPT_OPERATION_COUNT = REFINING_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangeAgentLabelImpl <em>Change Agent Label</em>}' class.
@@ -305,7 +342,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_AGENT_LABEL__MODEL = TRANSFORMATION__MODEL;
+	int CHANGE_AGENT_LABEL__MODEL = REFINING_TRANSFORMATION__MODEL;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' map.
@@ -314,7 +351,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_AGENT_LABEL__NAME = TRANSFORMATION_FEATURE_COUNT + 0;
+	int CHANGE_AGENT_LABEL__NAME = REFINING_TRANSFORMATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Change Agent Label</em>' class.
@@ -323,7 +360,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_AGENT_LABEL_FEATURE_COUNT = TRANSFORMATION_FEATURE_COUNT + 1;
+	int CHANGE_AGENT_LABEL_FEATURE_COUNT = REFINING_TRANSFORMATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Change Agent Label</em>' class.
@@ -332,7 +369,99 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_AGENT_LABEL_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
+	int CHANGE_AGENT_LABEL_OPERATION_COUNT = REFINING_TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.OutplaceTransformationImpl <em>Outplace Transformation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.OutplaceTransformationImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getOutplaceTransformation()
+	 * @generated
+	 */
+	int OUTPLACE_TRANSFORMATION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPLACE_TRANSFORMATION__MODEL = TRANSFORMATION__MODEL;
+
+	/**
+	 * The number of structural features of the '<em>Outplace Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPLACE_TRANSFORMATION_FEATURE_COUNT = TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Outplace Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPLACE_TRANSFORMATION_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceAgentLabelsImpl <em>Replace Agent Labels</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceAgentLabelsImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getReplaceAgentLabels()
+	 * @generated
+	 */
+	int REPLACE_AGENT_LABELS = 8;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_AGENT_LABELS__MODEL = OUTPLACE_TRANSFORMATION__MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_AGENT_LABELS__CONDITION = OUTPLACE_TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Labels</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_AGENT_LABELS__LABELS = OUTPLACE_TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Replace Agent Labels</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_AGENT_LABELS_FEATURE_COUNT = OUTPLACE_TRANSFORMATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Replace Agent Labels</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_AGENT_LABELS_OPERATION_COUNT = OUTPLACE_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES <em>MODEL NAMES</em>}' enum.
@@ -342,7 +471,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getMODEL_NAMES()
 	 * @generated
 	 */
-	int MODEL_NAMES = 6;
+	int MODEL_NAMES = 9;
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
@@ -464,25 +593,25 @@ public interface TransformationsPackage extends EPackage {
 	EReference getChangePlugin_Args();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript <em>ATL Script</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript <em>ATL Refining Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ATL Script</em>'.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript
+	 * @return the meta object for class '<em>ATL Refining Script</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript
 	 * @generated
 	 */
-	EClass getATLScript();
+	EClass getATLRefiningScript();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript#getScript <em>Script</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript#getScript <em>Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Script</em>'.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript#getScript()
-	 * @see #getATLScript()
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript#getScript()
+	 * @see #getATLRefiningScript()
 	 * @generated
 	 */
-	EAttribute getATLScript_Script();
+	EAttribute getATLRefiningScript_Script();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel <em>Change Agent Label</em>}'.
@@ -504,6 +633,58 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getChangeAgentLabel_Name();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.RefiningTransformation <em>Refining Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Refining Transformation</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.RefiningTransformation
+	 * @generated
+	 */
+	EClass getRefiningTransformation();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation <em>Outplace Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Outplace Transformation</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation
+	 * @generated
+	 */
+	EClass getOutplaceTransformation();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels <em>Replace Agent Labels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Replace Agent Labels</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels
+	 * @generated
+	 */
+	EClass getReplaceAgentLabels();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Condition</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getCondition()
+	 * @see #getReplaceAgentLabels()
+	 * @generated
+	 */
+	EAttribute getReplaceAgentLabels_Condition();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getLabels <em>Labels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Labels</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getLabels()
+	 * @see #getReplaceAgentLabels()
+	 * @generated
+	 */
+	EAttribute getReplaceAgentLabels_Labels();
 
 	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES <em>MODEL NAMES</em>}'.
@@ -635,14 +816,14 @@ public interface TransformationsPackage extends EPackage {
 		EReference CHANGE_PLUGIN__ARGS = eINSTANCE.getChangePlugin_Args();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl <em>ATL Script</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLRefiningScriptImpl <em>ATL Refining Script</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl
-		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getATLScript()
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLRefiningScriptImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getATLRefiningScript()
 		 * @generated
 		 */
-		EClass ATL_SCRIPT = eINSTANCE.getATLScript();
+		EClass ATL_REFINING_SCRIPT = eINSTANCE.getATLRefiningScript();
 
 		/**
 		 * The meta object literal for the '<em><b>Script</b></em>' attribute feature.
@@ -650,7 +831,7 @@ public interface TransformationsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ATL_SCRIPT__SCRIPT = eINSTANCE.getATLScript_Script();
+		EAttribute ATL_REFINING_SCRIPT__SCRIPT = eINSTANCE.getATLRefiningScript_Script();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangeAgentLabelImpl <em>Change Agent Label</em>}' class.
@@ -669,6 +850,52 @@ public interface TransformationsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CHANGE_AGENT_LABEL__NAME = eINSTANCE.getChangeAgentLabel_Name();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.RefiningTransformationImpl <em>Refining Transformation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.RefiningTransformationImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getRefiningTransformation()
+		 * @generated
+		 */
+		EClass REFINING_TRANSFORMATION = eINSTANCE.getRefiningTransformation();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.OutplaceTransformationImpl <em>Outplace Transformation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.OutplaceTransformationImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getOutplaceTransformation()
+		 * @generated
+		 */
+		EClass OUTPLACE_TRANSFORMATION = eINSTANCE.getOutplaceTransformation();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceAgentLabelsImpl <em>Replace Agent Labels</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceAgentLabelsImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getReplaceAgentLabels()
+		 * @generated
+		 */
+		EClass REPLACE_AGENT_LABELS = eINSTANCE.getReplaceAgentLabels();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPLACE_AGENT_LABELS__CONDITION = eINSTANCE.getReplaceAgentLabels_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Labels</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPLACE_AGENT_LABELS__LABELS = eINSTANCE.getReplaceAgentLabels_Labels();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES <em>MODEL NAMES</em>}' enum.

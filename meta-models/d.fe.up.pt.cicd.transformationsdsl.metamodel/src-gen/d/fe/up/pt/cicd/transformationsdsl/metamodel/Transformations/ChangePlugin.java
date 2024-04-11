@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EMap;
  * @model
  * @generated
  */
-public interface ChangePlugin extends Transformation {
+public interface ChangePlugin extends RefiningTransformation {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' map.
 	 * <!-- begin-user-doc -->

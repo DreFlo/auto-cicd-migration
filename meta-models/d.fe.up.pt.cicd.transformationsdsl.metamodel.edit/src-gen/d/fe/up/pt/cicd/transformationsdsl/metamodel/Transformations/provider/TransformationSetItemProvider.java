@@ -156,11 +156,19 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 
 		newChildDescriptors
 				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
-						TransformationsFactory.eINSTANCE.createATLScript()));
+						TransformationsFactory.eINSTANCE.createATLRefiningScript()));
 
 		newChildDescriptors
 				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
 						TransformationsFactory.eINSTANCE.createChangeAgentLabel()));
+
+		newChildDescriptors
+				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
+						TransformationsFactory.eINSTANCE.createOutplaceTransformation()));
+
+		newChildDescriptors
+				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
+						TransformationsFactory.eINSTANCE.createReplaceAgentLabels()));
 	}
 
 	/**

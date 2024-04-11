@@ -94,16 +94,20 @@ public class TransformationsSwitch<T> extends Switch<T> {
 			ChangePlugin changePlugin = (ChangePlugin) theEObject;
 			T result = caseChangePlugin(changePlugin);
 			if (result == null)
+				result = caseRefiningTransformation(changePlugin);
+			if (result == null)
 				result = caseTransformation(changePlugin);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.ATL_SCRIPT: {
-			ATLScript atlScript = (ATLScript) theEObject;
-			T result = caseATLScript(atlScript);
+		case TransformationsPackage.ATL_REFINING_SCRIPT: {
+			ATLRefiningScript atlRefiningScript = (ATLRefiningScript) theEObject;
+			T result = caseATLRefiningScript(atlRefiningScript);
 			if (result == null)
-				result = caseTransformation(atlScript);
+				result = caseRefiningTransformation(atlRefiningScript);
+			if (result == null)
+				result = caseTransformation(atlRefiningScript);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -112,7 +116,38 @@ public class TransformationsSwitch<T> extends Switch<T> {
 			ChangeAgentLabel changeAgentLabel = (ChangeAgentLabel) theEObject;
 			T result = caseChangeAgentLabel(changeAgentLabel);
 			if (result == null)
+				result = caseRefiningTransformation(changeAgentLabel);
+			if (result == null)
 				result = caseTransformation(changeAgentLabel);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.REFINING_TRANSFORMATION: {
+			RefiningTransformation refiningTransformation = (RefiningTransformation) theEObject;
+			T result = caseRefiningTransformation(refiningTransformation);
+			if (result == null)
+				result = caseTransformation(refiningTransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.OUTPLACE_TRANSFORMATION: {
+			OutplaceTransformation outplaceTransformation = (OutplaceTransformation) theEObject;
+			T result = caseOutplaceTransformation(outplaceTransformation);
+			if (result == null)
+				result = caseTransformation(outplaceTransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.REPLACE_AGENT_LABELS: {
+			ReplaceAgentLabels replaceAgentLabels = (ReplaceAgentLabels) theEObject;
+			T result = caseReplaceAgentLabels(replaceAgentLabels);
+			if (result == null)
+				result = caseOutplaceTransformation(replaceAgentLabels);
+			if (result == null)
+				result = caseTransformation(replaceAgentLabels);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -183,17 +218,17 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ATL Script</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ATL Refining Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ATL Script</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ATL Refining Script</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseATLScript(ATLScript object) {
+	public T caseATLRefiningScript(ATLRefiningScript object) {
 		return null;
 	}
 
@@ -209,6 +244,51 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseChangeAgentLabel(ChangeAgentLabel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Refining Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Refining Transformation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRefiningTransformation(RefiningTransformation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Outplace Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Outplace Transformation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOutplaceTransformation(OutplaceTransformation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Replace Agent Labels</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Replace Agent Labels</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReplaceAgentLabels(ReplaceAgentLabels object) {
 		return null;
 	}
 

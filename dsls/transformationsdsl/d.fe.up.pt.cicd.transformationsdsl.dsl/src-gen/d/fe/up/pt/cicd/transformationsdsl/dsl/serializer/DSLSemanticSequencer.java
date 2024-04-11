@@ -5,9 +5,10 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl.serializer;
 
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 import java.util.Map;
@@ -36,14 +37,17 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == TransformationsPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case TransformationsPackage.ATL_SCRIPT:
-				sequence_ATLScript(context, (ATLScript) semanticObject); 
+			case TransformationsPackage.ATL_REFINING_SCRIPT:
+				sequence_ATLRefiningScript(context, (ATLRefiningScript) semanticObject); 
 				return; 
 			case TransformationsPackage.CHANGE_AGENT_LABEL:
 				sequence_ChangeAgentLabel(context, (ChangeAgentLabel) semanticObject); 
 				return; 
 			case TransformationsPackage.CHANGE_PLUGIN:
 				sequence_ChangePlugin(context, (ChangePlugin) semanticObject); 
+				return; 
+			case TransformationsPackage.REPLACE_AGENT_LABELS:
+				sequence_ReplaceAgentLabels(context, (ReplaceAgentLabels) semanticObject); 
 				return; 
 			case TransformationsPackage.STRING_TO_STRING_MAP_ENTRY:
 				sequence_StringToStringMapEntry(context, (Map.Entry) semanticObject); 
@@ -59,23 +63,23 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Transformation returns ATLScript
-	 *     ATLScript returns ATLScript
+	 *     Transformation returns ATLRefiningScript
+	 *     ATLRefiningScript returns ATLRefiningScript
 	 *
 	 * Constraint:
 	 *     (model=MODEL_NAMES script=EString)
 	 * </pre>
 	 */
-	protected void sequence_ATLScript(ISerializationContext context, ATLScript semanticObject) {
+	protected void sequence_ATLRefiningScript(ISerializationContext context, ATLRefiningScript semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.TRANSFORMATION__MODEL) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.TRANSFORMATION__MODEL));
-			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ATL_SCRIPT__SCRIPT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ATL_SCRIPT__SCRIPT));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ATL_REFINING_SCRIPT__SCRIPT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ATL_REFINING_SCRIPT__SCRIPT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getATLScriptAccess().getModelMODEL_NAMESEnumRuleCall_3_0(), semanticObject.getModel());
-		feeder.accept(grammarAccess.getATLScriptAccess().getScriptEStringParserRuleCall_5_0(), semanticObject.getScript());
+		feeder.accept(grammarAccess.getATLRefiningScriptAccess().getModelMODEL_NAMESEnumRuleCall_3_0(), semanticObject.getModel());
+		feeder.accept(grammarAccess.getATLRefiningScriptAccess().getScriptEStringParserRuleCall_5_0(), semanticObject.getScript());
 		feeder.finish();
 	}
 	
@@ -115,6 +119,21 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_ChangePlugin(ISerializationContext context, ChangePlugin semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Transformation returns ReplaceAgentLabels
+	 *     ReplaceAgentLabels returns ReplaceAgentLabels
+	 *
+	 * Constraint:
+	 *     (model=MODEL_NAMES condition=EString labels+=EString labels+=EString*)
+	 * </pre>
+	 */
+	protected void sequence_ReplaceAgentLabels(ISerializationContext context, ReplaceAgentLabels semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

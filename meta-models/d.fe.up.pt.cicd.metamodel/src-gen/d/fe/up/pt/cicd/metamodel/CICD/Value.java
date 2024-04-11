@@ -9,7 +9,7 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  *
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getValue()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface Value extends Expression {

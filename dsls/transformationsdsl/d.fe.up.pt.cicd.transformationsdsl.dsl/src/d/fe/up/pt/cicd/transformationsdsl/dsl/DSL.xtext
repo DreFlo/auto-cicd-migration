@@ -12,7 +12,7 @@ TransformationSet returns TransformationSet:
 	'}';
 
 Transformation returns Transformation:
-	ChangePlugin | ATLScript | ChangeAgentLabel;
+	ChangePlugin | ATLRefiningScript | ChangeAgentLabel | ReplaceAgentLabels;
 
 
 enum MODEL_NAMES returns MODEL_NAMES:
@@ -27,8 +27,8 @@ ChangePlugin returns ChangePlugin:
 		('args' '{' args+=StringToStringMapEntry ( "," args+=StringToStringMapEntry)* '}' )?
 	'}';
 
-ATLScript returns ATLScript:
-	'ATLScript'
+ATLRefiningScript returns ATLRefiningScript:
+	'ATLRefiningScript'
 	'{'
 		'model' model=MODEL_NAMES
 		'script' script=EString 
@@ -40,6 +40,15 @@ ChangeAgentLabel returns ChangeAgentLabel:
 		'model' model=MODEL_NAMES
 		'name' name=StringToStringMapEntry
 	'}';
+	
+ReplaceAgentLabels returns ReplaceAgentLabels:
+	'ReplaceAgentLabels'
+	'{'		
+		'model' model=MODEL_NAMES
+		'condition' condition=EString
+		'labels' labels+=EString (',' labels+=EString)*
+	'}'
+	;
 
 StringToStringMapEntry returns StringToStringMapEntry:
 	'StringToStringMapEntry'

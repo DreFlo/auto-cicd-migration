@@ -2,9 +2,8 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import java.util.Collection;
@@ -13,25 +12,25 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProvider {
+public class ATLRefiningScriptItemProvider extends RefiningTransformationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChangeAgentLabelItemProvider(AdapterFactory adapterFactory) {
+	public ATLRefiningScriptItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -46,49 +45,36 @@ public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProv
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addScriptPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Script feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME);
-		}
-		return childrenFeatures;
+	protected void addScriptPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_ATLRefiningScript_script_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_ATLRefiningScript_script_feature",
+						"_UI_ATLRefiningScript_type"),
+				TransformationsPackage.Literals.ATL_REFINING_SCRIPT__SCRIPT, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns ChangeAgentLabel.gif.
+	 * This returns ATLRefiningScript.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChangeAgentLabel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ATLRefiningScript"));
 	}
 
 	/**
@@ -109,10 +95,10 @@ public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProv
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((ChangeAgentLabel) object).getModel();
+		MODEL_NAMES labelValue = ((ATLRefiningScript) object).getModel();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_ChangeAgentLabel_type")
-				: getString("_UI_ChangeAgentLabel_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_ATLRefiningScript_type")
+				: getString("_UI_ATLRefiningScript_type") + " " + label;
 	}
 
 	/**
@@ -126,9 +112,9 @@ public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProv
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ChangeAgentLabel.class)) {
-		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(ATLRefiningScript.class)) {
+		case TransformationsPackage.ATL_REFINING_SCRIPT__SCRIPT:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -144,9 +130,6 @@ public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProv
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME,
-				TransformationsFactory.eINSTANCE.create(TransformationsPackage.Literals.STRING_TO_STRING_MAP_ENTRY)));
 	}
 
 }

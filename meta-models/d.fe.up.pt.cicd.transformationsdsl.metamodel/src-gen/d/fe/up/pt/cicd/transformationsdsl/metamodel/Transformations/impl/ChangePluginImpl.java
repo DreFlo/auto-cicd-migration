@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ChangePluginImpl extends TransformationImpl implements ChangePlugin {
+public class ChangePluginImpl extends RefiningTransformationImpl implements ChangePlugin {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' map.
 	 * <!-- begin-user-doc -->

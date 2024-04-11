@@ -40,8 +40,10 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getChangePluginAccess().getGroup(), "rule__ChangePlugin__Group__0");
 			builder.put(grammarAccess.getChangePluginAccess().getGroup_8(), "rule__ChangePlugin__Group_8__0");
 			builder.put(grammarAccess.getChangePluginAccess().getGroup_8_3(), "rule__ChangePlugin__Group_8_3__0");
-			builder.put(grammarAccess.getATLScriptAccess().getGroup(), "rule__ATLScript__Group__0");
+			builder.put(grammarAccess.getATLRefiningScriptAccess().getGroup(), "rule__ATLRefiningScript__Group__0");
 			builder.put(grammarAccess.getChangeAgentLabelAccess().getGroup(), "rule__ChangeAgentLabel__Group__0");
+			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup(), "rule__ReplaceAgentLabels__Group__0");
+			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup_8(), "rule__ReplaceAgentLabels__Group_8__0");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getGroup(), "rule__StringToStringMapEntry__Group__0");
 			builder.put(grammarAccess.getTransformationSetAccess().getTransformationsAssignment_3_2(), "rule__TransformationSet__TransformationsAssignment_3_2");
 			builder.put(grammarAccess.getTransformationSetAccess().getTransformationsAssignment_3_3_1(), "rule__TransformationSet__TransformationsAssignment_3_3_1");
@@ -50,10 +52,14 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getChangePluginAccess().getNameAssignment_7(), "rule__ChangePlugin__NameAssignment_7");
 			builder.put(grammarAccess.getChangePluginAccess().getArgsAssignment_8_2(), "rule__ChangePlugin__ArgsAssignment_8_2");
 			builder.put(grammarAccess.getChangePluginAccess().getArgsAssignment_8_3_1(), "rule__ChangePlugin__ArgsAssignment_8_3_1");
-			builder.put(grammarAccess.getATLScriptAccess().getModelAssignment_3(), "rule__ATLScript__ModelAssignment_3");
-			builder.put(grammarAccess.getATLScriptAccess().getScriptAssignment_5(), "rule__ATLScript__ScriptAssignment_5");
+			builder.put(grammarAccess.getATLRefiningScriptAccess().getModelAssignment_3(), "rule__ATLRefiningScript__ModelAssignment_3");
+			builder.put(grammarAccess.getATLRefiningScriptAccess().getScriptAssignment_5(), "rule__ATLRefiningScript__ScriptAssignment_5");
 			builder.put(grammarAccess.getChangeAgentLabelAccess().getModelAssignment_3(), "rule__ChangeAgentLabel__ModelAssignment_3");
 			builder.put(grammarAccess.getChangeAgentLabelAccess().getNameAssignment_5(), "rule__ChangeAgentLabel__NameAssignment_5");
+			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getModelAssignment_3(), "rule__ReplaceAgentLabels__ModelAssignment_3");
+			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getConditionAssignment_5(), "rule__ReplaceAgentLabels__ConditionAssignment_5");
+			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getLabelsAssignment_7(), "rule__ReplaceAgentLabels__LabelsAssignment_7");
+			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getLabelsAssignment_8_1(), "rule__ReplaceAgentLabels__LabelsAssignment_8_1");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getKeyAssignment_3(), "rule__StringToStringMapEntry__KeyAssignment_3");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getValueAssignment_5(), "rule__StringToStringMapEntry__ValueAssignment_5");
 		}

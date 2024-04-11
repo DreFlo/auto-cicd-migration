@@ -174,12 +174,6 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createLiteral()));
-
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
 				CICDFactory.eINSTANCE.createStringLiteral()));
 
@@ -231,12 +225,6 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createLiteral()));
-
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createStringLiteral()));
 
@@ -287,12 +275,6 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createValue()));
-
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createLiteral()));
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createStringLiteral()));

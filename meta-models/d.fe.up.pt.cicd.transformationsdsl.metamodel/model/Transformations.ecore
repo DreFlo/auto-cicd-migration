@@ -17,7 +17,7 @@
     <eLiterals name="GHA" value="1"/>
     <eLiterals name="CircleCI" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChangePlugin" eSuperTypes="#//Transformation">
+  <eClassifiers xsi:type="ecore:EClass" name="ChangePlugin" eSuperTypes="#//RefiningTransformation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//StringToStringMapEntry"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
@@ -25,12 +25,21 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//StringToStringMapEntry"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ATLScript" eSuperTypes="#//Transformation">
+  <eClassifiers xsi:type="ecore:EClass" name="ATLRefiningScript" eSuperTypes="#//RefiningTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="script" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChangeAgentLabel" eSuperTypes="#//Transformation">
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeAgentLabel" eSuperTypes="#//RefiningTransformation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//StringToStringMapEntry"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefiningTransformation" abstract="true"
+      eSuperTypes="#//Transformation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutplaceTransformation" eSuperTypes="#//Transformation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReplaceAgentLabels" eSuperTypes="#//OutplaceTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labels" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

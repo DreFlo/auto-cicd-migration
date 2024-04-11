@@ -83,12 +83,8 @@ jar {
     }
 }
 
-// TODO MAKE PLATFORM INDEPENDENT, REPLACE CLASSPATH WITH *
 startScripts {
-    doLast {
-        def windowsScriptFile = file getWindowsScript()
-        windowsScriptFile.text = windowsScriptFile.text.replaceAll('set CLASSPATH=.*', 'set CLASSPATH=%APP_HOME%\\\\lib\\\\*')
-    }
+    classpath = files('$APP_HOME/lib/*')
 }
 
 mainClassName = 'cli.Main'

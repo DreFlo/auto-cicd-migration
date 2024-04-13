@@ -80,8 +80,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createWebhookTrigger();
 		case CICDPackage.CONCURRENCY_GROUP:
 			return createConcurrencyGroup();
-		case CICDPackage.PERMISSION:
-			return (EObject) createPermission();
 		case CICDPackage.MATRIX:
 			return createMatrix();
 		case CICDPackage.MATRIX_AXIS:
@@ -104,6 +102,8 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createArtifact();
 		case CICDPackage.CHECKOUT:
 			return createCheckout();
+		case CICDPackage.VARIABLE_DECLARATION:
+			return createVariableDeclaration();
 		case CICDPackage.ASSIGNMENT:
 			return (EObject) createAssignment();
 		case CICDPackage.CONCAT:
@@ -116,20 +116,18 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createDoubleLiteral();
 		case CICDPackage.BOOLEAN_LITERAL:
 			return createBooleanLiteral();
-		case CICDPackage.VARIABLE:
-			return createVariable();
-		case CICDPackage.SECRET_VARIABLE:
-			return createSecretVariable();
+		case CICDPackage.VARIABLE_REFERENCE:
+			return createVariableReference();
 		case CICDPackage.VARIABLE_CONTEXT:
 			return createVariableContext();
-		case CICDPackage.VARIABLE_DEREFERENCE:
-			return createVariableDereference();
 		case CICDPackage.BUILT_IN_FUNCTION:
 			return createBuiltInFunction();
 		case CICDPackage.EQUALITY_OP:
 			return createEqualityOp();
 		case CICDPackage.COMPARISON_OP:
 			return createComparisonOp();
+		case CICDPackage.DOT_OP:
+			return createDotOp();
 		case CICDPackage.AND:
 			return createAnd();
 		case CICDPackage.OR:
@@ -151,8 +149,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case CICDPackage.PERMISSION_TYPE:
-			return createPERMISSION_TYPEFromString(eDataType, initialValue);
 		case CICDPackage.SHELL_TYPE:
 			return createSHELL_TYPEFromString(eDataType, initialValue);
 		case CICDPackage.INPUT_TYPE:
@@ -178,8 +174,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case CICDPackage.PERMISSION_TYPE:
-			return convertPERMISSION_TYPEToString(eDataType, instanceValue);
 		case CICDPackage.SHELL_TYPE:
 			return convertSHELL_TYPEToString(eDataType, instanceValue);
 		case CICDPackage.INPUT_TYPE:
@@ -323,16 +317,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, PERMISSION_TYPE> createPermission() {
-		PermissionImpl permission = new PermissionImpl();
-		return permission;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Matrix createMatrix() {
 		MatrixImpl matrix = new MatrixImpl();
@@ -454,7 +438,18 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<Variable, Expression> createAssignment() {
+	@Override
+	public VariableDeclaration createVariableDeclaration() {
+		VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+		return variableDeclaration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<VariableDeclaration, Expression> createAssignment() {
 		AssignmentImpl assignment = new AssignmentImpl();
 		return assignment;
 	}
@@ -520,20 +515,9 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public Variable createVariable() {
-		VariableImpl variable = new VariableImpl();
-		return variable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public SecretVariable createSecretVariable() {
-		SecretVariableImpl secretVariable = new SecretVariableImpl();
-		return secretVariable;
+	public VariableReference createVariableReference() {
+		VariableReferenceImpl variableReference = new VariableReferenceImpl();
+		return variableReference;
 	}
 
 	/**
@@ -545,17 +529,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public VariableContext createVariableContext() {
 		VariableContextImpl variableContext = new VariableContextImpl();
 		return variableContext;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public VariableDereference createVariableDereference() {
-		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
-		return variableDereference;
 	}
 
 	/**
@@ -589,6 +562,17 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public ComparisonOp createComparisonOp() {
 		ComparisonOpImpl comparisonOp = new ComparisonOpImpl();
 		return comparisonOp;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DotOp createDotOp() {
+		DotOpImpl dotOp = new DotOpImpl();
+		return dotOp;
 	}
 
 	/**
@@ -633,28 +617,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Negation createNegation() {
 		NegationImpl negation = new NegationImpl();
 		return negation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PERMISSION_TYPE createPERMISSION_TYPEFromString(EDataType eDataType, String initialValue) {
-		PERMISSION_TYPE result = PERMISSION_TYPE.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException(
-					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertPERMISSION_TYPEToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

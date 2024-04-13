@@ -326,29 +326,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PermissionItemProvider permissionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPermissionAdapter() {
-		if (permissionItemProvider == null) {
-			permissionItemProvider = new PermissionItemProvider(this);
-		}
-
-		return permissionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Matrix} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -602,6 +579,29 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableDeclarationItemProvider variableDeclarationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableDeclarationAdapter() {
+		if (variableDeclarationItemProvider == null) {
+			variableDeclarationItemProvider = new VariableDeclarationItemProvider(this);
+		}
+
+		return variableDeclarationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -740,49 +740,26 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Variable} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableItemProvider variableItemProvider;
+	protected VariableReferenceItemProvider variableReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Variable}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.VariableReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createVariableAdapter() {
-		if (variableItemProvider == null) {
-			variableItemProvider = new VariableItemProvider(this);
+	public Adapter createVariableReferenceAdapter() {
+		if (variableReferenceItemProvider == null) {
+			variableReferenceItemProvider = new VariableReferenceItemProvider(this);
 		}
 
-		return variableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SecretVariableItemProvider secretVariableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSecretVariableAdapter() {
-		if (secretVariableItemProvider == null) {
-			secretVariableItemProvider = new SecretVariableItemProvider(this);
-		}
-
-		return secretVariableItemProvider;
+		return variableReferenceItemProvider;
 	}
 
 	/**
@@ -806,29 +783,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 		}
 
 		return variableContextItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVariableDereferenceAdapter() {
-		if (variableDereferenceItemProvider == null) {
-			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
-		}
-
-		return variableDereferenceItemProvider;
 	}
 
 	/**
@@ -898,6 +852,29 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 		}
 
 		return comparisonOpItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.DotOp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DotOpItemProvider dotOpItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.DotOp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDotOpAdapter() {
+		if (dotOpItemProvider == null) {
+			dotOpItemProvider = new DotOpItemProvider(this);
+		}
+
+		return dotOpItemProvider;
 	}
 
 	/**
@@ -1119,8 +1096,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			webhookTriggerItemProvider.dispose();
 		if (concurrencyGroupItemProvider != null)
 			concurrencyGroupItemProvider.dispose();
-		if (permissionItemProvider != null)
-			permissionItemProvider.dispose();
 		if (matrixItemProvider != null)
 			matrixItemProvider.dispose();
 		if (matrixAxisItemProvider != null)
@@ -1143,6 +1118,8 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			artifactItemProvider.dispose();
 		if (checkoutItemProvider != null)
 			checkoutItemProvider.dispose();
+		if (variableDeclarationItemProvider != null)
+			variableDeclarationItemProvider.dispose();
 		if (assignmentItemProvider != null)
 			assignmentItemProvider.dispose();
 		if (concatItemProvider != null)
@@ -1155,20 +1132,18 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			doubleLiteralItemProvider.dispose();
 		if (booleanLiteralItemProvider != null)
 			booleanLiteralItemProvider.dispose();
-		if (variableItemProvider != null)
-			variableItemProvider.dispose();
-		if (secretVariableItemProvider != null)
-			secretVariableItemProvider.dispose();
+		if (variableReferenceItemProvider != null)
+			variableReferenceItemProvider.dispose();
 		if (variableContextItemProvider != null)
 			variableContextItemProvider.dispose();
-		if (variableDereferenceItemProvider != null)
-			variableDereferenceItemProvider.dispose();
 		if (builtInFunctionItemProvider != null)
 			builtInFunctionItemProvider.dispose();
 		if (equalityOpItemProvider != null)
 			equalityOpItemProvider.dispose();
 		if (comparisonOpItemProvider != null)
 			comparisonOpItemProvider.dispose();
+		if (dotOpItemProvider != null)
+			dotOpItemProvider.dispose();
 		if (andItemProvider != null)
 			andItemProvider.dispose();
 		if (orItemProvider != null)

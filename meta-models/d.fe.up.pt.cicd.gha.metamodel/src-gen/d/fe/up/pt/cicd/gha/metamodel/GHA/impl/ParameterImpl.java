@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -31,24 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public abstract class ParameterImpl extends MinimalEObjectImpl.Container implements Parameter {
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * The cached value of the '{@link #getId() <em>Id</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String id = ID_EDEFAULT;
+	protected VariableDeclaration id;
 
 	/**
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
@@ -85,7 +76,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public String getId() {
+	public VariableDeclaration getId() {
 		return id;
 	}
 
@@ -94,12 +85,40 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setId(String newId) {
-		String oldId = id;
+	public NotificationChain basicSetId(VariableDeclaration newId, NotificationChain msgs) {
+		VariableDeclaration oldId = id;
 		id = newId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.PARAMETER__ID, oldId, id));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GHAPackage.PARAMETER__ID,
+					oldId, newId);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setId(VariableDeclaration newId) {
+		if (newId != id) {
+			NotificationChain msgs = null;
+			if (id != null)
+				msgs = ((InternalEObject) id).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GHAPackage.PARAMETER__ID,
+						null, msgs);
+			if (newId != null)
+				msgs = ((InternalEObject) newId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GHAPackage.PARAMETER__ID,
+						null, msgs);
+			msgs = basicSetId(newId, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.PARAMETER__ID, newId, newId));
 	}
 
 	/**
@@ -162,6 +181,8 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case GHAPackage.PARAMETER__ID:
+			return basicSetId(null, msgs);
 		case GHAPackage.PARAMETER__DESCRIPTION:
 			return basicSetDescription(null, msgs);
 		}
@@ -193,7 +214,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case GHAPackage.PARAMETER__ID:
-			setId((String) newValue);
+			setId((VariableDeclaration) newValue);
 			return;
 		case GHAPackage.PARAMETER__DESCRIPTION:
 			setDescription((Expression) newValue);
@@ -211,7 +232,7 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case GHAPackage.PARAMETER__ID:
-			setId(ID_EDEFAULT);
+			setId((VariableDeclaration) null);
 			return;
 		case GHAPackage.PARAMETER__DESCRIPTION:
 			setDescription((Expression) null);
@@ -229,28 +250,11 @@ public abstract class ParameterImpl extends MinimalEObjectImpl.Container impleme
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case GHAPackage.PARAMETER__ID:
-			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			return id != null;
 		case GHAPackage.PARAMETER__DESCRIPTION:
 			return description != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (id: ");
-		result.append(id);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ParameterImpl

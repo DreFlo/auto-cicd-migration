@@ -152,8 +152,14 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createEquality()));
@@ -218,17 +224,20 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.AGENT__GROUP, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.AGENT__GROUP,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createEquality()));
@@ -293,14 +302,11 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.AGENT__LABELS, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.AGENT__LABELS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

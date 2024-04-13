@@ -188,14 +188,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.PERMISSION: {
-			@SuppressWarnings("unchecked")
-			Map.Entry<String, PERMISSION_TYPE> permission = (Map.Entry<String, PERMISSION_TYPE>) theEObject;
-			T result = casePermission(permission);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case CICDPackage.MATRIX: {
 			Matrix matrix = (Matrix) theEObject;
 			T result = caseMatrix(matrix);
@@ -322,9 +314,16 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CICDPackage.VARIABLE_DECLARATION: {
+			VariableDeclaration variableDeclaration = (VariableDeclaration) theEObject;
+			T result = caseVariableDeclaration(variableDeclaration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CICDPackage.ASSIGNMENT: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<Variable, Expression> assignment = (Map.Entry<Variable, Expression>) theEObject;
+			Map.Entry<VariableDeclaration, Expression> assignment = (Map.Entry<VariableDeclaration, Expression>) theEObject;
 			T result = caseAssignment(assignment);
 			if (result == null)
 				result = caseExpression((Expression) assignment);
@@ -420,26 +419,13 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.VARIABLE: {
-			Variable variable = (Variable) theEObject;
-			T result = caseVariable(variable);
+		case CICDPackage.VARIABLE_REFERENCE: {
+			VariableReference variableReference = (VariableReference) theEObject;
+			T result = caseVariableReference(variableReference);
 			if (result == null)
-				result = caseValue(variable);
+				result = caseValue(variableReference);
 			if (result == null)
-				result = caseExpression(variable);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CICDPackage.SECRET_VARIABLE: {
-			SecretVariable secretVariable = (SecretVariable) theEObject;
-			T result = caseSecretVariable(secretVariable);
-			if (result == null)
-				result = caseVariable(secretVariable);
-			if (result == null)
-				result = caseValue(secretVariable);
-			if (result == null)
-				result = caseExpression(secretVariable);
+				result = caseExpression(variableReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -451,15 +437,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = caseValue(variableContext);
 			if (result == null)
 				result = caseExpression(variableContext);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CICDPackage.VARIABLE_DEREFERENCE: {
-			VariableDereference variableDereference = (VariableDereference) theEObject;
-			T result = caseVariableDereference(variableDereference);
-			if (result == null)
-				result = caseExpression(variableDereference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -500,6 +477,17 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = caseBinaryOp(comparisonOp);
 			if (result == null)
 				result = caseExpression(comparisonOp);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.DOT_OP: {
+			DotOp dotOp = (DotOp) theEObject;
+			T result = caseDotOp(dotOp);
+			if (result == null)
+				result = caseBinaryOp(dotOp);
+			if (result == null)
+				result = caseExpression(dotOp);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -777,21 +765,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Permission</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Permission</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePermission(Map.Entry<String, PERMISSION_TYPE> object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Matrix</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1002,6 +975,21 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableDeclaration(VariableDeclaration object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1012,7 +1000,7 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAssignment(Map.Entry<Variable, Expression> object) {
+	public T caseAssignment(Map.Entry<VariableDeclaration, Expression> object) {
 		return null;
 	}
 
@@ -1137,32 +1125,17 @@ public class CICDSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariable(Variable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Secret Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Secret Variable</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSecretVariable(SecretVariable object) {
+	public T caseVariableReference(VariableReference object) {
 		return null;
 	}
 
@@ -1178,21 +1151,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariableContext(VariableContext object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableDereference(VariableDereference object) {
 		return null;
 	}
 
@@ -1253,6 +1211,21 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComparisonOp(ComparisonOp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dot Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dot Op</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDotOp(DotOp object) {
 		return null;
 	}
 

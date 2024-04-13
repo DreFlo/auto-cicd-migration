@@ -8,10 +8,9 @@ import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 import d.fe.up.pt.cicd.metamodel.CICD.Output;
-import d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
 import d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE;
-import d.fe.up.pt.cicd.metamodel.CICD.Variable;
+import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 
 import java.util.Collection;
 
@@ -45,7 +44,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getPermissions <em>Permissions</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getWorkingDirectory <em>Working Directory</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineBlockImpl#getConcurrencyGroup <em>Concurrency Group</em>}</li>
@@ -113,17 +111,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> environmentVariables;
-
-	/**
-	 * The cached value of the '{@link #getPermissions() <em>Permissions</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPermissions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EMap<String, PERMISSION_TYPE> permissions;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The default value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' attribute.
@@ -321,26 +309,12 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(CICDPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EMap<String, PERMISSION_TYPE> getPermissions() {
-		if (permissions == null) {
-			permissions = new EcoreEMap<String, PERMISSION_TYPE>(CICDPackage.Literals.PERMISSION, PermissionImpl.class,
-					this, CICDPackage.PIPELINE_BLOCK__PERMISSIONS);
-		}
-		return permissions;
 	}
 
 	/**
@@ -482,8 +456,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
-		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
-			return ((InternalEList<?>) getPermissions()).basicRemove(otherEnd, msgs);
 		case CICDPackage.PIPELINE_BLOCK__CONCURRENCY_GROUP:
 			return basicSetConcurrencyGroup(null, msgs);
 		}
@@ -511,11 +483,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 				return getEnvironmentVariables();
 			else
 				return getEnvironmentVariables().map();
-		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
-			if (coreType)
-				return getPermissions();
-			else
-				return getPermissions().map();
 		case CICDPackage.PIPELINE_BLOCK__TIMEOUT_MINUTES:
 			return getTimeoutMinutes();
 		case CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY:
@@ -553,9 +520,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			return;
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
 			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
-			return;
-		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
-			((EStructuralFeature.Setting) getPermissions()).set(newValue);
 			return;
 		case CICDPackage.PIPELINE_BLOCK__TIMEOUT_MINUTES:
 			setTimeoutMinutes((Integer) newValue);
@@ -596,9 +560,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
 			getEnvironmentVariables().clear();
 			return;
-		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
-			getPermissions().clear();
-			return;
 		case CICDPackage.PIPELINE_BLOCK__TIMEOUT_MINUTES:
 			setTimeoutMinutes(TIMEOUT_MINUTES_EDEFAULT);
 			return;
@@ -633,8 +594,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			return outputs != null && !outputs.isEmpty();
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
 			return environmentVariables != null && !environmentVariables.isEmpty();
-		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
-			return permissions != null && !permissions.isEmpty();
 		case CICDPackage.PIPELINE_BLOCK__TIMEOUT_MINUTES:
 			return TIMEOUT_MINUTES_EDEFAULT == null ? timeoutMinutes != null
 					: !TIMEOUT_MINUTES_EDEFAULT.equals(timeoutMinutes);

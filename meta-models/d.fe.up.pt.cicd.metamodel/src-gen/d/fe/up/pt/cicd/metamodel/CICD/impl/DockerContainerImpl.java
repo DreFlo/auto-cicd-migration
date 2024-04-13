@@ -5,7 +5,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
-import d.fe.up.pt.cicd.metamodel.CICD.Variable;
+import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 
 import java.util.Collection;
 
@@ -86,7 +86,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getVolumes() <em>Volumes</em>}' containment reference list.
@@ -259,9 +259,9 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT,
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(CICDPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, CICDPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;

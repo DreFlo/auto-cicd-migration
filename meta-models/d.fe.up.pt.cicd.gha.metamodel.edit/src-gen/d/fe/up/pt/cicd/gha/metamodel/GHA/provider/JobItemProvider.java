@@ -231,8 +231,14 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createEquality()));
@@ -297,20 +303,23 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__JOB_NAME, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__JOB_NAME,
-				GHAFactory.eINSTANCE.createVariableDereference()));
-
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__PERMISSIONS,
 				GHAFactory.eINSTANCE.create(GHAPackage.Literals.PERMISSION)));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
@@ -375,14 +384,11 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__IF_CONDITION,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__AGENT, GHAFactory.eINSTANCE.createAgent()));
@@ -405,8 +411,14 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONCURRENCY_GROUP,
 				GHAFactory.eINSTANCE.createConcurrencyGroup()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createEquality()));
@@ -471,17 +483,20 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__TIMEOUT_MINUTES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -547,13 +562,10 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOB__CONTINUE_ON_ERROR,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOB__STRATEGY, GHAFactory.eINSTANCE.createMatrix()));
@@ -572,6 +584,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 
 		boolean qualify = childFeature == GHAPackage.Literals.JOB__JOB_NAME
 				|| childFeature == GHAPackage.Literals.JOB__IF_CONDITION
+				|| childFeature == GHAPackage.Literals.JOB__ENVIRONMENT_VARIABLES
 				|| childFeature == GHAPackage.Literals.JOB__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.JOB__CONTINUE_ON_ERROR;
 

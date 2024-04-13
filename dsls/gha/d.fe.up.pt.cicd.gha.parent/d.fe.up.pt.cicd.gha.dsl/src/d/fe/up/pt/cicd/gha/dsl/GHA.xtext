@@ -37,7 +37,7 @@ Blank returns GHA::Expression:
 ;
 
 VariableDereference returns GHA::Expression:
-	Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('['  ('"' property=ID '"') | ("'" property=ID '"')  ']')))*
+	Primary ({GHA::DotOp.lhs=current} (('.' rhs=VariableDereference) | ('[' rhs=VariableDereference ']')))?
 ;
 
 Primary returns GHA::Expression:
@@ -46,11 +46,11 @@ Primary returns GHA::Expression:
 
 Atomic returns GHA::Value:
 	({GHA::GitHubContext} context=CONTEXT) |
-	({GHA::Variable} name=ID) | 
+	({GHA::VariableReference} name=ID) | 
 	({GHA::IntegerLiteral} value=INT) |
 	({GHA::DoubleLiteral} value=DOUBLE) |
 	({GHA::BooleanLiteral} value=BOOLEAN) |
-	({GHA::StringLiteral} value=STRING)	
+	({GHA::StringLiteral} value=STRING)
 ;
 
 CallExpression returns GHA::BuiltInFunctionCall:

@@ -185,7 +185,13 @@ public class PushTriggerItemProvider extends SpecifiedBranchesTriggerItemProvide
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -251,16 +257,19 @@ public class PushTriggerItemProvider extends SpecifiedBranchesTriggerItemProvide
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS, GHAFactory.eINSTANCE.createEquality()));
@@ -325,14 +334,11 @@ public class PushTriggerItemProvider extends SpecifiedBranchesTriggerItemProvide
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PUSH_TRIGGER__TAGS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -73,8 +72,7 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 						getResourceLocator(), getString("_UI_Parameter_id_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_id_feature",
 								"_UI_Parameter_type"),
-						GHAPackage.Literals.PARAMETER__ID, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						GHAPackage.Literals.PARAMETER__ID, true, false, false, null, null, null));
 	}
 
 	/**
@@ -125,9 +123,7 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Parameter) object).getId();
-		return label == null || label.length() == 0 ? getString("_UI_Parameter_type")
-				: getString("_UI_Parameter_type") + " " + label;
+		return getString("_UI_Parameter_type");
 	}
 
 	/**
@@ -163,8 +159,14 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -230,13 +232,10 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PARAMETER__DESCRIPTION,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

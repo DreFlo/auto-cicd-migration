@@ -143,8 +143,14 @@ public class CommandItemProvider extends StepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createEquality()));
@@ -209,14 +215,11 @@ public class CommandItemProvider extends StepItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.COMMAND__COMMAND, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.COMMAND__COMMAND,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**
@@ -235,6 +238,7 @@ public class CommandItemProvider extends StepItemProvider {
 				|| childFeature == GHAPackage.Literals.STEP__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.STEP__SHELL
 				|| childFeature == GHAPackage.Literals.STEP__WORKING_DIRECTORY
+				|| childFeature == GHAPackage.Literals.STEP__ENVIRONMENT_VARIABLES
 				|| childFeature == GHAPackage.Literals.COMMAND__COMMAND;
 
 		if (qualify) {

@@ -141,8 +141,14 @@ public class HashFilesItemProvider extends BuiltInFunctionCallItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createEquality()));
@@ -207,14 +213,11 @@ public class HashFilesItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.HASH_FILES__PATH, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.HASH_FILES__PATH,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

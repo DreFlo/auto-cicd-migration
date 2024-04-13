@@ -11,6 +11,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.BooleanLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Cancelled;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Comparison;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
@@ -28,8 +29,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StringLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Success;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Variable;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -72,6 +72,9 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				return; 
 			case GHAPackage.CONTAINS:
 				sequence_Contains(context, (Contains) semanticObject); 
+				return; 
+			case GHAPackage.DOT_OP:
+				sequence_VariableDereference(context, (DotOp) semanticObject); 
 				return; 
 			case GHAPackage.DOUBLE_LITERAL:
 				sequence_Atomic(context, (DoubleLiteral) semanticObject); 
@@ -121,11 +124,8 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 			case GHAPackage.TO_JSON:
 				sequence_ToJSON(context, (ToJSON) semanticObject); 
 				return; 
-			case GHAPackage.VARIABLE:
-				sequence_Atomic(context, (Variable) semanticObject); 
-				return; 
-			case GHAPackage.VARIABLE_DEREFERENCE:
-				sequence_VariableDereference(context, (VariableDereference) semanticObject); 
+			case GHAPackage.VARIABLE_REFERENCE:
+				sequence_Atomic(context, (VariableReference) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -147,7 +147,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Always
 	 *     Blank returns Always
 	 *     VariableDereference returns Always
-	 *     VariableDereference.VariableDereference_1_0 returns Always
+	 *     VariableDereference.DotOp_1_0 returns Always
 	 *     Primary returns Always
 	 *     CallExpression returns Always
 	 *     Always returns Always
@@ -176,7 +176,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns And
 	 *     Blank returns And
 	 *     VariableDereference returns And
-	 *     VariableDereference.VariableDereference_1_0 returns And
+	 *     VariableDereference.DotOp_1_0 returns And
 	 *     Primary returns And
 	 *
 	 * Constraint:
@@ -212,7 +212,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns BooleanLiteral
 	 *     Blank returns BooleanLiteral
 	 *     VariableDereference returns BooleanLiteral
-	 *     VariableDereference.VariableDereference_1_0 returns BooleanLiteral
+	 *     VariableDereference.DotOp_1_0 returns BooleanLiteral
 	 *     Primary returns BooleanLiteral
 	 *     Atomic returns BooleanLiteral
 	 *
@@ -246,7 +246,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns DoubleLiteral
 	 *     Blank returns DoubleLiteral
 	 *     VariableDereference returns DoubleLiteral
-	 *     VariableDereference.VariableDereference_1_0 returns DoubleLiteral
+	 *     VariableDereference.DotOp_1_0 returns DoubleLiteral
 	 *     Primary returns DoubleLiteral
 	 *     Atomic returns DoubleLiteral
 	 *
@@ -280,7 +280,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns GitHubContext
 	 *     Blank returns GitHubContext
 	 *     VariableDereference returns GitHubContext
-	 *     VariableDereference.VariableDereference_1_0 returns GitHubContext
+	 *     VariableDereference.DotOp_1_0 returns GitHubContext
 	 *     Primary returns GitHubContext
 	 *     Atomic returns GitHubContext
 	 *
@@ -314,7 +314,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns IntegerLiteral
 	 *     Blank returns IntegerLiteral
 	 *     VariableDereference returns IntegerLiteral
-	 *     VariableDereference.VariableDereference_1_0 returns IntegerLiteral
+	 *     VariableDereference.DotOp_1_0 returns IntegerLiteral
 	 *     Primary returns IntegerLiteral
 	 *     Atomic returns IntegerLiteral
 	 *
@@ -348,7 +348,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns StringLiteral
 	 *     Blank returns StringLiteral
 	 *     VariableDereference returns StringLiteral
-	 *     VariableDereference.VariableDereference_1_0 returns StringLiteral
+	 *     VariableDereference.DotOp_1_0 returns StringLiteral
 	 *     Primary returns StringLiteral
 	 *     Atomic returns StringLiteral
 	 *
@@ -370,30 +370,30 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns Variable
-	 *     Or returns Variable
-	 *     Or.Or_1_0 returns Variable
-	 *     And returns Variable
-	 *     And.And_1_0 returns Variable
-	 *     Equality returns Variable
-	 *     Equality.Equality_1_0 returns Variable
-	 *     Comparison returns Variable
-	 *     Comparison.Comparison_1_0 returns Variable
-	 *     UnaryOp returns Variable
-	 *     Blank returns Variable
-	 *     VariableDereference returns Variable
-	 *     VariableDereference.VariableDereference_1_0 returns Variable
-	 *     Primary returns Variable
-	 *     Atomic returns Variable
+	 *     Expression returns VariableReference
+	 *     Or returns VariableReference
+	 *     Or.Or_1_0 returns VariableReference
+	 *     And returns VariableReference
+	 *     And.And_1_0 returns VariableReference
+	 *     Equality returns VariableReference
+	 *     Equality.Equality_1_0 returns VariableReference
+	 *     Comparison returns VariableReference
+	 *     Comparison.Comparison_1_0 returns VariableReference
+	 *     UnaryOp returns VariableReference
+	 *     Blank returns VariableReference
+	 *     VariableDereference returns VariableReference
+	 *     VariableDereference.DotOp_1_0 returns VariableReference
+	 *     Primary returns VariableReference
+	 *     Atomic returns VariableReference
 	 *
 	 * Constraint:
 	 *     name=ID
 	 * </pre>
 	 */
-	protected void sequence_Atomic(ISerializationContext context, Variable semanticObject) {
+	protected void sequence_Atomic(ISerializationContext context, VariableReference semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.VARIABLE__NAME));
+			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.VARIABLE_REFERENCE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.VARIABLE_REFERENCE__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getAtomicAccess().getNameIDTerminalRuleCall_1_1_0(), semanticObject.getName());
@@ -416,7 +416,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Cancelled
 	 *     Blank returns Cancelled
 	 *     VariableDereference returns Cancelled
-	 *     VariableDereference.VariableDereference_1_0 returns Cancelled
+	 *     VariableDereference.DotOp_1_0 returns Cancelled
 	 *     Primary returns Cancelled
 	 *     CallExpression returns Cancelled
 	 *     Cancelled returns Cancelled
@@ -445,7 +445,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Comparison
 	 *     Blank returns Comparison
 	 *     VariableDereference returns Comparison
-	 *     VariableDereference.VariableDereference_1_0 returns Comparison
+	 *     VariableDereference.DotOp_1_0 returns Comparison
 	 *     Primary returns Comparison
 	 *
 	 * Constraint:
@@ -484,7 +484,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Contains
 	 *     Blank returns Contains
 	 *     VariableDereference returns Contains
-	 *     VariableDereference.VariableDereference_1_0 returns Contains
+	 *     VariableDereference.DotOp_1_0 returns Contains
 	 *     Primary returns Contains
 	 *     CallExpression returns Contains
 	 *     Contains returns Contains
@@ -522,7 +522,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns EndsWith
 	 *     Blank returns EndsWith
 	 *     VariableDereference returns EndsWith
-	 *     VariableDereference.VariableDereference_1_0 returns EndsWith
+	 *     VariableDereference.DotOp_1_0 returns EndsWith
 	 *     Primary returns EndsWith
 	 *     CallExpression returns EndsWith
 	 *     EndsWith returns EndsWith
@@ -560,7 +560,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Equality
 	 *     Blank returns Equality
 	 *     VariableDereference returns Equality
-	 *     VariableDereference.VariableDereference_1_0 returns Equality
+	 *     VariableDereference.DotOp_1_0 returns Equality
 	 *     Primary returns Equality
 	 *
 	 * Constraint:
@@ -599,7 +599,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Failure
 	 *     Blank returns Failure
 	 *     VariableDereference returns Failure
-	 *     VariableDereference.VariableDereference_1_0 returns Failure
+	 *     VariableDereference.DotOp_1_0 returns Failure
 	 *     Primary returns Failure
 	 *     CallExpression returns Failure
 	 *     Failure returns Failure
@@ -628,7 +628,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Format
 	 *     Blank returns Format
 	 *     VariableDereference returns Format
-	 *     VariableDereference.VariableDereference_1_0 returns Format
+	 *     VariableDereference.DotOp_1_0 returns Format
 	 *     Primary returns Format
 	 *     CallExpression returns Format
 	 *     Format returns Format
@@ -657,7 +657,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns FromJSON
 	 *     Blank returns FromJSON
 	 *     VariableDereference returns FromJSON
-	 *     VariableDereference.VariableDereference_1_0 returns FromJSON
+	 *     VariableDereference.DotOp_1_0 returns FromJSON
 	 *     Primary returns FromJSON
 	 *     CallExpression returns FromJSON
 	 *     FromJSON returns FromJSON
@@ -692,7 +692,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns HashFiles
 	 *     Blank returns HashFiles
 	 *     VariableDereference returns HashFiles
-	 *     VariableDereference.VariableDereference_1_0 returns HashFiles
+	 *     VariableDereference.DotOp_1_0 returns HashFiles
 	 *     Primary returns HashFiles
 	 *     CallExpression returns HashFiles
 	 *     HashFiles returns HashFiles
@@ -727,7 +727,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Join
 	 *     Blank returns Join
 	 *     VariableDereference returns Join
-	 *     VariableDereference.VariableDereference_1_0 returns Join
+	 *     VariableDereference.DotOp_1_0 returns Join
 	 *     Primary returns Join
 	 *     CallExpression returns Join
 	 *     Join returns Join
@@ -757,7 +757,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Not returns Not
 	 *     Blank returns Not
 	 *     VariableDereference returns Not
-	 *     VariableDereference.VariableDereference_1_0 returns Not
+	 *     VariableDereference.DotOp_1_0 returns Not
 	 *     Primary returns Not
 	 *
 	 * Constraint:
@@ -790,7 +790,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Or
 	 *     Blank returns Or
 	 *     VariableDereference returns Or
-	 *     VariableDereference.VariableDereference_1_0 returns Or
+	 *     VariableDereference.DotOp_1_0 returns Or
 	 *     Primary returns Or
 	 *
 	 * Constraint:
@@ -826,7 +826,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns StartsWith
 	 *     Blank returns StartsWith
 	 *     VariableDereference returns StartsWith
-	 *     VariableDereference.VariableDereference_1_0 returns StartsWith
+	 *     VariableDereference.DotOp_1_0 returns StartsWith
 	 *     Primary returns StartsWith
 	 *     CallExpression returns StartsWith
 	 *     StartsWith returns StartsWith
@@ -864,7 +864,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns Success
 	 *     Blank returns Success
 	 *     VariableDereference returns Success
-	 *     VariableDereference.VariableDereference_1_0 returns Success
+	 *     VariableDereference.DotOp_1_0 returns Success
 	 *     Primary returns Success
 	 *     CallExpression returns Success
 	 *     Success returns Success
@@ -893,7 +893,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     UnaryOp returns ToJSON
 	 *     Blank returns ToJSON
 	 *     VariableDereference returns ToJSON
-	 *     VariableDereference.VariableDereference_1_0 returns ToJSON
+	 *     VariableDereference.DotOp_1_0 returns ToJSON
 	 *     Primary returns ToJSON
 	 *     CallExpression returns ToJSON
 	 *     ToJSON returns ToJSON
@@ -916,26 +916,26 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns VariableDereference
-	 *     Or returns VariableDereference
-	 *     Or.Or_1_0 returns VariableDereference
-	 *     And returns VariableDereference
-	 *     And.And_1_0 returns VariableDereference
-	 *     Equality returns VariableDereference
-	 *     Equality.Equality_1_0 returns VariableDereference
-	 *     Comparison returns VariableDereference
-	 *     Comparison.Comparison_1_0 returns VariableDereference
-	 *     UnaryOp returns VariableDereference
-	 *     Blank returns VariableDereference
-	 *     VariableDereference returns VariableDereference
-	 *     VariableDereference.VariableDereference_1_0 returns VariableDereference
-	 *     Primary returns VariableDereference
+	 *     Expression returns DotOp
+	 *     Or returns DotOp
+	 *     Or.Or_1_0 returns DotOp
+	 *     And returns DotOp
+	 *     And.And_1_0 returns DotOp
+	 *     Equality returns DotOp
+	 *     Equality.Equality_1_0 returns DotOp
+	 *     Comparison returns DotOp
+	 *     Comparison.Comparison_1_0 returns DotOp
+	 *     UnaryOp returns DotOp
+	 *     Blank returns DotOp
+	 *     VariableDereference returns DotOp
+	 *     VariableDereference.DotOp_1_0 returns DotOp
+	 *     Primary returns DotOp
 	 *
 	 * Constraint:
-	 *     (variable=VariableDereference_VariableDereference_1_0 (property=ID | property=ID | property=ID))
+	 *     (lhs=VariableDereference_DotOp_1_0 (rhs=VariableDereference | rhs=VariableDereference))
 	 * </pre>
 	 */
-	protected void sequence_VariableDereference(ISerializationContext context, VariableDereference semanticObject) {
+	protected void sequence_VariableDereference(ISerializationContext context, DotOp semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

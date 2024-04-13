@@ -169,13 +169,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="workingDirectory" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" instanceClassName="java.util.Map$Entry"
+      eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//VariableDeclaration"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" abstract="true" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//Expression"
         containment="true"/>
@@ -186,6 +191,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="expressions" lowerBound="1"
         upperBound="-1" eType="#//Expression" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DotOp" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Equality" eSuperTypes="#//BinaryOp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//EQUALITY_OPS"/>
   </eClassifiers>
@@ -263,19 +269,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableReference" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GitHubContext" eSuperTypes="#//Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" lowerBound="1"
         eType="#//CONTEXTS"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableDereference" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Matrix">
     <eStructuralFeatures xsi:type="ecore:EReference" name="axes" lowerBound="1" upperBound="-1"
@@ -290,8 +289,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MatrixAxis">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//VariableDeclaration"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" lowerBound="1" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
@@ -336,8 +335,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//VariableDeclaration"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Expression"
         containment="true"/>
   </eClassifiers>

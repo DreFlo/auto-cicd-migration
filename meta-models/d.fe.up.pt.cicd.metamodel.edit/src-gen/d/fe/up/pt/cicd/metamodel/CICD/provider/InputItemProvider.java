@@ -3,6 +3,7 @@
 package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 
 import java.util.Collection;
@@ -141,7 +142,8 @@ public class InputItemProvider extends ParameterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Input) object).getId();
+		INPUT_TYPE labelValue = ((Input) object).getType();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Input_type")
 				: getString("_UI_Input_type") + " " + label;
 	}

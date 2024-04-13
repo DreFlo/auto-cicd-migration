@@ -144,7 +144,13 @@ public class StartsWithItemProvider extends BuiltInFunctionCallItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -210,16 +216,19 @@ public class StartsWithItemProvider extends BuiltInFunctionCallItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_STRING,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -285,13 +294,10 @@ public class StartsWithItemProvider extends BuiltInFunctionCallItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STARTS_WITH__SEARCH_VALUE,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

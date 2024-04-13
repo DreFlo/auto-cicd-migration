@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_DOUBLE", "RULE_BOOLEAN", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'||'", "'&&'", "'!'", "'.'", "'['", "'\"'", "'\\''", "']'", "'('", "')'", "'contains'", "','", "'startsWith'", "'endsWith'", "'format'", "'join'", "'toJSON'", "'fromJSON'", "'hashFiles'", "'success'", "'always'", "'cancelled'", "'failure'", "'>'", "'>='", "'<'", "'<='", "'=='", "'!='", "'github'", "'env'", "'vars'", "'job'", "'jobs'", "'steps'", "'runner'", "'secrets'", "'strategy'", "'matrix'", "'needs'", "'inputs'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_DOUBLE", "RULE_BOOLEAN", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'||'", "'&&'", "'!'", "'.'", "'['", "']'", "'('", "')'", "'contains'", "','", "'startsWith'", "'endsWith'", "'format'", "'join'", "'toJSON'", "'fromJSON'", "'hashFiles'", "'success'", "'always'", "'cancelled'", "'failure'", "'>'", "'>='", "'<'", "'<='", "'=='", "'!='", "'github'", "'env'", "'vars'", "'job'", "'jobs'", "'steps'", "'runner'", "'secrets'", "'strategy'", "'matrix'", "'needs'", "'inputs'"
     };
     public static final int T__50=50;
     public static final int RULE_BOOLEAN=7;
@@ -34,8 +34,6 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
     public static final int RULE_ID=4;
     public static final int T__26=26;
     public static final int T__27=27;
@@ -595,7 +593,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( ((LA3_0>=40 && LA3_0<=41)) ) {
+                if ( ((LA3_0>=38 && LA3_0<=39)) ) {
                     alt3=1;
                 }
 
@@ -784,7 +782,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( ((LA4_0>=36 && LA4_0<=39)) ) {
+                if ( ((LA4_0>=34 && LA4_0<=37)) ) {
                     alt4=1;
                 }
 
@@ -957,7 +955,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             if ( (LA5_0==15) ) {
                 alt5=1;
             }
-            else if ( ((LA5_0>=RULE_ID && LA5_0<=RULE_STRING)||LA5_0==21||LA5_0==23||(LA5_0>=25 && LA5_0<=35)||(LA5_0>=42 && LA5_0<=53)) ) {
+            else if ( ((LA5_0>=RULE_ID && LA5_0<=RULE_STRING)||LA5_0==19||LA5_0==21||(LA5_0>=23 && LA5_0<=33)||(LA5_0>=40 && LA5_0<=51)) ) {
                 alt5=2;
             }
             else {
@@ -1256,32 +1254,29 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariableDereference"
-    // InternalGitHubActions.g:466:1: ruleVariableDereference returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) ) )* ) ;
+    // InternalGitHubActions.g:466:1: ruleVariableDereference returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) ) )? ) ;
     public final EObject ruleVariableDereference() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_2=null;
-        Token lv_property_3_0=null;
         Token otherlv_4=null;
-        Token otherlv_5=null;
-        Token lv_property_6_0=null;
-        Token otherlv_7=null;
-        Token otherlv_8=null;
-        Token lv_property_9_0=null;
-        Token otherlv_10=null;
-        Token otherlv_11=null;
+        Token otherlv_6=null;
         EObject this_Primary_0 = null;
+
+        EObject lv_rhs_3_0 = null;
+
+        EObject lv_rhs_5_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:472:2: ( (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) ) )* ) )
-            // InternalGitHubActions.g:473:2: (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) ) )* )
+            // InternalGitHubActions.g:472:2: ( (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) ) )? ) )
+            // InternalGitHubActions.g:473:2: (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) ) )? )
             {
-            // InternalGitHubActions.g:473:2: (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) ) )* )
-            // InternalGitHubActions.g:474:3: this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) ) )*
+            // InternalGitHubActions.g:473:2: (this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) ) )? )
+            // InternalGitHubActions.g:474:3: this_Primary_0= rulePrimary ( () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) ) )?
             {
 
             			newCompositeNode(grammarAccess.getVariableDereferenceAccess().getPrimaryParserRuleCall_0());
@@ -1295,240 +1290,151 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             			current = this_Primary_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGitHubActions.g:482:3: ( () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) ) )*
-            loop8:
-            do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+            // InternalGitHubActions.g:482:3: ( () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) ) )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-                if ( ((LA8_0>=16 && LA8_0<=17)||LA8_0==19) ) {
-                    alt8=1;
-                }
+            if ( ((LA7_0>=16 && LA7_0<=17)) ) {
+                alt7=1;
+            }
+            switch (alt7) {
+                case 1 :
+                    // InternalGitHubActions.g:483:4: () ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) )
+                    {
+                    // InternalGitHubActions.g:483:4: ()
+                    // InternalGitHubActions.g:484:5: 
+                    {
 
+                    					current = forceCreateModelElementAndSet(
+                    						grammarAccess.getVariableDereferenceAccess().getDotOpLhsAction_1_0(),
+                    						current);
+                    				
 
-                switch (alt8) {
-            	case 1 :
-            	    // InternalGitHubActions.g:483:4: () ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) )
-            	    {
-            	    // InternalGitHubActions.g:483:4: ()
-            	    // InternalGitHubActions.g:484:5: 
-            	    {
+                    }
 
-            	    					current = forceCreateModelElementAndSet(
-            	    						grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0(),
-            	    						current);
-            	    				
+                    // InternalGitHubActions.g:490:4: ( (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) ) | (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' ) )
+                    int alt6=2;
+                    int LA6_0 = input.LA(1);
 
-            	    }
+                    if ( (LA6_0==16) ) {
+                        alt6=1;
+                    }
+                    else if ( (LA6_0==17) ) {
+                        alt6=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 6, 0, input);
 
-            	    // InternalGitHubActions.g:490:4: ( (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) ) | ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) ) )
-            	    int alt7=2;
-            	    int LA7_0 = input.LA(1);
+                        throw nvae;
+                    }
+                    switch (alt6) {
+                        case 1 :
+                            // InternalGitHubActions.g:491:5: (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) )
+                            {
+                            // InternalGitHubActions.g:491:5: (otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) ) )
+                            // InternalGitHubActions.g:492:6: otherlv_2= '.' ( (lv_rhs_3_0= ruleVariableDereference ) )
+                            {
+                            otherlv_2=(Token)match(input,16,FOLLOW_4); 
 
-            	    if ( (LA7_0==16) ) {
-            	        alt7=1;
-            	    }
-            	    else if ( (LA7_0==17||LA7_0==19) ) {
-            	        alt7=2;
-            	    }
-            	    else {
-            	        NoViableAltException nvae =
-            	            new NoViableAltException("", 7, 0, input);
+                            						newLeafNode(otherlv_2, grammarAccess.getVariableDereferenceAccess().getFullStopKeyword_1_1_0_0());
+                            					
+                            // InternalGitHubActions.g:496:6: ( (lv_rhs_3_0= ruleVariableDereference ) )
+                            // InternalGitHubActions.g:497:7: (lv_rhs_3_0= ruleVariableDereference )
+                            {
+                            // InternalGitHubActions.g:497:7: (lv_rhs_3_0= ruleVariableDereference )
+                            // InternalGitHubActions.g:498:8: lv_rhs_3_0= ruleVariableDereference
+                            {
 
-            	        throw nvae;
-            	    }
-            	    switch (alt7) {
-            	        case 1 :
-            	            // InternalGitHubActions.g:491:5: (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) )
-            	            {
-            	            // InternalGitHubActions.g:491:5: (otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) ) )
-            	            // InternalGitHubActions.g:492:6: otherlv_2= '.' ( (lv_property_3_0= RULE_ID ) )
-            	            {
-            	            otherlv_2=(Token)match(input,16,FOLLOW_9); 
+                            								newCompositeNode(grammarAccess.getVariableDereferenceAccess().getRhsVariableDereferenceParserRuleCall_1_1_0_1_0());
+                            							
+                            pushFollow(FOLLOW_2);
+                            lv_rhs_3_0=ruleVariableDereference();
 
-            	            						newLeafNode(otherlv_2, grammarAccess.getVariableDereferenceAccess().getFullStopKeyword_1_1_0_0());
-            	            					
-            	            // InternalGitHubActions.g:496:6: ( (lv_property_3_0= RULE_ID ) )
-            	            // InternalGitHubActions.g:497:7: (lv_property_3_0= RULE_ID )
-            	            {
-            	            // InternalGitHubActions.g:497:7: (lv_property_3_0= RULE_ID )
-            	            // InternalGitHubActions.g:498:8: lv_property_3_0= RULE_ID
-            	            {
-            	            lv_property_3_0=(Token)match(input,RULE_ID,FOLLOW_8); 
-
-            	            								newLeafNode(lv_property_3_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_0_1_0());
-            	            							
-
-            	            								if (current==null) {
-            	            									current = createModelElement(grammarAccess.getVariableDereferenceRule());
-            	            								}
-            	            								setWithLastConsumed(
-            	            									current,
-            	            									"property",
-            	            									lv_property_3_0,
-            	            									"org.eclipse.xtext.common.Terminals.ID");
-            	            							
-
-            	            }
+                            state._fsp--;
 
 
-            	            }
+                            								if (current==null) {
+                            									current = createModelElementForParent(grammarAccess.getVariableDereferenceRule());
+                            								}
+                            								set(
+                            									current,
+                            									"rhs",
+                            									lv_rhs_3_0,
+                            									"d.fe.up.pt.cicd.gha.dsl.GitHubActions.VariableDereference");
+                            								afterParserOrEnumRuleCall();
+                            							
+
+                            }
 
 
-            	            }
+                            }
 
 
-            	            }
-            	            break;
-            	        case 2 :
-            	            // InternalGitHubActions.g:516:5: ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) )
-            	            {
-            	            // InternalGitHubActions.g:516:5: ( (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) ) | ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' ) )
-            	            int alt6=2;
-            	            int LA6_0 = input.LA(1);
-
-            	            if ( (LA6_0==17) ) {
-            	                alt6=1;
-            	            }
-            	            else if ( (LA6_0==19) ) {
-            	                alt6=2;
-            	            }
-            	            else {
-            	                NoViableAltException nvae =
-            	                    new NoViableAltException("", 6, 0, input);
-
-            	                throw nvae;
-            	            }
-            	            switch (alt6) {
-            	                case 1 :
-            	                    // InternalGitHubActions.g:517:6: (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) )
-            	                    {
-            	                    // InternalGitHubActions.g:517:6: (otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' ) )
-            	                    // InternalGitHubActions.g:518:7: otherlv_4= '[' (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' )
-            	                    {
-            	                    otherlv_4=(Token)match(input,17,FOLLOW_10); 
-
-            	                    							newLeafNode(otherlv_4, grammarAccess.getVariableDereferenceAccess().getLeftSquareBracketKeyword_1_1_1_0_0());
-            	                    						
-            	                    // InternalGitHubActions.g:522:7: (otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"' )
-            	                    // InternalGitHubActions.g:523:8: otherlv_5= '\"' ( (lv_property_6_0= RULE_ID ) ) otherlv_7= '\"'
-            	                    {
-            	                    otherlv_5=(Token)match(input,18,FOLLOW_9); 
-
-            	                    								newLeafNode(otherlv_5, grammarAccess.getVariableDereferenceAccess().getQuotationMarkKeyword_1_1_1_0_1_0());
-            	                    							
-            	                    // InternalGitHubActions.g:527:8: ( (lv_property_6_0= RULE_ID ) )
-            	                    // InternalGitHubActions.g:528:9: (lv_property_6_0= RULE_ID )
-            	                    {
-            	                    // InternalGitHubActions.g:528:9: (lv_property_6_0= RULE_ID )
-            	                    // InternalGitHubActions.g:529:10: lv_property_6_0= RULE_ID
-            	                    {
-            	                    lv_property_6_0=(Token)match(input,RULE_ID,FOLLOW_10); 
-
-            	                    										newLeafNode(lv_property_6_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_1_0_1_1_0());
-            	                    									
-
-            	                    										if (current==null) {
-            	                    											current = createModelElement(grammarAccess.getVariableDereferenceRule());
-            	                    										}
-            	                    										setWithLastConsumed(
-            	                    											current,
-            	                    											"property",
-            	                    											lv_property_6_0,
-            	                    											"org.eclipse.xtext.common.Terminals.ID");
-            	                    									
-
-            	                    }
+                            }
 
 
-            	                    }
+                            }
+                            break;
+                        case 2 :
+                            // InternalGitHubActions.g:517:5: (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' )
+                            {
+                            // InternalGitHubActions.g:517:5: (otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']' )
+                            // InternalGitHubActions.g:518:6: otherlv_4= '[' ( (lv_rhs_5_0= ruleVariableDereference ) ) otherlv_6= ']'
+                            {
+                            otherlv_4=(Token)match(input,17,FOLLOW_4); 
 
-            	                    otherlv_7=(Token)match(input,18,FOLLOW_8); 
+                            						newLeafNode(otherlv_4, grammarAccess.getVariableDereferenceAccess().getLeftSquareBracketKeyword_1_1_1_0());
+                            					
+                            // InternalGitHubActions.g:522:6: ( (lv_rhs_5_0= ruleVariableDereference ) )
+                            // InternalGitHubActions.g:523:7: (lv_rhs_5_0= ruleVariableDereference )
+                            {
+                            // InternalGitHubActions.g:523:7: (lv_rhs_5_0= ruleVariableDereference )
+                            // InternalGitHubActions.g:524:8: lv_rhs_5_0= ruleVariableDereference
+                            {
 
-            	                    								newLeafNode(otherlv_7, grammarAccess.getVariableDereferenceAccess().getQuotationMarkKeyword_1_1_1_0_1_2());
-            	                    							
+                            								newCompositeNode(grammarAccess.getVariableDereferenceAccess().getRhsVariableDereferenceParserRuleCall_1_1_1_1_0());
+                            							
+                            pushFollow(FOLLOW_9);
+                            lv_rhs_5_0=ruleVariableDereference();
 
-            	                    }
-
-
-            	                    }
-
-
-            	                    }
-            	                    break;
-            	                case 2 :
-            	                    // InternalGitHubActions.g:552:6: ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' )
-            	                    {
-            	                    // InternalGitHubActions.g:552:6: ( (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']' )
-            	                    // InternalGitHubActions.g:553:7: (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' ) otherlv_11= ']'
-            	                    {
-            	                    // InternalGitHubActions.g:553:7: (otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"' )
-            	                    // InternalGitHubActions.g:554:8: otherlv_8= '\\'' ( (lv_property_9_0= RULE_ID ) ) otherlv_10= '\"'
-            	                    {
-            	                    otherlv_8=(Token)match(input,19,FOLLOW_9); 
-
-            	                    								newLeafNode(otherlv_8, grammarAccess.getVariableDereferenceAccess().getApostropheKeyword_1_1_1_1_0_0());
-            	                    							
-            	                    // InternalGitHubActions.g:558:8: ( (lv_property_9_0= RULE_ID ) )
-            	                    // InternalGitHubActions.g:559:9: (lv_property_9_0= RULE_ID )
-            	                    {
-            	                    // InternalGitHubActions.g:559:9: (lv_property_9_0= RULE_ID )
-            	                    // InternalGitHubActions.g:560:10: lv_property_9_0= RULE_ID
-            	                    {
-            	                    lv_property_9_0=(Token)match(input,RULE_ID,FOLLOW_10); 
-
-            	                    										newLeafNode(lv_property_9_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_1_1_0_1_0());
-            	                    									
-
-            	                    										if (current==null) {
-            	                    											current = createModelElement(grammarAccess.getVariableDereferenceRule());
-            	                    										}
-            	                    										setWithLastConsumed(
-            	                    											current,
-            	                    											"property",
-            	                    											lv_property_9_0,
-            	                    											"org.eclipse.xtext.common.Terminals.ID");
-            	                    									
-
-            	                    }
+                            state._fsp--;
 
 
-            	                    }
+                            								if (current==null) {
+                            									current = createModelElementForParent(grammarAccess.getVariableDereferenceRule());
+                            								}
+                            								set(
+                            									current,
+                            									"rhs",
+                            									lv_rhs_5_0,
+                            									"d.fe.up.pt.cicd.gha.dsl.GitHubActions.VariableDereference");
+                            								afterParserOrEnumRuleCall();
+                            							
 
-            	                    otherlv_10=(Token)match(input,18,FOLLOW_11); 
-
-            	                    								newLeafNode(otherlv_10, grammarAccess.getVariableDereferenceAccess().getQuotationMarkKeyword_1_1_1_1_0_2());
-            	                    							
-
-            	                    }
-
-            	                    otherlv_11=(Token)match(input,20,FOLLOW_8); 
-
-            	                    							newLeafNode(otherlv_11, grammarAccess.getVariableDereferenceAccess().getRightSquareBracketKeyword_1_1_1_1_1());
-            	                    						
-
-            	                    }
+                            }
 
 
-            	                    }
-            	                    break;
+                            }
 
-            	            }
+                            otherlv_6=(Token)match(input,18,FOLLOW_2); 
 
+                            						newLeafNode(otherlv_6, grammarAccess.getVariableDereferenceAccess().getRightSquareBracketKeyword_1_1_1_2());
+                            					
 
-            	            }
-            	            break;
-
-            	    }
+                            }
 
 
-            	    }
-            	    break;
+                            }
+                            break;
 
-            	default :
-            	    break loop8;
-                }
-            } while (true);
+                    }
+
+
+                    }
+                    break;
+
+            }
 
 
             }
@@ -1553,7 +1459,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimary"
-    // InternalGitHubActions.g:593:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
+    // InternalGitHubActions.g:552:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
     public final EObject entryRulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -1561,8 +1467,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:593:48: (iv_rulePrimary= rulePrimary EOF )
-            // InternalGitHubActions.g:594:2: iv_rulePrimary= rulePrimary EOF
+            // InternalGitHubActions.g:552:48: (iv_rulePrimary= rulePrimary EOF )
+            // InternalGitHubActions.g:553:2: iv_rulePrimary= rulePrimary EOF
             {
              newCompositeNode(grammarAccess.getPrimaryRule()); 
             pushFollow(FOLLOW_1);
@@ -1589,7 +1495,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimary"
-    // InternalGitHubActions.g:600:1: rulePrimary returns [EObject current=null] : ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic ) ;
+    // InternalGitHubActions.g:559:1: rulePrimary returns [EObject current=null] : ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic ) ;
     public final EObject rulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -1606,18 +1512,20 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:606:2: ( ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic ) )
-            // InternalGitHubActions.g:607:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic )
+            // InternalGitHubActions.g:565:2: ( ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic ) )
+            // InternalGitHubActions.g:566:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic )
             {
-            // InternalGitHubActions.g:607:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic )
-            int alt9=3;
+            // InternalGitHubActions.g:566:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | this_CallExpression_3= ruleCallExpression | this_Atomic_4= ruleAtomic )
+            int alt8=3;
             switch ( input.LA(1) ) {
-            case 21:
+            case 19:
                 {
-                alt9=1;
+                alt8=1;
                 }
                 break;
+            case 21:
             case 23:
+            case 24:
             case 25:
             case 26:
             case 27:
@@ -1627,10 +1535,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             case 31:
             case 32:
             case 33:
-            case 34:
-            case 35:
                 {
-                alt9=2;
+                alt8=2;
                 }
                 break;
             case RULE_ID:
@@ -1638,6 +1544,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             case RULE_DOUBLE:
             case RULE_BOOLEAN:
             case RULE_STRING:
+            case 40:
+            case 41:
             case 42:
             case 43:
             case 44:
@@ -1648,34 +1556,32 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             case 49:
             case 50:
             case 51:
-            case 52:
-            case 53:
                 {
-                alt9=3;
+                alt8=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt9) {
+            switch (alt8) {
                 case 1 :
-                    // InternalGitHubActions.g:608:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
+                    // InternalGitHubActions.g:567:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
                     {
-                    // InternalGitHubActions.g:608:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
-                    // InternalGitHubActions.g:609:4: otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')'
+                    // InternalGitHubActions.g:567:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
+                    // InternalGitHubActions.g:568:4: otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')'
                     {
-                    otherlv_0=(Token)match(input,21,FOLLOW_4); 
+                    otherlv_0=(Token)match(input,19,FOLLOW_4); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
                     			
 
                     				newCompositeNode(grammarAccess.getPrimaryAccess().getExpressionParserRuleCall_0_1());
                     			
-                    pushFollow(FOLLOW_12);
+                    pushFollow(FOLLOW_10);
                     this_Expression_1=ruleExpression();
 
                     state._fsp--;
@@ -1684,7 +1590,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     				current = this_Expression_1;
                     				afterParserOrEnumRuleCall();
                     			
-                    otherlv_2=(Token)match(input,22,FOLLOW_2); 
+                    otherlv_2=(Token)match(input,20,FOLLOW_2); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getPrimaryAccess().getRightParenthesisKeyword_0_2());
                     			
@@ -1695,7 +1601,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:627:3: this_CallExpression_3= ruleCallExpression
+                    // InternalGitHubActions.g:586:3: this_CallExpression_3= ruleCallExpression
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryAccess().getCallExpressionParserRuleCall_1());
@@ -1713,7 +1619,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGitHubActions.g:636:3: this_Atomic_4= ruleAtomic
+                    // InternalGitHubActions.g:595:3: this_Atomic_4= ruleAtomic
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryAccess().getAtomicParserRuleCall_2());
@@ -1753,7 +1659,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomic"
-    // InternalGitHubActions.g:648:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
+    // InternalGitHubActions.g:607:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
     public final EObject entryRuleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -1761,8 +1667,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:648:47: (iv_ruleAtomic= ruleAtomic EOF )
-            // InternalGitHubActions.g:649:2: iv_ruleAtomic= ruleAtomic EOF
+            // InternalGitHubActions.g:607:47: (iv_ruleAtomic= ruleAtomic EOF )
+            // InternalGitHubActions.g:608:2: iv_ruleAtomic= ruleAtomic EOF
             {
              newCompositeNode(grammarAccess.getAtomicRule()); 
             pushFollow(FOLLOW_1);
@@ -1789,7 +1695,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomic"
-    // InternalGitHubActions.g:655:1: ruleAtomic returns [EObject current=null] : ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) ) ;
+    // InternalGitHubActions.g:614:1: ruleAtomic returns [EObject current=null] : ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) ) ;
     public final EObject ruleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -1805,12 +1711,14 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:661:2: ( ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) ) )
-            // InternalGitHubActions.g:662:2: ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) )
+            // InternalGitHubActions.g:620:2: ( ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) ) )
+            // InternalGitHubActions.g:621:2: ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) )
             {
-            // InternalGitHubActions.g:662:2: ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) )
-            int alt10=6;
+            // InternalGitHubActions.g:621:2: ( ( () ( (lv_context_1_0= ruleCONTEXT ) ) ) | ( () ( (lv_name_3_0= RULE_ID ) ) ) | ( () ( (lv_value_5_0= RULE_INT ) ) ) | ( () ( (lv_value_7_0= RULE_DOUBLE ) ) ) | ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) ) | ( () ( (lv_value_11_0= RULE_STRING ) ) ) )
+            int alt9=6;
             switch ( input.LA(1) ) {
+            case 40:
+            case 41:
             case 42:
             case 43:
             case 44:
@@ -1821,53 +1729,51 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             case 49:
             case 50:
             case 51:
-            case 52:
-            case 53:
                 {
-                alt10=1;
+                alt9=1;
                 }
                 break;
             case RULE_ID:
                 {
-                alt10=2;
+                alt9=2;
                 }
                 break;
             case RULE_INT:
                 {
-                alt10=3;
+                alt9=3;
                 }
                 break;
             case RULE_DOUBLE:
                 {
-                alt10=4;
+                alt9=4;
                 }
                 break;
             case RULE_BOOLEAN:
                 {
-                alt10=5;
+                alt9=5;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt10=6;
+                alt9=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt10) {
+            switch (alt9) {
                 case 1 :
-                    // InternalGitHubActions.g:663:3: ( () ( (lv_context_1_0= ruleCONTEXT ) ) )
+                    // InternalGitHubActions.g:622:3: ( () ( (lv_context_1_0= ruleCONTEXT ) ) )
                     {
-                    // InternalGitHubActions.g:663:3: ( () ( (lv_context_1_0= ruleCONTEXT ) ) )
-                    // InternalGitHubActions.g:664:4: () ( (lv_context_1_0= ruleCONTEXT ) )
+                    // InternalGitHubActions.g:622:3: ( () ( (lv_context_1_0= ruleCONTEXT ) ) )
+                    // InternalGitHubActions.g:623:4: () ( (lv_context_1_0= ruleCONTEXT ) )
                     {
-                    // InternalGitHubActions.g:664:4: ()
-                    // InternalGitHubActions.g:665:5: 
+                    // InternalGitHubActions.g:623:4: ()
+                    // InternalGitHubActions.g:624:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -1877,11 +1783,11 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGitHubActions.g:671:4: ( (lv_context_1_0= ruleCONTEXT ) )
-                    // InternalGitHubActions.g:672:5: (lv_context_1_0= ruleCONTEXT )
+                    // InternalGitHubActions.g:630:4: ( (lv_context_1_0= ruleCONTEXT ) )
+                    // InternalGitHubActions.g:631:5: (lv_context_1_0= ruleCONTEXT )
                     {
-                    // InternalGitHubActions.g:672:5: (lv_context_1_0= ruleCONTEXT )
-                    // InternalGitHubActions.g:673:6: lv_context_1_0= ruleCONTEXT
+                    // InternalGitHubActions.g:631:5: (lv_context_1_0= ruleCONTEXT )
+                    // InternalGitHubActions.g:632:6: lv_context_1_0= ruleCONTEXT
                     {
 
                     						newCompositeNode(grammarAccess.getAtomicAccess().getContextCONTEXTEnumRuleCall_0_1_0());
@@ -1915,27 +1821,27 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:692:3: ( () ( (lv_name_3_0= RULE_ID ) ) )
+                    // InternalGitHubActions.g:651:3: ( () ( (lv_name_3_0= RULE_ID ) ) )
                     {
-                    // InternalGitHubActions.g:692:3: ( () ( (lv_name_3_0= RULE_ID ) ) )
-                    // InternalGitHubActions.g:693:4: () ( (lv_name_3_0= RULE_ID ) )
+                    // InternalGitHubActions.g:651:3: ( () ( (lv_name_3_0= RULE_ID ) ) )
+                    // InternalGitHubActions.g:652:4: () ( (lv_name_3_0= RULE_ID ) )
                     {
-                    // InternalGitHubActions.g:693:4: ()
-                    // InternalGitHubActions.g:694:5: 
+                    // InternalGitHubActions.g:652:4: ()
+                    // InternalGitHubActions.g:653:5: 
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getAtomicAccess().getVariableAction_1_0(),
+                    						grammarAccess.getAtomicAccess().getVariableReferenceAction_1_0(),
                     						current);
                     				
 
                     }
 
-                    // InternalGitHubActions.g:700:4: ( (lv_name_3_0= RULE_ID ) )
-                    // InternalGitHubActions.g:701:5: (lv_name_3_0= RULE_ID )
+                    // InternalGitHubActions.g:659:4: ( (lv_name_3_0= RULE_ID ) )
+                    // InternalGitHubActions.g:660:5: (lv_name_3_0= RULE_ID )
                     {
-                    // InternalGitHubActions.g:701:5: (lv_name_3_0= RULE_ID )
-                    // InternalGitHubActions.g:702:6: lv_name_3_0= RULE_ID
+                    // InternalGitHubActions.g:660:5: (lv_name_3_0= RULE_ID )
+                    // InternalGitHubActions.g:661:6: lv_name_3_0= RULE_ID
                     {
                     lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -1964,13 +1870,13 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGitHubActions.g:720:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
+                    // InternalGitHubActions.g:679:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
                     {
-                    // InternalGitHubActions.g:720:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
-                    // InternalGitHubActions.g:721:4: () ( (lv_value_5_0= RULE_INT ) )
+                    // InternalGitHubActions.g:679:3: ( () ( (lv_value_5_0= RULE_INT ) ) )
+                    // InternalGitHubActions.g:680:4: () ( (lv_value_5_0= RULE_INT ) )
                     {
-                    // InternalGitHubActions.g:721:4: ()
-                    // InternalGitHubActions.g:722:5: 
+                    // InternalGitHubActions.g:680:4: ()
+                    // InternalGitHubActions.g:681:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -1980,11 +1886,11 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGitHubActions.g:728:4: ( (lv_value_5_0= RULE_INT ) )
-                    // InternalGitHubActions.g:729:5: (lv_value_5_0= RULE_INT )
+                    // InternalGitHubActions.g:687:4: ( (lv_value_5_0= RULE_INT ) )
+                    // InternalGitHubActions.g:688:5: (lv_value_5_0= RULE_INT )
                     {
-                    // InternalGitHubActions.g:729:5: (lv_value_5_0= RULE_INT )
-                    // InternalGitHubActions.g:730:6: lv_value_5_0= RULE_INT
+                    // InternalGitHubActions.g:688:5: (lv_value_5_0= RULE_INT )
+                    // InternalGitHubActions.g:689:6: lv_value_5_0= RULE_INT
                     {
                     lv_value_5_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -2013,13 +1919,13 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGitHubActions.g:748:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
+                    // InternalGitHubActions.g:707:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
                     {
-                    // InternalGitHubActions.g:748:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
-                    // InternalGitHubActions.g:749:4: () ( (lv_value_7_0= RULE_DOUBLE ) )
+                    // InternalGitHubActions.g:707:3: ( () ( (lv_value_7_0= RULE_DOUBLE ) ) )
+                    // InternalGitHubActions.g:708:4: () ( (lv_value_7_0= RULE_DOUBLE ) )
                     {
-                    // InternalGitHubActions.g:749:4: ()
-                    // InternalGitHubActions.g:750:5: 
+                    // InternalGitHubActions.g:708:4: ()
+                    // InternalGitHubActions.g:709:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -2029,11 +1935,11 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGitHubActions.g:756:4: ( (lv_value_7_0= RULE_DOUBLE ) )
-                    // InternalGitHubActions.g:757:5: (lv_value_7_0= RULE_DOUBLE )
+                    // InternalGitHubActions.g:715:4: ( (lv_value_7_0= RULE_DOUBLE ) )
+                    // InternalGitHubActions.g:716:5: (lv_value_7_0= RULE_DOUBLE )
                     {
-                    // InternalGitHubActions.g:757:5: (lv_value_7_0= RULE_DOUBLE )
-                    // InternalGitHubActions.g:758:6: lv_value_7_0= RULE_DOUBLE
+                    // InternalGitHubActions.g:716:5: (lv_value_7_0= RULE_DOUBLE )
+                    // InternalGitHubActions.g:717:6: lv_value_7_0= RULE_DOUBLE
                     {
                     lv_value_7_0=(Token)match(input,RULE_DOUBLE,FOLLOW_2); 
 
@@ -2062,13 +1968,13 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalGitHubActions.g:776:3: ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) )
+                    // InternalGitHubActions.g:735:3: ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) )
                     {
-                    // InternalGitHubActions.g:776:3: ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) )
-                    // InternalGitHubActions.g:777:4: () ( (lv_value_9_0= RULE_BOOLEAN ) )
+                    // InternalGitHubActions.g:735:3: ( () ( (lv_value_9_0= RULE_BOOLEAN ) ) )
+                    // InternalGitHubActions.g:736:4: () ( (lv_value_9_0= RULE_BOOLEAN ) )
                     {
-                    // InternalGitHubActions.g:777:4: ()
-                    // InternalGitHubActions.g:778:5: 
+                    // InternalGitHubActions.g:736:4: ()
+                    // InternalGitHubActions.g:737:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -2078,11 +1984,11 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGitHubActions.g:784:4: ( (lv_value_9_0= RULE_BOOLEAN ) )
-                    // InternalGitHubActions.g:785:5: (lv_value_9_0= RULE_BOOLEAN )
+                    // InternalGitHubActions.g:743:4: ( (lv_value_9_0= RULE_BOOLEAN ) )
+                    // InternalGitHubActions.g:744:5: (lv_value_9_0= RULE_BOOLEAN )
                     {
-                    // InternalGitHubActions.g:785:5: (lv_value_9_0= RULE_BOOLEAN )
-                    // InternalGitHubActions.g:786:6: lv_value_9_0= RULE_BOOLEAN
+                    // InternalGitHubActions.g:744:5: (lv_value_9_0= RULE_BOOLEAN )
+                    // InternalGitHubActions.g:745:6: lv_value_9_0= RULE_BOOLEAN
                     {
                     lv_value_9_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); 
 
@@ -2111,13 +2017,13 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalGitHubActions.g:804:3: ( () ( (lv_value_11_0= RULE_STRING ) ) )
+                    // InternalGitHubActions.g:763:3: ( () ( (lv_value_11_0= RULE_STRING ) ) )
                     {
-                    // InternalGitHubActions.g:804:3: ( () ( (lv_value_11_0= RULE_STRING ) ) )
-                    // InternalGitHubActions.g:805:4: () ( (lv_value_11_0= RULE_STRING ) )
+                    // InternalGitHubActions.g:763:3: ( () ( (lv_value_11_0= RULE_STRING ) ) )
+                    // InternalGitHubActions.g:764:4: () ( (lv_value_11_0= RULE_STRING ) )
                     {
-                    // InternalGitHubActions.g:805:4: ()
-                    // InternalGitHubActions.g:806:5: 
+                    // InternalGitHubActions.g:764:4: ()
+                    // InternalGitHubActions.g:765:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -2127,11 +2033,11 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGitHubActions.g:812:4: ( (lv_value_11_0= RULE_STRING ) )
-                    // InternalGitHubActions.g:813:5: (lv_value_11_0= RULE_STRING )
+                    // InternalGitHubActions.g:771:4: ( (lv_value_11_0= RULE_STRING ) )
+                    // InternalGitHubActions.g:772:5: (lv_value_11_0= RULE_STRING )
                     {
-                    // InternalGitHubActions.g:813:5: (lv_value_11_0= RULE_STRING )
-                    // InternalGitHubActions.g:814:6: lv_value_11_0= RULE_STRING
+                    // InternalGitHubActions.g:772:5: (lv_value_11_0= RULE_STRING )
+                    // InternalGitHubActions.g:773:6: lv_value_11_0= RULE_STRING
                     {
                     lv_value_11_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -2182,7 +2088,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCallExpression"
-    // InternalGitHubActions.g:835:1: entryRuleCallExpression returns [EObject current=null] : iv_ruleCallExpression= ruleCallExpression EOF ;
+    // InternalGitHubActions.g:794:1: entryRuleCallExpression returns [EObject current=null] : iv_ruleCallExpression= ruleCallExpression EOF ;
     public final EObject entryRuleCallExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2190,8 +2096,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:835:55: (iv_ruleCallExpression= ruleCallExpression EOF )
-            // InternalGitHubActions.g:836:2: iv_ruleCallExpression= ruleCallExpression EOF
+            // InternalGitHubActions.g:794:55: (iv_ruleCallExpression= ruleCallExpression EOF )
+            // InternalGitHubActions.g:795:2: iv_ruleCallExpression= ruleCallExpression EOF
             {
              newCompositeNode(grammarAccess.getCallExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -2218,7 +2124,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCallExpression"
-    // InternalGitHubActions.g:842:1: ruleCallExpression returns [EObject current=null] : (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled ) ;
+    // InternalGitHubActions.g:801:1: ruleCallExpression returns [EObject current=null] : (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled ) ;
     public final EObject ruleCallExpression() throws RecognitionException {
         EObject current = null;
 
@@ -2251,82 +2157,82 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:848:2: ( (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled ) )
-            // InternalGitHubActions.g:849:2: (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled )
+            // InternalGitHubActions.g:807:2: ( (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled ) )
+            // InternalGitHubActions.g:808:2: (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled )
             {
-            // InternalGitHubActions.g:849:2: (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled )
-            int alt11=12;
+            // InternalGitHubActions.g:808:2: (this_Contains_0= ruleContains | this_StartsWith_1= ruleStartsWith | this_EndsWith_2= ruleEndsWith | this_Format_3= ruleFormat | this_Join_4= ruleJoin | this_ToJSON_5= ruleToJSON | this_FromJSON_6= ruleFromJSON | this_HashFiles_7= ruleHashFiles | this_Success_8= ruleSuccess | this_Always_9= ruleAlways | this_Failure_10= ruleFailure | this_Cancelled_11= ruleCancelled )
+            int alt10=12;
             switch ( input.LA(1) ) {
+            case 21:
+                {
+                alt10=1;
+                }
+                break;
             case 23:
                 {
-                alt11=1;
+                alt10=2;
+                }
+                break;
+            case 24:
+                {
+                alt10=3;
                 }
                 break;
             case 25:
                 {
-                alt11=2;
+                alt10=4;
                 }
                 break;
             case 26:
                 {
-                alt11=3;
+                alt10=5;
                 }
                 break;
             case 27:
                 {
-                alt11=4;
+                alt10=6;
                 }
                 break;
             case 28:
                 {
-                alt11=5;
+                alt10=7;
                 }
                 break;
             case 29:
                 {
-                alt11=6;
+                alt10=8;
                 }
                 break;
             case 30:
                 {
-                alt11=7;
+                alt10=9;
                 }
                 break;
             case 31:
                 {
-                alt11=8;
-                }
-                break;
-            case 32:
-                {
-                alt11=9;
+                alt10=10;
                 }
                 break;
             case 33:
                 {
-                alt11=10;
+                alt10=11;
                 }
                 break;
-            case 35:
+            case 32:
                 {
-                alt11=11;
-                }
-                break;
-            case 34:
-                {
-                alt11=12;
+                alt10=12;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt11) {
+            switch (alt10) {
                 case 1 :
-                    // InternalGitHubActions.g:850:3: this_Contains_0= ruleContains
+                    // InternalGitHubActions.g:809:3: this_Contains_0= ruleContains
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getContainsParserRuleCall_0());
@@ -2344,7 +2250,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:859:3: this_StartsWith_1= ruleStartsWith
+                    // InternalGitHubActions.g:818:3: this_StartsWith_1= ruleStartsWith
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getStartsWithParserRuleCall_1());
@@ -2362,7 +2268,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGitHubActions.g:868:3: this_EndsWith_2= ruleEndsWith
+                    // InternalGitHubActions.g:827:3: this_EndsWith_2= ruleEndsWith
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getEndsWithParserRuleCall_2());
@@ -2380,7 +2286,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGitHubActions.g:877:3: this_Format_3= ruleFormat
+                    // InternalGitHubActions.g:836:3: this_Format_3= ruleFormat
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getFormatParserRuleCall_3());
@@ -2398,7 +2304,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalGitHubActions.g:886:3: this_Join_4= ruleJoin
+                    // InternalGitHubActions.g:845:3: this_Join_4= ruleJoin
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getJoinParserRuleCall_4());
@@ -2416,7 +2322,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalGitHubActions.g:895:3: this_ToJSON_5= ruleToJSON
+                    // InternalGitHubActions.g:854:3: this_ToJSON_5= ruleToJSON
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getToJSONParserRuleCall_5());
@@ -2434,7 +2340,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalGitHubActions.g:904:3: this_FromJSON_6= ruleFromJSON
+                    // InternalGitHubActions.g:863:3: this_FromJSON_6= ruleFromJSON
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getFromJSONParserRuleCall_6());
@@ -2452,7 +2358,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalGitHubActions.g:913:3: this_HashFiles_7= ruleHashFiles
+                    // InternalGitHubActions.g:872:3: this_HashFiles_7= ruleHashFiles
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getHashFilesParserRuleCall_7());
@@ -2470,7 +2376,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalGitHubActions.g:922:3: this_Success_8= ruleSuccess
+                    // InternalGitHubActions.g:881:3: this_Success_8= ruleSuccess
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getSuccessParserRuleCall_8());
@@ -2488,7 +2394,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalGitHubActions.g:931:3: this_Always_9= ruleAlways
+                    // InternalGitHubActions.g:890:3: this_Always_9= ruleAlways
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getAlwaysParserRuleCall_9());
@@ -2506,7 +2412,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalGitHubActions.g:940:3: this_Failure_10= ruleFailure
+                    // InternalGitHubActions.g:899:3: this_Failure_10= ruleFailure
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getFailureParserRuleCall_10());
@@ -2524,7 +2430,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // InternalGitHubActions.g:949:3: this_Cancelled_11= ruleCancelled
+                    // InternalGitHubActions.g:908:3: this_Cancelled_11= ruleCancelled
                     {
 
                     			newCompositeNode(grammarAccess.getCallExpressionAccess().getCancelledParserRuleCall_11());
@@ -2564,7 +2470,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleContains"
-    // InternalGitHubActions.g:961:1: entryRuleContains returns [EObject current=null] : iv_ruleContains= ruleContains EOF ;
+    // InternalGitHubActions.g:920:1: entryRuleContains returns [EObject current=null] : iv_ruleContains= ruleContains EOF ;
     public final EObject entryRuleContains() throws RecognitionException {
         EObject current = null;
 
@@ -2572,8 +2478,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:961:49: (iv_ruleContains= ruleContains EOF )
-            // InternalGitHubActions.g:962:2: iv_ruleContains= ruleContains EOF
+            // InternalGitHubActions.g:920:49: (iv_ruleContains= ruleContains EOF )
+            // InternalGitHubActions.g:921:2: iv_ruleContains= ruleContains EOF
             {
              newCompositeNode(grammarAccess.getContainsRule()); 
             pushFollow(FOLLOW_1);
@@ -2600,7 +2506,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContains"
-    // InternalGitHubActions.g:968:1: ruleContains returns [EObject current=null] : (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' ) ;
+    // InternalGitHubActions.g:927:1: ruleContains returns [EObject current=null] : (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' ) ;
     public final EObject ruleContains() throws RecognitionException {
         EObject current = null;
 
@@ -2617,30 +2523,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:974:2: ( (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' ) )
-            // InternalGitHubActions.g:975:2: (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' )
+            // InternalGitHubActions.g:933:2: ( (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' ) )
+            // InternalGitHubActions.g:934:2: (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' )
             {
-            // InternalGitHubActions.g:975:2: (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' )
-            // InternalGitHubActions.g:976:3: otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')'
+            // InternalGitHubActions.g:934:2: (otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')' )
+            // InternalGitHubActions.g:935:3: otherlv_0= 'contains' otherlv_1= '(' ( (lv_search_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_item_4_0= ruleExpression ) ) otherlv_5= ')'
             {
-            otherlv_0=(Token)match(input,23,FOLLOW_13); 
+            otherlv_0=(Token)match(input,21,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getContainsAccess().getContainsKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getContainsAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:984:3: ( (lv_search_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:985:4: (lv_search_2_0= ruleExpression )
+            // InternalGitHubActions.g:943:3: ( (lv_search_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:944:4: (lv_search_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:985:4: (lv_search_2_0= ruleExpression )
-            // InternalGitHubActions.g:986:5: lv_search_2_0= ruleExpression
+            // InternalGitHubActions.g:944:4: (lv_search_2_0= ruleExpression )
+            // InternalGitHubActions.g:945:5: lv_search_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getContainsAccess().getSearchExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_12);
             lv_search_2_0=ruleExpression();
 
             state._fsp--;
@@ -2662,20 +2568,20 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,24,FOLLOW_4); 
+            otherlv_3=(Token)match(input,22,FOLLOW_4); 
 
             			newLeafNode(otherlv_3, grammarAccess.getContainsAccess().getCommaKeyword_3());
             		
-            // InternalGitHubActions.g:1007:3: ( (lv_item_4_0= ruleExpression ) )
-            // InternalGitHubActions.g:1008:4: (lv_item_4_0= ruleExpression )
+            // InternalGitHubActions.g:966:3: ( (lv_item_4_0= ruleExpression ) )
+            // InternalGitHubActions.g:967:4: (lv_item_4_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1008:4: (lv_item_4_0= ruleExpression )
-            // InternalGitHubActions.g:1009:5: lv_item_4_0= ruleExpression
+            // InternalGitHubActions.g:967:4: (lv_item_4_0= ruleExpression )
+            // InternalGitHubActions.g:968:5: lv_item_4_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getContainsAccess().getItemExpressionParserRuleCall_4_0());
             				
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_10);
             lv_item_4_0=ruleExpression();
 
             state._fsp--;
@@ -2697,7 +2603,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,22,FOLLOW_2); 
+            otherlv_5=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_5, grammarAccess.getContainsAccess().getRightParenthesisKeyword_5());
             		
@@ -2724,7 +2630,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStartsWith"
-    // InternalGitHubActions.g:1034:1: entryRuleStartsWith returns [EObject current=null] : iv_ruleStartsWith= ruleStartsWith EOF ;
+    // InternalGitHubActions.g:993:1: entryRuleStartsWith returns [EObject current=null] : iv_ruleStartsWith= ruleStartsWith EOF ;
     public final EObject entryRuleStartsWith() throws RecognitionException {
         EObject current = null;
 
@@ -2732,8 +2638,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1034:51: (iv_ruleStartsWith= ruleStartsWith EOF )
-            // InternalGitHubActions.g:1035:2: iv_ruleStartsWith= ruleStartsWith EOF
+            // InternalGitHubActions.g:993:51: (iv_ruleStartsWith= ruleStartsWith EOF )
+            // InternalGitHubActions.g:994:2: iv_ruleStartsWith= ruleStartsWith EOF
             {
              newCompositeNode(grammarAccess.getStartsWithRule()); 
             pushFollow(FOLLOW_1);
@@ -2760,7 +2666,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStartsWith"
-    // InternalGitHubActions.g:1041:1: ruleStartsWith returns [EObject current=null] : (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) ;
+    // InternalGitHubActions.g:1000:1: ruleStartsWith returns [EObject current=null] : (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) ;
     public final EObject ruleStartsWith() throws RecognitionException {
         EObject current = null;
 
@@ -2777,30 +2683,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1047:2: ( (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) )
-            // InternalGitHubActions.g:1048:2: (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
+            // InternalGitHubActions.g:1006:2: ( (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) )
+            // InternalGitHubActions.g:1007:2: (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
             {
-            // InternalGitHubActions.g:1048:2: (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
-            // InternalGitHubActions.g:1049:3: otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')'
+            // InternalGitHubActions.g:1007:2: (otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
+            // InternalGitHubActions.g:1008:3: otherlv_0= 'startsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')'
             {
-            otherlv_0=(Token)match(input,25,FOLLOW_13); 
+            otherlv_0=(Token)match(input,23,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getStartsWithAccess().getStartsWithKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getStartsWithAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1057:3: ( (lv_searchString_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1058:4: (lv_searchString_2_0= ruleExpression )
+            // InternalGitHubActions.g:1016:3: ( (lv_searchString_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1017:4: (lv_searchString_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1058:4: (lv_searchString_2_0= ruleExpression )
-            // InternalGitHubActions.g:1059:5: lv_searchString_2_0= ruleExpression
+            // InternalGitHubActions.g:1017:4: (lv_searchString_2_0= ruleExpression )
+            // InternalGitHubActions.g:1018:5: lv_searchString_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getStartsWithAccess().getSearchStringExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_12);
             lv_searchString_2_0=ruleExpression();
 
             state._fsp--;
@@ -2822,20 +2728,20 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,24,FOLLOW_4); 
+            otherlv_3=(Token)match(input,22,FOLLOW_4); 
 
             			newLeafNode(otherlv_3, grammarAccess.getStartsWithAccess().getCommaKeyword_3());
             		
-            // InternalGitHubActions.g:1080:3: ( (lv_searchValue_4_0= ruleExpression ) )
-            // InternalGitHubActions.g:1081:4: (lv_searchValue_4_0= ruleExpression )
+            // InternalGitHubActions.g:1039:3: ( (lv_searchValue_4_0= ruleExpression ) )
+            // InternalGitHubActions.g:1040:4: (lv_searchValue_4_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1081:4: (lv_searchValue_4_0= ruleExpression )
-            // InternalGitHubActions.g:1082:5: lv_searchValue_4_0= ruleExpression
+            // InternalGitHubActions.g:1040:4: (lv_searchValue_4_0= ruleExpression )
+            // InternalGitHubActions.g:1041:5: lv_searchValue_4_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getStartsWithAccess().getSearchValueExpressionParserRuleCall_4_0());
             				
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_10);
             lv_searchValue_4_0=ruleExpression();
 
             state._fsp--;
@@ -2857,7 +2763,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,22,FOLLOW_2); 
+            otherlv_5=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_5, grammarAccess.getStartsWithAccess().getRightParenthesisKeyword_5());
             		
@@ -2884,7 +2790,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEndsWith"
-    // InternalGitHubActions.g:1107:1: entryRuleEndsWith returns [EObject current=null] : iv_ruleEndsWith= ruleEndsWith EOF ;
+    // InternalGitHubActions.g:1066:1: entryRuleEndsWith returns [EObject current=null] : iv_ruleEndsWith= ruleEndsWith EOF ;
     public final EObject entryRuleEndsWith() throws RecognitionException {
         EObject current = null;
 
@@ -2892,8 +2798,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1107:49: (iv_ruleEndsWith= ruleEndsWith EOF )
-            // InternalGitHubActions.g:1108:2: iv_ruleEndsWith= ruleEndsWith EOF
+            // InternalGitHubActions.g:1066:49: (iv_ruleEndsWith= ruleEndsWith EOF )
+            // InternalGitHubActions.g:1067:2: iv_ruleEndsWith= ruleEndsWith EOF
             {
              newCompositeNode(grammarAccess.getEndsWithRule()); 
             pushFollow(FOLLOW_1);
@@ -2920,7 +2826,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEndsWith"
-    // InternalGitHubActions.g:1114:1: ruleEndsWith returns [EObject current=null] : (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) ;
+    // InternalGitHubActions.g:1073:1: ruleEndsWith returns [EObject current=null] : (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) ;
     public final EObject ruleEndsWith() throws RecognitionException {
         EObject current = null;
 
@@ -2937,30 +2843,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1120:2: ( (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) )
-            // InternalGitHubActions.g:1121:2: (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
+            // InternalGitHubActions.g:1079:2: ( (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' ) )
+            // InternalGitHubActions.g:1080:2: (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
             {
-            // InternalGitHubActions.g:1121:2: (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
-            // InternalGitHubActions.g:1122:3: otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')'
+            // InternalGitHubActions.g:1080:2: (otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')' )
+            // InternalGitHubActions.g:1081:3: otherlv_0= 'endsWith' otherlv_1= '(' ( (lv_searchString_2_0= ruleExpression ) ) otherlv_3= ',' ( (lv_searchValue_4_0= ruleExpression ) ) otherlv_5= ')'
             {
-            otherlv_0=(Token)match(input,26,FOLLOW_13); 
+            otherlv_0=(Token)match(input,24,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getEndsWithAccess().getEndsWithKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getEndsWithAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1130:3: ( (lv_searchString_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1131:4: (lv_searchString_2_0= ruleExpression )
+            // InternalGitHubActions.g:1089:3: ( (lv_searchString_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1090:4: (lv_searchString_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1131:4: (lv_searchString_2_0= ruleExpression )
-            // InternalGitHubActions.g:1132:5: lv_searchString_2_0= ruleExpression
+            // InternalGitHubActions.g:1090:4: (lv_searchString_2_0= ruleExpression )
+            // InternalGitHubActions.g:1091:5: lv_searchString_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getEndsWithAccess().getSearchStringExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_12);
             lv_searchString_2_0=ruleExpression();
 
             state._fsp--;
@@ -2982,20 +2888,20 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,24,FOLLOW_4); 
+            otherlv_3=(Token)match(input,22,FOLLOW_4); 
 
             			newLeafNode(otherlv_3, grammarAccess.getEndsWithAccess().getCommaKeyword_3());
             		
-            // InternalGitHubActions.g:1153:3: ( (lv_searchValue_4_0= ruleExpression ) )
-            // InternalGitHubActions.g:1154:4: (lv_searchValue_4_0= ruleExpression )
+            // InternalGitHubActions.g:1112:3: ( (lv_searchValue_4_0= ruleExpression ) )
+            // InternalGitHubActions.g:1113:4: (lv_searchValue_4_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1154:4: (lv_searchValue_4_0= ruleExpression )
-            // InternalGitHubActions.g:1155:5: lv_searchValue_4_0= ruleExpression
+            // InternalGitHubActions.g:1113:4: (lv_searchValue_4_0= ruleExpression )
+            // InternalGitHubActions.g:1114:5: lv_searchValue_4_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getEndsWithAccess().getSearchValueExpressionParserRuleCall_4_0());
             				
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_10);
             lv_searchValue_4_0=ruleExpression();
 
             state._fsp--;
@@ -3017,7 +2923,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,22,FOLLOW_2); 
+            otherlv_5=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_5, grammarAccess.getEndsWithAccess().getRightParenthesisKeyword_5());
             		
@@ -3044,7 +2950,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFormat"
-    // InternalGitHubActions.g:1180:1: entryRuleFormat returns [EObject current=null] : iv_ruleFormat= ruleFormat EOF ;
+    // InternalGitHubActions.g:1139:1: entryRuleFormat returns [EObject current=null] : iv_ruleFormat= ruleFormat EOF ;
     public final EObject entryRuleFormat() throws RecognitionException {
         EObject current = null;
 
@@ -3052,8 +2958,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1180:47: (iv_ruleFormat= ruleFormat EOF )
-            // InternalGitHubActions.g:1181:2: iv_ruleFormat= ruleFormat EOF
+            // InternalGitHubActions.g:1139:47: (iv_ruleFormat= ruleFormat EOF )
+            // InternalGitHubActions.g:1140:2: iv_ruleFormat= ruleFormat EOF
             {
              newCompositeNode(grammarAccess.getFormatRule()); 
             pushFollow(FOLLOW_1);
@@ -3080,7 +2986,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFormat"
-    // InternalGitHubActions.g:1187:1: ruleFormat returns [EObject current=null] : (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' ) ;
+    // InternalGitHubActions.g:1146:1: ruleFormat returns [EObject current=null] : (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' ) ;
     public final EObject ruleFormat() throws RecognitionException {
         EObject current = null;
 
@@ -3097,30 +3003,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1193:2: ( (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' ) )
-            // InternalGitHubActions.g:1194:2: (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' )
+            // InternalGitHubActions.g:1152:2: ( (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' ) )
+            // InternalGitHubActions.g:1153:2: (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' )
             {
-            // InternalGitHubActions.g:1194:2: (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' )
-            // InternalGitHubActions.g:1195:3: otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')'
+            // InternalGitHubActions.g:1153:2: (otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')' )
+            // InternalGitHubActions.g:1154:3: otherlv_0= 'format' otherlv_1= '(' ( (lv_string_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )* otherlv_5= ')'
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_13); 
+            otherlv_0=(Token)match(input,25,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFormatAccess().getFormatKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getFormatAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1203:3: ( (lv_string_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1204:4: (lv_string_2_0= ruleExpression )
+            // InternalGitHubActions.g:1162:3: ( (lv_string_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1163:4: (lv_string_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1204:4: (lv_string_2_0= ruleExpression )
-            // InternalGitHubActions.g:1205:5: lv_string_2_0= ruleExpression
+            // InternalGitHubActions.g:1163:4: (lv_string_2_0= ruleExpression )
+            // InternalGitHubActions.g:1164:5: lv_string_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getFormatAccess().getStringExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_15);
+            pushFollow(FOLLOW_13);
             lv_string_2_0=ruleExpression();
 
             state._fsp--;
@@ -3142,35 +3048,35 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGitHubActions.g:1222:3: (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )*
-            loop12:
+            // InternalGitHubActions.g:1181:3: (otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) ) )*
+            loop11:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA12_0==24) ) {
-                    alt12=1;
+                if ( (LA11_0==22) ) {
+                    alt11=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt11) {
             	case 1 :
-            	    // InternalGitHubActions.g:1223:4: otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) )
+            	    // InternalGitHubActions.g:1182:4: otherlv_3= ',' ( (lv_replaceValues_4_0= ruleExpression ) )
             	    {
-            	    otherlv_3=(Token)match(input,24,FOLLOW_4); 
+            	    otherlv_3=(Token)match(input,22,FOLLOW_4); 
 
             	    				newLeafNode(otherlv_3, grammarAccess.getFormatAccess().getCommaKeyword_3_0());
             	    			
-            	    // InternalGitHubActions.g:1227:4: ( (lv_replaceValues_4_0= ruleExpression ) )
-            	    // InternalGitHubActions.g:1228:5: (lv_replaceValues_4_0= ruleExpression )
+            	    // InternalGitHubActions.g:1186:4: ( (lv_replaceValues_4_0= ruleExpression ) )
+            	    // InternalGitHubActions.g:1187:5: (lv_replaceValues_4_0= ruleExpression )
             	    {
-            	    // InternalGitHubActions.g:1228:5: (lv_replaceValues_4_0= ruleExpression )
-            	    // InternalGitHubActions.g:1229:6: lv_replaceValues_4_0= ruleExpression
+            	    // InternalGitHubActions.g:1187:5: (lv_replaceValues_4_0= ruleExpression )
+            	    // InternalGitHubActions.g:1188:6: lv_replaceValues_4_0= ruleExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getFormatAccess().getReplaceValuesExpressionParserRuleCall_3_1_0());
             	    					
-            	    pushFollow(FOLLOW_15);
+            	    pushFollow(FOLLOW_13);
             	    lv_replaceValues_4_0=ruleExpression();
 
             	    state._fsp--;
@@ -3197,11 +3103,11 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop11;
                 }
             } while (true);
 
-            otherlv_5=(Token)match(input,22,FOLLOW_2); 
+            otherlv_5=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_5, grammarAccess.getFormatAccess().getRightParenthesisKeyword_4());
             		
@@ -3228,7 +3134,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleJoin"
-    // InternalGitHubActions.g:1255:1: entryRuleJoin returns [EObject current=null] : iv_ruleJoin= ruleJoin EOF ;
+    // InternalGitHubActions.g:1214:1: entryRuleJoin returns [EObject current=null] : iv_ruleJoin= ruleJoin EOF ;
     public final EObject entryRuleJoin() throws RecognitionException {
         EObject current = null;
 
@@ -3236,8 +3142,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1255:45: (iv_ruleJoin= ruleJoin EOF )
-            // InternalGitHubActions.g:1256:2: iv_ruleJoin= ruleJoin EOF
+            // InternalGitHubActions.g:1214:45: (iv_ruleJoin= ruleJoin EOF )
+            // InternalGitHubActions.g:1215:2: iv_ruleJoin= ruleJoin EOF
             {
              newCompositeNode(grammarAccess.getJoinRule()); 
             pushFollow(FOLLOW_1);
@@ -3264,7 +3170,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleJoin"
-    // InternalGitHubActions.g:1262:1: ruleJoin returns [EObject current=null] : (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' ) ;
+    // InternalGitHubActions.g:1221:1: ruleJoin returns [EObject current=null] : (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' ) ;
     public final EObject ruleJoin() throws RecognitionException {
         EObject current = null;
 
@@ -3281,30 +3187,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1268:2: ( (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' ) )
-            // InternalGitHubActions.g:1269:2: (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' )
+            // InternalGitHubActions.g:1227:2: ( (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' ) )
+            // InternalGitHubActions.g:1228:2: (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' )
             {
-            // InternalGitHubActions.g:1269:2: (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' )
-            // InternalGitHubActions.g:1270:3: otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')'
+            // InternalGitHubActions.g:1228:2: (otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')' )
+            // InternalGitHubActions.g:1229:3: otherlv_0= 'join' otherlv_1= '(' ( (lv_array_2_0= ruleExpression ) ) (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )? otherlv_5= ')'
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_13); 
+            otherlv_0=(Token)match(input,26,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getJoinAccess().getJoinKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getJoinAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1278:3: ( (lv_array_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1279:4: (lv_array_2_0= ruleExpression )
+            // InternalGitHubActions.g:1237:3: ( (lv_array_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1238:4: (lv_array_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1279:4: (lv_array_2_0= ruleExpression )
-            // InternalGitHubActions.g:1280:5: lv_array_2_0= ruleExpression
+            // InternalGitHubActions.g:1238:4: (lv_array_2_0= ruleExpression )
+            // InternalGitHubActions.g:1239:5: lv_array_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getJoinAccess().getArrayExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_15);
+            pushFollow(FOLLOW_13);
             lv_array_2_0=ruleExpression();
 
             state._fsp--;
@@ -3326,31 +3232,31 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGitHubActions.g:1297:3: (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalGitHubActions.g:1256:3: (otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) ) )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA13_0==24) ) {
-                alt13=1;
+            if ( (LA12_0==22) ) {
+                alt12=1;
             }
-            switch (alt13) {
+            switch (alt12) {
                 case 1 :
-                    // InternalGitHubActions.g:1298:4: otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) )
+                    // InternalGitHubActions.g:1257:4: otherlv_3= ',' ( (lv_sep_4_0= ruleExpression ) )
                     {
-                    otherlv_3=(Token)match(input,24,FOLLOW_4); 
+                    otherlv_3=(Token)match(input,22,FOLLOW_4); 
 
                     				newLeafNode(otherlv_3, grammarAccess.getJoinAccess().getCommaKeyword_3_0());
                     			
-                    // InternalGitHubActions.g:1302:4: ( (lv_sep_4_0= ruleExpression ) )
-                    // InternalGitHubActions.g:1303:5: (lv_sep_4_0= ruleExpression )
+                    // InternalGitHubActions.g:1261:4: ( (lv_sep_4_0= ruleExpression ) )
+                    // InternalGitHubActions.g:1262:5: (lv_sep_4_0= ruleExpression )
                     {
-                    // InternalGitHubActions.g:1303:5: (lv_sep_4_0= ruleExpression )
-                    // InternalGitHubActions.g:1304:6: lv_sep_4_0= ruleExpression
+                    // InternalGitHubActions.g:1262:5: (lv_sep_4_0= ruleExpression )
+                    // InternalGitHubActions.g:1263:6: lv_sep_4_0= ruleExpression
                     {
 
                     						newCompositeNode(grammarAccess.getJoinAccess().getSepExpressionParserRuleCall_3_1_0());
                     					
-                    pushFollow(FOLLOW_12);
+                    pushFollow(FOLLOW_10);
                     lv_sep_4_0=ruleExpression();
 
                     state._fsp--;
@@ -3378,7 +3284,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,22,FOLLOW_2); 
+            otherlv_5=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_5, grammarAccess.getJoinAccess().getRightParenthesisKeyword_4());
             		
@@ -3405,7 +3311,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleToJSON"
-    // InternalGitHubActions.g:1330:1: entryRuleToJSON returns [EObject current=null] : iv_ruleToJSON= ruleToJSON EOF ;
+    // InternalGitHubActions.g:1289:1: entryRuleToJSON returns [EObject current=null] : iv_ruleToJSON= ruleToJSON EOF ;
     public final EObject entryRuleToJSON() throws RecognitionException {
         EObject current = null;
 
@@ -3413,8 +3319,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1330:47: (iv_ruleToJSON= ruleToJSON EOF )
-            // InternalGitHubActions.g:1331:2: iv_ruleToJSON= ruleToJSON EOF
+            // InternalGitHubActions.g:1289:47: (iv_ruleToJSON= ruleToJSON EOF )
+            // InternalGitHubActions.g:1290:2: iv_ruleToJSON= ruleToJSON EOF
             {
              newCompositeNode(grammarAccess.getToJSONRule()); 
             pushFollow(FOLLOW_1);
@@ -3441,7 +3347,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleToJSON"
-    // InternalGitHubActions.g:1337:1: ruleToJSON returns [EObject current=null] : (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1296:1: ruleToJSON returns [EObject current=null] : (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
     public final EObject ruleToJSON() throws RecognitionException {
         EObject current = null;
 
@@ -3455,30 +3361,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1343:2: ( (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1344:2: (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalGitHubActions.g:1302:2: ( (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1303:2: (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1344:2: (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
-            // InternalGitHubActions.g:1345:3: otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')'
+            // InternalGitHubActions.g:1303:2: (otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalGitHubActions.g:1304:3: otherlv_0= 'toJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_13); 
+            otherlv_0=(Token)match(input,27,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getToJSONAccess().getToJSONKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getToJSONAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1353:3: ( (lv_value_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1354:4: (lv_value_2_0= ruleExpression )
+            // InternalGitHubActions.g:1312:3: ( (lv_value_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1313:4: (lv_value_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1354:4: (lv_value_2_0= ruleExpression )
-            // InternalGitHubActions.g:1355:5: lv_value_2_0= ruleExpression
+            // InternalGitHubActions.g:1313:4: (lv_value_2_0= ruleExpression )
+            // InternalGitHubActions.g:1314:5: lv_value_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getToJSONAccess().getValueExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_10);
             lv_value_2_0=ruleExpression();
 
             state._fsp--;
@@ -3500,7 +3406,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getToJSONAccess().getRightParenthesisKeyword_3());
             		
@@ -3527,7 +3433,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFromJSON"
-    // InternalGitHubActions.g:1380:1: entryRuleFromJSON returns [EObject current=null] : iv_ruleFromJSON= ruleFromJSON EOF ;
+    // InternalGitHubActions.g:1339:1: entryRuleFromJSON returns [EObject current=null] : iv_ruleFromJSON= ruleFromJSON EOF ;
     public final EObject entryRuleFromJSON() throws RecognitionException {
         EObject current = null;
 
@@ -3535,8 +3441,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1380:49: (iv_ruleFromJSON= ruleFromJSON EOF )
-            // InternalGitHubActions.g:1381:2: iv_ruleFromJSON= ruleFromJSON EOF
+            // InternalGitHubActions.g:1339:49: (iv_ruleFromJSON= ruleFromJSON EOF )
+            // InternalGitHubActions.g:1340:2: iv_ruleFromJSON= ruleFromJSON EOF
             {
              newCompositeNode(grammarAccess.getFromJSONRule()); 
             pushFollow(FOLLOW_1);
@@ -3563,7 +3469,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFromJSON"
-    // InternalGitHubActions.g:1387:1: ruleFromJSON returns [EObject current=null] : (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1346:1: ruleFromJSON returns [EObject current=null] : (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
     public final EObject ruleFromJSON() throws RecognitionException {
         EObject current = null;
 
@@ -3577,30 +3483,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1393:2: ( (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1394:2: (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalGitHubActions.g:1352:2: ( (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1353:2: (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1394:2: (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
-            // InternalGitHubActions.g:1395:3: otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')'
+            // InternalGitHubActions.g:1353:2: (otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalGitHubActions.g:1354:3: otherlv_0= 'fromJSON' otherlv_1= '(' ( (lv_value_2_0= ruleExpression ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_13); 
+            otherlv_0=(Token)match(input,28,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFromJSONAccess().getFromJSONKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getFromJSONAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1403:3: ( (lv_value_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1404:4: (lv_value_2_0= ruleExpression )
+            // InternalGitHubActions.g:1362:3: ( (lv_value_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1363:4: (lv_value_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1404:4: (lv_value_2_0= ruleExpression )
-            // InternalGitHubActions.g:1405:5: lv_value_2_0= ruleExpression
+            // InternalGitHubActions.g:1363:4: (lv_value_2_0= ruleExpression )
+            // InternalGitHubActions.g:1364:5: lv_value_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getFromJSONAccess().getValueExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_10);
             lv_value_2_0=ruleExpression();
 
             state._fsp--;
@@ -3622,7 +3528,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getFromJSONAccess().getRightParenthesisKeyword_3());
             		
@@ -3649,7 +3555,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleHashFiles"
-    // InternalGitHubActions.g:1430:1: entryRuleHashFiles returns [EObject current=null] : iv_ruleHashFiles= ruleHashFiles EOF ;
+    // InternalGitHubActions.g:1389:1: entryRuleHashFiles returns [EObject current=null] : iv_ruleHashFiles= ruleHashFiles EOF ;
     public final EObject entryRuleHashFiles() throws RecognitionException {
         EObject current = null;
 
@@ -3657,8 +3563,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1430:50: (iv_ruleHashFiles= ruleHashFiles EOF )
-            // InternalGitHubActions.g:1431:2: iv_ruleHashFiles= ruleHashFiles EOF
+            // InternalGitHubActions.g:1389:50: (iv_ruleHashFiles= ruleHashFiles EOF )
+            // InternalGitHubActions.g:1390:2: iv_ruleHashFiles= ruleHashFiles EOF
             {
              newCompositeNode(grammarAccess.getHashFilesRule()); 
             pushFollow(FOLLOW_1);
@@ -3685,7 +3591,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleHashFiles"
-    // InternalGitHubActions.g:1437:1: ruleHashFiles returns [EObject current=null] : (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1396:1: ruleHashFiles returns [EObject current=null] : (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
     public final EObject ruleHashFiles() throws RecognitionException {
         EObject current = null;
 
@@ -3699,30 +3605,30 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1443:2: ( (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1444:2: (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalGitHubActions.g:1402:2: ( (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1403:2: (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1444:2: (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' )
-            // InternalGitHubActions.g:1445:3: otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')'
+            // InternalGitHubActions.g:1403:2: (otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalGitHubActions.g:1404:3: otherlv_0= 'hashFiles' otherlv_1= '(' ( (lv_path_2_0= ruleExpression ) ) otherlv_3= ')'
             {
-            otherlv_0=(Token)match(input,31,FOLLOW_13); 
+            otherlv_0=(Token)match(input,29,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getHashFilesAccess().getHashFilesKeyword_0());
             		
-            otherlv_1=(Token)match(input,21,FOLLOW_4); 
+            otherlv_1=(Token)match(input,19,FOLLOW_4); 
 
             			newLeafNode(otherlv_1, grammarAccess.getHashFilesAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGitHubActions.g:1453:3: ( (lv_path_2_0= ruleExpression ) )
-            // InternalGitHubActions.g:1454:4: (lv_path_2_0= ruleExpression )
+            // InternalGitHubActions.g:1412:3: ( (lv_path_2_0= ruleExpression ) )
+            // InternalGitHubActions.g:1413:4: (lv_path_2_0= ruleExpression )
             {
-            // InternalGitHubActions.g:1454:4: (lv_path_2_0= ruleExpression )
-            // InternalGitHubActions.g:1455:5: lv_path_2_0= ruleExpression
+            // InternalGitHubActions.g:1413:4: (lv_path_2_0= ruleExpression )
+            // InternalGitHubActions.g:1414:5: lv_path_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getHashFilesAccess().getPathExpressionParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_12);
+            pushFollow(FOLLOW_10);
             lv_path_2_0=ruleExpression();
 
             state._fsp--;
@@ -3744,7 +3650,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getHashFilesAccess().getRightParenthesisKeyword_3());
             		
@@ -3771,7 +3677,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSuccess"
-    // InternalGitHubActions.g:1480:1: entryRuleSuccess returns [EObject current=null] : iv_ruleSuccess= ruleSuccess EOF ;
+    // InternalGitHubActions.g:1439:1: entryRuleSuccess returns [EObject current=null] : iv_ruleSuccess= ruleSuccess EOF ;
     public final EObject entryRuleSuccess() throws RecognitionException {
         EObject current = null;
 
@@ -3779,8 +3685,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1480:48: (iv_ruleSuccess= ruleSuccess EOF )
-            // InternalGitHubActions.g:1481:2: iv_ruleSuccess= ruleSuccess EOF
+            // InternalGitHubActions.g:1439:48: (iv_ruleSuccess= ruleSuccess EOF )
+            // InternalGitHubActions.g:1440:2: iv_ruleSuccess= ruleSuccess EOF
             {
              newCompositeNode(grammarAccess.getSuccessRule()); 
             pushFollow(FOLLOW_1);
@@ -3807,7 +3713,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSuccess"
-    // InternalGitHubActions.g:1487:1: ruleSuccess returns [EObject current=null] : ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1446:1: ruleSuccess returns [EObject current=null] : ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' ) ;
     public final EObject ruleSuccess() throws RecognitionException {
         EObject current = null;
 
@@ -3819,14 +3725,14 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1493:2: ( ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1494:2: ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1452:2: ( ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1453:2: ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1494:2: ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' )
-            // InternalGitHubActions.g:1495:3: () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')'
+            // InternalGitHubActions.g:1453:2: ( () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1454:3: () otherlv_1= 'success' otherlv_2= '(' otherlv_3= ')'
             {
-            // InternalGitHubActions.g:1495:3: ()
-            // InternalGitHubActions.g:1496:4: 
+            // InternalGitHubActions.g:1454:3: ()
+            // InternalGitHubActions.g:1455:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3836,15 +3742,15 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,32,FOLLOW_13); 
+            otherlv_1=(Token)match(input,30,FOLLOW_11); 
 
             			newLeafNode(otherlv_1, grammarAccess.getSuccessAccess().getSuccessKeyword_1());
             		
-            otherlv_2=(Token)match(input,21,FOLLOW_12); 
+            otherlv_2=(Token)match(input,19,FOLLOW_10); 
 
             			newLeafNode(otherlv_2, grammarAccess.getSuccessAccess().getLeftParenthesisKeyword_2());
             		
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getSuccessAccess().getRightParenthesisKeyword_3());
             		
@@ -3871,7 +3777,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAlways"
-    // InternalGitHubActions.g:1518:1: entryRuleAlways returns [EObject current=null] : iv_ruleAlways= ruleAlways EOF ;
+    // InternalGitHubActions.g:1477:1: entryRuleAlways returns [EObject current=null] : iv_ruleAlways= ruleAlways EOF ;
     public final EObject entryRuleAlways() throws RecognitionException {
         EObject current = null;
 
@@ -3879,8 +3785,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1518:47: (iv_ruleAlways= ruleAlways EOF )
-            // InternalGitHubActions.g:1519:2: iv_ruleAlways= ruleAlways EOF
+            // InternalGitHubActions.g:1477:47: (iv_ruleAlways= ruleAlways EOF )
+            // InternalGitHubActions.g:1478:2: iv_ruleAlways= ruleAlways EOF
             {
              newCompositeNode(grammarAccess.getAlwaysRule()); 
             pushFollow(FOLLOW_1);
@@ -3907,7 +3813,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAlways"
-    // InternalGitHubActions.g:1525:1: ruleAlways returns [EObject current=null] : ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1484:1: ruleAlways returns [EObject current=null] : ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' ) ;
     public final EObject ruleAlways() throws RecognitionException {
         EObject current = null;
 
@@ -3919,14 +3825,14 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1531:2: ( ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1532:2: ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1490:2: ( ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1491:2: ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1532:2: ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' )
-            // InternalGitHubActions.g:1533:3: () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')'
+            // InternalGitHubActions.g:1491:2: ( () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1492:3: () otherlv_1= 'always' otherlv_2= '(' otherlv_3= ')'
             {
-            // InternalGitHubActions.g:1533:3: ()
-            // InternalGitHubActions.g:1534:4: 
+            // InternalGitHubActions.g:1492:3: ()
+            // InternalGitHubActions.g:1493:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3936,15 +3842,15 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,33,FOLLOW_13); 
+            otherlv_1=(Token)match(input,31,FOLLOW_11); 
 
             			newLeafNode(otherlv_1, grammarAccess.getAlwaysAccess().getAlwaysKeyword_1());
             		
-            otherlv_2=(Token)match(input,21,FOLLOW_12); 
+            otherlv_2=(Token)match(input,19,FOLLOW_10); 
 
             			newLeafNode(otherlv_2, grammarAccess.getAlwaysAccess().getLeftParenthesisKeyword_2());
             		
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getAlwaysAccess().getRightParenthesisKeyword_3());
             		
@@ -3971,7 +3877,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCancelled"
-    // InternalGitHubActions.g:1556:1: entryRuleCancelled returns [EObject current=null] : iv_ruleCancelled= ruleCancelled EOF ;
+    // InternalGitHubActions.g:1515:1: entryRuleCancelled returns [EObject current=null] : iv_ruleCancelled= ruleCancelled EOF ;
     public final EObject entryRuleCancelled() throws RecognitionException {
         EObject current = null;
 
@@ -3979,8 +3885,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1556:50: (iv_ruleCancelled= ruleCancelled EOF )
-            // InternalGitHubActions.g:1557:2: iv_ruleCancelled= ruleCancelled EOF
+            // InternalGitHubActions.g:1515:50: (iv_ruleCancelled= ruleCancelled EOF )
+            // InternalGitHubActions.g:1516:2: iv_ruleCancelled= ruleCancelled EOF
             {
              newCompositeNode(grammarAccess.getCancelledRule()); 
             pushFollow(FOLLOW_1);
@@ -4007,7 +3913,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCancelled"
-    // InternalGitHubActions.g:1563:1: ruleCancelled returns [EObject current=null] : ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1522:1: ruleCancelled returns [EObject current=null] : ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' ) ;
     public final EObject ruleCancelled() throws RecognitionException {
         EObject current = null;
 
@@ -4019,14 +3925,14 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1569:2: ( ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1570:2: ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1528:2: ( ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1529:2: ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1570:2: ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' )
-            // InternalGitHubActions.g:1571:3: () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')'
+            // InternalGitHubActions.g:1529:2: ( () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1530:3: () otherlv_1= 'cancelled' otherlv_2= '(' otherlv_3= ')'
             {
-            // InternalGitHubActions.g:1571:3: ()
-            // InternalGitHubActions.g:1572:4: 
+            // InternalGitHubActions.g:1530:3: ()
+            // InternalGitHubActions.g:1531:4: 
             {
 
             				current = forceCreateModelElement(
@@ -4036,15 +3942,15 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,34,FOLLOW_13); 
+            otherlv_1=(Token)match(input,32,FOLLOW_11); 
 
             			newLeafNode(otherlv_1, grammarAccess.getCancelledAccess().getCancelledKeyword_1());
             		
-            otherlv_2=(Token)match(input,21,FOLLOW_12); 
+            otherlv_2=(Token)match(input,19,FOLLOW_10); 
 
             			newLeafNode(otherlv_2, grammarAccess.getCancelledAccess().getLeftParenthesisKeyword_2());
             		
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getCancelledAccess().getRightParenthesisKeyword_3());
             		
@@ -4071,7 +3977,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFailure"
-    // InternalGitHubActions.g:1594:1: entryRuleFailure returns [EObject current=null] : iv_ruleFailure= ruleFailure EOF ;
+    // InternalGitHubActions.g:1553:1: entryRuleFailure returns [EObject current=null] : iv_ruleFailure= ruleFailure EOF ;
     public final EObject entryRuleFailure() throws RecognitionException {
         EObject current = null;
 
@@ -4079,8 +3985,8 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGitHubActions.g:1594:48: (iv_ruleFailure= ruleFailure EOF )
-            // InternalGitHubActions.g:1595:2: iv_ruleFailure= ruleFailure EOF
+            // InternalGitHubActions.g:1553:48: (iv_ruleFailure= ruleFailure EOF )
+            // InternalGitHubActions.g:1554:2: iv_ruleFailure= ruleFailure EOF
             {
              newCompositeNode(grammarAccess.getFailureRule()); 
             pushFollow(FOLLOW_1);
@@ -4107,7 +4013,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFailure"
-    // InternalGitHubActions.g:1601:1: ruleFailure returns [EObject current=null] : ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' ) ;
+    // InternalGitHubActions.g:1560:1: ruleFailure returns [EObject current=null] : ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' ) ;
     public final EObject ruleFailure() throws RecognitionException {
         EObject current = null;
 
@@ -4119,14 +4025,14 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1607:2: ( ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' ) )
-            // InternalGitHubActions.g:1608:2: ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1566:2: ( ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' ) )
+            // InternalGitHubActions.g:1567:2: ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' )
             {
-            // InternalGitHubActions.g:1608:2: ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' )
-            // InternalGitHubActions.g:1609:3: () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')'
+            // InternalGitHubActions.g:1567:2: ( () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')' )
+            // InternalGitHubActions.g:1568:3: () otherlv_1= 'failure' otherlv_2= '(' otherlv_3= ')'
             {
-            // InternalGitHubActions.g:1609:3: ()
-            // InternalGitHubActions.g:1610:4: 
+            // InternalGitHubActions.g:1568:3: ()
+            // InternalGitHubActions.g:1569:4: 
             {
 
             				current = forceCreateModelElement(
@@ -4136,15 +4042,15 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,35,FOLLOW_13); 
+            otherlv_1=(Token)match(input,33,FOLLOW_11); 
 
             			newLeafNode(otherlv_1, grammarAccess.getFailureAccess().getFailureKeyword_1());
             		
-            otherlv_2=(Token)match(input,21,FOLLOW_12); 
+            otherlv_2=(Token)match(input,19,FOLLOW_10); 
 
             			newLeafNode(otherlv_2, grammarAccess.getFailureAccess().getLeftParenthesisKeyword_2());
             		
-            otherlv_3=(Token)match(input,22,FOLLOW_2); 
+            otherlv_3=(Token)match(input,20,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getFailureAccess().getRightParenthesisKeyword_3());
             		
@@ -4171,7 +4077,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCOMPARISON_OP"
-    // InternalGitHubActions.g:1632:1: ruleCOMPARISON_OP returns [Enumerator current=null] : ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) ) ;
+    // InternalGitHubActions.g:1591:1: ruleCOMPARISON_OP returns [Enumerator current=null] : ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) ) ;
     public final Enumerator ruleCOMPARISON_OP() throws RecognitionException {
         Enumerator current = null;
 
@@ -4184,47 +4090,47 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1638:2: ( ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) ) )
-            // InternalGitHubActions.g:1639:2: ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) )
+            // InternalGitHubActions.g:1597:2: ( ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) ) )
+            // InternalGitHubActions.g:1598:2: ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) )
             {
-            // InternalGitHubActions.g:1639:2: ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) )
-            int alt14=4;
+            // InternalGitHubActions.g:1598:2: ( (enumLiteral_0= '>' ) | (enumLiteral_1= '>=' ) | (enumLiteral_2= '<' ) | (enumLiteral_3= '<=' ) )
+            int alt13=4;
             switch ( input.LA(1) ) {
+            case 34:
+                {
+                alt13=1;
+                }
+                break;
+            case 35:
+                {
+                alt13=2;
+                }
+                break;
             case 36:
                 {
-                alt14=1;
+                alt13=3;
                 }
                 break;
             case 37:
                 {
-                alt14=2;
-                }
-                break;
-            case 38:
-                {
-                alt14=3;
-                }
-                break;
-            case 39:
-                {
-                alt14=4;
+                alt13=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
-                    // InternalGitHubActions.g:1640:3: (enumLiteral_0= '>' )
+                    // InternalGitHubActions.g:1599:3: (enumLiteral_0= '>' )
                     {
-                    // InternalGitHubActions.g:1640:3: (enumLiteral_0= '>' )
-                    // InternalGitHubActions.g:1641:4: enumLiteral_0= '>'
+                    // InternalGitHubActions.g:1599:3: (enumLiteral_0= '>' )
+                    // InternalGitHubActions.g:1600:4: enumLiteral_0= '>'
                     {
-                    enumLiteral_0=(Token)match(input,36,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,34,FOLLOW_2); 
 
                     				current = grammarAccess.getCOMPARISON_OPAccess().getGTEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getCOMPARISON_OPAccess().getGTEnumLiteralDeclaration_0());
@@ -4236,12 +4142,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:1648:3: (enumLiteral_1= '>=' )
+                    // InternalGitHubActions.g:1607:3: (enumLiteral_1= '>=' )
                     {
-                    // InternalGitHubActions.g:1648:3: (enumLiteral_1= '>=' )
-                    // InternalGitHubActions.g:1649:4: enumLiteral_1= '>='
+                    // InternalGitHubActions.g:1607:3: (enumLiteral_1= '>=' )
+                    // InternalGitHubActions.g:1608:4: enumLiteral_1= '>='
                     {
-                    enumLiteral_1=(Token)match(input,37,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,35,FOLLOW_2); 
 
                     				current = grammarAccess.getCOMPARISON_OPAccess().getGTEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getCOMPARISON_OPAccess().getGTEEnumLiteralDeclaration_1());
@@ -4253,12 +4159,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGitHubActions.g:1656:3: (enumLiteral_2= '<' )
+                    // InternalGitHubActions.g:1615:3: (enumLiteral_2= '<' )
                     {
-                    // InternalGitHubActions.g:1656:3: (enumLiteral_2= '<' )
-                    // InternalGitHubActions.g:1657:4: enumLiteral_2= '<'
+                    // InternalGitHubActions.g:1615:3: (enumLiteral_2= '<' )
+                    // InternalGitHubActions.g:1616:4: enumLiteral_2= '<'
                     {
-                    enumLiteral_2=(Token)match(input,38,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,36,FOLLOW_2); 
 
                     				current = grammarAccess.getCOMPARISON_OPAccess().getLTEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getCOMPARISON_OPAccess().getLTEnumLiteralDeclaration_2());
@@ -4270,12 +4176,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGitHubActions.g:1664:3: (enumLiteral_3= '<=' )
+                    // InternalGitHubActions.g:1623:3: (enumLiteral_3= '<=' )
                     {
-                    // InternalGitHubActions.g:1664:3: (enumLiteral_3= '<=' )
-                    // InternalGitHubActions.g:1665:4: enumLiteral_3= '<='
+                    // InternalGitHubActions.g:1623:3: (enumLiteral_3= '<=' )
+                    // InternalGitHubActions.g:1624:4: enumLiteral_3= '<='
                     {
-                    enumLiteral_3=(Token)match(input,39,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,37,FOLLOW_2); 
 
                     				current = grammarAccess.getCOMPARISON_OPAccess().getLTEEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getCOMPARISON_OPAccess().getLTEEnumLiteralDeclaration_3());
@@ -4309,7 +4215,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEQUALITY_OP"
-    // InternalGitHubActions.g:1675:1: ruleEQUALITY_OP returns [Enumerator current=null] : ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) ;
+    // InternalGitHubActions.g:1634:1: ruleEQUALITY_OP returns [Enumerator current=null] : ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) ;
     public final Enumerator ruleEQUALITY_OP() throws RecognitionException {
         Enumerator current = null;
 
@@ -4320,33 +4226,33 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1681:2: ( ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) )
-            // InternalGitHubActions.g:1682:2: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
+            // InternalGitHubActions.g:1640:2: ( ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) ) )
+            // InternalGitHubActions.g:1641:2: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
             {
-            // InternalGitHubActions.g:1682:2: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalGitHubActions.g:1641:2: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) )
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA15_0==40) ) {
-                alt15=1;
+            if ( (LA14_0==38) ) {
+                alt14=1;
             }
-            else if ( (LA15_0==41) ) {
-                alt15=2;
+            else if ( (LA14_0==39) ) {
+                alt14=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 15, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
-            switch (alt15) {
+            switch (alt14) {
                 case 1 :
-                    // InternalGitHubActions.g:1683:3: (enumLiteral_0= '==' )
+                    // InternalGitHubActions.g:1642:3: (enumLiteral_0= '==' )
                     {
-                    // InternalGitHubActions.g:1683:3: (enumLiteral_0= '==' )
-                    // InternalGitHubActions.g:1684:4: enumLiteral_0= '=='
+                    // InternalGitHubActions.g:1642:3: (enumLiteral_0= '==' )
+                    // InternalGitHubActions.g:1643:4: enumLiteral_0= '=='
                     {
-                    enumLiteral_0=(Token)match(input,40,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,38,FOLLOW_2); 
 
                     				current = grammarAccess.getEQUALITY_OPAccess().getEQUALSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getEQUALITY_OPAccess().getEQUALSEnumLiteralDeclaration_0());
@@ -4358,12 +4264,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:1691:3: (enumLiteral_1= '!=' )
+                    // InternalGitHubActions.g:1650:3: (enumLiteral_1= '!=' )
                     {
-                    // InternalGitHubActions.g:1691:3: (enumLiteral_1= '!=' )
-                    // InternalGitHubActions.g:1692:4: enumLiteral_1= '!='
+                    // InternalGitHubActions.g:1650:3: (enumLiteral_1= '!=' )
+                    // InternalGitHubActions.g:1651:4: enumLiteral_1= '!='
                     {
-                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,39,FOLLOW_2); 
 
                     				current = grammarAccess.getEQUALITY_OPAccess().getNOT_EQUALSEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getEQUALITY_OPAccess().getNOT_EQUALSEnumLiteralDeclaration_1());
@@ -4397,7 +4303,7 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCONTEXT"
-    // InternalGitHubActions.g:1702:1: ruleCONTEXT returns [Enumerator current=null] : ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) ) ;
+    // InternalGitHubActions.g:1661:1: ruleCONTEXT returns [Enumerator current=null] : ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) ) ;
     public final Enumerator ruleCONTEXT() throws RecognitionException {
         Enumerator current = null;
 
@@ -4418,87 +4324,87 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGitHubActions.g:1708:2: ( ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) ) )
-            // InternalGitHubActions.g:1709:2: ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) )
+            // InternalGitHubActions.g:1667:2: ( ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) ) )
+            // InternalGitHubActions.g:1668:2: ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) )
             {
-            // InternalGitHubActions.g:1709:2: ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) )
-            int alt16=12;
+            // InternalGitHubActions.g:1668:2: ( (enumLiteral_0= 'github' ) | (enumLiteral_1= 'env' ) | (enumLiteral_2= 'vars' ) | (enumLiteral_3= 'job' ) | (enumLiteral_4= 'jobs' ) | (enumLiteral_5= 'steps' ) | (enumLiteral_6= 'runner' ) | (enumLiteral_7= 'secrets' ) | (enumLiteral_8= 'strategy' ) | (enumLiteral_9= 'matrix' ) | (enumLiteral_10= 'needs' ) | (enumLiteral_11= 'inputs' ) )
+            int alt15=12;
             switch ( input.LA(1) ) {
+            case 40:
+                {
+                alt15=1;
+                }
+                break;
+            case 41:
+                {
+                alt15=2;
+                }
+                break;
             case 42:
                 {
-                alt16=1;
+                alt15=3;
                 }
                 break;
             case 43:
                 {
-                alt16=2;
+                alt15=4;
                 }
                 break;
             case 44:
                 {
-                alt16=3;
+                alt15=5;
                 }
                 break;
             case 45:
                 {
-                alt16=4;
+                alt15=6;
                 }
                 break;
             case 46:
                 {
-                alt16=5;
+                alt15=7;
                 }
                 break;
             case 47:
                 {
-                alt16=6;
+                alt15=8;
                 }
                 break;
             case 48:
                 {
-                alt16=7;
+                alt15=9;
                 }
                 break;
             case 49:
                 {
-                alt16=8;
+                alt15=10;
                 }
                 break;
             case 50:
                 {
-                alt16=9;
+                alt15=11;
                 }
                 break;
             case 51:
                 {
-                alt16=10;
-                }
-                break;
-            case 52:
-                {
-                alt16=11;
-                }
-                break;
-            case 53:
-                {
-                alt16=12;
+                alt15=12;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 16, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt16) {
+            switch (alt15) {
                 case 1 :
-                    // InternalGitHubActions.g:1710:3: (enumLiteral_0= 'github' )
+                    // InternalGitHubActions.g:1669:3: (enumLiteral_0= 'github' )
                     {
-                    // InternalGitHubActions.g:1710:3: (enumLiteral_0= 'github' )
-                    // InternalGitHubActions.g:1711:4: enumLiteral_0= 'github'
+                    // InternalGitHubActions.g:1669:3: (enumLiteral_0= 'github' )
+                    // InternalGitHubActions.g:1670:4: enumLiteral_0= 'github'
                     {
-                    enumLiteral_0=(Token)match(input,42,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,40,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getGITHUBEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getCONTEXTAccess().getGITHUBEnumLiteralDeclaration_0());
@@ -4510,12 +4416,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:1718:3: (enumLiteral_1= 'env' )
+                    // InternalGitHubActions.g:1677:3: (enumLiteral_1= 'env' )
                     {
-                    // InternalGitHubActions.g:1718:3: (enumLiteral_1= 'env' )
-                    // InternalGitHubActions.g:1719:4: enumLiteral_1= 'env'
+                    // InternalGitHubActions.g:1677:3: (enumLiteral_1= 'env' )
+                    // InternalGitHubActions.g:1678:4: enumLiteral_1= 'env'
                     {
-                    enumLiteral_1=(Token)match(input,43,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,41,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getENVEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getCONTEXTAccess().getENVEnumLiteralDeclaration_1());
@@ -4527,12 +4433,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGitHubActions.g:1726:3: (enumLiteral_2= 'vars' )
+                    // InternalGitHubActions.g:1685:3: (enumLiteral_2= 'vars' )
                     {
-                    // InternalGitHubActions.g:1726:3: (enumLiteral_2= 'vars' )
-                    // InternalGitHubActions.g:1727:4: enumLiteral_2= 'vars'
+                    // InternalGitHubActions.g:1685:3: (enumLiteral_2= 'vars' )
+                    // InternalGitHubActions.g:1686:4: enumLiteral_2= 'vars'
                     {
-                    enumLiteral_2=(Token)match(input,44,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,42,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getVARSEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getCONTEXTAccess().getVARSEnumLiteralDeclaration_2());
@@ -4544,12 +4450,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGitHubActions.g:1734:3: (enumLiteral_3= 'job' )
+                    // InternalGitHubActions.g:1693:3: (enumLiteral_3= 'job' )
                     {
-                    // InternalGitHubActions.g:1734:3: (enumLiteral_3= 'job' )
-                    // InternalGitHubActions.g:1735:4: enumLiteral_3= 'job'
+                    // InternalGitHubActions.g:1693:3: (enumLiteral_3= 'job' )
+                    // InternalGitHubActions.g:1694:4: enumLiteral_3= 'job'
                     {
-                    enumLiteral_3=(Token)match(input,45,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,43,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getJOBEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_3, grammarAccess.getCONTEXTAccess().getJOBEnumLiteralDeclaration_3());
@@ -4561,12 +4467,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalGitHubActions.g:1742:3: (enumLiteral_4= 'jobs' )
+                    // InternalGitHubActions.g:1701:3: (enumLiteral_4= 'jobs' )
                     {
-                    // InternalGitHubActions.g:1742:3: (enumLiteral_4= 'jobs' )
-                    // InternalGitHubActions.g:1743:4: enumLiteral_4= 'jobs'
+                    // InternalGitHubActions.g:1701:3: (enumLiteral_4= 'jobs' )
+                    // InternalGitHubActions.g:1702:4: enumLiteral_4= 'jobs'
                     {
-                    enumLiteral_4=(Token)match(input,46,FOLLOW_2); 
+                    enumLiteral_4=(Token)match(input,44,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getJOBSEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_4, grammarAccess.getCONTEXTAccess().getJOBSEnumLiteralDeclaration_4());
@@ -4578,12 +4484,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalGitHubActions.g:1750:3: (enumLiteral_5= 'steps' )
+                    // InternalGitHubActions.g:1709:3: (enumLiteral_5= 'steps' )
                     {
-                    // InternalGitHubActions.g:1750:3: (enumLiteral_5= 'steps' )
-                    // InternalGitHubActions.g:1751:4: enumLiteral_5= 'steps'
+                    // InternalGitHubActions.g:1709:3: (enumLiteral_5= 'steps' )
+                    // InternalGitHubActions.g:1710:4: enumLiteral_5= 'steps'
                     {
-                    enumLiteral_5=(Token)match(input,47,FOLLOW_2); 
+                    enumLiteral_5=(Token)match(input,45,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getSTEPSEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_5, grammarAccess.getCONTEXTAccess().getSTEPSEnumLiteralDeclaration_5());
@@ -4595,12 +4501,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalGitHubActions.g:1758:3: (enumLiteral_6= 'runner' )
+                    // InternalGitHubActions.g:1717:3: (enumLiteral_6= 'runner' )
                     {
-                    // InternalGitHubActions.g:1758:3: (enumLiteral_6= 'runner' )
-                    // InternalGitHubActions.g:1759:4: enumLiteral_6= 'runner'
+                    // InternalGitHubActions.g:1717:3: (enumLiteral_6= 'runner' )
+                    // InternalGitHubActions.g:1718:4: enumLiteral_6= 'runner'
                     {
-                    enumLiteral_6=(Token)match(input,48,FOLLOW_2); 
+                    enumLiteral_6=(Token)match(input,46,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getRUNNEREnumLiteralDeclaration_6().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_6, grammarAccess.getCONTEXTAccess().getRUNNEREnumLiteralDeclaration_6());
@@ -4612,12 +4518,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalGitHubActions.g:1766:3: (enumLiteral_7= 'secrets' )
+                    // InternalGitHubActions.g:1725:3: (enumLiteral_7= 'secrets' )
                     {
-                    // InternalGitHubActions.g:1766:3: (enumLiteral_7= 'secrets' )
-                    // InternalGitHubActions.g:1767:4: enumLiteral_7= 'secrets'
+                    // InternalGitHubActions.g:1725:3: (enumLiteral_7= 'secrets' )
+                    // InternalGitHubActions.g:1726:4: enumLiteral_7= 'secrets'
                     {
-                    enumLiteral_7=(Token)match(input,49,FOLLOW_2); 
+                    enumLiteral_7=(Token)match(input,47,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getSECRETSEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_7, grammarAccess.getCONTEXTAccess().getSECRETSEnumLiteralDeclaration_7());
@@ -4629,12 +4535,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalGitHubActions.g:1774:3: (enumLiteral_8= 'strategy' )
+                    // InternalGitHubActions.g:1733:3: (enumLiteral_8= 'strategy' )
                     {
-                    // InternalGitHubActions.g:1774:3: (enumLiteral_8= 'strategy' )
-                    // InternalGitHubActions.g:1775:4: enumLiteral_8= 'strategy'
+                    // InternalGitHubActions.g:1733:3: (enumLiteral_8= 'strategy' )
+                    // InternalGitHubActions.g:1734:4: enumLiteral_8= 'strategy'
                     {
-                    enumLiteral_8=(Token)match(input,50,FOLLOW_2); 
+                    enumLiteral_8=(Token)match(input,48,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getSTRATEGYEnumLiteralDeclaration_8().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_8, grammarAccess.getCONTEXTAccess().getSTRATEGYEnumLiteralDeclaration_8());
@@ -4646,12 +4552,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalGitHubActions.g:1782:3: (enumLiteral_9= 'matrix' )
+                    // InternalGitHubActions.g:1741:3: (enumLiteral_9= 'matrix' )
                     {
-                    // InternalGitHubActions.g:1782:3: (enumLiteral_9= 'matrix' )
-                    // InternalGitHubActions.g:1783:4: enumLiteral_9= 'matrix'
+                    // InternalGitHubActions.g:1741:3: (enumLiteral_9= 'matrix' )
+                    // InternalGitHubActions.g:1742:4: enumLiteral_9= 'matrix'
                     {
-                    enumLiteral_9=(Token)match(input,51,FOLLOW_2); 
+                    enumLiteral_9=(Token)match(input,49,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getMATRIXEnumLiteralDeclaration_9().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_9, grammarAccess.getCONTEXTAccess().getMATRIXEnumLiteralDeclaration_9());
@@ -4663,12 +4569,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalGitHubActions.g:1790:3: (enumLiteral_10= 'needs' )
+                    // InternalGitHubActions.g:1749:3: (enumLiteral_10= 'needs' )
                     {
-                    // InternalGitHubActions.g:1790:3: (enumLiteral_10= 'needs' )
-                    // InternalGitHubActions.g:1791:4: enumLiteral_10= 'needs'
+                    // InternalGitHubActions.g:1749:3: (enumLiteral_10= 'needs' )
+                    // InternalGitHubActions.g:1750:4: enumLiteral_10= 'needs'
                     {
-                    enumLiteral_10=(Token)match(input,52,FOLLOW_2); 
+                    enumLiteral_10=(Token)match(input,50,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getNEEDSEnumLiteralDeclaration_10().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_10, grammarAccess.getCONTEXTAccess().getNEEDSEnumLiteralDeclaration_10());
@@ -4680,12 +4586,12 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // InternalGitHubActions.g:1798:3: (enumLiteral_11= 'inputs' )
+                    // InternalGitHubActions.g:1757:3: (enumLiteral_11= 'inputs' )
                     {
-                    // InternalGitHubActions.g:1798:3: (enumLiteral_11= 'inputs' )
-                    // InternalGitHubActions.g:1799:4: enumLiteral_11= 'inputs'
+                    // InternalGitHubActions.g:1757:3: (enumLiteral_11= 'inputs' )
+                    // InternalGitHubActions.g:1758:4: enumLiteral_11= 'inputs'
                     {
-                    enumLiteral_11=(Token)match(input,53,FOLLOW_2); 
+                    enumLiteral_11=(Token)match(input,51,FOLLOW_2); 
 
                     				current = grammarAccess.getCONTEXTAccess().getINPUTSEnumLiteralDeclaration_11().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_11, grammarAccess.getCONTEXTAccess().getINPUTSEnumLiteralDeclaration_11());
@@ -4725,17 +4631,15 @@ public class InternalGitHubActionsParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x003FFC0FFEA081F0L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x000FFF03FFA881F0L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000030000000002L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x000000F000000002L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x00000000000B0002L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x000000C000000002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000003C00000002L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000030002L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000001400000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000500000L});
 
 }

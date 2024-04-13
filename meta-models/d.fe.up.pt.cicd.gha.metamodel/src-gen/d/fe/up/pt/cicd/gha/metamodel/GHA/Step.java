@@ -161,15 +161,15 @@ public interface Step extends AbstractStep {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link java.lang.String},
+	 * The key is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getStep_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
 	 * @generated
 	 */
-	EMap<String, Expression> getEnvironmentVariables();
+	EMap<VariableDeclaration, Expression> getEnvironmentVariables();
 
 } // Step

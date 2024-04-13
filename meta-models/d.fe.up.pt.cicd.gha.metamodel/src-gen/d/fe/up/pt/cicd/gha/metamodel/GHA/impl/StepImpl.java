@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Step;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -117,7 +119,7 @@ public abstract class StepImpl extends AbstractStepImpl implements Step {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -425,10 +427,11 @@ public abstract class StepImpl extends AbstractStepImpl implements Step {
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, GHAPackage.STEP__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					GHAPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					GHAPackage.STEP__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

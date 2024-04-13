@@ -161,17 +161,11 @@ public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createVariable()));
-
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
-				CICDFactory.eINSTANCE.createSecretVariable()));
+				CICDFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
 				CICDFactory.eINSTANCE.createVariableContext()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
-				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
@@ -181,6 +175,9 @@ public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createAnd()));

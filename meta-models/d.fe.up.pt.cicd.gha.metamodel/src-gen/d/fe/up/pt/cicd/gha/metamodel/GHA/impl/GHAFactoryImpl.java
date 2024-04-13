@@ -15,6 +15,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Concat;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EQUALITY_OPS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EVENTS;
@@ -53,8 +54,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StringLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Success;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Variable;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob;
@@ -152,10 +153,14 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 			return createConcurrencyGroup();
 		case GHAPackage.DEFAULTS:
 			return createDefaults();
+		case GHAPackage.VARIABLE_DECLARATION:
+			return createVariableDeclaration();
 		case GHAPackage.VARIABLE_ASSIGNMENT:
 			return (EObject) createVariableAssignment();
 		case GHAPackage.CONCAT:
 			return createConcat();
+		case GHAPackage.DOT_OP:
+			return createDotOp();
 		case GHAPackage.EQUALITY:
 			return createEquality();
 		case GHAPackage.COMPARISON:
@@ -198,12 +203,10 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 			return createDoubleLiteral();
 		case GHAPackage.BOOLEAN_LITERAL:
 			return createBooleanLiteral();
-		case GHAPackage.VARIABLE:
-			return createVariable();
+		case GHAPackage.VARIABLE_REFERENCE:
+			return createVariableReference();
 		case GHAPackage.GIT_HUB_CONTEXT:
 			return createGitHubContext();
-		case GHAPackage.VARIABLE_DEREFERENCE:
-			return createVariableDereference();
 		case GHAPackage.MATRIX:
 			return createMatrix();
 		case GHAPackage.MATRIX_AXIS:
@@ -486,7 +489,18 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, Expression> createVariableAssignment() {
+	@Override
+	public VariableDeclaration createVariableDeclaration() {
+		VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+		return variableDeclaration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map.Entry<VariableDeclaration, Expression> createVariableAssignment() {
 		VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
 		return variableAssignment;
 	}
@@ -500,6 +514,17 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	public Concat createConcat() {
 		ConcatImpl concat = new ConcatImpl();
 		return concat;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DotOp createDotOp() {
+		DotOpImpl dotOp = new DotOpImpl();
+		return dotOp;
 	}
 
 	/**
@@ -739,9 +764,9 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	 * @generated
 	 */
 	@Override
-	public Variable createVariable() {
-		VariableImpl variable = new VariableImpl();
-		return variable;
+	public VariableReference createVariableReference() {
+		VariableReferenceImpl variableReference = new VariableReferenceImpl();
+		return variableReference;
 	}
 
 	/**
@@ -753,17 +778,6 @@ public class GHAFactoryImpl extends EFactoryImpl implements GHAFactory {
 	public GitHubContext createGitHubContext() {
 		GitHubContextImpl gitHubContext = new GitHubContextImpl();
 		return gitHubContext;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public VariableDereference createVariableDereference() {
-		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
-		return variableDereference;
 	}
 
 	/**

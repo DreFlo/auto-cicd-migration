@@ -152,8 +152,14 @@ public class DefaultsItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createEquality()));
@@ -218,17 +224,20 @@ public class DefaultsItemProvider extends ItemProviderAdapter implements IEditin
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__SHELL,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -294,13 +303,10 @@ public class DefaultsItemProvider extends ItemProviderAdapter implements IEditin
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.DEFAULTS__WORKING_DIRECTORY,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

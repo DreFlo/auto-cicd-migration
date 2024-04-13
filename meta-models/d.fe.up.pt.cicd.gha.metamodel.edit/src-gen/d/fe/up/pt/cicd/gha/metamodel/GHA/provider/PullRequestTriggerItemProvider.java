@@ -186,7 +186,13 @@ public class PullRequestTriggerItemProvider extends EventTypeTriggerItemProvider
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -252,16 +258,19 @@ public class PullRequestTriggerItemProvider extends EventTypeTriggerItemProvider
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -327,13 +336,10 @@ public class PullRequestTriggerItemProvider extends EventTypeTriggerItemProvider
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

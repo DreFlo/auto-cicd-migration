@@ -152,8 +152,14 @@ public class ConcurrencyGroupItemProvider extends ItemProviderAdapter implements
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -219,16 +225,19 @@ public class ConcurrencyGroupItemProvider extends ItemProviderAdapter implements
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__NAME,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -294,13 +303,10 @@ public class ConcurrencyGroupItemProvider extends ItemProviderAdapter implements
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCURRENCY_GROUP__CANCEL_IN_PROGRESS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

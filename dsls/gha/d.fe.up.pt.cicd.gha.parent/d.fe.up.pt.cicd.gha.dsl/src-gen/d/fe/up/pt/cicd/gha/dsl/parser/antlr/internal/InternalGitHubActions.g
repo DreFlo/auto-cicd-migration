@@ -483,7 +483,7 @@ ruleVariableDereference returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElementAndSet(
-						grammarAccess.getVariableDereferenceAccess().getVariableDereferenceVariableAction_1_0(),
+						grammarAccess.getVariableDereferenceAccess().getDotOpLhsAction_1_0(),
 						$current);
 				}
 			)
@@ -495,97 +495,56 @@ ruleVariableDereference returns [EObject current=null]
 					}
 					(
 						(
-							lv_property_3_0=RULE_ID
 							{
-								newLeafNode(lv_property_3_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_0_1_0());
+								newCompositeNode(grammarAccess.getVariableDereferenceAccess().getRhsVariableDereferenceParserRuleCall_1_1_0_1_0());
 							}
+							lv_rhs_3_0=ruleVariableDereference
 							{
 								if ($current==null) {
-									$current = createModelElement(grammarAccess.getVariableDereferenceRule());
+									$current = createModelElementForParent(grammarAccess.getVariableDereferenceRule());
 								}
-								setWithLastConsumed(
+								set(
 									$current,
-									"property",
-									lv_property_3_0,
-									"org.eclipse.xtext.common.Terminals.ID");
+									"rhs",
+									lv_rhs_3_0,
+									"d.fe.up.pt.cicd.gha.dsl.GitHubActions.VariableDereference");
+								afterParserOrEnumRuleCall();
 							}
 						)
 					)
 				)
 				    |
 				(
+					otherlv_4='['
+					{
+						newLeafNode(otherlv_4, grammarAccess.getVariableDereferenceAccess().getLeftSquareBracketKeyword_1_1_1_0());
+					}
 					(
-						otherlv_4='['
-						{
-							newLeafNode(otherlv_4, grammarAccess.getVariableDereferenceAccess().getLeftSquareBracketKeyword_1_1_1_0_0());
-						}
 						(
-							otherlv_5='"'
 							{
-								newLeafNode(otherlv_5, grammarAccess.getVariableDereferenceAccess().getQuotationMarkKeyword_1_1_1_0_1_0());
+								newCompositeNode(grammarAccess.getVariableDereferenceAccess().getRhsVariableDereferenceParserRuleCall_1_1_1_1_0());
 							}
-							(
-								(
-									lv_property_6_0=RULE_ID
-									{
-										newLeafNode(lv_property_6_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_1_0_1_1_0());
-									}
-									{
-										if ($current==null) {
-											$current = createModelElement(grammarAccess.getVariableDereferenceRule());
-										}
-										setWithLastConsumed(
-											$current,
-											"property",
-											lv_property_6_0,
-											"org.eclipse.xtext.common.Terminals.ID");
-									}
-								)
-							)
-							otherlv_7='"'
+							lv_rhs_5_0=ruleVariableDereference
 							{
-								newLeafNode(otherlv_7, grammarAccess.getVariableDereferenceAccess().getQuotationMarkKeyword_1_1_1_0_1_2());
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getVariableDereferenceRule());
+								}
+								set(
+									$current,
+									"rhs",
+									lv_rhs_5_0,
+									"d.fe.up.pt.cicd.gha.dsl.GitHubActions.VariableDereference");
+								afterParserOrEnumRuleCall();
 							}
 						)
 					)
-					    |
-					(
-						(
-							otherlv_8='\''
-							{
-								newLeafNode(otherlv_8, grammarAccess.getVariableDereferenceAccess().getApostropheKeyword_1_1_1_1_0_0());
-							}
-							(
-								(
-									lv_property_9_0=RULE_ID
-									{
-										newLeafNode(lv_property_9_0, grammarAccess.getVariableDereferenceAccess().getPropertyIDTerminalRuleCall_1_1_1_1_0_1_0());
-									}
-									{
-										if ($current==null) {
-											$current = createModelElement(grammarAccess.getVariableDereferenceRule());
-										}
-										setWithLastConsumed(
-											$current,
-											"property",
-											lv_property_9_0,
-											"org.eclipse.xtext.common.Terminals.ID");
-									}
-								)
-							)
-							otherlv_10='"'
-							{
-								newLeafNode(otherlv_10, grammarAccess.getVariableDereferenceAccess().getQuotationMarkKeyword_1_1_1_1_0_2());
-							}
-						)
-						otherlv_11=']'
-						{
-							newLeafNode(otherlv_11, grammarAccess.getVariableDereferenceAccess().getRightSquareBracketKeyword_1_1_1_1_1());
-						}
-					)
+					otherlv_6=']'
+					{
+						newLeafNode(otherlv_6, grammarAccess.getVariableDereferenceAccess().getRightSquareBracketKeyword_1_1_1_2());
+					}
 				)
 			)
-		)*
+		)?
 	)
 ;
 
@@ -693,7 +652,7 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getVariableAction_1_0(),
+						grammarAccess.getAtomicAccess().getVariableReferenceAction_1_0(),
 						$current);
 				}
 			)

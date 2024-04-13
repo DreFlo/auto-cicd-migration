@@ -1,30 +1,28 @@
 /**
  */
-package d.fe.up.pt.cicd.metamodel.CICD.impl;
+package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
-import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.Variable;
-
+import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable</b></em>'.
+ * An implementation of the model object '<em><b>Variable Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableReferenceImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableImpl extends ValueImpl implements Variable {
+public class VariableReferenceImpl extends ValueImpl implements VariableReference {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -34,7 +32,6 @@ public class VariableImpl extends ValueImpl implements Variable {
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,7 +47,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableImpl() {
+	protected VariableReferenceImpl() {
 		super();
 	}
 
@@ -61,7 +58,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CICDPackage.Literals.VARIABLE;
+		return GHAPackage.Literals.VARIABLE_REFERENCE;
 	}
 
 	/**
@@ -84,7 +81,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.VARIABLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.VARIABLE_REFERENCE__NAME, oldName, name));
 	}
 
 	/**
@@ -95,7 +92,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case CICDPackage.VARIABLE__NAME:
+		case GHAPackage.VARIABLE_REFERENCE__NAME:
 			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -106,10 +103,11 @@ public class VariableImpl extends ValueImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case CICDPackage.VARIABLE__NAME:
+		case GHAPackage.VARIABLE_REFERENCE__NAME:
 			setName((String) newValue);
 			return;
 		}
@@ -124,7 +122,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case CICDPackage.VARIABLE__NAME:
+		case GHAPackage.VARIABLE_REFERENCE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
 		}
@@ -139,7 +137,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case CICDPackage.VARIABLE__NAME:
+		case GHAPackage.VARIABLE_REFERENCE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
@@ -162,4 +160,4 @@ public class VariableImpl extends ValueImpl implements Variable {
 		return result.toString();
 	}
 
-} //VariableImpl
+} //VariableReferenceImpl

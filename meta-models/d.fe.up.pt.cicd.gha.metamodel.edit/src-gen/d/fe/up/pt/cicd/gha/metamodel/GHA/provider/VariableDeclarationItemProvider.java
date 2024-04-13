@@ -1,12 +1,12 @@
 /**
  */
-package d.fe.up.pt.cicd.metamodel.CICD.provider;
+package d.fe.up.pt.cicd.gha.metamodel.GHA.provider;
 
-import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -25,12 +25,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link java.util.Map.Entry} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PermissionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class VariableDeclarationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
 		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -38,7 +38,7 @@ public class PermissionItemProvider extends ItemProviderAdapter implements IEdit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PermissionItemProvider(AdapterFactory adapterFactory) {
+	public VariableDeclarationItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -53,53 +53,36 @@ public class PermissionItemProvider extends ItemProviderAdapter implements IEdit
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addKeyPropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Key feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addKeyPropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Permission_key_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Permission_key_feature",
-								"_UI_Permission_type"),
-						CICDPackage.Literals.PERMISSION__KEY, true, false, false,
+						getResourceLocator(), getString("_UI_VariableDeclaration_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_VariableDeclaration_name_feature",
+								"_UI_VariableDeclaration_type"),
+						GHAPackage.Literals.VARIABLE_DECLARATION__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Permission_value_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Permission_value_feature",
-								"_UI_Permission_type"),
-						CICDPackage.Literals.PERMISSION__VALUE, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This returns Permission.gif.
+	 * This returns VariableDeclaration.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Permission"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/VariableDeclaration"));
 	}
 
 	/**
@@ -120,8 +103,9 @@ public class PermissionItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> permission = (Map.Entry<?, ?>) object;
-		return "" + permission.getKey() + " -> " + permission.getValue();
+		String label = ((VariableDeclaration) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_VariableDeclaration_type")
+				: getString("_UI_VariableDeclaration_type") + " " + label;
 	}
 
 	/**
@@ -135,9 +119,8 @@ public class PermissionItemProvider extends ItemProviderAdapter implements IEdit
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class)) {
-		case CICDPackage.PERMISSION__KEY:
-		case CICDPackage.PERMISSION__VALUE:
+		switch (notification.getFeatureID(VariableDeclaration.class)) {
+		case GHAPackage.VARIABLE_DECLARATION__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
@@ -164,7 +147,7 @@ public class PermissionItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return CICDEditPlugin.INSTANCE;
+		return GHAEditPlugin.INSTANCE;
 	}
 
 }

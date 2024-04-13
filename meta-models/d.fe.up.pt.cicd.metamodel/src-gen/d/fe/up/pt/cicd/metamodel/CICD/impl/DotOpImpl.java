@@ -3,24 +3,24 @@
 package d.fe.up.pt.cicd.metamodel.CICD.impl;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
+import d.fe.up.pt.cicd.metamodel.CICD.DotOp;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Secret Variable</b></em>'.
+ * An implementation of the model object '<em><b>Dot Op</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class SecretVariableImpl extends VariableImpl implements SecretVariable {
+public class DotOpImpl extends BinaryOpImpl implements DotOp {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SecretVariableImpl() {
+	protected DotOpImpl() {
 		super();
 	}
 
@@ -31,7 +31,7 @@ public class SecretVariableImpl extends VariableImpl implements SecretVariable {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CICDPackage.Literals.SECRET_VARIABLE;
+		return CICDPackage.Literals.DOT_OP;
 	}
 
-} //SecretVariableImpl
+} //DotOpImpl

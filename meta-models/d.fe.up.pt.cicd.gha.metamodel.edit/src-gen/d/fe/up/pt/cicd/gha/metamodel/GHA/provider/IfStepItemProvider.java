@@ -143,8 +143,14 @@ public class IfStepItemProvider extends AbstractStepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION, GHAFactory.eINSTANCE.createEquality()));
@@ -209,14 +215,11 @@ public class IfStepItemProvider extends AbstractStepItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.IF_STEP__IF_CONDITION,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.IF_STEP__THEN_RUN, GHAFactory.eINSTANCE.createCommand()));

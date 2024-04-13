@@ -1,5 +1,5 @@
 name: "Workflow"
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+run-name: Deploy to ${{ inputs.deploy_target.tt[4] }} by @${{ github.actor }}
 on:
   check_run:
     types: assigned
@@ -13,7 +13,7 @@ on:
     tags:
       - tag
   schedule:
-    - "cron": "oooooo"
+    - cron: "oooooo"
   workflow_call:
     inputs:
       username:
@@ -46,8 +46,19 @@ concurrency:
 jobs:
   my_first_job:
     name: My first job
+    runs-on: ubuntu-latest
     permissions:
       actions: read
+    services:
+      my_service:
+        image: redis
+        ports:
+          - 6379:6379
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [10, 12, 14]
     steps:
       - name: Print a greeting
         env:

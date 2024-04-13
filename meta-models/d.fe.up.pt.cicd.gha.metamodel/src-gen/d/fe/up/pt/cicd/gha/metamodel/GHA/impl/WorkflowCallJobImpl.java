@@ -4,16 +4,20 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob;
-import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -52,7 +56,7 @@ public class WorkflowCallJobImpl extends JobImpl implements WorkflowCallJob {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> args;
+	protected EMap<VariableDeclaration, Expression> args;
 
 	/**
 	 * The cached value of the '{@link #getSecrets() <em>Secrets</em>}' map.
@@ -62,7 +66,7 @@ public class WorkflowCallJobImpl extends JobImpl implements WorkflowCallJob {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> secrets;
+	protected EMap<VariableDeclaration, Expression> secrets;
 
 	/**
 	 * The default value of the '{@link #getInheritSecrets() <em>Inherit Secrets</em>}' attribute.
@@ -161,9 +165,9 @@ public class WorkflowCallJobImpl extends JobImpl implements WorkflowCallJob {
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getArgs() {
+	public EMap<VariableDeclaration, Expression> getArgs() {
 		if (args == null) {
-			args = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
+			args = new EcoreEMap<VariableDeclaration, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, GHAPackage.WORKFLOW_CALL_JOB__ARGS);
 		}
 		return args;
@@ -175,9 +179,9 @@ public class WorkflowCallJobImpl extends JobImpl implements WorkflowCallJob {
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getSecrets() {
+	public EMap<VariableDeclaration, Expression> getSecrets() {
 		if (secrets == null) {
-			secrets = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
+			secrets = new EcoreEMap<VariableDeclaration, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, GHAPackage.WORKFLOW_CALL_JOB__SECRETS);
 		}
 		return secrets;
@@ -256,7 +260,6 @@ public class WorkflowCallJobImpl extends JobImpl implements WorkflowCallJob {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

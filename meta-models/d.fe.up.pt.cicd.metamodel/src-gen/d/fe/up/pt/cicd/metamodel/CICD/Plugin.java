@@ -69,15 +69,15 @@ public interface Plugin extends NonConditionalStep {
 
 	/**
 	 * Returns the value of the '<em><b>Kwargs</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Variable},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Kwargs</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPlugin_Kwargs()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Variable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EMap<Variable, Expression> getKwargs();
+	EMap<VariableDeclaration, Expression> getKwargs();
 
 } // Plugin

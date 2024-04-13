@@ -199,7 +199,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			YamlMapping triggerMap = trigger.asMapping();
 			for (YamlNode key : triggerMap.keys()) {
 				if (key.type().equals(Node.SCALAR)) {
-					result.add(parseOptionedTrigger(key.asScalar().value(), triggerMap.value(key.asScalar().value())));
+					result.add(parseOptionedTrigger(key.asScalar().value(), triggerMap.value(key)));
 				} else {
 					throw new SyntaxException("Invalid trigger");
 				}
@@ -355,7 +355,9 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private Input parseInput(String id, YamlMapping inputMap) throws SyntaxException {
 		Input input = GHAPackage.eINSTANCE.getGHAFactory().createInput();
-		input.setId(id);
+		VariableDeclaration variableDeclaration = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
+		variableDeclaration.setName(id);
+		input.setId(variableDeclaration);
 		if (inputMap.string("description") != null) {
 			input.setDescription(parseExpression(inputMap.string("description")));
 		}
@@ -393,7 +395,9 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private Output parseOutput(String id, YamlMapping outputMap) throws SyntaxException {
 		Output output = GHAPackage.eINSTANCE.getGHAFactory().createOutput();
-		output.setId(id);
+		VariableDeclaration variableDeclaration = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
+		variableDeclaration.setName(id);
+		output.setId(variableDeclaration);
 		if (outputMap.string("description") != null) {
 			output.setDescription(parseExpression(outputMap.string("description")));
 		}
@@ -422,7 +426,9 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private Secret parseSecret(String id, YamlMapping secretMap) throws SyntaxException {
 		Secret secret = GHAPackage.eINSTANCE.getGHAFactory().createSecret();
-		secret.setId(id);
+		VariableDeclaration variableDeclaration = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
+		variableDeclaration.setName(id);
+		secret.setId(variableDeclaration);
 		if (secretMap.string("description") != null) {
 			secret.setDescription(parseExpression(secretMap.string("description")));
 		}
@@ -465,12 +471,14 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return result;
 	}
 
-	private Map<String, Expression> parseVariableAssignments(YamlMapping variablesMap) throws SyntaxException {
-		Map<String, Expression> result = new HashMap<>();
+	private Map<VariableDeclaration, Expression> parseVariableAssignments(YamlMapping variablesMap) throws SyntaxException {
+		Map<VariableDeclaration, Expression> result = new HashMap<>();
 
 		for (YamlNode key : variablesMap.keys()) {
 			if (key.type().equals(Node.SCALAR)) {
-				result.put(key.asScalar().value(), parseExpression(variablesMap.string(key.asScalar().value())));
+				VariableDeclaration variableDeclaration = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
+				variableDeclaration.setName(key.asScalar().value());
+				result.put(variableDeclaration, parseExpression(variablesMap.string(key.asScalar().value())));
 			} else {
 				throw new SyntaxException("Invalid variable assignment");
 			}
@@ -675,7 +683,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			}
 			for (YamlNode key : matrixMap.keys()) {
 				if (!key.asScalar().value().equals("include") && !key.asScalar().value().equals("exclude")) {
-					matrix.getAxes().add(parseMatrixAxis(key.asScalar().value(), matrixMap.value(key.asScalar().value())));
+					matrix.getAxes().add(parseMatrixAxis(key.asScalar().value(), matrixMap.value(key)));
 				}
 			}
 		} else {
@@ -714,7 +722,9 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	private MatrixAxis parseMatrixAxis(String key, YamlNode axisNode) throws SyntaxException {
 		MatrixAxis axis = GHAPackage.eINSTANCE.getGHAFactory().createMatrixAxis();
-		axis.setName(key);
+		VariableDeclaration axisVariable = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
+		axisVariable.setName(key);
+		axis.setName(axisVariable);
 		if (axisNode.type().equals(Node.SEQUENCE)) {
 			axis.getCells().addAll(parseExpressions(axisNode));
 		} else if (axisNode.type().equals(Node.SCALAR) && axisNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
@@ -773,6 +783,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return result;
 	}
 
+	// TODO See lists again
 	private List<Job> parseDependencies(YamlNode dependenciesNode, Map<String, Job> jobs) throws SyntaxException {
 		List<Job> result = new ArrayList<>();
 		if (dependenciesNode.type().equals(Node.SCALAR) && !dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
@@ -871,7 +882,9 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 				else {
 					for (YamlNode key : withMap.keys()) {
 						if (key.type().equals(Node.SCALAR)) {
-							((Package) step).getArgs().put(key.asScalar().value(), parseExpression(withMap.string(key.asScalar().value())));
+							VariableDeclaration variableDeclaration = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
+							variableDeclaration.setName(key.asScalar().value());
+							((Package) step).getArgs().put(variableDeclaration, parseExpression(withMap.string(key.asScalar().value())));
 						} else {
 							throw new SyntaxException("Invalid argument");
 						}

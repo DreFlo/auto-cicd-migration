@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -73,8 +72,7 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 						getResourceLocator(), getString("_UI_MatrixAxis_name_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_MatrixAxis_name_feature",
 								"_UI_MatrixAxis_type"),
-						GHAPackage.Literals.MATRIX_AXIS__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						GHAPackage.Literals.MATRIX_AXIS__NAME, true, false, false, null, null, null));
 	}
 
 	/**
@@ -136,9 +134,7 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MatrixAxis) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_MatrixAxis_type")
-				: getString("_UI_MatrixAxis_type") + " " + label;
+		return getString("_UI_MatrixAxis_type");
 	}
 
 	/**
@@ -174,8 +170,14 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createEquality()));
@@ -240,14 +242,11 @@ public class MatrixAxisItemProvider extends ItemProviderAdapter implements IEdit
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX_AXIS__CELLS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

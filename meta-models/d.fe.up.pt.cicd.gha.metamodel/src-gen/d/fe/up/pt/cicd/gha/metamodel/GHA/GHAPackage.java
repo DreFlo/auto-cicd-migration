@@ -1756,52 +1756,6 @@ public interface GHAPackage extends EPackage {
 	int DEFAULTS_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableAssignmentImpl
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableAssignment()
-	 * @generated
-	 */
-	int VARIABLE_ASSIGNMENT = 24;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ASSIGNMENT__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ASSIGNMENT__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Variable Assignment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ASSIGNMENT_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Variable Assignment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_ASSIGNMENT_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ExpressionImpl <em>Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1809,7 +1763,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 25;
+	int EXPRESSION = 24;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -1830,6 +1784,89 @@ public interface GHAPackage extends EPackage {
 	int EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDeclarationImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableDeclaration()
+	 * @generated
+	 */
+	int VARIABLE_DECLARATION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DECLARATION__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Variable Declaration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DECLARATION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Variable Declaration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_DECLARATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableAssignmentImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableAssignment()
+	 * @generated
+	 */
+	int VARIABLE_ASSIGNMENT = 26;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT__KEY = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT__VALUE = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Variable Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Variable Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.BinaryOpImpl <em>Binary Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1837,7 +1874,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 26;
+	int BINARY_OP = 27;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1883,7 +1920,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 27;
+	int CONCAT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -1913,6 +1950,52 @@ public interface GHAPackage extends EPackage {
 	int CONCAT_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.DotOpImpl <em>Dot Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.DotOpImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDotOp()
+	 * @generated
+	 */
+	int DOT_OP = 29;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP__LHS = BINARY_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP__RHS = BINARY_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Dot Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Dot Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EqualityImpl <em>Equality</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1920,7 +2003,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEquality()
 	 * @generated
 	 */
-	int EQUALITY = 28;
+	int EQUALITY = 30;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1975,7 +2058,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getComparison()
 	 * @generated
 	 */
-	int COMPARISON = 29;
+	int COMPARISON = 31;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2030,7 +2113,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 30;
+	int LOGICAL_OP = 32;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2076,7 +2159,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 31;
+	int OR = 33;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2122,7 +2205,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 32;
+	int AND = 34;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2168,7 +2251,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 33;
+	int UNARY_OP = 35;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -2205,7 +2288,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 34;
+	int NOT = 36;
 
 	/**
 	 * The feature id for the '<em><b>Child Expr</b></em>' containment reference.
@@ -2242,7 +2325,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBuiltInFunctionCall()
 	 * @generated
 	 */
-	int BUILT_IN_FUNCTION_CALL = 35;
+	int BUILT_IN_FUNCTION_CALL = 37;
 
 	/**
 	 * The number of structural features of the '<em>Built In Function Call</em>' class.
@@ -2270,7 +2353,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getContains()
 	 * @generated
 	 */
-	int CONTAINS = 36;
+	int CONTAINS = 38;
 
 	/**
 	 * The feature id for the '<em><b>Search</b></em>' containment reference.
@@ -2316,7 +2399,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStartsWith()
 	 * @generated
 	 */
-	int STARTS_WITH = 37;
+	int STARTS_WITH = 39;
 
 	/**
 	 * The feature id for the '<em><b>Search String</b></em>' containment reference.
@@ -2362,7 +2445,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEndsWith()
 	 * @generated
 	 */
-	int ENDS_WITH = 38;
+	int ENDS_WITH = 40;
 
 	/**
 	 * The feature id for the '<em><b>Search String</b></em>' containment reference.
@@ -2408,7 +2491,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFormat()
 	 * @generated
 	 */
-	int FORMAT = 39;
+	int FORMAT = 41;
 
 	/**
 	 * The feature id for the '<em><b>String</b></em>' containment reference.
@@ -2454,7 +2537,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getJoin()
 	 * @generated
 	 */
-	int JOIN = 40;
+	int JOIN = 42;
 
 	/**
 	 * The feature id for the '<em><b>Array</b></em>' containment reference.
@@ -2500,7 +2583,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getToJSON()
 	 * @generated
 	 */
-	int TO_JSON = 41;
+	int TO_JSON = 43;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2537,7 +2620,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFromJSON()
 	 * @generated
 	 */
-	int FROM_JSON = 42;
+	int FROM_JSON = 44;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -2574,7 +2657,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getHashFiles()
 	 * @generated
 	 */
-	int HASH_FILES = 43;
+	int HASH_FILES = 45;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -2611,7 +2694,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStatusCheck()
 	 * @generated
 	 */
-	int STATUS_CHECK = 44;
+	int STATUS_CHECK = 46;
 
 	/**
 	 * The number of structural features of the '<em>Status Check</em>' class.
@@ -2639,7 +2722,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAlways()
 	 * @generated
 	 */
-	int ALWAYS = 45;
+	int ALWAYS = 47;
 
 	/**
 	 * The number of structural features of the '<em>Always</em>' class.
@@ -2667,7 +2750,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSuccess()
 	 * @generated
 	 */
-	int SUCCESS = 46;
+	int SUCCESS = 48;
 
 	/**
 	 * The number of structural features of the '<em>Success</em>' class.
@@ -2695,7 +2778,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCancelled()
 	 * @generated
 	 */
-	int CANCELLED = 47;
+	int CANCELLED = 49;
 
 	/**
 	 * The number of structural features of the '<em>Cancelled</em>' class.
@@ -2723,7 +2806,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getFailure()
 	 * @generated
 	 */
-	int FAILURE = 48;
+	int FAILURE = 50;
 
 	/**
 	 * The number of structural features of the '<em>Failure</em>' class.
@@ -2751,7 +2834,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 49;
+	int VALUE = 51;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -2779,7 +2862,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 50;
+	int LITERAL = 52;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -2807,7 +2890,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 51;
+	int STRING_LITERAL = 53;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2844,7 +2927,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 52;
+	int INTEGER_LITERAL = 54;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2881,7 +2964,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 53;
+	int DOUBLE_LITERAL = 55;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2918,7 +3001,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 54;
+	int BOOLEAN_LITERAL = 56;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2948,14 +3031,14 @@ public interface GHAPackage extends EPackage {
 	int BOOLEAN_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableImpl <em>Variable</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableImpl
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariable()
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableReferenceImpl
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableReference()
 	 * @generated
 	 */
-	int VARIABLE = 55;
+	int VARIABLE_REFERENCE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2964,25 +3047,25 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__NAME = VALUE_FEATURE_COUNT + 0;
+	int VARIABLE_REFERENCE__NAME = VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Variable</em>' class.
+	 * The number of structural features of the '<em>Variable Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int VARIABLE_REFERENCE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Variable</em>' class.
+	 * The number of operations of the '<em>Variable Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int VARIABLE_REFERENCE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GitHubContextImpl <em>Git Hub Context</em>}' class.
@@ -2992,7 +3075,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getGitHubContext()
 	 * @generated
 	 */
-	int GIT_HUB_CONTEXT = 56;
+	int GIT_HUB_CONTEXT = 58;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' attribute.
@@ -3022,52 +3105,6 @@ public interface GHAPackage extends EPackage {
 	int GIT_HUB_CONTEXT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDereferenceImpl
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableDereference()
-	 * @generated
-	 */
-	int VARIABLE_DEREFERENCE = 57;
-
-	/**
-	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE__VARIABLE = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE__PROPERTY = EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Variable Dereference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Variable Dereference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.MatrixImpl <em>Matrix</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3075,7 +3112,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 58;
+	int MATRIX = 59;
 
 	/**
 	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
@@ -3148,10 +3185,10 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrixAxis()
 	 * @generated
 	 */
-	int MATRIX_AXIS = 59;
+	int MATRIX_AXIS = 60;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3194,7 +3231,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 60;
+	int MATRIX_COMBINATION = 61;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' map.
@@ -3231,7 +3268,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getAbstractStep()
 	 * @generated
 	 */
-	int ABSTRACT_STEP = 61;
+	int ABSTRACT_STEP = 62;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Step</em>' class.
@@ -3259,7 +3296,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getIfStep()
 	 * @generated
 	 */
-	int IF_STEP = 62;
+	int IF_STEP = 63;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -3305,7 +3342,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 63;
+	int STEP = 64;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3396,7 +3433,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 64;
+	int COMMAND = 65;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3496,7 +3533,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPackage()
 	 * @generated
 	 */
-	int PACKAGE = 65;
+	int PACKAGE = 66;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3623,10 +3660,10 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 66;
+	int PARAMETER = 67;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3669,10 +3706,10 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 67;
+	int INPUT = 68;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3751,10 +3788,10 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getSecret()
 	 * @generated
 	 */
-	int SECRET = 68;
+	int SECRET = 69;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3806,10 +3843,10 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 69;
+	int OUTPUT = 70;
 
 	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3861,7 +3898,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEVENTS()
 	 * @generated
 	 */
-	int EVENTS = 70;
+	int EVENTS = 71;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES <em>WEBHOOK ACTIVITY TYPES</em>}' enum.
@@ -3871,7 +3908,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getWEBHOOK_ACTIVITY_TYPES()
 	 * @generated
 	 */
-	int WEBHOOK_ACTIVITY_TYPES = 71;
+	int WEBHOOK_ACTIVITY_TYPES = 72;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES <em>PERMISSION SCOPES</em>}' enum.
@@ -3881,7 +3918,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPERMISSION_SCOPES()
 	 * @generated
 	 */
-	int PERMISSION_SCOPES = 72;
+	int PERMISSION_SCOPES = 73;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS <em>PERMISSIONS</em>}' enum.
@@ -3891,7 +3928,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getPERMISSIONS()
 	 * @generated
 	 */
-	int PERMISSIONS = 73;
+	int PERMISSIONS = 74;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3901,7 +3938,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 74;
+	int EQUALITY_OPS = 75;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3911,7 +3948,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 75;
+	int COMPARISON_OPS = 76;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.CONTEXTS <em>CONTEXTS</em>}' enum.
@@ -3921,7 +3958,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getCONTEXTS()
 	 * @generated
 	 */
-	int CONTEXTS = 76;
+	int CONTEXTS = 77;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.INPUT_TYPES <em>INPUT TYPES</em>}' enum.
@@ -3931,7 +3968,7 @@ public interface GHAPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getINPUT_TYPES()
 	 * @generated
 	 */
-	int INPUT_TYPES = 77;
+	int INPUT_TYPES = 78;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow <em>Workflow</em>}'.
@@ -4849,27 +4886,58 @@ public interface GHAPackage extends EPackage {
 	EReference getDefaults_WorkingDirectory();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression <em>Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Expression
+	 * @generated
+	 */
+	EClass getExpression();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration <em>Variable Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Declaration</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration
+	 * @generated
+	 */
+	EClass getVariableDeclaration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration#getName()
+	 * @see #getVariableDeclaration()
+	 * @generated
+	 */
+	EAttribute getVariableDeclaration_Name();
+
+	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Variable Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Variable Assignment</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyId="true" keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
+	 * @model keyType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration" keyContainment="true" keyRequired="true"
 	 *        valueType="d.fe.up.pt.cicd.gha.metamodel.GHA.Expression" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
 	EClass getVariableAssignment();
 
 	/**
-	 * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @return the meta object for the containment reference '<em>Key</em>'.
 	 * @see java.util.Map.Entry
 	 * @see #getVariableAssignment()
 	 * @generated
 	 */
-	EAttribute getVariableAssignment_Key();
+	EReference getVariableAssignment_Key();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link java.util.Map.Entry <em>Value</em>}'.
@@ -4881,16 +4949,6 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getVariableAssignment_Value();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Expression</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Expression
-	 * @generated
-	 */
-	EClass getExpression();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.BinaryOp <em>Binary Op</em>}'.
@@ -4944,6 +5002,16 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConcat_Expressions();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp <em>Dot Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dot Op</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp
+	 * @generated
+	 */
+	EClass getDotOp();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Equality <em>Equality</em>}'.
@@ -5436,25 +5504,25 @@ public interface GHAPackage extends EPackage {
 	EAttribute getBooleanLiteral_Value();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Variable <em>Variable</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Variable
+	 * @return the meta object for class '<em>Variable Reference</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference
 	 * @generated
 	 */
-	EClass getVariable();
+	EClass getVariableReference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Variable#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Variable#getName()
-	 * @see #getVariable()
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getName()
+	 * @see #getVariableReference()
 	 * @generated
 	 */
-	EAttribute getVariable_Name();
+	EAttribute getVariableReference_Name();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext <em>Git Hub Context</em>}'.
@@ -5476,38 +5544,6 @@ public interface GHAPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGitHubContext_Context();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference <em>Variable Dereference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable Dereference</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference
-	 * @generated
-	 */
-	EClass getVariableDereference();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference#getVariable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Variable</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference#getVariable()
-	 * @see #getVariableDereference()
-	 * @generated
-	 */
-	EReference getVariableDereference_Variable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Property</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference#getProperty()
-	 * @see #getVariableDereference()
-	 * @generated
-	 */
-	EAttribute getVariableDereference_Property();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix <em>Matrix</em>}'.
@@ -5585,15 +5621,15 @@ public interface GHAPackage extends EPackage {
 	EClass getMatrixAxis();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @return the meta object for the containment reference '<em>Name</em>'.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis#getName()
 	 * @see #getMatrixAxis()
 	 * @generated
 	 */
-	EAttribute getMatrixAxis_Name();
+	EReference getMatrixAxis_Name();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis#getCells <em>Cells</em>}'.
@@ -5842,15 +5878,15 @@ public interface GHAPackage extends EPackage {
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter#getId <em>Id</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @return the meta object for the containment reference '<em>Id</em>'.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter#getId()
 	 * @see #getParameter()
 	 * @generated
 	 */
-	EAttribute getParameter_Id();
+	EReference getParameter_Id();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Parameter#getDescription <em>Description</em>}'.
@@ -6793,6 +6829,34 @@ public interface GHAPackage extends EPackage {
 		EReference DEFAULTS__WORKING_DIRECTORY = eINSTANCE.getDefaults_WorkingDirectory();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ExpressionImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getExpression()
+		 * @generated
+		 */
+		EClass EXPRESSION = eINSTANCE.getExpression();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDeclarationImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableDeclaration()
+		 * @generated
+		 */
+		EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_DECLARATION__NAME = eINSTANCE.getVariableDeclaration_Name();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableAssignmentImpl <em>Variable Assignment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6803,12 +6867,12 @@ public interface GHAPackage extends EPackage {
 		EClass VARIABLE_ASSIGNMENT = eINSTANCE.getVariableAssignment();
 
 		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Key</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE_ASSIGNMENT__KEY = eINSTANCE.getVariableAssignment_Key();
+		EReference VARIABLE_ASSIGNMENT__KEY = eINSTANCE.getVariableAssignment_Key();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -6817,16 +6881,6 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE_ASSIGNMENT__VALUE = eINSTANCE.getVariableAssignment_Value();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ExpressionImpl <em>Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.ExpressionImpl
-		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getExpression()
-		 * @generated
-		 */
-		EClass EXPRESSION = eINSTANCE.getExpression();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.BinaryOpImpl <em>Binary Op</em>}' class.
@@ -6871,6 +6925,16 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONCAT__EXPRESSIONS = eINSTANCE.getConcat_Expressions();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.DotOpImpl <em>Dot Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.DotOpImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getDotOp()
+		 * @generated
+		 */
+		EClass DOT_OP = eINSTANCE.getDotOp();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.EqualityImpl <em>Equality</em>}' class.
@@ -7303,14 +7367,14 @@ public interface GHAPackage extends EPackage {
 		EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableImpl <em>Variable</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableImpl
-		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariable()
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableReferenceImpl
+		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableReference()
 		 * @generated
 		 */
-		EClass VARIABLE = eINSTANCE.getVariable();
+		EClass VARIABLE_REFERENCE = eINSTANCE.getVariableReference();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -7318,7 +7382,7 @@ public interface GHAPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+		EAttribute VARIABLE_REFERENCE__NAME = eINSTANCE.getVariableReference_Name();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GitHubContextImpl <em>Git Hub Context</em>}' class.
@@ -7337,32 +7401,6 @@ public interface GHAPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GIT_HUB_CONTEXT__CONTEXT = eINSTANCE.getGitHubContext_Context();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.VariableDereferenceImpl
-		 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GHAPackageImpl#getVariableDereference()
-		 * @generated
-		 */
-		EClass VARIABLE_DEREFERENCE = eINSTANCE.getVariableDereference();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VARIABLE_DEREFERENCE__VARIABLE = eINSTANCE.getVariableDereference_Variable();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE_DEREFERENCE__PROPERTY = eINSTANCE.getVariableDereference_Property();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.MatrixImpl <em>Matrix</em>}' class.
@@ -7425,12 +7463,12 @@ public interface GHAPackage extends EPackage {
 		EClass MATRIX_AXIS = eINSTANCE.getMatrixAxis();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MATRIX_AXIS__NAME = eINSTANCE.getMatrixAxis_Name();
+		EReference MATRIX_AXIS__NAME = eINSTANCE.getMatrixAxis_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
@@ -7631,12 +7669,12 @@ public interface GHAPackage extends EPackage {
 		EClass PARAMETER = eINSTANCE.getParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Id</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PARAMETER__ID = eINSTANCE.getParameter_Id();
+		EReference PARAMETER__ID = eINSTANCE.getParameter_Id();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' containment reference feature.

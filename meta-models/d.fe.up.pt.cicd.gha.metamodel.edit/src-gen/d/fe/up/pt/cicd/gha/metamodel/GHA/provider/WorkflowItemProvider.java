@@ -164,8 +164,14 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createEquality()));
@@ -230,17 +236,20 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.WORKFLOW__NAME, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__NAME,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createEquality()));
@@ -305,14 +314,11 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__RUN_NAME,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.WORKFLOW__TRIGGERS,
 				GHAFactory.eINSTANCE.createStandardEventTrigger()));
@@ -369,7 +375,8 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 		Object childObject = child;
 
 		boolean qualify = childFeature == GHAPackage.Literals.WORKFLOW__NAME
-				|| childFeature == GHAPackage.Literals.WORKFLOW__RUN_NAME;
+				|| childFeature == GHAPackage.Literals.WORKFLOW__RUN_NAME
+				|| childFeature == GHAPackage.Literals.WORKFLOW__ENVIRONMENT_VARIABLES;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -54,7 +55,7 @@ public class PackageImpl extends StepImpl implements d.fe.up.pt.cicd.gha.metamod
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> args;
+	protected EMap<VariableDeclaration, Expression> args;
 
 	/**
 	 * The cached value of the '{@link #getEntrypoint() <em>Entrypoint</em>}' containment reference.
@@ -152,9 +153,9 @@ public class PackageImpl extends StepImpl implements d.fe.up.pt.cicd.gha.metamod
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getArgs() {
+	public EMap<VariableDeclaration, Expression> getArgs() {
 		if (args == null) {
-			args = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
+			args = new EcoreEMap<VariableDeclaration, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, GHAPackage.PACKAGE__ARGS);
 		}
 		return args;

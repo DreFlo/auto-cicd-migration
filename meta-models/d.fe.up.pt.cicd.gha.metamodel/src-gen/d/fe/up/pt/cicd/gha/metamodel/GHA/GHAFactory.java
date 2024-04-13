@@ -166,6 +166,15 @@ public interface GHAFactory extends EFactory {
 	Defaults createDefaults();
 
 	/**
+	 * Returns a new object of class '<em>Variable Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Declaration</em>'.
+	 * @generated
+	 */
+	VariableDeclaration createVariableDeclaration();
+
+	/**
 	 * Returns a new object of class '<em>Concat</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,6 +182,15 @@ public interface GHAFactory extends EFactory {
 	 * @generated
 	 */
 	Concat createConcat();
+
+	/**
+	 * Returns a new object of class '<em>Dot Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dot Op</em>'.
+	 * @generated
+	 */
+	DotOp createDotOp();
 
 	/**
 	 * Returns a new object of class '<em>Equality</em>'.
@@ -364,13 +382,13 @@ public interface GHAFactory extends EFactory {
 	BooleanLiteral createBooleanLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Variable</em>'.
+	 * Returns a new object of class '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable</em>'.
+	 * @return a new object of class '<em>Variable Reference</em>'.
 	 * @generated
 	 */
-	Variable createVariable();
+	VariableReference createVariableReference();
 
 	/**
 	 * Returns a new object of class '<em>Git Hub Context</em>'.
@@ -380,15 +398,6 @@ public interface GHAFactory extends EFactory {
 	 * @generated
 	 */
 	GitHubContext createGitHubContext();
-
-	/**
-	 * Returns a new object of class '<em>Variable Dereference</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Dereference</em>'.
-	 * @generated
-	 */
-	VariableDereference createVariableDereference();
 
 	/**
 	 * Returns a new object of class '<em>Matrix</em>'.

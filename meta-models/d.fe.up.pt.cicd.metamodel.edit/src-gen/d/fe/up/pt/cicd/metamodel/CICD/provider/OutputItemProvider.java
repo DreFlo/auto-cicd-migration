@@ -3,7 +3,6 @@
 package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
-import d.fe.up.pt.cicd.metamodel.CICD.Output;
 
 import java.util.Collection;
 import java.util.List;
@@ -90,9 +89,7 @@ public class OutputItemProvider extends ParameterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Output) object).getId();
-		return label == null || label.length() == 0 ? getString("_UI_Output_type")
-				: getString("_UI_Output_type") + " " + label;
+		return getString("_UI_Output_type");
 	}
 
 	/**

@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -38,24 +39,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements MatrixAxis {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
+	protected VariableDeclaration name;
 
 	/**
 	 * The cached value of the '{@link #getCells() <em>Cells</em>}' containment reference list.
@@ -92,7 +83,7 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	 * @generated
 	 */
 	@Override
-	public String getName() {
+	public VariableDeclaration getName() {
 		return name;
 	}
 
@@ -101,12 +92,40 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setName(String newName) {
-		String oldName = name;
+	public NotificationChain basicSetName(VariableDeclaration newName, NotificationChain msgs) {
+		VariableDeclaration oldName = name;
 		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.MATRIX_AXIS__NAME, oldName, name));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GHAPackage.MATRIX_AXIS__NAME,
+					oldName, newName);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(VariableDeclaration newName) {
+		if (newName != name) {
+			NotificationChain msgs = null;
+			if (name != null)
+				msgs = ((InternalEObject) name).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - GHAPackage.MATRIX_AXIS__NAME, null, msgs);
+			if (newName != null)
+				msgs = ((InternalEObject) newName).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - GHAPackage.MATRIX_AXIS__NAME, null, msgs);
+			msgs = basicSetName(newName, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GHAPackage.MATRIX_AXIS__NAME, newName, newName));
 	}
 
 	/**
@@ -130,6 +149,8 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case GHAPackage.MATRIX_AXIS__NAME:
+			return basicSetName(null, msgs);
 		case GHAPackage.MATRIX_AXIS__CELLS:
 			return ((InternalEList<?>) getCells()).basicRemove(otherEnd, msgs);
 		}
@@ -162,7 +183,7 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case GHAPackage.MATRIX_AXIS__NAME:
-			setName((String) newValue);
+			setName((VariableDeclaration) newValue);
 			return;
 		case GHAPackage.MATRIX_AXIS__CELLS:
 			getCells().clear();
@@ -181,7 +202,7 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case GHAPackage.MATRIX_AXIS__NAME:
-			setName(NAME_EDEFAULT);
+			setName((VariableDeclaration) null);
 			return;
 		case GHAPackage.MATRIX_AXIS__CELLS:
 			getCells().clear();
@@ -199,28 +220,11 @@ public class MatrixAxisImpl extends MinimalEObjectImpl.Container implements Matr
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case GHAPackage.MATRIX_AXIS__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			return name != null;
 		case GHAPackage.MATRIX_AXIS__CELLS:
 			return cells != null && !cells.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //MatrixAxisImpl

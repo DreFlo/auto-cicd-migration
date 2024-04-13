@@ -167,8 +167,14 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__EXCLUDES,
 				GHAFactory.eINSTANCE.createMatrixCombination()));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createEquality()));
@@ -233,17 +239,20 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__FAIL_FAST,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL, GHAFactory.eINSTANCE.createEquality()));
@@ -308,14 +317,11 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.MATRIX__MAX_PARALLEL,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

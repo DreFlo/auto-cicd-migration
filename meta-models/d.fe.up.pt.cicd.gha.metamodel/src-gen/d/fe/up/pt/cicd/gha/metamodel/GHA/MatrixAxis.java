@@ -25,26 +25,26 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MatrixAxis extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
+	 * @return the value of the '<em>Name</em>' containment reference.
+	 * @see #setName(VariableDeclaration)
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getMatrixAxis_Name()
-	 * @model id="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getName();
+	VariableDeclaration getName();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis#getName <em>Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @param value the new value of the '<em>Name</em>' containment reference.
 	 * @see #getName()
 	 * @generated
 	 */
-	void setName(String value);
+	void setName(VariableDeclaration value);
 
 	/**
 	 * Returns the value of the '<em><b>Cells</b></em>' containment reference list.

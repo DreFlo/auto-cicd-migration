@@ -143,8 +143,14 @@ public class ContainsItemProvider extends BuiltInFunctionCallItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createEquality()));
@@ -209,17 +215,20 @@ public class ContainsItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__SEARCH,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createEquality()));
@@ -284,14 +293,11 @@ public class ContainsItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINS__ITEM, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINS__ITEM,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

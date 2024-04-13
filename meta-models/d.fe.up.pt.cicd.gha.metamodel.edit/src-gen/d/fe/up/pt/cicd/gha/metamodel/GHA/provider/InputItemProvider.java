@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.provider;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAFactory;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.INPUT_TYPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 
 import java.util.Collection;
@@ -13,9 +14,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -145,7 +146,8 @@ public class InputItemProvider extends ParameterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Input) object).getId();
+		INPUT_TYPES labelValue = ((Input) object).getType();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Input_type")
 				: getString("_UI_Input_type") + " " + label;
 	}
@@ -188,8 +190,14 @@ public class InputItemProvider extends ParameterItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__IS_REQUIRED,
 				EcoreFactory.eINSTANCE.createFromString(EcorePackage.Literals.EBOOLEAN_OBJECT, "false")));
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createEquality()));
@@ -254,14 +262,11 @@ public class InputItemProvider extends ParameterItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.INPUT__DEFAULT, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.INPUT__DEFAULT,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

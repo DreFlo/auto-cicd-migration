@@ -17,6 +17,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Container;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
@@ -64,8 +65,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Trigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Value;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Variable;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger;
@@ -360,17 +361,26 @@ public class GHASwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case GHAPackage.VARIABLE_ASSIGNMENT: {
-			@SuppressWarnings("unchecked")
-			Map.Entry<String, Expression> variableAssignment = (Map.Entry<String, Expression>) theEObject;
-			T result = caseVariableAssignment(variableAssignment);
+		case GHAPackage.EXPRESSION: {
+			Expression expression = (Expression) theEObject;
+			T result = caseExpression(expression);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case GHAPackage.EXPRESSION: {
-			Expression expression = (Expression) theEObject;
-			T result = caseExpression(expression);
+		case GHAPackage.VARIABLE_DECLARATION: {
+			VariableDeclaration variableDeclaration = (VariableDeclaration) theEObject;
+			T result = caseVariableDeclaration(variableDeclaration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.VARIABLE_ASSIGNMENT: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<VariableDeclaration, Expression> variableAssignment = (Map.Entry<VariableDeclaration, Expression>) theEObject;
+			T result = caseVariableAssignment(variableAssignment);
+			if (result == null)
+				result = caseExpression((Expression) variableAssignment);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -389,6 +399,17 @@ public class GHASwitch<T> extends Switch<T> {
 			T result = caseConcat(concat);
 			if (result == null)
 				result = caseExpression(concat);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GHAPackage.DOT_OP: {
+			DotOp dotOp = (DotOp) theEObject;
+			T result = caseDotOp(dotOp);
+			if (result == null)
+				result = caseBinaryOp(dotOp);
+			if (result == null)
+				result = caseExpression(dotOp);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -704,13 +725,13 @@ public class GHASwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case GHAPackage.VARIABLE: {
-			Variable variable = (Variable) theEObject;
-			T result = caseVariable(variable);
+		case GHAPackage.VARIABLE_REFERENCE: {
+			VariableReference variableReference = (VariableReference) theEObject;
+			T result = caseVariableReference(variableReference);
 			if (result == null)
-				result = caseValue(variable);
+				result = caseValue(variableReference);
 			if (result == null)
-				result = caseExpression(variable);
+				result = caseExpression(variableReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -722,15 +743,6 @@ public class GHASwitch<T> extends Switch<T> {
 				result = caseValue(gitHubContext);
 			if (result == null)
 				result = caseExpression(gitHubContext);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case GHAPackage.VARIABLE_DEREFERENCE: {
-			VariableDereference variableDereference = (VariableDereference) theEObject;
-			T result = caseVariableDereference(variableDereference);
-			if (result == null)
-				result = caseExpression(variableDereference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1203,21 +1215,6 @@ public class GHASwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableAssignment(Map.Entry<String, Expression> object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1229,6 +1226,36 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseExpression(Expression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableDeclaration(VariableDeclaration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Assignment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableAssignment(Map.Entry<VariableDeclaration, Expression> object) {
 		return null;
 	}
 
@@ -1259,6 +1286,21 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConcat(Concat object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dot Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dot Op</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDotOp(DotOp object) {
 		return null;
 	}
 
@@ -1668,17 +1710,17 @@ public class GHASwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariable(Variable object) {
+	public T caseVariableReference(VariableReference object) {
 		return null;
 	}
 
@@ -1694,21 +1736,6 @@ public class GHASwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGitHubContext(GitHubContext object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableDereference(VariableDereference object) {
 		return null;
 	}
 

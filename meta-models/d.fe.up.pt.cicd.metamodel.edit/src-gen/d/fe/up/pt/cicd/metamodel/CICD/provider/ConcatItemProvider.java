@@ -159,17 +159,11 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS, CICDFactory.eINSTANCE.createVariable()));
-
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
-				CICDFactory.eINSTANCE.createSecretVariable()));
+				CICDFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
 				CICDFactory.eINSTANCE.createVariableContext()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
-				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
@@ -179,6 +173,9 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS,
 				CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS, CICDFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CONCAT__EXPRESSIONS, CICDFactory.eINSTANCE.createAnd()));

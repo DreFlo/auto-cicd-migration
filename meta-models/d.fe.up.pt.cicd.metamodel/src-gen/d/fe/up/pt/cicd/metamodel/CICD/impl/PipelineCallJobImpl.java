@@ -5,7 +5,7 @@ package d.fe.up.pt.cicd.metamodel.CICD.impl;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob;
-import d.fe.up.pt.cicd.metamodel.CICD.Variable;
+import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -54,7 +54,7 @@ public class PipelineCallJobImpl extends JobImpl implements PipelineCallJob {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> args;
+	protected EMap<VariableDeclaration, Expression> args;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,10 +133,10 @@ public class PipelineCallJobImpl extends JobImpl implements PipelineCallJob {
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getArgs() {
+	public EMap<VariableDeclaration, Expression> getArgs() {
 		if (args == null) {
-			args = new EcoreEMap<Variable, Expression>(CICDPackage.Literals.ASSIGNMENT, AssignmentImpl.class, this,
-					CICDPackage.PIPELINE_CALL_JOB__ARGS);
+			args = new EcoreEMap<VariableDeclaration, Expression>(CICDPackage.Literals.ASSIGNMENT, AssignmentImpl.class,
+					this, CICDPackage.PIPELINE_CALL_JOB__ARGS);
 		}
 		return args;
 	}

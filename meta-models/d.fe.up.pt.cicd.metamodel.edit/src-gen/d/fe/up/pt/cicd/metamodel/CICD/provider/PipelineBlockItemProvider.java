@@ -190,7 +190,6 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CICDPackage.Literals.PIPELINE_BLOCK__AGENT);
 			childrenFeatures.add(CICDPackage.Literals.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
-			childrenFeatures.add(CICDPackage.Literals.PIPELINE_BLOCK__PERMISSIONS);
 		}
 		return childrenFeatures;
 	}
@@ -251,7 +250,6 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 			return;
 		case CICDPackage.PIPELINE_BLOCK__AGENT:
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
-		case CICDPackage.PIPELINE_BLOCK__PERMISSIONS:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -274,9 +272,6 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES,
 				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__PERMISSIONS,
-				CICDFactory.eINSTANCE.create(CICDPackage.Literals.PERMISSION)));
 	}
 
 	/**

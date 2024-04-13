@@ -12,19 +12,10 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -33,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VariableAssignmentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class VariableAssignmentItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -73,8 +63,7 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 						getResourceLocator(), getString("_UI_VariableAssignment_key_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_VariableAssignment_key_feature",
 								"_UI_VariableAssignment_type"),
-						GHAPackage.Literals.VARIABLE_ASSIGNMENT__KEY, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						GHAPackage.Literals.VARIABLE_ASSIGNMENT__KEY, true, false, false, null, null, null));
 	}
 
 	/**
@@ -174,7 +163,13 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -240,24 +235,10 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
-				GHAFactory.eINSTANCE.createVariableDereference()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return GHAEditPlugin.INSTANCE;
 	}
 
 }

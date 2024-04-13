@@ -148,8 +148,14 @@ public class PackageItemProvider extends StepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createEquality()));
@@ -214,20 +220,23 @@ public class PackageItemProvider extends StepItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__USES, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__USES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
-
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__ARGS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT,
 				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createEquality()));
@@ -292,17 +301,20 @@ public class PackageItemProvider extends StepItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__ENTRYPOINT,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -368,13 +380,10 @@ public class PackageItemProvider extends StepItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.PACKAGE__CONTAINER_ARGS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**
@@ -393,11 +402,11 @@ public class PackageItemProvider extends StepItemProvider {
 				|| childFeature == GHAPackage.Literals.STEP__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.STEP__SHELL
 				|| childFeature == GHAPackage.Literals.STEP__WORKING_DIRECTORY
-				|| childFeature == GHAPackage.Literals.PACKAGE__USES
-				|| childFeature == GHAPackage.Literals.PACKAGE__ENTRYPOINT
-				|| childFeature == GHAPackage.Literals.PACKAGE__CONTAINER_ARGS
 				|| childFeature == GHAPackage.Literals.STEP__ENVIRONMENT_VARIABLES
-				|| childFeature == GHAPackage.Literals.PACKAGE__ARGS;
+				|| childFeature == GHAPackage.Literals.PACKAGE__USES
+				|| childFeature == GHAPackage.Literals.PACKAGE__ARGS
+				|| childFeature == GHAPackage.Literals.PACKAGE__ENTRYPOINT
+				|| childFeature == GHAPackage.Literals.PACKAGE__CONTAINER_ARGS;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

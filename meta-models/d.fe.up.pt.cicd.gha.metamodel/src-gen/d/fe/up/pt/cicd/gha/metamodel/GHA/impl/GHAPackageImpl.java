@@ -16,6 +16,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Concat;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
@@ -62,8 +63,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Trigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Value;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Variable;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger;
@@ -260,14 +261,21 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableAssignmentEClass = null;
+	private EClass expressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass expressionEClass = null;
+	private EClass variableDeclarationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass variableAssignmentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -282,6 +290,13 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	private EClass concatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dotOpEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -477,7 +492,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableEClass = null;
+	private EClass variableReferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -485,13 +500,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	private EClass gitHubContextEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass variableDereferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1553,6 +1561,36 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getExpression() {
+		return expressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariableDeclaration() {
+		return variableDeclarationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariableDeclaration_Name() {
+		return (EAttribute) variableDeclarationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getVariableAssignment() {
 		return variableAssignmentEClass;
 	}
@@ -1563,8 +1601,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariableAssignment_Key() {
-		return (EAttribute) variableAssignmentEClass.getEStructuralFeatures().get(0);
+	public EReference getVariableAssignment_Key() {
+		return (EReference) variableAssignmentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1575,16 +1613,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	@Override
 	public EReference getVariableAssignment_Value() {
 		return (EReference) variableAssignmentEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getExpression() {
-		return expressionEClass;
 	}
 
 	/**
@@ -1635,6 +1663,16 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	@Override
 	public EReference getConcat_Expressions() {
 		return (EReference) concatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDotOp() {
+		return dotOpEClass;
 	}
 
 	/**
@@ -2113,8 +2151,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getVariable() {
-		return variableEClass;
+	public EClass getVariableReference() {
+		return variableReferenceEClass;
 	}
 
 	/**
@@ -2123,8 +2161,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariable_Name() {
-		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
+	public EAttribute getVariableReference_Name() {
+		return (EAttribute) variableReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2145,36 +2183,6 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	@Override
 	public EAttribute getGitHubContext_Context() {
 		return (EAttribute) gitHubContextEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVariableDereference() {
-		return variableDereferenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getVariableDereference_Variable() {
-		return (EReference) variableDereferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getVariableDereference_Property() {
-		return (EAttribute) variableDereferenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2253,8 +2261,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMatrixAxis_Name() {
-		return (EAttribute) matrixAxisEClass.getEStructuralFeatures().get(0);
+	public EReference getMatrixAxis_Name() {
+		return (EReference) matrixAxisEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2493,8 +2501,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameter_Id() {
-		return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
+	public EReference getParameter_Id() {
+		return (EReference) parameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2816,11 +2824,14 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(defaultsEClass, DEFAULTS__SHELL);
 		createEReference(defaultsEClass, DEFAULTS__WORKING_DIRECTORY);
 
-		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
-		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
-		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VALUE);
-
 		expressionEClass = createEClass(EXPRESSION);
+
+		variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+		createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
+
+		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
+		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
+		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VALUE);
 
 		binaryOpEClass = createEClass(BINARY_OP);
 		createEReference(binaryOpEClass, BINARY_OP__LHS);
@@ -2828,6 +2839,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		concatEClass = createEClass(CONCAT);
 		createEReference(concatEClass, CONCAT__EXPRESSIONS);
+
+		dotOpEClass = createEClass(DOT_OP);
 
 		equalityEClass = createEClass(EQUALITY);
 		createEAttribute(equalityEClass, EQUALITY__OP);
@@ -2903,15 +2916,11 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
 		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
-		variableEClass = createEClass(VARIABLE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
+		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
+		createEAttribute(variableReferenceEClass, VARIABLE_REFERENCE__NAME);
 
 		gitHubContextEClass = createEClass(GIT_HUB_CONTEXT);
 		createEAttribute(gitHubContextEClass, GIT_HUB_CONTEXT__CONTEXT);
-
-		variableDereferenceEClass = createEClass(VARIABLE_DEREFERENCE);
-		createEReference(variableDereferenceEClass, VARIABLE_DEREFERENCE__VARIABLE);
-		createEAttribute(variableDereferenceEClass, VARIABLE_DEREFERENCE__PROPERTY);
 
 		matrixEClass = createEClass(MATRIX);
 		createEReference(matrixEClass, MATRIX__AXES);
@@ -2921,7 +2930,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(matrixEClass, MATRIX__MAX_PARALLEL);
 
 		matrixAxisEClass = createEClass(MATRIX_AXIS);
-		createEAttribute(matrixAxisEClass, MATRIX_AXIS__NAME);
+		createEReference(matrixAxisEClass, MATRIX_AXIS__NAME);
 		createEReference(matrixAxisEClass, MATRIX_AXIS__CELLS);
 
 		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
@@ -2952,7 +2961,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEReference(packageEClass, PACKAGE__CONTAINER_ARGS);
 
 		parameterEClass = createEClass(PARAMETER);
-		createEAttribute(parameterEClass, PARAMETER__ID);
+		createEReference(parameterEClass, PARAMETER__ID);
 		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
 
 		inputEClass = createEClass(INPUT);
@@ -3024,8 +3033,10 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		scheduleTriggerEClass.getESuperTypes().add(this.getTrigger());
 		workflowCallTriggerEClass.getESuperTypes().add(this.getInputTrigger());
 		workflowDispatchTriggerEClass.getESuperTypes().add(this.getInputTrigger());
+		variableAssignmentEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		concatEClass.getESuperTypes().add(this.getExpression());
+		dotOpEClass.getESuperTypes().add(this.getBinaryOp());
 		equalityEClass.getESuperTypes().add(this.getBinaryOp());
 		comparisonEClass.getESuperTypes().add(this.getBinaryOp());
 		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
@@ -3053,9 +3064,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
-		variableEClass.getESuperTypes().add(this.getValue());
+		variableReferenceEClass.getESuperTypes().add(this.getValue());
 		gitHubContextEClass.getESuperTypes().add(this.getValue());
-		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
 		ifStepEClass.getESuperTypes().add(this.getAbstractStep());
 		stepEClass.getESuperTypes().add(this.getAbstractStep());
 		commandEClass.getESuperTypes().add(this.getStep());
@@ -3313,16 +3323,23 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 				Defaults.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
 		initEClass(variableAssignmentEClass, Map.Entry.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariableAssignment_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableAssignment_Key(), this.getVariableDeclaration(), null, "key", null, 1, 1,
+				Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBinaryOp_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
@@ -3336,6 +3353,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEReference(getConcat_Expressions(), this.getExpression(), null, "expressions", null, 1, -1, Concat.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dotOpEClass, DotOp.class, "DotOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(equalityEClass, Equality.class, "Equality", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -3462,24 +3481,16 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBoolean(), "value", null, 1, 1, BooleanLiteral.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(variableReferenceEClass, VariableReference.class, "VariableReference", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableReference_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(gitHubContextEClass, GitHubContext.class, "GitHubContext", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGitHubContext_Context(), this.getCONTEXTS(), "context", null, 1, 1, GitHubContext.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableDereferenceEClass, VariableDereference.class, "VariableDereference", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableDereference_Variable(), this.getExpression(), null, "variable", null, 1, 1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariableDereference_Property(), ecorePackage.getEString(), "property", null, 1, 1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 1, -1, Matrix.class, !IS_TRANSIENT,
@@ -3500,8 +3511,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(matrixAxisEClass, MatrixAxis.class, "MatrixAxis", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMatrixAxis_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixAxis.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixAxis_Name(), this.getVariableDeclaration(), null, "name", null, 1, 1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMatrixAxis_Cells(), this.getExpression(), null, "cells", null, 1, -1, MatrixAxis.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3567,8 +3579,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Id(), ecorePackage.getEString(), "id", null, 1, 1, Parameter.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Id(), this.getVariableDeclaration(), null, "id", null, 1, 1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_Description(), this.getExpression(), null, "description", null, 0, 1,
 				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

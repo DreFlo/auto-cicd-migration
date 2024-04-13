@@ -77,9 +77,9 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) value=STRING
 	 *     (rule start) (ambiguity) {And.lhs=}
 	 *     (rule start) (ambiguity) {Comparison.lhs=}
+	 *     (rule start) (ambiguity) {DotOp.lhs=}
 	 *     (rule start) (ambiguity) {Equality.lhs=}
 	 *     (rule start) (ambiguity) {Or.lhs=}
-	 *     (rule start) (ambiguity) {VariableDereference.variable=}
 	 
 	 * </pre>
 	 */
@@ -96,9 +96,9 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) '!' childExpr=VariableDereference
 	 *     (rule start) (ambiguity) {And.lhs=}
 	 *     (rule start) (ambiguity) {Comparison.lhs=}
+	 *     (rule start) (ambiguity) {DotOp.lhs=}
 	 *     (rule start) (ambiguity) {Equality.lhs=}
 	 *     (rule start) (ambiguity) {Or.lhs=}
-	 *     (rule start) (ambiguity) {VariableDereference.variable=}
 	 
 	 * </pre>
 	 */

@@ -6,7 +6,9 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Secret;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -32,6 +34,7 @@ public class SecretImpl extends ParameterImpl implements Secret {
 	 * @ordered
 	 */
 	protected static final Boolean IS_REQUIRED_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getIsRequired() <em>Is Required</em>}' attribute.
 	 * <!-- begin-user-doc -->

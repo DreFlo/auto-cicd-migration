@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -82,7 +83,7 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements d.fe.
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
@@ -294,10 +295,11 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements d.fe.
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, GHAPackage.CONTAINER__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					GHAPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					GHAPackage.CONTAINER__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

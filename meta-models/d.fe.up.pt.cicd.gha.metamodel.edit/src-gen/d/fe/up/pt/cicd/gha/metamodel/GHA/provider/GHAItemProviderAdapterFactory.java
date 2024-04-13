@@ -487,6 +487,29 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableDeclarationItemProvider variableDeclarationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableDeclarationAdapter() {
+		if (variableDeclarationItemProvider == null) {
+			variableDeclarationItemProvider = new VariableDeclarationItemProvider(this);
+		}
+
+		return variableDeclarationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -530,6 +553,29 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 		}
 
 		return concatItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DotOpItemProvider dotOpItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDotOpAdapter() {
+		if (dotOpItemProvider == null) {
+			dotOpItemProvider = new DotOpItemProvider(this);
+		}
+
+		return dotOpItemProvider;
 	}
 
 	/**
@@ -1016,26 +1062,26 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Variable} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableItemProvider variableItemProvider;
+	protected VariableReferenceItemProvider variableReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Variable}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createVariableAdapter() {
-		if (variableItemProvider == null) {
-			variableItemProvider = new VariableItemProvider(this);
+	public Adapter createVariableReferenceAdapter() {
+		if (variableReferenceItemProvider == null) {
+			variableReferenceItemProvider = new VariableReferenceItemProvider(this);
 		}
 
-		return variableItemProvider;
+		return variableReferenceItemProvider;
 	}
 
 	/**
@@ -1059,29 +1105,6 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 		}
 
 		return gitHubContextItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVariableDereferenceAdapter() {
-		if (variableDereferenceItemProvider == null) {
-			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
-		}
-
-		return variableDereferenceItemProvider;
 	}
 
 	/**
@@ -1432,10 +1455,14 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 			concurrencyGroupItemProvider.dispose();
 		if (defaultsItemProvider != null)
 			defaultsItemProvider.dispose();
+		if (variableDeclarationItemProvider != null)
+			variableDeclarationItemProvider.dispose();
 		if (variableAssignmentItemProvider != null)
 			variableAssignmentItemProvider.dispose();
 		if (concatItemProvider != null)
 			concatItemProvider.dispose();
+		if (dotOpItemProvider != null)
+			dotOpItemProvider.dispose();
 		if (equalityItemProvider != null)
 			equalityItemProvider.dispose();
 		if (comparisonItemProvider != null)
@@ -1478,12 +1505,10 @@ public class GHAItemProviderAdapterFactory extends GHAAdapterFactory
 			doubleLiteralItemProvider.dispose();
 		if (booleanLiteralItemProvider != null)
 			booleanLiteralItemProvider.dispose();
-		if (variableItemProvider != null)
-			variableItemProvider.dispose();
+		if (variableReferenceItemProvider != null)
+			variableReferenceItemProvider.dispose();
 		if (gitHubContextItemProvider != null)
 			gitHubContextItemProvider.dispose();
-		if (variableDereferenceItemProvider != null)
-			variableDereferenceItemProvider.dispose();
 		if (matrixItemProvider != null)
 			matrixItemProvider.dispose();
 		if (matrixAxisItemProvider != null)

@@ -46,15 +46,15 @@ public interface PipelineCallJob extends Job {
 
 	/**
 	 * Returns the value of the '<em><b>Args</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Variable},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Args</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineCallJob_Args()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Variable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EMap<Variable, Expression> getArgs();
+	EMap<VariableDeclaration, Expression> getArgs();
 
 } // PipelineCallJob

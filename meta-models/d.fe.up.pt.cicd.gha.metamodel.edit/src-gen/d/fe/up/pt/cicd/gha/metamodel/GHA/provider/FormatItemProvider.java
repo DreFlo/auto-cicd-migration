@@ -143,8 +143,14 @@ public class FormatItemProvider extends BuiltInFunctionCallItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createEquality()));
@@ -209,17 +215,20 @@ public class FormatItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.FORMAT__STRING, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__STRING,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -285,13 +294,10 @@ public class FormatItemProvider extends BuiltInFunctionCallItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FORMAT__REPLACE_VALUES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

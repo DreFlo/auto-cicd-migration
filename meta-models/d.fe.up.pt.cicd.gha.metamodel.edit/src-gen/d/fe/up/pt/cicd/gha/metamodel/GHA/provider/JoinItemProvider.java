@@ -143,8 +143,14 @@ public class JoinItemProvider extends BuiltInFunctionCallItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createEquality()));
@@ -208,17 +214,20 @@ public class JoinItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOIN__ARRAY,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.JOIN__SEP,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createEquality()));
@@ -279,14 +288,11 @@ public class JoinItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.JOIN__SEP, GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

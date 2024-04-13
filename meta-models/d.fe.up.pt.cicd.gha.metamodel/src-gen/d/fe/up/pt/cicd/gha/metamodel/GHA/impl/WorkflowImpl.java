@@ -10,6 +10,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Trigger;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 
 import java.util.Collection;
@@ -110,7 +111,7 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getConcurrencyGroup() <em>Concurrency Group</em>}' containment reference.
@@ -339,10 +340,11 @@ public class WorkflowImpl extends MinimalEObjectImpl.Container implements Workfl
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, GHAPackage.WORKFLOW__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					GHAPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					GHAPackage.WORKFLOW__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

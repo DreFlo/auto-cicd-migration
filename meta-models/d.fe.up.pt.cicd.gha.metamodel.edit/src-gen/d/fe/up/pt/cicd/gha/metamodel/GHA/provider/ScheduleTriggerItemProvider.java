@@ -141,8 +141,14 @@ public class ScheduleTriggerItemProvider extends TriggerItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -208,13 +214,10 @@ public class ScheduleTriggerItemProvider extends TriggerItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SCHEDULE_TRIGGER__CRONS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

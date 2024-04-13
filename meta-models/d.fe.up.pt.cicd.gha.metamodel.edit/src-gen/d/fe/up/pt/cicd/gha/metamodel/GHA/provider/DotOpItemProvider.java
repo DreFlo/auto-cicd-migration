@@ -1,8 +1,8 @@
 /**
  */
-package d.fe.up.pt.cicd.metamodel.CICD.provider;
+package d.fe.up.pt.cicd.gha.metamodel.GHA.provider;
 
-import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,19 +13,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SecretVariableItemProvider extends VariableItemProvider {
+public class DotOpItemProvider extends BinaryOpItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SecretVariableItemProvider(AdapterFactory adapterFactory) {
+	public DotOpItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,14 +45,14 @@ public class SecretVariableItemProvider extends VariableItemProvider {
 	}
 
 	/**
-	 * This returns SecretVariable.gif.
+	 * This returns DotOp.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SecretVariable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DotOp"));
 	}
 
 	/**
@@ -73,9 +73,7 @@ public class SecretVariableItemProvider extends VariableItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SecretVariable) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_SecretVariable_type")
-				: getString("_UI_SecretVariable_type") + " " + label;
+		return getString("_UI_DotOp_type");
 	}
 
 	/**
@@ -101,6 +99,27 @@ public class SecretVariableItemProvider extends VariableItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == GHAPackage.Literals.BINARY_OP__LHS
+				|| childFeature == GHAPackage.Literals.BINARY_OP__RHS;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

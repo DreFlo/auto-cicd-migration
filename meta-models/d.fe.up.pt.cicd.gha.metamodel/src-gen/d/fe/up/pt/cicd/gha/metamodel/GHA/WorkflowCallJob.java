@@ -48,29 +48,29 @@ public interface WorkflowCallJob extends Job {
 
 	/**
 	 * Returns the value of the '<em><b>Args</b></em>' map.
-	 * The key is of type {@link java.lang.String},
+	 * The key is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Args</em>' map.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getWorkflowCallJob_Args()
-	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
 	 * @generated
 	 */
-	EMap<String, Expression> getArgs();
+	EMap<VariableDeclaration, Expression> getArgs();
 
 	/**
 	 * Returns the value of the '<em><b>Secrets</b></em>' map.
-	 * The key is of type {@link java.lang.String},
+	 * The key is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Secrets</em>' map.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getWorkflowCallJob_Secrets()
-	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
 	 * @generated
 	 */
-	EMap<String, Expression> getSecrets();
+	EMap<VariableDeclaration, Expression> getSecrets();
 
 	/**
 	 * Returns the value of the '<em><b>Inherit Secrets</b></em>' attribute.

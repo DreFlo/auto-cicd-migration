@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface MatrixCombination extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' map.
-	 * The key is of type {@link java.lang.String},
+	 * The key is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' map.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getMatrixCombination_Entries()
-	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.gha.metamodel.GHA.VariableAssignment&lt;d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration, d.fe.up.pt.cicd.gha.metamodel.GHA.Expression&gt;"
 	 * @generated
 	 */
-	EMap<String, Expression> getEntries();
+	EMap<VariableDeclaration, Expression> getEntries();
 
 } // MatrixCombination

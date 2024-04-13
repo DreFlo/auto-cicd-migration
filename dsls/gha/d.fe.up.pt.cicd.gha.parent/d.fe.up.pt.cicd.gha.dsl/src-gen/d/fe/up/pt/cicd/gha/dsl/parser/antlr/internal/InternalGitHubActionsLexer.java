@@ -22,8 +22,6 @@ public class InternalGitHubActionsLexer extends Lexer {
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
     public static final int RULE_ID=4;
     public static final int T__26=26;
     public static final int T__27=27;
@@ -184,10 +182,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:16:7: ( '\"' )
-            // InternalGitHubActions.g:16:9: '\"'
+            // InternalGitHubActions.g:16:7: ( ']' )
+            // InternalGitHubActions.g:16:9: ']'
             {
-            match('\"'); 
+            match(']'); 
 
             }
 
@@ -204,10 +202,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:17:7: ( '\\'' )
-            // InternalGitHubActions.g:17:9: '\\''
+            // InternalGitHubActions.g:17:7: ( '(' )
+            // InternalGitHubActions.g:17:9: '('
             {
-            match('\''); 
+            match('('); 
 
             }
 
@@ -224,10 +222,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:18:7: ( ']' )
-            // InternalGitHubActions.g:18:9: ']'
+            // InternalGitHubActions.g:18:7: ( ')' )
+            // InternalGitHubActions.g:18:9: ')'
             {
-            match(']'); 
+            match(')'); 
 
             }
 
@@ -244,10 +242,11 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:19:7: ( '(' )
-            // InternalGitHubActions.g:19:9: '('
+            // InternalGitHubActions.g:19:7: ( 'contains' )
+            // InternalGitHubActions.g:19:9: 'contains'
             {
-            match('('); 
+            match("contains"); 
+
 
             }
 
@@ -264,10 +263,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:20:7: ( ')' )
-            // InternalGitHubActions.g:20:9: ')'
+            // InternalGitHubActions.g:20:7: ( ',' )
+            // InternalGitHubActions.g:20:9: ','
             {
-            match(')'); 
+            match(','); 
 
             }
 
@@ -284,10 +283,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:21:7: ( 'contains' )
-            // InternalGitHubActions.g:21:9: 'contains'
+            // InternalGitHubActions.g:21:7: ( 'startsWith' )
+            // InternalGitHubActions.g:21:9: 'startsWith'
             {
-            match("contains"); 
+            match("startsWith"); 
 
 
             }
@@ -305,10 +304,11 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:22:7: ( ',' )
-            // InternalGitHubActions.g:22:9: ','
+            // InternalGitHubActions.g:22:7: ( 'endsWith' )
+            // InternalGitHubActions.g:22:9: 'endsWith'
             {
-            match(','); 
+            match("endsWith"); 
+
 
             }
 
@@ -325,10 +325,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:23:7: ( 'startsWith' )
-            // InternalGitHubActions.g:23:9: 'startsWith'
+            // InternalGitHubActions.g:23:7: ( 'format' )
+            // InternalGitHubActions.g:23:9: 'format'
             {
-            match("startsWith"); 
+            match("format"); 
 
 
             }
@@ -346,10 +346,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:24:7: ( 'endsWith' )
-            // InternalGitHubActions.g:24:9: 'endsWith'
+            // InternalGitHubActions.g:24:7: ( 'join' )
+            // InternalGitHubActions.g:24:9: 'join'
             {
-            match("endsWith"); 
+            match("join"); 
 
 
             }
@@ -367,10 +367,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:25:7: ( 'format' )
-            // InternalGitHubActions.g:25:9: 'format'
+            // InternalGitHubActions.g:25:7: ( 'toJSON' )
+            // InternalGitHubActions.g:25:9: 'toJSON'
             {
-            match("format"); 
+            match("toJSON"); 
 
 
             }
@@ -388,10 +388,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:26:7: ( 'join' )
-            // InternalGitHubActions.g:26:9: 'join'
+            // InternalGitHubActions.g:26:7: ( 'fromJSON' )
+            // InternalGitHubActions.g:26:9: 'fromJSON'
             {
-            match("join"); 
+            match("fromJSON"); 
 
 
             }
@@ -409,10 +409,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:27:7: ( 'toJSON' )
-            // InternalGitHubActions.g:27:9: 'toJSON'
+            // InternalGitHubActions.g:27:7: ( 'hashFiles' )
+            // InternalGitHubActions.g:27:9: 'hashFiles'
             {
-            match("toJSON"); 
+            match("hashFiles"); 
 
 
             }
@@ -430,10 +430,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:28:7: ( 'fromJSON' )
-            // InternalGitHubActions.g:28:9: 'fromJSON'
+            // InternalGitHubActions.g:28:7: ( 'success' )
+            // InternalGitHubActions.g:28:9: 'success'
             {
-            match("fromJSON"); 
+            match("success"); 
 
 
             }
@@ -451,10 +451,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:29:7: ( 'hashFiles' )
-            // InternalGitHubActions.g:29:9: 'hashFiles'
+            // InternalGitHubActions.g:29:7: ( 'always' )
+            // InternalGitHubActions.g:29:9: 'always'
             {
-            match("hashFiles"); 
+            match("always"); 
 
 
             }
@@ -472,10 +472,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:30:7: ( 'success' )
-            // InternalGitHubActions.g:30:9: 'success'
+            // InternalGitHubActions.g:30:7: ( 'cancelled' )
+            // InternalGitHubActions.g:30:9: 'cancelled'
             {
-            match("success"); 
+            match("cancelled"); 
 
 
             }
@@ -493,10 +493,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:31:7: ( 'always' )
-            // InternalGitHubActions.g:31:9: 'always'
+            // InternalGitHubActions.g:31:7: ( 'failure' )
+            // InternalGitHubActions.g:31:9: 'failure'
             {
-            match("always"); 
+            match("failure"); 
 
 
             }
@@ -514,11 +514,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:32:7: ( 'cancelled' )
-            // InternalGitHubActions.g:32:9: 'cancelled'
+            // InternalGitHubActions.g:32:7: ( '>' )
+            // InternalGitHubActions.g:32:9: '>'
             {
-            match("cancelled"); 
-
+            match('>'); 
 
             }
 
@@ -535,10 +534,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:33:7: ( 'failure' )
-            // InternalGitHubActions.g:33:9: 'failure'
+            // InternalGitHubActions.g:33:7: ( '>=' )
+            // InternalGitHubActions.g:33:9: '>='
             {
-            match("failure"); 
+            match(">="); 
 
 
             }
@@ -556,10 +555,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:34:7: ( '>' )
-            // InternalGitHubActions.g:34:9: '>'
+            // InternalGitHubActions.g:34:7: ( '<' )
+            // InternalGitHubActions.g:34:9: '<'
             {
-            match('>'); 
+            match('<'); 
 
             }
 
@@ -576,10 +575,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:35:7: ( '>=' )
-            // InternalGitHubActions.g:35:9: '>='
+            // InternalGitHubActions.g:35:7: ( '<=' )
+            // InternalGitHubActions.g:35:9: '<='
             {
-            match(">="); 
+            match("<="); 
 
 
             }
@@ -597,10 +596,11 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:36:7: ( '<' )
-            // InternalGitHubActions.g:36:9: '<'
+            // InternalGitHubActions.g:36:7: ( '==' )
+            // InternalGitHubActions.g:36:9: '=='
             {
-            match('<'); 
+            match("=="); 
+
 
             }
 
@@ -617,10 +617,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:37:7: ( '<=' )
-            // InternalGitHubActions.g:37:9: '<='
+            // InternalGitHubActions.g:37:7: ( '!=' )
+            // InternalGitHubActions.g:37:9: '!='
             {
-            match("<="); 
+            match("!="); 
 
 
             }
@@ -638,10 +638,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:38:7: ( '==' )
-            // InternalGitHubActions.g:38:9: '=='
+            // InternalGitHubActions.g:38:7: ( 'github' )
+            // InternalGitHubActions.g:38:9: 'github'
             {
-            match("=="); 
+            match("github"); 
 
 
             }
@@ -659,10 +659,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:39:7: ( '!=' )
-            // InternalGitHubActions.g:39:9: '!='
+            // InternalGitHubActions.g:39:7: ( 'env' )
+            // InternalGitHubActions.g:39:9: 'env'
             {
-            match("!="); 
+            match("env"); 
 
 
             }
@@ -680,10 +680,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:40:7: ( 'github' )
-            // InternalGitHubActions.g:40:9: 'github'
+            // InternalGitHubActions.g:40:7: ( 'vars' )
+            // InternalGitHubActions.g:40:9: 'vars'
             {
-            match("github"); 
+            match("vars"); 
 
 
             }
@@ -701,10 +701,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:41:7: ( 'env' )
-            // InternalGitHubActions.g:41:9: 'env'
+            // InternalGitHubActions.g:41:7: ( 'job' )
+            // InternalGitHubActions.g:41:9: 'job'
             {
-            match("env"); 
+            match("job"); 
 
 
             }
@@ -722,10 +722,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:42:7: ( 'vars' )
-            // InternalGitHubActions.g:42:9: 'vars'
+            // InternalGitHubActions.g:42:7: ( 'jobs' )
+            // InternalGitHubActions.g:42:9: 'jobs'
             {
-            match("vars"); 
+            match("jobs"); 
 
 
             }
@@ -743,10 +743,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:43:7: ( 'job' )
-            // InternalGitHubActions.g:43:9: 'job'
+            // InternalGitHubActions.g:43:7: ( 'steps' )
+            // InternalGitHubActions.g:43:9: 'steps'
             {
-            match("job"); 
+            match("steps"); 
 
 
             }
@@ -764,10 +764,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:44:7: ( 'jobs' )
-            // InternalGitHubActions.g:44:9: 'jobs'
+            // InternalGitHubActions.g:44:7: ( 'runner' )
+            // InternalGitHubActions.g:44:9: 'runner'
             {
-            match("jobs"); 
+            match("runner"); 
 
 
             }
@@ -785,10 +785,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:45:7: ( 'steps' )
-            // InternalGitHubActions.g:45:9: 'steps'
+            // InternalGitHubActions.g:45:7: ( 'secrets' )
+            // InternalGitHubActions.g:45:9: 'secrets'
             {
-            match("steps"); 
+            match("secrets"); 
 
 
             }
@@ -806,10 +806,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:46:7: ( 'runner' )
-            // InternalGitHubActions.g:46:9: 'runner'
+            // InternalGitHubActions.g:46:7: ( 'strategy' )
+            // InternalGitHubActions.g:46:9: 'strategy'
             {
-            match("runner"); 
+            match("strategy"); 
 
 
             }
@@ -827,10 +827,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:47:7: ( 'secrets' )
-            // InternalGitHubActions.g:47:9: 'secrets'
+            // InternalGitHubActions.g:47:7: ( 'matrix' )
+            // InternalGitHubActions.g:47:9: 'matrix'
             {
-            match("secrets"); 
+            match("matrix"); 
 
 
             }
@@ -848,10 +848,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:48:7: ( 'strategy' )
-            // InternalGitHubActions.g:48:9: 'strategy'
+            // InternalGitHubActions.g:48:7: ( 'needs' )
+            // InternalGitHubActions.g:48:9: 'needs'
             {
-            match("strategy"); 
+            match("needs"); 
 
 
             }
@@ -869,50 +869,8 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:49:7: ( 'matrix' )
-            // InternalGitHubActions.g:49:9: 'matrix'
-            {
-            match("matrix"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__51"
-
-    // $ANTLR start "T__52"
-    public final void mT__52() throws RecognitionException {
-        try {
-            int _type = T__52;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:50:7: ( 'needs' )
-            // InternalGitHubActions.g:50:9: 'needs'
-            {
-            match("needs"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__52"
-
-    // $ANTLR start "T__53"
-    public final void mT__53() throws RecognitionException {
-        try {
-            int _type = T__53;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:51:7: ( 'inputs' )
-            // InternalGitHubActions.g:51:9: 'inputs'
+            // InternalGitHubActions.g:49:7: ( 'inputs' )
+            // InternalGitHubActions.g:49:9: 'inputs'
             {
             match("inputs"); 
 
@@ -925,15 +883,15 @@ public class InternalGitHubActionsLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__53"
+    // $ANTLR end "T__51"
 
     // $ANTLR start "RULE_DOUBLE"
     public final void mRULE_DOUBLE() throws RecognitionException {
         try {
             int _type = RULE_DOUBLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1808:13: ( RULE_INT '.' RULE_INT )
-            // InternalGitHubActions.g:1808:15: RULE_INT '.' RULE_INT
+            // InternalGitHubActions.g:1767:13: ( RULE_INT '.' RULE_INT )
+            // InternalGitHubActions.g:1767:15: RULE_INT '.' RULE_INT
             {
             mRULE_INT(); 
             match('.'); 
@@ -954,10 +912,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1810:14: ( ( 'true' | 'false' ) )
-            // InternalGitHubActions.g:1810:16: ( 'true' | 'false' )
+            // InternalGitHubActions.g:1769:14: ( ( 'true' | 'false' ) )
+            // InternalGitHubActions.g:1769:16: ( 'true' | 'false' )
             {
-            // InternalGitHubActions.g:1810:16: ( 'true' | 'false' )
+            // InternalGitHubActions.g:1769:16: ( 'true' | 'false' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -975,7 +933,7 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalGitHubActions.g:1810:17: 'true'
+                    // InternalGitHubActions.g:1769:17: 'true'
                     {
                     match("true"); 
 
@@ -983,7 +941,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:1810:24: 'false'
+                    // InternalGitHubActions.g:1769:24: 'false'
                     {
                     match("false"); 
 
@@ -1009,10 +967,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1812:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalGitHubActions.g:1812:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGitHubActions.g:1771:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalGitHubActions.g:1771:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalGitHubActions.g:1812:11: ( '^' )?
+            // InternalGitHubActions.g:1771:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -1021,7 +979,7 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalGitHubActions.g:1812:11: '^'
+                    // InternalGitHubActions.g:1771:11: '^'
                     {
                     match('^'); 
 
@@ -1039,7 +997,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalGitHubActions.g:1812:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGitHubActions.g:1771:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -1088,10 +1046,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1814:10: ( ( '0' .. '9' )+ )
-            // InternalGitHubActions.g:1814:12: ( '0' .. '9' )+
+            // InternalGitHubActions.g:1773:10: ( ( '0' .. '9' )+ )
+            // InternalGitHubActions.g:1773:12: ( '0' .. '9' )+
             {
-            // InternalGitHubActions.g:1814:12: ( '0' .. '9' )+
+            // InternalGitHubActions.g:1773:12: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1105,7 +1063,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalGitHubActions.g:1814:13: '0' .. '9'
+            	    // InternalGitHubActions.g:1773:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1137,10 +1095,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1816:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalGitHubActions.g:1816:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGitHubActions.g:1775:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalGitHubActions.g:1775:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalGitHubActions.g:1816:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGitHubActions.g:1775:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1158,10 +1116,10 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalGitHubActions.g:1816:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalGitHubActions.g:1775:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalGitHubActions.g:1816:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalGitHubActions.g:1775:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1177,7 +1135,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalGitHubActions.g:1816:21: '\\\\' .
+                    	    // InternalGitHubActions.g:1775:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1185,7 +1143,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGitHubActions.g:1816:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalGitHubActions.g:1775:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1210,10 +1168,10 @@ public class InternalGitHubActionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:1816:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalGitHubActions.g:1775:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalGitHubActions.g:1816:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalGitHubActions.g:1775:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1229,7 +1187,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalGitHubActions.g:1816:54: '\\\\' .
+                    	    // InternalGitHubActions.g:1775:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1237,7 +1195,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGitHubActions.g:1816:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalGitHubActions.g:1775:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1280,12 +1238,12 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1818:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalGitHubActions.g:1818:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalGitHubActions.g:1777:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalGitHubActions.g:1777:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalGitHubActions.g:1818:24: ( options {greedy=false; } : . )*
+            // InternalGitHubActions.g:1777:24: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -1310,7 +1268,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalGitHubActions.g:1818:52: .
+            	    // InternalGitHubActions.g:1777:52: .
             	    {
             	    matchAny(); 
 
@@ -1340,12 +1298,12 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1820:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalGitHubActions.g:1820:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalGitHubActions.g:1779:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalGitHubActions.g:1779:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalGitHubActions.g:1820:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalGitHubActions.g:1779:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop9:
             do {
                 int alt9=2;
@@ -1358,7 +1316,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalGitHubActions.g:1820:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalGitHubActions.g:1779:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1378,7 +1336,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalGitHubActions.g:1820:40: ( ( '\\r' )? '\\n' )?
+            // InternalGitHubActions.g:1779:40: ( ( '\\r' )? '\\n' )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1387,9 +1345,9 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // InternalGitHubActions.g:1820:41: ( '\\r' )? '\\n'
+                    // InternalGitHubActions.g:1779:41: ( '\\r' )? '\\n'
                     {
-                    // InternalGitHubActions.g:1820:41: ( '\\r' )?
+                    // InternalGitHubActions.g:1779:41: ( '\\r' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1398,7 +1356,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // InternalGitHubActions.g:1820:41: '\\r'
+                            // InternalGitHubActions.g:1779:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1430,10 +1388,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1822:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalGitHubActions.g:1822:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGitHubActions.g:1781:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalGitHubActions.g:1781:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalGitHubActions.g:1822:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGitHubActions.g:1781:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt12=0;
             loop12:
             do {
@@ -1487,8 +1445,8 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:1824:16: ( . )
-            // InternalGitHubActions.g:1824:18: .
+            // InternalGitHubActions.g:1783:16: ( . )
+            // InternalGitHubActions.g:1783:18: .
             {
             matchAny(); 
 
@@ -1503,8 +1461,8 @@ public class InternalGitHubActionsLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalGitHubActions.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | RULE_DOUBLE | RULE_BOOLEAN | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt13=50;
+        // InternalGitHubActions.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | RULE_DOUBLE | RULE_BOOLEAN | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt13=48;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
@@ -1781,77 +1739,63 @@ public class InternalGitHubActionsLexer extends Lexer {
                 }
                 break;
             case 40 :
-                // InternalGitHubActions.g:1:244: T__52
-                {
-                mT__52(); 
-
-                }
-                break;
-            case 41 :
-                // InternalGitHubActions.g:1:250: T__53
-                {
-                mT__53(); 
-
-                }
-                break;
-            case 42 :
-                // InternalGitHubActions.g:1:256: RULE_DOUBLE
+                // InternalGitHubActions.g:1:244: RULE_DOUBLE
                 {
                 mRULE_DOUBLE(); 
 
                 }
                 break;
-            case 43 :
-                // InternalGitHubActions.g:1:268: RULE_BOOLEAN
+            case 41 :
+                // InternalGitHubActions.g:1:256: RULE_BOOLEAN
                 {
                 mRULE_BOOLEAN(); 
 
                 }
                 break;
-            case 44 :
-                // InternalGitHubActions.g:1:281: RULE_ID
+            case 42 :
+                // InternalGitHubActions.g:1:269: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 45 :
-                // InternalGitHubActions.g:1:289: RULE_INT
+            case 43 :
+                // InternalGitHubActions.g:1:277: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 46 :
-                // InternalGitHubActions.g:1:298: RULE_STRING
+            case 44 :
+                // InternalGitHubActions.g:1:286: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 47 :
-                // InternalGitHubActions.g:1:310: RULE_ML_COMMENT
+            case 45 :
+                // InternalGitHubActions.g:1:298: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 48 :
-                // InternalGitHubActions.g:1:326: RULE_SL_COMMENT
+            case 46 :
+                // InternalGitHubActions.g:1:314: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 49 :
-                // InternalGitHubActions.g:1:342: RULE_WS
+            case 47 :
+                // InternalGitHubActions.g:1:330: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 50 :
-                // InternalGitHubActions.g:1:350: RULE_ANY_OTHER
+            case 48 :
+                // InternalGitHubActions.g:1:338: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1865,52 +1809,51 @@ public class InternalGitHubActionsLexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\2\42\1\46\2\uffff\1\51\1\53\3\uffff\1\61\1\uffff\7\61\1\100\1\102\1\42\6\61\1\112\1\42\1\uffff\1\42\16\uffff\2\61\2\uffff\14\61\5\uffff\6\61\2\uffff\1\112\3\uffff\10\61\1\161\5\61\1\170\22\61\1\uffff\4\61\1\u008f\1\u0090\1\uffff\1\61\1\u0092\3\61\1\u0096\7\61\1\u009e\7\61\1\u0092\2\uffff\1\61\1\uffff\3\61\1\uffff\2\61\1\u00ac\4\61\1\uffff\4\61\1\u00b5\2\61\1\u00b8\1\61\1\u00ba\1\u00bb\1\u00bc\1\u00bd\1\uffff\1\u00be\4\61\1\u00c3\1\u00c4\1\61\1\uffff\1\61\1\u00c7\1\uffff\1\61\5\uffff\1\u00c9\2\61\1\u00cc\2\uffff\1\u00cd\1\u00ce\1\uffff\1\61\1\uffff\1\u00d0\1\61\3\uffff\1\u00d2\1\uffff\1\u00d3\2\uffff";
+        "\1\uffff\2\42\1\46\5\uffff\1\56\1\uffff\7\56\1\75\1\77\1\42\6\56\1\107\1\42\1\uffff\3\42\13\uffff\2\56\2\uffff\14\56\5\uffff\6\56\1\uffff\1\107\5\uffff\10\56\1\157\5\56\1\166\22\56\1\uffff\4\56\1\u008d\1\u008e\1\uffff\1\56\1\u0090\3\56\1\u0094\7\56\1\u009c\7\56\1\u0090\2\uffff\1\56\1\uffff\3\56\1\uffff\2\56\1\u00aa\4\56\1\uffff\4\56\1\u00b3\2\56\1\u00b6\1\56\1\u00b8\1\u00b9\1\u00ba\1\u00bb\1\uffff\1\u00bc\4\56\1\u00c1\1\u00c2\1\56\1\uffff\1\56\1\u00c5\1\uffff\1\56\5\uffff\1\u00c7\2\56\1\u00ca\2\uffff\1\u00cb\1\u00cc\1\uffff\1\56\1\uffff\1\u00ce\1\56\3\uffff\1\u00d0\1\uffff\1\u00d1\2\uffff";
     static final String DFA13_eofS =
-        "\u00d4\uffff";
+        "\u00d2\uffff";
     static final String DFA13_minS =
-        "\1\0\1\174\1\46\1\75\2\uffff\2\0\3\uffff\1\141\1\uffff\1\145\1\156\1\141\2\157\1\141\1\154\3\75\1\151\1\141\1\165\1\141\1\145\1\156\1\56\1\101\1\uffff\1\52\16\uffff\2\156\2\uffff\1\141\2\143\1\144\1\162\1\157\1\151\1\142\1\112\1\165\1\163\1\167\5\uffff\1\164\1\162\1\156\1\164\1\145\1\160\2\uffff\1\56\3\uffff\1\164\1\143\1\162\1\160\1\141\1\143\1\162\1\163\1\60\2\155\1\154\1\163\1\156\1\60\1\123\1\145\1\150\1\141\1\150\1\163\1\156\1\162\1\144\1\165\1\141\1\145\1\164\1\163\1\164\2\145\1\127\1\uffff\1\141\1\112\1\165\1\145\2\60\1\uffff\1\117\1\60\1\106\1\171\1\165\1\60\1\145\1\151\1\163\1\164\1\151\1\154\1\163\1\60\1\145\1\163\1\164\1\151\1\164\1\123\1\162\1\60\2\uffff\1\116\1\uffff\1\151\1\163\1\142\1\uffff\1\162\1\170\1\60\1\163\1\156\1\154\1\127\1\uffff\1\147\2\163\1\164\1\60\1\117\1\145\1\60\1\154\4\60\1\uffff\1\60\1\163\1\145\1\151\1\171\2\60\1\150\1\uffff\1\116\1\60\1\uffff\1\145\5\uffff\1\60\1\144\1\164\1\60\2\uffff\2\60\1\uffff\1\163\1\uffff\1\60\1\150\3\uffff\1\60\1\uffff\1\60\2\uffff";
+        "\1\0\1\174\1\46\1\75\5\uffff\1\141\1\uffff\1\145\1\156\1\141\2\157\1\141\1\154\3\75\1\151\1\141\1\165\1\141\1\145\1\156\1\56\1\101\1\uffff\2\0\1\52\13\uffff\2\156\2\uffff\1\141\2\143\1\144\1\162\1\157\1\151\1\142\1\112\1\165\1\163\1\167\5\uffff\1\164\1\162\1\156\1\164\1\145\1\160\1\uffff\1\56\5\uffff\1\164\1\143\1\162\1\160\1\141\1\143\1\162\1\163\1\60\2\155\1\154\1\163\1\156\1\60\1\123\1\145\1\150\1\141\1\150\1\163\1\156\1\162\1\144\1\165\1\141\1\145\1\164\1\163\1\164\2\145\1\127\1\uffff\1\141\1\112\1\165\1\145\2\60\1\uffff\1\117\1\60\1\106\1\171\1\165\1\60\1\145\1\151\1\163\1\164\1\151\1\154\1\163\1\60\1\145\1\163\1\164\1\151\1\164\1\123\1\162\1\60\2\uffff\1\116\1\uffff\1\151\1\163\1\142\1\uffff\1\162\1\170\1\60\1\163\1\156\1\154\1\127\1\uffff\1\147\2\163\1\164\1\60\1\117\1\145\1\60\1\154\4\60\1\uffff\1\60\1\163\1\145\1\151\1\171\2\60\1\150\1\uffff\1\116\1\60\1\uffff\1\145\5\uffff\1\60\1\144\1\164\1\60\2\uffff\2\60\1\uffff\1\163\1\uffff\1\60\1\150\3\uffff\1\60\1\uffff\1\60\2\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\174\1\46\1\75\2\uffff\2\uffff\3\uffff\1\157\1\uffff\1\165\1\156\1\162\1\157\1\162\1\141\1\154\3\75\1\151\1\141\1\165\1\141\1\145\1\156\1\71\1\172\1\uffff\1\57\16\uffff\2\156\2\uffff\1\162\2\143\1\166\1\162\1\157\1\154\1\151\1\112\1\165\1\163\1\167\5\uffff\1\164\1\162\1\156\1\164\1\145\1\160\2\uffff\1\71\3\uffff\1\164\1\143\1\162\1\160\1\141\1\143\1\162\1\163\1\172\2\155\1\154\1\163\1\156\1\172\1\123\1\145\1\150\1\141\1\150\1\163\1\156\1\162\1\144\1\165\1\141\1\145\1\164\1\163\1\164\2\145\1\127\1\uffff\1\141\1\112\1\165\1\145\2\172\1\uffff\1\117\1\172\1\106\1\171\1\165\1\172\1\145\1\151\1\163\1\164\1\151\1\154\1\163\1\172\1\145\1\163\1\164\1\151\1\164\1\123\1\162\1\172\2\uffff\1\116\1\uffff\1\151\1\163\1\142\1\uffff\1\162\1\170\1\172\1\163\1\156\1\154\1\127\1\uffff\1\147\2\163\1\164\1\172\1\117\1\145\1\172\1\154\4\172\1\uffff\1\172\1\163\1\145\1\151\1\171\2\172\1\150\1\uffff\1\116\1\172\1\uffff\1\145\5\uffff\1\172\1\144\1\164\1\172\2\uffff\2\172\1\uffff\1\163\1\uffff\1\172\1\150\3\uffff\1\172\1\uffff\1\172\2\uffff";
+        "\1\uffff\1\174\1\46\1\75\5\uffff\1\157\1\uffff\1\165\1\156\1\162\1\157\1\162\1\141\1\154\3\75\1\151\1\141\1\165\1\141\1\145\1\156\1\71\1\172\1\uffff\2\uffff\1\57\13\uffff\2\156\2\uffff\1\162\2\143\1\166\1\162\1\157\1\154\1\151\1\112\1\165\1\163\1\167\5\uffff\1\164\1\162\1\156\1\164\1\145\1\160\1\uffff\1\71\5\uffff\1\164\1\143\1\162\1\160\1\141\1\143\1\162\1\163\1\172\2\155\1\154\1\163\1\156\1\172\1\123\1\145\1\150\1\141\1\150\1\163\1\156\1\162\1\144\1\165\1\141\1\145\1\164\1\163\1\164\2\145\1\127\1\uffff\1\141\1\112\1\165\1\145\2\172\1\uffff\1\117\1\172\1\106\1\171\1\165\1\172\1\145\1\151\1\163\1\164\1\151\1\154\1\163\1\172\1\145\1\163\1\164\1\151\1\164\1\123\1\162\1\172\2\uffff\1\116\1\uffff\1\151\1\163\1\142\1\uffff\1\162\1\170\1\172\1\163\1\156\1\154\1\127\1\uffff\1\147\2\163\1\164\1\172\1\117\1\145\1\172\1\154\4\172\1\uffff\1\172\1\163\1\145\1\151\1\171\2\172\1\150\1\uffff\1\116\1\172\1\uffff\1\145\5\uffff\1\172\1\144\1\164\1\172\2\uffff\2\172\1\uffff\1\163\1\uffff\1\172\1\150\3\uffff\1\172\1\uffff\1\172\2\uffff";
     static final String DFA13_acceptS =
-        "\4\uffff\1\4\1\5\2\uffff\1\10\1\11\1\12\1\uffff\1\14\22\uffff\1\54\1\uffff\1\61\1\62\1\1\1\2\1\35\1\3\1\4\1\5\1\6\1\56\1\7\1\10\1\11\1\12\2\uffff\1\54\1\14\14\uffff\1\31\1\30\1\33\1\32\1\34\6\uffff\1\55\1\52\1\uffff\1\57\1\60\1\61\41\uffff\1\37\6\uffff\1\41\26\uffff\1\20\1\42\1\uffff\1\53\3\uffff\1\40\7\uffff\1\43\15\uffff\1\50\10\uffff\1\17\2\uffff\1\21\1\uffff\1\25\1\36\1\44\1\47\1\51\4\uffff\1\24\1\45\2\uffff\1\27\1\uffff\1\13\2\uffff\1\46\1\16\1\22\1\uffff\1\26\1\uffff\1\23\1\15";
+        "\4\uffff\1\4\1\5\1\6\1\7\1\10\1\uffff\1\12\22\uffff\1\52\3\uffff\1\57\1\60\1\1\1\2\1\33\1\3\1\4\1\5\1\6\1\7\1\10\2\uffff\1\52\1\12\14\uffff\1\27\1\26\1\31\1\30\1\32\6\uffff\1\53\1\uffff\1\50\1\54\1\55\1\56\1\57\41\uffff\1\35\6\uffff\1\37\26\uffff\1\16\1\40\1\uffff\1\51\3\uffff\1\36\7\uffff\1\41\15\uffff\1\46\10\uffff\1\15\2\uffff\1\17\1\uffff\1\23\1\34\1\42\1\45\1\47\4\uffff\1\22\1\43\2\uffff\1\25\1\uffff\1\11\2\uffff\1\44\1\14\1\20\1\uffff\1\24\1\uffff\1\21\1\13";
     static final String DFA13_specialS =
-        "\1\1\5\uffff\1\2\1\0\u00cc\uffff}>";
+        "\1\1\35\uffff\1\2\1\0\u00b2\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\42\2\41\2\42\1\41\22\42\1\41\1\3\1\6\3\42\1\2\1\7\1\11\1\12\2\42\1\14\1\42\1\4\1\40\12\35\2\42\1\25\1\26\1\24\2\42\32\37\1\5\1\42\1\10\1\36\1\37\1\42\1\23\1\37\1\13\1\37\1\16\1\17\1\27\1\22\1\34\1\20\2\37\1\32\1\33\3\37\1\31\1\15\1\21\1\37\1\30\4\37\1\42\1\1\uff83\42",
+            "\11\42\2\41\2\42\1\41\22\42\1\41\1\3\1\36\3\42\1\2\1\37\1\7\1\10\2\42\1\12\1\42\1\4\1\40\12\33\2\42\1\23\1\24\1\22\2\42\32\35\1\5\1\42\1\6\1\34\1\35\1\42\1\21\1\35\1\11\1\35\1\14\1\15\1\25\1\20\1\32\1\16\2\35\1\30\1\31\3\35\1\27\1\13\1\17\1\35\1\26\4\35\1\42\1\1\uff83\42",
             "\1\43",
             "\1\44",
             "\1\45",
             "",
             "",
-            "\0\52",
-            "\0\52",
             "",
             "",
             "",
-            "\1\60\15\uffff\1\57",
+            "\1\55\15\uffff\1\54",
             "",
-            "\1\65\16\uffff\1\63\1\64",
-            "\1\66",
-            "\1\71\15\uffff\1\67\2\uffff\1\70",
+            "\1\62\16\uffff\1\60\1\61",
+            "\1\63",
+            "\1\66\15\uffff\1\64\2\uffff\1\65",
+            "\1\67",
+            "\1\70\2\uffff\1\71",
             "\1\72",
-            "\1\73\2\uffff\1\74",
-            "\1\75",
+            "\1\73",
+            "\1\74",
             "\1\76",
-            "\1\77",
+            "\1\100",
             "\1\101",
+            "\1\102",
             "\1\103",
             "\1\104",
             "\1\105",
             "\1\106",
-            "\1\107",
-            "\1\110",
-            "\1\111",
-            "\1\113\1\uffff\12\114",
-            "\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\1\111\1\uffff\12\110",
+            "\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
-            "\1\115\4\uffff\1\116",
-            "",
+            "\0\112",
+            "\0\112",
+            "\1\113\4\uffff\1\114",
             "",
             "",
             "",
@@ -1922,56 +1865,57 @@ public class InternalGitHubActionsLexer extends Lexer {
             "",
             "",
             "",
+            "\1\116",
+            "\1\117",
             "",
             "",
-            "\1\120",
-            "\1\121",
-            "",
-            "",
-            "\1\122\3\uffff\1\123\14\uffff\1\124",
-            "\1\125",
-            "\1\126",
-            "\1\127\21\uffff\1\130",
-            "\1\131",
-            "\1\132",
-            "\1\133\2\uffff\1\134",
-            "\1\136\6\uffff\1\135",
+            "\1\120\3\uffff\1\121\14\uffff\1\122",
+            "\1\123",
+            "\1\124",
+            "\1\125\21\uffff\1\126",
+            "\1\127",
+            "\1\130",
+            "\1\131\2\uffff\1\132",
+            "\1\134\6\uffff\1\133",
+            "\1\135",
+            "\1\136",
             "\1\137",
             "\1\140",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\141",
             "\1\142",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\143",
             "\1\144",
             "\1\145",
             "\1\146",
+            "",
+            "\1\111\1\uffff\12\110",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\147",
             "\1\150",
-            "",
-            "",
-            "\1\113\1\uffff\12\114",
-            "",
-            "",
-            "",
             "\1\151",
             "\1\152",
             "\1\153",
             "\1\154",
             "\1\155",
             "\1\156",
-            "\1\157",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\160",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\1\161",
             "\1\162",
             "\1\163",
             "\1\164",
-            "\1\165",
-            "\1\166",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\22\61\1\167\7\61",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\22\56\1\165\7\56",
+            "\1\167",
+            "\1\170",
             "\1\171",
             "\1\172",
             "\1\173",
@@ -1988,105 +1932,103 @@ public class InternalGitHubActionsLexer extends Lexer {
             "\1\u0086",
             "\1\u0087",
             "\1\u0088",
+            "",
             "\1\u0089",
             "\1\u008a",
-            "",
             "\1\u008b",
             "\1\u008c",
-            "\1\u008d",
-            "\1\u008e",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
+            "\1\u008f",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u0091",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\1\u0092",
             "\1\u0093",
-            "\1\u0094",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u0095",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\1\u0096",
             "\1\u0097",
             "\1\u0098",
             "\1\u0099",
             "\1\u009a",
             "\1\u009b",
-            "\1\u009c",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u009d",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\1\u009e",
             "\1\u009f",
             "\1\u00a0",
             "\1\u00a1",
             "\1\u00a2",
             "\1\u00a3",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "",
+            "",
             "\1\u00a4",
+            "",
             "\1\u00a5",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "",
-            "",
             "\1\u00a6",
-            "",
             "\1\u00a7",
+            "",
             "\1\u00a8",
             "\1\u00a9",
-            "",
-            "\1\u00aa",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u00ab",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\1\u00ac",
             "\1\u00ad",
             "\1\u00ae",
+            "",
             "\1\u00af",
             "\1\u00b0",
-            "",
             "\1\u00b1",
             "\1\u00b2",
-            "\1\u00b3",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u00b4",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\1\u00b6",
+            "\1\u00b5",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u00b7",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\1\u00b9",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\1\u00bd",
+            "\1\u00be",
             "\1\u00bf",
             "\1\u00c0",
-            "\1\u00c1",
-            "\1\u00c2",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\1\u00c5",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\1\u00c3",
+            "",
+            "\1\u00c4",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
             "\1\u00c6",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
             "",
+            "",
+            "",
+            "",
+            "",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u00c8",
+            "\1\u00c9",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
             "",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
+            "\1\u00cd",
             "",
-            "",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\1\u00ca",
-            "\1\u00cb",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "",
-            "",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "\1\u00cf",
             "",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "\1\u00d1",
             "",
             "",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
-            "",
-            "\12\61\7\uffff\32\61\4\uffff\1\61\1\uffff\32\61",
+            "\12\56\7\uffff\32\56\4\uffff\1\56\1\uffff\32\56",
             "",
             ""
     };
@@ -2121,19 +2063,19 @@ public class InternalGitHubActionsLexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | RULE_DOUBLE | RULE_BOOLEAN | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | RULE_DOUBLE | RULE_BOOLEAN | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA13_7 = input.LA(1);
+                        int LA13_31 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA13_7>='\u0000' && LA13_7<='\uFFFF')) ) {s = 42;}
+                        if ( ((LA13_31>='\u0000' && LA13_31<='\uFFFF')) ) {s = 74;}
 
-                        else s = 43;
+                        else s = 34;
 
                         if ( s>=0 ) return s;
                         break;
@@ -2151,57 +2093,57 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                         else if ( (LA13_0=='[') ) {s = 5;}
 
-                        else if ( (LA13_0=='\"') ) {s = 6;}
+                        else if ( (LA13_0==']') ) {s = 6;}
 
-                        else if ( (LA13_0=='\'') ) {s = 7;}
+                        else if ( (LA13_0=='(') ) {s = 7;}
 
-                        else if ( (LA13_0==']') ) {s = 8;}
+                        else if ( (LA13_0==')') ) {s = 8;}
 
-                        else if ( (LA13_0=='(') ) {s = 9;}
+                        else if ( (LA13_0=='c') ) {s = 9;}
 
-                        else if ( (LA13_0==')') ) {s = 10;}
+                        else if ( (LA13_0==',') ) {s = 10;}
 
-                        else if ( (LA13_0=='c') ) {s = 11;}
+                        else if ( (LA13_0=='s') ) {s = 11;}
 
-                        else if ( (LA13_0==',') ) {s = 12;}
+                        else if ( (LA13_0=='e') ) {s = 12;}
 
-                        else if ( (LA13_0=='s') ) {s = 13;}
+                        else if ( (LA13_0=='f') ) {s = 13;}
 
-                        else if ( (LA13_0=='e') ) {s = 14;}
+                        else if ( (LA13_0=='j') ) {s = 14;}
 
-                        else if ( (LA13_0=='f') ) {s = 15;}
+                        else if ( (LA13_0=='t') ) {s = 15;}
 
-                        else if ( (LA13_0=='j') ) {s = 16;}
+                        else if ( (LA13_0=='h') ) {s = 16;}
 
-                        else if ( (LA13_0=='t') ) {s = 17;}
+                        else if ( (LA13_0=='a') ) {s = 17;}
 
-                        else if ( (LA13_0=='h') ) {s = 18;}
+                        else if ( (LA13_0=='>') ) {s = 18;}
 
-                        else if ( (LA13_0=='a') ) {s = 19;}
+                        else if ( (LA13_0=='<') ) {s = 19;}
 
-                        else if ( (LA13_0=='>') ) {s = 20;}
+                        else if ( (LA13_0=='=') ) {s = 20;}
 
-                        else if ( (LA13_0=='<') ) {s = 21;}
+                        else if ( (LA13_0=='g') ) {s = 21;}
 
-                        else if ( (LA13_0=='=') ) {s = 22;}
+                        else if ( (LA13_0=='v') ) {s = 22;}
 
-                        else if ( (LA13_0=='g') ) {s = 23;}
+                        else if ( (LA13_0=='r') ) {s = 23;}
 
-                        else if ( (LA13_0=='v') ) {s = 24;}
+                        else if ( (LA13_0=='m') ) {s = 24;}
 
-                        else if ( (LA13_0=='r') ) {s = 25;}
+                        else if ( (LA13_0=='n') ) {s = 25;}
 
-                        else if ( (LA13_0=='m') ) {s = 26;}
+                        else if ( (LA13_0=='i') ) {s = 26;}
 
-                        else if ( (LA13_0=='n') ) {s = 27;}
+                        else if ( ((LA13_0>='0' && LA13_0<='9')) ) {s = 27;}
 
-                        else if ( (LA13_0=='i') ) {s = 28;}
+                        else if ( (LA13_0=='^') ) {s = 28;}
 
-                        else if ( ((LA13_0>='0' && LA13_0<='9')) ) {s = 29;}
+                        else if ( ((LA13_0>='A' && LA13_0<='Z')||LA13_0=='_'||LA13_0=='b'||LA13_0=='d'||(LA13_0>='k' && LA13_0<='l')||(LA13_0>='o' && LA13_0<='q')||LA13_0=='u'||(LA13_0>='w' && LA13_0<='z')) ) {s = 29;}
 
-                        else if ( (LA13_0=='^') ) {s = 30;}
+                        else if ( (LA13_0=='\"') ) {s = 30;}
 
-                        else if ( ((LA13_0>='A' && LA13_0<='Z')||LA13_0=='_'||LA13_0=='b'||LA13_0=='d'||(LA13_0>='k' && LA13_0<='l')||(LA13_0>='o' && LA13_0<='q')||LA13_0=='u'||(LA13_0>='w' && LA13_0<='z')) ) {s = 31;}
+                        else if ( (LA13_0=='\'') ) {s = 31;}
 
                         else if ( (LA13_0=='/') ) {s = 32;}
 
@@ -2212,12 +2154,12 @@ public class InternalGitHubActionsLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA13_6 = input.LA(1);
+                        int LA13_30 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA13_6>='\u0000' && LA13_6<='\uFFFF')) ) {s = 42;}
+                        if ( ((LA13_30>='\u0000' && LA13_30<='\uFFFF')) ) {s = 74;}
 
-                        else s = 41;
+                        else s = 34;
 
                         if ( s>=0 ) return s;
                         break;

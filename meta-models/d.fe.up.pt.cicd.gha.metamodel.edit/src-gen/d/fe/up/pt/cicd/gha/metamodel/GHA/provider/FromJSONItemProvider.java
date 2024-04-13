@@ -141,8 +141,14 @@ public class FromJSONItemProvider extends BuiltInFunctionCallItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createEquality()));
@@ -207,14 +213,11 @@ public class FromJSONItemProvider extends BuiltInFunctionCallItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.FROM_JSON__VALUE,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

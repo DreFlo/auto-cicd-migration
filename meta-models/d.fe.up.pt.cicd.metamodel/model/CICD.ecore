@@ -11,8 +11,6 @@
         eType="#//Output" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//Assignment" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="permissions" upperBound="-1"
-        eType="#//Permission" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeoutMinutes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="workingDirectory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concurrencyGroup" eType="#//ConcurrencyGroup"
@@ -97,10 +95,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cancelInProgress" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Permission" instanceClassName="java.util.Map$Entry">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//PERMISSION_TYPE"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Matrix">
     <eStructuralFeatures xsi:type="ecore:EReference" name="axes" lowerBound="1" upperBound="-1"
         eType="#//MatrixAxis" containment="true"/>
@@ -113,7 +107,8 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MatrixAxis">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//VariableDeclaration"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cells" lowerBound="1" upperBound="-1"
         eType="#//Expression" containment="true"/>
   </eClassifiers>
@@ -122,7 +117,8 @@
         upperBound="-1" eType="#//Assignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//VariableDeclaration"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
@@ -194,9 +190,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="path" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Assignment" instanceClassName="java.util.Map$Entry"
       eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Variable"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//VariableDeclaration"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
@@ -220,19 +219,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableReference" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="#//VariableDeclaration"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SecretVariable" eSuperTypes="#//Variable"/>
   <eClassifiers xsi:type="ecore:EClass" name="VariableContext" eSuperTypes="#//Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" lowerBound="1"
         eType="#//VARIABLE_CONTEXTS"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableDereference" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
-        eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BuiltInFunction" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" abstract="true" eSuperTypes="#//Expression">
@@ -247,6 +240,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ComparisonOp" eSuperTypes="#//BinaryOp">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="op" lowerBound="1" eType="#//COMPARISON_OPS"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DotOp" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="LogicalOp" abstract="true" eSuperTypes="#//BinaryOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="And" eSuperTypes="#//LogicalOp"/>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//LogicalOp"/>
@@ -255,11 +249,6 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Negation" eSuperTypes="#//UnaryOp"/>
-  <eClassifiers xsi:type="ecore:EEnum" name="PERMISSION_TYPE">
-    <eLiterals name="READ"/>
-    <eLiterals name="WRITE" value="1"/>
-    <eLiterals name="NONE" value="2"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SHELL_TYPE">
     <eLiterals name="BASH"/>
   </eClassifiers>

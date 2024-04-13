@@ -235,17 +235,11 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
 				CICDFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createVariable()));
-
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
-				CICDFactory.eINSTANCE.createSecretVariable()));
+				CICDFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
 				CICDFactory.eINSTANCE.createVariableContext()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
-				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
@@ -255,6 +249,9 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
 				CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createAnd()));

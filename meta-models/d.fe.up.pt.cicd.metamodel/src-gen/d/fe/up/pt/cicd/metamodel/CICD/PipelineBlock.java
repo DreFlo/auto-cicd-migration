@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getInputs <em>Inputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getOutputs <em>Outputs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getEnvironmentVariables <em>Environment Variables</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getPermissions <em>Permissions</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory <em>Working Directory</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}</li>
@@ -103,29 +102,16 @@ public interface PipelineBlock extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Variable},
+	 * The key is of type {@link d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.Variable, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Assignment&lt;d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration, d.fe.up.pt.cicd.metamodel.CICD.Expression&gt;"
 	 * @generated
 	 */
-	EMap<Variable, Expression> getEnvironmentVariables();
-
-	/**
-	 * Returns the value of the '<em><b>Permissions</b></em>' map.
-	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE},
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Permissions</em>' map.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Permissions()
-	 * @model mapType="d.fe.up.pt.cicd.metamodel.CICD.Permission&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE&gt;"
-	 * @generated
-	 */
-	EMap<String, PERMISSION_TYPE> getPermissions();
+	EMap<VariableDeclaration, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Timeout Minutes</b></em>' attribute.

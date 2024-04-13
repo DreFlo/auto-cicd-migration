@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixCombination;
 
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EMap;
@@ -41,7 +42,7 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> entries;
+	protected EMap<VariableDeclaration, Expression> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +69,9 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEntries() {
+	public EMap<VariableDeclaration, Expression> getEntries() {
 		if (entries == null) {
-			entries = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
+			entries = new EcoreEMap<VariableDeclaration, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, GHAPackage.MATRIX_COMBINATION__ENTRIES);
 		}
 		return entries;

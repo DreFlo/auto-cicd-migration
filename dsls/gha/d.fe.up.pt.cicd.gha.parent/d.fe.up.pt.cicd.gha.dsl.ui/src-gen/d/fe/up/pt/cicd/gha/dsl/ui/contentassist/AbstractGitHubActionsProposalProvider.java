@@ -38,7 +38,7 @@ public abstract class AbstractGitHubActionsProposalProvider extends TerminalsPro
 	public void completeNot_ChildExpr(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeVariableDereference_Property(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeVariableDereference_Rhs(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeAtomic_Context(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

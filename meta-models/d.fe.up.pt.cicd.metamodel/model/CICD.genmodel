@@ -10,11 +10,6 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="CICD" basePackage="d.fe.up.pt.cicd.metamodel" disposableProviderFactory="true"
       ecorePackage="CICD.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//PERMISSION_TYPE">
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//PERMISSION_TYPE/READ"/>
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//PERMISSION_TYPE/WRITE"/>
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//PERMISSION_TYPE/NONE"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//SHELL_TYPE">
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//SHELL_TYPE/BASH"/>
     </genEnums>
@@ -51,7 +46,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/inputs"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/outputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/environmentVariables"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/permissions"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/timeoutMinutes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/workingDirectory"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/concurrencyGroup"/>
@@ -109,10 +103,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//ConcurrencyGroup/groupId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ConcurrencyGroup/cancelInProgress"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//Permission">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Permission/key"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Permission/value"/>
-    </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Matrix">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Matrix/axes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Matrix/includes"/>
@@ -120,14 +110,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Matrix/failFast"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//MatrixAxis">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//MatrixAxis/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//MatrixAxis/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//MatrixAxis/cells"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//MatrixCombination">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//MatrixCombination/combinationEntries"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CICD.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Parameter/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//Parameter/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//Parameter/description"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Input">
@@ -176,6 +166,9 @@
     <genClasses ecoreClass="CICD.ecore#//Checkout">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Checkout/path"/>
     </genClasses>
+    <genClasses ecoreClass="CICD.ecore#//VariableDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableDeclaration/name"/>
+    </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Assignment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Assignment/key"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Assignment/value"/>
@@ -198,16 +191,11 @@
     <genClasses ecoreClass="CICD.ecore#//BooleanLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//BooleanLiteral/value"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//Variable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Variable/name"/>
+    <genClasses ecoreClass="CICD.ecore#//VariableReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//VariableReference/reference"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//SecretVariable"/>
     <genClasses ecoreClass="CICD.ecore#//VariableContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableContext/context"/>
-    </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//VariableDereference">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//VariableDereference/variable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableDereference/property"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//BuiltInFunction"/>
     <genClasses ecoreClass="CICD.ecore#//BinaryOp">
@@ -220,6 +208,7 @@
     <genClasses ecoreClass="CICD.ecore#//ComparisonOp">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ComparisonOp/op"/>
     </genClasses>
+    <genClasses ecoreClass="CICD.ecore#//DotOp"/>
     <genClasses image="false" ecoreClass="CICD.ecore#//LogicalOp"/>
     <genClasses ecoreClass="CICD.ecore#//And"/>
     <genClasses ecoreClass="CICD.ecore#//Or"/>

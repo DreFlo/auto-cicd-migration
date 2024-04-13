@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -162,8 +163,14 @@ public class StepItemProvider extends AbstractStepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__NAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createEquality()));
@@ -225,17 +232,20 @@ public class StepItemProvider extends AbstractStepItemProvider {
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__NAME, GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createEquality()));
@@ -300,17 +310,20 @@ public class StepItemProvider extends AbstractStepItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__TIMEOUT_MINUTES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -376,16 +389,19 @@ public class StepItemProvider extends AbstractStepItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__CONTINUE_ON_ERROR,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__SHELL,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createEquality()));
@@ -449,17 +465,20 @@ public class StepItemProvider extends AbstractStepItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.STEP__SHELL, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__SHELL,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -525,13 +544,10 @@ public class StepItemProvider extends AbstractStepItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__WORKING_DIRECTORY,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STEP__ENVIRONMENT_VARIABLES,
 				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
@@ -552,7 +568,8 @@ public class StepItemProvider extends AbstractStepItemProvider {
 				|| childFeature == GHAPackage.Literals.STEP__TIMEOUT_MINUTES
 				|| childFeature == GHAPackage.Literals.STEP__CONTINUE_ON_ERROR
 				|| childFeature == GHAPackage.Literals.STEP__SHELL
-				|| childFeature == GHAPackage.Literals.STEP__WORKING_DIRECTORY;
+				|| childFeature == GHAPackage.Literals.STEP__WORKING_DIRECTORY
+				|| childFeature == GHAPackage.Literals.STEP__ENVIRONMENT_VARIABLES;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

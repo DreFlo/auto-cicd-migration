@@ -162,8 +162,14 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createEquality()));
@@ -228,17 +234,20 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__IMAGE,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createEquality()));
@@ -303,17 +312,20 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__USERNAME,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createEquality()));
@@ -378,20 +390,23 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PASSWORD,
-				GHAFactory.eINSTANCE.createVariableDereference()));
-
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__ENVIRONMENT_VARIABLES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS,
 				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createEquality()));
@@ -456,17 +471,20 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__PORTS, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__PORTS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createEquality()));
@@ -531,17 +549,20 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__VOLUMES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createEquality()));
@@ -606,14 +627,11 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONTAINER__OPTIONS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**
@@ -630,6 +648,7 @@ public class ContainerItemProvider extends ItemProviderAdapter implements IEditi
 		boolean qualify = childFeature == GHAPackage.Literals.CONTAINER__IMAGE
 				|| childFeature == GHAPackage.Literals.CONTAINER__USERNAME
 				|| childFeature == GHAPackage.Literals.CONTAINER__PASSWORD
+				|| childFeature == GHAPackage.Literals.CONTAINER__ENVIRONMENT_VARIABLES
 				|| childFeature == GHAPackage.Literals.CONTAINER__PORTS
 				|| childFeature == GHAPackage.Literals.CONTAINER__VOLUMES
 				|| childFeature == GHAPackage.Literals.CONTAINER__OPTIONS;

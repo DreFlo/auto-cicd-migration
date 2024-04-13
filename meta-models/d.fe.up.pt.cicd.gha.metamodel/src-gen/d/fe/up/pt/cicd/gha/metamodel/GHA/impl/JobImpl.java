@@ -13,6 +13,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
+
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -27,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
@@ -180,7 +183,7 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getServices() <em>Services</em>}' map.
@@ -643,10 +646,11 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(GHAPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, GHAPackage.JOB__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					GHAPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					GHAPackage.JOB__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

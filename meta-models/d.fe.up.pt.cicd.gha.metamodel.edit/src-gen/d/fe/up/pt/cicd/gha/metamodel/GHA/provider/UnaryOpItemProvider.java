@@ -130,8 +130,14 @@ public class UnaryOpItemProvider extends ExpressionItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR, GHAFactory.eINSTANCE.createEquality()));
@@ -196,14 +202,11 @@ public class UnaryOpItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.UNARY_OP__CHILD_EXPR,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

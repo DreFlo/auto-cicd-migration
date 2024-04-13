@@ -12,9 +12,9 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -109,7 +109,8 @@ public class SecretItemProvider extends ParameterItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Secret) object).getId();
+		Boolean labelValue = ((Secret) object).getIsRequired();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Secret_type")
 				: getString("_UI_Secret_type") + " " + label;
 	}
@@ -127,7 +128,7 @@ public class SecretItemProvider extends ParameterItemProvider {
 
 		switch (notification.getFeatureID(Secret.class)) {
 		case GHAPackage.SECRET__IS_REQUIRED:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));
 			return;
 		}
 		super.notifyChanged(notification);

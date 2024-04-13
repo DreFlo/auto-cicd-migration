@@ -170,17 +170,11 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createSecretVariable()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
+				CICDFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
 				CICDFactory.eINSTANCE.createVariableContext()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
-				CICDFactory.eINSTANCE.createVariableDereference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS,
 				CICDFactory.eINSTANCE.createBuiltInFunction()));
@@ -190,6 +184,9 @@ public class AgentItemProvider extends ItemProviderAdapter implements IEditingDo
 
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.AGENT__LABELS, CICDFactory.eINSTANCE.createAnd()));

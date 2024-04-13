@@ -33,7 +33,6 @@ public class GitHubActionsParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, GitHubActionsGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getUnaryOpAccess().getAlternatives(), "rule__UnaryOp__Alternatives");
 			builder.put(grammarAccess.getVariableDereferenceAccess().getAlternatives_1_1(), "rule__VariableDereference__Alternatives_1_1");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getAlternatives_1_1_1(), "rule__VariableDereference__Alternatives_1_1_1");
 			builder.put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
 			builder.put(grammarAccess.getAtomicAccess().getAlternatives(), "rule__Atomic__Alternatives");
 			builder.put(grammarAccess.getCallExpressionAccess().getAlternatives(), "rule__CallExpression__Alternatives");
@@ -52,10 +51,7 @@ public class GitHubActionsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup(), "rule__VariableDereference__Group__0");
 			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1(), "rule__VariableDereference__Group_1__0");
 			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1_1_0(), "rule__VariableDereference__Group_1_1_0__0");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1_1_1_0(), "rule__VariableDereference__Group_1_1_1_0__0");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1_1_1_0_1(), "rule__VariableDereference__Group_1_1_1_0_1__0");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1_1_1_1(), "rule__VariableDereference__Group_1_1_1_1__0");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1_1_1_1_0(), "rule__VariableDereference__Group_1_1_1_1_0__0");
+			builder.put(grammarAccess.getVariableDereferenceAccess().getGroup_1_1_1(), "rule__VariableDereference__Group_1_1_1__0");
 			builder.put(grammarAccess.getPrimaryAccess().getGroup_0(), "rule__Primary__Group_0__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_0(), "rule__Atomic__Group_0__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_1(), "rule__Atomic__Group_1__0");
@@ -84,9 +80,8 @@ public class GitHubActionsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getComparisonAccess().getOpAssignment_1_1(), "rule__Comparison__OpAssignment_1_1");
 			builder.put(grammarAccess.getComparisonAccess().getRhsAssignment_1_2(), "rule__Comparison__RhsAssignment_1_2");
 			builder.put(grammarAccess.getNotAccess().getChildExprAssignment_1(), "rule__Not__ChildExprAssignment_1");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getPropertyAssignment_1_1_0_1(), "rule__VariableDereference__PropertyAssignment_1_1_0_1");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getPropertyAssignment_1_1_1_0_1_1(), "rule__VariableDereference__PropertyAssignment_1_1_1_0_1_1");
-			builder.put(grammarAccess.getVariableDereferenceAccess().getPropertyAssignment_1_1_1_1_0_1(), "rule__VariableDereference__PropertyAssignment_1_1_1_1_0_1");
+			builder.put(grammarAccess.getVariableDereferenceAccess().getRhsAssignment_1_1_0_1(), "rule__VariableDereference__RhsAssignment_1_1_0_1");
+			builder.put(grammarAccess.getVariableDereferenceAccess().getRhsAssignment_1_1_1_1(), "rule__VariableDereference__RhsAssignment_1_1_1_1");
 			builder.put(grammarAccess.getAtomicAccess().getContextAssignment_0_1(), "rule__Atomic__ContextAssignment_0_1");
 			builder.put(grammarAccess.getAtomicAccess().getNameAssignment_1_1(), "rule__Atomic__NameAssignment_1_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_2_1(), "rule__Atomic__ValueAssignment_2_1");

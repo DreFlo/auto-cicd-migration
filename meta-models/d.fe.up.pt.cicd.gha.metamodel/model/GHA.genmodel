@@ -216,11 +216,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Defaults/shell"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Defaults/workingDirectory"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="GHA.ecore#//Expression"/>
+    <genClasses ecoreClass="GHA.ecore#//VariableDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableDeclaration/name"/>
+    </genClasses>
     <genClasses ecoreClass="GHA.ecore#//VariableAssignment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableAssignment/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference GHA.ecore#//VariableAssignment/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//VariableAssignment/value"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="GHA.ecore#//Expression"/>
     <genClasses image="false" ecoreClass="GHA.ecore#//BinaryOp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//BinaryOp/lhs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//BinaryOp/rhs"/>
@@ -228,6 +231,7 @@
     <genClasses ecoreClass="GHA.ecore#//Concat">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Concat/expressions"/>
     </genClasses>
+    <genClasses ecoreClass="GHA.ecore#//DotOp"/>
     <genClasses ecoreClass="GHA.ecore#//Equality">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Equality/op"/>
     </genClasses>
@@ -290,15 +294,11 @@
     <genClasses ecoreClass="GHA.ecore#//BooleanLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//BooleanLiteral/value"/>
     </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//Variable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Variable/name"/>
+    <genClasses ecoreClass="GHA.ecore#//VariableReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableReference/name"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//GitHubContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//GitHubContext/context"/>
-    </genClasses>
-    <genClasses ecoreClass="GHA.ecore#//VariableDereference">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//VariableDereference/variable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableDereference/property"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Matrix">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/axes"/>
@@ -308,7 +308,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Matrix/maxParallel"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//MatrixAxis">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//MatrixAxis/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference GHA.ecore#//MatrixAxis/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//MatrixAxis/cells"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//MatrixCombination">
@@ -338,17 +338,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Package/containerArgs"/>
     </genClasses>
     <genClasses image="false" ecoreClass="GHA.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Parameter/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference GHA.ecore#//Parameter/id"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Parameter/description"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Input">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Input/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Input/isRequired"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute GHA.ecore#//Input/isRequired"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Input/default"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//Input/options"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Secret">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Secret/isRequired"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute GHA.ecore#//Secret/isRequired"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//Output">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GHA.ecore#//Output/value"/>

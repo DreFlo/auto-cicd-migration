@@ -153,7 +153,13 @@ public class StagingEnvironmentItemProvider extends ItemProviderAdapter implemen
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -219,16 +225,19 @@ public class StagingEnvironmentItemProvider extends ItemProviderAdapter implemen
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
 				GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__NAME,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -294,13 +303,10 @@ public class StagingEnvironmentItemProvider extends ItemProviderAdapter implemen
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.STAGING_ENVIRONMENT__URL,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

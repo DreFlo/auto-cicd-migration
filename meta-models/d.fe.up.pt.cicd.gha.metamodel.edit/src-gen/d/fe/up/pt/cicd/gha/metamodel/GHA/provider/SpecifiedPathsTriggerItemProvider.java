@@ -154,7 +154,13 @@ public class SpecifiedPathsTriggerItemProvider extends TriggerItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -220,13 +226,10 @@ public class SpecifiedPathsTriggerItemProvider extends TriggerItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_PATHS_TRIGGER__PATHS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

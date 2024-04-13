@@ -17,6 +17,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ConcurrencyGroup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Container;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Contains;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Defaults;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.DoubleLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.EndsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
@@ -64,8 +65,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Trigger;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Value;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.Variable;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.WorkflowCallTrigger;
@@ -257,13 +258,18 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariableAssignment(Map.Entry<String, Expression> object) {
-			return createVariableAssignmentAdapter();
+		public Adapter caseExpression(Expression object) {
+			return createExpressionAdapter();
 		}
 
 		@Override
-		public Adapter caseExpression(Expression object) {
-			return createExpressionAdapter();
+		public Adapter caseVariableDeclaration(VariableDeclaration object) {
+			return createVariableDeclarationAdapter();
+		}
+
+		@Override
+		public Adapter caseVariableAssignment(Map.Entry<VariableDeclaration, Expression> object) {
+			return createVariableAssignmentAdapter();
 		}
 
 		@Override
@@ -274,6 +280,11 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseConcat(Concat object) {
 			return createConcatAdapter();
+		}
+
+		@Override
+		public Adapter caseDotOp(DotOp object) {
+			return createDotOpAdapter();
 		}
 
 		@Override
@@ -412,18 +423,13 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariable(Variable object) {
-			return createVariableAdapter();
+		public Adapter caseVariableReference(VariableReference object) {
+			return createVariableReferenceAdapter();
 		}
 
 		@Override
 		public Adapter caseGitHubContext(GitHubContext object) {
 			return createGitHubContextAdapter();
-		}
-
-		@Override
-		public Adapter caseVariableDereference(VariableDereference object) {
-			return createVariableDereferenceAdapter();
 		}
 
 		@Override
@@ -842,20 +848,6 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Variable Assignment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createVariableAssignmentAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Expression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -866,6 +858,34 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration <em>Variable Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration
+	 * @generated
+	 */
+	public Adapter createVariableDeclarationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Variable Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see java.util.Map.Entry
+	 * @generated
+	 */
+	public Adapter createVariableAssignmentAdapter() {
 		return null;
 	}
 
@@ -894,6 +914,20 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConcatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp <em>Dot Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.DotOp
+	 * @generated
+	 */
+	public Adapter createDotOpAdapter() {
 		return null;
 	}
 
@@ -1276,16 +1310,16 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Variable <em>Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Variable
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference
 	 * @generated
 	 */
-	public Adapter createVariableAdapter() {
+	public Adapter createVariableReferenceAdapter() {
 		return null;
 	}
 
@@ -1300,20 +1334,6 @@ public class GHAAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGitHubContextAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference <em>Variable Dereference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDereference
-	 * @generated
-	 */
-	public Adapter createVariableDereferenceAdapter() {
 		return null;
 	}
 

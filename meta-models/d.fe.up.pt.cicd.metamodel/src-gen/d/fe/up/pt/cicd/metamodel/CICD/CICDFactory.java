@@ -220,6 +220,15 @@ public interface CICDFactory extends EFactory {
 	Checkout createCheckout();
 
 	/**
+	 * Returns a new object of class '<em>Variable Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Declaration</em>'.
+	 * @generated
+	 */
+	VariableDeclaration createVariableDeclaration();
+
+	/**
 	 * Returns a new object of class '<em>Concat</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,22 +274,13 @@ public interface CICDFactory extends EFactory {
 	BooleanLiteral createBooleanLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Variable</em>'.
+	 * Returns a new object of class '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable</em>'.
+	 * @return a new object of class '<em>Variable Reference</em>'.
 	 * @generated
 	 */
-	Variable createVariable();
-
-	/**
-	 * Returns a new object of class '<em>Secret Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Secret Variable</em>'.
-	 * @generated
-	 */
-	SecretVariable createSecretVariable();
+	VariableReference createVariableReference();
 
 	/**
 	 * Returns a new object of class '<em>Variable Context</em>'.
@@ -290,15 +290,6 @@ public interface CICDFactory extends EFactory {
 	 * @generated
 	 */
 	VariableContext createVariableContext();
-
-	/**
-	 * Returns a new object of class '<em>Variable Dereference</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Dereference</em>'.
-	 * @generated
-	 */
-	VariableDereference createVariableDereference();
 
 	/**
 	 * Returns a new object of class '<em>Built In Function</em>'.
@@ -326,6 +317,15 @@ public interface CICDFactory extends EFactory {
 	 * @generated
 	 */
 	ComparisonOp createComparisonOp();
+
+	/**
+	 * Returns a new object of class '<em>Dot Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dot Op</em>'.
+	 * @generated
+	 */
+	DotOp createDotOp();
 
 	/**
 	 * Returns a new object of class '<em>And</em>'.

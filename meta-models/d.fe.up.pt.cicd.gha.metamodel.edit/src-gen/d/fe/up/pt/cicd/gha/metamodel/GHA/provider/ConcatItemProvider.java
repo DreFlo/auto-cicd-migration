@@ -141,8 +141,14 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createEquality()));
@@ -207,14 +213,11 @@ public class ConcatItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS,
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.CONCAT__EXPRESSIONS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

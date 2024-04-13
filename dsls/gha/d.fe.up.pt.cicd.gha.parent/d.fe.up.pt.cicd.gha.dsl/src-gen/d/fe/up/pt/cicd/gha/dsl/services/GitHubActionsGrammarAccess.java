@@ -250,104 +250,64 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cVariableDereferenceVariableAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cDotOpLhsAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
 		private final Group cGroup_1_1_0 = (Group)cAlternatives_1_1.eContents().get(0);
 		private final Keyword cFullStopKeyword_1_1_0_0 = (Keyword)cGroup_1_1_0.eContents().get(0);
-		private final Assignment cPropertyAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
-		private final RuleCall cPropertyIDTerminalRuleCall_1_1_0_1_0 = (RuleCall)cPropertyAssignment_1_1_0_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_1_1 = (Alternatives)cAlternatives_1_1.eContents().get(1);
-		private final Group cGroup_1_1_1_0 = (Group)cAlternatives_1_1_1.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_1_1_1_0_0 = (Keyword)cGroup_1_1_1_0.eContents().get(0);
-		private final Group cGroup_1_1_1_0_1 = (Group)cGroup_1_1_1_0.eContents().get(1);
-		private final Keyword cQuotationMarkKeyword_1_1_1_0_1_0 = (Keyword)cGroup_1_1_1_0_1.eContents().get(0);
-		private final Assignment cPropertyAssignment_1_1_1_0_1_1 = (Assignment)cGroup_1_1_1_0_1.eContents().get(1);
-		private final RuleCall cPropertyIDTerminalRuleCall_1_1_1_0_1_1_0 = (RuleCall)cPropertyAssignment_1_1_1_0_1_1.eContents().get(0);
-		private final Keyword cQuotationMarkKeyword_1_1_1_0_1_2 = (Keyword)cGroup_1_1_1_0_1.eContents().get(2);
-		private final Group cGroup_1_1_1_1 = (Group)cAlternatives_1_1_1.eContents().get(1);
-		private final Group cGroup_1_1_1_1_0 = (Group)cGroup_1_1_1_1.eContents().get(0);
-		private final Keyword cApostropheKeyword_1_1_1_1_0_0 = (Keyword)cGroup_1_1_1_1_0.eContents().get(0);
-		private final Assignment cPropertyAssignment_1_1_1_1_0_1 = (Assignment)cGroup_1_1_1_1_0.eContents().get(1);
-		private final RuleCall cPropertyIDTerminalRuleCall_1_1_1_1_0_1_0 = (RuleCall)cPropertyAssignment_1_1_1_1_0_1.eContents().get(0);
-		private final Keyword cQuotationMarkKeyword_1_1_1_1_0_2 = (Keyword)cGroup_1_1_1_1_0.eContents().get(2);
-		private final Keyword cRightSquareBracketKeyword_1_1_1_1_1 = (Keyword)cGroup_1_1_1_1.eContents().get(1);
+		private final Assignment cRhsAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
+		private final RuleCall cRhsVariableDereferenceParserRuleCall_1_1_0_1_0 = (RuleCall)cRhsAssignment_1_1_0_1.eContents().get(0);
+		private final Group cGroup_1_1_1 = (Group)cAlternatives_1_1.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
+		private final Assignment cRhsAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
+		private final RuleCall cRhsVariableDereferenceParserRuleCall_1_1_1_1_0 = (RuleCall)cRhsAssignment_1_1_1_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_1_1_2 = (Keyword)cGroup_1_1_1.eContents().get(2);
 		
 		//VariableDereference returns GHA::Expression:
-		//    Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('['  ('"' property=ID '"') | ("'" property=ID '"')  ']')))*
+		//    Primary ({GHA::DotOp.lhs=current} (('.' rhs=VariableDereference) | ('[' rhs=VariableDereference ']')))?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('['  ('"' property=ID '"') | ("'" property=ID '"')  ']')))*
+		//Primary ({GHA::DotOp.lhs=current} (('.' rhs=VariableDereference) | ('[' rhs=VariableDereference ']')))?
 		public Group getGroup() { return cGroup; }
 		
 		//Primary
 		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//({GHA::VariableDereference.variable=current} (('.' property=ID) | ('['  ('"' property=ID '"') | ("'" property=ID '"')  ']')))*
+		//({GHA::DotOp.lhs=current} (('.' rhs=VariableDereference) | ('[' rhs=VariableDereference ']')))?
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{GHA::VariableDereference.variable=current}
-		public Action getVariableDereferenceVariableAction_1_0() { return cVariableDereferenceVariableAction_1_0; }
+		//{GHA::DotOp.lhs=current}
+		public Action getDotOpLhsAction_1_0() { return cDotOpLhsAction_1_0; }
 		
-		//(('.' property=ID) | ('['  ('"' property=ID '"') | ("'" property=ID '"')  ']'))
+		//(('.' rhs=VariableDereference) | ('[' rhs=VariableDereference ']'))
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
-		//('.' property=ID)
+		//('.' rhs=VariableDereference)
 		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
 		
 		//'.'
 		public Keyword getFullStopKeyword_1_1_0_0() { return cFullStopKeyword_1_1_0_0; }
 		
-		//property=ID
-		public Assignment getPropertyAssignment_1_1_0_1() { return cPropertyAssignment_1_1_0_1; }
+		//rhs=VariableDereference
+		public Assignment getRhsAssignment_1_1_0_1() { return cRhsAssignment_1_1_0_1; }
 		
-		//ID
-		public RuleCall getPropertyIDTerminalRuleCall_1_1_0_1_0() { return cPropertyIDTerminalRuleCall_1_1_0_1_0; }
+		//VariableDereference
+		public RuleCall getRhsVariableDereferenceParserRuleCall_1_1_0_1_0() { return cRhsVariableDereferenceParserRuleCall_1_1_0_1_0; }
 		
-		//('['  ('"' property=ID '"') | ("'" property=ID '"')  ']')
-		public Alternatives getAlternatives_1_1_1() { return cAlternatives_1_1_1; }
-		
-		//'['  ('"' property=ID '"')
-		public Group getGroup_1_1_1_0() { return cGroup_1_1_1_0; }
+		//('[' rhs=VariableDereference ']')
+		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_1_1_1_0_0() { return cLeftSquareBracketKeyword_1_1_1_0_0; }
+		public Keyword getLeftSquareBracketKeyword_1_1_1_0() { return cLeftSquareBracketKeyword_1_1_1_0; }
 		
-		//('"' property=ID '"')
-		public Group getGroup_1_1_1_0_1() { return cGroup_1_1_1_0_1; }
+		//rhs=VariableDereference
+		public Assignment getRhsAssignment_1_1_1_1() { return cRhsAssignment_1_1_1_1; }
 		
-		//'"'
-		public Keyword getQuotationMarkKeyword_1_1_1_0_1_0() { return cQuotationMarkKeyword_1_1_1_0_1_0; }
-		
-		//property=ID
-		public Assignment getPropertyAssignment_1_1_1_0_1_1() { return cPropertyAssignment_1_1_1_0_1_1; }
-		
-		//ID
-		public RuleCall getPropertyIDTerminalRuleCall_1_1_1_0_1_1_0() { return cPropertyIDTerminalRuleCall_1_1_1_0_1_1_0; }
-		
-		//'"'
-		public Keyword getQuotationMarkKeyword_1_1_1_0_1_2() { return cQuotationMarkKeyword_1_1_1_0_1_2; }
-		
-		//("'" property=ID '"')  ']'
-		public Group getGroup_1_1_1_1() { return cGroup_1_1_1_1; }
-		
-		//("'" property=ID '"')
-		public Group getGroup_1_1_1_1_0() { return cGroup_1_1_1_1_0; }
-		
-		//"'"
-		public Keyword getApostropheKeyword_1_1_1_1_0_0() { return cApostropheKeyword_1_1_1_1_0_0; }
-		
-		//property=ID
-		public Assignment getPropertyAssignment_1_1_1_1_0_1() { return cPropertyAssignment_1_1_1_1_0_1; }
-		
-		//ID
-		public RuleCall getPropertyIDTerminalRuleCall_1_1_1_1_0_1_0() { return cPropertyIDTerminalRuleCall_1_1_1_1_0_1_0; }
-		
-		//'"'
-		public Keyword getQuotationMarkKeyword_1_1_1_1_0_2() { return cQuotationMarkKeyword_1_1_1_1_0_2; }
+		//VariableDereference
+		public RuleCall getRhsVariableDereferenceParserRuleCall_1_1_1_1_0() { return cRhsVariableDereferenceParserRuleCall_1_1_1_1_0; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_1_1_1_1_1() { return cRightSquareBracketKeyword_1_1_1_1_1; }
+		public Keyword getRightSquareBracketKeyword_1_1_1_2() { return cRightSquareBracketKeyword_1_1_1_2; }
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.dsl.GitHubActions.Primary");
@@ -393,7 +353,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cContextAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
 		private final RuleCall cContextCONTEXTEnumRuleCall_0_1_0 = (RuleCall)cContextAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cVariableAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cVariableReferenceAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
@@ -415,7 +375,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		
 		//Atomic returns GHA::Value:
 		//    ({GHA::GitHubContext} context=CONTEXT) |
-		//    ({GHA::Variable} name=ID) |
+		//    ({GHA::VariableReference} name=ID) |
 		//    ({GHA::IntegerLiteral} value=INT) |
 		//    ({GHA::DoubleLiteral} value=DOUBLE) |
 		//    ({GHA::BooleanLiteral} value=BOOLEAN) |
@@ -424,7 +384,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//({GHA::GitHubContext} context=CONTEXT) |
-		//({GHA::Variable} name=ID) |
+		//({GHA::VariableReference} name=ID) |
 		//({GHA::IntegerLiteral} value=INT) |
 		//({GHA::DoubleLiteral} value=DOUBLE) |
 		//({GHA::BooleanLiteral} value=BOOLEAN) |
@@ -443,11 +403,11 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//CONTEXT
 		public RuleCall getContextCONTEXTEnumRuleCall_0_1_0() { return cContextCONTEXTEnumRuleCall_0_1_0; }
 		
-		//({GHA::Variable} name=ID)
+		//({GHA::VariableReference} name=ID)
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{GHA::Variable}
-		public Action getVariableAction_1_0() { return cVariableAction_1_0; }
+		//{GHA::VariableReference}
+		public Action getVariableReferenceAction_1_0() { return cVariableReferenceAction_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
@@ -1419,7 +1379,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//VariableDereference returns GHA::Expression:
-	//    Primary ({GHA::VariableDereference.variable=current} (('.' property=ID) | ('['  ('"' property=ID '"') | ("'" property=ID '"')  ']')))*
+	//    Primary ({GHA::DotOp.lhs=current} (('.' rhs=VariableDereference) | ('[' rhs=VariableDereference ']')))?
 	//;
 	public VariableDereferenceElements getVariableDereferenceAccess() {
 		return pVariableDereference;
@@ -1442,7 +1402,7 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Atomic returns GHA::Value:
 	//    ({GHA::GitHubContext} context=CONTEXT) |
-	//    ({GHA::Variable} name=ID) |
+	//    ({GHA::VariableReference} name=ID) |
 	//    ({GHA::IntegerLiteral} value=INT) |
 	//    ({GHA::DoubleLiteral} value=DOUBLE) |
 	//    ({GHA::BooleanLiteral} value=BOOLEAN) |

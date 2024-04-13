@@ -156,7 +156,13 @@ public class SpecifiedBranchesTriggerItemProvider extends TriggerItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
+				GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createEquality()));
@@ -222,13 +228,10 @@ public class SpecifiedBranchesTriggerItemProvider extends TriggerItemProvider {
 				GHAFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
-				GHAFactory.eINSTANCE.createVariable()));
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
 				GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.SPECIFIED_BRANCHES_TRIGGER__BRANCHES,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 }

@@ -18,6 +18,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Concat;
 import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
 import d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
+import d.fe.up.pt.cicd.metamodel.CICD.DotOp;
 import d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.EqualityOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Expression;
@@ -43,15 +44,14 @@ import d.fe.up.pt.cicd.metamodel.CICD.PullRequestTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.PushTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.ScriptJob;
-import d.fe.up.pt.cicd.metamodel.CICD.SecretVariable;
 import d.fe.up.pt.cicd.metamodel.CICD.Step;
 import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.Trigger;
 import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Value;
-import d.fe.up.pt.cicd.metamodel.CICD.Variable;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableContext;
-import d.fe.up.pt.cicd.metamodel.CICD.VariableDereference;
+import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
+import d.fe.up.pt.cicd.metamodel.CICD.VariableReference;
 import d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger;
 
 import java.util.Map;
@@ -174,13 +174,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass permissionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass matrixEClass = null;
 
 	/**
@@ -279,6 +272,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass variableDeclarationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass assignmentEClass = null;
 
 	/**
@@ -342,14 +342,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass secretVariableEClass = null;
+	private EClass variableReferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -357,13 +350,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass variableContextEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass variableDereferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -392,6 +378,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass comparisonOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dotOpEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -427,13 +420,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass negationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum permissioN_TYPEEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -607,18 +593,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPipelineBlock_Permissions() {
-		return (EReference) pipelineBlockEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getPipelineBlock_TimeoutMinutes() {
-		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -628,7 +604,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EAttribute getPipelineBlock_WorkingDirectory() {
-		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -638,7 +614,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EReference getPipelineBlock_ConcurrencyGroup() {
-		return (EReference) pipelineBlockEClass.getEStructuralFeatures().get(8);
+		return (EReference) pipelineBlockEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -648,7 +624,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EAttribute getPipelineBlock_Shell() {
-		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1077,36 +1053,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getPermission() {
-		return permissionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPermission_Key() {
-		return (EAttribute) permissionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPermission_Value() {
-		return (EAttribute) permissionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getMatrix() {
 		return matrixEClass;
 	}
@@ -1167,8 +1113,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMatrixAxis_Name() {
-		return (EAttribute) matrixAxisEClass.getEStructuralFeatures().get(0);
+	public EReference getMatrixAxis_Name() {
+		return (EReference) matrixAxisEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1217,8 +1163,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameter_Id() {
-		return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
+	public EReference getParameter_Id() {
+		return (EReference) parameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1607,6 +1553,26 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getVariableDeclaration() {
+		return variableDeclarationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariableDeclaration_Name() {
+		return (EAttribute) variableDeclarationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAssignment() {
 		return assignmentEClass;
 	}
@@ -1767,8 +1733,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getVariable() {
-		return variableEClass;
+	public EClass getVariableReference() {
+		return variableReferenceEClass;
 	}
 
 	/**
@@ -1777,18 +1743,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariable_Name() {
-		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getSecretVariable() {
-		return secretVariableEClass;
+	public EReference getVariableReference_Reference() {
+		return (EReference) variableReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1809,36 +1765,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EAttribute getVariableContext_Context() {
 		return (EAttribute) variableContextEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVariableDereference() {
-		return variableDereferenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getVariableDereference_Variable() {
-		return (EReference) variableDereferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getVariableDereference_Property() {
-		return (EAttribute) variableDereferenceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1927,6 +1853,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getDotOp() {
+		return dotOpEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getLogicalOp() {
 		return logicalOpEClass;
 	}
@@ -1979,16 +1915,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EClass getNegation() {
 		return negationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getPERMISSION_TYPE() {
-		return permissioN_TYPEEEnum;
 	}
 
 	/**
@@ -2087,7 +2013,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__INPUTS);
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__OUTPUTS);
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
-		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__PERMISSIONS);
 		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__TIMEOUT_MINUTES);
 		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__WORKING_DIRECTORY);
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__CONCURRENCY_GROUP);
@@ -2148,10 +2073,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(concurrencyGroupEClass, CONCURRENCY_GROUP__GROUP_ID);
 		createEAttribute(concurrencyGroupEClass, CONCURRENCY_GROUP__CANCEL_IN_PROGRESS);
 
-		permissionEClass = createEClass(PERMISSION);
-		createEAttribute(permissionEClass, PERMISSION__KEY);
-		createEAttribute(permissionEClass, PERMISSION__VALUE);
-
 		matrixEClass = createEClass(MATRIX);
 		createEReference(matrixEClass, MATRIX__AXES);
 		createEReference(matrixEClass, MATRIX__INCLUDES);
@@ -2159,14 +2080,14 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEAttribute(matrixEClass, MATRIX__FAIL_FAST);
 
 		matrixAxisEClass = createEClass(MATRIX_AXIS);
-		createEAttribute(matrixAxisEClass, MATRIX_AXIS__NAME);
+		createEReference(matrixAxisEClass, MATRIX_AXIS__NAME);
 		createEReference(matrixAxisEClass, MATRIX_AXIS__CELLS);
 
 		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
 		createEReference(matrixCombinationEClass, MATRIX_COMBINATION__COMBINATION_ENTRIES);
 
 		parameterEClass = createEClass(PARAMETER);
-		createEAttribute(parameterEClass, PARAMETER__ID);
+		createEReference(parameterEClass, PARAMETER__ID);
 		createEReference(parameterEClass, PARAMETER__DESCRIPTION);
 
 		inputEClass = createEClass(INPUT);
@@ -2216,6 +2137,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		checkoutEClass = createEClass(CHECKOUT);
 		createEReference(checkoutEClass, CHECKOUT__PATH);
 
+		variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+		createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
+
 		assignmentEClass = createEClass(ASSIGNMENT);
 		createEReference(assignmentEClass, ASSIGNMENT__KEY);
 		createEReference(assignmentEClass, ASSIGNMENT__VALUE);
@@ -2241,17 +2165,11 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
 		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
-		variableEClass = createEClass(VARIABLE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
-
-		secretVariableEClass = createEClass(SECRET_VARIABLE);
+		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
+		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REFERENCE);
 
 		variableContextEClass = createEClass(VARIABLE_CONTEXT);
 		createEAttribute(variableContextEClass, VARIABLE_CONTEXT__CONTEXT);
-
-		variableDereferenceEClass = createEClass(VARIABLE_DEREFERENCE);
-		createEReference(variableDereferenceEClass, VARIABLE_DEREFERENCE__VARIABLE);
-		createEAttribute(variableDereferenceEClass, VARIABLE_DEREFERENCE__PROPERTY);
 
 		builtInFunctionEClass = createEClass(BUILT_IN_FUNCTION);
 
@@ -2265,6 +2183,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		comparisonOpEClass = createEClass(COMPARISON_OP);
 		createEAttribute(comparisonOpEClass, COMPARISON_OP__OP);
 
+		dotOpEClass = createEClass(DOT_OP);
+
 		logicalOpEClass = createEClass(LOGICAL_OP);
 
 		andEClass = createEClass(AND);
@@ -2277,7 +2197,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		negationEClass = createEClass(NEGATION);
 
 		// Create enums
-		permissioN_TYPEEEnum = createEEnum(PERMISSION_TYPE);
 		shelL_TYPEEEnum = createEEnum(SHELL_TYPE);
 		inpuT_TYPEEEnum = createEEnum(INPUT_TYPE);
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
@@ -2341,14 +2260,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
-		variableEClass.getESuperTypes().add(this.getValue());
-		secretVariableEClass.getESuperTypes().add(this.getVariable());
+		variableReferenceEClass.getESuperTypes().add(this.getValue());
 		variableContextEClass.getESuperTypes().add(this.getValue());
-		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
 		builtInFunctionEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		equalityOpEClass.getESuperTypes().add(this.getBinaryOp());
 		comparisonOpEClass.getESuperTypes().add(this.getBinaryOp());
+		dotOpEClass.getESuperTypes().add(this.getBinaryOp());
 		logicalOpEClass.getESuperTypes().add(this.getBinaryOp());
 		andEClass.getESuperTypes().add(this.getLogicalOp());
 		orEClass.getESuperTypes().add(this.getLogicalOp());
@@ -2372,9 +2290,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getPipelineBlock_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
 				null, 0, -1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_Permissions(), this.getPermission(), null, "permissions", null, 0, -1,
-				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPipelineBlock_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null, 0,
 				1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
@@ -2505,13 +2420,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				null, 1, 1, ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(permissionEClass, Map.Entry.class, "Permission", !IS_ABSTRACT, !IS_INTERFACE,
-				!IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPermission_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPermission_Value(), this.getPERMISSION_TYPE(), "value", null, 1, 1, Map.Entry.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 1, -1, Matrix.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
@@ -2527,8 +2435,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(matrixAxisEClass, MatrixAxis.class, "MatrixAxis", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMatrixAxis_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixAxis.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixAxis_Name(), this.getVariableDeclaration(), null, "name", null, 1, 1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMatrixAxis_Cells(), this.getExpression(), null, "cells", null, 1, -1, MatrixAxis.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2541,8 +2450,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Id(), ecorePackage.getEString(), "id", null, 1, 1, Parameter.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Id(), this.getVariableDeclaration(), null, "id", null, 1, 1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getParameter_Description(), this.getExpression(), null, "description", null, 0, 1,
 				Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2645,11 +2555,17 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAssignment_Key(), this.getVariable(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getAssignment_Key(), this.getVariableDeclaration(), null, "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2689,28 +2605,17 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(variableReferenceEClass, VariableReference.class, "VariableReference", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(secretVariableEClass, SecretVariable.class, "SecretVariable", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariableReference_Reference(), this.getVariableDeclaration(), null, "reference", null, 1, 1,
+				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableContextEClass, VariableContext.class, "VariableContext", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableContext_Context(), this.getVARIABLE_CONTEXTS(), "context", null, 1, 1,
 				VariableContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableDereferenceEClass, VariableDereference.class, "VariableDereference", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableDereference_Variable(), this.getExpression(), null, "variable", null, 1, 1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariableDereference_Property(), ecorePackage.getEString(), "property", null, 1, 1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(builtInFunctionEClass, BuiltInFunction.class, "BuiltInFunction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2733,6 +2638,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getComparisonOp_Op(), this.getCOMPARISON_OPS(), "op", null, 1, 1, ComparisonOp.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(dotOpEClass, DotOp.class, "DotOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(logicalOpEClass, LogicalOp.class, "LogicalOp", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
@@ -2749,11 +2656,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
-		initEEnum(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.class, "PERMISSION_TYPE");
-		addEEnumLiteral(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.READ);
-		addEEnumLiteral(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.WRITE);
-		addEEnumLiteral(permissioN_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.PERMISSION_TYPE.NONE);
-
 		initEEnum(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.class, "SHELL_TYPE");
 		addEEnumLiteral(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.BASH);
 

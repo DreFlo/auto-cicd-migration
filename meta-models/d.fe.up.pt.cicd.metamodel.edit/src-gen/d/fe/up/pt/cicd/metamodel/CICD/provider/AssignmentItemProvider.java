@@ -159,11 +159,8 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.ASSIGNMENT__KEY, CICDFactory.eINSTANCE.createVariable()));
-
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.ASSIGNMENT__KEY,
-				CICDFactory.eINSTANCE.createSecretVariable()));
+				CICDFactory.eINSTANCE.createVariableDeclaration()));
 	}
 
 }

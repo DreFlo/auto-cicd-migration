@@ -20,7 +20,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -71,8 +70,7 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 						getResourceLocator(), getString("_UI_Parameter_id_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_id_feature",
 								"_UI_Parameter_type"),
-						CICDPackage.Literals.PARAMETER__ID, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CICDPackage.Literals.PARAMETER__ID, true, false, false, null, null, null));
 	}
 
 	/**
@@ -108,9 +106,7 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Parameter) object).getId();
-		return label == null || label.length() == 0 ? getString("_UI_Parameter_type")
-				: getString("_UI_Parameter_type") + " " + label;
+		return getString("_UI_Parameter_type");
 	}
 
 	/**

@@ -132,8 +132,14 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
+
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createEquality()));
@@ -198,17 +204,20 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.BINARY_OP__LHS, GHAFactory.eINSTANCE.createGitHubContext()));
 
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.BINARY_OP__LHS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS,
+				GHAFactory.eINSTANCE.create(GHAPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors
 				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createEquality()));
@@ -273,14 +282,11 @@ public class BinaryOpItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors
-				.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createVariable()));
+		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS,
+				GHAFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(
 				createChildParameter(GHAPackage.Literals.BINARY_OP__RHS, GHAFactory.eINSTANCE.createGitHubContext()));
-
-		newChildDescriptors.add(createChildParameter(GHAPackage.Literals.BINARY_OP__RHS,
-				GHAFactory.eINSTANCE.createVariableDereference()));
 	}
 
 	/**

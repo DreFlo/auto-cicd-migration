@@ -70,21 +70,13 @@ ruleVariableDereference:
 	(
 		(
 			'.'
-			RULE_ID
+			ruleVariableDereference
 			    |
-			(
-				'['
-				'"'
-				RULE_ID
-				'"'
-				    |
-				'\''
-				RULE_ID
-				'"'
-				']'
-			)
+			'['
+			ruleVariableDereference
+			']'
 		)
-	)*
+	)?
 ;
 
 // Rule Primary

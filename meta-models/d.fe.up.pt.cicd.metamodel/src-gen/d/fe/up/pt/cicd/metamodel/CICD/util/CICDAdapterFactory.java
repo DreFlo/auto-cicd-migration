@@ -139,11 +139,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter casePermission(Map.Entry<String, PERMISSION_TYPE> object) {
-			return createPermissionAdapter();
-		}
-
-		@Override
 		public Adapter caseMatrix(Matrix object) {
 			return createMatrixAdapter();
 		}
@@ -214,7 +209,12 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAssignment(Map.Entry<Variable, Expression> object) {
+		public Adapter caseVariableDeclaration(VariableDeclaration object) {
+			return createVariableDeclarationAdapter();
+		}
+
+		@Override
+		public Adapter caseAssignment(Map.Entry<VariableDeclaration, Expression> object) {
 			return createAssignmentAdapter();
 		}
 
@@ -259,23 +259,13 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariable(Variable object) {
-			return createVariableAdapter();
-		}
-
-		@Override
-		public Adapter caseSecretVariable(SecretVariable object) {
-			return createSecretVariableAdapter();
+		public Adapter caseVariableReference(VariableReference object) {
+			return createVariableReferenceAdapter();
 		}
 
 		@Override
 		public Adapter caseVariableContext(VariableContext object) {
 			return createVariableContextAdapter();
-		}
-
-		@Override
-		public Adapter caseVariableDereference(VariableDereference object) {
-			return createVariableDereferenceAdapter();
 		}
 
 		@Override
@@ -296,6 +286,11 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseComparisonOp(ComparisonOp object) {
 			return createComparisonOpAdapter();
+		}
+
+		@Override
+		public Adapter caseDotOp(DotOp object) {
+			return createDotOpAdapter();
 		}
 
 		@Override
@@ -539,20 +534,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Permission</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createPermissionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Matrix <em>Matrix</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -749,6 +730,20 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration <em>Variable Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration
+	 * @generated
+	 */
+	public Adapter createVariableDeclarationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -875,30 +870,16 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.Variable <em>Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Variable
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableReference
 	 * @generated
 	 */
-	public Adapter createVariableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.SecretVariable <em>Secret Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SecretVariable
-	 * @generated
-	 */
-	public Adapter createSecretVariableAdapter() {
+	public Adapter createVariableReferenceAdapter() {
 		return null;
 	}
 
@@ -913,20 +894,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableContextAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableDereference <em>Variable Dereference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableDereference
-	 * @generated
-	 */
-	public Adapter createVariableDereferenceAdapter() {
 		return null;
 	}
 
@@ -983,6 +950,20 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComparisonOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.DotOp <em>Dot Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.DotOp
+	 * @generated
+	 */
+	public Adapter createDotOpAdapter() {
 		return null;
 	}
 

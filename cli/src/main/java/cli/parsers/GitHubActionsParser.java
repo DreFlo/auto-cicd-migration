@@ -7,11 +7,14 @@ import com.google.inject.Injector;
 import d.fe.up.pt.cicd.gha.dsl.GitHubActionsStandaloneSetup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.*;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Package;
+import org.antlr.stringtemplate.language.Expr;
 import org.eclipse.xtext.parser.IParseResult;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.StreamSupport;
 
 
@@ -157,6 +160,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private Expression parseBracketedExpression(String expressionString) throws SyntaxException {
+		parseOr(expressionString);
 		IParseResult result = parser.parse(new StringReader(expressionString));
 
 		if (result.hasSyntaxErrors()) {
@@ -165,6 +169,106 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		return (Expression) result.getRootASTElement();
+	}
+
+	private Expression parseOr(String expressionString) throws SyntaxException {
+		List<String> parts = new ArrayList<>();
+		Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|(\\|\\|(?!$))|[^\\|]+").matcher(expressionString);
+
+		while (matcher.find()) {
+			if (!Objects.equals(matcher.group(), "||"))
+				parts.add(matcher.group().trim());
+		}
+
+		if (parts.size() == 1) {
+			return parseAnd(parts.get(0));
+		}
+
+		Or or = GHAPackage.eINSTANCE.getGHAFactory().createOr();
+
+		or.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 1).stream().reduce((s1, s2) -> s1 + "||" + s2).get()));
+		or.setRhs(parseAnd(parts.get(parts.size() - 1)));
+
+		return or;
+	}
+
+	private Expression parseAnd(String expressionString) throws SyntaxException {
+		List<String> parts = new ArrayList<>();
+		Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|(\\&\\&(?!$))|[^\\&]+").matcher(expressionString);
+
+		while (matcher.find()) {
+			if (!Objects.equals(matcher.group(), "&&"))
+				parts.add(matcher.group().trim());
+		}
+
+		if (parts.size() == 1) {
+			return parseEquality(parts.get(0));
+		}
+
+		And and = GHAPackage.eINSTANCE.getGHAFactory().createAnd();
+
+		and.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 1).stream().reduce((s1, s2) -> s1 + "&&" + s2).get()));
+		and.setRhs(parseEquality(parts.get(parts.size() - 1)));
+
+		return and;
+	}
+
+	private Expression parseEquality(String expressionString) throws SyntaxException {
+		List<String> parts = new ArrayList<>();
+		Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|((==|!=)(?!$))|[^=]+").matcher(expressionString);
+
+		while (matcher.find()) {
+			parts.add(matcher.group().trim());
+		}
+
+		if (parts.size() == 1) {
+			return parseComparison(parts.get(0));
+		}
+
+		Equality equality = GHAPackage.eINSTANCE.getGHAFactory().createEquality();
+
+		equality.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 2).stream().reduce((s1, s2) -> s1 + s2).get()));
+		equality.setOp(EQUALITY_OPS.get(parts.get(parts.size() - 2)));
+		equality.setRhs(parseComparison(parts.get(parts.size() - 1)));
+
+		return equality;
+
+	}
+
+	private Expression parseComparison(String expressionString) throws SyntaxException {
+		List<String> parts = new ArrayList<>();
+		Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|((<|<=|>|>=)(?!$))|[^<>=]+").matcher(expressionString);
+
+		while (matcher.find()) {
+			parts.add(matcher.group().trim());
+		}
+
+		if (parts.size() == 1) {
+			return parseNot(parts.get(0));
+		}
+
+		Comparison comparison = GHAPackage.eINSTANCE.getGHAFactory().createComparison();
+
+		comparison.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 2).stream().reduce((s1, s2) -> s1 + s2).get()));
+		comparison.setOp(COMPARISON_OPS.get(parts.get(parts.size() - 2)));
+		comparison.setRhs(parseNot(parts.get(parts.size() - 1)));
+
+		return comparison;
+	}
+
+	private Expression parseNot(String expressionString) throws SyntaxException {
+		if (expressionString.startsWith("!")) {
+			Not not = GHAPackage.eINSTANCE.getGHAFactory().createNot();
+			not.setChildExpr(parseBracketedExpression(expressionString.substring(1)));
+			return not;
+		} else {
+			return parsePrimary(expressionString);
+		}
+	}
+
+	// TODO: Implement
+	private Expression parsePrimary(String expressionString) throws SyntaxException {
+		return null;
 	}
 
 	private List<Trigger> parseWorkflowTriggers(YamlNode triggers) throws SyntaxException {

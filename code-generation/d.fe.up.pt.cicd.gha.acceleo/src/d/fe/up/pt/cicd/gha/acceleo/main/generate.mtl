@@ -13,12 +13,16 @@
   invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'quoteString(java.lang.String)', Sequence{string})
 /]
 
+[template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]
+[name/]
+[/template]
+
 [template public generateExpression(expression : Expression)post (trim())]
 [if (expression.oclIsUndefined())]
 OclUndefined
 [elseif (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))]
 [_generateExpression(expression)/]
-[elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(VariableDereference) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))]
+[elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(DotOp) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))]
 [_generateExpression(expression)/]
 [else]
 ${{ [_generateExpression(expression)/] }}
@@ -28,14 +32,14 @@ ${{ [_generateExpression(expression)/] }}
 [template public _generateExpression(expression : Expression) post (trim())]
 [if (expression.oclIsKindOf(Literal))]
 [generateLiteral(expression.oclAsType(Literal))/]
-[elseif (expression.oclIsKindOf(Variable))]
-[expression.oclAsType(Variable).name/]
+[elseif (expression.oclIsTypeOf(VariableReference))]
+[expression.oclAsType(VariableReference).name/]
+[elseif (expression.oclIsTypeOf(DotOp))]
+[generateDotOp(expression.oclAsType(DotOp))/]
 [elseif (expression.oclIsKindOf(GitHubContext))]
 [expression.oclAsType(GitHubContext)._context/]
 [elseif (expression.oclIsKindOf(BinaryOp))]
 [generateBinaryOp(expression.oclAsType(BinaryOp))/]
-[elseif (expression.oclIsKindOf(VariableDereference))]
-[generateVariableDereference(expression.oclAsType(VariableDereference))/]
 [elseif (expression.oclIsKindOf(UnaryOp))]
 [generateUnaryOp(expression.oclAsType(UnaryOp))/]
 [elseif (expression.oclIsKindOf(Concat))]
@@ -72,12 +76,12 @@ ${{ [_generateExpression(expression)/] }}
 [/if]
 [/template]
 
-[template public generateVariableDereference(variableDereference : VariableDereference)]
-[generateExpression(variable)/].[property/]
+[template public generateDotOp(dotOp : DotOp)]
+[generateExpression(lhs)/].[generateExpression(rhs)/]
 [/template]
 
 [template public generateBinaryOp(binaryOp : BinaryOp)]
-[generateExpression(lhs)/] [getBinaryOperator(binaryOp)/] [generateExpression(rhs)/]
+[generateExpression(lhs)/][getBinaryOperator(binaryOp)/][generateExpression(rhs)/]
 [/template]
 
 [template public generateUnaryOp(unaryOp : UnaryOp)]
@@ -219,7 +223,7 @@ types:
 [/template]
 
 [template public generateInput(input : Input) post (trim())]
-[id/]:
+[generateVariableDeclaration(id)/]:
   type: [type/]
 [if (not description.oclIsUndefined())]
   description: [generateExpression(description)/]
@@ -239,7 +243,7 @@ types:
 [/template]
 
 [template public generateOutput(output : Output) post (trim())]
-[id/]:
+[generateVariableDeclaration(id)/]:
 [if (not description.oclIsUndefined())]
   description: [generateExpression(description)/]
 [/if]
@@ -261,7 +265,7 @@ types:
 [/template]
 
 [template public generateVariableAssignment(variableAssignment : VariableAssignment) post (trim())]
-[key/]: [generateExpression(value)/]
+[generateVariableDeclaration(key)/]: [generateExpression(value)/]
 [/template]
 
 [template public generateConcurrencyGroup(concurrencyGroup : ConcurrencyGroup) post (trim())]
@@ -319,7 +323,7 @@ cancel-in-progress: [generateExpression(cancelInProgress)/]
   strategy:
     matrix:
     [for (axis : MatrixAxis | strategy.axes)]
-      [generateExpressionList(axis.cells, axis.name, '', true)/]
+      [generateExpressionList(axis.cells, axis.name.name, '', true)/]
     [/for]
     [if (strategy.includes->notEmpty())]
       include:

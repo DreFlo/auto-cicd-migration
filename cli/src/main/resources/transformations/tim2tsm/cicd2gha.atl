@@ -10,8 +10,12 @@ rule Pipeline2Workflow {
 		pipeline : CICD!Pipeline
 	to
 		workflow : GHA!Workflow(
-			concurrencyGroup <- pipeline.concurrencyGroup,
-			defaults <- thisModule.Defaults(pipeline.shell, pipeline.workingDirectory),
+			defaults <- 
+				if not pipeline.shell.oclIsUndefined() then
+					thisModule.Defaults(pipeline.shell, pipeline.workingDirectory)
+				else
+					OclUndefined
+				endif,
 			environmentVariables <- pipeline.environmentVariables,
 			jobs <- thisModule.getAllJobs(pipeline.jobStreams),
 			name <- 
@@ -20,7 +24,6 @@ rule Pipeline2Workflow {
 				else
 					OclUndefined
 				endif,
-			permissions <- pipeline.permissions,
 			runName <- 
 				if not pipeline.name.oclIsUndefined() then
 					thisModule.String2StringLiteral(pipeline.name)
@@ -101,7 +104,6 @@ abstract rule Job2Job {
 	to
 		ghaJob : GHA!Job(
 			agent <- thisModule.Agent2Agent(cicdJob.agent),
-			concurrencyGroup <- cicdJob.concurrencyGroup,
 			container <- 
 				if cicdJob.agent.oclIsUndefined() then
 					OclUndefined
@@ -114,7 +116,12 @@ abstract rule Job2Job {
 				else
 					OclUndefined
 				endif,
-			defaults <- thisModule.Defaults(cicdJob.shell, cicdJob.workingDirectory),
+			defaults <- 
+				if not cicdJob.shell.oclIsUndefined() then
+					thisModule.Defaults(cicdJob.shell, cicdJob.workingDirectory)
+				else
+					OclUndefined
+				endif,
 			dependsOn <- cicdJob.previous,
 			environmentVariables <- cicdJob.environmentVariables,
 			ifCondition <- cicdJob.ifCondition,
@@ -125,7 +132,6 @@ abstract rule Job2Job {
 					OclUndefined
 				endif,
 			name <- cicdJob.id,
-			permissions <- cicdJob.permissions,
 			services <- cicdJob.services->collect(service | thisModule.DockerContainer2Service(service)),
 			strategy <- cicdJob.matrix,
 			timeoutMinutes <- 
@@ -279,24 +285,6 @@ rule Checkout2Package extends NonConditionalStep2Step {
 		)
 }
 
-rule Permission2Permission {
-	from
-		cicdPermission : CICD!Permission
-	to
-		ghaPermission : GHA!Permission(
-			key <- cicdPermission.key.getPermissionScope(),
-			value <-
-				if cicdPermission.value = #READ then
-					#read
-				else if cicdPermission.value = #WRITE then
-					#write
-				else
-					#none
-				endif
-				endif
-		)
-}
-
 rule DockerContainer2Container {
 	from
 		dockerContainer : CICD!DockerContainer
@@ -314,21 +302,6 @@ rule DockerContainer2Container {
 			ports <- dockerContainer.ports,
 			username <- dockerContainer.registryUsername,
 			volumes <- dockerContainer.volumes
-		)
-}
-
-rule ConcurrencyGroup2ConcurrencyGroup {
-	from
-		cicdGroup : CICD!ConcurrencyGroup
-	to
-		ghaGroup : GHA!ConcurrencyGroup(
-			name <- cicdGroup.groupId,
-			cancelInProgress <- 
-				if not cicdGroup.cancelInProgress.oclIsUndefined() then
-					thisModule.Boolean2BooleanLiteral(cicdGroup.cancelInProgress)
-				else
-					OclUndefined
-				endif
 		)
 }
 
@@ -408,8 +381,17 @@ rule Assignment2VariableAssignment {
 		assignment : CICD!Assignment
 	to
 		variableAssignment : GHA!VariableAssignment(
-			key <- assignment.key.name,
+			key <- assignment.key,
 			value <- assignment.value
+		)
+}
+
+rule VariableDeclaration2VariableDeclaration {
+	from
+		input : CICD!VariableDeclaration
+	to
+		output : GHA!VariableDeclaration(
+			name <- input.name
 		)
 }
 
@@ -501,6 +483,15 @@ abstract rule Value2Value extends Expression2Expression {
 		output : GHA!Value
 }
 
+rule VariableReference2VariableReference extends Value2Value {
+	from
+		input : CICD!VariableReference
+	to
+		output : GHA!VariableReference(
+			name <- input.reference.name
+		)
+}
+
 abstract rule Literal2Literal extends Value2Value {
 	from
 		input : CICD!Literal
@@ -560,13 +551,13 @@ rule Negation2Not extends UnaryOp2UnaryOp {
 		output : GHA!Not
 }
 
-rule VariableDereference2VariableDereference extends Expression2Expression {
+rule DotOp2DotOp extends BinaryOp2BinaryOp {
 	from
-		input : CICD!VariableDereference
+		input : CICD!DotOp
 	to
-		output : GHA!VariableDereference(
-			property <- input.property,
-			variable <- input.variable
+		output : GHA!DotOp(
+			lhs <- input.lhs,
+			rhs <- input.rhs
 		)
 }
 
@@ -603,8 +594,17 @@ lazy rule VariableAssignment {
 		value : CICD!Expression
 	to
 		assignment : GHA!VariableAssignment(
-			key <- key,
+			key <- thisModule.VariableDeclaration(key),
 			value <- value
+		)
+}
+
+lazy rule VariableDeclaration {
+	from
+		input : String
+	to
+		output : GHA!VariableDeclaration(
+			name <- input
 		)
 }
 
@@ -677,42 +677,3 @@ helper def : getAllJobs(jobStreams : Sequence(CICD!Job)) : Sequence(CICD!Job) =
 		thisModule.getAllJobs(next)->prepend(jobStreams)->flatten()
 	endif;
 	
-helper context String def : getPermissionScope() : CICD!PERMISSION_SCOPES =
-	if self = 'actions' then
-		#actions
-	else if self = 'checks' then
-		#checks
-	else if self = 'contents' then
-		#contents
-	else if self = 'deployments' then
-		#deployments
-	else if self = 'discussions' then
-		#discussions
-	else if self = 'id-token' then
-		#"id-token"
-	else if self = 'issues' then
-		#issues
-	else if self = 'packages' then
-		#packages
-	else if self = 'pages' then
-		#pages
-	else if self = 'pull-requests' then
-		#"pull-requests"
-	else if self = 'repository-projects' then
-		#"repository-projects"
-	else if self = 'security-events' then
-		#"security-events"
-	else
-		#statuses
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif	
-	endif
-	endif
-	endif;

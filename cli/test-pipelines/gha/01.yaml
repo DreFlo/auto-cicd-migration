@@ -1,5 +1,5 @@
 name: "Workflow"
-run-name: Deploy to ${{ inputs.deploy_target.tt[4] }} by @${{ github.actor }}
+run-name: Deploy to ${{ inputs || rerere  }} by @${{ github.actor }}
 on:
   check_run:
     types: assigned

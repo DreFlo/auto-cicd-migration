@@ -14,10 +14,10 @@ public class CICD2GHATransformer extends FromTIMAbstractTransformer<Workflow, GH
 
     @Override
     protected void registerRefiners() {
-//        try {
-//            getRefiners().add(new SimplifyConditionals(getResourceSet()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            getRefiners().add(new SimplifyConditionals(getResourceSet()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

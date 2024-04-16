@@ -10,12 +10,10 @@ abstract rule PipelineBlock {
 	to
 		output : CICD2!PipelineBlock(
 			agent <- input.agent,
-			concurrencyGroup <- input.concurrencyGroup,
 			environmentVariables <- input.environmentVariables,
 			inputs <- input.inputs,
 			name <- input.name,
 			outputs <- input.outputs,
-			permissions <- input.permissions,
 			shell <- input.shell,
 			timeoutMinutes <- input.timeoutMinutes,
 			workingDirectory <- input.workingDirectory
@@ -140,26 +138,6 @@ rule WebhookTrigger extends Trigger {
 		input : CICD1!WebhookTrigger
 	to
 		output : CICD2!WebhookTrigger
-}
-
-rule ConcurrencyGroup {
-	from
-		input : CICD1!ConcurrencyGroup
-	to
-		output : CICD2!ConcurrencyGroup(
-			cancelInProgress <- input.cancelInProgress,
-			groupId <- input.groupId
-		)
-}
-
-rule Permission {
-	from
-		input : CICD1!Permission
-	to
-		output : CICD2!Permission(
-			key <- input.key,
-			value <- input.value
-		)
 }
 
 rule Matrix {
@@ -369,6 +347,13 @@ abstract rule BinaryOp extends Expression {
 		)
 }
 
+rule DotOp extends BinaryOp {
+	from
+		input : CICD1!DotOp
+	to
+		output : CICD2!DotOp
+}
+
 rule EqualityOp extends BinaryOp {
 	from
 		input : CICD1!EqualityOp
@@ -447,15 +432,6 @@ abstract rule Value extends Expression {
 		output : CICD2!Value
 }
 
-rule Variable extends Value {
-	from
-		input : CICD1!Variable
-	to
-		output : CICD2!Variable(
-			name <- input.name
-		)
-}
-
 abstract rule Literal extends Value {
 	from
 		input : CICD1!Literal
@@ -509,28 +485,22 @@ rule VariableDereference extends Expression {
 		)
 }
 
-rule VariableContext extends Value {
+rule VariableReference extends Value {
 	from
-		input : CICD1!VariableContext
+		input : CICD1!VariableReference
 	to
-		output : CICD2!VariableContext(
-			context <- 
-				if input.context = #ENV then
-					#ENV
-				else if input.context = #PARAMS then
-					#PARAMS
-				else
-					#""
-				endif
-				endif
+		output : CICD2!VariableReference(
+			reference <- input.reference
 		)
 }
 
-rule SecretVariable extends Variable {
+rule VariableDeclaration {
 	from
-		input : CICD1!SecretVariable
+		input : CICD1!VariableDeclaration
 	to
-		output : CICD2!SecretVariable
+		output : CICD2!VariableDeclaration(
+			name <- input.name
+		)
 }
 
 helper context CICD1!Step def : step2StepHelper() : Sequence(CICD2!Step) =

@@ -24,17 +24,12 @@ rule Pipeline2Workflow {
 				else
 					OclUndefined
 				endif,
-			runName <- 
-				if not pipeline.name.oclIsUndefined() then
-					thisModule.String2StringLiteral(pipeline.name)
-				else
-					OclUndefined
-				endif,
 			triggers <- pipeline.triggers->union(
-				if pipeline.inputs->notEmpty() or thisModule.getAllJobs(pipeline.jobStreams)->exists(job | job.inputs->notEmpty()) then 
+				if pipeline.inputs->notEmpty() or pipeline.outputs->notEmpty() or thisModule.getAllJobs(pipeline.jobStreams)->exists(job | job.inputs->notEmpty()) then 
 					 Sequence{
 						thisModule.CreateWorkflowDispatchTrigger(
-					 		pipeline.inputs->union(thisModule.getAllJobs(pipeline.jobStreams)->collect(job | job.inputs)->flatten())
+					 		pipeline.inputs->union(thisModule.getAllJobs(pipeline.jobStreams)->collect(job | job.inputs)->flatten()),
+							pipeline.outputs
 					 	)
 					 }
 				else 
@@ -46,10 +41,12 @@ rule Pipeline2Workflow {
 
 lazy rule CreateWorkflowDispatchTrigger {
 	from
-		inputs : Sequence(CICD!Input)
+		inputs : Sequence(CICD!Input),
+		outputs : Sequence(CICD!Output)
 	to
-		workflowDispatchTrigger : GHA!WorkflowDispatchTrigger(
-			inputs <- inputs
+		workflowCallTrigger : GHA!WorkflowCallTrigger(
+			inputs <- inputs,
+			outputs <- outputs
 		)
 }
 
@@ -488,7 +485,7 @@ rule VariableReference2VariableReference extends Value2Value {
 		input : CICD!VariableReference
 	to
 		output : GHA!VariableReference(
-			name <- input.reference.name
+			reference <- input.reference
 		)
 }
 
@@ -558,23 +555,6 @@ rule DotOp2DotOp extends BinaryOp2BinaryOp {
 		output : GHA!DotOp(
 			lhs <- input.lhs,
 			rhs <- input.rhs
-		)
-}
-
-rule VariableContext2GitHubContext extends Value2Value {
-	from
-		input : CICD!VariableContext
-	to
-		output : GHA!GitHubContext(
-			context <-
-				if input.context = #ENV then
-					#env
-				else if input.context = #PARAMS then
-					#inputs
-				else
-					#""
-				endif
-				endif
 		)
 }
 

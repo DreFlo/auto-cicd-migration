@@ -28,7 +28,7 @@ public interface VariableDeclaration extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getVariableDeclaration_Name()
-	 * @model id="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();

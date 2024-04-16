@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExpressionsParser {
-    private GitHubActionsParser parser;
+    private final GitHubActionsParser parser;
 
     public ExpressionsParser(GitHubActionsParser parser) {
         this.parser = parser;
@@ -87,7 +87,7 @@ public class ExpressionsParser {
     private Expression parseOr(String expressionString, EObject container) throws SyntaxException {
         expressionString = expressionString.trim();
         List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|(\\|\\|(?!$))|[^\\|]+").matcher(expressionString);
+        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|(\\|\\|(?!$))|[^|]+").matcher(expressionString);
 
         while (matcher.find()) {
             if (!Objects.equals(matcher.group(), "||"))
@@ -109,7 +109,7 @@ public class ExpressionsParser {
     private Expression parseAnd(String expressionString, EObject container) throws SyntaxException {
         expressionString = expressionString.trim();
         List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|(\\&\\&(?!$))|[^\\&]+").matcher(expressionString);
+        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|(&&(?!$))|[^&]+").matcher(expressionString);
 
         while (matcher.find()) {
             if (!Objects.equals(matcher.group(), "&&"))
@@ -131,7 +131,7 @@ public class ExpressionsParser {
     private Expression parseEquality(String expressionString, EObject container) throws SyntaxException {
         expressionString = expressionString.trim();
         List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|((==|!=)(?!$))|[^=]+").matcher(expressionString);
+        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|((==|!=)(?!$))|[^=]+").matcher(expressionString);
 
         while (matcher.find()) {
             parts.add(matcher.group().trim());
@@ -154,7 +154,7 @@ public class ExpressionsParser {
     private Expression parseComparison(String expressionString, EObject container) throws SyntaxException {
         expressionString = expressionString.trim();
         List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\\\"[^\\\"]*\\\"\\s*)|(\\s*\\([^\\)]*\\)\\s*)|((<|<=|>|>=)(?!$))|[^<>=]+").matcher(expressionString);
+        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|((<|<=|>|>=)(?!$))|[^<>=]+").matcher(expressionString);
 
         while (matcher.find()) {
             parts.add(matcher.group().trim());
@@ -243,6 +243,7 @@ public class ExpressionsParser {
             return null;
 
         VariableReference variableReference = GHAPackage.eINSTANCE.getGHAFactory().createVariableReference();
+        System.out.println(variableDeclaration.eContainer());
         variableReference.setReference(variableDeclaration);
 
         if (parts.isEmpty()) {
@@ -278,25 +279,30 @@ public class ExpressionsParser {
     private VariableDeclaration getVariableDeclaration(Queue<String> parts, EObject container) {
         if (parts.isEmpty()) {
             return null;
-        } else {
-            String name = parts.poll();
-            if (name.equals("env")) {
+        }
+
+        String name = parts.poll();
+        switch (name) {
+            case "env" -> {
                 return getEnvironmentVariable(container, parts.poll());
-            } else if (name.equals("outputs")) {
+            }
+            case "outputs" -> {
                 return getOutput(container, parts.poll());
-            } else if (name.equals("inputs")) {
+            }
+            case "inputs" -> {
                 return getInput(container, parts.poll());
-            } else if (name.equals("jobs")) {
+            }
+            case "jobs" -> {
                 Job job = getJobByName(parts.poll());
-
-                if (job != null) {
-                    return getVariableDeclaration(parts, job);
-                }
-
+                return getVariableDeclaration(parts, job);
+            }
+            case "matrix" -> {
+                return getMatrixAxis(container, parts.poll());
+            }
+            default -> {
                 return null;
             }
         }
-        return null;
     }
 
     private VariableDeclaration getEnvironmentVariable(EObject eObject, String name) {
@@ -304,6 +310,10 @@ public class ExpressionsParser {
         while (true) {
             while (!(current instanceof Workflow || current instanceof Job || current instanceof Step)) {
                 current = current.eContainer();
+                if (current == null) {
+                    return null;
+                }
+                System.out.println(current.eClass().getName());
             }
 
             if (current instanceof Workflow workflow) {
@@ -325,6 +335,8 @@ public class ExpressionsParser {
 
             if (current.eContainer() == null) {
                 return null;
+            } else {
+                current = current.eContainer();
             }
         }
     }
@@ -366,7 +378,7 @@ public class ExpressionsParser {
     }
 
     private VariableDeclaration getVariableDeclaration(Queue<String> parts, Job job) {
-        if (parts.isEmpty()) {
+        if (parts.isEmpty() || job == null) {
             return null;
         }
 
@@ -385,6 +397,12 @@ public class ExpressionsParser {
             if (step != null) {
                 return getVariableDeclaration(parts, step);
             }
+        } else if (name.equals("matrix")) {
+            if (parts.isEmpty()) {
+                return null;
+            }
+
+            return getMatrixAxis(job, parts.poll());
         }
 
         return null;
@@ -435,6 +453,9 @@ public class ExpressionsParser {
         while (true) {
             while (!(current instanceof Workflow || current instanceof Job)) {
                 current = current.eContainer();
+                if (current == null) {
+                    return null;
+                }
             }
 
             if (current instanceof Workflow workflow) {
@@ -452,6 +473,8 @@ public class ExpressionsParser {
 
             if (current.eContainer() == null) {
                 return null;
+            } else {
+                current = current.eContainer();
             }
         }
     }
@@ -486,6 +509,9 @@ public class ExpressionsParser {
         while (true) {
             while (!(current instanceof Workflow workflow)) {
                 current = current.eContainer();
+                if (current == null) {
+                    return null;
+                }
             }
 
             VariableDeclaration variableDeclaration = getInput(workflow, name);
@@ -495,6 +521,8 @@ public class ExpressionsParser {
 
             if (current.eContainer() == null) {
                 return null;
+            } else {
+                current = current.eContainer();
             }
         }
     }
@@ -510,6 +538,41 @@ public class ExpressionsParser {
         for (Input input : inputs) {
             if (input.getId().getName().equals(name)) {
                 return input.getId();
+            }
+        }
+        return null;
+    }
+
+    private VariableDeclaration getMatrixAxis(EObject eObject, String name) {
+        EObject current = eObject;
+        while (true) {
+            while (!(current instanceof Job job)) {
+                current = current.eContainer();
+                if (current == null) {
+                    return null;
+                }
+            }
+
+            VariableDeclaration variableDeclaration = getMatrixAxis(job, name);
+            if (variableDeclaration != null) {
+                return variableDeclaration;
+            }
+
+            if (current.eContainer() == null) {
+                return null;
+            } else {
+                current = current.eContainer();
+            }
+        }
+    }
+
+    private VariableDeclaration getMatrixAxis(Job job, String name) {
+        if (job.getStrategy() == null) {
+            return null;
+        }
+        for (MatrixAxis matrixAxis : job.getStrategy().getAxes()) {
+            if (matrixAxis.getName().getName().equals(name)) {
+                return matrixAxis.getName();
             }
         }
         return null;

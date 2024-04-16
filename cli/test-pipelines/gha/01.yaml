@@ -36,6 +36,7 @@ permissions:
   actions: read
 env:
   SERVER: production
+  os: ubuntu-latest
 defaults:
   run:
     shell: bash
@@ -66,4 +67,4 @@ jobs:
           FIRST_NAME: Mona
           MIDDLE_NAME: The
           LAST_NAME: Octocat
-        run: echo ${{ env.MY_VAR }} ${{ inputs.username.bob }}
+        run: echo ${{ env.MY_VAR }} ${{ inputs.username.bob }} ${{ matrix.os }} ${{ env.os }}

@@ -176,6 +176,25 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 				}
 			}
 		}
+
+		if (yamlMapping.yamlMapping("strategy") != null) {
+			YamlMapping strategyMap = yamlMapping.yamlMapping("strategy");
+			if (strategyMap.yamlMapping("matrix") != null) {
+				Matrix matrix = GHAPackage.eINSTANCE.getGHAFactory().createMatrix();
+				job.setStrategy(matrix);
+				initMatrix(matrix, strategyMap.yamlMapping("matrix"));
+			}
+		}
+	}
+
+	private void initMatrix(Matrix matrix, YamlMapping yamlMapping) {
+		for (YamlNode key : yamlMapping.keys()) {
+			if (!key.asScalar().value().equals("include") && !key.asScalar().value().equals("exclude")) {
+				MatrixAxis axis = GHAPackage.eINSTANCE.getGHAFactory().createMatrixAxis();
+				matrix.getAxes().add(axis);
+				axis.setName(createVariableDeclaration(key.asScalar().value()));
+			}
+		}
 	}
 
 	private void initVariables(Step step, YamlMapping yamlMapping) throws SyntaxException {
@@ -722,9 +741,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (jobMap.value("strategy") != null) {
-			Matrix matrix = GHAPackage.eINSTANCE.getGHAFactory().createMatrix();
-			job.setStrategy(matrix);
-			parseMatrix(matrix, jobMap.yamlMapping("strategy"));
+			parseMatrix(job.getStrategy(), jobMap.yamlMapping("strategy"));
 		}
 
 		if (jobMap.value("container") != null) {
@@ -827,9 +844,12 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			}
 			for (YamlNode key : matrixMap.keys()) {
 				if (!key.asScalar().value().equals("include") && !key.asScalar().value().equals("exclude")) {
-					MatrixAxis axis = GHAPackage.eINSTANCE.getGHAFactory().createMatrixAxis();
-					matrix.getAxes().add(axis);
-					parseMatrixAxis(axis, key.asScalar().value(), matrixMap.value(key));
+					MatrixAxis axis = matrix.getAxes().stream().filter(a -> a.getName().getName().equals(key.asScalar().value())).findFirst().orElse(null);
+					if (axis != null) {
+						parseMatrixAxis(axis, matrixMap.value(key));
+					} else {
+						throw new SyntaxException("Invalid matrix axis");
+					}
 				}
 			}
 		} else {
@@ -862,10 +882,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 	}
 
-	private void parseMatrixAxis(MatrixAxis axis, String key, YamlNode axisNode) throws SyntaxException {
-		VariableDeclaration axisVariable = GHAPackage.eINSTANCE.getGHAFactory().createVariableDeclaration();
-		axisVariable.setName(key);
-		axis.setName(axisVariable);
+	private void parseMatrixAxis(MatrixAxis axis, YamlNode axisNode) throws SyntaxException {
 		if (axisNode.type().equals(Node.SEQUENCE)) {
 			axis.getCells().addAll(parseExpressions(axisNode, axis));
 		} else if (axisNode.type().equals(Node.SCALAR) && axisNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {

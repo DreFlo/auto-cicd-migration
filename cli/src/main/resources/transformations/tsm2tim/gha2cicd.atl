@@ -7,36 +7,36 @@ create OUT : CICD from IN : GHA;
 rule Workflow2Pipeline {
 	from
 		workflow : GHA!Workflow
-	using {
-		pipelineVariables : Sequence(GHA!VariableDeclaration) = thisModule.getPipelineVariableDeclarations(workflow);
-	}
 	to
-		pipeline : CICD!Pipeline(
-			environmentVariables <- 
-				workflow.environmentVariables->collect(
-					var | 
-					thisModule.VariableAssignment2Assigment(var, Sequence{}, Sequence{}, Sequence{})
-				),
+		pipeline : CICD!Pipeline(			
+			environmentVariables <- workflow.environmentVariables,
 			inputs <- 
 				workflow.triggers->select(trigger | trigger.oclIsKindOf(GHA!InputTrigger))
-				->collect(trigger | trigger.inputs)->flatten()->collect(input | thisModule.Input2Input(input)),
-			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs)->collect(job | job.job2JobHelper(pipelineVariables)),
-			name <-
+				->collect(trigger | trigger.inputs)->flatten()->union(
+				workflow.triggers->select(trigger | trigger.oclIsKindOf(GHA!WorkflowCallTrigger))
+				->collect(trigger | trigger.secrets)->flatten()),
+			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
+			name <-				
 				if not workflow.name.oclIsUndefined() then
 					workflow.name.expression2String()
 				else
 					OclUndefined
-				endif,			
+				endif,
+			outputs <- 
+				workflow.triggers->select(trigger | trigger.oclIsKindOf(GHA!WorkflowCallTrigger))
+				->collect(trigger | trigger.outputs)->flatten(),
 			shell <-
 				if not workflow.defaults.oclIsUndefined() then
 					workflow.defaults.shell.expression2String().getShell()
 				else
 					OclUndefined
 				endif,
-			outputs <- 
-				workflow.triggers->select(trigger | trigger.oclIsKindOf(GHA!InputTrigger))
-				->collect(trigger | trigger.outputs)->flatten()->collect(output | thisModule.Output2Output(output, Sequence{}, Sequence{})),
-			triggers <- workflow.triggers->select(trigger | not trigger.oclIsKindOf(GHA!InputTrigger)),
+			triggers <- 
+				workflow.triggers
+				->select(
+					trigger | 
+					not trigger.oclIsKindOf(GHA!InputTrigger) and not trigger.oclIsKindOf(GHA!StandardEventTrigger)
+				),
 			workingDirectory <-
 				if not workflow.defaults.oclIsUndefined() then
 					workflow.defaults.workingDirectory.expression2String()
@@ -46,25 +46,23 @@ rule Workflow2Pipeline {
 		)
 }
 
-lazy rule Input2Input {
+abstract rule Parameter2Parameter {
+	from
+		input : GHA!Parameter
+	to
+		output : CICD!Parameter(
+			description <- input.description,
+			id <- input.id
+		)
+}
+
+rule Input2Input extends Parameter2Parameter {
 	from
 		input : GHA!Input
 	to
 		output : CICD!Input(
-			id <- input.id,
-			description <- 
-				if not input.description.oclIsUndefined() then
-					input.description.expression2ExpressionHelper(Sequence{}, Sequence{}, Sequence{})
-				else
-					OclUndefined
-				endif,
 			choices <- input.options,
-			defaultValue <- 
-				if not input.default.oclIsUndefined() then
-					input.default.expression2ExpressionHelper(Sequence{}, Sequence{}, Sequence{})
-				else
-					OclUndefined
-				endif,
+			defaultValue <- input.default,
 			required <- input.isRequired,
 			type <-
 				if input.type = #STRING then
@@ -84,145 +82,24 @@ lazy rule Input2Input {
 		)
 }
 
-lazy rule Output2Output {
+rule Output2Output extends Parameter2Parameter {
 	from
-		input : GHA!Output,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
+		input : GHA!Output
 	to
 		output : CICD!Output(
-			id <- input.id,
-			description <- 
-				if not input.description.oclIsUndefined() then
-					input.description.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			value <- 
-				if not input.value.oclIsUndefined() then
-					input.value.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif
+			value <- input.value
 		)
 }
 
-unique lazy rule ScriptJob2ScriptJob {
+rule Secret2Input extends Parameter2Parameter {
 	from
-		ghaJob : GHA!ScriptJob,
-		pipelineVariables : Sequence(GHA!VariableDeclaration)
-	using {
-		jobVariables : Sequence(GHA!VariableDeclaration) = thisModule.getJobVariableDeclarations(ghaJob);
-	}
+		input : GHA!Secret
 	to
-		cicdJob : CICD!ScriptJob(
-			agent <- 
-				if not ghaJob.agent.oclIsUndefined() then
-					thisModule.GetAgentFromJob(ghaJob, pipelineVariables, jobVariables)
-				else
-					OclUndefined
-				endif,
-			allowFailure <- ghaJob.continueOnError.expression2Boolean(),
-			environmentVariables <- ghaJob.environmentVariables->collect(var | thisModule.VariableAssignment2Assigment(var, pipelineVariables, Sequence{}, Sequence{})),
-			id <- ghaJob.name,
-			ifCondition <- 
-				if not ghaJob.ifCondition.oclIsUndefined() then 
-					ghaJob.ifCondition.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			matrix <-
-				if not ghaJob.strategy.oclIsUndefined() then
-					thisModule.Matrix2Matrix(ghaJob.strategy)
-				else
-					OclUndefined
-				endif,
-			name <- 
-				if not ghaJob.jobName.oclIsUndefined() then
-					ghaJob.jobName.expression2String()
-				else
-					OclUndefined
-				endif,
-			next <- ghaJob.necessaryFor->collect(job | job.job2JobHelper(pipelineVariables)),
-			outputs <- ghaJob.outputs->collect(output | thisModule.Output2Output(output, pipelineVariables, jobVariables)),
-			shell <-
-				if not ghaJob.defaults.oclIsUndefined() then
-					ghaJob.defaults.shell.expression2String().getShell()
-				else
-					OclUndefined
-				endif,
-			services <- ghaJob.services->collect(service | thisModule.Service2DockerContainer(service, pipelineVariables, jobVariables)),
-			steps <- ghaJob.steps->collect(step | step.step2StepHelper(pipelineVariables, jobVariables)),
-			workingDirectory <-
-				if not ghaJob.defaults.oclIsUndefined() then
-					ghaJob.defaults.workingDirectory.expression2String()
-				else
-					OclUndefined
-				endif
+		output : CICD!Input(
+			required <- input.isRequired
 		)
 }
 
-unique lazy rule WorkflowCallJob2PipelineCallJob {
-	from
-		ghaJob : GHA!WorkflowCallJob,
-		pipelineVariables : Sequence(GHA!VariableDeclaration)
-	using {
-		jobVariables : Sequence(GHA!VariableDeclaration) = thisModule.getJobVariableDeclarations(ghaJob);
-	}
-	to
-		cicdJob : CICD!PipelineCallJob(
-			agent <- 
-				if not ghaJob.agent.oclIsUndefined() then
-					thisModule.GetAgentFromJob(ghaJob, pipelineVariables, jobVariables)
-				else
-					OclUndefined
-				endif,
-			allowFailure <- ghaJob.continueOnError.expression2Boolean(),
-			args <- ghaJob.args->collect(
-						var | 
-						thisModule.VariableAssignment2Assigment(var, pipelineVariables, jobVariables, Sequence{}))
-					->union(ghaJob.secrets->collect(
-						var | 
-						thisModule.VariableAssignment2Assigment(var, pipelineVariables, jobVariables, Sequence{}))
-					),			
-			environmentVariables <- ghaJob.environmentVariables->collect(var | thisModule.VariableAssignment2Assigment(var, pipelineVariables, Sequence{}, Sequence{})),
-			id <- ghaJob.name,
-			ifCondition <- 
-				if not ghaJob.ifCondition.oclIsUndefined() then 
-					ghaJob.ifCondition.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			matrix <-
-				if not ghaJob.strategy.oclIsUndefined() then
-					thisModule.Matrix2Matrix(ghaJob.strategy)
-				else
-					OclUndefined
-				endif,
-			name <- ghaJob.jobName.expression2String(),
-			next <- ghaJob.necessaryFor->collect(job | job.job2JobHelper(pipelineVariables)),
-			outputs <- ghaJob.outputs->collect(output | thisModule.Output2Output(output, pipelineVariables, jobVariables)),
-			pipelinePath <-
-				if not ghaJob.uses.oclIsUndefined() then
-					ghaJob.uses.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			shell <-
-				if not ghaJob.defaults.oclIsUndefined() then
-					ghaJob.defaults.shell.expression2String().getShell()
-				else
-					OclUndefined
-				endif,
-			services <- ghaJob.services->collect(service | thisModule.Service2DockerContainer(service, pipelineVariables, jobVariables)),
-			workingDirectory <-
-				if not ghaJob.defaults.oclIsUndefined() then
-					ghaJob.defaults.workingDirectory.expression2String()
-				else
-					OclUndefined
-				endif
-		)
-}
 
 abstract rule Trigger2Trigger {
 	from
@@ -274,399 +151,87 @@ rule PullRequestTrigger2PullRequestTrigger extends Trigger2Trigger {
 		)	
 }
 
-rule VariableDeclaration2VariableDeclaration {
+abstract rule Job2Job {
 	from
-		input : GHA!VariableDeclaration
+		ghaJob : GHA!Job
 	to
-		output : CICD!VariableDeclaration(
-			name <- input.name
-		)
-}
-
-lazy rule VariableAssignment2Assigment {
-	from
-		variableAssignment : GHA!VariableAssignment,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		assignment : CICD!Assignment (
-			key <- variableAssignment.key,
-			value <- variableAssignment.value.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-		)
-}
-
-lazy rule Concat2Concat {
-	from
-		ghaExpression : GHA!Concat,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!Concat(
-			expressions <- ghaExpression.expressions->collect(expression | expression.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables))	
-		)
-}
-
-lazy rule DotOp2DotOp {
-	from
-		ghaExpression : GHA!DotOp,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!DotOp(
-			lhs <- ghaExpression.lhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables),
-			rhs <- ghaExpression.rhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)			
-		)
-}
-
-lazy rule VariableReference2VariableReference {
-	from
-		ghaExpression : GHA!VariableReference,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!VariableReference(
-			reference <-
-				if stepVariables->exists(var | var.name = ghaExpression.name) then
-					stepVariables->select(var | var.name = ghaExpression.name)->first()
-				else if jobVariables->exists(var | var.name = ghaExpression.name) then
-					jobVariables->select(var | var.name = ghaExpression.name)->first()
-				else if pipelineVariables->exists(var | var.name = ghaExpression.name) then
-					pipelineVariables->select(var | var.name = ghaExpression.name)->first()
-				else
-					OclUndefined
-				endif
-				endif
-				endif
-		)
-}
-
-lazy rule And2And {
-	from
-		ghaExpression : GHA!And,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!And(
-			lhs <- ghaExpression.lhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables),
-			rhs <- ghaExpression.rhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-		)
-}
-
-lazy rule Or2Or {
-	from
-		ghaExpression : GHA!Or,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!Or(
-			lhs <- ghaExpression.lhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables),
-			rhs <- ghaExpression.rhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-		)
-}
-
-lazy rule StringLiteral2StringLiteral {
-	from
-		ghaExpression : GHA!StringLiteral
-	to
-		cicdExpression : CICD!StringLiteral(
-			value <- ghaExpression.value
-		)
-}
-
-lazy rule IntegerLiteral2IntegerLiteral {
-	from
-		ghaExpression : GHA!IntegerLiteral
-	to
-		cicdExpression : CICD!IntegerLiteral(
-			value <- ghaExpression.value	
-		)
-}
-
-lazy rule DoubleLiteral2DoubleLiteral {
-	from
-		ghaExpression : GHA!DoubleLiteral
-	to
-		cicdExpression : CICD!DoubleLiteral(
-			value <- ghaExpression.value	
-		)
-}
-
-lazy rule BooleanLiteral2BooleanLiteral {
-	from
-		ghaExpression : GHA!BooleanLiteral
-	to
-		cicdExpression : CICD!BooleanLiteral(
-			value <- ghaExpression.value	
-		)
-}
-
-lazy rule Not2Negation {
-	from
-		ghaExpression : GHA!Not,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!Negation(
-			rhs <- ghaExpression.childExpr.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-		)
-}
-
--- TODO Other Contexts
-lazy rule GitHubContext2VariableContext {
-	from
-		ghaExpression : GHA!GitHubContext
-	to
-		cicdExpression : CICD!VariableContext(
-			context <-
-				if ghaExpression.context = #env then
-					#ENV
-				else if ghaExpression.context = #inputs then
-					#PARAMS
-				else
-					#"ENV"
-				endif
-				endif
-		)
-}
-
-lazy rule String2StringLiteral {
-	from
-		string : String
-	to
-		stringLiteral : CICD!StringLiteral(
-			value <- string
-		)
-}
-
-lazy rule Equality2EqualityOp {
-	from
-		ghaExpression : GHA!Equality,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!EqualityOp(
-			lhs <- ghaExpression.lhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables),
-			op <-
-				if ghaExpression.op = #"==" then
-					#"=="
-				else
-					#"!="
-				endif,	
-			rhs <- ghaExpression.rhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-		)
-}
-
-lazy rule Comparison2ComparisonOp {
-	from
-		ghaExpression : GHA!Comparison,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration),
-		stepVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdExpression : CICD!ComparisonOp(
-			lhs <- ghaExpression.lhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables),
-			op <-
-				if ghaExpression.op = #">" then
-					#">"
-				else if ghaExpression.op = #">=" then
-					#">="
-				else if ghaExpression.op = #"<" then
-					#"<"
-				else
-					#"<="
-				endif
-				endif
-				endif,			
-			rhs <- ghaExpression.rhs.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-		)
-}
-
-
-lazy rule GetAgentFromJob {
-	from
-		job : GHA!Job,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	to
-		agent : CICD!Agent(
-			labels <- job.agent.labels->collect(label | label.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})),
-			container <- 
-				if not job.container.oclIsUndefined() then
-					thisModule.Container2DockerContainer(job.container, pipelineVariables, jobVariables)
-				else
-					OclUndefined
-				endif
-		)
-}
-
-lazy rule Container2DockerContainer {
-	from
-		container : GHA!Container,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	to
-		dockerContainer : CICD!DockerContainer(
-			image <- 
-				if not container.image.oclIsUndefined() then
-					container.image.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
+		cicdJob : CICD!Job(
+			agent <- thisModule.GetAgentFromJob(ghaJob),
+			allowFailure <- 
+				if not ghaJob.continueOnError.oclIsUndefined() then
+					ghaJob.continueOnError.expression2Boolean()
 				else
 					OclUndefined
 				endif,
-			environmentVariables <- container.environmentVariables->collect(var | thisModule.VariableAssignment2Assigment(var, pipelineVariables, jobVariables, Sequence{})),
-			ports <- container.ports->collect(port | port.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})),
-			volumes <- container.volumes->collect(volume | volume.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})),
-			registryUsername <-  
-				if not container.username.oclIsUndefined() then
-					container.username.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
+			environmentVariables <- ghaJob.environmentVariables,
+			id <- ghaJob.name,
+			ifCondition <- ghaJob.ifCondition,
+			matrix <- ghaJob.strategy,
+			name <- 
+				if not ghaJob.jobName.oclIsUndefined() then
+					ghaJob.jobName.expression2String()
 				else
 					OclUndefined
 				endif,
-			registryPassword <-  
-				if not container.password.oclIsUndefined() then
-					container.password.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
+			next <- ghaJob.necessaryFor,
+			outputs <- ghaJob.outputs,
+			shell <-
+				if not ghaJob.defaults.oclIsUndefined() then
+					ghaJob.defaults.shell.expression2String().getShell()
 				else
 					OclUndefined
 				endif,
-			options <- container.options.expression2String()
+			services <- ghaJob.services,
+			workingDirectory <-
+				if not ghaJob.defaults.oclIsUndefined() then
+					ghaJob.defaults.workingDirectory.expression2String()
+				else
+					OclUndefined
+				endif
 		)
 }
 
-lazy rule Service2DockerContainer {
+rule ScriptJob2ScriptJob extends Job2Job {
 	from
-		service : GHA!Service,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	using {
-		container : GHA!Container = service.value;
-	}
+		ghaJob : GHA!ScriptJob
 	to
-		dockerContainer : CICD!DockerContainer(
-			label <- service.key,
-			image <- 
-				if not container.image.oclIsUndefined() then
-					container.image.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			environmentVariables <- container.environmentVariables->collect(var | thisModule.VariableAssignment2Assigment(var, pipelineVariables, jobVariables, Sequence{})),
-			ports <- container.ports->collect(port | port.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})),
-			volumes <- container.volumes->collect(volume | volume.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})),
-			registryUsername <-  
-				if not container.username.oclIsUndefined() then
-					container.username.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			registryPassword <-  
-				if not container.password.oclIsUndefined() then
-					container.password.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			options <- container.options.expression2String()
+		cicdJob : CICD!ScriptJob(
+			steps <- ghaJob.steps
 		)
 }
 
-lazy rule Matrix2Matrix {
+rule WorkflowCallJob2PipelineCallJob extends Job2Job {
 	from
-		ghaMatrix : GHA!Matrix,
-		pipelineVariables : Sequence(GHA!VariableDeclaration)
+		ghaJob : GHA!WorkflowCallJob
 	to
-		cicdMatrix : CICD!Matrix(
-			axes <- ghaMatrix.axes->collect(axis | thisModule.MatrixAxis2MatrixAxis(axis, pipelineVariables)),
-			includes <- ghaMatrix.includes->collect(include | thisModule.MatrixCombination2MatrixCombination(include, pipelineVariables)),
-			excludes <- ghaMatrix.excludes->collect(exclude | thisModule.MatrixCombination2MatrixCombination(exclude, pipelineVariables)),
-			failFast <- ghaMatrix.failFast.expression2Boolean()
+		cicdJob : CICD!PipelineCallJob(
+			pipelinePath <- ghaJob.uses,
+			args <- ghaJob.args.union(ghaJob.secrets)
 		)
 }
 
-lazy rule MatrixAxis2MatrixAxis {
+abstract rule AbstractStep2Step {
 	from
-		ghaAxis : GHA!MatrixAxis,
-		pipelineVariables : Sequence(GHA!VariableDeclaration)
+		ghaStep : GHA!AbstractStep
 	to
-		cicdAxis : CICD!MatrixAxis(
-			name <- ghaAxis.name,
-			cells <- ghaAxis.cells->collect(cell | cell.expression2ExpressionHelper(pipelineVariables, Sequence{}, Sequence{}))
-		)
+		cicdStep : CICD!Step
 }
 
-lazy rule MatrixCombination2MatrixCombination {
+rule IfStep2ConditionalStep extends AbstractStep2Step {
 	from
-		ghaCombination : GHA!MatrixCombination,
-		pipelineVariables : Sequence(GHA!VariableDeclaration)
-	to
-		cicdCombination : CICD!MatrixCombination(
-			combinationEntries <- ghaCombination.entries->collect(entry | thisModule.VariableAssignment2Assigment(entry, pipelineVariables, Sequence{}, Sequence{}))
-		)
-}
-
-lazy rule IfStep2ConditionalStep {
-	from
-		ghaStep : GHA!IfStep,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)		
+		ghaStep : GHA!IfStep
 	to
 		cicdStep : CICD!ConditionalStep(
-			ifCondition <-
-				if not ghaStep.ifCondition.oclIsUndefined() then
-					ghaStep.ifCondition.expression2ExpressionHelper(pipelineVariables, jobVariables, Sequence{})
-				else
-					OclUndefined
-				endif,
-			thenRun <- ghaStep.thenRun->collect(step | step.step2StepHelper(pipelineVariables, jobVariables))
+			ifCondition <- ghaStep.ifCondition,
+			thenRun <- ghaStep.thenRun
 		)
 }
 
-lazy rule Command2Command {
+abstract rule Step2NonConditionalStep extends AbstractStep2Step {
 	from
-		ghaStep : GHA!Command,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	using {		
-		stepVariables : Sequence(GHA!VariableDeclaration) = thisModule.getStepVariableDeclarations(ghaStep);
-	}
+		ghaStep : GHA!Step
 	to
-		cicdStep : CICD!Command(
-			id <- ghaStep.id,
-			timeoutMinutes <- 
-				if not ghaStep.timeoutMinutes.oclIsUndefined() then
-					ghaStep.timeoutMinutes.expression2String().stringToInt()
-				else
-					OclUndefined
-				endif,
-			environmentVariables <- ghaStep.environmentVariables->collect(var | thisModule.VariableAssignment2Assigment(var, pipelineVariables, jobVariables, Sequence{})),
-			allowFailure <- ghaStep.continueOnError,
-			name <- ghaStep.name.expression2String(),
-			program <-
-				if not ghaStep.command.oclIsUndefined() then
-					ghaStep.command.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-				else
-					OclUndefined
-				endif
-		)
-}
-
-lazy rule Package2Plugin {
-	from
-		ghaStep : GHA!Package,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	using {
-		stepVariables : Sequence(GHA!VariableDeclaration) = thisModule.getStepVariableDeclarations(ghaStep);
-		plugin : String = ghaStep.uses.expression2String().split('@')->first();
-		version : String = ghaStep.uses.expression2String().split('@')->last();
-	}
-	to
-		cicdStep : CICD!Plugin(
+		cicdStep : CICD!NonConditionalStep(
 			id <- ghaStep.id,
 			timeoutMinutes <- 
 				if not ghaStep.timeoutMinutes.oclIsUndefined() then
@@ -675,38 +240,59 @@ lazy rule Package2Plugin {
 					OclUndefined
 				endif,
 			environmentVariables <- ghaStep.environmentVariables,
-			allowFailure <- ghaStep.continueOnError,
-			name <- ghaStep.name.expression2String(),
-			pluginName <- plugin,
-			version <- version,
-			kwargs <- ghaStep.args->collect(arg | thisModule.VariableAssignment2Assigment(arg, pipelineVariables, jobVariables, stepVariables))
+			allowFailure <-
+				if not ghaStep.continueOnError.oclIsUndefined() then
+					ghaStep.continueOnError.expression2Boolean()
+				else
+					OclUndefined
+				endif,
+			name <-
+				if not ghaStep.name.oclIsUndefined() then
+					ghaStep.name.expression2String()
+				else
+					OclUndefined
+				endif
 		)
 }
 
-lazy rule Package2Cache {
+rule Command2Command extends Step2NonConditionalStep {
 	from
-		ghaStep : GHA!Package,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
+		ghaStep : GHA!Command
+	to
+		cicdStep : CICD!Command(
+			program <- ghaStep.command
+		)
+}
+
+rule Package2Plugin extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Package(
+			not ghaStep.uses.expression2String().startsWith('actions/cache') and
+			not ghaStep.uses.expression2String().startsWith('actions/upload-artifact') and
+			not ghaStep.uses.expression2String().startsWith('actions/download-artifact') and
+			not ghaStep.uses.expression2String().startsWith('actions/checkout')
+		)
 	using {
-		stepVariables : Sequence(GHA!VariableDeclaration) = thisModule.getStepVariableDeclarations(ghaStep);
-		key : GHA!Expression = thisModule.getVariable(ghaStep.args, 'key');
-		path : GHA!Expression = thisModule.getVariable(ghaStep.args, 'path');
+		plugin : String = ghaStep.uses.expression2String().split('@')->first();
+		version : String = ghaStep.uses.expression2String().split('@')->last();
 	}
 	to
+		cicdStep : CICD!Plugin(
+			pluginName <- plugin,
+			version <- version,
+			kwargs <- ghaStep.args
+		)
+}
+
+rule Package2Cache extends Step2NonConditionalStep {
+	from
+		ghaStep : GHA!Package(
+			ghaStep.uses.expression2String().startsWith('actions/cache')
+		)
+	to
 		cicdStep : CICD!Cache(
-			keys <-
-				if not key.oclIsUndefined() then
-					key.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-				else
-					OclUndefined
-				endif,
-			paths <-
-				if not path.oclIsUndefined() then
-					path.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-				else
-					OclUndefined
-				endif,
+			keys <- thisModule.getVariable(ghaStep.args, 'key'),
+			paths <- thisModule.getVariable(ghaStep.args, 'path'),
 			store <-
 				if ghaStep.uses.expression2String().startsWith('actions/cache/restore') then
 					#LOAD
@@ -719,58 +305,319 @@ lazy rule Package2Cache {
 		)
 }
 
-lazy rule Package2Artifact {
+rule Package2Artifact extends Step2NonConditionalStep {
 	from
-		ghaStep : GHA!Package,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	using {
-		stepVariables : Sequence(GHA!VariableDeclaration) = thisModule.getStepVariableDeclarations(ghaStep);
-		artifactName : GHA!Expression = thisModule.getVariable(ghaStep.args, 'name');
-		includePaths : GHA!Expression = thisModule.getVariable(ghaStep.args, 'path');
-		retentionTime : GHA!Expression = thisModule.getVariable(ghaStep.args, 'retention-days');
-	}
+		ghaStep : GHA!Package(
+			ghaStep.uses.expression2String().startsWith('actions/upload-artifact') or
+			ghaStep.uses.expression2String().startsWith('actions/download-artifact')
+		)
 	to
 		cicdStep : CICD!Artifact(
-			artifactName <-
-				if not artifactName.oclIsUndefined() then
-					artifactName.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-				else
-					OclUndefined
-				endif,
-			includePaths <-
-				if not includePaths.oclIsUndefined() then
-					includePaths.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-				else
-					OclUndefined
-				endif,
-			retentionTime <-
-				if not retentionTime.oclIsUndefined() then
-					retentionTime.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
-				else
-					OclUndefined
-				endif,
+			artifactName <- thisModule.getVariable(ghaStep.args, 'name'),
+			includePaths <- thisModule.getVariable(ghaStep.args, 'path'),
+			retentionTime <- thisModule.getVariable(ghaStep.args, 'retention-days'),
 			store <- ghaStep.uses.expression2String().startsWith('actions/upload-artifact')
 		)
 }
 
-lazy rule Package2Checkout {
+rule Package2Checkout extends Step2NonConditionalStep {
 	from
-		ghaStep : GHA!Package,
-		pipelineVariables : Sequence(GHA!VariableDeclaration),
-		jobVariables : Sequence(GHA!VariableDeclaration)
-	using {
-		stepVariables : Sequence(GHA!VariableDeclaration) = thisModule.getStepVariableDeclarations(ghaStep);
-		path : GHA!Expression = thisModule.getVariable(ghaStep.args, 'path');
-	}
+		ghaStep : GHA!Package(
+			ghaStep.uses.expression2String().startsWith('actions/checkout')
+		)
 	to
 		cicdStep : CICD!Checkout(
-			path <-
-				if not path.oclIsUndefined() then
-					path.expression2ExpressionHelper(pipelineVariables, jobVariables, stepVariables)
+			path <- thisModule.getVariable(ghaStep.args, 'path')
+		)
+}
+
+rule Container2DockerContainer {
+	from
+		container : GHA!Container
+	to
+		dockerContainer : CICD!DockerContainer(
+			image <- container.image,
+			environmentVariables <- container.environmentVariables,
+			ports <- container.ports,
+			volumes <- container.volumes,
+			registryUsername <- container.username,
+			registryPassword <- container.password,
+			options <- 
+				if not container.options.oclIsUndefined() then
+					container.options.expression2String()
 				else
 					OclUndefined
 				endif
+		)
+}
+
+rule Service2DockerContainer {
+	from
+		service : GHA!Service
+	using {
+		container : GHA!Container = service.value;
+	}
+	to
+		dockerContainer : CICD!DockerContainer(
+			label <- service.key,
+			image <- container.image,
+			environmentVariables <- container.environmentVariables,
+			ports <- container.ports,
+			volumes <- container.volumes,
+			registryUsername <- container.username,
+			registryPassword <- container.password,
+			options <-  
+				if not container.options.oclIsUndefined() then
+					container.options.expression2String()
+				else
+					OclUndefined
+				endif
+		)
+}
+
+rule Matrix2Matrix {
+	from
+		ghaMatrix : GHA!Matrix
+	to
+		cicdMatrix : CICD!Matrix(
+			axes <- ghaMatrix.axes,
+			includes <- ghaMatrix.includes,
+			excludes <- ghaMatrix.excludes,
+			failFast <- 
+				if not ghaMatrix.failFast.oclIsUndefined() then
+					ghaMatrix.failFast.expression2Boolean()
+				else
+					OclUndefined
+				endif
+		)
+}
+
+rule MatrixAxis2MatrixAxis {
+	from
+		ghaAxis : GHA!MatrixAxis
+	to
+		cicdAxis : CICD!MatrixAxis(
+			name <- ghaAxis.name,
+			cells <- ghaAxis.cells
+		)
+}
+
+rule MatrixCombination2MatrixCombination {
+	from
+		ghaCombination : GHA!MatrixCombination
+	to
+		cicdCombination : CICD!MatrixCombination(
+			combinationEntries <- ghaCombination.entries
+		)
+}
+
+rule VariableDeclaration2VariableDeclaration {
+	from
+		input : GHA!VariableDeclaration
+	to
+		output : CICD!VariableDeclaration(
+			name <- input.name
+		)
+}
+
+rule VariableAssignment2Assigment {
+	from
+		variableAssignment : GHA!VariableAssignment
+	to
+		assignment : CICD!Assignment (
+			key <- variableAssignment.key,
+			value <- variableAssignment.value
+		)
+}
+
+abstract rule Expression2Expression {
+	from
+		ghaExpression : GHA!Expression
+	to
+		cicdExpression : CICD!Expression
+}
+
+rule Concat2Concat extends Expression2Expression {
+	from
+		ghaExpression : GHA!Concat
+	to
+		cicdExpression : CICD!Concat(
+			expressions <- ghaExpression.expressions	
+		)
+}
+
+abstract rule BinaryOp2BinaryOp extends Expression2Expression {
+	from
+		ghaExpression : GHA!BinaryOp
+	to
+		cicdExpression : CICD!BinaryOp(
+			lhs <- ghaExpression.lhs,
+			rhs <- ghaExpression.rhs
+		)
+}
+
+rule DotOp2DotOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!DotOp
+	to
+		cicdExpression : CICD!DotOp
+}
+
+abstract rule LogicalOp2LogicalOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!LogicalOp
+	to
+		cicdExpression : CICD!LogicalOp
+}
+
+rule And2And extends LogicalOp2LogicalOp {
+	from
+		ghaExpression : GHA!And
+	to
+		cicdExpression : CICD!And
+}
+
+rule Or2Or extends LogicalOp2LogicalOp {
+	from
+		ghaExpression : GHA!Or
+	to
+		cicdExpression : CICD!Or
+}
+
+rule Equality2EqualityOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!Equality
+	to
+		cicdExpression : CICD!EqualityOp(
+			op <-
+				if ghaExpression.op = #"==" then
+					#"=="
+				else
+					#"!="
+				endif
+		)
+}
+
+rule Comparison2ComparisonOp extends BinaryOp2BinaryOp {
+	from
+		ghaExpression : GHA!Comparison
+	to
+		cicdExpression : CICD!ComparisonOp(
+			op <-
+				if ghaExpression.op = #">" then
+					#">"
+				else if ghaExpression.op = #">=" then
+					#">="
+				else if ghaExpression.op = #"<" then
+					#"<"
+				else
+					#"<="
+				endif
+				endif
+				endif
+		)
+}
+
+abstract rule Value2Value extends Expression2Expression {
+	from
+		ghaExpression : GHA!Value
+	to
+		cicdExpression : CICD!Value
+}
+
+abstract rule Literal2Literal extends Value2Value {
+	from
+		ghaExpression : GHA!Literal
+	to
+		cicdExpression : CICD!Literal
+}
+
+rule StringLiteral2StringLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!StringLiteral
+	to
+		cicdExpression : CICD!StringLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+rule IntegerLiteral2IntegerLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!IntegerLiteral
+	to
+		cicdExpression : CICD!IntegerLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+rule DoubleLiteral2DoubleLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!DoubleLiteral
+	to
+		cicdExpression : CICD!DoubleLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+rule BooleanLiteral2BooleanLiteral extends Literal2Literal {
+	from
+		ghaExpression : GHA!BooleanLiteral
+	to
+		cicdExpression : CICD!BooleanLiteral(
+			value <- ghaExpression.value	
+		)
+}
+
+abstract rule UnaryOp2UnaryOp extends Expression2Expression {
+	from
+		ghaExpression : GHA!UnaryOp
+	to
+		cicdExpression : CICD!UnaryOp(
+			rhs <- ghaExpression.childExpr
+		)
+}
+
+rule Not2Negation extends Expression2Expression {
+	from
+		ghaExpression : GHA!Not
+	to
+		cicdExpression : CICD!Negation
+}
+
+rule VariableReference2VariableReference extends Value2Value {
+	from
+		ghaExpression : GHA!VariableReference
+	to
+		cicdExpression : CICD!VariableReference(
+			reference <- ghaExpression.reference
+		)
+}
+
+lazy rule GetAgentFromJob {
+	from
+		job : GHA!Job
+	to
+		agent : CICD!Agent(
+			labels <- job.agent.labels,
+			container <- job.container
+		)
+}
+
+lazy rule NegateExpression {
+	from
+		expression : GHA!Expression
+	to
+		negatedExpression : CICD!Negation(
+			rhs <- expression
+		)
+}
+
+lazy rule String2StringLiteral {
+	from
+		string : String
+	to
+		stringLiteral : CICD!StringLiteral(
+			value <- string
 		)
 }
 
@@ -790,20 +637,6 @@ helper context GHA!DoubleLiteral def : expression2String() : String = self.value
 helper context GHA!BooleanLiteral def : expression2String() : String = self.value.toString();
 
 helper context OclAny def : expression2String() : String = OclUndefined;
-
-helper context GHA!Concat def : expression2String() : String =
-	let exprStrings : Sequence(String) =
-		self.expressions->collect(expr | expr.expression2String()) in
-		exprStrings->iterate(exprString; joinedString: String = '' |
-			joinedString.concat(exprString)
-		);
-
-helper context GHA!Not def : expression2String() : String = 
-	if self.childExpr.oclIsKindOf(GHA!Value) then
-		'!' + self.childExpr.expression2String()
-	else
-		'!(' + self.childExpr.expression2String() + ')'
-	endif;
 
 helper context GHA!Expression def : expression2Boolean() : Boolean = false;
 
@@ -832,16 +665,27 @@ helper context GHA!StringLiteral def : expression2Boolean() : Boolean =
 
 helper context OclAny def : expression2Boolean() : String = OclUndefined;
 
-helper context GHA!Expression def : negationString() : String =
-	if self.oclIsKindOf(GHA!Value) then
-		'!' + self.expression2String()
+helper context GHA!Concat def : expression2String() : String =
+	let exprStrings : Sequence(String) =
+		self.expressions->collect(expr | expr.expression2String()) in
+		exprStrings->iterate(exprString; joinedString: String = '' |
+			joinedString.concat(exprString)
+		);
+
+helper context GHA!Not def : expression2String() : String = 
+	if self.childExpr.oclIsKindOf(GHA!Value) then
+		'!' + self.childExpr.expression2String()
 	else
-		'!(' + self.expression2String() + ')'
+		'!(' + self.childExpr.expression2String() + ')'
 	endif;
+
+helper context String def : getShell() : CICD!SHELL_TYPE = #BASH;
+
+helper context String def : stringToInt() : Integer = Integer.parseInt(self);
 
 helper def : getVariable(map : Sequence(GHA!VariableAssignment), key : String) : GHA!Expression =
 	let matching : Sequence(GHA!VariableAssignment) = 
-		map->select(assignment | assignment.key = key)
+		map->select(assignment | assignment.key.name = key)
 	in
 	if matching->size() >= 1 then
 		matching->first().value
@@ -849,128 +693,9 @@ helper def : getVariable(map : Sequence(GHA!VariableAssignment), key : String) :
 		OclUndefined
 	endif;
 
-
-helper context String def : string2Variable() : CICD!EnvironmentVariable =
-	let environmentVariable : CICD!Variable = CICD!Variable.newInstance() in
-		environmentVariable.refSetValue('name', self);
-
-helper context String def : stringToInt() : Integer = Integer.parseInt(self);
-
-helper context String def : getShell() : CICD!SHELL_TYPE = #BASH;
-
-helper context GHA!Expression def : checkIfVariableDeclaration(
-	pipelineVariables : Sequence(GHA!VariableDeclaration), 
-	jobVariables : Sequence(GHA!VariableDeclaration), 
-	stepVariables : Sequence(GHA!VariableDeclaration)
-) : Boolean =
-	false;
-
-helper context GHA!VariableReference def : checkIfVariableDeclaration(
-	pipelineVariables : Sequence(GHA!VariableDeclaration), 
-	jobVariables : Sequence(GHA!VariableDeclaration), 
-	stepVariables : Sequence(GHA!VariableDeclaration)
-) : Boolean =
-	stepVariables->exists(variable | variable.name = self.name) or
-	jobVariables->exists(variable | variable.name = self.name) or
-	pipelineVariables->exists(variable | variable.name = self.name);
-
-helper context GHA!Expression def : expression2ExpressionHelper(
-	pipelineVariables : Sequence(GHA!VariableDeclaration), 
-	jobVariables : Sequence(GHA!VariableDeclaration), 
-	stepVariables : Sequence(GHA!VariableDeclaration)
-) : CICD!Expression =
-	if self.oclIsTypeOf(GHA!Concat) then
-		thisModule.Concat2Concat(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!DotOp) then
-		thisModule.DotOp2DotOp(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!VariableReference) then
-		if self.checkIfVariableDeclaration(pipelineVariables, jobVariables, stepVariables) then
-			thisModule.VariableReference2VariableReference(self, pipelineVariables, jobVariables, stepVariables)
-		else
-			thisModule.String2StringLiteral(self.name)
-		endif
-	else if self.oclIsTypeOf(GHA!And) then
-		thisModule.And2And(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!Or) then
-		thisModule.Or2Or(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!Equality) then
-		thisModule.Equality2EqualityOp(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!Comparison) then
-		thisModule.Comparison2ComparisonOp(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!StringLiteral) then
-		thisModule.StringLiteral2StringLiteral(self)
-	else if self.oclIsTypeOf(GHA!IntegerLiteral) then
-		thisModule.IntegerLiteral2IntegerLiteral(self)
-	else if self.oclIsTypeOf(GHA!DoubleLiteral) then
-		thisModule.DoubleLiteral2DoubleLiteral(self)
-	else if self.oclIsTypeOf(GHA!BooleanLiteral) then
-		thisModule.BooleanLiteral2BooleanLiteral(self)
-	else if self.oclIsTypeOf(GHA!Not) then
-		thisModule.Not2Negation(self, pipelineVariables, jobVariables, stepVariables)
-	else if self.oclIsTypeOf(GHA!GitHubContext) then
-		thisModule.GitHubContext2VariableContext(self)
+helper context GHA!Expression def : negationString() : String =
+	if self.oclIsKindOf(GHA!Value) then
+		'!' + self.expression2String()
 	else
-		OclUndefined
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif;
-
-helper context GHA!Job def : job2JobHelper(pipelineVariables : Sequence(GHA!VariableDeclaration)) : CICD!Job =
-	if self.oclIsTypeOf(GHA!ScriptJob) then
-		thisModule.ScriptJob2ScriptJob(self, pipelineVariables)
-	else if self.oclIsTypeOf(GHA!WorkflowCallJob) then
-		thisModule.WorkflowCallJob2PipelineCallJob(self, pipelineVariables)
-	else
-		OclUndefined
-	endif
-	endif;
-
-helper def : getPipelineVariableDeclarations(pipeline : GHA!Workflow) : Sequence(GHA!VariableDeclaration) =
-	pipeline.environmentVariables->collect(var | var.key)->union(
-	pipeline.triggers->select(trigger | trigger.oclIsKindOf(GHA!InputTrigger))->collect(trigger | trigger.inputs)->flatten()->collect(input | input.id)
-	);
-
-helper def : getJobVariableDeclarations(job : GHA!Job) : Sequence(GHA!VariableDeclaration) =
-	job.environmentVariables->collect(var | var.key)->union(
-		if not job.strategy.oclIsUndefined() then
-			job.strategy.axes->collect(axis | axis.name)
-		else
-			Sequence{}
-		endif
-	);
-
-helper def : getStepVariableDeclarations(step : GHA!Step) : Sequence(GHA!VariableDeclaration) =
-	step.environmentVariables->collect(var | var.key);
-
-helper context GHA!AbstractStep def : step2StepHelper(pipelineVariables : Sequence(GHA!VariableDeclaration), jobVariables : Sequence(GHA!VariableDeclaration)) : CICD!Step =
-	if self.oclIsTypeOf(GHA!IfStep) then
-		thisModule.IfStep2ConditionalStep(self, pipelineVariables, jobVariables)
-	else if self.oclIsTypeOf(GHA!Command) then
-		thisModule.Command2Command(self, pipelineVariables, jobVariables)
-	else if self.oclIsTypeOf(GHA!Package) then
-		if self.uses.expression2String().startsWith('actions/cache') then
-			thisModule.Package2Cache(self, pipelineVariables, jobVariables)
-		else if self.uses.expression2String().startsWith('actions/upload-artifact') or self.uses.expression2String().startsWith('actions/download-artifact') then
-			thisModule.Package2Artifact(self, pipelineVariables, jobVariables)
-		else if self.uses.expression2String().startsWith('actions/checkout') then
-			thisModule.Package2Checkout(self, pipelineVariables, jobVariables)
-		else
-			thisModule.Package2Plugin(self, pipelineVariables, jobVariables)
-		endif
-		endif
-		endif
-	else
-		OclUndefined
-	endif
-	endif
+		'!(' + self.expression2String() + ')'
 	endif;

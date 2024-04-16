@@ -243,7 +243,6 @@ public class ExpressionsParser {
             return null;
 
         VariableReference variableReference = GHAPackage.eINSTANCE.getGHAFactory().createVariableReference();
-        System.out.println(variableDeclaration.eContainer());
         variableReference.setReference(variableDeclaration);
 
         if (parts.isEmpty()) {

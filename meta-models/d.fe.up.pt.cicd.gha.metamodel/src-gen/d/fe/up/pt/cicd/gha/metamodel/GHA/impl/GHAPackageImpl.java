@@ -2161,8 +2161,8 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariableReference_Name() {
-		return (EAttribute) variableReferenceEClass.getEStructuralFeatures().get(0);
+	public EReference getVariableReference_Reference() {
+		return (EReference) variableReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2917,7 +2917,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
 		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
-		createEAttribute(variableReferenceEClass, VARIABLE_REFERENCE__NAME);
+		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REFERENCE);
 
 		gitHubContextEClass = createEClass(GIT_HUB_CONTEXT);
 		createEAttribute(gitHubContextEClass, GIT_HUB_CONTEXT__CONTEXT);
@@ -3483,9 +3483,9 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(variableReferenceEClass, VariableReference.class, "VariableReference", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariableReference_Name(), ecorePackage.getEString(), "name", null, 1, 1,
-				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableReference_Reference(), this.getVariableDeclaration(), null, "reference", null, 1, 1,
+				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(gitHubContextEClass, GitHubContext.class, "GitHubContext", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

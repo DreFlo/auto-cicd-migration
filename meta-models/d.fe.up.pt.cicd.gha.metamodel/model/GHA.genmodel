@@ -295,7 +295,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//BooleanLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//VariableReference">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//VariableReference/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GHA.ecore#//VariableReference/reference"/>
     </genClasses>
     <genClasses ecoreClass="GHA.ecore#//GitHubContext">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GHA.ecore#//GitHubContext/context"/>

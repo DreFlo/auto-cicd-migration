@@ -3041,13 +3041,13 @@ public interface GHAPackage extends EPackage {
 	int VARIABLE_REFERENCE = 57;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_REFERENCE__NAME = VALUE_FEATURE_COUNT + 0;
+	int VARIABLE_REFERENCE__REFERENCE = VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Variable Reference</em>' class.
@@ -5514,15 +5514,15 @@ public interface GHAPackage extends EPackage {
 	EClass getVariableReference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getName <em>Name</em>}'.
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getName()
+	 * @return the meta object for the reference '<em>Reference</em>'.
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getReference()
 	 * @see #getVariableReference()
 	 * @generated
 	 */
-	EAttribute getVariableReference_Name();
+	EReference getVariableReference_Reference();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.GitHubContext <em>Git Hub Context</em>}'.
@@ -7377,12 +7377,12 @@ public interface GHAPackage extends EPackage {
 		EClass VARIABLE_REFERENCE = eINSTANCE.getVariableReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE_REFERENCE__NAME = eINSTANCE.getVariableReference_Name();
+		EReference VARIABLE_REFERENCE__REFERENCE = eINSTANCE.getVariableReference_Reference();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.impl.GitHubContextImpl <em>Git Hub Context</em>}' class.

@@ -353,29 +353,24 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cContextAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
 		private final RuleCall cContextCONTEXTEnumRuleCall_0_1_0 = (RuleCall)cContextAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cVariableReferenceAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
+		private final Action cIntegerLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cIntegerLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Action cDoubleLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cValueINTTerminalRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
+		private final RuleCall cValueDOUBLETerminalRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cDoubleLiteralAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Action cBooleanLiteralAction_3_0 = (Action)cGroup_3.eContents().get(0);
 		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cValueDOUBLETerminalRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
+		private final RuleCall cValueBOOLEANTerminalRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cBooleanLiteralAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Action cStringLiteralAction_4_0 = (Action)cGroup_4.eContents().get(0);
 		private final Assignment cValueAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cValueBOOLEANTerminalRuleCall_4_1_0 = (RuleCall)cValueAssignment_4_1.eContents().get(0);
-		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Action cStringLiteralAction_5_0 = (Action)cGroup_5.eContents().get(0);
-		private final Assignment cValueAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_5_1_0 = (RuleCall)cValueAssignment_5_1.eContents().get(0);
+		private final RuleCall cValueSTRINGTerminalRuleCall_4_1_0 = (RuleCall)cValueAssignment_4_1.eContents().get(0);
 		
 		//Atomic returns GHA::Value:
 		//    ({GHA::GitHubContext} context=CONTEXT) |
-		//    ({GHA::VariableReference} name=ID) |
 		//    ({GHA::IntegerLiteral} value=INT) |
 		//    ({GHA::DoubleLiteral} value=DOUBLE) |
 		//    ({GHA::BooleanLiteral} value=BOOLEAN) |
@@ -384,7 +379,6 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		@Override public ParserRule getRule() { return rule; }
 		
 		//({GHA::GitHubContext} context=CONTEXT) |
-		//({GHA::VariableReference} name=ID) |
 		//({GHA::IntegerLiteral} value=INT) |
 		//({GHA::DoubleLiteral} value=DOUBLE) |
 		//({GHA::BooleanLiteral} value=BOOLEAN) |
@@ -403,65 +397,53 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 		//CONTEXT
 		public RuleCall getContextCONTEXTEnumRuleCall_0_1_0() { return cContextCONTEXTEnumRuleCall_0_1_0; }
 		
-		//({GHA::VariableReference} name=ID)
+		//({GHA::IntegerLiteral} value=INT)
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{GHA::VariableReference}
-		public Action getVariableReferenceAction_1_0() { return cVariableReferenceAction_1_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1_1() { return cNameAssignment_1_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_0() { return cNameIDTerminalRuleCall_1_1_0; }
-		
-		//({GHA::IntegerLiteral} value=INT)
-		public Group getGroup_2() { return cGroup_2; }
-		
 		//{GHA::IntegerLiteral}
-		public Action getIntegerLiteralAction_2_0() { return cIntegerLiteralAction_2_0; }
+		public Action getIntegerLiteralAction_1_0() { return cIntegerLiteralAction_1_0; }
 		
 		//value=INT
-		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
 		
 		//INT
-		public RuleCall getValueINTTerminalRuleCall_2_1_0() { return cValueINTTerminalRuleCall_2_1_0; }
+		public RuleCall getValueINTTerminalRuleCall_1_1_0() { return cValueINTTerminalRuleCall_1_1_0; }
 		
 		//({GHA::DoubleLiteral} value=DOUBLE)
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_2() { return cGroup_2; }
 		
 		//{GHA::DoubleLiteral}
-		public Action getDoubleLiteralAction_3_0() { return cDoubleLiteralAction_3_0; }
+		public Action getDoubleLiteralAction_2_0() { return cDoubleLiteralAction_2_0; }
 		
 		//value=DOUBLE
-		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
+		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
 		
 		//DOUBLE
-		public RuleCall getValueDOUBLETerminalRuleCall_3_1_0() { return cValueDOUBLETerminalRuleCall_3_1_0; }
+		public RuleCall getValueDOUBLETerminalRuleCall_2_1_0() { return cValueDOUBLETerminalRuleCall_2_1_0; }
 		
 		//({GHA::BooleanLiteral} value=BOOLEAN)
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_3() { return cGroup_3; }
 		
 		//{GHA::BooleanLiteral}
-		public Action getBooleanLiteralAction_4_0() { return cBooleanLiteralAction_4_0; }
+		public Action getBooleanLiteralAction_3_0() { return cBooleanLiteralAction_3_0; }
 		
 		//value=BOOLEAN
-		public Assignment getValueAssignment_4_1() { return cValueAssignment_4_1; }
+		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
 		
 		//BOOLEAN
-		public RuleCall getValueBOOLEANTerminalRuleCall_4_1_0() { return cValueBOOLEANTerminalRuleCall_4_1_0; }
+		public RuleCall getValueBOOLEANTerminalRuleCall_3_1_0() { return cValueBOOLEANTerminalRuleCall_3_1_0; }
 		
 		//({GHA::StringLiteral} value=STRING)
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//{GHA::StringLiteral}
-		public Action getStringLiteralAction_5_0() { return cStringLiteralAction_5_0; }
+		public Action getStringLiteralAction_4_0() { return cStringLiteralAction_4_0; }
 		
 		//value=STRING
-		public Assignment getValueAssignment_5_1() { return cValueAssignment_5_1; }
+		public Assignment getValueAssignment_4_1() { return cValueAssignment_4_1; }
 		
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_5_1_0() { return cValueSTRINGTerminalRuleCall_5_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_4_1_0() { return cValueSTRINGTerminalRuleCall_4_1_0; }
 	}
 	public class CallExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.dsl.GitHubActions.CallExpression");
@@ -1402,7 +1384,6 @@ public class GitHubActionsGrammarAccess extends AbstractElementFinder.AbstractGr
 	
 	//Atomic returns GHA::Value:
 	//    ({GHA::GitHubContext} context=CONTEXT) |
-	//    ({GHA::VariableReference} name=ID) |
 	//    ({GHA::IntegerLiteral} value=INT) |
 	//    ({GHA::DoubleLiteral} value=DOUBLE) |
 	//    ({GHA::BooleanLiteral} value=BOOLEAN) |

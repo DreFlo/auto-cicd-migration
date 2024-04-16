@@ -45,8 +45,7 @@ Primary returns GHA::Expression:
 ;
 
 Atomic returns GHA::Value:
-	({GHA::GitHubContext} context=CONTEXT) |
-	({GHA::VariableReference} name=ID) | 
+	({GHA::GitHubContext} context=CONTEXT) | 
 	({GHA::IntegerLiteral} value=INT) |
 	({GHA::DoubleLiteral} value=DOUBLE) |
 	({GHA::BooleanLiteral} value=BOOLEAN) |

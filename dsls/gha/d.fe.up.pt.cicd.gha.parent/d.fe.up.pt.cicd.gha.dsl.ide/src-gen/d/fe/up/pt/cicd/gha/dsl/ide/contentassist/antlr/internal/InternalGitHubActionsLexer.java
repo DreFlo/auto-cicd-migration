@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGitHubActionsLexer extends Lexer {
     public static final int T__50=50;
-    public static final int RULE_BOOLEAN=7;
+    public static final int RULE_BOOLEAN=6;
     public static final int T__19=19;
     public static final int T__15=15;
     public static final int T__16=16;
@@ -22,11 +22,11 @@ public class InternalGitHubActionsLexer extends Lexer {
     public static final int T__13=13;
     public static final int T__14=14;
     public static final int T__51=51;
-    public static final int RULE_ID=4;
+    public static final int RULE_ID=8;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=5;
+    public static final int RULE_INT=4;
     public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=9;
@@ -35,10 +35,10 @@ public class InternalGitHubActionsLexer extends Lexer {
     public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
-    public static final int RULE_STRING=8;
+    public static final int RULE_STRING=7;
     public static final int RULE_SL_COMMENT=10;
     public static final int T__37=37;
-    public static final int RULE_DOUBLE=6;
+    public static final int RULE_DOUBLE=5;
     public static final int T__38=38;
     public static final int T__39=39;
     public static final int T__33=33;
@@ -890,8 +890,8 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_DOUBLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4312:13: ( RULE_INT '.' RULE_INT )
-            // InternalGitHubActions.g:4312:15: RULE_INT '.' RULE_INT
+            // InternalGitHubActions.g:4237:13: ( RULE_INT '.' RULE_INT )
+            // InternalGitHubActions.g:4237:15: RULE_INT '.' RULE_INT
             {
             mRULE_INT(); 
             match('.'); 
@@ -912,10 +912,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4314:14: ( ( 'true' | 'false' ) )
-            // InternalGitHubActions.g:4314:16: ( 'true' | 'false' )
+            // InternalGitHubActions.g:4239:14: ( ( 'true' | 'false' ) )
+            // InternalGitHubActions.g:4239:16: ( 'true' | 'false' )
             {
-            // InternalGitHubActions.g:4314:16: ( 'true' | 'false' )
+            // InternalGitHubActions.g:4239:16: ( 'true' | 'false' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -933,7 +933,7 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalGitHubActions.g:4314:17: 'true'
+                    // InternalGitHubActions.g:4239:17: 'true'
                     {
                     match("true"); 
 
@@ -941,7 +941,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:4314:24: 'false'
+                    // InternalGitHubActions.g:4239:24: 'false'
                     {
                     match("false"); 
 
@@ -967,10 +967,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4316:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalGitHubActions.g:4316:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGitHubActions.g:4241:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalGitHubActions.g:4241:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalGitHubActions.g:4316:11: ( '^' )?
+            // InternalGitHubActions.g:4241:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -979,7 +979,7 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalGitHubActions.g:4316:11: '^'
+                    // InternalGitHubActions.g:4241:11: '^'
                     {
                     match('^'); 
 
@@ -997,7 +997,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalGitHubActions.g:4316:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGitHubActions.g:4241:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -1046,10 +1046,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4318:10: ( ( '0' .. '9' )+ )
-            // InternalGitHubActions.g:4318:12: ( '0' .. '9' )+
+            // InternalGitHubActions.g:4243:10: ( ( '0' .. '9' )+ )
+            // InternalGitHubActions.g:4243:12: ( '0' .. '9' )+
             {
-            // InternalGitHubActions.g:4318:12: ( '0' .. '9' )+
+            // InternalGitHubActions.g:4243:12: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1063,7 +1063,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalGitHubActions.g:4318:13: '0' .. '9'
+            	    // InternalGitHubActions.g:4243:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1095,10 +1095,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4320:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalGitHubActions.g:4320:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGitHubActions.g:4245:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalGitHubActions.g:4245:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalGitHubActions.g:4320:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGitHubActions.g:4245:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1116,10 +1116,10 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalGitHubActions.g:4320:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalGitHubActions.g:4245:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalGitHubActions.g:4320:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalGitHubActions.g:4245:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1135,7 +1135,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalGitHubActions.g:4320:21: '\\\\' .
+                    	    // InternalGitHubActions.g:4245:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1143,7 +1143,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGitHubActions.g:4320:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalGitHubActions.g:4245:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1168,10 +1168,10 @@ public class InternalGitHubActionsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGitHubActions.g:4320:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalGitHubActions.g:4245:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalGitHubActions.g:4320:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalGitHubActions.g:4245:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1187,7 +1187,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalGitHubActions.g:4320:54: '\\\\' .
+                    	    // InternalGitHubActions.g:4245:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1195,7 +1195,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGitHubActions.g:4320:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalGitHubActions.g:4245:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1238,12 +1238,12 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4322:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalGitHubActions.g:4322:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalGitHubActions.g:4247:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalGitHubActions.g:4247:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalGitHubActions.g:4322:24: ( options {greedy=false; } : . )*
+            // InternalGitHubActions.g:4247:24: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -1268,7 +1268,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalGitHubActions.g:4322:52: .
+            	    // InternalGitHubActions.g:4247:52: .
             	    {
             	    matchAny(); 
 
@@ -1298,12 +1298,12 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4324:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalGitHubActions.g:4324:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalGitHubActions.g:4249:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalGitHubActions.g:4249:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalGitHubActions.g:4324:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalGitHubActions.g:4249:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop9:
             do {
                 int alt9=2;
@@ -1316,7 +1316,7 @@ public class InternalGitHubActionsLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalGitHubActions.g:4324:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalGitHubActions.g:4249:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1336,7 +1336,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalGitHubActions.g:4324:40: ( ( '\\r' )? '\\n' )?
+            // InternalGitHubActions.g:4249:40: ( ( '\\r' )? '\\n' )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1345,9 +1345,9 @@ public class InternalGitHubActionsLexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // InternalGitHubActions.g:4324:41: ( '\\r' )? '\\n'
+                    // InternalGitHubActions.g:4249:41: ( '\\r' )? '\\n'
                     {
-                    // InternalGitHubActions.g:4324:41: ( '\\r' )?
+                    // InternalGitHubActions.g:4249:41: ( '\\r' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1356,7 +1356,7 @@ public class InternalGitHubActionsLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // InternalGitHubActions.g:4324:41: '\\r'
+                            // InternalGitHubActions.g:4249:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1388,10 +1388,10 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4326:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalGitHubActions.g:4326:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGitHubActions.g:4251:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalGitHubActions.g:4251:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalGitHubActions.g:4326:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGitHubActions.g:4251:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt12=0;
             loop12:
             do {
@@ -1445,8 +1445,8 @@ public class InternalGitHubActionsLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGitHubActions.g:4328:16: ( . )
-            // InternalGitHubActions.g:4328:18: .
+            // InternalGitHubActions.g:4253:16: ( . )
+            // InternalGitHubActions.g:4253:18: .
             {
             matchAny(); 
 

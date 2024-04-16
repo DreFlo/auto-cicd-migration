@@ -29,7 +29,6 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.StartsWith;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StringLiteral;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Success;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.ToJSON;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -123,9 +122,6 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				return; 
 			case GHAPackage.TO_JSON:
 				sequence_ToJSON(context, (ToJSON) semanticObject); 
-				return; 
-			case GHAPackage.VARIABLE_REFERENCE:
-				sequence_Atomic(context, (VariableReference) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -226,7 +222,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.BOOLEAN_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueBOOLEANTerminalRuleCall_4_1_0(), semanticObject.isValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueBOOLEANTerminalRuleCall_3_1_0(), semanticObject.isValue());
 		feeder.finish();
 	}
 	
@@ -260,7 +256,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.DOUBLE_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_3_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_2_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -328,7 +324,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.INTEGER_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_1_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -362,41 +358,7 @@ public class GitHubActionsSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.STRING_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_5_1_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns VariableReference
-	 *     Or returns VariableReference
-	 *     Or.Or_1_0 returns VariableReference
-	 *     And returns VariableReference
-	 *     And.And_1_0 returns VariableReference
-	 *     Equality returns VariableReference
-	 *     Equality.Equality_1_0 returns VariableReference
-	 *     Comparison returns VariableReference
-	 *     Comparison.Comparison_1_0 returns VariableReference
-	 *     UnaryOp returns VariableReference
-	 *     Blank returns VariableReference
-	 *     VariableDereference returns VariableReference
-	 *     VariableDereference.DotOp_1_0 returns VariableReference
-	 *     Primary returns VariableReference
-	 *     Atomic returns VariableReference
-	 *
-	 * Constraint:
-	 *     name=ID
-	 * </pre>
-	 */
-	protected void sequence_Atomic(ISerializationContext context, VariableReference semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GHAPackage.Literals.VARIABLE_REFERENCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GHAPackage.Literals.VARIABLE_REFERENCE__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAtomicAccess().getNameIDTerminalRuleCall_1_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_4_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

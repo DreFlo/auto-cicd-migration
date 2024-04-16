@@ -12,7 +12,7 @@ import cli.generators.CircleCIGenerator;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
 import cli.parsers.CircleCIParser;
-import cli.parsers.GitHubActionsParser;
+import cli.parsers.GitHubActionsParser.GitHubActionsParser;
 import cli.parsers.exceptions.SyntaxException;
 import cli.transformers.exogenous.fromTIM.CICD2CircleCITransformer;
 import cli.transformers.exogenous.fromTIM.CICD2GHATransformer;
@@ -31,10 +31,8 @@ import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformati
 import org.apache.commons.cli.*;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.m2m.atl.engine.compiler.AtlCompiler;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;

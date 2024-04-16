@@ -13,8 +13,8 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSIONS;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.PERMISSION_SCOPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.StagingEnvironment;
-
 import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;

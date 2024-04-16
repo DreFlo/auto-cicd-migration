@@ -4,8 +4,8 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA.impl;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Expression;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
-
 import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 

@@ -652,43 +652,15 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getVariableReferenceAction_1_0(),
+						grammarAccess.getAtomicAccess().getIntegerLiteralAction_1_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_name_3_0=RULE_ID
+					lv_value_3_0=RULE_INT
 					{
-						newLeafNode(lv_name_3_0, grammarAccess.getAtomicAccess().getNameIDTerminalRuleCall_1_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"name",
-							lv_name_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
-			)
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getIntegerLiteralAction_2_0(),
-						$current);
-				}
-			)
-			(
-				(
-					lv_value_5_0=RULE_INT
-					{
-						newLeafNode(lv_value_5_0, grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_2_1_0());
+						newLeafNode(lv_value_3_0, grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_1_1_0());
 					}
 					{
 						if ($current==null) {
@@ -697,7 +669,7 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_5_0,
+							lv_value_3_0,
 							"org.eclipse.xtext.common.Terminals.INT");
 					}
 				)
@@ -708,15 +680,15 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getDoubleLiteralAction_3_0(),
+						grammarAccess.getAtomicAccess().getDoubleLiteralAction_2_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_7_0=RULE_DOUBLE
+					lv_value_5_0=RULE_DOUBLE
 					{
-						newLeafNode(lv_value_7_0, grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_3_1_0());
+						newLeafNode(lv_value_5_0, grammarAccess.getAtomicAccess().getValueDOUBLETerminalRuleCall_2_1_0());
 					}
 					{
 						if ($current==null) {
@@ -725,7 +697,7 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_7_0,
+							lv_value_5_0,
 							"d.fe.up.pt.cicd.gha.dsl.GitHubActions.DOUBLE");
 					}
 				)
@@ -736,15 +708,15 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getBooleanLiteralAction_4_0(),
+						grammarAccess.getAtomicAccess().getBooleanLiteralAction_3_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_9_0=RULE_BOOLEAN
+					lv_value_7_0=RULE_BOOLEAN
 					{
-						newLeafNode(lv_value_9_0, grammarAccess.getAtomicAccess().getValueBOOLEANTerminalRuleCall_4_1_0());
+						newLeafNode(lv_value_7_0, grammarAccess.getAtomicAccess().getValueBOOLEANTerminalRuleCall_3_1_0());
 					}
 					{
 						if ($current==null) {
@@ -753,7 +725,7 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_9_0,
+							lv_value_7_0,
 							"d.fe.up.pt.cicd.gha.dsl.GitHubActions.BOOLEAN");
 					}
 				)
@@ -764,15 +736,15 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getStringLiteralAction_5_0(),
+						grammarAccess.getAtomicAccess().getStringLiteralAction_4_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_11_0=RULE_STRING
+					lv_value_9_0=RULE_STRING
 					{
-						newLeafNode(lv_value_11_0, grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_5_1_0());
+						newLeafNode(lv_value_9_0, grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_4_1_0());
 					}
 					{
 						if ($current==null) {
@@ -781,7 +753,7 @@ ruleAtomic returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_11_0,
+							lv_value_9_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)

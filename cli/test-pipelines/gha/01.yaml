@@ -1,5 +1,5 @@
 name: "Workflow"
-run-name: Deploy to ${{ inputs || rerere  }} by @${{ github.actor }}
+run-name: Deploy to ${{ inputs || rerere && 3 || 4 }} by @${{ github.actor }}
 on:
   check_run:
     types: assigned
@@ -66,4 +66,4 @@ jobs:
           FIRST_NAME: Mona
           MIDDLE_NAME: The
           LAST_NAME: Octocat
-        run: echo ${{ env.MY_VAR }}
+        run: echo ${{ env.MY_VAR }} ${{ inputs.username.bob }}

@@ -97,8 +97,6 @@ ruleAtomic:
 	(
 		ruleCONTEXT
 		    |
-		RULE_ID
-		    |
 		RULE_INT
 		    |
 		RULE_DOUBLE

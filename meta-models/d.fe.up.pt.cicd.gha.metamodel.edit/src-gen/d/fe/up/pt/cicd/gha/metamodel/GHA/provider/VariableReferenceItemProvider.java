@@ -3,17 +3,15 @@
 package d.fe.up.pt.cicd.gha.metamodel.GHA.provider;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
-import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference} object.
@@ -43,25 +41,24 @@ public class VariableReferenceItemProvider extends ValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addReferencePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Reference feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addReferencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_VariableReference_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_VariableReference_name_feature",
+						getResourceLocator(), getString("_UI_VariableReference_reference_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_VariableReference_reference_feature",
 								"_UI_VariableReference_type"),
-						GHAPackage.Literals.VARIABLE_REFERENCE__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						GHAPackage.Literals.VARIABLE_REFERENCE__REFERENCE, true, false, true, null, null, null));
 	}
 
 	/**
@@ -93,9 +90,7 @@ public class VariableReferenceItemProvider extends ValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((VariableReference) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_VariableReference_type")
-				: getString("_UI_VariableReference_type") + " " + label;
+		return getString("_UI_VariableReference_type");
 	}
 
 	/**
@@ -108,12 +103,6 @@ public class VariableReferenceItemProvider extends ValueItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(VariableReference.class)) {
-		case GHAPackage.VARIABLE_REFERENCE__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 

@@ -70,7 +70,6 @@ public class GitHubActionsSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     (rule start) (ambiguity) 'success' '(' ')' (rule start)
 	 *     (rule start) (ambiguity) 'toJSON' '(' value=Expression
 	 *     (rule start) (ambiguity) context=CONTEXT
-	 *     (rule start) (ambiguity) name=ID
 	 *     (rule start) (ambiguity) value=BOOLEAN
 	 *     (rule start) (ambiguity) value=DOUBLE
 	 *     (rule start) (ambiguity) value=INT

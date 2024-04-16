@@ -58,7 +58,6 @@ public class GitHubActionsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAtomicAccess().getGroup_2(), "rule__Atomic__Group_2__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_3(), "rule__Atomic__Group_3__0");
 			builder.put(grammarAccess.getAtomicAccess().getGroup_4(), "rule__Atomic__Group_4__0");
-			builder.put(grammarAccess.getAtomicAccess().getGroup_5(), "rule__Atomic__Group_5__0");
 			builder.put(grammarAccess.getContainsAccess().getGroup(), "rule__Contains__Group__0");
 			builder.put(grammarAccess.getStartsWithAccess().getGroup(), "rule__StartsWith__Group__0");
 			builder.put(grammarAccess.getEndsWithAccess().getGroup(), "rule__EndsWith__Group__0");
@@ -83,11 +82,10 @@ public class GitHubActionsParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getVariableDereferenceAccess().getRhsAssignment_1_1_0_1(), "rule__VariableDereference__RhsAssignment_1_1_0_1");
 			builder.put(grammarAccess.getVariableDereferenceAccess().getRhsAssignment_1_1_1_1(), "rule__VariableDereference__RhsAssignment_1_1_1_1");
 			builder.put(grammarAccess.getAtomicAccess().getContextAssignment_0_1(), "rule__Atomic__ContextAssignment_0_1");
-			builder.put(grammarAccess.getAtomicAccess().getNameAssignment_1_1(), "rule__Atomic__NameAssignment_1_1");
+			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_1_1(), "rule__Atomic__ValueAssignment_1_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_2_1(), "rule__Atomic__ValueAssignment_2_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_3_1(), "rule__Atomic__ValueAssignment_3_1");
 			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_4_1(), "rule__Atomic__ValueAssignment_4_1");
-			builder.put(grammarAccess.getAtomicAccess().getValueAssignment_5_1(), "rule__Atomic__ValueAssignment_5_1");
 			builder.put(grammarAccess.getContainsAccess().getSearchAssignment_2(), "rule__Contains__SearchAssignment_2");
 			builder.put(grammarAccess.getContainsAccess().getItemAssignment_4(), "rule__Contains__ItemAssignment_4");
 			builder.put(grammarAccess.getStartsWithAccess().getSearchStringAssignment_2(), "rule__StartsWith__SearchStringAssignment_2");

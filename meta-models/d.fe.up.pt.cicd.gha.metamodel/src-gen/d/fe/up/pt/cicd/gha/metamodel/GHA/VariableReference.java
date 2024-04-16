@@ -11,7 +11,7 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getReference <em>Reference</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getVariableReference()
@@ -20,25 +20,25 @@ package d.fe.up.pt.cicd.gha.metamodel.GHA;
  */
 public interface VariableReference extends Value {
 	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getVariableReference_Name()
+	 * @return the value of the '<em>Reference</em>' reference.
+	 * @see #setReference(VariableDeclaration)
+	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getVariableReference_Reference()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getName();
+	VariableDeclaration getReference();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.VariableReference#getReference <em>Reference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
+	 * @param value the new value of the '<em>Reference</em>' reference.
+	 * @see #getReference()
 	 * @generated
 	 */
-	void setName(String value);
+	void setReference(VariableDeclaration value);
 
 } // VariableReference

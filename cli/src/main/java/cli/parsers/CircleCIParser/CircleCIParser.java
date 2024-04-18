@@ -9,13 +9,13 @@ import org.eclipse.emf.ecore.EObject;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class CircleCIParser extends AbstractParser<Pipeline> {
-    private final VariableReferenceParser variableReferenceParser;
 
     public CircleCIParser() {
-        this.variableReferenceParser = new VariableReferenceParser(this);
     }
 
     @Override
@@ -537,32 +537,35 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private List<String> splitExpression(String string) {
+        Matcher matcher = Pattern.compile("(<<\\s*[a-zA-Z_-][\\w_-]*(\\.[a-zA-Z_-][\\w_-]*)*\\s*>>)|(\\$\\{\\s*[a-zA-Z_-][\\w_-]*(\\.[a-zA-Z_-][\\w_-]*)*\\s*})|(.)").matcher(string);
         List<String> parts = new ArrayList<>();
+        StringBuilder acc = new StringBuilder();
 
-        while (!string.isEmpty()) {
-            int splitIndex = string.indexOf("<<");
-
-            if (splitIndex == -1) {
-                parts.add(string);
-                break;
-            } else if (splitIndex == 0) {
-                splitIndex = string.indexOf(">>");
-
-                parts.add(string.substring(0, splitIndex + 2));
-                string = string.substring(splitIndex + 2);
-            } else {
-                parts.add(string.substring(0, splitIndex));
-                string = string.substring(splitIndex);
+        while (matcher.find()) {
+            String part = matcher.group();
+            if (part.length() > 1) {
+                if (!acc.toString().isEmpty()) {
+                    parts.add(acc.toString());
+                    acc = new StringBuilder();
+                }
+                parts.add(part);
             }
+            else {
+                acc.append(part);
+            }
+        }
+
+        if (!acc.toString().isEmpty()) {
+            parts.add(acc.toString());
         }
 
         return parts;
     }
 
     private Value parseValue(String string, EObject container) {
-        if (string.startsWith("<<") && string.endsWith(">>")) {
-            // TODO
-            return parseLiteral(string.substring(2, string.length() - 2));
+        if ((string.startsWith("<<") && string.endsWith(">>")) || (string.startsWith("${") && string.endsWith("}"))){
+            VariableReferenceParser variableReferenceParser = new VariableReferenceParser(container);
+            return variableReferenceParser.parse(string);
         } else {
             return parseLiteral(string);
         }

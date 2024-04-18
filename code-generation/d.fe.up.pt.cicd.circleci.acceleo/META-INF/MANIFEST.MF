@@ -21,4 +21,5 @@ Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: d.fe.up.pt.cicd.circleci.acceleo.main
 Automatic-Module-Name: d.fe.up.pt.cicd.circleci.acceleo
+Import-Package: d.fe.up.pt.cicd.circleci.metamodel.CircleCI
 

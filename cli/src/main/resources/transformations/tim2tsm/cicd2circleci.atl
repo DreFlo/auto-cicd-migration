@@ -476,18 +476,22 @@ rule Assignment2VariableAssignment {
 		input : CICD!Assignment
 	to
 		output : CircleCI!VariableAssignment(
-			key <-
-				if not input.key.oclIsUndefined() then
-					input.key.name
-				else
-					OclUndefined
-				endif,
+			key <- input.key,
 			value <-
 				if not input.value.oclIsUndefined() then
 					input.value.expression2ExpressionHelper()
 				else
 					OclUndefined
 				endif
+		)
+}
+
+rule VariableDeclaration2VariableDeclaration {
+	from
+		input : CICD!VariableDeclaration
+	to
+		output : CircleCI!VariableDeclaration(
+			name <- input.name
 		)
 }
 
@@ -581,14 +585,35 @@ lazy rule BooleanLiteral2BooleanLiteral {
 		)
 }
 
-lazy rule VariableDereference2VariableDereference {
+lazy rule VariableReference2VariableReference {
 	from
-		output : CICD!VariableDereference
+		input : CICD!VariableReference
 	to
-		input : CircleCI!VariableDereference(
-			names <- thisModule.getVariableDereferenceNames(output)
+		output : CircleCI!VariableReference(
+			reference <- input.reference
 		)
 }
+
+lazy rule DotOp2DotOperator {
+	from
+		input : CICD!DotOp
+	to
+		output : CircleCI!DotOperator(
+			lhs <-
+				if not input.lhs.oclIsUndefined() then
+					input.lhs.expression2ValueHelper()
+				else
+					OclUndefined
+				endif,
+			rhs <-
+				if not input.rhs.oclIsUndefined() then
+					input.rhs.expression2ValueHelper()
+				else
+					OclUndefined
+				endif	
+		)
+}
+
 
 lazy rule String2StringLiteral {
 	from
@@ -598,19 +623,6 @@ lazy rule String2StringLiteral {
 			value <- input
 		)
 }
-
-helper def : getVariableDereferenceNames(variableDereference : CICD!VariableDereference) : Sequence(String) =
-	if variableDereference.variable.oclIsTypeOf(CICD!VariableContext) then
-		Sequence{variableDereference.variable.context.toString(), variableDereference.property}	
-	else if variableDereference.variable.oclIsTypeOf(CICD!Variable) then
-		Sequence{variableDereference.variable.name, variableDereference.property}	
-	else if variableDereference.variable.oclIsTypeOf(CICD!VariableDereference) then 
-		thisModule.getVariableDereferenceNames(variableDereference.variable)->append(variableDereference.property)
-	else
-		Sequence{variableDereference.property}
-	endif
-	endif
-	endif;
 
 helper context CICD!Expression def : expression2ExpressionHelper() : CircleCI!Expression =
 	if self.oclIsTypeOf(CICD!Concat) then
@@ -637,8 +649,10 @@ helper context CICD!Expression def : expression2LogicHelper() : CircleCI!Logic =
 	endif;
 	
 helper context CICD!Expression def : expression2ValueHelper() : CircleCI!Value =
-	if self.oclIsTypeOf(CICD!VariableDereference) then
-		thisModule.VariableDereference2VariableDereference(self)
+	if self.oclIsTypeOf(CICD!VariableReference) then
+		thisModule.VariableReference2VariableReference(self)
+	else if self.oclIsTypeOf(CICD!VariableReference) then
+		thisModule.DotOp2DotOperator(self)
 	else if self.oclIsTypeOf(CICD!StringLiteral) then
 		thisModule.StringLiteral2StringLiteral(self)
 	else if self.oclIsTypeOf(CICD!IntegerLiteral) then
@@ -649,6 +663,7 @@ helper context CICD!Expression def : expression2ValueHelper() : CircleCI!Value =
 		thisModule.BooleanLiteral2BooleanLiteral(self)
 	else
 		OclUndefined
+	endif
 	endif
 	endif
 	endif
@@ -667,19 +682,13 @@ helper context CICD!BooleanLiteral def : expression2String() : String = self.val
 
 helper context CICD!Concat def : expression2String() : String =
 	let exprStrings : Sequence(String) =
-		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
+		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableReference) then '<<' + expr.expression2String() + '>>' else expr.expression2String() endif) in
 		exprStrings->iterate(exprString; joinedString: String = '' |
 			joinedString.concat(exprString)
 		);
 
-helper context CICD!Variable def : expression2String() : String =
-	'$'.concat(self.name);
-
-helper context CICD!VariableContext def : expression2String() : String =
-	thisModule.variableContext2JenkinsContext(self.context).toString();
-
-helper context CICD!VariableDereference def : expression2String() : String =
-	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;
+helper context CICD!VariableReference def : expression2String() : String =
+	self.reference.name;
 
 helper context CICD!Job def : job2JobHelper() : CircleCI!Job =
 	if self.oclIsTypeOf(CICD!ScriptJob) then

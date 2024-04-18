@@ -61,7 +61,7 @@
     <eLiterals name="STEPS" value="5" literal="steps"/>
     <eLiterals name="ENVIRONMENT_VARIABLE_NAME" value="6" literal="environment_variable_name"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Executor" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Executor" abstract="true" eSuperTypes="#//Environment">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourceClass" eType="#//Expression"
         containment="true"/>
@@ -69,14 +69,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="workingDirectory" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
-        eType="#//VariableAssignment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerExecutor" eSuperTypes="#//Executor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="containers" upperBound="-1"
         eType="#//DockerContainer" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="DockerContainer" eSuperTypes="#//Environment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="image" lowerBound="1" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Expression"
@@ -87,8 +85,6 @@
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="user" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
-        eType="#//VariableAssignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="username" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="password" eType="#//Expression"

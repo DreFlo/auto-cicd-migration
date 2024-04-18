@@ -67,7 +67,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Executor/resourceClass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Executor/shell"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Executor/workingDirectory"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Executor/environmentVariables"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//DockerExecutor">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerExecutor/containers"/>
@@ -78,7 +77,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/entrypoint"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/command"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/user"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/environmentVariables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/username"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/password"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/oidc"/>

@@ -5,25 +5,17 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -39,7 +31,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getEntrypoint <em>Entrypoint</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getCommand <em>Command</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getUser <em>User</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getUsername <em>Username</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getPassword <em>Password</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl#getOidc <em>Oidc</em>}</li>
@@ -49,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class DockerContainerImpl extends MinimalEObjectImpl.Container implements DockerContainer {
+public class DockerContainerImpl extends EnvironmentImpl implements DockerContainer {
 	/**
 	 * The cached value of the '{@link #getImage() <em>Image</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -99,16 +90,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected Expression user;
-
-	/**
-	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvironmentVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getUsername() <em>Username</em>}' containment reference.
@@ -361,21 +342,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.DOCKER_CONTAINER__USER, newUser,
 					newUser));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
-		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
-					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
-					CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
-		}
-		return environmentVariables;
 	}
 
 	/**
@@ -658,8 +624,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 			return ((InternalEList<?>) getCommand()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.DOCKER_CONTAINER__USER:
 			return basicSetUser(null, msgs);
-		case CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
-			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.DOCKER_CONTAINER__USERNAME:
 			return basicSetUsername(null, msgs);
 		case CircleCIPackage.DOCKER_CONTAINER__PASSWORD:
@@ -692,11 +656,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 			return getCommand();
 		case CircleCIPackage.DOCKER_CONTAINER__USER:
 			return getUser();
-		case CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
-			if (coreType)
-				return getEnvironmentVariables();
-			else
-				return getEnvironmentVariables().map();
 		case CircleCIPackage.DOCKER_CONTAINER__USERNAME:
 			return getUsername();
 		case CircleCIPackage.DOCKER_CONTAINER__PASSWORD:
@@ -736,9 +695,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 			return;
 		case CircleCIPackage.DOCKER_CONTAINER__USER:
 			setUser((Expression) newValue);
-			return;
-		case CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
-			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
 		case CircleCIPackage.DOCKER_CONTAINER__USERNAME:
 			setUsername((Expression) newValue);
@@ -782,9 +738,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 		case CircleCIPackage.DOCKER_CONTAINER__USER:
 			setUser((Expression) null);
 			return;
-		case CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
-			getEnvironmentVariables().clear();
-			return;
 		case CircleCIPackage.DOCKER_CONTAINER__USERNAME:
 			setUsername((Expression) null);
 			return;
@@ -822,8 +775,6 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 			return command != null && !command.isEmpty();
 		case CircleCIPackage.DOCKER_CONTAINER__USER:
 			return user != null;
-		case CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
-			return environmentVariables != null && !environmentVariables.isEmpty();
 		case CircleCIPackage.DOCKER_CONTAINER__USERNAME:
 			return username != null;
 		case CircleCIPackage.DOCKER_CONTAINER__PASSWORD:

@@ -3,9 +3,6 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEntrypoint <em>Entrypoint</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getCommand <em>Command</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUser <em>User</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUsername <em>Username</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getPassword <em>Password</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getOidc <em>Oidc</em>}</li>
@@ -33,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DockerContainer extends EObject {
+public interface DockerContainer extends Environment {
 	/**
 	 * Returns the value of the '<em><b>Image</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -123,19 +119,6 @@ public interface DockerContainer extends EObject {
 	 * @generated
 	 */
 	void setUser(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration},
-	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Environment Variables</em>' map.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getDockerContainer_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
-	 * @generated
-	 */
-	EMap<VariableDeclaration, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Username</b></em>' containment reference.

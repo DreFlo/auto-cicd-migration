@@ -11,20 +11,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -33,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ExecutorItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ExecutorItemProvider extends EnvironmentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -92,7 +82,6 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 			childrenFeatures.add(CircleCIPackage.Literals.EXECUTOR__RESOURCE_CLASS);
 			childrenFeatures.add(CircleCIPackage.Literals.EXECUTOR__SHELL);
 			childrenFeatures.add(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY);
-			childrenFeatures.add(CircleCIPackage.Literals.EXECUTOR__ENVIRONMENT_VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -162,7 +151,6 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 		case CircleCIPackage.EXECUTOR__RESOURCE_CLASS:
 		case CircleCIPackage.EXECUTOR__SHELL:
 		case CircleCIPackage.EXECUTOR__WORKING_DIRECTORY:
-		case CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -242,9 +230,6 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY,
 				CircleCIFactory.eINSTANCE.createVariableReference()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__ENVIRONMENT_VARIABLES,
-				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
 	}
 
 	/**
@@ -267,17 +252,6 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return CircleCIEditPlugin.INSTANCE;
 	}
 
 }

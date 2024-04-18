@@ -156,6 +156,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			Executor executor = (Executor) theEObject;
 			T result = caseExecutor(executor);
 			if (result == null)
+				result = caseEnvironment(executor);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -165,12 +167,16 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExecutor(dockerExecutor);
 			if (result == null)
+				result = caseEnvironment(dockerExecutor);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case CircleCIPackage.DOCKER_CONTAINER: {
 			DockerContainer dockerContainer = (DockerContainer) theEObject;
 			T result = caseDockerContainer(dockerContainer);
+			if (result == null)
+				result = caseEnvironment(dockerContainer);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -181,6 +187,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExecutor(machineExecutor);
 			if (result == null)
+				result = caseEnvironment(machineExecutor);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -189,6 +197,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			T result = caseMacOSExecutor(macOSExecutor);
 			if (result == null)
 				result = caseExecutor(macOSExecutor);
+			if (result == null)
+				result = caseEnvironment(macOSExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -199,6 +209,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExecutor(windowsOrbExecutor);
 			if (result == null)
+				result = caseEnvironment(windowsOrbExecutor);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -207,6 +219,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			T result = caseReferenceExecutor(referenceExecutor);
 			if (result == null)
 				result = caseExecutor(referenceExecutor);
+			if (result == null)
+				result = caseEnvironment(referenceExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -219,6 +233,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseExecutor(executorReferenceExecutor);
 			if (result == null)
+				result = caseEnvironment(executorReferenceExecutor);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -229,6 +245,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = caseReferenceExecutor(orbReferenceExecutor);
 			if (result == null)
 				result = caseExecutor(orbReferenceExecutor);
+			if (result == null)
+				result = caseEnvironment(orbReferenceExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;

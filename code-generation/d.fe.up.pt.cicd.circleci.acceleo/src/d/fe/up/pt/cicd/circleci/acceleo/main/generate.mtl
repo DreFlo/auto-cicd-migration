@@ -9,6 +9,14 @@
 	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'logString(java.lang.String)', Sequence{string})
 /]
 
+[query public generateVariableReference(variableDeclaration : VariableDeclaration) : String =
+	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'generateVariableReference(d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, boolean)', Sequence{variableDeclaration, true})
+/]
+
+[query public generateVariableReferenceInDotOp(variableDeclaration : VariableDeclaration) : String =
+	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'generateVariableReference(d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, boolean)', Sequence{variableDeclaration, false})
+/]
+
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('config.yml', false, 'UTF-8')]
@@ -239,7 +247,7 @@ macos:
 [/template]
 
 [template public generateVariableAssignment(variableAssignment : VariableAssignment) post (trim())]
-[key/]: [generateExpression(value)/]
+[generateVariableDeclaration(key)/]: [generateExpression(value)/]
 [/template]
 
 [template public generateStep(step : Step) post (trim())]
@@ -435,7 +443,7 @@ macos:
 [/template]
 
 [template public generateParameter(parameter: Parameter) post (trim())]
-[name/]:
+[generateVariableDeclaration(name)/]:
   type: [type/]
 [if (type = PARAMETER_TYPES::ENUM and enumValues->notEmpty())]
   enum:
@@ -571,7 +579,7 @@ macos:
 [/template]
 
 [template public generateMatrixParameter(parameter : MatrixParameter)]
-[name/]: [for (cell : Expression | cells) before ('[') separator (', ') after (']')][generateExpression(cell)/][/for]
+[generateVariableDeclaration(name)/]: [for (cell : Expression | cells) before ('[') separator (', ') after (']')][generateExpression(cell)/][/for]
 [/template]
 
 [template public generateMatrixCombination(combination : MatrixCombination)]
@@ -582,7 +590,7 @@ macos:
 [/template]
 
 [template public generateExpression(expression : Expression)]
-[if (expression.oclIsUndefined())]OclUndefined[elseif (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableDereference))][generateVariableDereference(expression.oclAsType(VariableDereference))/][/if]
+[if (expression.oclIsUndefined())]OclUndefined[elseif (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][/if]
 [/template]
 
 [template public generateConcat(concat : Concat) post (trim())]
@@ -596,11 +604,11 @@ macos:
 [else]
 [generateLiteral(logic.oclAsType(Literal))/]
 [/if]
-[elseif (logic.oclIsTypeOf(VariableDereference))]
+[elseif (logic.oclIsTypeOf(VariableReference))]
 [if (addDash)]
-- [generateVariableDereference(logic.oclAsType(VariableDereference))/]
+- [generateVariableReference(logic.oclAsType(VariableReference).reference)/]
 [else]
-[generateVariableDereference(logic.oclAsType(VariableDereference))/]
+[generateVariableReference(logic.oclAsType(VariableReference).reference)/]
 [/if]
 [elseif (logic.oclIsKindOf(InfinitaryOperator))]
 [generateInfinitaryOperator(logic, addDash)/]
@@ -673,10 +681,10 @@ matches:
 [/if]
 [/template]
 
-[template public generateVariableDereference(variableDerenference : VariableDereference) post (trim())]
-[for (name : String | names) before ('<< ') separator ('.') after (' >>')][name/][/for]
-[/template]
-
 [template public generateLiteral(literal : Literal)]
 [if (literal.oclIsTypeOf(StringLiteral))][literal.oclAsType(StringLiteral).value/][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
+[/template]
+
+[template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]
+[name/]
 [/template]

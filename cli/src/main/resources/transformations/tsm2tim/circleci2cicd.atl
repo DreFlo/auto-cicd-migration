@@ -252,6 +252,15 @@ lazy rule String2StringLiteral {
 		)
 }
 
+rule VariableDeclaration2VariableDeclaration {
+	from
+		input : CircleCI!VariableDeclaration
+	to
+		output : CICD!VariableDeclaration(
+			name <- input.name
+		)
+}
+
 abstract rule Expression2Expression {
 	from
 		input : CircleCI!Expression
@@ -275,50 +284,22 @@ abstract rule Value2Value {
 		output : CICD!Value
 }
 
-rule VariableDereference2VariableDereference extends Value2Value {
+rule DotOperator2DotOp extends Value2Value {
 	from
-		input : CircleCI!VariableDereference
+		input : CircleCI!DotOperator
 	to
-		output : CICD!VariableDereference(
-			property <- input.names->last(),
-			variable <- 
-				if input.names->size() = 2 then
-					thisModule.CreateVariableContext(input.names->first())
-				else
-					thisModule.CreateVariableDereference(input.names->subSequence(1, input.names->size() - 1))
-				endif
+		output : CICD!DotOp(
+			lhs <- input.lhs,
+			rhs <- input.rhs
 		)
 }
 
-lazy rule CreateVariableDereference {
+rule VariableReference2VariableReference extends Value2Value {
 	from
-		input : Sequence(String)
+		input : CircleCI!VariableReference
 	to
-		output : CICD!VariableDereference(
-			property <- input->last(),
-			variable <- 
-				if input->size() = 2 then
-					thisModule.CreateVariableContext(input->first())
-				else
-					thisModule.CreateVariableDereference(input->subSequence(1, input->size() - 1))
-				endif
-		)
-}
-
-lazy rule CreateVariableContext {
-	from
-		input : String
-	to
-		output : CICD!VariableContext(
-			context <-
-				if input = 'env' then
-					#ENV
-				else if input = 'parameters' then
-					#PARAMS
-				else
-					#ENV
-				endif
-				endif
+		output : CICD!VariableReference(
+			reference <- input.reference
 		)
 }
 
@@ -533,7 +514,7 @@ rule VariableAssignment2Assignment {
 		input : CircleCI!VariableAssignment
 	to
 		output : CICD!Assignment(
-			key <- thisModule.String2Variable(input.key),
+			key <- input.key,
 			value <- input.value
 		)
 }
@@ -542,7 +523,7 @@ lazy rule String2Variable {
 	from
 		string : String
 	to
-		variable : CICD!Variable(
+		variable : CICD!VariableDeclaration(
 			name <- string
 		)
 }
@@ -772,7 +753,7 @@ helper def : orbDefinitionReference2StepsHelper(orbDefinition : CircleCI!OrbDefi
 	endif;
 
 helper def : getVariableValue(variables : Sequence(CircleCI!VariableAssignment), name : String) : CircleCI!Expression =
-	let variableSequence : Sequence(CircleCI!VariableAssignment) = variables->collect(variable | variable.key = name) in
+	let variableSequence : Sequence(CircleCI!VariableAssignment) = variables->collect(variable | variable.key.name = name) in
 	if variableSequence->isEmpty() then OclUndefined else variableSequence->first().value endif;
 
 helper context CircleCI!Executor def : executor2AgentHelper() : CICD!Agent =
@@ -839,10 +820,8 @@ helper context CircleCI!DoubleLiteral def : expression2String() : String =
 helper context CircleCI!BooleanLiteral def : expression2String() : String =
 	self.value.toString();
 
-helper context CircleCI!VariableDereference def : expression2String() : String =
-	self.names->iterate(name; acc : String = '' |
-		acc + name + if self.names->indexOf(name) <> self.names->size() then '.' else '' endif
-	);
+helper context CircleCI!VariableReference def : expression2String() : String =
+	self.reference.name;
 
 helper def : getJobStreamOrigins(jobs : Sequence(CircleCI!WorkflowJobConfiguration)) : Sequence(CircleCI!WorkflowJobConfiguration) =
 	jobs->select(job | job.requires->isEmpty());

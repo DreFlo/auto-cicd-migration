@@ -989,16 +989,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getExecutor_EnvironmentVariables() {
-		return (EReference) executorEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getDockerExecutor() {
 		return dockerExecutorEClass;
 	}
@@ -1079,7 +1069,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_EnvironmentVariables() {
+	public EReference getDockerContainer_Username() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1089,7 +1079,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Username() {
+	public EReference getDockerContainer_Password() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1099,7 +1089,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Password() {
+	public EReference getDockerContainer_Oidc() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1109,7 +1099,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Oidc() {
+	public EReference getDockerContainer_AwsAccessKeyID() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1119,18 +1109,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_AwsAccessKeyID() {
-		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getDockerContainer_AwsSecretAccessKey() {
-		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(10);
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -2617,7 +2597,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(executorEClass, EXECUTOR__RESOURCE_CLASS);
 		createEReference(executorEClass, EXECUTOR__SHELL);
 		createEReference(executorEClass, EXECUTOR__WORKING_DIRECTORY);
-		createEReference(executorEClass, EXECUTOR__ENVIRONMENT_VARIABLES);
 
 		dockerExecutorEClass = createEClass(DOCKER_EXECUTOR);
 		createEReference(dockerExecutorEClass, DOCKER_EXECUTOR__CONTAINERS);
@@ -2628,7 +2607,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__ENTRYPOINT);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__COMMAND);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__USER);
-		createEReference(dockerContainerEClass, DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__USERNAME);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__PASSWORD);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__OIDC);
@@ -2870,7 +2848,9 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		orbDefinitionEClass.getESuperTypes().add(this.getDefinitionGroup());
 		commandEClass.getESuperTypes().add(this.getScript());
 		commandEClass.getESuperTypes().add(this.getCallable());
+		executorEClass.getESuperTypes().add(this.getEnvironment());
 		dockerExecutorEClass.getESuperTypes().add(this.getExecutor());
+		dockerContainerEClass.getESuperTypes().add(this.getEnvironment());
 		machineExecutorEClass.getESuperTypes().add(this.getExecutor());
 		macOSExecutorEClass.getESuperTypes().add(this.getExecutor());
 		windowsOrbExecutorEClass.getESuperTypes().add(this.getExecutor());
@@ -3010,9 +2990,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEReference(getExecutor_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null, 0, 1,
 				Executor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExecutor_EnvironmentVariables(), this.getVariableAssignment(), null, "environmentVariables",
-				null, 0, -1, Executor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dockerExecutorEClass, DockerExecutor.class, "DockerExecutor", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -3037,9 +3014,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEReference(getDockerContainer_User(), this.getExpression(), null, "user", null, 0, 1, DockerContainer.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_EnvironmentVariables(), this.getVariableAssignment(), null,
-				"environmentVariables", null, 0, -1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDockerContainer_Username(), this.getExpression(), null, "username", null, 0, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -5,22 +5,12 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreEMap;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,12 +24,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl#getResourceClass <em>Resource Class</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl#getShell <em>Shell</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl#getWorkingDirectory <em>Working Directory</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ExecutorImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implements Executor {
+public abstract class ExecutorImpl extends EnvironmentImpl implements Executor {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,16 +78,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected Expression workingDirectory;
-
-	/**
-	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvironmentVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -303,21 +282,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
-		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
-					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
-					CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES);
-		}
-		return environmentVariables;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case CircleCIPackage.EXECUTOR__RESOURCE_CLASS:
@@ -326,8 +290,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 			return basicSetShell(null, msgs);
 		case CircleCIPackage.EXECUTOR__WORKING_DIRECTORY:
 			return basicSetWorkingDirectory(null, msgs);
-		case CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES:
-			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -348,11 +310,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 			return getShell();
 		case CircleCIPackage.EXECUTOR__WORKING_DIRECTORY:
 			return getWorkingDirectory();
-		case CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES:
-			if (coreType)
-				return getEnvironmentVariables();
-			else
-				return getEnvironmentVariables().map();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -376,9 +333,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 			return;
 		case CircleCIPackage.EXECUTOR__WORKING_DIRECTORY:
 			setWorkingDirectory((Expression) newValue);
-			return;
-		case CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES:
-			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -404,9 +358,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 		case CircleCIPackage.EXECUTOR__WORKING_DIRECTORY:
 			setWorkingDirectory((Expression) null);
 			return;
-		case CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES:
-			getEnvironmentVariables().clear();
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -427,8 +378,6 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 			return shell != null;
 		case CircleCIPackage.EXECUTOR__WORKING_DIRECTORY:
 			return workingDirectory != null;
-		case CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES:
-			return environmentVariables != null && !environmentVariables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

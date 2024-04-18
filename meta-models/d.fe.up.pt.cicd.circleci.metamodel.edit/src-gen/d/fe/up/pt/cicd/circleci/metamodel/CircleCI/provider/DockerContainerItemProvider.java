@@ -11,18 +11,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -31,8 +21,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DockerContainerItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DockerContainerItemProvider extends EnvironmentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -75,7 +64,6 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__USER);
-			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__USERNAME);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__PASSWORD);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__OIDC);
@@ -147,7 +135,6 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 		case CircleCIPackage.DOCKER_CONTAINER__ENTRYPOINT:
 		case CircleCIPackage.DOCKER_CONTAINER__COMMAND:
 		case CircleCIPackage.DOCKER_CONTAINER__USER:
-		case CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES:
 		case CircleCIPackage.DOCKER_CONTAINER__USERNAME:
 		case CircleCIPackage.DOCKER_CONTAINER__PASSWORD:
 		case CircleCIPackage.DOCKER_CONTAINER__OIDC:
@@ -274,9 +261,6 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USER,
 				CircleCIFactory.eINSTANCE.createVariableReference()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES,
-				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USERNAME,
 				CircleCIFactory.eINSTANCE.createConcat()));
@@ -411,17 +395,6 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return CircleCIEditPlugin.INSTANCE;
 	}
 
 }

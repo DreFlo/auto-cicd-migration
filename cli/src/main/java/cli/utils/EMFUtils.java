@@ -29,12 +29,9 @@ public class EMFUtils {
     }
 
     public static void serializeModel(EObject model, String filePath, ResourceSet resourceSet) throws IOException {
-        System.out.println(filePath);
         URI uri = URI.createURI(filePath);
-        System.out.println(uri);
         // Write the parsed model to a file
         Resource completeResource = resourceSet.createResource(uri);
-        System.out.println(completeResource);
 
         List<EObject> collection = new ArrayList<>();
         readReferences(model, new HashSet<>(), collection);

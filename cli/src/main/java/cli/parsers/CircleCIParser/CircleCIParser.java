@@ -537,7 +537,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private List<String> splitExpression(String string) {
-        Matcher matcher = Pattern.compile("(<<\\s*[a-zA-Z_-][\\w_-]*(\\.[a-zA-Z_-][\\w_-]*)*\\s*>>)|(\\$\\{\\s*[a-zA-Z_-][\\w_-]*(\\.[a-zA-Z_-][\\w_-]*)*\\s*})|(.)").matcher(string);
+        Matcher matcher = Pattern.compile("(<<\\s*[a-zA-Z_-][\\w_-]*(\\.[a-zA-Z_-][\\w_-]*)*\\s*>>)|(\\$\\{\\s*[a-zA-Z_-][\\w_-]*(\\.[a-zA-Z_-][\\w_-]*)*\\s*})|(.|\\s|\\R)").matcher(string);
         List<String> parts = new ArrayList<>();
         StringBuilder acc = new StringBuilder();
 

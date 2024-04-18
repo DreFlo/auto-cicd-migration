@@ -636,13 +636,22 @@ public interface CircleCIPackage extends EPackage {
 	int EXECUTOR = 10;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR__ENVIRONMENT_VARIABLES = ENVIRONMENT__ENVIRONMENT_VARIABLES;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTOR__NAME = 0;
+	int EXECUTOR__NAME = ENVIRONMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
@@ -651,7 +660,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTOR__RESOURCE_CLASS = 1;
+	int EXECUTOR__RESOURCE_CLASS = ENVIRONMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
@@ -660,7 +669,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTOR__SHELL = 2;
+	int EXECUTOR__SHELL = ENVIRONMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
@@ -669,16 +678,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTOR__WORKING_DIRECTORY = 3;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTOR__ENVIRONMENT_VARIABLES = 4;
+	int EXECUTOR__WORKING_DIRECTORY = ENVIRONMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Executor</em>' class.
@@ -687,7 +687,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTOR_FEATURE_COUNT = 5;
+	int EXECUTOR_FEATURE_COUNT = ENVIRONMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Executor</em>' class.
@@ -696,7 +696,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXECUTOR_OPERATION_COUNT = 0;
+	int EXECUTOR_OPERATION_COUNT = ENVIRONMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerExecutorImpl <em>Docker Executor</em>}' class.
@@ -707,6 +707,15 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	int DOCKER_EXECUTOR = 11;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -743,15 +752,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCKER_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Containers</b></em>' containment reference list.
@@ -791,13 +791,22 @@ public interface CircleCIPackage extends EPackage {
 	int DOCKER_CONTAINER = 12;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = ENVIRONMENT__ENVIRONMENT_VARIABLES;
+
+	/**
 	 * The feature id for the '<em><b>Image</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__IMAGE = 0;
+	int DOCKER_CONTAINER__IMAGE = ENVIRONMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -806,7 +815,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__NAME = 1;
+	int DOCKER_CONTAINER__NAME = ENVIRONMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Entrypoint</b></em>' containment reference list.
@@ -815,7 +824,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__ENTRYPOINT = 2;
+	int DOCKER_CONTAINER__ENTRYPOINT = ENVIRONMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' containment reference list.
@@ -824,7 +833,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__COMMAND = 3;
+	int DOCKER_CONTAINER__COMMAND = ENVIRONMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' containment reference.
@@ -833,16 +842,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__USER = 4;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = 5;
+	int DOCKER_CONTAINER__USER = ENVIRONMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Username</b></em>' containment reference.
@@ -851,7 +851,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__USERNAME = 6;
+	int DOCKER_CONTAINER__USERNAME = ENVIRONMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Password</b></em>' containment reference.
@@ -860,7 +860,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__PASSWORD = 7;
+	int DOCKER_CONTAINER__PASSWORD = ENVIRONMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Oidc</b></em>' containment reference.
@@ -869,7 +869,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__OIDC = 8;
+	int DOCKER_CONTAINER__OIDC = ENVIRONMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Aws Access Key ID</b></em>' containment reference.
@@ -878,7 +878,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__AWS_ACCESS_KEY_ID = 9;
+	int DOCKER_CONTAINER__AWS_ACCESS_KEY_ID = ENVIRONMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Aws Secret Access Key</b></em>' containment reference.
@@ -887,7 +887,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY = 10;
+	int DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY = ENVIRONMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Docker Container</em>' class.
@@ -896,7 +896,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER_FEATURE_COUNT = 11;
+	int DOCKER_CONTAINER_FEATURE_COUNT = ENVIRONMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of operations of the '<em>Docker Container</em>' class.
@@ -905,7 +905,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOCKER_CONTAINER_OPERATION_COUNT = 0;
+	int DOCKER_CONTAINER_OPERATION_COUNT = ENVIRONMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.MachineExecutorImpl <em>Machine Executor</em>}' class.
@@ -916,6 +916,15 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	int MACHINE_EXECUTOR = 13;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -952,15 +961,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Image</b></em>' containment reference.
@@ -1009,6 +1009,15 @@ public interface CircleCIPackage extends EPackage {
 	int MAC_OS_EXECUTOR = 14;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1043,15 +1052,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int MAC_OS_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAC_OS_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Xcode</b></em>' containment reference.
@@ -1091,6 +1091,15 @@ public interface CircleCIPackage extends EPackage {
 	int WINDOWS_ORB_EXECUTOR = 15;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_ORB_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1125,15 +1134,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int WINDOWS_ORB_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Executor</b></em>' containment reference.
@@ -1173,6 +1173,15 @@ public interface CircleCIPackage extends EPackage {
 	int REFERENCE_EXECUTOR = 16;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1209,15 +1218,6 @@ public interface CircleCIPackage extends EPackage {
 	int REFERENCE_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
-
-	/**
 	 * The number of structural features of the '<em>Reference Executor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1244,6 +1244,15 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	int EXECUTOR_REFERENCE_EXECUTOR = 17;
+
+	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTOR_REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1280,15 +1289,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTOR_REFERENCE_EXECUTOR__WORKING_DIRECTORY = REFERENCE_EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTOR_REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Executor</b></em>' reference.
@@ -1328,6 +1328,15 @@ public interface CircleCIPackage extends EPackage {
 	int ORB_REFERENCE_EXECUTOR = 18;
 
 	/**
+	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ORB_REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1362,15 +1371,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @ordered
 	 */
 	int ORB_REFERENCE_EXECUTOR__WORKING_DIRECTORY = REFERENCE_EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ORB_REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES = REFERENCE_EXECUTOR__ENVIRONMENT_VARIABLES;
 
 	/**
 	 * The feature id for the '<em><b>Orb</b></em>' reference.
@@ -4424,17 +4424,6 @@ public interface CircleCIPackage extends EPackage {
 	EReference getExecutor_WorkingDirectory();
 
 	/**
-	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getEnvironmentVariables <em>Environment Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Environment Variables</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor#getEnvironmentVariables()
-	 * @see #getExecutor()
-	 * @generated
-	 */
-	EReference getExecutor_EnvironmentVariables();
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor <em>Docker Executor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4519,17 +4508,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDockerContainer_User();
-
-	/**
-	 * Returns the meta object for the map '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEnvironmentVariables <em>Environment Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the map '<em>Environment Variables</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEnvironmentVariables()
-	 * @see #getDockerContainer()
-	 * @generated
-	 */
-	EReference getDockerContainer_EnvironmentVariables();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getUsername <em>Username</em>}'.
@@ -6400,14 +6378,6 @@ public interface CircleCIPackage extends EPackage {
 		EReference EXECUTOR__WORKING_DIRECTORY = eINSTANCE.getExecutor_WorkingDirectory();
 
 		/**
-		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXECUTOR__ENVIRONMENT_VARIABLES = eINSTANCE.getExecutor_EnvironmentVariables();
-
-		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerExecutorImpl <em>Docker Executor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6474,14 +6444,6 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DOCKER_CONTAINER__USER = eINSTANCE.getDockerContainer_User();
-
-		/**
-		 * The meta object literal for the '<em><b>Environment Variables</b></em>' map feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCKER_CONTAINER__ENVIRONMENT_VARIABLES = eINSTANCE.getDockerContainer_EnvironmentVariables();
 
 		/**
 		 * The meta object literal for the '<em><b>Username</b></em>' containment reference feature.

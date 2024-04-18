@@ -147,6 +147,9 @@ public class MatchesItemProvider extends LogicFunctionItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__PATTERN,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__PATTERN,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__PATTERN,
@@ -159,12 +162,15 @@ public class MatchesItemProvider extends LogicFunctionItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__PATTERN,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__VALUE,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__VALUE,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__VALUE,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__VALUE,
@@ -177,7 +183,7 @@ public class MatchesItemProvider extends LogicFunctionItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATCHES__VALUE,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

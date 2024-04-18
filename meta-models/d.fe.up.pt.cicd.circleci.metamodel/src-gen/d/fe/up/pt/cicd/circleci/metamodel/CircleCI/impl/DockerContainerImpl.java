@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
 import java.util.Collection;
 
@@ -107,7 +108,7 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getUsername() <em>Username</em>}' containment reference.
@@ -368,10 +369,11 @@ public class DockerContainerImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					CircleCIPackage.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

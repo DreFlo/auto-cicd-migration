@@ -237,6 +237,9 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__CONTEXTS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__CONTEXTS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__CONTEXTS,
@@ -249,12 +252,15 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__CONTEXTS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__BRANCHES,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__BRANCHES,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__BRANCHES,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__BRANCHES,
@@ -267,12 +273,15 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__BRANCHES,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__TAGS,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__TAGS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__TAGS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__TAGS,
@@ -285,7 +294,7 @@ public class WorkflowJobConfigurationItemProvider extends ItemProviderAdapter im
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__TAGS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_JOB_CONFIGURATION__MATRIX,
 				CircleCIFactory.eINSTANCE.createMatrix()));

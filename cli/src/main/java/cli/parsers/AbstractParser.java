@@ -12,28 +12,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parser.IParser;
 
 public abstract class AbstractParser<T extends EObject> {
-	@Inject
-    protected IParser parser;
-	
-	protected abstract Injector getInjector();
 	
 	public AbstractParser() {
-		Injector injector = getInjector();
-		
-		injector.injectMembers(this);
 	}
 
-	@SuppressWarnings("unchecked")
-	public T parse(String pipeline) throws SyntaxException {
-		var result = parser.parse(new StringReader(pipeline));
-
-		if (result.hasSyntaxErrors()) {
-            throw new SyntaxException(StreamSupport.stream(result.getSyntaxErrors().spliterator(), false)
-                    .map(error -> error.getSyntaxErrorMessage().getMessage()).toList());
-        }
-
-		return (T) result.getRootASTElement();
-	}
+	public abstract T parse(String pipeline) throws SyntaxException;
 
 
 

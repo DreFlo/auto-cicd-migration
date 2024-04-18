@@ -147,6 +147,9 @@ public class WindowsOrbExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WINDOWS_ORB_EXECUTOR__EXECUTOR,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WINDOWS_ORB_EXECUTOR__EXECUTOR,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WINDOWS_ORB_EXECUTOR__EXECUTOR,
@@ -159,7 +162,7 @@ public class WindowsOrbExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WINDOWS_ORB_EXECUTOR__EXECUTOR,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

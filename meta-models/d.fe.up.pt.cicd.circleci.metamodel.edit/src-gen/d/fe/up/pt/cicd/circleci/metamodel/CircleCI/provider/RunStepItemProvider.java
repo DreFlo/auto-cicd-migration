@@ -80,10 +80,10 @@ public class RunStepItemProvider extends StepItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CircleCIPackage.Literals.ENVIRONMENT__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__COMMAND);
 			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__NAME);
 			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__SHELL);
-			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__BACKGROUND);
 			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__WORKING_DIRECTORY);
 			childrenFeatures.add(CircleCIPackage.Literals.RUN_STEP__NO_OUTPUT_TIMEOUT);
@@ -154,10 +154,10 @@ public class RunStepItemProvider extends StepItemProvider {
 		case CircleCIPackage.RUN_STEP__WHEN:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
 		case CircleCIPackage.RUN_STEP__COMMAND:
 		case CircleCIPackage.RUN_STEP__NAME:
 		case CircleCIPackage.RUN_STEP__SHELL:
-		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
 		case CircleCIPackage.RUN_STEP__BACKGROUND:
 		case CircleCIPackage.RUN_STEP__WORKING_DIRECTORY:
 		case CircleCIPackage.RUN_STEP__NO_OUTPUT_TIMEOUT:
@@ -178,65 +178,77 @@ public class RunStepItemProvider extends StepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
-				CircleCIFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
-				CircleCIFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
-				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
-				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
-				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
-				CircleCIFactory.eINSTANCE.createConcat()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
-				CircleCIFactory.eINSTANCE.createStringLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
-				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
-				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
-				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__ENVIRONMENT_VARIABLES,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ENVIRONMENT__ENVIRONMENT_VARIABLES,
 				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
 
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__COMMAND,
+				CircleCIFactory.eINSTANCE.createVariableReference()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createVariableReference()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__SHELL,
+				CircleCIFactory.eINSTANCE.createVariableReference()));
+
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__BACKGROUND,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__BACKGROUND,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__BACKGROUND,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -251,10 +263,13 @@ public class RunStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__BACKGROUND,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__WORKING_DIRECTORY,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__WORKING_DIRECTORY,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__WORKING_DIRECTORY,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -269,10 +284,13 @@ public class RunStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__WORKING_DIRECTORY,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NO_OUTPUT_TIMEOUT,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NO_OUTPUT_TIMEOUT,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NO_OUTPUT_TIMEOUT,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -287,7 +305,7 @@ public class RunStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.RUN_STEP__NO_OUTPUT_TIMEOUT,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

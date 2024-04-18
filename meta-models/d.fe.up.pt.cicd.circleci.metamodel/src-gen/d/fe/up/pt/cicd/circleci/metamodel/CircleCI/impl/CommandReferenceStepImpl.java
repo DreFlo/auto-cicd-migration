@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CommandReferenceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -54,7 +55,7 @@ public class CommandReferenceStepImpl extends StepImpl implements CommandReferen
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> arguments;
+	protected EMap<VariableDeclaration, Expression> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,9 +124,9 @@ public class CommandReferenceStepImpl extends StepImpl implements CommandReferen
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getArguments() {
+	public EMap<VariableDeclaration, Expression> getArguments() {
 		if (arguments == null) {
-			arguments = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
+			arguments = new EcoreEMap<VariableDeclaration, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, CircleCIPackage.COMMAND_REFERENCE_STEP__ARGUMENTS);
 		}
 		return arguments;

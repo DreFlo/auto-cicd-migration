@@ -11,7 +11,7 @@ import cli.engineers.forwardEngineers.AbstractForwardEngineer;
 import cli.generators.CircleCIGenerator;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
-import cli.parsers.CircleCIParser;
+import cli.parsers.CircleCIParser.CircleCIParser;
 import cli.parsers.GitHubActionsParser.GitHubActionsParser;
 import cli.parsers.exceptions.SyntaxException;
 import cli.transformers.exogenous.fromTIM.CICD2CircleCITransformer;
@@ -48,6 +48,8 @@ public class Main {
     static {
 		JavaUtils.cleanUp();
 		registerPackages();
+		EMFUtils.registerExtensionToFactoryMap(resourceSet, "ecore", new org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl());
+		EMFUtils.registerExtensionToFactoryMap(resourceSet, "xmi", new org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl());
         try {
             registerInputCompilers();
         } catch (IOException e) {

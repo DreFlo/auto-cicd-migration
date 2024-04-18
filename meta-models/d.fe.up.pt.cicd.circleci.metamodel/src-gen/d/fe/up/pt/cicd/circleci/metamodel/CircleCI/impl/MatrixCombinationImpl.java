@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -41,7 +42,7 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> entries;
+	protected EMap<VariableDeclaration, Expression> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +69,9 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEntries() {
+	public EMap<VariableDeclaration, Expression> getEntries() {
 		if (entries == null) {
-			entries = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
+			entries = new EcoreEMap<VariableDeclaration, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, CircleCIPackage.MATRIX_COMBINATION__ENTRIES);
 		}
 		return entries;

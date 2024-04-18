@@ -24,14 +24,24 @@
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//WHEN_TYPE/ALWAYS"/>
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//WHEN_TYPE/ON_FAIL"/>
     </genEnums>
+    <genClasses ecoreClass="CircleCI.ecore#//DefinitionGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DefinitionGroup/orbs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DefinitionGroup/commands"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DefinitionGroup/executors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DefinitionGroup/jobs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CircleCI.ecore#//Script">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Script/steps"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CircleCI.ecore#//Callable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Callable/parameters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CircleCI.ecore#//Environment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Environment/environmentVariables"/>
+    </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Pipeline">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Pipeline/version"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Pipeline/setup"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Pipeline/orbs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Pipeline/commands"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Pipeline/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Pipeline/executors"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Pipeline/jobs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Pipeline/workflows"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Orb">
@@ -40,20 +50,13 @@
     <genClasses ecoreClass="CircleCI.ecore#//OrbReference">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//OrbReference/reference"/>
     </genClasses>
-    <genClasses ecoreClass="CircleCI.ecore#//OrbDefinition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbDefinition/orbs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbDefinition/commands"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbDefinition/executors"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//OrbDefinition/jobs"/>
-    </genClasses>
+    <genClasses ecoreClass="CircleCI.ecore#//OrbDefinition"/>
     <genClasses ecoreClass="CircleCI.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Command/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Command/steps"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Command/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Command/description"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Parameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CircleCI.ecore#//Parameter/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Parameter/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Parameter/enumValues"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference CircleCI.ecore#//Parameter/default"/>
@@ -103,10 +106,7 @@
     <genClasses ecoreClass="CircleCI.ecore#//Job">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Job/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Job/executor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Job/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Job/steps"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference CircleCI.ecore#//Job/parallelism"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Job/environmentVariables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Job/circleCIIPRanges"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Step"/>
@@ -114,7 +114,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/command"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/shell"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/environmentVariables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/background"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/workingDirectory"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//RunStep/noOutputTimeout"/>
@@ -122,7 +121,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="CircleCI.ecore#//ConditionalStep">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//ConditionalStep/condition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//ConditionalStep/steps"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//WhenStep"/>
     <genClasses ecoreClass="CircleCI.ecore#//UnlessStep"/>
@@ -170,8 +168,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//CommandReferenceStep/arguments"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//VariableAssignment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//VariableAssignment/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CircleCI.ecore#//VariableAssignment/key"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//VariableAssignment/value"/>
+    </genClasses>
+    <genClasses ecoreClass="CircleCI.ecore#//VariableDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//VariableDeclaration/name"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Workflow">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//Workflow/name"/>
@@ -201,6 +202,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/postSteps"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowJobConfiguration/arguments"/>
     </genClasses>
+    <genClasses ecoreClass="CircleCI.ecore#//NullWorkflowJobConfiguration"/>
     <genClasses ecoreClass="CircleCI.ecore#//WorkflowDefinedJobConfiguration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowDefinedJobConfiguration/job"/>
     </genClasses>
@@ -215,7 +217,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Matrix/alias"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//MatrixParameter">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//MatrixParameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CircleCI.ecore#//MatrixParameter/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//MatrixParameter/cells"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//MatrixCombination">
@@ -242,6 +244,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//Matches/value"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CircleCI.ecore#//Value"/>
+    <genClasses ecoreClass="CircleCI.ecore#//DotOperator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DotOperator/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DotOperator/rhs"/>
+    </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Literal"/>
     <genClasses ecoreClass="CircleCI.ecore#//StringLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//StringLiteral/value"/>
@@ -255,8 +261,8 @@
     <genClasses ecoreClass="CircleCI.ecore#//BooleanLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//BooleanLiteral/value"/>
     </genClasses>
-    <genClasses ecoreClass="CircleCI.ecore#//VariableDereference">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//VariableDereference/names"/>
+    <genClasses ecoreClass="CircleCI.ecore#//VariableReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//VariableReference/reference"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

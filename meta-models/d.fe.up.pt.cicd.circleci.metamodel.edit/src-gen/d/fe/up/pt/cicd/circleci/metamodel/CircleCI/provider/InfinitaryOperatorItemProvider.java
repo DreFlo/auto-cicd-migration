@@ -146,6 +146,9 @@ public class InfinitaryOperatorItemProvider extends LogicItemProvider {
 				CircleCIFactory.eINSTANCE.createMatches()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.INFINITARY_OPERATOR__OPERANDS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.INFINITARY_OPERATOR__OPERANDS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.INFINITARY_OPERATOR__OPERANDS,
@@ -158,7 +161,7 @@ public class InfinitaryOperatorItemProvider extends LogicItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.INFINITARY_OPERATOR__OPERANDS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 }

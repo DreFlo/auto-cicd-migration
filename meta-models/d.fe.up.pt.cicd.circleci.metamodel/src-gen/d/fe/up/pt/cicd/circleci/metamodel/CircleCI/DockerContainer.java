@@ -126,16 +126,16 @@ public interface DockerContainer extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link java.lang.String},
+	 * The key is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getDockerContainer_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
 	 * @generated
 	 */
-	EMap<String, Expression> getEnvironmentVariables();
+	EMap<VariableDeclaration, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Username</b></em>' containment reference.

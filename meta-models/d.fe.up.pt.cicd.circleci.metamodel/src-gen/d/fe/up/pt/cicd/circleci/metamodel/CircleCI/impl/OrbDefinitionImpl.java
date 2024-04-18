@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DefinitionGroup;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
@@ -262,6 +263,54 @@ public class OrbDefinitionImpl extends OrbImpl implements OrbDefinition {
 			return jobs != null && !jobs.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == DefinitionGroup.class) {
+			switch (derivedFeatureID) {
+			case CircleCIPackage.ORB_DEFINITION__ORBS:
+				return CircleCIPackage.DEFINITION_GROUP__ORBS;
+			case CircleCIPackage.ORB_DEFINITION__COMMANDS:
+				return CircleCIPackage.DEFINITION_GROUP__COMMANDS;
+			case CircleCIPackage.ORB_DEFINITION__EXECUTORS:
+				return CircleCIPackage.DEFINITION_GROUP__EXECUTORS;
+			case CircleCIPackage.ORB_DEFINITION__JOBS:
+				return CircleCIPackage.DEFINITION_GROUP__JOBS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == DefinitionGroup.class) {
+			switch (baseFeatureID) {
+			case CircleCIPackage.DEFINITION_GROUP__ORBS:
+				return CircleCIPackage.ORB_DEFINITION__ORBS;
+			case CircleCIPackage.DEFINITION_GROUP__COMMANDS:
+				return CircleCIPackage.ORB_DEFINITION__COMMANDS;
+			case CircleCIPackage.DEFINITION_GROUP__EXECUTORS:
+				return CircleCIPackage.ORB_DEFINITION__EXECUTORS;
+			case CircleCIPackage.DEFINITION_GROUP__JOBS:
+				return CircleCIPackage.ORB_DEFINITION__JOBS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //OrbDefinitionImpl

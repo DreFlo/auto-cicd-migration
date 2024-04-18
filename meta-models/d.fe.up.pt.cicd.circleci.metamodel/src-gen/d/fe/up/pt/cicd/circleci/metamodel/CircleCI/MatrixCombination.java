@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface MatrixCombination extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' map.
-	 * The key is of type {@link java.lang.String},
+	 * The key is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' map.
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getMatrixCombination_Entries()
-	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
 	 * @generated
 	 */
-	EMap<String, Expression> getEntries();
+	EMap<VariableDeclaration, Expression> getEntries();
 
 } // MatrixCombination

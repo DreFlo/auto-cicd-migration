@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -73,8 +72,7 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 						getResourceLocator(), getString("_UI_VariableAssignment_key_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_VariableAssignment_key_feature",
 								"_UI_VariableAssignment_type"),
-						CircleCIPackage.Literals.VARIABLE_ASSIGNMENT__KEY, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CircleCIPackage.Literals.VARIABLE_ASSIGNMENT__KEY, true, false, false, null, null, null));
 	}
 
 	/**
@@ -177,6 +175,9 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
@@ -189,7 +190,7 @@ public class VariableAssignmentItemProvider extends ItemProviderAdapter implemen
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT__VALUE,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

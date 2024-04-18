@@ -3,8 +3,10 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,10 +31,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getCommand <em>Command</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getShell <em>Shell</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getBackground <em>Background</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getWorkingDirectory <em>Working Directory</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.RunStepImpl#getNoOutputTimeout <em>No Output Timeout</em>}</li>
@@ -42,6 +44,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class RunStepImpl extends StepImpl implements RunStep {
+	/**
+	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvironmentVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
+
 	/**
 	 * The cached value of the '{@link #getCommand() <em>Command</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -71,16 +83,6 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	 * @ordered
 	 */
 	protected Expression shell;
-
-	/**
-	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvironmentVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EMap<String, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getBackground() <em>Background</em>}' containment reference.
@@ -311,10 +313,11 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}
@@ -506,14 +509,14 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
+			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.RUN_STEP__COMMAND:
 			return basicSetCommand(null, msgs);
 		case CircleCIPackage.RUN_STEP__NAME:
 			return basicSetName(null, msgs);
 		case CircleCIPackage.RUN_STEP__SHELL:
 			return basicSetShell(null, msgs);
-		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
-			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.RUN_STEP__BACKGROUND:
 			return basicSetBackground(null, msgs);
 		case CircleCIPackage.RUN_STEP__WORKING_DIRECTORY:
@@ -532,17 +535,17 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
+			if (coreType)
+				return getEnvironmentVariables();
+			else
+				return getEnvironmentVariables().map();
 		case CircleCIPackage.RUN_STEP__COMMAND:
 			return getCommand();
 		case CircleCIPackage.RUN_STEP__NAME:
 			return getName();
 		case CircleCIPackage.RUN_STEP__SHELL:
 			return getShell();
-		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
-			if (coreType)
-				return getEnvironmentVariables();
-			else
-				return getEnvironmentVariables().map();
 		case CircleCIPackage.RUN_STEP__BACKGROUND:
 			return getBackground();
 		case CircleCIPackage.RUN_STEP__WORKING_DIRECTORY:
@@ -563,6 +566,9 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
+			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
+			return;
 		case CircleCIPackage.RUN_STEP__COMMAND:
 			setCommand((Expression) newValue);
 			return;
@@ -571,9 +577,6 @@ public class RunStepImpl extends StepImpl implements RunStep {
 			return;
 		case CircleCIPackage.RUN_STEP__SHELL:
 			setShell((Expression) newValue);
-			return;
-		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
-			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
 		case CircleCIPackage.RUN_STEP__BACKGROUND:
 			setBackground((Expression) newValue);
@@ -599,6 +602,9 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
+			getEnvironmentVariables().clear();
+			return;
 		case CircleCIPackage.RUN_STEP__COMMAND:
 			setCommand((Expression) null);
 			return;
@@ -607,9 +613,6 @@ public class RunStepImpl extends StepImpl implements RunStep {
 			return;
 		case CircleCIPackage.RUN_STEP__SHELL:
 			setShell((Expression) null);
-			return;
-		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
-			getEnvironmentVariables().clear();
 			return;
 		case CircleCIPackage.RUN_STEP__BACKGROUND:
 			setBackground((Expression) null);
@@ -635,14 +638,14 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
+			return environmentVariables != null && !environmentVariables.isEmpty();
 		case CircleCIPackage.RUN_STEP__COMMAND:
 			return command != null;
 		case CircleCIPackage.RUN_STEP__NAME:
 			return name != null;
 		case CircleCIPackage.RUN_STEP__SHELL:
 			return shell != null;
-		case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
-			return environmentVariables != null && !environmentVariables.isEmpty();
 		case CircleCIPackage.RUN_STEP__BACKGROUND:
 			return background != null;
 		case CircleCIPackage.RUN_STEP__WORKING_DIRECTORY:
@@ -653,6 +656,42 @@ public class RunStepImpl extends StepImpl implements RunStep {
 			return when != WHEN_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Environment.class) {
+			switch (derivedFeatureID) {
+			case CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES:
+				return CircleCIPackage.ENVIRONMENT__ENVIRONMENT_VARIABLES;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Environment.class) {
+			switch (baseFeatureID) {
+			case CircleCIPackage.ENVIRONMENT__ENVIRONMENT_VARIABLES:
+				return CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

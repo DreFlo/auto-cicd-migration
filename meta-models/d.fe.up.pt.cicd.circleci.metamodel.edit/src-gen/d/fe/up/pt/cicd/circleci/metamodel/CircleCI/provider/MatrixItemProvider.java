@@ -164,6 +164,9 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 				createChildParameter(CircleCIPackage.Literals.MATRIX__ALIAS, CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX__ALIAS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX__ALIAS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX__ALIAS,
@@ -176,7 +179,7 @@ public class MatrixItemProvider extends ItemProviderAdapter implements IEditingD
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX__ALIAS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

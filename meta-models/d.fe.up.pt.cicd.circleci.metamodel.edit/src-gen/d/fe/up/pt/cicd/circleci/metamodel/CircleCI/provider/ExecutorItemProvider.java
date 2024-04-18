@@ -184,6 +184,9 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__RESOURCE_CLASS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__RESOURCE_CLASS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__RESOURCE_CLASS,
@@ -196,12 +199,15 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__RESOURCE_CLASS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__SHELL,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__SHELL,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__SHELL,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__SHELL,
@@ -214,12 +220,15 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__SHELL,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY,
@@ -232,7 +241,7 @@ public class ExecutorItemProvider extends ItemProviderAdapter implements IEditin
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__WORKING_DIRECTORY,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.EXECUTOR__ENVIRONMENT_VARIABLES,
 				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));

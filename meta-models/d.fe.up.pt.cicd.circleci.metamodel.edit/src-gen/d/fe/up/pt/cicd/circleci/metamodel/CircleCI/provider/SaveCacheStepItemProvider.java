@@ -175,6 +175,9 @@ public class SaveCacheStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__PATHS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__PATHS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__PATHS,
@@ -187,12 +190,15 @@ public class SaveCacheStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__PATHS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__KEY,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__KEY,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__KEY,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__KEY,
@@ -205,12 +211,15 @@ public class SaveCacheStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__KEY,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__NAME,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__NAME,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__NAME,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__NAME,
@@ -223,7 +232,7 @@ public class SaveCacheStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SAVE_CACHE_STEP__NAME,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

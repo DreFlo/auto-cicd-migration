@@ -4,6 +4,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -33,26 +34,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
-		implements BasicEMap.Entry<String, Expression> {
+		implements BasicEMap.Entry<VariableDeclaration, Expression> {
 	/**
-	 * The default value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
+	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTypedKey()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String KEY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypedKey()
-	 * @generated
-	 * @ordered
-	 */
-	protected String key = KEY_EDEFAULT;
+	protected VariableDeclaration key;
 
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
@@ -88,7 +79,7 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTypedKey() {
+	public VariableDeclaration getTypedKey() {
 		return key;
 	}
 
@@ -97,12 +88,40 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedKey(String newKey) {
-		String oldKey = key;
+	public NotificationChain basicSetTypedKey(VariableDeclaration newKey, NotificationChain msgs) {
+		VariableDeclaration oldKey = key;
 		key = newKey;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.VARIABLE_ASSIGNMENT__KEY, oldKey,
-					key));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CircleCIPackage.VARIABLE_ASSIGNMENT__KEY, oldKey, newKey);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTypedKey(VariableDeclaration newKey) {
+		if (newKey != key) {
+			NotificationChain msgs = null;
+			if (key != null)
+				msgs = ((InternalEObject) key).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CircleCIPackage.VARIABLE_ASSIGNMENT__KEY, null, msgs);
+			if (newKey != null)
+				msgs = ((InternalEObject) newKey).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CircleCIPackage.VARIABLE_ASSIGNMENT__KEY, null, msgs);
+			msgs = basicSetTypedKey(newKey, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.VARIABLE_ASSIGNMENT__KEY, newKey,
+					newKey));
 	}
 
 	/**
@@ -163,6 +182,8 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+		case CircleCIPackage.VARIABLE_ASSIGNMENT__KEY:
+			return basicSetTypedKey(null, msgs);
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__VALUE:
 			return basicSetTypedValue(null, msgs);
 		}
@@ -194,7 +215,7 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__KEY:
-			setTypedKey((String) newValue);
+			setTypedKey((VariableDeclaration) newValue);
 			return;
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__VALUE:
 			setTypedValue((Expression) newValue);
@@ -212,7 +233,7 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__KEY:
-			setTypedKey(KEY_EDEFAULT);
+			setTypedKey((VariableDeclaration) null);
 			return;
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__VALUE:
 			setTypedValue((Expression) null);
@@ -230,28 +251,11 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__KEY:
-			return KEY_EDEFAULT == null ? key != null : !KEY_EDEFAULT.equals(key);
+			return key != null;
 		case CircleCIPackage.VARIABLE_ASSIGNMENT__VALUE:
 			return value != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (key: ");
-		result.append(key);
-		result.append(')');
-		return result.toString();
 	}
 
 	/**
@@ -291,7 +295,7 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
-	public String getKey() {
+	public VariableDeclaration getKey() {
 		return getTypedKey();
 	}
 
@@ -301,7 +305,7 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@Override
-	public void setKey(String key) {
+	public void setKey(VariableDeclaration key) {
 		setTypedKey(key);
 	}
 
@@ -333,9 +337,9 @@ public class VariableAssignmentImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<String, Expression> getEMap() {
+	public EMap<VariableDeclaration, Expression> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, Expression>) container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<VariableDeclaration, Expression>) container.eGet(eContainmentFeature());
 	}
 
 } //VariableAssignmentImpl

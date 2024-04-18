@@ -145,6 +145,9 @@ public class AddSSHKeysStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ADD_SSH_KEYS_STEP__FINGERPRINTS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ADD_SSH_KEYS_STEP__FINGERPRINTS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ADD_SSH_KEYS_STEP__FINGERPRINTS,
@@ -157,7 +160,7 @@ public class AddSSHKeysStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ADD_SSH_KEYS_STEP__FINGERPRINTS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 }

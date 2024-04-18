@@ -2,11 +2,8 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Callable;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Pipeline;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow;
@@ -22,8 +19,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -35,19 +30,25 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getSetup <em>Setup</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getOrbs <em>Orbs</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getCommands <em>Commands</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getExecutors <em>Executors</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getJobs <em>Jobs</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.PipelineImpl#getWorkflows <em>Workflows</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeline {
+public class PipelineImpl extends DefinitionGroupImpl implements Pipeline {
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Parameter> parameters;
+
 	/**
 	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -87,56 +88,6 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @ordered
 	 */
 	protected Boolean setup = SETUP_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOrbs() <em>Orbs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrbs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Orb> orbs;
-
-	/**
-	 * The cached value of the '{@link #getCommands() <em>Commands</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCommands()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Command> commands;
-
-	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> parameters;
-
-	/**
-	 * The cached value of the '{@link #getExecutors() <em>Executors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExecutors()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Executor> executors;
-
-	/**
-	 * The cached value of the '{@link #getJobs() <em>Jobs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJobs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Job> jobs;
 
 	/**
 	 * The cached value of the '{@link #getWorkflows() <em>Workflows</em>}' containment reference list.
@@ -220,65 +171,12 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @generated
 	 */
 	@Override
-	public EList<Orb> getOrbs() {
-		if (orbs == null) {
-			orbs = new EObjectContainmentEList<Orb>(Orb.class, this, CircleCIPackage.PIPELINE__ORBS);
-		}
-		return orbs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Command> getCommands() {
-		if (commands == null) {
-			commands = new EObjectContainmentEList<Command>(Command.class, this, CircleCIPackage.PIPELINE__COMMANDS);
-		}
-		return commands;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
 			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this,
 					CircleCIPackage.PIPELINE__PARAMETERS);
 		}
 		return parameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Executor> getExecutors() {
-		if (executors == null) {
-			executors = new EObjectContainmentEList<Executor>(Executor.class, this,
-					CircleCIPackage.PIPELINE__EXECUTORS);
-		}
-		return executors;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Job> getJobs() {
-		if (jobs == null) {
-			jobs = new EObjectContainmentEList<Job>(Job.class, this, CircleCIPackage.PIPELINE__JOBS);
-		}
-		return jobs;
 	}
 
 	/**
@@ -303,16 +201,8 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case CircleCIPackage.PIPELINE__ORBS:
-			return ((InternalEList<?>) getOrbs()).basicRemove(otherEnd, msgs);
-		case CircleCIPackage.PIPELINE__COMMANDS:
-			return ((InternalEList<?>) getCommands()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.PIPELINE__PARAMETERS:
 			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
-		case CircleCIPackage.PIPELINE__EXECUTORS:
-			return ((InternalEList<?>) getExecutors()).basicRemove(otherEnd, msgs);
-		case CircleCIPackage.PIPELINE__JOBS:
-			return ((InternalEList<?>) getJobs()).basicRemove(otherEnd, msgs);
 		case CircleCIPackage.PIPELINE__WORKFLOWS:
 			return ((InternalEList<?>) getWorkflows()).basicRemove(otherEnd, msgs);
 		}
@@ -327,20 +217,12 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+		case CircleCIPackage.PIPELINE__PARAMETERS:
+			return getParameters();
 		case CircleCIPackage.PIPELINE__VERSION:
 			return getVersion();
 		case CircleCIPackage.PIPELINE__SETUP:
 			return getSetup();
-		case CircleCIPackage.PIPELINE__ORBS:
-			return getOrbs();
-		case CircleCIPackage.PIPELINE__COMMANDS:
-			return getCommands();
-		case CircleCIPackage.PIPELINE__PARAMETERS:
-			return getParameters();
-		case CircleCIPackage.PIPELINE__EXECUTORS:
-			return getExecutors();
-		case CircleCIPackage.PIPELINE__JOBS:
-			return getJobs();
 		case CircleCIPackage.PIPELINE__WORKFLOWS:
 			return getWorkflows();
 		}
@@ -356,31 +238,15 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case CircleCIPackage.PIPELINE__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends Parameter>) newValue);
+			return;
 		case CircleCIPackage.PIPELINE__VERSION:
 			setVersion((String) newValue);
 			return;
 		case CircleCIPackage.PIPELINE__SETUP:
 			setSetup((Boolean) newValue);
-			return;
-		case CircleCIPackage.PIPELINE__ORBS:
-			getOrbs().clear();
-			getOrbs().addAll((Collection<? extends Orb>) newValue);
-			return;
-		case CircleCIPackage.PIPELINE__COMMANDS:
-			getCommands().clear();
-			getCommands().addAll((Collection<? extends Command>) newValue);
-			return;
-		case CircleCIPackage.PIPELINE__PARAMETERS:
-			getParameters().clear();
-			getParameters().addAll((Collection<? extends Parameter>) newValue);
-			return;
-		case CircleCIPackage.PIPELINE__EXECUTORS:
-			getExecutors().clear();
-			getExecutors().addAll((Collection<? extends Executor>) newValue);
-			return;
-		case CircleCIPackage.PIPELINE__JOBS:
-			getJobs().clear();
-			getJobs().addAll((Collection<? extends Job>) newValue);
 			return;
 		case CircleCIPackage.PIPELINE__WORKFLOWS:
 			getWorkflows().clear();
@@ -398,26 +264,14 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case CircleCIPackage.PIPELINE__PARAMETERS:
+			getParameters().clear();
+			return;
 		case CircleCIPackage.PIPELINE__VERSION:
 			setVersion(VERSION_EDEFAULT);
 			return;
 		case CircleCIPackage.PIPELINE__SETUP:
 			setSetup(SETUP_EDEFAULT);
-			return;
-		case CircleCIPackage.PIPELINE__ORBS:
-			getOrbs().clear();
-			return;
-		case CircleCIPackage.PIPELINE__COMMANDS:
-			getCommands().clear();
-			return;
-		case CircleCIPackage.PIPELINE__PARAMETERS:
-			getParameters().clear();
-			return;
-		case CircleCIPackage.PIPELINE__EXECUTORS:
-			getExecutors().clear();
-			return;
-		case CircleCIPackage.PIPELINE__JOBS:
-			getJobs().clear();
 			return;
 		case CircleCIPackage.PIPELINE__WORKFLOWS:
 			getWorkflows().clear();
@@ -434,24 +288,52 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case CircleCIPackage.PIPELINE__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
 		case CircleCIPackage.PIPELINE__VERSION:
 			return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 		case CircleCIPackage.PIPELINE__SETUP:
 			return SETUP_EDEFAULT == null ? setup != null : !SETUP_EDEFAULT.equals(setup);
-		case CircleCIPackage.PIPELINE__ORBS:
-			return orbs != null && !orbs.isEmpty();
-		case CircleCIPackage.PIPELINE__COMMANDS:
-			return commands != null && !commands.isEmpty();
-		case CircleCIPackage.PIPELINE__PARAMETERS:
-			return parameters != null && !parameters.isEmpty();
-		case CircleCIPackage.PIPELINE__EXECUTORS:
-			return executors != null && !executors.isEmpty();
-		case CircleCIPackage.PIPELINE__JOBS:
-			return jobs != null && !jobs.isEmpty();
 		case CircleCIPackage.PIPELINE__WORKFLOWS:
 			return workflows != null && !workflows.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Callable.class) {
+			switch (derivedFeatureID) {
+			case CircleCIPackage.PIPELINE__PARAMETERS:
+				return CircleCIPackage.CALLABLE__PARAMETERS;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Callable.class) {
+			switch (baseFeatureID) {
+			case CircleCIPackage.CALLABLE__PARAMETERS:
+				return CircleCIPackage.PIPELINE__PARAMETERS;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

@@ -5,6 +5,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -97,7 +98,7 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,10 +303,11 @@ public abstract class ExecutorImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					CircleCIPackage.EXECUTOR__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}

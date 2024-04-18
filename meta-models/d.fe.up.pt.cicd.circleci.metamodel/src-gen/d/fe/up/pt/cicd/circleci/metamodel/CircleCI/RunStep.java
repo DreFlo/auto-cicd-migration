@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
-import org.eclipse.emf.common.util.EMap;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Run Step</b></em>'.
@@ -16,7 +14,6 @@ import org.eclipse.emf.common.util.EMap;
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getCommand <em>Command</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getShell <em>Shell</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getBackground <em>Background</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getWorkingDirectory <em>Working Directory</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep#getNoOutputTimeout <em>No Output Timeout</em>}</li>
@@ -27,7 +24,7 @@ import org.eclipse.emf.common.util.EMap;
  * @model
  * @generated
  */
-public interface RunStep extends Step {
+public interface RunStep extends Step, Environment {
 	/**
 	 * Returns the value of the '<em><b>Command</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -93,19 +90,6 @@ public interface RunStep extends Step {
 	 * @generated
 	 */
 	void setShell(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Environment Variables</em>' map.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getRunStep_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
-	 * @generated
-	 */
-	EMap<String, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Background</b></em>' containment reference.

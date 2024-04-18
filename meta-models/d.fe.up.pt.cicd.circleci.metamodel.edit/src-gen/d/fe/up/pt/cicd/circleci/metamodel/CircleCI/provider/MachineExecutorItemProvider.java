@@ -149,6 +149,9 @@ public class MachineExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__IMAGE,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__IMAGE,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__IMAGE,
@@ -161,12 +164,15 @@ public class MachineExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__IMAGE,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__DOCKER_LAYER_CACHING,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__DOCKER_LAYER_CACHING,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__DOCKER_LAYER_CACHING,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__DOCKER_LAYER_CACHING,
@@ -179,7 +185,7 @@ public class MachineExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MACHINE_EXECUTOR__DOCKER_LAYER_CACHING,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

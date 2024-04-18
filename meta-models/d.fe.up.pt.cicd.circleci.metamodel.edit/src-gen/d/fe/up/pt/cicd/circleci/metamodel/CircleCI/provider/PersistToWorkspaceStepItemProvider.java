@@ -147,6 +147,9 @@ public class PersistToWorkspaceStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__ROOT,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__ROOT,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__ROOT,
@@ -159,12 +162,15 @@ public class PersistToWorkspaceStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__ROOT,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__PATHS,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__PATHS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__PATHS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__PATHS,
@@ -177,7 +183,7 @@ public class PersistToWorkspaceStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.PERSIST_TO_WORKSPACE_STEP__PATHS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

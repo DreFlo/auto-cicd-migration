@@ -1,5 +1,6 @@
 package cli.utils;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -28,8 +29,12 @@ public class EMFUtils {
     }
 
     public static void serializeModel(EObject model, String filePath, ResourceSet resourceSet) throws IOException {
+        System.out.println(filePath);
+        URI uri = URI.createURI(filePath);
+        System.out.println(uri);
         // Write the parsed model to a file
-        Resource completeResource = resourceSet.createResource(org.eclipse.emf.common.util.URI.createURI(filePath));
+        Resource completeResource = resourceSet.createResource(uri);
+        System.out.println(completeResource);
 
         List<EObject> collection = new ArrayList<>();
         readReferences(model, new HashSet<>(), collection);

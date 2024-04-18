@@ -3,6 +3,7 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.provider;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter;
 
 import java.util.Collection;
@@ -74,8 +75,7 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 						getResourceLocator(), getString("_UI_Parameter_name_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Parameter_name_feature",
 								"_UI_Parameter_type"),
-						CircleCIPackage.Literals.PARAMETER__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CircleCIPackage.Literals.PARAMETER__NAME, true, false, false, null, null, null));
 	}
 
 	/**
@@ -170,7 +170,8 @@ public class ParameterItemProvider extends ItemProviderAdapter implements IEditi
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Parameter) object).getName();
+		PARAMETER_TYPES labelValue = ((Parameter) object).getType();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ? getString("_UI_Parameter_type")
 				: getString("_UI_Parameter_type") + " " + label;
 	}

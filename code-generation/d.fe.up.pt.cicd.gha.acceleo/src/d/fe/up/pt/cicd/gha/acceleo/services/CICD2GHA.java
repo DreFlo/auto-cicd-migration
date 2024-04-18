@@ -1,12 +1,23 @@
 package d.fe.up.pt.cicd.gha.acceleo.services;
 
+import org.eclipse.emf.ecore.EObject;
+
 import d.fe.up.pt.cicd.gha.metamodel.GHA.And;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.BinaryOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Comparison;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Equality;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Not;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Or;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Step;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 
 public class CICD2GHA {
 	public String getBinaryOperator(BinaryOp binaryOp) {
@@ -38,5 +49,70 @@ public class CICD2GHA {
 		} else {
 			return "\"" + string + "\"";
 		}
+	}
+	
+	public String generateVariableReference(VariableDeclaration variableDeclaration) {
+		EObject current = variableDeclaration;
+		
+		while (true) {
+			if (current == null)
+				break;
+			else if (current instanceof Step step)
+				return generateStepVariableReference(variableDeclaration, step);
+			else if (current instanceof Job job)
+				return generateJobVariableReference(variableDeclaration, job);
+			else if (current instanceof Workflow)
+				return generateWorkflowVariableReference(variableDeclaration);
+			
+			current = current.eContainer();
+		}
+		
+		return "<INVALID VARIABLE REFERENCE>";
+	}
+	
+	public String generateStepVariableReference(VariableDeclaration variableDeclaration, Step step) {
+		if (variableDeclaration.eContainingFeature().getFeatureID() == GHAPackage.VARIABLE_ASSIGNMENT__KEY)
+			return generateStepReference(step) + ".env." + variableDeclaration.getName(); 
+		return "<INVALID STEP VARIABLE REFERENCE>";
+	}
+	
+	public String generateMatrixVariableReference(VariableDeclaration variableDeclaration) {
+		return "matrix." + variableDeclaration.getName();
+	}
+	
+	public String  generateJobVariableReference(VariableDeclaration variableDeclaration, Job job) {
+		if (variableDeclaration.eContainer() instanceof Matrix)
+			return generateJobReference(job) + "." + generateMatrixVariableReference(variableDeclaration);
+		else if (variableDeclaration.eContainer() instanceof Output)
+			return generateJobReference(job) + ".outputs." + variableDeclaration.getName();
+		else if (variableDeclaration.eContainingFeature().getFeatureID() == GHAPackage.VARIABLE_ASSIGNMENT__KEY)
+			return generateJobReference(job) + ".env." + variableDeclaration.getName();
+		return "<INVALID JOB VARIABLE REFERENCE>";
+	}
+	
+	public String generateWorkflowVariableReference(VariableDeclaration variableDeclaration) {
+		if (variableDeclaration.eContainer() instanceof Input)
+			return "inputs." + variableDeclaration.getName();
+		else if (variableDeclaration.eContainer() instanceof Output)
+			return "outputs." + variableDeclaration.getName();
+		else if (variableDeclaration.eContainingFeature().getFeatureID() == GHAPackage.VARIABLE_ASSIGNMENT__KEY)
+			return "env." + variableDeclaration.getName();
+		return "<INVALID WORKFLOW VARIABLE REFERENCE>";
+	}
+	
+	public String generateJobReference(Job job) {
+		return "jobs." + job.getName();
+	}
+	
+	public String generateStepReference(Step step) {
+		EObject current = step;
+		while (!(current instanceof ScriptJob job)) {
+			if (current == null)
+				return "<INVALID STEP>";
+		
+			current = current.eContainer();
+		}
+		
+		return generateJobReference(job) + "." + "steps." + job.getSteps().indexOf(step);
 	}
 }

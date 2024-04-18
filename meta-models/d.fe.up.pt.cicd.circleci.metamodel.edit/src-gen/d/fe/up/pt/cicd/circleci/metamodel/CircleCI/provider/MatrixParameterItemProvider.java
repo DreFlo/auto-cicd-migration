@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -73,8 +72,7 @@ public class MatrixParameterItemProvider extends ItemProviderAdapter implements 
 						getResourceLocator(), getString("_UI_MatrixParameter_name_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_MatrixParameter_name_feature",
 								"_UI_MatrixParameter_type"),
-						CircleCIPackage.Literals.MATRIX_PARAMETER__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CircleCIPackage.Literals.MATRIX_PARAMETER__NAME, true, false, false, null, null, null));
 	}
 
 	/**
@@ -136,9 +134,7 @@ public class MatrixParameterItemProvider extends ItemProviderAdapter implements 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MatrixParameter) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_MatrixParameter_type")
-				: getString("_UI_MatrixParameter_type") + " " + label;
+		return getString("_UI_MatrixParameter_type");
 	}
 
 	/**
@@ -178,6 +174,9 @@ public class MatrixParameterItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX_PARAMETER__CELLS,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX_PARAMETER__CELLS,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX_PARAMETER__CELLS,
@@ -190,7 +189,7 @@ public class MatrixParameterItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MATRIX_PARAMETER__CELLS,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

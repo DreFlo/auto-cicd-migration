@@ -179,6 +179,9 @@ public class TriggerItemProvider extends ItemProviderAdapter implements IEditing
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
@@ -191,7 +194,7 @@ public class TriggerItemProvider extends ItemProviderAdapter implements IEditing
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.TRIGGER__BRANCHES,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

@@ -61,10 +61,10 @@ public class OrbDefinitionItemProvider extends OrbItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CircleCIPackage.Literals.ORB_DEFINITION__ORBS);
-			childrenFeatures.add(CircleCIPackage.Literals.ORB_DEFINITION__COMMANDS);
-			childrenFeatures.add(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS);
-			childrenFeatures.add(CircleCIPackage.Literals.ORB_DEFINITION__JOBS);
+			childrenFeatures.add(CircleCIPackage.Literals.DEFINITION_GROUP__ORBS);
+			childrenFeatures.add(CircleCIPackage.Literals.DEFINITION_GROUP__COMMANDS);
+			childrenFeatures.add(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS);
+			childrenFeatures.add(CircleCIPackage.Literals.DEFINITION_GROUP__JOBS);
 		}
 		return childrenFeatures;
 	}
@@ -149,34 +149,34 @@ public class OrbDefinitionItemProvider extends OrbItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__ORBS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__ORBS,
 				CircleCIFactory.eINSTANCE.createOrbReference()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__ORBS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__ORBS,
 				CircleCIFactory.eINSTANCE.createOrbDefinition()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__COMMANDS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__COMMANDS,
 				CircleCIFactory.eINSTANCE.createCommand()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createDockerExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createMachineExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createMacOSExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createWindowsOrbExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createExecutorReferenceExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__EXECUTORS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createOrbReferenceExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ORB_DEFINITION__JOBS,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__JOBS,
 				CircleCIFactory.eINSTANCE.createJob()));
 	}
 

@@ -115,10 +115,14 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 			return createCommandReferenceStep();
 		case CircleCIPackage.VARIABLE_ASSIGNMENT:
 			return (EObject) createVariableAssignment();
+		case CircleCIPackage.VARIABLE_DECLARATION:
+			return createVariableDeclaration();
 		case CircleCIPackage.WORKFLOW:
 			return createWorkflow();
 		case CircleCIPackage.SCHEDULE_TRIGGER:
 			return createScheduleTrigger();
+		case CircleCIPackage.NULL_WORKFLOW_JOB_CONFIGURATION:
+			return createNullWorkflowJobConfiguration();
 		case CircleCIPackage.WORKFLOW_DEFINED_JOB_CONFIGURATION:
 			return createWorkflowDefinedJobConfiguration();
 		case CircleCIPackage.WORKFLOW_APPROVAL_JOB_CONFIGURATION:
@@ -143,6 +147,8 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 			return createNot();
 		case CircleCIPackage.MATCHES:
 			return createMatches();
+		case CircleCIPackage.DOT_OPERATOR:
+			return createDotOperator();
 		case CircleCIPackage.STRING_LITERAL:
 			return createStringLiteral();
 		case CircleCIPackage.INTEGER_LITERAL:
@@ -151,8 +157,8 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 			return createDoubleLiteral();
 		case CircleCIPackage.BOOLEAN_LITERAL:
 			return createBooleanLiteral();
-		case CircleCIPackage.VARIABLE_DEREFERENCE:
-			return createVariableDereference();
+		case CircleCIPackage.VARIABLE_REFERENCE:
+			return createVariableReference();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -494,9 +500,20 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map.Entry<String, Expression> createVariableAssignment() {
+	public Map.Entry<VariableDeclaration, Expression> createVariableAssignment() {
 		VariableAssignmentImpl variableAssignment = new VariableAssignmentImpl();
 		return variableAssignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public VariableDeclaration createVariableDeclaration() {
+		VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+		return variableDeclaration;
 	}
 
 	/**
@@ -519,6 +536,17 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	public ScheduleTrigger createScheduleTrigger() {
 		ScheduleTriggerImpl scheduleTrigger = new ScheduleTriggerImpl();
 		return scheduleTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NullWorkflowJobConfiguration createNullWorkflowJobConfiguration() {
+		NullWorkflowJobConfigurationImpl nullWorkflowJobConfiguration = new NullWorkflowJobConfigurationImpl();
+		return nullWorkflowJobConfiguration;
 	}
 
 	/**
@@ -659,6 +687,17 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
+	public DotOperator createDotOperator() {
+		DotOperatorImpl dotOperator = new DotOperatorImpl();
+		return dotOperator;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public StringLiteral createStringLiteral() {
 		StringLiteralImpl stringLiteral = new StringLiteralImpl();
 		return stringLiteral;
@@ -703,9 +742,9 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
-	public VariableDereference createVariableDereference() {
-		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
-		return variableDereference;
+	public VariableReference createVariableReference() {
+		VariableReferenceImpl variableReference = new VariableReferenceImpl();
+		return variableReference;
 	}
 
 	/**

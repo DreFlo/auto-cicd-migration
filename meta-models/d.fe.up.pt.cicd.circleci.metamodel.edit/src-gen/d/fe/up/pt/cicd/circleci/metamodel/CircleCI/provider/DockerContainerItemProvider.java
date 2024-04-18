@@ -174,6 +174,9 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
@@ -186,10 +189,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__NAME,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__NAME,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__NAME,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -204,10 +210,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__NAME,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -222,10 +231,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -240,10 +252,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USER,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USER,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USER,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -258,7 +273,7 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USER,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__ENVIRONMENT_VARIABLES,
 				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
@@ -267,6 +282,9 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USERNAME,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USERNAME,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USERNAME,
@@ -279,10 +297,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__USERNAME,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__PASSWORD,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__PASSWORD,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__PASSWORD,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -297,10 +318,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__PASSWORD,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__OIDC,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__OIDC,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__OIDC,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -315,10 +339,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__OIDC,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_ACCESS_KEY_ID,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_ACCESS_KEY_ID,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_ACCESS_KEY_ID,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -333,10 +360,13 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_ACCESS_KEY_ID,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -351,7 +381,7 @@ public class DockerContainerItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__AWS_SECRET_ACCESS_KEY,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

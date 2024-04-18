@@ -717,6 +717,29 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VariableDeclarationItemProvider variableDeclarationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVariableDeclarationAdapter() {
+		if (variableDeclarationItemProvider == null) {
+			variableDeclarationItemProvider = new VariableDeclarationItemProvider(this);
+		}
+
+		return variableDeclarationItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -760,6 +783,29 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 		}
 
 		return scheduleTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullWorkflowJobConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NullWorkflowJobConfigurationItemProvider nullWorkflowJobConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullWorkflowJobConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNullWorkflowJobConfigurationAdapter() {
+		if (nullWorkflowJobConfigurationItemProvider == null) {
+			nullWorkflowJobConfigurationItemProvider = new NullWorkflowJobConfigurationItemProvider(this);
+		}
+
+		return nullWorkflowJobConfigurationItemProvider;
 	}
 
 	/**
@@ -1039,6 +1085,29 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DotOperator} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DotOperatorItemProvider dotOperatorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DotOperator}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDotOperatorAdapter() {
+		if (dotOperatorItemProvider == null) {
+			dotOperatorItemProvider = new DotOperatorItemProvider(this);
+		}
+
+		return dotOperatorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StringLiteral} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1131,26 +1200,26 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
+	protected VariableReferenceItemProvider variableReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createVariableDereferenceAdapter() {
-		if (variableDereferenceItemProvider == null) {
-			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
+	public Adapter createVariableReferenceAdapter() {
+		if (variableReferenceItemProvider == null) {
+			variableReferenceItemProvider = new VariableReferenceItemProvider(this);
 		}
 
-		return variableDereferenceItemProvider;
+		return variableReferenceItemProvider;
 	}
 
 	/**
@@ -1314,10 +1383,14 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 			commandReferenceStepItemProvider.dispose();
 		if (variableAssignmentItemProvider != null)
 			variableAssignmentItemProvider.dispose();
+		if (variableDeclarationItemProvider != null)
+			variableDeclarationItemProvider.dispose();
 		if (workflowItemProvider != null)
 			workflowItemProvider.dispose();
 		if (scheduleTriggerItemProvider != null)
 			scheduleTriggerItemProvider.dispose();
+		if (nullWorkflowJobConfigurationItemProvider != null)
+			nullWorkflowJobConfigurationItemProvider.dispose();
 		if (workflowDefinedJobConfigurationItemProvider != null)
 			workflowDefinedJobConfigurationItemProvider.dispose();
 		if (workflowApprovalJobConfigurationItemProvider != null)
@@ -1342,6 +1415,8 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 			notItemProvider.dispose();
 		if (matchesItemProvider != null)
 			matchesItemProvider.dispose();
+		if (dotOperatorItemProvider != null)
+			dotOperatorItemProvider.dispose();
 		if (stringLiteralItemProvider != null)
 			stringLiteralItemProvider.dispose();
 		if (integerLiteralItemProvider != null)
@@ -1350,8 +1425,8 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 			doubleLiteralItemProvider.dispose();
 		if (booleanLiteralItemProvider != null)
 			booleanLiteralItemProvider.dispose();
-		if (variableDereferenceItemProvider != null)
-			variableDereferenceItemProvider.dispose();
+		if (variableReferenceItemProvider != null)
+			variableReferenceItemProvider.dispose();
 	}
 
 }

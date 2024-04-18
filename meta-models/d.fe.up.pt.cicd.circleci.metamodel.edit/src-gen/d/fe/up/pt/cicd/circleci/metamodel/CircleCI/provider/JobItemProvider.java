@@ -11,20 +11,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -33,8 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class JobItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class JobItemProvider extends ScriptItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -103,10 +93,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CircleCIPackage.Literals.CALLABLE__PARAMETERS);
+			childrenFeatures.add(CircleCIPackage.Literals.ENVIRONMENT__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(CircleCIPackage.Literals.JOB__EXECUTOR);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__PARAMETERS);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__STEPS);
-			childrenFeatures.add(CircleCIPackage.Literals.JOB__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES);
 		}
 		return childrenFeatures;
@@ -175,10 +164,9 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		case CircleCIPackage.JOB__PARALLELISM:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
-		case CircleCIPackage.JOB__EXECUTOR:
 		case CircleCIPackage.JOB__PARAMETERS:
-		case CircleCIPackage.JOB__STEPS:
 		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
+		case CircleCIPackage.JOB__EXECUTOR:
 		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -196,6 +184,12 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CALLABLE__PARAMETERS,
+				CircleCIFactory.eINSTANCE.createParameter()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ENVIRONMENT__ENVIRONMENT_VARIABLES,
+				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
 				CircleCIFactory.eINSTANCE.createDockerExecutor()));
@@ -215,56 +209,11 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
 				CircleCIFactory.eINSTANCE.createOrbReferenceExecutor()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__PARAMETERS,
-				CircleCIFactory.eINSTANCE.createParameter()));
-
-		newChildDescriptors.add(
-				createChildParameter(CircleCIPackage.Literals.JOB__STEPS, CircleCIFactory.eINSTANCE.createRunStep()));
-
-		newChildDescriptors.add(
-				createChildParameter(CircleCIPackage.Literals.JOB__STEPS, CircleCIFactory.eINSTANCE.createWhenStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createUnlessStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createCheckoutStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createSetupRemoteDockerStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createSaveCacheStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createRestoreCacheStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createStoreArtifactsStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createStoreTestResultsStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createPersistToWorkspaceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createAttachWorkspaceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__STEPS,
-				CircleCIFactory.eINSTANCE.createCommandReferenceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__ENVIRONMENT_VARIABLES,
-				CircleCIFactory.eINSTANCE.create(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT)));
-
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
 				CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
@@ -279,18 +228,7 @@ public class JobItemProvider extends ItemProviderAdapter implements IEditingDoma
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__CIRCLE_CIIP_RANGES,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return CircleCIEditPlugin.INSTANCE;
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 }

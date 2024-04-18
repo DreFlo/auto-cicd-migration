@@ -69,6 +69,26 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	 */
 	protected CircleCISwitch<Adapter> modelSwitch = new CircleCISwitch<Adapter>() {
 		@Override
+		public Adapter caseDefinitionGroup(DefinitionGroup object) {
+			return createDefinitionGroupAdapter();
+		}
+
+		@Override
+		public Adapter caseScript(Script object) {
+			return createScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseCallable(Callable object) {
+			return createCallableAdapter();
+		}
+
+		@Override
+		public Adapter caseEnvironment(Environment object) {
+			return createEnvironmentAdapter();
+		}
+
+		@Override
 		public Adapter casePipeline(Pipeline object) {
 			return createPipelineAdapter();
 		}
@@ -229,8 +249,13 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariableAssignment(Map.Entry<String, Expression> object) {
+		public Adapter caseVariableAssignment(Map.Entry<VariableDeclaration, Expression> object) {
 			return createVariableAssignmentAdapter();
+		}
+
+		@Override
+		public Adapter caseVariableDeclaration(VariableDeclaration object) {
+			return createVariableDeclarationAdapter();
 		}
 
 		@Override
@@ -251,6 +276,11 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseWorkflowJobConfiguration(WorkflowJobConfiguration object) {
 			return createWorkflowJobConfigurationAdapter();
+		}
+
+		@Override
+		public Adapter caseNullWorkflowJobConfiguration(NullWorkflowJobConfiguration object) {
+			return createNullWorkflowJobConfigurationAdapter();
 		}
 
 		@Override
@@ -344,6 +374,11 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseDotOperator(DotOperator object) {
+			return createDotOperatorAdapter();
+		}
+
+		@Override
 		public Adapter caseLiteral(Literal object) {
 			return createLiteralAdapter();
 		}
@@ -369,8 +404,8 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariableDereference(VariableDereference object) {
-			return createVariableDereferenceAdapter();
+		public Adapter caseVariableReference(VariableReference object) {
+			return createVariableReferenceAdapter();
 		}
 
 		@Override
@@ -390,6 +425,62 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	@Override
 	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject) target);
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DefinitionGroup <em>Definition Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DefinitionGroup
+	 * @generated
+	 */
+	public Adapter createDefinitionGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Script <em>Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Script
+	 * @generated
+	 */
+	public Adapter createScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Callable <em>Callable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Callable
+	 * @generated
+	 */
+	public Adapter createCallableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment <em>Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment
+	 * @generated
+	 */
+	public Adapter createEnvironmentAdapter() {
+		return null;
 	}
 
 	/**
@@ -855,6 +946,20 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration <em>Variable Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration
+	 * @generated
+	 */
+	public Adapter createVariableDeclarationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow <em>Workflow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -907,6 +1012,20 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createWorkflowJobConfigurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullWorkflowJobConfiguration <em>Null Workflow Job Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullWorkflowJobConfiguration
+	 * @generated
+	 */
+	public Adapter createNullWorkflowJobConfigurationAdapter() {
 		return null;
 	}
 
@@ -1163,6 +1282,20 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DotOperator <em>Dot Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DotOperator
+	 * @generated
+	 */
+	public Adapter createDotOperatorAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Literal <em>Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -1233,16 +1366,16 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference <em>Variable Dereference</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableReference
 	 * @generated
 	 */
-	public Adapter createVariableDereferenceAdapter() {
+	public Adapter createVariableReferenceAdapter() {
 		return null;
 	}
 

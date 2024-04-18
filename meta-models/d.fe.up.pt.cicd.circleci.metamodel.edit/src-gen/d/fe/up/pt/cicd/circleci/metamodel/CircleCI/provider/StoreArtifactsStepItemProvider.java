@@ -147,6 +147,9 @@ public class StoreArtifactsStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__PATH,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__PATH,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__PATH,
@@ -159,12 +162,15 @@ public class StoreArtifactsStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__PATH,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__DESTINATION,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__DESTINATION,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__DESTINATION,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__DESTINATION,
@@ -177,7 +183,7 @@ public class StoreArtifactsStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.STORE_ARTIFACTS_STEP__DESTINATION,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

@@ -3,46 +3,55 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable Dereference</b></em>'.
+ * An implementation of the model object '<em><b>Variable Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableDereferenceImpl#getNames <em>Names</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.VariableDeclarationImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableDereferenceImpl extends ValueImpl implements VariableDereference {
+public class VariableDeclarationImpl extends MinimalEObjectImpl.Container implements VariableDeclaration {
 	/**
-	 * The cached value of the '{@link #getNames() <em>Names</em>}' attribute list.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNames()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> names;
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableDereferenceImpl() {
+	protected VariableDeclarationImpl() {
 		super();
 	}
 
@@ -53,7 +62,7 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CircleCIPackage.Literals.VARIABLE_DEREFERENCE;
+		return CircleCIPackage.Literals.VARIABLE_DECLARATION;
 	}
 
 	/**
@@ -62,11 +71,22 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 	 * @generated
 	 */
 	@Override
-	public EList<String> getNames() {
-		if (names == null) {
-			names = new EDataTypeUniqueEList<String>(String.class, this, CircleCIPackage.VARIABLE_DEREFERENCE__NAMES);
-		}
-		return names;
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.VARIABLE_DECLARATION__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -77,8 +97,8 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case CircleCIPackage.VARIABLE_DEREFERENCE__NAMES:
-			return getNames();
+		case CircleCIPackage.VARIABLE_DECLARATION__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -88,13 +108,11 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case CircleCIPackage.VARIABLE_DEREFERENCE__NAMES:
-			getNames().clear();
-			getNames().addAll((Collection<? extends String>) newValue);
+		case CircleCIPackage.VARIABLE_DECLARATION__NAME:
+			setName((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -108,8 +126,8 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case CircleCIPackage.VARIABLE_DEREFERENCE__NAMES:
-			getNames().clear();
+		case CircleCIPackage.VARIABLE_DECLARATION__NAME:
+			setName(NAME_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -123,8 +141,8 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case CircleCIPackage.VARIABLE_DEREFERENCE__NAMES:
-			return names != null && !names.isEmpty();
+		case CircleCIPackage.VARIABLE_DECLARATION__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -140,10 +158,10 @@ public class VariableDereferenceImpl extends ValueImpl implements VariableDerefe
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (names: ");
-		result.append(names);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //VariableDereferenceImpl
+} //VariableDeclarationImpl

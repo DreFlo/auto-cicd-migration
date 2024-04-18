@@ -13,78 +13,39 @@
   invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'quoteString(java.lang.String)', Sequence{string})
 /]
 
+[query public generateVariableReference(variableDeclaration : VariableDeclaration) : String =
+  invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'generateVariableReference(d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration)', Sequence{variableDeclaration})
+/]
+
 [template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]
 [name/]
 [/template]
 
-[template public generateExpression(expression : Expression)post (trim())]
-[if (expression.oclIsUndefined())]
-OclUndefined
-[elseif (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))]
-[_generateExpression(expression)/]
-[elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(DotOp) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))]
-[_generateExpression(expression)/]
-[else]
-${{ [_generateExpression(expression)/] }}
-[/if]
+[template public generateExpression(expression : Expression)]
+[if (expression.oclIsUndefined())]OclUndefined[elseif (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))][_generateExpression(expression)/][elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(DotOp) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))][_generateExpression(expression)/][else]${{ [_generateExpression(expression)/] }}[/if]
 [/template]
 
-[template public _generateExpression(expression : Expression) post (trim())]
-[if (expression.oclIsKindOf(Literal))]
-[generateLiteral(expression.oclAsType(Literal))/]
-[elseif (expression.oclIsTypeOf(VariableReference))]
-[expression.oclAsType(VariableReference).name/]
-[elseif (expression.oclIsTypeOf(DotOp))]
-[generateDotOp(expression.oclAsType(DotOp))/]
-[elseif (expression.oclIsKindOf(GitHubContext))]
-[expression.oclAsType(GitHubContext)._context/]
-[elseif (expression.oclIsKindOf(BinaryOp))]
-[generateBinaryOp(expression.oclAsType(BinaryOp))/]
-[elseif (expression.oclIsKindOf(UnaryOp))]
-[generateUnaryOp(expression.oclAsType(UnaryOp))/]
-[elseif (expression.oclIsKindOf(Concat))]
-[generateConcat(expression.oclAsType(Concat))/]
-[/if]
+[template public _generateExpression(expression : Expression)]
+[if (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][elseif (expression.oclIsTypeOf(DotOp))][generateDotOp(expression.oclAsType(DotOp))/][elseif (expression.oclIsKindOf(BinaryOp))][generateBinaryOp(expression.oclAsType(BinaryOp))/][elseif (expression.oclIsKindOf(UnaryOp))][generateUnaryOp(expression.oclAsType(UnaryOp))/][elseif (expression.oclIsKindOf(Concat))][generateConcat(expression.oclAsType(Concat))/][/if]
 [/template]
 
-[template public generateConcat(concat : Concat)]
+[template public generateConcat(concat : Concat) post (trim())]
 [for (expression : Expression | expressions) separator ('')][generateExpression(expression)/][/for]
 [/template]
 
 [template public generateLiteral(literal : Literal)]
-[if (literal.oclIsKindOf(StringLiteral))]
-[if (
-  literal.eContainer().oclIsKindOf(BinaryOp) or 
-  literal.eContainer().oclIsKindOf(UnaryOp) or 
-  literal.eContainer().oclIsKindOf(BuiltInFunctionCall) or
-  literal.eContainer().oclIsKindOf(Trigger) or
-  (
-    (not literal.oclAsType(StringLiteral).value.oclIsUndefined()) and
-    literal.oclAsType(StringLiteral).value.contains('*')
-  )
-)]
-[quoteString(literal.oclAsType(StringLiteral).value)/]
-[else]
-[literal.oclAsType(StringLiteral).value/]
-[/if]
-[elseif (literal.oclIsKindOf(IntegerLiteral))]
-[literal.oclAsType(IntegerLiteral).value/]
-[elseif (literal.oclIsKindOf(DoubleLiteral))]
-[literal.oclAsType(DoubleLiteral).value/]
-[elseif (literal.oclIsKindOf(BooleanLiteral))]
-[literal.oclAsType(BooleanLiteral).value/]
-[/if]
+[if (literal.oclIsKindOf(StringLiteral))][if ((literal.eContainer().oclIsKindOf(BinaryOp) and not literal.eContainer().oclIsTypeOf(DotOp)) or literal.eContainer().oclIsKindOf(UnaryOp) or literal.eContainer().oclIsKindOf(BuiltInFunctionCall) or literal.eContainer().oclIsKindOf(Trigger) or ((not literal.oclAsType(StringLiteral).value.oclIsUndefined()) and literal.oclAsType(StringLiteral).value.contains('*')))][quoteString(literal.oclAsType(StringLiteral).value)/][else][literal.oclAsType(StringLiteral).value/][/if][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value/][/if]
 [/template]
 
-[template public generateDotOp(dotOp : DotOp)]
+[template public generateDotOp(dotOp : DotOp) post (trim())]
 [generateExpression(lhs)/].[generateExpression(rhs)/]
 [/template]
 
-[template public generateBinaryOp(binaryOp : BinaryOp)]
+[template public generateBinaryOp(binaryOp : BinaryOp) post (trim())]
 [generateExpression(lhs)/][getBinaryOperator(binaryOp)/][generateExpression(rhs)/]
 [/template]
 
-[template public generateUnaryOp(unaryOp : UnaryOp)]
+[template public generateUnaryOp(unaryOp : UnaryOp) post (trim())]
 [getUnaryOperator(unaryOp)/][generateExpression(childExpr)/]
 [/template]
 

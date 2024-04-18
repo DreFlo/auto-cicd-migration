@@ -2,8 +2,6 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Conditional Step</b></em>'.
@@ -14,14 +12,13 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep#getCondition <em>Condition</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep#getSteps <em>Steps</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getConditionalStep()
  * @model abstract="true"
  * @generated
  */
-public interface ConditionalStep extends Step {
+public interface ConditionalStep extends Step, Script {
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -43,17 +40,5 @@ public interface ConditionalStep extends Step {
 	 * @generated
 	 */
 	void setCondition(Logic value);
-
-	/**
-	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Steps</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getConditionalStep_Steps()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<Step> getSteps();
 
 } // ConditionalStep

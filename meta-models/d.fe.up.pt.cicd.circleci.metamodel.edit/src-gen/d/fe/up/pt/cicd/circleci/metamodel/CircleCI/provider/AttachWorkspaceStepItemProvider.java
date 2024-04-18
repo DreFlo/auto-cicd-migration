@@ -145,6 +145,9 @@ public class AttachWorkspaceStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ATTACH_WORKSPACE_STEP__AT,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ATTACH_WORKSPACE_STEP__AT,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ATTACH_WORKSPACE_STEP__AT,
@@ -157,7 +160,7 @@ public class AttachWorkspaceStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ATTACH_WORKSPACE_STEP__AT,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 }

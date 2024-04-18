@@ -2,11 +2,6 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
-
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Job</b></em>'.
@@ -18,10 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getExecutor <em>Executor</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParameters <em>Parameters</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getParallelism <em>Parallelism</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job#getCircleCIIPRanges <em>Circle CIIP Ranges</em>}</li>
  * </ul>
  *
@@ -29,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Job extends EObject {
+public interface Job extends Script, Callable, Environment {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -37,7 +29,7 @@ public interface Job extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Name()
-	 * @model id="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -75,30 +67,6 @@ public interface Job extends EObject {
 	void setExecutor(Executor value);
 
 	/**
-	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parameters</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Parameters()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Parameter> getParameters();
-
-	/**
-	 * Returns the value of the '<em><b>Steps</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Steps</em>' containment reference list.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_Steps()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Step> getSteps();
-
-	/**
 	 * Returns the value of the '<em><b>Parallelism</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,19 +87,6 @@ public interface Job extends EObject {
 	 * @generated
 	 */
 	void setParallelism(Expression value);
-
-	/**
-	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link java.lang.String},
-	 * and the value is of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression},
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Environment Variables</em>' map.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getJob_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableAssignment&lt;org.eclipse.emf.ecore.EString, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression&gt;"
-	 * @generated
-	 */
-	EMap<String, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Circle CIIP Ranges</b></em>' containment reference.

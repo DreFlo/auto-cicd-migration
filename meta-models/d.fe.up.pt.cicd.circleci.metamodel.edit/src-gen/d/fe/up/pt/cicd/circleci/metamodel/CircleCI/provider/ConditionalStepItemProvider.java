@@ -61,8 +61,8 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CircleCIPackage.Literals.SCRIPT__STEPS);
 			childrenFeatures.add(CircleCIPackage.Literals.CONDITIONAL_STEP__CONDITION);
-			childrenFeatures.add(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS);
 		}
 		return childrenFeatures;
 	}
@@ -113,8 +113,8 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ConditionalStep.class)) {
-		case CircleCIPackage.CONDITIONAL_STEP__CONDITION:
 		case CircleCIPackage.CONDITIONAL_STEP__STEPS:
+		case CircleCIPackage.CONDITIONAL_STEP__CONDITION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -132,6 +132,48 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createRunStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createWhenStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createUnlessStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createCheckoutStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createSetupRemoteDockerStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createSaveCacheStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createRestoreCacheStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createStoreArtifactsStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createStoreTestResultsStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createPersistToWorkspaceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createAttachWorkspaceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SCRIPT__STEPS,
+				CircleCIFactory.eINSTANCE.createCommandReferenceStep()));
+
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__CONDITION,
 				CircleCIFactory.eINSTANCE.createAnd()));
 
@@ -148,6 +190,9 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createMatches()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__CONDITION,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__CONDITION,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__CONDITION,
@@ -160,49 +205,7 @@ public class ConditionalStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__CONDITION,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createRunStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createWhenStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createUnlessStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createCheckoutStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createSetupRemoteDockerStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createSaveCacheStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createRestoreCacheStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createStoreArtifactsStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createStoreTestResultsStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createPersistToWorkspaceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createAttachWorkspaceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createAddSSHKeysStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createOrbReferenceStep()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.CONDITIONAL_STEP__STEPS,
-				CircleCIFactory.eINSTANCE.createCommandReferenceStep()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 }

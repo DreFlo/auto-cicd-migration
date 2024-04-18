@@ -265,6 +265,15 @@ public interface CircleCIFactory extends EFactory {
 	CommandReferenceStep createCommandReferenceStep();
 
 	/**
+	 * Returns a new object of class '<em>Variable Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Variable Declaration</em>'.
+	 * @generated
+	 */
+	VariableDeclaration createVariableDeclaration();
+
+	/**
 	 * Returns a new object of class '<em>Workflow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -281,6 +290,15 @@ public interface CircleCIFactory extends EFactory {
 	 * @generated
 	 */
 	ScheduleTrigger createScheduleTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Null Workflow Job Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Null Workflow Job Configuration</em>'.
+	 * @generated
+	 */
+	NullWorkflowJobConfiguration createNullWorkflowJobConfiguration();
 
 	/**
 	 * Returns a new object of class '<em>Workflow Defined Job Configuration</em>'.
@@ -391,6 +409,15 @@ public interface CircleCIFactory extends EFactory {
 	Matches createMatches();
 
 	/**
+	 * Returns a new object of class '<em>Dot Operator</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dot Operator</em>'.
+	 * @generated
+	 */
+	DotOperator createDotOperator();
+
+	/**
 	 * Returns a new object of class '<em>String Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -427,13 +454,13 @@ public interface CircleCIFactory extends EFactory {
 	BooleanLiteral createBooleanLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Variable Dereference</em>'.
+	 * Returns a new object of class '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Dereference</em>'.
+	 * @return a new object of class '<em>Variable Reference</em>'.
 	 * @generated
 	 */
-	VariableDereference createVariableDereference();
+	VariableReference createVariableReference();
 
 	/**
 	 * Returns the package supported by this factory.

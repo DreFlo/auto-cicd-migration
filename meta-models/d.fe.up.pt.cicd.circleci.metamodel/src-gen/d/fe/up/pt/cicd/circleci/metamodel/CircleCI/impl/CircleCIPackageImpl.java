@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.And;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.BooleanLiteral;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Callable;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CheckoutStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIFactory;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
@@ -13,9 +14,12 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CommandReferenceStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Concat;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ConditionalStep;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DefinitionGroup;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DotOperator;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DoubleLiteral;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Equals;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ExecutorReferenceExecutor;
@@ -33,6 +37,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Not;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullWorkflowJobConfiguration;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Or;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.OrbDefinition;
@@ -47,6 +52,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RestoreCacheStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.RunStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SaveCacheStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ScheduleTrigger;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Script;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.SetupRemoteDockerStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.StoreArtifactsStep;
@@ -56,7 +62,8 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Trigger;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnaryOperator;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.UnlessStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Value;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDereference;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableReference;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WhenStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow;
@@ -82,6 +89,34 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass definitionGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scriptEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass callableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass environmentEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +353,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass variableDeclarationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass workflowEClass = null;
 
 	/**
@@ -340,6 +382,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	private EClass workflowJobConfigurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nullWorkflowJobConfigurationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -472,6 +521,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass dotOperatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass literalEClass = null;
 
 	/**
@@ -507,7 +563,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableDereferenceEClass = null;
+	private EClass variableReferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -593,6 +649,116 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getDefinitionGroup() {
+		return definitionGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDefinitionGroup_Orbs() {
+		return (EReference) definitionGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDefinitionGroup_Commands() {
+		return (EReference) definitionGroupEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDefinitionGroup_Executors() {
+		return (EReference) definitionGroupEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDefinitionGroup_Jobs() {
+		return (EReference) definitionGroupEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScript() {
+		return scriptEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScript_Steps() {
+		return (EReference) scriptEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCallable() {
+		return callableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCallable_Parameters() {
+		return (EReference) callableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEnvironment() {
+		return environmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEnvironment_EnvironmentVariables() {
+		return (EReference) environmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPipeline() {
 		return pipelineEClass;
 	}
@@ -623,58 +789,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getPipeline_Orbs() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPipeline_Commands() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPipeline_Parameters() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPipeline_Executors() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPipeline_Jobs() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getPipeline_Workflows() {
-		return (EReference) pipelineEClass.getEStructuralFeatures().get(7);
+		return (EReference) pipelineEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -733,46 +849,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getOrbDefinition_Orbs() {
-		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getOrbDefinition_Commands() {
-		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getOrbDefinition_Executors() {
-		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getOrbDefinition_Jobs() {
-		return (EReference) orbDefinitionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCommand() {
 		return commandEClass;
 	}
@@ -793,28 +869,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getCommand_Steps() {
-		return (EReference) commandEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCommand_Parameters() {
-		return (EReference) commandEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getCommand_Description() {
-		return (EAttribute) commandEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) commandEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -833,8 +889,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getParameter_Name() {
-		return (EAttribute) parameterEClass.getEStructuralFeatures().get(0);
+	public EReference getParameter_Name() {
+		return (EReference) parameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1243,7 +1299,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Parameters() {
+	public EReference getJob_Parallelism() {
 		return (EReference) jobEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1253,38 +1309,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getJob_Steps() {
-		return (EReference) jobEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getJob_Parallelism() {
-		return (EReference) jobEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getJob_EnvironmentVariables() {
-		return (EReference) jobEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getJob_CircleCIIPRanges() {
-		return (EReference) jobEClass.getEStructuralFeatures().get(6);
+		return (EReference) jobEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1343,7 +1369,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunStep_EnvironmentVariables() {
+	public EReference getRunStep_Background() {
 		return (EReference) runStepEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1353,7 +1379,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunStep_Background() {
+	public EReference getRunStep_WorkingDirectory() {
 		return (EReference) runStepEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -1363,7 +1389,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunStep_WorkingDirectory() {
+	public EReference getRunStep_NoOutputTimeout() {
 		return (EReference) runStepEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1373,18 +1399,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getRunStep_NoOutputTimeout() {
-		return (EReference) runStepEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getRunStep_When() {
-		return (EAttribute) runStepEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) runStepEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -1405,16 +1421,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	@Override
 	public EReference getConditionalStep_Condition() {
 		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getConditionalStep_Steps() {
-		return (EReference) conditionalStepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1773,8 +1779,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariableAssignment_Key() {
-		return (EAttribute) variableAssignmentEClass.getEStructuralFeatures().get(0);
+	public EReference getVariableAssignment_Key() {
+		return (EReference) variableAssignmentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1785,6 +1791,26 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	@Override
 	public EReference getVariableAssignment_Value() {
 		return (EReference) variableAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVariableDeclaration() {
+		return variableDeclarationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVariableDeclaration_Name() {
+		return (EAttribute) variableDeclarationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2033,6 +2059,16 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getNullWorkflowJobConfiguration() {
+		return nullWorkflowJobConfigurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getWorkflowDefinedJobConfiguration() {
 		return workflowDefinedJobConfigurationEClass;
 	}
@@ -2143,8 +2179,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMatrixParameter_Name() {
-		return (EAttribute) matrixParameterEClass.getEStructuralFeatures().get(0);
+	public EReference getMatrixParameter_Name() {
+		return (EReference) matrixParameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2353,6 +2389,36 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getDotOperator() {
+		return dotOperatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDotOperator_Lhs() {
+		return (EReference) dotOperatorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getDotOperator_Rhs() {
+		return (EReference) dotOperatorEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getLiteral() {
 		return literalEClass;
 	}
@@ -2443,8 +2509,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getVariableDereference() {
-		return variableDereferenceEClass;
+	public EClass getVariableReference() {
+		return variableReferenceEClass;
 	}
 
 	/**
@@ -2453,8 +2519,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariableDereference_Names() {
-		return (EAttribute) variableDereferenceEClass.getEStructuralFeatures().get(0);
+	public EReference getVariableReference_Reference() {
+		return (EReference) variableReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2507,14 +2573,24 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		isCreated = true;
 
 		// Create classes and their features
+		definitionGroupEClass = createEClass(DEFINITION_GROUP);
+		createEReference(definitionGroupEClass, DEFINITION_GROUP__ORBS);
+		createEReference(definitionGroupEClass, DEFINITION_GROUP__COMMANDS);
+		createEReference(definitionGroupEClass, DEFINITION_GROUP__EXECUTORS);
+		createEReference(definitionGroupEClass, DEFINITION_GROUP__JOBS);
+
+		scriptEClass = createEClass(SCRIPT);
+		createEReference(scriptEClass, SCRIPT__STEPS);
+
+		callableEClass = createEClass(CALLABLE);
+		createEReference(callableEClass, CALLABLE__PARAMETERS);
+
+		environmentEClass = createEClass(ENVIRONMENT);
+		createEReference(environmentEClass, ENVIRONMENT__ENVIRONMENT_VARIABLES);
+
 		pipelineEClass = createEClass(PIPELINE);
 		createEAttribute(pipelineEClass, PIPELINE__VERSION);
 		createEAttribute(pipelineEClass, PIPELINE__SETUP);
-		createEReference(pipelineEClass, PIPELINE__ORBS);
-		createEReference(pipelineEClass, PIPELINE__COMMANDS);
-		createEReference(pipelineEClass, PIPELINE__PARAMETERS);
-		createEReference(pipelineEClass, PIPELINE__EXECUTORS);
-		createEReference(pipelineEClass, PIPELINE__JOBS);
 		createEReference(pipelineEClass, PIPELINE__WORKFLOWS);
 
 		orbEClass = createEClass(ORB);
@@ -2524,19 +2600,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEAttribute(orbReferenceEClass, ORB_REFERENCE__REFERENCE);
 
 		orbDefinitionEClass = createEClass(ORB_DEFINITION);
-		createEReference(orbDefinitionEClass, ORB_DEFINITION__ORBS);
-		createEReference(orbDefinitionEClass, ORB_DEFINITION__COMMANDS);
-		createEReference(orbDefinitionEClass, ORB_DEFINITION__EXECUTORS);
-		createEReference(orbDefinitionEClass, ORB_DEFINITION__JOBS);
 
 		commandEClass = createEClass(COMMAND);
 		createEAttribute(commandEClass, COMMAND__NAME);
-		createEReference(commandEClass, COMMAND__STEPS);
-		createEReference(commandEClass, COMMAND__PARAMETERS);
 		createEAttribute(commandEClass, COMMAND__DESCRIPTION);
 
 		parameterEClass = createEClass(PARAMETER);
-		createEAttribute(parameterEClass, PARAMETER__NAME);
+		createEReference(parameterEClass, PARAMETER__NAME);
 		createEAttribute(parameterEClass, PARAMETER__TYPE);
 		createEAttribute(parameterEClass, PARAMETER__ENUM_VALUES);
 		createEReference(parameterEClass, PARAMETER__DEFAULT);
@@ -2587,10 +2657,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		jobEClass = createEClass(JOB);
 		createEAttribute(jobEClass, JOB__NAME);
 		createEReference(jobEClass, JOB__EXECUTOR);
-		createEReference(jobEClass, JOB__PARAMETERS);
-		createEReference(jobEClass, JOB__STEPS);
 		createEReference(jobEClass, JOB__PARALLELISM);
-		createEReference(jobEClass, JOB__ENVIRONMENT_VARIABLES);
 		createEReference(jobEClass, JOB__CIRCLE_CIIP_RANGES);
 
 		stepEClass = createEClass(STEP);
@@ -2599,7 +2666,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(runStepEClass, RUN_STEP__COMMAND);
 		createEReference(runStepEClass, RUN_STEP__NAME);
 		createEReference(runStepEClass, RUN_STEP__SHELL);
-		createEReference(runStepEClass, RUN_STEP__ENVIRONMENT_VARIABLES);
 		createEReference(runStepEClass, RUN_STEP__BACKGROUND);
 		createEReference(runStepEClass, RUN_STEP__WORKING_DIRECTORY);
 		createEReference(runStepEClass, RUN_STEP__NO_OUTPUT_TIMEOUT);
@@ -2607,7 +2673,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		conditionalStepEClass = createEClass(CONDITIONAL_STEP);
 		createEReference(conditionalStepEClass, CONDITIONAL_STEP__CONDITION);
-		createEReference(conditionalStepEClass, CONDITIONAL_STEP__STEPS);
 
 		whenStepEClass = createEClass(WHEN_STEP);
 
@@ -2657,8 +2722,11 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(commandReferenceStepEClass, COMMAND_REFERENCE_STEP__ARGUMENTS);
 
 		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
-		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
+		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__KEY);
 		createEReference(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VALUE);
+
+		variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+		createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
 
 		workflowEClass = createEClass(WORKFLOW);
 		createEAttribute(workflowEClass, WORKFLOW__NAME);
@@ -2688,6 +2756,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__POST_STEPS);
 		createEReference(workflowJobConfigurationEClass, WORKFLOW_JOB_CONFIGURATION__ARGUMENTS);
 
+		nullWorkflowJobConfigurationEClass = createEClass(NULL_WORKFLOW_JOB_CONFIGURATION);
+
 		workflowDefinedJobConfigurationEClass = createEClass(WORKFLOW_DEFINED_JOB_CONFIGURATION);
 		createEReference(workflowDefinedJobConfigurationEClass, WORKFLOW_DEFINED_JOB_CONFIGURATION__JOB);
 
@@ -2703,7 +2773,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		createEReference(matrixEClass, MATRIX__ALIAS);
 
 		matrixParameterEClass = createEClass(MATRIX_PARAMETER);
-		createEAttribute(matrixParameterEClass, MATRIX_PARAMETER__NAME);
+		createEReference(matrixParameterEClass, MATRIX_PARAMETER__NAME);
 		createEReference(matrixParameterEClass, MATRIX_PARAMETER__CELLS);
 
 		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
@@ -2738,6 +2808,10 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		valueEClass = createEClass(VALUE);
 
+		dotOperatorEClass = createEClass(DOT_OPERATOR);
+		createEReference(dotOperatorEClass, DOT_OPERATOR__LHS);
+		createEReference(dotOperatorEClass, DOT_OPERATOR__RHS);
+
 		literalEClass = createEClass(LITERAL);
 
 		stringLiteralEClass = createEClass(STRING_LITERAL);
@@ -2752,8 +2826,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
 		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
-		variableDereferenceEClass = createEClass(VARIABLE_DEREFERENCE);
-		createEAttribute(variableDereferenceEClass, VARIABLE_DEREFERENCE__NAMES);
+		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
+		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REFERENCE);
 
 		// Create enums
 		parameteR_TYPESEEnum = createEEnum(PARAMETER_TYPES);
@@ -2789,8 +2863,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		pipelineEClass.getESuperTypes().add(this.getDefinitionGroup());
+		pipelineEClass.getESuperTypes().add(this.getCallable());
 		orbReferenceEClass.getESuperTypes().add(this.getOrb());
 		orbDefinitionEClass.getESuperTypes().add(this.getOrb());
+		orbDefinitionEClass.getESuperTypes().add(this.getDefinitionGroup());
+		commandEClass.getESuperTypes().add(this.getScript());
+		commandEClass.getESuperTypes().add(this.getCallable());
 		dockerExecutorEClass.getESuperTypes().add(this.getExecutor());
 		machineExecutorEClass.getESuperTypes().add(this.getExecutor());
 		macOSExecutorEClass.getESuperTypes().add(this.getExecutor());
@@ -2798,8 +2877,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		referenceExecutorEClass.getESuperTypes().add(this.getExecutor());
 		executorReferenceExecutorEClass.getESuperTypes().add(this.getReferenceExecutor());
 		orbReferenceExecutorEClass.getESuperTypes().add(this.getReferenceExecutor());
+		jobEClass.getESuperTypes().add(this.getScript());
+		jobEClass.getESuperTypes().add(this.getCallable());
+		jobEClass.getESuperTypes().add(this.getEnvironment());
 		runStepEClass.getESuperTypes().add(this.getStep());
+		runStepEClass.getESuperTypes().add(this.getEnvironment());
 		conditionalStepEClass.getESuperTypes().add(this.getStep());
+		conditionalStepEClass.getESuperTypes().add(this.getScript());
 		whenStepEClass.getESuperTypes().add(this.getConditionalStep());
 		unlessStepEClass.getESuperTypes().add(this.getConditionalStep());
 		checkoutStepEClass.getESuperTypes().add(this.getStep());
@@ -2814,6 +2898,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		orbReferenceStepEClass.getESuperTypes().add(this.getStep());
 		commandReferenceStepEClass.getESuperTypes().add(this.getStep());
 		scheduleTriggerEClass.getESuperTypes().add(this.getTrigger());
+		nullWorkflowJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
 		workflowDefinedJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
 		workflowApprovalJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
 		workflowOrbJobConfigurationEClass.getESuperTypes().add(this.getWorkflowJobConfiguration());
@@ -2828,42 +2913,59 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		matchesEClass.getESuperTypes().add(this.getLogicFunction());
 		valueEClass.getESuperTypes().add(this.getExpression());
 		valueEClass.getESuperTypes().add(this.getLogic());
+		dotOperatorEClass.getESuperTypes().add(this.getValue());
 		literalEClass.getESuperTypes().add(this.getValue());
 		stringLiteralEClass.getESuperTypes().add(this.getLiteral());
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
-		variableDereferenceEClass.getESuperTypes().add(this.getValue());
+		variableReferenceEClass.getESuperTypes().add(this.getValue());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(definitionGroupEClass, DefinitionGroup.class, "DefinitionGroup", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDefinitionGroup_Orbs(), this.getOrb(), null, "orbs", null, 0, -1, DefinitionGroup.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDefinitionGroup_Commands(), this.getCommand(), null, "commands", null, 0, -1,
+				DefinitionGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDefinitionGroup_Executors(), this.getExecutor(), null, "executors", null, 0, -1,
+				DefinitionGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDefinitionGroup_Jobs(), this.getJob(), null, "jobs", null, 0, -1, DefinitionGroup.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scriptEClass, Script.class, "Script", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScript_Steps(), this.getStep(), null, "steps", null, 0, -1, Script.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(callableEClass, Callable.class, "Callable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCallable_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Callable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(environmentEClass, Environment.class, "Environment", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEnvironment_EnvironmentVariables(), this.getVariableAssignment(), null,
+				"environmentVariables", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPipeline_Version(), ecorePackage.getEString(), "version", null, 1, 1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPipeline_Setup(), ecorePackage.getEBooleanObject(), "setup", null, 0, 1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Orbs(), this.getOrb(), null, "orbs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getPipeline_Commands(), this.getCommand(), null, "commands", null, 0, -1, Pipeline.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Pipeline.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Executors(), this.getExecutor(), null, "executors", null, 0, -1, Pipeline.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPipeline_Jobs(), this.getJob(), null, "jobs", null, 0, -1, Pipeline.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 		initEReference(getPipeline_Workflows(), this.getWorkflow(), null, "workflows", null, 0, -1, Pipeline.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orbEClass, Orb.class, "Orb", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOrb_Name(), ecorePackage.getEString(), "name", null, 1, 1, Orb.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(orbReferenceEClass, OrbReference.class, "OrbReference", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2873,35 +2975,18 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(orbDefinitionEClass, OrbDefinition.class, "OrbDefinition", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOrbDefinition_Orbs(), this.getOrb(), null, "orbs", null, 0, -1, OrbDefinition.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrbDefinition_Commands(), this.getCommand(), null, "commands", null, 0, -1,
-				OrbDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrbDefinition_Executors(), this.getExecutor(), null, "executors", null, 0, -1,
-				OrbDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOrbDefinition_Jobs(), this.getJob(), null, "jobs", null, 0, -1, OrbDefinition.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommand_Name(), ecorePackage.getEString(), "name", null, 1, 1, Command.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCommand_Steps(), this.getStep(), null, "steps", null, 0, -1, Command.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getCommand_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Command.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCommand_Description(), ecorePackage.getEString(), "description", null, 0, 1, Command.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, Parameter.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Name(), this.getVariableDeclaration(), null, "name", null, 1, 1, Parameter.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Type(), this.getPARAMETER_TYPES(), "type", null, 1, 1, Parameter.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_EnumValues(), ecorePackage.getEString(), "enumValues", null, 0, -1, Parameter.class,
@@ -2915,7 +3000,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(executorEClass, Executor.class, "Executor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExecutor_Name(), ecorePackage.getEString(), "name", null, 0, 1, Executor.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExecutor_ResourceClass(), this.getExpression(), null, "resourceClass", null, 0, 1,
 				Executor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3012,22 +3097,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(jobEClass, Job.class, "Job", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getJob_Name(), ecorePackage.getEString(), "name", null, 1, 1, Job.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_Executor(), this.getExecutor(), null, "executor", null, 1, 1, Job.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getJob_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Job.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_Steps(), this.getStep(), null, "steps", null, 0, -1, Job.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getJob_Parallelism(), this.getExpression(), null, "parallelism", null, 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getJob_EnvironmentVariables(), this.getVariableAssignment(), null, "environmentVariables", null,
-				0, -1, Job.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getJob_CircleCIIPRanges(), this.getExpression(), null, "circleCIIPRanges", null, 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3044,9 +3120,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEReference(getRunStep_Shell(), this.getExpression(), null, "shell", null, 0, 1, RunStep.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunStep_EnvironmentVariables(), this.getVariableAssignment(), null, "environmentVariables",
-				null, 0, -1, RunStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunStep_Background(), this.getExpression(), null, "background", null, 1, 1, RunStep.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3064,9 +3137,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEReference(getConditionalStep_Condition(), this.getLogic(), null, "condition", null, 1, 1,
 				ConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConditionalStep_Steps(), this.getStep(), null, "steps", null, 1, -1, ConditionalStep.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(whenStepEClass, WhenStep.class, "WhenStep", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -3171,10 +3241,17 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(variableAssignmentEClass, Map.Entry.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariableAssignment_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableAssignment_Key(), this.getVariableDeclaration(), null, "key", null, 1, 1,
+				Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariableAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(workflowEClass, Workflow.class, "Workflow", !IS_ABSTRACT, !IS_INTERFACE,
@@ -3247,6 +3324,9 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 				0, -1, WorkflowJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(nullWorkflowJobConfigurationEClass, NullWorkflowJobConfiguration.class,
+				"NullWorkflowJobConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(workflowDefinedJobConfigurationEClass, WorkflowDefinedJobConfiguration.class,
 				"WorkflowDefinedJobConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkflowDefinedJobConfiguration_Job(), this.getJob(), null, "job", null, 1, 1,
@@ -3278,8 +3358,9 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(matrixParameterEClass, MatrixParameter.class, "MatrixParameter", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMatrixParameter_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixParameter.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixParameter_Name(), this.getVariableDeclaration(), null, "name", null, 1, 1,
+				MatrixParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMatrixParameter_Cells(), this.getExpression(), null, "cells", null, 1, -1,
 				MatrixParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3333,6 +3414,15 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(dotOperatorEClass, DotOperator.class, "DotOperator", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDotOperator_Lhs(), this.getValue(), null, "lhs", null, 1, 1, DotOperator.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getDotOperator_Rhs(), this.getValue(), null, "rhs", null, 1, 1, DotOperator.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
 		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE,
@@ -3358,11 +3448,11 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 				BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableDereferenceEClass, VariableDereference.class, "VariableDereference", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariableDereference_Names(), ecorePackage.getEString(), "names", null, 1, -1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(variableReferenceEClass, VariableReference.class, "VariableReference", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariableReference_Reference(), this.getVariableDeclaration(), null, "reference", null, 1, 1,
+				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.class,

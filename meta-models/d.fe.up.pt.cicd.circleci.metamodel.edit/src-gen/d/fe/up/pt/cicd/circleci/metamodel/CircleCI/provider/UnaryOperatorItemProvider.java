@@ -146,6 +146,9 @@ public class UnaryOperatorItemProvider extends LogicItemProvider {
 				CircleCIFactory.eINSTANCE.createMatches()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.UNARY_OPERATOR__OPERAND,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.UNARY_OPERATOR__OPERAND,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.UNARY_OPERATOR__OPERAND,
@@ -158,7 +161,7 @@ public class UnaryOperatorItemProvider extends LogicItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.UNARY_OPERATOR__OPERAND,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 }

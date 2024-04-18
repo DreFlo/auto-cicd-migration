@@ -68,9 +68,41 @@ public class CircleCISwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+		case CircleCIPackage.DEFINITION_GROUP: {
+			DefinitionGroup definitionGroup = (DefinitionGroup) theEObject;
+			T result = caseDefinitionGroup(definitionGroup);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.SCRIPT: {
+			Script script = (Script) theEObject;
+			T result = caseScript(script);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.CALLABLE: {
+			Callable callable = (Callable) theEObject;
+			T result = caseCallable(callable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.ENVIRONMENT: {
+			Environment environment = (Environment) theEObject;
+			T result = caseEnvironment(environment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CircleCIPackage.PIPELINE: {
 			Pipeline pipeline = (Pipeline) theEObject;
 			T result = casePipeline(pipeline);
+			if (result == null)
+				result = caseDefinitionGroup(pipeline);
+			if (result == null)
+				result = caseCallable(pipeline);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -97,12 +129,18 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseOrb(orbDefinition);
 			if (result == null)
+				result = caseDefinitionGroup(orbDefinition);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case CircleCIPackage.COMMAND: {
 			Command command = (Command) theEObject;
 			T result = caseCommand(command);
+			if (result == null)
+				result = caseScript(command);
+			if (result == null)
+				result = caseCallable(command);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -199,6 +237,12 @@ public class CircleCISwitch<T> extends Switch<T> {
 			Job job = (Job) theEObject;
 			T result = caseJob(job);
 			if (result == null)
+				result = caseScript(job);
+			if (result == null)
+				result = caseCallable(job);
+			if (result == null)
+				result = caseEnvironment(job);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -215,6 +259,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseStep(runStep);
 			if (result == null)
+				result = caseEnvironment(runStep);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -223,6 +269,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			T result = caseConditionalStep(conditionalStep);
 			if (result == null)
 				result = caseStep(conditionalStep);
+			if (result == null)
+				result = caseScript(conditionalStep);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -235,6 +283,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseStep(whenStep);
 			if (result == null)
+				result = caseScript(whenStep);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -245,6 +295,8 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = caseConditionalStep(unlessStep);
 			if (result == null)
 				result = caseStep(unlessStep);
+			if (result == null)
+				result = caseScript(unlessStep);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -350,8 +402,15 @@ public class CircleCISwitch<T> extends Switch<T> {
 		}
 		case CircleCIPackage.VARIABLE_ASSIGNMENT: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<String, Expression> variableAssignment = (Map.Entry<String, Expression>) theEObject;
+			Map.Entry<VariableDeclaration, Expression> variableAssignment = (Map.Entry<VariableDeclaration, Expression>) theEObject;
 			T result = caseVariableAssignment(variableAssignment);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.VARIABLE_DECLARATION: {
+			VariableDeclaration variableDeclaration = (VariableDeclaration) theEObject;
+			T result = caseVariableDeclaration(variableDeclaration);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -382,6 +441,15 @@ public class CircleCISwitch<T> extends Switch<T> {
 		case CircleCIPackage.WORKFLOW_JOB_CONFIGURATION: {
 			WorkflowJobConfiguration workflowJobConfiguration = (WorkflowJobConfiguration) theEObject;
 			T result = caseWorkflowJobConfiguration(workflowJobConfiguration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.NULL_WORKFLOW_JOB_CONFIGURATION: {
+			NullWorkflowJobConfiguration nullWorkflowJobConfiguration = (NullWorkflowJobConfiguration) theEObject;
+			T result = caseNullWorkflowJobConfiguration(nullWorkflowJobConfiguration);
+			if (result == null)
+				result = caseWorkflowJobConfiguration(nullWorkflowJobConfiguration);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -550,6 +618,19 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CircleCIPackage.DOT_OPERATOR: {
+			DotOperator dotOperator = (DotOperator) theEObject;
+			T result = caseDotOperator(dotOperator);
+			if (result == null)
+				result = caseValue(dotOperator);
+			if (result == null)
+				result = caseExpression(dotOperator);
+			if (result == null)
+				result = caseLogic(dotOperator);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CircleCIPackage.LITERAL: {
 			Literal literal = (Literal) theEObject;
 			T result = caseLiteral(literal);
@@ -623,15 +704,15 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CircleCIPackage.VARIABLE_DEREFERENCE: {
-			VariableDereference variableDereference = (VariableDereference) theEObject;
-			T result = caseVariableDereference(variableDereference);
+		case CircleCIPackage.VARIABLE_REFERENCE: {
+			VariableReference variableReference = (VariableReference) theEObject;
+			T result = caseVariableReference(variableReference);
 			if (result == null)
-				result = caseValue(variableDereference);
+				result = caseValue(variableReference);
 			if (result == null)
-				result = caseExpression(variableDereference);
+				result = caseExpression(variableReference);
 			if (result == null)
-				result = caseLogic(variableDereference);
+				result = caseLogic(variableReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -639,6 +720,66 @@ public class CircleCISwitch<T> extends Switch<T> {
 		default:
 			return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Definition Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Definition Group</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDefinitionGroup(DefinitionGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Script</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScript(Script object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Callable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Callable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCallable(Callable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Environment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Environment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEnvironment(Environment object) {
+		return null;
 	}
 
 	/**
@@ -1132,7 +1273,22 @@ public class CircleCISwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariableAssignment(Map.Entry<String, Expression> object) {
+	public T caseVariableAssignment(Map.Entry<VariableDeclaration, Expression> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVariableDeclaration(VariableDeclaration object) {
 		return null;
 	}
 
@@ -1193,6 +1349,21 @@ public class CircleCISwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWorkflowJobConfiguration(WorkflowJobConfiguration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Null Workflow Job Configuration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Null Workflow Job Configuration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNullWorkflowJobConfiguration(NullWorkflowJobConfiguration object) {
 		return null;
 	}
 
@@ -1467,6 +1638,21 @@ public class CircleCISwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dot Operator</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dot Operator</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDotOperator(DotOperator object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1542,17 +1728,17 @@ public class CircleCISwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariableDereference(VariableDereference object) {
+	public T caseVariableReference(VariableReference object) {
 		return null;
 	}
 

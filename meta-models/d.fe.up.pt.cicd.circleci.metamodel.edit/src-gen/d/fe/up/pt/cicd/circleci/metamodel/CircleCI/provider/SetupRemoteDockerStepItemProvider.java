@@ -147,6 +147,9 @@ public class SetupRemoteDockerStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__VERSION,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__VERSION,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__VERSION,
@@ -159,11 +162,15 @@ public class SetupRemoteDockerStepItemProvider extends StepItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__VERSION,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors
 				.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING,
 						CircleCIFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors
+				.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING,
+						CircleCIFactory.eINSTANCE.createDotOperator()));
 
 		newChildDescriptors
 				.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING,
@@ -183,7 +190,7 @@ public class SetupRemoteDockerStepItemProvider extends StepItemProvider {
 
 		newChildDescriptors
 				.add(createChildParameter(CircleCIPackage.Literals.SETUP_REMOTE_DOCKER_STEP__DOCKER_LAYER_CACHING,
-						CircleCIFactory.eINSTANCE.createVariableDereference()));
+						CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

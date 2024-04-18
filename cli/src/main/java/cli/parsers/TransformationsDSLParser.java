@@ -4,7 +4,7 @@ import com.google.inject.Injector;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.DSLStandaloneSetup;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 
-public class TransformationsDSLParser extends AbstractParser<TransformationSet> {
+public class TransformationsDSLParser extends AbstractXtextParser<TransformationSet> {
     @Override
     protected Injector getInjector() {
         return new DSLStandaloneSetup().createInjectorAndDoEMFRegistration();

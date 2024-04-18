@@ -147,6 +147,9 @@ public class MacOSExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createConcat()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MAC_OS_EXECUTOR__XCODE,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MAC_OS_EXECUTOR__XCODE,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MAC_OS_EXECUTOR__XCODE,
@@ -159,7 +162,7 @@ public class MacOSExecutorItemProvider extends ExecutorItemProvider {
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.MAC_OS_EXECUTOR__XCODE,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
 	}
 
 	/**

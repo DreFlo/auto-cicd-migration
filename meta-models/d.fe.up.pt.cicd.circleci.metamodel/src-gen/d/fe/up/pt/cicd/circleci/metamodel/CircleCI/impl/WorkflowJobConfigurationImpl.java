@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowJobConfiguration;
 
 import java.util.Collection;
@@ -202,7 +203,7 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<String, Expression> arguments;
+	protected EMap<VariableDeclaration, Expression> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -455,9 +456,9 @@ public abstract class WorkflowJobConfigurationImpl extends MinimalEObjectImpl.Co
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getArguments() {
+	public EMap<VariableDeclaration, Expression> getArguments() {
 		if (arguments == null) {
-			arguments = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
+			arguments = new EcoreEMap<VariableDeclaration, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
 					VariableAssignmentImpl.class, this, CircleCIPackage.WORKFLOW_JOB_CONFIGURATION__ARGUMENTS);
 		}
 		return arguments;

@@ -2,12 +2,14 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Callable;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Environment;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Job;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Step;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 
 import java.util.Collection;
 
@@ -22,8 +24,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -36,18 +36,37 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getExecutor <em>Executor</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getSteps <em>Steps</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getParallelism <em>Parallelism</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.JobImpl#getCircleCIIPRanges <em>Circle CIIP Ranges</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class JobImpl extends MinimalEObjectImpl.Container implements Job {
+public class JobImpl extends ScriptImpl implements Job {
+	/**
+	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameters()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Parameter> parameters;
+
+	/**
+	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvironmentVariables()
+	 * @generated
+	 * @ordered
+	 */
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,26 +98,6 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	protected Executor executor;
 
 	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Parameter> parameters;
-
-	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSteps()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Step> steps;
-
-	/**
 	 * The cached value of the '{@link #getParallelism() <em>Parallelism</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -107,16 +106,6 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	 * @ordered
 	 */
 	protected Expression parallelism;
-
-	/**
-	 * The cached value of the '{@link #getEnvironmentVariables() <em>Environment Variables</em>}' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnvironmentVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EMap<String, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getCircleCIIPRanges() <em>Circle CIIP Ranges</em>}' containment reference.
@@ -241,19 +230,6 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<Step> getSteps() {
-		if (steps == null) {
-			steps = new EObjectContainmentEList<Step>(Step.class, this, CircleCIPackage.JOB__STEPS);
-		}
-		return steps;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Expression getParallelism() {
 		return parallelism;
 	}
@@ -306,10 +282,11 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	 * @generated
 	 */
 	@Override
-	public EMap<String, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<String, Expression>(CircleCIPackage.Literals.VARIABLE_ASSIGNMENT,
-					VariableAssignmentImpl.class, this, CircleCIPackage.JOB__ENVIRONMENT_VARIABLES);
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					CircleCIPackage.JOB__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;
 	}
@@ -374,16 +351,14 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case CircleCIPackage.JOB__EXECUTOR:
-			return basicSetExecutor(null, msgs);
 		case CircleCIPackage.JOB__PARAMETERS:
 			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
-		case CircleCIPackage.JOB__STEPS:
-			return ((InternalEList<?>) getSteps()).basicRemove(otherEnd, msgs);
-		case CircleCIPackage.JOB__PARALLELISM:
-			return basicSetParallelism(null, msgs);
 		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		case CircleCIPackage.JOB__EXECUTOR:
+			return basicSetExecutor(null, msgs);
+		case CircleCIPackage.JOB__PARALLELISM:
+			return basicSetParallelism(null, msgs);
 		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			return basicSetCircleCIIPRanges(null, msgs);
 		}
@@ -398,21 +373,19 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case CircleCIPackage.JOB__NAME:
-			return getName();
-		case CircleCIPackage.JOB__EXECUTOR:
-			return getExecutor();
 		case CircleCIPackage.JOB__PARAMETERS:
 			return getParameters();
-		case CircleCIPackage.JOB__STEPS:
-			return getSteps();
-		case CircleCIPackage.JOB__PARALLELISM:
-			return getParallelism();
 		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
 			if (coreType)
 				return getEnvironmentVariables();
 			else
 				return getEnvironmentVariables().map();
+		case CircleCIPackage.JOB__NAME:
+			return getName();
+		case CircleCIPackage.JOB__EXECUTOR:
+			return getExecutor();
+		case CircleCIPackage.JOB__PARALLELISM:
+			return getParallelism();
 		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			return getCircleCIIPRanges();
 		}
@@ -428,25 +401,21 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+		case CircleCIPackage.JOB__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends Parameter>) newValue);
+			return;
+		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
+			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
+			return;
 		case CircleCIPackage.JOB__NAME:
 			setName((String) newValue);
 			return;
 		case CircleCIPackage.JOB__EXECUTOR:
 			setExecutor((Executor) newValue);
 			return;
-		case CircleCIPackage.JOB__PARAMETERS:
-			getParameters().clear();
-			getParameters().addAll((Collection<? extends Parameter>) newValue);
-			return;
-		case CircleCIPackage.JOB__STEPS:
-			getSteps().clear();
-			getSteps().addAll((Collection<? extends Step>) newValue);
-			return;
 		case CircleCIPackage.JOB__PARALLELISM:
 			setParallelism((Expression) newValue);
-			return;
-		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
-			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
 		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			setCircleCIIPRanges((Expression) newValue);
@@ -463,23 +432,20 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+		case CircleCIPackage.JOB__PARAMETERS:
+			getParameters().clear();
+			return;
+		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
+			getEnvironmentVariables().clear();
+			return;
 		case CircleCIPackage.JOB__NAME:
 			setName(NAME_EDEFAULT);
 			return;
 		case CircleCIPackage.JOB__EXECUTOR:
 			setExecutor((Executor) null);
 			return;
-		case CircleCIPackage.JOB__PARAMETERS:
-			getParameters().clear();
-			return;
-		case CircleCIPackage.JOB__STEPS:
-			getSteps().clear();
-			return;
 		case CircleCIPackage.JOB__PARALLELISM:
 			setParallelism((Expression) null);
-			return;
-		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
-			getEnvironmentVariables().clear();
 			return;
 		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			setCircleCIIPRanges((Expression) null);
@@ -496,22 +462,72 @@ public class JobImpl extends MinimalEObjectImpl.Container implements Job {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case CircleCIPackage.JOB__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
+		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
+			return environmentVariables != null && !environmentVariables.isEmpty();
 		case CircleCIPackage.JOB__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case CircleCIPackage.JOB__EXECUTOR:
 			return executor != null;
-		case CircleCIPackage.JOB__PARAMETERS:
-			return parameters != null && !parameters.isEmpty();
-		case CircleCIPackage.JOB__STEPS:
-			return steps != null && !steps.isEmpty();
 		case CircleCIPackage.JOB__PARALLELISM:
 			return parallelism != null;
-		case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
-			return environmentVariables != null && !environmentVariables.isEmpty();
 		case CircleCIPackage.JOB__CIRCLE_CIIP_RANGES:
 			return circleCIIPRanges != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Callable.class) {
+			switch (derivedFeatureID) {
+			case CircleCIPackage.JOB__PARAMETERS:
+				return CircleCIPackage.CALLABLE__PARAMETERS;
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == Environment.class) {
+			switch (derivedFeatureID) {
+			case CircleCIPackage.JOB__ENVIRONMENT_VARIABLES:
+				return CircleCIPackage.ENVIRONMENT__ENVIRONMENT_VARIABLES;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Callable.class) {
+			switch (baseFeatureID) {
+			case CircleCIPackage.CALLABLE__PARAMETERS:
+				return CircleCIPackage.JOB__PARAMETERS;
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == Environment.class) {
+			switch (baseFeatureID) {
+			case CircleCIPackage.ENVIRONMENT__ENVIRONMENT_VARIABLES:
+				return CircleCIPackage.JOB__ENVIRONMENT_VARIABLES;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

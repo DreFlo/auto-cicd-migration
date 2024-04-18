@@ -25,11 +25,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	@Override
-	protected Injector getInjector() {
-		return new GitHubActionsStandaloneSetup().createInjectorAndDoEMFRegistration();
-	}
-
-	@Override
 	protected String formatPipeline(String pipeline) {
 		return pipeline;
 	}

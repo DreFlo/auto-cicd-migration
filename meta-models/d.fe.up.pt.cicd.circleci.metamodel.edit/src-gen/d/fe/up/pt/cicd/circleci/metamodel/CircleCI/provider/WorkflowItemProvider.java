@@ -215,6 +215,9 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 				CircleCIFactory.eINSTANCE.createMatches()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
+				CircleCIFactory.eINSTANCE.createDotOperator()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
@@ -227,7 +230,10 @@ public class WorkflowItemProvider extends ItemProviderAdapter implements IEditin
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__CONDITION,
-				CircleCIFactory.eINSTANCE.createVariableDereference()));
+				CircleCIFactory.eINSTANCE.createVariableReference()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__JOBS,
+				CircleCIFactory.eINSTANCE.createNullWorkflowJobConfiguration()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW__JOBS,
 				CircleCIFactory.eINSTANCE.createWorkflowDefinedJobConfiguration()));

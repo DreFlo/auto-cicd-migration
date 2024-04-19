@@ -5,7 +5,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixCombination;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -42,7 +42,7 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> entries;
+	protected EMap<VariableDeclaration, Expression> entries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,10 +69,10 @@ public class MatrixCombinationImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getEntries() {
+	public EMap<VariableDeclaration, Expression> getEntries() {
 		if (entries == null) {
-			entries = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT, AssignmentImpl.class,
-					this, JenkinsPackage.MATRIX_COMBINATION__ENTRIES);
+			entries = new EcoreEMap<VariableDeclaration, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, JenkinsPackage.MATRIX_COMBINATION__ENTRIES);
 		}
 		return entries;
 	}

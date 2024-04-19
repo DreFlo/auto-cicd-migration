@@ -10,12 +10,10 @@ abstract rule PipelineBlock {
 	to
 		output : CICD2!PipelineBlock(
 			agent <- input.agent,
-			concurrencyGroup <- input.concurrencyGroup,
-			environmentVariables <- input.environmentVariables->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false)),
+			environmentVariables <- input.environmentVariables,
 			inputs <- input.inputs,
 			name <- input.name,
 			outputs <- input.outputs,
-			permissions <- input.permissions,
 			shell <- input.shell,
 			timeoutMinutes <- input.timeoutMinutes,
 			workingDirectory <- input.workingDirectory
@@ -170,26 +168,6 @@ rule WebhookTrigger extends Trigger {
 		input : CICD1!WebhookTrigger
 	to
 		output : CICD2!WebhookTrigger
-}
-
-rule ConcurrencyGroup {
-	from
-		input : CICD1!ConcurrencyGroup
-	to
-		output : CICD2!ConcurrencyGroup(
-			cancelInProgress <- input.cancelInProgress,
-			groupId <- if not input.groupId.oclIsUndefined() then input.groupId.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif
-		)
-}
-
-rule Permission {
-	from
-		input : CICD1!Permission
-	to
-		output : CICD2!Permission(
-			key <- input.key,
-			value <- input.value
-		)
 }
 
 rule Matrix {

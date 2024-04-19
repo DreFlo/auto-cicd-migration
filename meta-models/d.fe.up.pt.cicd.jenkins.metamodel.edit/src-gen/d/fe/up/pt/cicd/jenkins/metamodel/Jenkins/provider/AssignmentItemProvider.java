@@ -11,7 +11,9 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -143,7 +145,7 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__KEY,
-				JenkinsFactory.eINSTANCE.createVariable()));
+				JenkinsFactory.eINSTANCE.createVariableDeclaration()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
 				JenkinsFactory.eINSTANCE.createExpression()));
@@ -161,16 +163,13 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createJenkinsContext()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
-				JenkinsFactory.eINSTANCE.createVariableDereference()));
+				JenkinsFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
 				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
+				JenkinsFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
 				JenkinsFactory.eINSTANCE.createArray()));
@@ -192,27 +191,6 @@ public class AssignmentItemProvider extends ExpressionItemProvider {
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ASSIGNMENT__VALUE,
 				JenkinsFactory.eINSTANCE.createFunction()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify = childFeature == JenkinsPackage.Literals.ASSIGNMENT__KEY
-				|| childFeature == JenkinsPackage.Literals.ASSIGNMENT__VALUE;
-
-		if (qualify) {
-			return getString("_UI_CreateChild_text2",
-					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

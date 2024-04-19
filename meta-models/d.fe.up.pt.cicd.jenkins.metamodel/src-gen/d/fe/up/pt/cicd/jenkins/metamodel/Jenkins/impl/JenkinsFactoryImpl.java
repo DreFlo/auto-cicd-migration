@@ -103,14 +103,14 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createDoubleLiteral();
 		case JenkinsPackage.BOOLEAN_LITERAL:
 			return createBooleanLiteral();
-		case JenkinsPackage.VARIABLE:
-			return createVariable();
-		case JenkinsPackage.JENKINS_CONTEXT:
-			return createJenkinsContext();
-		case JenkinsPackage.VARIABLE_DEREFERENCE:
-			return createVariableDereference();
+		case JenkinsPackage.VARIABLE_DECLARATION:
+			return createVariableDeclaration();
+		case JenkinsPackage.VARIABLE_REFERENCE:
+			return createVariableReference();
 		case JenkinsPackage.ASSIGNMENT:
 			return (EObject) createAssignment();
+		case JenkinsPackage.DOT_OP:
+			return createDotOp();
 		case JenkinsPackage.ARRAY:
 			return createArray();
 		case JenkinsPackage.NEGATION:
@@ -188,8 +188,6 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return createCHANGE_REQUEST_MATCHERFromString(eDataType, initialValue);
 		case JenkinsPackage.WHEN_EVALUATION_TIMES:
 			return createWHEN_EVALUATION_TIMESFromString(eDataType, initialValue);
-		case JenkinsPackage.JENKINS_CONTEXTS:
-			return createJENKINS_CONTEXTSFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -215,8 +213,6 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 			return convertCHANGE_REQUEST_MATCHERToString(eDataType, instanceValue);
 		case JenkinsPackage.WHEN_EVALUATION_TIMES:
 			return convertWHEN_EVALUATION_TIMESToString(eDataType, instanceValue);
-		case JenkinsPackage.JENKINS_CONTEXTS:
-			return convertJENKINS_CONTEXTSToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -470,9 +466,9 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
-	public Variable createVariable() {
-		VariableImpl variable = new VariableImpl();
-		return variable;
+	public VariableDeclaration createVariableDeclaration() {
+		VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+		return variableDeclaration;
 	}
 
 	/**
@@ -481,9 +477,9 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	@Override
-	public JenkinsContext createJenkinsContext() {
-		JenkinsContextImpl jenkinsContext = new JenkinsContextImpl();
-		return jenkinsContext;
+	public VariableReference createVariableReference() {
+		VariableReferenceImpl variableReference = new VariableReferenceImpl();
+		return variableReference;
 	}
 
 	/**
@@ -491,20 +487,20 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public VariableDereference createVariableDereference() {
-		VariableDereferenceImpl variableDereference = new VariableDereferenceImpl();
-		return variableDereference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<Variable, Expression> createAssignment() {
+	public Map.Entry<VariableDeclaration, Expression> createAssignment() {
 		AssignmentImpl assignment = new AssignmentImpl();
 		return assignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DotOp createDotOp() {
+		DotOpImpl dotOp = new DotOpImpl();
+		return dotOp;
 	}
 
 	/**
@@ -922,28 +918,6 @@ public class JenkinsFactoryImpl extends EFactoryImpl implements JenkinsFactory {
 	 * @generated
 	 */
 	public String convertWHEN_EVALUATION_TIMESToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JENKINS_CONTEXTS createJENKINS_CONTEXTSFromString(EDataType eDataType, String initialValue) {
-		JENKINS_CONTEXTS result = JENKINS_CONTEXTS.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException(
-					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJENKINS_CONTEXTSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -651,7 +651,7 @@ public interface JenkinsPackage extends EPackage {
 	int MATRIX_AXIS = 7;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1555,14 +1555,14 @@ public interface JenkinsPackage extends EPackage {
 	int BOOLEAN_LITERAL_OPERATION_COUNT = LITERAL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl <em>Variable</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariable()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDeclarationImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableDeclaration()
 	 * @generated
 	 */
-	int VARIABLE = 30;
+	int VARIABLE_DECLARATION = 30;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1571,108 +1571,62 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__NAME = VALUE_FEATURE_COUNT + 0;
+	int VARIABLE_DECLARATION__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Variable</em>' class.
+	 * The number of structural features of the '<em>Variable Declaration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int VARIABLE_DECLARATION_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Variable</em>' class.
+	 * The number of operations of the '<em>Variable Declaration</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int VARIABLE_DECLARATION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl <em>Context</em>}' class.
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJenkinsContext()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableReferenceImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableReference()
 	 * @generated
 	 */
-	int JENKINS_CONTEXT = 31;
+	int VARIABLE_REFERENCE = 31;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JENKINS_CONTEXT__NAME = VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Context</em>' class.
+	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JENKINS_CONTEXT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int VARIABLE_REFERENCE__REFERENCE = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Context</em>' class.
+	 * The number of structural features of the '<em>Variable Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JENKINS_CONTEXT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int VARIABLE_REFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableDereference()
-	 * @generated
-	 */
-	int VARIABLE_DEREFERENCE = 32;
-
-	/**
-	 * The feature id for the '<em><b>Variable</b></em>' containment reference.
+	 * The number of operations of the '<em>Variable Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_DEREFERENCE__VARIABLE = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE__PROPERTY = EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Variable Dereference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Variable Dereference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_DEREFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+	int VARIABLE_REFERENCE_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -1682,7 +1636,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getAssignment()
 	 * @generated
 	 */
-	int ASSIGNMENT = 33;
+	int ASSIGNMENT = 32;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -1728,7 +1682,7 @@ public interface JenkinsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 34;
+	int BINARY_OP = 33;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -1765,6 +1719,52 @@ public interface JenkinsPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY_OP_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DotOpImpl <em>Dot Op</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DotOpImpl
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDotOp()
+	 * @generated
+	 */
+	int DOT_OP = 34;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP__LHS = BINARY_OP__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP__RHS = BINARY_OP__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Dot Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP_FEATURE_COUNT = BINARY_OP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Dot Op</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOT_OP_OPERATION_COUNT = BINARY_OP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl <em>Array</em>}' class.
@@ -3173,16 +3173,6 @@ public interface JenkinsPackage extends EPackage {
 	int WHEN_EVALUATION_TIMES = 72;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJENKINS_CONTEXTS()
-	 * @generated
-	 */
-	int JENKINS_CONTEXTS = 73;
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline <em>Pipeline</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3439,15 +3429,15 @@ public interface JenkinsPackage extends EPackage {
 	EClass getMatrixAxis();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getName <em>Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @return the meta object for the containment reference '<em>Name</em>'.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getName()
 	 * @see #getMatrixAxis()
 	 * @generated
 	 */
-	EAttribute getMatrixAxis_Name();
+	EReference getMatrixAxis_Name();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis#getCells <em>Cells</em>}'.
@@ -3901,78 +3891,46 @@ public interface JenkinsPackage extends EPackage {
 	EAttribute getBooleanLiteral_Value();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable <em>Variable</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration <em>Variable Declaration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable
+	 * @return the meta object for class '<em>Variable Declaration</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration
 	 * @generated
 	 */
-	EClass getVariable();
+	EClass getVariableDeclaration();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable#getName()
-	 * @see #getVariable()
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration#getName()
+	 * @see #getVariableDeclaration()
 	 * @generated
 	 */
-	EAttribute getVariable_Name();
+	EAttribute getVariableDeclaration_Name();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext <em>Context</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Context</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext
+	 * @return the meta object for class '<em>Variable Reference</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference
 	 * @generated
 	 */
-	EClass getJenkinsContext();
+	EClass getVariableReference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext#getName <em>Name</em>}'.
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext#getName()
-	 * @see #getJenkinsContext()
+	 * @return the meta object for the reference '<em>Reference</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference#getReference()
+	 * @see #getVariableReference()
 	 * @generated
 	 */
-	EAttribute getJenkinsContext_Name();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference <em>Variable Dereference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable Dereference</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference
-	 * @generated
-	 */
-	EClass getVariableDereference();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getVariable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Variable</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getVariable()
-	 * @see #getVariableDereference()
-	 * @generated
-	 */
-	EReference getVariableDereference_Variable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Property</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference#getProperty()
-	 * @see #getVariableDereference()
-	 * @generated
-	 */
-	EAttribute getVariableDereference_Property();
+	EReference getVariableReference_Reference();
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Assignment</em>}'.
@@ -3980,7 +3938,7 @@ public interface JenkinsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Assignment</em>'.
 	 * @see java.util.Map.Entry
-	 * @model keyType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable" keyContainment="true" keyRequired="true"
+	 * @model keyType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration" keyContainment="true" keyRequired="true"
 	 *        valueType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression" valueContainment="true" valueRequired="true"
 	 * @generated
 	 */
@@ -4039,6 +3997,16 @@ public interface JenkinsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBinaryOp_Rhs();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp <em>Dot Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dot Op</em>'.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp
+	 * @generated
+	 */
+	EClass getDotOp();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Array <em>Array</em>}'.
@@ -4685,16 +4653,6 @@ public interface JenkinsPackage extends EPackage {
 	EEnum getWHEN_EVALUATION_TIMES();
 
 	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>JENKINS CONTEXTS</em>'.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS
-	 * @generated
-	 */
-	EEnum getJENKINS_CONTEXTS();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4926,12 +4884,12 @@ public interface JenkinsPackage extends EPackage {
 		EClass MATRIX_AXIS = eINSTANCE.getMatrixAxis();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MATRIX_AXIS__NAME = eINSTANCE.getMatrixAxis_Name();
+		EReference MATRIX_AXIS__NAME = eINSTANCE.getMatrixAxis_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
@@ -5322,14 +5280,14 @@ public interface JenkinsPackage extends EPackage {
 		EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl <em>Variable</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariable()
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDeclarationImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableDeclaration()
 		 * @generated
 		 */
-		EClass VARIABLE = eINSTANCE.getVariable();
+		EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -5337,51 +5295,25 @@ public interface JenkinsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+		EAttribute VARIABLE_DECLARATION__NAME = eINSTANCE.getVariableDeclaration_Name();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl <em>Context</em>}' class.
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableReferenceImpl <em>Variable Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsContextImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJenkinsContext()
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableReferenceImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableReference()
 		 * @generated
 		 */
-		EClass JENKINS_CONTEXT = eINSTANCE.getJenkinsContext();
+		EClass VARIABLE_REFERENCE = eINSTANCE.getVariableReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JENKINS_CONTEXT__NAME = eINSTANCE.getJenkinsContext_Name();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl <em>Variable Dereference</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDereferenceImpl
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getVariableDereference()
-		 * @generated
-		 */
-		EClass VARIABLE_DEREFERENCE = eINSTANCE.getVariableDereference();
-
-		/**
-		 * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VARIABLE_DEREFERENCE__VARIABLE = eINSTANCE.getVariableDereference_Variable();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE_DEREFERENCE__PROPERTY = eINSTANCE.getVariableDereference_Property();
+		EReference VARIABLE_REFERENCE__REFERENCE = eINSTANCE.getVariableReference_Reference();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.AssignmentImpl <em>Assignment</em>}' class.
@@ -5434,6 +5366,16 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINARY_OP__RHS = eINSTANCE.getBinaryOp_Rhs();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DotOpImpl <em>Dot Op</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.DotOpImpl
+		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getDotOp()
+		 * @generated
+		 */
+		EClass DOT_OP = eINSTANCE.getDotOp();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.ArrayImpl <em>Array</em>}' class.
@@ -6006,16 +5948,6 @@ public interface JenkinsPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum WHEN_EVALUATION_TIMES = eINSTANCE.getWHEN_EVALUATION_TIMES();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS <em>JENKINS CONTEXTS</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS
-		 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.JenkinsPackageImpl#getJENKINS_CONTEXTS()
-		 * @generated
-		 */
-		EEnum JENKINS_CONTEXTS = eINSTANCE.getJENKINS_CONTEXTS();
 
 	}
 

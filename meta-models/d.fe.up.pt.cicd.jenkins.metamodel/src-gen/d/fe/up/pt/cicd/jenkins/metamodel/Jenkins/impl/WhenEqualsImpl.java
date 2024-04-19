@@ -4,7 +4,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Literal;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -48,7 +48,7 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 * @generated
 	 * @ordered
 	 */
-	protected Variable actual;
+	protected VariableDeclaration actual;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,7 +127,7 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 * @generated
 	 */
 	@Override
-	public Variable getActual() {
+	public VariableDeclaration getActual() {
 		return actual;
 	}
 
@@ -136,8 +136,8 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActual(Variable newActual, NotificationChain msgs) {
-		Variable oldActual = actual;
+	public NotificationChain basicSetActual(VariableDeclaration newActual, NotificationChain msgs) {
+		VariableDeclaration oldActual = actual;
 		actual = newActual;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
@@ -156,7 +156,7 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 	 * @generated
 	 */
 	@Override
-	public void setActual(Variable newActual) {
+	public void setActual(VariableDeclaration newActual) {
 		if (newActual != actual) {
 			NotificationChain msgs = null;
 			if (actual != null)
@@ -217,7 +217,7 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 			setExpected((Literal) newValue);
 			return;
 		case JenkinsPackage.WHEN_EQUALS__ACTUAL:
-			setActual((Variable) newValue);
+			setActual((VariableDeclaration) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -235,7 +235,7 @@ public class WhenEqualsImpl extends WhenImpl implements WhenEquals {
 			setExpected((Literal) null);
 			return;
 		case JenkinsPackage.WHEN_EQUALS__ACTUAL:
-			setActual((Variable) null);
+			setActual((VariableDeclaration) null);
 			return;
 		}
 		super.eUnset(featureID);

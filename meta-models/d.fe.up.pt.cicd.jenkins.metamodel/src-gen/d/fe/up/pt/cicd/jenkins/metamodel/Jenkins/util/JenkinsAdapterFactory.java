@@ -219,28 +219,28 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariable(Variable object) {
-			return createVariableAdapter();
+		public Adapter caseVariableDeclaration(VariableDeclaration object) {
+			return createVariableDeclarationAdapter();
 		}
 
 		@Override
-		public Adapter caseJenkinsContext(JenkinsContext object) {
-			return createJenkinsContextAdapter();
+		public Adapter caseVariableReference(VariableReference object) {
+			return createVariableReferenceAdapter();
 		}
 
 		@Override
-		public Adapter caseVariableDereference(VariableDereference object) {
-			return createVariableDereferenceAdapter();
-		}
-
-		@Override
-		public Adapter caseAssignment(Map.Entry<Variable, Expression> object) {
+		public Adapter caseAssignment(Map.Entry<VariableDeclaration, Expression> object) {
 			return createAssignmentAdapter();
 		}
 
 		@Override
 		public Adapter caseBinaryOp(BinaryOp object) {
 			return createBinaryOpAdapter();
+		}
+
+		@Override
+		public Adapter caseDotOp(DotOp object) {
+			return createDotOpAdapter();
 		}
 
 		@Override
@@ -843,44 +843,30 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable <em>Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration <em>Variable Declaration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration
 	 * @generated
 	 */
-	public Adapter createVariableAdapter() {
+	public Adapter createVariableDeclarationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext <em>Context</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference <em>Variable Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference
 	 * @generated
 	 */
-	public Adapter createJenkinsContextAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference <em>Variable Dereference</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference
-	 * @generated
-	 */
-	public Adapter createVariableDereferenceAdapter() {
+	public Adapter createVariableReferenceAdapter() {
 		return null;
 	}
 
@@ -909,6 +895,20 @@ public class JenkinsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBinaryOpAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp <em>Dot Op</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp
+	 * @generated
+	 */
+	public Adapter createDotOpAdapter() {
 		return null;
 	}
 

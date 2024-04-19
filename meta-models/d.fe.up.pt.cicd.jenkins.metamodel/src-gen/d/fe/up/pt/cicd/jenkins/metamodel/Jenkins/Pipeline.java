@@ -64,16 +64,16 @@ public interface Pipeline extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Environment Variables</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable},
+	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment Variables</em>' map.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getPipeline_EnvironmentVariables()
-	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
 	 * @generated
 	 */
-	EMap<Variable, Expression> getEnvironmentVariables();
+	EMap<VariableDeclaration, Expression> getEnvironmentVariables();
 
 	/**
 	 * Returns the value of the '<em><b>Triggers</b></em>' containment reference list.

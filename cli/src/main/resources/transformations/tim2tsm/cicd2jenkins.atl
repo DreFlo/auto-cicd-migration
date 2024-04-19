@@ -101,15 +101,12 @@ lazy rule CreateBuildStep {
 				thisModule.CreateAssignment('parameters', thisModule.CreateArray(
 					job.args->collect(arg | 
 						thisModule.Assignment2Function(
-							if arg.key.oclIsTypeOf(CICD!SecretVariable) then
-								'credentials'
-							else if arg.value.oclIsTypeOf(CICD!StringLiteral) or arg.value.oclIsTypeOf(CICD!Concat) then
+							if arg.value.oclIsTypeOf(CICD!StringLiteral) or arg.value.oclIsTypeOf(CICD!Concat) then
 								'string'
 							else if arg.value.oclIsTypeOf(CICD!BooleanLiteral) then
 								'boolean'
 							else
 								'OclUndefined'
-							endif
 							endif
 							endif,
 							arg
@@ -276,7 +273,7 @@ lazy rule String2Variable {
 	from
 		string : String
 	to
-		variable : Jenkins!Variable(
+		variable : Jenkins!VariableDeclaration(
 			name <- string
 		)
 }
@@ -455,6 +452,13 @@ abstract rule BinaryOp2BinaryOp extends Expression2Expression {
 		)
 }
 
+rule DotOp2DotOp extends BinaryOp2BinaryOp {
+	from
+		cicdExpression : CICD!DotOp
+	to
+		jenkinsExpression : Jenkins!DotOp
+}
+
 abstract rule UnaryOp2UnaryOp extends Expression2Expression {
 	from
 		cicdExpression : CICD!UnaryOp
@@ -526,13 +530,12 @@ rule Or2Or extends LogicalOp2LogicalOp {
 		jenkinsExpression : Jenkins!Or
 }
 
-rule VariableDereference2VariableDereference extends Expression2Expression {
+rule VariableReference2VariableReference extends Expression2Expression {
 	from
-		cicdExpression : CICD!VariableDereference
+		cicdExpression : CICD!VariableReference
 	to
-		jenkinsExpression : Jenkins!VariableDereference(
-			variable <- cicdExpression.variable,
-			property <- cicdExpression.property
+		jenkinsExpression : Jenkins!VariableReference(
+			reference <- cicdExpression.reference
 		)
 }
 
@@ -543,21 +546,12 @@ abstract rule Value2Value extends Expression2Expression {
 		jenkinsExpression : Jenkins!Value
 }
 
-rule Variable2Variable extends Value2Value {
+rule VariableDeclaration2VariableDeclaration {
 	from
-		cicdExpression : CICD!Variable
+		cicdExpression : CICD!VariableDeclaration
 	to
-		jenkinsExpression : Jenkins!Variable(
+		jenkinsExpression : Jenkins!VariableDeclaration(
 			name <- cicdExpression.name
-		)
-}
-
-rule VariableContext2JenkinsContext extends Value2Value {
-	from
-		cicdExpression : CICD!VariableContext
-	to
-		jenkinsExpression : Jenkins!JenkinsContext(
-			name <- thisModule.variableContext2JenkinsContext(cicdExpression.context)
 		)
 }
 
@@ -737,19 +731,13 @@ helper context CICD!BooleanLiteral def : expression2String() : String = self.val
 
 helper context CICD!Concat def : expression2String() : String =
 	let exprStrings : Sequence(String) =
-		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
+		self.expressions->collect(expr | if expr.oclIsTypeOf(CICD!VariableReference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
 		exprStrings->iterate(exprString; joinedString: String = '' |
 			joinedString.concat(exprString)
 		);
 
-helper context CICD!Variable def : expression2String() : String =
-	'$'.concat(self.name);
-
-helper context CICD!VariableContext def : expression2String() : String =
-	thisModule.variableContext2JenkinsContext(self.context).toString();
-
-helper context CICD!VariableDereference def : expression2String() : String =
-	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;
+helper context CICD!VariableReference def : expression2String() : String =
+	'$'.concat(self.reference.name);
 
 helper def : groupJobs(jobStreams : Sequence(CICD!Job), previous : Set(CICD!Job)) : Sequence(Sequence(CICD!Job)) =
 	let next : Sequence(CICD!Job) = 
@@ -822,15 +810,12 @@ helper def : variableContext2JenkinsContext(variableContext : CICD!VARIABLE_CONT
 helper def : assignment2BuildStepParameterHelper(assignment : CICD!Assignment) : Jenkins!BuildStepParameter =
 	if assignment.oclIsUndefined() then
 		OclUndefined
-	else if assignment.key.oclIsTypeOf(CICD!SecretVariable) then
-		thisModule.Assignment2CredentialsBuildStepParameter(assignment)
 	else if assignment.value.oclIsTypeOf(CICD!StringLiteral) or assignment.value.oclIsTypeOf(CICD!Concat) then
 		thisModule.Assignment2StringBuildStepParameter(assignment)
 	else if assignment.value.oclIsTypeOf(CICD!BooleanLiteral) then
 		thisModule.Assignment2BooleanBuildStepParameter(assignment)
 	else
 		OclUndefined
-	endif
 	endif
 	endif
 	endif;

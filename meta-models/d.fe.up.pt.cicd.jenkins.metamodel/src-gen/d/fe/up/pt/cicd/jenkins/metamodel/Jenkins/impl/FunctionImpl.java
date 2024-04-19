@@ -5,7 +5,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -64,7 +64,7 @@ public class FunctionImpl extends ExpressionImpl implements Function {
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> arguments;
+	protected EMap<VariableDeclaration, Expression> arguments;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,10 +114,10 @@ public class FunctionImpl extends ExpressionImpl implements Function {
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getArguments() {
+	public EMap<VariableDeclaration, Expression> getArguments() {
 		if (arguments == null) {
-			arguments = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT, AssignmentImpl.class,
-					this, JenkinsPackage.FUNCTION__ARGUMENTS);
+			arguments = new EcoreEMap<VariableDeclaration, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
+					AssignmentImpl.class, this, JenkinsPackage.FUNCTION__ARGUMENTS);
 		}
 		return arguments;
 	}

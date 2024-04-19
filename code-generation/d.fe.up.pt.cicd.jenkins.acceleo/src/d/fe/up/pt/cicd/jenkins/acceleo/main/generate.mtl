@@ -13,6 +13,13 @@
 	invoke('d.fe.up.pt.cicd.jenkins.acceleo.services.CICD2Jenkins', 'getUnaryOperator(d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp)', Sequence{unaryOp})
 /]
 
+[query public generateVariableReference(variableReference : VariableReference) : String =
+	reference.name
+/]
+
+[template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]
+[name/]
+[/template]
 
 [template public generateAbstractStage(abstractStage : AbstractStage) post (trim())]
 stage([quoteString(abstractStage.name)/]) {
@@ -65,7 +72,7 @@ matrix {
 
 [template public generateMatrixAxis(axis : MatrixAxis) post (trim())]
 axis {
-	name [quoteString(axis.name)/]
+	name [quoteString(generateVariableDeclaration(name))/]
 	values [for (cell : Expression | axis.cells)][generateExpression(cell)/][if (axis.cells->indexOf(cell) <> axis.cells->size())], [/if][/for]
 }
 [/template]
@@ -73,7 +80,7 @@ axis {
 [template public generateMatrixCombination(combination : MatrixCombination) post (trim())]
 [for (assignment : Assignment | entries)]
 axis {
-	name [quoteString(assignment.key.name)/]
+	name [quoteString(generateVariableDeclaration(assignment.key))/]
 	values [generateExpression(assignment.value)/]
 }
 [/for]
@@ -135,12 +142,8 @@ script {
 [template public generateExpression(expression : Expression) post (trim())]
 [if (expression.oclIsUndefined())]
 OclUndefined
-[elseif (expression.oclIsKindOf(Variable))]
-[generateVariable(expression.oclAsType(Variable))/]
-[elseif (expression.oclIsKindOf(JenkinsContext))]
-[generateJekinsContext(expression.oclAsType(JenkinsContext))/]
-[elseif (expression.oclIsKindOf(VariableDereference))]
-[generateVariableDereference(expression.oclAsType(VariableDereference))/]
+[elseif (expression.oclIsKindOf(VariableReference))]
+[generateVariableReference(expression.oclAsType(VariableReference))/]
 [elseif (expression.oclIsKindOf(Literal))]
 [generateLiteral(expression.oclAsType(Literal))/]
 [elseif (expression.oclIsKindOf(BinaryOp))]
@@ -154,18 +157,6 @@ OclUndefined
 [elseif (expression.oclIsTypeOf(Array))]
 [generateArray(expression.oclAsType(Array))/]
 [/if]
-[/template]
-
-[template public generateVariable(variable : Variable)]
-[variable.name/]
-[/template]
-
-[template public generateJekinsContext(jenkinsContext : JenkinsContext)]
-[jenkinsContext.name/]
-[/template]
-
-[template public generateVariableDereference(variableDereference : VariableDereference)]
-[generateExpression(variableDereference.variable)/].[variableDereference.property/]
 [/template]
 
 [template public generateLiteral(literal : Literal)]

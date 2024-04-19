@@ -157,16 +157,13 @@ public class LabelAgentItemProvider extends AbstractAgentItemProvider {
 				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createVariable()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createJenkinsContext()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
-				JenkinsFactory.eINSTANCE.createVariableDereference()));
+				JenkinsFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
+				JenkinsFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.LABEL_AGENT__LABELS,
 				JenkinsFactory.eINSTANCE.createArray()));

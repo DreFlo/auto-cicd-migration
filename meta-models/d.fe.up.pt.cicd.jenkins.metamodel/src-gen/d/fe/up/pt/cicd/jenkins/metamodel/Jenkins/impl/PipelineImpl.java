@@ -9,7 +9,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Pipeline;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Tool;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 
 import java.util.Collection;
 
@@ -76,7 +76,7 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getTriggers() <em>Triggers</em>}' containment reference list.
@@ -188,9 +188,9 @@ public class PipelineImpl extends MinimalEObjectImpl.Container implements Pipeli
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, JenkinsPackage.PIPELINE__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;

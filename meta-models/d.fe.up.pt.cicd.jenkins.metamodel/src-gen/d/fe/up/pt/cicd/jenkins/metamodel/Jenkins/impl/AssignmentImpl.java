@@ -4,7 +4,7 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Variable, Expression> {
+public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<VariableDeclaration, Expression> {
 	/**
 	 * The cached value of the '{@link #getTypedKey() <em>Key</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -41,7 +41,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * @generated
 	 * @ordered
 	 */
-	protected Variable key;
+	protected VariableDeclaration key;
 
 	/**
 	 * The cached value of the '{@link #getTypedValue() <em>Value</em>}' containment reference.
@@ -77,7 +77,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Variable getTypedKey() {
+	public VariableDeclaration getTypedKey() {
 		return key;
 	}
 
@@ -86,8 +86,8 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTypedKey(Variable newKey, NotificationChain msgs) {
-		Variable oldKey = key;
+	public NotificationChain basicSetTypedKey(VariableDeclaration newKey, NotificationChain msgs) {
+		VariableDeclaration oldKey = key;
 		key = newKey;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
@@ -105,7 +105,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTypedKey(Variable newKey) {
+	public void setTypedKey(VariableDeclaration newKey) {
 		if (newKey != key) {
 			NotificationChain msgs = null;
 			if (key != null)
@@ -212,7 +212,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case JenkinsPackage.ASSIGNMENT__KEY:
-			setTypedKey((Variable) newValue);
+			setTypedKey((VariableDeclaration) newValue);
 			return;
 		case JenkinsPackage.ASSIGNMENT__VALUE:
 			setTypedValue((Expression) newValue);
@@ -230,7 +230,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case JenkinsPackage.ASSIGNMENT__KEY:
-			setTypedKey((Variable) null);
+			setTypedKey((VariableDeclaration) null);
 			return;
 		case JenkinsPackage.ASSIGNMENT__VALUE:
 			setTypedValue((Expression) null);
@@ -292,7 +292,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * @generated
 	 */
 	@Override
-	public Variable getKey() {
+	public VariableDeclaration getKey() {
 		return getTypedKey();
 	}
 
@@ -302,7 +302,7 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * @generated
 	 */
 	@Override
-	public void setKey(Variable key) {
+	public void setKey(VariableDeclaration key) {
 		setTypedKey(key);
 	}
 
@@ -334,9 +334,9 @@ public class AssignmentImpl extends ExpressionImpl implements BasicEMap.Entry<Va
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EMap<Variable, Expression> getEMap() {
+	public EMap<VariableDeclaration, Expression> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<Variable, Expression>) container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<VariableDeclaration, Expression>) container.eGet(eContainmentFeature());
 	}
 
 } //AssignmentImpl

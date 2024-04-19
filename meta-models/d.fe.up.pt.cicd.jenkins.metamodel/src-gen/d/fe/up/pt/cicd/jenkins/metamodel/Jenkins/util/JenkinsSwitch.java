@@ -382,40 +382,25 @@ public class JenkinsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case JenkinsPackage.VARIABLE: {
-			Variable variable = (Variable) theEObject;
-			T result = caseVariable(variable);
-			if (result == null)
-				result = caseValue(variable);
-			if (result == null)
-				result = caseExpression(variable);
+		case JenkinsPackage.VARIABLE_DECLARATION: {
+			VariableDeclaration variableDeclaration = (VariableDeclaration) theEObject;
+			T result = caseVariableDeclaration(variableDeclaration);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case JenkinsPackage.JENKINS_CONTEXT: {
-			JenkinsContext jenkinsContext = (JenkinsContext) theEObject;
-			T result = caseJenkinsContext(jenkinsContext);
+		case JenkinsPackage.VARIABLE_REFERENCE: {
+			VariableReference variableReference = (VariableReference) theEObject;
+			T result = caseVariableReference(variableReference);
 			if (result == null)
-				result = caseValue(jenkinsContext);
-			if (result == null)
-				result = caseExpression(jenkinsContext);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case JenkinsPackage.VARIABLE_DEREFERENCE: {
-			VariableDereference variableDereference = (VariableDereference) theEObject;
-			T result = caseVariableDereference(variableDereference);
-			if (result == null)
-				result = caseExpression(variableDereference);
+				result = caseExpression(variableReference);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case JenkinsPackage.ASSIGNMENT: {
 			@SuppressWarnings("unchecked")
-			Map.Entry<Variable, Expression> assignment = (Map.Entry<Variable, Expression>) theEObject;
+			Map.Entry<VariableDeclaration, Expression> assignment = (Map.Entry<VariableDeclaration, Expression>) theEObject;
 			T result = caseAssignment(assignment);
 			if (result == null)
 				result = caseExpression((Expression) assignment);
@@ -428,6 +413,17 @@ public class JenkinsSwitch<T> extends Switch<T> {
 			T result = caseBinaryOp(binaryOp);
 			if (result == null)
 				result = caseExpression(binaryOp);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case JenkinsPackage.DOT_OP: {
+			DotOp dotOp = (DotOp) theEObject;
+			T result = caseDotOp(dotOp);
+			if (result == null)
+				result = caseBinaryOp(dotOp);
+			if (result == null)
+				result = caseExpression(dotOp);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -1210,47 +1206,32 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariable(Variable object) {
+	public T caseVariableDeclaration(VariableDeclaration object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Context</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Context</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseJenkinsContext(JenkinsContext object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Dereference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableDereference(VariableDereference object) {
+	public T caseVariableReference(VariableReference object) {
 		return null;
 	}
 
@@ -1265,7 +1246,7 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAssignment(Map.Entry<Variable, Expression> object) {
+	public T caseAssignment(Map.Entry<VariableDeclaration, Expression> object) {
 		return null;
 	}
 
@@ -1281,6 +1262,21 @@ public class JenkinsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBinaryOp(BinaryOp object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dot Op</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dot Op</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDotOp(DotOp object) {
 		return null;
 	}
 

@@ -47,12 +47,12 @@ public interface WhenEquals extends When {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actual</em>' containment reference.
-	 * @see #setActual(Variable)
+	 * @see #setActual(VariableDeclaration)
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getWhenEquals_Actual()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Variable getActual();
+	VariableDeclaration getActual();
 
 	/**
 	 * Sets the value of the '{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenEquals#getActual <em>Actual</em>}' containment reference.
@@ -62,6 +62,6 @@ public interface WhenEquals extends When {
 	 * @see #getActual()
 	 * @generated
 	 */
-	void setActual(Variable value);
+	void setActual(VariableDeclaration value);
 
 } // WhenEquals

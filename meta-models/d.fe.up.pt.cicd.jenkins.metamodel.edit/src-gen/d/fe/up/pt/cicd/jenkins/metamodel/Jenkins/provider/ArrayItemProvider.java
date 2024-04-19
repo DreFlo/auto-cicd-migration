@@ -156,17 +156,14 @@ public class ArrayItemProvider extends ExpressionItemProvider {
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(
-				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createVariable()));
-
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
-				JenkinsFactory.eINSTANCE.createJenkinsContext()));
-
-		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
-				JenkinsFactory.eINSTANCE.createVariableDereference()));
+				JenkinsFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES,
 				JenkinsFactory.eINSTANCE.create(JenkinsPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(
+				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createDotOp()));
 
 		newChildDescriptors.add(
 				createChildParameter(JenkinsPackage.Literals.ARRAY__VALUES, JenkinsFactory.eINSTANCE.createArray()));

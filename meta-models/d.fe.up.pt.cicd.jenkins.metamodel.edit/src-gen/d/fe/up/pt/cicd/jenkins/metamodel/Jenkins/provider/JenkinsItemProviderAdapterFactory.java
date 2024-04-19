@@ -579,72 +579,49 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableItemProvider variableItemProvider;
+	protected VariableDeclarationItemProvider variableDeclarationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createVariableAdapter() {
-		if (variableItemProvider == null) {
-			variableItemProvider = new VariableItemProvider(this);
+	public Adapter createVariableDeclarationAdapter() {
+		if (variableDeclarationItemProvider == null) {
+			variableDeclarationItemProvider = new VariableDeclarationItemProvider(this);
 		}
 
-		return variableItemProvider;
+		return variableDeclarationItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected JenkinsContextItemProvider jenkinsContextItemProvider;
+	protected VariableReferenceItemProvider variableReferenceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createJenkinsContextAdapter() {
-		if (jenkinsContextItemProvider == null) {
-			jenkinsContextItemProvider = new JenkinsContextItemProvider(this);
+	public Adapter createVariableReferenceAdapter() {
+		if (variableReferenceItemProvider == null) {
+			variableReferenceItemProvider = new VariableReferenceItemProvider(this);
 		}
 
-		return jenkinsContextItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableDereferenceItemProvider variableDereferenceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVariableDereferenceAdapter() {
-		if (variableDereferenceItemProvider == null) {
-			variableDereferenceItemProvider = new VariableDereferenceItemProvider(this);
-		}
-
-		return variableDereferenceItemProvider;
+		return variableReferenceItemProvider;
 	}
 
 	/**
@@ -668,6 +645,29 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 		}
 
 		return assignmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DotOpItemProvider dotOpItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDotOpAdapter() {
+		if (dotOpItemProvider == null) {
+			dotOpItemProvider = new DotOpItemProvider(this);
+		}
+
+		return dotOpItemProvider;
 	}
 
 	/**
@@ -1417,14 +1417,14 @@ public class JenkinsItemProviderAdapterFactory extends JenkinsAdapterFactory
 			doubleLiteralItemProvider.dispose();
 		if (booleanLiteralItemProvider != null)
 			booleanLiteralItemProvider.dispose();
-		if (variableItemProvider != null)
-			variableItemProvider.dispose();
-		if (jenkinsContextItemProvider != null)
-			jenkinsContextItemProvider.dispose();
-		if (variableDereferenceItemProvider != null)
-			variableDereferenceItemProvider.dispose();
+		if (variableDeclarationItemProvider != null)
+			variableDeclarationItemProvider.dispose();
+		if (variableReferenceItemProvider != null)
+			variableReferenceItemProvider.dispose();
 		if (assignmentItemProvider != null)
 			assignmentItemProvider.dispose();
+		if (dotOpItemProvider != null)
+			dotOpItemProvider.dispose();
 		if (arrayItemProvider != null)
 			arrayItemProvider.dispose();
 		if (negationItemProvider != null)

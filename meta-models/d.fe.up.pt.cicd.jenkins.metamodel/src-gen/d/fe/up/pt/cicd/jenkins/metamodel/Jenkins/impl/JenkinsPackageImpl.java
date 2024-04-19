@@ -16,12 +16,12 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalChildStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.ConditionalStep;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DockerContainer;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DotOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.DoubleLiteral;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.EqualityOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Function;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.IntegerLiteral;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsContext;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsFactory;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.LabelAgent;
@@ -53,8 +53,8 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Trigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UnaryOp;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.UpstreamTrigger;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Value;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDereference;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAllOf;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WhenAnyOf;
@@ -303,21 +303,14 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableEClass = null;
+	private EClass variableDeclarationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass jenkinsContextEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass variableDereferenceEClass = null;
+	private EClass variableReferenceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -332,6 +325,13 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	private EClass binaryOpEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dotOpEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -598,13 +598,6 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	private EEnum wheN_EVALUATION_TIMESEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum jenkinS_CONTEXTSEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -916,8 +909,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMatrixAxis_Name() {
-		return (EAttribute) matrixAxisEClass.getEStructuralFeatures().get(0);
+	public EReference getMatrixAxis_Name() {
+		return (EReference) matrixAxisEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1356,8 +1349,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getVariable() {
-		return variableEClass;
+	public EClass getVariableDeclaration() {
+		return variableDeclarationEClass;
 	}
 
 	/**
@@ -1366,8 +1359,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVariable_Name() {
-		return (EAttribute) variableEClass.getEStructuralFeatures().get(0);
+	public EAttribute getVariableDeclaration_Name() {
+		return (EAttribute) variableDeclarationEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1376,8 +1369,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getJenkinsContext() {
-		return jenkinsContextEClass;
+	public EClass getVariableReference() {
+		return variableReferenceEClass;
 	}
 
 	/**
@@ -1386,38 +1379,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getJenkinsContext_Name() {
-		return (EAttribute) jenkinsContextEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVariableDereference() {
-		return variableDereferenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getVariableDereference_Variable() {
-		return (EReference) variableDereferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getVariableDereference_Property() {
-		return (EAttribute) variableDereferenceEClass.getEStructuralFeatures().get(1);
+	public EReference getVariableReference_Reference() {
+		return (EReference) variableReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1478,6 +1441,16 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	@Override
 	public EReference getBinaryOp_Rhs() {
 		return (EReference) binaryOpEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDotOp() {
+		return dotOpEClass;
 	}
 
 	/**
@@ -2106,16 +2079,6 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getJENKINS_CONTEXTS() {
-		return jenkinS_CONTEXTSEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public JenkinsFactory getJenkinsFactory() {
 		return (JenkinsFactory) getEFactoryInstance();
 	}
@@ -2171,7 +2134,7 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		createEAttribute(matrixStageEClass, MATRIX_STAGE__FAIL_FAST);
 
 		matrixAxisEClass = createEClass(MATRIX_AXIS);
-		createEAttribute(matrixAxisEClass, MATRIX_AXIS__NAME);
+		createEReference(matrixAxisEClass, MATRIX_AXIS__NAME);
 		createEReference(matrixAxisEClass, MATRIX_AXIS__CELLS);
 
 		matrixCombinationEClass = createEClass(MATRIX_COMBINATION);
@@ -2238,15 +2201,11 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
 		createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
-		variableEClass = createEClass(VARIABLE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
+		variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+		createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
 
-		jenkinsContextEClass = createEClass(JENKINS_CONTEXT);
-		createEAttribute(jenkinsContextEClass, JENKINS_CONTEXT__NAME);
-
-		variableDereferenceEClass = createEClass(VARIABLE_DEREFERENCE);
-		createEReference(variableDereferenceEClass, VARIABLE_DEREFERENCE__VARIABLE);
-		createEAttribute(variableDereferenceEClass, VARIABLE_DEREFERENCE__PROPERTY);
+		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
+		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REFERENCE);
 
 		assignmentEClass = createEClass(ASSIGNMENT);
 		createEReference(assignmentEClass, ASSIGNMENT__KEY);
@@ -2255,6 +2214,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		binaryOpEClass = createEClass(BINARY_OP);
 		createEReference(binaryOpEClass, BINARY_OP__LHS);
 		createEReference(binaryOpEClass, BINARY_OP__RHS);
+
+		dotOpEClass = createEClass(DOT_OP);
 
 		arrayEClass = createEClass(ARRAY);
 		createEReference(arrayEClass, ARRAY__VALUES);
@@ -2351,7 +2312,6 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		comparatorsEEnum = createEEnum(COMPARATORS);
 		changE_REQUEST_MATCHEREEnum = createEEnum(CHANGE_REQUEST_MATCHER);
 		wheN_EVALUATION_TIMESEEnum = createEEnum(WHEN_EVALUATION_TIMES);
-		jenkinS_CONTEXTSEEnum = createEEnum(JENKINS_CONTEXTS);
 	}
 
 	/**
@@ -2407,11 +2367,10 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		integerLiteralEClass.getESuperTypes().add(this.getLiteral());
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
-		variableEClass.getESuperTypes().add(this.getValue());
-		jenkinsContextEClass.getESuperTypes().add(this.getValue());
-		variableDereferenceEClass.getESuperTypes().add(this.getExpression());
+		variableReferenceEClass.getESuperTypes().add(this.getExpression());
 		assignmentEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
+		dotOpEClass.getESuperTypes().add(this.getBinaryOp());
 		arrayEClass.getESuperTypes().add(this.getExpression());
 		unaryOpEClass.getESuperTypes().add(this.getExpression());
 		negationEClass.getESuperTypes().add(this.getUnaryOp());
@@ -2513,8 +2472,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 
 		initEClass(matrixAxisEClass, MatrixAxis.class, "MatrixAxis", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMatrixAxis_Name(), ecorePackage.getEString(), "name", null, 1, 1, MatrixAxis.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMatrixAxis_Name(), this.getVariableDeclaration(), null, "name", null, 1, 1, MatrixAxis.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMatrixAxis_Cells(), this.getExpression(), null, "cells", null, 1, -1, MatrixAxis.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2638,30 +2598,23 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(jenkinsContextEClass, JenkinsContext.class, "JenkinsContext", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getJenkinsContext_Name(), this.getJENKINS_CONTEXTS(), "name", null, 1, 1, JenkinsContext.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableDereferenceEClass, VariableDereference.class, "VariableDereference", !IS_ABSTRACT,
+		initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableDereference_Variable(), this.getExpression(), null, "variable", null, 1, 1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariableDereference_Property(), ecorePackage.getEString(), "property", null, 1, 1,
-				VariableDereference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 1, 1,
+				VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(variableReferenceEClass, VariableReference.class, "VariableReference", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariableReference_Reference(), this.getVariableDeclaration(), null, "reference", null, 1, 1,
+				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignmentEClass, Map.Entry.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE,
 				!IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAssignment_Key(), this.getVariable(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEReference(getAssignment_Key(), this.getVariableDeclaration(), null, "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 1, 1, Map.Entry.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2673,6 +2626,8 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getBinaryOp_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+
+		initEClass(dotOpEClass, DotOp.class, "DotOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(arrayEClass, Array.class, "Array", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getArray_Values(), this.getExpression(), null, "values", null, 0, -1, Array.class, !IS_TRANSIENT,
@@ -2767,9 +2722,9 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 		initEReference(getWhenEquals_Expected(), this.getLiteral(), null, "expected", null, 1, 1, WhenEquals.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getWhenEquals_Actual(), this.getVariable(), null, "actual", null, 1, 1, WhenEquals.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWhenEquals_Actual(), this.getVariableDeclaration(), null, "actual", null, 1, 1,
+				WhenEquals.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(whenEnvironmentEClass, WhenEnvironment.class, "WhenEnvironment", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2879,11 +2834,6 @@ public class JenkinsPackageImpl extends EPackageImpl implements JenkinsPackage {
 				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_INPUT);
 		addEEnumLiteral(wheN_EVALUATION_TIMESEEnum,
 				d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES.BEFORE_OPTIONS);
-
-		initEEnum(jenkinS_CONTEXTSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS.class,
-				"JENKINS_CONTEXTS");
-		addEEnumLiteral(jenkinS_CONTEXTSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS.ENV);
-		addEEnumLiteral(jenkinS_CONTEXTSEEnum, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JENKINS_CONTEXTS.PARAMS);
 
 		// Create resource
 		createResource(eNS_URI);

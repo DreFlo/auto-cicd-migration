@@ -3,7 +3,6 @@
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.provider;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,23 +12,21 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable} object.
+ * This is the item provider adapter for a {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableReference} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class VariableItemProvider extends ValueItemProvider {
+public class VariableReferenceItemProvider extends ExpressionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableItemProvider(AdapterFactory adapterFactory) {
+	public VariableReferenceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -44,36 +41,35 @@ public class VariableItemProvider extends ValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
+			addReferencePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Reference feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addReferencePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Variable_name_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Variable_name_feature",
-								"_UI_Variable_type"),
-						JenkinsPackage.Literals.VARIABLE__NAME, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						getResourceLocator(), getString("_UI_VariableReference_reference_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_VariableReference_reference_feature",
+								"_UI_VariableReference_type"),
+						JenkinsPackage.Literals.VARIABLE_REFERENCE__REFERENCE, true, false, true, null, null, null));
 	}
 
 	/**
-	 * This returns Variable.gif.
+	 * This returns VariableReference.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Variable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/VariableReference"));
 	}
 
 	/**
@@ -94,9 +90,7 @@ public class VariableItemProvider extends ValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Variable) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Variable_type")
-				: getString("_UI_Variable_type") + " " + label;
+		return getString("_UI_VariableReference_type");
 	}
 
 	/**
@@ -109,12 +103,6 @@ public class VariableItemProvider extends ValueItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Variable.class)) {
-		case JenkinsPackage.VARIABLE__NAME:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 

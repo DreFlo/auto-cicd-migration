@@ -3,28 +3,29 @@
 package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable</b></em>'.
+ * An implementation of the model object '<em><b>Variable Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl.VariableDeclarationImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableImpl extends ValueImpl implements Variable {
+public class VariableDeclarationImpl extends MinimalEObjectImpl.Container implements VariableDeclaration {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -50,7 +51,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableImpl() {
+	protected VariableDeclarationImpl() {
 		super();
 	}
 
@@ -61,7 +62,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return JenkinsPackage.Literals.VARIABLE;
+		return JenkinsPackage.Literals.VARIABLE_DECLARATION;
 	}
 
 	/**
@@ -84,7 +85,8 @@ public class VariableImpl extends ValueImpl implements Variable {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.VARIABLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, JenkinsPackage.VARIABLE_DECLARATION__NAME, oldName,
+					name));
 	}
 
 	/**
@@ -95,7 +97,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case JenkinsPackage.VARIABLE__NAME:
+		case JenkinsPackage.VARIABLE_DECLARATION__NAME:
 			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -109,7 +111,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case JenkinsPackage.VARIABLE__NAME:
+		case JenkinsPackage.VARIABLE_DECLARATION__NAME:
 			setName((String) newValue);
 			return;
 		}
@@ -124,7 +126,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.VARIABLE__NAME:
+		case JenkinsPackage.VARIABLE_DECLARATION__NAME:
 			setName(NAME_EDEFAULT);
 			return;
 		}
@@ -139,7 +141,7 @@ public class VariableImpl extends ValueImpl implements Variable {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case JenkinsPackage.VARIABLE__NAME:
+		case JenkinsPackage.VARIABLE_DECLARATION__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
@@ -162,4 +164,4 @@ public class VariableImpl extends ValueImpl implements Variable {
 		return result.toString();
 	}
 
-} //VariableImpl
+} //VariableDeclarationImpl

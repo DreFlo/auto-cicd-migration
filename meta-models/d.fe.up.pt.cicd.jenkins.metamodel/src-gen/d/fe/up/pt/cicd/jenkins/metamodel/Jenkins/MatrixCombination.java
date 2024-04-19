@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface MatrixCombination extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Entries</b></em>' map.
-	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable},
+	 * The key is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration},
 	 * and the value is of type {@link d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression},
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Entries</em>' map.
 	 * @see d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage#getMatrixCombination_Entries()
-	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
+	 * @model mapType="d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Assignment&lt;d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration, d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression&gt;"
 	 * @generated
 	 */
-	EMap<Variable, Expression> getEntries();
+	EMap<VariableDeclaration, Expression> getEntries();
 
 } // MatrixCombination

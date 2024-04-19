@@ -220,31 +220,31 @@ public interface JenkinsFactory extends EFactory {
 	BooleanLiteral createBooleanLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Variable</em>'.
+	 * Returns a new object of class '<em>Variable Declaration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable</em>'.
+	 * @return a new object of class '<em>Variable Declaration</em>'.
 	 * @generated
 	 */
-	Variable createVariable();
+	VariableDeclaration createVariableDeclaration();
 
 	/**
-	 * Returns a new object of class '<em>Context</em>'.
+	 * Returns a new object of class '<em>Variable Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Context</em>'.
+	 * @return a new object of class '<em>Variable Reference</em>'.
 	 * @generated
 	 */
-	JenkinsContext createJenkinsContext();
+	VariableReference createVariableReference();
 
 	/**
-	 * Returns a new object of class '<em>Variable Dereference</em>'.
+	 * Returns a new object of class '<em>Dot Op</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Dereference</em>'.
+	 * @return a new object of class '<em>Dot Op</em>'.
 	 * @generated
 	 */
-	VariableDereference createVariableDereference();
+	DotOp createDotOp();
 
 	/**
 	 * Returns a new object of class '<em>Array</em>'.

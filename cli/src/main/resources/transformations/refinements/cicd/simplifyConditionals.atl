@@ -475,16 +475,6 @@ rule BooleanLiteral extends Literal {
 		)
 }
 
-rule VariableDereference extends Expression {
-	from
-		input : CICD1!VariableDereference
-	to
-		output : CICD2!VariableDereference(
-			property <- input.property,
-			variable <- input.variable
-		)
-}
-
 rule VariableReference extends Value {
 	from
 		input : CICD1!VariableReference

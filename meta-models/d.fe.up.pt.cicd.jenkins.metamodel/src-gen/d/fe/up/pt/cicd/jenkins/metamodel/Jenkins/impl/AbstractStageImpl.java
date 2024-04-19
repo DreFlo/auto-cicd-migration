@@ -6,7 +6,7 @@ import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractAgent;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.AbstractStage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
-import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Variable;
+import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.WHEN_EVALUATION_TIMES;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.When;
 
@@ -96,7 +96,7 @@ public abstract class AbstractStageImpl extends AbstractPipelineExecutionBlockIm
 	 * @generated
 	 * @ordered
 	 */
-	protected EMap<Variable, Expression> environmentVariables;
+	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
 	 * The cached value of the '{@link #getWhens() <em>Whens</em>}' containment reference list.
@@ -231,9 +231,9 @@ public abstract class AbstractStageImpl extends AbstractPipelineExecutionBlockIm
 	 * @generated
 	 */
 	@Override
-	public EMap<Variable, Expression> getEnvironmentVariables() {
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
 		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<Variable, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(JenkinsPackage.Literals.ASSIGNMENT,
 					AssignmentImpl.class, this, JenkinsPackage.ABSTRACT_STAGE__ENVIRONMENT_VARIABLES);
 		}
 		return environmentVariables;

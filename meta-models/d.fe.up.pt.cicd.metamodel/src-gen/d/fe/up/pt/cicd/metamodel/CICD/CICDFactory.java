@@ -283,15 +283,6 @@ public interface CICDFactory extends EFactory {
 	VariableReference createVariableReference();
 
 	/**
-	 * Returns a new object of class '<em>Variable Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Context</em>'.
-	 * @generated
-	 */
-	VariableContext createVariableContext();
-
-	/**
 	 * Returns a new object of class '<em>Built In Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

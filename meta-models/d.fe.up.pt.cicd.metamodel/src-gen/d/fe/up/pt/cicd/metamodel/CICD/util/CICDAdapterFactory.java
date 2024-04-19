@@ -264,11 +264,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVariableContext(VariableContext object) {
-			return createVariableContextAdapter();
-		}
-
-		@Override
 		public Adapter caseBuiltInFunction(BuiltInFunction object) {
 			return createBuiltInFunctionAdapter();
 		}
@@ -880,20 +875,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableReferenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext <em>Variable Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableContext
-	 * @generated
-	 */
-	public Adapter createVariableContextAdapter() {
 		return null;
 	}
 

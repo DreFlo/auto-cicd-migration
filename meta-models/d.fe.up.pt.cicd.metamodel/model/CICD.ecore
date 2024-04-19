@@ -223,10 +223,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
         eType="#//VariableDeclaration"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableContext" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="context" lowerBound="1"
-        eType="#//VARIABLE_CONTEXTS"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BuiltInFunction" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" abstract="true" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//Expression"

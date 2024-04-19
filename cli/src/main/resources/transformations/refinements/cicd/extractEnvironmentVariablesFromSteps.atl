@@ -36,14 +36,14 @@ abstract rule Job extends PipelineBlock {
 	to
 		output : CICD2!Job(
 			id <- input.id,
-			ifCondition <- if not input.ifCondition.oclIsUndefined() then input.ifCondition.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
+			ifCondition <- input.ifCondition,
 			services <- input.services,
 			matrix <- input.matrix,
 			next <- input.next,
 			previous <- input.previous,
 			maxAttempts <- input.maxAttempts,
 			allowFailure <- input.allowFailure,
-			environmentVariables <- input.environmentVariables->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
+			environmentVariables <- input.environmentVariables
 		)
 }
 
@@ -52,36 +52,8 @@ rule ScriptJob extends Job {
 		input: CICD1!ScriptJob
 	to
 		output: CICD2!ScriptJob(
-			steps <- input.steps->collect(step | step.step2StepHelper('STEP_' + input.steps.indexOf(step).toString().concat('_'))),			
-			environmentVariables <- 
-				input.environmentVariables
-				->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
-				->union(input.steps->collect(step |
-					if step.oclIsKindOf(CICD1!ConditionalStep) then
-						step.thenRun->collect(thenStep | 
-							thenStep.environmentVariables->collect(environmentVariable |
-								thisModule.Assignment(environmentVariable, thisModule.getEnvironmentVariableNames(thenStep.environmentVariables), 
-									'STEP_' + input.steps.indexOf(step).toString().concat('_THEN_STEP_').concat(step.thenRun.indexOf(thenStep).toString()).concat('_'),
-									true
-								)
-							)
-						)->flatten()->union(
-							step.elseRun->collect(thenStep | 
-							thenStep.environmentVariables->collect(environmentVariable |
-								thisModule.Assignment(environmentVariable, thisModule.getEnvironmentVariableNames(thenStep.environmentVariables), 
-									'STEP_' + input.steps.indexOf(step).toString().concat('_ELSE_STEP_').concat(step.elseRun.indexOf(thenStep).toString()).concat('_'),
-									true
-								)
-							)
-							)->flatten()
-						)
-					else
-						step.environmentVariables->collect(environmentVariable |
-							thisModule.Assignment(environmentVariable, thisModule.getEnvironmentVariableNames(step.environmentVariables), 'STEP_' + input.steps.indexOf(step).toString().concat('_'), true)
-						)
-					endif
-					)->flatten()
-				)
+			steps <- input.steps,			
+			environmentVariables <- input.environmentVariables->union(thisModule.extractEnvironmentVariables(input.steps))
 		)
 }
 
@@ -90,8 +62,8 @@ rule PipelineCallJob extends Job {
 		input: CICD1!PipelineCallJob
 	to
 		output: CICD2!PipelineCallJob(
-			pipelinePath <- if not input.pipelinePath.oclIsUndefined() then input.pipelinePath.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
-			args <- input.args->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false))
+			pipelinePath <- input.pipelinePath,
+			args <- input.args
 		)
 }
 
@@ -100,7 +72,7 @@ rule Agent {
 		input : CICD1!Agent
 	to
 		output : CICD2!Agent(
-			labels <- input.labels->collect(label | label.expression2ExpressionHelper(Sequence{}, '')),
+			labels <- input.labels,
 			container <- input.container
 		)
 }
@@ -111,14 +83,14 @@ rule DockerContainer {
 	to
 		output : CICD2!DockerContainer(
 			label <- input.label,
-			image <- if not input.image.oclIsUndefined() then input.image.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
-			environmentVariables <- input.environmentVariables->collect(environmentVariable | thisModule.Assignment(environmentVariable, Sequence{}, '', false)),
-			volumes <- input.volumes->collect(volume | volume.expression2ExpressionHelper(Sequence{}, '')),
-			ports <- input.ports->collect(port | port.expression2ExpressionHelper(Sequence{}, '')),
+			image <- input.image,
+			environmentVariables <- input.environmentVariables,
+			volumes <- input.volumes,
+			ports <- input.ports,
 			options <- input.options,
-			registryUsername <- if not input.registryUsername.oclIsUndefined() then input.registryUsername.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
-			registryPassword <- if not input.registryPassword.oclIsUndefined() then input.registryPassword.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
-			network <- if not input.network.oclIsUndefined() then input.network.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif
+			registryUsername <- input.registryUsername,
+			registryPassword <- input.registryPassword,
+			network <- input.network
 		)
 }
 
@@ -188,7 +160,7 @@ rule MatrixAxis {
 	to
 		output : CICD2!MatrixAxis(
 			name <- input.name,
-			cells <- input.cells->collect(cell | cell.expression2ExpressionHelper(Sequence{}, ''))
+			cells <- input.cells
 		)
 }
 
@@ -197,7 +169,7 @@ rule MatrixCombination {
 		input : CICD1!MatrixCombination
 	to
 		output : CICD2!MatrixCombination(
-			combinationEntries <- input.combinationEntries->collect(combinationEntry | thisModule.Assignment(combinationEntry, Sequence{}, '', false))
+			combinationEntries <- input.combinationEntries
 		)
 }
 
@@ -227,180 +199,166 @@ rule Output extends Parameter {
 		input : CICD1!Output
 	to
 		output : CICD2!Output(
-			value <-
-				if input.value.oclIsKindOf(CICD1!Variable) then
-					thisModule.Variable(input.value, Sequence{}, '')
-				else
-					input.value
-				endif
+			value <- input.value
 		)
 }
 
-lazy rule ConditionalStep {
+abstract rule Step {
 	from
-		input : CICD1!ConditionalStep,
-		prefix : String
+		input : CICD1!Step
+	to
+		output : CICD2!Step
+}
+
+rule ConditionalStep extends Step {
+	from
+		input : CICD1!ConditionalStep
 	to
 		output : CICD2!ConditionalStep(
-			ifCondition <- if not input.ifCondition.oclIsUndefined() then input.ifCondition.expression2ExpressionHelper(Sequence{}, '') else OclUndefined endif,
-			thenRun <- input.thenRun->collect(step | step.step2StepHelper(prefix + 'THEN_STEP_' + input.thenRun.indexOf(step).toString().concat('_'))),
-			elseRun <- input.elseRun->collect(step | step.step2StepHelper(prefix + 'ELSE_STEP_' + input.elseRun.indexOf(step).toString().concat('_')))
+			ifCondition <- input.ifCondition,
+			thenRun <- input.thenRun,
+			elseRun <- input.elseRun
 		)
 }
 
-lazy rule Command {
+abstract rule NonConditionalStep extends Step {
 	from
-		input : CICD1!Command,
-		prefix : String
-	using {
-		environmentVariableNames : Sequence(String) = thisModule.getEnvironmentVariableNames(input.environmentVariables);
-	}
+		input : CICD1!NonConditionalStep
 	to
-		output : CICD2!Command(
-			name <- input.name,
-			id <- input.id,
-			allowFailure <- input.allowFailure,
-			timeoutMinutes <- input.timeoutMinutes,
-			environmentVariables <- Sequence{},
-			program <- if not input.program.oclIsUndefined() then input.program.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif
-		)
-}
-
-lazy rule Plugin {
-	from
-		input : CICD1!Plugin,
-		prefix : String
-	using {
-		environmentVariableNames : Sequence(String) = thisModule.getEnvironmentVariableNames(input.environmentVariables);
-	}
-	to
-		output : CICD2!Plugin(
-			name <- input.name,
-			id <- input.id,
-			allowFailure <- input.allowFailure,
-			timeoutMinutes <- input.timeoutMinutes,
-			environmentVariables <- Sequence{},
-			pluginName <- input.pluginName,
-			version <- input.version,
-			kwargs <- input.kwargs->collect(kwarg | thisModule.Assignment(kwarg, environmentVariableNames, prefix, false))
-		)
-}
-
-lazy rule Cache {
-	from
-		input : CICD1!Cache,
-		prefix : String
-	using {
-		environmentVariableNames : Sequence(String) = thisModule.getEnvironmentVariableNames(input.environmentVariables);
-	}
-	to
-		output : CICD2!Cache(
-			name <- input.name,
-			id <- input.id,
-			allowFailure <- input.allowFailure,
-			timeoutMinutes <- input.timeoutMinutes,
-			environmentVariables <- Sequence{},
-			cacheName <- if not input.cacheName.oclIsUndefined() then input.cacheName.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif,
-			keys <- input.keys->collect(key | key.expression2ExpressionHelper(environmentVariableNames, prefix)),
-			paths <- input.paths->collect(path | path.expression2ExpressionHelper(environmentVariableNames, prefix)),
-			store <- input.store
-		)
-}
-
-lazy rule Artifact {
-	from
-		input : CICD1!Artifact,
-		prefix : String
-	using {
-		environmentVariableNames : Sequence(String) = thisModule.getEnvironmentVariableNames(input.environmentVariables);
-	}
-	to
-		output : CICD2!Artifact(
-			name <- input.name,
-			id <- input.id,
-			allowFailure <- input.allowFailure,
-			timeoutMinutes <- input.timeoutMinutes,
-			environmentVariables <- Sequence{},
-			artifactName <- if not input.artifactName.oclIsUndefined() then input.artifactName.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif,
-			includePaths <- input.includePaths->collect(includePath | includePath.expression2ExpressionHelper(environmentVariableNames, prefix)),
-			excludePaths <- input.excludePaths->collect(excludePath | excludePath.expression2ExpressionHelper(environmentVariableNames, prefix)),
-			retentionTime <- if not input.retentionTime.oclIsUndefined() then input.retentionTime.expression2ExpressionHelper(environmentVariableNames, prefix) else OclUndefined endif,
-			store <- input.store
-		)
-}
-
-lazy rule Checkout {
-	from
-		input : CICD1!Checkout,
-		prefix : String
-	using {
-		environmentVariableNames : Sequence(String) = thisModule.getEnvironmentVariableNames(input.environmentVariables);
-	}
-	to
-		output : CICD2!Checkout(
+		output : CICD2!NonConditionalStep(
 			allowFailure <- input.allowFailure,
 			environmentVariables <- Sequence{},
 			id <- input.id,
 			name <- input.name,
-			path <- input.path,
 			timeoutMinutes <- input.timeoutMinutes
 		)
 }
 
-lazy rule Assignment {
+rule Command extends NonConditionalStep {
 	from
-		input : CICD1!Assignment,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String,
-		changeVariableName : Boolean
+		input : CICD1!Command
+	to
+		output : CICD2!Command(
+			program <- input.program
+		)
+}
+
+rule Plugin extends NonConditionalStep {
+	from
+		input : CICD1!Plugin
+	to
+		output : CICD2!Plugin(
+			pluginName <- input.pluginName,
+			version <- input.version,
+			kwargs <- input.kwargs
+		)
+}
+
+rule Cache extends NonConditionalStep {
+	from
+		input : CICD1!Cache
+	to
+		output : CICD2!Cache(
+			cacheName <- input.cacheName,
+			keys <- input.keys,
+			paths <- input.paths,
+			store <- input.store
+		)
+}
+
+rule Artifact extends NonConditionalStep {
+	from
+		input : CICD1!Artifact
+	to
+		output : CICD2!Artifact(
+			artifactName <- input.artifactName,
+			includePaths <- input.includePaths,
+			excludePaths <- input.excludePaths,
+			retentionTime <- input.retentionTime,
+			store <- input.store
+		)
+}
+
+rule Checkout extends NonConditionalStep {
+	from
+		input : CICD1!Checkout
+	to
+		output : CICD2!Checkout(
+			path <- input.path
+		)
+}
+
+rule VariableDeclaration {
+	from
+		input : CICD1!VariableDeclaration
+	to
+		output : CICD2!VariableDeclaration(
+			name <- input.name
+		)
+}
+
+rule EnvironmentNonConditionalStep extends VariableDeclaration {
+	from
+		input : CICD1!VariableDeclaration(
+			input.isStepEnvironmentVariable()
+		)
+	using {
+		step : CICD1!NonConditionalStep = input.refImmediateComposite().refImmediateComposite();
+	}
+	to
+		output : CICD2!VariableDeclaration(
+			name <- thisModule.getStepPrefix(step) + input.name
+		)
+}
+
+rule Assignment {
+	from
+		input : CICD1!Assignment
 	to
 		output : CICD2!Assignment(
-			key <-
-				if changeVariableName then
-					thisModule.Variable(input.key, stepEnvironmentVariableNames, prefix)
-				else
-					thisModule.Variable(input.key, Sequence{}, '')
-				endif,
-			value <- if not input.value.oclIsUndefined() then input.value.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
+			key <- input.key,
+			value <- input.value
 		)
 }
 
-lazy rule Variable {
+abstract rule Expression {
 	from
-		input : CICD1!Variable,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!Expression
 	to
-		output : CICD2!Variable(
-			name <-
-				if stepEnvironmentVariableNames.includes(input.name) then
-					prefix.concat(input.name)
-				else
-					input.name
-				endif
-		)
+		output : CICD2!Expression
 }
 
-lazy rule Concat {
+rule Concat extends Expression {
 	from
-		input : CICD1!Concat,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!Concat
 	to
 		output : CICD2!Concat(
-			expressions <- input.expressions->collect(expression | expression.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix))
+			expressions <- input.expressions
 		)
 }
 
-lazy rule EqualityOp {
+abstract rule BinaryOp extends Expression {
 	from
-		input : CICD1!EqualityOp,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!BinaryOp
+	to
+		output : CICD2!BinaryOp(
+			lhs <- input.lhs,
+			rhs <- input.rhs
+		)
+}
+
+rule DotOp extends BinaryOp {
+	from
+		input : CICD1!DotOp
+	to
+		output : CICD2!DotOp
+}
+
+rule EqualityOp extends BinaryOp {
+	from
+		input : CICD1!EqualityOp
 	to
 		output : CICD2!EqualityOp(
-			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
-			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
 			op <-
 				if input.op = #"==" then
 					#"=="
@@ -410,15 +368,11 @@ lazy rule EqualityOp {
 		)
 }
 
-lazy rule ComparisonOp {
+rule ComparisonOp extends BinaryOp {
 	from
-		input : CICD1!ComparisonOp,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!ComparisonOp
 	to
 		output : CICD2!ComparisonOp(
-			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
-			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
 			op <-
 				if input.op = #">" then
 					#">"
@@ -434,58 +388,60 @@ lazy rule ComparisonOp {
 		)
 }
 
-lazy rule And {
+abstract rule LogicalOp extends BinaryOp {
 	from
-		input : CICD1!And,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!LogicalOp
 	to
-		output : CICD2!And(
-			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
-			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
-		)
+	 	output : CICD2!LogicalOp
 }
 
-lazy rule Or {
+rule And extends LogicalOp {
 	from
-		input : CICD1!Or,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!And
 	to
-		output : CICD2!Or(
-			lhs <- if not input.lhs.oclIsUndefined() then input.lhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
-			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
-		)
+		output : CICD2!And
 }
 
-lazy rule Negation {
+rule Or extends LogicalOp {
 	from
-		input : CICD1!Negation,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+		input : CICD1!Or
 	to
-		output : CICD2!Negation(
-			rhs <- if not input.rhs.oclIsUndefined() then input.rhs.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif
+		output : CICD2!Or
+}
+
+abstract rule UnaryOp extends Expression {
+	from
+		input : CICD1!UnaryOp
+	to
+		output : CICD2!UnaryOp(
+			rhs <- input.rhs
 		)
 }
 
-lazy rule VariableDereference {from
-		input : CICD1!VariableDereference,
-		stepEnvironmentVariableNames : Sequence(String),
-		prefix : String
+rule Negation extends UnaryOp {
+	from
+		input : CICD1!Negation
 	to
-		output : CICD2!VariableDereference(
-			variable <- if not input.variable.oclIsUndefined() then input.variable.expression2ExpressionHelper(stepEnvironmentVariableNames, prefix) else OclUndefined endif,
-			property <-
-				if stepEnvironmentVariableNames.includes(input.property) then
-					prefix.concat(input.property)
-				else
-					input.property
-				endif
+		output : CICD2!Negation
+}
+
+abstract rule Value extends Expression {
+	from
+		input : CICD1!Value
+	to
+		output : CICD2!Value
+}
+
+rule VariableReference extends Value {
+	from
+		input : CICD1!VariableReference
+	to
+		output : CICD2!VariableReference(
+			reference <- input.reference
 		)
 }
 
-abstract rule Literal {
+abstract rule Literal extends Value {
 	from
 		input : CICD1!Literal
 	to
@@ -528,32 +484,32 @@ rule BooleanLiteral extends Literal {
 		)
 }
 
-rule VariableContext {
-	from
-		input : CICD1!VariableContext
-	to
-		output : CICD2!VariableContext(
-			context <- 
-				if input.context = #ENV then
-					#ENV
-				else if input.context = #PARAMS then
-					#PARAMS
-				else
-					#""
-				endif
-				endif
-		)
-}
+helper context CICD1!VariableDeclaration def : isStepEnvironmentVariable() : Boolean =
+	if self.refImmediateComposite().oclIsTypeOf(CICD1!Assignment) then
+		if self.refImmediateComposite().refImmediateComposite().oclIsKindOf(CICD1!NonConditionalStep) then
+			self.refImmediateComposite().refImmediateComposite().environmentVariables->collect(assignment | assignment.key)->includes(self)
+		else
+			false
+		endif
+	else
+		false
+	endif;
 
-rule SecretVariable {
-	from
-		input : CICD1!SecretVariable
-	to
-		output : CICD2!SecretVariable(
-			name <- input.name
-		)
-}
-
+helper def : getStepPrefix(step : CICD1!Step) : String =
+	if step.refImmediateComposite().oclIsTypeOf(CICD1!ConditionalStep) then
+		let conditionalStep : CICD1!ConditionalStep = step.refImmediateComposite() in
+		if conditionalStep.thenRun->includes(step) then
+			thisModule.getStepPrefix(conditionalStep) + 'THEN_STEP_' + conditionalStep.thenRun->indexOf(step).toString() + '_'
+		else if conditionalStep.elseRun->includes(step) then
+			thisModule.getStepPrefix(conditionalStep) + 'ELSE_STEP_' + conditionalStep.elseRun->indexOf(step).toString() + '_'
+		else
+			''
+		endif
+		endif
+	else
+		'STEP_' + step.refImmediateComposite().steps->indexOf(step).toString() + '_'
+	endif;
+	
 helper def : extractEnvironmentVariables(steps : Sequence(CICD1!Step)) : Sequence(CICD1!Assignment) =
 	steps->collect(step | 
 		if step.oclIsKindOf(CICD1!ConditionalStep) then
@@ -562,56 +518,3 @@ helper def : extractEnvironmentVariables(steps : Sequence(CICD1!Step)) : Sequenc
 			step.environmentVariables
 		endif
 	)->flatten();
-
-helper def : getEnvironmentVariableNames(environmentVariables : Sequence(CICD1!Assignment)) : Sequence(String) =
-	environmentVariables->collect(environmentVariable | environmentVariable.key.name);
-
-helper context CICD1!Expression def : expression2ExpressionHelper(stepEnvironmentVariableNames : Sequence(String), prefix : String) : CICD2!Expression =
-	if self.oclIsKindOf(CICD1!Concat) then
-		thisModule.Concat(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!ComparisonOp) then
-		thisModule.ComparisonOp(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!EqualityOp) then
-		thisModule.EqualityOp(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!And) then
-		thisModule.And(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!Or) then
-		thisModule.Or(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!Variable) then
-		thisModule.Variable(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!Negation) then
-		thisModule.Negation(self, stepEnvironmentVariableNames, prefix)
-	else if self.oclIsKindOf(CICD1!VariableDereference) then
-		thisModule.VariableDereference(self, stepEnvironmentVariableNames, prefix)
-	else
-		self
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif;
-
-helper context CICD1!Step def : step2StepHelper(prefix : String) : CICD2!Step =
-	if self.oclIsKindOf(CICD1!ConditionalStep) then
-		thisModule.ConditionalStep(self, prefix)
-	else if self.oclIsKindOf(CICD1!Command) then
-		thisModule.Command(self, prefix)
-	else if self.oclIsKindOf(CICD1!Plugin) then
-		thisModule.Plugin(self, prefix)
-	else if self.oclIsKindOf(CICD1!Cache) then
-		thisModule.Cache(self, prefix)
-	else if self.oclIsKindOf(CICD1!Artifact) then
-		thisModule.Artifact(self, prefix)
-	else if self.oclIsKindOf(CICD1!Checkout) then
-		thisModule.Checkout(self, prefix)
-	else 
-		OclUndefined
-	endif
-	endif
-	endif
-	endif
-	endif
-	endif;

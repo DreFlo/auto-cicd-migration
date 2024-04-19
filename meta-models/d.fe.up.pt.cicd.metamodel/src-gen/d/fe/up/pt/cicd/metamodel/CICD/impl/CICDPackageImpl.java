@@ -49,7 +49,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.Trigger;
 import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Value;
-import d.fe.up.pt.cicd.metamodel.CICD.VariableContext;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableReference;
 import d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger;
@@ -343,13 +342,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass variableReferenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass variableContextEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1753,26 +1745,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getVariableContext() {
-		return variableContextEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getVariableContext_Context() {
-		return (EAttribute) variableContextEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getBuiltInFunction() {
 		return builtInFunctionEClass;
 	}
@@ -2168,9 +2140,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
 		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REFERENCE);
 
-		variableContextEClass = createEClass(VARIABLE_CONTEXT);
-		createEAttribute(variableContextEClass, VARIABLE_CONTEXT__CONTEXT);
-
 		builtInFunctionEClass = createEClass(BUILT_IN_FUNCTION);
 
 		binaryOpEClass = createEClass(BINARY_OP);
@@ -2261,7 +2230,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 		variableReferenceEClass.getESuperTypes().add(this.getValue());
-		variableContextEClass.getESuperTypes().add(this.getValue());
 		builtInFunctionEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		equalityOpEClass.getESuperTypes().add(this.getBinaryOp());
@@ -2610,12 +2578,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getVariableReference_Reference(), this.getVariableDeclaration(), null, "reference", null, 1, 1,
 				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableContextEClass, VariableContext.class, "VariableContext", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVariableContext_Context(), this.getVARIABLE_CONTEXTS(), "context", null, 1, 1,
-				VariableContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(builtInFunctionEClass, BuiltInFunction.class, "BuiltInFunction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

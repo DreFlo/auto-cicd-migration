@@ -430,17 +430,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.VARIABLE_CONTEXT: {
-			VariableContext variableContext = (VariableContext) theEObject;
-			T result = caseVariableContext(variableContext);
-			if (result == null)
-				result = caseValue(variableContext);
-			if (result == null)
-				result = caseExpression(variableContext);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case CICDPackage.BUILT_IN_FUNCTION: {
 			BuiltInFunction builtInFunction = (BuiltInFunction) theEObject;
 			T result = caseBuiltInFunction(builtInFunction);
@@ -1136,21 +1125,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariableReference(VariableReference object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Context</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Context</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableContext(VariableContext object) {
 		return null;
 	}
 

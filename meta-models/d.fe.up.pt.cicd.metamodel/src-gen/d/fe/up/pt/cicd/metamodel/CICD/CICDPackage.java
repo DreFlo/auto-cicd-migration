@@ -2671,43 +2671,6 @@ public interface CICDPackage extends EPackage {
 	int VARIABLE_REFERENCE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl <em>Variable Context</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableContext()
-	 * @generated
-	 */
-	int VARIABLE_CONTEXT = 39;
-
-	/**
-	 * The feature id for the '<em><b>Context</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_CONTEXT__CONTEXT = VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Variable Context</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_CONTEXT_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Variable Context</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_CONTEXT_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2715,7 +2678,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBuiltInFunction()
 	 * @generated
 	 */
-	int BUILT_IN_FUNCTION = 40;
+	int BUILT_IN_FUNCTION = 39;
 
 	/**
 	 * The number of structural features of the '<em>Built In Function</em>' class.
@@ -2743,7 +2706,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 41;
+	int BINARY_OP = 40;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2789,7 +2752,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 42;
+	int EQUALITY_OP = 41;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2844,7 +2807,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 43;
+	int COMPARISON_OP = 42;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2899,7 +2862,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDotOp()
 	 * @generated
 	 */
-	int DOT_OP = 44;
+	int DOT_OP = 43;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2945,7 +2908,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 45;
+	int LOGICAL_OP = 44;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2991,7 +2954,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 46;
+	int AND = 45;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -3037,7 +3000,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 47;
+	int OR = 46;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -3083,7 +3046,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 48;
+	int UNARY_OP = 47;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3120,7 +3083,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 49;
+	int NEGATION = 48;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3157,7 +3120,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 	 * @generated
 	 */
-	int SHELL_TYPE = 50;
+	int SHELL_TYPE = 49;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
@@ -3167,7 +3130,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 51;
+	int INPUT_TYPE = 50;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3177,7 +3140,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 52;
+	int EQUALITY_OPS = 51;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3187,7 +3150,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 53;
+	int COMPARISON_OPS = 52;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
@@ -3197,7 +3160,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
 	 * @generated
 	 */
-	int VARIABLE_CONTEXTS = 54;
+	int VARIABLE_CONTEXTS = 53;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
@@ -3207,7 +3170,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
 	 * @generated
 	 */
-	int CACHE_MODE = 55;
+	int CACHE_MODE = 54;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -4515,27 +4478,6 @@ public interface CICDPackage extends EPackage {
 	EReference getVariableReference_Reference();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext <em>Variable Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable Context</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableContext
-	 * @generated
-	 */
-	EClass getVariableContext();
-
-	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext#getContext <em>Context</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Context</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.VariableContext#getContext()
-	 * @see #getVariableContext()
-	 * @generated
-	 */
-	EAttribute getVariableContext_Context();
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction <em>Built In Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5826,24 +5768,6 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE_REFERENCE__REFERENCE = eINSTANCE.getVariableReference_Reference();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl <em>Variable Context</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.VariableContextImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableContext()
-		 * @generated
-		 */
-		EClass VARIABLE_CONTEXT = eINSTANCE.getVariableContext();
-
-		/**
-		 * The meta object literal for the '<em><b>Context</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE_CONTEXT__CONTEXT = eINSTANCE.getVariableContext_Context();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.

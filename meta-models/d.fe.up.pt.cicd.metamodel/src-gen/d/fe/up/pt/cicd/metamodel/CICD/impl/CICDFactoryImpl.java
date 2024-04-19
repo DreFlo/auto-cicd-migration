@@ -118,8 +118,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createBooleanLiteral();
 		case CICDPackage.VARIABLE_REFERENCE:
 			return createVariableReference();
-		case CICDPackage.VARIABLE_CONTEXT:
-			return createVariableContext();
 		case CICDPackage.BUILT_IN_FUNCTION:
 			return createBuiltInFunction();
 		case CICDPackage.EQUALITY_OP:
@@ -518,17 +516,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public VariableReference createVariableReference() {
 		VariableReferenceImpl variableReference = new VariableReferenceImpl();
 		return variableReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public VariableContext createVariableContext() {
-		VariableContextImpl variableContext = new VariableContextImpl();
-		return variableContext;
 	}
 
 	/**

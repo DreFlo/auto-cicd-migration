@@ -15,10 +15,10 @@ public class CICD2JenkinsTransformer extends FromTIMAbstractTransformer<Pipeline
 
     @Override
     protected void registerRefiners() {
-//        try {
-//            getRefiners().add(new ExtractEnvironmentVariablesFromSteps(getResourceSet()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            getRefiners().add(new ExtractEnvironmentVariablesFromSteps(getResourceSet()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

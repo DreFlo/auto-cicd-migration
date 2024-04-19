@@ -763,29 +763,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableContextItemProvider variableContextItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.VariableContext}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVariableContextAdapter() {
-		if (variableContextItemProvider == null) {
-			variableContextItemProvider = new VariableContextItemProvider(this);
-		}
-
-		return variableContextItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1134,8 +1111,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			booleanLiteralItemProvider.dispose();
 		if (variableReferenceItemProvider != null)
 			variableReferenceItemProvider.dispose();
-		if (variableContextItemProvider != null)
-			variableContextItemProvider.dispose();
 		if (builtInFunctionItemProvider != null)
 			builtInFunctionItemProvider.dispose();
 		if (equalityOpItemProvider != null)

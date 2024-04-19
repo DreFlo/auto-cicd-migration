@@ -194,9 +194,6 @@
     <genClasses ecoreClass="CICD.ecore#//VariableReference">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//VariableReference/reference"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//VariableContext">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//VariableContext/context"/>
-    </genClasses>
     <genClasses ecoreClass="CICD.ecore#//BuiltInFunction"/>
     <genClasses ecoreClass="CICD.ecore#//BinaryOp">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//BinaryOp/lhs"/>

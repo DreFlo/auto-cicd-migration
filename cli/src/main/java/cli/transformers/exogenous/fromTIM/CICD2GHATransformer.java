@@ -1,5 +1,6 @@
 package cli.transformers.exogenous.fromTIM;
 
+import cli.transformers.endogenous.CICD.ExtractJobInputs;
 import cli.transformers.endogenous.CICD.SimplifyConditionals;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
@@ -16,6 +17,7 @@ public class CICD2GHATransformer extends FromTIMAbstractTransformer<Workflow, GH
     protected void registerRefiners() {
         try {
             getRefiners().add(new SimplifyConditionals(getResourceSet()));
+            getRefiners().add(new ExtractJobInputs(getResourceSet()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

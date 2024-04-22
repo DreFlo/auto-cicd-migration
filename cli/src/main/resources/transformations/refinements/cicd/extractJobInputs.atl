@@ -70,6 +70,27 @@ rule PipelineCallJob extends Job {
 		)
 }
 
+rule VariableDeclaration {
+	from
+		input : CICD!VariableDeclaration (
+			input.isJobInput()
+		)
+	using {
+		job : CICD!Job = input.refImmediateComposite().refImmediateComposite();
+	}
+	to
+		output : CICD!VariableDeclaration (
+			name <- job.id + '_' + input.name
+		)
+}
+
+helper context CICD!VariableDeclaration def : isJobInput() : Boolean =
+	if self.refImmediateComposite().oclIsTypeOf(CICD!Input) then
+		self.refImmediateComposite().refImmediateComposite().oclIsKindOf(CICD!Job)
+	else
+		false
+	endif;
+
 helper def : getAllJobs(jobStreams : Sequence(CICD!Job)) : Sequence(CICD!Job) =
 	let next : Sequence(CICD!Job) = 
 		jobStreams->iterate(jobStream; acc : Sequence(Sequence(CICD!Job)) = Sequence{} | 

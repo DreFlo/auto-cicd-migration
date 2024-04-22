@@ -112,15 +112,6 @@ public interface CICDFactory extends EFactory {
 	WebhookTrigger createWebhookTrigger();
 
 	/**
-	 * Returns a new object of class '<em>Concurrency Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Concurrency Group</em>'.
-	 * @generated
-	 */
-	ConcurrencyGroup createConcurrencyGroup();
-
-	/**
 	 * Returns a new object of class '<em>Matrix</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

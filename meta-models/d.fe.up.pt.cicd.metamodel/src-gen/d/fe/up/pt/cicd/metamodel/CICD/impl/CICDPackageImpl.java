@@ -15,7 +15,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.Checkout;
 import d.fe.up.pt.cicd.metamodel.CICD.Command;
 import d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Concat;
-import d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup;
 import d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.DotOp;
@@ -160,13 +159,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass webhookTriggerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass concurrencyGroupEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -605,18 +597,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getPipelineBlock_ConcurrencyGroup() {
-		return (EReference) pipelineBlockEClass.getEStructuralFeatures().get(7);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getPipelineBlock_Shell() {
-		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(8);
+		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1007,36 +989,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EClass getWebhookTrigger() {
 		return webhookTriggerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getConcurrencyGroup() {
-		return concurrencyGroupEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getConcurrencyGroup_GroupId() {
-		return (EReference) concurrencyGroupEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getConcurrencyGroup_CancelInProgress() {
-		return (EAttribute) concurrencyGroupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1987,7 +1939,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
 		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__TIMEOUT_MINUTES);
 		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__WORKING_DIRECTORY);
-		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__CONCURRENCY_GROUP);
 		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__SHELL);
 
 		pipelineEClass = createEClass(PIPELINE);
@@ -2040,10 +1991,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRONS);
 
 		webhookTriggerEClass = createEClass(WEBHOOK_TRIGGER);
-
-		concurrencyGroupEClass = createEClass(CONCURRENCY_GROUP);
-		createEReference(concurrencyGroupEClass, CONCURRENCY_GROUP__GROUP_ID);
-		createEAttribute(concurrencyGroupEClass, CONCURRENCY_GROUP__CANCEL_IN_PROGRESS);
 
 		matrixEClass = createEClass(MATRIX);
 		createEReference(matrixEClass, MATRIX__AXES);
@@ -2264,9 +2211,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getPipelineBlock_WorkingDirectory(), ecorePackage.getEString(), "workingDirectory", null, 0, 1,
 				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getPipelineBlock_ConcurrencyGroup(), this.getConcurrencyGroup(), null, "concurrencyGroup", null,
-				0, 1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPipelineBlock_Shell(), this.getSHELL_TYPE(), "shell", null, 1, 1, PipelineBlock.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2378,15 +2322,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(webhookTriggerEClass, WebhookTrigger.class, "WebhookTrigger", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(concurrencyGroupEClass, ConcurrencyGroup.class, "ConcurrencyGroup", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConcurrencyGroup_GroupId(), this.getExpression(), null, "groupId", null, 1, 1,
-				ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConcurrencyGroup_CancelInProgress(), ecorePackage.getEBooleanObject(), "cancelInProgress",
-				null, 1, 1, ConcurrencyGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 1, -1, Matrix.class, !IS_TRANSIENT,

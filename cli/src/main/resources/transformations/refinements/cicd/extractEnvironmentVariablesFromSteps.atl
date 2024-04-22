@@ -1,40 +1,20 @@
--- @path CICD1=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
--- @path CICD2=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
 
 module extractEnvironmentVariablesFromSteps;
-create OUT : CICD2 from IN : CICD1;
+create OUT : CICD refining IN : CICD;
 
-abstract rule PipelineBlock {
+rule ScriptJob {
 	from
-		input : CICD1!PipelineBlock
+		input: CICD!ScriptJob
 	to
-		output : CICD2!PipelineBlock(
+		output: CICD!ScriptJob(
 			agent <- input.agent,
-			environmentVariables <- input.environmentVariables,
 			inputs <- input.inputs,
 			name <- input.name,
 			outputs <- input.outputs,
 			shell <- input.shell,
 			timeoutMinutes <- input.timeoutMinutes,
-			workingDirectory <- input.workingDirectory
-		)
-}
-
-rule Pipeline extends PipelineBlock {
-	from
-		input : CICD1!Pipeline
-	to
-		output : CICD2!Pipeline(
-			triggers <- input.triggers,
-			jobStreams <- input.jobStreams
-		)
-}
-
-abstract rule Job extends PipelineBlock {
-	from
-		input : CICD1!Job
-	to
-		output : CICD2!Job(
+			workingDirectory <- input.workingDirectory,
 			id <- input.id,
 			ifCondition <- input.ifCondition,
 			services <- input.services,
@@ -43,178 +23,23 @@ abstract rule Job extends PipelineBlock {
 			previous <- input.previous,
 			maxAttempts <- input.maxAttempts,
 			allowFailure <- input.allowFailure,
-			environmentVariables <- input.environmentVariables
-		)
-}
-
-rule ScriptJob extends Job {
-	from
-		input: CICD1!ScriptJob
-	to
-		output: CICD2!ScriptJob(
 			steps <- input.steps,			
 			environmentVariables <- input.environmentVariables->union(thisModule.extractEnvironmentVariables(input.steps))
 		)
 }
 
-rule PipelineCallJob extends Job {
-	from
-		input: CICD1!PipelineCallJob
-	to
-		output: CICD2!PipelineCallJob(
-			pipelinePath <- input.pipelinePath,
-			args <- input.args
-		)
-}
-
-rule Agent {
-	from
-		input : CICD1!Agent
-	to
-		output : CICD2!Agent(
-			labels <- input.labels,
-			container <- input.container
-		)
-}
-
-rule DockerContainer {
-	from
-		input : CICD1!DockerContainer
-	to
-		output : CICD2!DockerContainer(
-			label <- input.label,
-			image <- input.image,
-			environmentVariables <- input.environmentVariables,
-			volumes <- input.volumes,
-			ports <- input.ports,
-			options <- input.options,
-			registryUsername <- input.registryUsername,
-			registryPassword <- input.registryPassword,
-			network <- input.network
-		)
-}
-
-abstract rule Trigger {
-	from
-		input : CICD1!Trigger
-	to
-		output : CICD2!Trigger(
-			branchGlobs <- input.branchGlobs
-		)
-}
-
-rule PushTrigger extends Trigger {
-	from
-		input : CICD1!PushTrigger
-	to
-		output : CICD2!PushTrigger(
-			tagGlobs <- input.tagGlobs
-		)
-}
-
-rule PullRequestTrigger extends Trigger {
-	from
-		input : CICD1!PullRequestTrigger
-	to
-		output : CICD2!PullRequestTrigger
-}
-
-rule ManualTrigger extends Trigger {
-	from
-		input : CICD1!ManualTrigger
-	to
-		output : CICD2!ManualTrigger
-}
-
-rule ScheduledTrigger extends Trigger {
-	from
-		input : CICD1!ScheduledTrigger
-	to
-		output : CICD2!ScheduledTrigger(
-			crons <- input.crons
-		)
-}
-
-rule WebhookTrigger extends Trigger {
-	from
-		input : CICD1!WebhookTrigger
-	to
-		output : CICD2!WebhookTrigger
-}
-
-rule Matrix {
-	from
-		input : CICD1!Matrix
-	to
-		output : CICD2!Matrix(
-			axes <- input.axes,
-			excludes <- input.excludes,
-			includes <- input.includes,
-			failFast <- input.failFast
-		)
-}
-
-rule MatrixAxis {
-	from
-		input : CICD1!MatrixAxis
-	to
-		output : CICD2!MatrixAxis(
-			name <- input.name,
-			cells <- input.cells
-		)
-}
-
-rule MatrixCombination {
-	from
-		input : CICD1!MatrixCombination
-	to
-		output : CICD2!MatrixCombination(
-			combinationEntries <- input.combinationEntries
-		)
-}
-
-abstract rule Parameter {
-	from
-		input : CICD1!Parameter
-	to
-		output : CICD2!Parameter(
-			description <- input.description,
-			id <- input.id
-		)
-}
-
-rule Input extends Parameter {
-	from
-		input : CICD1!Input
-	to
-		output : CICD2!Input(
-			defaultValue <- input.defaultValue,
-			required <- input.required,
-			type <- input.type
-		)
-}
-
-rule Output extends Parameter {
-	from
-		input : CICD1!Output
-	to
-		output : CICD2!Output(
-			value <- input.value
-		)
-}
-
 abstract rule Step {
 	from
-		input : CICD1!Step
+		input : CICD!Step
 	to
-		output : CICD2!Step
+		output : CICD!Step
 }
 
 rule ConditionalStep extends Step {
 	from
-		input : CICD1!ConditionalStep
+		input : CICD!ConditionalStep
 	to
-		output : CICD2!ConditionalStep(
+		output : CICD!ConditionalStep(
 			ifCondition <- input.ifCondition,
 			thenRun <- input.thenRun,
 			elseRun <- input.elseRun
@@ -223,9 +48,9 @@ rule ConditionalStep extends Step {
 
 abstract rule NonConditionalStep extends Step {
 	from
-		input : CICD1!NonConditionalStep
+		input : CICD!NonConditionalStep
 	to
-		output : CICD2!NonConditionalStep(
+		output : CICD!NonConditionalStep(
 			allowFailure <- input.allowFailure,
 			environmentVariables <- Sequence{},
 			id <- input.id,
@@ -236,18 +61,18 @@ abstract rule NonConditionalStep extends Step {
 
 rule Command extends NonConditionalStep {
 	from
-		input : CICD1!Command
+		input : CICD!Command
 	to
-		output : CICD2!Command(
+		output : CICD!Command(
 			program <- input.program
 		)
 }
 
 rule Plugin extends NonConditionalStep {
 	from
-		input : CICD1!Plugin
+		input : CICD!Plugin
 	to
-		output : CICD2!Plugin(
+		output : CICD!Plugin(
 			pluginName <- input.pluginName,
 			version <- input.version,
 			kwargs <- input.kwargs
@@ -256,9 +81,9 @@ rule Plugin extends NonConditionalStep {
 
 rule Cache extends NonConditionalStep {
 	from
-		input : CICD1!Cache
+		input : CICD!Cache
 	to
-		output : CICD2!Cache(
+		output : CICD!Cache(
 			cacheName <- input.cacheName,
 			keys <- input.keys,
 			paths <- input.paths,
@@ -268,9 +93,9 @@ rule Cache extends NonConditionalStep {
 
 rule Artifact extends NonConditionalStep {
 	from
-		input : CICD1!Artifact
+		input : CICD!Artifact
 	to
-		output : CICD2!Artifact(
+		output : CICD!Artifact(
 			artifactName <- input.artifactName,
 			includePaths <- input.includePaths,
 			excludePaths <- input.excludePaths,
@@ -281,212 +106,39 @@ rule Artifact extends NonConditionalStep {
 
 rule Checkout extends NonConditionalStep {
 	from
-		input : CICD1!Checkout
+		input : CICD!Checkout
 	to
-		output : CICD2!Checkout(
+		output : CICD!Checkout(
 			path <- input.path
 		)
 }
 
 rule VariableDeclaration {
 	from
-		input : CICD1!VariableDeclaration
+		input : CICD!VariableDeclaration
 	to
-		output : CICD2!VariableDeclaration(
+		output : CICD!VariableDeclaration(
 			name <- input.name
 		)
 }
 
 rule EnvironmentNonConditionalStep extends VariableDeclaration {
 	from
-		input : CICD1!VariableDeclaration(
+		input : CICD!VariableDeclaration(
 			input.isStepEnvironmentVariable()
 		)
 	using {
-		step : CICD1!NonConditionalStep = input.refImmediateComposite().refImmediateComposite();
+		step : CICD!NonConditionalStep = input.refImmediateComposite().refImmediateComposite();
 	}
 	to
-		output : CICD2!VariableDeclaration(
+		output : CICD!VariableDeclaration(
 			name <- thisModule.getStepPrefix(step) + input.name
 		)
 }
 
-rule Assignment {
-	from
-		input : CICD1!Assignment
-	to
-		output : CICD2!Assignment(
-			key <- input.key,
-			value <- input.value
-		)
-}
-
-abstract rule Expression {
-	from
-		input : CICD1!Expression
-	to
-		output : CICD2!Expression
-}
-
-rule Concat extends Expression {
-	from
-		input : CICD1!Concat
-	to
-		output : CICD2!Concat(
-			expressions <- input.expressions
-		)
-}
-
-abstract rule BinaryOp extends Expression {
-	from
-		input : CICD1!BinaryOp
-	to
-		output : CICD2!BinaryOp(
-			lhs <- input.lhs,
-			rhs <- input.rhs
-		)
-}
-
-rule DotOp extends BinaryOp {
-	from
-		input : CICD1!DotOp
-	to
-		output : CICD2!DotOp
-}
-
-rule EqualityOp extends BinaryOp {
-	from
-		input : CICD1!EqualityOp
-	to
-		output : CICD2!EqualityOp(
-			op <-
-				if input.op = #"==" then
-					#"=="
-				else
-					#"!="
-				endif
-		)
-}
-
-rule ComparisonOp extends BinaryOp {
-	from
-		input : CICD1!ComparisonOp
-	to
-		output : CICD2!ComparisonOp(
-			op <-
-				if input.op = #">" then
-					#">"
-				else if input.op = #">=" then
-					#">="
-				else if input.op = #"<" then
-					#"<"
-				else
-					#"<="
-				endif
-				endif
-				endif
-		)
-}
-
-abstract rule LogicalOp extends BinaryOp {
-	from
-		input : CICD1!LogicalOp
-	to
-	 	output : CICD2!LogicalOp
-}
-
-rule And extends LogicalOp {
-	from
-		input : CICD1!And
-	to
-		output : CICD2!And
-}
-
-rule Or extends LogicalOp {
-	from
-		input : CICD1!Or
-	to
-		output : CICD2!Or
-}
-
-abstract rule UnaryOp extends Expression {
-	from
-		input : CICD1!UnaryOp
-	to
-		output : CICD2!UnaryOp(
-			rhs <- input.rhs
-		)
-}
-
-rule Negation extends UnaryOp {
-	from
-		input : CICD1!Negation
-	to
-		output : CICD2!Negation
-}
-
-abstract rule Value extends Expression {
-	from
-		input : CICD1!Value
-	to
-		output : CICD2!Value
-}
-
-rule VariableReference extends Value {
-	from
-		input : CICD1!VariableReference
-	to
-		output : CICD2!VariableReference(
-			reference <- input.reference
-		)
-}
-
-abstract rule Literal extends Value {
-	from
-		input : CICD1!Literal
-	to
-		output : CICD2!Literal
-}
-
-rule StringLiteral extends Literal {
-	from
-		input : CICD1!StringLiteral
-	to
-		output : CICD2!StringLiteral(
-			value <- input.value
-		)
-}
-
-rule IntegerLiteral extends Literal {
-	from
-		input : CICD1!IntegerLiteral
-	to
-		output : CICD2!IntegerLiteral(
-			value <- input.value
-		)
-}
-
-rule DoubleLiteral extends Literal {
-	from
-		input : CICD1!DoubleLiteral
-	to
-		output : CICD2!DoubleLiteral(
-			value <- input.value
-		)
-}
-
-rule BooleanLiteral extends Literal {
-	from
-		input : CICD1!BooleanLiteral
-	to
-		output : CICD2!BooleanLiteral(
-			value <- input.value
-		)
-}
-
-helper context CICD1!VariableDeclaration def : isStepEnvironmentVariable() : Boolean =
-	if self.refImmediateComposite().oclIsTypeOf(CICD1!Assignment) then
-		if self.refImmediateComposite().refImmediateComposite().oclIsKindOf(CICD1!NonConditionalStep) then
+helper context CICD!VariableDeclaration def : isStepEnvironmentVariable() : Boolean =
+	if self.refImmediateComposite().oclIsTypeOf(CICD!Assignment) then
+		if self.refImmediateComposite().refImmediateComposite().oclIsKindOf(CICD!NonConditionalStep) then
 			self.refImmediateComposite().refImmediateComposite().environmentVariables->collect(assignment | assignment.key)->includes(self)
 		else
 			false
@@ -495,9 +147,9 @@ helper context CICD1!VariableDeclaration def : isStepEnvironmentVariable() : Boo
 		false
 	endif;
 
-helper def : getStepPrefix(step : CICD1!Step) : String =
-	if step.refImmediateComposite().oclIsTypeOf(CICD1!ConditionalStep) then
-		let conditionalStep : CICD1!ConditionalStep = step.refImmediateComposite() in
+helper def : getStepPrefix(step : CICD!Step) : String =
+	if step.refImmediateComposite().oclIsTypeOf(CICD!ConditionalStep) then
+		let conditionalStep : CICD!ConditionalStep = step.refImmediateComposite() in
 		if conditionalStep.thenRun->includes(step) then
 			thisModule.getStepPrefix(conditionalStep) + 'THEN_STEP_' + conditionalStep.thenRun->indexOf(step).toString() + '_'
 		else if conditionalStep.elseRun->includes(step) then
@@ -510,9 +162,9 @@ helper def : getStepPrefix(step : CICD1!Step) : String =
 		'STEP_' + step.refImmediateComposite().steps->indexOf(step).toString() + '_'
 	endif;
 	
-helper def : extractEnvironmentVariables(steps : Sequence(CICD1!Step)) : Sequence(CICD1!Assignment) =
+helper def : extractEnvironmentVariables(steps : Sequence(CICD!Step)) : Sequence(CICD!Assignment) =
 	steps->collect(step | 
-		if step.oclIsKindOf(CICD1!ConditionalStep) then
+		if step.oclIsKindOf(CICD!ConditionalStep) then
 			thisModule.extractEnvironmentVariables(step.thenRun)->union(thisModule.extractEnvironmentVariables(step.elseRun))
 		else
 			step.environmentVariables

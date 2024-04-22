@@ -61,7 +61,6 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 			addOutputsPropertyDescriptor(object);
 			addTimeoutMinutesPropertyDescriptor(object);
 			addWorkingDirectoryPropertyDescriptor(object);
-			addConcurrencyGroupPropertyDescriptor(object);
 			addShellPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -143,21 +142,6 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 								"_UI_PipelineBlock_type"),
 						CICDPackage.Literals.PIPELINE_BLOCK__WORKING_DIRECTORY, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Concurrency Group feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addConcurrencyGroupPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_PipelineBlock_concurrencyGroup_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_PipelineBlock_concurrencyGroup_feature",
-								"_UI_PipelineBlock_type"),
-						CICDPackage.Literals.PIPELINE_BLOCK__CONCURRENCY_GROUP, true, false, true, null, null, null));
 	}
 
 	/**

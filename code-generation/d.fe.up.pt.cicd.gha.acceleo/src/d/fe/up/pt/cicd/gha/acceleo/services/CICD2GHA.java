@@ -1,5 +1,7 @@
 package d.fe.up.pt.cicd.gha.acceleo.services;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 
 import d.fe.up.pt.cicd.gha.metamodel.GHA.And;
@@ -20,6 +22,10 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 
 public class CICD2GHA {
+	public List<String> splitString(String string, String regex) {
+		return List.of(string.split(regex));
+	}
+	
 	public String getBinaryOperator(BinaryOp binaryOp) {
 		if (binaryOp instanceof Comparison comparisonOp) {
 			return comparisonOp.getOp().getLiteral();

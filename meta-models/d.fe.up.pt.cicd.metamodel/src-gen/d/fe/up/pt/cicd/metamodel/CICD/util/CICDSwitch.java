@@ -181,13 +181,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.CONCURRENCY_GROUP: {
-			ConcurrencyGroup concurrencyGroup = (ConcurrencyGroup) theEObject;
-			T result = caseConcurrencyGroup(concurrencyGroup);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case CICDPackage.MATRIX: {
 			Matrix matrix = (Matrix) theEObject;
 			T result = caseMatrix(matrix);
@@ -735,21 +728,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseWebhookTrigger(WebhookTrigger object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Concurrency Group</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Concurrency Group</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseConcurrencyGroup(ConcurrencyGroup object) {
 		return null;
 	}
 

@@ -303,29 +303,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConcurrencyGroupItemProvider concurrencyGroupItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.ConcurrencyGroup}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createConcurrencyGroupAdapter() {
-		if (concurrencyGroupItemProvider == null) {
-			concurrencyGroupItemProvider = new ConcurrencyGroupItemProvider(this);
-		}
-
-		return concurrencyGroupItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Matrix} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1071,8 +1048,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			scheduledTriggerItemProvider.dispose();
 		if (webhookTriggerItemProvider != null)
 			webhookTriggerItemProvider.dispose();
-		if (concurrencyGroupItemProvider != null)
-			concurrencyGroupItemProvider.dispose();
 		if (matrixItemProvider != null)
 			matrixItemProvider.dispose();
 		if (matrixAxisItemProvider != null)

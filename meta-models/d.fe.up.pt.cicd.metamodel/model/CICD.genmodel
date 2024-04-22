@@ -48,7 +48,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/environmentVariables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/timeoutMinutes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/workingDirectory"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/concurrencyGroup"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/shell"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Pipeline">
@@ -99,10 +98,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ScheduledTrigger/crons"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//WebhookTrigger"/>
-    <genClasses ecoreClass="CICD.ecore#//ConcurrencyGroup">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//ConcurrencyGroup/groupId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ConcurrencyGroup/cancelInProgress"/>
-    </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Matrix">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Matrix/axes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Matrix/includes"/>

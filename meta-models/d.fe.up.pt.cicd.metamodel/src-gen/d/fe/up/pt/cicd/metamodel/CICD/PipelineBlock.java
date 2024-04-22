@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory <em>Working Directory</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell <em>Shell</em>}</li>
  * </ul>
  *
@@ -156,28 +155,6 @@ public interface PipelineBlock extends EObject {
 	 * @generated
 	 */
 	void setWorkingDirectory(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Concurrency Group</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Concurrency Group</em>' containment reference.
-	 * @see #setConcurrencyGroup(ConcurrencyGroup)
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_ConcurrencyGroup()
-	 * @model containment="true"
-	 * @generated
-	 */
-	ConcurrencyGroup getConcurrencyGroup();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getConcurrencyGroup <em>Concurrency Group</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Concurrency Group</em>' containment reference.
-	 * @see #getConcurrencyGroup()
-	 * @generated
-	 */
-	void setConcurrencyGroup(ConcurrencyGroup value);
 
 	/**
 	 * Returns the value of the '<em><b>Shell</b></em>' attribute.

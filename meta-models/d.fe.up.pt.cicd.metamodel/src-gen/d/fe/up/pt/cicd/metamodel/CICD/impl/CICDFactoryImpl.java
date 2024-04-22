@@ -78,8 +78,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createScheduledTrigger();
 		case CICDPackage.WEBHOOK_TRIGGER:
 			return createWebhookTrigger();
-		case CICDPackage.CONCURRENCY_GROUP:
-			return createConcurrencyGroup();
 		case CICDPackage.MATRIX:
 			return createMatrix();
 		case CICDPackage.MATRIX_AXIS:
@@ -297,17 +295,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public WebhookTrigger createWebhookTrigger() {
 		WebhookTriggerImpl webhookTrigger = new WebhookTriggerImpl();
 		return webhookTrigger;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ConcurrencyGroup createConcurrencyGroup() {
-		ConcurrencyGroupImpl concurrencyGroup = new ConcurrencyGroupImpl();
-		return concurrencyGroup;
 	}
 
 	/**

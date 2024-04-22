@@ -1,6 +1,10 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/GHA')]
 
+[query public splitString(string : String, regex : String) : Sequence(String) = 
+	invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'splitString(java.lang.String, java.lang.String)', Sequence{string, regex})
+/]
+
 [query public getBinaryOperator(binaryOp : BinaryOp) : String =
   invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'getBinaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.BinaryOp)', Sequence{binaryOp})
 /]
@@ -345,11 +349,27 @@ cancel-in-progress: [generateExpression(cancelInProgress)/]
 [template public generateStep(step : Step, addDash : Boolean)]
 [if (step.oclIsTypeOf(Command))]
 [let command : Command = step.oclAsType(Command)]
+[let commandString : String = generateExpression(command.command)]
 [if (addDash)]
-- run: [generateExpression(command.command)/]
+[if (commandString.contains('\n'))]
+- run: |
+  [for (commandPart : String | splitString(commandString, '\n'))]
+    [commandPart.trim()/]
+  [/for]
 [else]
-run: [generateExpression(command.command)/]
+- run: [commandString/]
 [/if]
+[else]
+[if (commandString.contains('\n'))]
+run: |
+[for (commandPart : String | splitString(commandString, '\n'))]
+  [commandPart.trim()/]
+[/for]
+[else]
+run: [commandString/]
+[/if]
+[/if]
+[/let]
 [/let]
 [elseif (step.oclIsTypeOf(Package))]
 [let _package : Package = step.oclAsType(Package)]

@@ -1,0 +1,39 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@5.0
+
+workflows:
+  build-and-unittest:
+    jobs:
+      - build-and-test
+jobs:
+  build-and-test:
+    executor:
+      name: win/default
+      version: edge
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:OG/zNyhypWA+HxhPiME/rxzFU+aNNdA+5KgbBn9+w38"
+      - checkout
+      - run:
+          name: Restore project dependencies and tools
+          command: dotnet restore src\Cfd
+      - run:
+          name: Build project
+          command: dotnet build src\Cfd
+      - run:
+          name: "Running tests"
+          command: |
+            mkdir test-results
+            dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
+      - store_test_results:
+          path: ./Cfd.Tests/test-results
+      - store_artifacts:
+          path: ./Cfd.Tests/test-results
+
+
+
+
+

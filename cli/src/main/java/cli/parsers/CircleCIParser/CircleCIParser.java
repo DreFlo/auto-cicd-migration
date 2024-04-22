@@ -136,7 +136,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                     throw new SyntaxException("Invalid run step");
                 }
                 RunStep runStep = CircleCIPackage.eINSTANCE.getCircleCIFactory().createRunStep();
-                initVariables(runStep, yamlNode.asMapping());
+                initVariables(runStep, yamlNode.asMapping().yamlMapping("run"));
                 return runStep;
             }
             case "when" -> {
@@ -1040,16 +1040,19 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             executor = CircleCIPackage.eINSTANCE.getCircleCIFactory().createMachineExecutor();
         } else if (yamlMapping.yamlMapping("macos") != null) {
             executor = CircleCIPackage.eINSTANCE.getCircleCIFactory().createMacOSExecutor();
-        } else if (yamlMapping.string("executor") != null) {
-            if (executorsTable.containsKey(yamlMapping.string("executor"))) {
+        } else if (yamlMapping.string("executor") != null || (yamlMapping.yamlMapping("executor") != null && yamlMapping.yamlMapping("executor").string("name") != null)) {
+            String name = yamlMapping.string("executor") != null ? yamlMapping.string("executor") : yamlMapping.yamlMapping("executor").string("name");
+            if (executorsTable.containsKey(name)) {
                 ExecutorReferenceExecutor executorReferenceExecutor = CircleCIPackage.eINSTANCE.getCircleCIFactory().createExecutorReferenceExecutor();
-                executorReferenceExecutor.setExecutor(executorsTable.get(yamlMapping.string("executor")));
+                executorReferenceExecutor.setExecutor(executorsTable.get(name));
 
                 executor = executorReferenceExecutor;
-            } else if (orbsTable.containsKey(yamlMapping.string("executor").split("/")[0])) {
+            } else if (orbsTable.containsKey(name.split("/")[0])) {
                 OrbReferenceExecutor orbReferenceExecutor = CircleCIPackage.eINSTANCE.getCircleCIFactory().createOrbReferenceExecutor();
-                orbReferenceExecutor.setOrb(orbsTable.get(yamlMapping.string("executor").split("/")[0]));
-                orbReferenceExecutor.setOrbExecutorName(yamlMapping.string("executor").split("/")[1]);
+                orbReferenceExecutor.setOrb(orbsTable.get(name.split("/")[0]));
+                orbReferenceExecutor.setOrbExecutorName(name.split("/")[1]);
+
+                // TODO Add version
 
                 executor = orbReferenceExecutor;
             } else {
@@ -1449,12 +1452,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
 
         workflowJobConfiguration.setName(key);
 
-        List<Step> preSteps = new ArrayList<>();
-        List<Step> postSteps = new ArrayList<>();
+        // Init preSteps, postSteps with correct size
         Matrix matrix = nullJobConfiguration.getMatrix();
-
-        Collections.copy(preSteps, nullJobConfiguration.getPreSteps());
-        Collections.copy(postSteps, nullJobConfiguration.getPostSteps());
+        List<Step> preSteps = new ArrayList<>(nullJobConfiguration.getPreSteps());
+        List<Step> postSteps = new ArrayList<>(nullJobConfiguration.getPostSteps());
 
         nullJobConfiguration.getPreSteps().clear();
         nullJobConfiguration.getPostSteps().clear();

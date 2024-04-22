@@ -100,7 +100,12 @@ abstract rule Job2Job {
 		cicdJob : CICD!Job
 	to
 		ghaJob : GHA!Job(
-			agent <- thisModule.Agent2Agent(cicdJob.agent),
+			agent <-
+				if not cicdJob.agent.oclIsUndefined() then 
+					thisModule.Agent2Agent(cicdJob.agent)
+				else
+					OclUndefined
+				endif,
 			container <- 
 				if cicdJob.agent.oclIsUndefined() then
 					OclUndefined

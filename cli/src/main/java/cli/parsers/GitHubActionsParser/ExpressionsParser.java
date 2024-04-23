@@ -312,7 +312,6 @@ public class ExpressionsParser {
                 if (current == null) {
                     return null;
                 }
-                System.out.println(current.eClass().getName());
             }
 
             if (current instanceof Workflow workflow) {

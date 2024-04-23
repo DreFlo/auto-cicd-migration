@@ -3,9 +3,6 @@ run-name: Deploy to ${{ inputs || rerere && 3 || 4 }} by @${{ github.actor }}
 on:
   check_run:
     types: assigned
-  workflow_run:
-    branches:
-      - main
   pull_request:
     paths:
       - path

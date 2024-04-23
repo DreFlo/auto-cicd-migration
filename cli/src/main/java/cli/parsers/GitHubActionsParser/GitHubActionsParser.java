@@ -10,6 +10,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GitHubActionsParser extends AbstractParser<Workflow> {
 	private Workflow workflow;
@@ -214,21 +216,20 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		List<Trigger> result = new ArrayList<>();
 		if (
 			yamlNode.type().equals(Node.SCALAR) &&
-			!yamlNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")
+			!isList(yamlNode.asScalar().value())
 		) {
 			result.add(initSimpleTrigger(yamlNode.asScalar().value()));
 		} else if (
 			yamlNode.type().equals(Node.SEQUENCE) ||
 			(
 				yamlNode.type().equals(Node.SCALAR) &&
-				yamlNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")
+				isList(yamlNode.asScalar().value())
 			)
 		) {
 			if (
-				yamlNode.type().equals(Node.SCALAR) &&
-				yamlNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_]+\\s*(,\\s*[a-zA-Z0-9_]+\\s*)]*$")
+				yamlNode.type().equals(Node.SCALAR)
 			) {
-				List<String> triggerStrings = new ArrayList<>(Arrays.asList(yamlNode.asScalar().value().substring(1, yamlNode.asScalar().value().length() - 1).split(",")));
+				List<String> triggerStrings = parseList(yamlNode.asScalar().value());
 				for (String trigger : triggerStrings) {
 					result.add(initSimpleTrigger(trigger.trim()));
 				}
@@ -348,15 +349,16 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 					parseTriggerMap(trigger.asMapping());
 				}
 			}
-		} else if (triggers.type().equals(Node.SEQUENCE))
+		} else if (triggers.type().equals(Node.MAPPING)) {
 			parseTriggerMap(triggers.asMapping());
+		}
 	}
 
 	private void parseTriggerMap(YamlMapping trigger) throws SyntaxException {
 		YamlMapping triggerMap = trigger.asMapping();
 		for (YamlNode key : triggerMap.keys()) {
 			if (key.type().equals(Node.SCALAR)) {
-				parseOptionedTrigger(getTrigger(key.asScalar().value()), triggerMap.yamlMapping(key));
+				parseOptionedTrigger(getTrigger(key.asScalar().value()), triggerMap.value(key));
 			} else {
 				throw new SyntaxException("Invalid trigger");
 			}
@@ -366,15 +368,23 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	private Trigger getTrigger(String trigger) throws SyntaxException {
 		Optional<Trigger> triggerObject;
 		switch (trigger) {
-			case "push" -> triggerObject = workflow.getTriggers().stream().filter(PushTrigger.class::isInstance).findFirst();
-			case "pull_request" -> triggerObject = workflow.getTriggers().stream().filter(PullRequestTrigger.class::isInstance).findFirst();
-			case "pull_request_target" -> triggerObject = workflow.getTriggers().stream().filter(PullRequestTargetTrigger.class::isInstance).findFirst();
-			case "workflow_dispatch" -> triggerObject = workflow.getTriggers().stream().filter(WorkflowDispatchTrigger.class::isInstance).findFirst();
-			case "workflow_call" -> triggerObject = workflow.getTriggers().stream().filter(WorkflowCallTrigger.class::isInstance).findFirst();
-			case "schedule" -> triggerObject = workflow.getTriggers().stream().filter(ScheduleTrigger.class::isInstance).findFirst();
-			default -> {
-				triggerObject = workflow.getTriggers().stream().filter(StandardEventTrigger.class::isInstance).filter(t -> ((StandardEventTrigger) t).getEvent().equals(EVENTS.get(trigger))).findFirst();
-			}
+			case "push" ->
+				triggerObject = workflow.getTriggers().stream().filter(PushTrigger.class::isInstance).findFirst();
+			case "pull_request" ->
+				triggerObject = workflow.getTriggers().stream().filter(PullRequestTrigger.class::isInstance).findFirst();
+			case "pull_request_target" ->
+				triggerObject = workflow.getTriggers().stream().filter(PullRequestTargetTrigger.class::isInstance).findFirst();
+			case "workflow_dispatch" ->
+				triggerObject = workflow.getTriggers().stream().filter(WorkflowDispatchTrigger.class::isInstance).findFirst();
+			case "workflow_call" ->
+				triggerObject = workflow.getTriggers().stream().filter(WorkflowCallTrigger.class::isInstance).findFirst();
+			case "schedule" ->
+				triggerObject = workflow.getTriggers().stream().filter(ScheduleTrigger.class::isInstance).findFirst();
+			default ->
+				triggerObject = workflow.getTriggers().stream()
+						.filter(StandardEventTrigger.class::isInstance)
+						.filter(t -> ((StandardEventTrigger) t).getEvent().equals(EVENTS.get(trigger)))
+						.findFirst();
 		}
 		if (triggerObject.isEmpty()) {
 			throw new SyntaxException("Invalid trigger");
@@ -383,12 +393,12 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private List<WEBHOOK_ACTIVITY_TYPES> parseEventTypes(YamlNode types) throws SyntaxException {
-		if (types.type().equals(Node.SCALAR)  && !types.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
+		if (types.type().equals(Node.SCALAR)  && !isList(types.asScalar().value())) {
 			return List.of(WEBHOOK_ACTIVITY_TYPES.get(types.asScalar().value()));
 		} else if (types.type().equals(Node.SEQUENCE)  ||
-				(types.type().equals(Node.SCALAR) && types.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$"))) {
-			if (types.type().equals(Node.SCALAR) && types.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
-				List<String> typeStrings = new ArrayList<>(Arrays.asList(types.asScalar().value().substring(1, types.asScalar().value().length() - 1).split(",")));
+				(types.type().equals(Node.SCALAR) && isList(types.asScalar().value()))) {
+			if (types.type().equals(Node.SCALAR)) {
+				List<String> typeStrings = parseList(types.asScalar().value());
 				List<WEBHOOK_ACTIVITY_TYPES> result = new ArrayList<>();
 				for (String type : typeStrings) {
 					result.add(WEBHOOK_ACTIVITY_TYPES.get(type.trim()));
@@ -425,7 +435,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return triggerObject;
 	}
 
-	private void parseOptionedTrigger(Trigger trigger, YamlMapping options) throws SyntaxException {
+	private void parseOptionedTrigger(Trigger trigger, YamlNode options) throws SyntaxException {
 		if (options == null) {
 			return;
 		}
@@ -470,8 +480,8 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (trigger instanceof InputTrigger inputTrigger) {
-			if (options.yamlMapping("inputs") != null) {
-				parseInputs(inputTrigger.getInputs(), options.yamlMapping("inputs"));
+			if (options.asMapping().yamlMapping("inputs") != null) {
+				parseInputs(inputTrigger.getInputs(), options.asMapping().yamlMapping("inputs"));
 			}
 		}
 
@@ -877,8 +887,8 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	private void parseMatrixAxis(MatrixAxis axis, YamlNode axisNode) throws SyntaxException {
 		if (axisNode.type().equals(Node.SEQUENCE)) {
 			axis.getCells().addAll(parseExpressions(axisNode, axis));
-		} else if (axisNode.type().equals(Node.SCALAR) && axisNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
-			List<String> cells = new ArrayList<>(Arrays.asList(axisNode.asScalar().value().substring(1, axisNode.asScalar().value().length() - 1).split(",")));
+		} else if (axisNode.type().equals(Node.SCALAR) && isList(axisNode.asScalar().value())) {
+			List<String> cells = parseList(axisNode.asScalar().value());
 			axis.getCells().addAll(parseExpressions(cells, axis));
 		} else {
 			throw new SyntaxException("Invalid matrix axis");
@@ -943,20 +953,18 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 	}
 
-	// TODO See lists again
 	private List<Job> parseDependencies(YamlNode dependenciesNode, Map<String, Job> jobs) throws SyntaxException {
 		List<Job> result = new ArrayList<>();
-		if (dependenciesNode.type().equals(Node.SCALAR) && !dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
+		if (dependenciesNode.type().equals(Node.SCALAR) && !isList(dependenciesNode.asScalar().value())) {
 			if (jobs.containsKey(dependenciesNode.asScalar().value())) {
 				result.add(jobs.get(dependenciesNode.asScalar().value()));
 			} else {
 				throw new SyntaxException("Invalid dependency");
 			}
-		} else if (dependenciesNode.type().equals(Node.SEQUENCE)  ||
-				(dependenciesNode.type().equals(Node.SCALAR) && dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$"))
+		} else if (dependenciesNode.type().equals(Node.SEQUENCE) || (dependenciesNode.type().equals(Node.SCALAR) && isList(dependenciesNode.asScalar().value()))
 		) {
-			if (dependenciesNode.type().equals(Node.SCALAR) && dependenciesNode.asScalar().value().matches("^\\[\\s*[a-zA-Z0-9_-]+\\s*(,\\s*[a-zA-Z0-9_-]+\\s*)*]$")) {
-				List<String> jobStrings = new ArrayList<>(Arrays.asList(dependenciesNode.asScalar().value().substring(1, dependenciesNode.asScalar().value().length() - 1).split(",")));
+			if (dependenciesNode.type().equals(Node.SCALAR) && isList(dependenciesNode.asScalar().value())) {
+				List<String> jobStrings = parseList(dependenciesNode.asScalar().value());
 				for (String job : jobStrings) {
 					if (jobs.containsKey(job.trim())) {
 						result.add(jobs.get(job.trim()));
@@ -1083,5 +1091,18 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 	public Workflow getWorkflow() {
 		return workflow;
+	}
+
+	private boolean isList(String string) {
+		return string.matches("^\\s*\\[\\s*(?:(?:[\\w-]+|\"(?:[^\"]|\\\\.)*\")\\s*(?:,\\s*(?:[\\w-]+|\"(?:[^\"]|\\\\.)*\")\\s*)*)?]\\s*$");
+	}
+
+	private List<String> parseList(String string) {
+		List<String> result = new ArrayList<>();
+		Matcher matcher = Pattern.compile("([\\w-]+|(?:\"(?:[^\"]|\\.)*\"))").matcher(string);
+		while (matcher.find()) {
+			result.add(matcher.group());
+		}
+		return result;
 	}
 }

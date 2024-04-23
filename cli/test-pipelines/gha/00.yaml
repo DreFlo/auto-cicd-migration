@@ -5,9 +5,6 @@ run-name: "string with spaces"
 on:
   check_run:
     types: assigned
-  workflow_run:
-    branches:
-      - main
   pull_request:
     paths:
       - path

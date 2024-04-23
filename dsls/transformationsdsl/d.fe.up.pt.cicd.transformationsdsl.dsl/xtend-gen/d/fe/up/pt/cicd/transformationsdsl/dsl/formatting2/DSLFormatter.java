@@ -5,10 +5,8 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl.formatting2;
 
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import java.util.Arrays;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
@@ -22,10 +20,6 @@ public class DSLFormatter extends AbstractFormatter2 {
   private DSLGrammarAccess _dSLGrammarAccess;
 
   protected void _format(final TransformationSet transformationSet, @Extension final IFormattableDocument document) {
-    EList<Transformation> _transformations = transformationSet.getTransformations();
-    for (final Transformation transformation : _transformations) {
-      document.<Transformation>format(transformation);
-    }
   }
 
   public void format(final Object transformationSet, final IFormattableDocument document) {

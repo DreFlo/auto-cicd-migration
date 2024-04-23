@@ -12,37 +12,45 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Transformations" basePackage="d.fe.up.pt.cicd.transformationsdsl.metamodel"
       disposableProviderFactory="true" ecorePackage="Transformations.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Transformations.ecore#//MODEL_NAMES">
-      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/CICD"/>
-      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/GHA"/>
-      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODEL_NAMES/CircleCI"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Transformations.ecore#//MODELS">
+      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODELS/CICD"/>
+      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODELS/CircleCI"/>
+      <genEnumLiterals ecoreEnumLiteral="Transformations.ecore#//MODELS/GHA"/>
     </genEnums>
     <genClasses ecoreClass="Transformations.ecore#//StringToStringMapEntry">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//StringToStringMapEntry/value"/>
     </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//TransformationSet">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//TransformationSet/transformations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//TransformationSet/preTIM"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//TransformationSet/onTIM"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//TransformationSet/postTIM"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Transformations.ecore#//Transformation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//Transformation/model"/>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//Transformation"/>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//TIMTransformation"/>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//TSMTransformation"/>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//InplaceTransformation"/>
+    <genClasses ecoreClass="Transformations.ecore#//OutplaceTransformation"/>
+    <genClasses ecoreClass="Transformations.ecore#//ATLScript">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLScript/script"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLScript/model"/>
     </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//ChangePlugin">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePlugin/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangePlugin/version"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePlugin/args"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//ATLRefiningScript">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLRefiningScript/script"/>
-    </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//ChangeAgentLabel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangeAgentLabel/name"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Transformations.ecore#//RefiningTransformation"/>
-    <genClasses ecoreClass="Transformations.ecore#//OutplaceTransformation"/>
     <genClasses ecoreClass="Transformations.ecore#//ReplaceAgentLabels">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/condition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/labels"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//GHATransformation"/>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//CircleCITransformation"/>
+    <genClasses ecoreClass="Transformations.ecore#//SetCircleCIVersion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//SetCircleCIVersion/version"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

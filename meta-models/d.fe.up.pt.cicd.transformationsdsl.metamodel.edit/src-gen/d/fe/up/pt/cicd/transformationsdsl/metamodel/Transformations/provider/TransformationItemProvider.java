@@ -2,10 +2,6 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -14,16 +10,13 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation} object.
@@ -54,25 +47,8 @@ public class TransformationItemProvider extends ItemProviderAdapter implements I
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addModelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Model feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addModelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Transformation_model_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Transformation_model_feature",
-								"_UI_Transformation_type"),
-						TransformationsPackage.Literals.TRANSFORMATION__MODEL, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -93,10 +69,7 @@ public class TransformationItemProvider extends ItemProviderAdapter implements I
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((Transformation) object).getModel();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_Transformation_type")
-				: getString("_UI_Transformation_type") + " " + label;
+		return getString("_UI_Transformation_type");
 	}
 
 	/**
@@ -109,12 +82,6 @@ public class TransformationItemProvider extends ItemProviderAdapter implements I
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Transformation.class)) {
-		case TransformationsPackage.TRANSFORMATION__MODEL:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 

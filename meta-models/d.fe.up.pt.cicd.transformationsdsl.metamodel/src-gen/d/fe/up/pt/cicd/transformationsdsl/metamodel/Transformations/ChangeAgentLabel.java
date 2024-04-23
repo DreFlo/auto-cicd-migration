@@ -20,7 +20,7 @@ import java.util.Map;
  * @model
  * @generated
  */
-public interface ChangeAgentLabel extends RefiningTransformation {
+public interface ChangeAgentLabel extends InplaceTransformation, TIMTransformation {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' map.
 	 * <!-- begin-user-doc -->

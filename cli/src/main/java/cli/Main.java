@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -167,18 +168,17 @@ public class Main {
 		List<String> cicdRefinerPaths = new ArrayList<>();
 
 		for (String refinerPath : refinerPaths) {
-			if (refinerPath.toLowerCase().contains(commandLine.getOptionValue("il").toLowerCase())) {
+			// Split at path separator (OS independent) and get the last element
+			String separator = FileSystems.getDefault().getSeparator().replace("\\", "\\\\");
+			String partialRefinerPath = refinerPath.split(separator)[refinerPath.split(separator).length - 1];
+			if (partialRefinerPath.startsWith("PRE") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("il").toLowerCase())) {
 				inputRefinerPaths.add(refinerPath);
-			} else if (refinerPath.toLowerCase().contains(commandLine.getOptionValue("ol").toLowerCase())) {
+			} else if (partialRefinerPath.startsWith("POST") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("ol").toLowerCase())) {
 				outputRefinerPaths.add(refinerPath);
-			} else if (refinerPath.toLowerCase().contains("cicd")) {
+			} else if (partialRefinerPath.toLowerCase().contains("cicd")) {
 				cicdRefinerPaths.add(refinerPath);
 			}
 		}
-
-//		inputRefinerPaths.clear();
-//		outputRefinerPaths.clear();
-//		cicdRefinerPaths.clear();
 
         try {
 			Pipeline pipeline = inputEngineer.transform(inputScript, inputRefinerPaths, new ArrayList<>());

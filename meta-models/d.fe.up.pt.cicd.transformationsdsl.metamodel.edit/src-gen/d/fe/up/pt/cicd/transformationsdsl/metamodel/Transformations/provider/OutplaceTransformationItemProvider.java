@@ -2,9 +2,6 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -74,10 +71,7 @@ public class OutplaceTransformationItemProvider extends TransformationItemProvid
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((OutplaceTransformation) object).getModel();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_OutplaceTransformation_type")
-				: getString("_UI_OutplaceTransformation_type") + " " + label;
+		return getString("_UI_OutplaceTransformation_type");
 	}
 
 	/**

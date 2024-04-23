@@ -1,7 +1,9 @@
 [comment encoding = UTF-8 /]
 [module generate('http://d.fe.up.pt/Transformations')]
 
-[query public generateATLFileName(transformation : Transformation, index : Integer) : String = generateIndexString(index) + '_' + model + '.atl'/]
+[query public generateATLFileName(transformation : Transformation, index : Integer, prefix : String) : String = 
+	prefix + generateIndexString(index) + '_' + getModelName(transformation) + '.atl'
+/]
 
 [query public generateIndexString(index : Integer) : String = 
 	if index < 10 then 
@@ -14,26 +16,59 @@
 	endif
 /]
 
+[query public getModelName(transformation : Transformation) : String =
+	if transformation.oclIsTypeOf(ATLScript) then
+		'ATL_' + transformation.oclAsType(ATLScript).model
+	else if transformation.oclIsKindOf(TIMTransformation) then
+		'CICD'
+	else if transformation.oclIsKindOf(CircleCITransformation) then
+		'CircleCI'
+	else if transformation.oclIsKindOf(GHATransformation) then
+		'GHA'
+	else
+		'ERROR'
+	endif
+	endif
+	endif
+	endif
+/]
+
+
 
 [template public generateTransformationFiles(transformationSet : TransformationSet)]
 [comment @main/]
-[for (transformation : Transformation | transformations)]
-[file (generateATLFileName(transformation, transformationSet.transformations->indexOf(transformation)), false, 'UTF-8')]
-[if (transformation.oclIsTypeOf(ATLRefiningScript))]
-[generateRefiningATLScript(transformation.oclAsType(ATLRefiningScript))/]
-[elseif (model = MODEL_NAMES::CICD)]
-[generateCICDRefinement(transformation)/]
-[elseif (model = MODEL_NAMES::GHA)]
-[elseif (model = MODEL_NAMES::CircleCI)]
-[else]
-ERROR
-[/if]
+[for (transformation : Transformation | preTIM)]
+[file (generateATLFileName(transformation, transformationSet.preTIM->indexOf(transformation), 'PRE_'), false, 'UTF-8')]
+[generateTransformation(transformation)/]
+[/file]
+[/for]
+[for (transformation : Transformation | onTIM)]
+[file (generateATLFileName(transformation, transformationSet.onTIM->indexOf(transformation), ''), false, 'UTF-8')]
+[generateTransformation(transformation)/]
+[/file]
+[/for]
+[for (transformation : Transformation | postTIM)]
+[file (generateATLFileName(transformation, transformationSet.postTIM->indexOf(transformation), 'POST_'), false, 'UTF-8')]
+[generateTransformation(transformation)/]
 [/file]
 [/for]
 [/template]
 
-[template public generateCICDRefinement(transformation : Transformation)]
-[if (transformation.oclIsKindOf(RefiningTransformation))]
+[template public generateTransformation(transformation : Transformation)]
+[if (transformation.oclIsTypeOf(ATLScript))]
+[generateATLScript(transformation.oclAsType(ATLScript))/]
+[elseif (transformation.oclIsKindOf(TIMTransformation))]
+[generateTIMTrasnformation(transformation.oclAsType(TIMTransformation))/]
+[elseif (transformation.oclIsKindOf(GHATransformation))]
+[elseif (transformation.oclIsKindOf(CircleCITransformation))]
+[generateCircleCITransformation(transformation.oclAsType(CircleCITransformation))/]
+[else]
+ERROR
+[/if]
+[/template]
+
+[template public generateTIMTrasnformation(transformation : TIMTransformation)]
+[if (transformation.oclIsKindOf(InplaceTransformation))]
 -- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
 
 module cicdRefinement;
@@ -110,7 +145,7 @@ rule Expression {
 [generateExpression2StringHelpers('CICD')/]
 [/template]
 
-[template public generateRefiningATLScript(transformation : ATLRefiningScript)]
+[template public generateATLScript(transformation : ATLScript)]
 [script/]
 [/template]
 
@@ -119,7 +154,7 @@ rule Expression {
 rule ReplaceAgentLabels extends Agent {
 	from
 		input : CICD1!Agent(
-			[condition/]
+			[if (not condition.oclIsUndefined())][condition/][/if]
 		)
 	to
 		output : CICD2!Agent(
@@ -137,6 +172,7 @@ lazy rule String2StringLiteral {
 			value <- input
 		)
 }
+[generateCopyVariableDeclaration()/]
 [generateCopyAgent()/]
 [generateCopyDockerContainer()/]
 [generateCopyExpressions()/]
@@ -160,19 +196,16 @@ helper context [modelName/]!BooleanLiteral def : expression2String() : String = 
 
 helper context [modelName/]!Concat def : expression2String() : String =
 	let exprStrings : Sequence(String) =
-		self.expressions->collect(expr | if expr.oclIsTypeOf([modelName/]!VariableDereference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
+		self.expressions->collect(expr | if expr.oclIsTypeOf([modelName/]!VariableReference) then '${' + expr.expression2String() + '}' else expr.expression2String() endif) in
 		exprStrings->iterate(exprString; joinedString: String = '' |
 			joinedString.concat(exprString)
 		);
 
-helper context [modelName/]!Variable def : expression2String() : String =
-	'$'.concat(self.name);
+helper context [modelName/]!VariableReference def : expression2String() : String =
+	'$'.concat(self.reference.name);
 
-helper context [modelName/]!VariableContext def : expression2String() : String =
-	self.context.toString();
-
-helper context [modelName/]!VariableDereference def : expression2String() : String =
-	if not self.variable.oclIsUndefined() then self.variable.expression2String() else 'OclUndefined' endif + '.' + self.property;
+helper context [modelName/]!DotOp def : expression2String() : String =
+	self.lhs.expression2String() + '.' + self.rhs.expression2String();
 [/template]
 
 [template public generateCopyPipeline(traceabilityContext : OclAny)]
@@ -182,17 +215,26 @@ rule Pipeline {
 	to
 		output : CICD2!Pipeline(
 			agent <- input.agent,
-			concurrencyGroup <- input.concurrencyGroup,
 			environmentVariables <- input.environmentVariables,
 			inputs <- input.inputs,
 			jobStreams <- input.jobStreams,
 			name <- input.name,
 			outputs <- input.outputs,
-			permissions <- input.permissions,
 			shell <- input.shell,
 			timeoutMinutes <- input.timeoutMinutes,
 			triggers <- input.triggers,
 			workingDirectory <- input.workingDirectory
+		)
+}
+[/template]
+
+[template public generateCopyVariableDeclaration(traceabilityContext : OclAny)]
+rule VariableDeclaration {
+	from
+		input : CICD1!VariableDeclaration
+	to
+		output : CICD2!VariableDeclaration(
+			name <- input.name
 		)
 }
 [/template]
@@ -460,7 +502,7 @@ abstract rule Value extends Expression {
 		output : CICD2!Value
 }
 
-rule Literal extends Value {
+abstract rule Literal extends Value {
 	from
 		input : CICD1!Literal
 	to
@@ -503,38 +545,12 @@ rule BooleanLiteral extends Literal {
 		)
 }
 
-rule Variable extends Value {
+rule VariableReference extends Value {
 	from
-		input : CICD1!Variable
+		input : CICD1!VariableReference
 	to
-		output : CICD2!Variable(
-			name <- input.name
-		)
-}
-
-rule SecretVariable extends Variable {
-	from
-		input : CICD1!SecretVariable
-	to
-		output : CICD2!SecretVariable
-}
-
-rule VariableContext extends Value {
-	from
-		input : CICD1!VariableContext
-	to
-		output : CICD2!VariableContext(
-			context <- input.context
-		)
-}
-
-rule VariableDereference extends Expression {
-	from
-		input : CICD1!VariableDereference
-	to
-		output : CICD2!VariableDereference(
-			property <- input.property,
-			variable <- input.variable
+		output : CICD2!VariableReference(
+			reference <- input.reference
 		)
 }
 
@@ -553,6 +569,13 @@ abstract rule BinaryOp extends Expression {
 			lhs <- input.lhs,
 			rhs <- input.rhs
 		)
+}
+
+rule DotOp extends BinaryOp {
+	from
+		input : CICD1!DotOp
+	to
+		output : CICD2!DotOp
 }
 
 rule EqualityOp extends BinaryOp {
@@ -608,5 +631,42 @@ rule Negation extends UnaryOp {
 		input : CICD1!Negation
 	to
 		output : CICD2!Negation
+}
+[/template]
+
+[template public generateCircleCITransformation(transformation : CircleCITransformation)]
+[if (transformation.oclIsKindOf(InplaceTransformation))]
+-- @path CircleCI=/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.ecore
+
+module circleCIRefinement;
+create OUT : CircleCI refining IN : CircleCI;
+[else]
+-- @path CircleCI1=/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.ecore
+-- @path CircleCI2=/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.ecore
+
+module circleCIRefinement;
+create OUT : CircleCI2 from IN : CircleCI1;
+[/if]
+
+[if (transformation.oclIsTypeOf(SetCircleCIVersion))]
+[generateSetCircleCIVersion(transformation.oclAsType(SetCircleCIVersion))/]
+[/if]
+[/template]
+
+[template public generateSetCircleCIVersion(transformation : SetCircleCIVersion)]
+rule Pipeline {
+	from
+		input : CircleCI!Pipeline
+	to
+		output : CircleCI!Pipeline (
+			orbs <- input.orbs,
+			commands <- input.commands,
+			executors <- input.executors,
+			jobs <- input.jobs,
+			parameters <- input.parameters,
+			version <- '[version/]',
+			setup <- input.setup,
+			workflows <- input.workflows
+		)
 }
 [/template]

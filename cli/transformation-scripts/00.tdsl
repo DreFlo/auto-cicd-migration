@@ -1,26 +1,8 @@
-TransformationSet {
-    transformations {
-        ChangePlugin {
-            model CICD
-            version "8"
-            name StringToStringMapEntry {key "persist_to_workspace" value "ptw"}
-        },
-        ChangePlugin {
-            model CICD
-            version "7"
-            name StringToStringMapEntry {key "ptw" value "ptw____"}
-            args {
-                StringToStringMapEntry {key "root" value "boot"}
-            }
-        },
-        ChangeAgentLabel {
-            model CICD
-            name StringToStringMapEntry {key "machine" value "ubuntu"}
-        },
-        ReplaceAgentLabels {
-            model CICD
-            condition "input.labels->exists(label | label.expression2String() = 'macos')"
-            labels "macos-latest"
-        }
-    }
+during {
+    change plugin "persist_to_workspace" -> "ptw" version "8"
+    change label "machine" -> "ubuntu"
+    set labels when "input.labels->exists(label | label.expression2String() = 'macos')" {"macos-latest"}
+}
+after {
+    on circleci set version to "2.1"
 }

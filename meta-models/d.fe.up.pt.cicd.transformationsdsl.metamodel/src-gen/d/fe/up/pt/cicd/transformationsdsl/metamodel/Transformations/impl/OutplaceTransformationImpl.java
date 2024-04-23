@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class OutplaceTransformationImpl extends TransformationImpl implements OutplaceTransformation {
+public abstract class OutplaceTransformationImpl extends TransformationImpl implements OutplaceTransformation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

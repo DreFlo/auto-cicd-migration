@@ -9,6 +9,7 @@ import cli.utils.LoggerUtils;
 import d.fe.up.pt.cicd.transformationsdsl.acceleo.main.Generate;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.m2m.atl.engine.compiler.AtlCompiler;
 
@@ -54,8 +55,16 @@ public class TransformationsDSLToATLASMCompiler {
             if (file.isFile() && file.getName().endsWith(".atl")) {
                 LoggerUtils.log(Level.INFO,"Compiling " + file.getName() + " to ATL ASM...");
                 String asmPath = Path.of("intermediate", "atl", file.getName().replace(".atl", ".asm")).toAbsolutePath().toString();
-                AtlCompiler.compile(new InputStreamReader(file.toURI().toURL().openStream()), asmPath);
-                asmFilePaths.add(asmPath);
+                EObject[] problems = AtlCompiler.compile(new InputStreamReader(file.toURI().toURL().openStream()), asmPath);
+                if (problems.length > 0) {
+                    LoggerUtils.log(Level.SEVERE, "Error compiling " + file.getName() + " to ATL ASM");
+                    for (EObject problem : problems) {
+                        LoggerUtils.log(Level.SEVERE, problem.toString());
+                    }
+                } else {
+                    LoggerUtils.log(Level.INFO, "Compiled " + file.getName() + " to ATL ASM");
+                    asmFilePaths.add(asmPath);
+                }
             }
         }
 

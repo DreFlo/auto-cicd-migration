@@ -119,6 +119,29 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ATLScriptItemProvider atlScriptItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createATLScriptAdapter() {
+		if (atlScriptItemProvider == null) {
+			atlScriptItemProvider = new ATLScriptItemProvider(this);
+		}
+
+		return atlScriptItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -139,29 +162,6 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 		}
 
 		return changePluginItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ATLRefiningScriptItemProvider atlRefiningScriptItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createATLRefiningScriptAdapter() {
-		if (atlRefiningScriptItemProvider == null) {
-			atlRefiningScriptItemProvider = new ATLRefiningScriptItemProvider(this);
-		}
-
-		return atlRefiningScriptItemProvider;
 	}
 
 	/**
@@ -188,29 +188,6 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OutplaceTransformationItemProvider outplaceTransformationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOutplaceTransformationAdapter() {
-		if (outplaceTransformationItemProvider == null) {
-			outplaceTransformationItemProvider = new OutplaceTransformationItemProvider(this);
-		}
-
-		return outplaceTransformationItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -231,6 +208,29 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 		}
 
 		return replaceAgentLabelsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SetCircleCIVersionItemProvider setCircleCIVersionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSetCircleCIVersionAdapter() {
+		if (setCircleCIVersionItemProvider == null) {
+			setCircleCIVersionItemProvider = new SetCircleCIVersionItemProvider(this);
+		}
+
+		return setCircleCIVersionItemProvider;
 	}
 
 	/**
@@ -342,16 +342,16 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 			stringToStringMapEntryItemProvider.dispose();
 		if (transformationSetItemProvider != null)
 			transformationSetItemProvider.dispose();
+		if (atlScriptItemProvider != null)
+			atlScriptItemProvider.dispose();
 		if (changePluginItemProvider != null)
 			changePluginItemProvider.dispose();
-		if (atlRefiningScriptItemProvider != null)
-			atlRefiningScriptItemProvider.dispose();
 		if (changeAgentLabelItemProvider != null)
 			changeAgentLabelItemProvider.dispose();
-		if (outplaceTransformationItemProvider != null)
-			outplaceTransformationItemProvider.dispose();
 		if (replaceAgentLabelsItemProvider != null)
 			replaceAgentLabelsItemProvider.dispose();
+		if (setCircleCIVersionItemProvider != null)
+			setCircleCIVersionItemProvider.dispose();
 	}
 
 }

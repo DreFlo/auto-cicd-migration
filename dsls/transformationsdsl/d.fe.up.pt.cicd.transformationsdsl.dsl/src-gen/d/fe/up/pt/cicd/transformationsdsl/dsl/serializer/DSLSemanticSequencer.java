@@ -5,10 +5,11 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl.serializer;
 
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 import java.util.Map;
@@ -37,8 +38,8 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == TransformationsPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case TransformationsPackage.ATL_REFINING_SCRIPT:
-				sequence_ATLRefiningScript(context, (ATLRefiningScript) semanticObject); 
+			case TransformationsPackage.ATL_SCRIPT:
+				sequence_ATLScript(context, (ATLScript) semanticObject); 
 				return; 
 			case TransformationsPackage.CHANGE_AGENT_LABEL:
 				sequence_ChangeAgentLabel(context, (ChangeAgentLabel) semanticObject); 
@@ -48,6 +49,9 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TransformationsPackage.REPLACE_AGENT_LABELS:
 				sequence_ReplaceAgentLabels(context, (ReplaceAgentLabels) semanticObject); 
+				return; 
+			case TransformationsPackage.SET_CIRCLE_CI_VERSION:
+				sequence_SetCircleCIVersion(context, (SetCircleCIVersion) semanticObject); 
 				return; 
 			case TransformationsPackage.STRING_TO_STRING_MAP_ENTRY:
 				sequence_StringToStringMapEntry(context, (Map.Entry) semanticObject); 
@@ -63,23 +67,24 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Transformation returns ATLRefiningScript
-	 *     ATLRefiningScript returns ATLRefiningScript
+	 *     TSMTransformation returns ATLScript
+	 *     ATLScript returns ATLScript
+	 *     TIMTransformation returns ATLScript
 	 *
 	 * Constraint:
-	 *     (model=MODEL_NAMES script=EString)
+	 *     (model=MODELS script=EString)
 	 * </pre>
 	 */
-	protected void sequence_ATLRefiningScript(ISerializationContext context, ATLRefiningScript semanticObject) {
+	protected void sequence_ATLScript(ISerializationContext context, ATLScript semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.TRANSFORMATION__MODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.TRANSFORMATION__MODEL));
-			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ATL_REFINING_SCRIPT__SCRIPT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ATL_REFINING_SCRIPT__SCRIPT));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ATL_SCRIPT__MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ATL_SCRIPT__MODEL));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ATL_SCRIPT__SCRIPT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ATL_SCRIPT__SCRIPT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getATLRefiningScriptAccess().getModelMODEL_NAMESEnumRuleCall_3_0(), semanticObject.getModel());
-		feeder.accept(grammarAccess.getATLRefiningScriptAccess().getScriptEStringParserRuleCall_5_0(), semanticObject.getScript());
+		feeder.accept(grammarAccess.getATLScriptAccess().getModelMODELSEnumRuleCall_3_0(), semanticObject.getModel());
+		feeder.accept(grammarAccess.getATLScriptAccess().getScriptEStringParserRuleCall_5_0(), semanticObject.getScript());
 		feeder.finish();
 	}
 	
@@ -87,23 +92,20 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Transformation returns ChangeAgentLabel
+	 *     TIMTransformation returns ChangeAgentLabel
 	 *     ChangeAgentLabel returns ChangeAgentLabel
 	 *
 	 * Constraint:
-	 *     (model=MODEL_NAMES name=StringToStringMapEntry)
+	 *     name=StringToStringMapEntry
 	 * </pre>
 	 */
 	protected void sequence_ChangeAgentLabel(ISerializationContext context, ChangeAgentLabel semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.TRANSFORMATION__MODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.TRANSFORMATION__MODEL));
 			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getChangeAgentLabelAccess().getModelMODEL_NAMESEnumRuleCall_3_0(), semanticObject.getModel());
-		feeder.accept(grammarAccess.getChangeAgentLabelAccess().getNameStringToStringMapEntryParserRuleCall_5_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getChangeAgentLabelAccess().getNameStringToStringMapEntryParserRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -111,11 +113,11 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Transformation returns ChangePlugin
+	 *     TIMTransformation returns ChangePlugin
 	 *     ChangePlugin returns ChangePlugin
 	 *
 	 * Constraint:
-	 *     (model=MODEL_NAMES version=EString name=StringToStringMapEntry (args+=StringToStringMapEntry args+=StringToStringMapEntry*)?)
+	 *     (name=StringToStringMapEntry version=EString (args+=StringToStringMapEntry args+=StringToStringMapEntry*)?)
 	 * </pre>
 	 */
 	protected void sequence_ChangePlugin(ISerializationContext context, ChangePlugin semanticObject) {
@@ -126,15 +128,37 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Transformation returns ReplaceAgentLabels
+	 *     TIMTransformation returns ReplaceAgentLabels
 	 *     ReplaceAgentLabels returns ReplaceAgentLabels
 	 *
 	 * Constraint:
-	 *     (model=MODEL_NAMES condition=EString labels+=EString labels+=EString*)
+	 *     (condition=EString? labels+=EString labels+=EString*)
 	 * </pre>
 	 */
 	protected void sequence_ReplaceAgentLabels(ISerializationContext context, ReplaceAgentLabels semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TSMTransformation returns SetCircleCIVersion
+	 *     CircleCITransformation returns SetCircleCIVersion
+	 *     SetCircleCIVersion returns SetCircleCIVersion
+	 *
+	 * Constraint:
+	 *     version=EString
+	 * </pre>
+	 */
+	protected void sequence_SetCircleCIVersion(ISerializationContext context, SetCircleCIVersion semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.SET_CIRCLE_CI_VERSION__VERSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.SET_CIRCLE_CI_VERSION__VERSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSetCircleCIVersionAccess().getVersionEStringParserRuleCall_3_0(), semanticObject.getVersion());
+		feeder.finish();
 	}
 	
 	
@@ -155,8 +179,8 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TransformationsPackage.Literals.STRING_TO_STRING_MAP_ENTRY__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getStringToStringMapEntryAccess().getKeyEStringParserRuleCall_3_0(), semanticObject.getKey());
-		feeder.accept(grammarAccess.getStringToStringMapEntryAccess().getValueEStringParserRuleCall_5_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getStringToStringMapEntryAccess().getKeyEStringParserRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getStringToStringMapEntryAccess().getValueEStringParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -167,7 +191,7 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TransformationSet returns TransformationSet
 	 *
 	 * Constraint:
-	 *     (transformations+=Transformation transformations+=Transformation*)?
+	 *     (preTIM+=TSMTransformation* onTIM+=TIMTransformation* postTIM+=TSMTransformation*)
 	 * </pre>
 	 */
 	protected void sequence_TransformationSet(ISerializationContext context, TransformationSet semanticObject) {

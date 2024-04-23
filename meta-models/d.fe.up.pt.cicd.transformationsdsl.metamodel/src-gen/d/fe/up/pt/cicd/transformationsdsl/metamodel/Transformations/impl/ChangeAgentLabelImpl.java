@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ChangeAgentLabelImpl extends RefiningTransformationImpl implements ChangeAgentLabel {
+public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements ChangeAgentLabel {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' map.
 	 * <!-- begin-user-doc -->

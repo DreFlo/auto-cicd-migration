@@ -2,7 +2,6 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
@@ -112,8 +111,7 @@ public class ReplaceAgentLabelsItemProvider extends OutplaceTransformationItemPr
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((ReplaceAgentLabels) object).getModel();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((ReplaceAgentLabels) object).getCondition();
 		return label == null || label.length() == 0 ? getString("_UI_ReplaceAgentLabels_type")
 				: getString("_UI_ReplaceAgentLabels_type") + " " + label;
 	}

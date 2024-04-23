@@ -136,7 +136,9 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                     throw new SyntaxException("Invalid run step");
                 }
                 RunStep runStep = CircleCIPackage.eINSTANCE.getCircleCIFactory().createRunStep();
-                initVariables(runStep, yamlNode.asMapping().yamlMapping("run"));
+                if (yamlNode.asMapping().yamlMapping("run") != null) {
+                    initVariables(runStep, yamlNode.asMapping().yamlMapping("run"));
+                }
                 return runStep;
             }
             case "when" -> {

@@ -70,7 +70,9 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS);
+			childrenFeatures.add(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM);
+			childrenFeatures.add(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM);
+			childrenFeatures.add(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM);
 		}
 		return childrenFeatures;
 	}
@@ -132,7 +134,9 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TransformationSet.class)) {
-		case TransformationsPackage.TRANSFORMATION_SET__TRANSFORMATIONS:
+		case TransformationsPackage.TRANSFORMATION_SET__PRE_TIM:
+		case TransformationsPackage.TRANSFORMATION_SET__ON_TIM:
+		case TransformationsPackage.TRANSFORMATION_SET__POST_TIM:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -150,25 +154,54 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
-						TransformationsFactory.eINSTANCE.createChangePlugin()));
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM,
+				TransformationsFactory.eINSTANCE.createATLScript()));
 
-		newChildDescriptors
-				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
-						TransformationsFactory.eINSTANCE.createATLRefiningScript()));
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM,
+				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
 
-		newChildDescriptors
-				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
-						TransformationsFactory.eINSTANCE.createChangeAgentLabel()));
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createATLScript()));
 
-		newChildDescriptors
-				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
-						TransformationsFactory.eINSTANCE.createOutplaceTransformation()));
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createChangePlugin()));
 
-		newChildDescriptors
-				.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__TRANSFORMATIONS,
-						TransformationsFactory.eINSTANCE.createReplaceAgentLabels()));
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createChangeAgentLabel()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createReplaceAgentLabels()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
+				TransformationsFactory.eINSTANCE.createATLScript()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
+				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM
+				|| childFeature == TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM
+				|| childFeature == TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ReplaceAgentLabels extends OutplaceTransformation {
+public interface ReplaceAgentLabels extends OutplaceTransformation, TIMTransformation {
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -29,7 +29,7 @@ public interface ReplaceAgentLabels extends OutplaceTransformation {
 	 * @return the value of the '<em>Condition</em>' attribute.
 	 * @see #setCondition(String)
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getReplaceAgentLabels_Condition()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	String getCondition();

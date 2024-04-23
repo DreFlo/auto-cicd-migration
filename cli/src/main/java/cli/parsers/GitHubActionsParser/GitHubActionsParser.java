@@ -3,9 +3,6 @@ package cli.parsers.GitHubActionsParser;
 import cli.parsers.AbstractParser;
 import cli.parsers.exceptions.SyntaxException;
 import com.amihaiemil.eoyaml.*;
-import com.google.inject.Injector;
-
-import d.fe.up.pt.cicd.gha.dsl.GitHubActionsStandaloneSetup;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.*;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Package;
 import org.eclipse.emf.common.util.EMap;

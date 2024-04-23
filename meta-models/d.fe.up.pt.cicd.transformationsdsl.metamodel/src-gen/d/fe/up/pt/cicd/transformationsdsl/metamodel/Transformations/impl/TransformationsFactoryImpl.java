@@ -63,16 +63,16 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 			return (EObject) createStringToStringMapEntry();
 		case TransformationsPackage.TRANSFORMATION_SET:
 			return createTransformationSet();
+		case TransformationsPackage.ATL_SCRIPT:
+			return createATLScript();
 		case TransformationsPackage.CHANGE_PLUGIN:
 			return createChangePlugin();
-		case TransformationsPackage.ATL_REFINING_SCRIPT:
-			return createATLRefiningScript();
 		case TransformationsPackage.CHANGE_AGENT_LABEL:
 			return createChangeAgentLabel();
-		case TransformationsPackage.OUTPLACE_TRANSFORMATION:
-			return createOutplaceTransformation();
 		case TransformationsPackage.REPLACE_AGENT_LABELS:
 			return createReplaceAgentLabels();
+		case TransformationsPackage.SET_CIRCLE_CI_VERSION:
+			return createSetCircleCIVersion();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -86,8 +86,8 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case TransformationsPackage.MODEL_NAMES:
-			return createMODEL_NAMESFromString(eDataType, initialValue);
+		case TransformationsPackage.MODELS:
+			return createMODELSFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -101,8 +101,8 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case TransformationsPackage.MODEL_NAMES:
-			return convertMODEL_NAMESToString(eDataType, instanceValue);
+		case TransformationsPackage.MODELS:
+			return convertMODELSToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -135,9 +135,9 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public ChangePlugin createChangePlugin() {
-		ChangePluginImpl changePlugin = new ChangePluginImpl();
-		return changePlugin;
+	public ATLScript createATLScript() {
+		ATLScriptImpl atlScript = new ATLScriptImpl();
+		return atlScript;
 	}
 
 	/**
@@ -146,9 +146,9 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public ATLRefiningScript createATLRefiningScript() {
-		ATLRefiningScriptImpl atlRefiningScript = new ATLRefiningScriptImpl();
-		return atlRefiningScript;
+	public ChangePlugin createChangePlugin() {
+		ChangePluginImpl changePlugin = new ChangePluginImpl();
+		return changePlugin;
 	}
 
 	/**
@@ -168,17 +168,6 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public OutplaceTransformation createOutplaceTransformation() {
-		OutplaceTransformationImpl outplaceTransformation = new OutplaceTransformationImpl();
-		return outplaceTransformation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public ReplaceAgentLabels createReplaceAgentLabels() {
 		ReplaceAgentLabelsImpl replaceAgentLabels = new ReplaceAgentLabelsImpl();
 		return replaceAgentLabels;
@@ -189,8 +178,19 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MODEL_NAMES createMODEL_NAMESFromString(EDataType eDataType, String initialValue) {
-		MODEL_NAMES result = MODEL_NAMES.get(initialValue);
+	@Override
+	public SetCircleCIVersion createSetCircleCIVersion() {
+		SetCircleCIVersionImpl setCircleCIVersion = new SetCircleCIVersionImpl();
+		return setCircleCIVersion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MODELS createMODELSFromString(EDataType eDataType, String initialValue) {
+		MODELS result = MODELS.get(initialValue);
 		if (result == null)
 			throw new IllegalArgumentException(
 					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -202,7 +202,7 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMODEL_NAMESToString(EDataType eDataType, Object instanceValue) {
+	public String convertMODELSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

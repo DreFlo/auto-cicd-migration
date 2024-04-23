@@ -6,56 +6,64 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 TransformationSet returns TransformationSet:
 	{TransformationSet}
-	'TransformationSet'
-	'{'
-		('transformations' '{' transformations+=Transformation ( "," transformations+=Transformation)* '}' )?
-	'}';
+	('before' 'transformation'? '{' (preTIM+=TSMTransformation)* '}')?
+	('during' 'transformation'? '{' (onTIM+=TIMTransformation)* '}')?
+	('after' 'transformation'? '{' (postTIM+=TSMTransformation)* '}')?
+;
 
-Transformation returns Transformation:
-	ChangePlugin | ATLRefiningScript | ChangeAgentLabel | ReplaceAgentLabels;
+TSMTransformation returns TSMTransformation:
+	ATLScript | CircleCITransformation
+;
 
+ATLScript returns ATLScript:
+	'run' 'ATL' 'on'? model=MODELS '{' script=EString '}'
+;
 
-enum MODEL_NAMES returns MODEL_NAMES:
-				CICD = 'CICD' | GHA = 'GHA' | CircleCI = 'CircleCI';
-
+TIMTransformation returns TIMTransformation:
+	ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels
+;
+	
 ChangePlugin returns ChangePlugin:
-	'ChangePlugin'
-	'{'
-		'model' model=MODEL_NAMES
-		'version' version=EString
-		'name' name=StringToStringMapEntry
-		('args' '{' args+=StringToStringMapEntry ( "," args+=StringToStringMapEntry)* '}' )?
-	'}';
-
-ATLRefiningScript returns ATLRefiningScript:
-	'ATLRefiningScript'
-	'{'
-		'model' model=MODEL_NAMES
-		'script' script=EString 
-	'}';
+	'change' 'plugin' name=StringToStringMapEntry 'version' version=EString	('args' '{' args+=StringToStringMapEntry ( "," args+=StringToStringMapEntry)* '}' )?
+;
 	
 ChangeAgentLabel returns ChangeAgentLabel:
-	'ChangeAgentLabel'
-	'{'
-		'model' model=MODEL_NAMES
-		'name' name=StringToStringMapEntry
-	'}';
+	'change' 'label' name=StringToStringMapEntry
+;
 	
 ReplaceAgentLabels returns ReplaceAgentLabels:
-	'ReplaceAgentLabels'
-	'{'		
-		'model' model=MODEL_NAMES
-		'condition' condition=EString
-		'labels' labels+=EString (',' labels+=EString)*
-	'}'
-	;
+	'set' 'labels' ('when' condition=EString)? '{' labels+=EString (',' labels+=EString)* '}'
+;
+
+CircleCITransformation returns CircleCITransformation:
+	'on' CIRCLE_CI (SetCircleCIVersion)	
+;
+
+SetCircleCIVersion returns SetCircleCIVersion:
+	'set' 'version' 'to'? version=EString
+;
 
 StringToStringMapEntry returns StringToStringMapEntry:
-	'StringToStringMapEntry'
-	'{'
-		'key' key=EString
-		'value' value=EString
-	'}';
+	key=EString '->' value=EString
+;
+	
+enum MODELS returns MODELS:
+	GHA = 'GHA' | GHA = 'gha' | GHA = 'github' |
+	CICD = 'CICD' | CICD = 'cicd' | CICD = 'TIM' | CICD = 'tim' |
+	CircleCI = 'CircleCI' | CircleCI = 'circleci'	
+;
+
+GHA:
+	'GHA' | 'gha' | 'github'
+;
+
+CICD:
+	'CICD' | 'cicd' | 'TIM' | 'tim'
+;
+
+CIRCLE_CI:
+	'CircleCI' | 'circleci'
+;
 
 EString returns ecore::EString:
 	STRING | ID;

@@ -9,7 +9,7 @@ package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations;
  *
  *
  * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage#getOutplaceTransformation()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface OutplaceTransformation extends Transformation {

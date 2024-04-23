@@ -15,9 +15,6 @@ class DSLFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(TransformationSet transformationSet, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (transformation : transformationSet.transformations) {
-			transformation.format
-		}
 	}
 	
 }

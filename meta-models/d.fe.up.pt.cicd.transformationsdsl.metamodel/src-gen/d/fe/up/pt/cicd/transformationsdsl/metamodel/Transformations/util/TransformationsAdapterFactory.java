@@ -84,23 +84,18 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseChangePlugin(ChangePlugin object) {
-			return createChangePluginAdapter();
+		public Adapter caseTIMTransformation(TIMTransformation object) {
+			return createTIMTransformationAdapter();
 		}
 
 		@Override
-		public Adapter caseATLRefiningScript(ATLRefiningScript object) {
-			return createATLRefiningScriptAdapter();
+		public Adapter caseTSMTransformation(TSMTransformation object) {
+			return createTSMTransformationAdapter();
 		}
 
 		@Override
-		public Adapter caseChangeAgentLabel(ChangeAgentLabel object) {
-			return createChangeAgentLabelAdapter();
-		}
-
-		@Override
-		public Adapter caseRefiningTransformation(RefiningTransformation object) {
-			return createRefiningTransformationAdapter();
+		public Adapter caseInplaceTransformation(InplaceTransformation object) {
+			return createInplaceTransformationAdapter();
 		}
 
 		@Override
@@ -109,8 +104,38 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseATLScript(ATLScript object) {
+			return createATLScriptAdapter();
+		}
+
+		@Override
+		public Adapter caseChangePlugin(ChangePlugin object) {
+			return createChangePluginAdapter();
+		}
+
+		@Override
+		public Adapter caseChangeAgentLabel(ChangeAgentLabel object) {
+			return createChangeAgentLabelAdapter();
+		}
+
+		@Override
 		public Adapter caseReplaceAgentLabels(ReplaceAgentLabels object) {
 			return createReplaceAgentLabelsAdapter();
+		}
+
+		@Override
+		public Adapter caseGHATransformation(GHATransformation object) {
+			return createGHATransformationAdapter();
+		}
+
+		@Override
+		public Adapter caseCircleCITransformation(CircleCITransformation object) {
+			return createCircleCITransformationAdapter();
+		}
+
+		@Override
+		public Adapter caseSetCircleCIVersion(SetCircleCIVersion object) {
+			return createSetCircleCIVersionAdapter();
 		}
 
 		@Override
@@ -175,58 +200,44 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin <em>Change Plugin</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TIMTransformation <em>TIM Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TIMTransformation
 	 * @generated
 	 */
-	public Adapter createChangePluginAdapter() {
+	public Adapter createTIMTransformationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript <em>ATL Refining Script</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TSMTransformation <em>TSM Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TSMTransformation
 	 * @generated
 	 */
-	public Adapter createATLRefiningScriptAdapter() {
+	public Adapter createTSMTransformationAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel <em>Change Agent Label</em>}'.
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.InplaceTransformation <em>Inplace Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.InplaceTransformation
 	 * @generated
 	 */
-	public Adapter createChangeAgentLabelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.RefiningTransformation <em>Refining Transformation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.RefiningTransformation
-	 * @generated
-	 */
-	public Adapter createRefiningTransformationAdapter() {
+	public Adapter createInplaceTransformationAdapter() {
 		return null;
 	}
 
@@ -245,6 +256,48 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript <em>ATL Script</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript
+	 * @generated
+	 */
+	public Adapter createATLScriptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin <em>Change Plugin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin
+	 * @generated
+	 */
+	public Adapter createChangePluginAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel <em>Change Agent Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel
+	 * @generated
+	 */
+	public Adapter createChangeAgentLabelAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels <em>Replace Agent Labels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -255,6 +308,48 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReplaceAgentLabelsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation <em>GHA Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation
+	 * @generated
+	 */
+	public Adapter createGHATransformationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.CircleCITransformation <em>Circle CI Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.CircleCITransformation
+	 * @generated
+	 */
+	public Adapter createCircleCITransformationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion <em>Set Circle CI Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion
+	 * @generated
+	 */
+	public Adapter createSetCircleCIVersionAdapter() {
 		return null;
 	}
 

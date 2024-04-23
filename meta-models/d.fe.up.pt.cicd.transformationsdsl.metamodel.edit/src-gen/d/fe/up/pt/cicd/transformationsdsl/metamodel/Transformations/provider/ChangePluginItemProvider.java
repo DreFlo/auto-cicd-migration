@@ -3,7 +3,6 @@
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
@@ -26,7 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChangePluginItemProvider extends RefiningTransformationItemProvider {
+public class ChangePluginItemProvider extends InplaceTransformationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -129,8 +128,7 @@ public class ChangePluginItemProvider extends RefiningTransformationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((ChangePlugin) object).getModel();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((ChangePlugin) object).getVersion();
 		return label == null || label.length() == 0 ? getString("_UI_ChangePlugin_type")
 				: getString("_UI_ChangePlugin_type") + " " + label;
 	}

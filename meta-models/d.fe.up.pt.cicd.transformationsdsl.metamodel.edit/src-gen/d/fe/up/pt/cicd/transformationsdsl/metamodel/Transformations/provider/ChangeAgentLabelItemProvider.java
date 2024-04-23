@@ -3,7 +3,6 @@
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
@@ -24,7 +23,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProvider {
+public class ChangeAgentLabelItemProvider extends InplaceTransformationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -109,10 +108,7 @@ public class ChangeAgentLabelItemProvider extends RefiningTransformationItemProv
 	 */
 	@Override
 	public String getText(Object object) {
-		MODEL_NAMES labelValue = ((ChangeAgentLabel) object).getModel();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ? getString("_UI_ChangeAgentLabel_type")
-				: getString("_UI_ChangeAgentLabel_type") + " " + label;
+		return getString("_UI_ChangeAgentLabel_type");
 	}
 
 	/**

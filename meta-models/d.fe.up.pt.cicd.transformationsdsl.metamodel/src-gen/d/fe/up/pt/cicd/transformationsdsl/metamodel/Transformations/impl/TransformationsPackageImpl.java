@@ -2,12 +2,17 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLRefiningScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.CircleCITransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.InplaceTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.RefiningTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TIMTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TSMTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsFactory;
@@ -56,28 +61,21 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass changePluginEClass = null;
+	private EClass timTransformationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass atlRefiningScriptEClass = null;
+	private EClass tsmTransformationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass changeAgentLabelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass refiningTransformationEClass = null;
+	private EClass inplaceTransformationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,6 +89,27 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass atlScriptEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass changePluginEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass changeAgentLabelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass replaceAgentLabelsEClass = null;
 
 	/**
@@ -98,7 +117,28 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum modeL_NAMESEEnum = null;
+	private EClass ghaTransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass circleCITransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass setCircleCIVersionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum modelsEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -210,8 +250,28 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EReference getTransformationSet_Transformations() {
+	public EReference getTransformationSet_PreTIM() {
 		return (EReference) transformationSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTransformationSet_OnTIM() {
+		return (EReference) transformationSetEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTransformationSet_PostTIM() {
+		return (EReference) transformationSetEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -230,8 +290,68 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTransformation_Model() {
-		return (EAttribute) transformationEClass.getEStructuralFeatures().get(0);
+	public EClass getTIMTransformation() {
+		return timTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTSMTransformation() {
+		return tsmTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getInplaceTransformation() {
+		return inplaceTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOutplaceTransformation() {
+		return outplaceTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getATLScript() {
+		return atlScriptEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getATLScript_Script() {
+		return (EAttribute) atlScriptEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getATLScript_Model() {
+		return (EAttribute) atlScriptEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -280,26 +400,6 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EClass getATLRefiningScript() {
-		return atlRefiningScriptEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getATLRefiningScript_Script() {
-		return (EAttribute) atlRefiningScriptEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getChangeAgentLabel() {
 		return changeAgentLabelEClass;
 	}
@@ -312,26 +412,6 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	@Override
 	public EReference getChangeAgentLabel_Name() {
 		return (EReference) changeAgentLabelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRefiningTransformation() {
-		return refiningTransformationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getOutplaceTransformation() {
-		return outplaceTransformationEClass;
 	}
 
 	/**
@@ -370,8 +450,48 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EEnum getMODEL_NAMES() {
-		return modeL_NAMESEEnum;
+	public EClass getGHATransformation() {
+		return ghaTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCircleCITransformation() {
+		return circleCITransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSetCircleCIVersion() {
+		return setCircleCIVersionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSetCircleCIVersion_Version() {
+		return (EAttribute) setCircleCIVersionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getMODELS() {
+		return modelsEEnum;
 	}
 
 	/**
@@ -409,32 +529,45 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		createEAttribute(stringToStringMapEntryEClass, STRING_TO_STRING_MAP_ENTRY__VALUE);
 
 		transformationSetEClass = createEClass(TRANSFORMATION_SET);
-		createEReference(transformationSetEClass, TRANSFORMATION_SET__TRANSFORMATIONS);
+		createEReference(transformationSetEClass, TRANSFORMATION_SET__PRE_TIM);
+		createEReference(transformationSetEClass, TRANSFORMATION_SET__ON_TIM);
+		createEReference(transformationSetEClass, TRANSFORMATION_SET__POST_TIM);
 
 		transformationEClass = createEClass(TRANSFORMATION);
-		createEAttribute(transformationEClass, TRANSFORMATION__MODEL);
+
+		timTransformationEClass = createEClass(TIM_TRANSFORMATION);
+
+		tsmTransformationEClass = createEClass(TSM_TRANSFORMATION);
+
+		inplaceTransformationEClass = createEClass(INPLACE_TRANSFORMATION);
+
+		outplaceTransformationEClass = createEClass(OUTPLACE_TRANSFORMATION);
+
+		atlScriptEClass = createEClass(ATL_SCRIPT);
+		createEAttribute(atlScriptEClass, ATL_SCRIPT__SCRIPT);
+		createEAttribute(atlScriptEClass, ATL_SCRIPT__MODEL);
 
 		changePluginEClass = createEClass(CHANGE_PLUGIN);
 		createEReference(changePluginEClass, CHANGE_PLUGIN__NAME);
 		createEAttribute(changePluginEClass, CHANGE_PLUGIN__VERSION);
 		createEReference(changePluginEClass, CHANGE_PLUGIN__ARGS);
 
-		atlRefiningScriptEClass = createEClass(ATL_REFINING_SCRIPT);
-		createEAttribute(atlRefiningScriptEClass, ATL_REFINING_SCRIPT__SCRIPT);
-
 		changeAgentLabelEClass = createEClass(CHANGE_AGENT_LABEL);
 		createEReference(changeAgentLabelEClass, CHANGE_AGENT_LABEL__NAME);
-
-		refiningTransformationEClass = createEClass(REFINING_TRANSFORMATION);
-
-		outplaceTransformationEClass = createEClass(OUTPLACE_TRANSFORMATION);
 
 		replaceAgentLabelsEClass = createEClass(REPLACE_AGENT_LABELS);
 		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__CONDITION);
 		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__LABELS);
 
+		ghaTransformationEClass = createEClass(GHA_TRANSFORMATION);
+
+		circleCITransformationEClass = createEClass(CIRCLE_CI_TRANSFORMATION);
+
+		setCircleCIVersionEClass = createEClass(SET_CIRCLE_CI_VERSION);
+		createEAttribute(setCircleCIVersionEClass, SET_CIRCLE_CI_VERSION__VERSION);
+
 		// Create enums
-		modeL_NAMESEEnum = createEEnum(MODEL_NAMES);
+		modelsEEnum = createEEnum(MODELS);
 	}
 
 	/**
@@ -466,12 +599,23 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		changePluginEClass.getESuperTypes().add(this.getRefiningTransformation());
-		atlRefiningScriptEClass.getESuperTypes().add(this.getRefiningTransformation());
-		changeAgentLabelEClass.getESuperTypes().add(this.getRefiningTransformation());
-		refiningTransformationEClass.getESuperTypes().add(this.getTransformation());
+		timTransformationEClass.getESuperTypes().add(this.getTransformation());
+		tsmTransformationEClass.getESuperTypes().add(this.getTransformation());
+		inplaceTransformationEClass.getESuperTypes().add(this.getTransformation());
 		outplaceTransformationEClass.getESuperTypes().add(this.getTransformation());
+		atlScriptEClass.getESuperTypes().add(this.getTransformation());
+		atlScriptEClass.getESuperTypes().add(this.getTSMTransformation());
+		atlScriptEClass.getESuperTypes().add(this.getTIMTransformation());
+		changePluginEClass.getESuperTypes().add(this.getInplaceTransformation());
+		changePluginEClass.getESuperTypes().add(this.getTIMTransformation());
+		changeAgentLabelEClass.getESuperTypes().add(this.getInplaceTransformation());
+		changeAgentLabelEClass.getESuperTypes().add(this.getTIMTransformation());
 		replaceAgentLabelsEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		replaceAgentLabelsEClass.getESuperTypes().add(this.getTIMTransformation());
+		ghaTransformationEClass.getESuperTypes().add(this.getTSMTransformation());
+		circleCITransformationEClass.getESuperTypes().add(this.getTSMTransformation());
+		setCircleCIVersionEClass.getESuperTypes().add(this.getCircleCITransformation());
+		setCircleCIVersionEClass.getESuperTypes().add(this.getInplaceTransformation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
@@ -484,14 +628,37 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 
 		initEClass(transformationSetEClass, TransformationSet.class, "TransformationSet", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransformationSet_Transformations(), this.getTransformation(), null, "transformations", null,
-				0, -1, TransformationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformationSet_PreTIM(), this.getTSMTransformation(), null, "preTIM", null, 0, -1,
+				TransformationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformationSet_OnTIM(), this.getTransformation(), null, "onTIM", null, 0, -1,
+				TransformationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformationSet_PostTIM(), this.getTSMTransformation(), null, "postTIM", null, 0, -1,
+				TransformationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transformationEClass, Transformation.class, "Transformation", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransformation_Model(), this.getMODEL_NAMES(), "model", null, 1, 1, Transformation.class,
+
+		initEClass(timTransformationEClass, TIMTransformation.class, "TIMTransformation", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tsmTransformationEClass, TSMTransformation.class, "TSMTransformation", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inplaceTransformationEClass, InplaceTransformation.class, "InplaceTransformation", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(outplaceTransformationEClass, OutplaceTransformation.class, "OutplaceTransformation", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(atlScriptEClass, ATLScript.class, "ATLScript", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getATLScript_Script(), ecorePackage.getEString(), "script", null, 1, 1, ATLScript.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getATLScript_Model(), this.getMODELS(), "model", null, 1, 1, ATLScript.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(changePluginEClass, ChangePlugin.class, "ChangePlugin", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -504,41 +671,38 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 				ChangePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(atlRefiningScriptEClass, ATLRefiningScript.class, "ATLRefiningScript", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getATLRefiningScript_Script(), ecorePackage.getEString(), "script", null, 1, 1,
-				ATLRefiningScript.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
 		initEClass(changeAgentLabelEClass, ChangeAgentLabel.class, "ChangeAgentLabel", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChangeAgentLabel_Name(), this.getStringToStringMapEntry(), null, "name", null, 1, 1,
 				ChangeAgentLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(refiningTransformationEClass, RefiningTransformation.class, "RefiningTransformation", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(outplaceTransformationEClass, OutplaceTransformation.class, "OutplaceTransformation", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(replaceAgentLabelsEClass, ReplaceAgentLabels.class, "ReplaceAgentLabels", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReplaceAgentLabels_Condition(), ecorePackage.getEString(), "condition", null, 1, 1,
+		initEAttribute(getReplaceAgentLabels_Condition(), ecorePackage.getEString(), "condition", null, 0, 1,
 				ReplaceAgentLabels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReplaceAgentLabels_Labels(), ecorePackage.getEString(), "labels", null, 0, -1,
 				ReplaceAgentLabels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
+		initEClass(ghaTransformationEClass, GHATransformation.class, "GHATransformation", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(circleCITransformationEClass, CircleCITransformation.class, "CircleCITransformation", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(setCircleCIVersionEClass, SetCircleCIVersion.class, "SetCircleCIVersion", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSetCircleCIVersion_Version(), ecorePackage.getEString(), "version", null, 1, 1,
+				SetCircleCIVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
-		initEEnum(modeL_NAMESEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES.class,
-				"MODEL_NAMES");
-		addEEnumLiteral(modeL_NAMESEEnum,
-				d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES.CICD);
-		addEEnumLiteral(modeL_NAMESEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES.GHA);
-		addEEnumLiteral(modeL_NAMESEEnum,
-				d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODEL_NAMES.CIRCLE_CI);
+		initEEnum(modelsEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS.class, "MODELS");
+		addEEnumLiteral(modelsEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS.CICD);
+		addEEnumLiteral(modelsEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS.CIRCLE_CI);
+		addEEnumLiteral(modelsEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS.GHA);
 
 		// Create resource
 		createResource(eNS_URI);

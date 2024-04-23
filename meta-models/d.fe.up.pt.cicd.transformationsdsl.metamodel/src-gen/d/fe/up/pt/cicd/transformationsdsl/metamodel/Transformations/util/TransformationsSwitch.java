@@ -90,44 +90,29 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.CHANGE_PLUGIN: {
-			ChangePlugin changePlugin = (ChangePlugin) theEObject;
-			T result = caseChangePlugin(changePlugin);
+		case TransformationsPackage.TIM_TRANSFORMATION: {
+			TIMTransformation timTransformation = (TIMTransformation) theEObject;
+			T result = caseTIMTransformation(timTransformation);
 			if (result == null)
-				result = caseRefiningTransformation(changePlugin);
-			if (result == null)
-				result = caseTransformation(changePlugin);
+				result = caseTransformation(timTransformation);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.ATL_REFINING_SCRIPT: {
-			ATLRefiningScript atlRefiningScript = (ATLRefiningScript) theEObject;
-			T result = caseATLRefiningScript(atlRefiningScript);
+		case TransformationsPackage.TSM_TRANSFORMATION: {
+			TSMTransformation tsmTransformation = (TSMTransformation) theEObject;
+			T result = caseTSMTransformation(tsmTransformation);
 			if (result == null)
-				result = caseRefiningTransformation(atlRefiningScript);
-			if (result == null)
-				result = caseTransformation(atlRefiningScript);
+				result = caseTransformation(tsmTransformation);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.CHANGE_AGENT_LABEL: {
-			ChangeAgentLabel changeAgentLabel = (ChangeAgentLabel) theEObject;
-			T result = caseChangeAgentLabel(changeAgentLabel);
+		case TransformationsPackage.INPLACE_TRANSFORMATION: {
+			InplaceTransformation inplaceTransformation = (InplaceTransformation) theEObject;
+			T result = caseInplaceTransformation(inplaceTransformation);
 			if (result == null)
-				result = caseRefiningTransformation(changeAgentLabel);
-			if (result == null)
-				result = caseTransformation(changeAgentLabel);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case TransformationsPackage.REFINING_TRANSFORMATION: {
-			RefiningTransformation refiningTransformation = (RefiningTransformation) theEObject;
-			T result = caseRefiningTransformation(refiningTransformation);
-			if (result == null)
-				result = caseTransformation(refiningTransformation);
+				result = caseTransformation(inplaceTransformation);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -141,13 +126,91 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case TransformationsPackage.ATL_SCRIPT: {
+			ATLScript atlScript = (ATLScript) theEObject;
+			T result = caseATLScript(atlScript);
+			if (result == null)
+				result = caseTSMTransformation(atlScript);
+			if (result == null)
+				result = caseTIMTransformation(atlScript);
+			if (result == null)
+				result = caseTransformation(atlScript);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.CHANGE_PLUGIN: {
+			ChangePlugin changePlugin = (ChangePlugin) theEObject;
+			T result = caseChangePlugin(changePlugin);
+			if (result == null)
+				result = caseInplaceTransformation(changePlugin);
+			if (result == null)
+				result = caseTIMTransformation(changePlugin);
+			if (result == null)
+				result = caseTransformation(changePlugin);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.CHANGE_AGENT_LABEL: {
+			ChangeAgentLabel changeAgentLabel = (ChangeAgentLabel) theEObject;
+			T result = caseChangeAgentLabel(changeAgentLabel);
+			if (result == null)
+				result = caseInplaceTransformation(changeAgentLabel);
+			if (result == null)
+				result = caseTIMTransformation(changeAgentLabel);
+			if (result == null)
+				result = caseTransformation(changeAgentLabel);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case TransformationsPackage.REPLACE_AGENT_LABELS: {
 			ReplaceAgentLabels replaceAgentLabels = (ReplaceAgentLabels) theEObject;
 			T result = caseReplaceAgentLabels(replaceAgentLabels);
 			if (result == null)
 				result = caseOutplaceTransformation(replaceAgentLabels);
 			if (result == null)
+				result = caseTIMTransformation(replaceAgentLabels);
+			if (result == null)
 				result = caseTransformation(replaceAgentLabels);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.GHA_TRANSFORMATION: {
+			GHATransformation ghaTransformation = (GHATransformation) theEObject;
+			T result = caseGHATransformation(ghaTransformation);
+			if (result == null)
+				result = caseTSMTransformation(ghaTransformation);
+			if (result == null)
+				result = caseTransformation(ghaTransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.CIRCLE_CI_TRANSFORMATION: {
+			CircleCITransformation circleCITransformation = (CircleCITransformation) theEObject;
+			T result = caseCircleCITransformation(circleCITransformation);
+			if (result == null)
+				result = caseTSMTransformation(circleCITransformation);
+			if (result == null)
+				result = caseTransformation(circleCITransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.SET_CIRCLE_CI_VERSION: {
+			SetCircleCIVersion setCircleCIVersion = (SetCircleCIVersion) theEObject;
+			T result = caseSetCircleCIVersion(setCircleCIVersion);
+			if (result == null)
+				result = caseCircleCITransformation(setCircleCIVersion);
+			if (result == null)
+				result = caseInplaceTransformation(setCircleCIVersion);
+			if (result == null)
+				result = caseTSMTransformation(setCircleCIVersion);
+			if (result == null)
+				result = caseTransformation(setCircleCIVersion);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -203,62 +266,47 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Change Plugin</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>TIM Transformation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Change Plugin</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>TIM Transformation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChangePlugin(ChangePlugin object) {
+	public T caseTIMTransformation(TIMTransformation object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ATL Refining Script</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>TSM Transformation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ATL Refining Script</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>TSM Transformation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseATLRefiningScript(ATLRefiningScript object) {
+	public T caseTSMTransformation(TSMTransformation object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Inplace Transformation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Inplace Transformation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChangeAgentLabel(ChangeAgentLabel object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Refining Transformation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Refining Transformation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRefiningTransformation(RefiningTransformation object) {
+	public T caseInplaceTransformation(InplaceTransformation object) {
 		return null;
 	}
 
@@ -278,6 +326,51 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ATL Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ATL Script</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseATLScript(ATLScript object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Plugin</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Plugin</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangePlugin(ChangePlugin object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangeAgentLabel(ChangeAgentLabel object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Replace Agent Labels</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -289,6 +382,51 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseReplaceAgentLabels(ReplaceAgentLabels object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GHA Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GHA Transformation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGHATransformation(GHATransformation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Circle CI Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Circle CI Transformation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCircleCITransformation(CircleCITransformation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Set Circle CI Version</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Set Circle CI Version</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSetCircleCIVersion(SetCircleCIVersion object) {
 		return null;
 	}
 

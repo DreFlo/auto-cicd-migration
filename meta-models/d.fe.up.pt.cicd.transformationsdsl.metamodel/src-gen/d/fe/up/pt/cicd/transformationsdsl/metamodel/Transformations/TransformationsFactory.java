@@ -32,6 +32,15 @@ public interface TransformationsFactory extends EFactory {
 	TransformationSet createTransformationSet();
 
 	/**
+	 * Returns a new object of class '<em>ATL Script</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>ATL Script</em>'.
+	 * @generated
+	 */
+	ATLScript createATLScript();
+
+	/**
 	 * Returns a new object of class '<em>Change Plugin</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39,15 +48,6 @@ public interface TransformationsFactory extends EFactory {
 	 * @generated
 	 */
 	ChangePlugin createChangePlugin();
-
-	/**
-	 * Returns a new object of class '<em>ATL Refining Script</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ATL Refining Script</em>'.
-	 * @generated
-	 */
-	ATLRefiningScript createATLRefiningScript();
 
 	/**
 	 * Returns a new object of class '<em>Change Agent Label</em>'.
@@ -59,15 +59,6 @@ public interface TransformationsFactory extends EFactory {
 	ChangeAgentLabel createChangeAgentLabel();
 
 	/**
-	 * Returns a new object of class '<em>Outplace Transformation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Outplace Transformation</em>'.
-	 * @generated
-	 */
-	OutplaceTransformation createOutplaceTransformation();
-
-	/**
 	 * Returns a new object of class '<em>Replace Agent Labels</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -75,6 +66,15 @@ public interface TransformationsFactory extends EFactory {
 	 * @generated
 	 */
 	ReplaceAgentLabels createReplaceAgentLabels();
+
+	/**
+	 * Returns a new object of class '<em>Set Circle CI Version</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Set Circle CI Version</em>'.
+	 * @generated
+	 */
+	SetCircleCIVersion createSetCircleCIVersion();
 
 	/**
 	 * Returns the package supported by this factory.

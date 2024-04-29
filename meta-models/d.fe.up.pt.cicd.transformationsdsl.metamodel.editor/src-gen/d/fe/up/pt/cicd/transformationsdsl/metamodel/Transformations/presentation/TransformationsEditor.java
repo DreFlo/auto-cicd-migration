@@ -155,6 +155,9 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider.TransformationsItemProviderAdapterFactory;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.provider.CircleCIItemProviderAdapterFactory;
+import d.fe.up.pt.cicd.metamodel.CICD.provider.CICDItemProviderAdapterFactory;
+
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -687,6 +690,8 @@ public class TransformationsEditor extends MultiPageEditorPart
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TransformationsItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CICDItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new CircleCIItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

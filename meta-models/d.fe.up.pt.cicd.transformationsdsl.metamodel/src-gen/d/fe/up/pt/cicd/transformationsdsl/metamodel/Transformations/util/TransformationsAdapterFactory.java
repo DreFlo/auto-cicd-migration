@@ -104,6 +104,11 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseConditionalTransformation(ConditionalTransformation object) {
+			return createConditionalTransformationAdapter();
+		}
+
+		@Override
 		public Adapter caseATLScript(ATLScript object) {
 			return createATLScriptAdapter();
 		}
@@ -124,6 +129,11 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseAddTrigger(AddTrigger object) {
+			return createAddTriggerAdapter();
+		}
+
+		@Override
 		public Adapter caseGHATransformation(GHATransformation object) {
 			return createGHATransformationAdapter();
 		}
@@ -131,6 +141,16 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseCircleCITransformation(CircleCITransformation object) {
 			return createCircleCITransformationAdapter();
+		}
+
+		@Override
+		public Adapter caseAddExecutor(AddExecutor object) {
+			return createAddExecutorAdapter();
+		}
+
+		@Override
+		public Adapter caseAddOrbReferenceExecutor(AddOrbReferenceExecutor object) {
+			return createAddOrbReferenceExecutorAdapter();
 		}
 
 		@Override
@@ -256,6 +276,20 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation <em>Conditional Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation
+	 * @generated
+	 */
+	public Adapter createConditionalTransformationAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript <em>ATL Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -312,6 +346,20 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger <em>Add Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger
+	 * @generated
+	 */
+	public Adapter createAddTriggerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation <em>GHA Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -336,6 +384,34 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCircleCITransformationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor <em>Add Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor
+	 * @generated
+	 */
+	public Adapter createAddExecutorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor <em>Add Orb Reference Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor
+	 * @generated
+	 */
+	public Adapter createAddOrbReferenceExecutorAdapter() {
 		return null;
 	}
 

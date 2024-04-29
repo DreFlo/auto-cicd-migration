@@ -211,6 +211,52 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddTriggerItemProvider addTriggerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAddTriggerAdapter() {
+		if (addTriggerItemProvider == null) {
+			addTriggerItemProvider = new AddTriggerItemProvider(this);
+		}
+
+		return addTriggerItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddOrbReferenceExecutorItemProvider addOrbReferenceExecutorItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAddOrbReferenceExecutorAdapter() {
+		if (addOrbReferenceExecutorItemProvider == null) {
+			addOrbReferenceExecutorItemProvider = new AddOrbReferenceExecutorItemProvider(this);
+		}
+
+		return addOrbReferenceExecutorItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -350,6 +396,10 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 			changeAgentLabelItemProvider.dispose();
 		if (replaceAgentLabelsItemProvider != null)
 			replaceAgentLabelsItemProvider.dispose();
+		if (addTriggerItemProvider != null)
+			addTriggerItemProvider.dispose();
+		if (addOrbReferenceExecutorItemProvider != null)
+			addOrbReferenceExecutorItemProvider.dispose();
 		if (setCircleCIVersionItemProvider != null)
 			setCircleCIVersionItemProvider.dispose();
 	}

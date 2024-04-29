@@ -126,6 +126,15 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case TransformationsPackage.CONDITIONAL_TRANSFORMATION: {
+			ConditionalTransformation conditionalTransformation = (ConditionalTransformation) theEObject;
+			T result = caseConditionalTransformation(conditionalTransformation);
+			if (result == null)
+				result = caseTransformation(conditionalTransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case TransformationsPackage.ATL_SCRIPT: {
 			ATLScript atlScript = (ATLScript) theEObject;
 			T result = caseATLScript(atlScript);
@@ -173,7 +182,24 @@ public class TransformationsSwitch<T> extends Switch<T> {
 			if (result == null)
 				result = caseTIMTransformation(replaceAgentLabels);
 			if (result == null)
+				result = caseConditionalTransformation(replaceAgentLabels);
+			if (result == null)
 				result = caseTransformation(replaceAgentLabels);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.ADD_TRIGGER: {
+			AddTrigger addTrigger = (AddTrigger) theEObject;
+			T result = caseAddTrigger(addTrigger);
+			if (result == null)
+				result = caseOutplaceTransformation(addTrigger);
+			if (result == null)
+				result = caseTIMTransformation(addTrigger);
+			if (result == null)
+				result = caseConditionalTransformation(addTrigger);
+			if (result == null)
+				result = caseTransformation(addTrigger);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -196,6 +222,38 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = caseTSMTransformation(circleCITransformation);
 			if (result == null)
 				result = caseTransformation(circleCITransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.ADD_EXECUTOR: {
+			AddExecutor addExecutor = (AddExecutor) theEObject;
+			T result = caseAddExecutor(addExecutor);
+			if (result == null)
+				result = caseCircleCITransformation(addExecutor);
+			if (result == null)
+				result = caseOutplaceTransformation(addExecutor);
+			if (result == null)
+				result = caseTSMTransformation(addExecutor);
+			if (result == null)
+				result = caseTransformation(addExecutor);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.ADD_ORB_REFERENCE_EXECUTOR: {
+			AddOrbReferenceExecutor addOrbReferenceExecutor = (AddOrbReferenceExecutor) theEObject;
+			T result = caseAddOrbReferenceExecutor(addOrbReferenceExecutor);
+			if (result == null)
+				result = caseAddExecutor(addOrbReferenceExecutor);
+			if (result == null)
+				result = caseCircleCITransformation(addOrbReferenceExecutor);
+			if (result == null)
+				result = caseOutplaceTransformation(addOrbReferenceExecutor);
+			if (result == null)
+				result = caseTSMTransformation(addOrbReferenceExecutor);
+			if (result == null)
+				result = caseTransformation(addOrbReferenceExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -326,6 +384,21 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Transformation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalTransformation(ConditionalTransformation object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>ATL Script</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -386,6 +459,21 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add Trigger</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddTrigger(AddTrigger object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>GHA Transformation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -412,6 +500,36 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCircleCITransformation(CircleCITransformation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add Executor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add Executor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddExecutor(AddExecutor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add Orb Reference Executor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add Orb Reference Executor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddOrbReferenceExecutor(AddOrbReferenceExecutor object) {
 		return null;
 	}
 

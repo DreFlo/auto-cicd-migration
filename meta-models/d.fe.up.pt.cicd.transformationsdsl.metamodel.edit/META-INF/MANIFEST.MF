@@ -12,5 +12,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider
 Require-Bundle: org.eclipse.core.runtime,
  d.fe.up.pt.cicd.transformationsdsl.metamodel;visibility:=reexport,
- org.eclipse.emf.edit;visibility:=reexport
+ org.eclipse.emf.edit;visibility:=reexport,
+ d.fe.up.pt.cicd.metamodel;visibility:=reexport,
+ d.fe.up.pt.cicd.metamodel.edit;visibility:=reexport,
+ d.fe.up.pt.cicd.circleci.metamodel;visibility:=reexport,
+ d.fe.up.pt.cicd.circleci.metamodel.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

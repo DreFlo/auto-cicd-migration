@@ -12,5 +12,7 @@ Export-Package: d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations,
  d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl,
  d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ d.fe.up.pt.cicd.metamodel;visibility:=reexport,
+ d.fe.up.pt.cicd.circleci.metamodel;visibility:=reexport,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy

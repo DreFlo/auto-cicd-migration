@@ -3,6 +3,10 @@
   <viewpoint:DAnalysis uid="_Z0YxkPWgEe63n4eXU_SAvg" selectedViews="_Z1HxYPWgEe63n4eXU_SAvg _Z1VMwPWgEe63n4eXU_SAvg" version="15.0.0.202209061200">
     <semanticResources>Transformations.ecore</semanticResources>
     <semanticResources>Transformations.genmodel</semanticResources>
+    <semanticResources>platform:/resource/d.fe.up.pt.cicd.metamodel/model/CICD.ecore</semanticResources>
+    <semanticResources>platform:/resource/d.fe.up.pt.cicd.metamodel/model/CICD.genmodel</semanticResources>
+    <semanticResources>platform:/resource/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.ecore</semanticResources>
+    <semanticResources>platform:/resource/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_Z1HxYPWgEe63n4eXU_SAvg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Z1zG0PWgEe63n4eXU_SAvg" name="Transformations" repPath="#_Z1wDgPWgEe63n4eXU_SAvg" changeId="047c00de-4271-48ae-b1fc-deee32e0af64">

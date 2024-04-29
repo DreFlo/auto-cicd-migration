@@ -1,0 +1,5 @@
+after {
+    on circleci set version to "2.1"
+    on circleci add executor "default" on "release" from orb "github-release"
+    on circleci add executor "default" on "build" from orb "node"
+}

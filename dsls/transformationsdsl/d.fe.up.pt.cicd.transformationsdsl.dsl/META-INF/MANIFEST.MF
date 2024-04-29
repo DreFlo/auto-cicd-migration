@@ -7,6 +7,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: d.fe.up.pt.cicd.transformationsdsl.dsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: d.fe.up.pt.cicd.transformationsdsl.metamodel,
+ d.fe.up.pt.cicd.metamodel;bundle-version="0.1.0",
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.16.0",

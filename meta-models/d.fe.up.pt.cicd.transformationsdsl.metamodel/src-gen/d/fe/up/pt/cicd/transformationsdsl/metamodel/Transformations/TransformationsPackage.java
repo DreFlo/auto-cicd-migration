@@ -300,6 +300,43 @@ public interface TransformationsPackage extends EPackage {
 	int OUTPLACE_TRANSFORMATION_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ConditionalTransformationImpl <em>Conditional Transformation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ConditionalTransformationImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getConditionalTransformation()
+	 * @generated
+	 */
+	int CONDITIONAL_TRANSFORMATION = 7;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_TRANSFORMATION__CONDITION = TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Conditional Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_TRANSFORMATION_FEATURE_COUNT = TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Conditional Transformation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_TRANSFORMATION_OPERATION_COUNT = TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl <em>ATL Script</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -307,7 +344,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getATLScript()
 	 * @generated
 	 */
-	int ATL_SCRIPT = 7;
+	int ATL_SCRIPT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Script</b></em>' attribute.
@@ -353,7 +390,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getChangePlugin()
 	 * @generated
 	 */
-	int CHANGE_PLUGIN = 8;
+	int CHANGE_PLUGIN = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' map.
@@ -408,7 +445,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getChangeAgentLabel()
 	 * @generated
 	 */
-	int CHANGE_AGENT_LABEL = 9;
+	int CHANGE_AGENT_LABEL = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' map.
@@ -445,7 +482,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getReplaceAgentLabels()
 	 * @generated
 	 */
-	int REPLACE_AGENT_LABELS = 10;
+	int REPLACE_AGENT_LABELS = 11;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' attribute.
@@ -484,6 +521,52 @@ public interface TransformationsPackage extends EPackage {
 	int REPLACE_AGENT_LABELS_OPERATION_COUNT = OUTPLACE_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddTriggerImpl <em>Add Trigger</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddTriggerImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddTrigger()
+	 * @generated
+	 */
+	int ADD_TRIGGER = 12;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_TRIGGER__CONDITION = OUTPLACE_TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Trigger</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_TRIGGER__TRIGGER = OUTPLACE_TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Add Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_TRIGGER_FEATURE_COUNT = OUTPLACE_TRANSFORMATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Add Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_TRIGGER_OPERATION_COUNT = OUTPLACE_TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.GHATransformationImpl <em>GHA Transformation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -491,7 +574,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getGHATransformation()
 	 * @generated
 	 */
-	int GHA_TRANSFORMATION = 11;
+	int GHA_TRANSFORMATION = 13;
 
 	/**
 	 * The number of structural features of the '<em>GHA Transformation</em>' class.
@@ -519,7 +602,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getCircleCITransformation()
 	 * @generated
 	 */
-	int CIRCLE_CI_TRANSFORMATION = 12;
+	int CIRCLE_CI_TRANSFORMATION = 14;
 
 	/**
 	 * The number of structural features of the '<em>Circle CI Transformation</em>' class.
@@ -540,6 +623,98 @@ public interface TransformationsPackage extends EPackage {
 	int CIRCLE_CI_TRANSFORMATION_OPERATION_COUNT = TSM_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddExecutorImpl <em>Add Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddExecutorImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddExecutor()
+	 * @generated
+	 */
+	int ADD_EXECUTOR = 15;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_EXECUTOR__JOB_NAME = CIRCLE_CI_TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Add Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_EXECUTOR_FEATURE_COUNT = CIRCLE_CI_TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Add Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_EXECUTOR_OPERATION_COUNT = CIRCLE_CI_TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddOrbReferenceExecutorImpl <em>Add Orb Reference Executor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddOrbReferenceExecutorImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddOrbReferenceExecutor()
+	 * @generated
+	 */
+	int ADD_ORB_REFERENCE_EXECUTOR = 16;
+
+	/**
+	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ORB_REFERENCE_EXECUTOR__JOB_NAME = ADD_EXECUTOR__JOB_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Orb</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ORB_REFERENCE_EXECUTOR__ORB = ADD_EXECUTOR_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Executor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ORB_REFERENCE_EXECUTOR__EXECUTOR = ADD_EXECUTOR_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Add Orb Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ORB_REFERENCE_EXECUTOR_FEATURE_COUNT = ADD_EXECUTOR_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Add Orb Reference Executor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADD_ORB_REFERENCE_EXECUTOR_OPERATION_COUNT = ADD_EXECUTOR_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.SetCircleCIVersionImpl <em>Set Circle CI Version</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -547,7 +722,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getSetCircleCIVersion()
 	 * @generated
 	 */
-	int SET_CIRCLE_CI_VERSION = 13;
+	int SET_CIRCLE_CI_VERSION = 17;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -584,7 +759,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getMODELS()
 	 * @generated
 	 */
-	int MODELS = 14;
+	int MODELS = 18;
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
@@ -714,6 +889,27 @@ public interface TransformationsPackage extends EPackage {
 	EClass getOutplaceTransformation();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation <em>Conditional Transformation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conditional Transformation</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation
+	 * @generated
+	 */
+	EClass getConditionalTransformation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Condition</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation#getCondition()
+	 * @see #getConditionalTransformation()
+	 * @generated
+	 */
+	EAttribute getConditionalTransformation_Condition();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript <em>ATL Script</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -820,17 +1016,6 @@ public interface TransformationsPackage extends EPackage {
 	EClass getReplaceAgentLabels();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getCondition <em>Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Condition</em>'.
-	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getCondition()
-	 * @see #getReplaceAgentLabels()
-	 * @generated
-	 */
-	EAttribute getReplaceAgentLabels_Condition();
-
-	/**
 	 * Returns the meta object for the attribute list '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels#getLabels <em>Labels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -840,6 +1025,27 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getReplaceAgentLabels_Labels();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger <em>Add Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Add Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger
+	 * @generated
+	 */
+	EClass getAddTrigger();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger#getTrigger <em>Trigger</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Trigger</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger#getTrigger()
+	 * @see #getAddTrigger()
+	 * @generated
+	 */
+	EReference getAddTrigger_Trigger();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation <em>GHA Transformation</em>}'.
@@ -860,6 +1066,59 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCircleCITransformation();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor <em>Add Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Add Executor</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor
+	 * @generated
+	 */
+	EClass getAddExecutor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor#getJobName <em>Job Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job Name</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor#getJobName()
+	 * @see #getAddExecutor()
+	 * @generated
+	 */
+	EAttribute getAddExecutor_JobName();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor <em>Add Orb Reference Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Add Orb Reference Executor</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor
+	 * @generated
+	 */
+	EClass getAddOrbReferenceExecutor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor#getOrb <em>Orb</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Orb</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor#getOrb()
+	 * @see #getAddOrbReferenceExecutor()
+	 * @generated
+	 */
+	EAttribute getAddOrbReferenceExecutor_Orb();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor#getExecutor <em>Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Executor</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor#getExecutor()
+	 * @see #getAddOrbReferenceExecutor()
+	 * @generated
+	 */
+	EAttribute getAddOrbReferenceExecutor_Executor();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion <em>Set Circle CI Version</em>}'.
@@ -1026,6 +1285,24 @@ public interface TransformationsPackage extends EPackage {
 		EClass OUTPLACE_TRANSFORMATION = eINSTANCE.getOutplaceTransformation();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ConditionalTransformationImpl <em>Conditional Transformation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ConditionalTransformationImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getConditionalTransformation()
+		 * @generated
+		 */
+		EClass CONDITIONAL_TRANSFORMATION = eINSTANCE.getConditionalTransformation();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONDITIONAL_TRANSFORMATION__CONDITION = eINSTANCE.getConditionalTransformation_Condition();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ATLScriptImpl <em>ATL Script</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1114,20 +1391,30 @@ public interface TransformationsPackage extends EPackage {
 		EClass REPLACE_AGENT_LABELS = eINSTANCE.getReplaceAgentLabels();
 
 		/**
-		 * The meta object literal for the '<em><b>Condition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute REPLACE_AGENT_LABELS__CONDITION = eINSTANCE.getReplaceAgentLabels_Condition();
-
-		/**
 		 * The meta object literal for the '<em><b>Labels</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute REPLACE_AGENT_LABELS__LABELS = eINSTANCE.getReplaceAgentLabels_Labels();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddTriggerImpl <em>Add Trigger</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddTriggerImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddTrigger()
+		 * @generated
+		 */
+		EClass ADD_TRIGGER = eINSTANCE.getAddTrigger();
+
+		/**
+		 * The meta object literal for the '<em><b>Trigger</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADD_TRIGGER__TRIGGER = eINSTANCE.getAddTrigger_Trigger();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.GHATransformationImpl <em>GHA Transformation</em>}' class.
@@ -1148,6 +1435,50 @@ public interface TransformationsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CIRCLE_CI_TRANSFORMATION = eINSTANCE.getCircleCITransformation();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddExecutorImpl <em>Add Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddExecutorImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddExecutor()
+		 * @generated
+		 */
+		EClass ADD_EXECUTOR = eINSTANCE.getAddExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Job Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD_EXECUTOR__JOB_NAME = eINSTANCE.getAddExecutor_JobName();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddOrbReferenceExecutorImpl <em>Add Orb Reference Executor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.AddOrbReferenceExecutorImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddOrbReferenceExecutor()
+		 * @generated
+		 */
+		EClass ADD_ORB_REFERENCE_EXECUTOR = eINSTANCE.getAddOrbReferenceExecutor();
+
+		/**
+		 * The meta object literal for the '<em><b>Orb</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD_ORB_REFERENCE_EXECUTOR__ORB = eINSTANCE.getAddOrbReferenceExecutor_Orb();
+
+		/**
+		 * The meta object literal for the '<em><b>Executor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ADD_ORB_REFERENCE_EXECUTOR__EXECUTOR = eINSTANCE.getAddOrbReferenceExecutor_Executor();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.SetCircleCIVersionImpl <em>Set Circle CI Version</em>}' class.

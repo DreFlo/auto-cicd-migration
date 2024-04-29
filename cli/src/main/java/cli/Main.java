@@ -183,8 +183,6 @@ public class Main {
         try {
 			Pipeline pipeline = inputEngineer.transform(inputScript, inputRefinerPaths, new ArrayList<>());
 			outputScript = outputEngineer.transform(pipeline, cicdRefinerPaths, outputRefinerPaths);
-		} catch (SyntaxException | IOException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
             throw new RuntimeException(e);
         }

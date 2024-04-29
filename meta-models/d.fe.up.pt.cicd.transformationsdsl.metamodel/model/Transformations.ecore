@@ -20,6 +20,10 @@
       eSuperTypes="#//Transformation"/>
   <eClassifiers xsi:type="ecore:EClass" name="OutplaceTransformation" abstract="true"
       eSuperTypes="#//Transformation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalTransformation" abstract="true"
+      eSuperTypes="#//Transformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATLScript" eSuperTypes="#//Transformation #//TSMTransformation #//TIMTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="script" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -37,14 +41,26 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//StringToStringMapEntry"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReplaceAgentLabels" eSuperTypes="#//OutplaceTransformation #//TIMTransformation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReplaceAgentLabels" eSuperTypes="#//OutplaceTransformation #//TIMTransformation #//ConditionalTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labels" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AddTrigger" eSuperTypes="#//OutplaceTransformation #//TIMTransformation #//ConditionalTransformation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="ecore:EClass ../../d.fe.up.pt.cicd.metamodel/model/CICD.ecore#//Trigger"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GHATransformation" abstract="true" eSuperTypes="#//TSMTransformation"/>
   <eClassifiers xsi:type="ecore:EClass" name="CircleCITransformation" abstract="true"
       eSuperTypes="#//TSMTransformation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AddExecutor" abstract="true" eSuperTypes="#//CircleCITransformation #//OutplaceTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AddOrbReferenceExecutor" eSuperTypes="#//AddExecutor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orb" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SetCircleCIVersion" eSuperTypes="#//CircleCITransformation #//InplaceTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

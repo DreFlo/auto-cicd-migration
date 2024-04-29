@@ -14,6 +14,7 @@ public abstract class AbstractDSLValidator extends AbstractDeclarativeValidator 
 	protected List<EPackage> getEPackages() {
 		List<EPackage> result = new ArrayList<EPackage>();
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://d.fe.up.pt/Transformations"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://www.d.fe.up.pt/CICD"));
 		return result;
 	}
 }

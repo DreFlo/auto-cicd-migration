@@ -33,6 +33,7 @@ public class DSLParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, DSLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getTSMTransformationAccess().getAlternatives(), "rule__TSMTransformation__Alternatives");
 			builder.put(grammarAccess.getTIMTransformationAccess().getAlternatives(), "rule__TIMTransformation__Alternatives");
+			builder.put(grammarAccess.getCircleCITransformationAccess().getAlternatives_2(), "rule__CircleCITransformation__Alternatives_2");
 			builder.put(grammarAccess.getGHAAccess().getAlternatives(), "rule__GHA__Alternatives");
 			builder.put(grammarAccess.getCICDAccess().getAlternatives(), "rule__CICD__Alternatives");
 			builder.put(grammarAccess.getCIRCLE_CIAccess().getAlternatives(), "rule__CIRCLE_CI__Alternatives");
@@ -50,8 +51,13 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup(), "rule__ReplaceAgentLabels__Group__0");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup_2(), "rule__ReplaceAgentLabels__Group_2__0");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup_5(), "rule__ReplaceAgentLabels__Group_5__0");
+			builder.put(grammarAccess.getAddTriggerAccess().getGroup(), "rule__AddTrigger__Group__0");
+			builder.put(grammarAccess.getAddTriggerAccess().getGroup_2(), "rule__AddTrigger__Group_2__0");
+			builder.put(grammarAccess.getManualTriggerAccess().getGroup(), "rule__ManualTrigger__Group__0");
 			builder.put(grammarAccess.getCircleCITransformationAccess().getGroup(), "rule__CircleCITransformation__Group__0");
 			builder.put(grammarAccess.getSetCircleCIVersionAccess().getGroup(), "rule__SetCircleCIVersion__Group__0");
+			builder.put(grammarAccess.getAddExecutorAccess().getGroup(), "rule__AddExecutor__Group__0");
+			builder.put(grammarAccess.getAddOrbReferenceExecutorAccess().getGroup(), "rule__AddOrbReferenceExecutor__Group__0");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getGroup(), "rule__StringToStringMapEntry__Group__0");
 			builder.put(grammarAccess.getTransformationSetAccess().getPreTIMAssignment_1_3(), "rule__TransformationSet__PreTIMAssignment_1_3");
 			builder.put(grammarAccess.getTransformationSetAccess().getOnTIMAssignment_2_3(), "rule__TransformationSet__OnTIMAssignment_2_3");
@@ -66,7 +72,12 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getConditionAssignment_2_1(), "rule__ReplaceAgentLabels__ConditionAssignment_2_1");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getLabelsAssignment_4(), "rule__ReplaceAgentLabels__LabelsAssignment_4");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getLabelsAssignment_5_1(), "rule__ReplaceAgentLabels__LabelsAssignment_5_1");
+			builder.put(grammarAccess.getAddTriggerAccess().getConditionAssignment_2_1(), "rule__AddTrigger__ConditionAssignment_2_1");
+			builder.put(grammarAccess.getAddTriggerAccess().getTriggerAssignment_3(), "rule__AddTrigger__TriggerAssignment_3");
 			builder.put(grammarAccess.getSetCircleCIVersionAccess().getVersionAssignment_3(), "rule__SetCircleCIVersion__VersionAssignment_3");
+			builder.put(grammarAccess.getAddOrbReferenceExecutorAccess().getExecutorAssignment_0(), "rule__AddOrbReferenceExecutor__ExecutorAssignment_0");
+			builder.put(grammarAccess.getAddOrbReferenceExecutorAccess().getJobNameAssignment_2(), "rule__AddOrbReferenceExecutor__JobNameAssignment_2");
+			builder.put(grammarAccess.getAddOrbReferenceExecutorAccess().getOrbAssignment_5(), "rule__AddOrbReferenceExecutor__OrbAssignment_5");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getKeyAssignment_0(), "rule__StringToStringMapEntry__KeyAssignment_0");
 			builder.put(grammarAccess.getStringToStringMapEntryAccess().getValueAssignment_2(), "rule__StringToStringMapEntry__ValueAssignment_2");
 		}

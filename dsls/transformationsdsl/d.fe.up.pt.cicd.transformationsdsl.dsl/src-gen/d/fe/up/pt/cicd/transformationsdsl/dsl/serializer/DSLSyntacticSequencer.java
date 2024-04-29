@@ -22,6 +22,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DSLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_ATLScript_OnKeyword_2_q;
+	protected AbstractElementAlias match_AddOrbReferenceExecutor_FromKeyword_3_q;
 	protected AbstractElementAlias match_SetCircleCIVersion_ToKeyword_2_q;
 	protected AbstractElementAlias match_TransformationSet_TransformationKeyword_1_1_q;
 	protected AbstractElementAlias match_TransformationSet_TransformationKeyword_2_1_q;
@@ -34,6 +35,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DSLGrammarAccess) access;
 		match_ATLScript_OnKeyword_2_q = new TokenAlias(false, true, grammarAccess.getATLScriptAccess().getOnKeyword_2());
+		match_AddOrbReferenceExecutor_FromKeyword_3_q = new TokenAlias(false, true, grammarAccess.getAddOrbReferenceExecutorAccess().getFromKeyword_3());
 		match_SetCircleCIVersion_ToKeyword_2_q = new TokenAlias(false, true, grammarAccess.getSetCircleCIVersionAccess().getToKeyword_2());
 		match_TransformationSet_TransformationKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_1_1());
 		match_TransformationSet_TransformationKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_2_1());
@@ -69,6 +71,8 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_ATLScript_OnKeyword_2_q.equals(syntax))
 				emit_ATLScript_OnKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_AddOrbReferenceExecutor_FromKeyword_3_q.equals(syntax))
+				emit_AddOrbReferenceExecutor_FromKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_SetCircleCIVersion_ToKeyword_2_q.equals(syntax))
 				emit_SetCircleCIVersion_ToKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_TransformationSet_TransformationKeyword_1_1_q.equals(syntax))
@@ -98,6 +102,20 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_ATLScript_OnKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'from'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     jobName=EString (ambiguity) 'orb' orb=EString
+	 
+	 * </pre>
+	 */
+	protected void emit_AddOrbReferenceExecutor_FromKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

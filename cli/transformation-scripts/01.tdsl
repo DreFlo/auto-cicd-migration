@@ -1,0 +1,3 @@
+during {
+    add trigger when "input.triggers->isEmpty()" manual
+}

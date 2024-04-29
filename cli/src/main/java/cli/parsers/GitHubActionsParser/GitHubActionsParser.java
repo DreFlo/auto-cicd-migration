@@ -273,18 +273,18 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (trigger instanceof InputTrigger inputTrigger) {
-			if (options.asMapping().yamlMapping("inputs") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().yamlMapping("inputs") != null) {
 				List<Input> inputs = initInputs(options.asMapping().yamlMapping("inputs"));
 				inputTrigger.getInputs().addAll(inputs);
 			}
 		}
 
 		if (trigger instanceof WorkflowCallTrigger workflowCallTrigger) {
-			if (options.asMapping().yamlMapping("outputs") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().yamlMapping("outputs") != null) {
 				List<Output> outputs = initOutputs(options.asMapping().yamlMapping("outputs"));
 				workflowCallTrigger.getOutputs().addAll(outputs);
 			}
-			if (options.asMapping().yamlMapping("secrets") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().yamlMapping("secrets") != null) {
 				List<Secret> secrets = initSecrets(options.asMapping().yamlMapping("secrets"));
 				workflowCallTrigger.getSecrets().addAll(secrets);
 			}
@@ -441,55 +441,57 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (trigger instanceof EventTypeTrigger eventTypeTrigger) {
-			if (options.asMapping().value("types") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().value("types") != null) {
 				eventTypeTrigger.getEventTypes().addAll(parseEventTypes(options.asMapping().value("types")));
 			}
 		}
 
 		if (trigger instanceof SpecifiedBranchesTrigger specifiedBranchesTrigger) {
-			if (options.asMapping().value("branches") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().value("branches") != null) {
 				specifiedBranchesTrigger.getBranches().addAll(parseExpressions(options.asMapping().value("branches"), trigger));
-			} else if (options.asMapping().value("branches-ignore") != null) {
+			} else if (options.type().equals(Node.MAPPING) && options.asMapping().value("branches-ignore") != null) {
 				specifiedBranchesTrigger.getBranches().addAll(parseExpressions(options.asMapping().value("branches-ignore"), trigger));
 				specifiedBranchesTrigger.setIgnoreSpecifiedBranches(true);
 			}
 		}
 
 		if (trigger instanceof SpecifiedPathsTrigger specifiedPathsTrigger) {
-			if (options.asMapping().value("paths") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().value("paths") != null) {
 				specifiedPathsTrigger.getPaths().addAll(parseExpressions(options.asMapping().value("paths"), trigger));
-			} else if (options.asMapping().value("paths-ignore") != null) {
+			} else if (options.type().equals(Node.MAPPING) && options.asMapping().value("paths-ignore") != null) {
 				specifiedPathsTrigger.getPaths().addAll(parseExpressions(options.asMapping().value("paths-ignore"), trigger));
 				specifiedPathsTrigger.setIgnoreSpecifiedPaths(true);
 			}
 		}
 
 		if (trigger instanceof PushTrigger pushTrigger) {
-			if (options.asMapping().value("tags") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().value("tags") != null) {
 				pushTrigger.getTags().addAll(parseExpressions(options.asMapping().value("tags"), trigger));
-			} else if (options.asMapping().value("tags-ignore") != null) {
+			} else if (options.type().equals(Node.MAPPING) && options.asMapping().value("tags-ignore") != null) {
 				pushTrigger.getTags().addAll(parseExpressions(options.asMapping().value("tags-ignore"), trigger));
 				pushTrigger.setIgnoreSpecifiedTags(true);
 			}
 		}
 
 		if (trigger instanceof ScheduleTrigger scheduleTrigger) {
-			for (YamlNode cron : options.asSequence().values()) {
-				scheduleTrigger.getCrons().add(parseExpression(cron.asMapping().value("cron").asScalar().value(), trigger));
+			if (options.type().equals(Node.SEQUENCE)) {
+				for (YamlNode cron : options.asSequence().values()) {
+					scheduleTrigger.getCrons().add(parseExpression(cron.asMapping().value("cron").asScalar().value(), trigger));
+				}
 			}
 		}
 
 		if (trigger instanceof InputTrigger inputTrigger) {
-			if (options.asMapping().yamlMapping("inputs") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().yamlMapping("inputs") != null) {
 				parseInputs(inputTrigger.getInputs(), options.asMapping().yamlMapping("inputs"));
 			}
 		}
 
 		if (trigger instanceof WorkflowCallTrigger workflowCallTrigger) {
-			if (options.asMapping().yamlMapping("outputs") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().yamlMapping("outputs") != null) {
 				parseOutputs(workflowCallTrigger.getOutputs(), options.asMapping().yamlMapping("outputs"));
 			}
-			if (options.asMapping().yamlMapping("secrets") != null) {
+			if (options.type().equals(Node.MAPPING) && options.asMapping().yamlMapping("secrets") != null) {
 				parseSecrets(workflowCallTrigger.getSecrets(), options.asMapping().yamlMapping("secrets"));
 			}
 		}

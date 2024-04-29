@@ -23,7 +23,7 @@ public class AbstractValidator<Model extends EObject, Package extends EPackage> 
     private final ResourceSet resourceSet;
     private final Map<String, Constraint> constraintMap;
 
-    public AbstractValidator(ResourceSet resourceSet, Package aPackage, EClassifier classifier, String oclFilePath) {
+    public AbstractValidator(ResourceSet resourceSet, Package aPackage, String oclFilePath) {
         this.resourceSet = resourceSet;
         this.aPackage = aPackage;
 

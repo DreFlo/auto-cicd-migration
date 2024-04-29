@@ -4,8 +4,12 @@
 package d.fe.up.pt.cicd.transformationsdsl.dsl.serializer;
 
 import com.google.inject.Inject;
+import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.ManualTrigger;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
@@ -36,10 +40,22 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == TransformationsPackage.eINSTANCE)
+		if (epackage == CICDPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case CICDPackage.MANUAL_TRIGGER:
+				sequence_ManualTrigger(context, (ManualTrigger) semanticObject); 
+				return; 
+			}
+		else if (epackage == TransformationsPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case TransformationsPackage.ATL_SCRIPT:
 				sequence_ATLScript(context, (ATLScript) semanticObject); 
+				return; 
+			case TransformationsPackage.ADD_ORB_REFERENCE_EXECUTOR:
+				sequence_AddOrbReferenceExecutor(context, (AddOrbReferenceExecutor) semanticObject); 
+				return; 
+			case TransformationsPackage.ADD_TRIGGER:
+				sequence_AddTrigger(context, (AddTrigger) semanticObject); 
 				return; 
 			case TransformationsPackage.CHANGE_AGENT_LABEL:
 				sequence_ChangeAgentLabel(context, (ChangeAgentLabel) semanticObject); 
@@ -92,6 +108,50 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TSMTransformation returns AddOrbReferenceExecutor
+	 *     CircleCITransformation returns AddOrbReferenceExecutor
+	 *     AddExecutor returns AddOrbReferenceExecutor
+	 *     AddOrbReferenceExecutor returns AddOrbReferenceExecutor
+	 *
+	 * Constraint:
+	 *     (executor=EString jobName=EString orb=EString)
+	 * </pre>
+	 */
+	protected void sequence_AddOrbReferenceExecutor(ISerializationContext context, AddOrbReferenceExecutor semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ADD_ORB_REFERENCE_EXECUTOR__EXECUTOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ADD_ORB_REFERENCE_EXECUTOR__EXECUTOR));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ADD_EXECUTOR__JOB_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ADD_EXECUTOR__JOB_NAME));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.ADD_ORB_REFERENCE_EXECUTOR__ORB) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.ADD_ORB_REFERENCE_EXECUTOR__ORB));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAddOrbReferenceExecutorAccess().getExecutorEStringParserRuleCall_0_0(), semanticObject.getExecutor());
+		feeder.accept(grammarAccess.getAddOrbReferenceExecutorAccess().getJobNameEStringParserRuleCall_2_0(), semanticObject.getJobName());
+		feeder.accept(grammarAccess.getAddOrbReferenceExecutorAccess().getOrbEStringParserRuleCall_5_0(), semanticObject.getOrb());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TIMTransformation returns AddTrigger
+	 *     AddTrigger returns AddTrigger
+	 *
+	 * Constraint:
+	 *     (condition=EString? trigger=Trigger)
+	 * </pre>
+	 */
+	protected void sequence_AddTrigger(ISerializationContext context, AddTrigger semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     TIMTransformation returns ChangeAgentLabel
 	 *     ChangeAgentLabel returns ChangeAgentLabel
 	 *
@@ -121,6 +181,21 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_ChangePlugin(ISerializationContext context, ChangePlugin semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Trigger returns ManualTrigger
+	 *     ManualTrigger returns ManualTrigger
+	 *
+	 * Constraint:
+	 *     {ManualTrigger}
+	 * </pre>
+	 */
+	protected void sequence_ManualTrigger(ISerializationContext context, ManualTrigger semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

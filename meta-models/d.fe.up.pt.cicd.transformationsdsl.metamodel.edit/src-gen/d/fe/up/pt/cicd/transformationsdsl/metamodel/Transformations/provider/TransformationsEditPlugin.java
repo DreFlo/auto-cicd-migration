@@ -2,6 +2,9 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.provider.CircleCIEditPlugin;
+import d.fe.up.pt.cicd.metamodel.CICD.provider.CICDEditPlugin;
+
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -36,7 +39,7 @@ public final class TransformationsEditPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public TransformationsEditPlugin() {
-		super(new ResourceLocator[] {});
+		super(new ResourceLocator[] { CICDEditPlugin.INSTANCE, CircleCIEditPlugin.INSTANCE, });
 	}
 
 	/**

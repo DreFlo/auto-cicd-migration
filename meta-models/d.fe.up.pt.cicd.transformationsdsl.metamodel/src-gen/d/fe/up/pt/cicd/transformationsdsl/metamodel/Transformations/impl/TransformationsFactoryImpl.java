@@ -71,6 +71,10 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 			return createChangeAgentLabel();
 		case TransformationsPackage.REPLACE_AGENT_LABELS:
 			return createReplaceAgentLabels();
+		case TransformationsPackage.ADD_TRIGGER:
+			return createAddTrigger();
+		case TransformationsPackage.ADD_ORB_REFERENCE_EXECUTOR:
+			return createAddOrbReferenceExecutor();
 		case TransformationsPackage.SET_CIRCLE_CI_VERSION:
 			return createSetCircleCIVersion();
 		default:
@@ -171,6 +175,28 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	public ReplaceAgentLabels createReplaceAgentLabels() {
 		ReplaceAgentLabelsImpl replaceAgentLabels = new ReplaceAgentLabelsImpl();
 		return replaceAgentLabels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AddTrigger createAddTrigger() {
+		AddTriggerImpl addTrigger = new AddTriggerImpl();
+		return addTrigger;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AddOrbReferenceExecutor createAddOrbReferenceExecutor() {
+		AddOrbReferenceExecutorImpl addOrbReferenceExecutor = new AddOrbReferenceExecutorImpl();
+		return addOrbReferenceExecutor;
 	}
 
 	/**

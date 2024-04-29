@@ -59,10 +59,10 @@ public class ReplaceAgentLabelsItemProvider extends OutplaceTransformationItemPr
 	protected void addConditionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_ReplaceAgentLabels_condition_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ReplaceAgentLabels_condition_feature",
-						"_UI_ReplaceAgentLabels_type"),
-				TransformationsPackage.Literals.REPLACE_AGENT_LABELS__CONDITION, true, false, false,
+				getString("_UI_ConditionalTransformation_condition_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_ConditionalTransformation_condition_feature",
+						"_UI_ConditionalTransformation_type"),
+				TransformationsPackage.Literals.CONDITIONAL_TRANSFORMATION__CONDITION, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 

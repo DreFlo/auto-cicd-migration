@@ -183,7 +183,9 @@ types:
 [name2/]:
 [/if]
 [for (expression : Expression | expressions)]
-  - [generateExpression(expression)/]
+[let expressionString : String = generateExpression(expression)]
+  - [if (expressionString.equalsIgnoreCase(''))]""[else][expressionString/][/if]
+[/let]
 [/for]
 [/template]
 

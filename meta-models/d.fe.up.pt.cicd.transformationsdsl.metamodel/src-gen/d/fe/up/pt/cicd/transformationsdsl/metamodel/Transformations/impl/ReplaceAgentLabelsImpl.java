@@ -2,7 +2,9 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TIMTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import java.util.Collection;
@@ -187,6 +189,54 @@ public class ReplaceAgentLabelsImpl extends OutplaceTransformationImpl implement
 			return labels != null && !labels.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == TIMTransformation.class) {
+			switch (derivedFeatureID) {
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == ConditionalTransformation.class) {
+			switch (derivedFeatureID) {
+			case TransformationsPackage.REPLACE_AGENT_LABELS__CONDITION:
+				return TransformationsPackage.CONDITIONAL_TRANSFORMATION__CONDITION;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == TIMTransformation.class) {
+			switch (baseFeatureID) {
+			default:
+				return -1;
+			}
+		}
+		if (baseClass == ConditionalTransformation.class) {
+			switch (baseFeatureID) {
+			case TransformationsPackage.CONDITIONAL_TRANSFORMATION__CONDITION:
+				return TransformationsPackage.REPLACE_AGENT_LABELS__CONDITION;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

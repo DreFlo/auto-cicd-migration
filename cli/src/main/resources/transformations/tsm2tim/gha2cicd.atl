@@ -598,7 +598,12 @@ lazy rule GetAgentFromJob {
 		job : GHA!Job
 	to
 		agent : CICD!Agent(
-			labels <- job.agent.labels,
+			labels <- 
+				if not job.agent.oclIsUndefined() then
+					job.agent.labels
+				else
+					Sequence{}
+				endif,
 			container <- job.container
 		)
 }

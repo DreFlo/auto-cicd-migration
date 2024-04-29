@@ -68,6 +68,24 @@ public interface TransformationsFactory extends EFactory {
 	ReplaceAgentLabels createReplaceAgentLabels();
 
 	/**
+	 * Returns a new object of class '<em>Add Trigger</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Add Trigger</em>'.
+	 * @generated
+	 */
+	AddTrigger createAddTrigger();
+
+	/**
+	 * Returns a new object of class '<em>Add Orb Reference Executor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Add Orb Reference Executor</em>'.
+	 * @generated
+	 */
+	AddOrbReferenceExecutor createAddOrbReferenceExecutor();
+
+	/**
 	 * Returns a new object of class '<em>Set Circle CI Version</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

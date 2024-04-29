@@ -145,13 +145,17 @@ environment:
 [/for]
 [/if]
 [if (executor.oclIsKindOf(DockerExecutor))]
-[generateDockerExecutor(oclAsType(DockerExecutor))/] 
+[generateDockerExecutor(executor.oclAsType(DockerExecutor))/] 
 [elseif (executor.oclIsKindOf(WindowsOrbExecutor))]
-[generateWindowsOrbExecutor(oclAsType(WindowsOrbExecutor))/] 
+[generateWindowsOrbExecutor(executor.oclAsType(WindowsOrbExecutor))/] 
 [elseif (executor.oclIsKindOf(MachineExecutor))]
-[generateMachineExecutor(oclAsType(MachineExecutor))/] 
+[generateMachineExecutor(executor.oclAsType(MachineExecutor))/] 
 [elseif (executor.oclIsKindOf(MacOSExecutor))]
-[generateMacOSExecutor(oclAsType(MacOSExecutor))/]
+[generateMacOSExecutor(executor.oclAsType(MacOSExecutor))/]
+[elseif (executor.oclIsKindOf(OrbReferenceExecutor))]
+[generateOrbReferenceExecutor(executor.oclAsType(OrbReferenceExecutor))/] 
+[elseif (executor.oclIsKindOf(ExecutorReferenceExecutor))]
+[generateExecutorReferenceExecutor(executor.oclAsType(ExecutorReferenceExecutor))/]
 [/if]
 [/if]
 [/template]
@@ -180,6 +184,14 @@ machine:
 [template public generateMacOSExecutor(executor : MacOSExecutor) post (trim())]
 macos:
   xcode: [generateExpression(xcode)/]
+[/template]
+
+[template public generateOrbReferenceExecutor(executor : OrbReferenceExecutor)]
+executor: [orb.name/]/[orbExecutorName/]
+[/template]
+
+[template public generateExecutorReferenceExecutor(executor : ExecutorReferenceExecutor)]
+executor: [executor.name/]
 [/template]
 
 [template public generateJob(job : Job) post (trim())]
@@ -275,6 +287,8 @@ macos:
 [generateOrbReferenceStep(step.oclAsType(OrbReferenceStep))/]
 [elseif (step.oclIsKindOf(CommandReferenceStep))]
 [generateCommandReferenceStep(step.oclAsType(CommandReferenceStep))/]
+[elseif (step.oclIsKindOf(AddSSHKeysStep))]
+[generateAddSSHKeysStep(step.oclAsType(AddSSHKeysStep))/]
 [/if]
 [/template]
 
@@ -413,7 +427,7 @@ macos:
 [template public generateAddSSHKeysStep(step : AddSSHKeysStep) post (trim())]
 [if (fingerprints->notEmpty())]
 - add_ssh_keys:
-    fingerprnts:
+    fingerprints:
     [for (fingerprint : Expression | fingerprints)]
       - [generateExpression(fingerprint)/]
     [/for]

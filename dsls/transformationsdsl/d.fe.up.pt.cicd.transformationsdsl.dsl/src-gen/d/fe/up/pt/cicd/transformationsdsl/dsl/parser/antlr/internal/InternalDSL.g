@@ -370,6 +370,15 @@ ruleTIMTransformation returns [EObject current=null]
 			$current = $this_ReplaceAgentLabels_3.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTIMTransformationAccess().getAddTriggerParserRuleCall_4());
+		}
+		this_AddTrigger_4=ruleAddTrigger
+		{
+			$current = $this_AddTrigger_4.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -650,6 +659,132 @@ ruleReplaceAgentLabels returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleAddTrigger
+entryRuleAddTrigger returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAddTriggerRule()); }
+	iv_ruleAddTrigger=ruleAddTrigger
+	{ $current=$iv_ruleAddTrigger.current; }
+	EOF;
+
+// Rule AddTrigger
+ruleAddTrigger returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='add'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAddTriggerAccess().getAddKeyword_0());
+		}
+		otherlv_1='trigger'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAddTriggerAccess().getTriggerKeyword_1());
+		}
+		(
+			otherlv_2='when'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getAddTriggerAccess().getWhenKeyword_2_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAddTriggerAccess().getConditionEStringParserRuleCall_2_1_0());
+					}
+					lv_condition_3_0=ruleEString
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAddTriggerRule());
+						}
+						set(
+							$current,
+							"condition",
+							lv_condition_3_0,
+							"d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.EString");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAddTriggerAccess().getTriggerTriggerParserRuleCall_3_0());
+				}
+				lv_trigger_4_0=ruleTrigger
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAddTriggerRule());
+					}
+					set(
+						$current,
+						"trigger",
+						lv_trigger_4_0,
+						"d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.Trigger");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleTrigger
+entryRuleTrigger returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTriggerRule()); }
+	iv_ruleTrigger=ruleTrigger
+	{ $current=$iv_ruleTrigger.current; }
+	EOF;
+
+// Rule Trigger
+ruleTrigger returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getTriggerAccess().getManualTriggerParserRuleCall());
+	}
+	this_ManualTrigger_0=ruleManualTrigger
+	{
+		$current = $this_ManualTrigger_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRuleManualTrigger
+entryRuleManualTrigger returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getManualTriggerRule()); }
+	iv_ruleManualTrigger=ruleManualTrigger
+	{ $current=$iv_ruleManualTrigger.current; }
+	EOF;
+
+// Rule ManualTrigger
+ruleManualTrigger returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getManualTriggerAccess().getManualTriggerAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='manual'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getManualTriggerAccess().getManualKeyword_1());
+		}
+	)
+;
+
 // Entry rule entryRuleCircleCITransformation
 entryRuleCircleCITransformation returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getCircleCITransformationRule()); }
@@ -677,14 +812,25 @@ ruleCircleCITransformation returns [EObject current=null]
 		{
 			afterParserOrEnumRuleCall();
 		}
-		{
-			newCompositeNode(grammarAccess.getCircleCITransformationAccess().getSetCircleCIVersionParserRuleCall_2());
-		}
-		this_SetCircleCIVersion_2=ruleSetCircleCIVersion
-		{
-			$current = $this_SetCircleCIVersion_2.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			{
+				newCompositeNode(grammarAccess.getCircleCITransformationAccess().getSetCircleCIVersionParserRuleCall_2_0());
+			}
+			this_SetCircleCIVersion_2=ruleSetCircleCIVersion
+			{
+				$current = $this_SetCircleCIVersion_2.current;
+				afterParserOrEnumRuleCall();
+			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getCircleCITransformationAccess().getAddExecutorParserRuleCall_2_1());
+			}
+			this_AddExecutor_3=ruleAddExecutor
+			{
+				$current = $this_AddExecutor_3.current;
+				afterParserOrEnumRuleCall();
+			}
+		)
 	)
 ;
 
@@ -740,6 +886,131 @@ ruleSetCircleCIVersion returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleAddExecutor
+entryRuleAddExecutor returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAddExecutorRule()); }
+	iv_ruleAddExecutor=ruleAddExecutor
+	{ $current=$iv_ruleAddExecutor.current; }
+	EOF;
+
+// Rule AddExecutor
+ruleAddExecutor returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='add'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAddExecutorAccess().getAddKeyword_0());
+		}
+		otherlv_1='executor'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAddExecutorAccess().getExecutorKeyword_1());
+		}
+		{
+			newCompositeNode(grammarAccess.getAddExecutorAccess().getAddOrbReferenceExecutorParserRuleCall_2());
+		}
+		this_AddOrbReferenceExecutor_2=ruleAddOrbReferenceExecutor
+		{
+			$current = $this_AddOrbReferenceExecutor_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleAddOrbReferenceExecutor
+entryRuleAddOrbReferenceExecutor returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAddOrbReferenceExecutorRule()); }
+	iv_ruleAddOrbReferenceExecutor=ruleAddOrbReferenceExecutor
+	{ $current=$iv_ruleAddOrbReferenceExecutor.current; }
+	EOF;
+
+// Rule AddOrbReferenceExecutor
+ruleAddOrbReferenceExecutor returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAddOrbReferenceExecutorAccess().getExecutorEStringParserRuleCall_0_0());
+				}
+				lv_executor_0_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAddOrbReferenceExecutorRule());
+					}
+					set(
+						$current,
+						"executor",
+						lv_executor_0_0,
+						"d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='on'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAddOrbReferenceExecutorAccess().getOnKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAddOrbReferenceExecutorAccess().getJobNameEStringParserRuleCall_2_0());
+				}
+				lv_jobName_2_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAddOrbReferenceExecutorRule());
+					}
+					set(
+						$current,
+						"jobName",
+						lv_jobName_2_0,
+						"d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_3='from'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getAddOrbReferenceExecutorAccess().getFromKeyword_3());
+			}
+		)?
+		otherlv_4='orb'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getAddOrbReferenceExecutorAccess().getOrbKeyword_4());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAddOrbReferenceExecutorAccess().getOrbEStringParserRuleCall_5_0());
+				}
+				lv_orb_5_0=ruleEString
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAddOrbReferenceExecutorRule());
+					}
+					set(
+						$current,
+						"orb",
+						lv_orb_5_0,
+						"d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.EString");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
 // Entry rule entryRuleStringToStringMapEntry
 entryRuleStringToStringMapEntry returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getStringToStringMapEntryRule()); }
@@ -775,9 +1046,9 @@ ruleStringToStringMapEntry returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_1='->'
+		otherlv_1='to'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getStringToStringMapEntryAccess().getHyphenMinusGreaterThanSignKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getStringToStringMapEntryAccess().getToKeyword_1());
 		}
 		(
 			(

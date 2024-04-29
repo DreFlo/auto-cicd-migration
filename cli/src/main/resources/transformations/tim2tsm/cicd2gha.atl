@@ -342,6 +342,13 @@ rule PushTrigger2PushTrigger extends Trigger2Trigger {
 		)
 }
 
+rule ManualTrigger2WorkflowDispatchTrigger extends Trigger2Trigger {
+	from
+		cicdTrigger : CICD!ManualTrigger
+	to
+		ghaTrigger : GHA!WorkflowDispatchTrigger
+}
+
 rule Matrix2Matrix {
 	from
 		cicdMatrix : CICD!Matrix

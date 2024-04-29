@@ -158,6 +158,9 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 				TransformationsFactory.eINSTANCE.createATLScript()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM,
+				TransformationsFactory.eINSTANCE.createAddOrbReferenceExecutor()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM,
 				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
@@ -173,10 +176,19 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 				TransformationsFactory.eINSTANCE.createReplaceAgentLabels()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createAddTrigger()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createAddOrbReferenceExecutor()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
 				TransformationsFactory.eINSTANCE.createATLScript()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
+				TransformationsFactory.eINSTANCE.createAddOrbReferenceExecutor()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
 				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));

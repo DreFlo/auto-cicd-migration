@@ -697,20 +697,26 @@ helper context CICD!Job def : job2JobHelper() : CircleCI!Job =
 		OclUndefined
 	endif;
 
--- TODO IDK
 helper def : job2ExecutorHelper(job : CICD!Job) : CircleCI!Executor =
-	if job.agent.labels->size() = 1 and job.agent.labels->first().expression2String() = 'macos' then
-		thisModule.Job2MacOSExecutor(job)
-	else if job.agent.labels->size() = 1 and job.agent.labels->first().expression2String() = 'windows' then
-		thisModule.Job2WindowsOrbExecutor(job)
-	else if job.agent.labels->size() = 1 and job.agent.labels->first().expression2String() = 'machine' then
-		thisModule.Job2MachineExecutor(job)
+	if job.agent.labels->size() = 1 then
+		if job.agent.labels->first().expression2String() = 'macos' then
+			thisModule.Job2MacOSExecutor(job)
+		else if job.agent.labels->first().expression2String() = 'windows' then
+			thisModule.Job2WindowsOrbExecutor(job)
+		else if job.agent.labels->first().expression2String() = 'machine' then
+			thisModule.Job2MachineExecutor(job)
+		else if  not job.agent.container.oclIsUndefined() then
+			thisModule.Job2DockerExecutor(job)
+		else
+			OclUndefined
+		endif
+		endif
+		endif
+		endif
 	else if not job.agent.container.oclIsUndefined() then
 		thisModule.Job2DockerExecutor(job)
 	else
 		OclUndefined
-	endif
-	endif
 	endif
 	endif;
 	

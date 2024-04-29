@@ -198,7 +198,7 @@ public class ExpressionsParser {
 
     private Expression parseAtomic(String expressionString, EObject container) throws SyntaxException {
         expressionString = expressionString.trim();
-        if (expressionString.matches("^[a-zA-Z_][a-zA-Z0-9_]*(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$")) {
+        if (expressionString.matches("^\\w[\\w-]*(\\.\\w[\\w-]*)*$")) {
             Expression expression = getVariableReferenceOrDotOp(expressionString, container);
             if (expression != null) {
                 return expression;

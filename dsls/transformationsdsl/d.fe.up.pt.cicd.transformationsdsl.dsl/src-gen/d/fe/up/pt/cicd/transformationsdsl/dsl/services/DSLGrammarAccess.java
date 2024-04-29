@@ -206,13 +206,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cChangePluginParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cChangeAgentLabelParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cReplaceAgentLabelsParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cAddTriggerParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		//TIMTransformation returns TIMTransformation:
-		//    ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels
+		//    ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels
+		//ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ATLScript
@@ -226,6 +227,9 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//ReplaceAgentLabels
 		public RuleCall getReplaceAgentLabelsParserRuleCall_3() { return cReplaceAgentLabelsParserRuleCall_3; }
+		
+		//AddTrigger
+		public RuleCall getAddTriggerParserRuleCall_4() { return cAddTriggerParserRuleCall_4; }
 	}
 	public class ChangePluginElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ChangePlugin");
@@ -403,19 +407,97 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
+	public class AddTriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.AddTrigger");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAddKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cTriggerKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cWhenKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cConditionAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cConditionEStringParserRuleCall_2_1_0 = (RuleCall)cConditionAssignment_2_1.eContents().get(0);
+		private final Assignment cTriggerAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTriggerTriggerParserRuleCall_3_0 = (RuleCall)cTriggerAssignment_3.eContents().get(0);
+		
+		//AddTrigger returns AddTrigger:
+		//    'add' 'trigger' ('when' condition=EString)? trigger=Trigger
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'add' 'trigger' ('when' condition=EString)? trigger=Trigger
+		public Group getGroup() { return cGroup; }
+		
+		//'add'
+		public Keyword getAddKeyword_0() { return cAddKeyword_0; }
+		
+		//'trigger'
+		public Keyword getTriggerKeyword_1() { return cTriggerKeyword_1; }
+		
+		//('when' condition=EString)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'when'
+		public Keyword getWhenKeyword_2_0() { return cWhenKeyword_2_0; }
+		
+		//condition=EString
+		public Assignment getConditionAssignment_2_1() { return cConditionAssignment_2_1; }
+		
+		//EString
+		public RuleCall getConditionEStringParserRuleCall_2_1_0() { return cConditionEStringParserRuleCall_2_1_0; }
+		
+		//trigger=Trigger
+		public Assignment getTriggerAssignment_3() { return cTriggerAssignment_3; }
+		
+		//Trigger
+		public RuleCall getTriggerTriggerParserRuleCall_3_0() { return cTriggerTriggerParserRuleCall_3_0; }
+	}
+	public class TriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.Trigger");
+		private final RuleCall cManualTriggerParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//Trigger returns CICD::Trigger:
+		//    ManualTrigger
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ManualTrigger
+		public RuleCall getManualTriggerParserRuleCall() { return cManualTriggerParserRuleCall; }
+	}
+	public class ManualTriggerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ManualTrigger");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cManualTriggerAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cManualKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//ManualTrigger returns CICD::ManualTrigger:
+		//    {CICD::ManualTrigger} 'manual'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{CICD::ManualTrigger} 'manual'
+		public Group getGroup() { return cGroup; }
+		
+		//{CICD::ManualTrigger}
+		public Action getManualTriggerAction_0() { return cManualTriggerAction_0; }
+		
+		//'manual'
+		public Keyword getManualKeyword_1() { return cManualKeyword_1; }
+	}
 	public class CircleCITransformationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.CircleCITransformation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOnKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final RuleCall cCIRCLE_CIParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final RuleCall cSetCircleCIVersionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final RuleCall cSetCircleCIVersionParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
+		private final RuleCall cAddExecutorParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
 		
 		//CircleCITransformation returns CircleCITransformation:
-		//    'on' CIRCLE_CI (SetCircleCIVersion)
+		//    'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'on' CIRCLE_CI (SetCircleCIVersion)
+		//'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)
 		public Group getGroup() { return cGroup; }
 		
 		//'on'
@@ -424,8 +506,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//CIRCLE_CI
 		public RuleCall getCIRCLE_CIParserRuleCall_1() { return cCIRCLE_CIParserRuleCall_1; }
 		
-		//(SetCircleCIVersion)
-		public RuleCall getSetCircleCIVersionParserRuleCall_2() { return cSetCircleCIVersionParserRuleCall_2; }
+		//(SetCircleCIVersion | AddExecutor)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//SetCircleCIVersion
+		public RuleCall getSetCircleCIVersionParserRuleCall_2_0() { return cSetCircleCIVersionParserRuleCall_2_0; }
+		
+		//AddExecutor
+		public RuleCall getAddExecutorParserRuleCall_2_1() { return cAddExecutorParserRuleCall_2_1; }
 	}
 	public class SetCircleCIVersionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.SetCircleCIVersion");
@@ -459,21 +547,93 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//EString
 		public RuleCall getVersionEStringParserRuleCall_3_0() { return cVersionEStringParserRuleCall_3_0; }
 	}
+	public class AddExecutorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.AddExecutor");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAddKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cExecutorKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cAddOrbReferenceExecutorParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//AddExecutor returns AddExecutor:
+		//    'add' 'executor' (AddOrbReferenceExecutor)
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'add' 'executor' (AddOrbReferenceExecutor)
+		public Group getGroup() { return cGroup; }
+		
+		//'add'
+		public Keyword getAddKeyword_0() { return cAddKeyword_0; }
+		
+		//'executor'
+		public Keyword getExecutorKeyword_1() { return cExecutorKeyword_1; }
+		
+		//(AddOrbReferenceExecutor)
+		public RuleCall getAddOrbReferenceExecutorParserRuleCall_2() { return cAddOrbReferenceExecutorParserRuleCall_2; }
+	}
+	public class AddOrbReferenceExecutorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.AddOrbReferenceExecutor");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cExecutorAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cExecutorEStringParserRuleCall_0_0 = (RuleCall)cExecutorAssignment_0.eContents().get(0);
+		private final Keyword cOnKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cJobNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cJobNameEStringParserRuleCall_2_0 = (RuleCall)cJobNameAssignment_2.eContents().get(0);
+		private final Keyword cFromKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cOrbKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cOrbAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOrbEStringParserRuleCall_5_0 = (RuleCall)cOrbAssignment_5.eContents().get(0);
+		
+		//AddOrbReferenceExecutor returns AddOrbReferenceExecutor:
+		//    executor=EString 'on' jobName=EString 'from'? 'orb' orb=EString
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//executor=EString 'on' jobName=EString 'from'? 'orb' orb=EString
+		public Group getGroup() { return cGroup; }
+		
+		//executor=EString
+		public Assignment getExecutorAssignment_0() { return cExecutorAssignment_0; }
+		
+		//EString
+		public RuleCall getExecutorEStringParserRuleCall_0_0() { return cExecutorEStringParserRuleCall_0_0; }
+		
+		//'on'
+		public Keyword getOnKeyword_1() { return cOnKeyword_1; }
+		
+		//jobName=EString
+		public Assignment getJobNameAssignment_2() { return cJobNameAssignment_2; }
+		
+		//EString
+		public RuleCall getJobNameEStringParserRuleCall_2_0() { return cJobNameEStringParserRuleCall_2_0; }
+		
+		//'from'?
+		public Keyword getFromKeyword_3() { return cFromKeyword_3; }
+		
+		//'orb'
+		public Keyword getOrbKeyword_4() { return cOrbKeyword_4; }
+		
+		//orb=EString
+		public Assignment getOrbAssignment_5() { return cOrbAssignment_5; }
+		
+		//EString
+		public RuleCall getOrbEStringParserRuleCall_5_0() { return cOrbEStringParserRuleCall_5_0; }
+	}
 	public class StringToStringMapEntryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.StringToStringMapEntry");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cKeyAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cKeyEStringParserRuleCall_0_0 = (RuleCall)cKeyAssignment_0.eContents().get(0);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cToKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueEStringParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//StringToStringMapEntry returns StringToStringMapEntry:
-		//    key=EString '->' value=EString
+		//    key=EString 'to' value=EString
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//key=EString '->' value=EString
+		//key=EString 'to' value=EString
 		public Group getGroup() { return cGroup; }
 		
 		//key=EString
@@ -482,8 +642,8 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//EString
 		public RuleCall getKeyEStringParserRuleCall_0_0() { return cKeyEStringParserRuleCall_0_0; }
 		
-		//'->'
-		public Keyword getHyphenMinusGreaterThanSignKeyword_1() { return cHyphenMinusGreaterThanSignKeyword_1; }
+		//'to'
+		public Keyword getToKeyword_1() { return cToKeyword_1; }
 		
 		//value=EString
 		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
@@ -679,8 +839,13 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final ChangePluginElements pChangePlugin;
 	private final ChangeAgentLabelElements pChangeAgentLabel;
 	private final ReplaceAgentLabelsElements pReplaceAgentLabels;
+	private final AddTriggerElements pAddTrigger;
+	private final TriggerElements pTrigger;
+	private final ManualTriggerElements pManualTrigger;
 	private final CircleCITransformationElements pCircleCITransformation;
 	private final SetCircleCIVersionElements pSetCircleCIVersion;
+	private final AddExecutorElements pAddExecutor;
+	private final AddOrbReferenceExecutorElements pAddOrbReferenceExecutor;
 	private final StringToStringMapEntryElements pStringToStringMapEntry;
 	private final MODELSElements eMODELS;
 	private final GHAElements pGHA;
@@ -704,8 +869,13 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pChangePlugin = new ChangePluginElements();
 		this.pChangeAgentLabel = new ChangeAgentLabelElements();
 		this.pReplaceAgentLabels = new ReplaceAgentLabelsElements();
+		this.pAddTrigger = new AddTriggerElements();
+		this.pTrigger = new TriggerElements();
+		this.pManualTrigger = new ManualTriggerElements();
 		this.pCircleCITransformation = new CircleCITransformationElements();
 		this.pSetCircleCIVersion = new SetCircleCIVersionElements();
+		this.pAddExecutor = new AddExecutorElements();
+		this.pAddOrbReferenceExecutor = new AddOrbReferenceExecutorElements();
 		this.pStringToStringMapEntry = new StringToStringMapEntryElements();
 		this.eMODELS = new MODELSElements();
 		this.pGHA = new GHAElements();
@@ -778,7 +948,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//TIMTransformation returns TIMTransformation:
-	//    ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels
+	//    ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger
 	//;
 	public TIMTransformationElements getTIMTransformationAccess() {
 		return pTIMTransformation;
@@ -821,8 +991,41 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getReplaceAgentLabelsAccess().getRule();
 	}
 	
+	//AddTrigger returns AddTrigger:
+	//    'add' 'trigger' ('when' condition=EString)? trigger=Trigger
+	//;
+	public AddTriggerElements getAddTriggerAccess() {
+		return pAddTrigger;
+	}
+	
+	public ParserRule getAddTriggerRule() {
+		return getAddTriggerAccess().getRule();
+	}
+	
+	//Trigger returns CICD::Trigger:
+	//    ManualTrigger
+	//;
+	public TriggerElements getTriggerAccess() {
+		return pTrigger;
+	}
+	
+	public ParserRule getTriggerRule() {
+		return getTriggerAccess().getRule();
+	}
+	
+	//ManualTrigger returns CICD::ManualTrigger:
+	//    {CICD::ManualTrigger} 'manual'
+	//;
+	public ManualTriggerElements getManualTriggerAccess() {
+		return pManualTrigger;
+	}
+	
+	public ParserRule getManualTriggerRule() {
+		return getManualTriggerAccess().getRule();
+	}
+	
 	//CircleCITransformation returns CircleCITransformation:
-	//    'on' CIRCLE_CI (SetCircleCIVersion)
+	//    'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)
 	//;
 	public CircleCITransformationElements getCircleCITransformationAccess() {
 		return pCircleCITransformation;
@@ -843,8 +1046,30 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getSetCircleCIVersionAccess().getRule();
 	}
 	
+	//AddExecutor returns AddExecutor:
+	//    'add' 'executor' (AddOrbReferenceExecutor)
+	//;
+	public AddExecutorElements getAddExecutorAccess() {
+		return pAddExecutor;
+	}
+	
+	public ParserRule getAddExecutorRule() {
+		return getAddExecutorAccess().getRule();
+	}
+	
+	//AddOrbReferenceExecutor returns AddOrbReferenceExecutor:
+	//    executor=EString 'on' jobName=EString 'from'? 'orb' orb=EString
+	//;
+	public AddOrbReferenceExecutorElements getAddOrbReferenceExecutorAccess() {
+		return pAddOrbReferenceExecutor;
+	}
+	
+	public ParserRule getAddOrbReferenceExecutorRule() {
+		return getAddOrbReferenceExecutorAccess().getRule();
+	}
+	
 	//StringToStringMapEntry returns StringToStringMapEntry:
-	//    key=EString '->' value=EString
+	//    key=EString 'to' value=EString
 	//;
 	public StringToStringMapEntryElements getStringToStringMapEntryAccess() {
 		return pStringToStringMapEntry;

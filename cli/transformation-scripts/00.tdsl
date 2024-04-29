@@ -1,6 +1,6 @@
 during {
-    change plugin "persist_to_workspace" -> "ptw" version "8"
-    change label "machine" -> "ubuntu"
+    change plugin "persist_to_workspace" to "ptw" version "8"
+    change label "machine" to "ubuntu"
     set labels when "input.labels->exists(label | label.expression2String() = 'macos')" {"macos-latest"}
 }
 after {

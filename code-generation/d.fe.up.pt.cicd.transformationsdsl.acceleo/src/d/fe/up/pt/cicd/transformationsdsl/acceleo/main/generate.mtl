@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generate('http://d.fe.up.pt/Transformations')]
+[module generate('http://d.fe.up.pt/Transformations', 'http://www.d.fe.up.pt/CICD')]
 
 [query public generateATLFileName(transformation : Transformation, index : Integer, prefix : String) : String = 
 	prefix + generateIndexString(index) + '_' + getModelName(transformation) + '.atl'
@@ -87,6 +87,8 @@ create OUT : CICD2 from IN : CICD1;
 [generateChangeAgentLabel(transformation.oclAsType(ChangeAgentLabel))/]
 [elseif (transformation.oclIsTypeOf(ReplaceAgentLabels))]
 [generateReplaceAgentLabels(transformation.oclAsType(ReplaceAgentLabels))/]
+[elseif (transformation.oclIsTypeOf(AddTrigger))]
+[generateAddTrigger(transformation.oclAsType(AddTrigger))/]
 [/if]
 [/template]
 
@@ -181,6 +183,43 @@ lazy rule String2StringLiteral {
 [generateCopyParameters()/]
 [generateCopySteps()/]
 [generateExpression2StringHelpers('CICD1')/]
+[/template]
+
+[template public generateAddTrigger(transformation : AddTrigger)]
+[if (condition.oclIsUndefined())]
+	block_expression
+[else]
+[generateCopyPipeline()/]
+rule PipelineWithTrigger extends Pipeline {
+	from
+		input : CICD1!Pipeline (
+			[condition/]
+		)
+	to
+		output : CICD2!Pipeline(
+			triggers <- input.triggers->including(thisModule.GenerateTrigger(''))
+		)
+}
+[/if]
+[generateGenerateTrigger(trigger)/]
+[generateCopyVariableDeclaration()/]
+[generateCopyAgent()/]
+[generateCopyDockerContainer()/]
+[generateCopyExpressions()/]
+[generateCopyJob()/]
+[generateCopyMatrix()/]
+[generateCopyParameters()/]
+[generateCopySteps()/]
+[generateExpression2StringHelpers('CICD1')/]
+[/template]
+
+[template public generateGenerateTrigger(trigger : Trigger)]
+[if (trigger.oclIsTypeOf(ManualTrigger))]
+lazy rule GenerateTrigger {
+	from input : String
+	to output : CICD2!ManualTrigger
+}
+[/if]
 [/template]
 
 [template public generateExpression2StringHelpers(modelName : String)]
@@ -650,6 +689,8 @@ create OUT : CircleCI2 from IN : CircleCI1;
 
 [if (transformation.oclIsTypeOf(SetCircleCIVersion))]
 [generateSetCircleCIVersion(transformation.oclAsType(SetCircleCIVersion))/]
+[elseif (transformation.oclIsTypeOf(AddOrbReferenceExecutor))]
+[generateAddOrbReferenceExecutor(transformation.oclAsType(AddOrbReferenceExecutor))/]
 [/if]
 [/template]
 
@@ -667,6 +708,665 @@ rule Pipeline {
 			version <- '[version/]',
 			setup <- input.setup,
 			workflows <- input.workflows
+		)
+}
+[/template]
+
+[template public generateAddOrbReferenceExecutor(transformation : AddOrbReferenceExecutor)]
+[generateCopyCircleCIPipeline()/]
+[generateCopyCircleCIOrbs()/]
+[generateCopyCircleCIParameter()/]
+[generateCopyCircleCICommand()/]
+[generateCopyCircleCIOrbReferenceExecutor()/]
+[generateCopyCircleCIJob()/]
+rule AddExecutor extends Job {
+	from
+		input : CircleCI1!Job (
+			input.name = '[jobName/]'
+		)
+	using {
+		orbs : Sequence(CircleCI1!Orb) = input.refImmediateComposite().orbs;
+	}
+	to
+		output : CircleCI2!Job (
+			executor <- thisModule.CreateExecutor('[orb/]', '[executor/]', orbs)
+		)
+}
+
+lazy rule CreateExecutor {
+	from
+		orbName : String,
+		executorName : String,
+		orbs : Sequence(CircleCI1!Orb)
+	to
+		output : CircleCI2!OrbReferenceExecutor (
+			orb <- thisModule.getExecutorByName(orbName, orbs),
+			orbExecutorName <- executorName
+		)
+}
+
+helper def : getExecutorByName(orbName : String, orbs : Sequence(CircleCI1!Orb)) : CircleCI1!Orb =
+	let matching : Sequence(CircleCI1!Orb) = orbs->select(orb | orb.name = orbName) in
+	if matching->notEmpty() then matching->first() else OclUndefined endif;
+
+[generateCopyCircleCISteps()/]
+[generateCopyCircleCIVariables()/]
+[generateCopyCircleCIWorkflows()/]
+[generateCopyCircleCIExpressions()/]
+[/template]
+
+[template public generateCopyCircleCIPipeline(traceabilityContext : OclAny)]
+rule Pipeline {
+	from
+		input : CircleCI1!Pipeline
+	to 
+		output : CircleCI2!Pipeline (
+			commands <- input.commands,
+			executors <- input.executors,
+			jobs <- input.jobs,
+			orbs <- input.orbs,
+			parameters <- input.parameters,
+			setup <- input.setup,
+			version <- input.version,
+			workflows <- input.workflows
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIOrbs(traceabilityContext : OclAny)]
+abstract rule Orb {
+	from
+		input : CircleCI1!Orb
+	to
+		output : CircleCI2!Orb (
+			name <- input.name
+		)
+}
+
+rule OrbReference extends Orb {
+	from
+		input : CircleCI1!OrbReference
+	to
+		output : CircleCI2!OrbReference (
+			reference <- input.reference
+		)
+}
+
+rule OrbDefinition extends Orb {
+	from
+		input : CircleCI1!OrbDefinition
+	to
+		output : CircleCI2!OrbDefinition (
+			commands <- input.commands,
+			executors <- input.executors,
+			jobs <- input.jobs,
+			orbs <- input.orbs			
+		)
+}
+[/template]
+
+[template public generateCopyCircleCICommand(traceabilityContext : OclAny)]
+rule Command {
+	from
+		input : CircleCI1!Command
+	to
+		output : CircleCI2!Command (
+			description <- input.description,
+			name <- input.name,
+			parameters <- input.parameters,
+			steps <- input.steps
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIParameter(traceabilityContext : OclAny)]
+rule Parameter {
+	from
+		input : CircleCI1!Parameter
+	to
+		output : CircleCI2!Parameter (
+			default <- input.default,
+			description <- input.description,
+			enumValues <- input.enumValues,
+			name <- input.name,
+			type <- input.type
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIOrbReferenceExecutor(traceabilityContext : OclAny)]
+abstract rule Executor {
+	from
+		input : CircleCI1!Executor
+	to
+		output : CircleCI2!Executor (
+			environmentVariables <- input.environmentVariables,
+			name <- input.name,
+			resourceClass <- input.resourceClass,
+			shell <- input.shell,
+			workingDirectory <- input.workingDirectory
+		)
+}
+
+rule DockerExecutor extends Executor {
+	from
+		input : CircleCI1!DockerExecutor
+	to
+		output : CircleCI2!DockerExecutor (
+			containers <- input.containers
+		)
+}
+
+rule DockerContainer {
+	from
+		input : CircleCI1!DockerContainer
+	to
+		output : CircleCI2!DockerContainer (
+			awsAccessKeyID <- input.awsAccessKeyID,
+			awsSecretAccessKey <- input.awsSecretAccessKey,
+			command <- input.command,
+			entrypoint <- input.entrypoint,
+			environmentVariables <- input.environmentVariables,
+			image <- input.image,
+			name <- input.name,
+			oidc <- input.oidc,
+			password <- input.password,
+			user <- input.user,
+			username <- input.username
+		)
+}
+
+rule MachineExecutor extends Executor {
+	from
+		input : CircleCI1!MachineExecutor
+	to
+		output : CircleCI2!MachineExecutor (
+			dockerLayerCaching <- input.dockerLayerCaching,
+			image <- input.image
+		)
+}
+
+rule MacOSExecutor extends Executor {
+	from
+		input : CircleCI1!MacOSExecutor
+	to
+		output : CircleCI2!MacOSExecutor (
+			xcode <- input.xcode
+		)
+}
+
+rule WindowsOrbExecutor extends Executor {
+	from
+		input : CircleCI1!WindowsOrbExecutor
+	to
+		output : CircleCI2!WindowsOrbExecutor (
+			executor <- input.executor
+		)
+}
+
+abstract rule ReferenceExecutor extends Executor {
+	from
+		input : CircleCI1!ReferenceExecutor
+	to
+		output : CircleCI2!ReferenceExecutor
+}
+
+rule ExecutorReferenceExecutor extends ReferenceExecutor {
+	from
+		input : CircleCI1!ExecutorReferenceExecutor
+	to
+		output : CircleCI2!ExecutorReferenceExecutor (
+			executor <- input.executor
+		)
+}
+
+rule OrbReferenceExecutor extends ReferenceExecutor {
+	from
+		input : CircleCI1!OrbReferenceExecutor
+	to
+		output : CircleCI2!OrbReferenceExecutor (
+			orb <- input.orb
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIJob(traceabilityContext : OclAny)]
+rule Job {
+	from
+		input : CircleCI1!Job
+	to
+		output : CircleCI2!Job (
+			circleCIIPRanges <- input.circleCIIPRanges,
+			environmentVariables <- input.environmentVariables,
+			executor <- input.executor,
+			name <- input.name,
+			parallelism <- input.parallelism,
+			parameters <- input.parameters,
+			steps <- input.steps
+		)
+}
+[/template]
+
+[template public generateCopyCircleCISteps(traceabilityContext : OclAny)]
+abstract rule Step {
+	from
+		input : CircleCI1!Step
+	to
+		output : CircleCI2!Step
+}
+
+rule RunStep extends Step {
+	from
+		input : CircleCI1!RunStep
+	to
+		output : CircleCI2!RunStep (
+			background <- input.background,
+			command <- input.command,
+			environmentVariables <- input.environmentVariables,
+			name <- input.name,
+			noOutputTimeout <- input.noOutputTimeout,
+			shell <- input.shell,
+			when <- input.when,
+			workingDirectory <- input.workingDirectory
+		)
+}
+
+abstract rule ConditionalStep extends Step {
+	from
+		input : CircleCI1!ConditionalStep
+	to
+		output : CircleCI2!ConditionalStep (
+			condition <- input.condition,
+			steps <- input.steps
+		)
+}
+
+rule WhenStep extends ConditionalStep {
+	from
+		input : CircleCI1!WhenStep
+	to
+		output : CircleCI2!WhenStep
+}
+
+rule UnlessStep extends ConditionalStep {
+	from
+		input : CircleCI1!UnlessStep
+	to
+		output : CircleCI2!UnlessStep
+}
+
+rule CheckoutStep extends Step {
+	from
+		input : CircleCI1!CheckoutStep
+	to
+		output : CircleCI2!CheckoutStep (
+			path <- input.path
+		)
+}
+
+rule SetupRemoteDockerStep extends Step {
+	from
+		input : CircleCI1!SetupRemoteDockerStep
+	to
+		output : CircleCI2!SetupRemoteDockerStep (
+			dockerLayerCaching <- input.dockerLayerCaching,
+			version <- input.version
+		)
+}
+
+rule SaveCacheStep extends Step {
+	from
+		input : CircleCI1!SaveCacheStep
+	to
+		output : CircleCI2!SaveCacheStep (
+			key <- input.key,
+			name <- input.name,
+			paths <- input.paths,
+			when <- input.when
+		)
+}
+
+rule RestoreCacheStep extends Step {
+	from
+		input : CircleCI1!RestoreCacheStep
+	to
+		output : CircleCI2!RestoreCacheStep (
+			keys <- input.keys,
+			name <- input.name
+		)
+}
+
+rule StoreArtifactsStep extends Step {
+	from
+		input : CircleCI1!StoreArtifactsStep
+	to
+		output : CircleCI2!StoreArtifactsStep (
+			destination <- input.destination,
+			path <- input.path
+		)
+}
+
+rule StoreTestResultsStep extends Step {
+	from
+		input : CircleCI1!StoreTestResultsStep
+	to
+		output : CircleCI2!StoreTestResultsStep (
+			path <- input.path
+		)
+}
+
+rule PersistToWorkspaceStep extends Step {
+	from
+		input : CircleCI1!PersistToWorkspaceStep
+	to
+		output : CircleCI2!PersistToWorkspaceStep (
+			paths <- input.paths,
+			root <- input.root
+		)
+}
+
+rule AttachWorkspaceStep extends Step {
+	from
+		input : CircleCI1!AttachWorkspaceStep
+	to
+		output : CircleCI2!AttachWorkspaceStep (
+			at <- input.at
+		)
+}
+
+rule AddSSHKeys extends Step {
+	from
+		input : CircleCI1!AddSSHKeysStep
+	to
+		output : CircleCI2!AddSSHKeysStep (
+			fingerprints <- input.fingerprints
+		)
+}
+
+rule OrbReferenceStep extends Step {
+	from
+		input : CircleCI1!OrbReferenceStep
+	to
+		output : CircleCI2!OrbReferenceStep (
+			arguments <- input.arguments,
+			jobName <- input.jobName,
+			orb <- input.orb
+		)
+}
+
+rule CommandReferenceStep extends Step {
+	from
+		input : CircleCI1!CommandReferenceStep
+	to
+		output : CircleCI2!CommandReferenceStep (
+			arguments <- input.arguments,
+			command <- input.command
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIVariables(traceabilityContext : OclAny)]
+rule VariableAssignment {
+	from
+		input : CircleCI1!VariableAssignment
+	to
+		output : CircleCI2!VariableAssignment (
+			key <- input.key,
+			value <- input.value
+		)
+}
+
+rule VariableDeclaration {
+	from
+		input : CircleCI1!VariableDeclaration
+	to
+		output : CircleCI2!VariableDeclaration (
+			name <- input.name
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIWorkflows(traceabilityContext : OclAny)]
+rule Workflow {
+	from
+		input : CircleCI1!Workflow
+	to
+		output : CircleCI2!Workflow (
+			condition <- input.condition,
+			isWhen <- input.isWhen,
+			jobs <- input.jobs,
+			name <- input.name,
+			triggers <- input.triggers
+		)
+}
+
+abstract rule Trigger {
+	from
+		input : CircleCI1!Trigger
+	to
+		output : CircleCI2!Trigger (
+			branches <- input.branches,
+			ignoreSpecifiedBranches <- input.ignoreSpecifiedBranches
+		)
+}
+
+rule ScheduleTrigger extends Trigger {
+	from
+		input : CircleCI1!ScheduleTrigger
+	to
+		output : CircleCI2!ScheduleTrigger (
+			cron <- input.cron
+		)
+}
+
+abstract rule WorkflowJobConfiguration {
+	from
+		input : CircleCI1!WorkflowJobConfiguration
+	to
+		output : CircleCI2!WorkflowJobConfiguration (
+			arguments <- input.arguments,
+			branches <- input.branches,
+			contexts <- input.contexts,
+			ignoreSpecifiedBranches <- input.ignoreSpecifiedBranches,
+			ignoreSpecifiedTags <- input.ignoreSpecifiedTags,
+			matrix <- input.matrix,
+			name <- input.name,
+			postSteps <- input.postSteps,
+			preSteps <- input.preSteps,
+			requires <- input.requires,
+			tags <- input.tags
+		)
+}
+
+rule NullWorkflowJobConfiguration extends WorkflowJobConfiguration {
+	from	
+		input : CircleCI1!NullWorkflowJobConfiguration
+	to
+		output : CircleCI2!NullWorkflowJobConfiguration
+}
+
+rule WorkflowDefinedJobConfiguration extends WorkflowJobConfiguration {
+	from
+		input : CircleCI1!WorkflowDefinedJobConfiguration
+	to
+		output : CircleCI2!WorkflowDefinedJobConfiguration (
+			job <- input.job
+		)
+}
+
+rule WorkflowApprovalJobConfiguration extends WorkflowJobConfiguration {
+	from
+		input : CircleCI1!WorkflowApprovalJobConfiguration
+	to
+		output : CircleCI2!WorkflowApprovalJobConfiguration
+}
+
+rule WorkflowOrbJobConfiguration extends WorkflowJobConfiguration {
+	from
+		input : CircleCI1!WorkflowOrbJobConfiguration
+	to
+		output : CircleCI2!WorkflowOrbJobConfiguration (
+			orb <- input.orb,
+			jobName <- input.jobName
+		)
+}
+
+rule Matrix {
+	from
+		input : CircleCI1!Matrix
+	to
+		output : CircleCI2!Matrix (
+			alias <- input.alias,
+			excludes <- input.excludes,
+			parameters <- input.parameters
+		)
+}
+
+rule MatrixParameter {
+	from
+		input : CircleCI1!MatrixParameter
+	to
+		output : CircleCI2!MatrixParameter (
+			cells <- input.cells,
+			name <- input.name
+		)
+}
+
+rule MatrixCombination {
+	from
+		input : CircleCI1!MatrixCombination
+	to
+		output : CircleCI2!MatrixCombination (
+			entries <- input.entries
+		)
+}
+[/template]
+
+[template public generateCopyCircleCIExpressions(traceabilityContext : OclAny)]
+rule Concat {
+	from
+		input : CircleCI1!Concat
+	to
+		output : CircleCI2!Concat (
+			expressions <- input.expressions
+		)
+}
+
+abstract rule InfinitaryOperator {
+	from
+		input : CircleCI1!InfinitaryOperator
+	to
+		output : CircleCI2!InfinitaryOperator (
+			operands <- input.operands
+		)
+}
+
+rule And extends InfinitaryOperator {
+	from
+		input : CircleCI1!And
+	to
+		output : CircleCI2!And
+}
+
+rule Or extends InfinitaryOperator {
+	from
+		input : CircleCI1!Or
+	to
+		output : CircleCI2!Or
+}
+
+rule Equals extends InfinitaryOperator {
+	from
+		input : CircleCI1!Equals
+	to
+		output : CircleCI2!Equals
+}
+
+abstract rule UnaryOperator {
+	from
+		input : CircleCI1!UnaryOperator
+	to
+		output : CircleCI2!UnaryOperator (
+			operand <- input.operand
+		)
+}
+
+rule Matches {
+	from
+		input : CircleCI1!Matches
+	to
+		output : CircleCI2!Matches (
+			pattern <- input.pattern,
+			value <- input.value
+		)
+}
+
+abstract rule Value {
+	from
+		input : CircleCI1!Value
+	to
+		output : CircleCI2!Value
+}
+
+rule DotOperator extends Value {
+	from
+		input : CircleCI1!DotOperator
+	to
+		output : CircleCI2!DotOperator (
+			lhs <- input.lhs,
+			rhs <- input.rhs
+		)
+}
+
+abstract rule Literal extends Value {
+	from
+		input : CircleCI1!Literal
+	to
+		output : CircleCI2!Literal
+}
+
+rule StringLiteral extends Literal {
+	from
+		input : CircleCI1!StringLiteral
+	to
+		output : CircleCI2!StringLiteral (
+			value <- input.value
+		)
+}
+
+rule IntegerLiteral extends Literal {
+	from
+		input : CircleCI1!IntegerLiteral
+	to
+		output : CircleCI2!IntegerLiteral (
+			value <- input.value
+		)
+}
+
+rule DoubleLiteral extends Literal {
+	from
+		input : CircleCI1!DoubleLiteral
+	to
+		output : CircleCI2!DoubleLiteral (
+			value <- input.value
+		)
+}
+
+rule BooleanLiteral extends Literal {
+	from
+		input : CircleCI1!BooleanLiteral
+	to
+		output : CircleCI2!BooleanLiteral (
+			value <- input.value
+		)
+}
+
+rule VariableReference extends Value {
+	from
+		input : CircleCI1!VariableReference
+	to
+		output : CircleCI2!VariableReference (
+			reference <- input.reference
 		)
 }
 [/template]

@@ -7,6 +7,7 @@
     modelPluginID="d.fe.up.pt.cicd.transformationsdsl.metamodel" modelName="Transformations"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" codeFormatting="true"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="17.0" copyrightFields="false"
+    usedGenPackages="../../d.fe.up.pt.cicd.metamodel/model/CICD.genmodel#//CICD ../../d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.genmodel#//CircleCI"
     operationReflection="true" importOrganizing="true">
   <foreignModel>Transformations.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
@@ -31,6 +32,9 @@
     <genClasses image="false" ecoreClass="Transformations.ecore#//TSMTransformation"/>
     <genClasses image="false" ecoreClass="Transformations.ecore#//InplaceTransformation"/>
     <genClasses ecoreClass="Transformations.ecore#//OutplaceTransformation"/>
+    <genClasses image="false" ecoreClass="Transformations.ecore#//ConditionalTransformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ConditionalTransformation/condition"/>
+    </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//ATLScript">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLScript/script"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ATLScript/model"/>
@@ -44,11 +48,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangeAgentLabel/name"/>
     </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//ReplaceAgentLabels">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/condition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/labels"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//AddTrigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//AddTrigger/trigger"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Transformations.ecore#//GHATransformation"/>
     <genClasses image="false" ecoreClass="Transformations.ecore#//CircleCITransformation"/>
+    <genClasses ecoreClass="Transformations.ecore#//AddExecutor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//AddExecutor/jobName"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//AddOrbReferenceExecutor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//AddOrbReferenceExecutor/orb"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//AddOrbReferenceExecutor/executor"/>
+    </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//SetCircleCIVersion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//SetCircleCIVersion/version"/>
     </genClasses>

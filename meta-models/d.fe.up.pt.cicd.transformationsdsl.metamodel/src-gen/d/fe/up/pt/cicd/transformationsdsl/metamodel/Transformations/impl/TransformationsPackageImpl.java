@@ -2,10 +2,17 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.CircleCITransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.InplaceTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation;
@@ -89,6 +96,13 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass conditionalTransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass atlScriptEClass = null;
 
 	/**
@@ -117,6 +131,13 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass addTriggerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass ghaTransformationEClass = null;
 
 	/**
@@ -125,6 +146,20 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	private EClass circleCITransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addExecutorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addOrbReferenceExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,6 +224,10 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 				: new TransformationsPackageImpl();
 
 		isInited = true;
+
+		// Initialize simple dependencies
+		CICDPackage.eINSTANCE.eClass();
+		CircleCIPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theTransformationsPackage.createPackageContents();
@@ -330,6 +369,26 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public EClass getConditionalTransformation() {
+		return conditionalTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConditionalTransformation_Condition() {
+		return (EAttribute) conditionalTransformationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getATLScript() {
 		return atlScriptEClass;
 	}
@@ -430,7 +489,7 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getReplaceAgentLabels_Condition() {
+	public EAttribute getReplaceAgentLabels_Labels() {
 		return (EAttribute) replaceAgentLabelsEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -440,8 +499,18 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getReplaceAgentLabels_Labels() {
-		return (EAttribute) replaceAgentLabelsEClass.getEStructuralFeatures().get(1);
+	public EClass getAddTrigger() {
+		return addTriggerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAddTrigger_Trigger() {
+		return (EReference) addTriggerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -462,6 +531,56 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	@Override
 	public EClass getCircleCITransformation() {
 		return circleCITransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAddExecutor() {
+		return addExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAddExecutor_JobName() {
+		return (EAttribute) addExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAddOrbReferenceExecutor() {
+		return addOrbReferenceExecutorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAddOrbReferenceExecutor_Orb() {
+		return (EAttribute) addOrbReferenceExecutorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAddOrbReferenceExecutor_Executor() {
+		return (EAttribute) addOrbReferenceExecutorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -543,6 +662,9 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 
 		outplaceTransformationEClass = createEClass(OUTPLACE_TRANSFORMATION);
 
+		conditionalTransformationEClass = createEClass(CONDITIONAL_TRANSFORMATION);
+		createEAttribute(conditionalTransformationEClass, CONDITIONAL_TRANSFORMATION__CONDITION);
+
 		atlScriptEClass = createEClass(ATL_SCRIPT);
 		createEAttribute(atlScriptEClass, ATL_SCRIPT__SCRIPT);
 		createEAttribute(atlScriptEClass, ATL_SCRIPT__MODEL);
@@ -556,12 +678,21 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		createEReference(changeAgentLabelEClass, CHANGE_AGENT_LABEL__NAME);
 
 		replaceAgentLabelsEClass = createEClass(REPLACE_AGENT_LABELS);
-		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__CONDITION);
 		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__LABELS);
+
+		addTriggerEClass = createEClass(ADD_TRIGGER);
+		createEReference(addTriggerEClass, ADD_TRIGGER__TRIGGER);
 
 		ghaTransformationEClass = createEClass(GHA_TRANSFORMATION);
 
 		circleCITransformationEClass = createEClass(CIRCLE_CI_TRANSFORMATION);
+
+		addExecutorEClass = createEClass(ADD_EXECUTOR);
+		createEAttribute(addExecutorEClass, ADD_EXECUTOR__JOB_NAME);
+
+		addOrbReferenceExecutorEClass = createEClass(ADD_ORB_REFERENCE_EXECUTOR);
+		createEAttribute(addOrbReferenceExecutorEClass, ADD_ORB_REFERENCE_EXECUTOR__ORB);
+		createEAttribute(addOrbReferenceExecutorEClass, ADD_ORB_REFERENCE_EXECUTOR__EXECUTOR);
 
 		setCircleCIVersionEClass = createEClass(SET_CIRCLE_CI_VERSION);
 		createEAttribute(setCircleCIVersionEClass, SET_CIRCLE_CI_VERSION__VERSION);
@@ -594,6 +725,9 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		CICDPackage theCICDPackage = (CICDPackage) EPackage.Registry.INSTANCE.getEPackage(CICDPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -603,6 +737,7 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		tsmTransformationEClass.getESuperTypes().add(this.getTransformation());
 		inplaceTransformationEClass.getESuperTypes().add(this.getTransformation());
 		outplaceTransformationEClass.getESuperTypes().add(this.getTransformation());
+		conditionalTransformationEClass.getESuperTypes().add(this.getTransformation());
 		atlScriptEClass.getESuperTypes().add(this.getTransformation());
 		atlScriptEClass.getESuperTypes().add(this.getTSMTransformation());
 		atlScriptEClass.getESuperTypes().add(this.getTIMTransformation());
@@ -612,8 +747,15 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		changeAgentLabelEClass.getESuperTypes().add(this.getTIMTransformation());
 		replaceAgentLabelsEClass.getESuperTypes().add(this.getOutplaceTransformation());
 		replaceAgentLabelsEClass.getESuperTypes().add(this.getTIMTransformation());
+		replaceAgentLabelsEClass.getESuperTypes().add(this.getConditionalTransformation());
+		addTriggerEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		addTriggerEClass.getESuperTypes().add(this.getTIMTransformation());
+		addTriggerEClass.getESuperTypes().add(this.getConditionalTransformation());
 		ghaTransformationEClass.getESuperTypes().add(this.getTSMTransformation());
 		circleCITransformationEClass.getESuperTypes().add(this.getTSMTransformation());
+		addExecutorEClass.getESuperTypes().add(this.getCircleCITransformation());
+		addExecutorEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		addOrbReferenceExecutorEClass.getESuperTypes().add(this.getAddExecutor());
 		setCircleCIVersionEClass.getESuperTypes().add(this.getCircleCITransformation());
 		setCircleCIVersionEClass.getESuperTypes().add(this.getInplaceTransformation());
 
@@ -653,6 +795,12 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		initEClass(outplaceTransformationEClass, OutplaceTransformation.class, "OutplaceTransformation", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(conditionalTransformationEClass, ConditionalTransformation.class, "ConditionalTransformation",
+				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConditionalTransformation_Condition(), ecorePackage.getEString(), "condition", null, 0, 1,
+				ConditionalTransformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(atlScriptEClass, ATLScript.class, "ATLScript", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getATLScript_Script(), ecorePackage.getEString(), "script", null, 1, 1, ATLScript.class,
@@ -679,18 +827,35 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 
 		initEClass(replaceAgentLabelsEClass, ReplaceAgentLabels.class, "ReplaceAgentLabels", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReplaceAgentLabels_Condition(), ecorePackage.getEString(), "condition", null, 0, 1,
-				ReplaceAgentLabels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getReplaceAgentLabels_Labels(), ecorePackage.getEString(), "labels", null, 0, -1,
 				ReplaceAgentLabels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(addTriggerEClass, AddTrigger.class, "AddTrigger", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAddTrigger_Trigger(), theCICDPackage.getTrigger(), null, "trigger", null, 0, 1,
+				AddTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ghaTransformationEClass, GHATransformation.class, "GHATransformation", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(circleCITransformationEClass, CircleCITransformation.class, "CircleCITransformation", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(addExecutorEClass, AddExecutor.class, "AddExecutor", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAddExecutor_JobName(), ecorePackage.getEString(), "jobName", null, 1, 1, AddExecutor.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(addOrbReferenceExecutorEClass, AddOrbReferenceExecutor.class, "AddOrbReferenceExecutor",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAddOrbReferenceExecutor_Orb(), ecorePackage.getEString(), "orb", null, 1, 1,
+				AddOrbReferenceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAddOrbReferenceExecutor_Executor(), ecorePackage.getEString(), "executor", null, 1, 1,
+				AddOrbReferenceExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(setCircleCIVersionEClass, SetCircleCIVersion.class, "SetCircleCIVersion", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

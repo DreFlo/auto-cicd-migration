@@ -18,7 +18,6 @@ import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -30,6 +29,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final OutputPackage outputPackage;
     private IModel inputModel;
     private IModel outputModel;
+    private final String atlFilePath;
     private final InputStream atlFileStream;
     private final String inputModelName;
     private final String outputModelName;
@@ -40,6 +40,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         this.resourceSet = resourceSet;
         this.inputPackage = inputPackage;
         this.outputPackage = outputPackage;
+        this.atlFilePath = null;
         this.atlFileStream = atlFileStream;
         this.inputModelName = inputModelName;
         this.outputModelName = outputModelName;
@@ -51,6 +52,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         this.resourceSet = resourceSet;
         this.inputPackage = inputPackage;
         this.outputPackage = outputPackage;
+        this.atlFilePath = atlFilePath;
         Path path = Path.of(atlFilePath);
         if (path.toFile().exists()) {
             this.atlFileStream = path.toUri().toURL().openStream();
@@ -159,6 +161,18 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     protected InputStream getATLFileStream() {
+        if (atlFilePath != null) {
+            Path path = Path.of(atlFilePath);
+            if (path.toFile().exists()) {
+                try {
+                    return path.toUri().toURL().openStream();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                return JavaUtils.getResourceAsStream(atlFilePath);
+            }
+        }
         return atlFileStream;
     }
 

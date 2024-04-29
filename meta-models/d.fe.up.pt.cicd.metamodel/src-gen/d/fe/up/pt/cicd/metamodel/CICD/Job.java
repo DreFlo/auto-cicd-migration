@@ -35,7 +35,7 @@ public interface Job extends PipelineBlock {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_Id()
-	 * @model required="true"
+	 * @model id="true" required="true"
 	 * @generated
 	 */
 	String getId();

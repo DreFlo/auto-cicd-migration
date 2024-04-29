@@ -29,6 +29,12 @@ public class EMFUtils {
     }
 
     public static void serializeModel(EObject model, String filePath, ResourceSet resourceSet) throws IOException {
+        Resource completeResource = createResource(model, filePath, resourceSet);
+
+        completeResource.save(null);
+    }
+
+    public static Resource createResource(EObject model, String filePath, ResourceSet resourceSet) {
         URI uri = URI.createURI(filePath);
         // Write the parsed model to a file
         Resource completeResource = resourceSet.createResource(uri);
@@ -38,7 +44,7 @@ public class EMFUtils {
 
         completeResource.getContents().addAll(EcoreUtil.copyAll(collection));
 
-        completeResource.save(null);
+        return completeResource;
     }
 
     private static void readReferences(EObject eobject, HashSet<EObject> preventCycles, List<EObject> rootList) {

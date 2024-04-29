@@ -11,6 +11,7 @@ import cli.engineers.forwardEngineers.AbstractForwardEngineer;
 import cli.generators.CircleCIGenerator;
 import cli.generators.GHAGenerator;
 import cli.generators.JenkinsGenerator;
+import cli.mergers.CICDMerger;
 import cli.parsers.CircleCIParser.CircleCIParser;
 import cli.parsers.GitHubActionsParser.GitHubActionsParser;
 import cli.parsers.exceptions.SyntaxException;
@@ -81,9 +82,24 @@ public class Main {
 	private static Options getCommandLineOptions() {
 		Options options = new Options();
 
-		options.addRequiredOption("il", "input-language", true, "Input language (required)");
+		options.addOption(
+			Option.builder()
+				.option("il")
+				.longOpt("input-languages")
+				.hasArgs()
+				.desc("Input language (required)")
+				.required()
+				.build()
+		);
 		options.addRequiredOption("ol", "output-language", true, "Output language (required)");
-		options.addOption("i", "input-file", true, "Input file path");
+		options.addOption(
+			Option.builder()
+				.option("i")
+				.longOpt("input-files")
+				.hasArgs()
+				.desc("Input file paths")
+				.build()
+		);
 		options.addOption("o", "output-file", true, "Output file path");
 		options.addOption("v", "verbose", false, "Verbose mode");
 		options.addOption("lf", "log-file", true, "Log file path");
@@ -92,7 +108,7 @@ public class Main {
 		return options;
 	}
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		Options options = getCommandLineOptions();
 		CommandLineParser commandLineParser = new DefaultParser();
 
@@ -111,28 +127,34 @@ public class Main {
 			}
 		}
 
-		AbstractReverseEngineer<?, ?> inputEngineer = getInputCompiler(commandLine.getOptionValue("il"));
-		AbstractForwardEngineer<?, ?, ?> outputEngineer = getOutputCompiler(commandLine.getOptionValue("ol"));
-
-		if (inputEngineer == null) {
-			throw new RuntimeException("Input language not supported");
+		List<AbstractReverseEngineer<?, ?>> inputEngineers = new ArrayList<>();
+		for (String inputLanguage : commandLine.getOptionValues("il")) {
+			AbstractReverseEngineer<?, ?> inputEngineer = getInputCompiler(inputLanguage);
+			if (inputEngineer == null) {
+				throw new RuntimeException("Input language \"" + inputLanguage + "\" not supported");
+			} else {
+				inputEngineers.add(inputEngineer);
+			}
 		}
+		AbstractForwardEngineer<?, ?, ?> outputEngineer = getOutputCompiler(commandLine.getOptionValue("ol"));
 
 		if (outputEngineer == null) {
 			throw new RuntimeException("Output language not supported");
 		}
 
-		String inputScript;
+		List<String> inputScripts;
 
 		if (commandLine.hasOption("i")) {
-			try {
-				inputScript = Files.readString(Path.of(commandLine.getOptionValue("if")));
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
+			inputScripts = Arrays.stream(commandLine.getOptionValues("i")).map(Path::of).map(path -> {
+				try {
+					return Files.readString(path);
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}).toList();
 		} else {
 			// Read from stdin
-			inputScript = new Scanner(System.in).useDelimiter("\\A").next();
+			inputScripts = List.of(new Scanner(System.in).useDelimiter("\\A").next());
 		}
 
 		if (commandLine.hasOption("v")) {
@@ -167,21 +189,38 @@ public class Main {
 		List<String> outputRefinerPaths = new ArrayList<>();
 		List<String> cicdRefinerPaths = new ArrayList<>();
 
-		for (String refinerPath : refinerPaths) {
-			// Split at path separator (OS independent) and get the last element
-			String separator = FileSystems.getDefault().getSeparator().replace("\\", "\\\\");
-			String partialRefinerPath = refinerPath.split(separator)[refinerPath.split(separator).length - 1];
-			if (partialRefinerPath.startsWith("PRE") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("il").toLowerCase())) {
-				inputRefinerPaths.add(refinerPath);
-			} else if (partialRefinerPath.startsWith("POST") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("ol").toLowerCase())) {
-				outputRefinerPaths.add(refinerPath);
-			} else if (partialRefinerPath.toLowerCase().contains("cicd")) {
-				cicdRefinerPaths.add(refinerPath);
-			}
-		}
+//		for (String refinerPath : refinerPaths) {
+//			// Split at path separator (OS independent) and get the last element
+//			String separator = FileSystems.getDefault().getSeparator().replace("\\", "\\\\");
+//			String partialRefinerPath = refinerPath.split(separator)[refinerPath.split(separator).length - 1];
+//			if (partialRefinerPath.startsWith("PRE") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("il").toLowerCase())) {
+//				inputRefinerPaths.add(refinerPath);
+//			} else if (partialRefinerPath.startsWith("POST") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("ol").toLowerCase())) {
+//				outputRefinerPaths.add(refinerPath);
+//			} else if (partialRefinerPath.toLowerCase().contains("cicd")) {
+//				cicdRefinerPaths.add(refinerPath);
+//			}
+//		}
 
         try {
-			Pipeline pipeline = inputEngineer.transform(inputScript, inputRefinerPaths, new ArrayList<>());
+			List<Pipeline> pipelines = new ArrayList<>();
+			if (inputScripts.size() != inputEngineers.size()) {
+				throw new RuntimeException("Number of input scripts does not match number of input languages");
+			}
+			for (int i = 0; i < inputScripts.size(); i++) {
+				pipelines.add(inputEngineers.get(i).transform(inputScripts.get(i), inputRefinerPaths, new ArrayList<>()));
+			}
+			Pipeline pipeline;
+
+			if (pipelines.size() == 1) {
+				pipeline = pipelines.get(0);
+			} else {
+				pipeline = pipelines.get(0);
+				for (int i = 1; i < pipelines.size(); i++) {
+					pipeline = (new CICDMerger(getResourceSet())).merge(pipeline, pipelines.get(i));
+				}
+			}
+
 			outputScript = outputEngineer.transform(pipeline, cicdRefinerPaths, outputRefinerPaths);
 		} catch (Exception e) {
             throw new RuntimeException(e);

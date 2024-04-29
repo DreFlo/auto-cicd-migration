@@ -22,7 +22,8 @@
         upperBound="-1" eType="#//Job"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Job" abstract="true" eSuperTypes="#//PipelineBlock">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifCondition" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="services" upperBound="-1"

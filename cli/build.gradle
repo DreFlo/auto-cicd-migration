@@ -63,6 +63,20 @@ dependencies {
     implementation group: 'org.eclipse.emf', name: 'org.eclipse.emf.codegen', version: '2.23.0'
     // https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.common
     implementation group: 'org.eclipse.emf', name: 'org.eclipse.emf.common', version: '2.29.0'
+
+    // https://mvnrepository.com/artifact/org.eclipse.emf.diffmerge/org.eclipse.emf.diffmerge
+    implementation group: 'org.eclipse.emf.diffmerge', name: 'org.eclipse.emf.diffmerge', version: '0.14.0-M1'
+    // https://mvnrepository.com/artifact/org.eclipse.emf.diffmerge/org.eclipse.emf.diffmerge.generic
+    implementation group: 'org.eclipse.emf.diffmerge', name: 'org.eclipse.emf.diffmerge.generic', version: '0.14.0-M1'
+    // https://mvnrepository.com/artifact/org.eclipse.emf.diffmerge/org.eclipse.emf.diffmerge.structures
+    implementation group: 'org.eclipse.emf.diffmerge', name: 'org.eclipse.emf.diffmerge.structures', version: '0.14.0-M1'
+
+
+    // https://mvnrepository.com/artifact/org.eclipse.emf/org.eclipse.emf.edit
+    implementation group: 'org.eclipse.emf', name: 'org.eclipse.emf.edit', version: '2.21.0'
+
+    // https://mvnrepository.com/artifact/org.eclipse.epsilon/org.eclipse.epsilon.eml.engine
+    implementation group: 'org.eclipse.epsilon', name: 'org.eclipse.epsilon.eml.engine', version: '2.5.0'
 }
 
 dependencies {

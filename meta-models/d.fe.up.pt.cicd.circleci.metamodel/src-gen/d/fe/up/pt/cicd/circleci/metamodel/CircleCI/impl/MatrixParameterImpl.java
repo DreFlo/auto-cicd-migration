@@ -5,8 +5,8 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter;
-
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;

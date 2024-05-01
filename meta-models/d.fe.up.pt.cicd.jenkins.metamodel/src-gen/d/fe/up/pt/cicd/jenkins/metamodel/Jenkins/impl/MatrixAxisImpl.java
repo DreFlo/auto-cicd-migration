@@ -5,8 +5,8 @@ package d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.impl;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.Expression;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.MatrixAxis;
-
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.VariableDeclaration;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;

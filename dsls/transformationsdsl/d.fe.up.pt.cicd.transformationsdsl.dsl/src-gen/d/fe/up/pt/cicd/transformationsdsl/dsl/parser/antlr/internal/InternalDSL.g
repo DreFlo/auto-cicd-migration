@@ -805,12 +805,9 @@ ruleCircleCITransformation returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getCircleCITransformationAccess().getOnKeyword_0());
 		}
+		otherlv_1='CircleCI'
 		{
-			newCompositeNode(grammarAccess.getCircleCITransformationAccess().getCIRCLE_CIParserRuleCall_1());
-		}
-		ruleCIRCLE_CI
-		{
-			afterParserOrEnumRuleCall();
+			newLeafNode(otherlv_1, grammarAccess.getCircleCITransformationAccess().getCircleCIKeyword_1());
 		}
 		(
 			{
@@ -1072,36 +1069,6 @@ ruleStringToStringMapEntry returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleCIRCLE_CI
-entryRuleCIRCLE_CI returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getCIRCLE_CIRule()); }
-	iv_ruleCIRCLE_CI=ruleCIRCLE_CI
-	{ $current=$iv_ruleCIRCLE_CI.current.getText(); }
-	EOF;
-
-// Rule CIRCLE_CI
-ruleCIRCLE_CI returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		kw='CircleCI'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getCIRCLE_CIAccess().getCircleCIKeyword_0());
-		}
-		    |
-		kw='circleci'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getCIRCLE_CIAccess().getCircleciKeyword_1());
-		}
-	)
-;
-
 // Entry rule entryRuleEString
 entryRuleEString returns [String current=null]:
 	{ newCompositeNode(grammarAccess.getEStringRule()); }
@@ -1154,66 +1121,18 @@ ruleMODELS returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='gha'
+			enumLiteral_1='CICD'
 			{
-				$current = grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_1());
+				$current = grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_1());
 			}
 		)
 		    |
 		(
-			enumLiteral_2='github'
+			enumLiteral_2='CircleCI'
 			{
-				$current = grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_2());
-			}
-		)
-		    |
-		(
-			enumLiteral_3='CICD'
-			{
-				$current = grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_3());
-			}
-		)
-		    |
-		(
-			enumLiteral_4='cicd'
-			{
-				$current = grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_4());
-			}
-		)
-		    |
-		(
-			enumLiteral_5='TIM'
-			{
-				$current = grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_5());
-			}
-		)
-		    |
-		(
-			enumLiteral_6='tim'
-			{
-				$current = grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_6, grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_6());
-			}
-		)
-		    |
-		(
-			enumLiteral_7='CircleCI'
-			{
-				$current = grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_7, grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_7());
-			}
-		)
-		    |
-		(
-			enumLiteral_8='circleci'
-			{
-				$current = grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_8().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_8, grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_8());
+				$current = grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_2());
 			}
 		)
 	)

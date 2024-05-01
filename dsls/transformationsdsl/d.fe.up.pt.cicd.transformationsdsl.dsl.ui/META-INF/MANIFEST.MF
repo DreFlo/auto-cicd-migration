@@ -8,7 +8,6 @@ Bundle-SymbolicName: d.fe.up.pt.cicd.transformationsdsl.dsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: d.fe.up.pt.cicd.transformationsdsl.dsl,
  d.fe.up.pt.cicd.transformationsdsl.dsl.ide,
- d.fe.up.pt.cicd.transformationsdsl.metamodel,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
  org.eclipse.xtext.ui.codetemplates.ui,

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -124,6 +125,20 @@ public class PipelineImpl extends DefinitionGroupImpl implements Pipeline {
 	 * @generated
 	 */
 	@Override
+	public EList<Parameter> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this,
+					CircleCIPackage.PIPELINE__PARAMETERS);
+		}
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -163,20 +178,6 @@ public class PipelineImpl extends DefinitionGroupImpl implements Pipeline {
 		setup = newSetup;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.PIPELINE__SETUP, oldSetup, setup));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this,
-					CircleCIPackage.PIPELINE__PARAMETERS);
-		}
-		return parameters;
 	}
 
 	/**

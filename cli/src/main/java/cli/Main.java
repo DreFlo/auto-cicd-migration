@@ -189,18 +189,18 @@ public class Main {
 		List<String> outputRefinerPaths = new ArrayList<>();
 		List<String> cicdRefinerPaths = new ArrayList<>();
 
-//		for (String refinerPath : refinerPaths) {
-//			// Split at path separator (OS independent) and get the last element
-//			String separator = FileSystems.getDefault().getSeparator().replace("\\", "\\\\");
-//			String partialRefinerPath = refinerPath.split(separator)[refinerPath.split(separator).length - 1];
-//			if (partialRefinerPath.startsWith("PRE") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("il").toLowerCase())) {
-//				inputRefinerPaths.add(refinerPath);
-//			} else if (partialRefinerPath.startsWith("POST") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("ol").toLowerCase())) {
-//				outputRefinerPaths.add(refinerPath);
-//			} else if (partialRefinerPath.toLowerCase().contains("cicd")) {
-//				cicdRefinerPaths.add(refinerPath);
-//			}
-//		}
+		for (String refinerPath : refinerPaths) {
+			// Split at path separator (OS independent) and get the last element
+			String separator = FileSystems.getDefault().getSeparator().replace("\\", "\\\\");
+			String partialRefinerPath = refinerPath.split(separator)[refinerPath.split(separator).length - 1];
+			if (partialRefinerPath.startsWith("PRE") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("il").toLowerCase())) {
+				inputRefinerPaths.add(refinerPath);
+			} else if (partialRefinerPath.startsWith("POST") && partialRefinerPath.toLowerCase().contains(commandLine.getOptionValue("ol").toLowerCase())) {
+				outputRefinerPaths.add(refinerPath);
+			} else if (partialRefinerPath.toLowerCase().contains("cicd")) {
+				cicdRefinerPaths.add(refinerPath);
+			}
+		}
 
         try {
 			List<Pipeline> pipelines = new ArrayList<>();

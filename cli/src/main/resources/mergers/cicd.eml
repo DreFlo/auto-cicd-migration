@@ -1,10 +1,11 @@
 // Merge
 @abstract
+@greedy
 rule MergePipelineBlock 
 	merge l : Left!CICD::PipelineBlock
 	with r : Right!CICD::PipelineBlock
 	into t : Target!CICD::PipelineBlock {
-	t.name = l.name;
+	t.name = 'NAME';
 }
 
 rule MergePipeline 
@@ -32,8 +33,6 @@ rule ScriptJob
 	with r : Right!CICD::ScriptJob
 	into t : Target!CICD::ScriptJob
 	extends MergeJob {
-	
-	t.id = l.id + 'merged';
 }
 
 // Copy

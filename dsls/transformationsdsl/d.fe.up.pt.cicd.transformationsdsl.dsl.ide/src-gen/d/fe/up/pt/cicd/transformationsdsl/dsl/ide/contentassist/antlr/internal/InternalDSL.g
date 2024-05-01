@@ -424,31 +424,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleCIRCLE_CI
-entryRuleCIRCLE_CI
-:
-{ before(grammarAccess.getCIRCLE_CIRule()); }
-	 ruleCIRCLE_CI
-{ after(grammarAccess.getCIRCLE_CIRule()); } 
-	 EOF 
-;
-
-// Rule CIRCLE_CI
-ruleCIRCLE_CI 
-	@init {
-		int stackSize = keepStackSize();
-	}
-	:
-	(
-		{ before(grammarAccess.getCIRCLE_CIAccess().getAlternatives()); }
-		(rule__CIRCLE_CI__Alternatives)
-		{ after(grammarAccess.getCIRCLE_CIAccess().getAlternatives()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 // Entry rule entryRuleEString
 entryRuleEString
 :
@@ -571,27 +546,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__CIRCLE_CI__Alternatives
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getCIRCLE_CIAccess().getCircleCIKeyword_0()); }
-		'CircleCI'
-		{ after(grammarAccess.getCIRCLE_CIAccess().getCircleCIKeyword_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getCIRCLE_CIAccess().getCircleciKeyword_1()); }
-		'circleci'
-		{ after(grammarAccess.getCIRCLE_CIAccess().getCircleciKeyword_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__EString__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -625,51 +579,15 @@ rule__MODELS__Alternatives
 	)
 	|
 	(
-		{ before(grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_1()); }
-		('gha')
-		{ after(grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_1()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_2()); }
-		('github')
-		{ after(grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_2()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_3()); }
+		{ before(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_1()); }
 		('CICD')
-		{ after(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_3()); }
+		{ after(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_1()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_4()); }
-		('cicd')
-		{ after(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_4()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_5()); }
-		('TIM')
-		{ after(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_5()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_6()); }
-		('tim')
-		{ after(grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_6()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_7()); }
+		{ before(grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_2()); }
 		('CircleCI')
-		{ after(grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_7()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_8()); }
-		('circleci')
-		{ after(grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_8()); }
+		{ after(grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_2()); }
 	)
 ;
 finally {
@@ -2368,9 +2286,9 @@ rule__CircleCITransformation__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCircleCITransformationAccess().getCIRCLE_CIParserRuleCall_1()); }
-	ruleCIRCLE_CI
-	{ after(grammarAccess.getCircleCITransformationAccess().getCIRCLE_CIParserRuleCall_1()); }
+	{ before(grammarAccess.getCircleCITransformationAccess().getCircleCIKeyword_1()); }
+	'CircleCI'
+	{ after(grammarAccess.getCircleCITransformationAccess().getCircleCIKeyword_1()); }
 )
 ;
 finally {

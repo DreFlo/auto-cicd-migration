@@ -156,6 +156,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider.TransformationsItemProviderAdapterFactory;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.provider.CircleCIItemProviderAdapterFactory;
+
 import d.fe.up.pt.cicd.metamodel.CICD.provider.CICDItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;

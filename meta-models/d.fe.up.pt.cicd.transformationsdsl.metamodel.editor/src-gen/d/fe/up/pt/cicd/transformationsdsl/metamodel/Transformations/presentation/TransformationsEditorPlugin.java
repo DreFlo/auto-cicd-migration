@@ -3,6 +3,7 @@
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.presentation;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.provider.CircleCIEditPlugin;
+
 import d.fe.up.pt.cicd.metamodel.CICD.provider.CICDEditPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;

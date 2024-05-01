@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -142,6 +143,34 @@ public class JobImpl extends ScriptImpl implements Job {
 	 * @generated
 	 */
 	@Override
+	public EList<Parameter> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, CircleCIPackage.JOB__PARAMETERS);
+		}
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
+		if (environmentVariables == null) {
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					CircleCIPackage.JOB__ENVIRONMENT_VARIABLES);
+		}
+		return environmentVariables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -217,19 +246,6 @@ public class JobImpl extends ScriptImpl implements Job {
 	 * @generated
 	 */
 	@Override
-	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, CircleCIPackage.JOB__PARAMETERS);
-		}
-		return parameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Expression getParallelism() {
 		return parallelism;
 	}
@@ -274,21 +290,6 @@ public class JobImpl extends ScriptImpl implements Job {
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.JOB__PARALLELISM, newParallelism,
 					newParallelism));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
-		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
-					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
-					CircleCIPackage.JOB__ENVIRONMENT_VARIABLES);
-		}
-		return environmentVariables;
 	}
 
 	/**

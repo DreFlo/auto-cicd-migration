@@ -50,7 +50,7 @@ ManualTrigger returns CICD::ManualTrigger:
 ;
 
 CircleCITransformation returns CircleCITransformation:
-	'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)	
+	'on' 'CircleCI' (SetCircleCIVersion | AddExecutor)	
 ;
 
 SetCircleCIVersion returns SetCircleCIVersion:
@@ -70,21 +70,7 @@ StringToStringMapEntry returns StringToStringMapEntry:
 ;
 	
 enum MODELS returns MODELS:
-	GHA = 'GHA' | GHA = 'gha' | GHA = 'github' |
-	CICD = 'CICD' | CICD = 'cicd' | CICD = 'TIM' | CICD = 'tim' |
-	CircleCI = 'CircleCI' | CircleCI = 'circleci'	
-;
-
-GHA:
-	'GHA' | 'gha' | 'github'
-;
-
-CICD:
-	'CICD' | 'cicd' | 'TIM' | 'tim'
-;
-
-CIRCLE_CI:
-	'CircleCI' | 'circleci'
+	GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'	
 ;
 
 EString returns ecore::EString:

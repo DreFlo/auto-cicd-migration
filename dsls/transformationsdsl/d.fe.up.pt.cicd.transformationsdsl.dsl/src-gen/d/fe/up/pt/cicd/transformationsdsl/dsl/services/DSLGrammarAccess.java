@@ -487,24 +487,24 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.CircleCITransformation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOnKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cCIRCLE_CIParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cCircleCIKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final RuleCall cSetCircleCIVersionParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
 		private final RuleCall cAddExecutorParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
 		
 		//CircleCITransformation returns CircleCITransformation:
-		//    'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)
+		//    'on' 'CircleCI' (SetCircleCIVersion | AddExecutor)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)
+		//'on' 'CircleCI' (SetCircleCIVersion | AddExecutor)
 		public Group getGroup() { return cGroup; }
 		
 		//'on'
 		public Keyword getOnKeyword_0() { return cOnKeyword_0; }
 		
-		//CIRCLE_CI
-		public RuleCall getCIRCLE_CIParserRuleCall_1() { return cCIRCLE_CIParserRuleCall_1; }
+		//'CircleCI'
+		public Keyword getCircleCIKeyword_1() { return cCircleCIKeyword_1; }
 		
 		//(SetCircleCIVersion | AddExecutor)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
@@ -651,78 +651,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//EString
 		public RuleCall getValueEStringParserRuleCall_2_0() { return cValueEStringParserRuleCall_2_0; }
 	}
-	public class GHAElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.GHA");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cGHAKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cGhaKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cGithubKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		
-		//GHA:
-		//    'GHA' | 'gha' | 'github'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'GHA' | 'gha' | 'github'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//'GHA'
-		public Keyword getGHAKeyword_0() { return cGHAKeyword_0; }
-		
-		//'gha'
-		public Keyword getGhaKeyword_1() { return cGhaKeyword_1; }
-		
-		//'github'
-		public Keyword getGithubKeyword_2() { return cGithubKeyword_2; }
-	}
-	public class CICDElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.CICD");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cCICDKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cCicdKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cTIMKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cTimKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		
-		//CICD:
-		//    'CICD' | 'cicd' | 'TIM' | 'tim'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'CICD' | 'cicd' | 'TIM' | 'tim'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//'CICD'
-		public Keyword getCICDKeyword_0() { return cCICDKeyword_0; }
-		
-		//'cicd'
-		public Keyword getCicdKeyword_1() { return cCicdKeyword_1; }
-		
-		//'TIM'
-		public Keyword getTIMKeyword_2() { return cTIMKeyword_2; }
-		
-		//'tim'
-		public Keyword getTimKeyword_3() { return cTimKeyword_3; }
-	}
-	public class CIRCLE_CIElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.CIRCLE_CI");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cCircleCIKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cCircleciKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		
-		//CIRCLE_CI:
-		//    'CircleCI' | 'circleci'
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'CircleCI' | 'circleci'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//'CircleCI'
-		public Keyword getCircleCIKeyword_0() { return cCircleCIKeyword_0; }
-		
-		//'circleci'
-		public Keyword getCircleciKeyword_1() { return cCircleciKeyword_1; }
-	}
 	public class EStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.EString");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -748,33 +676,17 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cGHAEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cGHAGHAKeyword_0_0 = (Keyword)cGHAEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cGHAEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cGHAGhaKeyword_1_0 = (Keyword)cGHAEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cGHAEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cGHAGithubKeyword_2_0 = (Keyword)cGHAEnumLiteralDeclaration_2.eContents().get(0);
-		private final EnumLiteralDeclaration cCICDEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
-		private final Keyword cCICDCICDKeyword_3_0 = (Keyword)cCICDEnumLiteralDeclaration_3.eContents().get(0);
-		private final EnumLiteralDeclaration cCICDEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
-		private final Keyword cCICDCicdKeyword_4_0 = (Keyword)cCICDEnumLiteralDeclaration_4.eContents().get(0);
-		private final EnumLiteralDeclaration cCICDEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
-		private final Keyword cCICDTIMKeyword_5_0 = (Keyword)cCICDEnumLiteralDeclaration_5.eContents().get(0);
-		private final EnumLiteralDeclaration cCICDEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
-		private final Keyword cCICDTimKeyword_6_0 = (Keyword)cCICDEnumLiteralDeclaration_6.eContents().get(0);
-		private final EnumLiteralDeclaration cCircleCIEnumLiteralDeclaration_7 = (EnumLiteralDeclaration)cAlternatives.eContents().get(7);
-		private final Keyword cCircleCICircleCIKeyword_7_0 = (Keyword)cCircleCIEnumLiteralDeclaration_7.eContents().get(0);
-		private final EnumLiteralDeclaration cCircleCIEnumLiteralDeclaration_8 = (EnumLiteralDeclaration)cAlternatives.eContents().get(8);
-		private final Keyword cCircleCICircleciKeyword_8_0 = (Keyword)cCircleCIEnumLiteralDeclaration_8.eContents().get(0);
+		private final EnumLiteralDeclaration cCICDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cCICDCICDKeyword_1_0 = (Keyword)cCICDEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cCircleCIEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cCircleCICircleCIKeyword_2_0 = (Keyword)cCircleCIEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum MODELS returns MODELS:
-		//    GHA = 'GHA' | GHA = 'gha' | GHA = 'github' |
-		//    CICD = 'CICD' | CICD = 'cicd' | CICD = 'TIM' | CICD = 'tim' |
-		//    CircleCI = 'CircleCI' | CircleCI = 'circleci'
+		//    GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'
 		//;
 		public EnumRule getRule() { return rule; }
 		
-		//GHA = 'GHA' | GHA = 'gha' | GHA = 'github' |
-		//CICD = 'CICD' | CICD = 'cicd' | CICD = 'TIM' | CICD = 'tim' |
-		//CircleCI = 'CircleCI' | CircleCI = 'circleci'
+		//GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//GHA = 'GHA'
@@ -783,53 +695,17 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'GHA'
 		public Keyword getGHAGHAKeyword_0_0() { return cGHAGHAKeyword_0_0; }
 		
-		//GHA = 'gha'
-		public EnumLiteralDeclaration getGHAEnumLiteralDeclaration_1() { return cGHAEnumLiteralDeclaration_1; }
-		
-		//'gha'
-		public Keyword getGHAGhaKeyword_1_0() { return cGHAGhaKeyword_1_0; }
-		
-		//GHA = 'github'
-		public EnumLiteralDeclaration getGHAEnumLiteralDeclaration_2() { return cGHAEnumLiteralDeclaration_2; }
-		
-		//'github'
-		public Keyword getGHAGithubKeyword_2_0() { return cGHAGithubKeyword_2_0; }
-		
 		//CICD = 'CICD'
-		public EnumLiteralDeclaration getCICDEnumLiteralDeclaration_3() { return cCICDEnumLiteralDeclaration_3; }
+		public EnumLiteralDeclaration getCICDEnumLiteralDeclaration_1() { return cCICDEnumLiteralDeclaration_1; }
 		
 		//'CICD'
-		public Keyword getCICDCICDKeyword_3_0() { return cCICDCICDKeyword_3_0; }
-		
-		//CICD = 'cicd'
-		public EnumLiteralDeclaration getCICDEnumLiteralDeclaration_4() { return cCICDEnumLiteralDeclaration_4; }
-		
-		//'cicd'
-		public Keyword getCICDCicdKeyword_4_0() { return cCICDCicdKeyword_4_0; }
-		
-		//CICD = 'TIM'
-		public EnumLiteralDeclaration getCICDEnumLiteralDeclaration_5() { return cCICDEnumLiteralDeclaration_5; }
-		
-		//'TIM'
-		public Keyword getCICDTIMKeyword_5_0() { return cCICDTIMKeyword_5_0; }
-		
-		//CICD = 'tim'
-		public EnumLiteralDeclaration getCICDEnumLiteralDeclaration_6() { return cCICDEnumLiteralDeclaration_6; }
-		
-		//'tim'
-		public Keyword getCICDTimKeyword_6_0() { return cCICDTimKeyword_6_0; }
+		public Keyword getCICDCICDKeyword_1_0() { return cCICDCICDKeyword_1_0; }
 		
 		//CircleCI = 'CircleCI'
-		public EnumLiteralDeclaration getCircleCIEnumLiteralDeclaration_7() { return cCircleCIEnumLiteralDeclaration_7; }
+		public EnumLiteralDeclaration getCircleCIEnumLiteralDeclaration_2() { return cCircleCIEnumLiteralDeclaration_2; }
 		
 		//'CircleCI'
-		public Keyword getCircleCICircleCIKeyword_7_0() { return cCircleCICircleCIKeyword_7_0; }
-		
-		//CircleCI = 'circleci'
-		public EnumLiteralDeclaration getCircleCIEnumLiteralDeclaration_8() { return cCircleCIEnumLiteralDeclaration_8; }
-		
-		//'circleci'
-		public Keyword getCircleCICircleciKeyword_8_0() { return cCircleCICircleciKeyword_8_0; }
+		public Keyword getCircleCICircleCIKeyword_2_0() { return cCircleCICircleCIKeyword_2_0; }
 	}
 	
 	private final TransformationSetElements pTransformationSet;
@@ -848,9 +724,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final AddOrbReferenceExecutorElements pAddOrbReferenceExecutor;
 	private final StringToStringMapEntryElements pStringToStringMapEntry;
 	private final MODELSElements eMODELS;
-	private final GHAElements pGHA;
-	private final CICDElements pCICD;
-	private final CIRCLE_CIElements pCIRCLE_CI;
 	private final EStringElements pEString;
 	
 	private final Grammar grammar;
@@ -878,9 +751,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pAddOrbReferenceExecutor = new AddOrbReferenceExecutorElements();
 		this.pStringToStringMapEntry = new StringToStringMapEntryElements();
 		this.eMODELS = new MODELSElements();
-		this.pGHA = new GHAElements();
-		this.pCICD = new CICDElements();
-		this.pCIRCLE_CI = new CIRCLE_CIElements();
 		this.pEString = new EStringElements();
 	}
 	
@@ -1025,7 +895,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//CircleCITransformation returns CircleCITransformation:
-	//    'on' CIRCLE_CI (SetCircleCIVersion | AddExecutor)
+	//    'on' 'CircleCI' (SetCircleCIVersion | AddExecutor)
 	//;
 	public CircleCITransformationElements getCircleCITransformationAccess() {
 		return pCircleCITransformation;
@@ -1080,9 +950,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//enum MODELS returns MODELS:
-	//    GHA = 'GHA' | GHA = 'gha' | GHA = 'github' |
-	//    CICD = 'CICD' | CICD = 'cicd' | CICD = 'TIM' | CICD = 'tim' |
-	//    CircleCI = 'CircleCI' | CircleCI = 'circleci'
+	//    GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'
 	//;
 	public MODELSElements getMODELSAccess() {
 		return eMODELS;
@@ -1090,39 +958,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	public EnumRule getMODELSRule() {
 		return getMODELSAccess().getRule();
-	}
-	
-	//GHA:
-	//    'GHA' | 'gha' | 'github'
-	//;
-	public GHAElements getGHAAccess() {
-		return pGHA;
-	}
-	
-	public ParserRule getGHARule() {
-		return getGHAAccess().getRule();
-	}
-	
-	//CICD:
-	//    'CICD' | 'cicd' | 'TIM' | 'tim'
-	//;
-	public CICDElements getCICDAccess() {
-		return pCICD;
-	}
-	
-	public ParserRule getCICDRule() {
-		return getCICDAccess().getRule();
-	}
-	
-	//CIRCLE_CI:
-	//    'CircleCI' | 'circleci'
-	//;
-	public CIRCLE_CIElements getCIRCLE_CIAccess() {
-		return pCIRCLE_CI;
-	}
-	
-	public ParserRule getCIRCLE_CIRule() {
-		return getCIRCLE_CIAccess().getRule();
 	}
 	
 	//EString returns ecore::EString:

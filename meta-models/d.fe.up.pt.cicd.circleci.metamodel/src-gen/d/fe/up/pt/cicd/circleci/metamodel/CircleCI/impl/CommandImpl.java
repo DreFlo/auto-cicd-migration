@@ -6,6 +6,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Callable;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Command;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Parameter;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -111,6 +113,20 @@ public class CommandImpl extends ScriptImpl implements Command {
 	 * @generated
 	 */
 	@Override
+	public EList<Parameter> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this,
+					CircleCIPackage.COMMAND__PARAMETERS);
+		}
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -126,20 +142,6 @@ public class CommandImpl extends ScriptImpl implements Command {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.COMMAND__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Parameter> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this,
-					CircleCIPackage.COMMAND__PARAMETERS);
-		}
-		return parameters;
 	}
 
 	/**

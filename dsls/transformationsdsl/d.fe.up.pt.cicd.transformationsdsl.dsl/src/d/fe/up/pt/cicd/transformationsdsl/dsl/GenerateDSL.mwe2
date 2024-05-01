@@ -34,13 +34,8 @@ Workflow {
 			name = "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL"
 			fileExtensions = "tdsl"
 			referencedResource = "platform:/resource/d.fe.up.pt.cicd.transformationsdsl.metamodel/model/Transformations.genmodel"
-			
-			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
-
-			formatter = {
-				generateStub = true
-				generateXtendStub = true
-			}
+			referencedResource = "platform:/resource/d.fe.up.pt.cicd.metamodel/model/CICD.genmodel"
+			referencedResource = "platform:/resource/d.fe.up.pt.cicd.circleci.metamodel/model/CircleCI.genmodel"
 
 			serializer = {
 				generateStub = false

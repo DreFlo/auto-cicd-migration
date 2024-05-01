@@ -159,6 +159,21 @@ public class RunStepImpl extends StepImpl implements RunStep {
 	 * @generated
 	 */
 	@Override
+	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
+		if (environmentVariables == null) {
+			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
+					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
+					CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES);
+		}
+		return environmentVariables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Expression getCommand() {
 		return command;
 	}
@@ -305,21 +320,6 @@ public class RunStepImpl extends StepImpl implements RunStep {
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.RUN_STEP__SHELL, newShell, newShell));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EMap<VariableDeclaration, Expression> getEnvironmentVariables() {
-		if (environmentVariables == null) {
-			environmentVariables = new EcoreEMap<VariableDeclaration, Expression>(
-					CircleCIPackage.Literals.VARIABLE_ASSIGNMENT, VariableAssignmentImpl.class, this,
-					CircleCIPackage.RUN_STEP__ENVIRONMENT_VARIABLES);
-		}
-		return environmentVariables;
 	}
 
 	/**

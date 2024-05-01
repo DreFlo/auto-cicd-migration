@@ -6,7 +6,6 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl;
 import com.google.inject.Binder;
 import com.google.inject.Provider;
 import com.google.inject.name.Names;
-import d.fe.up.pt.cicd.transformationsdsl.dsl.formatting2.DSLFormatter;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.generator.DSLGenerator;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.parser.antlr.DSLAntlrTokenFileProvider;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.parser.antlr.DSLParser;
@@ -20,11 +19,6 @@ import d.fe.up.pt.cicd.transformationsdsl.dsl.validation.DSLValidator;
 import java.util.Properties;
 import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.IGrammarAccess;
-import org.eclipse.xtext.common.services.Ecore2XtextTerminalConverters;
-import org.eclipse.xtext.conversion.IValueConverterService;
-import org.eclipse.xtext.formatting2.FormatterPreferenceValuesProvider;
-import org.eclipse.xtext.formatting2.FormatterPreferences;
-import org.eclipse.xtext.formatting2.IFormatter2;
 import org.eclipse.xtext.generator.IGenerator2;
 import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
@@ -37,7 +31,6 @@ import org.eclipse.xtext.parser.antlr.ITokenDefProvider;
 import org.eclipse.xtext.parser.antlr.Lexer;
 import org.eclipse.xtext.parser.antlr.LexerBindings;
 import org.eclipse.xtext.parser.antlr.LexerProvider;
-import org.eclipse.xtext.preferences.IPreferenceValuesProvider;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.containers.IAllContainersState;
@@ -203,21 +196,6 @@ public abstract class AbstractDSLRuntimeModule extends DefaultRuntimeModule {
 	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
 	public Class<? extends IGenerator2> bindIGenerator2() {
 		return DSLGenerator.class;
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.formatting.Formatter2Fragment2
-	public Class<? extends IFormatter2> bindIFormatter2() {
-		return DSLFormatter.class;
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.formatting.Formatter2Fragment2
-	public void configureFormatterPreferences(Binder binder) {
-		binder.bind(IPreferenceValuesProvider.class).annotatedWith(FormatterPreferences.class).to(FormatterPreferenceValuesProvider.class);
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.ecore2xtext.Ecore2XtextValueConverterServiceFragment2
-	public Class<? extends IValueConverterService> bindIValueConverterService() {
-		return Ecore2XtextTerminalConverters.class;
 	}
 	
 }

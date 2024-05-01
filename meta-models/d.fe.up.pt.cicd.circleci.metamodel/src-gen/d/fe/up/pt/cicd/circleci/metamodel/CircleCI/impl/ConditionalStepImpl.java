@@ -83,6 +83,19 @@ public abstract class ConditionalStepImpl extends StepImpl implements Conditiona
 	 * @generated
 	 */
 	@Override
+	public EList<Step> getSteps() {
+		if (steps == null) {
+			steps = new EObjectContainmentEList<Step>(Step.class, this, CircleCIPackage.CONDITIONAL_STEP__STEPS);
+		}
+		return steps;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Logic getCondition() {
 		return condition;
 	}
@@ -127,19 +140,6 @@ public abstract class ConditionalStepImpl extends StepImpl implements Conditiona
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CircleCIPackage.CONDITIONAL_STEP__CONDITION,
 					newCondition, newCondition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Step> getSteps() {
-		if (steps == null) {
-			steps = new EObjectContainmentEList<Step>(Step.class, this, CircleCIPackage.CONDITIONAL_STEP__STEPS);
-		}
-		return steps;
 	}
 
 	/**

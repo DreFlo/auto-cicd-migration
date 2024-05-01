@@ -13,5 +13,4 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
  * @generated
  */
 public interface OrbDefinition extends Orb, DefinitionGroup {
-
 } // OrbDefinition

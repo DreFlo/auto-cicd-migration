@@ -6,7 +6,9 @@ import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -32,6 +34,7 @@ public abstract class AddExecutorImpl extends CircleCITransformationImpl impleme
 	 * @ordered
 	 */
 	protected static final String JOB_NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getJobName() <em>Job Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

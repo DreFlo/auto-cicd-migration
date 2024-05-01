@@ -3,6 +3,7 @@
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;

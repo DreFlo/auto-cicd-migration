@@ -34,9 +34,6 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTSMTransformationAccess().getAlternatives(), "rule__TSMTransformation__Alternatives");
 			builder.put(grammarAccess.getTIMTransformationAccess().getAlternatives(), "rule__TIMTransformation__Alternatives");
 			builder.put(grammarAccess.getCircleCITransformationAccess().getAlternatives_2(), "rule__CircleCITransformation__Alternatives_2");
-			builder.put(grammarAccess.getGHAAccess().getAlternatives(), "rule__GHA__Alternatives");
-			builder.put(grammarAccess.getCICDAccess().getAlternatives(), "rule__CICD__Alternatives");
-			builder.put(grammarAccess.getCIRCLE_CIAccess().getAlternatives(), "rule__CIRCLE_CI__Alternatives");
 			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 			builder.put(grammarAccess.getMODELSAccess().getAlternatives(), "rule__MODELS__Alternatives");
 			builder.put(grammarAccess.getTransformationSetAccess().getGroup(), "rule__TransformationSet__Group__0");

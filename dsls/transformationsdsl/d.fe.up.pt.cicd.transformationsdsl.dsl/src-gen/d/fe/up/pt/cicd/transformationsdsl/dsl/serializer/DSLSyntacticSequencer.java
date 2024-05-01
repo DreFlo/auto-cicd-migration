@@ -47,21 +47,9 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getCIRCLE_CIRule())
-			return getCIRCLE_CIToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * CIRCLE_CI:
-	 * 	'CircleCI' | 'circleci'
-	 * ;
-	 */
-	protected String getCIRCLE_CIToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "CircleCI";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -125,7 +113,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'to'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'on' CIRCLE_CI 'set' 'version' (ambiguity) version=EString
+	 *     (rule start) 'on' 'CircleCI' 'set' 'version' (ambiguity) version=EString
 	 *     (rule start) 'set' 'version' (ambiguity) version=EString
 	 
 	 * </pre>

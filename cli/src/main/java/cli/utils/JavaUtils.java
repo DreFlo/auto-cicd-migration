@@ -14,6 +14,10 @@ public class JavaUtils {
         return JavaUtils.class.getClassLoader().getResourceAsStream(path);
     }
 
+    public static String getResourceAsString(String path) throws IOException {
+        return new String(Objects.requireNonNull(getResourceAsStream(path)).readAllBytes());
+    }
+
     public static String getResourcePath(String path) {
         return Objects.requireNonNull(JavaUtils.class.getClassLoader().getResource(path)).getPath();
     }

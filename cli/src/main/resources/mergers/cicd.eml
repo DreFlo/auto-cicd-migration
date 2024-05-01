@@ -1,0 +1,61 @@
+// Merge
+@abstract
+rule MergePipelineBlock 
+	merge l : Left!CICD::PipelineBlock
+	with r : Right!CICD::PipelineBlock
+	into t : Target!CICD::PipelineBlock {
+	t.name = l.name;
+}
+
+rule MergePipeline 
+	merge l : Left!CICD::Pipeline
+	with r : Right!CICD::Pipeline
+	into t : Target!CICD::Pipeline
+	extends MergePipelineBlock {
+	t.jobStreams = l.jobStreams.equivalent().includingAll(r.jobStreams.equivalent());
+	l.jobStreams.println();
+	l.jobStreams.equivalent().println();
+	r.jobStreams.equivalent().println();
+}
+
+@abstract
+rule MergeJob 
+	merge l : Left!CICD::Job
+	with r : Right!CICD::Job
+	into t : Target!CICD::Job
+	extends MergePipelineBlock {
+	t.id = l.id + 'merged';
+}
+
+rule ScriptJob
+	merge l : Left!CICD::ScriptJob
+	with r : Right!CICD::ScriptJob
+	into t : Target!CICD::ScriptJob
+	extends MergeJob {
+	
+	t.id = l.id + 'merged';
+}
+
+// Copy
+@abstract
+rule CopyPipelineBlock 
+	transform s : Source!CICD::PipelineBlock
+	to t : Target!CICD::PipelineBlock {
+	t.name = s.name;
+	t.workingDirectory = s.workingDirectory;
+}
+
+@abstract
+rule CopyJob 
+	transform s : Source!CICD::Job
+	to t : Target!CICD::Job
+	extends CopyPipelineBlock {
+	t.id = s.id + 'transformed';
+}
+
+rule CopyScriptJob
+	transform s : Source!CICD::ScriptJob
+	to t : Target!CICD::ScriptJob
+	extends CopyJob {
+	t.steps = Sequence{};
+}

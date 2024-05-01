@@ -28,10 +28,12 @@ public class EMFUtils {
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(extension, factory);
     }
 
-    public static void serializeModel(EObject model, String filePath, ResourceSet resourceSet) throws IOException {
+    public static URI serializeModel(EObject model, String filePath, ResourceSet resourceSet) throws IOException {
         Resource completeResource = createResource(model, filePath, resourceSet);
 
         completeResource.save(null);
+
+        return completeResource.getURI();
     }
 
     public static Resource createResource(EObject model, String filePath, ResourceSet resourceSet) {
@@ -44,10 +46,15 @@ public class EMFUtils {
 
         completeResource.getContents().addAll(EcoreUtil.copyAll(collection));
 
+//        System.out.println(completeResource.getContents());
+
         return completeResource;
     }
 
     private static void readReferences(EObject eobject, HashSet<EObject> preventCycles, List<EObject> rootList) {
+        if (eobject == null) {
+            return;
+        }
         if(preventCycles.contains(eobject)){ // been here get away
             return;
         }

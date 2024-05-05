@@ -363,7 +363,8 @@ public class ArtifactItemProvider extends NonConditionalStepItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME
+		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
+				|| childFeature == CICDPackage.Literals.ARTIFACT__ARTIFACT_NAME
 				|| childFeature == CICDPackage.Literals.ARTIFACT__INCLUDE_PATHS
 				|| childFeature == CICDPackage.Literals.ARTIFACT__EXCLUDE_PATHS
 				|| childFeature == CICDPackage.Literals.ARTIFACT__RETENTION_TIME;

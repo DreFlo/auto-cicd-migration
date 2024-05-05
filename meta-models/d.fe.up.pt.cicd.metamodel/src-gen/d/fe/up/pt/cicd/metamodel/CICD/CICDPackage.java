@@ -1682,13 +1682,22 @@ public interface CICDPackage extends EPackage {
 	int NON_CONDITIONAL_STEP__ALLOW_FAILURE = STEP_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_CONDITIONAL_STEP__WORKING_DIRECTORY = STEP_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Non Conditional Step</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NON_CONDITIONAL_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 5;
+	int NON_CONDITIONAL_STEP_FEATURE_COUNT = STEP_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Non Conditional Step</em>' class.
@@ -1753,6 +1762,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMAND__ALLOW_FAILURE = NON_CONDITIONAL_STEP__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
 
 	/**
 	 * The feature id for the '<em><b>Program</b></em>' containment reference.
@@ -1835,6 +1853,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int PLUGIN__ALLOW_FAILURE = NON_CONDITIONAL_STEP__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
 
 	/**
 	 * The feature id for the '<em><b>Plugin Name</b></em>' attribute.
@@ -1935,6 +1962,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int CACHE__ALLOW_FAILURE = NON_CONDITIONAL_STEP__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
 
 	/**
 	 * The feature id for the '<em><b>Cache Name</b></em>' containment reference.
@@ -2044,6 +2080,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARTIFACT__ALLOW_FAILURE = NON_CONDITIONAL_STEP__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
 
 	/**
 	 * The feature id for the '<em><b>Artifact Name</b></em>' containment reference.
@@ -2162,6 +2207,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHECKOUT__ALLOW_FAILURE = NON_CONDITIONAL_STEP__ALLOW_FAILURE;
+
+	/**
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKOUT__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -3929,6 +3983,17 @@ public interface CICDPackage extends EPackage {
 	EAttribute getNonConditionalStep_AllowFailure();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getWorkingDirectory <em>Working Directory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Working Directory</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getWorkingDirectory()
+	 * @see #getNonConditionalStep()
+	 * @generated
+	 */
+	EReference getNonConditionalStep_WorkingDirectory();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Command <em>Command</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5256,6 +5321,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NON_CONDITIONAL_STEP__ALLOW_FAILURE = eINSTANCE.getNonConditionalStep_AllowFailure();
+
+		/**
+		 * The meta object literal for the '<em><b>Working Directory</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NON_CONDITIONAL_STEP__WORKING_DIRECTORY = eINSTANCE.getNonConditionalStep_WorkingDirectory();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CommandImpl <em>Command</em>}' class.

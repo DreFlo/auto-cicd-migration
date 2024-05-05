@@ -3103,7 +3103,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEReference(getRunStep_NoOutputTimeout(), this.getExpression(), null, "noOutputTimeout", null, 0, 1,
 				RunStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRunStep_When(), this.getWHEN_TYPE(), "when", "on_success", 1, 1, RunStep.class, !IS_TRANSIENT,
+		initEAttribute(getRunStep_When(), this.getWHEN_TYPE(), "when", null, 0, 1, RunStep.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(conditionalStepEClass, ConditionalStep.class, "ConditionalStep", IS_ABSTRACT, !IS_INTERFACE,

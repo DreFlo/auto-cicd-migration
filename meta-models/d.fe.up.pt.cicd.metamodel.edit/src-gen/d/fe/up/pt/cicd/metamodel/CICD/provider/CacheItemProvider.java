@@ -315,7 +315,8 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == CICDPackage.Literals.CACHE__CACHE_NAME
+		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
+				|| childFeature == CICDPackage.Literals.CACHE__CACHE_NAME
 				|| childFeature == CICDPackage.Literals.CACHE__KEYS
 				|| childFeature == CICDPackage.Literals.CACHE__PATHS;
 

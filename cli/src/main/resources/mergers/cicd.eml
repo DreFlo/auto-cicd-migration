@@ -1,38 +1,147 @@
-// Merge
-@abstract
-@greedy
-rule MergePipelineBlock 
-	merge l : Left!CICD::PipelineBlock
-	with r : Right!CICD::PipelineBlock
-	into t : Target!CICD::PipelineBlock {
-	t.name = 'NAME';
+// Helpers
+operation selectDefined (left : Any, right : Any) : Any {
+	if (left.isUndefined()) {
+		return right;
+	}
+	else {
+		return left;
+	}
 }
 
+operation Sequence(CICD::Assignment) mergeWith(map : Sequence(CICD::Assignment)) : Sequence(CICD::Assignment) {
+	for (entry in map) { 
+		if (not self.includes(entry)) {
+			self.put(entry);
+		}
+	}
+	return self;
+}
+
+// Merge
 rule MergePipeline 
 	merge l : Left!CICD::Pipeline
 	with r : Right!CICD::Pipeline
-	into t : Target!CICD::Pipeline
-	extends MergePipelineBlock {
-	t.jobStreams = l.jobStreams.equivalent().includingAll(r.jobStreams.equivalent());
-	l.jobStreams.println();
-	l.jobStreams.equivalent().println();
-	r.jobStreams.equivalent().println();
+	into t : Target!CICD::Pipeline {
+	t.name = selectDefined(l.name, r.name);
+	
+	t.agent = selectDefined(l.agent.equivalent(), r.agent.equivalent());
+	
+	t.inputs = l.inputs.equivalent().includingAll(r.inputs.equivalent());
+	
+	t.outputs = l.outputs.equivalent().includingAll(r.outputs.equivalent());
+	
+	t.environmentVariables = 
+		l.environmentVariables.equivalent()
+			.mergeWith(r.environmentVariables.equivalent());
+	
+	t.timeoutMinutes = selectDefined(l.timeoutMinutes, r.timeoutMinutes);
+	
+	t.workingDirectory = selectDefined(l.workingDirectory, r.workingDirectory);
+	
+	t.shell = selectDefined(l.shell, r.shell);
+	
+	t.triggers = l.triggers.equivalent().includingAll(r.triggers.equivalent());
+	
+	t.jobStreams = 
+		l.jobStreams.equivalent().includingAll(r.jobStreams.equivalent())
+			.select(job|job.previous.isEmpty());
 }
 
-@abstract
 rule MergeJob 
 	merge l : Left!CICD::Job
 	with r : Right!CICD::Job
-	into t : Target!CICD::Job
-	extends MergePipelineBlock {
-	t.id = l.id + 'merged';
+	into t : Target!CICD::Job {
+	t.name = selectDefined(l.name, r.name);
+	
+	t.agent = selectDefined(l.agent.equivalent(), r.agent.equivalent());
+	
+	t.inputs = l.inputs.equivalent().includingAll(r.inputs.equivalent());
+	
+	t.outputs = l.outputs.equivalent().includingAll(r.outputs.equivalent());
+	
+	t.environmentVariables = 
+		l.environmentVariables.equivalent()
+			.mergeWith(r.environmentVariables.equivalent());
+	
+	t.timeoutMinutes = selectDefined(l.timeoutMinutes, r.timeoutMinutes);
+	
+	t.workingDirectory = selectDefined(l.workingDirectory, r.workingDirectory);
+	
+	t.shell = selectDefined(l.shell, r.shell);
+	
+	t.id = selectDefined(l.id, r.id);
+	
+	t.ifCondition = selectDefined(l.ifCondition.equivalent(), r.ifCondition.equivalent());
+	
+	t.services = l.services.equivalent().includingAll(r.services.equivalent());
+	
+	t.matrix = selectDefined(l.matrix, r.matrix);
+	
+	t.previous = l.previous.equivalent().includingAll(r.previous.equivalent());
+	
+	t.maxAttempts = selectDefined(l.maxAttempts, r.maxAttempts);
+	
+	t.allowFailure = selectDefined(l.allowFailure, r.allowFailure);
+	
+	t.pipelinePath = selectDefined(l.pipelinePath, r.pipelinePath);
+	
+	t.args = 
+		l.args.equivalent()
+			.mergeWith(r.args.equivalent());
 }
 
 rule ScriptJob
 	merge l : Left!CICD::ScriptJob
 	with r : Right!CICD::ScriptJob
-	into t : Target!CICD::ScriptJob
-	extends MergeJob {
+	into t : Target!CICD::ScriptJob {
+	t.name = selectDefined(l.name, r.name);
+	
+	t.agent = selectDefined(l.agent.equivalent(), r.agent.equivalent());
+	
+	t.inputs = l.inputs.equivalent().includingAll(r.inputs.equivalent());
+	
+	t.outputs = l.outputs.equivalent().includingAll(r.outputs.equivalent());
+	
+	t.environmentVariables = 
+		l.environmentVariables.equivalent()
+			.mergeWith(r.environmentVariables.equivalent());
+	
+	t.timeoutMinutes = selectDefined(l.timeoutMinutes, r.timeoutMinutes);
+	
+	t.workingDirectory = selectDefined(l.workingDirectory, r.workingDirectory);
+	
+	t.shell = selectDefined(l.shell, r.shell);
+	
+	t.id = selectDefined(l.id, r.id);
+	
+	t.ifCondition = selectDefined(l.ifCondition.equivalent(), r.ifCondition.equivalent());
+	
+	t.services = l.services.equivalent().includingAll(r.services.equivalent());
+	
+	t.matrix = selectDefined(l.matrix, r.matrix);
+	
+	t.previous = l.previous.equivalent().includingAll(r.previous.equivalent());
+	
+	t.maxAttempts = selectDefined(l.maxAttempts, r.maxAttempts);
+	
+	t.allowFailure = selectDefined(l.allowFailure, r.allowFailure);
+	
+	t.steps = l.steps.equivalent().select(step | r.steps.equivalent().includes(step));
+}
+
+rule Command
+	merge l : Left!CICD::Command
+	with r : Right!CICD::Command
+	into t : Target!CICD::Command {
+	t.program ::= l.program;
+	t.program.println();
+}
+
+rule Checkout
+	merge l : Left!CICD::Checkout
+	with r : Right!CICD::Checkout
+	into t : Target!CICD::Checkout {
+	
 }
 
 // Copy

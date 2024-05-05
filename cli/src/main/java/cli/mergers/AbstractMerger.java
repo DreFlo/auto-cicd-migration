@@ -69,6 +69,12 @@ public class AbstractMerger<Model extends EObject, Package extends EPackage> {
             throw new RuntimeException(e);
         }
 
+        try {
+            targetModel.getResource().save(null);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         return (Model) targetModel.getResource().getContents().stream().filter(model1.getClass()::isInstance).findFirst().orElseThrow();
     }
 

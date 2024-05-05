@@ -159,7 +159,6 @@ public interface RunStep extends Step, Environment {
 
 	/**
 	 * Returns the value of the '<em><b>When</b></em>' attribute.
-	 * The default value is <code>"on_success"</code>.
 	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,7 +166,7 @@ public interface RunStep extends Step, Environment {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE
 	 * @see #setWhen(WHEN_TYPE)
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getRunStep_When()
-	 * @model default="on_success" required="true"
+	 * @model
 	 * @generated
 	 */
 	WHEN_TYPE getWhen();

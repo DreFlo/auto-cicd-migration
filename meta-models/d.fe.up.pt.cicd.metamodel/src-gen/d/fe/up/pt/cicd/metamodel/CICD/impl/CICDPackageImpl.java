@@ -1307,6 +1307,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getNonConditionalStep_WorkingDirectory() {
+		return (EReference) nonConditionalStepEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCommand() {
 		return commandEClass;
 	}
@@ -2031,6 +2041,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__TIMEOUT_MINUTES);
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ALLOW_FAILURE);
+		createEReference(nonConditionalStepEClass, NON_CONDITIONAL_STEP__WORKING_DIRECTORY);
 
 		commandEClass = createEClass(COMMAND);
 		createEReference(commandEClass, COMMAND__PROGRAM);
@@ -2404,9 +2415,12 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getNonConditionalStep_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null,
 				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNonConditionalStep_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", "false", 1, 1,
+		initEAttribute(getNonConditionalStep_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", null, 0, 1,
 				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEReference(getNonConditionalStep_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null,
+				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCommand_Program(), this.getExpression(), null, "program", null, 1, 1, Command.class,

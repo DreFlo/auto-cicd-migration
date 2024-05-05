@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#isAllowFailure <em>Allow Failure</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getWorkingDirectory <em>Working Directory</em>}</li>
  * </ul>
  *
  * @generated
@@ -128,6 +129,16 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @ordered
 	 */
 	protected boolean allowFailure = ALLOW_FAILURE_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getWorkingDirectory() <em>Working Directory</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWorkingDirectory()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression workingDirectory;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,10 +274,64 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
+	public Expression getWorkingDirectory() {
+		return workingDirectory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetWorkingDirectory(Expression newWorkingDirectory, NotificationChain msgs) {
+		Expression oldWorkingDirectory = workingDirectory;
+		workingDirectory = newWorkingDirectory;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY, oldWorkingDirectory, newWorkingDirectory);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setWorkingDirectory(Expression newWorkingDirectory) {
+		if (newWorkingDirectory != workingDirectory) {
+			NotificationChain msgs = null;
+			if (workingDirectory != null)
+				msgs = ((InternalEObject) workingDirectory).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY, null, msgs);
+			if (newWorkingDirectory != null)
+				msgs = ((InternalEObject) newWorkingDirectory).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY, null, msgs);
+			msgs = basicSetWorkingDirectory(newWorkingDirectory, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+					newWorkingDirectory, newWorkingDirectory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
+			return basicSetWorkingDirectory(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -292,6 +357,8 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 			return getTimeoutMinutes();
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			return isAllowFailure();
+		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
+			return getWorkingDirectory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -318,6 +385,9 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			setAllowFailure((Boolean) newValue);
+			return;
+		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
+			setWorkingDirectory((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -346,6 +416,9 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			setAllowFailure(ALLOW_FAILURE_EDEFAULT);
 			return;
+		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
+			setWorkingDirectory((Expression) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -369,6 +442,8 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 					: !TIMEOUT_MINUTES_EDEFAULT.equals(timeoutMinutes);
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			return allowFailure != ALLOW_FAILURE_EDEFAULT;
+		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
+			return workingDirectory != null;
 		}
 		return super.eIsSet(featureID);
 	}

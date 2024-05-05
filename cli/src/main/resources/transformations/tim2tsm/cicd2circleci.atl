@@ -178,6 +178,12 @@ lazy rule Command2RunStep {
 					thisModule.String2StringLiteral(input.name)
 				else
 					OclUndefined
+				endif,
+			workingDirectory <-
+				if not input.workingDirectory.oclIsUndefined() then
+					input.workingDirectory.expression2ExpressionHelper()
+				else
+					OclUndefined
 				endif
 		)
 }
@@ -300,13 +306,10 @@ lazy rule Plugin2PersistToWorkspaceStep {
 	to
 		output : CircleCI!PersistToWorkspaceStep(
 			paths <-
-				if paths.oclIsTypeOf(CICD!Concat) then
-					paths.expressions->collect(expression | expression.expression2ExpressionHelper())
-				else if not paths.oclIsUndefined() then
+				if not paths.oclIsUndefined() then
 					paths.expression2ExpressionHelper()
 				else
 					OclUndefined
-				endif
 				endif,
 			root <-
 				if not root.oclIsUndefined() then

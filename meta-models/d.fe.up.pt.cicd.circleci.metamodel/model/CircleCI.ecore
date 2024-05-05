@@ -143,8 +143,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="noOutputTimeout" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="when" lowerBound="1" eType="#//WHEN_TYPE"
-        defaultValueLiteral="on_success"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="when" eType="#//WHEN_TYPE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="WHEN_TYPE">
     <eLiterals name="ON_SUCCESS" literal="on_success"/>

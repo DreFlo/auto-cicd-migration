@@ -600,7 +600,8 @@ rule RunStep2Command {
 		ouptut : CICD!Command(
 			environmentVariables <- input.environmentVariables,
 			name <- if input.name.oclIsUndefined() then OclUndefined else input.name.expression2String() endif,
-			program <- input.command
+			program <- input.command,
+			workingDirectory <- input.workingDirectory
 		)
 }
 

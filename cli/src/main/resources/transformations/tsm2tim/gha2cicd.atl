@@ -251,7 +251,8 @@ abstract rule Step2NonConditionalStep extends AbstractStep2Step {
 					ghaStep.name.expression2String()
 				else
 					OclUndefined
-				endif
+				endif,
+			workingDirectory <- ghaStep.workingDirectory
 		)
 }
 
@@ -422,7 +423,9 @@ rule VariableDeclaration2VariableDeclaration {
 
 rule VariableAssignment2Assigment {
 	from
-		variableAssignment : GHA!VariableAssignment
+		variableAssignment : GHA!VariableAssignment(
+			not thisModule.isSpecificPackageArg(variableAssignment)
+		)
 	to
 		assignment : CICD!Assignment (
 			key <- variableAssignment.key,
@@ -696,6 +699,23 @@ helper def : getVariable(map : Sequence(GHA!VariableAssignment), key : String) :
 		matching->first().value
 	else
 		OclUndefined
+	endif;
+
+helper def : isSpecificPackageArg(assignment : GHA!VariableAssignment) : Boolean =
+	let container : OclAny = assignment.refImmediateComposite() in
+   	if (container.oclIsTypeOf(GHA!Package)) then
+		if 
+			not container.uses.expression2String().startsWith('actions/cache') and
+			not container.uses.expression2String().startsWith('actions/upload-artifact') and
+			not container.uses.expression2String().startsWith('actions/download-artifact') and
+			not container.uses.expression2String().startsWith('actions/checkout') 
+		then 
+			false 
+		else 
+			container.args->includes(assignment)
+		endif
+	else
+		false
 	endif;
 
 helper context GHA!Expression def : negationString() : String =

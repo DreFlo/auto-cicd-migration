@@ -242,7 +242,8 @@ lazy rule Command {
 			id <- input.id,
 			name <- input.name,
 			program <- input.program,
-			timeoutMinutes <- input.timeoutMinutes
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
 		)
 }
 
@@ -258,7 +259,8 @@ lazy rule Plugin {
 			name <- input.name,
 			pluginName <- input.pluginName,
 			timeoutMinutes <- input.timeoutMinutes,
-			version <- input.version
+			version <- input.version,
+			workingDirectory <- input.workingDirectory
 		)
 }
 
@@ -275,7 +277,8 @@ lazy rule Cache {
 			name <- input.name,
 			paths <- input.paths,
 			store <- input.store,
-			timeoutMinutes <- input.timeoutMinutes
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
 		)
 }
 
@@ -293,7 +296,8 @@ lazy rule Artifact {
 			name <- input.name,
 			retentionTime <- input.retentionTime,
 			store <- input.store,
-			timeoutMinutes <- input.timeoutMinutes
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
 		)
 }
 
@@ -307,7 +311,8 @@ lazy rule Checkout {
 			id <- input.id,
 			name <- input.name,
 			path <- input.path,
-			timeoutMinutes <- input.timeoutMinutes
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
 		)
 }
 

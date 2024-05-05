@@ -33,6 +33,9 @@
 	endif
 /]
 
+[query public unquoteString(string : String) : String =
+	invoke('d.fe.up.pt.cicd.transformationsdsl.acceleo.services.TDSL2ATL', 'unquoteString(java.lang.String)', Sequence{string})
+/]
 
 
 [template public generateTransformationFiles(transformationSet : TransformationSet)]
@@ -96,7 +99,7 @@ create OUT : CICD2 from IN : CICD1;
 rule Plugin {
 	from
 		input : CICD!Plugin (
-			input.pluginName = '[name.key/]'
+			input.pluginName = '[unquoteString(name.key)/]'
 		)
 	to 
 		output : CICD!Plugin (
@@ -105,7 +108,7 @@ rule Plugin {
 			id <- input.id,
 			kwargs <- input.kwargs,
 			name <- input.name,
-			pluginName <- '[name.value/]',
+			pluginName <- '[unquoteString(name.value)/]',
 			timeoutMinutes <- input.timeoutMinutes,
 			version <- '[version/]'
 		)
@@ -122,11 +125,11 @@ rule Assignment[index/] {
 		input : CICD!Assignment(
 			input.refImmediateComposite().oclIsTypeOf(CICD!Plugin) and
 			input.refImmediateComposite().kwargs->includes(input) and
-			input.key.name = '[key/]'
+			input.key.name = '[unquoteString(key)/]'
 		)
 	to 
 		output : CICD!Assignment (
-			key <- input.key.refSetValue('name', '[value/]'),
+			key <- input.key.refSetValue('name', '[unquoteString(value)/]'),
 			value <- input.value
 		)
 }
@@ -137,11 +140,11 @@ rule Expression {
 	from
 		input : CICD!Expression(
 			input.refImmediateComposite().oclIsTypeOf(CICD!Agent) and
-			input.expression2String() = '[name.key/]'
+			input.expression2String() = '[unquoteString(name.key)/]'
 		)
 	to
 		output : CICD!StringLiteral(
-			value <- '[name.value/]'
+			value <- '[unquoteString(name.value)/]'
 		)
 }
 [generateExpression2StringHelpers('CICD')/]
@@ -156,12 +159,12 @@ rule Expression {
 rule ReplaceAgentLabels extends Agent {
 	from
 		input : CICD1!Agent(
-			[if (not condition.oclIsUndefined())][condition/][/if]
+			[if (not condition.oclIsUndefined())][unquoteString(condition)/][/if]
 		)
 	to
 		output : CICD2!Agent(
 			labels <- Sequence{
-				[for (label : String | labels) separator (', ')]'[label/]'[/for]
+				[for (label : String | labels) separator (', ')]'[unquoteString(label)/]'[/for]
 			}->collect(label | thisModule.String2StringLiteral(label))
 		)
 }
@@ -193,7 +196,7 @@ lazy rule String2StringLiteral {
 rule PipelineWithTrigger extends Pipeline {
 	from
 		input : CICD1!Pipeline (
-			[condition/]
+			[unquoteString(condition)/]
 		)
 	to
 		output : CICD2!Pipeline(
@@ -438,7 +441,8 @@ abstract rule NonConditionalStep extends Step {
 			environmentVariables <- input.environmentVariables,
 			id <- input.id,
 			name <- input.name,
-			timeoutMinutes <- input.timeoutMinutes
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
 		)
 }
 
@@ -705,7 +709,7 @@ rule Pipeline {
 			executors <- input.executors,
 			jobs <- input.jobs,
 			parameters <- input.parameters,
-			version <- '[version/]',
+			version <- '[unquoteString(version)/]',
 			setup <- input.setup,
 			workflows <- input.workflows
 		)
@@ -722,14 +726,14 @@ rule Pipeline {
 rule AddExecutor extends Job {
 	from
 		input : CircleCI1!Job (
-			input.name = '[jobName/]'
+			input.name = '[unquoteString(jobName)/]'
 		)
 	using {
 		orbs : Sequence(CircleCI1!Orb) = input.refImmediateComposite().orbs;
 	}
 	to
 		output : CircleCI2!Job (
-			executor <- thisModule.CreateExecutor('[orb/]', '[executor/]', orbs)
+			executor <- thisModule.CreateExecutor('[unquoteString(orb)/]', '[unquoteString(executor)/]', orbs)
 		)
 }
 
@@ -925,7 +929,8 @@ rule OrbReferenceExecutor extends ReferenceExecutor {
 		input : CircleCI1!OrbReferenceExecutor
 	to
 		output : CircleCI2!OrbReferenceExecutor (
-			orb <- input.orb
+			orb <- input.orb,
+			orbExecutorName <- input.orbExecutorName
 		)
 }
 [/template]

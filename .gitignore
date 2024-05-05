@@ -1,1 +1,5 @@
 .vscode/
+test/scripts/.env
+test/tests/*
+!test/tests/.empty
+test/Repositories.random_processed.json

@@ -24,7 +24,6 @@ abstract public class AbstractXtextParser<T extends EObject> extends AbstractPar
     @Override
     @SuppressWarnings("unchecked")
     public T parse(String pipeline) throws SyntaxException {
-        System.out.println(pipeline);
         var result = parser.parse(new StringReader(pipeline));
 
         if (result.hasSyntaxErrors()) {

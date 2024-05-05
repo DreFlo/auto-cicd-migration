@@ -189,6 +189,7 @@ public class Main {
 		List<String> outputRefinerPaths = new ArrayList<>();
 		List<String> cicdRefinerPaths = new ArrayList<>();
 
+		// TODO Fix for multiple input languages
 		for (String refinerPath : refinerPaths) {
 			// Split at path separator (OS independent) and get the last element
 			String separator = FileSystems.getDefault().getSeparator().replace("\\", "\\\\");

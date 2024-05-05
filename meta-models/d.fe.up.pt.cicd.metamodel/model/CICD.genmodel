@@ -136,6 +136,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/environmentVariables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/timeoutMinutes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/allowFailure"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/workingDirectory"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//Command/program"/>

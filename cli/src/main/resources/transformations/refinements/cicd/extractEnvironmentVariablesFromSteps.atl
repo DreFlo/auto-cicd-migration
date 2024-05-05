@@ -55,7 +55,8 @@ abstract rule NonConditionalStep extends Step {
 			environmentVariables <- Sequence{},
 			id <- input.id,
 			name <- input.name,
-			timeoutMinutes <- input.timeoutMinutes
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
 		)
 }
 

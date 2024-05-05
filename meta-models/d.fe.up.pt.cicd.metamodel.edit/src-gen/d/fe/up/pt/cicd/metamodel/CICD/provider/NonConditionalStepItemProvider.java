@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
+import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -133,6 +135,36 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -173,6 +205,9 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -187,6 +222,51 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createVariableReference()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createBuiltInFunction()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createDotOp()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createUnaryOp()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
+				CICDFactory.eINSTANCE.createNegation()));
 	}
 
 }

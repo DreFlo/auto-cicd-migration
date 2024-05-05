@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EMap;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#isAllowFailure <em>Allow Failure</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getWorkingDirectory <em>Working Directory</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep()
@@ -106,13 +107,12 @@ public interface NonConditionalStep extends Step {
 
 	/**
 	 * Returns the value of the '<em><b>Allow Failure</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Allow Failure</em>' attribute.
 	 * @see #setAllowFailure(boolean)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep_AllowFailure()
-	 * @model default="false" required="true"
+	 * @model
 	 * @generated
 	 */
 	boolean isAllowFailure();
@@ -126,5 +126,27 @@ public interface NonConditionalStep extends Step {
 	 * @generated
 	 */
 	void setAllowFailure(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Working Directory</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Working Directory</em>' containment reference.
+	 * @see #setWorkingDirectory(Expression)
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep_WorkingDirectory()
+	 * @model containment="true"
+	 * @generated
+	 */
+	Expression getWorkingDirectory();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getWorkingDirectory <em>Working Directory</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Working Directory</em>' containment reference.
+	 * @see #getWorkingDirectory()
+	 * @generated
+	 */
+	void setWorkingDirectory(Expression value);
 
 } // NonConditionalStep

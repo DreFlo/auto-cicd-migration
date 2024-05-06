@@ -8,10 +8,10 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExpressionsParser {
+public class GHAExpressionsVisitor {
     private final GitHubActionsParser parser;
 
-    public ExpressionsParser(GitHubActionsParser parser) {
+    public GHAExpressionsVisitor(GitHubActionsParser parser) {
         this.parser = parser;
     }
 
@@ -59,6 +59,10 @@ public class ExpressionsParser {
     private List<String> splitExpression(String expressionString) {
         List<String> parts = new ArrayList<>();
 
+        if (expressionString == null) {
+            return parts;
+        }
+
         while (!expressionString.isEmpty()) {
             int splitIndex = expressionString.indexOf("${{");
 
@@ -81,150 +85,100 @@ public class ExpressionsParser {
     }
 
     private Expression parseBracketedExpression(String expressionString, EObject container) throws SyntaxException {
-        return parseOr(expressionString, container);
+        GHAExpressionsParser expressionsParser = new GHAExpressionsParser();
+        d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Expression expression = expressionsParser.parse(expressionString);
+        return visitExpression(expression, container);
     }
 
-    private Expression parseOr(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|(\\|\\|(?!$))|[^|]+").matcher(expressionString);
-
-        while (matcher.find()) {
-            if (!Objects.equals(matcher.group(), "||"))
-                parts.add(matcher.group().trim());
+    private Expression visitExpression(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Expression expression, EObject container) throws SyntaxException {
+        if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Or or) {
+            return visitOr(or, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.And and) {
+            return visitAnd(and, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Equality equality) {
+            return visitEquality(equality, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Comparison comparison) {
+            return visitComparison(comparison, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Not not) {
+            return visitNot(not, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.VariableReference variableReference) {
+            return visitVariableReference(variableReference, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Function function) {
+            return visitFunction(function, container);
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.StringLiteral stringLiteral) {
+            StringLiteral convertedStringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
+            convertedStringLiteral.setValue(stringLiteral.getValue());
+            return convertedStringLiteral;
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.IntegerLiteral integerLiteral) {
+            IntegerLiteral convertedIntegerLiteral = GHAPackage.eINSTANCE.getGHAFactory().createIntegerLiteral();
+            convertedIntegerLiteral.setValue(integerLiteral.getValue());
+            return convertedIntegerLiteral;
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.DoubleLiteral doubleLiteral) {
+            DoubleLiteral convertedDoubleLiteral = GHAPackage.eINSTANCE.getGHAFactory().createDoubleLiteral();
+            convertedDoubleLiteral.setValue(doubleLiteral.getValue());
+            return convertedDoubleLiteral;
+        } else if (expression instanceof d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.BooleanLiteral booleanLiteral) {
+            BooleanLiteral convertedBooleanLiteral = GHAPackage.eINSTANCE.getGHAFactory().createBooleanLiteral();
+            convertedBooleanLiteral.setValue(booleanLiteral.getValue());
+            return convertedBooleanLiteral;
+        } else {
+            throw new SyntaxException("Unknown expression type: " + expression.getClass().getName());
         }
+    }
 
-        if (parts.size() == 1) {
-            return parseAnd(parts.get(0), container);
-        }
-
+    private Expression visitOr(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Or expression, EObject container) throws SyntaxException {
         Or or = GHAPackage.eINSTANCE.getGHAFactory().createOr();
 
-        or.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 1).stream().reduce((s1, s2) -> s1 + "||" + s2).get(), container));
-        or.setRhs(parseAnd(parts.get(parts.size() - 1), container));
+        or.setLhs(visitExpression(expression.getLhs(), container));
+        or.setRhs(visitExpression(expression.getRhs(), container));
 
         return or;
     }
 
-    private Expression parseAnd(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|(&&(?!$))|[^&]+").matcher(expressionString);
-
-        while (matcher.find()) {
-            if (!Objects.equals(matcher.group(), "&&"))
-                parts.add(matcher.group().trim());
-        }
-
-        if (parts.size() == 1) {
-            return parseEquality(parts.get(0), container);
-        }
-
+    private Expression visitAnd(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.And expression, EObject container) throws SyntaxException {
         And and = GHAPackage.eINSTANCE.getGHAFactory().createAnd();
 
-        and.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 1).stream().reduce((s1, s2) -> s1 + "&&" + s2).get(), container));
-        and.setRhs(parseEquality(parts.get(parts.size() - 1), container));
+        and.setLhs(visitExpression(expression.getLhs(), container));
+        and.setRhs(visitExpression(expression.getRhs(), container));
 
         return and;
     }
 
-    private Expression parseEquality(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|((==|!=)(?!$))|[^=]+").matcher(expressionString);
-
-        while (matcher.find()) {
-            parts.add(matcher.group().trim());
-        }
-
-        if (parts.size() == 1) {
-            return parseComparison(parts.get(0), container);
-        }
-
+    private Expression visitEquality(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Equality expression, EObject container) throws SyntaxException {
         Equality equality = GHAPackage.eINSTANCE.getGHAFactory().createEquality();
 
-        equality.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 2).stream().reduce((s1, s2) -> s1 + s2).get(), container));
-        equality.setOp(EQUALITY_OPS.get(parts.get(parts.size() - 2)));
-        equality.setRhs(parseComparison(parts.get(parts.size() - 1), container));
+        equality.setLhs(visitExpression(expression.getLhs(), container));
+        equality.setOp(EQUALITY_OPS.get(expression.getOp().getLiteral()));
+        equality.setRhs(visitExpression(expression.getRhs(), container));
 
         return equality;
 
     }
 
-    private Expression parseComparison(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        List<String> parts = new ArrayList<>();
-        Matcher matcher = Pattern.compile("(\\s*\"[^\"]*\"\\s*)|(\\s*\\([^)]*\\)\\s*)|((<|<=|>|>=)(?!$))|[^<>=]+").matcher(expressionString);
-
-        while (matcher.find()) {
-            parts.add(matcher.group().trim());
-        }
-
-        if (parts.size() == 1) {
-            return parseNot(parts.get(0), container);
-        }
-
+    private Expression visitComparison(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Comparison expression, EObject container) throws SyntaxException {
         Comparison comparison = GHAPackage.eINSTANCE.getGHAFactory().createComparison();
 
-        comparison.setLhs(parseBracketedExpression(parts.subList(0, parts.size() - 2).stream().reduce((s1, s2) -> s1 + s2).get(), container));
-        comparison.setOp(COMPARISON_OPS.get(parts.get(parts.size() - 2)));
-        comparison.setRhs(parseNot(parts.get(parts.size() - 1), container));
+        comparison.setLhs(visitExpression(expression.getLhs(), container));
+        comparison.setOp(COMPARISON_OPS.get(expression.getOp().getLiteral()));
+        comparison.setRhs(visitExpression(expression.getRhs(), container));
 
         return comparison;
     }
 
-    private Expression parseNot(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        if (expressionString.startsWith("!")) {
-            Not not = GHAPackage.eINSTANCE.getGHAFactory().createNot();
-            not.setChildExpr(parseBracketedExpression(expressionString.substring(1), container));
-            return not;
-        } else {
-            return parsePrimary(expressionString, container);
-        }
+    private Expression visitNot(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Not expression, EObject container) throws SyntaxException {
+        Not not = GHAPackage.eINSTANCE.getGHAFactory().createNot();
+        not.setChildExpr(visitExpression(expression.getChildExpr(), container));
+        return not;
     }
 
-    private Expression parsePrimary(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        if (expressionString.startsWith("(") && expressionString.endsWith(")")) {
-            return parseBracketedExpression(expressionString.substring(1, expressionString.length() - 1), container);
-        } else if (expressionString.matches("\\w+\\s*\\(.*\\)")) {
-            // TODO Functions
-            return null;
+    private Expression visitVariableReference(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.VariableReference expression, EObject container) throws SyntaxException {
+        Expression convertedExpression = getVariableReferenceOrDotOp(expression.getValue(), container);
+        if (convertedExpression != null) {
+            return convertedExpression;
         } else {
-            return parseAtomic(expressionString, container);
-        }
-    }
-
-    private Expression parseAtomic(String expressionString, EObject container) throws SyntaxException {
-        expressionString = expressionString.trim();
-        if (expressionString.matches("^\\w[\\w-]*(\\.\\w[\\w-]*)*$")) {
-            Expression expression = getVariableReferenceOrDotOp(expressionString, container);
-            if (expression != null) {
-                return expression;
-            } else {
-                StringLiteral stringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
-                stringLiteral.setValue(expressionString);
-                return stringLiteral;
-            }
-        } else if (expressionString.matches("^\"([^\"]|\\.)*\"$")) {
             StringLiteral stringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
-            stringLiteral.setValue(expressionString.substring(1, expressionString.length() - 1));
+            stringLiteral.setValue(expression.getValue());
             return stringLiteral;
-        } else if (expressionString.matches("^[0-9]+$")) {
-            IntegerLiteral integerLiteral = GHAPackage.eINSTANCE.getGHAFactory().createIntegerLiteral();
-            integerLiteral.setValue(Integer.parseInt(expressionString));
-            return integerLiteral;
-        } else if (expressionString.matches("^true|false$")) {
-            BooleanLiteral booleanLiteral = GHAPackage.eINSTANCE.getGHAFactory().createBooleanLiteral();
-            booleanLiteral.setValue(Boolean.parseBoolean(expressionString));
-            return booleanLiteral;
-        } else if (expressionString.matches("^[0-9]+\\.[0-9]+$")) {
-            DoubleLiteral doubleLiteral = GHAPackage.eINSTANCE.getGHAFactory().createDoubleLiteral();
-            doubleLiteral.setValue(Double.parseDouble(expressionString));
-            return doubleLiteral;
-        } else {
-            return null;
         }
     }
 
@@ -574,5 +528,11 @@ public class ExpressionsParser {
             }
         }
         return null;
+    }
+
+    private Expression visitFunction(d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Function expression, EObject container) throws SyntaxException {
+        StringLiteral function = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
+        function.setValue(expression.getName());
+        return function;
     }
 }

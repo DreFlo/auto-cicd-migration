@@ -42,6 +42,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initVariables(DefinitionGroup definitionGroup, YamlMapping yamlMapping) throws SyntaxException {
+        if (yamlMapping == null) {
+            return;
+        }
+
         Map<String, Orb> orbMap = new HashMap<>();
         Map<String, Command> commandMap = new HashMap<>();
         if (yamlMapping.yamlMapping("orbs") != null) {
@@ -66,6 +70,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initOrbs(Collection<Orb> orbs, YamlMapping yamlMapping) throws SyntaxException {
+        if (yamlMapping == null) {
+            return;
+        }
+
         for (YamlNode key : yamlMapping.keys()) {
             Orb orb;
             if (yamlMapping.value(key).type().equals(Node.MAPPING)) {
@@ -85,6 +93,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initVariables(Callable callable, YamlMapping yamlMapping) {
+        if (yamlMapping == null) {
+            return;
+        }
+
         if (yamlMapping.yamlMapping("parameters") != null) {
             for (YamlNode key : yamlMapping.yamlMapping("parameters").keys()) {
                 if (key.type().equals(Node.SCALAR)) {
@@ -98,6 +110,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initVariables(Script script, YamlMapping yamlMapping, Map<String, Orb> orbMap, Map<String, Command> commandMap) throws SyntaxException {
+        if (yamlMapping == null) {
+            return;
+        }
+
         if (yamlMapping.yamlSequence("steps") != null) {
             for (YamlNode stepNode : yamlMapping.yamlSequence("steps")) {
                 Step step = initStep(stepNode, orbMap, commandMap);
@@ -107,6 +123,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initVariables(Matrix matrix, YamlMapping yamlMapping) {
+        if (yamlMapping == null) {
+            return;
+        }
+
         if (yamlMapping.yamlMapping("parameters") != null) {
             for (YamlNode paramKey : yamlMapping.yamlMapping("parameters").keys()) {
                 if (paramKey.type().equals(Node.SCALAR)) {
@@ -214,6 +234,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initVariables(Workflow workflow, YamlMapping yamlMapping, Map<String, Orb> orbMap, Map<String, Command> commandMap) throws SyntaxException {
+        if (yamlMapping == null) {
+            return;
+        }
+
         if (yamlMapping.yamlSequence("jobs") != null) {
             for (YamlNode jobNode : yamlMapping.yamlSequence("jobs")) {
                 String key;
@@ -231,13 +255,17 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 workflow.getJobs().add(nullWorkflowJobConfiguration);
 
                 if (jobNode.type().equals(Node.MAPPING)) {
-                        initVariables(nullWorkflowJobConfiguration, jobNode.asMapping().yamlMapping(key), orbMap, commandMap);
+                    initVariables(nullWorkflowJobConfiguration, jobNode.asMapping().yamlMapping(key), orbMap, commandMap);
                 }
             }
         }
     }
 
     private void initVariables(Pipeline pipeline, YamlMapping yamlMapping) throws SyntaxException {
+        if (yamlMapping == null) {
+            return;
+        }
+
         Map<String, Orb> orbMap = new HashMap<>();
         Map<String, Command> commandMap = new HashMap<>();
         initVariables((DefinitionGroup) pipeline, yamlMapping);
@@ -254,6 +282,9 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         if (yamlMapping.yamlMapping("workflows") != null) {
             for (YamlNode key : yamlMapping.yamlMapping("workflows").keys()) {
                 if (key.type().equals(Node.SCALAR)) {
+                    if (key.asScalar().value().equals("version")) {
+                        continue;
+                    }
                     Workflow workflow = CircleCIPackage.eINSTANCE.getCircleCIFactory().createWorkflow();
                     workflow.setName(key.asScalar().value());
                     pipeline.getWorkflows().add(workflow);
@@ -268,6 +299,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private void initVariables(NullWorkflowJobConfiguration nullWorkflowJobConfiguration, YamlMapping yamlMapping, Map<String, Orb> orbMap, Map<String, Command> commandMap) throws SyntaxException {
+        if (yamlMapping == null) {
+            return;
+        }
+
         if (yamlMapping.yamlMapping("matrix") != null) {
             Matrix matrix = CircleCIPackage.eINSTANCE.getCircleCIFactory().createMatrix();
             nullWorkflowJobConfiguration.setMatrix(matrix);
@@ -1394,7 +1429,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 String key = job.asMapping().keys().iterator().next().asScalar().value();
 
                 if (job.asMapping().yamlMapping(key) == null) {
-                    throw new SyntaxException("Invalid job configuration");
+                    continue;
                 }
 
                 YamlMapping yamlMapping = job.asMapping().yamlMapping(key);
@@ -1470,12 +1505,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         workflowJobConfigurations.set(index, workflowJobConfiguration);
         workflowJobConfigurationsTable.put(key, workflowJobConfiguration);
 
-        if (yamlNode.type().equals(Node.SCALAR)) {
+        if (yamlNode.type().equals(Node.SCALAR) || yamlNode.asMapping().yamlMapping(key) == null) {
             return;
-        }
-
-        if (yamlNode.asMapping().yamlMapping(key) == null) {
-            throw new SyntaxException("Invalid job configuration");
         }
 
         YamlMapping yamlMapping = yamlNode.asMapping().yamlMapping(key);

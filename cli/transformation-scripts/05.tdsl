@@ -1,0 +1,3 @@
+during {
+   set labels when "input.labels->exists(label | label.expression2String() = 'machine')" {"ubuntu-latest"}
+}

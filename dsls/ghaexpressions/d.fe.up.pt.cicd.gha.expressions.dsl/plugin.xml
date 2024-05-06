@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.fe.d/up/pt/cicd/gha/expressions/dsl/GHAExpressions"
+			class = "d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.GhaExpressionsPackage"
+			genModel = "model/generated/GHAExpressions.genmodel" />
+	</extension>
+</plugin>

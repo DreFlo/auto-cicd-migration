@@ -47,7 +47,7 @@ lazy rule Pipeline2Workflow {
 				endif,
 			jobs <- thisModule.getAllJobs(input.jobStreams)->collect(job | thisModule.Job2WorkflowDefinedJobConfiguration(job)),
 			name <- input.name,
-			triggers <- input.triggers->collect(trigger | trigger.oclIsTypeOf(CICD!ScheduledTrigger))
+			triggers <- input.triggers->select(trigger | trigger.oclIsTypeOf(CICD!ScheduledTrigger))
 		)
 }
 
@@ -125,7 +125,7 @@ unique lazy rule ScriptJob2Job {
 		output : CircleCI!Job(
 			environmentVariables <- input.environmentVariables,
 			executor <- thisModule.job2ExecutorHelper(input),
-			name <- input.name,
+			name <- input.id,
 			parameters <- input.inputs,
 			steps <- input.steps->collect(step | thisModule.step2StepHelper(step))->flatten()
 		)

@@ -34,7 +34,7 @@ public interface Matrix extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Axes</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getMatrix_Axes()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<MatrixAxis> getAxes();

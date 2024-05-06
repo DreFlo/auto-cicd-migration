@@ -29,7 +29,7 @@ public interface Defaults extends EObject {
 	 * @return the value of the '<em>Shell</em>' containment reference.
 	 * @see #setShell(Expression)
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getDefaults_Shell()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Expression getShell();

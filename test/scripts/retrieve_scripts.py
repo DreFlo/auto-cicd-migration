@@ -18,7 +18,7 @@ auth = Auth.Token(TOKEN)
 
 g = Github(auth=auth)
 
-SAMPLE_SIZE = 100
+SAMPLE_SIZE = 200
 
 print('Connected to GitHub.')
 

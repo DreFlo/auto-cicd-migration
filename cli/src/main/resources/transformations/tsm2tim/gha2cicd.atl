@@ -27,7 +27,11 @@ rule Workflow2Pipeline {
 				->collect(trigger | trigger.outputs)->flatten(),
 			shell <-
 				if not workflow.defaults.oclIsUndefined() then
-					workflow.defaults.shell.expression2String().getShell()
+					if not workflow.defaults.shell.oclIsUndefined() then
+						workflow.defaults.shell.expression2String().getShell()
+					else
+						#BASH
+					endif
 				else
 					OclUndefined
 				endif,
@@ -35,7 +39,7 @@ rule Workflow2Pipeline {
 				workflow.triggers
 				->select(
 					trigger | 
-					not trigger.oclIsKindOf(GHA!InputTrigger) and not trigger.oclIsKindOf(GHA!StandardEventTrigger)
+					not trigger.oclIsKindOf(GHA!InputTrigger) and not trigger.oclIsKindOf(GHA!StandardEventTrigger) and not trigger.oclIsTypeOf(GHA!WorkflowRunTrigger)
 				),
 			workingDirectory <-
 				if not workflow.defaults.oclIsUndefined() then
@@ -177,7 +181,11 @@ abstract rule Job2Job {
 			outputs <- ghaJob.outputs,
 			shell <-
 				if not ghaJob.defaults.oclIsUndefined() then
-					ghaJob.defaults.shell.expression2String().getShell()
+					if not ghaJob.defaults.shell.oclIsUndefined() then
+						ghaJob.defaults.shell.expression2String().getShell()
+					else
+						#BASH
+					endif
 				else
 					OclUndefined
 				endif,
@@ -580,7 +588,7 @@ abstract rule UnaryOp2UnaryOp extends Expression2Expression {
 		)
 }
 
-rule Not2Negation extends Expression2Expression {
+rule Not2Negation extends UnaryOp2UnaryOp {
 	from
 		ghaExpression : GHA!Not
 	to

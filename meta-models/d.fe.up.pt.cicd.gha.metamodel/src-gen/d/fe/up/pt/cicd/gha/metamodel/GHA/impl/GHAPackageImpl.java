@@ -3316,7 +3316,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 
 		initEClass(defaultsEClass, Defaults.class, "Defaults", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDefaults_Shell(), this.getExpression(), null, "shell", null, 1, 1, Defaults.class,
+		initEReference(getDefaults_Shell(), this.getExpression(), null, "shell", null, 0, 1, Defaults.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDefaults_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null, 0, 1,
@@ -3493,7 +3493,7 @@ public class GHAPackageImpl extends EPackageImpl implements GHAPackage {
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 1, -1, Matrix.class, !IS_TRANSIENT,
+		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 0, -1, Matrix.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getMatrix_Includes(), this.getMatrixCombination(), null, "includes", null, 0, -1, Matrix.class,

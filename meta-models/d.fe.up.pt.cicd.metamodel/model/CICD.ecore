@@ -89,8 +89,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WebhookTrigger" eSuperTypes="#//Trigger"/>
   <eClassifiers xsi:type="ecore:EClass" name="Matrix">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="axes" lowerBound="1" upperBound="-1"
-        eType="#//MatrixAxis" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="axes" upperBound="-1" eType="#//MatrixAxis"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="includes" upperBound="-1"
         eType="#//MatrixCombination" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" upperBound="-1"

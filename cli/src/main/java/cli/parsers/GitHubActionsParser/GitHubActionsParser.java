@@ -1,6 +1,7 @@
 package cli.parsers.GitHubActionsParser;
 
 import cli.parsers.AbstractParser;
+import cli.parsers.YAML.TrimmedYamlMapping;
 import cli.parsers.exceptions.SyntaxException;
 import com.amihaiemil.eoyaml.*;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.*;
@@ -16,11 +17,11 @@ import java.util.regex.Pattern;
 public class GitHubActionsParser extends AbstractParser<Workflow> {
 	private Workflow workflow;
 
-	private final ExpressionsParser expressionsParser;
+	private final GHAExpressionsVisitor GHAExpressionsVisitor;
 
 	public GitHubActionsParser() {
 		super();
-		expressionsParser = new ExpressionsParser(this);
+		GHAExpressionsVisitor = new GHAExpressionsVisitor(this);
 	}
 
 	@Override
@@ -33,6 +34,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
         YamlMapping yamlMap;
         try {
             yamlMap = Yaml.createYamlInput(pipeline).readYamlMapping();
+			yamlMap = new TrimmedYamlMapping(yamlMap);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -60,7 +62,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (yamlMap.value("permissions") != null) {
-			workflow.getPermissions().putAll(parsePermissions(yamlMap.value("permissions").asMapping()));
+			workflow.getPermissions().putAll(parsePermissions(yamlMap.value("permissions")));
 		}
 
 		if (yamlMap.value("env") != null) {
@@ -76,7 +78,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		if (yamlMap.value("concurrency") != null) {
 			ConcurrencyGroup concurrencyGroup = GHAPackage.eINSTANCE.getGHAFactory().createConcurrencyGroup();
 			workflow.setConcurrencyGroup(concurrencyGroup);
-			parseConcurrencyGroup(concurrencyGroup, yamlMap.value("concurrency").asMapping());
+			parseConcurrencyGroup(concurrencyGroup, yamlMap.value("concurrency"));
 		}
 
 		if (yamlMap.value("jobs") != null) {
@@ -330,7 +332,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private Expression parseExpression(String expressionString, EObject container) throws SyntaxException {
-		return expressionsParser.parse(expressionString, container);
+		return GHAExpressionsVisitor.parse(expressionString, container);
 	}
 
 	private List<Expression> parseExpressions(List<String> expressions, EObject container) throws SyntaxException {
@@ -378,6 +380,8 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 				triggerObject = workflow.getTriggers().stream().filter(WorkflowDispatchTrigger.class::isInstance).findFirst();
 			case "workflow_call" ->
 				triggerObject = workflow.getTriggers().stream().filter(WorkflowCallTrigger.class::isInstance).findFirst();
+			case "workflow_run" ->
+				triggerObject = workflow.getTriggers().stream().filter(WorkflowRunTrigger.class::isInstance).findFirst();
 			case "schedule" ->
 				triggerObject = workflow.getTriggers().stream().filter(ScheduleTrigger.class::isInstance).findFirst();
 			default ->
@@ -425,6 +429,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			case "pull_request_target" -> triggerObject = GHAPackage.eINSTANCE.getGHAFactory().createPullRequestTargetTrigger();
 			case "workflow_dispatch" -> triggerObject = GHAPackage.eINSTANCE.getGHAFactory().createWorkflowDispatchTrigger();
 			case "workflow_call" -> triggerObject = GHAPackage.eINSTANCE.getGHAFactory().createWorkflowCallTrigger();
+			case "workflow_run" -> triggerObject = GHAPackage.eINSTANCE.getGHAFactory().createWorkflowRunTrigger();
 			case "schedule" -> triggerObject = GHAPackage.eINSTANCE.getGHAFactory().createScheduleTrigger();
 			default -> {
 				StandardEventTrigger standardEventTrigger = GHAPackage.eINSTANCE.getGHAFactory().createStandardEventTrigger();
@@ -620,14 +625,23 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return result;
 	}
 
-	private Map<PERMISSION_SCOPES, PERMISSIONS> parsePermissions(YamlMapping permissionsMap) throws SyntaxException {
+	private Map<PERMISSION_SCOPES, PERMISSIONS> parsePermissions(YamlNode yamlNode) throws SyntaxException {
 		Map<PERMISSION_SCOPES, PERMISSIONS> result = new HashMap<>();
 
-		for (YamlNode key : permissionsMap.keys()) {
-			if (key.type().equals(Node.SCALAR)) {
-				result.put(PERMISSION_SCOPES.get(key.asScalar().value()), PERMISSIONS.get(permissionsMap.string(key.asScalar().value())));
-			} else {
-				throw new SyntaxException("Invalid permission");
+		if (yamlNode.type().equals(Node.MAPPING)) {
+			YamlMapping permissionsMap = yamlNode.asMapping();
+			for (YamlNode key : permissionsMap.keys()) {
+				if (key.type().equals(Node.SCALAR)) {
+					result.put(PERMISSION_SCOPES.get(key.asScalar().value()), PERMISSIONS.get(permissionsMap.string(key.asScalar().value())));
+				} else {
+					throw new SyntaxException("Invalid permission");
+				}
+			}
+		} else if (yamlNode.type().equals(Node.SCALAR)) {
+			String permission = yamlNode.asScalar().value().split("-")[0];
+
+			for (PERMISSION_SCOPES scope : PERMISSION_SCOPES.values()) {
+				result.put(scope, PERMISSIONS.get(permission));
 			}
 		}
 
@@ -658,8 +672,6 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 
 		if (defaultsMap.string("shell") != null) {
 			defaults.setShell(parseExpression(defaultsMap.string("shell"), defaults));
-		} else {
-			throw new SyntaxException("Must have shell");
 		}
 
 		if (defaultsMap.string("working-directory") != null) {
@@ -667,19 +679,24 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 	}
 
-	private void parseConcurrencyGroup(ConcurrencyGroup concurrencyGroup, YamlMapping concurrencyGroupMap) throws SyntaxException {
+	private void parseConcurrencyGroup(ConcurrencyGroup concurrencyGroup, YamlNode yamlNode) throws SyntaxException {
 		if (concurrencyGroup == null) {
 			throw new SyntaxException("Invalid concurrency group");
 		}
 
-		if (concurrencyGroupMap.string("group") != null) {
-			concurrencyGroup.setName(parseExpression(concurrencyGroupMap.string("group"), concurrencyGroup));
-		} else {
-			throw new SyntaxException("Must have name");
-		}
+		if (yamlNode.type().equals(Node.MAPPING)) {
+			YamlMapping concurrencyGroupMap = yamlNode.asMapping();
+			if (concurrencyGroupMap.string("group") != null) {
+				concurrencyGroup.setName(parseExpression(concurrencyGroupMap.string("group"), concurrencyGroup));
+			} else {
+				throw new SyntaxException("Must have name");
+			}
 
-		if (concurrencyGroupMap.string("cancel-in-progress") != null) {
-			concurrencyGroup.setCancelInProgress(parseExpression(concurrencyGroupMap.string("cancel-in-progress"), concurrencyGroup));
+			if (concurrencyGroupMap.string("cancel-in-progress") != null) {
+				concurrencyGroup.setCancelInProgress(parseExpression(concurrencyGroupMap.string("cancel-in-progress"), concurrencyGroup));
+			}
+		} else if (yamlNode.type().equals(Node.SCALAR)) {
+			concurrencyGroup.setName(parseExpression(yamlNode.asScalar().value(), concurrencyGroup));
 		}
 	}
 
@@ -723,7 +740,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		if (jobMap.value("concurrency") != null) {
 			ConcurrencyGroup concurrencyGroup = GHAPackage.eINSTANCE.getGHAFactory().createConcurrencyGroup();
 			job.setConcurrencyGroup(concurrencyGroup);
-			parseConcurrencyGroup(concurrencyGroup, jobMap.yamlMapping("concurrency"));
+			parseConcurrencyGroup(concurrencyGroup, jobMap.value("concurrency"));
 		}
 
 		if (jobMap.value("env") != null) {
@@ -737,7 +754,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (jobMap.value("permissions") != null) {
-			job.getPermissions().putAll(parsePermissions(jobMap.value("permissions").asMapping()));
+			job.getPermissions().putAll(parsePermissions(jobMap.value("permissions")));
 		}
 
 		if (jobMap.value("if") != null) {
@@ -893,6 +910,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			List<String> cells = parseList(axisNode.asScalar().value());
 			axis.getCells().addAll(parseExpressions(cells, axis));
 		} else {
+			System.out.println(axisNode);
 			throw new SyntaxException("Invalid matrix axis");
 		}
 	}
@@ -1096,12 +1114,12 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 	}
 
 	private boolean isList(String string) {
-		return string.matches("^\\s*\\[\\s*(?:(?:[\\w-]+|\"(?:[^\"]|\\\\.)*\")\\s*(?:,\\s*(?:[\\w-]+|\"(?:[^\"]|\\\\.)*\")\\s*)*)?]\\s*$");
+		return string.matches("^\\s*\\[\\s*(?:(?:[\\w-.]+|\"(?:[^\"]|\\\\.)*\"|'(?:[^']|\\\\.)*')\\s*(?:,\\s*(?:[\\w-.]+|\"(?:[^\"]|\\\\.)*\"|'(?:[^']|\\\\.)*')\\s*)*)?]\\s*$");
 	}
 
 	private List<String> parseList(String string) {
 		List<String> result = new ArrayList<>();
-		Matcher matcher = Pattern.compile("([\\w-]+|(?:\"(?:[^\"]|\\.)*\"))").matcher(string);
+		Matcher matcher = Pattern.compile("([\\w-.]+|(?:\"(?:[^\"]|\\.)*\")|(?:'(?:[^']|\\\\.)*'))").matcher(string);
 		while (matcher.find()) {
 			result.add(matcher.group());
 		}

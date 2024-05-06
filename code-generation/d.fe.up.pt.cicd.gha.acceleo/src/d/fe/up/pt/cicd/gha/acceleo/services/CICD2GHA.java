@@ -121,4 +121,8 @@ public class CICD2GHA {
 		
 		return generateJobReference(job) + "." + "steps." + job.getSteps().indexOf(step);
 	}
+	
+	public String repeatString(String string, Integer n) {
+		return string.repeat(n);
+	}
 }

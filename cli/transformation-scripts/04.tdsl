@@ -1,0 +1,6 @@
+during {
+    set labels when "input.labels->exists(label | label.expression2String() = 'ubuntu-latest')" {"machine"}
+}
+after {
+    on CircleCI set version to "2.1"
+}

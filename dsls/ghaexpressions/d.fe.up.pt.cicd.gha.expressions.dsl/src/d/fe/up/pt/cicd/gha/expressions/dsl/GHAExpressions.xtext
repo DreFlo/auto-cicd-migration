@@ -1,0 +1,74 @@
+grammar d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions with org.eclipse.xtext.common.Terminals
+
+generate ghaExpressions "http://www.fe.d/up/pt/cicd/gha/expressions/dsl/GHAExpressions"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Expression returns Expression:
+	Or
+;
+
+Or returns Expression:
+    And ({Or.lhs=current} '||' rhs=And)*
+;
+
+
+And returns Expression:
+    Equality ({And.lhs=current}  '&&'  rhs=Equality )*
+;
+
+Equality returns Expression:
+	Comparison ({Equality.lhs=current}  op=EQUALITY_OP  rhs=Comparison )*
+;
+
+Comparison returns Expression:
+	UnaryOp ({Comparison.lhs=current}  op=COMPARISON_OP  rhs=UnaryOp )*
+;
+
+UnaryOp returns Expression:
+	Not | Primary
+;
+
+Not returns Expression:
+	{Not} '!' childExpr=Primary
+;
+
+Primary returns Expression:
+    ('('  Expression  ')') | Function | Atomic
+;
+
+Function returns Expression:
+	{Function} name=ID '(' ( args+=Expression (',' args+=Expression)* )? ')'
+;
+
+Atomic returns Expression:
+	({VariableReference} value=(ID | VARIABLE_REFERENCE)) |
+	({IntegerLiteral} value=INT) |
+	({DoubleLiteral} value=DOUBLE) |
+	({BooleanLiteral} value=BOOLEAN) |
+	({StringLiteral} value=STRING)
+;
+
+enum COMPARISON_OP:
+	GT='>' |
+	GTE='>=' |
+	LT='<' |
+	LTE='<='
+;
+
+enum EQUALITY_OP:
+	EQUALS='==' |
+	NOT_EQUALS='!='
+;
+
+terminal VARIABLE_REFERENCE returns ecore::EString:
+	ID (('.' ID) | '[' (ID | INT) ']')+
+;
+
+terminal DOUBLE returns ecore::EDoubleObject:
+	INT '.' INT
+;
+
+terminal BOOLEAN returns ecore::EBooleanObject:
+	'true' | 'false'
+;

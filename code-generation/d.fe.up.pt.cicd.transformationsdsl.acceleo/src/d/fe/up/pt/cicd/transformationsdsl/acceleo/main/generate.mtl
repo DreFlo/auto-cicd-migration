@@ -177,6 +177,7 @@ lazy rule String2StringLiteral {
 			value <- input
 		)
 }
+[generateCopyTriggers()/]
 [generateCopyVariableDeclaration()/]
 [generateCopyAgent()/]
 [generateCopyDockerContainer()/]
@@ -205,6 +206,7 @@ rule PipelineWithTrigger extends Pipeline {
 }
 [/if]
 [generateGenerateTrigger(trigger)/]
+[generateCopyTriggers()/]
 [generateCopyVariableDeclaration()/]
 [generateCopyAgent()/]
 [generateCopyDockerContainer()/]
@@ -267,6 +269,56 @@ rule Pipeline {
 			triggers <- input.triggers,
 			workingDirectory <- input.workingDirectory
 		)
+}
+[/template]
+
+[template public generateCopyTriggers(traceabilityContext : OclAny)]
+abstract rule Trigger {
+	from
+		input : CICD1!Trigger
+	to
+		output : CICD2!Trigger(
+			branchGlobs <- input.branchGlobs
+		)
+}
+
+rule PushTrigger extends Trigger {
+	from
+		input : CICD1!PushTrigger
+	to
+		output : CICD2!PushTrigger(
+			tagGlobs <- input.tagGlobs
+		)
+}
+
+rule PullRequestTrigger extends Trigger {
+	from
+		input : CICD1!PullRequestTrigger
+	to
+		output : CICD2!PullRequestTrigger
+}
+
+rule ManualTrigger extends Trigger {
+	from
+		input : CICD1!ManualTrigger
+	to
+		output : CICD2!ManualTrigger
+}
+
+rule ScheduledTrigger extends Trigger {
+	from
+		input : CICD1!ScheduledTrigger
+	to
+		output : CICD2!ScheduledTrigger(
+			crons <- input.crons
+		)
+}
+
+rule WebhookTrigger extends Trigger {
+	from
+		input : CICD1!WebhookTrigger
+	to
+		output : CICD2!WebhookTrigger
 }
 [/template]
 

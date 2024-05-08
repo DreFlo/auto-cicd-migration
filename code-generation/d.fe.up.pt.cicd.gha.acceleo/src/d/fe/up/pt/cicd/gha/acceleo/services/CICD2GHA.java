@@ -12,6 +12,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Input;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Job;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Matrix;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.MatrixAxis;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Not;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Or;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Output;
@@ -19,6 +20,7 @@ import d.fe.up.pt.cicd.gha.metamodel.GHA.ScriptJob;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Step;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.VariableDeclaration;
+import d.fe.up.pt.cicd.gha.metamodel.GHA.WEBHOOK_ACTIVITY_TYPES;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.Workflow;
 
 public class CICD2GHA {
@@ -87,7 +89,7 @@ public class CICD2GHA {
 	}
 	
 	public String  generateJobVariableReference(VariableDeclaration variableDeclaration, Job job) {
-		if (variableDeclaration.eContainer() instanceof Matrix)
+		if (variableDeclaration.eContainer() instanceof MatrixAxis)
 			return generateJobReference(job) + "." + generateMatrixVariableReference(variableDeclaration);
 		else if (variableDeclaration.eContainer() instanceof Output)
 			return generateJobReference(job) + ".outputs." + variableDeclaration.getName();
@@ -124,5 +126,9 @@ public class CICD2GHA {
 	
 	public String repeatString(String string, Integer n) {
 		return string.repeat(n);
+	}
+	
+	public String getEventTypeLiteral(WEBHOOK_ACTIVITY_TYPES eventType) {
+		return eventType.getLiteral();
 	}
 }

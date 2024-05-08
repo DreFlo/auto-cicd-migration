@@ -3353,11 +3353,11 @@ public interface CICDPackage extends EPackage {
 	EAttribute getJob_MaxAttempts();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#isAllowFailure <em>Allow Failure</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getAllowFailure <em>Allow Failure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Allow Failure</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#isAllowFailure()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Job#getAllowFailure()
 	 * @see #getJob()
 	 * @generated
 	 */
@@ -3972,11 +3972,11 @@ public interface CICDPackage extends EPackage {
 	EAttribute getNonConditionalStep_TimeoutMinutes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#isAllowFailure <em>Allow Failure</em>}'.
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getAllowFailure <em>Allow Failure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Allow Failure</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#isAllowFailure()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getAllowFailure()
 	 * @see #getNonConditionalStep()
 	 * @generated
 	 */

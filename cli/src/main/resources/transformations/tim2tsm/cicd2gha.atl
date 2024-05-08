@@ -113,7 +113,7 @@ abstract rule Job2Job {
 					cicdJob.agent.container
 				endif,
 			continueOnError <- 
-				if not cicdJob.allowFailure then
+				if not cicdJob.allowFailure.oclIsUndefined() then
 					thisModule.Boolean2BooleanLiteral(cicdJob.allowFailure)
 				else
 					OclUndefined
@@ -134,6 +134,7 @@ abstract rule Job2Job {
 					OclUndefined
 				endif,
 			name <- cicdJob.id,
+			outputs <- cicdJob.outputs, 
 			services <- cicdJob.services->collect(service | thisModule.DockerContainer2Service(service)),
 			strategy <- cicdJob.matrix,
 			timeoutMinutes <- 
@@ -338,8 +339,7 @@ rule PushTrigger2PushTrigger extends Trigger2Trigger {
 		cicdTrigger : CICD!PushTrigger
 	to
 		ghaTrigger : GHA!PushTrigger(
-			branches <- cicdTrigger.branchGlobs->collect(glob | thisModule.String2StringLiteral(glob)),
-			paths <- cicdTrigger.tagGlobs->collect(glob | thisModule.String2StringLiteral(glob))
+			branches <- cicdTrigger.branchGlobs->collect(glob | thisModule.String2StringLiteral(glob))
 		)
 }
 

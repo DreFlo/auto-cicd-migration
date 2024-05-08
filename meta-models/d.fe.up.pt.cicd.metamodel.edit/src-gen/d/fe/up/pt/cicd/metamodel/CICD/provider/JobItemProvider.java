@@ -111,7 +111,7 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 						getResourceLocator(), getString("_UI_Job_allowFailure_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_Job_allowFailure_feature", "_UI_Job_type"),
 						CICDPackage.Literals.JOB__ALLOW_FAILURE, true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

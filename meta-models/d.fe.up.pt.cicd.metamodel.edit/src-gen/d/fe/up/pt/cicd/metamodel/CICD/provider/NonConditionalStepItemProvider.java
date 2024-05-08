@@ -131,7 +131,7 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 				getString("_UI_PropertyDescriptor_description", "_UI_NonConditionalStep_allowFailure_feature",
 						"_UI_NonConditionalStep_type"),
 				CICDPackage.Literals.NON_CONDITIONAL_STEP__ALLOW_FAILURE, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**

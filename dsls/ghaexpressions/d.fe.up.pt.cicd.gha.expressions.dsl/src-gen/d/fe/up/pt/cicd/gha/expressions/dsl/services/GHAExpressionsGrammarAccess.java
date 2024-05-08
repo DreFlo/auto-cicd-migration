@@ -538,6 +538,7 @@ public class GHAExpressionsGrammarAccess extends AbstractElementFinder.AbstractG
 	private final TerminalRule tVARIABLE_REFERENCE;
 	private final TerminalRule tDOUBLE;
 	private final TerminalRule tBOOLEAN;
+	private final TerminalRule tID;
 	
 	private final Grammar grammar;
 	
@@ -563,6 +564,7 @@ public class GHAExpressionsGrammarAccess extends AbstractElementFinder.AbstractG
 		this.tVARIABLE_REFERENCE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.VARIABLE_REFERENCE");
 		this.tDOUBLE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.DOUBLE");
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.BOOLEAN");
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.ID");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -753,9 +755,12 @@ public class GHAExpressionsGrammarAccess extends AbstractElementFinder.AbstractG
 		return tBOOLEAN;
 	}
 	
-	//terminal ID: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+	//@Override
+	//terminal ID returns ecore::EString:
+	//    '^'?('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*
+	//;
 	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
+		return tID;
 	}
 	
 	//terminal INT returns ecore::EInt: ('0'..'9')+;

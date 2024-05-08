@@ -350,13 +350,13 @@ public interface Job extends EObject {
 	void setStrategy(Matrix value);
 
 	/**
-	 * Returns the value of the '<em><b>Outputs</b></em>' reference list.
+	 * Returns the value of the '<em><b>Outputs</b></em>' containment reference list.
 	 * The list contents are of type {@link d.fe.up.pt.cicd.gha.metamodel.GHA.Output}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outputs</em>' reference list.
+	 * @return the value of the '<em>Outputs</em>' containment reference list.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage#getJob_Outputs()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Output> getOutputs();

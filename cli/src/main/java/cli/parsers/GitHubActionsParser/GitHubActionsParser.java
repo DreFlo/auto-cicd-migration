@@ -564,22 +564,27 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		for (YamlNode key : yamlMapping.keys()) {
 			if (key.type().equals(Node.SCALAR)) {
 				Output output = outputs.stream().filter(i -> i.getId().getName().equals(key.asScalar().value())).findFirst().orElse(null);
-				parseOutput(output, yamlMapping.value(key.asScalar().value()).asMapping());
+				parseOutput(output, yamlMapping.value(key.asScalar().value()));
 			} else {
 				throw new SyntaxException("Invalid output");
 			}
 		}
 	}
 
-	private void parseOutput(Output output, YamlMapping outputMap) throws SyntaxException {
+	private void parseOutput(Output output, YamlNode yamlNode) throws SyntaxException {
 		if (output == null) {
 			throw new SyntaxException("Invalid output");
 		}
-		if (outputMap.string("description") != null) {
-			output.setDescription(parseExpression(outputMap.string("description"), output));
-		}
-		if (outputMap.string("value") != null) {
-			output.setValue(parseExpression(outputMap.string("value"), output));
+		if (yamlNode.type().equals(Node.MAPPING)) {
+			YamlMapping outputMap = yamlNode.asMapping();
+			if (outputMap.string("description") != null) {
+				output.setDescription(parseExpression(outputMap.string("description"), output));
+			}
+			if (outputMap.string("value") != null) {
+				output.setValue(parseExpression(outputMap.string("value"), output));
+			}
+		} else if (yamlNode.type().equals(Node.SCALAR)) {
+			output.setValue(parseExpression(yamlNode.asScalar().value(), output));
 		}
 	}
 
@@ -789,6 +794,10 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 				jobs.put(_job.getName(), _job);
 			}
 			job.getDependsOn().addAll(parseDependencies(jobMap.value("needs"), jobs));
+		}
+
+		if (jobMap.yamlMapping("outputs") != null) {
+			parseOutputs(job.getOutputs(), jobMap.yamlMapping("outputs"));
 		}
 
 		if (jobMap.value("steps") != null && job instanceof ScriptJob scriptJob) {

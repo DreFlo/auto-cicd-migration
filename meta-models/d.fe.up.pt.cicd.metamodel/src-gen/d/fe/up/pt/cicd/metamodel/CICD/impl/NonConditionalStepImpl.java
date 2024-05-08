@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#isAllowFailure <em>Allow Failure</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getAllowFailure <em>Allow Failure</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getWorkingDirectory <em>Working Directory</em>}</li>
  * </ul>
  *
@@ -111,24 +111,24 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	protected Integer timeoutMinutes = TIMEOUT_MINUTES_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isAllowFailure() <em>Allow Failure</em>}' attribute.
+	 * The default value of the '{@link #getAllowFailure() <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAllowFailure()
+	 * @see #getAllowFailure()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ALLOW_FAILURE_EDEFAULT = false;
+	protected static final Boolean ALLOW_FAILURE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isAllowFailure() <em>Allow Failure</em>}' attribute.
+	 * The cached value of the '{@link #getAllowFailure() <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAllowFailure()
+	 * @see #getAllowFailure()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean allowFailure = ALLOW_FAILURE_EDEFAULT;
+	protected Boolean allowFailure = ALLOW_FAILURE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getWorkingDirectory() <em>Working Directory</em>}' containment reference.
@@ -250,7 +250,7 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
-	public boolean isAllowFailure() {
+	public Boolean getAllowFailure() {
 		return allowFailure;
 	}
 
@@ -260,8 +260,8 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
-	public void setAllowFailure(boolean newAllowFailure) {
-		boolean oldAllowFailure = allowFailure;
+	public void setAllowFailure(Boolean newAllowFailure) {
+		Boolean oldAllowFailure = allowFailure;
 		allowFailure = newAllowFailure;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE,
@@ -356,7 +356,7 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
 			return getTimeoutMinutes();
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
-			return isAllowFailure();
+			return getAllowFailure();
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			return getWorkingDirectory();
 		}
@@ -441,7 +441,7 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 			return TIMEOUT_MINUTES_EDEFAULT == null ? timeoutMinutes != null
 					: !TIMEOUT_MINUTES_EDEFAULT.equals(timeoutMinutes);
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
-			return allowFailure != ALLOW_FAILURE_EDEFAULT;
+			return ALLOW_FAILURE_EDEFAULT == null ? allowFailure != null : !ALLOW_FAILURE_EDEFAULT.equals(allowFailure);
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			return workingDirectory != null;
 		}

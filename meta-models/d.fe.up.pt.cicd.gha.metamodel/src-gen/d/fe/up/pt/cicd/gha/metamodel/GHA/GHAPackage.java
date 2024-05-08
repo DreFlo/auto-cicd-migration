@@ -312,7 +312,7 @@ public interface GHAPackage extends EPackage {
 	int JOB__STRATEGY = 15;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -493,7 +493,7 @@ public interface GHAPackage extends EPackage {
 	int SCRIPT_JOB__STRATEGY = JOB__STRATEGY;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -683,7 +683,7 @@ public interface GHAPackage extends EPackage {
 	int WORKFLOW_CALL_JOB__STRATEGY = JOB__STRATEGY;
 
 	/**
-	 * The feature id for the '<em><b>Outputs</b></em>' reference list.
+	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4255,10 +4255,10 @@ public interface GHAPackage extends EPackage {
 	EReference getJob_Strategy();
 
 	/**
-	 * Returns the meta object for the reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getOutputs <em>Outputs</em>}'.
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getOutputs <em>Outputs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Outputs</em>'.
+	 * @return the meta object for the containment reference list '<em>Outputs</em>'.
 	 * @see d.fe.up.pt.cicd.gha.metamodel.GHA.Job#getOutputs()
 	 * @see #getJob()
 	 * @generated
@@ -6311,7 +6311,7 @@ public interface GHAPackage extends EPackage {
 		EReference JOB__STRATEGY = eINSTANCE.getJob_Strategy();
 
 		/**
-		 * The meta object literal for the '<em><b>Outputs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Outputs</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

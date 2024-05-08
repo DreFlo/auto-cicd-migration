@@ -336,7 +336,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
             	    int alt1=2;
             	    int LA1_0 = input.LA(1);
 
-            	    if ( ((LA1_0>='A' && LA1_0<='Z')||(LA1_0>='^' && LA1_0<='_')||(LA1_0>='a' && LA1_0<='z')) ) {
+            	    if ( (LA1_0=='-'||(LA1_0>='A' && LA1_0<='Z')||(LA1_0>='^' && LA1_0<='_')||(LA1_0>='a' && LA1_0<='z')) ) {
             	        alt1=1;
             	    }
             	    else if ( ((LA1_0>='0' && LA1_0<='9')) ) {
@@ -473,8 +473,8 @@ public class InternalGHAExpressionsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGHAExpressions.g:844:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalGHAExpressions.g:844:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGHAExpressions.g:844:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '0' .. '9' )* )
+            // InternalGHAExpressions.g:844:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '0' .. '9' )*
             {
             // InternalGHAExpressions.g:844:11: ( '^' )?
             int alt4=2;
@@ -494,7 +494,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
 
             }
 
-            if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            if ( input.LA(1)=='-'||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
 
             }
@@ -503,13 +503,13 @@ public class InternalGHAExpressionsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalGHAExpressions.g:844:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGHAExpressions.g:844:44: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '-' | '0' .. '9' )*
             loop5:
             do {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( ((LA5_0>='0' && LA5_0<='9')||(LA5_0>='A' && LA5_0<='Z')||LA5_0=='_'||(LA5_0>='a' && LA5_0<='z')) ) {
+                if ( (LA5_0=='-'||(LA5_0>='0' && LA5_0<='9')||(LA5_0>='A' && LA5_0<='Z')||LA5_0=='_'||(LA5_0>='a' && LA5_0<='z')) ) {
                     alt5=1;
                 }
 
@@ -518,7 +518,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
             	case 1 :
             	    // InternalGHAExpressions.g:
             	    {
-            	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            	    if ( input.LA(1)=='-'||(input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
 
             	    }
@@ -1137,7 +1137,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
     static final String DFA15_eofS =
         "\63\uffff";
     static final String DFA15_minS =
-        "\1\0\1\174\1\46\1\75\3\uffff\3\75\1\101\4\56\2\0\1\52\16\uffff\2\56\1\uffff\1\56\2\uffff\1\56\1\uffff\1\56\4\uffff\4\56\1\uffff\1\56";
+        "\1\0\1\174\1\46\1\75\3\uffff\3\75\2\55\1\56\2\55\2\0\1\52\16\uffff\2\55\1\uffff\1\55\2\uffff\1\56\1\uffff\1\55\4\uffff\4\55\1\uffff\1\55";
     static final String DFA15_maxS =
         "\1\uffff\1\174\1\46\1\75\3\uffff\3\75\2\172\1\71\2\172\2\uffff\1\57\16\uffff\2\172\1\uffff\1\172\2\uffff\1\71\1\uffff\1\172\4\uffff\4\172\1\uffff\1\172";
     static final String DFA15_acceptS =
@@ -1145,7 +1145,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
     static final String DFA15_specialS =
         "\1\2\16\uffff\1\0\1\1\42\uffff}>";
     static final String[] DFA15_transitionS = {
-            "\11\23\2\22\2\23\1\22\22\23\1\22\1\3\1\17\3\23\1\2\1\20\1\4\1\5\2\23\1\6\2\23\1\21\12\14\2\23\1\10\1\11\1\7\2\23\32\16\3\23\1\12\1\16\1\23\5\16\1\15\15\16\1\13\6\16\1\23\1\1\uff83\23",
+            "\11\23\2\22\2\23\1\22\22\23\1\22\1\3\1\17\3\23\1\2\1\20\1\4\1\5\2\23\1\6\1\16\1\23\1\21\12\14\2\23\1\10\1\11\1\7\2\23\32\16\3\23\1\12\1\16\1\23\5\16\1\15\15\16\1\13\6\16\1\23\1\1\uff83\23",
             "\1\24",
             "\1\25",
             "\1\26",
@@ -1155,11 +1155,11 @@ public class InternalGHAExpressionsLexer extends Lexer {
             "\1\33",
             "\1\35",
             "\1\37",
-            "\32\40\4\uffff\1\40\1\uffff\32\40",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\21\43\1\41\10\43",
+            "\1\40\23\uffff\32\40\4\uffff\1\40\1\uffff\32\40",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\21\43\1\41\10\43",
             "\1\47\1\uffff\12\46",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\1\50\31\43",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\1\50\31\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
             "\0\51",
             "\0\51",
             "\1\52\4\uffff\1\53",
@@ -1177,25 +1177,25 @@ public class InternalGHAExpressionsLexer extends Lexer {
             "",
             "",
             "",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\24\43\1\55\5\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\24\43\1\55\5\43",
             "",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
             "",
             "",
             "\1\47\1\uffff\12\46",
             "",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\13\43\1\56\16\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\13\43\1\56\16\43",
             "",
             "",
             "",
             "",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\4\43\1\57\25\43",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\22\43\1\60\7\43",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\4\43\1\62\25\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\4\43\1\57\25\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\22\43\1\60\7\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43",
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\4\43\1\62\25\43",
             "",
-            "\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43"
+            "\1\43\1\44\1\uffff\12\43\7\uffff\32\43\1\44\3\uffff\1\43\1\uffff\32\43"
     };
 
     static final short[] DFA15_eot = DFA.unpackEncodedString(DFA15_eotS);
@@ -1284,7 +1284,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
 
                         else if ( (LA15_0=='f') ) {s = 13;}
 
-                        else if ( ((LA15_0>='A' && LA15_0<='Z')||LA15_0=='_'||(LA15_0>='a' && LA15_0<='e')||(LA15_0>='g' && LA15_0<='s')||(LA15_0>='u' && LA15_0<='z')) ) {s = 14;}
+                        else if ( (LA15_0=='-'||(LA15_0>='A' && LA15_0<='Z')||LA15_0=='_'||(LA15_0>='a' && LA15_0<='e')||(LA15_0>='g' && LA15_0<='s')||(LA15_0>='u' && LA15_0<='z')) ) {s = 14;}
 
                         else if ( (LA15_0=='\"') ) {s = 15;}
 
@@ -1294,7 +1294,7 @@ public class InternalGHAExpressionsLexer extends Lexer {
 
                         else if ( ((LA15_0>='\t' && LA15_0<='\n')||LA15_0=='\r'||LA15_0==' ') ) {s = 18;}
 
-                        else if ( ((LA15_0>='\u0000' && LA15_0<='\b')||(LA15_0>='\u000B' && LA15_0<='\f')||(LA15_0>='\u000E' && LA15_0<='\u001F')||(LA15_0>='#' && LA15_0<='%')||(LA15_0>='*' && LA15_0<='+')||(LA15_0>='-' && LA15_0<='.')||(LA15_0>=':' && LA15_0<=';')||(LA15_0>='?' && LA15_0<='@')||(LA15_0>='[' && LA15_0<=']')||LA15_0=='`'||LA15_0=='{'||(LA15_0>='}' && LA15_0<='\uFFFF')) ) {s = 19;}
+                        else if ( ((LA15_0>='\u0000' && LA15_0<='\b')||(LA15_0>='\u000B' && LA15_0<='\f')||(LA15_0>='\u000E' && LA15_0<='\u001F')||(LA15_0>='#' && LA15_0<='%')||(LA15_0>='*' && LA15_0<='+')||LA15_0=='.'||(LA15_0>=':' && LA15_0<=';')||(LA15_0>='?' && LA15_0<='@')||(LA15_0>='[' && LA15_0<=']')||LA15_0=='`'||LA15_0=='{'||(LA15_0>='}' && LA15_0<='\uFFFF')) ) {s = 19;}
 
                         if ( s>=0 ) return s;
                         break;

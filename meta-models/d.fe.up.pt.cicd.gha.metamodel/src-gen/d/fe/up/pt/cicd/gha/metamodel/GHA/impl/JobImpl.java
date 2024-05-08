@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEMap;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -236,7 +236,7 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	protected Matrix strategy;
 
 	/**
-	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' reference list.
+	 * The cached value of the '{@link #getOutputs() <em>Outputs</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOutputs()
@@ -884,7 +884,7 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 	@Override
 	public EList<Output> getOutputs() {
 		if (outputs == null) {
-			outputs = new EObjectResolvingEList<Output>(Output.class, this, GHAPackage.JOB__OUTPUTS);
+			outputs = new EObjectContainmentEList<Output>(Output.class, this, GHAPackage.JOB__OUTPUTS);
 		}
 		return outputs;
 	}
@@ -944,6 +944,8 @@ public abstract class JobImpl extends MinimalEObjectImpl.Container implements Jo
 			return basicSetContinueOnError(null, msgs);
 		case GHAPackage.JOB__STRATEGY:
 			return basicSetStrategy(null, msgs);
+		case GHAPackage.JOB__OUTPUTS:
+			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

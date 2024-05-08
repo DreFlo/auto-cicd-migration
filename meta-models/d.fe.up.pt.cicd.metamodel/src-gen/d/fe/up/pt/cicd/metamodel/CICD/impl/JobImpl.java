@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getPrevious <em>Previous</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getNext <em>Next</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getMaxAttempts <em>Max Attempts</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#isAllowFailure <em>Allow Failure</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.JobImpl#getAllowFailure <em>Allow Failure</em>}</li>
  * </ul>
  *
  * @generated
@@ -136,24 +136,24 @@ public abstract class JobImpl extends PipelineBlockImpl implements Job {
 	protected Integer maxAttempts = MAX_ATTEMPTS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isAllowFailure() <em>Allow Failure</em>}' attribute.
+	 * The default value of the '{@link #getAllowFailure() <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAllowFailure()
+	 * @see #getAllowFailure()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ALLOW_FAILURE_EDEFAULT = false;
+	protected static final Boolean ALLOW_FAILURE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isAllowFailure() <em>Allow Failure</em>}' attribute.
+	 * The cached value of the '{@link #getAllowFailure() <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isAllowFailure()
+	 * @see #getAllowFailure()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean allowFailure = ALLOW_FAILURE_EDEFAULT;
+	protected Boolean allowFailure = ALLOW_FAILURE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -372,7 +372,7 @@ public abstract class JobImpl extends PipelineBlockImpl implements Job {
 	 * @generated
 	 */
 	@Override
-	public boolean isAllowFailure() {
+	public Boolean getAllowFailure() {
 		return allowFailure;
 	}
 
@@ -382,8 +382,8 @@ public abstract class JobImpl extends PipelineBlockImpl implements Job {
 	 * @generated
 	 */
 	@Override
-	public void setAllowFailure(boolean newAllowFailure) {
-		boolean oldAllowFailure = allowFailure;
+	public void setAllowFailure(Boolean newAllowFailure) {
+		Boolean oldAllowFailure = allowFailure;
 		allowFailure = newAllowFailure;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.JOB__ALLOW_FAILURE, oldAllowFailure,
@@ -452,7 +452,7 @@ public abstract class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__MAX_ATTEMPTS:
 			return getMaxAttempts();
 		case CICDPackage.JOB__ALLOW_FAILURE:
-			return isAllowFailure();
+			return getAllowFailure();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -556,7 +556,7 @@ public abstract class JobImpl extends PipelineBlockImpl implements Job {
 		case CICDPackage.JOB__MAX_ATTEMPTS:
 			return MAX_ATTEMPTS_EDEFAULT == null ? maxAttempts != null : !MAX_ATTEMPTS_EDEFAULT.equals(maxAttempts);
 		case CICDPackage.JOB__ALLOW_FAILURE:
-			return allowFailure != ALLOW_FAILURE_EDEFAULT;
+			return ALLOW_FAILURE_EDEFAULT == null ? allowFailure != null : !ALLOW_FAILURE_EDEFAULT.equals(allowFailure);
 		}
 		return super.eIsSet(featureID);
 	}

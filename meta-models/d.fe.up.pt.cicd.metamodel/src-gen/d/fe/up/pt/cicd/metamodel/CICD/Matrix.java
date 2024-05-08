@@ -64,13 +64,12 @@ public interface Matrix extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Fail Fast</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fail Fast</em>' attribute.
 	 * @see #setFailFast(Boolean)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getMatrix_FailFast()
-	 * @model default="true" required="true"
+	 * @model
 	 * @generated
 	 */
 	Boolean getFailFast();

@@ -86,7 +86,13 @@ public class GHAExpressionsVisitor {
 
     private Expression parseBracketedExpression(String expressionString, EObject container) throws SyntaxException {
         GHAExpressionsParser expressionsParser = new GHAExpressionsParser();
-        d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Expression expression = expressionsParser.parse(expressionString);
+        d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Expression expression;
+        try {
+            expression = expressionsParser.parse(expressionString);
+        }
+        catch (SyntaxException e) {;
+            throw new SyntaxException("Error parsing expression: " + expressionString);
+        }
         return visitExpression(expression, container);
     }
 
@@ -177,7 +183,7 @@ public class GHAExpressionsVisitor {
             return convertedExpression;
         } else {
             StringLiteral stringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
-            stringLiteral.setValue(expression.getValue());
+            stringLiteral.setValue("${{ " + expression.getValue() + " }}");
             return stringLiteral;
         }
     }

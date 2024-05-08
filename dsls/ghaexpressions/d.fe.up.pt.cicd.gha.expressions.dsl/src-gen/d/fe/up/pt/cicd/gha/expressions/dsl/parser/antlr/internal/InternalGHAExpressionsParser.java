@@ -1399,7 +1399,7 @@ public class InternalGHAExpressionsParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.ID");
             				
 
             }
@@ -1691,7 +1691,7 @@ public class InternalGHAExpressionsParser extends AbstractInternalAntlrParser {
                             								current,
                             								"value",
                             								lv_value_1_1,
-                            								"org.eclipse.xtext.common.Terminals.ID");
+                            								"d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.ID");
                             						
 
                             }

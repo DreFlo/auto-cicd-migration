@@ -3,3 +3,9 @@ test/scripts/.env
 test/tests/*
 !test/tests/.empty
 test/Repositories.random_processed.json
+cli/log
+test/converted/*
+!test/converted/.empty
+test/yamldiff
+test/diffs/*
+!test/diffs/.empty

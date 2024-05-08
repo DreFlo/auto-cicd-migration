@@ -36,8 +36,7 @@
         eOpposite="#//Job/previous"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxAttempts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ScriptJob" eSuperTypes="#//Job">
     <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
@@ -95,9 +94,7 @@
         eType="#//MatrixCombination" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" upperBound="-1"
         eType="#//MatrixCombination" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failFast" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
-        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failFast" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MatrixAxis">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//VariableDeclaration"
@@ -144,7 +141,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="environmentVariables" upperBound="-1"
         eType="#//Assignment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeoutMinutes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowFailure" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="workingDirectory" eType="#//Expression"
         containment="true"/>
   </eClassifiers>

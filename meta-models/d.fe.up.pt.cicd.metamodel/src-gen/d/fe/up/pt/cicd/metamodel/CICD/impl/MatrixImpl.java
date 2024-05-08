@@ -78,7 +78,7 @@ public class MatrixImpl extends MinimalEObjectImpl.Container implements Matrix {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Boolean FAIL_FAST_EDEFAULT = Boolean.TRUE;
+	protected static final Boolean FAIL_FAST_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getFailFast() <em>Fail Fast</em>}' attribute.

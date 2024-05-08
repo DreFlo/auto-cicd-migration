@@ -72,3 +72,8 @@ terminal DOUBLE returns ecore::EDoubleObject:
 terminal BOOLEAN returns ecore::EBooleanObject:
 	'true' | 'false'
 ;
+
+@Override 
+terminal ID returns ecore::EString:
+	'^'?('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*
+;

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EMap;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getEnvironmentVariables <em>Environment Variables</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#isAllowFailure <em>Allow Failure</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getAllowFailure <em>Allow Failure</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getWorkingDirectory <em>Working Directory</em>}</li>
  * </ul>
  *
@@ -110,22 +110,22 @@ public interface NonConditionalStep extends Step {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Allow Failure</em>' attribute.
-	 * @see #setAllowFailure(boolean)
+	 * @see #setAllowFailure(Boolean)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep_AllowFailure()
 	 * @model
 	 * @generated
 	 */
-	boolean isAllowFailure();
+	Boolean getAllowFailure();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#isAllowFailure <em>Allow Failure</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getAllowFailure <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Allow Failure</em>' attribute.
-	 * @see #isAllowFailure()
+	 * @see #getAllowFailure()
 	 * @generated
 	 */
-	void setAllowFailure(boolean value);
+	void setAllowFailure(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Working Directory</b></em>' containment reference.

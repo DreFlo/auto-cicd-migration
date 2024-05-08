@@ -529,7 +529,7 @@ ruleFunction returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.ID");
 				}
 			)
 		)
@@ -629,7 +629,7 @@ ruleAtomic returns [EObject current=null]
 								$current,
 								"value",
 								lv_value_1_1,
-								"org.eclipse.xtext.common.Terminals.ID");
+								"d.fe.up.pt.cicd.gha.expressions.dsl.GHAExpressions.ID");
 						}
 						    |
 						lv_value_1_2=RULE_VARIABLE_REFERENCE
@@ -841,7 +841,7 @@ RULE_DOUBLE : RULE_INT '.' RULE_INT;
 
 RULE_BOOLEAN : ('true'|'false');
 
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 

@@ -2254,7 +2254,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getJob_MaxAttempts(), ecorePackage.getEIntegerObject(), "maxAttempts", "1", 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getJob_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", "false", 1, 1, Job.class,
+		initEAttribute(getJob_AllowFailure(), ecorePackage.getEBooleanObject(), "allowFailure", null, 0, 1, Job.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scriptJobEClass, ScriptJob.class, "ScriptJob", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2344,7 +2344,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getMatrix_Excludes(), this.getMatrixCombination(), null, "excludes", null, 0, -1, Matrix.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMatrix_FailFast(), ecorePackage.getEBooleanObject(), "failFast", "true", 1, 1, Matrix.class,
+		initEAttribute(getMatrix_FailFast(), ecorePackage.getEBooleanObject(), "failFast", null, 0, 1, Matrix.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(matrixAxisEClass, MatrixAxis.class, "MatrixAxis", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2415,9 +2415,9 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getNonConditionalStep_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null,
 				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNonConditionalStep_AllowFailure(), ecorePackage.getEBoolean(), "allowFailure", null, 0, 1,
-				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNonConditionalStep_AllowFailure(), ecorePackage.getEBooleanObject(), "allowFailure", null, 0,
+				1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNonConditionalStep_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null,
 				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -47,101 +47,138 @@ rule MergePipeline
 			.select(job|job.previous.isEmpty());
 }
 
-rule MergeJob 
-	merge l : Left!CICD::Job
-	with r : Right!CICD::Job
-	into t : Target!CICD::Job {
-	t.name = selectDefined(l.name, r.name);
+rule MergePipelineCallJob
+	merge l : Left!CICD::PipelineCallJob
+	with r : Right!CICD::PipelineCallJob
+	into t : Target!CICD::PipelineCallJob {
+	t.name = l.name;
 	
-	t.agent = selectDefined(l.agent.equivalent(), r.agent.equivalent());
+	t.agent ::= l.agent;
 	
-	t.inputs = l.inputs.equivalent().includingAll(r.inputs.equivalent());
+	t.inputs ::= l.inputs;
 	
-	t.outputs = l.outputs.equivalent().includingAll(r.outputs.equivalent());
+	t.outputs ::= l.outputs;
 	
-	t.environmentVariables = 
-		l.environmentVariables.equivalent()
-			.mergeWith(r.environmentVariables.equivalent());
+	t.environmentVariables ::= l.environmentVariables;
 	
-	t.timeoutMinutes = selectDefined(l.timeoutMinutes, r.timeoutMinutes);
+	t.timeoutMinutes = l.timeoutMinutes;
 	
-	t.workingDirectory = selectDefined(l.workingDirectory, r.workingDirectory);
+	t.workingDirectory = l.workingDirectory;
 	
-	t.shell = selectDefined(l.shell, r.shell);
+	t.shell = l.shell;
 	
-	t.id = selectDefined(l.id, r.id);
+	t.id = l.id;
 	
-	t.ifCondition = selectDefined(l.ifCondition.equivalent(), r.ifCondition.equivalent());
+	t.ifCondition ::= l.ifCondition;
 	
-	t.services = l.services.equivalent().includingAll(r.services.equivalent());
+	t.services ::= l.services;
 	
-	t.matrix = selectDefined(l.matrix, r.matrix);
+	t.matrix ::= l.matrix;
 	
-	t.previous = l.previous.equivalent().includingAll(r.previous.equivalent());
+	t.previous ::= l.previous;
 	
-	t.maxAttempts = selectDefined(l.maxAttempts, r.maxAttempts);
+	t.maxAttempts = l.maxAttempts;
 	
-	t.allowFailure = selectDefined(l.allowFailure, r.allowFailure);
+	t.allowFailure = l.allowFailure;
 	
-	t.pipelinePath = selectDefined(l.pipelinePath, r.pipelinePath);
+	t.pipelinePath ::= l.pipelinePath;
 	
-	t.args = 
-		l.args.equivalent()
-			.mergeWith(r.args.equivalent());
+	t.args ::= l.args;
 }
 
-rule ScriptJob
+rule MergeScriptJob
 	merge l : Left!CICD::ScriptJob
 	with r : Right!CICD::ScriptJob
 	into t : Target!CICD::ScriptJob {
-	t.name = selectDefined(l.name, r.name);
+	t.name = l.name;
 	
-	t.agent = selectDefined(l.agent.equivalent(), r.agent.equivalent());
+	t.agent ::= l.agent;
 	
-	t.inputs = l.inputs.equivalent().includingAll(r.inputs.equivalent());
+	t.inputs ::= l.inputs;
 	
-	t.outputs = l.outputs.equivalent().includingAll(r.outputs.equivalent());
+	t.outputs ::= l.outputs;
 	
-	t.environmentVariables = 
-		l.environmentVariables.equivalent()
-			.mergeWith(r.environmentVariables.equivalent());
+	t.environmentVariables ::= l.environmentVariables;
 	
-	t.timeoutMinutes = selectDefined(l.timeoutMinutes, r.timeoutMinutes);
+	t.timeoutMinutes = l.timeoutMinutes;
 	
-	t.workingDirectory = selectDefined(l.workingDirectory, r.workingDirectory);
+	t.workingDirectory = l.workingDirectory;
 	
-	t.shell = selectDefined(l.shell, r.shell);
+	t.shell = l.shell;
 	
-	t.id = selectDefined(l.id, r.id);
+	t.id = l.id;
 	
-	t.ifCondition = selectDefined(l.ifCondition.equivalent(), r.ifCondition.equivalent());
+	t.ifCondition ::= l.ifCondition;
 	
-	t.services = l.services.equivalent().includingAll(r.services.equivalent());
+	t.services ::= l.services;
 	
-	t.matrix = selectDefined(l.matrix, r.matrix);
+	t.matrix ::= l.matrix;
 	
-	t.previous = l.previous.equivalent().includingAll(r.previous.equivalent());
+	t.previous ::= l.previous;
 	
-	t.maxAttempts = selectDefined(l.maxAttempts, r.maxAttempts);
+	t.maxAttempts = l.maxAttempts;
 	
-	t.allowFailure = selectDefined(l.allowFailure, r.allowFailure);
+	t.allowFailure = l.allowFailure;
 	
-	t.steps = l.steps.equivalent().select(step | r.steps.equivalent().includes(step));
+	t.steps ::= l.steps;
 }
 
-rule Command
-	merge l : Left!CICD::Command
-	with r : Right!CICD::Command
-	into t : Target!CICD::Command {
-	t.program ::= l.program;
-	t.program.println();
+rule MergePushTrigger 
+	merge l : Left!CICD::PushTrigger
+	with r : Right!CICD::PushTrigger
+	into t : Target!CICD::PushTrigger {
+	t.branchGlobs = l.branchGlobs.includingAll(r.branchGlobs);
+	t.tagGlobs = l.tagGlobs.includingAll(l.tagGlobs);
 }
 
-rule Checkout
-	merge l : Left!CICD::Checkout
-	with r : Right!CICD::Checkout
-	into t : Target!CICD::Checkout {
-	
+rule MergePullRequestTrigger 
+	merge l : Left!CICD::PullRequestTrigger
+	with r : Right!CICD::PullRequestTrigger
+	into t : Target!CICD::PullRequestTrigger {
+	t.branchGlobs = l.branchGlobs.includingAll(r.branchGlobs);
+}
+
+rule MergeManualTrigger 
+	merge l : Left!CICD::ManualTrigger
+	with r : Right!CICD::ManualTrigger
+	into t : Target!CICD::ManualTrigger {
+	t.branchGlobs = l.branchGlobs.includingAll(r.branchGlobs);
+}
+
+rule MergeScheduledTrigger 
+	merge l : Left!CICD::ScheduledTrigger
+	with r : Right!CICD::ScheduledTrigger
+	into t : Target!CICD::ScheduledTrigger {
+	t.branchGlobs = l.branchGlobs.includingAll(r.branchGlobs);
+	t.crons = l.crons.includingAll(r.crons);
+}
+
+rule MergeVariableDeclaration 
+	merge l : Left!CICD::VariableDeclaration
+	with r : Right!CICD::VariableDeclaration
+	into t : Target!CICD::VariableDeclaration {
+	t.name = l.name;
+}
+
+rule MergeInput 
+	merge l : Left!CICD::Input
+	with r : Right!CICD::Input
+	into t : Target!CICD::Input {
+	t.id ::= l.id;
+	t.description ::= l.description;
+	t.type = l.type;
+	t.defaultValue ::= l.defaultValue;
+	t.required = l.required;
+	t.choices = l.choices;
+}
+
+rule MergeOutput 
+	merge l : Left!CICD::Output
+	with r : Right!CICD::Output
+	into t : Target!CICD::Output {
+	t.id ::= l.id;
+	t.description ::= l.description;
+	t.value ::= l.expression;
 }
 
 // Copy
@@ -150,7 +187,13 @@ rule CopyPipelineBlock
 	transform s : Source!CICD::PipelineBlock
 	to t : Target!CICD::PipelineBlock {
 	t.name = s.name;
+	t.agent ::= s.agent;
+	t.inputs ::= s.inputs;
+	t.outputs ::= s.outputs;
+	t.environmentVariables ::= s.environmentVariables;
+	t.timeoutMinutes = s.timeoutMinutes;
 	t.workingDirectory = s.workingDirectory;
+	t.shell = s.shell;
 }
 
 @abstract
@@ -158,12 +201,296 @@ rule CopyJob
 	transform s : Source!CICD::Job
 	to t : Target!CICD::Job
 	extends CopyPipelineBlock {
-	t.id = s.id + 'transformed';
+	t.id = s.id;
+	t.ifCondition ::= s.ifCondition;
+	t.services ::= s.services;
+	t.matrix ::= s.matrix;
+	t.previous ::= s.previous;
+	t.maxAttempts = s.maxAttempts;
+	t.allowFailure = s.allowFailure;
 }
 
 rule CopyScriptJob
 	transform s : Source!CICD::ScriptJob
 	to t : Target!CICD::ScriptJob
 	extends CopyJob {
-	t.steps = Sequence{};
+	t.steps ::= s.steps;
+}
+
+rule CopyPipelineCallJob
+	transform s : Source!CICD::PipelineCallJob
+	to t : Target!CICD::PipelineCallJob
+	extends CopyJob {
+	t.pipelinePath ::= s.pipelinePath;
+	t.args ::= s.args;
+}
+
+rule CopyAgent 
+	transform s : Source!CICD::Agent
+	to t : Target!CICD::Agent {
+	t.labels ::= s.labels;
+	t.container ::= s.container;
+}
+
+rule CopyDockerContainer 
+	transform s : Source!CICD::DockerContainer
+	to t : Target!CICD::DockerContainer {
+	t.label = s.label;
+	t.image ::= s.image;
+	t.environmentVariables ::= s.environmentVariables;
+	t.volumes ::= s.volumes;
+	t.ports ::= s.ports;
+	t.options = s.options;
+	t.registryUsername ::= s.registryUsername;
+	t.registryPassword ::= s.registryPassword;
+	t.network ::= s.network;
+}
+
+@abstract
+rule CopyTrigger 
+	transform s : Source!CICD::Trigger
+	to t : Target!CICD::Trigger {
+	t.branchGlobs = s.branchGlobs;
+}
+
+rule CopyPushTrigger 
+	transform s : Source!CICD::PushTrigger
+	to t : Target!CICD::PushTrigger
+	extends CopyTrigger {
+	t.tagGlobs = s.tagGlobs;
+}
+
+rule CopyPullRequestTrigger 
+	transform s : Source!CICD::PullRequestTrigger
+	to t : Target!CICD::PullRequestTrigger
+	extends CopyTrigger {
+}
+
+rule CopyManualTrigger 
+	transform s : Source!CICD::ManualTrigger
+	to t : Target!CICD::ManualTrigger
+	extends CopyTrigger {
+}
+
+rule CopyScheduledTrigger 
+	transform s : Source!CICD::ScheduledTrigger
+	to t : Target!CICD::ScheduledTrigger
+	extends CopyTrigger {
+	t.crons = s.crons;
+}
+
+@abstract
+rule CopyStep 
+	transform s : Source!CICD::Step
+	to t : Target!CICD::Step {
+}
+
+rule CopyConditionalStep 
+	transform s : Source!CICD::ConditionalStep
+	to t : Target!CICD::ConditionalStep
+	extends CopyStep {
+	t.ifCondition ::= s.ifCondition;
+	t.thenRun ::= s.thenRun;
+	t.elseRun ::= s.elseRun;
+}
+
+@abstract
+rule CopyNonConditionalStep 
+	transform s : Source!CICD::NonConditionalStep
+	to t : Target!CICD::NonConditionalStep
+	extends CopyStep {
+	t.id = s.id;
+	t.name = s.name;
+	t.environmentVariables ::= s.environmentVariables;
+	t.timeoutMinutes = s.timeoutMinutes;
+	t.allowFailure = s.allowFailure;
+	t.workingDirectory ::= s.workingDirectory;
+}
+
+rule CopyCommand 
+	transform s : Source!CICD::Command
+	to t : Target!CICD::Command
+	extends CopyNonConditionalStep {
+	t.program ::= s.program;
+}
+
+rule CopyPlugin 
+	transform s : Source!CICD::Plugin
+	to t : Target!CICD::Plugin
+	extends CopyNonConditionalStep {
+	t.pluginName = s.pluginName;
+	t.version = s.version;
+	t.kwargs ::= s.kwargs;
+}
+
+rule CopyCache
+	transform s : Source!CICD::Cache
+	to t : Target!CICD::Cache
+	extends CopyNonConditionalStep {
+	t.cacheName ::= s.cacheName;
+	t.keys ::= s.keys;
+	t.paths ::= s.paths;
+	t.store = s.store;
+}
+
+rule CopyArtifact
+	transform s : Source!CICD::Artifact
+	to t : Target!CICD::Artifact
+	extends CopyNonConditionalStep {
+	t.artifactName ::= s.artifactName;
+	t.includePaths ::= s.includePaths;
+	t.excludePaths ::= s.excludePaths;
+	t.retentionTime ::= s.retentionTime;
+	t.store = s.store;
+}
+
+rule CopyCheckout
+	transform s : Source!CICD::Checkout
+	to t : Target!CICD::Checkout
+	extends CopyNonConditionalStep {
+	t.path ::= s.path;
+}
+
+rule CopyVariableDeclaration 
+	transform s : Source!CICD::VariableDeclaration
+	to t : Target!CICD::VariableDeclaration {
+	t.name = s.name;
+}
+
+@abstract
+rule CopyExpression 
+	transform s : Source!CICD::Expression
+	to t : Target!CICD::Expression {
+}
+
+rule CopyAssignment 
+	transform s : Source!CICD::Assignment
+	to t : Target!CICD::Assignment 
+	extends CopyExpression {
+	t.key ::= s.key;
+	t.value ::= s.value;
+}
+
+rule CopyConcat 
+	transform s : Source!CICD::Concat
+	to t : Target!CICD::Concat 
+	extends CopyExpression {
+	t.expressions ::= s.expressions;
+}
+
+@abstract
+rule CopyValue 
+	transform s : Source!CICD::Value
+	to t : Target!CICD::Value 
+	extends CopyExpression {
+}
+
+@abstract
+rule CopyLiteral
+	transform s : Source!CICD::Literal
+	to t : Target!CICD::Literal 
+	extends CopyValue {
+}
+
+rule CopyStringLiteral
+	transform s : Source!CICD::StringLiteral
+	to t : Target!CICD::StringLiteral 
+	extends CopyLiteral {
+	t.value = s.value;
+}
+
+rule CopyIntegerLiteral
+	transform s : Source!CICD::IntegerLiteral
+	to t : Target!CICD::IntegerLiteral 
+	extends CopyLiteral {
+	t.value = s.value;
+}
+
+rule CopyDoubleLiteral
+	transform s : Source!CICD::DoubleLiteral
+	to t : Target!CICD::DoubleLiteral 
+	extends CopyLiteral {
+	t.value = s.value;
+}
+
+rule CopyBooleanLiteral
+	transform s : Source!CICD::BooleanLiteral
+	to t : Target!CICD::BooleanLiteral 
+	extends CopyLiteral {
+	t.value = s.value;
+}
+
+rule CopyVariableReference
+	transform s : Source!CICD::VariableReference
+	to t : Target!CICD::VariableReference
+	extends CopyValue {
+	t.reference ::= s.reference;
+}
+
+rule CopyBuiltInFunction
+	transform s : Source!CICD::BuiltInFunction
+	to t : Target!CICD::BuiltInFunction
+	extends CopyExpression {
+}
+
+@abstract
+rule CopyBinaryOp
+	transform s : Source!CICD::BinaryOp
+	to t : Target!CICD::BinaryOp
+	extends CopyExpression {
+	t.lhs ::= s.lhs;
+	t.rhs ::= s.rhs;
+}
+
+rule CopyEqualityOp
+	transform s : Source!CICD::EqualityOp
+	to t : Target!CICD::EqualityOp
+	extends CopyBinaryOp {
+	t.op = s.op;
+}
+
+rule CopyComparisonOp
+	transform s : Source!CICD::ComparisonOp
+	to t : Target!CICD::ComparisonOp
+	extends CopyBinaryOp {
+	t.op = s.op;
+}
+
+rule CopyDotOp
+	transform s : Source!CICD::DotOp
+	to t : Target!CICD::DotOp
+	extends CopyBinaryOp {
+}
+
+@abstract
+rule CopyLogicalOp
+	transform s : Source!CICD::LogicalOp
+	to t : Target!CICD::LogicalOp
+	extends CopyBinaryOp {
+}
+
+rule CopyAnd
+	transform s : Source!CICD::And
+	to t : Target!CICD::And
+	extends CopyLogicalOp {
+}
+
+rule CopyOr
+	transform s : Source!CICD::Or
+	to t : Target!CICD::Or
+	extends CopyLogicalOp {
+}
+
+@abstract
+rule CopyUnaryOp
+	transform s : Source!CICD::UnaryOp
+	to t : Target!CICD::UnaryOp
+	extends CopyExpression {
+	t.rhs ::= s.rhs;
+}
+
+rule CopyNegation
+	transform s : Source!CICD::Negation
+	to t : Target!CICD::Negation
+	extends CopyUnaryOp {
 }

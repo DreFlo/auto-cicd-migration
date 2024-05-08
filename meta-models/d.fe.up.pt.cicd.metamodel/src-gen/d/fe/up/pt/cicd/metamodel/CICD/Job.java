@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getPrevious <em>Previous</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getNext <em>Next</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getMaxAttempts <em>Max Attempts</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#isAllowFailure <em>Allow Failure</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getAllowFailure <em>Allow Failure</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob()
@@ -159,25 +159,24 @@ public interface Job extends PipelineBlock {
 
 	/**
 	 * Returns the value of the '<em><b>Allow Failure</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Allow Failure</em>' attribute.
-	 * @see #setAllowFailure(boolean)
+	 * @see #setAllowFailure(Boolean)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getJob_AllowFailure()
-	 * @model default="false" required="true"
+	 * @model
 	 * @generated
 	 */
-	boolean isAllowFailure();
+	Boolean getAllowFailure();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#isAllowFailure <em>Allow Failure</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Job#getAllowFailure <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Allow Failure</em>' attribute.
-	 * @see #isAllowFailure()
+	 * @see #getAllowFailure()
 	 * @generated
 	 */
-	void setAllowFailure(boolean value);
+	void setAllowFailure(Boolean value);
 
 } // Job

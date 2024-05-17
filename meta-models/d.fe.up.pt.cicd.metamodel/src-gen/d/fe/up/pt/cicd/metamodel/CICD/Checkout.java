@@ -26,7 +26,7 @@ public interface Checkout extends NonConditionalStep {
 	 * @return the value of the '<em>Path</em>' containment reference.
 	 * @see #setPath(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getCheckout_Path()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Expression getPath();

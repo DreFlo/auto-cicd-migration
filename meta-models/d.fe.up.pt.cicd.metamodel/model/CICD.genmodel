@@ -17,7 +17,6 @@
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/NUMBER"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/BOOLEAN"/>
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/SECRET"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/CHOICE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//EQUALITY_OPS">
@@ -29,11 +28,6 @@
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//COMPARISON_OPS/GTE"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//COMPARISON_OPS/LT"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//COMPARISON_OPS/LTE"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//VARIABLE_CONTEXTS">
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/ENV"/>
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/PARAMS"/>
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//VARIABLE_CONTEXTS/SECRETS"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//CACHE_MODE">
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//CACHE_MODE/STORE"/>
@@ -97,7 +91,6 @@
     <genClasses ecoreClass="CICD.ecore#//ScheduledTrigger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//ScheduledTrigger/crons"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//WebhookTrigger"/>
     <genClasses ecoreClass="CICD.ecore#//Matrix">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Matrix/axes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//Matrix/includes"/>
@@ -133,7 +126,7 @@
     <genClasses image="false" ecoreClass="CICD.ecore#//NonConditionalStep">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/environmentVariables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/environmentVariables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/timeoutMinutes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/allowFailure"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/workingDirectory"/>
@@ -190,7 +183,6 @@
     <genClasses ecoreClass="CICD.ecore#//VariableReference">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//VariableReference/reference"/>
     </genClasses>
-    <genClasses ecoreClass="CICD.ecore#//BuiltInFunction"/>
     <genClasses ecoreClass="CICD.ecore#//BinaryOp">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//BinaryOp/lhs"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//BinaryOp/rhs"/>

@@ -55,7 +55,7 @@ public class CICD2GHA {
 		if (string.matches("^\"(?:\\.|[^\\\"])*\"$") || string.matches("^'(?:\\.|[^\\'])*'$")) {
 			return string;
 		} else {
-			return "\"" + string + "\"";
+			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\"") + "\"";
 		}
 	}
 	

@@ -49,16 +49,6 @@ public enum INPUT_TYPE implements Enumerator {
 	BOOLEAN(2, "BOOLEAN", "BOOLEAN"),
 
 	/**
-	 * The '<em><b>SECRET</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SECRET_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	SECRET(4, "SECRET", "SECRET"),
-
-	/**
 	 * The '<em><b>CHOICE</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,7 +56,7 @@ public enum INPUT_TYPE implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CHOICE(5, "CHOICE", "CHOICE");
+	CHOICE(4, "CHOICE", "CHOICE");
 
 	/**
 	 * The '<em><b>STRING</b></em>' literal value.
@@ -102,17 +92,6 @@ public enum INPUT_TYPE implements Enumerator {
 	public static final int BOOLEAN_VALUE = 2;
 
 	/**
-	 * The '<em><b>SECRET</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SECRET
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SECRET_VALUE = 4;
-
-	/**
 	 * The '<em><b>CHOICE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,7 +100,7 @@ public enum INPUT_TYPE implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CHOICE_VALUE = 5;
+	public static final int CHOICE_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>INPUT TYPE</b></em>' enumerators.
@@ -129,7 +108,7 @@ public enum INPUT_TYPE implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final INPUT_TYPE[] VALUES_ARRAY = new INPUT_TYPE[] { STRING, NUMBER, BOOLEAN, SECRET, CHOICE, };
+	private static final INPUT_TYPE[] VALUES_ARRAY = new INPUT_TYPE[] { STRING, NUMBER, BOOLEAN, CHOICE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>INPUT TYPE</b></em>' enumerators.
@@ -191,8 +170,6 @@ public enum INPUT_TYPE implements Enumerator {
 			return NUMBER;
 		case BOOLEAN_VALUE:
 			return BOOLEAN;
-		case SECRET_VALUE:
-			return SECRET;
 		case CHOICE_VALUE:
 			return CHOICE;
 		}

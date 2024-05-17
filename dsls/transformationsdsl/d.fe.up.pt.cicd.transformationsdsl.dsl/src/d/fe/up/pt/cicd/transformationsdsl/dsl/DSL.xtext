@@ -3,7 +3,6 @@ grammar d.fe.up.pt.cicd.transformationsdsl.dsl.DSL with org.eclipse.xtext.common
 
 import "http://d.fe.up.pt/Transformations"
 import "http://www.d.fe.up.pt/CICD" as CICD
-import "http://d.fe.up.pt/CircleCI" as CircleCI
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 TransformationSet returns TransformationSet:

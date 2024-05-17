@@ -171,9 +171,6 @@ public class PipelineItemProvider extends PipelineBlockItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
 				CICDFactory.eINSTANCE.createScheduledTrigger()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE__TRIGGERS,
-				CICDFactory.eINSTANCE.createWebhookTrigger()));
 	}
 
 }

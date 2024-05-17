@@ -1,0 +1,47 @@
+defaults:
+- <nil>
++ map[run:map[shell:bash]]
+
+jobs.build.defaults:
+- <nil>
++ map[run:map[shell:bash]]
+
+jobs.build.runs-on:
+- windows-latest
++ [windows-latest]
+
+jobs.build.steps.0.uses:
+- actions/checkout@master
++ actions/checkout@v4
+
+jobs.publish.defaults:
+- <nil>
++ map[run:map[shell:bash]]
+
+jobs.publish.runs-on:
+- windows-latest
++ [windows-latest]
+
+jobs.publish.steps.0.uses:
+- actions/checkout@master
++ actions/checkout@v4
+
+jobs.publish.steps.2.run:
+- dotnet build src/OpenProtocolInterpreter/OpenProtocolInterpreter.csproj --configuration release
+nuget push src/OpenProtocolInterpreter/bin/release/OpenProtocolInterpreter.6.1.0.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate
++ dotnet build src/OpenProtocolInterpreter/OpenProtocolInterpreter.csproj --configuration release
+nuget push src/OpenProtocolInterpreter/bin/release/OpenProtocolInterpreter.6.1.0.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+
+
+jobs.test.defaults:
+- <nil>
++ map[run:map[shell:bash]]
+
+jobs.test.runs-on:
+- windows-latest
++ [windows-latest]
+
+jobs.test.steps.0.uses:
+- actions/checkout@master
++ actions/checkout@v4
+

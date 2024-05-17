@@ -280,29 +280,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WebhookTriggerItemProvider webhookTriggerItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWebhookTriggerAdapter() {
-		if (webhookTriggerItemProvider == null) {
-			webhookTriggerItemProvider = new WebhookTriggerItemProvider(this);
-		}
-
-		return webhookTriggerItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Matrix} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -740,29 +717,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected BuiltInFunctionItemProvider builtInFunctionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createBuiltInFunctionAdapter() {
-		if (builtInFunctionItemProvider == null) {
-			builtInFunctionItemProvider = new BuiltInFunctionItemProvider(this);
-		}
-
-		return builtInFunctionItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.EqualityOp} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1046,8 +1000,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			manualTriggerItemProvider.dispose();
 		if (scheduledTriggerItemProvider != null)
 			scheduledTriggerItemProvider.dispose();
-		if (webhookTriggerItemProvider != null)
-			webhookTriggerItemProvider.dispose();
 		if (matrixItemProvider != null)
 			matrixItemProvider.dispose();
 		if (matrixAxisItemProvider != null)
@@ -1086,8 +1038,6 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			booleanLiteralItemProvider.dispose();
 		if (variableReferenceItemProvider != null)
 			variableReferenceItemProvider.dispose();
-		if (builtInFunctionItemProvider != null)
-			builtInFunctionItemProvider.dispose();
 		if (equalityOpItemProvider != null)
 			equalityOpItemProvider.dispose();
 		if (comparisonOpItemProvider != null)

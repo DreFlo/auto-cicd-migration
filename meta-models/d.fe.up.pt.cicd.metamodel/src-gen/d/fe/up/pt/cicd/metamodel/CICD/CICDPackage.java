@@ -1177,43 +1177,6 @@ public interface CICDPackage extends EPackage {
 	int SCHEDULED_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.WebhookTriggerImpl <em>Webhook Trigger</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.WebhookTriggerImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getWebhookTrigger()
-	 * @generated
-	 */
-	int WEBHOOK_TRIGGER = 12;
-
-	/**
-	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WEBHOOK_TRIGGER__BRANCH_GLOBS = TRIGGER__BRANCH_GLOBS;
-
-	/**
-	 * The number of structural features of the '<em>Webhook Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WEBHOOK_TRIGGER_FEATURE_COUNT = TRIGGER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Webhook Trigger</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WEBHOOK_TRIGGER_OPERATION_COUNT = TRIGGER_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.MatrixImpl <em>Matrix</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1221,7 +1184,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 13;
+	int MATRIX = 12;
 
 	/**
 	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
@@ -1285,7 +1248,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrixAxis()
 	 * @generated
 	 */
-	int MATRIX_AXIS = 14;
+	int MATRIX_AXIS = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -1331,7 +1294,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 15;
+	int MATRIX_COMBINATION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Combination Entries</b></em>' map.
@@ -1368,7 +1331,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 16;
+	int PARAMETER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1414,7 +1377,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 17;
+	int INPUT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1496,7 +1459,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 18;
+	int OUTPUT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1551,7 +1514,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 19;
+	int STEP = 18;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -1579,7 +1542,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConditionalStep()
 	 * @generated
 	 */
-	int CONDITIONAL_STEP = 20;
+	int CONDITIONAL_STEP = 19;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -1634,7 +1597,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNonConditionalStep()
 	 * @generated
 	 */
-	int NON_CONDITIONAL_STEP = 21;
+	int NON_CONDITIONAL_STEP = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1716,7 +1679,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 22;
+	int COMMAND = 21;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1807,7 +1770,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPlugin()
 	 * @generated
 	 */
-	int PLUGIN = 23;
+	int PLUGIN = 22;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1916,7 +1879,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCache()
 	 * @generated
 	 */
-	int CACHE = 24;
+	int CACHE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2034,7 +1997,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 25;
+	int ARTIFACT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2161,7 +2124,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCheckout()
 	 * @generated
 	 */
-	int CHECKOUT = 26;
+	int CHECKOUT = 25;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2252,7 +2215,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableDeclaration()
 	 * @generated
 	 */
-	int VARIABLE_DECLARATION = 27;
+	int VARIABLE_DECLARATION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2289,7 +2252,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 29;
+	int EXPRESSION = 28;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -2317,7 +2280,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAssignment()
 	 * @generated
 	 */
-	int ASSIGNMENT = 28;
+	int ASSIGNMENT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -2363,7 +2326,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 30;
+	int CONCAT = 29;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2400,7 +2363,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 31;
+	int VALUE = 30;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -2428,7 +2391,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 32;
+	int LITERAL = 31;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -2456,7 +2419,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 33;
+	int STRING_LITERAL = 32;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2493,7 +2456,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 34;
+	int INTEGER_LITERAL = 33;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2530,7 +2493,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 35;
+	int DOUBLE_LITERAL = 34;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2567,7 +2530,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 36;
+	int BOOLEAN_LITERAL = 35;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2604,7 +2567,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableReference()
 	 * @generated
 	 */
-	int VARIABLE_REFERENCE = 37;
+	int VARIABLE_REFERENCE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -2634,34 +2597,6 @@ public interface CICDPackage extends EPackage {
 	int VARIABLE_REFERENCE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBuiltInFunction()
-	 * @generated
-	 */
-	int BUILT_IN_FUNCTION = 38;
-
-	/**
-	 * The number of structural features of the '<em>Built In Function</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUILT_IN_FUNCTION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Built In Function</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUILT_IN_FUNCTION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BinaryOpImpl <em>Binary Op</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2669,7 +2604,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 39;
+	int BINARY_OP = 37;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2715,7 +2650,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 40;
+	int EQUALITY_OP = 38;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2770,7 +2705,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 41;
+	int COMPARISON_OP = 39;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2825,7 +2760,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDotOp()
 	 * @generated
 	 */
-	int DOT_OP = 42;
+	int DOT_OP = 40;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2871,7 +2806,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 43;
+	int LOGICAL_OP = 41;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2917,7 +2852,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 44;
+	int AND = 42;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2963,7 +2898,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 45;
+	int OR = 43;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -3009,7 +2944,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 46;
+	int UNARY_OP = 44;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3046,7 +2981,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 47;
+	int NEGATION = 45;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3083,7 +3018,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 	 * @generated
 	 */
-	int SHELL_TYPE = 48;
+	int SHELL_TYPE = 46;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
@@ -3093,7 +3028,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 49;
+	int INPUT_TYPE = 47;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3103,7 +3038,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 50;
+	int EQUALITY_OPS = 48;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3113,17 +3048,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 51;
-
-	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
-	 * @generated
-	 */
-	int VARIABLE_CONTEXTS = 52;
+	int COMPARISON_OPS = 49;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
@@ -3133,7 +3058,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
 	 * @generated
 	 */
-	int CACHE_MODE = 53;
+	int CACHE_MODE = 50;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -3639,16 +3564,6 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getScheduledTrigger_Crons();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger <em>Webhook Trigger</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Webhook Trigger</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger
-	 * @generated
-	 */
-	EClass getWebhookTrigger();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Matrix <em>Matrix</em>}'.
@@ -4409,16 +4324,6 @@ public interface CICDPackage extends EPackage {
 	EReference getVariableReference_Reference();
 
 	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction <em>Built In Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Built In Function</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction
-	 * @generated
-	 */
-	EClass getBuiltInFunction();
-
-	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.BinaryOp <em>Binary Op</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4602,16 +4507,6 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCOMPARISON_OPS();
-
-	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>VARIABLE CONTEXTS</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS
-	 * @generated
-	 */
-	EEnum getVARIABLE_CONTEXTS();
 
 	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}'.
@@ -5045,16 +4940,6 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SCHEDULED_TRIGGER__CRONS = eINSTANCE.getScheduledTrigger_Crons();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.WebhookTriggerImpl <em>Webhook Trigger</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.WebhookTriggerImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getWebhookTrigger()
-		 * @generated
-		 */
-		EClass WEBHOOK_TRIGGER = eINSTANCE.getWebhookTrigger();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.MatrixImpl <em>Matrix</em>}' class.
@@ -5675,16 +5560,6 @@ public interface CICDPackage extends EPackage {
 		EReference VARIABLE_REFERENCE__REFERENCE = eINSTANCE.getVariableReference_Reference();
 
 		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.BuiltInFunctionImpl
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBuiltInFunction()
-		 * @generated
-		 */
-		EClass BUILT_IN_FUNCTION = eINSTANCE.getBuiltInFunction();
-
-		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.BinaryOpImpl <em>Binary Op</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5853,16 +5728,6 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COMPARISON_OPS = eINSTANCE.getCOMPARISON_OPS();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS <em>VARIABLE CONTEXTS</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVARIABLE_CONTEXTS()
-		 * @generated
-		 */
-		EEnum VARIABLE_CONTEXTS = eINSTANCE.getVARIABLE_CONTEXTS();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.

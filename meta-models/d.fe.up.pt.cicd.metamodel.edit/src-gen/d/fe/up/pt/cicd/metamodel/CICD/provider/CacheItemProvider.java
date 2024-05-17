@@ -189,9 +189,6 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
 				CICDFactory.eINSTANCE.createVariableReference()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME,
-				CICDFactory.eINSTANCE.createBuiltInFunction()));
-
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CACHE__CACHE_NAME, CICDFactory.eINSTANCE.createEqualityOp()));
 
@@ -233,9 +230,6 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS,
 				CICDFactory.eINSTANCE.createVariableReference()));
-
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createBuiltInFunction()));
 
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__KEYS, CICDFactory.eINSTANCE.createEqualityOp()));
@@ -279,9 +273,6 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS,
 				CICDFactory.eINSTANCE.createVariableReference()));
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createBuiltInFunction()));
-
 		newChildDescriptors
 				.add(createChildParameter(CICDPackage.Literals.CACHE__PATHS, CICDFactory.eINSTANCE.createEqualityOp()));
 
@@ -315,7 +306,8 @@ public class CacheItemProvider extends NonConditionalStepItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
+		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES
+				|| childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
 				|| childFeature == CICDPackage.Literals.CACHE__CACHE_NAME
 				|| childFeature == CICDPackage.Literals.CACHE__KEYS
 				|| childFeature == CICDPackage.Literals.CACHE__PATHS;

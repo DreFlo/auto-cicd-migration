@@ -103,15 +103,6 @@ public interface CICDFactory extends EFactory {
 	ScheduledTrigger createScheduledTrigger();
 
 	/**
-	 * Returns a new object of class '<em>Webhook Trigger</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Webhook Trigger</em>'.
-	 * @generated
-	 */
-	WebhookTrigger createWebhookTrigger();
-
-	/**
 	 * Returns a new object of class '<em>Matrix</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -272,15 +263,6 @@ public interface CICDFactory extends EFactory {
 	 * @generated
 	 */
 	VariableReference createVariableReference();
-
-	/**
-	 * Returns a new object of class '<em>Built In Function</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Built In Function</em>'.
-	 * @generated
-	 */
-	BuiltInFunction createBuiltInFunction();
 
 	/**
 	 * Returns a new object of class '<em>Equality Op</em>'.

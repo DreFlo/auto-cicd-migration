@@ -172,15 +172,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case CICDPackage.WEBHOOK_TRIGGER: {
-			WebhookTrigger webhookTrigger = (WebhookTrigger) theEObject;
-			T result = caseWebhookTrigger(webhookTrigger);
-			if (result == null)
-				result = caseTrigger(webhookTrigger);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case CICDPackage.MATRIX: {
 			Matrix matrix = (Matrix) theEObject;
 			T result = caseMatrix(matrix);
@@ -419,15 +410,6 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = caseValue(variableReference);
 			if (result == null)
 				result = caseExpression(variableReference);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CICDPackage.BUILT_IN_FUNCTION: {
-			BuiltInFunction builtInFunction = (BuiltInFunction) theEObject;
-			T result = caseBuiltInFunction(builtInFunction);
-			if (result == null)
-				result = caseExpression(builtInFunction);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -713,21 +695,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseScheduledTrigger(ScheduledTrigger object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Webhook Trigger</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Webhook Trigger</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWebhookTrigger(WebhookTrigger object) {
 		return null;
 	}
 
@@ -1103,21 +1070,6 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVariableReference(VariableReference object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Built In Function</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Built In Function</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBuiltInFunction(BuiltInFunction object) {
 		return null;
 	}
 

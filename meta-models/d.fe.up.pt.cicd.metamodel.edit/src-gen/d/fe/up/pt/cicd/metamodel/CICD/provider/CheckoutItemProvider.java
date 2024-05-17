@@ -164,9 +164,6 @@ public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
 				CICDFactory.eINSTANCE.createVariableReference()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.CHECKOUT__PATH,
-				CICDFactory.eINSTANCE.createBuiltInFunction()));
-
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.CHECKOUT__PATH, CICDFactory.eINSTANCE.createEqualityOp()));
 
@@ -200,7 +197,8 @@ public class CheckoutItemProvider extends NonConditionalStepItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
+		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES
+				|| childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
 				|| childFeature == CICDPackage.Literals.CHECKOUT__PATH;
 
 		if (qualify) {

@@ -7,7 +7,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.And;
 import d.fe.up.pt.cicd.metamodel.CICD.Artifact;
 import d.fe.up.pt.cicd.metamodel.CICD.BinaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.BooleanLiteral;
-import d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Cache;
@@ -50,7 +49,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Value;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableReference;
-import d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger;
 
 import java.util.Map;
 
@@ -152,13 +150,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass scheduledTriggerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass webhookTriggerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -340,13 +331,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass builtInFunctionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass binaryOpEClass = null;
 
 	/**
@@ -432,13 +416,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EEnum comparisoN_OPSEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum variablE_CONTEXTSEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -979,16 +956,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EAttribute getScheduledTrigger_Crons() {
 		return (EAttribute) scheduledTriggerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getWebhookTrigger() {
-		return webhookTriggerEClass;
 	}
 
 	/**
@@ -1707,16 +1674,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getBuiltInFunction() {
-		return builtInFunctionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getBinaryOp() {
 		return binaryOpEClass;
 	}
@@ -1897,16 +1854,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getVARIABLE_CONTEXTS() {
-		return variablE_CONTEXTSEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getCACHE_MODE() {
 		return cachE_MODEEEnum;
 	}
@@ -1999,8 +1946,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		scheduledTriggerEClass = createEClass(SCHEDULED_TRIGGER);
 		createEAttribute(scheduledTriggerEClass, SCHEDULED_TRIGGER__CRONS);
-
-		webhookTriggerEClass = createEClass(WEBHOOK_TRIGGER);
 
 		matrixEClass = createEClass(MATRIX);
 		createEReference(matrixEClass, MATRIX__AXES);
@@ -2098,8 +2043,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		variableReferenceEClass = createEClass(VARIABLE_REFERENCE);
 		createEReference(variableReferenceEClass, VARIABLE_REFERENCE__REFERENCE);
 
-		builtInFunctionEClass = createEClass(BUILT_IN_FUNCTION);
-
 		binaryOpEClass = createEClass(BINARY_OP);
 		createEReference(binaryOpEClass, BINARY_OP__LHS);
 		createEReference(binaryOpEClass, BINARY_OP__RHS);
@@ -2128,7 +2071,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		inpuT_TYPEEEnum = createEEnum(INPUT_TYPE);
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
 		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
-		variablE_CONTEXTSEEnum = createEEnum(VARIABLE_CONTEXTS);
 		cachE_MODEEEnum = createEEnum(CACHE_MODE);
 	}
 
@@ -2169,7 +2111,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		pullRequestTriggerEClass.getESuperTypes().add(this.getTrigger());
 		manualTriggerEClass.getESuperTypes().add(this.getTrigger());
 		scheduledTriggerEClass.getESuperTypes().add(this.getTrigger());
-		webhookTriggerEClass.getESuperTypes().add(this.getTrigger());
 		inputEClass.getESuperTypes().add(this.getParameter());
 		outputEClass.getESuperTypes().add(this.getParameter());
 		conditionalStepEClass.getESuperTypes().add(this.getStep());
@@ -2188,7 +2129,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		doubleLiteralEClass.getESuperTypes().add(this.getLiteral());
 		booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 		variableReferenceEClass.getESuperTypes().add(this.getValue());
-		builtInFunctionEClass.getESuperTypes().add(this.getExpression());
 		binaryOpEClass.getESuperTypes().add(this.getExpression());
 		equalityOpEClass.getESuperTypes().add(this.getBinaryOp());
 		comparisonOpEClass.getESuperTypes().add(this.getBinaryOp());
@@ -2300,13 +2240,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getDockerContainer_Options(), ecorePackage.getEString(), "options", null, 0, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_RegistryUsername(), this.getExpression(), null, "registryUsername", null, 1,
+		initEReference(getDockerContainer_RegistryUsername(), this.getExpression(), null, "registryUsername", null, 0,
 				1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_RegistryPassword(), this.getExpression(), null, "registryPassword", null, 1,
+		initEReference(getDockerContainer_RegistryPassword(), this.getExpression(), null, "registryPassword", null, 0,
 				1, DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDockerContainer_Network(), this.getExpression(), null, "network", null, 1, 1,
+		initEReference(getDockerContainer_Network(), this.getExpression(), null, "network", null, 0, 1,
 				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2330,9 +2270,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getScheduledTrigger_Crons(), ecorePackage.getEString(), "crons", null, 1, -1,
 				ScheduledTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(webhookTriggerEClass, WebhookTrigger.class, "WebhookTrigger", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(matrixEClass, Matrix.class, "Matrix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMatrix_Axes(), this.getMatrixAxis(), null, "axes", null, 0, -1, Matrix.class, !IS_TRANSIENT,
@@ -2468,7 +2405,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCheckout_Path(), this.getExpression(), null, "path", null, 1, 1, Checkout.class,
+		initEReference(getCheckout_Path(), this.getExpression(), null, "path", null, 0, 1, Checkout.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2528,9 +2465,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				VariableReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(builtInFunctionEClass, BuiltInFunction.class, "BuiltInFunction", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(binaryOpEClass, BinaryOp.class, "BinaryOp", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBinaryOp_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryOp.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
@@ -2574,7 +2508,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.STRING);
 		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.NUMBER);
 		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.BOOLEAN);
-		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.SECRET);
 		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.CHOICE);
 
 		initEEnum(equalitY_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS.class, "EQUALITY_OPS");
@@ -2586,11 +2519,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.GTE);
 		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.LT);
 		addEEnumLiteral(comparisoN_OPSEEnum, d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS.LTE);
-
-		initEEnum(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.class, "VARIABLE_CONTEXTS");
-		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.ENV);
-		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.PARAMS);
-		addEEnumLiteral(variablE_CONTEXTSEEnum, d.fe.up.pt.cicd.metamodel.CICD.VARIABLE_CONTEXTS.SECRETS);
 
 		initEEnum(cachE_MODEEEnum, d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE.class, "CACHE_MODE");
 		addEEnumLiteral(cachE_MODEEEnum, d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE.STORE);

@@ -238,9 +238,6 @@ public class JobItemProvider extends PipelineBlockItemProvider {
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
 				CICDFactory.eINSTANCE.createVariableReference()));
 
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION,
-				CICDFactory.eINSTANCE.createBuiltInFunction()));
-
 		newChildDescriptors.add(
 				createChildParameter(CICDPackage.Literals.JOB__IF_CONDITION, CICDFactory.eINSTANCE.createEqualityOp()));
 

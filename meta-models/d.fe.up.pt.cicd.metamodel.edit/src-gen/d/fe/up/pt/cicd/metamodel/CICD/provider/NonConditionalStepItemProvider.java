@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -48,7 +49,6 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 
 			addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
-			addEnvironmentVariablesPropertyDescriptor(object);
 			addTimeoutMinutesPropertyDescriptor(object);
 			addAllowFailurePropertyDescriptor(object);
 		}
@@ -85,21 +85,6 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 								"_UI_NonConditionalStep_type"),
 						CICDPackage.Literals.NON_CONDITIONAL_STEP__NAME, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Environment Variables feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEnvironmentVariablesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-				getString("_UI_NonConditionalStep_environmentVariables_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_NonConditionalStep_environmentVariables_feature",
-						"_UI_NonConditionalStep_type"),
-				CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES, true, false, true, null, null, null));
 	}
 
 	/**
@@ -146,6 +131,7 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
 			childrenFeatures.add(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY);
 		}
 		return childrenFeatures;
@@ -205,6 +191,7 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
@@ -222,6 +209,9 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES,
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
 				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
@@ -245,9 +235,6 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 				CICDFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
-				CICDFactory.eINSTANCE.createBuiltInFunction()));
-
-		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
 				CICDFactory.eINSTANCE.createEqualityOp()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
@@ -267,6 +254,27 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY,
 				CICDFactory.eINSTANCE.createNegation()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES
+				|| childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

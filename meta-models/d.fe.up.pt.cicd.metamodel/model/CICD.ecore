@@ -65,12 +65,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="registryUsername" lowerBound="1"
-        eType="#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="registryPassword" lowerBound="1"
-        eType="#//Expression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="network" lowerBound="1"
-        eType="#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryUsername" eType="#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registryPassword" eType="#//Expression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="network" eType="#//Expression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trigger" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="branchGlobs" upperBound="-1"
@@ -86,7 +83,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="crons" lowerBound="1" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WebhookTrigger" eSuperTypes="#//Trigger"/>
   <eClassifiers xsi:type="ecore:EClass" name="Matrix">
     <eStructuralFeatures xsi:type="ecore:EReference" name="axes" upperBound="-1" eType="#//MatrixAxis"
         containment="true"/>
@@ -178,7 +174,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="store" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="#//NonConditionalStep">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="path" lowerBound="1" eType="#//Expression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VariableDeclaration">
@@ -214,7 +210,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
         eType="#//VariableDeclaration"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BuiltInFunction" eSuperTypes="#//Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="BinaryOp" abstract="true" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//Expression"
         containment="true"/>
@@ -243,8 +238,7 @@
     <eLiterals name="STRING"/>
     <eLiterals name="NUMBER" value="1"/>
     <eLiterals name="BOOLEAN" value="2"/>
-    <eLiterals name="SECRET" value="4"/>
-    <eLiterals name="CHOICE" value="5" literal="CHOICE"/>
+    <eLiterals name="CHOICE" value="4" literal="CHOICE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EQUALITY_OPS">
     <eLiterals name="EQUALS" literal="=="/>
@@ -255,11 +249,6 @@
     <eLiterals name="GTE" value="1" literal=">="/>
     <eLiterals name="LT" value="2" literal="&lt;"/>
     <eLiterals name="LTE" value="3" literal="&lt;="/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="VARIABLE_CONTEXTS">
-    <eLiterals name="ENV"/>
-    <eLiterals name="PARAMS" value="1"/>
-    <eLiterals name="SECRETS" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CACHE_MODE">
     <eLiterals name="STORE"/>

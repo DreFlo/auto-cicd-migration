@@ -60,11 +60,25 @@
 [/template]
 
 [template public generateConcat(concat : Concat) post (trim())]
+[let string : String = _generateConcat(concat)]
+[if (string.contains('\n'))]
+[string/]
+[else]
+[quoteString(string)/]
+[/if]
+[/let]
+[/template]
+
+[template public _generateConcat(concat : Concat) post (trim())]
 [for (expression : Expression | expressions) separator ('')][_generateExpression(expression)/][/for]
 [/template]
 
 [template public generateLiteral(literal : Literal)]
-[if (literal.oclIsKindOf(StringLiteral))][if ((literal.eContainer().oclIsKindOf(BinaryOp) and not literal.eContainer().oclIsTypeOf(DotOp)) or literal.eContainer().oclIsKindOf(UnaryOp) or literal.eContainer().oclIsKindOf(BuiltInFunctionCall) or literal.eContainer().oclIsKindOf(Trigger) or ((not literal.oclAsType(StringLiteral).value.oclIsUndefined()) and not literal.oclAsType(StringLiteral).value.contains('\n') and (literal.oclAsType(StringLiteral).value.contains('*') or literal.oclAsType(StringLiteral).value.contains(':'))))][quoteString(literal.oclAsType(StringLiteral).value)/][else][literal.oclAsType(StringLiteral).value/][/if][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value/][/if]
+[if (literal.oclIsKindOf(StringLiteral))][generateStringLiteral(literal.oclAsType(StringLiteral))/][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value/][/if]
+[/template]
+
+[template public generateStringLiteral(literal : StringLiteral)]
+[if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.value.contains('\n'))][quoteString(literal.value)/][else][literal.value/][/if]
 [/template]
 
 [template public generateDotOp(dotOp : DotOp) post (trim())]

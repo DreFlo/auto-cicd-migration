@@ -177,9 +177,6 @@ public class AddTriggerItemProvider extends OutplaceTransformationItemProvider {
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.ADD_TRIGGER__TRIGGER,
 				CICDFactory.eINSTANCE.createScheduledTrigger()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.ADD_TRIGGER__TRIGGER,
-				CICDFactory.eINSTANCE.createWebhookTrigger()));
 	}
 
 }

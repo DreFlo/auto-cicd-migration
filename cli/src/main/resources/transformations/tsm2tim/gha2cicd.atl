@@ -12,9 +12,7 @@ rule Workflow2Pipeline {
 			environmentVariables <- workflow.environmentVariables,
 			inputs <- 
 				workflow.triggers->select(trigger | trigger.oclIsKindOf(GHA!InputTrigger))
-				->collect(trigger | trigger.inputs)->flatten()->union(
-				workflow.triggers->select(trigger | trigger.oclIsKindOf(GHA!WorkflowCallTrigger))
-				->collect(trigger | trigger.secrets)->flatten()),
+				->collect(trigger | trigger.inputs)->flatten(),
 			jobStreams <- thisModule.getJobStreamOrigins(workflow.jobs),
 			name <-				
 				if not workflow.name.oclIsUndefined() then
@@ -92,15 +90,6 @@ rule Output2Output extends Parameter2Parameter {
 	to
 		output : CICD!Output(
 			value <- input.value
-		)
-}
-
-rule Secret2Input extends Parameter2Parameter {
-	from
-		input : GHA!Secret
-	to
-		output : CICD!Input(
-			required <- input.isRequired
 		)
 }
 
@@ -651,6 +640,8 @@ helper context GHA!IntegerLiteral def : expression2String() : String = self.valu
 helper context GHA!DoubleLiteral def : expression2String() : String = self.value.toString();
 
 helper context GHA!BooleanLiteral def : expression2String() : String = self.value.toString();
+
+helper context GHA!VariableReference def : expression2String() : String = self.reference.name;
 
 helper context OclAny def : expression2String() : String = OclUndefined;
 

@@ -142,7 +142,7 @@ public interface DockerContainer extends EObject {
 	 * @return the value of the '<em>Registry Username</em>' reference.
 	 * @see #setRegistryUsername(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_RegistryUsername()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	Expression getRegistryUsername();
@@ -164,7 +164,7 @@ public interface DockerContainer extends EObject {
 	 * @return the value of the '<em>Registry Password</em>' reference.
 	 * @see #setRegistryPassword(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_RegistryPassword()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	Expression getRegistryPassword();
@@ -186,7 +186,7 @@ public interface DockerContainer extends EObject {
 	 * @return the value of the '<em>Network</em>' reference.
 	 * @see #setNetwork(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getDockerContainer_Network()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	Expression getNetwork();

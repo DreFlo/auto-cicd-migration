@@ -129,11 +129,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseWebhookTrigger(WebhookTrigger object) {
-			return createWebhookTriggerAdapter();
-		}
-
-		@Override
 		public Adapter caseMatrix(Matrix object) {
 			return createMatrixAdapter();
 		}
@@ -256,11 +251,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseVariableReference(VariableReference object) {
 			return createVariableReferenceAdapter();
-		}
-
-		@Override
-		public Adapter caseBuiltInFunction(BuiltInFunction object) {
-			return createBuiltInFunctionAdapter();
 		}
 
 		@Override
@@ -492,20 +482,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createScheduledTriggerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger <em>Webhook Trigger</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.WebhookTrigger
-	 * @generated
-	 */
-	public Adapter createWebhookTriggerAdapter() {
 		return null;
 	}
 
@@ -856,20 +832,6 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVariableReferenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction <em>Built In Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.BuiltInFunction
-	 * @generated
-	 */
-	public Adapter createBuiltInFunctionAdapter() {
 		return null;
 	}
 

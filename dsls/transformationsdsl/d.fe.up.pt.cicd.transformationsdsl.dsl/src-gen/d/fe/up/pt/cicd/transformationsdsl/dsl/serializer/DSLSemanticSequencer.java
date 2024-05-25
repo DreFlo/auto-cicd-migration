@@ -5,14 +5,21 @@ package d.fe.up.pt.cicd.transformationsdsl.dsl.serializer;
 
 import com.google.inject.Inject;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.Command;
+import d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep;
 import d.fe.up.pt.cicd.metamodel.CICD.ManualTrigger;
+import d.fe.up.pt.cicd.metamodel.CICD.StringLiteral;
+import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationSet;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
@@ -42,8 +49,23 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == CICDPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case CICDPackage.ASSIGNMENT:
+				sequence_Assignment(context, (Map.Entry) semanticObject); 
+				return; 
+			case CICDPackage.COMMAND:
+				sequence_NonConditionalStep(context, (Command) semanticObject); 
+				return; 
+			case CICDPackage.CONDITIONAL_STEP:
+				sequence_ConditionalStep(context, (ConditionalStep) semanticObject); 
+				return; 
 			case CICDPackage.MANUAL_TRIGGER:
 				sequence_ManualTrigger(context, (ManualTrigger) semanticObject); 
+				return; 
+			case CICDPackage.STRING_LITERAL:
+				sequence_StringLiteral(context, (StringLiteral) semanticObject); 
+				return; 
+			case CICDPackage.VARIABLE_DECLARATION:
+				sequence_VariableDeclaration(context, (VariableDeclaration) semanticObject); 
 				return; 
 			}
 		else if (epackage == TransformationsPackage.eINSTANCE)
@@ -63,8 +85,17 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TransformationsPackage.CHANGE_PLUGIN:
 				sequence_ChangePlugin(context, (ChangePlugin) semanticObject); 
 				return; 
+			case TransformationsPackage.DELETE_STEP:
+				sequence_DeleteStep(context, (DeleteStep) semanticObject); 
+				return; 
 			case TransformationsPackage.REPLACE_AGENT_LABELS:
 				sequence_ReplaceAgentLabels(context, (ReplaceAgentLabels) semanticObject); 
+				return; 
+			case TransformationsPackage.REPLACE_STEP:
+				sequence_ReplaceStep(context, (ReplaceStep) semanticObject); 
+				return; 
+			case TransformationsPackage.SELECT_WORKFLOW:
+				sequence_SelectWorkflow(context, (SelectWorkflow) semanticObject); 
 				return; 
 			case TransformationsPackage.SET_CIRCLE_CI_VERSION:
 				sequence_SetCircleCIVersion(context, (SetCircleCIVersion) semanticObject); 
@@ -152,6 +183,29 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Assignment returns Assignment
+	 *
+	 * Constraint:
+	 *     (key=VariableDeclaration value=StringLiteral)
+	 * </pre>
+	 */
+	protected void sequence_Assignment(ISerializationContext context, Map.Entry semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CICDPackage.Literals.ASSIGNMENT__KEY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CICDPackage.Literals.ASSIGNMENT__KEY));
+			if (transientValues.isValueTransient((EObject) semanticObject, CICDPackage.Literals.ASSIGNMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CICDPackage.Literals.ASSIGNMENT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getAssignmentAccess().getKeyVariableDeclarationParserRuleCall_0_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getAssignmentAccess().getValueStringLiteralParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     TIMTransformation returns ChangeAgentLabel
 	 *     ChangeAgentLabel returns ChangeAgentLabel
 	 *
@@ -177,11 +231,50 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ChangePlugin returns ChangePlugin
 	 *
 	 * Constraint:
-	 *     (name=StringToStringMapEntry version=EString (args+=StringToStringMapEntry args+=StringToStringMapEntry*)?)
+	 *     (name=StringToStringMapEntry version=EString args+=StringToStringMapEntry*)
 	 * </pre>
 	 */
 	protected void sequence_ChangePlugin(ISerializationContext context, ChangePlugin semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Step returns ConditionalStep
+	 *     ConditionalStep returns ConditionalStep
+	 *
+	 * Constraint:
+	 *     (ifCondition=StringLiteral thenRun+=Step+ elseRun+=Step*)
+	 * </pre>
+	 */
+	protected void sequence_ConditionalStep(ISerializationContext context, ConditionalStep semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TIMTransformation returns DeleteStep
+	 *     DeleteStep returns DeleteStep
+	 *
+	 * Constraint:
+	 *     (index=INT job=EString)
+	 * </pre>
+	 */
+	protected void sequence_DeleteStep(ISerializationContext context, DeleteStep semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.DELETE_STEP__INDEX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.DELETE_STEP__INDEX));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.DELETE_STEP__JOB) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.DELETE_STEP__JOB));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDeleteStepAccess().getIndexINTTerminalRuleCall_2_0(), semanticObject.getIndex());
+		feeder.accept(grammarAccess.getDeleteStepAccess().getJobEStringParserRuleCall_4_0(), semanticObject.getJob());
+		feeder.finish();
 	}
 	
 	
@@ -203,15 +296,79 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Step returns Command
+	 *     NonConditionalStep returns Command
+	 *
+	 * Constraint:
+	 *     (program=StringLiteral environmentVariables+=Assignment*)
+	 * </pre>
+	 */
+	protected void sequence_NonConditionalStep(ISerializationContext context, Command semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     TIMTransformation returns ReplaceAgentLabels
 	 *     ReplaceAgentLabels returns ReplaceAgentLabels
 	 *
 	 * Constraint:
-	 *     (condition=EString? labels+=EString labels+=EString*)
+	 *     (condition=EString? labels+=EString+)
 	 * </pre>
 	 */
 	protected void sequence_ReplaceAgentLabels(ISerializationContext context, ReplaceAgentLabels semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TIMTransformation returns ReplaceStep
+	 *     ReplaceStep returns ReplaceStep
+	 *
+	 * Constraint:
+	 *     (index=INT job=EString step=Step)
+	 * </pre>
+	 */
+	protected void sequence_ReplaceStep(ISerializationContext context, ReplaceStep semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.REPLACE_STEP__INDEX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.REPLACE_STEP__INDEX));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.REPLACE_STEP__JOB) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.REPLACE_STEP__JOB));
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.REPLACE_STEP__STEP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.REPLACE_STEP__STEP));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getReplaceStepAccess().getIndexINTTerminalRuleCall_2_0(), semanticObject.getIndex());
+		feeder.accept(grammarAccess.getReplaceStepAccess().getJobEStringParserRuleCall_4_0(), semanticObject.getJob());
+		feeder.accept(grammarAccess.getReplaceStepAccess().getStepStepParserRuleCall_6_0(), semanticObject.getStep());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TSMTransformation returns SelectWorkflow
+	 *     CircleCITransformation returns SelectWorkflow
+	 *     SelectWorkflow returns SelectWorkflow
+	 *
+	 * Constraint:
+	 *     name=EString
+	 * </pre>
+	 */
+	protected void sequence_SelectWorkflow(ISerializationContext context, SelectWorkflow semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.SELECT_WORKFLOW__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.SELECT_WORKFLOW__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSelectWorkflowAccess().getNameEStringParserRuleCall_2_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -233,6 +390,26 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSetCircleCIVersionAccess().getVersionEStringParserRuleCall_3_0(), semanticObject.getVersion());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     StringLiteral returns StringLiteral
+	 *
+	 * Constraint:
+	 *     value=EString
+	 * </pre>
+	 */
+	protected void sequence_StringLiteral(ISerializationContext context, StringLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CICDPackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CICDPackage.Literals.STRING_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStringLiteralAccess().getValueEStringParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -271,6 +448,26 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_TransformationSet(ISerializationContext context, TransformationSet semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     VariableDeclaration returns VariableDeclaration
+	 *
+	 * Constraint:
+	 *     name=EString
+	 * </pre>
+	 */
+	protected void sequence_VariableDeclaration(ISerializationContext context, VariableDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, CICDPackage.Literals.VARIABLE_DECLARATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CICDPackage.Literals.VARIABLE_DECLARATION__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVariableDeclarationAccess().getNameEStringParserRuleCall_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

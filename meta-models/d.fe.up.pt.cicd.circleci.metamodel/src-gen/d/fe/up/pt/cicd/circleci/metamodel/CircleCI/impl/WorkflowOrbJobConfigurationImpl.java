@@ -3,11 +3,11 @@
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Executor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl#getOrb <em>Orb</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl#getExecutor <em>Executor</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WorkflowOrbJobConfigurationImpl#getJobName <em>Job Name</em>}</li>
  * </ul>
  *
@@ -38,6 +39,16 @@ public class WorkflowOrbJobConfigurationImpl extends WorkflowJobConfigurationImp
 	 * @ordered
 	 */
 	protected Orb orb;
+
+	/**
+	 * The cached value of the '{@link #getExecutor() <em>Executor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExecutor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Executor executor;
 
 	/**
 	 * The default value of the '{@link #getJobName() <em>Job Name</em>}' attribute.
@@ -126,6 +137,48 @@ public class WorkflowOrbJobConfigurationImpl extends WorkflowJobConfigurationImp
 	 * @generated
 	 */
 	@Override
+	public Executor getExecutor() {
+		if (executor != null && executor.eIsProxy()) {
+			InternalEObject oldExecutor = (InternalEObject) executor;
+			executor = (Executor) eResolveProxy(oldExecutor);
+			if (executor != oldExecutor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR, oldExecutor, executor));
+			}
+		}
+		return executor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Executor basicGetExecutor() {
+		return executor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExecutor(Executor newExecutor) {
+		Executor oldExecutor = executor;
+		executor = newExecutor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR, oldExecutor, executor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getJobName() {
 		return jobName;
 	}
@@ -156,6 +209,10 @@ public class WorkflowOrbJobConfigurationImpl extends WorkflowJobConfigurationImp
 			if (resolve)
 				return getOrb();
 			return basicGetOrb();
+		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR:
+			if (resolve)
+				return getExecutor();
+			return basicGetExecutor();
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME:
 			return getJobName();
 		}
@@ -172,6 +229,9 @@ public class WorkflowOrbJobConfigurationImpl extends WorkflowJobConfigurationImp
 		switch (featureID) {
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__ORB:
 			setOrb((Orb) newValue);
+			return;
+		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR:
+			setExecutor((Executor) newValue);
 			return;
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME:
 			setJobName((String) newValue);
@@ -191,6 +251,9 @@ public class WorkflowOrbJobConfigurationImpl extends WorkflowJobConfigurationImp
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__ORB:
 			setOrb((Orb) null);
 			return;
+		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR:
+			setExecutor((Executor) null);
+			return;
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME:
 			setJobName(JOB_NAME_EDEFAULT);
 			return;
@@ -208,6 +271,8 @@ public class WorkflowOrbJobConfigurationImpl extends WorkflowJobConfigurationImp
 		switch (featureID) {
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__ORB:
 			return orb != null;
+		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR:
+			return executor != null;
 		case CircleCIPackage.WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME:
 			return JOB_NAME_EDEFAULT == null ? jobName != null : !JOB_NAME_EDEFAULT.equals(jobName);
 		}

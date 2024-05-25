@@ -363,12 +363,7 @@ unique lazy rule Plugin2OrbReference {
 		input : CICD!Plugin
 	to
 		output : CircleCI!OrbReference(
-			name <-
-				if input.name.oclIsUndefined() then
-					input.pluginName.split('/')->first()
-				else
-					input.name
-				endif,
+			name <-	input.pluginName.split('/')->first(),
 			reference <- reference
 		)
 }
@@ -415,7 +410,12 @@ unique lazy rule Job2DockerExecutor {
 		input : CICD!Job
 	to
 		output : CircleCI!DockerExecutor(
-			containers <- Sequence{input.agent.container}->union(input.services)->collect(container | thisModule.DockerContainer2DockerContainer(container))
+			containers <- Sequence{input.agent.container}->union(input.services)->collect(container | 
+				if not container.oclIsUndefined() then
+					thisModule.DockerContainer2DockerContainer(container)
+				else
+					OclUndefined
+				endif)
 		)
 }
 
@@ -701,12 +701,12 @@ helper context CICD!Job def : job2JobHelper() : CircleCI!Job =
 	endif;
 
 helper def : job2ExecutorHelper(job : CICD!Job) : CircleCI!Executor =
-	if job.agent.labels->size() = 1 then
+	if job.agent.labels->size() = 1 and job.services.isEmpty() then
 		if job.agent.labels->first().expression2String() = 'macos' then
 			thisModule.Job2MacOSExecutor(job)
 		else if job.agent.labels->first().expression2String() = 'windows' then
 			thisModule.Job2WindowsOrbExecutor(job)
-		else if job.agent.labels->first().expression2String() = 'machine' then
+		else if job.agent.labels->first().expression2String() = 'machine' or job.agent.labels->first().expression2String().startsWith('ubuntu') then
 			thisModule.Job2MachineExecutor(job)
 		else if  not job.agent.container.oclIsUndefined() then
 			thisModule.Job2DockerExecutor(job)
@@ -716,7 +716,7 @@ helper def : job2ExecutorHelper(job : CICD!Job) : CircleCI!Executor =
 		endif
 		endif
 		endif
-	else if not job.agent.container.oclIsUndefined() then
+	else if not job.agent.container.oclIsUndefined() or job.services.notEmpty() then
 		thisModule.Job2DockerExecutor(job)
 	else
 		OclUndefined

@@ -567,6 +567,107 @@ public interface TransformationsPackage extends EPackage {
 	int ADD_TRIGGER_OPERATION_COUNT = OUTPLACE_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceStepImpl <em>Replace Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceStepImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getReplaceStep()
+	 * @generated
+	 */
+	int REPLACE_STEP = 13;
+
+	/**
+	 * The feature id for the '<em><b>Job</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_STEP__JOB = TIM_TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_STEP__INDEX = TIM_TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Step</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_STEP__STEP = TIM_TRANSFORMATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Replace Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_STEP_FEATURE_COUNT = TIM_TRANSFORMATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Replace Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPLACE_STEP_OPERATION_COUNT = TIM_TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.DeleteStepImpl <em>Delete Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.DeleteStepImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getDeleteStep()
+	 * @generated
+	 */
+	int DELETE_STEP = 14;
+
+	/**
+	 * The feature id for the '<em><b>Job</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_STEP__JOB = TIM_TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Index</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_STEP__INDEX = TIM_TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Delete Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_STEP_FEATURE_COUNT = TIM_TRANSFORMATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Delete Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DELETE_STEP_OPERATION_COUNT = TIM_TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.GHATransformationImpl <em>GHA Transformation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -574,7 +675,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getGHATransformation()
 	 * @generated
 	 */
-	int GHA_TRANSFORMATION = 13;
+	int GHA_TRANSFORMATION = 15;
 
 	/**
 	 * The number of structural features of the '<em>GHA Transformation</em>' class.
@@ -602,7 +703,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getCircleCITransformation()
 	 * @generated
 	 */
-	int CIRCLE_CI_TRANSFORMATION = 14;
+	int CIRCLE_CI_TRANSFORMATION = 16;
 
 	/**
 	 * The number of structural features of the '<em>Circle CI Transformation</em>' class.
@@ -630,7 +731,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddExecutor()
 	 * @generated
 	 */
-	int ADD_EXECUTOR = 15;
+	int ADD_EXECUTOR = 17;
 
 	/**
 	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
@@ -667,7 +768,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getAddOrbReferenceExecutor()
 	 * @generated
 	 */
-	int ADD_ORB_REFERENCE_EXECUTOR = 16;
+	int ADD_ORB_REFERENCE_EXECUTOR = 18;
 
 	/**
 	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
@@ -722,7 +823,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getSetCircleCIVersion()
 	 * @generated
 	 */
-	int SET_CIRCLE_CI_VERSION = 17;
+	int SET_CIRCLE_CI_VERSION = 19;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -752,6 +853,43 @@ public interface TransformationsPackage extends EPackage {
 	int SET_CIRCLE_CI_VERSION_OPERATION_COUNT = CIRCLE_CI_TRANSFORMATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.SelectWorkflowImpl <em>Select Workflow</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.SelectWorkflowImpl
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getSelectWorkflow()
+	 * @generated
+	 */
+	int SELECT_WORKFLOW = 20;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_WORKFLOW__NAME = CIRCLE_CI_TRANSFORMATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Select Workflow</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_WORKFLOW_FEATURE_COUNT = CIRCLE_CI_TRANSFORMATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Select Workflow</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SELECT_WORKFLOW_OPERATION_COUNT = CIRCLE_CI_TRANSFORMATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS <em>MODELS</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -759,7 +897,7 @@ public interface TransformationsPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getMODELS()
 	 * @generated
 	 */
-	int MODELS = 18;
+	int MODELS = 21;
 
 	/**
 	 * Returns the meta object for class '{@link java.util.Map.Entry <em>String To String Map Entry</em>}'.
@@ -1048,6 +1186,81 @@ public interface TransformationsPackage extends EPackage {
 	EReference getAddTrigger_Trigger();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep <em>Replace Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Replace Step</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep
+	 * @generated
+	 */
+	EClass getReplaceStep();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep#getJob <em>Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep#getJob()
+	 * @see #getReplaceStep()
+	 * @generated
+	 */
+	EAttribute getReplaceStep_Job();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep#getIndex()
+	 * @see #getReplaceStep()
+	 * @generated
+	 */
+	EAttribute getReplaceStep_Index();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep#getStep <em>Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Step</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep#getStep()
+	 * @see #getReplaceStep()
+	 * @generated
+	 */
+	EReference getReplaceStep_Step();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep <em>Delete Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Delete Step</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep
+	 * @generated
+	 */
+	EClass getDeleteStep();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep#getJob <em>Job</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Job</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep#getJob()
+	 * @see #getDeleteStep()
+	 * @generated
+	 */
+	EAttribute getDeleteStep_Job();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep#getIndex <em>Index</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Index</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep#getIndex()
+	 * @see #getDeleteStep()
+	 * @generated
+	 */
+	EAttribute getDeleteStep_Index();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation <em>GHA Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1140,6 +1353,27 @@ public interface TransformationsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getSetCircleCIVersion_Version();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow <em>Select Workflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Select Workflow</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow
+	 * @generated
+	 */
+	EClass getSelectWorkflow();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow#getName()
+	 * @see #getSelectWorkflow()
+	 * @generated
+	 */
+	EAttribute getSelectWorkflow_Name();
 
 	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS <em>MODELS</em>}'.
@@ -1417,6 +1651,66 @@ public interface TransformationsPackage extends EPackage {
 		EReference ADD_TRIGGER__TRIGGER = eINSTANCE.getAddTrigger_Trigger();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceStepImpl <em>Replace Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ReplaceStepImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getReplaceStep()
+		 * @generated
+		 */
+		EClass REPLACE_STEP = eINSTANCE.getReplaceStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Job</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPLACE_STEP__JOB = eINSTANCE.getReplaceStep_Job();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REPLACE_STEP__INDEX = eINSTANCE.getReplaceStep_Index();
+
+		/**
+		 * The meta object literal for the '<em><b>Step</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REPLACE_STEP__STEP = eINSTANCE.getReplaceStep_Step();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.DeleteStepImpl <em>Delete Step</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.DeleteStepImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getDeleteStep()
+		 * @generated
+		 */
+		EClass DELETE_STEP = eINSTANCE.getDeleteStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Job</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DELETE_STEP__JOB = eINSTANCE.getDeleteStep_Job();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DELETE_STEP__INDEX = eINSTANCE.getDeleteStep_Index();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.GHATransformationImpl <em>GHA Transformation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1497,6 +1791,24 @@ public interface TransformationsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SET_CIRCLE_CI_VERSION__VERSION = eINSTANCE.getSetCircleCIVersion_Version();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.SelectWorkflowImpl <em>Select Workflow</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.SelectWorkflowImpl
+		 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.TransformationsPackageImpl#getSelectWorkflow()
+		 * @generated
+		 */
+		EClass SELECT_WORKFLOW = eINSTANCE.getSelectWorkflow();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SELECT_WORKFLOW__NAME = eINSTANCE.getSelectWorkflow_Name();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS <em>MODELS</em>}' enum.

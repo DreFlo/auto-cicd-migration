@@ -9,3 +9,6 @@ test/converted/*
 test/yamldiff
 test/diffs/*
 !test/diffs/.empty
+test/categorized_diffs/*
+!test/categorized_diffs/.empty
+test/converted_circleci/*

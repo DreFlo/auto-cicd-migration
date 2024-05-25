@@ -182,20 +182,24 @@ public class GHAExpressionsVisitor {
         if (convertedExpression != null) {
             return convertedExpression;
         } else {
-            StringLiteral stringLiteral = GHAPackage.eINSTANCE.getGHAFactory().createStringLiteral();
-            stringLiteral.setValue("${{ " + expression.getValue() + " }}");
-            return stringLiteral;
+            return makeDotOp(splitVariableReference(expression.getValue()));
         }
     }
 
-    private Expression getVariableReferenceOrDotOp(String expressionString, EObject container) {
-        Matcher matcher = Pattern.compile("(\\w[\\w-]*)").matcher(expressionString);
-
+    private Queue<String> splitVariableReference(String expressionString) {
         Queue<String> parts = new LinkedList<>();
+
+        Matcher matcher = Pattern.compile("(\\w[\\w-]*)").matcher(expressionString);
 
         while (matcher.find()) {
             parts.add(matcher.group());
         }
+
+        return parts;
+    }
+
+    private Expression getVariableReferenceOrDotOp(String expressionString, EObject container) {
+        Queue<String> parts = splitVariableReference(expressionString);
 
         VariableDeclaration variableDeclaration = getVariableDeclaration(parts, container);
 

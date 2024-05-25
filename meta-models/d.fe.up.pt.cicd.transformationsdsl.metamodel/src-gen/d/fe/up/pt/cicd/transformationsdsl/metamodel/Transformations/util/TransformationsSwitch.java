@@ -204,6 +204,32 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case TransformationsPackage.REPLACE_STEP: {
+			ReplaceStep replaceStep = (ReplaceStep) theEObject;
+			T result = caseReplaceStep(replaceStep);
+			if (result == null)
+				result = caseTIMTransformation(replaceStep);
+			if (result == null)
+				result = caseOutplaceTransformation(replaceStep);
+			if (result == null)
+				result = caseTransformation(replaceStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.DELETE_STEP: {
+			DeleteStep deleteStep = (DeleteStep) theEObject;
+			T result = caseDeleteStep(deleteStep);
+			if (result == null)
+				result = caseTIMTransformation(deleteStep);
+			if (result == null)
+				result = caseInplaceTransformation(deleteStep);
+			if (result == null)
+				result = caseTransformation(deleteStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case TransformationsPackage.GHA_TRANSFORMATION: {
 			GHATransformation ghaTransformation = (GHATransformation) theEObject;
 			T result = caseGHATransformation(ghaTransformation);
@@ -269,6 +295,21 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = caseTSMTransformation(setCircleCIVersion);
 			if (result == null)
 				result = caseTransformation(setCircleCIVersion);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.SELECT_WORKFLOW: {
+			SelectWorkflow selectWorkflow = (SelectWorkflow) theEObject;
+			T result = caseSelectWorkflow(selectWorkflow);
+			if (result == null)
+				result = caseCircleCITransformation(selectWorkflow);
+			if (result == null)
+				result = caseInplaceTransformation(selectWorkflow);
+			if (result == null)
+				result = caseTSMTransformation(selectWorkflow);
+			if (result == null)
+				result = caseTransformation(selectWorkflow);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -474,6 +515,36 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Replace Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Replace Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReplaceStep(ReplaceStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Delete Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Delete Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeleteStep(DeleteStep object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>GHA Transformation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -545,6 +616,21 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseSetCircleCIVersion(SetCircleCIVersion object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Select Workflow</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Select Workflow</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSelectWorkflow(SelectWorkflow object) {
 		return null;
 	}
 

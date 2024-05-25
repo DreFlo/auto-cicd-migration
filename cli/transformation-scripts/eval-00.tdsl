@@ -1,0 +1,4 @@
+during {
+   add trigger when "input.triggers->isEmpty()" manual
+   set labels when "true" {"ubuntu-latest"}
+}

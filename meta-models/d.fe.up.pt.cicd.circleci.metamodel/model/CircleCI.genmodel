@@ -207,6 +207,7 @@
     <genClasses ecoreClass="CircleCI.ecore#//WorkflowApprovalJobConfiguration"/>
     <genClasses ecoreClass="CircleCI.ecore#//WorkflowOrbJobConfiguration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowOrbJobConfiguration/orb"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WorkflowOrbJobConfiguration/executor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//WorkflowOrbJobConfiguration/jobName"/>
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//Matrix">

@@ -30,9 +30,13 @@
 /]
 
 
-[template public listItem(item : String)]
+[template public listItem(item : String) post (trim())]
+[if (item.contains('\n'))]
 - 
   [item/]
+[else]
+- [item/]
+[/if]
 [/template]
 
 [template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]
@@ -78,7 +82,7 @@
 [/template]
 
 [template public generateStringLiteral(literal : StringLiteral)]
-[if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.value.contains('\n'))][quoteString(literal.value)/][else][literal.value/][/if]
+[if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.value.contains('\n') and not literal.eContainer().oclIsTypeOf(DotOp))][quoteString(literal.value)/][else][literal.value/][/if]
 [/template]
 
 [template public generateDotOp(dotOp : DotOp) post (trim())]

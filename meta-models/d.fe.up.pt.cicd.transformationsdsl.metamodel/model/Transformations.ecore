@@ -49,6 +49,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="ecore:EClass ../../d.fe.up.pt.cicd.metamodel/model/CICD.ecore#//Trigger"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReplaceStep" eSuperTypes="#//TIMTransformation #//OutplaceTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="job" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="step" lowerBound="1" eType="ecore:EClass ../../d.fe.up.pt.cicd.metamodel/model/CICD.ecore#//Step"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteStep" eSuperTypes="#//TIMTransformation #//InplaceTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="job" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GHATransformation" abstract="true" eSuperTypes="#//TSMTransformation"/>
   <eClassifiers xsi:type="ecore:EClass" name="CircleCITransformation" abstract="true"
       eSuperTypes="#//TSMTransformation"/>
@@ -64,6 +74,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="SetCircleCIVersion" eSuperTypes="#//CircleCITransformation #//InplaceTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectWorkflow" eSuperTypes="#//CircleCITransformation #//InplaceTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MODELS">
     <eLiterals name="CICD"/>

@@ -407,7 +407,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
 
         if (yamlMapping.yamlMapping("workflows") != null) {
-            parseWorkflows(pipeline.getWorkflows(), yamlMapping.yamlMapping("workflows"), jobsTable, orbsTable, commandsTable);
+            parseWorkflows(pipeline.getWorkflows(), yamlMapping.yamlMapping("workflows"), jobsTable, orbsTable, commandsTable, executorsTable);
         }
 
         return pipeline;
@@ -558,6 +558,9 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private Expression parseExpression(String string, EObject container) {
+        if (string == null) {
+            return null;
+        }
         List<String> parts = splitExpression(string);
 
         if (parts.size() == 1) {
@@ -910,8 +913,6 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
 
         if (yamlMapping.yamlSequence("paths") != null) {
             saveCacheStep.getPaths().addAll(yamlMapping.yamlSequence("paths").values().stream().map(YamlNode::asScalar).map(Scalar::value).map(path -> parseExpression(path, saveCacheStep)).toList());
-        } else {
-            throw new SyntaxException("Paths are required");
         }
 
         if (yamlMapping.string("when") != null) {
@@ -989,7 +990,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                     persistToWorkspaceStep.getPaths().add(parseExpression(path.trim(), persistToWorkspaceStep));
                 }
             } else {
-                throw new SyntaxException("Paths must be a sequence");
+                persistToWorkspaceStep.getPaths().add(parseExpression(paths, persistToWorkspaceStep));
             }
         } else {
             throw new SyntaxException("Paths are required");
@@ -1051,7 +1052,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             if (yamlMapping.yamlMapping(command) != null) {
                 commandReferenceStep.getArguments().putAll(createVariableAssignments(yamlMapping.yamlMapping(command), commandReferenceStep));
             }
-        } else {
+        } else if (!yamlNode.type().equals(Node.SCALAR)) {
             throw new SyntaxException("Invalid command reference step");
         }
     }
@@ -1182,7 +1183,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
 
         }
 
-        if (yamlMapping.string("environment") != null) {
+        if (yamlMapping.yamlMapping("environment") != null) {
             dockerContainer.getEnvironmentVariables().putAll(createVariableAssignments(yamlMapping.yamlMapping("environment"), dockerContainer));
         }
 
@@ -1217,8 +1218,6 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     private void parseMachineExecutor(MachineExecutor machineExecutor, YamlMapping yamlMapping) throws SyntaxException {
         if (yamlMapping.string("image") != null) {
             machineExecutor.setImage(parseExpression(yamlMapping.string("image"), machineExecutor));
-        } else {
-            throw new SyntaxException("Image is required");
         }
 
         if (yamlMapping.string("docker_layer_caching") != null) {
@@ -1281,7 +1280,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
     }
 
-    private void parseWorkflows(Collection<Workflow> workflows, YamlMapping yamlMapping, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable) throws SyntaxException {
+    private void parseWorkflows(Collection<Workflow> workflows, YamlMapping yamlMapping, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable, Map<String, Executor> executorsTable) throws SyntaxException {
         for (YamlNode workflowKey : yamlMapping.keys()) {
             if (workflowKey.asScalar().value().equals("version")) {
                 continue;
@@ -1289,7 +1288,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             Workflow workflow = getWorkflow(workflowKey.asScalar().value(), workflows);
             if (workflow == null)
                 throw new RuntimeException("Workflow not found");
-            parseWorkflow(workflow, yamlMapping.yamlMapping(workflowKey), jobsTable, orbsTable, commandsTable);
+            parseWorkflow(workflow, yamlMapping.yamlMapping(workflowKey), jobsTable, orbsTable, commandsTable, executorsTable);
         }
     }
 
@@ -1302,7 +1301,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         return null;
     }
 
-    private void parseWorkflow(Workflow workflow, YamlMapping yamlMapping, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable) throws SyntaxException {
+    private void parseWorkflow(Workflow workflow, YamlMapping yamlMapping, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable, Map<String, Executor> executorsTable) throws SyntaxException {
         if (yamlMapping.value("when") != null) {
             workflow.setCondition(parseLogic(yamlMapping.value("when"), workflow));
             workflow.setIsWhen(true);
@@ -1316,7 +1315,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
 
         if (yamlMapping.yamlSequence("jobs") != null) {
-            parseWorkflowJobConfigurations(workflow.getJobs(), yamlMapping.yamlSequence("jobs"), jobsTable, orbsTable, commandsTable);
+            parseWorkflowJobConfigurations(workflow.getJobs(), yamlMapping.yamlSequence("jobs"), jobsTable, orbsTable, commandsTable, executorsTable);
         } else {
             throw new SyntaxException("Jobs are required");
         }
@@ -1412,7 +1411,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
     }
 
-    private void parseWorkflowJobConfigurations(List<WorkflowJobConfiguration> workflowJobConfigurations,YamlSequence yamlSequence, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable) throws SyntaxException {
+    private void parseWorkflowJobConfigurations(List<WorkflowJobConfiguration> workflowJobConfigurations,YamlSequence yamlSequence, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable, Map<String, Executor> executorsTable) throws SyntaxException {
         Map<String, WorkflowJobConfiguration> workflowJobConfigurationsTable = new HashMap<>();
 
         if (yamlSequence.size() != workflowJobConfigurations.size())
@@ -1421,7 +1420,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         List<YamlNode> yamlNodes = yamlSequence.values().stream().toList();
 
         for (int i = 0; i < yamlSequence.size(); i++) {
-            parseWorkflowJobConfiguration(i, workflowJobConfigurations, yamlNodes.get(i), workflowJobConfigurationsTable, jobsTable, orbsTable, commandsTable);
+            parseWorkflowJobConfiguration(i, workflowJobConfigurations, yamlNodes.get(i), workflowJobConfigurationsTable, jobsTable, orbsTable, commandsTable, executorsTable);
         }
 
         for (YamlNode job : yamlSequence) {
@@ -1455,7 +1454,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
     }
 
-    private void parseWorkflowJobConfiguration(Integer index, List<WorkflowJobConfiguration> workflowJobConfigurations, YamlNode yamlNode, Map<String, WorkflowJobConfiguration> workflowJobConfigurationsTable, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable) throws SyntaxException {
+    private void parseWorkflowJobConfiguration(Integer index, List<WorkflowJobConfiguration> workflowJobConfigurations, YamlNode yamlNode, Map<String, WorkflowJobConfiguration> workflowJobConfigurationsTable, Map<String, Job> jobsTable, Map<String, Orb> orbsTable, Map<String, Command> commandsTable, Map<String, Executor> executorsTable) throws SyntaxException {
         if (!yamlNode.type().equals(Node.MAPPING) && !yamlNode.type().equals(Node.SCALAR)) {
             throw new SyntaxException("Invalid job configuration");
         }
@@ -1510,6 +1509,17 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
 
         YamlMapping yamlMapping = yamlNode.asMapping().yamlMapping(key);
+
+
+        if (yamlMapping.string("executor") != null) {
+            String executor = yamlMapping.string("executor");
+            if (executorsTable.containsKey(executor)) {
+                ((WorkflowOrbJobConfiguration) workflowJobConfiguration).setExecutor(executorsTable.get(executor));
+            } else {
+
+                throw new SyntaxException("Invalid executor");
+            }
+        }
 
         if (yamlMapping.string("name") != null) {
             workflowJobConfiguration.setName(yamlMapping.string("name"));

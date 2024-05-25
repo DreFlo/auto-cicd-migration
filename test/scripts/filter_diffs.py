@@ -43,11 +43,29 @@ def string_spaces(string):
         return re.sub(r'\s+', '', match.group('old').strip()) == re.sub(r'\s+', '', match.group('new').strip())
     return False
 
+def full_variable_names(string):
+    # Check if string matches regex
+    all_expressions = re.findall(r"(\${{\s*[\w-]+(?:\.[\w-]+)*\s*}})", string)
+
+    all_variables = [variable for expression in all_expressions for variable in re.findall(r"(\${{\s*[\w-]+(?:\.[\w-]+)*\s*}})", expression)]
+
+    if len(all_variables) % 2 != 0:
+        return False
+
+    top, bottom = all_variables[:len(all_variables)//2], all_variables[len(all_variables)//2:]
+
+    for t, b in zip(top, bottom):
+        if not re.match(r"\${{\s*([.\w-]+)\s*}}\n\${{\s*(?:[\w-]+(?:\.[\w-]+)*\.)?\1\s*}}", t + "\n" + b):
+            return False
+    else:
+        return True
+
 diffs = [diff for diff in diffs if not no_diff(diff)]
 diffs = [diff for diff in diffs if not string_to_one_item_list(diff)]
 diffs = [diff for diff in diffs if not list_to_empty_map(diff)]
 diffs = [diff for diff in diffs if not add_default_shell(diff)]
 diffs = [diff for diff in diffs if not string_output_to_map(diff)]
-diffs = [diff for diff in diffs if not string_spaces(diff)]
+#diffs = [diff for diff in diffs if not string_spaces(diff)]
+#diffs = [diff for diff in diffs if not full_variable_names(diff)]
 
 print('\n'.join(diffs))

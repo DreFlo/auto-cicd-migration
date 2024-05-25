@@ -84,7 +84,7 @@ abstract rule WorkflowJobConfiguration2Job {
 				endif,
 			matrix <- input.matrix,
 			name <- input.name,
-			previous <- input.requires
+			previous <- input.requires->select(job | not job.oclIsTypeOf(CircleCI!WorkflowApprovalJobConfiguration))
 		)
 }
 
@@ -117,7 +117,7 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 				else
 					OclUndefined
 				endif,
-			steps <- input.preSteps->union(input.job.steps)->union(input.postSteps),
+			steps <- input.preSteps->collect(step | step.step2StepHelper())->flatten()->union(input.job.steps->collect(step | step.step2StepHelper())->flatten())->union(input.postSteps->collect(step | step.step2StepHelper())->flatten()),
 			workingDirectory <- 
 				if not input.job.executor.workingDirectory.oclIsUndefined() then
 					input.job.executor.workingDirectory.expression2String()
@@ -142,9 +142,20 @@ rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobCon
 		)
 	to
 		output : CICD!ScriptJob(
-			steps <- input.preSteps->union(
+			steps <- input.preSteps->collect(step | step.step2StepHelper())->flatten()->union(
 				Sequence{thisModule.OrbReference2Plugin(input.orb, input.arguments)}
-			)->union(input.postSteps)
+			)->union(input.postSteps->collect(step | step.step2StepHelper())->flatten()),
+			agent <- input.executor.executor2AgentHelper(),
+			services <- 
+				if input.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
+					if input.executor.containers->size() > 1 then
+						input.executor.containers->subSequence(2, input.executor.containers->size())
+					else
+						Sequence{}
+					endif
+				else
+					Sequence{}
+				endif
 		)
 }
 
@@ -179,9 +190,12 @@ lazy rule DockerExecutor2Agent {
 		input : CircleCI!DockerExecutor
 	to
 		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral(input.name)},
+			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('docker-executor')},
 			container <- if input.containers->notEmpty() then input.containers->first() else OclUndefined endif
 		)
+	do {
+		output.container.debug();
+	}
 }
 
 rule DockerContainer2DockerContainer {
@@ -202,8 +216,20 @@ lazy rule MachineExecutor2Agent {
 		input : CircleCI!MachineExecutor
 	to
 		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('machine')},
-			container <- thisModule.MachineExecutor2DockerContainer(input)
+			labels <- Sequence{thisModule.String2StringLiteral('ubuntu-latest')}
+				->union(
+					if input.name.oclIsUndefined() then 
+						Sequence{} 
+					else 
+						Sequence{thisModule.String2StringLiteral(input.name)} 
+					endif
+				),
+			container <- 
+				if not input.image.oclIsUndefined() then 
+					thisModule.MachineExecutor2DockerContainer(input)
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -825,7 +851,7 @@ helper context CircleCI!VariableReference def : expression2String() : String =
 	self.reference.name;
 
 helper def : getJobStreamOrigins(jobs : Sequence(CircleCI!WorkflowJobConfiguration)) : Sequence(CircleCI!WorkflowJobConfiguration) =
-	jobs->select(job | job.requires->isEmpty());
+	jobs->select(job | job.requires->select(j | not j.oclIsTypeOf(CircleCI!WorkflowApprovalJobConfiguration))->isEmpty());
 
 helper def : PARAMETER_TYPE_2_INPUT_TYPE(parameterType : CircleCI!PARAMETER_TYPES) : CICD!INPUT_TYPE =
 	if parameterType = #string then
@@ -841,4 +867,11 @@ helper def : PARAMETER_TYPE_2_INPUT_TYPE(parameterType : CircleCI!PARAMETER_TYPE
 	endif
 	endif
 	endif
+	endif;
+
+helper context CircleCI!Step def : step2StepHelper() : CICD!Step =
+	if self.oclIsTypeOf(CircleCI!CommandReferenceStep) then
+		self.command.steps->collect(step | step.step2StepHelper())->flatten()
+	else
+		Sequence{self}
 	endif;

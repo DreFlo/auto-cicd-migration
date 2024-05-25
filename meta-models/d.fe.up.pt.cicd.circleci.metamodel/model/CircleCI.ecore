@@ -278,6 +278,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="WorkflowApprovalJobConfiguration" eSuperTypes="#//WorkflowJobConfiguration"/>
   <eClassifiers xsi:type="ecore:EClass" name="WorkflowOrbJobConfiguration" eSuperTypes="#//WorkflowJobConfiguration">
     <eStructuralFeatures xsi:type="ecore:EReference" name="orb" lowerBound="1" eType="#//Orb"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executor" eType="#//Executor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="jobName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Matrix">

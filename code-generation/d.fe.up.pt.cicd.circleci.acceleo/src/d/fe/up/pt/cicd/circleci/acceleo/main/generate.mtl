@@ -17,6 +17,19 @@
 	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'generateVariableReference(d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, boolean)', Sequence{variableDeclaration, false})
 /]
 
+[query public quoteString(string : String) : String =
+  invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'quoteString(java.lang.String)', Sequence{string})
+/]
+
+[template public listItem(item : String) post(trim())]
+[if (item.contains('\n'))]
+- 
+  [item/]
+[else]
+- [item/]
+[/if]
+[/template]
+
 [template public generatePipeline(pipeline : Pipeline)]
 [comment @main/]
 [file ('config.yml', false, 'UTF-8')]
@@ -116,7 +129,7 @@ workflows:
 [/if]
   steps:
   [for (step : Step | steps)]
-    [generateStep(step)/]
+  [generateStep(step)/]
   [/for]
 [/template]
 
@@ -127,7 +140,7 @@ workflows:
 
 [template public generateExecutor(executor : Executor) post (trim())]
 [if (executor.oclIsUndefined())]
-OclUndefined
+executor:
 [else]
 [if (not resourceClass.oclIsUndefined())]
 resource_class: [generateExpression(resourceClass)/]
@@ -163,7 +176,7 @@ environment:
 [template public generateDockerExecutor(executor : DockerExecutor) post (trim())]
 docker:
 [for (dockerContainer : DockerContainer | containers)]
-  [generateDockerContainer(dockerContainer)/]
+[generateDockerContainer(dockerContainer)/]
 [/for]
 [/template]
 
@@ -217,12 +230,13 @@ executor: [executor.name/]
 [/if]
   steps:
   [for (step : Step | steps)]
-    [generateStep(step)/]
+  [generateStep(step)/]
   [/for]
 [/template]
 
 [template public generateDockerContainer(dockerContainer : DockerContainer) post (trim())]
-- image: [generateExpression(image)/]
+- 
+  image: [generateExpression(image)/]
 [if (not name.oclIsUndefined())]
   name: [generateExpression(name)/]
 [/if]
@@ -263,197 +277,175 @@ executor: [executor.name/]
 [/template]
 
 [template public generateStep(step : Step) post (trim())]
+-
 [if (step.oclIsTypeOf(RunStep))]
-[generateRunStep(step.oclAsType(RunStep))/]
+  [generateRunStep(step.oclAsType(RunStep))/]
 [elseif (step.oclIsKindOf(ConditionalStep))]
-[generateConditionalStep(step)/]
+  [generateConditionalStep(step)/]
 [elseif (step.oclIsKindOf(CheckoutStep))]
-[generateCheckoutStep(step.oclAsType(CheckoutStep))/]
+  [generateCheckoutStep(step.oclAsType(CheckoutStep))/]
 [elseif (step.oclIsKindOf(SetupRemoteDockerStep))]
-[generateSetupRemoteDockerStep(step.oclAsType(SetupRemoteDockerStep))/]
+  [generateSetupRemoteDockerStep(step.oclAsType(SetupRemoteDockerStep))/]
 [elseif (step.oclIsKindOf(SaveCacheStep))]
-[generateSaveCacheStep(step.oclAsType(SaveCacheStep))/]
+  [generateSaveCacheStep(step.oclAsType(SaveCacheStep))/]
 [elseif (step.oclIsKindOf(RestoreCacheStep))]
-[generateRestoreCacheStep(step.oclAsType(RestoreCacheStep))/]
+  [generateRestoreCacheStep(step.oclAsType(RestoreCacheStep))/]
 [elseif (step.oclIsKindOf(StoreArtifactsStep))]
-[generateStoreArtifactsStep(step.oclAsType(StoreArtifactsStep))/]
+  [generateStoreArtifactsStep(step.oclAsType(StoreArtifactsStep))/]
 [elseif (step.oclIsKindOf(StoreTestResultsStep))]
-[generateStoreTestResultsStep(step.oclAsType(StoreTestResultsStep))/]
+  [generateStoreTestResultsStep(step.oclAsType(StoreTestResultsStep))/]
 [elseif (step.oclIsKindOf(PersistToWorkspaceStep))]
-[generatePersistToWorkspaceStep(step.oclAsType(PersistToWorkspaceStep))/]
+  [generatePersistToWorkspaceStep(step.oclAsType(PersistToWorkspaceStep))/]
 [elseif (step.oclIsKindOf(AttachWorkspaceStep))]
-[generateAttachWorkspaceStep(step.oclAsType(AttachWorkspaceStep))/]
+  [generateAttachWorkspaceStep(step.oclAsType(AttachWorkspaceStep))/]
 [elseif (step.oclIsKindOf(OrbReferenceStep))]
-[generateOrbReferenceStep(step.oclAsType(OrbReferenceStep))/]
+  [generateOrbReferenceStep(step.oclAsType(OrbReferenceStep))/]
 [elseif (step.oclIsKindOf(CommandReferenceStep))]
-[generateCommandReferenceStep(step.oclAsType(CommandReferenceStep))/]
+  [generateCommandReferenceStep(step.oclAsType(CommandReferenceStep))/]
 [elseif (step.oclIsKindOf(AddSSHKeysStep))]
-[generateAddSSHKeysStep(step.oclAsType(AddSSHKeysStep))/]
+  [generateAddSSHKeysStep(step.oclAsType(AddSSHKeysStep))/]
 [/if]
 [/template]
 
 [template public generateRunStep(step : RunStep) post (trim())]
-- run:
+run:
 [if (not name.oclIsUndefined())]
-    name: [generateExpression(name)/]
+  name: [generateExpression(name)/]
 [/if]
-[let commandString : String = generateExpression(command)]
-[if (commandString.contains('\n'))]
-    command: |
-    [for (commandPart : String | splitString(commandString, '\n'))]
-      [commandPart.trim()/]
-    [/for]
-[else]
-    command: [commandString/]
-[/if]
-[/let]
+  command: [generateExpression(command)/]
 [if (not background.oclIsUndefined())]
-    background: [generateExpression(background)/]
+  background: [generateExpression(background)/]
 [/if]
 [if (not shell.oclIsUndefined())]
-    shell: [generateExpression(shell)/]
+  shell: [generateExpression(shell)/]
 [/if]
 [if (not workingDirectory.oclIsUndefined())]
-    working_directory: [generateExpression(workingDirectory)/]
+  working_directory: [generateExpression(workingDirectory)/]
 [/if]
 [if (not noOutputTimeout.oclIsUndefined())]
-    no_output_timeout: [generateExpression(noOutputTimeout)/]
+  no_output_timeout: [generateExpression(noOutputTimeout)/]
 [/if]
 [if (not when.oclIsUndefined())]
-    when: [when/]
+  when: [when/]
 [/if]
 [if (environmentVariables->notEmpty())]
-    environment:
-    [for (variableAssignment : VariableAssignment | environmentVariables)]
-      [generateVariableAssignment(variableAssignment)/]
-    [/for]
+  environment:
+  [for (variableAssignment : VariableAssignment | environmentVariables)]
+    [generateVariableAssignment(variableAssignment)/]
+  [/for]
 [/if]
 [/template]
 
 [template public generateConditionalStep(step : Step) post (trim())]
 [if (step.oclIsKindOf(ConditionalStep))]
 [if (step.oclIsTypeOf(WhenStep))]
-- when:
+when:
 [elseif (step.oclIsTypeOf(UnlessStep))]
-- unless:
+unless:
 [/if]
 [let conditionalStep : ConditionalStep = step.oclAsType(ConditionalStep)]
-    condition:
-      [generateLogic(conditionalStep.condition, false)/]
-    steps:
-    [for (step : Step | conditionalStep.steps)]
-      [generateStep(step)/]
-    [/for]
+  condition:
+    [generateLogic(conditionalStep.condition)/]
+  steps:
+  [for (step : Step | conditionalStep.steps)]
+  [generateStep(step)/]
+  [/for]
 [/let]
 [/if]
 [/template]
 
 [template public generateCheckoutStep(step : CheckoutStep) post (trim())]
+checkout:
 [if (not path.oclIsUndefined())]
-- checkout:
-    path: [generateExpression(path)/]
-[else]
-- checkout
+  path: [generateExpression(path)/]
 [/if]
 [/template]
 
 [template public generateSetupRemoteDockerStep(step : SetupRemoteDockerStep) post (trim())]
-[if (dockerLayerCaching.oclIsUndefined() and version.oclIsUndefined())]
-- setup_remote_docker
-[else]
-- setup_remote_docker:
+setup_remote_docker:
 [if (not dockerLayerCaching.oclIsUndefined())]
-    docker_layer_caching: [generateExpression(dockerLayerCaching)/]
+  docker_layer_caching: [generateExpression(dockerLayerCaching)/]
 [/if]
 [if (not version.oclIsUndefined())]
-    version: [generateExpression(version)/]
-[/if]
+  version: [generateExpression(version)/]
 [/if]
 [/template]
 
 [template public generateSaveCacheStep(step : SaveCacheStep) post (trim())]
-- save_cache:
-    key: [generateExpression(key)/]
-    paths:
-    [for (path : Expression | paths)]
-      - [generateExpression(path)/]
-    [/for]
+save_cache:
+  key: [generateExpression(key)/]
+  paths:
+  [for (path : Expression | paths)]
+  [listItem(generateExpression(path))/]
+  [/for]
 [if (not name.oclIsUndefined())]
-    name: [generateExpression(name)/]
+  name: [generateExpression(name)/]
 [/if]
 [if (not when.oclIsUndefined())]
-    when: [when/]
+  when: [when/]
 [/if]
 [/template]
 
 [template public generateRestoreCacheStep(step : RestoreCacheStep) post (trim())]
-- restore_cache:
-    keys:
-    [for (key : Expression | keys)]
-    	- [generateExpression(key)/]
-    [/for]
+restore_cache:
+  keys:
+  [for (key : Expression | keys)]
+  [listItem(generateExpression(key))/]
+  [/for]
 [if (not name.oclIsUndefined())]
-	name: [generateExpression(name)/]
+  name: [generateExpression(name)/]
 [/if]
 [/template]
 
 [template public generateStoreArtifactsStep(step : StoreArtifactsStep) post (trim())]
-- store_artifacts:
-    path: [generateExpression(path)/]
+store_artifacts:
+  path: [generateExpression(path)/]
 [if (not destination.oclIsUndefined())]
-    destination: [generateExpression(destination)/]
+  destination: [generateExpression(destination)/]
 [/if]
 [/template]
 
 [template public generateStoreTestResultsStep(step : StoreTestResultsStep) post (trim())]
-- store_test_results:
-    path: [generateExpression(path)/]
+store_test_results:
+  path: [generateExpression(path)/]
 [/template]
 
 [template public generatePersistToWorkspaceStep(step : PersistToWorkspaceStep) post (trim())]
-- persist_to_workspace:
-    root: [generateExpression(root)/]
-    paths:
-    [for (path : Expression | paths)]
-      - [generateExpression(path)/]
-    [/for]
+persist_to_workspace:
+  root: [generateExpression(root)/]
+  paths:
+  [for (path : Expression | paths)]
+  [listItem(generateExpression(path))/]
+  [/for]
 [/template]
 
 [template public generateAttachWorkspaceStep(step : AttachWorkspaceStep) post (trim())]
-- attach_workspace:
-    at: [generateExpression(at)/]
+attach_workspace:
+  at: [generateExpression(at)/]
 [/template]
 
 [template public generateAddSSHKeysStep(step : AddSSHKeysStep) post (trim())]
 [if (fingerprints->notEmpty())]
-- add_ssh_keys:
-    fingerprints:
-    [for (fingerprint : Expression | fingerprints)]
-      - [generateExpression(fingerprint)/]
-    [/for]
+add_ssh_keys:
+  fingerprints:
+  [for (fingerprint : Expression | fingerprints)]
+  [listItem(generateExpression(fingerprint))/]
+  [/for]
 [/if]
 [/template]
 
 [template public generateOrbReferenceStep(step : OrbReferenceStep)]
-[if (arguments->isEmpty())]
-- [orb.name/]/[jobName/]
-[else]
-- [orb.name/]/[jobName/]:
+[orb.name/]/[jobName/]:
 [for (variableAssignment : VariableAssignment | arguments)]
-    [generateVariableAssignment(variableAssignment)/]
+  [generateVariableAssignment(variableAssignment)/]
 [/for]
-[/if]
 [/template]
 
 [template public generateCommandReferenceStep(step : CommandReferenceStep)]
-[if (arguments->isEmpty())]
-- [command.name/]
-[else]
-- [command.name/]:
+[command.name/]:
 [for (variableAssignment : VariableAssignment | arguments)]
-    [generateVariableAssignment(variableAssignment)/]
+  [generateVariableAssignment(variableAssignment)/]
 [/for]
-[/if]
 [/template]
 
 [template public generateParameter(parameter: Parameter) post (trim())]
@@ -462,7 +454,7 @@ executor: [executor.name/]
 [if (type = PARAMETER_TYPES::ENUM and enumValues->notEmpty())]
   enum:
   [for (enumValue : String | enumValues)]
-    - [enumValue/]
+  [listItem(enumValue)/]
   [/for]
 [/if]
 [if (not description.oclIsUndefined())]
@@ -481,7 +473,7 @@ executor: [executor.name/]
 [else]
   unless:
 [/if]
-    [generateLogic(condition, false)/]
+    [generateLogic(condition)/]
 [/if]
 [if (triggers->notEmpty())]
   triggers:
@@ -505,7 +497,8 @@ executor: [executor.name/]
 [/template]
 
 [template public generateScheduleTrigger(trigger : ScheduleTrigger) post (trim())]
-- schedule:
+- 
+  schedule:
     cron: [cron/]
 [if (branches->notEmpty())]
     branches:
@@ -515,26 +508,30 @@ executor: [executor.name/]
       only:
     [/if]
     [for (branch : Expression | branches)]
-        - [generateExpression(branch)/]
+      - 
+        [generateExpression(branch)/]
     [/for]
 [/if]
 [/template]
 
 [template public generateWorkflowJobConfiguration(job : WorkflowJobConfiguration) post(trim())]
 [if (job.oclIsTypeOf(WorkflowDefinedJobConfiguration))]
-- [job.oclAsType(WorkflowDefinedJobConfiguration).job.name/]:
+- 
+  [job.oclAsType(WorkflowDefinedJobConfiguration).job.name/]:
 [elseif (job.oclIsTypeOf(WorkflowApprovalJobConfiguration))]
-- [job.oclAsType(WorkflowApprovalJobConfiguration).name/]:
+- 
+  [job.oclAsType(WorkflowApprovalJobConfiguration).name/]:
     type: approval
 [elseif (job.oclIsTypeOf(WorkflowOrbJobConfiguration))]
 [let orbConfiguration : WorkflowOrbJobConfiguration = job.oclAsType(WorkflowOrbJobConfiguration)]
-- [orbConfiguration.orb.name/]/[orbConfiguration.jobName/]:
+- 
+  [orbConfiguration.orb.name/]/[orbConfiguration.jobName/]:
 [/let]
 [/if]
 [if (requires->notEmpty())]
     requires:
     [for (job : WorkflowJobConfiguration | requires)]
-      - [job.name/]
+    [listItem(job.name)/]
     [/for]
 [/if]
 [if (branches->notEmpty() or tags->notEmpty())]
@@ -547,7 +544,8 @@ executor: [executor.name/]
         only:
       [/if]
       [for (branch : Expression | branches)]
-          - [generateExpression(branch)/]
+        - 
+          [generateExpression(branch)/]
       [/for]
     [/if]
     [if (tags->notEmpty())]
@@ -558,7 +556,7 @@ executor: [executor.name/]
         only:
       [/if]
       [for (tag : Expression | tags)]
-          - [generateExpression(tag)/]
+        [listItem(generateExpression(tag))/]
       [/for]
     [/if]
 [/if]
@@ -581,13 +579,13 @@ executor: [executor.name/]
 [if (preSteps->notEmpty())]
     pre-steps:
     [for (step : Step | preSteps)]
-      [generateStep(step)/]
+    [generateStep(step)/]
     [/for]
 [/if]
 [if (postSteps->notEmpty())]
     post-steps:
     [for (step : Step | postSteps)]
-      [generateStep(step)/]
+    [generateStep(step)/]
     [/for]
 [/if]
 [/template]
@@ -597,51 +595,60 @@ executor: [executor.name/]
 [/template]
 
 [template public generateMatrixCombination(combination : MatrixCombination)]
-- [generateVariableAssignment(entries->first())/]
-[for (variableAssignment : VariableAssignment | entries->select(entry | entry <> entries->first()))]
+- 
+[for (variableAssignment : VariableAssignment | entries)]
   [generateVariableAssignment(variableAssignment)/]
 [/for]
 [/template]
 
-[template public generateExpression(expression : Expression)]
-[if (expression.oclIsUndefined())]OclUndefined[elseif (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][/if]
+[template public generateExpression(expression : Expression) post (trim())]
+[if (expression.oclIsUndefined())]
+null
+[else]
+[let expressionString : String = _generateExpression(expression)]
+[if (expressionString.contains('\n'))]
+[for (expressionPart : String | splitString(expressionString, '\n'))]
+  [expressionPart.replaceAll('\n', '')/]
+[/for]
+[else]
+[expressionString/]
+[/if]
+[/let]
+[/if]
 [/template]
 
-[template public generateConcat(concat : Concat) post (trim())]
+[template public _generateExpression(expression : Expression)]
+[if (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][/if]
+[/template]
+
+[template public generateConcat(concat : Concat)]
+[let string : String = _generateConcat(concat)]
+[if (string.contains('\n'))]
+[string/]
+[else]
+[quoteString(string)/]
+[/if]
+[/let]
+[/template]
+
+[template public _generateConcat(concat : Concat) post (trim())]
 [for (expression : Expression | expressions) separator ('')][generateExpression(expression)/][/for]
 [/template]
 
-[template public generateLogic(logic : Logic, addDash : Boolean) post (trim())]
+[template public generateLogic(logic : Logic) post (trim())]
 [if (logic.oclIsTypeOf(Literal))]
-[if (addDash)]
-- [generateLiteral(logic.oclAsType(Literal))/]
-[else]
 [generateLiteral(logic.oclAsType(Literal))/]
-[/if]
 [elseif (logic.oclIsTypeOf(VariableReference))]
-[if (addDash)]
-- [generateVariableReference(logic.oclAsType(VariableReference).reference)/]
-[else]
 [generateVariableReference(logic.oclAsType(VariableReference).reference)/]
-[/if]
 [elseif (logic.oclIsKindOf(InfinitaryOperator))]
-[generateInfinitaryOperator(logic, addDash)/]
+[generateInfinitaryOperator(logic)/]
 [elseif (logic.oclIsTypeOf(Matches))]
-[generateMatches(logic.oclAsType(Matches), addDash)/]	
+[generateMatches(logic.oclAsType(Matches))/]	
 [/if]
 [/template]
 
-[template public generateInfinitaryOperator(logic : Logic, addDash : Boolean) post (trim())]
+[template public generateInfinitaryOperator(logic : Logic) post (trim())]
 [if (logic.oclIsKindOf(InfinitaryOperator))]
-[if (addDash)]
-[if (logic.oclIsTypeOf(And))]
-- and:
-[elseif (logic.oclIsTypeOf(Or))]
-- or:
-[elseif (logic.oclIsTypeOf(Equals))]
-- equals:
-[/if]
-[else]
 [if (logic.oclIsTypeOf(And))]
 and:
 [elseif (logic.oclIsTypeOf(Or))]
@@ -649,14 +656,9 @@ or:
 [elseif (logic.oclIsTypeOf(Equals))]
 equals:
 [/if]
-[/if]
 [let infinitaryOperator : InfinitaryOperator = logic.oclAsType(InfinitaryOperator)]
 [for (operand : Logic | infinitaryOperator.operands)]
-[if (addDash)]
-    [generateLogic(operand, true)/]
-[else]
-  [generateLogic(operand, true)/]
-[/if]
+[listItem(generateLogic(operand))/]
 [/for]
 [/let]
 [/if]
@@ -664,39 +666,23 @@ equals:
 
 [template public generateUnaryOperator(logic : Logic, addDash : Boolean) post (trim())]
 [if (logic.oclIsKindOf(UnaryOperator))]
-[if (addDash)]
-[if (logic.oclIsTypeOf(Not))]
-- not:
-[/if]
-[else]
 [if (logic.oclIsTypeOf(Not))]
 not:
 [/if]
-[/if]
 [let unaryOperator : UnaryOperator = logic.oclAsType(UnaryOperator)]
-[if (addDash)]
-  [generateLogic(unaryOperator.operand, false)/]
-[else]
-    [generateLogic(unaryOperator.operand, false)/]
-[/if]
+  [generateLogic(unaryOperator.operand)/]
 [/let]
 [/if]
 [/template]
 
-[template public generateMatches(matches : Matches, addDash : Boolean)]
-[if (addDash)]
-- matches:
-    pattern: [generateExpression(pattern)/]
-    value: [generateExpression(value)/]
-[else]
+[template public generateMatches(matches : Matches)]
 matches:
   pattern: [generateExpression(pattern)/]
   value: [generateExpression(value)/]
-[/if]
 [/template]
 
 [template public generateLiteral(literal : Literal)]
-[if (literal.oclIsTypeOf(StringLiteral))][literal.oclAsType(StringLiteral).value/][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
+[if (literal.oclIsTypeOf(StringLiteral))][if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.oclAsType(StringLiteral).value.contains('\n') and not literal.eContainer().oclIsTypeOf(DotOperator))][quoteString(literal.oclAsType(StringLiteral).value)/][else][literal.oclAsType(StringLiteral).value/][/if][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
 [/template]
 
 [template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]

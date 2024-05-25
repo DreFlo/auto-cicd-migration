@@ -2099,8 +2099,18 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getWorkflowOrbJobConfiguration_Executor() {
+		return (EReference) workflowOrbJobConfigurationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getWorkflowOrbJobConfiguration_JobName() {
-		return (EAttribute) workflowOrbJobConfigurationEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) workflowOrbJobConfigurationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2743,6 +2753,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		workflowOrbJobConfigurationEClass = createEClass(WORKFLOW_ORB_JOB_CONFIGURATION);
 		createEReference(workflowOrbJobConfigurationEClass, WORKFLOW_ORB_JOB_CONFIGURATION__ORB);
+		createEReference(workflowOrbJobConfigurationEClass, WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR);
 		createEAttribute(workflowOrbJobConfigurationEClass, WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME);
 
 		matrixEClass = createEClass(MATRIX);
@@ -3313,6 +3324,9 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEClass(workflowOrbJobConfigurationEClass, WorkflowOrbJobConfiguration.class, "WorkflowOrbJobConfiguration",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getWorkflowOrbJobConfiguration_Orb(), this.getOrb(), null, "orb", null, 1, 1,
+				WorkflowOrbJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getWorkflowOrbJobConfiguration_Executor(), this.getExecutor(), null, "executor", null, 0, 1,
 				WorkflowOrbJobConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWorkflowOrbJobConfiguration_JobName(), ecorePackage.getEString(), "jobName", null, 0, 1,

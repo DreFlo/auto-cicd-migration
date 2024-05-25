@@ -3,7 +3,10 @@ import re
 import sys
 
 categorized_diffs = {
+    'total': 0,
     'native_package_version_mismatch': 0,
+    'concurrency_deleted': 0,
+    'secrets_deleted': 0,
     'unknown' : []
 }
 
@@ -17,11 +20,21 @@ diffs = re.split(r"\n(?=[\w-]+[.\w-]*:)", diff_string)
 
 def native_package_version_mismatch(string):
     # Check if string matches regex
-    if re.match(r"^jobs\..+\.steps\.\d\.uses:\n- actions\/(checkout|(?:upload|download)-artifact|cache)@.+\n\+ actions\/\1@.+$", string.strip()):
+    if re.match(r"^jobs\.[\w-]+\.steps\.\d+\.uses:\n- actions\/(checkout|(?:upload|download)-artifact|cache)@.+\n\+ actions\/\1@.+$", string.strip()):
         return True
     return False
 
-functions = [native_package_version_mismatch]
+def concurrency_deleted(string):
+    if re.match(r"^(?:jobs\.[\w-]+\.)?concurrency:\n- .+\n\+ <nil>$", string.strip()):
+        return True
+    return False
+
+def secrets_deleted(string):
+    if re.match(r"^(?:[\w-]+\.)*secrets:\n- .+\n\+ <nil>$", string.strip()):
+        return True
+    return False
+
+functions = [native_package_version_mismatch, concurrency_deleted, secrets_deleted]
 
 for diff in diffs:
     for function in functions:
@@ -30,5 +43,7 @@ for diff in diffs:
             break
     else:
         categorized_diffs['unknown'].append(diff)
+
+categorized_diffs['total'] = len(diffs)
 
 print(json.dumps(categorized_diffs, indent=2))

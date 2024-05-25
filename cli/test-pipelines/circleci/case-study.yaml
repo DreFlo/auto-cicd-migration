@@ -1,0 +1,173 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - bundle_install:
+          requires:
+            - checkout_code
+      - yarn_install:
+          requires:
+            - checkout_code
+      - rubocop:
+          requires:
+            - bundle_install
+      - yarn_build:
+          requires:
+            - yarn_install
+      - test:
+          requires:
+            - bundle_install
+            - yarn_build
+
+executors:
+  ruby:
+    docker:
+      - image: cimg/ruby:3.1.2-node
+        environment:
+          BUNDLE_PATH: vendor/bundle
+          GEM_HOME: vendor/bundle
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          RAILS_ENV: test
+
+  rails:
+    docker:
+      - image: cimg/ruby:3.1.2-browsers
+        environment:
+          BUNDLE_PATH: vendor/bundle
+          GEM_HOME: vendor/bundle
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          RAILS_ENV: test
+          INCLUDE_FIXTURES: true
+          DATABASE_URL: postgresql://root@localhost:5432/circle_test
+          FAIL_SCREEN: 1
+      - image: cimg/postgres:14.5
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+
+jobs:
+  checkout_code:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  bundle_install:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - save_cache:
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths: vendor/bundle
+      - persist_to_workspace:
+          root: .
+          paths: vendor/bundle
+
+  yarn_install:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_node_modules_cache
+      - run:
+          name: Yarn Install
+          command: yarn install --verbose
+      - save_node_modules_cache
+
+  yarn_build:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_node_modules_cache
+      - restore_assets_cache
+      - run:
+          name: Yarn Build
+          command: yarn build --verbose
+      - save_assets_cache
+
+  rubocop:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Rubocop
+          command: |
+            bundle exec rubocop --fail-level E
+
+  test:
+    parallelism: 1
+    executor: rails
+    steps:
+      - attach_workspace:
+          at: .
+      - restore_node_modules_cache
+      - restore_assets_cache
+      - run:
+          name: Wait for database
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:test:prepare
+      - run:
+          name: RSpec system tests
+          command: |
+            BUILT_ASSETS_AVAILABLE=1 bundle exec rspec
+
+commands:
+  restore_node_modules_cache:
+    description: Restore node_modules/
+    steps:
+      - restore_cache:
+          keys:
+            - v1-yarn-dependency-cache-{{ checksum "yarn.lock" }}
+            - v1-yarn-dependency-cache
+
+  save_node_modules_cache:
+    description: Save node_modules/
+    steps:
+      - save_cache:
+          key: v1-yarn-dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+
+  restore_assets_cache:
+    description: Restore assets cache
+    steps:
+      - restore_cache:
+          keys:
+            - v1-assets-cache-{{ .Branch }}-{{ .Revision }}
+            - v1-assets-cache-{{ .Branch }}
+            - v1-assets-cache
+
+  save_assets_cache:
+    description: Save compiled assets
+    steps:
+      - save_cache:
+          key: v1-assets-cache-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - public/front

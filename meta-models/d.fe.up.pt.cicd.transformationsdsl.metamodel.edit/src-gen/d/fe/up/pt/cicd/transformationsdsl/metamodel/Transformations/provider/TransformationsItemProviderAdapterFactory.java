@@ -234,6 +234,52 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReplaceStepItemProvider replaceStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReplaceStepAdapter() {
+		if (replaceStepItemProvider == null) {
+			replaceStepItemProvider = new ReplaceStepItemProvider(this);
+		}
+
+		return replaceStepItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeleteStepItemProvider deleteStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDeleteStepAdapter() {
+		if (deleteStepItemProvider == null) {
+			deleteStepItemProvider = new DeleteStepItemProvider(this);
+		}
+
+		return deleteStepItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,6 +323,29 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 		}
 
 		return setCircleCIVersionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SelectWorkflowItemProvider selectWorkflowItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSelectWorkflowAdapter() {
+		if (selectWorkflowItemProvider == null) {
+			selectWorkflowItemProvider = new SelectWorkflowItemProvider(this);
+		}
+
+		return selectWorkflowItemProvider;
 	}
 
 	/**
@@ -398,10 +467,16 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 			replaceAgentLabelsItemProvider.dispose();
 		if (addTriggerItemProvider != null)
 			addTriggerItemProvider.dispose();
+		if (replaceStepItemProvider != null)
+			replaceStepItemProvider.dispose();
+		if (deleteStepItemProvider != null)
+			deleteStepItemProvider.dispose();
 		if (addOrbReferenceExecutorItemProvider != null)
 			addOrbReferenceExecutorItemProvider.dispose();
 		if (setCircleCIVersionItemProvider != null)
 			setCircleCIVersionItemProvider.dispose();
+		if (selectWorkflowItemProvider != null)
+			selectWorkflowItemProvider.dispose();
 	}
 
 }

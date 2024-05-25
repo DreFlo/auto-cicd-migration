@@ -1,0 +1,3 @@
+during {
+    delete step 1 on 'build-and-test'
+}

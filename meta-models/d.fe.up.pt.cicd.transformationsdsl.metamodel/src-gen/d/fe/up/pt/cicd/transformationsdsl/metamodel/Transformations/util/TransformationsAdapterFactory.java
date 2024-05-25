@@ -134,6 +134,16 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseReplaceStep(ReplaceStep object) {
+			return createReplaceStepAdapter();
+		}
+
+		@Override
+		public Adapter caseDeleteStep(DeleteStep object) {
+			return createDeleteStepAdapter();
+		}
+
+		@Override
 		public Adapter caseGHATransformation(GHATransformation object) {
 			return createGHATransformationAdapter();
 		}
@@ -156,6 +166,11 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseSetCircleCIVersion(SetCircleCIVersion object) {
 			return createSetCircleCIVersionAdapter();
+		}
+
+		@Override
+		public Adapter caseSelectWorkflow(SelectWorkflow object) {
+			return createSelectWorkflowAdapter();
 		}
 
 		@Override
@@ -360,6 +375,34 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep <em>Replace Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep
+	 * @generated
+	 */
+	public Adapter createReplaceStepAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep <em>Delete Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep
+	 * @generated
+	 */
+	public Adapter createDeleteStepAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation <em>GHA Transformation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -426,6 +469,20 @@ public class TransformationsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSetCircleCIVersionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow <em>Select Workflow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow
+	 * @generated
+	 */
+	public Adapter createSelectWorkflowAdapter() {
 		return null;
 	}
 

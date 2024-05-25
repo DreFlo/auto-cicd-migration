@@ -3200,13 +3200,22 @@ public interface CircleCIPackage extends EPackage {
 	int WORKFLOW_ORB_JOB_CONFIGURATION__ORB = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Executor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Job Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 1;
+	int WORKFLOW_ORB_JOB_CONFIGURATION__JOB_NAME = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Workflow Orb Job Configuration</em>' class.
@@ -3215,7 +3224,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKFLOW_ORB_JOB_CONFIGURATION_FEATURE_COUNT = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 2;
+	int WORKFLOW_ORB_JOB_CONFIGURATION_FEATURE_COUNT = WORKFLOW_JOB_CONFIGURATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Workflow Orb Job Configuration</em>' class.
@@ -5612,6 +5621,17 @@ public interface CircleCIPackage extends EPackage {
 	EReference getWorkflowOrbJobConfiguration_Orb();
 
 	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getExecutor <em>Executor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Executor</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getExecutor()
+	 * @see #getWorkflowOrbJobConfiguration()
+	 * @generated
+	 */
+	EReference getWorkflowOrbJobConfiguration_Executor();
+
+	/**
 	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getJobName <em>Job Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7337,6 +7357,14 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference WORKFLOW_ORB_JOB_CONFIGURATION__ORB = eINSTANCE.getWorkflowOrbJobConfiguration_Orb();
+
+		/**
+		 * The meta object literal for the '<em><b>Executor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR = eINSTANCE.getWorkflowOrbJobConfiguration_Executor();
 
 		/**
 		 * The meta object literal for the '<em><b>Job Name</b></em>' attribute feature.

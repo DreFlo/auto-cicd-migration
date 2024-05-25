@@ -52,10 +52,10 @@ public class CICD2GHA {
 	}
 	
 	public String quoteString(String string) {
-		if (string.matches("^\"(?:\\.|[^\\\"])*\"$") || string.matches("^'(?:\\.|[^\\'])*'$")) {
+		if (string.matches("^\"(?:\\\\.|[^\\\"])*\"$") || string.matches("^'(?:\\\\.|[^\\'])*'$")) {
 			return string;
 		} else {
-			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\"") + "\"";
+			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\\\"") + "\"";
 		}
 	}
 	

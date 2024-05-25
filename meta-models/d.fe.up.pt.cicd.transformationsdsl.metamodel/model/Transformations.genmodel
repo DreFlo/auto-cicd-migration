@@ -53,6 +53,15 @@
     <genClasses ecoreClass="Transformations.ecore#//AddTrigger">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//AddTrigger/trigger"/>
     </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//ReplaceStep">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceStep/job"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceStep/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ReplaceStep/step"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//DeleteStep">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//DeleteStep/job"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//DeleteStep/index"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="Transformations.ecore#//GHATransformation"/>
     <genClasses image="false" ecoreClass="Transformations.ecore#//CircleCITransformation"/>
     <genClasses ecoreClass="Transformations.ecore#//AddExecutor">
@@ -64,6 +73,9 @@
     </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//SetCircleCIVersion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//SetCircleCIVersion/version"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//SelectWorkflow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//SelectWorkflow/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

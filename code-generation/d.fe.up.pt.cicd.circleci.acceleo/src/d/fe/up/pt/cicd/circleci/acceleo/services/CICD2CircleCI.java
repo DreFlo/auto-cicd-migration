@@ -17,6 +17,14 @@ public class CICD2CircleCI {
 		return string;
 	}
 	
+	public String quoteString(String string) {
+		if (string.matches("^\"(?:\\\\.|[^\\\"])*\"$") || string.matches("^'(?:\\\\.|[^\\'])*'$")) {
+			return string;
+		} else {
+			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\\\"") + "\"";
+		}
+	}
+	
 	public String generateVariableReference(VariableDeclaration variableDeclaration, boolean inQuotes) {
 		if (isEnvironmentVariable(variableDeclaration))
 			return "${" + getVariableName(variableDeclaration) + "}";

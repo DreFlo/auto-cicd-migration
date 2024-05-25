@@ -1,0 +1,202 @@
+name: Release workflow for Kuvaq
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkout_code:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Save repository's content as artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: repo
+        path: ${{ github.workspace }}
+
+  bundle_install:
+    runs-on: ubuntu-22.04
+    needs: checkout_code
+
+    container: cimg/ruby:3.1.2-node
+    env:
+      BUNDLE_PATH: vendor/bundle
+      GEM_HOME: vendor/bundle
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      RAILS_ENV: test
+
+    steps:
+    - name: Setup file system permissions
+      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+    - name: Get repository's content
+      uses: actions/download-artifact@v3
+      with:
+        name: repo
+    - uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-${{ hashFiles('**/Gemfile.lock') }}
+          bundle-
+    - name: Bundle install
+      run: |
+        gem install bundler -v "$(cat Gemfile.lock | tail -1 | tr -d " ")"
+        bundle install
+
+  yarn_install:
+    runs-on: ubuntu-22.04
+    needs: checkout_code
+
+    container: cimg/ruby:3.1.2-node
+    env:
+      BUNDLE_PATH: vendor/bundle
+      GEM_HOME: vendor/bundle
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      RAILS_ENV: test
+
+    steps:
+    - name: Setup file system permissions
+      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+    - name: Get repository's content
+      uses: actions/download-artifact@v3
+      with:
+        name: repo
+    - uses: actions/cache@v3
+      with:
+        path: |
+          node_modules
+          ~/.cache/yarn
+        key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          v1-yarn-dependency-cache-
+    - name: Yarn Install
+      run: yarn install --verbose
+
+  yarn_build:
+    runs-on: ubuntu-22.04
+    needs: yarn_install
+
+    container: cimg/ruby:3.1.2-node
+    env:
+      BUNDLE_PATH: vendor/bundle
+      GEM_HOME: vendor/bundle
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      RAILS_ENV: test
+
+    steps:
+    - name: Setup file system permissions
+      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+    - name: Get repository's content
+      uses: actions/download-artifact@v3
+      with:
+        name: repo
+    - uses: actions/cache@v3
+      with:
+        path: |
+          node_modules
+          ~/.cache/yarn
+        key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          v1-yarn-dependency-cache-
+    - uses: actions/cache@v3
+      with:
+        path: public/front
+        key: v1-assets-cache-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          v1-assets-cache-${{ github.ref }}-${{ github.sha }}
+          v1-assets-cache-${{ github.ref }}
+          v1-assets-cache
+    - name: Yarn Build
+      run: yarn build --verbose
+
+  rubocop:
+    needs: bundle_install
+    runs-on: ubuntu-22.04
+
+    container: cimg/ruby:3.1.2-node
+    env:
+      BUNDLE_PATH: vendor/bundle
+      GEM_HOME: vendor/bundle
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      RAILS_ENV: test
+
+    steps:
+    - name: Setup file system permissions
+      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+    - name: Get repository's content
+      uses: actions/download-artifact@v3
+      with:
+        name: repo
+    - uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-${{ hashFiles('**/Gemfile.lock') }}
+          bundle-
+    - name: Rubocop
+      run: bundle exec rubocop --fail-level E
+
+  test:
+    needs:
+      - bundle_install
+      - yarn_build
+    runs-on: ubuntu-22.04
+
+    container: cimg/ruby:3.1.2-browsers
+    env:
+      BUNDLE_PATH: vendor/bundle
+      GEM_HOME: vendor/bundle
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      RAILS_ENV: test
+      INCLUDE_FIXTURES: true
+      DATABASE_URL: postgresql://root@postgres:5432/circle_test
+      FAIL_SCREEN: 1
+      BUILT_ASSETS_AVAILABLE: 1
+
+    services:
+      postgres:
+        image: cimg/postgres:14.5
+        env:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+        # Add a health check
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - name: Setup file system permissions
+      run: sudo chmod -R 777 $GITHUB_WORKSPACE /github /__w/_temp
+    - name: Get repository's content
+      uses: actions/download-artifact@v3
+      with:
+        name: repo
+    - uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          bundle-${{ hashFiles('**/Gemfile.lock') }}
+          bundle-
+    - uses: actions/cache@v3
+      with:
+        path: public/front
+        key: v1-assets-cache-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          v1-assets-cache-${{ github.ref }}-${{ github.sha }}
+          v1-assets-cache-${{ github.ref }}
+          v1-assets-cache
+    - name: Setup database
+      run: bundle exec rails db:test:prepare
+    - name: RSpec system tests
+      run: bundle exec rspec

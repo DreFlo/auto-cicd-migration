@@ -92,7 +92,148 @@ create OUT : CICD2 from IN : CICD1;
 [generateReplaceAgentLabels(transformation.oclAsType(ReplaceAgentLabels))/]
 [elseif (transformation.oclIsTypeOf(AddTrigger))]
 [generateAddTrigger(transformation.oclAsType(AddTrigger))/]
+[elseif (transformation.oclIsTypeOf(ReplaceStep))]
+[generateReplaceStep(transformation.oclAsType(ReplaceStep))/]
+[elseif (transformation.oclIsTypeOf(DeleteStep))]
+[generateDeleteStep(transformation.oclAsType(DeleteStep))/]
 [/if]
+[/template]
+
+[template public generateDeleteStep(transformation : DeleteStep)]
+rule DeleteStep {
+	from
+		input : CICD!Step (
+			input.refImmediateComposite().id = [job/] and
+			input.refImmediateComposite().steps->indexOf(input) = [index/]
+		)
+	to
+		drop
+}
+[/template]
+
+[template public generateReplaceStep(transformation : ReplaceStep)]
+[generateCopyPipeline()/]
+lazy rule String2StringLiteral {
+	from
+		input : String
+	to
+		output : CICD2!StringLiteral(
+			value <- input
+		)
+}
+
+rule ReplaceStep {
+	from
+		input : CICD1!Step (
+			input.refImmediateComposite().id = [job/] and
+			input.refImmediateComposite().steps->indexOf(input) = [index/]
+		)
+	to
+		output : 
+[if (step.oclIsTypeOf(Command))]
+[let command : Command = step.oclAsType(Command)]
+			CICD2!Command (
+				program <- thisModule.String2StringLiteral([command.program.oclAsType(StringLiteral).value/])
+[/let]
+			)
+[/if]
+}
+
+abstract rule Step {
+	from
+		input : CICD1!Step (
+			not (input.refImmediateComposite().id = [job/] and input.refImmediateComposite().steps->indexOf(input) = [index/])
+		)
+	to
+		output : CICD2!Step()
+}
+
+abstract rule NonConditionalStep extends Step {
+	from
+		input : CICD1!NonConditionalStep
+	to
+		output : CICD2!NonConditionalStep(
+			allowFailure <- input.allowFailure,
+			environmentVariables <- input.environmentVariables,
+			id <- input.id,
+			name <- input.name,
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
+		)
+}
+
+rule ConditionalStep extends Step {
+	from
+		input : CICD1!ConditionalStep
+	to
+		output : CICD2!ConditionalStep(
+			elseRun <- input.elseRun,
+			ifCondition <- input.ifCondition,
+			thenRun <- input.thenRun
+		)
+}
+
+rule Command extends NonConditionalStep {
+	from
+		input : CICD1!Command
+	to
+		output : CICD2!Command(
+			program <- input.program
+		)
+}
+
+rule Plugin extends NonConditionalStep {
+	from
+		input : CICD1!Plugin
+	to
+		output : CICD2!Plugin(
+			kwargs <- input.kwargs,
+			pluginName <- input.pluginName,
+			version <- input.version
+		)
+}
+
+rule Artifact extends NonConditionalStep {
+	from
+		input : CICD1!Artifact
+	to
+		output : CICD2!Artifact(
+			artifactName <- input.artifactName,
+			excludePaths <- input.excludePaths,
+			includePaths <- input.includePaths,
+			store <- input.store
+		)
+}
+
+rule Cache extends NonConditionalStep {
+	from
+		input : CICD1!Cache
+	to
+		output : CICD2!Cache(
+			cacheName <- input.cacheName,
+			keys <- input.keys,
+			paths <- input.paths,
+			store <- input.store
+		)
+}
+
+rule Checkout extends NonConditionalStep {
+	from
+		input : CICD1!Checkout
+	to
+		output : CICD2!Checkout(
+			path <- input.path
+		)
+}
+[generateCopyTriggers()/]
+[generateCopyVariableDeclaration()/]
+[generateCopyAgent()/]
+[generateCopyDockerContainer()/]
+[generateCopyExpressions()/]
+[generateCopyJob()/]
+[generateCopyMatrix()/]
+[generateCopyParameters()/]
+[generateExpression2StringHelpers('CICD1')/]
 [/template]
 
 [template public generateChangePlugin(transformation : ChangePlugin)]
@@ -747,7 +888,20 @@ create OUT : CircleCI2 from IN : CircleCI1;
 [generateSetCircleCIVersion(transformation.oclAsType(SetCircleCIVersion))/]
 [elseif (transformation.oclIsTypeOf(AddOrbReferenceExecutor))]
 [generateAddOrbReferenceExecutor(transformation.oclAsType(AddOrbReferenceExecutor))/]
+[elseif (transformation.oclIsTypeOf(SelectWorkflow))]
+[generateCircleCISelectWorkflow(transformation.oclAsType(SelectWorkflow))/]
 [/if]
+[/template]
+
+[template public generateCircleCISelectWorkflow(transformation : SelectWorkflow)]
+rule Workflow {
+	from
+		input : CircleCI!Workflow (
+			input.name <> '[transformation.name/]'
+		)
+	to
+		drop
+}
 [/template]
 
 [template public generateSetCircleCIVersion(transformation : SetCircleCIVersion)]
@@ -766,6 +920,7 @@ rule Pipeline {
 			workflows <- input.workflows
 		)
 }
+
 [/template]
 
 [template public generateAddOrbReferenceExecutor(transformation : AddOrbReferenceExecutor)]

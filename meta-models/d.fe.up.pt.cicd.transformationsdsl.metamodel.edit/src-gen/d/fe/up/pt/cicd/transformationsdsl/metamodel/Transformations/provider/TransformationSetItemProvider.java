@@ -163,6 +163,9 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM,
 				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
 
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__PRE_TIM,
+				TransformationsFactory.eINSTANCE.createSelectWorkflow()));
+
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createATLScript()));
 
@@ -179,10 +182,19 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 				TransformationsFactory.eINSTANCE.createAddTrigger()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createReplaceStep()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createDeleteStep()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createAddOrbReferenceExecutor()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createSelectWorkflow()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
 				TransformationsFactory.eINSTANCE.createATLScript()));
@@ -192,6 +204,9 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
 				TransformationsFactory.eINSTANCE.createSetCircleCIVersion()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__POST_TIM,
+				TransformationsFactory.eINSTANCE.createSelectWorkflow()));
 	}
 
 	/**

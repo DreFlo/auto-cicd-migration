@@ -14,10 +14,13 @@ import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentL
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.CircleCITransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.InplaceTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TIMTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TSMTransformation;
@@ -139,6 +142,20 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass replaceStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deleteStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass ghaTransformationEClass = null;
 
 	/**
@@ -168,6 +185,13 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	private EClass setCircleCIVersionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass selectWorkflowEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -520,6 +544,76 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public EClass getReplaceStep() {
+		return replaceStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReplaceStep_Job() {
+		return (EAttribute) replaceStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getReplaceStep_Index() {
+		return (EAttribute) replaceStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getReplaceStep_Step() {
+		return (EReference) replaceStepEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDeleteStep() {
+		return deleteStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeleteStep_Job() {
+		return (EAttribute) deleteStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDeleteStep_Index() {
+		return (EAttribute) deleteStepEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getGHATransformation() {
 		return ghaTransformationEClass;
 	}
@@ -610,6 +704,26 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public EClass getSelectWorkflow() {
+		return selectWorkflowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSelectWorkflow_Name() {
+		return (EAttribute) selectWorkflowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getMODELS() {
 		return modelsEEnum;
 	}
@@ -684,6 +798,15 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		addTriggerEClass = createEClass(ADD_TRIGGER);
 		createEReference(addTriggerEClass, ADD_TRIGGER__TRIGGER);
 
+		replaceStepEClass = createEClass(REPLACE_STEP);
+		createEAttribute(replaceStepEClass, REPLACE_STEP__JOB);
+		createEAttribute(replaceStepEClass, REPLACE_STEP__INDEX);
+		createEReference(replaceStepEClass, REPLACE_STEP__STEP);
+
+		deleteStepEClass = createEClass(DELETE_STEP);
+		createEAttribute(deleteStepEClass, DELETE_STEP__JOB);
+		createEAttribute(deleteStepEClass, DELETE_STEP__INDEX);
+
 		ghaTransformationEClass = createEClass(GHA_TRANSFORMATION);
 
 		circleCITransformationEClass = createEClass(CIRCLE_CI_TRANSFORMATION);
@@ -697,6 +820,9 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 
 		setCircleCIVersionEClass = createEClass(SET_CIRCLE_CI_VERSION);
 		createEAttribute(setCircleCIVersionEClass, SET_CIRCLE_CI_VERSION__VERSION);
+
+		selectWorkflowEClass = createEClass(SELECT_WORKFLOW);
+		createEAttribute(selectWorkflowEClass, SELECT_WORKFLOW__NAME);
 
 		// Create enums
 		modelsEEnum = createEEnum(MODELS);
@@ -752,6 +878,10 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		addTriggerEClass.getESuperTypes().add(this.getOutplaceTransformation());
 		addTriggerEClass.getESuperTypes().add(this.getTIMTransformation());
 		addTriggerEClass.getESuperTypes().add(this.getConditionalTransformation());
+		replaceStepEClass.getESuperTypes().add(this.getTIMTransformation());
+		replaceStepEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		deleteStepEClass.getESuperTypes().add(this.getTIMTransformation());
+		deleteStepEClass.getESuperTypes().add(this.getInplaceTransformation());
 		ghaTransformationEClass.getESuperTypes().add(this.getTSMTransformation());
 		circleCITransformationEClass.getESuperTypes().add(this.getTSMTransformation());
 		addExecutorEClass.getESuperTypes().add(this.getCircleCITransformation());
@@ -759,6 +889,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		addOrbReferenceExecutorEClass.getESuperTypes().add(this.getAddExecutor());
 		setCircleCIVersionEClass.getESuperTypes().add(this.getCircleCITransformation());
 		setCircleCIVersionEClass.getESuperTypes().add(this.getInplaceTransformation());
+		selectWorkflowEClass.getESuperTypes().add(this.getCircleCITransformation());
+		selectWorkflowEClass.getESuperTypes().add(this.getInplaceTransformation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(stringToStringMapEntryEClass, Map.Entry.class, "StringToStringMapEntry", !IS_ABSTRACT, !IS_INTERFACE,
@@ -838,6 +970,23 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 				AddTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(replaceStepEClass, ReplaceStep.class, "ReplaceStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getReplaceStep_Job(), ecorePackage.getEString(), "job", null, 1, 1, ReplaceStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReplaceStep_Index(), ecorePackage.getEIntegerObject(), "index", null, 1, 1, ReplaceStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReplaceStep_Step(), theCICDPackage.getStep(), null, "step", null, 1, 1, ReplaceStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(deleteStepEClass, DeleteStep.class, "DeleteStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeleteStep_Job(), ecorePackage.getEString(), "job", null, 1, 1, DeleteStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeleteStep_Index(), ecorePackage.getEIntegerObject(), "index", null, 1, 1, DeleteStep.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(ghaTransformationEClass, GHATransformation.class, "GHATransformation", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
@@ -863,6 +1012,11 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		initEAttribute(getSetCircleCIVersion_Version(), ecorePackage.getEString(), "version", null, 1, 1,
 				SetCircleCIVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(selectWorkflowEClass, SelectWorkflow.class, "SelectWorkflow", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSelectWorkflow_Name(), ecorePackage.getEString(), "name", null, 1, 1, SelectWorkflow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(modelsEEnum, d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.MODELS.class, "MODELS");

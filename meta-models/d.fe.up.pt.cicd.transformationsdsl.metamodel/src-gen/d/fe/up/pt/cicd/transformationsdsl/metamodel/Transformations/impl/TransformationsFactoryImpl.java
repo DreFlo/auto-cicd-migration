@@ -73,10 +73,16 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 			return createReplaceAgentLabels();
 		case TransformationsPackage.ADD_TRIGGER:
 			return createAddTrigger();
+		case TransformationsPackage.REPLACE_STEP:
+			return createReplaceStep();
+		case TransformationsPackage.DELETE_STEP:
+			return createDeleteStep();
 		case TransformationsPackage.ADD_ORB_REFERENCE_EXECUTOR:
 			return createAddOrbReferenceExecutor();
 		case TransformationsPackage.SET_CIRCLE_CI_VERSION:
 			return createSetCircleCIVersion();
+		case TransformationsPackage.SELECT_WORKFLOW:
+			return createSelectWorkflow();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -194,6 +200,28 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public ReplaceStep createReplaceStep() {
+		ReplaceStepImpl replaceStep = new ReplaceStepImpl();
+		return replaceStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DeleteStep createDeleteStep() {
+		DeleteStepImpl deleteStep = new DeleteStepImpl();
+		return deleteStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public AddOrbReferenceExecutor createAddOrbReferenceExecutor() {
 		AddOrbReferenceExecutorImpl addOrbReferenceExecutor = new AddOrbReferenceExecutorImpl();
 		return addOrbReferenceExecutor;
@@ -208,6 +236,17 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	public SetCircleCIVersion createSetCircleCIVersion() {
 		SetCircleCIVersionImpl setCircleCIVersion = new SetCircleCIVersionImpl();
 		return setCircleCIVersion;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SelectWorkflow createSelectWorkflow() {
+		SelectWorkflowImpl selectWorkflow = new SelectWorkflowImpl();
+		return selectWorkflow;
 	}
 
 	/**

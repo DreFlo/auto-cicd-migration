@@ -12,6 +12,7 @@ package d.fe.up.pt.cicd.circleci.metamodel.CircleCI;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getOrb <em>Orb</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getExecutor <em>Executor</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getJobName <em>Job Name</em>}</li>
  * </ul>
  *
@@ -41,6 +42,28 @@ public interface WorkflowOrbJobConfiguration extends WorkflowJobConfiguration {
 	 * @generated
 	 */
 	void setOrb(Orb value);
+
+	/**
+	 * Returns the value of the '<em><b>Executor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Executor</em>' reference.
+	 * @see #setExecutor(Executor)
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getWorkflowOrbJobConfiguration_Executor()
+	 * @model
+	 * @generated
+	 */
+	Executor getExecutor();
+
+	/**
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowOrbJobConfiguration#getExecutor <em>Executor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Executor</em>' reference.
+	 * @see #getExecutor()
+	 * @generated
+	 */
+	void setExecutor(Executor value);
 
 	/**
 	 * Returns the value of the '<em><b>Job Name</b></em>' attribute.

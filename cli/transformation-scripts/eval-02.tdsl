@@ -1,0 +1,9 @@
+before translating {
+    on CircleCI select workflow frontend
+}
+while translating {
+    set agent labels when "true" {"ubuntu-latest"}
+    replace step 2 on 'frontend-test' with command {
+        script 'npm install'
+    }
+}

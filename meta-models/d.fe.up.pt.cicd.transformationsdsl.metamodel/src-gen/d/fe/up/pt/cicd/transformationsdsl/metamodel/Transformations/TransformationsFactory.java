@@ -77,6 +77,24 @@ public interface TransformationsFactory extends EFactory {
 	AddTrigger createAddTrigger();
 
 	/**
+	 * Returns a new object of class '<em>Replace Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Replace Step</em>'.
+	 * @generated
+	 */
+	ReplaceStep createReplaceStep();
+
+	/**
+	 * Returns a new object of class '<em>Delete Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Delete Step</em>'.
+	 * @generated
+	 */
+	DeleteStep createDeleteStep();
+
+	/**
 	 * Returns a new object of class '<em>Add Orb Reference Executor</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,6 +111,15 @@ public interface TransformationsFactory extends EFactory {
 	 * @generated
 	 */
 	SetCircleCIVersion createSetCircleCIVersion();
+
+	/**
+	 * Returns a new object of class '<em>Select Workflow</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Select Workflow</em>'.
+	 * @generated
+	 */
+	SelectWorkflow createSelectWorkflow();
 
 	/**
 	 * Returns the package supported by this factory.

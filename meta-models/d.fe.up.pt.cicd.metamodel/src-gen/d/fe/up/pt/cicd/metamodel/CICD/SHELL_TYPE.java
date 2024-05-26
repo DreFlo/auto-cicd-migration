@@ -19,14 +19,34 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum SHELL_TYPE implements Enumerator {
 	/**
-	 * The '<em><b>BASH</b></em>' literal object.
+	 * The '<em><b>NULL</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #BASH_VALUE
+	 * @see #NULL_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	BASH(0, "BASH", "BASH");
+	NULL(0, "NULL", "NULL"),
+	/**
+	* The '<em><b>BASH</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #BASH_VALUE
+	* @generated
+	* @ordered
+	*/
+	BASH(1, "BASH", "BASH");
+
+	/**
+	 * The '<em><b>NULL</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NULL
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NULL_VALUE = 0;
 
 	/**
 	 * The '<em><b>BASH</b></em>' literal value.
@@ -37,7 +57,7 @@ public enum SHELL_TYPE implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BASH_VALUE = 0;
+	public static final int BASH_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>SHELL TYPE</b></em>' enumerators.
@@ -45,7 +65,7 @@ public enum SHELL_TYPE implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SHELL_TYPE[] VALUES_ARRAY = new SHELL_TYPE[] { BASH, };
+	private static final SHELL_TYPE[] VALUES_ARRAY = new SHELL_TYPE[] { NULL, BASH, };
 
 	/**
 	 * A public read-only list of all the '<em><b>SHELL TYPE</b></em>' enumerators.
@@ -101,6 +121,8 @@ public enum SHELL_TYPE implements Enumerator {
 	 */
 	public static SHELL_TYPE get(int value) {
 		switch (value) {
+		case NULL_VALUE:
+			return NULL;
 		case BASH_VALUE:
 			return BASH;
 		}

@@ -99,7 +99,7 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 			services <- 
 				if input.job.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
 					if input.job.executor.containers->size() > 1 then
-						input.job.executor.containers->subSequence(2, input.job.executor.containers->size())
+						input.job.executor.containers->subSequence(2, input.job.executor.containers->size())->collect(container | thisModule.DockerContainer2DockerContainer(container))
 					else
 						Sequence{}
 					endif
@@ -112,12 +112,15 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 					if shellString = 'shell' then
 						#BASH
 					else
-						#BASH
+						#NULL
 					endif
 				else
 					OclUndefined
 				endif,
-			steps <- input.preSteps->collect(step | step.step2StepHelper())->flatten()->union(input.job.steps->collect(step | step.step2StepHelper())->flatten())->union(input.postSteps->collect(step | step.step2StepHelper())->flatten()),
+			steps <- 
+				input.preSteps->collect(step | step.step2StepHelper())->flatten()
+				->union(input.job.steps->collect(step | step.step2StepHelper())->flatten())
+				->union(input.postSteps->collect(step | step.step2StepHelper())->flatten()),
 			workingDirectory <- 
 				if not input.job.executor.workingDirectory.oclIsUndefined() then
 					input.job.executor.workingDirectory.expression2String()
@@ -149,7 +152,7 @@ rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobCon
 			services <- 
 				if input.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
 					if input.executor.containers->size() > 1 then
-						input.executor.containers->subSequence(2, input.executor.containers->size())
+						input.executor.containers->subSequence(2, input.executor.containers->size())->collect(container | thisModule.DockerContainer2DockerContainer(container))
 					else
 						Sequence{}
 					endif
@@ -191,23 +194,127 @@ lazy rule DockerExecutor2Agent {
 	to
 		output : CICD!Agent(
 			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('docker-executor')},
-			container <- if input.containers->notEmpty() then input.containers->first() else OclUndefined endif
+			container <- thisModule.DockerContainer2DockerContainer(input.containers->first())
 		)
-	do {
-		output.container.debug();
-	}
 }
 
-rule DockerContainer2DockerContainer {
+lazy rule DockerContainer2DockerContainer {
 	from
 		input : CircleCI!DockerContainer
 	to
 		output : CICD!DockerContainer(
-			environmentVariables <- input.environmentVariables,
-			image <- input.image,
+			environmentVariables <- input.environmentVariables->collect(ass | thisModule.CopyAssignment(ass)),
+			image <- if not input.image.oclIsUndefined() then input.image.copyExpression() else OclUndefined endif,
 			label <- if input.name.oclIsUndefined() then input.image.expression2String() else input.name.expression2String() endif,
-			registryPassword <- input.password,
-			registryUsername <- input.username
+			registryPassword <- if not input.password.oclIsUndefined() then input.password.copyExpression() else OclUndefined endif,
+			registryUsername <- if not input.username.oclIsUndefined() then input.username.copyExpression() else OclUndefined endif
+		)
+}
+
+lazy rule CopyAssignment {
+	from
+		input : CircleCI!VariableAssignment
+	to
+		output : CICD!Assignment(
+			key <- thisModule.CreateVariableAssignment(input.key),
+			value <- input.value.copyExpression()
+		) 
+}
+
+helper context CircleCI!Expression def : copyExpression() : CICD!Expression =
+	OclUndefined;
+
+helper context CircleCI!StringLiteral def : copyExpression() : CICD!Expression =
+	thisModule.CopyStringLiteral(self);
+
+helper context CircleCI!IntegerLiteral def : copyExpression() : CICD!Expression =
+	thisModule.CopyIntegerLiteral(self);
+
+helper context CircleCI!DoubleLiteral def : copyExpression() : CICD!Expression =
+	thisModule.CopyDoubleLiteral(self);
+
+helper context CircleCI!BooleanLiteral def : copyExpression() : CICD!Expression =
+	thisModule.CopyBooleanLiteral(self);
+
+helper context CircleCI!DotOperator def : copyExpression() : CICD!Expression =
+	thisModule.CopyDotOperator(self);
+
+helper context CircleCI!VariableReference def : copyExpression() : CICD!Expression =
+	thisModule.CopyVariableReference(self);
+
+helper context CircleCI!Concat def : copyExpression() : CICD!Expression =
+	thisModule.CopyConcat(self);
+
+lazy rule CopyVariableDeclaration {
+	from
+		input : CircleCI!VariableDeclaration
+	to
+		output : CICD!VariableDeclaration (
+			name <- input.name
+		)
+}
+
+lazy rule CopyStringLiteral {
+	from
+		input : CircleCI!StringLiteral
+	to
+		output : CICD!StringLiteral (
+			value <- input.value
+		)
+}
+
+lazy rule CopyIntegerLiteral {
+	from
+		input : CircleCI!IntegerLiteral
+	to
+		output : CICD!IntegerLiteral (
+			value <- input.value
+		)
+}
+
+lazy rule CopyDoubleLiteral {
+	from
+		input : CircleCI!DoubleLiteral
+	to
+		output : CICD!DoubleLiteral (
+			value <- input.value
+		)
+}
+
+lazy rule CopyBooleanLiteral {
+	from
+		input : CircleCI!BooleanLiteral
+	to
+		output : CICD!BooleanLiteral (
+			value <- input.value
+		)
+}
+
+lazy rule CopyDotOperator {
+	from
+		input : CircleCI!DotOperator
+	to
+		output : CICD!DotOp (
+			lhs <- input.lhs.copyExpression(),
+			rhs <- input.rhs.copyExpression()
+		)
+}
+
+lazy rule CopyVariableReference {
+	from
+		input : CircleCI!VariableReference
+	to
+		output : CICD!VariableReference (
+			reference <- input.reference
+		)
+}
+
+lazy rule CopyConcat {
+	from
+		input : CircleCI!Concat
+	to
+		output : CICD!Concat (
+			expressions <- input.expressions->collect(expression | expression.copyExpression())
 		)
 }
 
@@ -697,7 +804,7 @@ rule StoreArtifactsStep2Artifact {
 		output : CICD!Artifact(
 			artifactName <- 
 				thisModule.String2StringLiteral(
-					'artifact_' + input.path.expression2String()
+					'artifact_' + CircleCI!StoreArtifactsStep.allInstances()->indexOf(input).toString()
 				),
 			includePaths <- Sequence{input.path},
 			store <- true

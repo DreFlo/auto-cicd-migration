@@ -28,7 +28,7 @@ rule Workflow2Pipeline {
 					if not workflow.defaults.shell.oclIsUndefined() then
 						workflow.defaults.shell.expression2String().getShell()
 					else
-						#BASH
+						#NULL
 					endif
 				else
 					OclUndefined
@@ -173,7 +173,7 @@ abstract rule Job2Job {
 					if not ghaJob.defaults.shell.oclIsUndefined() then
 						ghaJob.defaults.shell.expression2String().getShell()
 					else
-						#BASH
+						#NULL
 					endif
 				else
 					OclUndefined

@@ -37,22 +37,22 @@ public interface Agent extends EObject {
 	EList<Expression> getLabels();
 
 	/**
-	 * Returns the value of the '<em><b>Container</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Container</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Container</em>' containment reference.
+	 * @return the value of the '<em>Container</em>' reference.
 	 * @see #setContainer(DockerContainer)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getAgent_Container()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	DockerContainer getContainer();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}' containment reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Container</em>' containment reference.
+	 * @param value the new value of the '<em>Container</em>' reference.
 	 * @see #getContainer()
 	 * @generated
 	 */

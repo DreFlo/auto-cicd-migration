@@ -159,7 +159,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SHELL_TYPE SHELL_EDEFAULT = SHELL_TYPE.BASH;
+	protected static final SHELL_TYPE SHELL_EDEFAULT = SHELL_TYPE.NULL;
 
 	/**
 	 * The cached value of the '{@link #getShell() <em>Shell</em>}' attribute.

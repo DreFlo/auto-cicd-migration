@@ -2217,7 +2217,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getAgent_Container(), this.getDockerContainer(), null, "container", null, 0, 1, Agent.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dockerContainerEClass, DockerContainer.class, "DockerContainer", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2502,6 +2502,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 
 		// Initialize enums and add enum literals
 		initEEnum(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.class, "SHELL_TYPE");
+		addEEnumLiteral(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.NULL);
 		addEEnumLiteral(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.BASH);
 
 		initEEnum(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.class, "INPUT_TYPE");

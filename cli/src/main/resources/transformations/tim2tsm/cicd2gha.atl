@@ -11,7 +11,7 @@ rule Pipeline2Workflow {
 	to
 		workflow : GHA!Workflow(
 			defaults <- 
-				if not pipeline.shell.oclIsUndefined() then
+				if pipeline.shell <> #NULL or not pipeline.workingDirectory.oclIsUndefined() then
 					thisModule.Defaults(pipeline.shell, pipeline.workingDirectory)
 				else
 					OclUndefined
@@ -119,7 +119,7 @@ abstract rule Job2Job {
 					OclUndefined
 				endif,
 			defaults <- 
-				if not cicdJob.shell.oclIsUndefined() then
+				if cicdJob.shell <> #NULL or not cicdJob.workingDirectory.oclIsUndefined() then
 					thisModule.Defaults(cicdJob.shell, cicdJob.workingDirectory)
 				else
 					OclUndefined

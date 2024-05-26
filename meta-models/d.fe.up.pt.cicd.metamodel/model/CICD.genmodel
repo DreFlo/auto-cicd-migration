@@ -11,6 +11,7 @@
   <genPackages prefix="CICD" basePackage="d.fe.up.pt.cicd.metamodel" disposableProviderFactory="true"
       ecorePackage="CICD.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//SHELL_TYPE">
+      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//SHELL_TYPE/NULL"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//SHELL_TYPE/BASH"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//INPUT_TYPE">

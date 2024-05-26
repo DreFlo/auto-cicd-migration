@@ -49,7 +49,7 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	protected EList<Expression> labels;
 
 	/**
-	 * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
+	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContainer()
@@ -97,6 +97,15 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	 */
 	@Override
 	public DockerContainer getContainer() {
+		if (container != null && container.eIsProxy()) {
+			InternalEObject oldContainer = (InternalEObject) container;
+			container = (DockerContainer) eResolveProxy(oldContainer);
+			if (container != oldContainer) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.AGENT__CONTAINER,
+							oldContainer, container));
+			}
+		}
 		return container;
 	}
 
@@ -105,18 +114,8 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContainer(DockerContainer newContainer, NotificationChain msgs) {
-		DockerContainer oldContainer = container;
-		container = newContainer;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.AGENT__CONTAINER,
-					oldContainer, newContainer);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
+	public DockerContainer basicGetContainer() {
+		return container;
 	}
 
 	/**
@@ -126,20 +125,11 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 	 */
 	@Override
 	public void setContainer(DockerContainer newContainer) {
-		if (newContainer != container) {
-			NotificationChain msgs = null;
-			if (container != null)
-				msgs = ((InternalEObject) container).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - CICDPackage.AGENT__CONTAINER, null, msgs);
-			if (newContainer != null)
-				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - CICDPackage.AGENT__CONTAINER, null, msgs);
-			msgs = basicSetContainer(newContainer, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.AGENT__CONTAINER, newContainer,
-					newContainer));
+		DockerContainer oldContainer = container;
+		container = newContainer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.AGENT__CONTAINER, oldContainer,
+					container));
 	}
 
 	/**
@@ -152,8 +142,6 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 		switch (featureID) {
 		case CICDPackage.AGENT__LABELS:
 			return ((InternalEList<?>) getLabels()).basicRemove(otherEnd, msgs);
-		case CICDPackage.AGENT__CONTAINER:
-			return basicSetContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -169,7 +157,9 @@ public class AgentImpl extends MinimalEObjectImpl.Container implements Agent {
 		case CICDPackage.AGENT__LABELS:
 			return getLabels();
 		case CICDPackage.AGENT__CONTAINER:
-			return getContainer();
+			if (resolve)
+				return getContainer();
+			return basicGetContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -838,7 +838,7 @@ public interface CICDPackage extends EPackage {
 	int AGENT__LABELS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Container</b></em>' containment reference.
+	 * The feature id for the '<em><b>Container</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3363,10 +3363,10 @@ public interface CICDPackage extends EPackage {
 	EReference getAgent_Labels();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}'.
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Container</em>'.
+	 * @return the meta object for the reference '<em>Container</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer()
 	 * @see #getAgent()
 	 * @generated
@@ -4778,7 +4778,7 @@ public interface CICDPackage extends EPackage {
 		EReference AGENT__LABELS = eINSTANCE.getAgent_Labels();
 
 		/**
-		 * The meta object literal for the '<em><b>Container</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Container</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

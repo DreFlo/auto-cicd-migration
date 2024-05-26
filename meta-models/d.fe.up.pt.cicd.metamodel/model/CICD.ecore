@@ -51,8 +51,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Agent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
         eType="#//Expression" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -232,7 +231,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Negation" eSuperTypes="#//UnaryOp"/>
   <eClassifiers xsi:type="ecore:EEnum" name="SHELL_TYPE">
-    <eLiterals name="BASH"/>
+    <eLiterals name="NULL"/>
+    <eLiterals name="BASH" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="INPUT_TYPE">
     <eLiterals name="STRING"/>

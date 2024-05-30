@@ -144,6 +144,9 @@ public class DockerExecutorItemProvider extends ExecutorItemProvider {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_EXECUTOR__CONTAINERS,
+				CircleCIFactory.eINSTANCE.createNullDockerContainer()));
+
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_EXECUTOR__CONTAINERS,
 				CircleCIFactory.eINSTANCE.createDockerContainer()));
 	}
 

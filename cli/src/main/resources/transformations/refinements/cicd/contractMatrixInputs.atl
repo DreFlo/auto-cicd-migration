@@ -1,0 +1,77 @@
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module contractMatrixInputs;
+create OUT : CICD refining IN : CICD;
+
+abstract rule Job {
+	from
+		input : CICD!Job
+	to
+		output : CICD!Job (
+			agent <- input.agent,
+			allowFailure <- input.allowFailure,
+			environmentVariables <- input.environmentVariables,
+			id <- input.id,
+			ifCondition <- input.ifCondition,
+			inputs <- input.inputs->select(i | not i.id.isMatrixAxisInput()),
+			matrix <- input.matrix,
+			maxAttempts <- input.maxAttempts,
+			name <- input.name,
+			next <- input.next,
+			outputs <- input.outputs,
+			services <- input.services,
+			shell <- input.shell,
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
+		)
+}
+
+rule ScriptJob extends Job {
+	from
+		input : CICD!ScriptJob
+	to
+		output : CICD!ScriptJob (
+			steps <- input.steps
+		)
+}
+
+rule PipelineCallJob extends Job {
+	from
+		input : CICD!PipelineCallJob
+	to
+		output : CICD!PipelineCallJob (
+			pipelinePath <- input.pipelinePath,
+			args <- input.args
+		)
+}
+
+rule VariableReference {
+	from
+		input : CICD!VariableReference (
+			input.reference.isMatrixAxisInput()
+		)
+	using {
+		matrix : CICD!Matrix = input.reference.refImmediateComposite().refImmediateComposite().matrix;
+	}
+	to
+		output : CICD!VariableReference (
+			reference <- matrix.axes->select(axis | axis.name.name = input.reference.name)->first().name.debug()
+		)
+}
+
+helper context CICD!VariableDeclaration def : isMatrixAxisInput() : Boolean =
+	if self.refImmediateComposite().oclIsTypeOf(CICD!Input) then
+		let input : CICD!Input = self.refImmediateComposite() in
+		if input.refImmediateComposite().oclIsKindOf(CICD!Job) then
+			let matrix : CICD!Matrix = input.refImmediateComposite().matrix in
+			if matrix.oclIsUndefined() then
+				false
+			else let matrixVariableDeclarations : Sequence(CICD!VariableDeclaration) = matrix.axes->collect(axis | axis.name) in
+				matrixVariableDeclarations->exists(variableDeclaration | variableDeclaration.name = self.name)
+			endif
+		else
+			false
+		endif
+	else
+		false
+	endif;

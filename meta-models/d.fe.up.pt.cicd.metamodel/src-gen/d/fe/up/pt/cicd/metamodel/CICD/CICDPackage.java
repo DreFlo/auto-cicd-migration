@@ -829,31 +829,13 @@ public interface CICDPackage extends EPackage {
 	int AGENT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Labels</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGENT__LABELS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Container</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AGENT__CONTAINER = 1;
-
-	/**
 	 * The number of structural features of the '<em>Agent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AGENT_FEATURE_COUNT = 2;
+	int AGENT_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>Agent</em>' class.
@@ -865,6 +847,209 @@ public interface CICDPackage extends EPackage {
 	int AGENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CustomAgentImpl <em>Custom Agent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CustomAgentImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCustomAgent()
+	 * @generated
+	 */
+	int CUSTOM_AGENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Labels</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_AGENT__LABELS = AGENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Custom Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_AGENT_FEATURE_COUNT = AGENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Custom Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_AGENT_OPERATION_COUNT = AGENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PresetAgentImpl <em>Preset Agent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.PresetAgentImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPresetAgent()
+	 * @generated
+	 */
+	int PRESET_AGENT = 7;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRESET_AGENT__IMAGE = AGENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Preset Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRESET_AGENT_FEATURE_COUNT = AGENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Preset Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRESET_AGENT_OPERATION_COUNT = AGENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.LinuxAgentImpl <em>Linux Agent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.LinuxAgentImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLinuxAgent()
+	 * @generated
+	 */
+	int LINUX_AGENT = 8;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINUX_AGENT__IMAGE = PRESET_AGENT__IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINUX_AGENT__CONTAINER = PRESET_AGENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Linux Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINUX_AGENT_FEATURE_COUNT = PRESET_AGENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Linux Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINUX_AGENT_OPERATION_COUNT = PRESET_AGENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.WindowsAgentImpl <em>Windows Agent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.WindowsAgentImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getWindowsAgent()
+	 * @generated
+	 */
+	int WINDOWS_AGENT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_AGENT__IMAGE = PRESET_AGENT__IMAGE;
+
+	/**
+	 * The number of structural features of the '<em>Windows Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_AGENT_FEATURE_COUNT = PRESET_AGENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Windows Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WINDOWS_AGENT_OPERATION_COUNT = PRESET_AGENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.MacOSAgentImpl <em>Mac OS Agent</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.MacOSAgentImpl
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMacOSAgent()
+	 * @generated
+	 */
+	int MAC_OS_AGENT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_AGENT__IMAGE = PRESET_AGENT__IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Xcode</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_AGENT__XCODE = PRESET_AGENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Mac OS Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_AGENT_FEATURE_COUNT = PRESET_AGENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Mac OS Agent</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAC_OS_AGENT_OPERATION_COUNT = PRESET_AGENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.DockerContainerImpl <em>Docker Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -872,7 +1057,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDockerContainer()
 	 * @generated
 	 */
-	int DOCKER_CONTAINER = 6;
+	int DOCKER_CONTAINER = 11;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -981,7 +1166,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 7;
+	int TRIGGER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -1018,7 +1203,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPushTrigger()
 	 * @generated
 	 */
-	int PUSH_TRIGGER = 8;
+	int PUSH_TRIGGER = 13;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -1064,7 +1249,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPullRequestTrigger()
 	 * @generated
 	 */
-	int PULL_REQUEST_TRIGGER = 9;
+	int PULL_REQUEST_TRIGGER = 14;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -1101,7 +1286,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getManualTrigger()
 	 * @generated
 	 */
-	int MANUAL_TRIGGER = 10;
+	int MANUAL_TRIGGER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -1138,7 +1323,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getScheduledTrigger()
 	 * @generated
 	 */
-	int SCHEDULED_TRIGGER = 11;
+	int SCHEDULED_TRIGGER = 16;
 
 	/**
 	 * The feature id for the '<em><b>Branch Globs</b></em>' attribute list.
@@ -1184,7 +1369,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 12;
+	int MATRIX = 17;
 
 	/**
 	 * The feature id for the '<em><b>Axes</b></em>' containment reference list.
@@ -1248,7 +1433,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrixAxis()
 	 * @generated
 	 */
-	int MATRIX_AXIS = 13;
+	int MATRIX_AXIS = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -1294,7 +1479,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 14;
+	int MATRIX_COMBINATION = 19;
 
 	/**
 	 * The feature id for the '<em><b>Combination Entries</b></em>' map.
@@ -1331,7 +1516,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 15;
+	int PARAMETER = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1377,7 +1562,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getInput()
 	 * @generated
 	 */
-	int INPUT = 16;
+	int INPUT = 21;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1459,7 +1644,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOutput()
 	 * @generated
 	 */
-	int OUTPUT = 17;
+	int OUTPUT = 22;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' containment reference.
@@ -1514,7 +1699,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 18;
+	int STEP = 23;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -1542,7 +1727,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConditionalStep()
 	 * @generated
 	 */
-	int CONDITIONAL_STEP = 19;
+	int CONDITIONAL_STEP = 24;
 
 	/**
 	 * The feature id for the '<em><b>If Condition</b></em>' containment reference.
@@ -1597,7 +1782,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNonConditionalStep()
 	 * @generated
 	 */
-	int NON_CONDITIONAL_STEP = 20;
+	int NON_CONDITIONAL_STEP = 25;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1679,7 +1864,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 21;
+	int COMMAND = 26;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1770,7 +1955,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPlugin()
 	 * @generated
 	 */
-	int PLUGIN = 22;
+	int PLUGIN = 27;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1879,7 +2064,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCache()
 	 * @generated
 	 */
-	int CACHE = 23;
+	int CACHE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1997,7 +2182,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getArtifact()
 	 * @generated
 	 */
-	int ARTIFACT = 24;
+	int ARTIFACT = 29;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2124,7 +2309,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCheckout()
 	 * @generated
 	 */
-	int CHECKOUT = 25;
+	int CHECKOUT = 30;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2215,7 +2400,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableDeclaration()
 	 * @generated
 	 */
-	int VARIABLE_DECLARATION = 26;
+	int VARIABLE_DECLARATION = 31;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2252,7 +2437,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 28;
+	int EXPRESSION = 33;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -2280,7 +2465,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAssignment()
 	 * @generated
 	 */
-	int ASSIGNMENT = 27;
+	int ASSIGNMENT = 32;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -2326,7 +2511,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 29;
+	int CONCAT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2363,7 +2548,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 30;
+	int VALUE = 35;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -2391,7 +2576,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 31;
+	int LITERAL = 36;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -2419,7 +2604,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 32;
+	int STRING_LITERAL = 37;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2456,7 +2641,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 33;
+	int INTEGER_LITERAL = 38;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2493,7 +2678,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 34;
+	int DOUBLE_LITERAL = 39;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2530,7 +2715,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 35;
+	int BOOLEAN_LITERAL = 40;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2567,7 +2752,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getVariableReference()
 	 * @generated
 	 */
-	int VARIABLE_REFERENCE = 36;
+	int VARIABLE_REFERENCE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -2604,7 +2789,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getBinaryOp()
 	 * @generated
 	 */
-	int BINARY_OP = 37;
+	int BINARY_OP = 42;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2650,7 +2835,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEqualityOp()
 	 * @generated
 	 */
-	int EQUALITY_OP = 38;
+	int EQUALITY_OP = 43;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2705,7 +2890,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getComparisonOp()
 	 * @generated
 	 */
-	int COMPARISON_OP = 39;
+	int COMPARISON_OP = 44;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2760,7 +2945,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getDotOp()
 	 * @generated
 	 */
-	int DOT_OP = 40;
+	int DOT_OP = 45;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2806,7 +2991,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLogicalOp()
 	 * @generated
 	 */
-	int LOGICAL_OP = 41;
+	int LOGICAL_OP = 46;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2852,7 +3037,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 42;
+	int AND = 47;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2898,7 +3083,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 43;
+	int OR = 48;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -2944,7 +3129,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getUnaryOp()
 	 * @generated
 	 */
-	int UNARY_OP = 44;
+	int UNARY_OP = 49;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -2981,7 +3166,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getNegation()
 	 * @generated
 	 */
-	int NEGATION = 45;
+	int NEGATION = 50;
 
 	/**
 	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
@@ -3018,7 +3203,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
 	 * @generated
 	 */
-	int SHELL_TYPE = 46;
+	int SHELL_TYPE = 51;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
@@ -3028,7 +3213,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 47;
+	int INPUT_TYPE = 52;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3038,7 +3223,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 48;
+	int EQUALITY_OPS = 53;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3048,7 +3233,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 49;
+	int COMPARISON_OPS = 54;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
@@ -3058,7 +3243,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
 	 * @generated
 	 */
-	int CACHE_MODE = 50;
+	int CACHE_MODE = 55;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -3352,26 +3537,98 @@ public interface CICDPackage extends EPackage {
 	EClass getAgent();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getLabels <em>Labels</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.CustomAgent <em>Custom Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Custom Agent</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CustomAgent
+	 * @generated
+	 */
+	EClass getCustomAgent();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link d.fe.up.pt.cicd.metamodel.CICD.CustomAgent#getLabels <em>Labels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Labels</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Agent#getLabels()
-	 * @see #getAgent()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CustomAgent#getLabels()
+	 * @see #getCustomAgent()
 	 * @generated
 	 */
-	EReference getAgent_Labels();
+	EReference getCustomAgent_Labels();
 
 	/**
-	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer <em>Container</em>}'.
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PresetAgent <em>Preset Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Preset Agent</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PresetAgent
+	 * @generated
+	 */
+	EClass getPresetAgent();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.PresetAgent#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Image</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PresetAgent#getImage()
+	 * @see #getPresetAgent()
+	 * @generated
+	 */
+	EReference getPresetAgent_Image();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent <em>Linux Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Linux Agent</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent
+	 * @generated
+	 */
+	EClass getLinuxAgent();
+
+	/**
+	 * Returns the meta object for the reference '{@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Container</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.Agent#getContainer()
-	 * @see #getAgent()
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent#getContainer()
+	 * @see #getLinuxAgent()
 	 * @generated
 	 */
-	EReference getAgent_Container();
+	EReference getLinuxAgent_Container();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent <em>Windows Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Windows Agent</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent
+	 * @generated
+	 */
+	EClass getWindowsAgent();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent <em>Mac OS Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mac OS Agent</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent
+	 * @generated
+	 */
+	EClass getMacOSAgent();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent#getXcode <em>Xcode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Xcode</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent#getXcode()
+	 * @see #getMacOSAgent()
+	 * @generated
+	 */
+	EReference getMacOSAgent_Xcode();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.DockerContainer <em>Docker Container</em>}'.
@@ -4770,12 +5027,50 @@ public interface CICDPackage extends EPackage {
 		EClass AGENT = eINSTANCE.getAgent();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CustomAgentImpl <em>Custom Agent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CustomAgentImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCustomAgent()
+		 * @generated
+		 */
+		EClass CUSTOM_AGENT = eINSTANCE.getCustomAgent();
+
+		/**
 		 * The meta object literal for the '<em><b>Labels</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AGENT__LABELS = eINSTANCE.getAgent_Labels();
+		EReference CUSTOM_AGENT__LABELS = eINSTANCE.getCustomAgent_Labels();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PresetAgentImpl <em>Preset Agent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.PresetAgentImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getPresetAgent()
+		 * @generated
+		 */
+		EClass PRESET_AGENT = eINSTANCE.getPresetAgent();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRESET_AGENT__IMAGE = eINSTANCE.getPresetAgent_Image();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.LinuxAgentImpl <em>Linux Agent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.LinuxAgentImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getLinuxAgent()
+		 * @generated
+		 */
+		EClass LINUX_AGENT = eINSTANCE.getLinuxAgent();
 
 		/**
 		 * The meta object literal for the '<em><b>Container</b></em>' reference feature.
@@ -4783,7 +5078,35 @@ public interface CICDPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference AGENT__CONTAINER = eINSTANCE.getAgent_Container();
+		EReference LINUX_AGENT__CONTAINER = eINSTANCE.getLinuxAgent_Container();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.WindowsAgentImpl <em>Windows Agent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.WindowsAgentImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getWindowsAgent()
+		 * @generated
+		 */
+		EClass WINDOWS_AGENT = eINSTANCE.getWindowsAgent();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.MacOSAgentImpl <em>Mac OS Agent</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.MacOSAgentImpl
+		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getMacOSAgent()
+		 * @generated
+		 */
+		EClass MAC_OS_AGENT = eINSTANCE.getMacOSAgent();
+
+		/**
+		 * The meta object literal for the '<em><b>Xcode</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAC_OS_AGENT__XCODE = eINSTANCE.getMacOSAgent_Xcode();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.DockerContainerImpl <em>Docker Container</em>}' class.

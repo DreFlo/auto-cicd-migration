@@ -781,6 +781,89 @@ public interface CircleCIPackage extends EPackage {
 	int DOCKER_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AbstractDockerContainerImpl <em>Abstract Docker Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AbstractDockerContainerImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAbstractDockerContainer()
+	 * @generated
+	 */
+	int ABSTRACT_DOCKER_CONTAINER = 12;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_DOCKER_CONTAINER__IMAGE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Docker Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_DOCKER_CONTAINER_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Abstract Docker Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_DOCKER_CONTAINER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NullDockerContainerImpl <em>Null Docker Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NullDockerContainerImpl
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNullDockerContainer()
+	 * @generated
+	 */
+	int NULL_DOCKER_CONTAINER = 13;
+
+	/**
+	 * The feature id for the '<em><b>Image</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULL_DOCKER_CONTAINER__IMAGE = ABSTRACT_DOCKER_CONTAINER__IMAGE;
+
+	/**
+	 * The feature id for the '<em><b>Agent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULL_DOCKER_CONTAINER__AGENT = ABSTRACT_DOCKER_CONTAINER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Null Docker Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULL_DOCKER_CONTAINER_FEATURE_COUNT = ABSTRACT_DOCKER_CONTAINER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Null Docker Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NULL_DOCKER_CONTAINER_OPERATION_COUNT = ABSTRACT_DOCKER_CONTAINER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl <em>Docker Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -788,7 +871,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDockerContainer()
 	 * @generated
 	 */
-	int DOCKER_CONTAINER = 12;
+	int DOCKER_CONTAINER = 14;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -915,7 +998,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMachineExecutor()
 	 * @generated
 	 */
-	int MACHINE_EXECUTOR = 13;
+	int MACHINE_EXECUTOR = 15;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -1006,7 +1089,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMacOSExecutor()
 	 * @generated
 	 */
-	int MAC_OS_EXECUTOR = 14;
+	int MAC_OS_EXECUTOR = 16;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -1081,88 +1164,6 @@ public interface CircleCIPackage extends EPackage {
 	int MAC_OS_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl <em>Windows Orb Executor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWindowsOrbExecutor()
-	 * @generated
-	 */
-	int WINDOWS_ORB_EXECUTOR = 15;
-
-	/**
-	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__ENVIRONMENT_VARIABLES = EXECUTOR__ENVIRONMENT_VARIABLES;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__NAME = EXECUTOR__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Resource Class</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__RESOURCE_CLASS = EXECUTOR__RESOURCE_CLASS;
-
-	/**
-	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__SHELL = EXECUTOR__SHELL;
-
-	/**
-	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__WORKING_DIRECTORY = EXECUTOR__WORKING_DIRECTORY;
-
-	/**
-	 * The feature id for the '<em><b>Executor</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR__EXECUTOR = EXECUTOR_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Windows Orb Executor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR_FEATURE_COUNT = EXECUTOR_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Windows Orb Executor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WINDOWS_ORB_EXECUTOR_OPERATION_COUNT = EXECUTOR_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ReferenceExecutorImpl <em>Reference Executor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1170,7 +1171,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getReferenceExecutor()
 	 * @generated
 	 */
-	int REFERENCE_EXECUTOR = 16;
+	int REFERENCE_EXECUTOR = 17;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -1243,7 +1244,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExecutorReferenceExecutor()
 	 * @generated
 	 */
-	int EXECUTOR_REFERENCE_EXECUTOR = 17;
+	int EXECUTOR_REFERENCE_EXECUTOR = 18;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -1325,7 +1326,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReferenceExecutor()
 	 * @generated
 	 */
-	int ORB_REFERENCE_EXECUTOR = 18;
+	int ORB_REFERENCE_EXECUTOR = 19;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -1416,7 +1417,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getJob()
 	 * @generated
 	 */
-	int JOB = 19;
+	int JOB = 20;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -1507,7 +1508,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStep()
 	 * @generated
 	 */
-	int STEP = 20;
+	int STEP = 21;
 
 	/**
 	 * The number of structural features of the '<em>Step</em>' class.
@@ -1535,7 +1536,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getRunStep()
 	 * @generated
 	 */
-	int RUN_STEP = 21;
+	int RUN_STEP = 22;
 
 	/**
 	 * The feature id for the '<em><b>Environment Variables</b></em>' map.
@@ -1635,7 +1636,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConditionalStep()
 	 * @generated
 	 */
-	int CONDITIONAL_STEP = 22;
+	int CONDITIONAL_STEP = 23;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -1681,7 +1682,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWhenStep()
 	 * @generated
 	 */
-	int WHEN_STEP = 23;
+	int WHEN_STEP = 24;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -1727,7 +1728,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnlessStep()
 	 * @generated
 	 */
-	int UNLESS_STEP = 24;
+	int UNLESS_STEP = 25;
 
 	/**
 	 * The feature id for the '<em><b>Steps</b></em>' containment reference list.
@@ -1773,7 +1774,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCheckoutStep()
 	 * @generated
 	 */
-	int CHECKOUT_STEP = 25;
+	int CHECKOUT_STEP = 26;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -1810,7 +1811,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getSetupRemoteDockerStep()
 	 * @generated
 	 */
-	int SETUP_REMOTE_DOCKER_STEP = 26;
+	int SETUP_REMOTE_DOCKER_STEP = 27;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' containment reference.
@@ -1856,7 +1857,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getSaveCacheStep()
 	 * @generated
 	 */
-	int SAVE_CACHE_STEP = 27;
+	int SAVE_CACHE_STEP = 28;
 
 	/**
 	 * The feature id for the '<em><b>Paths</b></em>' containment reference list.
@@ -1920,7 +1921,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getRestoreCacheStep()
 	 * @generated
 	 */
-	int RESTORE_CACHE_STEP = 28;
+	int RESTORE_CACHE_STEP = 29;
 
 	/**
 	 * The feature id for the '<em><b>Keys</b></em>' containment reference list.
@@ -1966,7 +1967,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStoreArtifactsStep()
 	 * @generated
 	 */
-	int STORE_ARTIFACTS_STEP = 29;
+	int STORE_ARTIFACTS_STEP = 30;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -2012,7 +2013,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStoreTestResultsStep()
 	 * @generated
 	 */
-	int STORE_TEST_RESULTS_STEP = 30;
+	int STORE_TEST_RESULTS_STEP = 31;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -2049,7 +2050,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPersistToWorkspaceStep()
 	 * @generated
 	 */
-	int PERSIST_TO_WORKSPACE_STEP = 31;
+	int PERSIST_TO_WORKSPACE_STEP = 32;
 
 	/**
 	 * The feature id for the '<em><b>Root</b></em>' containment reference.
@@ -2095,7 +2096,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAttachWorkspaceStep()
 	 * @generated
 	 */
-	int ATTACH_WORKSPACE_STEP = 32;
+	int ATTACH_WORKSPACE_STEP = 33;
 
 	/**
 	 * The feature id for the '<em><b>At</b></em>' containment reference.
@@ -2132,7 +2133,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAddSSHKeysStep()
 	 * @generated
 	 */
-	int ADD_SSH_KEYS_STEP = 33;
+	int ADD_SSH_KEYS_STEP = 34;
 
 	/**
 	 * The feature id for the '<em><b>Fingerprints</b></em>' containment reference list.
@@ -2169,7 +2170,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOrbReferenceStep()
 	 * @generated
 	 */
-	int ORB_REFERENCE_STEP = 34;
+	int ORB_REFERENCE_STEP = 35;
 
 	/**
 	 * The feature id for the '<em><b>Orb</b></em>' reference.
@@ -2224,7 +2225,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCommandReferenceStep()
 	 * @generated
 	 */
-	int COMMAND_REFERENCE_STEP = 35;
+	int COMMAND_REFERENCE_STEP = 36;
 
 	/**
 	 * The feature id for the '<em><b>Command</b></em>' reference.
@@ -2270,7 +2271,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableAssignment()
 	 * @generated
 	 */
-	int VARIABLE_ASSIGNMENT = 36;
+	int VARIABLE_ASSIGNMENT = 37;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' containment reference.
@@ -2316,7 +2317,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableDeclaration()
 	 * @generated
 	 */
-	int VARIABLE_DECLARATION = 37;
+	int VARIABLE_DECLARATION = 38;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2353,7 +2354,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflow()
 	 * @generated
 	 */
-	int WORKFLOW = 38;
+	int WORKFLOW = 39;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2426,7 +2427,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getTrigger()
 	 * @generated
 	 */
-	int TRIGGER = 39;
+	int TRIGGER = 40;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -2472,7 +2473,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getScheduleTrigger()
 	 * @generated
 	 */
-	int SCHEDULE_TRIGGER = 40;
+	int SCHEDULE_TRIGGER = 41;
 
 	/**
 	 * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -2527,7 +2528,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_JOB_CONFIGURATION = 41;
+	int WORKFLOW_JOB_CONFIGURATION = 42;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2663,7 +2664,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNullWorkflowJobConfiguration()
 	 * @generated
 	 */
-	int NULL_WORKFLOW_JOB_CONFIGURATION = 42;
+	int NULL_WORKFLOW_JOB_CONFIGURATION = 43;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2799,7 +2800,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowDefinedJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_DEFINED_JOB_CONFIGURATION = 43;
+	int WORKFLOW_DEFINED_JOB_CONFIGURATION = 44;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -2944,7 +2945,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowApprovalJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_APPROVAL_JOB_CONFIGURATION = 44;
+	int WORKFLOW_APPROVAL_JOB_CONFIGURATION = 45;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -3080,7 +3081,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWorkflowOrbJobConfiguration()
 	 * @generated
 	 */
-	int WORKFLOW_ORB_JOB_CONFIGURATION = 45;
+	int WORKFLOW_ORB_JOB_CONFIGURATION = 46;
 
 	/**
 	 * The feature id for the '<em><b>Requires</b></em>' reference list.
@@ -3243,7 +3244,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrix()
 	 * @generated
 	 */
-	int MATRIX = 46;
+	int MATRIX = 47;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -3298,7 +3299,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixParameter()
 	 * @generated
 	 */
-	int MATRIX_PARAMETER = 47;
+	int MATRIX_PARAMETER = 48;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' containment reference.
@@ -3344,7 +3345,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatrixCombination()
 	 * @generated
 	 */
-	int MATRIX_COMBINATION = 48;
+	int MATRIX_COMBINATION = 49;
 
 	/**
 	 * The feature id for the '<em><b>Entries</b></em>' map.
@@ -3381,7 +3382,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 49;
+	int EXPRESSION = 50;
 
 	/**
 	 * The number of structural features of the '<em>Expression</em>' class.
@@ -3409,7 +3410,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getConcat()
 	 * @generated
 	 */
-	int CONCAT = 50;
+	int CONCAT = 51;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -3446,7 +3447,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogic()
 	 * @generated
 	 */
-	int LOGIC = 51;
+	int LOGIC = 52;
 
 	/**
 	 * The number of structural features of the '<em>Logic</em>' class.
@@ -3474,7 +3475,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getInfinitaryOperator()
 	 * @generated
 	 */
-	int INFINITARY_OPERATOR = 52;
+	int INFINITARY_OPERATOR = 53;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3511,7 +3512,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAnd()
 	 * @generated
 	 */
-	int AND = 53;
+	int AND = 54;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3548,7 +3549,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getOr()
 	 * @generated
 	 */
-	int OR = 54;
+	int OR = 55;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3585,7 +3586,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getEquals()
 	 * @generated
 	 */
-	int EQUALS = 55;
+	int EQUALS = 56;
 
 	/**
 	 * The feature id for the '<em><b>Operands</b></em>' containment reference list.
@@ -3622,7 +3623,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getUnaryOperator()
 	 * @generated
 	 */
-	int UNARY_OPERATOR = 56;
+	int UNARY_OPERATOR = 57;
 
 	/**
 	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -3659,7 +3660,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNot()
 	 * @generated
 	 */
-	int NOT = 57;
+	int NOT = 58;
 
 	/**
 	 * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -3696,7 +3697,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLogicFunction()
 	 * @generated
 	 */
-	int LOGIC_FUNCTION = 58;
+	int LOGIC_FUNCTION = 59;
 
 	/**
 	 * The number of structural features of the '<em>Logic Function</em>' class.
@@ -3724,7 +3725,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getMatches()
 	 * @generated
 	 */
-	int MATCHES = 59;
+	int MATCHES = 60;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
@@ -3770,7 +3771,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 60;
+	int VALUE = 61;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -3798,7 +3799,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDotOperator()
 	 * @generated
 	 */
-	int DOT_OPERATOR = 61;
+	int DOT_OPERATOR = 62;
 
 	/**
 	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
@@ -3844,7 +3845,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getLiteral()
 	 * @generated
 	 */
-	int LITERAL = 62;
+	int LITERAL = 63;
 
 	/**
 	 * The number of structural features of the '<em>Literal</em>' class.
@@ -3872,7 +3873,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getStringLiteral()
 	 * @generated
 	 */
-	int STRING_LITERAL = 63;
+	int STRING_LITERAL = 64;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3909,7 +3910,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getIntegerLiteral()
 	 * @generated
 	 */
-	int INTEGER_LITERAL = 64;
+	int INTEGER_LITERAL = 65;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3946,7 +3947,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getDoubleLiteral()
 	 * @generated
 	 */
-	int DOUBLE_LITERAL = 65;
+	int DOUBLE_LITERAL = 66;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -3983,7 +3984,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getBooleanLiteral()
 	 * @generated
 	 */
-	int BOOLEAN_LITERAL = 66;
+	int BOOLEAN_LITERAL = 67;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -4020,7 +4021,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getVariableReference()
 	 * @generated
 	 */
-	int VARIABLE_REFERENCE = 67;
+	int VARIABLE_REFERENCE = 68;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -4057,7 +4058,17 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getPARAMETER_TYPES()
 	 * @generated
 	 */
-	int PARAMETER_TYPES = 68;
+	int PARAMETER_TYPES = 69;
+
+	/**
+	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS <em>CICD AGENTS</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCICD_AGENTS()
+	 * @generated
+	 */
+	int CICD_AGENTS = 70;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}' enum.
@@ -4067,7 +4078,7 @@ public interface CircleCIPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWHEN_TYPE()
 	 * @generated
 	 */
-	int WHEN_TYPE = 69;
+	int WHEN_TYPE = 71;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DefinitionGroup <em>Definition Group</em>}'.
@@ -4454,6 +4465,48 @@ public interface CircleCIPackage extends EPackage {
 	EReference getDockerExecutor_Containers();
 
 	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer <em>Abstract Docker Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Docker Container</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer
+	 * @generated
+	 */
+	EClass getAbstractDockerContainer();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer#getImage <em>Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Image</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer#getImage()
+	 * @see #getAbstractDockerContainer()
+	 * @generated
+	 */
+	EReference getAbstractDockerContainer_Image();
+
+	/**
+	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer <em>Null Docker Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Null Docker Container</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer
+	 * @generated
+	 */
+	EClass getNullDockerContainer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer#getAgent <em>Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Agent</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer#getAgent()
+	 * @see #getNullDockerContainer()
+	 * @generated
+	 */
+	EAttribute getNullDockerContainer_Agent();
+
+	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer <em>Docker Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4462,17 +4515,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDockerContainer();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getImage <em>Image</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Image</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getImage()
-	 * @see #getDockerContainer()
-	 * @generated
-	 */
-	EReference getDockerContainer_Image();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getName <em>Name</em>}'.
@@ -4625,27 +4667,6 @@ public interface CircleCIPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMacOSExecutor_Xcode();
-
-	/**
-	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor <em>Windows Orb Executor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Windows Orb Executor</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor
-	 * @generated
-	 */
-	EClass getWindowsOrbExecutor();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor#getExecutor <em>Executor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Executor</em>'.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor#getExecutor()
-	 * @see #getWindowsOrbExecutor()
-	 * @generated
-	 */
-	EReference getWindowsOrbExecutor_Executor();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.ReferenceExecutor <em>Reference Executor</em>}'.
@@ -6071,6 +6092,16 @@ public interface CircleCIPackage extends EPackage {
 	EEnum getPARAMETER_TYPES();
 
 	/**
+	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS <em>CICD AGENTS</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>CICD AGENTS</em>'.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS
+	 * @generated
+	 */
+	EEnum getCICD_AGENTS();
+
+	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6416,6 +6447,42 @@ public interface CircleCIPackage extends EPackage {
 		EReference DOCKER_EXECUTOR__CONTAINERS = eINSTANCE.getDockerExecutor_Containers();
 
 		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AbstractDockerContainerImpl <em>Abstract Docker Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.AbstractDockerContainerImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getAbstractDockerContainer()
+		 * @generated
+		 */
+		EClass ABSTRACT_DOCKER_CONTAINER = eINSTANCE.getAbstractDockerContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Image</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_DOCKER_CONTAINER__IMAGE = eINSTANCE.getAbstractDockerContainer_Image();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NullDockerContainerImpl <em>Null Docker Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.NullDockerContainerImpl
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getNullDockerContainer()
+		 * @generated
+		 */
+		EClass NULL_DOCKER_CONTAINER = eINSTANCE.getNullDockerContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Agent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NULL_DOCKER_CONTAINER__AGENT = eINSTANCE.getNullDockerContainer_Agent();
+
+		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.DockerContainerImpl <em>Docker Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6424,14 +6491,6 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DOCKER_CONTAINER = eINSTANCE.getDockerContainer();
-
-		/**
-		 * The meta object literal for the '<em><b>Image</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DOCKER_CONTAINER__IMAGE = eINSTANCE.getDockerContainer_Image();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
@@ -6548,24 +6607,6 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MAC_OS_EXECUTOR__XCODE = eINSTANCE.getMacOSExecutor_Xcode();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl <em>Windows Orb Executor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.WindowsOrbExecutorImpl
-		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getWindowsOrbExecutor()
-		 * @generated
-		 */
-		EClass WINDOWS_ORB_EXECUTOR = eINSTANCE.getWindowsOrbExecutor();
-
-		/**
-		 * The meta object literal for the '<em><b>Executor</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WINDOWS_ORB_EXECUTOR__EXECUTOR = eINSTANCE.getWindowsOrbExecutor_Executor();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.ReferenceExecutorImpl <em>Reference Executor</em>}' class.
@@ -7747,6 +7788,16 @@ public interface CircleCIPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum PARAMETER_TYPES = eINSTANCE.getPARAMETER_TYPES();
+
+		/**
+		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS <em>CICD AGENTS</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS
+		 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl.CircleCIPackageImpl#getCICD_AGENTS()
+		 * @generated
+		 */
+		EEnum CICD_AGENTS = eINSTANCE.getCICD_AGENTS();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE <em>WHEN TYPE</em>}' enum.

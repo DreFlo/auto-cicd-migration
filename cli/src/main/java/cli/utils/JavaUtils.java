@@ -45,12 +45,10 @@ public class JavaUtils {
                     .forEach(p -> {
                         try {
                             Files.delete(p);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        } catch (Exception ignored) {
                         }
                     });
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
 

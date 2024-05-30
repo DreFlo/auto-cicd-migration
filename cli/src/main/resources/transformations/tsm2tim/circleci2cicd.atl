@@ -84,7 +84,7 @@ abstract rule WorkflowJobConfiguration2Job {
 				endif,
 			matrix <- input.matrix,
 			name <- input.name,
-			previous <- input.requires->select(job | not job.oclIsTypeOf(CircleCI!WorkflowApprovalJobConfiguration))
+			previous <- input.requires->select(job | not job.oclIsUndefined())->select(job | not job.oclIsTypeOf(CircleCI!WorkflowApprovalJobConfiguration))
 		)
 }
 
@@ -97,7 +97,9 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 			environmentVariables <- input.job.environmentVariables,
 			inputs <- input.job.parameters,
 			services <- 
-				if input.job.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
+				if input.job.executor.oclIsUndefined() then
+					Sequence{}
+				else if input.job.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
 					if input.job.executor.containers->size() > 1 then
 						input.job.executor.containers->subSequence(2, input.job.executor.containers->size())->collect(container | thisModule.DockerContainer2DockerContainer(container))
 					else
@@ -105,6 +107,7 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 					endif
 				else
 					Sequence{}
+				endif
 				endif,
 			shell <- 
 				if not input.job.executor.shell.oclIsUndefined() then
@@ -150,7 +153,9 @@ rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobCon
 			)->union(input.postSteps->collect(step | step.step2StepHelper())->flatten()),
 			agent <- input.executor.executor2AgentHelper(),
 			services <- 
-				if input.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
+				if input.executor.oclIsUndefined() then
+					Sequence{}
+				else if input.executor.oclIsTypeOf(CircleCI!DockerExecutor) then
 					if input.executor.containers->size() > 1 then
 						input.executor.containers->subSequence(2, input.executor.containers->size())->collect(container | thisModule.DockerContainer2DockerContainer(container))
 					else
@@ -158,6 +163,7 @@ rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobCon
 					endif
 				else
 					Sequence{}
+				endif
 				endif
 		)
 }
@@ -179,11 +185,15 @@ lazy rule OrbReference2Plugin {
 	from
 		input : CircleCI!OrbReference,
 		arguments : Sequence(CircleCI!VariableAssignment)
+	using {
+		pluginName : String = input.reference.split('@')->first();
+		version : String = input.reference.split('@')->last();
+	}
 	to
 		output : CICD!Plugin(
 			name <- input.name,
-			pluginName <- input.reference.split('@')->first(),
-			version <- input.reference.split('@')->last(),
+			pluginName <- pluginName,
+			version <- if version <> pluginName then version else OclUndefined endif,
 			kwargs <- arguments
 		)
 }
@@ -192,9 +202,25 @@ lazy rule DockerExecutor2Agent {
 	from
 		input : CircleCI!DockerExecutor
 	to
-		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral(input.name), thisModule.String2StringLiteral('docker-executor')},
-			container <- thisModule.DockerContainer2DockerContainer(input.containers->first())
+		output : CICD!LinuxAgent(
+			image <-
+				if input.containers->first().oclIsUndefined() then
+					OclUndefined
+				else if input.containers->first().oclIsTypeOf(CircleCI!NullDockerContainer) then
+					input.containers->first().image
+				else
+					OclUndefined
+				endif
+				endif,
+			container <- 
+				if input.containers->first().oclIsUndefined() then
+					OclUndefined
+				else if not input.containers->first().oclIsTypeOf(CircleCI!NullDockerContainer) then
+					thisModule.DockerContainer2DockerContainer(input.containers->first())
+				else
+					OclUndefined
+				endif
+				endif
 		)
 }
 
@@ -216,9 +242,18 @@ lazy rule CopyAssignment {
 		input : CircleCI!VariableAssignment
 	to
 		output : CICD!Assignment(
-			key <- thisModule.CreateVariableAssignment(input.key),
+			key <- thisModule.CreateVariableDeclaration(input.key.name),
 			value <- input.value.copyExpression()
 		) 
+}
+
+lazy rule CreateVariableDeclaration {
+	from
+		input : String
+	to
+		output : CICD!VariableDeclaration (
+			name <- input
+		)
 }
 
 helper context CircleCI!Expression def : copyExpression() : CICD!Expression =
@@ -318,34 +353,46 @@ lazy rule CopyConcat {
 		)
 }
 
-lazy rule MachineExecutor2Agent {
+lazy rule MachineExecutor2CustomAgent {
 	from
 		input : CircleCI!MachineExecutor
 	to
-		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral('ubuntu-latest')}
+		output : CICD!CustomAgent(
+			labels <- Sequence{thisModule.String2StringLiteral('%%CICD__MACHINE_AGENT')}
 				->union(
-					if input.name.oclIsUndefined() then 
+					if input.image.oclIsUndefined() then 
 						Sequence{} 
 					else 
-						Sequence{thisModule.String2StringLiteral(input.name)} 
+						Sequence{thisModule.CreateConcat(Sequence{thisModule.String2StringLiteral('%%__CICD__MACHINE_IMAGE#%!!__#%!!'), input.image})} 
 					endif
-				),
-			container <- 
-				if not input.image.oclIsUndefined() then 
-					thisModule.MachineExecutor2DockerContainer(input)
-				else
-					OclUndefined
-				endif
+				)
 		)
 }
 
-lazy rule MachineExecutor2DockerContainer {
+lazy rule MachineExecutor2LinuxAgent {
 	from
 		input : CircleCI!MachineExecutor
 	to
-		output : CICD!DockerContainer(
+		output : CICD!LinuxAgent(
 			image <- input.image
+		)
+}
+
+lazy rule MachineExecutor2WindowsAgent {
+	from
+		input : CircleCI!MachineExecutor
+	to
+		output : CICD!WindowsAgent(
+			image <- input.image
+		)
+}
+
+lazy rule CreateConcat {
+	from
+		input : Sequence(CircleCI!Expression)
+	to
+		output : CICD!Concat (
+			expressions <- input
 		)
 }
 
@@ -353,17 +400,8 @@ lazy rule MacOSExecutor2Agent {
 	from
 		input : CircleCI!MacOSExecutor
 	to
-		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral('macos')}
-		)
-}
-
-lazy rule WindowsOrbExecutor2Agent {
-	from
-		input : CircleCI!WindowsOrbExecutor
-	to
-		output : CICD!Agent(
-			labels <- Sequence{thisModule.String2StringLiteral('windows')}
+		output : CICD!MacOSAgent(
+			xcode <- input.xcode
 		)
 }
 
@@ -371,7 +409,7 @@ lazy rule Labels2Agent {
 	from
 		input : Sequence(String)
 	to
-		output : CICD!Agent(
+		output : CICD!CustomAgent(
 			labels <- input->collect(string | thisModule.String2StringLiteral(string))
 		)
 }
@@ -753,7 +791,7 @@ rule SetupRemoteDockerStep2Plugin {
 	to
 		output : CICD!Plugin(
 			pluginName <- 'setup_remote_docker',
-			version <- if input.version.oclIsUndefined() then '' else input.version.expression2String() endif,
+			version <- if input.version.oclIsUndefined() then OclUndefined else input.version.expression2String() endif,
 			kwargs <- 
 				if input.dockerLayerCaching.oclIsUndefined() then 
 					Sequence{} 
@@ -865,11 +903,15 @@ rule OrbReferenceOrbReferenceStep2Plugin {
 		input : CircleCI!OrbReferenceStep(
 			input.orb.oclIsTypeOf(CircleCI!OrbReference)
 		)
+	using {
+		pluginName : String = input.orb.reference.split('@')->first() + '/' + input.jobName;
+		version : String = input.orb.reference.split('@')->last();
+	}
 	to
 		output : CICD!Plugin(
 			name <- input.orb.name,
-			pluginName <- input.orb.reference.split('@')->first() + '/' + input.jobName,
-			version <- input.orb.reference.split('@')->last(),
+			pluginName <- pluginName,
+			version <- if version <> input.orb.reference.split('@')->first() then version else OclUndefined endif,
 			kwargs <- input.arguments
 		)
 }
@@ -891,14 +933,21 @@ helper def : getVariableValue(variables : Sequence(CircleCI!VariableAssignment),
 	if variableSequence->isEmpty() then OclUndefined else variableSequence->first().value endif;
 
 helper context CircleCI!Executor def : executor2AgentHelper() : CICD!Agent =
-	if self.oclIsTypeOf(CircleCI!DockerExecutor) then
+	if self.oclIsUndefined() then
+		OclUndefined
+	else if self.oclIsTypeOf(CircleCI!DockerExecutor) then
 		thisModule.DockerExecutor2Agent(self)
 	else if self.oclIsTypeOf(CircleCI!MachineExecutor) then
-		thisModule.MachineExecutor2Agent(self)
+		if self.image.startsWith('linux-') or self.image.startsWith('ubuntu-') then
+			thisModule.MachineExecutor2LinuxAgent(self)
+		else if self.image.startsWith('windows-') then
+			thisModule.MachineExecutor2WindowsAgent(self)
+		else
+			thisModule.MachineExecutor2CustomAgent(self)
+		endif
+		endif
 	else if self.oclIsTypeOf(CircleCI!MacOSExecutor) then
 		thisModule.MacOSExecutor2Agent(self)
-	else if self.oclIsTypeOf(CircleCI!WindowsOrbExecutor) then
-		thisModule.WindowsOrbExecutor2Agent(self)
 	else if self.oclIsTypeOf(CircleCI!ExecutorReferenceExecutor) then
 		self.executor.executor2AgentHelper()
 	else if self.oclIsTypeOf(CircleCI!OrbReferenceExecutor) and self.orb.oclIsTypeOf(CircleCI!OrbDefinition) then
@@ -919,6 +968,20 @@ helper context CircleCI!Executor def : executor2AgentHelper() : CICD!Agent =
 	endif
 	endif
 	endif;
+	
+helper context CircleCI!Expression def : startsWith(string : String) : Boolean =
+	false;
+
+helper context CircleCI!Concat def : startsWith(string : String) : Boolean =
+	let expressions : Sequence(CircleCI!Expression) = self.expressions->select(expression | not expression.oclIsUndefined()) in
+	if expressions->isEmpty() then
+		false
+	else
+		expressions->first().startsWith(string)
+	endif;
+
+helper context CircleCI!StringLiteral def : startsWith(string : String) : Boolean =
+	self.value.startsWith(string);
 
 helper context CircleCI!OrbDefinition def : getExecutorByName(name : String) : CircleCI!Executor =
 	let executors : Sequence(CircleCI!Executor) = self.executors->select(executor | executor.name = name) in
@@ -958,7 +1021,7 @@ helper context CircleCI!VariableReference def : expression2String() : String =
 	self.reference.name;
 
 helper def : getJobStreamOrigins(jobs : Sequence(CircleCI!WorkflowJobConfiguration)) : Sequence(CircleCI!WorkflowJobConfiguration) =
-	jobs->select(job | job.requires->select(j | not j.oclIsTypeOf(CircleCI!WorkflowApprovalJobConfiguration))->isEmpty());
+	jobs->select(job | not job.oclIsUndefined())->select(job | job.requires->select(job | not job.oclIsUndefined())->select(j | not j.oclIsTypeOf(CircleCI!WorkflowApprovalJobConfiguration))->isEmpty());
 
 helper def : PARAMETER_TYPE_2_INPUT_TYPE(parameterType : CircleCI!PARAMETER_TYPES) : CICD!INPUT_TYPE =
 	if parameterType = #string then
@@ -977,8 +1040,11 @@ helper def : PARAMETER_TYPE_2_INPUT_TYPE(parameterType : CircleCI!PARAMETER_TYPE
 	endif;
 
 helper context CircleCI!Step def : step2StepHelper() : CICD!Step =
-	if self.oclIsTypeOf(CircleCI!CommandReferenceStep) then
+	if self.oclIsUndefined() then
+		Sequence{}
+	else if self.oclIsTypeOf(CircleCI!CommandReferenceStep) then
 		self.command.steps->collect(step | step.step2StepHelper())->flatten()
 	else
 		Sequence{self}
+	endif
 	endif;

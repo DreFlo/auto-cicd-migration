@@ -202,9 +202,6 @@ public class JobItemProvider extends ScriptItemProvider {
 				CircleCIFactory.eINSTANCE.createMacOSExecutor()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
-				CircleCIFactory.eINSTANCE.createWindowsOrbExecutor()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,
 				CircleCIFactory.eINSTANCE.createExecutorReferenceExecutor()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.JOB__EXECUTOR,

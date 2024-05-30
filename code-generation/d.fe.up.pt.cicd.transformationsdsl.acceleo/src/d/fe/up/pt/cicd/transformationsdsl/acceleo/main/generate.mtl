@@ -303,7 +303,7 @@ rule ReplaceAgentLabels extends Agent {
 			[if (not condition.oclIsUndefined())][unquoteString(condition)/][/if]
 		)
 	to
-		output : CICD2!Agent(
+		output : CICD2!CustomAgent(
 			labels <- Sequence{
 				[for (label : String | labels) separator (', ')]'[unquoteString(label)/]'[/for]
 			}->collect(label | thisModule.String2StringLiteral(label))
@@ -475,13 +475,53 @@ rule VariableDeclaration {
 [/template]
 
 [template public generateCopyAgent(traceabilityContext : OclAny)]
-rule Agent {
+abstract rule Agent {
 	from
 		input : CICD1!Agent
 	to
-		output : CICD2!Agent(
-			container <- input.container,
+		output : CICD2!Agent
+}
+
+rule CustomAgent extends Agent {
+	from
+		input : CICD1!CustomAgent
+	to
+		output : CICD2!CustomAgent (
 			labels <- input.labels
+		)
+}
+
+abstract rule PresetAgent extends Agent {
+	from
+		input : CICD1!PresetAgent
+	to
+		output : CICD2!PresetAgent (
+			image <- input.image
+		)
+}
+
+rule LinuxAgent extends PresetAgent {
+	from
+		input : CICD1!LinuxAgent
+	to
+		output : CICD2!LinuxAgent (
+			container <- input.container
+		)
+}
+
+rule WindowsAgent extends PresetAgent {
+	from
+		input : CICD1!WindowsAgent
+	to
+		output : CICD2!WindowsAgent
+}
+
+rule MacOSAgent extends PresetAgent {
+	from
+		input : CICD1!MacOSAgent
+	to
+		output : CICD2!MacOSAgent (
+			xcode <- input.xcode
 		)
 }
 [/template]

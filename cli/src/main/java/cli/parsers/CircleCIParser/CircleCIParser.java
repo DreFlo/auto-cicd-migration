@@ -1,6 +1,7 @@
 package cli.parsers.CircleCIParser;
 
 import cli.parsers.AbstractParser;
+import cli.parsers.YAML.TrimmedYamlMapping;
 import cli.parsers.exceptions.SyntaxException;
 import com.amihaiemil.eoyaml.*;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.*;
@@ -28,6 +29,7 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         YamlMapping yamlMapping;
         try {
             yamlMapping = Yaml.createYamlInput(pipeline).readYamlMapping();
+            yamlMapping = new TrimmedYamlMapping(yamlMapping);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -167,9 +169,12 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 }
                 ConditionalStep conditionalStep = CircleCIPackage.eINSTANCE.getCircleCIFactory().createWhenStep();
 
-                if (yamlNode.asMapping().yamlSequence("steps") != null) {
-                    initVariables(conditionalStep, yamlNode.asMapping(), orbMap, commandMap);
+                YamlMapping stepMap = yamlNode.asMapping().yamlMapping("when");
+
+                if (stepMap.yamlSequence("steps") != null) {
+                    initVariables(conditionalStep, stepMap, orbMap, commandMap);
                 } else {
+                    System.out.println(yamlNode);
                     throw new SyntaxException("Steps are required");
                 }
 
@@ -181,8 +186,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 }
                 ConditionalStep conditionalStep = CircleCIPackage.eINSTANCE.getCircleCIFactory().createUnlessStep();
 
-                if (yamlNode.asMapping().yamlSequence("steps") != null) {
-                    initVariables(conditionalStep, yamlNode.asMapping(), orbMap, commandMap);
+                YamlMapping stepMap = yamlNode.asMapping().yamlMapping("unless");
+
+                if (stepMap.yamlSequence("steps") != null) {
+                    initVariables(conditionalStep, stepMap, orbMap, commandMap);
                 } else {
                     throw new SyntaxException("Steps are required");
                 }
@@ -534,10 +541,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             } else if (yamlMapping.string("enum") != null) {
                 String enumString = yamlMapping.string("enum");
 
-                if (enumString.startsWith("[") && enumString.endsWith("]")) {
-                    enumString = enumString.substring(1, enumString.length() - 1);
-
-                    for (String enumValue : enumString.split(",")) {
+                if (isList(enumString)) {
+                    for (String enumValue : parseList(enumString)) {
                         parameter.getEnumValues().add(enumValue.trim());
                     }
                 } else {
@@ -641,7 +646,15 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         for (int i = 0; i < yamlNodes.size(); i++) {
             YamlNode yamlNode = yamlNodes.get(i);
 
-            parseStep(steps.get(i), yamlNode);
+            try {
+                parseStep(steps.get(i), yamlNode);
+            }
+            catch (Exception e) {
+                System.out.println(steps);
+                System.out.println(i);
+                System.out.println(yamlNodes.get(i));
+                throw e;
+            }
         }
     }
 
@@ -845,10 +858,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     }
 
     private InfinitaryOperator parseInfinitaryOperatorOperandsFromString(InfinitaryOperator infinitaryOperator, String listString, EObject container) throws SyntaxException {
-        if (listString.startsWith("[") && listString.endsWith("]")) {
-            listString = listString.substring(1, listString.length() - 1);
-
-            listString = Arrays.stream(listString.split(",")).map(String::trim).map(string -> "- " + string).collect(Collectors.joining("\n"));
+        if (isList(listString)) {
+            listString = parseList(listString).stream().map(String::trim).map(string -> "- " + string).collect(Collectors.joining("\n"));
 
             try {
                 YamlSequence sequence = Yaml.createYamlInput(listString).readYamlSequence();
@@ -877,6 +888,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     private void parseCheckoutStep(CheckoutStep checkoutStep, YamlNode yamlNode) throws SyntaxException {
         if (yamlNode.type().equals(Node.MAPPING)) {
             YamlMapping yamlMapping = yamlNode.asMapping().yamlMapping("checkout");
+
+            if (yamlMapping == null) {
+                return;
+            }
 
             if (yamlMapping.string("path") != null) {
                 checkoutStep.setPath(parseExpression(yamlMapping.string("path"), checkoutStep));
@@ -932,10 +947,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         } else if (yamlMapping.string("keys") != null) {
             String keys = yamlMapping.string("keys");
 
-            if (keys.startsWith("[") && keys.endsWith("]")) {
-                keys = keys.substring(1, keys.length() - 1);
-
-                for (String key : keys.split(",")) {
+            if (isList(keys)) {
+                for (String key : parseList(keys)) {
                     restoreCacheStep.getKeys().add(parseExpression(key.trim(), restoreCacheStep));
                 }
             } else {
@@ -983,10 +996,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         } else if (yamlMapping.string("paths") != null) {
             String paths = yamlMapping.string("paths");
 
-            if (paths.startsWith("[") && paths.endsWith("]")) {
-                paths = paths.substring(1, paths.length() - 1);
-
-                for (String path : paths.split(",")) {
+            if (isList(paths)) {
+                for (String path : parseList(paths)) {
                     persistToWorkspaceStep.getPaths().add(parseExpression(path.trim(), persistToWorkspaceStep));
                 }
             } else {
@@ -1014,10 +1025,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             } else if (yamlMapping.string("fingerprints") != null) {
                 String fingerprints = yamlMapping.string("fingerprints");
 
-                if (fingerprints.startsWith("[") && fingerprints.endsWith("]")) {
-                    fingerprints = fingerprints.substring(1, fingerprints.length() - 1);
-
-                    for (String fingerprint : fingerprints.split(",")) {
+                if (isList(fingerprints)) {
+                    for (String fingerprint : parseList(fingerprints)) {
                         addSSHKeysStep.getFingerprints().add(parseExpression(fingerprint.trim(), addSSHKeysStep));
                     }
                 } else {
@@ -1133,9 +1142,20 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             if (!container.type().equals(Node.MAPPING)) {
                 throw new SyntaxException("Invalid docker executor");
             }
-            DockerContainer dockerContainer = CircleCIPackage.eINSTANCE.getCircleCIFactory().createDockerContainer();
-            dockerExecutor.getContainers().add(dockerContainer);
-            parseDockerContainer(dockerContainer, container.asMapping());
+            if (container.asMapping().string("NULL_DOCKER_CONTAINER") != null) {
+                NullDockerContainer dockerContainer = CircleCIPackage.eINSTANCE.getCircleCIFactory().createNullDockerContainer();
+                dockerContainer.setAgent(CICD_AGENTS.get(container.asMapping().string("NULL_DOCKER_CONTAINER")));
+                dockerExecutor.getContainers().add(dockerContainer);
+                if (container.asMapping().string("image") != null) {
+                    dockerContainer.setImage(parseExpression(container.asMapping().string("image"), dockerContainer));
+                } else {
+                    throw new SyntaxException("Image is required");
+                }
+            } else {
+                DockerContainer dockerContainer = CircleCIPackage.eINSTANCE.getCircleCIFactory().createDockerContainer();
+                dockerExecutor.getContainers().add(dockerContainer);
+                parseDockerContainer(dockerContainer, container.asMapping());
+            }
         }
     }
 
@@ -1155,10 +1175,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         } else if (yamlMapping.string("entrypoint") != null) {
             String entrypoint = yamlMapping.string("entrypoint");
 
-            if (entrypoint.startsWith("[") && entrypoint.endsWith("]")) {
-                entrypoint = entrypoint.substring(1, entrypoint.length() - 1);
-
-                for (String entry : entrypoint.split(",")) {
+            if (isList(entrypoint)) {
+                for (String entry : parseList(entrypoint)) {
                     dockerContainer.getEntrypoint().add(parseExpression(entry.trim(), dockerContainer));
                 }
             } else {
@@ -1171,10 +1189,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         } else if (yamlMapping.string("command") != null) {
             String command = yamlMapping.string("command");
 
-            if (command.startsWith("[") && command.endsWith("]")) {
-                command = command.substring(1, command.length() - 1);
-
-                for (String cmd : command.split(",")) {
+            if (isList(command)) {
+                for (String cmd : parseList(command)) {
                     dockerContainer.getCommand().add(parseExpression(cmd.trim(), dockerContainer));
                 }
             } else {
@@ -1218,6 +1234,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
     private void parseMachineExecutor(MachineExecutor machineExecutor, YamlMapping yamlMapping) throws SyntaxException {
         if (yamlMapping.string("image") != null) {
             machineExecutor.setImage(parseExpression(yamlMapping.string("image"), machineExecutor));
+        } else {
+            throw new SyntaxException("Must have image");
         }
 
         if (yamlMapping.string("docker_layer_caching") != null) {
@@ -1376,10 +1394,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 } else if (branches.string("only") != null ) {
                     String only = branches.string("only");
 
-                    if (only.startsWith("[") && only.endsWith("]")) {
-                        only = only.substring(1, only.length() - 1);
-
-                        for (String branch : only.split(",")) {
+                    if (isList(only)) {
+                        for (String branch : parseList(only)) {
                             scheduleTrigger.getBranches().add(parseExpression(branch.trim(), scheduleTrigger));
                         }
                     } else {
@@ -1393,10 +1409,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 } else if (yamlMapping.string("ignore") != null) {
                     String ignore = branches.string("ignore");
 
-                    if (ignore.startsWith("[") && ignore.endsWith("]")) {
-                        ignore = ignore.substring(1, ignore.length() - 1);
-
-                        for (String branch : ignore.split(",")) {
+                    if (isList(ignore)) {
+                        for (String branch : parseList(ignore)) {
                             scheduleTrigger.getBranches().add(parseExpression(branch.trim(), scheduleTrigger));
                         }
                     } else {
@@ -1532,10 +1546,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         } else if (yamlMapping.string("contexts") != null) {
             String contexts = yamlMapping.string("contexts");
 
-            if (contexts.startsWith("[") && contexts.endsWith("]")) {
-                contexts = contexts.substring(1, contexts.length() - 1);
-
-                for (String context : contexts.split(",")) {
+            if (isList(contexts)) {
+                for (String context : parseList(contexts)) {
                     workflowJobConfiguration.getContexts().add(parseExpression(context.trim(), workflowJobConfiguration));
                 }
             } else {
@@ -1555,10 +1567,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 } else if (branches.string("only") != null) {
                     String only = branches.string("only");
 
-                    if (only.startsWith("[") && only.endsWith("]")) {
-                        only = only.substring(1, only.length() - 1);
-
-                        for (String branch : only.split(",")) {
+                    if (isList(only)) {
+                        for (String branch : parseList(only)) {
                             workflowJobConfiguration.getBranches().add(parseExpression(branch.trim(), workflowJobConfiguration));
                         }
                     } else {
@@ -1572,10 +1582,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 } else if (branches.string("ignore") != null) {
                     String ignore = branches.string("ignore");
 
-                    if (ignore.startsWith("[") && ignore.endsWith("]")) {
-                        ignore = ignore.substring(1, ignore.length() - 1);
-
-                        for (String branch : ignore.split(",")) {
+                    if (isList(ignore)) {
+                        for (String branch : parseList(ignore)) {
                             workflowJobConfiguration.getBranches().add(parseExpression(branch.trim(), workflowJobConfiguration));
                         }
                     } else {
@@ -1597,10 +1605,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 } else if (tags.string("only") != null) {
                     String only = tags.string("only");
 
-                    if (only.startsWith("[") && only.endsWith("]")) {
-                        only = only.substring(1, only.length() - 1);
-
-                        for (String tag : only.split(",")) {
+                    if (isList(only)) {
+                        for (String tag : parseList(only)) {
                             workflowJobConfiguration.getTags().add(parseExpression(tag.trim(), workflowJobConfiguration));
                         }
                     } else {
@@ -1612,10 +1618,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
                 } else if (tags.string("ignore") != null) {
                     String ignore = tags.string("ignore");
 
-                    if (ignore.startsWith("[") && ignore.endsWith("]")) {
-                        ignore = ignore.substring(1, ignore.length() - 1);
-
-                        for (String tag : ignore.split(",")) {
+                    if (isList(ignore)) {
+                        for (String tag : parseList(ignore)) {
                             workflowJobConfiguration.getTags().add(parseExpression(tag.trim(), workflowJobConfiguration));
                         }
                     } else {
@@ -1676,10 +1680,8 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         if (yamlNode.type().equals(Node.SCALAR)) {
             String scalar = yamlNode.asScalar().value();
 
-            if (scalar.startsWith("[") && scalar.endsWith("]")) {
-                scalar = scalar.substring(1, scalar.length() - 1);
-
-                for (String part : scalar.split(",")) {
+            if (isList(scalar)) {
+                for (String part : parseList(scalar)) {
                     parameter.getCells().add(parseExpression(part, parameter));
                 }
             } else {
@@ -1720,5 +1722,18 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
         }
 
         return variableAssignments;
+    }
+
+    private boolean isList(String string) {
+        return string.matches("^\\s*\\[\\s*(?:(?:[\\w-.]+|\"(?:[^\"]|\\\\.)*\"|'(?:[^']|\\\\.)*')\\s*(?:,\\s*(?:[\\w-.]+|\"(?:[^\"]|\\\\.)*\"|'(?:[^']|\\\\.)*')\\s*)*)?]\\s*$");
+    }
+
+    private List<String> parseList(String string) {
+        List<String> result = new ArrayList<>();
+        Matcher matcher = Pattern.compile("([\\w-.]+|(?:\"(?:[^\"]|\\.)*\")|(?:'(?:[^']|\\\\.)*'))").matcher(string);
+        while (matcher.find()) {
+            result.add(matcher.group());
+        }
+        return result;
     }
 }

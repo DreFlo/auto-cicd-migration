@@ -49,13 +49,40 @@ public interface CICDFactory extends EFactory {
 	PipelineCallJob createPipelineCallJob();
 
 	/**
-	 * Returns a new object of class '<em>Agent</em>'.
+	 * Returns a new object of class '<em>Custom Agent</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Agent</em>'.
+	 * @return a new object of class '<em>Custom Agent</em>'.
 	 * @generated
 	 */
-	Agent createAgent();
+	CustomAgent createCustomAgent();
+
+	/**
+	 * Returns a new object of class '<em>Linux Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Linux Agent</em>'.
+	 * @generated
+	 */
+	LinuxAgent createLinuxAgent();
+
+	/**
+	 * Returns a new object of class '<em>Windows Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Windows Agent</em>'.
+	 * @generated
+	 */
+	WindowsAgent createWindowsAgent();
+
+	/**
+	 * Returns a new object of class '<em>Mac OS Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mac OS Agent</em>'.
+	 * @generated
+	 */
+	MacOSAgent createMacOSAgent();
 
 	/**
 	 * Returns a new object of class '<em>Docker Container</em>'.

@@ -27,14 +27,15 @@ public enum SHELL_TYPE implements Enumerator {
 	 * @ordered
 	 */
 	NULL(0, "NULL", "NULL"),
+
 	/**
-	* The '<em><b>BASH</b></em>' literal object.
-	* <!-- begin-user-doc -->
-	* <!-- end-user-doc -->
-	* @see #BASH_VALUE
-	* @generated
-	* @ordered
-	*/
+	 * The '<em><b>BASH</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BASH_VALUE
+	 * @generated
+	 * @ordered
+	 */
 	BASH(1, "BASH", "BASH");
 
 	/**

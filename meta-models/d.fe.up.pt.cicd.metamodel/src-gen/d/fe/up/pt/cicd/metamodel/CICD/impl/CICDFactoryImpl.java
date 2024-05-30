@@ -64,8 +64,14 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 			return createScriptJob();
 		case CICDPackage.PIPELINE_CALL_JOB:
 			return createPipelineCallJob();
-		case CICDPackage.AGENT:
-			return createAgent();
+		case CICDPackage.CUSTOM_AGENT:
+			return createCustomAgent();
+		case CICDPackage.LINUX_AGENT:
+			return createLinuxAgent();
+		case CICDPackage.WINDOWS_AGENT:
+			return createWindowsAgent();
+		case CICDPackage.MAC_OS_AGENT:
+			return createMacOSAgent();
 		case CICDPackage.DOCKER_CONTAINER:
 			return createDockerContainer();
 		case CICDPackage.PUSH_TRIGGER:
@@ -218,9 +224,42 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	 * @generated
 	 */
 	@Override
-	public Agent createAgent() {
-		AgentImpl agent = new AgentImpl();
-		return agent;
+	public CustomAgent createCustomAgent() {
+		CustomAgentImpl customAgent = new CustomAgentImpl();
+		return customAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public LinuxAgent createLinuxAgent() {
+		LinuxAgentImpl linuxAgent = new LinuxAgentImpl();
+		return linuxAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WindowsAgent createWindowsAgent() {
+		WindowsAgentImpl windowsAgent = new WindowsAgentImpl();
+		return windowsAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public MacOSAgent createMacOSAgent() {
+		MacOSAgentImpl macOSAgent = new MacOSAgentImpl();
+		return macOSAgent;
 	}
 
 	/**

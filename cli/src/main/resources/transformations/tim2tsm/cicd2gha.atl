@@ -102,15 +102,15 @@ abstract rule Job2Job {
 		ghaJob : GHA!Job(
 			agent <-
 				if not cicdJob.agent.oclIsUndefined() then 
-					thisModule.Agent2Agent(cicdJob.agent)
+					cicdJob.agent.agent2AgentHelper()
 				else
 					OclUndefined
 				endif,
 			container <- 
-				if cicdJob.agent.oclIsUndefined() then
-					OclUndefined
-				else
+				if cicdJob.agent.oclIsTypeOf(CICD!LinuxAgent) then
 					cicdJob.agent.container
+				else
+					OclUndefined
 				endif,
 			continueOnError <- 
 				if not cicdJob.allowFailure.oclIsUndefined() then
@@ -225,7 +225,7 @@ rule Plugin2Package extends NonConditionalStep2Step {
 		cicdStep : CICD!Plugin
 	to
 		ghaStep : GHA!Package(
-			uses <- thisModule.String2StringLiteral(cicdStep.pluginName + '@' + cicdStep.version),
+			uses <- thisModule.String2StringLiteral(cicdStep.pluginName + if cicdStep.version.oclIsUndefined() then '' else '@' + cicdStep.version endif),
 			args <- cicdStep.kwargs
 		)
 }
@@ -245,10 +245,19 @@ rule Cache2Package extends NonConditionalStep2Step {
 					endif
 					endif
 				),
-			args <- Sequence{
-					thisModule.VariableAssignment('key', cicdStep.keys->first()),
-					thisModule.VariableAssignment('path', cicdStep.paths->first())
-				}					
+			args <- Sequence{}->union(
+						if cicdStep.keys->notEmpty() then
+							Sequence{thisModule.VariableAssignment('key', cicdStep.keys->first())}
+						else
+							Sequence{}
+						endif
+					)->union(
+						if cicdStep.paths->notEmpty() then
+							Sequence{thisModule.VariableAssignment('path', cicdStep.paths->first())}
+						else
+							Sequence{}
+						endif
+					)				
 		)
 }
 
@@ -264,11 +273,25 @@ rule Artifact2Package extends NonConditionalStep2Step {
 						'actions/upload-artifact@v4'
 					endif
 				),
-			args <- Sequence{
-					thisModule.VariableAssignment('name', cicdStep.artifactName),
-					thisModule.VariableAssignment('path', cicdStep.includePaths->first()),
-					thisModule.VariableAssignment('retention-days', cicdStep.retentionTime)					
-				}
+			args <- Sequence{}->union(
+						if not cicdStep.artifactName.oclIsUndefined() then
+							Sequence{thisModule.VariableAssignment('name', cicdStep.artifactName)}
+						else
+							Sequence{}
+						endif
+					)->union(
+						if cicdStep.includePaths->notEmpty() then
+							Sequence{thisModule.VariableAssignment('path', cicdStep.includePaths->first())}
+						else
+							Sequence{}
+						endif
+					)->union(
+						if not cicdStep.retentionTime.oclIsUndefined() then
+							Sequence{thisModule.VariableAssignment('retention-days', cicdStep.retentionTime)}
+						else
+							Sequence{}
+						endif
+					)
 		)
 }
 
@@ -622,12 +645,69 @@ lazy rule Defaults {
 		)
 }
 
-lazy rule Agent2Agent {
+helper context CICD!Agent def : agent2AgentHelper() : GHA!Agent =
+	OclUndefined;
+
+helper context CICD!CustomAgent def : agent2AgentHelper() : GHA!Agent =
+	thisModule.CustomAgent2Agent(self);
+
+helper context CICD!LinuxAgent def : agent2AgentHelper() : GHA!Agent =
+	thisModule.LinuxAgent2Agent(self);
+
+helper context CICD!MacOSAgent def : agent2AgentHelper() : GHA!Agent =
+	thisModule.MacOSAgent2Agent(self);
+
+helper context CICD!WindowsAgent def : agent2AgentHelper() : GHA!Agent =
+	thisModule.WindowsAgent2Agent(self);
+
+lazy rule CustomAgent2Agent {
 	from
-		cicdAgent : CICD!Agent
+		cicdAgent : CICD!CustomAgent
 	to
 		ghaAgent : GHA!Agent(
 			labels <- cicdAgent.labels
+		)
+}
+
+lazy rule LinuxAgent2Agent {
+	from
+		cicdAgent : CICD!LinuxAgent
+	to
+		ghaAgent : GHA!Agent (
+			labels <- Sequence{if cicdAgent.image.oclIsUndefined() then thisModule.String2StringLiteral('ubuntu-latest') else cicdAgent.image endif}
+		)
+}
+
+lazy rule MacOSAgent2Agent {
+	from
+		cicdAgent : CICD!MacOSAgent
+	to
+		ghaAgent : GHA!Agent (
+			labels <- Sequence{if cicdAgent.image.oclIsUndefined() then thisModule.String2StringLiteral('macos-latest') else cicdAgent.image endif}->union(
+				if cicdAgent.xcode.oclIsUndefined() then
+					Sequence{}
+				else
+					Sequence{thisModule.ConcatExpressions(Sequence{thisModule.String2StringLiteral('%%__CICD__XCODE#%!!__#%!!'), cicdAgent.xcode})}
+				endif
+			)
+		)
+}
+
+lazy rule WindowsAgent2Agent {
+	from
+		cicdAgent : CICD!WindowsAgent
+	to
+		ghaAgent : GHA!Agent (
+			labels <- Sequence{if cicdAgent.image.oclIsUndefined() then thisModule.String2StringLiteral('windows-latest') else cicdAgent.image endif}
+		)
+}
+
+lazy rule ConcatExpressions {
+	from
+		input : Sequence(GHA!Expression)
+	to
+		output : GHA!Concat (
+			expressions <- input
 		)
 }
 

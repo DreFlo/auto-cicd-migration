@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -191,9 +192,6 @@ public class WorkflowOrbJobConfigurationItemProvider extends WorkflowJobConfigur
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR,
 				CircleCIFactory.eINSTANCE.createMacOSExecutor()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR,
-				CircleCIFactory.eINSTANCE.createWindowsOrbExecutor()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.WORKFLOW_ORB_JOB_CONFIGURATION__EXECUTOR,
 				CircleCIFactory.eINSTANCE.createExecutorReferenceExecutor()));

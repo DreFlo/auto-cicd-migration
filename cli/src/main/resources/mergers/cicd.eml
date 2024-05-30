@@ -225,11 +225,45 @@ rule CopyPipelineCallJob
 	t.args ::= s.args;
 }
 
+@abstract
 rule CopyAgent 
 	transform s : Source!CICD::Agent
 	to t : Target!CICD::Agent {
+}
+
+rule CopyCustomAgent
+	transform s : Source!CICD::CustomAgent
+	to t : Target!CICD::CustomAgent
+	extends CopyAgent {
 	t.labels ::= s.labels;
-	t.container ::= s.container;
+}
+
+@abstract
+rule CopyPresetAgent
+	transform s : Source!CICD::PresetAgent
+	to t : Target!CICD::PresetAgent
+	extends CopyAgent {
+	t.image ::= s.image;
+}
+
+rule CopyLinuxAgent
+	transform s : Source!CICD::LinuxAgent
+	to t : Target!CICD::LinuxAgent
+	extends CopyPresetAgent {
+	t.container ::= s.container;	
+}
+
+rule CopyWindowsAgent
+	transform s : Source!CICD::WindowsAgent
+	to t : Target!CICD::WindowsAgent
+	extends CopyPresetAgent {
+}
+
+rule CopyMacOSAgent
+	transform s : Source!CICD::MacOSAgent
+	to t : Target!CICD::MacOSAgent
+	extends CopyPresetAgent {
+	t.xcode ::= s.xcode;	
 }
 
 rule CopyDockerContainer 

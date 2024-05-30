@@ -13,7 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getImage <em>Image</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getEntrypoint <em>Entrypoint</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getCommand <em>Command</em>}</li>
@@ -29,29 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface DockerContainer extends Environment {
-	/**
-	 * Returns the value of the '<em><b>Image</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Image</em>' containment reference.
-	 * @see #setImage(Expression)
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage#getDockerContainer_Image()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Expression getImage();
-
-	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer#getImage <em>Image</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Image</em>' containment reference.
-	 * @see #getImage()
-	 * @generated
-	 */
-	void setImage(Expression value);
-
+public interface DockerContainer extends Environment, AbstractDockerContainer {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

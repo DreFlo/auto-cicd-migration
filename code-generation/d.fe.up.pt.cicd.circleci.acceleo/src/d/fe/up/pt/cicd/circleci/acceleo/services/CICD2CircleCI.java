@@ -21,7 +21,7 @@ public class CICD2CircleCI {
 		if (string.matches("^\"(?:\\\\.|[^\\\"])*\"$") || string.matches("^'(?:\\\\.|[^\\'])*'$")) {
 			return string;
 		} else {
-			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\\\"") + "\"";
+			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\\\"").replaceAll("(?<!\\\\)\\\\(?!\\\\)", "\\\\") + "\"";
 		}
 	}
 	

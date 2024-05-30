@@ -1,5 +1,6 @@
 package cli.transformers;
 
+import cli.transformers.endogenous.CICD.EndogenousCICDAbstractTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 import cli.utils.LoggerUtils;
@@ -20,7 +21,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 public abstract class AbstractTransformer<InputModel extends EObject, InputPackage extends EPackage, OutputModel extends EObject, OutputPackage extends EPackage> {
@@ -151,7 +155,12 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
             launcher.addInModel(getInputModel(), "IN", getInModelName());
             launcher.addOutModel(getOutputModel(), "OUT", getOutModelName());
 
-            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), new HashMap<>(), getATLFileStream());
+            Map<String, Object> options = new HashMap<>();
+
+//            options.put("step", true);
+//            options.put("printExecutionTime", true);
+
+            launcher.launch(ILauncher.RUN_MODE, new NullProgressMonitor(), options, getATLFileStream());
 
             IExtractor extractor = new EMFExtractor();
             extractor.extract(getOutputModel(), outputModelFilePath);

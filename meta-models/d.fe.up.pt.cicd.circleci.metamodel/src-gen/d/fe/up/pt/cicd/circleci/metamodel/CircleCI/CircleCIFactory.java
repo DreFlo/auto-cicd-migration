@@ -76,6 +76,15 @@ public interface CircleCIFactory extends EFactory {
 	DockerExecutor createDockerExecutor();
 
 	/**
+	 * Returns a new object of class '<em>Null Docker Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Null Docker Container</em>'.
+	 * @generated
+	 */
+	NullDockerContainer createNullDockerContainer();
+
+	/**
 	 * Returns a new object of class '<em>Docker Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -101,15 +110,6 @@ public interface CircleCIFactory extends EFactory {
 	 * @generated
 	 */
 	MacOSExecutor createMacOSExecutor();
-
-	/**
-	 * Returns a new object of class '<em>Windows Orb Executor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Windows Orb Executor</em>'.
-	 * @generated
-	 */
-	WindowsOrbExecutor createWindowsOrbExecutor();
 
 	/**
 	 * Returns a new object of class '<em>Executor Reference Executor</em>'.

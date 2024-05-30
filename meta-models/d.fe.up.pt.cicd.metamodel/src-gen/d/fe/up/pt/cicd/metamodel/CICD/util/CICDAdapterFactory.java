@@ -99,6 +99,31 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseCustomAgent(CustomAgent object) {
+			return createCustomAgentAdapter();
+		}
+
+		@Override
+		public Adapter casePresetAgent(PresetAgent object) {
+			return createPresetAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseLinuxAgent(LinuxAgent object) {
+			return createLinuxAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseWindowsAgent(WindowsAgent object) {
+			return createWindowsAgentAdapter();
+		}
+
+		@Override
+		public Adapter caseMacOSAgent(MacOSAgent object) {
+			return createMacOSAgentAdapter();
+		}
+
+		@Override
 		public Adapter caseDockerContainer(DockerContainer object) {
 			return createDockerContainerAdapter();
 		}
@@ -398,6 +423,76 @@ public class CICDAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.CustomAgent <em>Custom Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.CustomAgent
+	 * @generated
+	 */
+	public Adapter createCustomAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.PresetAgent <em>Preset Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.PresetAgent
+	 * @generated
+	 */
+	public Adapter createPresetAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent <em>Linux Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent
+	 * @generated
+	 */
+	public Adapter createLinuxAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent <em>Windows Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent
+	 * @generated
+	 */
+	public Adapter createWindowsAgentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent <em>Mac OS Agent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent
+	 * @generated
+	 */
+	public Adapter createMacOSAgentAdapter() {
 		return null;
 	}
 

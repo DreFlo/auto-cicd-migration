@@ -142,26 +142,95 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.Agent} instances.
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.CustomAgent} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AgentItemProvider agentItemProvider;
+	protected CustomAgentItemProvider customAgentItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.Agent}.
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.CustomAgent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createAgentAdapter() {
-		if (agentItemProvider == null) {
-			agentItemProvider = new AgentItemProvider(this);
+	public Adapter createCustomAgentAdapter() {
+		if (customAgentItemProvider == null) {
+			customAgentItemProvider = new CustomAgentItemProvider(this);
 		}
 
-		return agentItemProvider;
+		return customAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinuxAgentItemProvider linuxAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLinuxAgentAdapter() {
+		if (linuxAgentItemProvider == null) {
+			linuxAgentItemProvider = new LinuxAgentItemProvider(this);
+		}
+
+		return linuxAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WindowsAgentItemProvider windowsAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWindowsAgentAdapter() {
+		if (windowsAgentItemProvider == null) {
+			windowsAgentItemProvider = new WindowsAgentItemProvider(this);
+		}
+
+		return windowsAgentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MacOSAgentItemProvider macOSAgentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMacOSAgentAdapter() {
+		if (macOSAgentItemProvider == null) {
+			macOSAgentItemProvider = new MacOSAgentItemProvider(this);
+		}
+
+		return macOSAgentItemProvider;
 	}
 
 	/**
@@ -988,8 +1057,14 @@ public class CICDItemProviderAdapterFactory extends CICDAdapterFactory
 			scriptJobItemProvider.dispose();
 		if (pipelineCallJobItemProvider != null)
 			pipelineCallJobItemProvider.dispose();
-		if (agentItemProvider != null)
-			agentItemProvider.dispose();
+		if (customAgentItemProvider != null)
+			customAgentItemProvider.dispose();
+		if (linuxAgentItemProvider != null)
+			linuxAgentItemProvider.dispose();
+		if (windowsAgentItemProvider != null)
+			windowsAgentItemProvider.dispose();
+		if (macOSAgentItemProvider != null)
+			macOSAgentItemProvider.dispose();
 		if (dockerContainerItemProvider != null)
 			dockerContainerItemProvider.dispose();
 		if (pushTriggerItemProvider != null)

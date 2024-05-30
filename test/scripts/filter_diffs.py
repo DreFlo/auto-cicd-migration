@@ -63,7 +63,7 @@ def full_variable_names(string):
 diffs = [diff for diff in diffs if not no_diff(diff)]
 diffs = [diff for diff in diffs if not string_to_one_item_list(diff)]
 diffs = [diff for diff in diffs if not list_to_empty_map(diff)]
-diffs = [diff for diff in diffs if not add_default_shell(diff)]
+#diffs = [diff for diff in diffs if not add_default_shell(diff)]
 diffs = [diff for diff in diffs if not string_output_to_map(diff)]
 #diffs = [diff for diff in diffs if not string_spaces(diff)]
 #diffs = [diff for diff in diffs if not full_variable_names(diff)]

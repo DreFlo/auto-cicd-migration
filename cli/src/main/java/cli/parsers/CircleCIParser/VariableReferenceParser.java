@@ -42,6 +42,7 @@ public class VariableReferenceParser {
     }
 
     public Value parse(String variableReference) {
+        System.out.println(variableReference);
         Matcher matcher = Pattern.compile("(\\w[\\w-]*)").matcher(variableReference);
 
         Queue<String> parts = new LinkedList<>();

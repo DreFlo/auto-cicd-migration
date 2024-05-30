@@ -2,8 +2,8 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerExecutor;
 
 import java.util.Collection;
@@ -40,7 +40,7 @@ public class DockerExecutorImpl extends ExecutorImpl implements DockerExecutor {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DockerContainer> containers;
+	protected EList<AbstractDockerContainer> containers;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,9 +67,9 @@ public class DockerExecutorImpl extends ExecutorImpl implements DockerExecutor {
 	 * @generated
 	 */
 	@Override
-	public EList<DockerContainer> getContainers() {
+	public EList<AbstractDockerContainer> getContainers() {
 		if (containers == null) {
-			containers = new EObjectContainmentEList<DockerContainer>(DockerContainer.class, this,
+			containers = new EObjectContainmentEList<AbstractDockerContainer>(AbstractDockerContainer.class, this,
 					CircleCIPackage.DOCKER_EXECUTOR__CONTAINERS);
 		}
 		return containers;
@@ -114,7 +114,7 @@ public class DockerExecutorImpl extends ExecutorImpl implements DockerExecutor {
 		switch (featureID) {
 		case CircleCIPackage.DOCKER_EXECUTOR__CONTAINERS:
 			getContainers().clear();
-			getContainers().addAll((Collection<? extends DockerContainer>) newValue);
+			getContainers().addAll((Collection<? extends AbstractDockerContainer>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);

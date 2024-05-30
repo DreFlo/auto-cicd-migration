@@ -251,8 +251,17 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__AGENT, CICDFactory.eINSTANCE.createAgent()));
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__AGENT,
+				CICDFactory.eINSTANCE.createCustomAgent()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__AGENT,
+				CICDFactory.eINSTANCE.createLinuxAgent()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__AGENT,
+				CICDFactory.eINSTANCE.createWindowsAgent()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__AGENT,
+				CICDFactory.eINSTANCE.createMacOSAgent()));
 
 		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES,
 				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));

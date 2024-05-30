@@ -71,14 +71,14 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 			return createParameter();
 		case CircleCIPackage.DOCKER_EXECUTOR:
 			return createDockerExecutor();
+		case CircleCIPackage.NULL_DOCKER_CONTAINER:
+			return createNullDockerContainer();
 		case CircleCIPackage.DOCKER_CONTAINER:
 			return createDockerContainer();
 		case CircleCIPackage.MACHINE_EXECUTOR:
 			return createMachineExecutor();
 		case CircleCIPackage.MAC_OS_EXECUTOR:
 			return createMacOSExecutor();
-		case CircleCIPackage.WINDOWS_ORB_EXECUTOR:
-			return createWindowsOrbExecutor();
 		case CircleCIPackage.EXECUTOR_REFERENCE_EXECUTOR:
 			return createExecutorReferenceExecutor();
 		case CircleCIPackage.ORB_REFERENCE_EXECUTOR:
@@ -174,6 +174,8 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 		switch (eDataType.getClassifierID()) {
 		case CircleCIPackage.PARAMETER_TYPES:
 			return createPARAMETER_TYPESFromString(eDataType, initialValue);
+		case CircleCIPackage.CICD_AGENTS:
+			return createCICD_AGENTSFromString(eDataType, initialValue);
 		case CircleCIPackage.WHEN_TYPE:
 			return createWHEN_TYPEFromString(eDataType, initialValue);
 		default:
@@ -191,6 +193,8 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 		switch (eDataType.getClassifierID()) {
 		case CircleCIPackage.PARAMETER_TYPES:
 			return convertPARAMETER_TYPESToString(eDataType, instanceValue);
+		case CircleCIPackage.CICD_AGENTS:
+			return convertCICD_AGENTSToString(eDataType, instanceValue);
 		case CircleCIPackage.WHEN_TYPE:
 			return convertWHEN_TYPEToString(eDataType, instanceValue);
 		default:
@@ -270,6 +274,17 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	@Override
+	public NullDockerContainer createNullDockerContainer() {
+		NullDockerContainerImpl nullDockerContainer = new NullDockerContainerImpl();
+		return nullDockerContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DockerContainer createDockerContainer() {
 		DockerContainerImpl dockerContainer = new DockerContainerImpl();
 		return dockerContainer;
@@ -295,17 +310,6 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	public MacOSExecutor createMacOSExecutor() {
 		MacOSExecutorImpl macOSExecutor = new MacOSExecutorImpl();
 		return macOSExecutor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public WindowsOrbExecutor createWindowsOrbExecutor() {
-		WindowsOrbExecutorImpl windowsOrbExecutor = new WindowsOrbExecutorImpl();
-		return windowsOrbExecutor;
 	}
 
 	/**
@@ -766,6 +770,28 @@ public class CircleCIFactoryImpl extends EFactoryImpl implements CircleCIFactory
 	 * @generated
 	 */
 	public String convertPARAMETER_TYPESToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CICD_AGENTS createCICD_AGENTSFromString(EDataType eDataType, String initialValue) {
+		CICD_AGENTS result = CICD_AGENTS.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCICD_AGENTSToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

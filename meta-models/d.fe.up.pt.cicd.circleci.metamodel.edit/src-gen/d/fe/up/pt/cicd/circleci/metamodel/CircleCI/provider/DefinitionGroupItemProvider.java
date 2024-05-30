@@ -175,9 +175,6 @@ public class DefinitionGroupItemProvider extends ItemProviderAdapter implements 
 				CircleCIFactory.eINSTANCE.createMacOSExecutor()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
-				CircleCIFactory.eINSTANCE.createWindowsOrbExecutor()));
-
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,
 				CircleCIFactory.eINSTANCE.createExecutorReferenceExecutor()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DEFINITION_GROUP__EXECUTORS,

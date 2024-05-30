@@ -149,7 +149,7 @@ abstract rule Job2Job {
 		ghaJob : GHA!Job
 	to
 		cicdJob : CICD!Job(
-			agent <- thisModule.GetAgentFromJob(ghaJob),
+			agent <- ghaJob.getAgent(),
 			allowFailure <- 
 				if not ghaJob.continueOnError.oclIsUndefined() then
 					ghaJob.continueOnError.expression2Boolean()
@@ -277,7 +277,7 @@ rule Package2Plugin extends Step2NonConditionalStep {
 	to
 		cicdStep : CICD!Plugin(
 			pluginName <- plugin,
-			version <- version,
+			version <- if version <> plugin then version else OclUndefined endif,
 			kwargs <- ghaStep.args
 		)
 }
@@ -593,18 +593,111 @@ rule VariableReference2VariableReference extends Value2Value {
 		)
 }
 
-lazy rule GetAgentFromJob {
+helper context GHA!Job def : getAgent() : CICD!Agent =
+	if not thisModule.checkForLabel(self.agent.labels, 'ubuntu').oclIsUndefined() or not thisModule.checkForLabel(self.agent.labels, 'linux').oclIsUndefined() then
+		thisModule.Job2LinuxAgent(self)
+	else if not thisModule.checkForLabel(self.agent.labels, 'windows').oclIsUndefined() then 
+		thisModule.Job2WindowsAgent(self)
+	else if not thisModule.checkForLabel(self.agent.labels, 'macos').oclIsUndefined() then 
+		thisModule.Job2MacOSAgent(self)
+	else
+		thisModule.Job2CustomAgent(self)
+	endif
+	endif
+	endif;
+
+helper def : checkForLabel(labels : Sequence(GHA!Expression), string : String) : CICD!Expression =
+	if labels.oclIsUndefined() or labels->isEmpty() then
+		OclUndefined
+	else
+		if labels->first().oclIsTypeOf(GHA!StringLiteral) then 
+			if labels->first().expression2String().startsWith(string) then 
+				labels->first()
+			else
+				thisModule.checkForLabel(labels->excluding(labels->first()), string) 
+			endif 
+		else 
+			thisModule.checkForLabel(labels->excluding(labels->first()), string) 
+		endif
+	endif;
+	
+lazy rule Job2LinuxAgent {
 	from
 		job : GHA!Job
 	to
-		agent : CICD!Agent(
+		agent : CICD!LinuxAgent (
+			container <- job.container,
+			image <- 
+				if not thisModule.checkForLabel(job.agent.labels, 'ubuntu').oclIsUndefined() then
+					thisModule.checkForLabel(job.agent.labels, 'ubuntu')
+				else
+					thisModule.checkForLabel(job.agent.labels, 'linux')
+				endif
+		)
+}
+
+lazy rule Job2CustomAgent {
+	from
+		job : GHA!Job
+	to
+		agent : CICD!CustomAgent(
 			labels <- 
 				if not job.agent.oclIsUndefined() then
 					job.agent.labels
 				else
 					Sequence{}
-				endif,
-			container <- job.container
+				endif
+		)
+}
+
+lazy rule Job2WindowsAgent {
+	from
+		job : GHA!Job
+	to
+		agent : CICD!WindowsAgent (
+			image <- thisModule.checkForLabel(job.agent.labels, 'windows')
+		)
+}
+
+lazy rule Job2MacOSAgent {
+	from
+		job : GHA!Job
+	to
+		agent : CICD!MacOSAgent (
+			image <- thisModule.checkForLabel(job.agent.labels, 'macos'),
+			xcode <- thisModule.getCICDProperty(job.agent.labels, 'XCODE')
+		)
+}
+
+helper def : getCICDProperty(labels : Sequence(GHA!Expression), name : String) : CICD!Expression =
+	if labels.oclIsUndefined() or labels->isEmpty() then
+		OclUndefined
+	else if labels->first().expression2String().startsWith('%%__CICD__' + name + '#%!!__#%!!') then 
+		if labels->first().oclIsTypeOf(GHA!Concat) then
+			let concat : GHA!Concat = labels->first()
+			in
+			if concat.expressions->size() = 2 then
+				concat.expressions->last()
+			else
+				thisModule.CreateConcat(concat.expressions->excluding(concat.expressions->first()))
+			endif
+		else if labels->first().oclIsTypeOf(GHA!StringLiteral) then
+			thisModule.String2StringLiteral(labels->first().expression2String().split('#%!!__#%!!')->last())
+		else
+			OclUndefined
+		endif
+		endif
+	else 
+		thisModule.getCICDProperty(labels->excluding(labels->first()), name)
+	endif
+	endif;
+
+lazy rule CreateConcat {
+	from
+		input : Sequence(GHA!Expression)
+	to
+		output : CICD!Concat (
+			expressions <- input
 		)
 }
 

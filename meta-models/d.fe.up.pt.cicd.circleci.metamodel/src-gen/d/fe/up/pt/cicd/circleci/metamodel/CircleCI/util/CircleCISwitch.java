@@ -172,11 +172,29 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CircleCIPackage.ABSTRACT_DOCKER_CONTAINER: {
+			AbstractDockerContainer abstractDockerContainer = (AbstractDockerContainer) theEObject;
+			T result = caseAbstractDockerContainer(abstractDockerContainer);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CircleCIPackage.NULL_DOCKER_CONTAINER: {
+			NullDockerContainer nullDockerContainer = (NullDockerContainer) theEObject;
+			T result = caseNullDockerContainer(nullDockerContainer);
+			if (result == null)
+				result = caseAbstractDockerContainer(nullDockerContainer);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CircleCIPackage.DOCKER_CONTAINER: {
 			DockerContainer dockerContainer = (DockerContainer) theEObject;
 			T result = caseDockerContainer(dockerContainer);
 			if (result == null)
 				result = caseEnvironment(dockerContainer);
+			if (result == null)
+				result = caseAbstractDockerContainer(dockerContainer);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -199,17 +217,6 @@ public class CircleCISwitch<T> extends Switch<T> {
 				result = caseExecutor(macOSExecutor);
 			if (result == null)
 				result = caseEnvironment(macOSExecutor);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case CircleCIPackage.WINDOWS_ORB_EXECUTOR: {
-			WindowsOrbExecutor windowsOrbExecutor = (WindowsOrbExecutor) theEObject;
-			T result = caseWindowsOrbExecutor(windowsOrbExecutor);
-			if (result == null)
-				result = caseExecutor(windowsOrbExecutor);
-			if (result == null)
-				result = caseEnvironment(windowsOrbExecutor);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -921,6 +928,36 @@ public class CircleCISwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Docker Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Docker Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractDockerContainer(AbstractDockerContainer object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Null Docker Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Null Docker Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNullDockerContainer(NullDockerContainer object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Docker Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -962,21 +999,6 @@ public class CircleCISwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMacOSExecutor(MacOSExecutor object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Windows Orb Executor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Windows Orb Executor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWindowsOrbExecutor(WindowsOrbExecutor object) {
 		return null;
 	}
 

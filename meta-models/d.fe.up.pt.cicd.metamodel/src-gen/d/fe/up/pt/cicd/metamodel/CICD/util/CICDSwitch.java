@@ -122,6 +122,57 @@ public class CICDSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CICDPackage.CUSTOM_AGENT: {
+			CustomAgent customAgent = (CustomAgent) theEObject;
+			T result = caseCustomAgent(customAgent);
+			if (result == null)
+				result = caseAgent(customAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.PRESET_AGENT: {
+			PresetAgent presetAgent = (PresetAgent) theEObject;
+			T result = casePresetAgent(presetAgent);
+			if (result == null)
+				result = caseAgent(presetAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.LINUX_AGENT: {
+			LinuxAgent linuxAgent = (LinuxAgent) theEObject;
+			T result = caseLinuxAgent(linuxAgent);
+			if (result == null)
+				result = casePresetAgent(linuxAgent);
+			if (result == null)
+				result = caseAgent(linuxAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.WINDOWS_AGENT: {
+			WindowsAgent windowsAgent = (WindowsAgent) theEObject;
+			T result = caseWindowsAgent(windowsAgent);
+			if (result == null)
+				result = casePresetAgent(windowsAgent);
+			if (result == null)
+				result = caseAgent(windowsAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case CICDPackage.MAC_OS_AGENT: {
+			MacOSAgent macOSAgent = (MacOSAgent) theEObject;
+			T result = caseMacOSAgent(macOSAgent);
+			if (result == null)
+				result = casePresetAgent(macOSAgent);
+			if (result == null)
+				result = caseAgent(macOSAgent);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case CICDPackage.DOCKER_CONTAINER: {
 			DockerContainer dockerContainer = (DockerContainer) theEObject;
 			T result = caseDockerContainer(dockerContainer);
@@ -605,6 +656,81 @@ public class CICDSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAgent(Agent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Custom Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Custom Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCustomAgent(CustomAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Preset Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Preset Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePresetAgent(PresetAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Linux Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Linux Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinuxAgent(LinuxAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Windows Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Windows Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWindowsAgent(WindowsAgent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mac OS Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mac OS Agent</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMacOSAgent(MacOSAgent object) {
 		return null;
 	}
 

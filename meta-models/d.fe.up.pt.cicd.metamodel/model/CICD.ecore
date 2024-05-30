@@ -48,10 +48,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Assignment"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Agent">
+  <eClassifiers xsi:type="ecore:EClass" name="Agent" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomAgent" eSuperTypes="#//Agent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
         eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PresetAgent" abstract="true" eSuperTypes="#//Agent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinuxAgent" eSuperTypes="#//PresetAgent">
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WindowsAgent" eSuperTypes="#//PresetAgent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MacOSAgent" eSuperTypes="#//PresetAgent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xcode" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

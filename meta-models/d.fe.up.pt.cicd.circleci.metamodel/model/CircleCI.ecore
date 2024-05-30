@@ -72,11 +72,22 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DockerExecutor" eSuperTypes="#//Executor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="containers" upperBound="-1"
-        eType="#//DockerContainer" containment="true"/>
+        eType="#//AbstractDockerContainer" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DockerContainer" eSuperTypes="#//Environment">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractDockerContainer" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="image" lowerBound="1" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NullDockerContainer" eSuperTypes="#//AbstractDockerContainer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="agent" lowerBound="1" eType="#//CICD_AGENTS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CICD_AGENTS">
+    <eLiterals name="WINDOWS"/>
+    <eLiterals name="LINUX" value="1"/>
+    <eLiterals name="MACOS" value="2"/>
+    <eLiterals name="CUSTOM" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DockerContainer" eSuperTypes="#//Environment #//AbstractDockerContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entrypoint" upperBound="-1"
@@ -105,10 +116,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="MacOSExecutor" eSuperTypes="#//Executor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="xcode" lowerBound="1" eType="#//Expression"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WindowsOrbExecutor" eSuperTypes="#//Executor">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="executor" lowerBound="1"
-        eType="#//Expression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceExecutor" abstract="true" eSuperTypes="#//Executor"/>
   <eClassifiers xsi:type="ecore:EClass" name="ExecutorReferenceExecutor" eSuperTypes="#//ReferenceExecutor">

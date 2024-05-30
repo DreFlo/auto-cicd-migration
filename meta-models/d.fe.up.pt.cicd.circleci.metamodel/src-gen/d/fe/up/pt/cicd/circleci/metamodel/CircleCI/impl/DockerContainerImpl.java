@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Expression;
@@ -790,6 +791,42 @@ public class DockerContainerImpl extends EnvironmentImpl implements DockerContai
 			return awsSecretAccessKey != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractDockerContainer.class) {
+			switch (derivedFeatureID) {
+			case CircleCIPackage.DOCKER_CONTAINER__IMAGE:
+				return CircleCIPackage.ABSTRACT_DOCKER_CONTAINER__IMAGE;
+			default:
+				return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractDockerContainer.class) {
+			switch (baseFeatureID) {
+			case CircleCIPackage.ABSTRACT_DOCKER_CONTAINER__IMAGE:
+				return CircleCIPackage.DOCKER_CONTAINER__IMAGE;
+			default:
+				return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //DockerContainerImpl

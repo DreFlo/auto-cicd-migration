@@ -129,6 +129,16 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseAbstractDockerContainer(AbstractDockerContainer object) {
+			return createAbstractDockerContainerAdapter();
+		}
+
+		@Override
+		public Adapter caseNullDockerContainer(NullDockerContainer object) {
+			return createNullDockerContainerAdapter();
+		}
+
+		@Override
 		public Adapter caseDockerContainer(DockerContainer object) {
 			return createDockerContainerAdapter();
 		}
@@ -141,11 +151,6 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseMacOSExecutor(MacOSExecutor object) {
 			return createMacOSExecutorAdapter();
-		}
-
-		@Override
-		public Adapter caseWindowsOrbExecutor(WindowsOrbExecutor object) {
-			return createWindowsOrbExecutorAdapter();
 		}
 
 		@Override
@@ -596,6 +601,34 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer <em>Abstract Docker Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer
+	 * @generated
+	 */
+	public Adapter createAbstractDockerContainerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer <em>Null Docker Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer
+	 * @generated
+	 */
+	public Adapter createNullDockerContainerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer <em>Docker Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -634,20 +667,6 @@ public class CircleCIAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMacOSExecutorAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor <em>Windows Orb Executor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor
-	 * @generated
-	 */
-	public Adapter createWindowsOrbExecutorAdapter() {
 		return null;
 	}
 

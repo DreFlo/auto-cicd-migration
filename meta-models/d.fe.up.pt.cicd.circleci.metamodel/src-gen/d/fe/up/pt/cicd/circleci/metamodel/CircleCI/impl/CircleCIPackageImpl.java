@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.circleci.metamodel.CircleCI.impl;
 
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AddSSHKeysStep;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.And;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AttachWorkspaceStep;
@@ -37,6 +38,7 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Matrix;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixCombination;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.MatrixParameter;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Not;
+import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullWorkflowJobConfiguration;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Or;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Orb;
@@ -65,7 +67,6 @@ import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Value;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableReference;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WhenStep;
-import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.Workflow;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowApprovalJobConfiguration;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WorkflowDefinedJobConfiguration;
@@ -178,6 +179,20 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass abstractDockerContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nullDockerContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass dockerContainerEClass = null;
 
 	/**
@@ -193,13 +208,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	private EClass macOSExecutorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass windowsOrbExecutorEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -571,6 +579,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	private EEnum parameteR_TYPESEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum cicD_AGENTSEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1009,6 +1024,46 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getAbstractDockerContainer() {
+		return abstractDockerContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getAbstractDockerContainer_Image() {
+		return (EReference) abstractDockerContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNullDockerContainer() {
+		return nullDockerContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getNullDockerContainer_Agent() {
+		return (EAttribute) nullDockerContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDockerContainer() {
 		return dockerContainerEClass;
 	}
@@ -1019,7 +1074,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Image() {
+	public EReference getDockerContainer_Name() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1029,7 +1084,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Name() {
+	public EReference getDockerContainer_Entrypoint() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1039,7 +1094,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Entrypoint() {
+	public EReference getDockerContainer_Command() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1049,7 +1104,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Command() {
+	public EReference getDockerContainer_User() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1059,7 +1114,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_User() {
+	public EReference getDockerContainer_Username() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -1069,7 +1124,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Username() {
+	public EReference getDockerContainer_Password() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1079,7 +1134,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Password() {
+	public EReference getDockerContainer_Oidc() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1089,7 +1144,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_Oidc() {
+	public EReference getDockerContainer_AwsAccessKeyID() {
 		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1099,18 +1154,8 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getDockerContainer_AwsAccessKeyID() {
-		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getDockerContainer_AwsSecretAccessKey() {
-		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(9);
+		return (EReference) dockerContainerEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1161,26 +1206,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	@Override
 	public EReference getMacOSExecutor_Xcode() {
 		return (EReference) macOSExecutorEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getWindowsOrbExecutor() {
-		return windowsOrbExecutorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getWindowsOrbExecutor_Executor() {
-		return (EReference) windowsOrbExecutorEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2529,6 +2554,16 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 	 * @generated
 	 */
 	@Override
+	public EEnum getCICD_AGENTS() {
+		return cicD_AGENTSEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getWHEN_TYPE() {
 		return wheN_TYPEEEnum;
 	}
@@ -2611,8 +2646,13 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		dockerExecutorEClass = createEClass(DOCKER_EXECUTOR);
 		createEReference(dockerExecutorEClass, DOCKER_EXECUTOR__CONTAINERS);
 
+		abstractDockerContainerEClass = createEClass(ABSTRACT_DOCKER_CONTAINER);
+		createEReference(abstractDockerContainerEClass, ABSTRACT_DOCKER_CONTAINER__IMAGE);
+
+		nullDockerContainerEClass = createEClass(NULL_DOCKER_CONTAINER);
+		createEAttribute(nullDockerContainerEClass, NULL_DOCKER_CONTAINER__AGENT);
+
 		dockerContainerEClass = createEClass(DOCKER_CONTAINER);
-		createEReference(dockerContainerEClass, DOCKER_CONTAINER__IMAGE);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__NAME);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__ENTRYPOINT);
 		createEReference(dockerContainerEClass, DOCKER_CONTAINER__COMMAND);
@@ -2629,9 +2669,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		macOSExecutorEClass = createEClass(MAC_OS_EXECUTOR);
 		createEReference(macOSExecutorEClass, MAC_OS_EXECUTOR__XCODE);
-
-		windowsOrbExecutorEClass = createEClass(WINDOWS_ORB_EXECUTOR);
-		createEReference(windowsOrbExecutorEClass, WINDOWS_ORB_EXECUTOR__EXECUTOR);
 
 		referenceExecutorEClass = createEClass(REFERENCE_EXECUTOR);
 
@@ -2820,6 +2857,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		// Create enums
 		parameteR_TYPESEEnum = createEEnum(PARAMETER_TYPES);
+		cicD_AGENTSEEnum = createEEnum(CICD_AGENTS);
 		wheN_TYPEEEnum = createEEnum(WHEN_TYPE);
 	}
 
@@ -2861,10 +2899,11 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		commandEClass.getESuperTypes().add(this.getCallable());
 		executorEClass.getESuperTypes().add(this.getEnvironment());
 		dockerExecutorEClass.getESuperTypes().add(this.getExecutor());
+		nullDockerContainerEClass.getESuperTypes().add(this.getAbstractDockerContainer());
 		dockerContainerEClass.getESuperTypes().add(this.getEnvironment());
+		dockerContainerEClass.getESuperTypes().add(this.getAbstractDockerContainer());
 		machineExecutorEClass.getESuperTypes().add(this.getExecutor());
 		macOSExecutorEClass.getESuperTypes().add(this.getExecutor());
-		windowsOrbExecutorEClass.getESuperTypes().add(this.getExecutor());
 		referenceExecutorEClass.getESuperTypes().add(this.getExecutor());
 		executorReferenceExecutorEClass.getESuperTypes().add(this.getReferenceExecutor());
 		orbReferenceExecutorEClass.getESuperTypes().add(this.getReferenceExecutor());
@@ -3004,15 +3043,24 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 
 		initEClass(dockerExecutorEClass, DockerExecutor.class, "DockerExecutor", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDockerExecutor_Containers(), this.getDockerContainer(), null, "containers", null, 0, -1,
-				DockerExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getDockerExecutor_Containers(), this.getAbstractDockerContainer(), null, "containers", null, 0,
+				-1, DockerExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(abstractDockerContainerEClass, AbstractDockerContainer.class, "AbstractDockerContainer", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractDockerContainer_Image(), this.getExpression(), null, "image", null, 1, 1,
+				AbstractDockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nullDockerContainerEClass, NullDockerContainer.class, "NullDockerContainer", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNullDockerContainer_Agent(), this.getCICD_AGENTS(), "agent", null, 1, 1,
+				NullDockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dockerContainerEClass, DockerContainer.class, "DockerContainer", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDockerContainer_Image(), this.getExpression(), null, "image", null, 1, 1,
-				DockerContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDockerContainer_Name(), this.getExpression(), null, "name", null, 0, 1, DockerContainer.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3055,12 +3103,6 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		initEReference(getMacOSExecutor_Xcode(), this.getExpression(), null, "xcode", null, 1, 1, MacOSExecutor.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(windowsOrbExecutorEClass, WindowsOrbExecutor.class, "WindowsOrbExecutor", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWindowsOrbExecutor_Executor(), this.getExpression(), null, "executor", null, 1, 1,
-				WindowsOrbExecutor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(referenceExecutorEClass, ReferenceExecutor.class, "ReferenceExecutor", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -3453,6 +3495,11 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		addEEnumLiteral(parameteR_TYPESEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.STEPS);
 		addEEnumLiteral(parameteR_TYPESEEnum,
 				d.fe.up.pt.cicd.circleci.metamodel.CircleCI.PARAMETER_TYPES.ENVIRONMENT_VARIABLE_NAME);
+
+		initEEnum(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.class, "CICD_AGENTS");
+		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.WINDOWS);
+		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.LINUX);
+		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.MACOS);
 
 		initEEnum(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.class, "WHEN_TYPE");
 		addEEnumLiteral(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.ON_SUCCESS);

@@ -12,3 +12,5 @@ test/diffs/*
 test/categorized_diffs/*
 !test/categorized_diffs/.empty
 test/converted_circleci/*
+test/circleci_alex.zip
+test/circleci_alex/*

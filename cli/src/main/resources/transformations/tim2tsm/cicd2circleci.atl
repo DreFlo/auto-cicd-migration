@@ -14,6 +14,8 @@ rule Pipeline2Pipeline {
 				thisModule.getAllJobs(input.jobStreams)
 					->collect(job | job.steps)
 					->flatten()
+					->collect(step | step.getChildren())
+					->flatten()
 					->select(step | step.oclIsTypeOf(CICD!Plugin))
 					->select(step | step.checkIfOrb())
 					->collect(step | thisModule.Plugin2OrbReference(step.getReference(), step)),
@@ -21,6 +23,15 @@ rule Pipeline2Pipeline {
 			workflows <- Sequence{thisModule.Pipeline2Workflow(input)}
 		)
 }
+
+helper context CICD!Step def : getChildren() : Sequence(CICD!Step) =
+	Sequence{};
+	
+helper context CICD!NonConditionalStep def : getChildren() : Sequence(CICD!Step) =
+	Sequence{self};
+	
+helper context CICD!ConditionalStep def : getChildren() : Sequence(CICD!Step) =
+	Sequence{self}->union(self.thenRun->collect(step | step.getChildren())->flatten())->union(self.elseRun->collect(step | step.getChildren())->flatten());
 
 lazy rule Pipeline2Workflow {
 	from
@@ -124,7 +135,7 @@ unique lazy rule ScriptJob2Job {
 	to
 		output : CircleCI!Job(
 			environmentVariables <- input.environmentVariables,
-			executor <- thisModule.job2ExecutorHelper(input),
+			executor <- input.job2ExecutorHelper(),
 			name <- input.id,
 			parameters <- input.inputs,
 			steps <- input.steps->collect(step | thisModule.step2StepHelper(step))->flatten()
@@ -207,7 +218,12 @@ lazy rule Checkout2CheckoutStep {
 		input : CICD!Checkout
 	to
 		output : CircleCI!CheckoutStep(
-			path <- input.path
+			path <- 
+				if not input.path.oclIsUndefined() then 
+					input.path.expression2ExpressionHelper()
+				else
+					OclUndefined
+				endif
 		)
 }
 
@@ -363,7 +379,7 @@ unique lazy rule Plugin2OrbReference {
 		input : CICD!Plugin
 	to
 		output : CircleCI!OrbReference(
-			name <-	input.pluginName.split('/')->first(),
+			name <- CircleCI!OrbReference.allInstances()->indexOf(output).toString(),
 			reference <- reference
 		)
 }
@@ -410,12 +426,65 @@ unique lazy rule Job2DockerExecutor {
 		input : CICD!Job
 	to
 		output : CircleCI!DockerExecutor(
-			containers <- Sequence{input.agent.container}->union(input.services)->collect(container | 
-				if not container.oclIsUndefined() then
+			containers <- Sequence{
+					if input.agent.oclIsTypeOf(CICD!LinuxAgent) then
+						if not input.agent.container.oclIsUndefined() then
+							input.agent.container
+						else
+							thisModule.CreateNullDockerContainer(input.agent)
+						endif
+					else
+						thisModule.CreateNullDockerContainer(input.agent)
+					endif
+				}->union(input.services)->collect(container | 
+				if not container.oclIsTypeOf(CircleCI!NullDockerContainer) then
 					thisModule.DockerContainer2DockerContainer(container)
 				else
+					container
+				endif
+			),
+			environmentVariables <- input.environmentVariables,
+			shell <- 
+				if input.shell = #NULL then
 					OclUndefined
-				endif)
+				else
+					thisModule.String2StringLiteral(input.shell.toString())
+				endif,
+			workingDirectory <- 
+				if not input.workingDirectory.oclIsUndefined() then
+					thisModule.String2StringLiteral(input.workingDirectory)
+				else
+					OclUndefined
+				endif
+		)
+}
+
+lazy rule CreateNullDockerContainer {
+	from
+		input : CICD!Agent
+	to
+		output : CircleCI!NullDockerContainer (
+			agent <-
+				if input.oclIsTypeOf(CICD!WindowsAgent) then
+					#WINDOWS
+				else if input.oclIsTypeOf(CICD!MacOSAgent) then
+					#MACOS
+				else if input.oclIsTypeOf(CICD!LinuxAgent) then
+					#LINUX
+				else
+					#CUSTOM
+				endif
+				endif
+				endif,
+			image <-
+				if input.oclIsKindOf(CICD!PresetAgent) then
+					input.image.expression2ExpressionHelper()
+				else if input.oclIsTypeOf(CICD!CustomAgent) then
+					thisModule.getCICDProperty(input.agent.labels, 'MACHINE_IMAGE')
+				else
+					OclUndefined
+				endif
+				endif
 		)
 }
 
@@ -423,14 +492,28 @@ unique lazy rule Job2MacOSExecutor {
 	from
 		input : CICD!Job
 	to
-		output : CircleCI!MacOSExecutor
-}
-
-unique lazy rule Job2WindowsOrbExecutor {
-	from
-		input : CICD!Job
-	to
-		output : CircleCI!WindowsOrbExecutor
+		output : CircleCI!MacOSExecutor (
+			xcode <- 
+				if not input.agent.xcode.oclIsUndefined() then
+					input.agent.xcode.expression2ExpressionHelper()
+				else
+					thisModule.String2StringLiteral('latest')
+				endif,
+			environmentVariables <- input.environmentVariables,
+			shell <- 
+				if input.shell = #NULL then
+					OclUndefined
+				else
+					thisModule.String2StringLiteral(input.shell.toString())
+				endif,
+			workingDirectory <- 
+				if not input.workingDirectory.oclIsUndefined() then
+					thisModule.String2StringLiteral(input.workingDirectory)
+				else
+					OclUndefined
+				endif
+			
+		)
 }
 
 unique lazy rule Job2MachineExecutor {
@@ -438,18 +521,50 @@ unique lazy rule Job2MachineExecutor {
 		input : CICD!Job
 	to
 		output : CircleCI!MachineExecutor(
-			image <-
-				if not input.agent.container.oclIsUndefined() then
-					if not input.agent.container.image.oclIsUndefined() then
-						input.agent.container.image.expression2ExpressionHelper()
-					else
-						OclUndefined
-					endif
+			image <- 
+				if input.agent.oclIsKindOf(CICD!PresetAgent) then
+					input.agent.image.expression2ExpressionHelper()
+				else
+					thisModule.getCICDProperty(input.agent.labels, 'MACHINE_IMAGE')
+				endif,
+			environmentVariables <- input.environmentVariables,
+			shell <- 
+				if input.shell = #NULL then
+					OclUndefined
+				else
+					thisModule.String2StringLiteral(input.shell.toString())
+				endif,
+			workingDirectory <- 
+				if not input.workingDirectory.oclIsUndefined() then
+					thisModule.String2StringLiteral(input.workingDirectory)
 				else
 					OclUndefined
 				endif
 		)
 }
+
+helper def : getCICDProperty(labels : Sequence(CICD!Expression), name : String) : CircleCI!Expression =
+	if labels.oclIsUndefined() or labels->isEmpty() then
+		OclUndefined
+	else if labels->first().expression2String().startsWith('%%__CICD__' + name + '#%!!__#%!!') then 
+		if labels->first().oclIsTypeOf(CICD!Concat) then
+			let concat : CICD!Concat = labels->first()
+			in
+			if concat.expressions->size() = 2 then
+				concat.expressions->last()
+			else
+				thisModule.CreateConcat(concat.expressions->excluding(concat.expressions->first()))
+			endif
+		else if labels->first().oclIsTypeOf(CICD!StringLiteral) then
+			thisModule.String2StringLiteral(labels->first().expression2String().split('#%!!__#%!!')->last())
+		else
+			OclUndefined
+		endif
+		endif
+	else 
+		thisModule.getCICDProperty(labels->excluding(labels->first()), name)
+	endif
+	endif;
 
 lazy rule DockerContainer2DockerContainer {
 	from
@@ -700,26 +815,30 @@ helper context CICD!Job def : job2JobHelper() : CircleCI!Job =
 		OclUndefined
 	endif;
 
-helper def : job2ExecutorHelper(job : CICD!Job) : CircleCI!Executor =
-	if job.agent.labels->size() = 1 and job.services.isEmpty() then
-		if job.agent.labels->first().expression2String() = 'macos' then
-			thisModule.Job2MacOSExecutor(job)
-		else if job.agent.labels->first().expression2String() = 'windows' then
-			thisModule.Job2WindowsOrbExecutor(job)
-		else if job.agent.labels->first().expression2String() = 'machine' or job.agent.labels->first().expression2String().startsWith('ubuntu') then
-			thisModule.Job2MachineExecutor(job)
-		else if  not job.agent.container.oclIsUndefined() then
-			thisModule.Job2DockerExecutor(job)
-		else
-			OclUndefined
-		endif
-		endif
-		endif
-		endif
-	else if not job.agent.container.oclIsUndefined() or job.services.notEmpty() then
-		thisModule.Job2DockerExecutor(job)
+helper context CICD!Job def : job2ExecutorHelper() : CircleCI!Executor =
+	if self.checkIfTransform2DockerExecutor() then
+		thisModule.Job2DockerExecutor(self)
+	else if self.agent.oclIsTypeOf(CICD!MacOSAgent) then
+		thisModule.Job2MacOSExecutor(self)
+	else if self.agent.oclIsTypeOf(CICD!WindowsAgent) or self.agent.oclIsTypeOf(CICD!LinuxAgent) or self.agent.oclIsTypeOf(CICD!CustomAgent) then
+		thisModule.Job2MachineExecutor(self)
 	else
 		OclUndefined
+	endif
+	endif
+	endif;
+		
+helper context CICD!Job def : checkIfTransform2DockerExecutor() : Boolean =
+	if self.services->notEmpty() then
+		true
+	else if self.agent.oclIsTypeOf(CICD!LinuxAgent) then
+		if not self.agent.container.oclIsUndefined() then
+			true
+		else
+			false
+		endif
+	else
+		false
 	endif
 	endif;
 	
@@ -835,4 +954,4 @@ helper context CICD!Plugin def : getReference() : String =
 			pluginNameParts->subSequence(1, pluginNameParts->size() - 1) 
 		endif, 
 		'/'
-	) + '@' + self.version;
+	) + if self.version.oclIsUndefined() then '' else '@' + self.version endif;

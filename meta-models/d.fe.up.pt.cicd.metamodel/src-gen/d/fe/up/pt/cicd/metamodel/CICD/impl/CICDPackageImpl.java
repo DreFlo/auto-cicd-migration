@@ -15,6 +15,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Command;
 import d.fe.up.pt.cicd.metamodel.CICD.ComparisonOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Concat;
 import d.fe.up.pt.cicd.metamodel.CICD.ConditionalStep;
+import d.fe.up.pt.cicd.metamodel.CICD.CustomAgent;
 import d.fe.up.pt.cicd.metamodel.CICD.DockerContainer;
 import d.fe.up.pt.cicd.metamodel.CICD.DotOp;
 import d.fe.up.pt.cicd.metamodel.CICD.DoubleLiteral;
@@ -23,8 +24,10 @@ import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 import d.fe.up.pt.cicd.metamodel.CICD.IntegerLiteral;
 import d.fe.up.pt.cicd.metamodel.CICD.Job;
+import d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent;
 import d.fe.up.pt.cicd.metamodel.CICD.Literal;
 import d.fe.up.pt.cicd.metamodel.CICD.LogicalOp;
+import d.fe.up.pt.cicd.metamodel.CICD.MacOSAgent;
 import d.fe.up.pt.cicd.metamodel.CICD.ManualTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.Matrix;
 import d.fe.up.pt.cicd.metamodel.CICD.MatrixAxis;
@@ -38,6 +41,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.Pipeline;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineCallJob;
 import d.fe.up.pt.cicd.metamodel.CICD.Plugin;
+import d.fe.up.pt.cicd.metamodel.CICD.PresetAgent;
 import d.fe.up.pt.cicd.metamodel.CICD.PullRequestTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.PushTrigger;
 import d.fe.up.pt.cicd.metamodel.CICD.ScheduledTrigger;
@@ -49,6 +53,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.UnaryOp;
 import d.fe.up.pt.cicd.metamodel.CICD.Value;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableReference;
+import d.fe.up.pt.cicd.metamodel.CICD.WindowsAgent;
 
 import java.util.Map;
 
@@ -108,6 +113,41 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	private EClass agentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass customAgentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass presetAgentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linuxAgentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass windowsAgentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass macOSAgentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -764,8 +804,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getAgent_Labels() {
-		return (EReference) agentEClass.getEStructuralFeatures().get(0);
+	public EClass getCustomAgent() {
+		return customAgentEClass;
 	}
 
 	/**
@@ -774,8 +814,78 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getAgent_Container() {
-		return (EReference) agentEClass.getEStructuralFeatures().get(1);
+	public EReference getCustomAgent_Labels() {
+		return (EReference) customAgentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPresetAgent() {
+		return presetAgentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPresetAgent_Image() {
+		return (EReference) presetAgentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLinuxAgent() {
+		return linuxAgentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getLinuxAgent_Container() {
+		return (EReference) linuxAgentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWindowsAgent() {
+		return windowsAgentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getMacOSAgent() {
+		return macOSAgentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMacOSAgent_Xcode() {
+		return (EReference) macOSAgentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1920,8 +2030,20 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(pipelineCallJobEClass, PIPELINE_CALL_JOB__ARGS);
 
 		agentEClass = createEClass(AGENT);
-		createEReference(agentEClass, AGENT__LABELS);
-		createEReference(agentEClass, AGENT__CONTAINER);
+
+		customAgentEClass = createEClass(CUSTOM_AGENT);
+		createEReference(customAgentEClass, CUSTOM_AGENT__LABELS);
+
+		presetAgentEClass = createEClass(PRESET_AGENT);
+		createEReference(presetAgentEClass, PRESET_AGENT__IMAGE);
+
+		linuxAgentEClass = createEClass(LINUX_AGENT);
+		createEReference(linuxAgentEClass, LINUX_AGENT__CONTAINER);
+
+		windowsAgentEClass = createEClass(WINDOWS_AGENT);
+
+		macOSAgentEClass = createEClass(MAC_OS_AGENT);
+		createEReference(macOSAgentEClass, MAC_OS_AGENT__XCODE);
 
 		dockerContainerEClass = createEClass(DOCKER_CONTAINER);
 		createEAttribute(dockerContainerEClass, DOCKER_CONTAINER__LABEL);
@@ -2107,6 +2229,11 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		jobEClass.getESuperTypes().add(this.getPipelineBlock());
 		scriptJobEClass.getESuperTypes().add(this.getJob());
 		pipelineCallJobEClass.getESuperTypes().add(this.getJob());
+		customAgentEClass.getESuperTypes().add(this.getAgent());
+		presetAgentEClass.getESuperTypes().add(this.getAgent());
+		linuxAgentEClass.getESuperTypes().add(this.getPresetAgent());
+		windowsAgentEClass.getESuperTypes().add(this.getPresetAgent());
+		macOSAgentEClass.getESuperTypes().add(this.getPresetAgent());
 		pushTriggerEClass.getESuperTypes().add(this.getTrigger());
 		pullRequestTriggerEClass.getESuperTypes().add(this.getTrigger());
 		manualTriggerEClass.getESuperTypes().add(this.getTrigger());
@@ -2212,12 +2339,33 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				PipelineCallJob.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(agentEClass, Agent.class, "Agent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAgent_Labels(), this.getExpression(), null, "labels", null, 0, -1, Agent.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getAgent_Container(), this.getDockerContainer(), null, "container", null, 0, 1, Agent.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+		initEClass(agentEClass, Agent.class, "Agent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(customAgentEClass, CustomAgent.class, "CustomAgent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCustomAgent_Labels(), this.getExpression(), null, "labels", null, 0, -1, CustomAgent.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(presetAgentEClass, PresetAgent.class, "PresetAgent", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPresetAgent_Image(), this.getExpression(), null, "image", null, 0, 1, PresetAgent.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linuxAgentEClass, LinuxAgent.class, "LinuxAgent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinuxAgent_Container(), this.getDockerContainer(), null, "container", null, 0, 1,
+				LinuxAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(windowsAgentEClass, WindowsAgent.class, "WindowsAgent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(macOSAgentEClass, MacOSAgent.class, "MacOSAgent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMacOSAgent_Xcode(), this.getExpression(), null, "xcode", null, 0, 1, MacOSAgent.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dockerContainerEClass, DockerContainer.class, "DockerContainer", !IS_ABSTRACT, !IS_INTERFACE,

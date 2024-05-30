@@ -19,6 +19,11 @@
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//PARAMETER_TYPES/STEPS"/>
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//PARAMETER_TYPES/ENVIRONMENT_VARIABLE_NAME"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CircleCI.ecore#//CICD_AGENTS">
+      <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/WINDOWS"/>
+      <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/LINUX"/>
+      <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/MACOS"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CircleCI.ecore#//WHEN_TYPE">
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//WHEN_TYPE/ON_SUCCESS"/>
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//WHEN_TYPE/ALWAYS"/>
@@ -71,8 +76,13 @@
     <genClasses ecoreClass="CircleCI.ecore#//DockerExecutor">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerExecutor/containers"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="CircleCI.ecore#//AbstractDockerContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//AbstractDockerContainer/image"/>
+    </genClasses>
+    <genClasses ecoreClass="CircleCI.ecore#//NullDockerContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CircleCI.ecore#//NullDockerContainer/agent"/>
+    </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//DockerContainer">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/image"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/entrypoint"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//DockerContainer/command"/>
@@ -89,9 +99,6 @@
     </genClasses>
     <genClasses ecoreClass="CircleCI.ecore#//MacOSExecutor">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//MacOSExecutor/xcode"/>
-    </genClasses>
-    <genClasses ecoreClass="CircleCI.ecore#//WindowsOrbExecutor">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CircleCI.ecore#//WindowsOrbExecutor/executor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CircleCI.ecore#//ReferenceExecutor"/>
     <genClasses ecoreClass="CircleCI.ecore#//ExecutorReferenceExecutor">

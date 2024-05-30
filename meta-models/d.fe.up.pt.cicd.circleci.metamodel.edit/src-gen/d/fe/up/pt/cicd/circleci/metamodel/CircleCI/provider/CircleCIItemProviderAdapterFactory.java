@@ -211,6 +211,29 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NullDockerContainerItemProvider nullDockerContainerItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.NullDockerContainer}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNullDockerContainerAdapter() {
+		if (nullDockerContainerItemProvider == null) {
+			nullDockerContainerItemProvider = new NullDockerContainerItemProvider(this);
+		}
+
+		return nullDockerContainerItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,29 +300,6 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 		}
 
 		return macOSExecutorItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WindowsOrbExecutorItemProvider windowsOrbExecutorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WindowsOrbExecutor}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createWindowsOrbExecutorAdapter() {
-		if (windowsOrbExecutorItemProvider == null) {
-			windowsOrbExecutorItemProvider = new WindowsOrbExecutorItemProvider(this);
-		}
-
-		return windowsOrbExecutorItemProvider;
 	}
 
 	/**
@@ -1339,14 +1339,14 @@ public class CircleCIItemProviderAdapterFactory extends CircleCIAdapterFactory
 			parameterItemProvider.dispose();
 		if (dockerExecutorItemProvider != null)
 			dockerExecutorItemProvider.dispose();
+		if (nullDockerContainerItemProvider != null)
+			nullDockerContainerItemProvider.dispose();
 		if (dockerContainerItemProvider != null)
 			dockerContainerItemProvider.dispose();
 		if (machineExecutorItemProvider != null)
 			machineExecutorItemProvider.dispose();
 		if (macOSExecutorItemProvider != null)
 			macOSExecutorItemProvider.dispose();
-		if (windowsOrbExecutorItemProvider != null)
-			windowsOrbExecutorItemProvider.dispose();
 		if (executorReferenceExecutorItemProvider != null)
 			executorReferenceExecutorItemProvider.dispose();
 		if (orbReferenceExecutorItemProvider != null)

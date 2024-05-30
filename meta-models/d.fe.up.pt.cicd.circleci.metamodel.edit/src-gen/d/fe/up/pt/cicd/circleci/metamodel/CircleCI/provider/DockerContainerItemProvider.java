@@ -61,7 +61,7 @@ public class DockerContainerItemProvider extends EnvironmentItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE);
+			childrenFeatures.add(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__NAME);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT);
 			childrenFeatures.add(CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND);
@@ -159,25 +159,25 @@ public class DockerContainerItemProvider extends EnvironmentItemProvider {
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createConcat()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createDotOperator()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createStringLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createIntegerLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createDoubleLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createBooleanLiteral()));
 
-		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE,
+		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE,
 				CircleCIFactory.eINSTANCE.createVariableReference()));
 
 		newChildDescriptors.add(createChildParameter(CircleCIPackage.Literals.DOCKER_CONTAINER__NAME,
@@ -381,7 +381,7 @@ public class DockerContainerItemProvider extends EnvironmentItemProvider {
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == CircleCIPackage.Literals.DOCKER_CONTAINER__IMAGE
+		boolean qualify = childFeature == CircleCIPackage.Literals.ABSTRACT_DOCKER_CONTAINER__IMAGE
 				|| childFeature == CircleCIPackage.Literals.DOCKER_CONTAINER__NAME
 				|| childFeature == CircleCIPackage.Literals.DOCKER_CONTAINER__ENTRYPOINT
 				|| childFeature == CircleCIPackage.Literals.DOCKER_CONTAINER__COMMAND

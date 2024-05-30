@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface DockerExecutor extends Executor {
 	/**
 	 * Returns the value of the '<em><b>Containers</b></em>' containment reference list.
-	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.DockerContainer}.
+	 * The list contents are of type {@link d.fe.up.pt.cicd.circleci.metamodel.CircleCI.AbstractDockerContainer}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Containers</em>' containment reference list.
@@ -31,6 +31,6 @@ public interface DockerExecutor extends Executor {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<DockerContainer> getContainers();
+	EList<AbstractDockerContainer> getContainers();
 
 } // DockerExecutor

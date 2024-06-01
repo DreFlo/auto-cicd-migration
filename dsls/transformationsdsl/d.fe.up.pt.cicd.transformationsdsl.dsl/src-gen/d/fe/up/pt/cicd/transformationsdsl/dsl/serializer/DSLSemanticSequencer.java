@@ -14,7 +14,6 @@ import d.fe.up.pt.cicd.transformationsdsl.dsl.services.DSLGrammarAccess;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
@@ -78,9 +77,6 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TransformationsPackage.ADD_TRIGGER:
 				sequence_AddTrigger(context, (AddTrigger) semanticObject); 
-				return; 
-			case TransformationsPackage.CHANGE_AGENT_LABEL:
-				sequence_ChangeAgentLabel(context, (ChangeAgentLabel) semanticObject); 
 				return; 
 			case TransformationsPackage.CHANGE_PLUGIN:
 				sequence_ChangePlugin(context, (ChangePlugin) semanticObject); 
@@ -199,27 +195,6 @@ public class DSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
 		feeder.accept(grammarAccess.getAssignmentAccess().getKeyVariableDeclarationParserRuleCall_0_0(), semanticObject.getKey());
 		feeder.accept(grammarAccess.getAssignmentAccess().getValueStringLiteralParserRuleCall_2_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     TIMTransformation returns ChangeAgentLabel
-	 *     ChangeAgentLabel returns ChangeAgentLabel
-	 *
-	 * Constraint:
-	 *     name=StringToStringMapEntry
-	 * </pre>
-	 */
-	protected void sequence_ChangeAgentLabel(ISerializationContext context, ChangeAgentLabel semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, TransformationsPackage.Literals.CHANGE_AGENT_LABEL__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getChangeAgentLabelAccess().getNameStringToStringMapEntryParserRuleCall_2_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	

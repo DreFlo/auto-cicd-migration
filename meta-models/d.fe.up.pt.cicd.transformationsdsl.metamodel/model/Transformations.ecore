@@ -37,10 +37,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//StringToStringMapEntry"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ChangeAgentLabel" eSuperTypes="#//InplaceTransformation #//TIMTransformation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//StringToStringMapEntry"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReplaceAgentLabels" eSuperTypes="#//OutplaceTransformation #//TIMTransformation #//ConditionalTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labels" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

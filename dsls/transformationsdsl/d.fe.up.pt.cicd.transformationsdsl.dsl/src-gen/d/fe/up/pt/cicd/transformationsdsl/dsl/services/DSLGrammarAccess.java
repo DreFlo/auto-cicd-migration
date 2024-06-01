@@ -31,21 +31,21 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Action cTransformationSetAction_0 = (Action)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cBeforeKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cTransformationKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Keyword cTranslatingKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		private final Assignment cPreTIMAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
 		private final RuleCall cPreTIMTSMTransformationParserRuleCall_1_3_0 = (RuleCall)cPreTIMAssignment_1_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cDuringKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Keyword cTransformationKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Keyword cTranslatingKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Assignment cOnTIMAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
 		private final RuleCall cOnTIMTIMTransformationParserRuleCall_2_3_0 = (RuleCall)cOnTIMAssignment_2_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cAfterKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cTransformationKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Keyword cTranslatingKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		private final Assignment cPostTIMAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
 		private final RuleCall cPostTIMTSMTransformationParserRuleCall_3_3_0 = (RuleCall)cPostTIMAssignment_3_3.eContents().get(0);
@@ -53,29 +53,29 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//TransformationSet returns TransformationSet:
 		//    {TransformationSet}
-		//    ('before' 'transformation'? '{' (preTIM+=TSMTransformation)* '}')?
-		//    ('during' 'transformation'? '{' (onTIM+=TIMTransformation)* '}')?
-		//    ('after' 'transformation'? '{' (postTIM+=TSMTransformation)* '}')?
+		//    ('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
+		//    ('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+		//    ('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{TransformationSet}
-		//('before' 'transformation'? '{' (preTIM+=TSMTransformation)* '}')?
-		//('during' 'transformation'? '{' (onTIM+=TIMTransformation)* '}')?
-		//('after' 'transformation'? '{' (postTIM+=TSMTransformation)* '}')?
+		//('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
+		//('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+		//('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 		public Group getGroup() { return cGroup; }
 		
 		//{TransformationSet}
 		public Action getTransformationSetAction_0() { return cTransformationSetAction_0; }
 		
-		//('before' 'transformation'? '{' (preTIM+=TSMTransformation)* '}')?
+		//('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'before'
 		public Keyword getBeforeKeyword_1_0() { return cBeforeKeyword_1_0; }
 		
-		//'transformation'?
-		public Keyword getTransformationKeyword_1_1() { return cTransformationKeyword_1_1; }
+		//'translating'?
+		public Keyword getTranslatingKeyword_1_1() { return cTranslatingKeyword_1_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_1_2() { return cLeftCurlyBracketKeyword_1_2; }
@@ -89,14 +89,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_1_4() { return cRightCurlyBracketKeyword_1_4; }
 		
-		//('during' 'transformation'? '{' (onTIM+=TIMTransformation)* '}')?
+		//('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//'during'
 		public Keyword getDuringKeyword_2_0() { return cDuringKeyword_2_0; }
 		
-		//'transformation'?
-		public Keyword getTransformationKeyword_2_1() { return cTransformationKeyword_2_1; }
+		//'translating'?
+		public Keyword getTranslatingKeyword_2_1() { return cTranslatingKeyword_2_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2_2() { return cLeftCurlyBracketKeyword_2_2; }
@@ -110,14 +110,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_2_4() { return cRightCurlyBracketKeyword_2_4; }
 		
-		//('after' 'transformation'? '{' (postTIM+=TSMTransformation)* '}')?
+		//('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'after'
 		public Keyword getAfterKeyword_3_0() { return cAfterKeyword_3_0; }
 		
-		//'transformation'?
-		public Keyword getTransformationKeyword_3_1() { return cTransformationKeyword_3_1; }
+		//'translating'?
+		public Keyword getTranslatingKeyword_3_1() { return cTranslatingKeyword_3_1; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_2() { return cLeftCurlyBracketKeyword_3_2; }
@@ -204,18 +204,17 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cATLScriptParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cChangePluginParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cChangeAgentLabelParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cReplaceAgentLabelsParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cAddTriggerParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cReplaceStepParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final RuleCall cDeleteStepParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cReplaceAgentLabelsParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cAddTriggerParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cReplaceStepParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cDeleteStepParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//TIMTransformation returns TIMTransformation:
-		//    ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+		//    ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+		//ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ATLScript
@@ -224,20 +223,17 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//ChangePlugin
 		public RuleCall getChangePluginParserRuleCall_1() { return cChangePluginParserRuleCall_1; }
 		
-		//ChangeAgentLabel
-		public RuleCall getChangeAgentLabelParserRuleCall_2() { return cChangeAgentLabelParserRuleCall_2; }
-		
 		//ReplaceAgentLabels
-		public RuleCall getReplaceAgentLabelsParserRuleCall_3() { return cReplaceAgentLabelsParserRuleCall_3; }
+		public RuleCall getReplaceAgentLabelsParserRuleCall_2() { return cReplaceAgentLabelsParserRuleCall_2; }
 		
 		//AddTrigger
-		public RuleCall getAddTriggerParserRuleCall_4() { return cAddTriggerParserRuleCall_4; }
+		public RuleCall getAddTriggerParserRuleCall_3() { return cAddTriggerParserRuleCall_3; }
 		
 		//ReplaceStep
-		public RuleCall getReplaceStepParserRuleCall_5() { return cReplaceStepParserRuleCall_5; }
+		public RuleCall getReplaceStepParserRuleCall_4() { return cReplaceStepParserRuleCall_4; }
 		
 		//DeleteStep
-		public RuleCall getDeleteStepParserRuleCall_6() { return cDeleteStepParserRuleCall_6; }
+		public RuleCall getDeleteStepParserRuleCall_5() { return cDeleteStepParserRuleCall_5; }
 	}
 	public class ChangePluginElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ChangePlugin");
@@ -302,34 +298,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_3() { return cRightCurlyBracketKeyword_5_3; }
-	}
-	public class ChangeAgentLabelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ChangeAgentLabel");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cChangeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLabelKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameStringToStringMapEntryParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		
-		//ChangeAgentLabel returns ChangeAgentLabel:
-		//    'change' 'label' name=StringToStringMapEntry
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'change' 'label' name=StringToStringMapEntry
-		public Group getGroup() { return cGroup; }
-		
-		//'change'
-		public Keyword getChangeKeyword_0() { return cChangeKeyword_0; }
-		
-		//'label'
-		public Keyword getLabelKeyword_1() { return cLabelKeyword_1; }
-		
-		//name=StringToStringMapEntry
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//StringToStringMapEntry
-		public RuleCall getNameStringToStringMapEntryParserRuleCall_2_0() { return cNameStringToStringMapEntryParserRuleCall_2_0; }
 	}
 	public class ReplaceAgentLabelsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ReplaceAgentLabels");
@@ -913,25 +881,25 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.CircleCITransformation");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOnKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cCircleCIKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cCircleciKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final RuleCall cSetCircleCIVersionParserRuleCall_2_0 = (RuleCall)cAlternatives_2.eContents().get(0);
 		private final RuleCall cAddExecutorParserRuleCall_2_1 = (RuleCall)cAlternatives_2.eContents().get(1);
 		private final RuleCall cSelectWorkflowParserRuleCall_2_2 = (RuleCall)cAlternatives_2.eContents().get(2);
 		
 		//CircleCITransformation returns CircleCITransformation:
-		//    'on' 'CircleCI' (SetCircleCIVersion | AddExecutor | SelectWorkflow)
+		//    'on' 'circleci' (SetCircleCIVersion | AddExecutor | SelectWorkflow)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'on' 'CircleCI' (SetCircleCIVersion | AddExecutor | SelectWorkflow)
+		//'on' 'circleci' (SetCircleCIVersion | AddExecutor | SelectWorkflow)
 		public Group getGroup() { return cGroup; }
 		
 		//'on'
 		public Keyword getOnKeyword_0() { return cOnKeyword_0; }
 		
-		//'CircleCI'
-		public Keyword getCircleCIKeyword_1() { return cCircleCIKeyword_1; }
+		//'circleci'
+		public Keyword getCircleciKeyword_1() { return cCircleciKeyword_1; }
 		
 		//(SetCircleCIVersion | AddExecutor | SelectWorkflow)
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
@@ -1169,37 +1137,37 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.MODELS");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cGHAEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cGHAGHAKeyword_0_0 = (Keyword)cGHAEnumLiteralDeclaration_0.eContents().get(0);
+		private final Keyword cGHAGhaKeyword_0_0 = (Keyword)cGHAEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cCICDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cCICDCICDKeyword_1_0 = (Keyword)cCICDEnumLiteralDeclaration_1.eContents().get(0);
+		private final Keyword cCICDCicdKeyword_1_0 = (Keyword)cCICDEnumLiteralDeclaration_1.eContents().get(0);
 		private final EnumLiteralDeclaration cCircleCIEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cCircleCICircleCIKeyword_2_0 = (Keyword)cCircleCIEnumLiteralDeclaration_2.eContents().get(0);
+		private final Keyword cCircleCICircleciKeyword_2_0 = (Keyword)cCircleCIEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum MODELS returns MODELS:
-		//    GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'
+		//    GHA = 'gha' | CICD = 'cicd' | CircleCI = 'circleci'
 		//;
 		public EnumRule getRule() { return rule; }
 		
-		//GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'
+		//GHA = 'gha' | CICD = 'cicd' | CircleCI = 'circleci'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//GHA = 'GHA'
+		//GHA = 'gha'
 		public EnumLiteralDeclaration getGHAEnumLiteralDeclaration_0() { return cGHAEnumLiteralDeclaration_0; }
 		
-		//'GHA'
-		public Keyword getGHAGHAKeyword_0_0() { return cGHAGHAKeyword_0_0; }
+		//'gha'
+		public Keyword getGHAGhaKeyword_0_0() { return cGHAGhaKeyword_0_0; }
 		
-		//CICD = 'CICD'
+		//CICD = 'cicd'
 		public EnumLiteralDeclaration getCICDEnumLiteralDeclaration_1() { return cCICDEnumLiteralDeclaration_1; }
 		
-		//'CICD'
-		public Keyword getCICDCICDKeyword_1_0() { return cCICDCICDKeyword_1_0; }
+		//'cicd'
+		public Keyword getCICDCicdKeyword_1_0() { return cCICDCicdKeyword_1_0; }
 		
-		//CircleCI = 'CircleCI'
+		//CircleCI = 'circleci'
 		public EnumLiteralDeclaration getCircleCIEnumLiteralDeclaration_2() { return cCircleCIEnumLiteralDeclaration_2; }
 		
-		//'CircleCI'
-		public Keyword getCircleCICircleCIKeyword_2_0() { return cCircleCICircleCIKeyword_2_0; }
+		//'circleci'
+		public Keyword getCircleCICircleciKeyword_2_0() { return cCircleCICircleciKeyword_2_0; }
 	}
 	
 	private final TransformationSetElements pTransformationSet;
@@ -1207,7 +1175,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final ATLScriptElements pATLScript;
 	private final TIMTransformationElements pTIMTransformation;
 	private final ChangePluginElements pChangePlugin;
-	private final ChangeAgentLabelElements pChangeAgentLabel;
 	private final ReplaceAgentLabelsElements pReplaceAgentLabels;
 	private final AddTriggerElements pAddTrigger;
 	private final TriggerElements pTrigger;
@@ -1244,7 +1211,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pATLScript = new ATLScriptElements();
 		this.pTIMTransformation = new TIMTransformationElements();
 		this.pChangePlugin = new ChangePluginElements();
-		this.pChangeAgentLabel = new ChangeAgentLabelElements();
 		this.pReplaceAgentLabels = new ReplaceAgentLabelsElements();
 		this.pAddTrigger = new AddTriggerElements();
 		this.pTrigger = new TriggerElements();
@@ -1297,9 +1263,9 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//TransformationSet returns TransformationSet:
 	//    {TransformationSet}
-	//    ('before' 'transformation'? '{' (preTIM+=TSMTransformation)* '}')?
-	//    ('during' 'transformation'? '{' (onTIM+=TIMTransformation)* '}')?
-	//    ('after' 'transformation'? '{' (postTIM+=TSMTransformation)* '}')?
+	//    ('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
+	//    ('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+	//    ('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 	//;
 	public TransformationSetElements getTransformationSetAccess() {
 		return pTransformationSet;
@@ -1332,7 +1298,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//TIMTransformation returns TIMTransformation:
-	//    ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+	//    ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
 	//;
 	public TIMTransformationElements getTIMTransformationAccess() {
 		return pTIMTransformation;
@@ -1351,17 +1317,6 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	public ParserRule getChangePluginRule() {
 		return getChangePluginAccess().getRule();
-	}
-	
-	//ChangeAgentLabel returns ChangeAgentLabel:
-	//    'change' 'label' name=StringToStringMapEntry
-	//;
-	public ChangeAgentLabelElements getChangeAgentLabelAccess() {
-		return pChangeAgentLabel;
-	}
-	
-	public ParserRule getChangeAgentLabelRule() {
-		return getChangeAgentLabelAccess().getRule();
 	}
 	
 	//ReplaceAgentLabels returns ReplaceAgentLabels:
@@ -1556,7 +1511,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//CircleCITransformation returns CircleCITransformation:
-	//    'on' 'CircleCI' (SetCircleCIVersion | AddExecutor | SelectWorkflow)
+	//    'on' 'circleci' (SetCircleCIVersion | AddExecutor | SelectWorkflow)
 	//;
 	public CircleCITransformationElements getCircleCITransformationAccess() {
 		return pCircleCITransformation;
@@ -1622,7 +1577,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//enum MODELS returns MODELS:
-	//    GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'
+	//    GHA = 'gha' | CICD = 'cicd' | CircleCI = 'circleci'
 	//;
 	public MODELSElements getMODELSAccess() {
 		return eMODELS;

@@ -24,12 +24,12 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_ATLScript_OnKeyword_2_q;
 	protected AbstractElementAlias match_AddOrbReferenceExecutor_FromKeyword_3_q;
 	protected AbstractElementAlias match_SetCircleCIVersion_ToKeyword_2_q;
-	protected AbstractElementAlias match_TransformationSet_TransformationKeyword_1_1_q;
-	protected AbstractElementAlias match_TransformationSet_TransformationKeyword_2_1_q;
-	protected AbstractElementAlias match_TransformationSet_TransformationKeyword_3_1_q;
-	protected AbstractElementAlias match_TransformationSet___AfterKeyword_3_0_TransformationKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q;
-	protected AbstractElementAlias match_TransformationSet___BeforeKeyword_1_0_TransformationKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q;
-	protected AbstractElementAlias match_TransformationSet___DuringKeyword_2_0_TransformationKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q;
+	protected AbstractElementAlias match_TransformationSet_TranslatingKeyword_1_1_q;
+	protected AbstractElementAlias match_TransformationSet_TranslatingKeyword_2_1_q;
+	protected AbstractElementAlias match_TransformationSet_TranslatingKeyword_3_1_q;
+	protected AbstractElementAlias match_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q;
+	protected AbstractElementAlias match_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q;
+	protected AbstractElementAlias match_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -37,12 +37,12 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_ATLScript_OnKeyword_2_q = new TokenAlias(false, true, grammarAccess.getATLScriptAccess().getOnKeyword_2());
 		match_AddOrbReferenceExecutor_FromKeyword_3_q = new TokenAlias(false, true, grammarAccess.getAddOrbReferenceExecutorAccess().getFromKeyword_3());
 		match_SetCircleCIVersion_ToKeyword_2_q = new TokenAlias(false, true, grammarAccess.getSetCircleCIVersionAccess().getToKeyword_2());
-		match_TransformationSet_TransformationKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_1_1());
-		match_TransformationSet_TransformationKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_2_1());
-		match_TransformationSet_TransformationKeyword_3_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_3_1());
-		match_TransformationSet___AfterKeyword_3_0_TransformationKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getAfterKeyword_3_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_3_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_3_4()));
-		match_TransformationSet___BeforeKeyword_1_0_TransformationKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getBeforeKeyword_1_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_1_4()));
-		match_TransformationSet___DuringKeyword_2_0_TransformationKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTransformationKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_2_4()));
+		match_TransformationSet_TranslatingKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_1_1());
+		match_TransformationSet_TranslatingKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_2_1());
+		match_TransformationSet_TranslatingKeyword_3_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_3_1());
+		match_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getAfterKeyword_3_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_3_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_3_4()));
+		match_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getBeforeKeyword_1_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_1_4()));
+		match_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_2_4()));
 	}
 	
 	@Override
@@ -63,18 +63,18 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_AddOrbReferenceExecutor_FromKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_SetCircleCIVersion_ToKeyword_2_q.equals(syntax))
 				emit_SetCircleCIVersion_ToKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet_TransformationKeyword_1_1_q.equals(syntax))
-				emit_TransformationSet_TransformationKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet_TransformationKeyword_2_1_q.equals(syntax))
-				emit_TransformationSet_TransformationKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet_TransformationKeyword_3_1_q.equals(syntax))
-				emit_TransformationSet_TransformationKeyword_3_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet___AfterKeyword_3_0_TransformationKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q.equals(syntax))
-				emit_TransformationSet___AfterKeyword_3_0_TransformationKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet___BeforeKeyword_1_0_TransformationKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q.equals(syntax))
-				emit_TransformationSet___BeforeKeyword_1_0_TransformationKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet___DuringKeyword_2_0_TransformationKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q.equals(syntax))
-				emit_TransformationSet___DuringKeyword_2_0_TransformationKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet_TranslatingKeyword_1_1_q.equals(syntax))
+				emit_TransformationSet_TranslatingKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet_TranslatingKeyword_2_1_q.equals(syntax))
+				emit_TransformationSet_TranslatingKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet_TranslatingKeyword_3_1_q.equals(syntax))
+				emit_TransformationSet_TranslatingKeyword_3_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q.equals(syntax))
+				emit_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q.equals(syntax))
+				emit_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q.equals(syntax))
+				emit_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -113,7 +113,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'to'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'on' 'CircleCI' 'set' 'version' (ambiguity) version=EString
+	 *     (rule start) 'on' 'circleci' 'set' 'version' (ambiguity) version=EString
 	 *     (rule start) 'set' 'version' (ambiguity) version=EString
 	 
 	 * </pre>
@@ -125,94 +125,94 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     'transformation'?
+	 *     'translating'?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) 'before' (ambiguity) '{' preTIM+=TSMTransformation
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet_TransformationKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet_TranslatingKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     'transformation'?
+	 *     'translating'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'transformation'? '{' '}')? 'during' (ambiguity) '{' onTIM+=TIMTransformation
+	 *     (rule start) ('before' 'translating'? '{' '}')? 'during' (ambiguity) '{' onTIM+=TIMTransformation
 	 *     preTIM+=TSMTransformation '}' 'during' (ambiguity) '{' onTIM+=TIMTransformation
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet_TransformationKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet_TranslatingKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     'transformation'?
+	 *     'translating'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'transformation'? '{' '}')? ('during' 'transformation'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
+	 *     (rule start) ('before' 'translating'? '{' '}')? ('during' 'translating'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
 	 *     onTIM+=TIMTransformation '}' 'after' (ambiguity) '{' postTIM+=TSMTransformation
-	 *     preTIM+=TSMTransformation '}' ('during' 'transformation'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
+	 *     preTIM+=TSMTransformation '}' ('during' 'translating'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet_TransformationKeyword_3_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet_TranslatingKeyword_3_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     ('after' 'transformation'? '{' '}')?
+	 *     ('after' 'translating'? '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'transformation'? '{' '}')? ('during' 'transformation'? '{' '}')? (ambiguity) (rule start)
+	 *     (rule start) ('before' 'translating'? '{' '}')? ('during' 'translating'? '{' '}')? (ambiguity) (rule start)
 	 *     onTIM+=TIMTransformation '}' (ambiguity) (rule end)
-	 *     preTIM+=TSMTransformation '}' ('during' 'transformation'? '{' '}')? (ambiguity) (rule end)
+	 *     preTIM+=TSMTransformation '}' ('during' 'translating'? '{' '}')? (ambiguity) (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet___AfterKeyword_3_0_TransformationKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     ('before' 'transformation'? '{' '}')?
+	 *     ('before' 'translating'? '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'during' 'transformation'? '{' onTIM+=TIMTransformation
-	 *     (rule start) (ambiguity) ('during' 'transformation'? '{' '}')? 'after' 'transformation'? '{' postTIM+=TSMTransformation
-	 *     (rule start) (ambiguity) ('during' 'transformation'? '{' '}')? ('after' 'transformation'? '{' '}')? (rule start)
+	 *     (rule start) (ambiguity) 'during' 'translating'? '{' onTIM+=TIMTransformation
+	 *     (rule start) (ambiguity) ('during' 'translating'? '{' '}')? 'after' 'translating'? '{' postTIM+=TSMTransformation
+	 *     (rule start) (ambiguity) ('during' 'translating'? '{' '}')? ('after' 'translating'? '{' '}')? (rule start)
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet___BeforeKeyword_1_0_TransformationKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     ('during' 'transformation'? '{' '}')?
+	 *     ('during' 'translating'? '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'transformation'? '{' '}')? (ambiguity) 'after' 'transformation'? '{' postTIM+=TSMTransformation
-	 *     (rule start) ('before' 'transformation'? '{' '}')? (ambiguity) ('after' 'transformation'? '{' '}')? (rule start)
-	 *     preTIM+=TSMTransformation '}' (ambiguity) 'after' 'transformation'? '{' postTIM+=TSMTransformation
-	 *     preTIM+=TSMTransformation '}' (ambiguity) ('after' 'transformation'? '{' '}')? (rule end)
+	 *     (rule start) ('before' 'translating'? '{' '}')? (ambiguity) 'after' 'translating'? '{' postTIM+=TSMTransformation
+	 *     (rule start) ('before' 'translating'? '{' '}')? (ambiguity) ('after' 'translating'? '{' '}')? (rule start)
+	 *     preTIM+=TSMTransformation '}' (ambiguity) 'after' 'translating'? '{' postTIM+=TSMTransformation
+	 *     preTIM+=TSMTransformation '}' (ambiguity) ('after' 'translating'? '{' '}')? (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet___DuringKeyword_2_0_TransformationKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

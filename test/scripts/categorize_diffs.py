@@ -5,10 +5,10 @@ import sys
 categorized_diffs = {
     'total': 0,
     'native_package_version_mismatch': 0,
-    'concurrency_deleted': 0,
-    'secrets_deleted': 0,
     'changed_name': 0,
     'trigger_deleted': 0,
+    'workflow_env_deleted': 0,
+    'workflow_defaults_deleted': 0,
     'unknown' : []
 }
 
@@ -51,7 +51,17 @@ def permissions_deleted(string):
         return True
     return False
 
-functions = [native_package_version_mismatch, concurrency_deleted, secrets_deleted, changed_name, trigger_deleted]
+def workflow_env_deleted(string):
+    if re.match(r"^env:\n- .+\n\+ <nil>$", string.strip()):
+        return True
+    return False
+
+def workflow_defaults_deleted(string):
+    if re.match(r"^defaults:\n- .+\n\+ <nil>$", string.strip()):
+        return True
+    return False
+
+functions = [native_package_version_mismatch, changed_name, trigger_deleted, workflow_env_deleted, workflow_defaults_deleted]
 
 for diff in diffs:
     for function in functions:

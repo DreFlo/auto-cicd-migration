@@ -686,8 +686,15 @@ lazy rule MacOSAgent2Agent {
 			labels <- Sequence{if cicdAgent.image.oclIsUndefined() then thisModule.String2StringLiteral('macos-latest') else cicdAgent.image endif}->union(
 				if cicdAgent.xcode.oclIsUndefined() then
 					Sequence{}
+				else if cicdAgent.xcode.oclIsTypeOf(CICD!StringLiteral) then
+					if cicdAgent.xcode.value = 'latest' then
+						Sequence{}
+					else
+						Sequence{thisModule.ConcatExpressions(Sequence{thisModule.String2StringLiteral('%%__CICD__XCODE#%!!__#%!!'), cicdAgent.xcode})}
+					endif
 				else
 					Sequence{thisModule.ConcatExpressions(Sequence{thisModule.String2StringLiteral('%%__CICD__XCODE#%!!__#%!!'), cicdAgent.xcode})}
+				endif
 				endif
 			)
 		)

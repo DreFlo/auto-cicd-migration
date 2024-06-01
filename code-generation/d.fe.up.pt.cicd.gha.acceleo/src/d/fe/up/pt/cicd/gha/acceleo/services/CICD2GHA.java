@@ -90,7 +90,7 @@ public class CICD2GHA {
 	
 	public String  generateJobVariableReference(VariableDeclaration variableDeclaration, Job job) {
 		if (variableDeclaration.eContainer() instanceof MatrixAxis)
-			return generateJobReference(job) + "." + generateMatrixVariableReference(variableDeclaration);
+			return generateMatrixVariableReference(variableDeclaration);
 		else if (variableDeclaration.eContainer() instanceof Output)
 			return generateJobReference(job) + ".outputs." + variableDeclaration.getName();
 		else if (variableDeclaration.eContainingFeature().getFeatureID() == GHAPackage.VARIABLE_ASSIGNMENT__KEY)

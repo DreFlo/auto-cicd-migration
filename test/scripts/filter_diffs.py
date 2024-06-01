@@ -4,8 +4,11 @@ import sys
 diffs = re.split(r"\n(?=[\w-]+[.\w-]*:)", sys.stdin.read())
 
 def no_diff(string):
-    if re.match(r"^.+:\n- (.*)\n\+ \1$", string.strip()):
-        return True
+    match = re.match(r"^[\w-]+(?:\.[\w-]+)*:\n- ((?:.|\n(?!\+))+)\n\+ ((?:.|\n)+)$", string.strip())
+    if match:
+        prev = match.group(1).replace('\n', '')
+        new = match.group(2).replace('\n', '')
+        return prev == new
     return False
 
 def string_to_one_item_list(string):
@@ -22,6 +25,12 @@ def list_to_empty_map(string):
         list_items = re.findall(r"(?P<list>[\w-]+|(?:\"(?:\\.|[^\"])*\")|(?:\'(?:\\.|[^\'])*\'))", match.group('list'))
         map_items = re.findall(r"(?P<map>(?:[\w-]+|(?:\"(?:\\.|[^\"])*\")|(?:\'(?:\\.|[^\'])*\'))):<nil>", match.group('map'))
         return set(list_items) == set(map_items)
+    return False
+
+def empty_map_to_null(string):
+    # Check if string matches regex
+    if re.match(r"^.+:\n- map\[\]\n\+ <nil>$", string.strip()):
+        return True
     return False
 
 def add_default_shell(string):
@@ -67,5 +76,6 @@ diffs = [diff for diff in diffs if not list_to_empty_map(diff)]
 diffs = [diff for diff in diffs if not string_output_to_map(diff)]
 #diffs = [diff for diff in diffs if not string_spaces(diff)]
 #diffs = [diff for diff in diffs if not full_variable_names(diff)]
+diffs = [diff for diff in diffs if not empty_map_to_null(diff)]
 
 print('\n'.join(diffs))

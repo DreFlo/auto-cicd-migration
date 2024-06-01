@@ -9,7 +9,7 @@
 	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'logString(java.lang.String)', Sequence{string})
 /]
 
-[query public generateVariableReference(variableDeclaration : VariableDeclaration) : String =
+[query public _generateVariableReference(variableDeclaration : VariableDeclaration) : String =
 	invoke('d.fe.up.pt.cicd.circleci.acceleo.services.CICD2CircleCI', 'generateVariableReference(d.fe.up.pt.cicd.circleci.metamodel.CircleCI.VariableDeclaration, boolean)', Sequence{variableDeclaration, true})
 /]
 
@@ -625,7 +625,7 @@ add_ssh_keys:
 [/template]
 
 [template public _generateExpression(expression : Expression)]
-[if (expression.oclIsUndefined())]null[elseif (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][/if]
+[if (expression.oclIsUndefined())]null[elseif (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(Concat))][generateConcat(expression.oclAsType(Concat))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference))/][/if]
 [/template]
 
 [template public generateConcat(concat : Concat) post (trim())]
@@ -646,12 +646,16 @@ add_ssh_keys:
 [if (logic.oclIsKindOf(Literal))]
 [generateLiteral(logic.oclAsType(Literal))/]
 [elseif (logic.oclIsTypeOf(VariableReference))]
-[generateVariableReference(logic.oclAsType(VariableReference).reference)/]
+[generateVariableReference(logic.oclAsType(VariableReference))/]
 [elseif (logic.oclIsKindOf(InfinitaryOperator))]
 [generateInfinitaryOperator(logic)/]
 [elseif (logic.oclIsTypeOf(Matches))]
 [generateMatches(logic.oclAsType(Matches))/]	
 [/if]
+[/template]
+
+[template public generateVariableReference(variableReference : VariableReference)]
+[if (variableReference.eContainer().oclIsTypeOf(Concat))][_generateVariableReference(reference)/][else][quoteString(_generateVariableReference(reference))/][/if]
 [/template]
 
 [template public generateInfinitaryOperator(logic : Logic) post (trim())]

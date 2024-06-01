@@ -14,10 +14,10 @@ public class CircleCI2CICDTransformer extends ToTIMAbstractTransformer<Pipeline,
 
     @Override
     protected void registerRefiners() {
-//        try {
-//            getRefiners().add(new ContractMatrixInputs(getResourceSet()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            getRefiners().add(new ContractMatrixInputs(getResourceSet()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

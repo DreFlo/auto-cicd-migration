@@ -1,48 +1,16 @@
+-- @atlcompiler atl2010
 -- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
 
 module contractMatrixInputs;
 create OUT : CICD refining IN : CICD;
 
-abstract rule Job {
+rule DropInput {
 	from
-		input : CICD!Job
-	to
-		output : CICD!Job (
-			agent <- input.agent,
-			allowFailure <- input.allowFailure,
-			environmentVariables <- input.environmentVariables,
-			id <- input.id,
-			ifCondition <- input.ifCondition,
-			inputs <- input.inputs->select(i | not i.id.isMatrixAxisInput()),
-			matrix <- input.matrix,
-			maxAttempts <- input.maxAttempts,
-			name <- input.name,
-			next <- input.next,
-			outputs <- input.outputs,
-			services <- input.services,
-			shell <- input.shell,
-			timeoutMinutes <- input.timeoutMinutes,
-			workingDirectory <- input.workingDirectory
+		input : CICD!Input (
+			input.id.isMatrixAxisInput()
 		)
-}
-
-rule ScriptJob extends Job {
-	from
-		input : CICD!ScriptJob
 	to
-		output : CICD!ScriptJob (
-			steps <- input.steps
-		)
-}
-
-rule PipelineCallJob extends Job {
-	from
-		input : CICD!PipelineCallJob
-	to
-		output : CICD!PipelineCallJob (
-			pipelinePath <- input.pipelinePath,
-			args <- input.args
-		)
+		drop
 }
 
 rule VariableReference {
@@ -55,7 +23,7 @@ rule VariableReference {
 	}
 	to
 		output : CICD!VariableReference (
-			reference <- matrix.axes->select(axis | axis.name.name = input.reference.name)->first().name.debug()
+			reference <- matrix.axes->select(axis | axis.name.name = input.reference.name)->first().name
 		)
 }
 

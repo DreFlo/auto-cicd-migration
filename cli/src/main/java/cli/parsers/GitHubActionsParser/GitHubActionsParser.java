@@ -335,6 +335,10 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		return GHAExpressionsVisitor.parse(expressionString, container);
 	}
 
+	private Expression parseIfExpression(String expressionString, EObject container) throws SyntaxException {
+		return GHAExpressionsVisitor.parseIfExpression(expressionString, container);
+	}
+
 	private List<Expression> parseExpressions(List<String> expressions, EObject container) throws SyntaxException {
 		List<Expression> result = new ArrayList<>();
 		for (String expression : expressions) {
@@ -763,7 +767,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 		}
 
 		if (jobMap.value("if") != null) {
-			job.setIfCondition(parseExpression(jobMap.string("if"), job));
+			job.setIfCondition(parseIfExpression(jobMap.string("if"), job));
 		}
 
 		if (jobMap.value("strategy") != null) {
@@ -1053,7 +1057,7 @@ public class GitHubActionsParser extends AbstractParser<Workflow> {
 			throw new SyntaxException("Invalid step");
 		}
 		if (stepMap.value("if") != null) {
-			ifStep.setIfCondition(parseExpression(stepMap.string("if"), ifStep));
+			ifStep.setIfCondition(parseIfExpression(stepMap.string("if"), ifStep));
 		} else {
 			throw new SyntaxException("Must have if");
 		}

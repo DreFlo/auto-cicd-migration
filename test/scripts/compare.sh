@@ -2,7 +2,7 @@
 
 for file in ../tests/*.*ml; do
     base_name=$(basename "$file")
-    converted_file="../converted_circleci/${base_name}"
+    converted_file="../converted_circleci_pre_validate/${base_name}"
     # Check if the file has a corresponding converted file
     if [ ! -f "$converted_file" ]; then
         echo "Skipping $file as it has no corresponding converted file"

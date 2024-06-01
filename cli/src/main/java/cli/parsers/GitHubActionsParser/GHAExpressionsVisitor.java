@@ -84,6 +84,14 @@ public class GHAExpressionsVisitor {
         return parts;
     }
 
+    public Expression parseIfExpression(String expressionString, EObject container) throws SyntaxException {
+        if (expressionString.matches("^\\$\\{\\{.*}}$")) {
+            return parseBracketedExpression(expressionString.substring(3, expressionString.length() - 2), container);
+        } else {
+            return parseBracketedExpression(expressionString, container);
+        }
+    }
+
     private Expression parseBracketedExpression(String expressionString, EObject container) throws SyntaxException {
         GHAExpressionsParser expressionsParser = new GHAExpressionsParser();
         d.fe.up.pt.cicd.gha.expressions.dsl.ghaExpressions.Expression expression;

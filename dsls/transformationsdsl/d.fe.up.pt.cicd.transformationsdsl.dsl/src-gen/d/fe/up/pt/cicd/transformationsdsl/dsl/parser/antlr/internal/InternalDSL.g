@@ -90,9 +90,9 @@ ruleTransformationSet returns [EObject current=null]
 				newLeafNode(otherlv_1, grammarAccess.getTransformationSetAccess().getBeforeKeyword_1_0());
 			}
 			(
-				otherlv_2='transformation'
+				otherlv_2='translating'
 				{
-					newLeafNode(otherlv_2, grammarAccess.getTransformationSetAccess().getTransformationKeyword_1_1());
+					newLeafNode(otherlv_2, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_1_1());
 				}
 			)?
 			otherlv_3='{'
@@ -129,9 +129,9 @@ ruleTransformationSet returns [EObject current=null]
 				newLeafNode(otherlv_6, grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0());
 			}
 			(
-				otherlv_7='transformation'
+				otherlv_7='translating'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getTransformationSetAccess().getTransformationKeyword_2_1());
+					newLeafNode(otherlv_7, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_2_1());
 				}
 			)?
 			otherlv_8='{'
@@ -168,9 +168,9 @@ ruleTransformationSet returns [EObject current=null]
 				newLeafNode(otherlv_11, grammarAccess.getTransformationSetAccess().getAfterKeyword_3_0());
 			}
 			(
-				otherlv_12='transformation'
+				otherlv_12='translating'
 				{
-					newLeafNode(otherlv_12, grammarAccess.getTransformationSetAccess().getTransformationKeyword_3_1());
+					newLeafNode(otherlv_12, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_3_1());
 				}
 			)?
 			otherlv_13='{'
@@ -354,47 +354,38 @@ ruleTIMTransformation returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getTIMTransformationAccess().getChangeAgentLabelParserRuleCall_2());
+			newCompositeNode(grammarAccess.getTIMTransformationAccess().getReplaceAgentLabelsParserRuleCall_2());
 		}
-		this_ChangeAgentLabel_2=ruleChangeAgentLabel
+		this_ReplaceAgentLabels_2=ruleReplaceAgentLabels
 		{
-			$current = $this_ChangeAgentLabel_2.current;
+			$current = $this_ReplaceAgentLabels_2.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getTIMTransformationAccess().getReplaceAgentLabelsParserRuleCall_3());
+			newCompositeNode(grammarAccess.getTIMTransformationAccess().getAddTriggerParserRuleCall_3());
 		}
-		this_ReplaceAgentLabels_3=ruleReplaceAgentLabels
+		this_AddTrigger_3=ruleAddTrigger
 		{
-			$current = $this_ReplaceAgentLabels_3.current;
+			$current = $this_AddTrigger_3.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getTIMTransformationAccess().getAddTriggerParserRuleCall_4());
+			newCompositeNode(grammarAccess.getTIMTransformationAccess().getReplaceStepParserRuleCall_4());
 		}
-		this_AddTrigger_4=ruleAddTrigger
+		this_ReplaceStep_4=ruleReplaceStep
 		{
-			$current = $this_AddTrigger_4.current;
+			$current = $this_ReplaceStep_4.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getTIMTransformationAccess().getReplaceStepParserRuleCall_5());
+			newCompositeNode(grammarAccess.getTIMTransformationAccess().getDeleteStepParserRuleCall_5());
 		}
-		this_ReplaceStep_5=ruleReplaceStep
+		this_DeleteStep_5=ruleDeleteStep
 		{
-			$current = $this_ReplaceStep_5.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getTIMTransformationAccess().getDeleteStepParserRuleCall_6());
-		}
-		this_DeleteStep_6=ruleDeleteStep
-		{
-			$current = $this_DeleteStep_6.current;
+			$current = $this_DeleteStep_5.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -499,52 +490,6 @@ ruleChangePlugin returns [EObject current=null]
 				newLeafNode(otherlv_8, grammarAccess.getChangePluginAccess().getRightCurlyBracketKeyword_5_3());
 			}
 		)?
-	)
-;
-
-// Entry rule entryRuleChangeAgentLabel
-entryRuleChangeAgentLabel returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getChangeAgentLabelRule()); }
-	iv_ruleChangeAgentLabel=ruleChangeAgentLabel
-	{ $current=$iv_ruleChangeAgentLabel.current; }
-	EOF;
-
-// Rule ChangeAgentLabel
-ruleChangeAgentLabel returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='change'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getChangeAgentLabelAccess().getChangeKeyword_0());
-		}
-		otherlv_1='label'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getChangeAgentLabelAccess().getLabelKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getChangeAgentLabelAccess().getNameStringToStringMapEntryParserRuleCall_2_0());
-				}
-				lv_name_2_0=ruleStringToStringMapEntry
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getChangeAgentLabelRule());
-					}
-					set(
-						$current,
-						"name",
-						lv_name_2_0,
-						"d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.StringToStringMapEntry");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
 	)
 ;
 
@@ -1299,9 +1244,9 @@ ruleCircleCITransformation returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getCircleCITransformationAccess().getOnKeyword_0());
 		}
-		otherlv_1='CircleCI'
+		otherlv_1='circleci'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getCircleCITransformationAccess().getCircleCIKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getCircleCITransformationAccess().getCircleciKeyword_1());
 		}
 		(
 			{
@@ -1662,7 +1607,7 @@ ruleMODELS returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='GHA'
+			enumLiteral_0='gha'
 			{
 				$current = grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_0, grammarAccess.getMODELSAccess().getGHAEnumLiteralDeclaration_0());
@@ -1670,7 +1615,7 @@ ruleMODELS returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='CICD'
+			enumLiteral_1='cicd'
 			{
 				$current = grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getMODELSAccess().getCICDEnumLiteralDeclaration_1());
@@ -1678,7 +1623,7 @@ ruleMODELS returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_2='CircleCI'
+			enumLiteral_2='circleci'
 			{
 				$current = grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_2, grammarAccess.getMODELSAccess().getCircleCIEnumLiteralDeclaration_2());

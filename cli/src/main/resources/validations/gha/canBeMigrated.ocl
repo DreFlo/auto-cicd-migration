@@ -1,0 +1,37 @@
+import 'platform:/resource/d.fe.up.pt.cicd.gha.metamodel/model/GHA.ecore'
+
+package GHA
+
+context Workflow
+
+inv NoStagingEnvironments : 
+	if StagingEnvironment.allInstances()->notEmpty() then null else true endif
+
+inv NoPermissions :
+	if Permission.allInstances()->notEmpty() then null else true endif
+	
+inv NoDotOps :
+	if DotOp.allInstances()->notEmpty() then null else true endif
+	
+inv NoBuiltInFunctionCalls :
+	if BuiltInFunctionCall.allInstances()->notEmpty() then null else true endif
+	
+inv NonConcurrencyGroups :
+	if ConcurrencyGroup.allInstances()->notEmpty() then null else true endif
+	
+inv NoSecrets :
+	if Secret.allInstances()->notEmpty() then null else true endif
+	
+inv NoTimeoutMinutes :
+	if Job.allInstances()->select(job | job.timeoutMinutes <> null)->notEmpty() or Step.allInstances()->select(job | job.timeoutMinutes <> null)->notEmpty()
+	then null else true endif
+	
+inv MatrixSettings :
+	if Matrix.allInstances()->select(
+		matrix |
+		matrix.axes->isEmpty()or
+		matrix.failFast <> null or
+		matrix.maxParallel <> null
+	)->notEmpty() then null else true endif
+
+endpackage

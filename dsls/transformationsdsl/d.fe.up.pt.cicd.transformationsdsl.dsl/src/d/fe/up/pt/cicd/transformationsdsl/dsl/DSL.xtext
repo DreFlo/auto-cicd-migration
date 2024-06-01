@@ -7,9 +7,9 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 TransformationSet returns TransformationSet:
 	{TransformationSet}
-	('before' 'transformation'? '{' (preTIM+=TSMTransformation)* '}')?
-	('during' 'transformation'? '{' (onTIM+=TIMTransformation)* '}')?
-	('after' 'transformation'? '{' (postTIM+=TSMTransformation)* '}')?
+	('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
+	('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+	('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 ;
 
 TSMTransformation returns TSMTransformation:
@@ -21,15 +21,11 @@ ATLScript returns ATLScript:
 ;
 
 TIMTransformation returns TIMTransformation:
-	ATLScript | ChangePlugin | ChangeAgentLabel | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+	ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
 ;
 	
 ChangePlugin returns ChangePlugin:
 	'change' 'plugin' name=StringToStringMapEntry 'version' version=EString	('args' '{' args+=StringToStringMapEntry+ '}' )?
-;
-	
-ChangeAgentLabel returns ChangeAgentLabel:
-	'change' 'label' name=StringToStringMapEntry
 ;
 	
 ReplaceAgentLabels returns ReplaceAgentLabels:
@@ -135,7 +131,7 @@ enum CACHE_MODE returns CICD::CACHE_MODE:
 
 
 CircleCITransformation returns CircleCITransformation:
-	'on' 'CircleCI' (SetCircleCIVersion | AddExecutor | SelectWorkflow)	
+	'on' 'circleci' (SetCircleCIVersion | AddExecutor | SelectWorkflow)	
 ;
 
 SetCircleCIVersion returns SetCircleCIVersion:
@@ -160,7 +156,7 @@ StringToStringMapEntry returns StringToStringMapEntry:
 ;
 	
 enum MODELS returns MODELS:
-	GHA = 'GHA' | CICD = 'CICD' | CircleCI = 'CircleCI'	
+	GHA = 'gha' | CICD = 'cicd' | CircleCI = 'circleci'	
 ;
 
 EString returns ecore::EString:

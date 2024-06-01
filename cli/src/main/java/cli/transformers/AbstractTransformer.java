@@ -38,7 +38,7 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     private final String inputModelName;
     private final String outputModelName;
     private boolean deleteIntermediateFiles = false;
-    private final AbstractValidator<InputModel, InputPackage> validator;
+    private AbstractValidator<InputModel, InputPackage> validator;
 
     protected AbstractTransformer(ResourceSet resourceSet, InputPackage inputPackage, OutputPackage outputPackage, InputStream atlFileStream, String inputModelName, String outputModelName, AbstractValidator<InputModel, InputPackage> validator) {
         this.resourceSet = resourceSet;
@@ -67,6 +67,10 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
         this.outputModelName = outputModelName;
         this.validator = validator;
         checkRegistry();
+    }
+
+    public void setValidator(AbstractValidator<InputModel, InputPackage> validator) {
+        this.validator = validator;
     }
 
     protected final void checkRegistry() {

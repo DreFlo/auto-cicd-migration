@@ -23,6 +23,8 @@ import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 import cli.utils.LoggerUtils;
+import cli.validators.AbstractValidator;
+import cli.validators.GHAValidator;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
@@ -102,6 +104,7 @@ public class Main {
 		);
 		options.addOption("o", "output-file", true, "Output file path");
 		options.addOption("v", "verbose", false, "Verbose mode");
+		options.addOption("s", "strict", false, "Validate after parsing");
 		options.addOption("lf", "log-file", true, "Log file path");
 		options.addOption("ef", "extension-file", true, "Extension file path");
 
@@ -133,6 +136,9 @@ public class Main {
 			if (inputEngineer == null) {
 				throw new RuntimeException("Input language \"" + inputLanguage + "\" not supported");
 			} else {
+				if (inputLanguage.equals("gha") && commandLine.hasOption("s")) {
+					((GHA2CICDTransformer)inputEngineer.getTransformer()).setValidator(new GHAValidator(getResourceSet(), "validations/gha/canBeMigrated.ocl"));
+				}
 				inputEngineers.add(inputEngineer);
 			}
 		}

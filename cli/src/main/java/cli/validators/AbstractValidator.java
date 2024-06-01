@@ -72,6 +72,7 @@ public class AbstractValidator<Model extends EObject, Package extends EPackage> 
                 }
             } else if (result == null) {
                 LoggerUtils.log(Level.SEVERE, "Constraint " + entry.getKey() + " failed");
+                System.exit(1);
             }
         }
     }

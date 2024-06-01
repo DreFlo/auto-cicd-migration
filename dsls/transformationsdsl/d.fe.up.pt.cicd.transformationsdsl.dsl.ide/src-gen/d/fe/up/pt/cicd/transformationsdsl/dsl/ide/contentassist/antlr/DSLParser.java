@@ -45,7 +45,6 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getATLScriptAccess().getGroup(), "rule__ATLScript__Group__0");
 			builder.put(grammarAccess.getChangePluginAccess().getGroup(), "rule__ChangePlugin__Group__0");
 			builder.put(grammarAccess.getChangePluginAccess().getGroup_5(), "rule__ChangePlugin__Group_5__0");
-			builder.put(grammarAccess.getChangeAgentLabelAccess().getGroup(), "rule__ChangeAgentLabel__Group__0");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup(), "rule__ReplaceAgentLabels__Group__0");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getGroup_2(), "rule__ReplaceAgentLabels__Group_2__0");
 			builder.put(grammarAccess.getAddTriggerAccess().getGroup(), "rule__AddTrigger__Group__0");
@@ -73,7 +72,6 @@ public class DSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getChangePluginAccess().getNameAssignment_2(), "rule__ChangePlugin__NameAssignment_2");
 			builder.put(grammarAccess.getChangePluginAccess().getVersionAssignment_4(), "rule__ChangePlugin__VersionAssignment_4");
 			builder.put(grammarAccess.getChangePluginAccess().getArgsAssignment_5_2(), "rule__ChangePlugin__ArgsAssignment_5_2");
-			builder.put(grammarAccess.getChangeAgentLabelAccess().getNameAssignment_2(), "rule__ChangeAgentLabel__NameAssignment_2");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getConditionAssignment_2_1(), "rule__ReplaceAgentLabels__ConditionAssignment_2_1");
 			builder.put(grammarAccess.getReplaceAgentLabelsAccess().getLabelsAssignment_4(), "rule__ReplaceAgentLabels__LabelsAssignment_4");
 			builder.put(grammarAccess.getAddTriggerAccess().getConditionAssignment_2_1(), "rule__AddTrigger__ConditionAssignment_2_1");

@@ -5,10 +5,9 @@ import sys
 categorized_diffs = {
     'total': 0,
     'native_package_version_mismatch': 0,
+    'macos_version_mismatch': 0,
     'changed_name': 0,
     'trigger_deleted': 0,
-    'workflow_env_deleted': 0,
-    'workflow_defaults_deleted': 0,
     'unknown' : []
 }
 
@@ -26,18 +25,14 @@ def native_package_version_mismatch(string):
         return True
     return False
 
-def concurrency_deleted(string):
-    if re.match(r"^(?:jobs\.[\w-]+\.)?concurrency:\n- .+\n\+ <nil>$", string.strip()):
-        return True
-    return False
-
-def secrets_deleted(string):
-    if re.match(r"^(?:[\w-]+\.)*secrets:\n- .+\n\+ <nil>$", string.strip()):
+def macos_version_mismatch(string):
+    # Check if string matches regex
+    if re.match(r"^jobs\.[\w-]+\.runs-on:\n- .*macos-.+\n\+ \[macos-latest]$", string.strip()):
         return True
     return False
 
 def changed_name(string):
-    if re.match(r"^(?:[\w-]+\.)*name:\n- .+\n\+ .*$", string.strip()):
+    if re.match(r"^(?:[\w-]+\.)*name:\n- .+\n\+ .*$", string.strip()) or re.match(r"^run-name:\n- .+\n\+ <nil>$", string.strip()):
         return True
     return False
 
@@ -46,22 +41,7 @@ def trigger_deleted(string):
         return True
     return False
 
-def permissions_deleted(string):
-    if re.match(r"^(?:[\w-]+\.)*permissions:\n- .+\n\+ <nil>$", string.strip()):
-        return True
-    return False
-
-def workflow_env_deleted(string):
-    if re.match(r"^env:\n- .+\n\+ <nil>$", string.strip()):
-        return True
-    return False
-
-def workflow_defaults_deleted(string):
-    if re.match(r"^defaults:\n- .+\n\+ <nil>$", string.strip()):
-        return True
-    return False
-
-functions = [native_package_version_mismatch, changed_name, trigger_deleted, workflow_env_deleted, workflow_defaults_deleted]
+functions = [native_package_version_mismatch, changed_name, trigger_deleted, macos_version_mismatch]
 
 for diff in diffs:
     for function in functions:

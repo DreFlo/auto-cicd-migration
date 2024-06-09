@@ -37,7 +37,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cPreTIMTSMTransformationParserRuleCall_1_3_0 = (RuleCall)cPreTIMAssignment_1_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cDuringKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cWhileKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Keyword cTranslatingKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		private final Assignment cOnTIMAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
@@ -54,14 +54,14 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//TransformationSet returns TransformationSet:
 		//    {TransformationSet}
 		//    ('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
-		//    ('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+		//    ('while' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
 		//    ('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{TransformationSet}
 		//('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
-		//('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+		//('while' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
 		//('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 		public Group getGroup() { return cGroup; }
 		
@@ -89,11 +89,11 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_1_4() { return cRightCurlyBracketKeyword_1_4; }
 		
-		//('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+		//('while' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//'during'
-		public Keyword getDuringKeyword_2_0() { return cDuringKeyword_2_0; }
+		//'while'
+		public Keyword getWhileKeyword_2_0() { return cWhileKeyword_2_0; }
 		
 		//'translating'?
 		public Keyword getTranslatingKeyword_2_1() { return cTranslatingKeyword_2_1; }
@@ -1264,7 +1264,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//TransformationSet returns TransformationSet:
 	//    {TransformationSet}
 	//    ('before' 'translating'? '{' (preTIM+=TSMTransformation)* '}')?
-	//    ('during' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
+	//    ('while' 'translating'? '{' (onTIM+=TIMTransformation)* '}')?
 	//    ('after' 'translating'? '{' (postTIM+=TSMTransformation)* '}')?
 	//;
 	public TransformationSetElements getTransformationSetAccess() {

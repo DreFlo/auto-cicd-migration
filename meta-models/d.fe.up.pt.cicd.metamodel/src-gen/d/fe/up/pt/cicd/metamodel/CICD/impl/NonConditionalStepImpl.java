@@ -32,9 +32,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getEnvironmentVariables <em>Environment Variables</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getAllowFailure <em>Allow Failure</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getWorkingDirectory <em>Working Directory</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.NonConditionalStepImpl#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,26 +91,6 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	protected EMap<VariableDeclaration, Expression> environmentVariables;
 
 	/**
-	 * The default value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeoutMinutes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Integer TIMEOUT_MINUTES_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeoutMinutes()
-	 * @generated
-	 * @ordered
-	 */
-	protected Integer timeoutMinutes = TIMEOUT_MINUTES_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getAllowFailure() <em>Allow Failure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -139,6 +119,16 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @ordered
 	 */
 	protected Expression workingDirectory;
+
+	/**
+	 * The cached value of the '{@link #getTimeoutMinutes() <em>Timeout Minutes</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeoutMinutes()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression timeoutMinutes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -226,7 +216,7 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * @generated
 	 */
 	@Override
-	public Integer getTimeoutMinutes() {
+	public Expression getTimeoutMinutes() {
 		return timeoutMinutes;
 	}
 
@@ -235,13 +225,41 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setTimeoutMinutes(Integer newTimeoutMinutes) {
-		Integer oldTimeoutMinutes = timeoutMinutes;
+	public NotificationChain basicSetTimeoutMinutes(Expression newTimeoutMinutes, NotificationChain msgs) {
+		Expression oldTimeoutMinutes = timeoutMinutes;
 		timeoutMinutes = newTimeoutMinutes;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES, oldTimeoutMinutes, newTimeoutMinutes);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTimeoutMinutes(Expression newTimeoutMinutes) {
+		if (newTimeoutMinutes != timeoutMinutes) {
+			NotificationChain msgs = null;
+			if (timeoutMinutes != null)
+				msgs = ((InternalEObject) timeoutMinutes).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES, null, msgs);
+			if (newTimeoutMinutes != null)
+				msgs = ((InternalEObject) newTimeoutMinutes).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES, null, msgs);
+			msgs = basicSetTimeoutMinutes(newTimeoutMinutes, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES,
-					oldTimeoutMinutes, timeoutMinutes));
+					newTimeoutMinutes, newTimeoutMinutes));
 	}
 
 	/**
@@ -332,6 +350,8 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			return basicSetWorkingDirectory(null, msgs);
+		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
+			return basicSetTimeoutMinutes(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -353,12 +373,12 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 				return getEnvironmentVariables();
 			else
 				return getEnvironmentVariables().map();
-		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
-			return getTimeoutMinutes();
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			return getAllowFailure();
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			return getWorkingDirectory();
+		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
+			return getTimeoutMinutes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -380,14 +400,14 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
 			((EStructuralFeature.Setting) getEnvironmentVariables()).set(newValue);
 			return;
-		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
-			setTimeoutMinutes((Integer) newValue);
-			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			setAllowFailure((Boolean) newValue);
 			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			setWorkingDirectory((Expression) newValue);
+			return;
+		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
+			setTimeoutMinutes((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -410,14 +430,14 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
 			getEnvironmentVariables().clear();
 			return;
-		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
-			setTimeoutMinutes(TIMEOUT_MINUTES_EDEFAULT);
-			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			setAllowFailure(ALLOW_FAILURE_EDEFAULT);
 			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			setWorkingDirectory((Expression) null);
+			return;
+		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
+			setTimeoutMinutes((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -437,13 +457,12 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:
 			return environmentVariables != null && !environmentVariables.isEmpty();
-		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
-			return TIMEOUT_MINUTES_EDEFAULT == null ? timeoutMinutes != null
-					: !TIMEOUT_MINUTES_EDEFAULT.equals(timeoutMinutes);
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
 			return ALLOW_FAILURE_EDEFAULT == null ? allowFailure != null : !ALLOW_FAILURE_EDEFAULT.equals(allowFailure);
 		case CICDPackage.NON_CONDITIONAL_STEP__WORKING_DIRECTORY:
 			return workingDirectory != null;
+		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
+			return timeoutMinutes != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -463,8 +482,6 @@ public abstract class NonConditionalStepImpl extends StepImpl implements NonCond
 		result.append(id);
 		result.append(", name: ");
 		result.append(name);
-		result.append(", timeoutMinutes: ");
-		result.append(timeoutMinutes);
 		result.append(", allowFailure: ");
 		result.append(allowFailure);
 		result.append(')');

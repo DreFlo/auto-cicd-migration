@@ -8,7 +8,6 @@ import d.fe.up.pt.cicd.metamodel.CICD.Expression;
 import d.fe.up.pt.cicd.metamodel.CICD.Input;
 import d.fe.up.pt.cicd.metamodel.CICD.Output;
 import d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock;
-import d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE;
 import d.fe.up.pt.cicd.metamodel.CICD.VariableDeclaration;
 
 import java.util.Collection;
@@ -132,44 +131,24 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	protected Integer timeoutMinutes = TIMEOUT_MINUTES_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getWorkingDirectory() <em>Working Directory</em>}' attribute.
+	 * The cached value of the '{@link #getWorkingDirectory() <em>Working Directory</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getWorkingDirectory()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String WORKING_DIRECTORY_EDEFAULT = null;
+	protected Expression workingDirectory;
 
 	/**
-	 * The cached value of the '{@link #getWorkingDirectory() <em>Working Directory</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWorkingDirectory()
-	 * @generated
-	 * @ordered
-	 */
-	protected String workingDirectory = WORKING_DIRECTORY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getShell() <em>Shell</em>}' attribute.
+	 * The cached value of the '{@link #getShell() <em>Shell</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getShell()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SHELL_TYPE SHELL_EDEFAULT = SHELL_TYPE.NULL;
-
-	/**
-	 * The cached value of the '{@link #getShell() <em>Shell</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShell()
-	 * @generated
-	 * @ordered
-	 */
-	protected SHELL_TYPE shell = SHELL_EDEFAULT;
+	protected Expression shell;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -335,7 +314,7 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public String getWorkingDirectory() {
+	public Expression getWorkingDirectory() {
 		return workingDirectory;
 	}
 
@@ -344,13 +323,18 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setWorkingDirectory(String newWorkingDirectory) {
-		String oldWorkingDirectory = workingDirectory;
+	public NotificationChain basicSetWorkingDirectory(Expression newWorkingDirectory, NotificationChain msgs) {
+		Expression oldWorkingDirectory = workingDirectory;
 		workingDirectory = newWorkingDirectory;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY,
-					oldWorkingDirectory, workingDirectory));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY, oldWorkingDirectory, newWorkingDirectory);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -359,7 +343,30 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public SHELL_TYPE getShell() {
+	public void setWorkingDirectory(Expression newWorkingDirectory) {
+		if (newWorkingDirectory != workingDirectory) {
+			NotificationChain msgs = null;
+			if (workingDirectory != null)
+				msgs = ((InternalEObject) workingDirectory).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY, null, msgs);
+			if (newWorkingDirectory != null)
+				msgs = ((InternalEObject) newWorkingDirectory).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY, null, msgs);
+			msgs = basicSetWorkingDirectory(newWorkingDirectory, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY,
+					newWorkingDirectory, newWorkingDirectory));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Expression getShell() {
 		return shell;
 	}
 
@@ -368,12 +375,41 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NotificationChain basicSetShell(Expression newShell, NotificationChain msgs) {
+		Expression oldShell = shell;
+		shell = newShell;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.PIPELINE_BLOCK__SHELL, oldShell, newShell);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
-	public void setShell(SHELL_TYPE newShell) {
-		SHELL_TYPE oldShell = shell;
-		shell = newShell == null ? SHELL_EDEFAULT : newShell;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PIPELINE_BLOCK__SHELL, oldShell, shell));
+	public void setShell(Expression newShell) {
+		if (newShell != shell) {
+			NotificationChain msgs = null;
+			if (shell != null)
+				msgs = ((InternalEObject) shell).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PIPELINE_BLOCK__SHELL, null, msgs);
+			if (newShell != null)
+				msgs = ((InternalEObject) newShell).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.PIPELINE_BLOCK__SHELL, null, msgs);
+			msgs = basicSetShell(newShell, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.PIPELINE_BLOCK__SHELL, newShell,
+					newShell));
 	}
 
 	/**
@@ -392,6 +428,10 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			return ((InternalEList<?>) getOutputs()).basicRemove(otherEnd, msgs);
 		case CICDPackage.PIPELINE_BLOCK__ENVIRONMENT_VARIABLES:
 			return ((InternalEList<?>) getEnvironmentVariables()).basicRemove(otherEnd, msgs);
+		case CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY:
+			return basicSetWorkingDirectory(null, msgs);
+		case CICDPackage.PIPELINE_BLOCK__SHELL:
+			return basicSetShell(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -457,10 +497,10 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			setTimeoutMinutes((Integer) newValue);
 			return;
 		case CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY:
-			setWorkingDirectory((String) newValue);
+			setWorkingDirectory((Expression) newValue);
 			return;
 		case CICDPackage.PIPELINE_BLOCK__SHELL:
-			setShell((SHELL_TYPE) newValue);
+			setShell((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -493,10 +533,10 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			setTimeoutMinutes(TIMEOUT_MINUTES_EDEFAULT);
 			return;
 		case CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY:
-			setWorkingDirectory(WORKING_DIRECTORY_EDEFAULT);
+			setWorkingDirectory((Expression) null);
 			return;
 		case CICDPackage.PIPELINE_BLOCK__SHELL:
-			setShell(SHELL_EDEFAULT);
+			setShell((Expression) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -524,10 +564,9 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 			return TIMEOUT_MINUTES_EDEFAULT == null ? timeoutMinutes != null
 					: !TIMEOUT_MINUTES_EDEFAULT.equals(timeoutMinutes);
 		case CICDPackage.PIPELINE_BLOCK__WORKING_DIRECTORY:
-			return WORKING_DIRECTORY_EDEFAULT == null ? workingDirectory != null
-					: !WORKING_DIRECTORY_EDEFAULT.equals(workingDirectory);
+			return workingDirectory != null;
 		case CICDPackage.PIPELINE_BLOCK__SHELL:
-			return shell != SHELL_EDEFAULT;
+			return shell != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -547,10 +586,6 @@ public abstract class PipelineBlockImpl extends MinimalEObjectImpl.Container imp
 		result.append(name);
 		result.append(", timeoutMinutes: ");
 		result.append(timeoutMinutes);
-		result.append(", workingDirectory: ");
-		result.append(workingDirectory);
-		result.append(", shell: ");
-		result.append(shell);
 		result.append(')');
 		return result.toString();
 	}

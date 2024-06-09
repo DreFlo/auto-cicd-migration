@@ -86,8 +86,6 @@ create OUT : CICD2 from IN : CICD1;
 
 [if (transformation.oclIsTypeOf(ChangePlugin))]
 [generateChangePlugin(transformation.oclAsType(ChangePlugin))/]
-[elseif (transformation.oclIsTypeOf(ChangeAgentLabel))]
-[generateChangeAgentLabel(transformation.oclAsType(ChangeAgentLabel))/]
 [elseif (transformation.oclIsTypeOf(ReplaceAgentLabels))]
 [generateReplaceAgentLabels(transformation.oclAsType(ReplaceAgentLabels))/]
 [elseif (transformation.oclIsTypeOf(AddTrigger))]
@@ -178,7 +176,8 @@ rule Command extends NonConditionalStep {
 		input : CICD1!Command
 	to
 		output : CICD2!Command(
-			program <- input.program
+			program <- input.program,
+			shell <- input.shell
 		)
 }
 
@@ -251,7 +250,8 @@ rule Plugin {
 			name <- input.name,
 			pluginName <- '[unquoteString(name.value)/]',
 			timeoutMinutes <- input.timeoutMinutes,
-			version <- '[version/]'
+			version <- '[version/]',
+			workingDirectory <- input.workingDirectory
 		)
 }
 
@@ -274,21 +274,6 @@ rule Assignment[index/] {
 			value <- input.value
 		)
 }
-[/template]
-
-[template public generateChangeAgentLabel(transformation : ChangeAgentLabel)]
-rule Expression {
-	from
-		input : CICD!Expression(
-			input.refImmediateComposite().oclIsTypeOf(CICD!Agent) and
-			input.expression2String() = '[unquoteString(name.key)/]'
-		)
-	to
-		output : CICD!StringLiteral(
-			value <- '[unquoteString(name.value)/]'
-		)
-}
-[generateExpression2StringHelpers('CICD')/]
 [/template]
 
 [template public generateATLScript(transformation : ATLScript)]

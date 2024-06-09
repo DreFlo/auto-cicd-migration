@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CommandImpl#getProgram <em>Program</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.impl.CommandImpl#getShell <em>Shell</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,6 +38,16 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	 * @ordered
 	 */
 	protected Expression program;
+
+	/**
+	 * The cached value of the '{@link #getShell() <em>Shell</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShell()
+	 * @generated
+	 * @ordered
+	 */
+	protected Expression shell;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,10 +126,63 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 	 * @generated
 	 */
 	@Override
+	public Expression getShell() {
+		return shell;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetShell(Expression newShell, NotificationChain msgs) {
+		Expression oldShell = shell;
+		shell = newShell;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CICDPackage.COMMAND__SHELL,
+					oldShell, newShell);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setShell(Expression newShell) {
+		if (newShell != shell) {
+			NotificationChain msgs = null;
+			if (shell != null)
+				msgs = ((InternalEObject) shell).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.COMMAND__SHELL, null, msgs);
+			if (newShell != null)
+				msgs = ((InternalEObject) newShell).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.COMMAND__SHELL, null, msgs);
+			msgs = basicSetShell(newShell, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.COMMAND__SHELL, newShell, newShell));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
 			return basicSetProgram(null, msgs);
+		case CICDPackage.COMMAND__SHELL:
+			return basicSetShell(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -133,6 +197,8 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
 			return getProgram();
+		case CICDPackage.COMMAND__SHELL:
+			return getShell();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -147,6 +213,9 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
 			setProgram((Expression) newValue);
+			return;
+		case CICDPackage.COMMAND__SHELL:
+			setShell((Expression) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -163,6 +232,9 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 		case CICDPackage.COMMAND__PROGRAM:
 			setProgram((Expression) null);
 			return;
+		case CICDPackage.COMMAND__SHELL:
+			setShell((Expression) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -177,6 +249,8 @@ public class CommandImpl extends NonConditionalStepImpl implements Command {
 		switch (featureID) {
 		case CICDPackage.COMMAND__PROGRAM:
 			return program != null;
+		case CICDPackage.COMMAND__SHELL:
+			return shell != null;
 		}
 		return super.eIsSet(featureID);
 	}

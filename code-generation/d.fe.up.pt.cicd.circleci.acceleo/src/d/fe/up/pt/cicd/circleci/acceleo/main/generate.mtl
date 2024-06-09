@@ -539,6 +539,9 @@ add_ssh_keys:
 [let orbConfiguration : WorkflowOrbJobConfiguration = job.oclAsType(WorkflowOrbJobConfiguration)]
 - 
   [orbConfiguration.orb.name/]/[orbConfiguration.jobName/]:
+  [for (arg : VariableAssignment | orbConfiguration.arguments)]
+    [generateVariableAssignment(arg)/]
+  [/for]
 [/let]
 [/if]
 [if (requires->notEmpty())]
@@ -582,7 +585,7 @@ add_ssh_keys:
     [if (matrix.excludes->notEmpty())]
       exclude:
       [for (combination : MatrixCombination | matrix.excludes)]
-        [generateMatrixCombination(combination)/]
+        [listItem(generateMatrixCombination(combination))/]
       [/for]
     [/if]
     [if (not matrix.alias.oclIsUndefined())]
@@ -609,7 +612,7 @@ add_ssh_keys:
 
 [template public generateMatrixCombination(combination : MatrixCombination)]
 [for (variableAssignment : VariableAssignment | entries)]
-  [listItem(generateVariableAssignment(variableAssignment))/]
+[generateVariableAssignment(variableAssignment)/]
 [/for]
 [/template]
 
@@ -693,7 +696,7 @@ matches:
 [/template]
 
 [template public generateLiteral(literal : Literal)]
-[if (literal.oclIsTypeOf(StringLiteral))][if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.oclAsType(StringLiteral).value.contains('\n') and not literal.eContainer().oclIsTypeOf(DotOperator))][quoteString(literal.oclAsType(StringLiteral).value)/][else][literal.oclAsType(StringLiteral).value/][/if][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value.toString()/][/if]
+[if (literal.oclIsTypeOf(StringLiteral))][if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.oclAsType(StringLiteral).value.contains('\n') and not literal.eContainer().oclIsTypeOf(DotOperator))][quoteString(literal.oclAsType(StringLiteral).value)/][else][literal.oclAsType(StringLiteral).value/][/if][elseif (literal.oclIsTypeOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value.toString()/][elseif (literal.oclIsTypeOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value.toString()/][elseif (literal.oclIsTypeOf(BooleanLiteral))][if literal.oclAsType(BooleanLiteral).value]true[else]false[/if][/if]
 [/template]
 
 [template public generateVariableDeclaration(variableDeclaration : VariableDeclaration) post (trim())]

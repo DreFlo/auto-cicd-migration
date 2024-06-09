@@ -10,10 +10,6 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="CICD" basePackage="d.fe.up.pt.cicd.metamodel" disposableProviderFactory="true"
       ecorePackage="CICD.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//SHELL_TYPE">
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//SHELL_TYPE/NULL"/>
-      <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//SHELL_TYPE/BASH"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CICD.ecore#//INPUT_TYPE">
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/STRING"/>
       <genEnumLiterals ecoreEnumLiteral="CICD.ecore#//INPUT_TYPE/NUMBER"/>
@@ -42,8 +38,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/outputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/environmentVariables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/timeoutMinutes"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/workingDirectory"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//PipelineBlock/shell"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/workingDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//PipelineBlock/shell"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Pipeline">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Pipeline/triggers"/>
@@ -138,12 +134,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/environmentVariables"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/timeoutMinutes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//NonConditionalStep/allowFailure"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/workingDirectory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//NonConditionalStep/timeoutMinutes"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EReference CICD.ecore#//Command/program"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CICD.ecore#//Command/shell"/>
     </genClasses>
     <genClasses ecoreClass="CICD.ecore#//Plugin">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CICD.ecore#//Plugin/pluginName"/>

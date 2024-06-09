@@ -16,9 +16,9 @@ import org.eclipse.emf.common.util.EMap;
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getId <em>Id</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getName <em>Name</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getEnvironmentVariables <em>Environment Variables</em>}</li>
- *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getAllowFailure <em>Allow Failure</em>}</li>
  *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getWorkingDirectory <em>Working Directory</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}</li>
  * </ul>
  *
  * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep()
@@ -84,26 +84,26 @@ public interface NonConditionalStep extends Step {
 	EMap<VariableDeclaration, Expression> getEnvironmentVariables();
 
 	/**
-	 * Returns the value of the '<em><b>Timeout Minutes</b></em>' attribute.
+	 * Returns the value of the '<em><b>Timeout Minutes</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Timeout Minutes</em>' attribute.
-	 * @see #setTimeoutMinutes(Integer)
+	 * @return the value of the '<em>Timeout Minutes</em>' containment reference.
+	 * @see #setTimeoutMinutes(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getNonConditionalStep_TimeoutMinutes()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	Integer getTimeoutMinutes();
+	Expression getTimeoutMinutes();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Timeout Minutes</em>' attribute.
+	 * @param value the new value of the '<em>Timeout Minutes</em>' containment reference.
 	 * @see #getTimeoutMinutes()
 	 * @generated
 	 */
-	void setTimeoutMinutes(Integer value);
+	void setTimeoutMinutes(Expression value);
 
 	/**
 	 * Returns the value of the '<em><b>Allow Failure</b></em>' attribute.

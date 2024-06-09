@@ -12,13 +12,21 @@ rule Pipeline2Pipeline {
 			jobs <- thisModule.getAllJobs(input.jobStreams)->collect(job | job.job2JobHelper()),
 			orbs <- 
 				thisModule.getAllJobs(input.jobStreams)
+					->select(job | job.oclIsTypeOf(CICD!ScriptJob))
 					->collect(job | job.steps)
 					->flatten()
 					->collect(step | step.getChildren())
 					->flatten()
 					->select(step | step.oclIsTypeOf(CICD!Plugin))
 					->select(step | step.checkIfOrb())
-					->collect(step | thisModule.Plugin2OrbReference(step.getReference(), step)),
+					->collect(step | thisModule.Plugin2OrbReference(step.getReference(), step))
+				->union(
+					if thisModule.getAllJobs(input.jobStreams)->exists(job | job.oclIsTypeOf(CICD!PipelineCallJob)) then 
+						Sequence{thisModule.PipelineCallJob2OrbReference('')} 
+					else 
+						Sequence{} 
+					endif
+				),
 			parameters <- input.inputs,
 			workflows <- Sequence{thisModule.Pipeline2Workflow(input)}
 		)
@@ -56,15 +64,24 @@ lazy rule Pipeline2Workflow {
 				else
 					OclUndefined
 				endif,
-			jobs <- thisModule.getAllJobs(input.jobStreams)->collect(job | thisModule.Job2WorkflowDefinedJobConfiguration(job)),
+			jobs <- thisModule.getAllJobs(input.jobStreams)->collect(job | job.job2WorkflowJobHelper()),
 			name <- input.name,
 			triggers <- input.triggers->select(trigger | trigger.oclIsTypeOf(CICD!ScheduledTrigger))
 		)
 }
 
+helper context CICD!Job def : job2WorkflowJobHelper() : CircleCI!WorkflowJobConfiguration =
+	OclUndefined;
+
+helper context CICD!ScriptJob def : job2WorkflowJobHelper() : CircleCI!WorkflowJobConfiguration =
+	thisModule.Job2WorkflowDefinedJobConfiguration(self);
+	
+helper context CICD!PipelineCallJob def : job2WorkflowJobHelper() : CircleCI!WorkflowJobConfiguration =
+	thisModule.PipelineCallJob2WorkflowOrbJobConfiguration(self);
+
 unique lazy rule Job2WorkflowDefinedJobConfiguration {
 	from
-		input : CICD!Job
+		input : CICD!ScriptJob
 	using {
 		job : CircleCI!Job = input.job2JobHelper();
 	}
@@ -78,7 +95,51 @@ unique lazy rule Job2WorkflowDefinedJobConfiguration {
 				else
 					OclUndefined
 				endif,
-			requires <- input.previous->collect(j | thisModule.Job2WorkflowDefinedJobConfiguration(j))
+			requires <- input.previous->collect(j | j.job2WorkflowJobHelper())
+		)
+}
+
+unique lazy rule PipelineCallJob2WorkflowOrbJobConfiguration {
+	from
+		input : CICD!PipelineCallJob
+	using {
+		orb : CircleCI!OrbReference = OclUndefined;
+	}
+	to
+		output : CircleCI!WorkflowOrbJobConfiguration (
+			orb <- thisModule.PipelineCallJob2OrbReference(''),
+			name <- input.id,
+			jobName <- 'continue',
+			arguments <-
+				input.args->union(
+					if not input.pipelinePath.oclIsUndefined() then
+						Sequence{
+							thisModule.CreateVariableAssignment('configuration_path', input.pipelinePath)
+						}
+					else
+						Sequence{}
+					endif
+				)
+		)
+}
+
+lazy rule CreateVariableAssignment {
+	from
+		key : String,
+		value : CICD!Expression
+	to
+		output : CircleCI!VariableAssignment(
+			key <- thisModule.CreateVariableDeclaration(key),
+			value <- value.expression2ExpressionHelper()
+		)
+}
+
+lazy rule CreateVariableDeclaration {
+	from
+		name : String
+	to
+		output : CircleCI!VariableDeclaration(
+			name <- name
 		)
 }
 
@@ -190,7 +251,19 @@ lazy rule Command2RunStep {
 				else
 					OclUndefined
 				endif,
-			workingDirectory <-
+			shell <- 
+				if not input.shell.oclIsUndefined() then
+					input.shell.expression2ExpressionHelper()
+				else
+					OclUndefined
+				endif,
+			noOutputTimeout <-
+				if not input.timeoutMinutes.oclIsUndefined() then
+					input.timeoutMinutes.expression2ExpressionHelper()
+				else
+					OclUndefined
+				endif,
+			workingDirectory <- 
 				if not input.workingDirectory.oclIsUndefined() then
 					input.workingDirectory.expression2ExpressionHelper()
 				else
@@ -384,6 +457,16 @@ unique lazy rule Plugin2OrbReference {
 		)
 }
 
+unique lazy rule PipelineCallJob2OrbReference {
+	from
+		input : String
+	to
+		output : CircleCI!OrbReference (
+			name <- CircleCI!OrbReference.allInstances()->indexOf(output).toString(),
+			reference <- 'circleci/continuation@0.5.0'
+		)
+}
+
 rule Input2Parameter {
 	from
 		input : CICD!Input
@@ -445,14 +528,14 @@ unique lazy rule Job2DockerExecutor {
 			),
 			environmentVariables <- input.environmentVariables,
 			shell <- 
-				if input.shell = #NULL then
-					OclUndefined
+				if not input.shell.oclIsUndefined() then
+					input.shell.expression2ExpressionHelper()
 				else
-					thisModule.String2StringLiteral(input.shell.toString())
+					OclUndefined
 				endif,
 			workingDirectory <- 
 				if not input.workingDirectory.oclIsUndefined() then
-					thisModule.String2StringLiteral(input.workingDirectory)
+					input.workingDirectory.expression2ExpressionHelper()
 				else
 					OclUndefined
 				endif
@@ -501,14 +584,14 @@ unique lazy rule Job2MacOSExecutor {
 				endif,
 			environmentVariables <- input.environmentVariables,
 			shell <- 
-				if input.shell = #NULL then
-					OclUndefined
+				if not input.shell.oclIsUndefined() then
+					input.shell.expression2ExpressionHelper()
 				else
-					thisModule.String2StringLiteral(input.shell.toString())
+					OclUndefined
 				endif,
 			workingDirectory <- 
 				if not input.workingDirectory.oclIsUndefined() then
-					thisModule.String2StringLiteral(input.workingDirectory)
+					input.workingDirectory.expression2ExpressionHelper()
 				else
 					OclUndefined
 				endif
@@ -529,14 +612,14 @@ unique lazy rule Job2MachineExecutor {
 				endif,
 			environmentVariables <- input.environmentVariables,
 			shell <- 
-				if input.shell = #NULL then
-					OclUndefined
+				if not input.shell.oclIsUndefined() then
+					input.shell.expression2ExpressionHelper()
 				else
-					thisModule.String2StringLiteral(input.shell.toString())
+					OclUndefined
 				endif,
 			workingDirectory <- 
 				if not input.workingDirectory.oclIsUndefined() then
-					thisModule.String2StringLiteral(input.workingDirectory)
+					input.workingDirectory.expression2ExpressionHelper()
 				else
 					OclUndefined
 				endif
@@ -811,8 +894,7 @@ helper context CICD!VariableReference def : expression2String() : String =
 helper context CICD!Job def : job2JobHelper() : CircleCI!Job =
 	if self.oclIsTypeOf(CICD!ScriptJob) then
 		thisModule.ScriptJob2Job(self)
-	else
-		OclUndefined
+	else OclUndefined
 	endif;
 
 helper context CICD!Job def : job2ExecutorHelper() : CircleCI!Executor =

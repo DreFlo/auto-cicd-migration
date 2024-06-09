@@ -4,10 +4,10 @@ import sys
 diffs = re.split(r"\n(?=[\w-]+[.\w-]*:)", sys.stdin.read())
 
 def no_diff(string):
-    match = re.match(r"^[\w-]+(?:\.[\w-]+)*:\n- ((?:.|\n(?!\+))+)\n\+ ((?:.|\n)+)$", string.strip())
+    match = re.match(r"^[\w-]+(?:\.[\w-]+)*:\n- ((?:.|\n(?!\+))+)\n\+ ((?:.|\n)+)$", string.strip().replace('False', 'false').replace("'", '"'))
     if match:
-        prev = match.group(1).replace('\n', '')
-        new = match.group(2).replace('\n', '')
+        prev = re.sub(r'\s', '', match.group(1))
+        new = re.sub(r'\s', '', match.group(2))
         return prev == new
     return False
 
@@ -58,7 +58,7 @@ def full_variable_names(string):
 
     all_variables = [variable for expression in all_expressions for variable in re.findall(r"(\${{\s*[\w-]+(?:\.[\w-]+)*\s*}})", expression)]
 
-    if len(all_variables) % 2 != 0:
+    if len(all_variables) % 2 != 0 or len(all_variables) == 0:
         return False
 
     top, bottom = all_variables[:len(all_variables)//2], all_variables[len(all_variables)//2:]
@@ -68,6 +68,38 @@ def full_variable_names(string):
             return False
     else:
         return True
+    
+def if_without_brackets(string):
+    # Check if string matches regex
+    match = re.match(r"^(?:[\w-]+\.)*if:\n- (.*)\n\+ \${{ (.*) }}$", string.strip())
+    if match:
+        return re.sub(r"\s", '', match.group(1)) == re.sub(r"\s", '', match.group(2))
+    return False
+
+def delete_zero(string):
+    # Check if string matches regex
+    if re.match(r"^.*:\n- ((?:\d+\.)+)0+\n\+ \1$", string.strip() + '.'):
+        return True
+    return False
+
+def environment_variable_syntax(string):
+    # Check if string matches regex
+    env = re.findall(r"\${(\w+)}", string)
+
+    if len(env) == 0:
+        return False
+
+    for e in env:
+        if re.findall(r"env\." + e, string) == []: 
+            return False
+    else:
+        return True
+
+def container_image(string):
+    # Check if string matches regex
+    if re.match(r"^(?:[\w\-.]*)container:\n- (.+)\n\+ map\[image:\1]$", string.strip()):
+        return True
+    return False    
 
 diffs = [diff for diff in diffs if not no_diff(diff)]
 diffs = [diff for diff in diffs if not string_to_one_item_list(diff)]
@@ -75,7 +107,11 @@ diffs = [diff for diff in diffs if not list_to_empty_map(diff)]
 #diffs = [diff for diff in diffs if not add_default_shell(diff)]
 diffs = [diff for diff in diffs if not string_output_to_map(diff)]
 #diffs = [diff for diff in diffs if not string_spaces(diff)]
-#diffs = [diff for diff in diffs if not full_variable_names(diff)]
+diffs = [diff for diff in diffs if not full_variable_names(diff)]
 diffs = [diff for diff in diffs if not empty_map_to_null(diff)]
+diffs = [diff for diff in diffs if not if_without_brackets(diff)]
+diffs = [diff for diff in diffs if not delete_zero(diff)]
+diffs = [diff for diff in diffs if not environment_variable_syntax(diff)]
+diffs = [diff for diff in diffs if not container_image(diff)]
 
 print('\n'.join(diffs))

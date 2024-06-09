@@ -282,6 +282,7 @@ lazy rule Command {
 			id <- input.id,
 			name <- input.name,
 			program <- input.program,
+			shell <- input.shell,
 			timeoutMinutes <- input.timeoutMinutes,
 			workingDirectory <- input.workingDirectory
 		)

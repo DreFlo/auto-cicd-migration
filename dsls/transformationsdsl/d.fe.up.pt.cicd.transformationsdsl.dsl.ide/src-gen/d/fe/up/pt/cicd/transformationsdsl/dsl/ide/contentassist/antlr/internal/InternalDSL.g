@@ -1088,9 +1088,9 @@ rule__TransformationSet__Group_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()); }
-	'during'
-	{ after(grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()); }
+	{ before(grammarAccess.getTransformationSetAccess().getWhileKeyword_2_0()); }
+	'while'
+	{ after(grammarAccess.getTransformationSetAccess().getWhileKeyword_2_0()); }
 )
 ;
 finally {

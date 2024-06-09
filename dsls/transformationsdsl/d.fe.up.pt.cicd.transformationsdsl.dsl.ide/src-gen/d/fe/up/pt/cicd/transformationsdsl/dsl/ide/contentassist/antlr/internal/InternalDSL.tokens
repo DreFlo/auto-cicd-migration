@@ -10,7 +10,6 @@
 'command'=41
 'conditional'=37
 'delete'=33
-'during'=18
 'else'=40
 'environment'=43
 'executor'=46
@@ -34,6 +33,7 @@
 'trigger'=31
 'version'=25
 'when'=29
+'while'=18
 'with'=36
 'workflow'=50
 '{'=16

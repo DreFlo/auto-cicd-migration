@@ -1,3 +1,3 @@
 after {
-    on CircleCI set version to "2.1"
+    on circleci set version to "2.1"
 }

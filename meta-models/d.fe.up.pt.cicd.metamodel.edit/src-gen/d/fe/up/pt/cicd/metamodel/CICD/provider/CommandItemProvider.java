@@ -2,6 +2,7 @@
  */
 package d.fe.up.pt.cicd.metamodel.CICD.provider;
 
+import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
 import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.metamodel.CICD.Command;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -64,6 +66,36 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(CICDPackage.Literals.COMMAND__SHELL);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns Command.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,6 +144,9 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 		case CICDPackage.COMMAND__PROGRAM:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
+		case CICDPackage.COMMAND__SHELL:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -126,6 +161,48 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL,
+				CICDFactory.eINSTANCE.create(CICDPackage.Literals.ASSIGNMENT)));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createConcat()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createStringLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL,
+				CICDFactory.eINSTANCE.createIntegerLiteral()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createDoubleLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL,
+				CICDFactory.eINSTANCE.createBooleanLiteral()));
+
+		newChildDescriptors.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL,
+				CICDFactory.eINSTANCE.createVariableReference()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createEqualityOp()));
+
+		newChildDescriptors.add(
+				createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createComparisonOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createDotOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createAnd()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createOr()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createUnaryOp()));
+
+		newChildDescriptors
+				.add(createChildParameter(CICDPackage.Literals.COMMAND__SHELL, CICDFactory.eINSTANCE.createNegation()));
 	}
 
 	/**
@@ -140,7 +217,8 @@ public class CommandItemProvider extends NonConditionalStepItemProvider {
 		Object childObject = child;
 
 		boolean qualify = childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES
-				|| childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
+				|| childFeature == CICDPackage.Literals.NON_CONDITIONAL_STEP__WORKING_DIRECTORY
+				|| childFeature == CICDPackage.Literals.COMMAND__SHELL;
 
 		if (qualify) {
 			return getString("_UI_CreateChild_text2",

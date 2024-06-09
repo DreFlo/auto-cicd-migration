@@ -140,8 +140,7 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 						getResourceLocator(), getString("_UI_PipelineBlock_workingDirectory_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_PipelineBlock_workingDirectory_feature",
 								"_UI_PipelineBlock_type"),
-						CICDPackage.Literals.PIPELINE_BLOCK__WORKING_DIRECTORY, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CICDPackage.Literals.PIPELINE_BLOCK__WORKING_DIRECTORY, true, false, false, null, null, null));
 	}
 
 	/**
@@ -156,8 +155,7 @@ public class PipelineBlockItemProvider extends ItemProviderAdapter implements IE
 						getResourceLocator(), getString("_UI_PipelineBlock_shell_feature"),
 						getString("_UI_PropertyDescriptor_description", "_UI_PipelineBlock_shell_feature",
 								"_UI_PipelineBlock_type"),
-						CICDPackage.Literals.PIPELINE_BLOCK__SHELL, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+						CICDPackage.Literals.PIPELINE_BLOCK__SHELL, true, false, false, null, null, null));
 	}
 
 	/**

@@ -135,50 +135,47 @@ public interface PipelineBlock extends EObject {
 	void setTimeoutMinutes(Integer value);
 
 	/**
-	 * Returns the value of the '<em><b>Working Directory</b></em>' attribute.
+	 * Returns the value of the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Working Directory</em>' attribute.
-	 * @see #setWorkingDirectory(String)
+	 * @return the value of the '<em>Working Directory</em>' containment reference.
+	 * @see #setWorkingDirectory(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_WorkingDirectory()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getWorkingDirectory();
+	Expression getWorkingDirectory();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory <em>Working Directory</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory <em>Working Directory</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Working Directory</em>' attribute.
+	 * @param value the new value of the '<em>Working Directory</em>' containment reference.
 	 * @see #getWorkingDirectory()
 	 * @generated
 	 */
-	void setWorkingDirectory(String value);
+	void setWorkingDirectory(Expression value);
 
 	/**
-	 * Returns the value of the '<em><b>Shell</b></em>' attribute.
-	 * The literals are from the enumeration {@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE}.
+	 * Returns the value of the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Shell</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
-	 * @see #setShell(SHELL_TYPE)
+	 * @return the value of the '<em>Shell</em>' containment reference.
+	 * @see #setShell(Expression)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getPipelineBlock_Shell()
-	 * @model required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	SHELL_TYPE getShell();
+	Expression getShell();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell <em>Shell</em>}' attribute.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell <em>Shell</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Shell</em>' attribute.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
+	 * @param value the new value of the '<em>Shell</em>' containment reference.
 	 * @see #getShell()
 	 * @generated
 	 */
-	void setShell(SHELL_TYPE value);
+	void setShell(Expression value);
 
 } // PipelineBlock

@@ -122,7 +122,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_BLOCK__TIMEOUT_MINUTES = 5;
 
 	/**
-	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -131,7 +131,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_BLOCK__WORKING_DIRECTORY = 6;
 
 	/**
-	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -222,7 +222,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__TIMEOUT_MINUTES = PIPELINE_BLOCK__TIMEOUT_MINUTES;
 
 	/**
-	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -231,7 +231,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE__WORKING_DIRECTORY = PIPELINE_BLOCK__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -340,7 +340,7 @@ public interface CICDPackage extends EPackage {
 	int JOB__TIMEOUT_MINUTES = PIPELINE_BLOCK__TIMEOUT_MINUTES;
 
 	/**
-	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -349,7 +349,7 @@ public interface CICDPackage extends EPackage {
 	int JOB__WORKING_DIRECTORY = PIPELINE_BLOCK__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -512,7 +512,7 @@ public interface CICDPackage extends EPackage {
 	int SCRIPT_JOB__TIMEOUT_MINUTES = JOB__TIMEOUT_MINUTES;
 
 	/**
-	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -521,7 +521,7 @@ public interface CICDPackage extends EPackage {
 	int SCRIPT_JOB__WORKING_DIRECTORY = JOB__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -693,7 +693,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_CALL_JOB__TIMEOUT_MINUTES = JOB__TIMEOUT_MINUTES;
 
 	/**
-	 * The feature id for the '<em><b>Working Directory</b></em>' attribute.
+	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -702,7 +702,7 @@ public interface CICDPackage extends EPackage {
 	int PIPELINE_CALL_JOB__WORKING_DIRECTORY = JOB__WORKING_DIRECTORY;
 
 	/**
-	 * The feature id for the '<em><b>Shell</b></em>' attribute.
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1812,22 +1812,13 @@ public interface CICDPackage extends EPackage {
 	int NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES = STEP_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NON_CONDITIONAL_STEP__TIMEOUT_MINUTES = STEP_FEATURE_COUNT + 3;
-
-	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NON_CONDITIONAL_STEP__ALLOW_FAILURE = STEP_FEATURE_COUNT + 4;
+	int NON_CONDITIONAL_STEP__ALLOW_FAILURE = STEP_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Working Directory</b></em>' containment reference.
@@ -1836,7 +1827,16 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_CONDITIONAL_STEP__WORKING_DIRECTORY = STEP_FEATURE_COUNT + 5;
+	int NON_CONDITIONAL_STEP__WORKING_DIRECTORY = STEP_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_CONDITIONAL_STEP__TIMEOUT_MINUTES = STEP_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Non Conditional Step</em>' class.
@@ -1894,15 +1894,6 @@ public interface CICDPackage extends EPackage {
 	int COMMAND__ENVIRONMENT_VARIABLES = NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMAND__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
-
-	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1921,6 +1912,15 @@ public interface CICDPackage extends EPackage {
 	int COMMAND__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
 
 	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
+
+	/**
 	 * The feature id for the '<em><b>Program</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1930,13 +1930,22 @@ public interface CICDPackage extends EPackage {
 	int COMMAND__PROGRAM = NON_CONDITIONAL_STEP_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Shell</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND__SHELL = NON_CONDITIONAL_STEP_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Command</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 1;
+	int COMMAND_FEATURE_COUNT = NON_CONDITIONAL_STEP_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Command</em>' class.
@@ -1985,15 +1994,6 @@ public interface CICDPackage extends EPackage {
 	int PLUGIN__ENVIRONMENT_VARIABLES = NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLUGIN__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
-
-	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2010,6 +2010,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int PLUGIN__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUGIN__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
 
 	/**
 	 * The feature id for the '<em><b>Plugin Name</b></em>' attribute.
@@ -2094,15 +2103,6 @@ public interface CICDPackage extends EPackage {
 	int CACHE__ENVIRONMENT_VARIABLES = NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CACHE__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
-
-	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2119,6 +2119,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int CACHE__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CACHE__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
 
 	/**
 	 * The feature id for the '<em><b>Cache Name</b></em>' containment reference.
@@ -2212,15 +2221,6 @@ public interface CICDPackage extends EPackage {
 	int ARTIFACT__ENVIRONMENT_VARIABLES = NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARTIFACT__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
-
-	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2237,6 +2237,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARTIFACT__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARTIFACT__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
 
 	/**
 	 * The feature id for the '<em><b>Artifact Name</b></em>' containment reference.
@@ -2339,15 +2348,6 @@ public interface CICDPackage extends EPackage {
 	int CHECKOUT__ENVIRONMENT_VARIABLES = NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES;
 
 	/**
-	 * The feature id for the '<em><b>Timeout Minutes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHECKOUT__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
-
-	/**
 	 * The feature id for the '<em><b>Allow Failure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2364,6 +2364,15 @@ public interface CICDPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHECKOUT__WORKING_DIRECTORY = NON_CONDITIONAL_STEP__WORKING_DIRECTORY;
+
+	/**
+	 * The feature id for the '<em><b>Timeout Minutes</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHECKOUT__TIMEOUT_MINUTES = NON_CONDITIONAL_STEP__TIMEOUT_MINUTES;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' containment reference.
@@ -3196,16 +3205,6 @@ public interface CICDPackage extends EPackage {
 	int NEGATION_OPERATION_COUNT = UNARY_OP_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
-	 * @generated
-	 */
-	int SHELL_TYPE = 51;
-
-	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3213,7 +3212,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getINPUT_TYPE()
 	 * @generated
 	 */
-	int INPUT_TYPE = 52;
+	int INPUT_TYPE = 51;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.EQUALITY_OPS <em>EQUALITY OPS</em>}' enum.
@@ -3223,7 +3222,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getEQUALITY_OPS()
 	 * @generated
 	 */
-	int EQUALITY_OPS = 53;
+	int EQUALITY_OPS = 52;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.COMPARISON_OPS <em>COMPARISON OPS</em>}' enum.
@@ -3233,7 +3232,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCOMPARISON_OPS()
 	 * @generated
 	 */
-	int COMPARISON_OPS = 54;
+	int COMPARISON_OPS = 53;
 
 	/**
 	 * The meta object id for the '{@link d.fe.up.pt.cicd.metamodel.CICD.CACHE_MODE <em>CACHE MODE</em>}' enum.
@@ -3243,7 +3242,7 @@ public interface CICDPackage extends EPackage {
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getCACHE_MODE()
 	 * @generated
 	 */
-	int CACHE_MODE = 55;
+	int CACHE_MODE = 54;
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock <em>Pipeline Block</em>}'.
@@ -3322,26 +3321,26 @@ public interface CICDPackage extends EPackage {
 	EAttribute getPipelineBlock_TimeoutMinutes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory <em>Working Directory</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory <em>Working Directory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Working Directory</em>'.
+	 * @return the meta object for the containment reference '<em>Working Directory</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getWorkingDirectory()
 	 * @see #getPipelineBlock()
 	 * @generated
 	 */
-	EAttribute getPipelineBlock_WorkingDirectory();
+	EReference getPipelineBlock_WorkingDirectory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell <em>Shell</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell <em>Shell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Shell</em>'.
+	 * @return the meta object for the containment reference '<em>Shell</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.PipelineBlock#getShell()
 	 * @see #getPipelineBlock()
 	 * @generated
 	 */
-	EAttribute getPipelineBlock_Shell();
+	EReference getPipelineBlock_Shell();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Pipeline <em>Pipeline</em>}'.
@@ -4133,15 +4132,15 @@ public interface CICDPackage extends EPackage {
 	EReference getNonConditionalStep_EnvironmentVariables();
 
 	/**
-	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}'.
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes <em>Timeout Minutes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Timeout Minutes</em>'.
+	 * @return the meta object for the containment reference '<em>Timeout Minutes</em>'.
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getTimeoutMinutes()
 	 * @see #getNonConditionalStep()
 	 * @generated
 	 */
-	EAttribute getNonConditionalStep_TimeoutMinutes();
+	EReference getNonConditionalStep_TimeoutMinutes();
 
 	/**
 	 * Returns the meta object for the attribute '{@link d.fe.up.pt.cicd.metamodel.CICD.NonConditionalStep#getAllowFailure <em>Allow Failure</em>}'.
@@ -4185,6 +4184,17 @@ public interface CICDPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCommand_Program();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link d.fe.up.pt.cicd.metamodel.CICD.Command#getShell <em>Shell</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Shell</em>'.
+	 * @see d.fe.up.pt.cicd.metamodel.CICD.Command#getShell()
+	 * @see #getCommand()
+	 * @generated
+	 */
+	EReference getCommand_Shell();
 
 	/**
 	 * Returns the meta object for class '{@link d.fe.up.pt.cicd.metamodel.CICD.Plugin <em>Plugin</em>}'.
@@ -4726,16 +4736,6 @@ public interface CICDPackage extends EPackage {
 	EClass getNegation();
 
 	/**
-	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>SHELL TYPE</em>'.
-	 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
-	 * @generated
-	 */
-	EEnum getSHELL_TYPE();
-
-	/**
 	 * Returns the meta object for enum '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4857,20 +4857,20 @@ public interface CICDPackage extends EPackage {
 		EAttribute PIPELINE_BLOCK__TIMEOUT_MINUTES = eINSTANCE.getPipelineBlock_TimeoutMinutes();
 
 		/**
-		 * The meta object literal for the '<em><b>Working Directory</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Working Directory</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PIPELINE_BLOCK__WORKING_DIRECTORY = eINSTANCE.getPipelineBlock_WorkingDirectory();
+		EReference PIPELINE_BLOCK__WORKING_DIRECTORY = eINSTANCE.getPipelineBlock_WorkingDirectory();
 
 		/**
-		 * The meta object literal for the '<em><b>Shell</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Shell</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PIPELINE_BLOCK__SHELL = eINSTANCE.getPipelineBlock_Shell();
+		EReference PIPELINE_BLOCK__SHELL = eINSTANCE.getPipelineBlock_Shell();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PipelineImpl <em>Pipeline</em>}' class.
@@ -5515,12 +5515,12 @@ public interface CICDPackage extends EPackage {
 		EReference NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES = eINSTANCE.getNonConditionalStep_EnvironmentVariables();
 
 		/**
-		 * The meta object literal for the '<em><b>Timeout Minutes</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Timeout Minutes</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NON_CONDITIONAL_STEP__TIMEOUT_MINUTES = eINSTANCE.getNonConditionalStep_TimeoutMinutes();
+		EReference NON_CONDITIONAL_STEP__TIMEOUT_MINUTES = eINSTANCE.getNonConditionalStep_TimeoutMinutes();
 
 		/**
 		 * The meta object literal for the '<em><b>Allow Failure</b></em>' attribute feature.
@@ -5555,6 +5555,14 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMMAND__PROGRAM = eINSTANCE.getCommand_Program();
+
+		/**
+		 * The meta object literal for the '<em><b>Shell</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMMAND__SHELL = eINSTANCE.getCommand_Shell();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.impl.PluginImpl <em>Plugin</em>}' class.
@@ -6011,16 +6019,6 @@ public interface CICDPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NEGATION = eINSTANCE.getNegation();
-
-		/**
-		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE <em>SHELL TYPE</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE
-		 * @see d.fe.up.pt.cicd.metamodel.CICD.impl.CICDPackageImpl#getSHELL_TYPE()
-		 * @generated
-		 */
-		EEnum SHELL_TYPE = eINSTANCE.getSHELL_TYPE();
 
 		/**
 		 * The meta object literal for the '{@link d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE <em>INPUT TYPE</em>}' enum.

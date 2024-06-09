@@ -32,7 +32,7 @@ public class CICD2CircleCI {
 	}
 	
 	private boolean isEnvironmentVariable(VariableDeclaration variableDeclaration) {
-		if (variableDeclaration.eContainer() instanceof Environment environment) {
+		if (variableDeclaration.eContainer().eContainer() instanceof Environment environment) {
 			return environment.getEnvironmentVariables().keySet().contains(variableDeclaration);
 		}
 		return false;

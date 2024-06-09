@@ -23,6 +23,7 @@
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/WINDOWS"/>
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/LINUX"/>
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/MACOS"/>
+      <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//CICD_AGENTS/CUSTOM"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="CircleCI.ecore#//WHEN_TYPE">
       <genEnumLiterals ecoreEnumLiteral="CircleCI.ecore#//WHEN_TYPE/ON_SUCCESS"/>

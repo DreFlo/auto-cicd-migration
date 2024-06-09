@@ -60,7 +60,9 @@ public class VariableReferenceParser {
             return null;
         }
 
-        switch (parts.poll()) {
+        String firstPart = parts.poll();
+
+        switch (firstPart) {
             case "pipeline" -> {
                 return getPipelineVariable(parts);
             }
@@ -89,7 +91,6 @@ public class VariableReferenceParser {
             }
             default -> {
                 EObject localContainer = container;
-                String environmentName = parts.poll();
                 while (true) {
                     while (!(localContainer instanceof Environment environment)) {
                         localContainer = localContainer.eContainer();
@@ -98,7 +99,7 @@ public class VariableReferenceParser {
                         }
                     }
 
-                    VariableDeclaration variableDeclaration = getEnvironmentVariable(environment, environmentName);
+                    VariableDeclaration variableDeclaration = getEnvironmentVariable(environment, firstPart);
 
                     if (variableDeclaration != null) {
                         return variableDeclaration;

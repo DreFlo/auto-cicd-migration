@@ -23,7 +23,8 @@ rule ScriptJob {
 			previous <- input.previous,
 			maxAttempts <- input.maxAttempts,
 			allowFailure <- input.allowFailure,
-			steps <- input.steps,			
+			shell <- input.shell,
+			steps <- input.steps,
 			environmentVariables <- input.environmentVariables->union(thisModule.extractEnvironmentVariables(input.steps))
 		)
 }
@@ -65,7 +66,8 @@ rule Command extends NonConditionalStep {
 		input : CICD!Command
 	to
 		output : CICD!Command(
-			program <- input.program
+			program <- input.program,
+			shell <- input.shell
 		)
 }
 

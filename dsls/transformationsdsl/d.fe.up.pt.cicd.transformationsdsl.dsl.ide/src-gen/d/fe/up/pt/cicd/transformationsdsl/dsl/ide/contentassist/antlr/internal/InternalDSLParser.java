@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDSLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'gha'", "'cicd'", "'circleci'", "'before'", "'translating'", "'{'", "'}'", "'during'", "'after'", "'run'", "'ATL'", "'on'", "'change'", "'plugin'", "'version'", "'args'", "'set'", "'labels'", "'when'", "'add'", "'trigger'", "'manual'", "'delete'", "'step'", "'replace'", "'with'", "'conditional'", "'if'", "'then'", "'else'", "'command'", "'script'", "'environment'", "'='", "'to'", "'executor'", "'from'", "'orb'", "'select'", "'workflow'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'gha'", "'cicd'", "'circleci'", "'before'", "'translating'", "'{'", "'}'", "'while'", "'after'", "'run'", "'ATL'", "'on'", "'change'", "'plugin'", "'version'", "'args'", "'set'", "'labels'", "'when'", "'add'", "'trigger'", "'manual'", "'delete'", "'step'", "'replace'", "'with'", "'conditional'", "'if'", "'then'", "'else'", "'command'", "'script'", "'environment'", "'='", "'to'", "'executor'", "'from'", "'orb'", "'select'", "'workflow'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -3437,21 +3437,21 @@ public class InternalDSLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TransformationSet__Group_2__0__Impl"
-    // InternalDSL.g:1085:1: rule__TransformationSet__Group_2__0__Impl : ( 'during' ) ;
+    // InternalDSL.g:1085:1: rule__TransformationSet__Group_2__0__Impl : ( 'while' ) ;
     public final void rule__TransformationSet__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDSL.g:1089:1: ( ( 'during' ) )
-            // InternalDSL.g:1090:1: ( 'during' )
+            // InternalDSL.g:1089:1: ( ( 'while' ) )
+            // InternalDSL.g:1090:1: ( 'while' )
             {
-            // InternalDSL.g:1090:1: ( 'during' )
-            // InternalDSL.g:1091:2: 'during'
+            // InternalDSL.g:1090:1: ( 'while' )
+            // InternalDSL.g:1091:2: 'while'
             {
-             before(grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()); 
+             before(grammarAccess.getTransformationSetAccess().getWhileKeyword_2_0()); 
             match(input,18,FOLLOW_2); 
-             after(grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()); 
+             after(grammarAccess.getTransformationSetAccess().getWhileKeyword_2_0()); 
 
             }
 

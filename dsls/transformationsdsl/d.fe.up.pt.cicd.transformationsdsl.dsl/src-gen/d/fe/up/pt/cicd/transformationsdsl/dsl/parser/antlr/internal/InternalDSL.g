@@ -124,9 +124,9 @@ ruleTransformationSet returns [EObject current=null]
 			}
 		)?
 		(
-			otherlv_6='during'
+			otherlv_6='while'
 			{
-				newLeafNode(otherlv_6, grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0());
+				newLeafNode(otherlv_6, grammarAccess.getTransformationSetAccess().getWhileKeyword_2_0());
 			}
 			(
 				otherlv_7='translating'

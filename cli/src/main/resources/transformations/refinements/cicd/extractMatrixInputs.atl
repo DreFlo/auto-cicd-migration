@@ -307,7 +307,8 @@ rule Command extends NonConditionalStep {
 		input : CICD1!Command
 	to
 		output : CICD2!Command(
-			program <- input.program
+			program <- input.program,
+			shell <- input.shell
 		)
 }
 

@@ -78,7 +78,7 @@
 [/template]
 
 [template public generateLiteral(literal : Literal)]
-[if (literal.oclIsKindOf(StringLiteral))][generateStringLiteral(literal.oclAsType(StringLiteral))/][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][literal.oclAsType(BooleanLiteral).value/][/if]
+[if (literal.oclIsKindOf(StringLiteral))][generateStringLiteral(literal.oclAsType(StringLiteral))/][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][if (literal.oclAsType(BooleanLiteral).value)]true[else]false[/if][/if]
 [/template]
 
 [template public generateStringLiteral(literal : StringLiteral)]

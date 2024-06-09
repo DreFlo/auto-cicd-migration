@@ -29,7 +29,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_TransformationSet_TranslatingKeyword_3_1_q;
 	protected AbstractElementAlias match_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q;
 	protected AbstractElementAlias match_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q;
-	protected AbstractElementAlias match_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q;
+	protected AbstractElementAlias match_TransformationSet___WhileKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -42,7 +42,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_TransformationSet_TranslatingKeyword_3_1_q = new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_3_1());
 		match_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getAfterKeyword_3_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_3_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_3_4()));
 		match_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getBeforeKeyword_1_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_1_4()));
-		match_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getDuringKeyword_2_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_2_4()));
+		match_TransformationSet___WhileKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getWhileKeyword_2_0()), new TokenAlias(false, true, grammarAccess.getTransformationSetAccess().getTranslatingKeyword_2_1()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getLeftCurlyBracketKeyword_2_2()), new TokenAlias(false, false, grammarAccess.getTransformationSetAccess().getRightCurlyBracketKeyword_2_4()));
 	}
 	
 	@Override
@@ -73,8 +73,8 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_TransformationSet___AfterKeyword_3_0_TranslatingKeyword_3_1_q_LeftCurlyBracketKeyword_3_2_RightCurlyBracketKeyword_3_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q.equals(syntax))
 				emit_TransformationSet___BeforeKeyword_1_0_TranslatingKeyword_1_1_q_LeftCurlyBracketKeyword_1_2_RightCurlyBracketKeyword_1_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q.equals(syntax))
-				emit_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TransformationSet___WhileKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q.equals(syntax))
+				emit_TransformationSet___WhileKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -142,8 +142,8 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'translating'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'translating'? '{' '}')? 'during' (ambiguity) '{' onTIM+=TIMTransformation
-	 *     preTIM+=TSMTransformation '}' 'during' (ambiguity) '{' onTIM+=TIMTransformation
+	 *     (rule start) ('before' 'translating'? '{' '}')? 'while' (ambiguity) '{' onTIM+=TIMTransformation
+	 *     preTIM+=TSMTransformation '}' 'while' (ambiguity) '{' onTIM+=TIMTransformation
 	 
 	 * </pre>
 	 */
@@ -157,9 +157,9 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'translating'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'translating'? '{' '}')? ('during' 'translating'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
+	 *     (rule start) ('before' 'translating'? '{' '}')? ('while' 'translating'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
 	 *     onTIM+=TIMTransformation '}' 'after' (ambiguity) '{' postTIM+=TSMTransformation
-	 *     preTIM+=TSMTransformation '}' ('during' 'translating'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
+	 *     preTIM+=TSMTransformation '}' ('while' 'translating'? '{' '}')? 'after' (ambiguity) '{' postTIM+=TSMTransformation
 	 
 	 * </pre>
 	 */
@@ -173,9 +173,9 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('after' 'translating'? '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) ('before' 'translating'? '{' '}')? ('during' 'translating'? '{' '}')? (ambiguity) (rule start)
+	 *     (rule start) ('before' 'translating'? '{' '}')? ('while' 'translating'? '{' '}')? (ambiguity) (rule start)
 	 *     onTIM+=TIMTransformation '}' (ambiguity) (rule end)
-	 *     preTIM+=TSMTransformation '}' ('during' 'translating'? '{' '}')? (ambiguity) (rule end)
+	 *     preTIM+=TSMTransformation '}' ('while' 'translating'? '{' '}')? (ambiguity) (rule end)
 	 
 	 * </pre>
 	 */
@@ -189,9 +189,9 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('before' 'translating'? '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'during' 'translating'? '{' onTIM+=TIMTransformation
-	 *     (rule start) (ambiguity) ('during' 'translating'? '{' '}')? 'after' 'translating'? '{' postTIM+=TSMTransformation
-	 *     (rule start) (ambiguity) ('during' 'translating'? '{' '}')? ('after' 'translating'? '{' '}')? (rule start)
+	 *     (rule start) (ambiguity) 'while' 'translating'? '{' onTIM+=TIMTransformation
+	 *     (rule start) (ambiguity) ('while' 'translating'? '{' '}')? 'after' 'translating'? '{' postTIM+=TSMTransformation
+	 *     (rule start) (ambiguity) ('while' 'translating'? '{' '}')? ('after' 'translating'? '{' '}')? (rule start)
 	 
 	 * </pre>
 	 */
@@ -202,7 +202,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     ('during' 'translating'? '{' '}')?
+	 *     ('while' 'translating'? '{' '}')?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) ('before' 'translating'? '{' '}')? (ambiguity) 'after' 'translating'? '{' postTIM+=TSMTransformation
@@ -212,7 +212,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 
 	 * </pre>
 	 */
-	protected void emit_TransformationSet___DuringKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TransformationSet___WhileKeyword_2_0_TranslatingKeyword_2_1_q_LeftCurlyBracketKeyword_2_2_RightCurlyBracketKeyword_2_4__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

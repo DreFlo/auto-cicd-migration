@@ -23,8 +23,7 @@ import cli.transformers.exogenous.toTIM.GHA2CICDTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 import cli.utils.LoggerUtils;
-import cli.validators.AbstractValidator;
-import cli.validators.GHAValidator;
+import cli.validators.GHA2CircleCIValidator;
 import d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CircleCIPackage;
 import d.fe.up.pt.cicd.gha.metamodel.GHA.GHAPackage;
 import d.fe.up.pt.cicd.jenkins.metamodel.Jenkins.JenkinsPackage;
@@ -136,8 +135,8 @@ public class Main {
 			if (inputEngineer == null) {
 				throw new RuntimeException("Input language \"" + inputLanguage + "\" not supported");
 			} else {
-				if (inputLanguage.equals("gha") && commandLine.hasOption("s")) {
-					((GHA2CICDTransformer)inputEngineer.getTransformer()).setValidator(new GHAValidator(getResourceSet(), "validations/gha/canBeMigrated.ocl"));
+				if (inputLanguage.equals("gha") && commandLine.getOptionValue("ol").equals("circleci") && commandLine.hasOption("s")) {
+					((GHA2CICDTransformer)inputEngineer.getTransformer()).setValidator(new GHA2CircleCIValidator(getResourceSet()));
 				}
 				inputEngineers.add(inputEngineer);
 			}
@@ -219,13 +218,9 @@ public class Main {
 			}
 			Pipeline pipeline;
 
-			if (pipelines.size() == 1) {
-				pipeline = pipelines.get(0);
-			} else {
-				pipeline = pipelines.get(0);
-				for (int i = 1; i < pipelines.size(); i++) {
-					pipeline = (new CICDMerger(getResourceSet())).merge(pipeline, pipelines.get(i));
-				}
+			pipeline = pipelines.get(0);
+			for (int i = 1; i < pipelines.size(); i++) {
+				pipeline = (new CICDMerger(getResourceSet())).merge(pipeline, pipelines.get(i));
 			}
 
 			outputScript = outputEngineer.transform(pipeline, cicdRefinerPaths, outputRefinerPaths);

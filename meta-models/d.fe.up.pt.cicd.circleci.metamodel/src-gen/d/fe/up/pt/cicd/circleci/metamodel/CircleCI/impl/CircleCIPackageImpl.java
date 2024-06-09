@@ -3500,6 +3500,7 @@ public class CircleCIPackageImpl extends EPackageImpl implements CircleCIPackage
 		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.WINDOWS);
 		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.LINUX);
 		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.MACOS);
+		addEEnumLiteral(cicD_AGENTSEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.CICD_AGENTS.CUSTOM);
 
 		initEEnum(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.class, "WHEN_TYPE");
 		addEEnumLiteral(wheN_TYPEEEnum, d.fe.up.pt.cicd.circleci.metamodel.CircleCI.WHEN_TYPE.ON_SUCCESS);

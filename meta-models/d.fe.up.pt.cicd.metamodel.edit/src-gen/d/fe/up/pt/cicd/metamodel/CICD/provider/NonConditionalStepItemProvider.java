@@ -49,8 +49,8 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 
 			addIdPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
-			addTimeoutMinutesPropertyDescriptor(object);
 			addAllowFailurePropertyDescriptor(object);
+			addTimeoutMinutesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -99,8 +99,7 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 				getString("_UI_NonConditionalStep_timeoutMinutes_feature"),
 				getString("_UI_PropertyDescriptor_description", "_UI_NonConditionalStep_timeoutMinutes_feature",
 						"_UI_NonConditionalStep_type"),
-				CICDPackage.Literals.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+				CICDPackage.Literals.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES, true, false, false, null, null, null));
 	}
 
 	/**
@@ -187,8 +186,8 @@ public class NonConditionalStepItemProvider extends StepItemProvider {
 		switch (notification.getFeatureID(NonConditionalStep.class)) {
 		case CICDPackage.NON_CONDITIONAL_STEP__ID:
 		case CICDPackage.NON_CONDITIONAL_STEP__NAME:
-		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
 		case CICDPackage.NON_CONDITIONAL_STEP__ALLOW_FAILURE:
+		case CICDPackage.NON_CONDITIONAL_STEP__TIMEOUT_MINUTES:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case CICDPackage.NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES:

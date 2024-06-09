@@ -25,11 +25,7 @@ rule Workflow2Pipeline {
 				->collect(trigger | trigger.outputs)->flatten(),
 			shell <-
 				if not workflow.defaults.oclIsUndefined() then
-					if not workflow.defaults.shell.oclIsUndefined() then
-						workflow.defaults.shell.expression2String().getShell()
-					else
-						#NULL
-					endif
+					workflow.defaults.shell
 				else
 					OclUndefined
 				endif,
@@ -41,7 +37,7 @@ rule Workflow2Pipeline {
 				),
 			workingDirectory <-
 				if not workflow.defaults.oclIsUndefined() then
-					workflow.defaults.workingDirectory.expression2String()
+					workflow.defaults.workingDirectory
 				else
 					OclUndefined
 				endif
@@ -170,18 +166,14 @@ abstract rule Job2Job {
 			outputs <- ghaJob.outputs,
 			shell <-
 				if not ghaJob.defaults.oclIsUndefined() then
-					if not ghaJob.defaults.shell.oclIsUndefined() then
-						ghaJob.defaults.shell.expression2String().getShell()
-					else
-						#NULL
-					endif
+					ghaJob.defaults.shell
 				else
 					OclUndefined
 				endif,
 			services <- ghaJob.services,
 			workingDirectory <-
 				if not ghaJob.defaults.oclIsUndefined() then
-					ghaJob.defaults.workingDirectory.expression2String()
+					ghaJob.defaults.workingDirectory
 				else
 					OclUndefined
 				endif
@@ -230,12 +222,7 @@ abstract rule Step2NonConditionalStep extends AbstractStep2Step {
 	to
 		cicdStep : CICD!NonConditionalStep(
 			id <- ghaStep.id,
-			timeoutMinutes <- 
-				if not ghaStep.timeoutMinutes.oclIsUndefined() then
-					ghaStep.timeoutMinutes.expression2String().stringToInt()
-				else
-					OclUndefined
-				endif,
+			timeoutMinutes <- ghaStep.timeoutMinutes,
 			environmentVariables <- ghaStep.environmentVariables,
 			allowFailure <-
 				if not ghaStep.continueOnError.oclIsUndefined() then
@@ -258,7 +245,8 @@ rule Command2Command extends Step2NonConditionalStep {
 		ghaStep : GHA!Command
 	to
 		cicdStep : CICD!Command(
-			program <- ghaStep.command
+			program <- ghaStep.command,
+			shell <- ghaStep.shell
 		)
 }
 
@@ -594,7 +582,9 @@ rule VariableReference2VariableReference extends Value2Value {
 }
 
 helper context GHA!Job def : getAgent() : CICD!Agent =
-	if not thisModule.checkForLabel(self.agent.labels, 'ubuntu').oclIsUndefined() or not thisModule.checkForLabel(self.agent.labels, 'linux').oclIsUndefined() then
+	if self.agent.oclIsUndefined() then
+		OclUndefined
+	else if not thisModule.checkForLabel(self.agent.labels, 'ubuntu').oclIsUndefined() or not thisModule.checkForLabel(self.agent.labels, 'linux').oclIsUndefined() then
 		thisModule.Job2LinuxAgent(self)
 	else if not thisModule.checkForLabel(self.agent.labels, 'windows').oclIsUndefined() then 
 		thisModule.Job2WindowsAgent(self)
@@ -602,6 +592,7 @@ helper context GHA!Job def : getAgent() : CICD!Agent =
 		thisModule.Job2MacOSAgent(self)
 	else
 		thisModule.Job2CustomAgent(self)
+	endif
 	endif
 	endif
 	endif;

@@ -4,6 +4,12 @@ package GHA
 
 context Workflow
 
+inv NoWorkflowEnv:
+	if self.environmentVariables->notEmpty() then null else true endif
+	
+inv NoWorkflowDefaults:
+	if self.defaults.oclIsUndefined() then true else null endif
+
 inv NoStagingEnvironments : 
 	if StagingEnvironment.allInstances()->notEmpty() then null else true endif
 
@@ -33,5 +39,23 @@ inv MatrixSettings :
 		matrix.failFast <> null or
 		matrix.maxParallel <> null
 	)->notEmpty() then null else true endif
+	
+inv Container :
+	if Container.allInstances()->select(
+		container |
+		container.environmentVariables->notEmpty() or
+		container.ports->notEmpty() or
+		container.volumes->notEmpty() or
+		container.options->notEmpty()
+	)->notEmpty() then null else true endif
+	
+inv NoStepId :
+ 	if Step.allInstances()->select(
+ 		step |
+ 		step.id <> null
+ 	)->notEmpty() then null else true endif
+ 	
+inv NoWorkflowCallJob :
+	if WorkflowCallJob.allInstances()->notEmpty() then null else true endif
 
 endpackage

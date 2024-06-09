@@ -1,6 +1,5 @@
 package cli.transformers;
 
-import cli.transformers.endogenous.CICD.EndogenousCICDAbstractTransformer;
 import cli.utils.EMFUtils;
 import cli.utils.JavaUtils;
 import cli.utils.LoggerUtils;
@@ -21,9 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -87,10 +84,10 @@ public abstract class AbstractTransformer<InputModel extends EObject, InputPacka
     }
 
     public OutputModel transform(InputModel inputModel) throws IOException {
+        String inputModelFilePath = serializeModel(inputModel);
         if (validator != null) {
             validator.validate(inputModel);
         }
-        String inputModelFilePath = serializeModel(inputModel);
         String outputModelFilePath = inputModelFilePath + ".out.xmi";
 
         LoggerUtils.log(Level.INFO, "Transforming (" + getClass().getName() + ")...");

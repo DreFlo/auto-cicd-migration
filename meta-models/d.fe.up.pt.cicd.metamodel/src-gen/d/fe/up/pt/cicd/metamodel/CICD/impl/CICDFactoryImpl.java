@@ -147,8 +147,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case CICDPackage.SHELL_TYPE:
-			return createSHELL_TYPEFromString(eDataType, initialValue);
 		case CICDPackage.INPUT_TYPE:
 			return createINPUT_TYPEFromString(eDataType, initialValue);
 		case CICDPackage.EQUALITY_OPS:
@@ -170,8 +168,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-		case CICDPackage.SHELL_TYPE:
-			return convertSHELL_TYPEToString(eDataType, instanceValue);
 		case CICDPackage.INPUT_TYPE:
 			return convertINPUT_TYPEToString(eDataType, instanceValue);
 		case CICDPackage.EQUALITY_OPS:
@@ -600,28 +596,6 @@ public class CICDFactoryImpl extends EFactoryImpl implements CICDFactory {
 	public Negation createNegation() {
 		NegationImpl negation = new NegationImpl();
 		return negation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SHELL_TYPE createSHELL_TYPEFromString(EDataType eDataType, String initialValue) {
-		SHELL_TYPE result = SHELL_TYPE.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException(
-					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSHELL_TYPEToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

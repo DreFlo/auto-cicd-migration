@@ -11,7 +11,7 @@ rule Pipeline2Workflow {
 	to
 		workflow : GHA!Workflow(
 			defaults <- 
-				if pipeline.shell <> #NULL or not pipeline.workingDirectory.oclIsUndefined() then
+				if not pipeline.shell.oclIsUndefined() or not pipeline.workingDirectory.oclIsUndefined() then
 					thisModule.Defaults(pipeline.shell, pipeline.workingDirectory)
 				else
 					OclUndefined
@@ -119,7 +119,7 @@ abstract rule Job2Job {
 					OclUndefined
 				endif,
 			defaults <- 
-				if cicdJob.shell <> #NULL or not cicdJob.workingDirectory.oclIsUndefined() then
+				if not cicdJob.shell.oclIsUndefined() or not cicdJob.workingDirectory.oclIsUndefined() then
 					thisModule.Defaults(cicdJob.shell, cicdJob.workingDirectory)
 				else
 					OclUndefined
@@ -161,7 +161,17 @@ rule PipelineCallJob2WorkflowCallJob extends Job2Job {
 	to
 		ghaJob : GHA!WorkflowCallJob(
 			uses <- cicdJob.pipelinePath,
-			args <- cicdJob.args
+			args <- cicdJob.args,
+			agent <- thisModule.CreateAgent(Sequence{'ubuntu-latest'})
+		)
+}
+
+lazy rule CreateAgent {
+	from
+		input : Sequence(String)
+	to
+		output : GHA!Agent(
+			labels <- input->collect(string | thisModule.String2StringLiteral(string))
 		)
 }
 
@@ -201,12 +211,7 @@ abstract rule NonConditionalStep2Step extends Step2AbstractStep {
 				else
 					OclUndefined
 				endif,
-			timeoutMinutes <- 
-				if not cicdStep.timeoutMinutes.oclIsUndefined() then
-					thisModule.Integer2IntegerLiteral(cicdStep.timeoutMinutes)
-				else
-					OclUndefined
-				endif,
+			timeoutMinutes <- cicdStep.timeoutMinutes,
 			workingDirectory <- cicdStep.workingDirectory
 		)
 }
@@ -216,7 +221,8 @@ rule Command2Command extends NonConditionalStep2Step {
 		cicdStep : CICD!Command
 	to
 		ghaStep : GHA!Command(
-			command <- cicdStep.program
+			command <- cicdStep.program,
+			shell <- cicdStep.shell
 		)
 }
 
@@ -626,22 +632,12 @@ lazy rule VariableDeclaration {
 
 lazy rule Defaults {
 	from
-		shell : CICD!SHELL_TYPE,
-		workingDirectory : String
+		shell : CICD!Expression,
+		workingDirectory : CICD!Expression
 	to
 		defaults : GHA!Defaults(
-			shell <-
-				if shell = #BASH then
-					thisModule.String2StringLiteral('bash')
-				else
-					OclUndefined
-				endif,
-			workingDirectory <- 
-				if not workingDirectory.oclIsUndefined() then
-					thisModule.String2StringLiteral(workingDirectory)
-				else
-					OclUndefined
-				endif
+			shell <- shell,
+			workingDirectory <- workingDirectory
 		)
 }
 

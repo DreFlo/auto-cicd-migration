@@ -1,13 +1,8 @@
 #!/bin/bash
 
-for file in ../tests/*.*ml; do
-    base_name=$(basename "$file")
-    converted_file="../converted_circleci_pre_validate/${base_name}"
-    # Check if the file has a corresponding converted file
-    if [ ! -f "$converted_file" ]; then
-        echo "Skipping $file as it has no corresponding converted file"
-        continue
-    fi
+for converted_file in ../converted_circleci_pre_validate/*; do
+    base_name=$(basename "$converted_file")
+    file="../tests/${base_name}"
     echo "Comparing $file to $converted_file"
     ../yamldiff "$file" "$converted_file" --no-color | python ../scripts/filter_diffs.py > "../diffs/${base_name}.diff"
     cat "../diffs/${base_name}.diff" | python ../scripts/categorize_diffs.py > "../categorized_diffs/${base_name}.diff.json"

@@ -46,7 +46,16 @@ public enum CICD_AGENTS implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MACOS(3, "MACOS", "MACOS");
+	MACOS(2, "MACOS", "MACOS"),
+	/**
+	* The '<em><b>CUSTOM</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #CUSTOM_VALUE
+	* @generated
+	* @ordered
+	*/
+	CUSTOM(3, "CUSTOM", "CUSTOM");
 
 	/**
 	 * The '<em><b>WINDOWS</b></em>' literal value.
@@ -79,7 +88,18 @@ public enum CICD_AGENTS implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MACOS_VALUE = 3;
+	public static final int MACOS_VALUE = 2;
+
+	/**
+	 * The '<em><b>CUSTOM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CUSTOM
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CUSTOM_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>CICD AGENTS</b></em>' enumerators.
@@ -87,7 +107,7 @@ public enum CICD_AGENTS implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final CICD_AGENTS[] VALUES_ARRAY = new CICD_AGENTS[] { WINDOWS, LINUX, MACOS, };
+	private static final CICD_AGENTS[] VALUES_ARRAY = new CICD_AGENTS[] { WINDOWS, LINUX, MACOS, CUSTOM, };
 
 	/**
 	 * A public read-only list of all the '<em><b>CICD AGENTS</b></em>' enumerators.
@@ -149,6 +169,8 @@ public enum CICD_AGENTS implements Enumerator {
 			return LINUX;
 		case MACOS_VALUE:
 			return MACOS;
+		case CUSTOM_VALUE:
+			return CUSTOM;
 		}
 		return null;
 	}

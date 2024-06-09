@@ -109,27 +109,12 @@ rule WorkflowDefinedJobConfiguration2ScriptJob extends WorkflowJobConfiguration2
 					Sequence{}
 				endif
 				endif,
-			shell <- 
-				if not input.job.executor.shell.oclIsUndefined() then
-					let shellString : String = input.job.executor.shell.expression2String() in 
-					if shellString = 'shell' then
-						#BASH
-					else
-						#NULL
-					endif
-				else
-					OclUndefined
-				endif,
+			shell <- input.job.executor.shell,
 			steps <- 
 				input.preSteps->collect(step | step.step2StepHelper())->flatten()
 				->union(input.job.steps->collect(step | step.step2StepHelper())->flatten())
 				->union(input.postSteps->collect(step | step.step2StepHelper())->flatten()),
-			workingDirectory <- 
-				if not input.job.executor.workingDirectory.oclIsUndefined() then
-					input.job.executor.workingDirectory.expression2String()
-				else
-					OclUndefined
-				endif
+			workingDirectory <- input.job.executor.workingDirectory
 		)
 }
 
@@ -164,7 +149,9 @@ rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobCon
 				else
 					Sequence{}
 				endif
-				endif
+				endif,
+			shell <- input.job.executor.shell,
+			workingDirectory <- input.job.executor.workingDirectory
 		)
 }
 
@@ -772,7 +759,9 @@ rule RunStep2Command {
 			environmentVariables <- input.environmentVariables,
 			name <- if input.name.oclIsUndefined() then OclUndefined else input.name.expression2String() endif,
 			program <- input.command,
-			workingDirectory <- input.workingDirectory
+			workingDirectory <- input.workingDirectory,
+			shell <- input.shell,
+			timeoutMinutes <- input.noOutputTimeout
 		)
 }
 

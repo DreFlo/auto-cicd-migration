@@ -434,13 +434,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum shelL_TYPEEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum inpuT_TYPEEEnum = null;
 
 	/**
@@ -604,8 +597,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPipelineBlock_WorkingDirectory() {
-		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(6);
+	public EReference getPipelineBlock_WorkingDirectory() {
+		return (EReference) pipelineBlockEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -614,8 +607,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPipelineBlock_Shell() {
-		return (EAttribute) pipelineBlockEClass.getEStructuralFeatures().get(7);
+	public EReference getPipelineBlock_Shell() {
+		return (EReference) pipelineBlockEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1364,8 +1357,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getNonConditionalStep_TimeoutMinutes() {
-		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(3);
+	public EReference getNonConditionalStep_TimeoutMinutes() {
+		return (EReference) nonConditionalStepEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1375,7 +1368,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EAttribute getNonConditionalStep_AllowFailure() {
-		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) nonConditionalStepEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1385,7 +1378,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 */
 	@Override
 	public EReference getNonConditionalStep_WorkingDirectory() {
-		return (EReference) nonConditionalStepEClass.getEStructuralFeatures().get(5);
+		return (EReference) nonConditionalStepEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1406,6 +1399,16 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	@Override
 	public EReference getCommand_Program() {
 		return (EReference) commandEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCommand_Shell() {
+		return (EReference) commandEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1924,16 +1927,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getSHELL_TYPE() {
-		return shelL_TYPEEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getINPUT_TYPE() {
 		return inpuT_TYPEEEnum;
 	}
@@ -2005,8 +1998,8 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__OUTPUTS);
 		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__ENVIRONMENT_VARIABLES);
 		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__TIMEOUT_MINUTES);
-		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__WORKING_DIRECTORY);
-		createEAttribute(pipelineBlockEClass, PIPELINE_BLOCK__SHELL);
+		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__WORKING_DIRECTORY);
+		createEReference(pipelineBlockEClass, PIPELINE_BLOCK__SHELL);
 
 		pipelineEClass = createEClass(PIPELINE);
 		createEReference(pipelineEClass, PIPELINE__TRIGGERS);
@@ -2106,12 +2099,13 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ID);
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__NAME);
 		createEReference(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ENVIRONMENT_VARIABLES);
-		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__TIMEOUT_MINUTES);
 		createEAttribute(nonConditionalStepEClass, NON_CONDITIONAL_STEP__ALLOW_FAILURE);
 		createEReference(nonConditionalStepEClass, NON_CONDITIONAL_STEP__WORKING_DIRECTORY);
+		createEReference(nonConditionalStepEClass, NON_CONDITIONAL_STEP__TIMEOUT_MINUTES);
 
 		commandEClass = createEClass(COMMAND);
 		createEReference(commandEClass, COMMAND__PROGRAM);
+		createEReference(commandEClass, COMMAND__SHELL);
 
 		pluginEClass = createEClass(PLUGIN);
 		createEAttribute(pluginEClass, PLUGIN__PLUGIN_NAME);
@@ -2189,7 +2183,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		negationEClass = createEClass(NEGATION);
 
 		// Create enums
-		shelL_TYPEEEnum = createEEnum(SHELL_TYPE);
 		inpuT_TYPEEEnum = createEEnum(INPUT_TYPE);
 		equalitY_OPSEEnum = createEEnum(EQUALITY_OPS);
 		comparisoN_OPSEEnum = createEEnum(COMPARISON_OPS);
@@ -2286,11 +2279,12 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEAttribute(getPipelineBlock_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null, 0,
 				1, PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPipelineBlock_WorkingDirectory(), ecorePackage.getEString(), "workingDirectory", null, 0, 1,
-				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPipelineBlock_Shell(), this.getSHELL_TYPE(), "shell", null, 1, 1, PipelineBlock.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineBlock_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null, 0, 1,
+				PipelineBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPipelineBlock_Shell(), this.getExpression(), null, "shell", null, 0, 1, PipelineBlock.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pipelineEClass, Pipeline.class, "Pipeline", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2497,18 +2491,21 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEReference(getNonConditionalStep_EnvironmentVariables(), this.getAssignment(), null, "environmentVariables",
 				null, 0, -1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNonConditionalStep_TimeoutMinutes(), ecorePackage.getEIntegerObject(), "timeoutMinutes", null,
-				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNonConditionalStep_AllowFailure(), ecorePackage.getEBooleanObject(), "allowFailure", null, 0,
 				1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNonConditionalStep_WorkingDirectory(), this.getExpression(), null, "workingDirectory", null,
 				0, 1, NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNonConditionalStep_TimeoutMinutes(), this.getExpression(), null, "timeoutMinutes", null, 0, 1,
+				NonConditionalStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCommand_Program(), this.getExpression(), null, "program", null, 1, 1, Command.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommand_Shell(), this.getExpression(), null, "shell", null, 0, 1, Command.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2649,10 +2646,6 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
-		initEEnum(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.class, "SHELL_TYPE");
-		addEEnumLiteral(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.NULL);
-		addEEnumLiteral(shelL_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.SHELL_TYPE.BASH);
-
 		initEEnum(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.class, "INPUT_TYPE");
 		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.STRING);
 		addEEnumLiteral(inpuT_TYPEEEnum, d.fe.up.pt.cicd.metamodel.CICD.INPUT_TYPE.NUMBER);

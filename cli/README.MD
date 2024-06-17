@@ -13,3 +13,6 @@ gradle installDist
 ```
 
 If ```-i``` or ```-o``` are not provided, the program will read from ```stdin``` and write to ```stdout``` respectively.
+
+- -v - --verbose - CLI logs actions
+- -s - --strict - Strict mode (validate before migration)

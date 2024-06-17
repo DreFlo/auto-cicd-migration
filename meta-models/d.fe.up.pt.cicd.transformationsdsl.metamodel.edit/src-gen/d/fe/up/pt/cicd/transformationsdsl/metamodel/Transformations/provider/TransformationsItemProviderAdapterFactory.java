@@ -165,29 +165,6 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ChangeAgentLabelItemProvider changeAgentLabelItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createChangeAgentLabelAdapter() {
-		if (changeAgentLabelItemProvider == null) {
-			changeAgentLabelItemProvider = new ChangeAgentLabelItemProvider(this);
-		}
-
-		return changeAgentLabelItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -234,6 +211,75 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.JobTransformation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JobTransformationItemProvider jobTransformationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.JobTransformation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJobTransformationAdapter() {
+		if (jobTransformationItemProvider == null) {
+			jobTransformationItemProvider = new JobTransformationItemProvider(this);
+		}
+
+		return jobTransformationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.EditStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EditStepItemProvider editStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.EditStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEditStepAdapter() {
+		if (editStepItemProvider == null) {
+			editStepItemProvider = new EditStepItemProvider(this);
+		}
+
+		return editStepItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.NewStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NewStepItemProvider newStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.NewStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNewStepAdapter() {
+		if (newStepItemProvider == null) {
+			newStepItemProvider = new NewStepItemProvider(this);
+		}
+
+		return newStepItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,6 +303,29 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddStep} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddStepItemProvider addStepItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddStep}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAddStepAdapter() {
+		if (addStepItemProvider == null) {
+			addStepItemProvider = new AddStepItemProvider(this);
+		}
+
+		return addStepItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -277,6 +346,75 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 		}
 
 		return deleteStepItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddPorts} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AddPortsItemProvider addPortsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddPorts}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAddPortsAdapter() {
+		if (addPortsItemProvider == null) {
+			addPortsItemProvider = new AddPortsItemProvider(this);
+		}
+
+		return addPortsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetOptions} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SetOptionsItemProvider setOptionsItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetOptions}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSetOptionsAdapter() {
+		if (setOptionsItemProvider == null) {
+			setOptionsItemProvider = new SetOptionsItemProvider(this);
+		}
+
+		return setOptionsItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeImage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChangeImageItemProvider changeImageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeImage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChangeImageAdapter() {
+		if (changeImageItemProvider == null) {
+			changeImageItemProvider = new ChangeImageItemProvider(this);
+		}
+
+		return changeImageItemProvider;
 	}
 
 	/**
@@ -461,16 +599,28 @@ public class TransformationsItemProviderAdapterFactory extends TransformationsAd
 			atlScriptItemProvider.dispose();
 		if (changePluginItemProvider != null)
 			changePluginItemProvider.dispose();
-		if (changeAgentLabelItemProvider != null)
-			changeAgentLabelItemProvider.dispose();
 		if (replaceAgentLabelsItemProvider != null)
 			replaceAgentLabelsItemProvider.dispose();
 		if (addTriggerItemProvider != null)
 			addTriggerItemProvider.dispose();
+		if (jobTransformationItemProvider != null)
+			jobTransformationItemProvider.dispose();
+		if (editStepItemProvider != null)
+			editStepItemProvider.dispose();
+		if (newStepItemProvider != null)
+			newStepItemProvider.dispose();
 		if (replaceStepItemProvider != null)
 			replaceStepItemProvider.dispose();
+		if (addStepItemProvider != null)
+			addStepItemProvider.dispose();
 		if (deleteStepItemProvider != null)
 			deleteStepItemProvider.dispose();
+		if (addPortsItemProvider != null)
+			addPortsItemProvider.dispose();
+		if (setOptionsItemProvider != null)
+			setOptionsItemProvider.dispose();
+		if (changeImageItemProvider != null)
+			changeImageItemProvider.dispose();
 		if (addOrbReferenceExecutorItemProvider != null)
 			addOrbReferenceExecutorItemProvider.dispose();
 		if (setCircleCIVersionItemProvider != null)

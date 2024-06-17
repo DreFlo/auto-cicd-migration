@@ -60,7 +60,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LinuxAgent" eSuperTypes="#//PresetAgent">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//DockerContainer"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WindowsAgent" eSuperTypes="#//PresetAgent"/>
   <eClassifiers xsi:type="ecore:EClass" name="MacOSAgent" eSuperTypes="#//PresetAgent">

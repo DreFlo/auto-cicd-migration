@@ -173,19 +173,37 @@ public class TransformationSetItemProvider extends ItemProviderAdapter implement
 				TransformationsFactory.eINSTANCE.createChangePlugin()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
-				TransformationsFactory.eINSTANCE.createChangeAgentLabel()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createReplaceAgentLabels()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createAddTrigger()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createJobTransformation()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createEditStep()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createNewStep()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createReplaceStep()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createAddStep()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createDeleteStep()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createAddPorts()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createSetOptions()));
+
+		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
+				TransformationsFactory.eINSTANCE.createChangeImage()));
 
 		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.TRANSFORMATION_SET__ON_TIM,
 				TransformationsFactory.eINSTANCE.createAddOrbReferenceExecutor()));

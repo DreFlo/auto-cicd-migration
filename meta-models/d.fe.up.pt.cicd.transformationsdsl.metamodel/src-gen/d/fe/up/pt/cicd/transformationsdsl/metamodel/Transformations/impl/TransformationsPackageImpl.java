@@ -9,19 +9,25 @@ import d.fe.up.pt.cicd.metamodel.CICD.CICDPackage;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ATLScript;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddExecutor;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddOrbReferenceExecutor;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddPorts;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.AddTrigger;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeImage;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangePlugin;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.CircleCITransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ConditionalTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.DeleteStep;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.EditStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.GHATransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.InplaceTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.JobTransformation;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.NewStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.OutplaceTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceAgentLabels;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SelectWorkflow;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetCircleCIVersion;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.SetOptions;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TIMTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TSMTransformation;
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.Transformation;
@@ -121,13 +127,6 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass changeAgentLabelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass replaceAgentLabelsEClass = null;
 
 	/**
@@ -142,6 +141,27 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass jobTransformationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass editStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass newStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass replaceStepEClass = null;
 
 	/**
@@ -149,7 +169,35 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass addStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass deleteStepEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addPortsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass setOptionsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass changeImageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -484,26 +532,6 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EClass getChangeAgentLabel() {
-		return changeAgentLabelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getChangeAgentLabel_Name() {
-		return (EReference) changeAgentLabelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getReplaceAgentLabels() {
 		return replaceAgentLabelsEClass;
 	}
@@ -544,6 +572,66 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public EClass getJobTransformation() {
+		return jobTransformationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getJobTransformation_Job() {
+		return (EAttribute) jobTransformationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEditStep() {
+		return editStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEditStep_Index() {
+		return (EAttribute) editStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getNewStep() {
+		return newStepEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getNewStep_Step() {
+		return (EReference) newStepEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getReplaceStep() {
 		return replaceStepEClass;
 	}
@@ -554,28 +642,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getReplaceStep_Job() {
-		return (EAttribute) replaceStepEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getReplaceStep_Index() {
-		return (EAttribute) replaceStepEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getReplaceStep_Step() {
-		return (EReference) replaceStepEClass.getEStructuralFeatures().get(2);
+	public EClass getAddStep() {
+		return addStepEClass;
 	}
 
 	/**
@@ -594,8 +662,8 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDeleteStep_Job() {
-		return (EAttribute) deleteStepEClass.getEStructuralFeatures().get(0);
+	public EClass getAddPorts() {
+		return addPortsEClass;
 	}
 
 	/**
@@ -604,8 +672,48 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDeleteStep_Index() {
-		return (EAttribute) deleteStepEClass.getEStructuralFeatures().get(1);
+	public EAttribute getAddPorts_Ports() {
+		return (EAttribute) addPortsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSetOptions() {
+		return setOptionsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSetOptions_Options() {
+		return (EAttribute) setOptionsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getChangeImage() {
+		return changeImageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getChangeImage_Image() {
+		return (EAttribute) changeImageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -789,23 +897,35 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		createEAttribute(changePluginEClass, CHANGE_PLUGIN__VERSION);
 		createEReference(changePluginEClass, CHANGE_PLUGIN__ARGS);
 
-		changeAgentLabelEClass = createEClass(CHANGE_AGENT_LABEL);
-		createEReference(changeAgentLabelEClass, CHANGE_AGENT_LABEL__NAME);
-
 		replaceAgentLabelsEClass = createEClass(REPLACE_AGENT_LABELS);
 		createEAttribute(replaceAgentLabelsEClass, REPLACE_AGENT_LABELS__LABELS);
 
 		addTriggerEClass = createEClass(ADD_TRIGGER);
 		createEReference(addTriggerEClass, ADD_TRIGGER__TRIGGER);
 
+		jobTransformationEClass = createEClass(JOB_TRANSFORMATION);
+		createEAttribute(jobTransformationEClass, JOB_TRANSFORMATION__JOB);
+
+		editStepEClass = createEClass(EDIT_STEP);
+		createEAttribute(editStepEClass, EDIT_STEP__INDEX);
+
+		newStepEClass = createEClass(NEW_STEP);
+		createEReference(newStepEClass, NEW_STEP__STEP);
+
 		replaceStepEClass = createEClass(REPLACE_STEP);
-		createEAttribute(replaceStepEClass, REPLACE_STEP__JOB);
-		createEAttribute(replaceStepEClass, REPLACE_STEP__INDEX);
-		createEReference(replaceStepEClass, REPLACE_STEP__STEP);
+
+		addStepEClass = createEClass(ADD_STEP);
 
 		deleteStepEClass = createEClass(DELETE_STEP);
-		createEAttribute(deleteStepEClass, DELETE_STEP__JOB);
-		createEAttribute(deleteStepEClass, DELETE_STEP__INDEX);
+
+		addPortsEClass = createEClass(ADD_PORTS);
+		createEAttribute(addPortsEClass, ADD_PORTS__PORTS);
+
+		setOptionsEClass = createEClass(SET_OPTIONS);
+		createEAttribute(setOptionsEClass, SET_OPTIONS__OPTIONS);
+
+		changeImageEClass = createEClass(CHANGE_IMAGE);
+		createEAttribute(changeImageEClass, CHANGE_IMAGE__IMAGE);
 
 		ghaTransformationEClass = createEClass(GHA_TRANSFORMATION);
 
@@ -870,18 +990,29 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 		atlScriptEClass.getESuperTypes().add(this.getTIMTransformation());
 		changePluginEClass.getESuperTypes().add(this.getInplaceTransformation());
 		changePluginEClass.getESuperTypes().add(this.getTIMTransformation());
-		changeAgentLabelEClass.getESuperTypes().add(this.getInplaceTransformation());
-		changeAgentLabelEClass.getESuperTypes().add(this.getTIMTransformation());
 		replaceAgentLabelsEClass.getESuperTypes().add(this.getOutplaceTransformation());
 		replaceAgentLabelsEClass.getESuperTypes().add(this.getTIMTransformation());
 		replaceAgentLabelsEClass.getESuperTypes().add(this.getConditionalTransformation());
 		addTriggerEClass.getESuperTypes().add(this.getOutplaceTransformation());
 		addTriggerEClass.getESuperTypes().add(this.getTIMTransformation());
 		addTriggerEClass.getESuperTypes().add(this.getConditionalTransformation());
-		replaceStepEClass.getESuperTypes().add(this.getTIMTransformation());
-		replaceStepEClass.getESuperTypes().add(this.getOutplaceTransformation());
-		deleteStepEClass.getESuperTypes().add(this.getTIMTransformation());
+		jobTransformationEClass.getESuperTypes().add(this.getTIMTransformation());
+		editStepEClass.getESuperTypes().add(this.getJobTransformation());
+		newStepEClass.getESuperTypes().add(this.getEditStep());
+		newStepEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		replaceStepEClass.getESuperTypes().add(this.getNewStep());
+		addStepEClass.getESuperTypes().add(this.getNewStep());
+		deleteStepEClass.getESuperTypes().add(this.getEditStep());
 		deleteStepEClass.getESuperTypes().add(this.getInplaceTransformation());
+		addPortsEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		addPortsEClass.getESuperTypes().add(this.getTIMTransformation());
+		addPortsEClass.getESuperTypes().add(this.getConditionalTransformation());
+		setOptionsEClass.getESuperTypes().add(this.getInplaceTransformation());
+		setOptionsEClass.getESuperTypes().add(this.getConditionalTransformation());
+		setOptionsEClass.getESuperTypes().add(this.getTIMTransformation());
+		changeImageEClass.getESuperTypes().add(this.getOutplaceTransformation());
+		changeImageEClass.getESuperTypes().add(this.getConditionalTransformation());
+		changeImageEClass.getESuperTypes().add(this.getTIMTransformation());
 		ghaTransformationEClass.getESuperTypes().add(this.getTSMTransformation());
 		circleCITransformationEClass.getESuperTypes().add(this.getTSMTransformation());
 		addExecutorEClass.getESuperTypes().add(this.getCircleCITransformation());
@@ -952,12 +1083,6 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 				ChangePlugin.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(changeAgentLabelEClass, ChangeAgentLabel.class, "ChangeAgentLabel", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChangeAgentLabel_Name(), this.getStringToStringMapEntry(), null, "name", null, 1, 1,
-				ChangeAgentLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(replaceAgentLabelsEClass, ReplaceAgentLabels.class, "ReplaceAgentLabels", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReplaceAgentLabels_Labels(), ecorePackage.getEString(), "labels", null, 0, -1,
@@ -970,21 +1095,43 @@ public class TransformationsPackageImpl extends EPackageImpl implements Transfor
 				AddTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(replaceStepEClass, ReplaceStep.class, "ReplaceStep", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(jobTransformationEClass, JobTransformation.class, "JobTransformation", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReplaceStep_Job(), ecorePackage.getEString(), "job", null, 1, 1, ReplaceStep.class,
+		initEAttribute(getJobTransformation_Job(), ecorePackage.getEString(), "job", null, 1, 1,
+				JobTransformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(editStepEClass, EditStep.class, "EditStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEditStep_Index(), ecorePackage.getEIntegerObject(), "index", null, 1, 1, EditStep.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReplaceStep_Index(), ecorePackage.getEIntegerObject(), "index", null, 1, 1, ReplaceStep.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReplaceStep_Step(), theCICDPackage.getStep(), null, "step", null, 1, 1, ReplaceStep.class,
+
+		initEClass(newStepEClass, NewStep.class, "NewStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNewStep_Step(), theCICDPackage.getStep(), null, "step", null, 1, 1, NewStep.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(replaceStepEClass, ReplaceStep.class, "ReplaceStep", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(addStepEClass, AddStep.class, "AddStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(deleteStepEClass, DeleteStep.class, "DeleteStep", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDeleteStep_Job(), ecorePackage.getEString(), "job", null, 1, 1, DeleteStep.class,
+
+		initEClass(addPortsEClass, AddPorts.class, "AddPorts", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAddPorts_Ports(), ecorePackage.getEString(), "ports", null, 1, -1, AddPorts.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDeleteStep_Index(), ecorePackage.getEIntegerObject(), "index", null, 1, 1, DeleteStep.class,
+
+		initEClass(setOptionsEClass, SetOptions.class, "SetOptions", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSetOptions_Options(), ecorePackage.getEString(), "options", null, 1, 1, SetOptions.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(changeImageEClass, ChangeImage.class, "ChangeImage", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChangeImage_Image(), ecorePackage.getEString(), "image", null, 1, 1, ChangeImage.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ghaTransformationEClass, GHATransformation.class, "GHATransformation", IS_ABSTRACT, !IS_INTERFACE,

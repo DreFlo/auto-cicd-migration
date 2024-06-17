@@ -10,7 +10,7 @@ public class TDSL2ATL {
 				.matcher(string);
 		
 		if (matcher.find()) {
-			string = matcher.group(1);
+			string = matcher.group(1) != null ? matcher.group(1) : matcher.group(2);
 		}
 		
 		return string;

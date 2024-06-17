@@ -2350,7 +2350,7 @@ public class CICDPackageImpl extends EPackageImpl implements CICDPackage {
 		initEClass(linuxAgentEClass, LinuxAgent.class, "LinuxAgent", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLinuxAgent_Container(), this.getDockerContainer(), null, "container", null, 0, 1,
-				LinuxAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				LinuxAgent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(windowsAgentEClass, WindowsAgent.class, "WindowsAgent", !IS_ABSTRACT, !IS_INTERFACE,

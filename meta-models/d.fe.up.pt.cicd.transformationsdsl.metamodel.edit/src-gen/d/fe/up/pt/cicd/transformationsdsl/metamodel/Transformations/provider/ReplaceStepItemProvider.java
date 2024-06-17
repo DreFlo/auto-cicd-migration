@@ -2,10 +2,7 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.provider;
 
-import d.fe.up.pt.cicd.metamodel.CICD.CICDFactory;
-
 import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,12 +10,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ReplaceStep} object.
@@ -26,7 +18,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ReplaceStepItemProvider extends TIMTransformationItemProvider {
+public class ReplaceStepItemProvider extends NewStepItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -48,72 +40,8 @@ public class ReplaceStepItemProvider extends TIMTransformationItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addJobPropertyDescriptor(object);
-			addIndexPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Job feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addJobPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ReplaceStep_job_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ReplaceStep_job_feature",
-								"_UI_ReplaceStep_type"),
-						TransformationsPackage.Literals.REPLACE_STEP__JOB, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Index feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIndexPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_ReplaceStep_index_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_ReplaceStep_index_feature",
-								"_UI_ReplaceStep_type"),
-						TransformationsPackage.Literals.REPLACE_STEP__INDEX, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(TransformationsPackage.Literals.REPLACE_STEP__STEP);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -160,16 +88,6 @@ public class ReplaceStepItemProvider extends TIMTransformationItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(ReplaceStep.class)) {
-		case TransformationsPackage.REPLACE_STEP__JOB:
-		case TransformationsPackage.REPLACE_STEP__INDEX:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case TransformationsPackage.REPLACE_STEP__STEP:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -183,24 +101,6 @@ public class ReplaceStepItemProvider extends TIMTransformationItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.REPLACE_STEP__STEP,
-				CICDFactory.eINSTANCE.createConditionalStep()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.REPLACE_STEP__STEP,
-				CICDFactory.eINSTANCE.createCommand()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.REPLACE_STEP__STEP,
-				CICDFactory.eINSTANCE.createPlugin()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.REPLACE_STEP__STEP,
-				CICDFactory.eINSTANCE.createCache()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.REPLACE_STEP__STEP,
-				CICDFactory.eINSTANCE.createArtifact()));
-
-		newChildDescriptors.add(createChildParameter(TransformationsPackage.Literals.REPLACE_STEP__STEP,
-				CICDFactory.eINSTANCE.createCheckout()));
 	}
 
 }

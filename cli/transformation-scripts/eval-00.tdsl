@@ -1,3 +1,11 @@
 while {
    add trigger when "input.triggers->isEmpty()" manual
+   add container ports when "input.label = 'cimg/postgres:14.1'" ports {'5432:5432'}
+   insert step 1 on 'maven/test' with checkout  {}
+   replace step 3 on 'maven/test' with command {
+       script 'dockerize -wait tcp://172.17.0.1:5432 -timeout 1m'
+   }
+   replace step 4 on 'maven/test' with command {
+       script 'mvn verify'
+   }
 }

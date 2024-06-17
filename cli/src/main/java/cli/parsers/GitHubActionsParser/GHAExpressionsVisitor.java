@@ -39,7 +39,7 @@ public class GHAExpressionsVisitor {
                 IntegerLiteral integerLiteral = GHAPackage.eINSTANCE.getGHAFactory().createIntegerLiteral();
                 integerLiteral.setValue(Integer.parseInt(expressionString));
                 return integerLiteral;
-            } else if (expressionString.matches("true|false")) {
+            } else if (expressionString.matches("(?i)true|false")) {
                 BooleanLiteral booleanLiteral = GHAPackage.eINSTANCE.getGHAFactory().createBooleanLiteral();
                 booleanLiteral.setValue(Boolean.parseBoolean(expressionString));
                 return booleanLiteral;

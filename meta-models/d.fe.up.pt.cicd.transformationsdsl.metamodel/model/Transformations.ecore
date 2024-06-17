@@ -45,15 +45,29 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="ecore:EClass ../../d.fe.up.pt.cicd.metamodel/model/CICD.ecore#//Trigger"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReplaceStep" eSuperTypes="#//TIMTransformation #//OutplaceTransformation">
+  <eClassifiers xsi:type="ecore:EClass" name="JobTransformation" eSuperTypes="#//TIMTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="job" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EditStep" eSuperTypes="#//JobTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NewStep" eSuperTypes="#//EditStep #//OutplaceTransformation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="step" lowerBound="1" eType="ecore:EClass ../../d.fe.up.pt.cicd.metamodel/model/CICD.ecore#//Step"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DeleteStep" eSuperTypes="#//TIMTransformation #//InplaceTransformation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="job" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReplaceStep" eSuperTypes="#//NewStep"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AddStep" eSuperTypes="#//NewStep"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeleteStep" eSuperTypes="#//EditStep #//InplaceTransformation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AddPorts" eSuperTypes="#//OutplaceTransformation #//TIMTransformation #//ConditionalTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ports" lowerBound="1" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetOptions" eSuperTypes="#//InplaceTransformation #//ConditionalTransformation #//TIMTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeImage" eSuperTypes="#//OutplaceTransformation #//ConditionalTransformation #//TIMTransformation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="image" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GHATransformation" abstract="true" eSuperTypes="#//TSMTransformation"/>
   <eClassifiers xsi:type="ecore:EClass" name="CircleCITransformation" abstract="true"

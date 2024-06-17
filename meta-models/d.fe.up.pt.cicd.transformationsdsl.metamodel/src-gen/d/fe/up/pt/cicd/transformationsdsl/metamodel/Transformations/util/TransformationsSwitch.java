@@ -161,19 +161,6 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TransformationsPackage.CHANGE_AGENT_LABEL: {
-			ChangeAgentLabel changeAgentLabel = (ChangeAgentLabel) theEObject;
-			T result = caseChangeAgentLabel(changeAgentLabel);
-			if (result == null)
-				result = caseInplaceTransformation(changeAgentLabel);
-			if (result == null)
-				result = caseTIMTransformation(changeAgentLabel);
-			if (result == null)
-				result = caseTransformation(changeAgentLabel);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case TransformationsPackage.REPLACE_AGENT_LABELS: {
 			ReplaceAgentLabels replaceAgentLabels = (ReplaceAgentLabels) theEObject;
 			T result = caseReplaceAgentLabels(replaceAgentLabels);
@@ -204,15 +191,81 @@ public class TransformationsSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case TransformationsPackage.JOB_TRANSFORMATION: {
+			JobTransformation jobTransformation = (JobTransformation) theEObject;
+			T result = caseJobTransformation(jobTransformation);
+			if (result == null)
+				result = caseTIMTransformation(jobTransformation);
+			if (result == null)
+				result = caseTransformation(jobTransformation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.EDIT_STEP: {
+			EditStep editStep = (EditStep) theEObject;
+			T result = caseEditStep(editStep);
+			if (result == null)
+				result = caseJobTransformation(editStep);
+			if (result == null)
+				result = caseTIMTransformation(editStep);
+			if (result == null)
+				result = caseTransformation(editStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.NEW_STEP: {
+			NewStep newStep = (NewStep) theEObject;
+			T result = caseNewStep(newStep);
+			if (result == null)
+				result = caseEditStep(newStep);
+			if (result == null)
+				result = caseOutplaceTransformation(newStep);
+			if (result == null)
+				result = caseJobTransformation(newStep);
+			if (result == null)
+				result = caseTIMTransformation(newStep);
+			if (result == null)
+				result = caseTransformation(newStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case TransformationsPackage.REPLACE_STEP: {
 			ReplaceStep replaceStep = (ReplaceStep) theEObject;
 			T result = caseReplaceStep(replaceStep);
 			if (result == null)
-				result = caseTIMTransformation(replaceStep);
+				result = caseNewStep(replaceStep);
+			if (result == null)
+				result = caseEditStep(replaceStep);
 			if (result == null)
 				result = caseOutplaceTransformation(replaceStep);
 			if (result == null)
+				result = caseJobTransformation(replaceStep);
+			if (result == null)
+				result = caseTIMTransformation(replaceStep);
+			if (result == null)
 				result = caseTransformation(replaceStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.ADD_STEP: {
+			AddStep addStep = (AddStep) theEObject;
+			T result = caseAddStep(addStep);
+			if (result == null)
+				result = caseNewStep(addStep);
+			if (result == null)
+				result = caseEditStep(addStep);
+			if (result == null)
+				result = caseOutplaceTransformation(addStep);
+			if (result == null)
+				result = caseJobTransformation(addStep);
+			if (result == null)
+				result = caseTIMTransformation(addStep);
+			if (result == null)
+				result = caseTransformation(addStep);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -221,11 +274,60 @@ public class TransformationsSwitch<T> extends Switch<T> {
 			DeleteStep deleteStep = (DeleteStep) theEObject;
 			T result = caseDeleteStep(deleteStep);
 			if (result == null)
-				result = caseTIMTransformation(deleteStep);
+				result = caseEditStep(deleteStep);
 			if (result == null)
 				result = caseInplaceTransformation(deleteStep);
 			if (result == null)
+				result = caseJobTransformation(deleteStep);
+			if (result == null)
+				result = caseTIMTransformation(deleteStep);
+			if (result == null)
 				result = caseTransformation(deleteStep);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.ADD_PORTS: {
+			AddPorts addPorts = (AddPorts) theEObject;
+			T result = caseAddPorts(addPorts);
+			if (result == null)
+				result = caseOutplaceTransformation(addPorts);
+			if (result == null)
+				result = caseTIMTransformation(addPorts);
+			if (result == null)
+				result = caseConditionalTransformation(addPorts);
+			if (result == null)
+				result = caseTransformation(addPorts);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.SET_OPTIONS: {
+			SetOptions setOptions = (SetOptions) theEObject;
+			T result = caseSetOptions(setOptions);
+			if (result == null)
+				result = caseInplaceTransformation(setOptions);
+			if (result == null)
+				result = caseConditionalTransformation(setOptions);
+			if (result == null)
+				result = caseTIMTransformation(setOptions);
+			if (result == null)
+				result = caseTransformation(setOptions);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TransformationsPackage.CHANGE_IMAGE: {
+			ChangeImage changeImage = (ChangeImage) theEObject;
+			T result = caseChangeImage(changeImage);
+			if (result == null)
+				result = caseOutplaceTransformation(changeImage);
+			if (result == null)
+				result = caseConditionalTransformation(changeImage);
+			if (result == null)
+				result = caseTIMTransformation(changeImage);
+			if (result == null)
+				result = caseTransformation(changeImage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -470,21 +572,6 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Change Agent Label</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseChangeAgentLabel(ChangeAgentLabel object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Replace Agent Labels</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -515,6 +602,51 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Job Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Job Transformation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJobTransformation(JobTransformation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Edit Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Edit Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEditStep(EditStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>New Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>New Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNewStep(NewStep object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Replace Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -530,6 +662,21 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add Step</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddStep(AddStep object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Delete Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -541,6 +688,51 @@ public class TransformationsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDeleteStep(DeleteStep object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Add Ports</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Add Ports</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddPorts(AddPorts object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Set Options</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Set Options</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSetOptions(SetOptions object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Image</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Image</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangeImage(ChangeImage object) {
 		return null;
 	}
 

@@ -44,23 +44,32 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangePlugin/version"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangePlugin/args"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//ChangeAgentLabel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ChangeAgentLabel/name"/>
-    </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//ReplaceAgentLabels">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceAgentLabels/labels"/>
     </genClasses>
     <genClasses ecoreClass="Transformations.ecore#//AddTrigger">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//AddTrigger/trigger"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//ReplaceStep">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceStep/job"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ReplaceStep/index"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//ReplaceStep/step"/>
+    <genClasses ecoreClass="Transformations.ecore#//JobTransformation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//JobTransformation/job"/>
     </genClasses>
-    <genClasses ecoreClass="Transformations.ecore#//DeleteStep">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//DeleteStep/job"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//DeleteStep/index"/>
+    <genClasses ecoreClass="Transformations.ecore#//EditStep">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//EditStep/index"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//NewStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Transformations.ecore#//NewStep/step"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//ReplaceStep"/>
+    <genClasses ecoreClass="Transformations.ecore#//AddStep"/>
+    <genClasses ecoreClass="Transformations.ecore#//DeleteStep"/>
+    <genClasses ecoreClass="Transformations.ecore#//AddPorts">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//AddPorts/ports"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//SetOptions">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//SetOptions/options"/>
+    </genClasses>
+    <genClasses ecoreClass="Transformations.ecore#//ChangeImage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Transformations.ecore#//ChangeImage/image"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Transformations.ecore#//GHATransformation"/>
     <genClasses image="false" ecoreClass="Transformations.ecore#//CircleCITransformation"/>

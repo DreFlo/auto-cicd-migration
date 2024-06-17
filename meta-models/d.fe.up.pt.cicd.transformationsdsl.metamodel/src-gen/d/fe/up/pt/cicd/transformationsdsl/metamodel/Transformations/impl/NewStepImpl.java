@@ -2,10 +2,10 @@
  */
 package d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl;
 
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.ChangeAgentLabel;
-import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
+import d.fe.up.pt.cicd.metamodel.CICD.Step;
 
-import java.util.Map;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.NewStep;
+import d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.TransformationsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,34 +17,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Change Agent Label</b></em>'.
+ * An implementation of the model object '<em><b>New Step</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.ChangeAgentLabelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link d.fe.up.pt.cicd.transformationsdsl.metamodel.Transformations.impl.NewStepImpl#getStep <em>Step</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements ChangeAgentLabel {
+public class NewStepImpl extends EditStepImpl implements NewStep {
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' map.
+	 * The cached value of the '{@link #getStep() <em>Step</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getStep()
 	 * @generated
 	 * @ordered
 	 */
-	protected Map.Entry<String, String> name;
+	protected Step step;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChangeAgentLabelImpl() {
+	protected NewStepImpl() {
 		super();
 	}
 
@@ -55,7 +55,7 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TransformationsPackage.Literals.CHANGE_AGENT_LABEL;
+		return TransformationsPackage.Literals.NEW_STEP;
 	}
 
 	/**
@@ -64,8 +64,8 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	 * @generated
 	 */
 	@Override
-	public Map.Entry<String, String> getName() {
-		return name;
+	public Step getStep() {
+		return step;
 	}
 
 	/**
@@ -73,12 +73,12 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetName(Map.Entry<String, String> newName, NotificationChain msgs) {
-		Map.Entry<String, String> oldName = name;
-		name = newName;
+	public NotificationChain basicSetStep(Step newStep, NotificationChain msgs) {
+		Step oldStep = step;
+		step = newStep;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					TransformationsPackage.CHANGE_AGENT_LABEL__NAME, oldName, newName);
+					TransformationsPackage.NEW_STEP__STEP, oldStep, newStep);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -93,21 +93,21 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	 * @generated
 	 */
 	@Override
-	public void setName(Map.Entry<String, String> newName) {
-		if (newName != name) {
+	public void setStep(Step newStep) {
+		if (newStep != step) {
 			NotificationChain msgs = null;
-			if (name != null)
-				msgs = ((InternalEObject) name).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - TransformationsPackage.CHANGE_AGENT_LABEL__NAME, null, msgs);
-			if (newName != null)
-				msgs = ((InternalEObject) newName).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - TransformationsPackage.CHANGE_AGENT_LABEL__NAME, null, msgs);
-			msgs = basicSetName(newName, msgs);
+			if (step != null)
+				msgs = ((InternalEObject) step).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TransformationsPackage.NEW_STEP__STEP, null, msgs);
+			if (newStep != null)
+				msgs = ((InternalEObject) newStep).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TransformationsPackage.NEW_STEP__STEP, null, msgs);
+			msgs = basicSetStep(newStep, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TransformationsPackage.CHANGE_AGENT_LABEL__NAME,
-					newName, newName));
+			eNotify(new ENotificationImpl(this, Notification.SET, TransformationsPackage.NEW_STEP__STEP, newStep,
+					newStep));
 	}
 
 	/**
@@ -118,8 +118,8 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
-			return basicSetName(null, msgs);
+		case TransformationsPackage.NEW_STEP__STEP:
+			return basicSetStep(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -132,8 +132,8 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
-			return getName();
+		case TransformationsPackage.NEW_STEP__STEP:
+			return getStep();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -143,12 +143,11 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
-			setName((Map.Entry<String, String>) newValue);
+		case TransformationsPackage.NEW_STEP__STEP:
+			setStep((Step) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -162,8 +161,8 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
-			setName((Map.Entry<String, String>) null);
+		case TransformationsPackage.NEW_STEP__STEP:
+			setStep((Step) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -177,10 +176,10 @@ public class ChangeAgentLabelImpl extends InplaceTransformationImpl implements C
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TransformationsPackage.CHANGE_AGENT_LABEL__NAME:
-			return name != null;
+		case TransformationsPackage.NEW_STEP__STEP:
+			return step != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ChangeAgentLabelImpl
+} //NewStepImpl

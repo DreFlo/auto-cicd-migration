@@ -155,7 +155,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ATLScript");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cRunKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cATLKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cAtlKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cOnKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cModelMODELSEnumRuleCall_3_0 = (RuleCall)cModelAssignment_3.eContents().get(0);
@@ -165,18 +165,18 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//ATLScript returns ATLScript:
-		//    'run' 'ATL' 'on'? model=MODELS '{' script=EString '}'
+		//    'run' 'atl' 'on'? model=MODELS '{' script=EString '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'run' 'ATL' 'on'? model=MODELS '{' script=EString '}'
+		//'run' 'atl' 'on'? model=MODELS '{' script=EString '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'run'
 		public Keyword getRunKeyword_0() { return cRunKeyword_0; }
 		
-		//'ATL'
-		public Keyword getATLKeyword_1() { return cATLKeyword_1; }
+		//'atl'
+		public Keyword getAtlKeyword_1() { return cAtlKeyword_1; }
 		
 		//'on'?
 		public Keyword getOnKeyword_2() { return cOnKeyword_2; }
@@ -208,13 +208,17 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cAddTriggerParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cReplaceStepParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cDeleteStepParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cAddStepParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final RuleCall cAddPortsParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cSetOptionsParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cSetImageParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//TIMTransformation returns TIMTransformation:
-		//    ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+		//    ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep | AddStep | AddPorts | SetOptions | SetImage
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+		//ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep | AddStep | AddPorts | SetOptions | SetImage
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ATLScript
@@ -234,6 +238,194 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//DeleteStep
 		public RuleCall getDeleteStepParserRuleCall_5() { return cDeleteStepParserRuleCall_5; }
+		
+		//AddStep
+		public RuleCall getAddStepParserRuleCall_6() { return cAddStepParserRuleCall_6; }
+		
+		//AddPorts
+		public RuleCall getAddPortsParserRuleCall_7() { return cAddPortsParserRuleCall_7; }
+		
+		//SetOptions
+		public RuleCall getSetOptionsParserRuleCall_8() { return cSetOptionsParserRuleCall_8; }
+		
+		//SetImage
+		public RuleCall getSetImageParserRuleCall_9() { return cSetImageParserRuleCall_9; }
+	}
+	public class SetImageElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.SetImage");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cContainerKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cImageKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cWhenKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cConditionAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cConditionEStringParserRuleCall_4_0 = (RuleCall)cConditionAssignment_4.eContents().get(0);
+		private final Keyword cToKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cImageAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cImageEStringParserRuleCall_6_0 = (RuleCall)cImageAssignment_6.eContents().get(0);
+		
+		//SetImage returns ChangeImage:
+		//    'set' 'container' 'image' 'when' condition=EString 'to' image=EString
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'set' 'container' 'image' 'when' condition=EString 'to' image=EString
+		public Group getGroup() { return cGroup; }
+		
+		//'set'
+		public Keyword getSetKeyword_0() { return cSetKeyword_0; }
+		
+		//'container'
+		public Keyword getContainerKeyword_1() { return cContainerKeyword_1; }
+		
+		//'image'
+		public Keyword getImageKeyword_2() { return cImageKeyword_2; }
+		
+		//'when'
+		public Keyword getWhenKeyword_3() { return cWhenKeyword_3; }
+		
+		//condition=EString
+		public Assignment getConditionAssignment_4() { return cConditionAssignment_4; }
+		
+		//EString
+		public RuleCall getConditionEStringParserRuleCall_4_0() { return cConditionEStringParserRuleCall_4_0; }
+		
+		//'to'
+		public Keyword getToKeyword_5() { return cToKeyword_5; }
+		
+		//image=EString
+		public Assignment getImageAssignment_6() { return cImageAssignment_6; }
+		
+		//EString
+		public RuleCall getImageEStringParserRuleCall_6_0() { return cImageEStringParserRuleCall_6_0; }
+	}
+	public class AddPortsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.AddPorts");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAddKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cContainerKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cPortsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cWhenKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cConditionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cConditionEStringParserRuleCall_3_1_0 = (RuleCall)cConditionAssignment_3_1.eContents().get(0);
+		private final Keyword cPortsKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cPortsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cPortsEStringParserRuleCall_6_0 = (RuleCall)cPortsAssignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cCommaKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cPortsAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cPortsEStringParserRuleCall_7_1_0 = (RuleCall)cPortsAssignment_7_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		
+		//AddPorts returns AddPorts:
+		//    'add' 'container' 'ports' ('when' condition=EString)?  'ports' '{' ports+=EString (',' ports+=EString)* '}'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'add' 'container' 'ports' ('when' condition=EString)?  'ports' '{' ports+=EString (',' ports+=EString)* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//'add'
+		public Keyword getAddKeyword_0() { return cAddKeyword_0; }
+		
+		//'container'
+		public Keyword getContainerKeyword_1() { return cContainerKeyword_1; }
+		
+		//'ports'
+		public Keyword getPortsKeyword_2() { return cPortsKeyword_2; }
+		
+		//('when' condition=EString)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'when'
+		public Keyword getWhenKeyword_3_0() { return cWhenKeyword_3_0; }
+		
+		//condition=EString
+		public Assignment getConditionAssignment_3_1() { return cConditionAssignment_3_1; }
+		
+		//EString
+		public RuleCall getConditionEStringParserRuleCall_3_1_0() { return cConditionEStringParserRuleCall_3_1_0; }
+		
+		//'ports'
+		public Keyword getPortsKeyword_4() { return cPortsKeyword_4; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		
+		//ports+=EString
+		public Assignment getPortsAssignment_6() { return cPortsAssignment_6; }
+		
+		//EString
+		public RuleCall getPortsEStringParserRuleCall_6_0() { return cPortsEStringParserRuleCall_6_0; }
+		
+		//(',' ports+=EString)*
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//','
+		public Keyword getCommaKeyword_7_0() { return cCommaKeyword_7_0; }
+		
+		//ports+=EString
+		public Assignment getPortsAssignment_7_1() { return cPortsAssignment_7_1; }
+		
+		//EString
+		public RuleCall getPortsEStringParserRuleCall_7_1_0() { return cPortsEStringParserRuleCall_7_1_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
+	}
+	public class SetOptionsElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.SetOptions");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cSetKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cContainerKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cOptionsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cWhenKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cConditionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cConditionEStringParserRuleCall_3_1_0 = (RuleCall)cConditionAssignment_3_1.eContents().get(0);
+		private final Keyword cToKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cOptionsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOptionsEStringParserRuleCall_5_0 = (RuleCall)cOptionsAssignment_5.eContents().get(0);
+		
+		//SetOptions returns SetOptions:
+		//    'set' 'container' 'options' ('when' condition=EString)? 'to' options=EString
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'set' 'container' 'options' ('when' condition=EString)? 'to' options=EString
+		public Group getGroup() { return cGroup; }
+		
+		//'set'
+		public Keyword getSetKeyword_0() { return cSetKeyword_0; }
+		
+		//'container'
+		public Keyword getContainerKeyword_1() { return cContainerKeyword_1; }
+		
+		//'options'
+		public Keyword getOptionsKeyword_2() { return cOptionsKeyword_2; }
+		
+		//('when' condition=EString)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'when'
+		public Keyword getWhenKeyword_3_0() { return cWhenKeyword_3_0; }
+		
+		//condition=EString
+		public Assignment getConditionAssignment_3_1() { return cConditionAssignment_3_1; }
+		
+		//EString
+		public RuleCall getConditionEStringParserRuleCall_3_1_0() { return cConditionEStringParserRuleCall_3_1_0; }
+		
+		//'to'
+		public Keyword getToKeyword_4() { return cToKeyword_4; }
+		
+		//options=EString
+		public Assignment getOptionsAssignment_5() { return cOptionsAssignment_5; }
+		
+		//EString
+		public RuleCall getOptionsEStringParserRuleCall_5_0() { return cOptionsEStringParserRuleCall_5_0; }
 	}
 	public class ChangePluginElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ChangePlugin");
@@ -467,6 +659,58 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//EString
 		public RuleCall getJobEStringParserRuleCall_4_0() { return cJobEStringParserRuleCall_4_0; }
 	}
+	public class AddStepElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.AddStep");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInsertKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cStepKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cIndexAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cIndexINTTerminalRuleCall_2_0 = (RuleCall)cIndexAssignment_2.eContents().get(0);
+		private final Keyword cOnKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cJobAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cJobEStringParserRuleCall_4_0 = (RuleCall)cJobAssignment_4.eContents().get(0);
+		private final Keyword cWithKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cStepAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cStepStepParserRuleCall_6_0 = (RuleCall)cStepAssignment_6.eContents().get(0);
+		
+		//AddStep returns AddStep:
+		//    'insert' 'step' index=INT 'on' job=EString 'with' step=Step
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'insert' 'step' index=INT 'on' job=EString 'with' step=Step
+		public Group getGroup() { return cGroup; }
+		
+		//'insert'
+		public Keyword getInsertKeyword_0() { return cInsertKeyword_0; }
+		
+		//'step'
+		public Keyword getStepKeyword_1() { return cStepKeyword_1; }
+		
+		//index=INT
+		public Assignment getIndexAssignment_2() { return cIndexAssignment_2; }
+		
+		//INT
+		public RuleCall getIndexINTTerminalRuleCall_2_0() { return cIndexINTTerminalRuleCall_2_0; }
+		
+		//'on'
+		public Keyword getOnKeyword_3() { return cOnKeyword_3; }
+		
+		//job=EString
+		public Assignment getJobAssignment_4() { return cJobAssignment_4; }
+		
+		//EString
+		public RuleCall getJobEStringParserRuleCall_4_0() { return cJobEStringParserRuleCall_4_0; }
+		
+		//'with'
+		public Keyword getWithKeyword_5() { return cWithKeyword_5; }
+		
+		//step=Step
+		public Assignment getStepAssignment_6() { return cStepAssignment_6; }
+		
+		//Step
+		public RuleCall getStepStepParserRuleCall_6_0() { return cStepStepParserRuleCall_6_0; }
+	}
 	public class ReplaceStepElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.ReplaceStep");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -606,13 +850,38 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	public class NonConditionalStepElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "d.fe.up.pt.cicd.transformationsdsl.dsl.DSL.NonConditionalStep");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
-		private final Action cCommandAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cCommandKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Keyword cScriptKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
-		private final Assignment cProgramAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
-		private final RuleCall cProgramStringLiteralParserRuleCall_0_4_0 = (RuleCall)cProgramAssignment_0_4.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
+		private final Action cCommandAction_0_0_0 = (Action)cGroup_0_0.eContents().get(0);
+		private final Keyword cCommandKeyword_0_0_1 = (Keyword)cGroup_0_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0_0_2 = (Keyword)cGroup_0_0.eContents().get(2);
+		private final Keyword cScriptKeyword_0_0_3 = (Keyword)cGroup_0_0.eContents().get(3);
+		private final Assignment cProgramAssignment_0_0_4 = (Assignment)cGroup_0_0.eContents().get(4);
+		private final RuleCall cProgramStringLiteralParserRuleCall_0_0_4_0 = (RuleCall)cProgramAssignment_0_0_4.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
+		private final Action cPluginAction_0_1_0 = (Action)cGroup_0_1.eContents().get(0);
+		private final Keyword cPluginKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0_1_2 = (Keyword)cGroup_0_1.eContents().get(2);
+		private final Keyword cNameKeyword_0_1_3 = (Keyword)cGroup_0_1.eContents().get(3);
+		private final Assignment cPluginNameAssignment_0_1_4 = (Assignment)cGroup_0_1.eContents().get(4);
+		private final RuleCall cPluginNameEStringParserRuleCall_0_1_4_0 = (RuleCall)cPluginNameAssignment_0_1_4.eContents().get(0);
+		private final Keyword cVersionKeyword_0_1_5 = (Keyword)cGroup_0_1.eContents().get(5);
+		private final Assignment cVersionAssignment_0_1_6 = (Assignment)cGroup_0_1.eContents().get(6);
+		private final RuleCall cVersionEStringParserRuleCall_0_1_6_0 = (RuleCall)cVersionAssignment_0_1_6.eContents().get(0);
+		private final Group cGroup_0_1_7 = (Group)cGroup_0_1.eContents().get(7);
+		private final Keyword cArgsKeyword_0_1_7_0 = (Keyword)cGroup_0_1_7.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_1_7_1 = (Keyword)cGroup_0_1_7.eContents().get(1);
+		private final Assignment cKwargsAssignment_0_1_7_2 = (Assignment)cGroup_0_1_7.eContents().get(2);
+		private final RuleCall cKwargsAssignmentParserRuleCall_0_1_7_2_0 = (RuleCall)cKwargsAssignment_0_1_7_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_0_1_7_3 = (Keyword)cGroup_0_1_7.eContents().get(3);
+		private final Group cGroup_0_2 = (Group)cAlternatives_0.eContents().get(2);
+		private final Action cCheckoutAction_0_2_0 = (Action)cGroup_0_2.eContents().get(0);
+		private final Keyword cCheckoutKeyword_0_2_1 = (Keyword)cGroup_0_2.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_0_2_2 = (Keyword)cGroup_0_2.eContents().get(2);
+		private final Group cGroup_0_2_3 = (Group)cGroup_0_2.eContents().get(3);
+		private final Keyword cPathKeyword_0_2_3_0 = (Keyword)cGroup_0_2_3.eContents().get(0);
+		private final Assignment cPathAssignment_0_2_3_1 = (Assignment)cGroup_0_2_3.eContents().get(1);
+		private final RuleCall cPathStringLiteralParserRuleCall_0_2_3_1_0 = (RuleCall)cPathAssignment_0_2_3_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cEnvironmentKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
@@ -623,21 +892,22 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//NonConditionalStep returns CICD::NonConditionalStep:
 		//    (
-		//        {CICD::Command}
-		//        'command' '{' 'script' program=StringLiteral
-		//    )
-		//    /*|
-		//    (
-		//        {CICD::Plugin}
-		//        'plugin' '{'
-		//            'name' pluginName=EString
-		//            'version' version=EString
-		//            (
-		//                'args' '{'
-		//                    kwargs+=Assignment+
-		//                '}'
-		//            )?
-		//    ) |
+		//        (
+		//            {CICD::Command}
+		//            'command' '{' 'script' program=StringLiteral
+		//        )
+		//        |
+		//        (
+		//            {CICD::Plugin}
+		//            'plugin' '{'
+		//                'name' pluginName=EString
+		//                'version' version=EString
+		//                (
+		//                    'args' '{'
+		//                        kwargs+=Assignment+
+		//                    '}'
+		//                )?
+		//        )/* |
 		//    (
 		//        {CICD::Cache}
 		//        'cache' '{'
@@ -664,32 +934,34 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//            )?
 		//            ('retention' 'time' retentionTime=StringLiteral)?
 		//            'mode' store?=('store' | 'load')
-		//    ) |
-		//    (
-		//        {CICD::Checkout}
-		//        'checkout' ('{' path=StringLiteral '}')?
-		//    )*/
-		//    ('environment' '{' environmentVariables+=Assignment+ '}')?
+		//    )*/ |
+		//        (
+		//            {CICD::Checkout}
+		//            'checkout' '{' ('path' path=StringLiteral)?
+		//        )
+		//    )
+		//        ('environment' '{' environmentVariables+=Assignment+ '}')?
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(
-		//    {CICD::Command}
-		//    'command' '{' 'script' program=StringLiteral
-		//)
-		///*|
-		//(
-		//    {CICD::Plugin}
-		//    'plugin' '{'
-		//        'name' pluginName=EString
-		//        'version' version=EString
-		//        (
-		//            'args' '{'
-		//                kwargs+=Assignment+
-		//            '}'
-		//        )?
-		//) |
+		//    (
+		//        {CICD::Command}
+		//        'command' '{' 'script' program=StringLiteral
+		//    )
+		//    |
+		//    (
+		//        {CICD::Plugin}
+		//        'plugin' '{'
+		//            'name' pluginName=EString
+		//            'version' version=EString
+		//            (
+		//                'args' '{'
+		//                    kwargs+=Assignment+
+		//                '}'
+		//            )?
+		//    )/* |
 		//(
 		//    {CICD::Cache}
 		//    'cache' '{'
@@ -716,51 +988,33 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//        )?
 		//        ('retention' 'time' retentionTime=StringLiteral)?
 		//        'mode' store?=('store' | 'load')
-		//) |
-		//(
-		//    {CICD::Checkout}
-		//    'checkout' ('{' path=StringLiteral '}')?
-		//)*/
-		//('environment' '{' environmentVariables+=Assignment+ '}')?
+		//)*/ |
+		//    (
+		//        {CICD::Checkout}
+		//        'checkout' '{' ('path' path=StringLiteral)?
+		//    )
+		//)
+		//    ('environment' '{' environmentVariables+=Assignment+ '}')?
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
 		//(
-		//    {CICD::Command}
-		//    'command' '{' 'script' program=StringLiteral
-		//)
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//{CICD::Command}
-		public Action getCommandAction_0_0() { return cCommandAction_0_0; }
-		
-		//'command'
-		public Keyword getCommandKeyword_0_1() { return cCommandKeyword_0_1; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
-		
-		//'script'
-		public Keyword getScriptKeyword_0_3() { return cScriptKeyword_0_3; }
-		
-		//program=StringLiteral
-		public Assignment getProgramAssignment_0_4() { return cProgramAssignment_0_4; }
-		
-		//StringLiteral
-		public RuleCall getProgramStringLiteralParserRuleCall_0_4_0() { return cProgramStringLiteralParserRuleCall_0_4_0; }
-		
-		///*|
-		//(
-		//    {CICD::Plugin}
-		//    'plugin' '{'
-		//        'name' pluginName=EString
-		//        'version' version=EString
-		//        (
-		//            'args' '{'
-		//                kwargs+=Assignment+
-		//            '}'
-		//        )?
-		//) |
+		//    (
+		//        {CICD::Command}
+		//        'command' '{' 'script' program=StringLiteral
+		//    )
+		//    |
+		//    (
+		//        {CICD::Plugin}
+		//        'plugin' '{'
+		//            'name' pluginName=EString
+		//            'version' version=EString
+		//            (
+		//                'args' '{'
+		//                    kwargs+=Assignment+
+		//                '}'
+		//            )?
+		//    )/* |
 		//(
 		//    {CICD::Cache}
 		//    'cache' '{'
@@ -787,11 +1041,127 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//        )?
 		//        ('retention' 'time' retentionTime=StringLiteral)?
 		//        'mode' store?=('store' | 'load')
-		//) |
+		//)*/ |
+		//    (
+		//        {CICD::Checkout}
+		//        'checkout' '{' ('path' path=StringLiteral)?
+		//    )
+		//)
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
+		//(
+		//    {CICD::Command}
+		//    'command' '{' 'script' program=StringLiteral
+		//)
+		public Group getGroup_0_0() { return cGroup_0_0; }
+		
+		//{CICD::Command}
+		public Action getCommandAction_0_0_0() { return cCommandAction_0_0_0; }
+		
+		//'command'
+		public Keyword getCommandKeyword_0_0_1() { return cCommandKeyword_0_0_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_0_2() { return cLeftCurlyBracketKeyword_0_0_2; }
+		
+		//'script'
+		public Keyword getScriptKeyword_0_0_3() { return cScriptKeyword_0_0_3; }
+		
+		//program=StringLiteral
+		public Assignment getProgramAssignment_0_0_4() { return cProgramAssignment_0_0_4; }
+		
+		//StringLiteral
+		public RuleCall getProgramStringLiteralParserRuleCall_0_0_4_0() { return cProgramStringLiteralParserRuleCall_0_0_4_0; }
+		
+		//(
+		//    {CICD::Plugin}
+		//    'plugin' '{'
+		//        'name' pluginName=EString
+		//        'version' version=EString
+		//        (
+		//            'args' '{'
+		//                kwargs+=Assignment+
+		//            '}'
+		//        )?
+		//)
+		public Group getGroup_0_1() { return cGroup_0_1; }
+		
+		//{CICD::Plugin}
+		public Action getPluginAction_0_1_0() { return cPluginAction_0_1_0; }
+		
+		//'plugin'
+		public Keyword getPluginKeyword_0_1_1() { return cPluginKeyword_0_1_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_1_2() { return cLeftCurlyBracketKeyword_0_1_2; }
+		
+		//'name'
+		public Keyword getNameKeyword_0_1_3() { return cNameKeyword_0_1_3; }
+		
+		//pluginName=EString
+		public Assignment getPluginNameAssignment_0_1_4() { return cPluginNameAssignment_0_1_4; }
+		
+		//EString
+		public RuleCall getPluginNameEStringParserRuleCall_0_1_4_0() { return cPluginNameEStringParserRuleCall_0_1_4_0; }
+		
+		//'version'
+		public Keyword getVersionKeyword_0_1_5() { return cVersionKeyword_0_1_5; }
+		
+		//version=EString
+		public Assignment getVersionAssignment_0_1_6() { return cVersionAssignment_0_1_6; }
+		
+		//EString
+		public RuleCall getVersionEStringParserRuleCall_0_1_6_0() { return cVersionEStringParserRuleCall_0_1_6_0; }
+		
+		//(
+		//    'args' '{'
+		//        kwargs+=Assignment+
+		//    '}'
+		//)?
+		public Group getGroup_0_1_7() { return cGroup_0_1_7; }
+		
+		//'args'
+		public Keyword getArgsKeyword_0_1_7_0() { return cArgsKeyword_0_1_7_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_1_7_1() { return cLeftCurlyBracketKeyword_0_1_7_1; }
+		
+		//kwargs+=Assignment+
+		public Assignment getKwargsAssignment_0_1_7_2() { return cKwargsAssignment_0_1_7_2; }
+		
+		//Assignment
+		public RuleCall getKwargsAssignmentParserRuleCall_0_1_7_2_0() { return cKwargsAssignmentParserRuleCall_0_1_7_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_0_1_7_3() { return cRightCurlyBracketKeyword_0_1_7_3; }
+		
 		//(
 		//    {CICD::Checkout}
-		//    'checkout' ('{' path=StringLiteral '}')?
-		//)*/
+		//    'checkout' '{' ('path' path=StringLiteral)?
+		//)
+		public Group getGroup_0_2() { return cGroup_0_2; }
+		
+		//{CICD::Checkout}
+		public Action getCheckoutAction_0_2_0() { return cCheckoutAction_0_2_0; }
+		
+		//'checkout'
+		public Keyword getCheckoutKeyword_0_2_1() { return cCheckoutKeyword_0_2_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_2_2() { return cLeftCurlyBracketKeyword_0_2_2; }
+		
+		//('path' path=StringLiteral)?
+		public Group getGroup_0_2_3() { return cGroup_0_2_3; }
+		
+		//'path'
+		public Keyword getPathKeyword_0_2_3_0() { return cPathKeyword_0_2_3_0; }
+		
+		//path=StringLiteral
+		public Assignment getPathAssignment_0_2_3_1() { return cPathAssignment_0_2_3_1; }
+		
+		//StringLiteral
+		public RuleCall getPathStringLiteralParserRuleCall_0_2_3_1_0() { return cPathStringLiteralParserRuleCall_0_2_3_1_0; }
+		
 		//('environment' '{' environmentVariables+=Assignment+ '}')?
 		public Group getGroup_1() { return cGroup_1; }
 		
@@ -1174,12 +1544,16 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final TSMTransformationElements pTSMTransformation;
 	private final ATLScriptElements pATLScript;
 	private final TIMTransformationElements pTIMTransformation;
+	private final SetImageElements pSetImage;
+	private final AddPortsElements pAddPorts;
+	private final SetOptionsElements pSetOptions;
 	private final ChangePluginElements pChangePlugin;
 	private final ReplaceAgentLabelsElements pReplaceAgentLabels;
 	private final AddTriggerElements pAddTrigger;
 	private final TriggerElements pTrigger;
 	private final ManualTriggerElements pManualTrigger;
 	private final DeleteStepElements pDeleteStep;
+	private final AddStepElements pAddStep;
 	private final ReplaceStepElements pReplaceStep;
 	private final StepElements pStep;
 	private final ConditionalStepElements pConditionalStep;
@@ -1210,12 +1584,16 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pTSMTransformation = new TSMTransformationElements();
 		this.pATLScript = new ATLScriptElements();
 		this.pTIMTransformation = new TIMTransformationElements();
+		this.pSetImage = new SetImageElements();
+		this.pAddPorts = new AddPortsElements();
+		this.pSetOptions = new SetOptionsElements();
 		this.pChangePlugin = new ChangePluginElements();
 		this.pReplaceAgentLabels = new ReplaceAgentLabelsElements();
 		this.pAddTrigger = new AddTriggerElements();
 		this.pTrigger = new TriggerElements();
 		this.pManualTrigger = new ManualTriggerElements();
 		this.pDeleteStep = new DeleteStepElements();
+		this.pAddStep = new AddStepElements();
 		this.pReplaceStep = new ReplaceStepElements();
 		this.pStep = new StepElements();
 		this.pConditionalStep = new ConditionalStepElements();
@@ -1287,7 +1665,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//ATLScript returns ATLScript:
-	//    'run' 'ATL' 'on'? model=MODELS '{' script=EString '}'
+	//    'run' 'atl' 'on'? model=MODELS '{' script=EString '}'
 	//;
 	public ATLScriptElements getATLScriptAccess() {
 		return pATLScript;
@@ -1298,7 +1676,7 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//TIMTransformation returns TIMTransformation:
-	//    ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+	//    ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep | AddStep | AddPorts | SetOptions | SetImage
 	//;
 	public TIMTransformationElements getTIMTransformationAccess() {
 		return pTIMTransformation;
@@ -1306,6 +1684,39 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	public ParserRule getTIMTransformationRule() {
 		return getTIMTransformationAccess().getRule();
+	}
+	
+	//SetImage returns ChangeImage:
+	//    'set' 'container' 'image' 'when' condition=EString 'to' image=EString
+	//;
+	public SetImageElements getSetImageAccess() {
+		return pSetImage;
+	}
+	
+	public ParserRule getSetImageRule() {
+		return getSetImageAccess().getRule();
+	}
+	
+	//AddPorts returns AddPorts:
+	//    'add' 'container' 'ports' ('when' condition=EString)?  'ports' '{' ports+=EString (',' ports+=EString)* '}'
+	//;
+	public AddPortsElements getAddPortsAccess() {
+		return pAddPorts;
+	}
+	
+	public ParserRule getAddPortsRule() {
+		return getAddPortsAccess().getRule();
+	}
+	
+	//SetOptions returns SetOptions:
+	//    'set' 'container' 'options' ('when' condition=EString)? 'to' options=EString
+	//;
+	public SetOptionsElements getSetOptionsAccess() {
+		return pSetOptions;
+	}
+	
+	public ParserRule getSetOptionsRule() {
+		return getSetOptionsAccess().getRule();
 	}
 	
 	//ChangePlugin returns ChangePlugin:
@@ -1374,6 +1785,17 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		return getDeleteStepAccess().getRule();
 	}
 	
+	//AddStep returns AddStep:
+	//    'insert' 'step' index=INT 'on' job=EString 'with' step=Step
+	//;
+	public AddStepElements getAddStepAccess() {
+		return pAddStep;
+	}
+	
+	public ParserRule getAddStepRule() {
+		return getAddStepAccess().getRule();
+	}
+	
 	//ReplaceStep returns ReplaceStep:
 	//    'replace' 'step' index=INT 'on' job=EString 'with' step=Step
 	//;
@@ -1409,21 +1831,22 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//NonConditionalStep returns CICD::NonConditionalStep:
 	//    (
-	//        {CICD::Command}
-	//        'command' '{' 'script' program=StringLiteral
-	//    )
-	//    /*|
-	//    (
-	//        {CICD::Plugin}
-	//        'plugin' '{'
-	//            'name' pluginName=EString
-	//            'version' version=EString
-	//            (
-	//                'args' '{'
-	//                    kwargs+=Assignment+
-	//                '}'
-	//            )?
-	//    ) |
+	//        (
+	//            {CICD::Command}
+	//            'command' '{' 'script' program=StringLiteral
+	//        )
+	//        |
+	//        (
+	//            {CICD::Plugin}
+	//            'plugin' '{'
+	//                'name' pluginName=EString
+	//                'version' version=EString
+	//                (
+	//                    'args' '{'
+	//                        kwargs+=Assignment+
+	//                    '}'
+	//                )?
+	//        )/* |
 	//    (
 	//        {CICD::Cache}
 	//        'cache' '{'
@@ -1450,12 +1873,13 @@ public class DSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//            )?
 	//            ('retention' 'time' retentionTime=StringLiteral)?
 	//            'mode' store?=('store' | 'load')
-	//    ) |
-	//    (
-	//        {CICD::Checkout}
-	//        'checkout' ('{' path=StringLiteral '}')?
-	//    )*/
-	//    ('environment' '{' environmentVariables+=Assignment+ '}')?
+	//    )*/ |
+	//        (
+	//            {CICD::Checkout}
+	//            'checkout' '{' ('path' path=StringLiteral)?
+	//        )
+	//    )
+	//        ('environment' '{' environmentVariables+=Assignment+ '}')?
 	//    '}'
 	//;
 	public NonConditionalStepElements getNonConditionalStepAccess() {

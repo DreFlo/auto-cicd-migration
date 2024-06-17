@@ -1,0 +1,32 @@
+while {
+    add trigger when "input.triggers->isEmpty()" manual
+    set container image when 'true' to 'node:16'
+    replace step 2 on 'test' with command {
+        script 'yarn install'
+    }
+    insert step 1 on 'cypress/run' with checkout  {}
+    replace step 2 on 'cypress/run' with plugin {
+        name 'cypress-io/github-action'
+        version 'v6'
+        args {
+            'command' = 'yarn  run test:e2e --headless'
+        }
+    }
+    run atl on cicd {
+    "
+-- @path CICD=/d.fe.up.pt.cicd.metamodel/model/CICD.ecore
+
+module cicdRefinement;
+create OUT : CICD refining IN : CICD;
+
+rule RemoveContainer {
+    from
+        input : CICD!DockerContainer (
+            input.refImmediateComposite().refImmediateComposite().id = 'cypress/run'
+        )
+    to
+        drop
+}
+    "
+    }
+}

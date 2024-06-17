@@ -1,0 +1,8 @@
+before translating {
+    on circleci select workflow 'backend-test'
+}
+while translating {
+    replace step 2 on 'backend-test' with command {
+        script 'pip install -r requirements.txt'
+    }
+}

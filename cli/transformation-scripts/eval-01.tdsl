@@ -1,3 +1,6 @@
-during {
+while {
+    add trigger when "input.triggers->isEmpty()" manual
+    set labels {'windows-latest'}
     delete step 1 on 'build-and-test'
+    delete step 5 on 'build-and-test'
 }

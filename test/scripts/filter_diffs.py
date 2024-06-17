@@ -4,7 +4,7 @@ import sys
 diffs = re.split(r"\n(?=[\w-]+[.\w-]*:)", sys.stdin.read())
 
 def no_diff(string):
-    match = re.match(r"^[\w-]+(?:\.[\w-]+)*:\n- ((?:.|\n(?!\+))+)\n\+ ((?:.|\n)+)$", string.strip().replace('False', 'false').replace("'", '"'))
+    match = re.match(r"^[\w-]+(?:\.[\w-]+)*:\n- ((?:.|\n(?!\+))+)\n\+ ((?:.|\n)+)$", string.strip().replace('true', 'on').replace('false', 'off'))
     if match:
         prev = re.sub(r'\s', '', match.group(1))
         new = re.sub(r'\s', '', match.group(2))
@@ -25,6 +25,12 @@ def list_to_empty_map(string):
         list_items = re.findall(r"(?P<list>[\w-]+|(?:\"(?:\\.|[^\"])*\")|(?:\'(?:\\.|[^\'])*\'))", match.group('list'))
         map_items = re.findall(r"(?P<map>(?:[\w-]+|(?:\"(?:\\.|[^\"])*\")|(?:\'(?:\\.|[^\'])*\'))):<nil>", match.group('map'))
         return set(list_items) == set(map_items)
+    return False
+
+def string_to_empty_map(string):
+    # Check if string matches regex
+    if re.match(r"^.+:\n- (.*)\n\+ map\[\1:<nil>]$", string.strip()):
+        return True
     return False
 
 def empty_map_to_null(string):
@@ -71,7 +77,7 @@ def full_variable_names(string):
     
 def if_without_brackets(string):
     # Check if string matches regex
-    match = re.match(r"^(?:[\w-]+\.)*if:\n- (.*)\n\+ \${{ (.*) }}$", string.strip())
+    match = re.match(r"^(?:[\w-]+\.)*if:\n- (.*)\n\+ \${{\s*(.*)\s*}}$", string.strip())
     if match:
         return re.sub(r"\s", '', match.group(1)) == re.sub(r"\s", '', match.group(2))
     return False
@@ -104,13 +110,14 @@ def container_image(string):
 diffs = [diff for diff in diffs if not no_diff(diff)]
 diffs = [diff for diff in diffs if not string_to_one_item_list(diff)]
 diffs = [diff for diff in diffs if not list_to_empty_map(diff)]
+diffs = [diff for diff in diffs if not string_to_empty_map(diff)]
 #diffs = [diff for diff in diffs if not add_default_shell(diff)]
 diffs = [diff for diff in diffs if not string_output_to_map(diff)]
 #diffs = [diff for diff in diffs if not string_spaces(diff)]
 diffs = [diff for diff in diffs if not full_variable_names(diff)]
 diffs = [diff for diff in diffs if not empty_map_to_null(diff)]
 diffs = [diff for diff in diffs if not if_without_brackets(diff)]
-diffs = [diff for diff in diffs if not delete_zero(diff)]
+#diffs = [diff for diff in diffs if not delete_zero(diff)]
 diffs = [diff for diff in diffs if not environment_variable_syntax(diff)]
 diffs = [diff for diff in diffs if not container_image(diff)]
 

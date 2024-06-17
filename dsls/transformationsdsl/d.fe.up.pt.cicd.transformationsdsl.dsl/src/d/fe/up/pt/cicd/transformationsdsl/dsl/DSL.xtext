@@ -17,11 +17,23 @@ TSMTransformation returns TSMTransformation:
 ;
 
 ATLScript returns ATLScript:
-	'run' 'ATL' 'on'? model=MODELS '{' script=EString '}'
+	'run' 'atl' 'on'? model=MODELS '{' script=EString '}'
 ;
 
 TIMTransformation returns TIMTransformation:
-	ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep
+	ATLScript | ChangePlugin | ReplaceAgentLabels | AddTrigger | ReplaceStep | DeleteStep | AddStep | AddPorts | SetOptions | SetImage
+;
+
+SetImage returns ChangeImage:
+	'set' 'container' 'image' 'when' condition=EString 'to' image=EString
+;
+
+AddPorts returns AddPorts:
+	'add' 'container' 'ports' ('when' condition=EString)?  'ports' '{' ports+=EString (',' ports+=EString)* '}'
+;
+
+SetOptions returns SetOptions:
+	'set' 'container' 'options' ('when' condition=EString)? 'to' options=EString
 ;
 	
 ChangePlugin returns ChangePlugin:
@@ -48,6 +60,9 @@ DeleteStep returns DeleteStep:
 	'delete' 'step' index=INT 'on' job=EString
 ;
 
+AddStep returns AddStep:
+	'insert' 'step' index=INT 'on' job=EString 'with' step=Step
+;
 
 ReplaceStep returns ReplaceStep:
 	'replace' 'step' index=INT 'on' job=EString 'with' step=Step
@@ -63,21 +78,22 @@ ConditionalStep returns CICD::ConditionalStep:
 
 NonConditionalStep returns CICD::NonConditionalStep:
 	(
-		{CICD::Command}
-		'command' '{' 'script' program=StringLiteral 
-	) 
-	/*|
-	(
-		{CICD::Plugin}
-		'plugin' '{' 
-			'name' pluginName=EString 
-			'version' version=EString 
-			(
-				'args' '{' 
-					kwargs+=Assignment+ 
-				'}'
-			)?
-	) |
+		(
+			{CICD::Command}
+			'command' '{' 'script' program=StringLiteral 
+		) 
+		|
+		(
+			{CICD::Plugin}
+			'plugin' '{' 
+				'name' pluginName=EString 
+				'version' version=EString 
+				(
+					'args' '{' 
+						kwargs+=Assignment+ 
+					'}'
+				)?
+		)/* |
 	(
 		{CICD::Cache}
 		'cache' '{' 
@@ -104,12 +120,13 @@ NonConditionalStep returns CICD::NonConditionalStep:
 			)?
 			('retention' 'time' retentionTime=StringLiteral)? 
 			'mode' store?=('store' | 'load')
-	) |
-	(
-		{CICD::Checkout}
-		'checkout' ('{' path=StringLiteral '}')?
-	)*/
-	('environment' '{' environmentVariables+=Assignment+ '}')?
+	)*/ |
+		(
+			{CICD::Checkout}
+			'checkout' '{' ('path' path=StringLiteral)?
+		)
+	)
+		('environment' '{' environmentVariables+=Assignment+ '}')?
 	'}'
 ;
 

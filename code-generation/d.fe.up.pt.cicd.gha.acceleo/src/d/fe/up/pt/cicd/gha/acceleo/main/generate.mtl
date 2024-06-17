@@ -13,8 +13,8 @@
   invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'getUnaryOperator(d.fe.up.pt.cicd.gha.metamodel.GHA.UnaryOp)', Sequence{unaryOp})
 /]
 
-[query public quoteString(string : String) : String =
-  invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'quoteString(java.lang.String)', Sequence{string})
+[query public quoteString(string : String, singleQuotes : Boolean) : String =
+  invoke('d.fe.up.pt.cicd.gha.acceleo.services.CICD2GHA', 'quoteString(java.lang.String, java.lang.Boolean)', Sequence{string, singleQuotes})
 /]
 
 [query public generateVariableReference(variableDeclaration : VariableDeclaration) : String =
@@ -56,11 +56,11 @@
 [/template]
 
 [template public _generateExpression(expression : Expression)]
-[if (expression.oclIsUndefined())]null[elseif (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))][__generateExpression(expression)/][elseif (expression.eContainer().oclIsKindOf(BinaryOp) or expression.eContainer().oclIsKindOf(UnaryOp) or expression.eContainer().oclIsKindOf(DotOp) or expression.eContainer().oclIsKindOf(BuiltInFunctionCall))][__generateExpression(expression)/][else]${{ [__generateExpression(expression)/] }}[/if]
+[if (expression.oclIsUndefined())]null[elseif (expression.oclIsKindOf(Literal) or expression.oclIsTypeOf(Concat))][__generateExpression(expression, false)/][else]${{[__generateExpression(expression, true)/]}}[/if]
 [/template]
 
-[template public __generateExpression(expression : Expression)]
-[if (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal))/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][elseif (expression.oclIsTypeOf(DotOp))][generateDotOp(expression.oclAsType(DotOp))/][elseif (expression.oclIsKindOf(BinaryOp))][generateBinaryOp(expression.oclAsType(BinaryOp))/][elseif (expression.oclIsKindOf(UnaryOp))][generateUnaryOp(expression.oclAsType(UnaryOp))/][elseif (expression.oclIsKindOf(Concat))][generateConcat(expression.oclAsType(Concat))/][/if]
+[template public __generateExpression(expression : Expression, singleQuotes : Boolean)]
+[if (expression.oclIsKindOf(Literal))][generateLiteral(expression.oclAsType(Literal), singleQuotes)/][elseif (expression.oclIsTypeOf(VariableReference))][generateVariableReference(expression.oclAsType(VariableReference).reference)/][elseif (expression.oclIsTypeOf(DotOp))][generateDotOp(expression.oclAsType(DotOp))/][elseif (expression.oclIsKindOf(BinaryOp))][generateBinaryOp(expression.oclAsType(BinaryOp))/][elseif (expression.oclIsKindOf(UnaryOp))][generateUnaryOp(expression.oclAsType(UnaryOp))/][elseif (expression.oclIsKindOf(Concat))][generateConcat(expression.oclAsType(Concat))/][/if]
 [/template]
 
 [template public generateConcat(concat : Concat) post (trim())]
@@ -68,7 +68,7 @@
 [if (string.contains('\n'))]
 [string/]
 [else]
-[quoteString(string)/]
+[quoteString(string, false)/]
 [/if]
 [/let]
 [/template]
@@ -77,24 +77,24 @@
 [for (expression : Expression | expressions) separator ('')][_generateExpression(expression)/][/for]
 [/template]
 
-[template public generateLiteral(literal : Literal)]
-[if (literal.oclIsKindOf(StringLiteral))][generateStringLiteral(literal.oclAsType(StringLiteral))/][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][if (literal.oclAsType(BooleanLiteral).value)]true[else]false[/if][/if]
+[template public generateLiteral(literal : Literal, singleQuotes : Boolean)]
+[if (literal.oclIsKindOf(StringLiteral))][generateStringLiteral(literal.oclAsType(StringLiteral), singleQuotes)/][elseif (literal.oclIsKindOf(IntegerLiteral))][literal.oclAsType(IntegerLiteral).value/][elseif (literal.oclIsKindOf(DoubleLiteral))][literal.oclAsType(DoubleLiteral).value/][elseif (literal.oclIsKindOf(BooleanLiteral))][if (literal.oclAsType(BooleanLiteral).value)]true[else]false[/if][/if]
 [/template]
 
-[template public generateStringLiteral(literal : StringLiteral)]
-[if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.value.contains('\n') and not literal.eContainer().oclIsTypeOf(DotOp))][quoteString(literal.value)/][else][literal.value/][/if]
+[template public generateStringLiteral(literal : StringLiteral, singleQuotes : Boolean)]
+[if (not literal.eContainer().oclIsTypeOf(Concat) and not literal.value.contains('\n') and not literal.eContainer().oclIsTypeOf(DotOp))][quoteString(literal.value, singleQuotes)/][else][literal.value/][/if]
 [/template]
 
 [template public generateDotOp(dotOp : DotOp) post (trim())]
-[_generateExpression(lhs)/].[_generateExpression(rhs)/]
+[__generateExpression(lhs, true)/].[__generateExpression(rhs, true)/]
 [/template]
 
 [template public generateBinaryOp(binaryOp : BinaryOp) post (trim())]
-[_generateExpression(lhs)/][getBinaryOperator(binaryOp)/][_generateExpression(rhs)/]
+[__generateExpression(lhs, true)/][getBinaryOperator(binaryOp)/][__generateExpression(rhs, true)/]
 [/template]
 
 [template public generateUnaryOp(unaryOp : UnaryOp) post (trim())]
-[getUnaryOperator(unaryOp)/][_generateExpression(childExpr)/]
+[getUnaryOperator(unaryOp)/][__generateExpression(childExpr, true)/]
 [/template]
 
 [template public generateDefaults(defaults : Defaults) post (trim())]
@@ -179,7 +179,7 @@ push:
 [template public generateScheduleTrigger(trigger : ScheduleTrigger)]
 schedule:
 [for (cron : Expression | crons)]
-[listItem('cron: ' + quoteString(generateExpression(cron)))/]
+[listItem('cron: ' + quoteString(generateExpression(cron), false))/]
 [/for]
 [/template]
 
@@ -417,7 +417,7 @@ with:
 [/let]
 [/if]
 [if (not id.oclIsUndefined())]
-id: [quoteString(id)/]
+id: [quoteString(id, false)/]
 [/if]
 [if (not name.oclIsUndefined())]
 name: [generateExpression(name)/]

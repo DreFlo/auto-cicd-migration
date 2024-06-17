@@ -150,8 +150,8 @@ rule OrbReferenceWorkflowOrbJobConfiguration2ScriptJob extends WorkflowOrbJobCon
 					Sequence{}
 				endif
 				endif,
-			shell <- input.job.executor.shell,
-			workingDirectory <- input.job.executor.workingDirectory
+			shell <- input.executor.shell,
+			workingDirectory <- input.executor.workingDirectory
 		)
 }
 

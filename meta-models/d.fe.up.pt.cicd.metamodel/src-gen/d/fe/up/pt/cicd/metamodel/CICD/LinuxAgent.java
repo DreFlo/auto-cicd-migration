@@ -20,22 +20,22 @@ package d.fe.up.pt.cicd.metamodel.CICD;
  */
 public interface LinuxAgent extends PresetAgent {
 	/**
-	 * Returns the value of the '<em><b>Container</b></em>' reference.
+	 * Returns the value of the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Container</em>' reference.
+	 * @return the value of the '<em>Container</em>' containment reference.
 	 * @see #setContainer(DockerContainer)
 	 * @see d.fe.up.pt.cicd.metamodel.CICD.CICDPackage#getLinuxAgent_Container()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	DockerContainer getContainer();
 
 	/**
-	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent#getContainer <em>Container</em>}' reference.
+	 * Sets the value of the '{@link d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent#getContainer <em>Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Container</em>' reference.
+	 * @param value the new value of the '<em>Container</em>' containment reference.
 	 * @see #getContainer()
 	 * @generated
 	 */

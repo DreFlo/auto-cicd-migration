@@ -1142,9 +1142,10 @@ public class CircleCIParser extends AbstractParser<Pipeline> {
             if (!container.type().equals(Node.MAPPING)) {
                 throw new SyntaxException("Invalid docker executor");
             }
-            if (container.asMapping().string("NULL_DOCKER_CONTAINER") != null) {
+            if (container.asMapping().string("name") != null && container.asMapping().string("name").startsWith("%%__CICD__AGENT#%!!__#%!!")) {
                 NullDockerContainer dockerContainer = CircleCIPackage.eINSTANCE.getCircleCIFactory().createNullDockerContainer();
-                dockerContainer.setAgent(CICD_AGENTS.get(container.asMapping().string("NULL_DOCKER_CONTAINER")));
+                String agentName = container.asMapping().string("name").substring("%%__CICD__AGENT#%!!__#%!!".length());
+                dockerContainer.setAgent(CICD_AGENTS.get(container.asMapping().string(agentName)));
                 dockerExecutor.getContainers().add(dockerContainer);
                 if (container.asMapping().string("image") != null) {
                     dockerContainer.setImage(parseExpression(container.asMapping().string("image"), dockerContainer));

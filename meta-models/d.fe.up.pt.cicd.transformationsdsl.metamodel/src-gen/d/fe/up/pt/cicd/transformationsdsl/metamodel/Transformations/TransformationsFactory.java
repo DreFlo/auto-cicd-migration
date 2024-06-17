@@ -50,15 +50,6 @@ public interface TransformationsFactory extends EFactory {
 	ChangePlugin createChangePlugin();
 
 	/**
-	 * Returns a new object of class '<em>Change Agent Label</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Change Agent Label</em>'.
-	 * @generated
-	 */
-	ChangeAgentLabel createChangeAgentLabel();
-
-	/**
 	 * Returns a new object of class '<em>Replace Agent Labels</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -77,6 +68,33 @@ public interface TransformationsFactory extends EFactory {
 	AddTrigger createAddTrigger();
 
 	/**
+	 * Returns a new object of class '<em>Job Transformation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Job Transformation</em>'.
+	 * @generated
+	 */
+	JobTransformation createJobTransformation();
+
+	/**
+	 * Returns a new object of class '<em>Edit Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Edit Step</em>'.
+	 * @generated
+	 */
+	EditStep createEditStep();
+
+	/**
+	 * Returns a new object of class '<em>New Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>New Step</em>'.
+	 * @generated
+	 */
+	NewStep createNewStep();
+
+	/**
 	 * Returns a new object of class '<em>Replace Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -86,6 +104,15 @@ public interface TransformationsFactory extends EFactory {
 	ReplaceStep createReplaceStep();
 
 	/**
+	 * Returns a new object of class '<em>Add Step</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Add Step</em>'.
+	 * @generated
+	 */
+	AddStep createAddStep();
+
+	/**
 	 * Returns a new object of class '<em>Delete Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,6 +120,33 @@ public interface TransformationsFactory extends EFactory {
 	 * @generated
 	 */
 	DeleteStep createDeleteStep();
+
+	/**
+	 * Returns a new object of class '<em>Add Ports</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Add Ports</em>'.
+	 * @generated
+	 */
+	AddPorts createAddPorts();
+
+	/**
+	 * Returns a new object of class '<em>Set Options</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Set Options</em>'.
+	 * @generated
+	 */
+	SetOptions createSetOptions();
+
+	/**
+	 * Returns a new object of class '<em>Change Image</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Change Image</em>'.
+	 * @generated
+	 */
+	ChangeImage createChangeImage();
 
 	/**
 	 * Returns a new object of class '<em>Add Orb Reference Executor</em>'.

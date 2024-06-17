@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generate('http://d.fe.up.pt/Transformations', 'http://www.d.fe.up.pt/CICD')]
+[module generate('http://d.fe.up.pt/Transformations')]
 
 [query public generateATLFileName(transformation : Transformation, index : Integer, prefix : String) : String = 
 	prefix + generateIndexString(index) + '_' + getModelName(transformation) + '.atl'
@@ -94,7 +94,124 @@ create OUT : CICD2 from IN : CICD1;
 [generateReplaceStep(transformation.oclAsType(ReplaceStep))/]
 [elseif (transformation.oclIsTypeOf(DeleteStep))]
 [generateDeleteStep(transformation.oclAsType(DeleteStep))/]
+[elseif (transformation.oclIsTypeOf(AddStep))]
+[generateAddStep(transformation.oclAsType(AddStep))/]
+[elseif (transformation.oclIsTypeOf(AddPorts))]
+[generateAddPorts(transformation.oclAsType(AddPorts))/]
+[elseif (transformation.oclIsTypeOf(SetOptions))]
+[generateSetOptions(transformation.oclAsType(SetOptions))/]
+[elseif (transformation.oclIsTypeOf(ChangeImage))]
+[generateChangeImage(transformation.oclAsType(ChangeImage))/]
 [/if]
+[/template]
+
+[template public generateSetOptions(transformation : SetOptions)]
+rule DockerContainer {
+	from
+		input : CICD!DockerContainer[if (not condition.oclIsUndefined())]([unquoteString(condition)/])[/if]
+	to
+		output : CICD!DockerContainer(
+			environmentVariables <- input.environmentVariables,
+			image <- input.image,
+			label <- input.label,
+			network <- input.network,
+			options <- '[unquoteString(options)/]',
+			ports <- input.ports,
+			registryPassword <- input.registryPassword,
+			registryUsername <- input.registryUsername,
+			volumes <- input.volumes
+		)
+}
+[/template]
+
+[template public generateAddPorts(transformation : AddPorts)]
+[generateCopyPipeline()/]
+[generateCopyJob()/]
+[generateCopySteps()/]
+[generateCopyTriggers()/]
+[generateCopyVariableDeclaration()/]
+[generateCopyAgent()/]
+rule DockerContainer {
+	from
+		input : CICD1!DockerContainer
+	to
+		output : CICD2!DockerContainer(
+			environmentVariables <- input.environmentVariables,
+			image <- input.image,
+			label <- input.label,
+			network <- input.network,
+			options <- input.options,
+			ports <- input.ports,
+			registryPassword <- input.registryPassword,
+			registryUsername <- input.registryUsername,
+			volumes <- input.volumes
+		)
+}
+rule ChangeDockerContainer extends DockerContainer {
+	from
+		input : CICD1!DockerContainer[if (not condition.oclIsUndefined())]([unquoteString(condition)/])[/if]
+	to
+		output : CICD2!DockerContainer(
+			ports <- input.ports->union(Sequence{[for (port : String | ports) separator (', ')][port/][/for]}->collect(port | thisModule.String2StringLiteral(port)))
+		)
+}
+lazy rule String2StringLiteral {
+	from
+		input : String
+	to
+		output : CICD2!StringLiteral(
+			value <- input
+		)
+}
+[generateCopyExpressions()/]
+[generateCopyMatrix()/]
+[generateCopyParameters()/]
+[generateExpression2StringHelpers('CICD1')/]
+[/template]
+
+[template public generateChangeImage(transformation : ChangeImage)]
+[generateCopyPipeline()/]
+[generateCopyJob()/]
+[generateCopySteps()/]
+[generateCopyTriggers()/]
+[generateCopyVariableDeclaration()/]
+[generateCopyAgent()/]
+rule DockerContainer {
+	from
+		input : CICD1!DockerContainer
+	to
+		output : CICD2!DockerContainer(
+			environmentVariables <- input.environmentVariables,
+			image <- input.image,
+			label <- input.label,
+			network <- input.network,
+			options <- input.options,
+			ports <- input.ports,
+			registryPassword <- input.registryPassword,
+			registryUsername <- input.registryUsername,
+			volumes <- input.volumes
+		)
+}
+rule ChangeDockerContainer extends DockerContainer {
+	from
+		input : CICD1!DockerContainer[if (not condition.oclIsUndefined())]([unquoteString(condition)/])[/if]
+	to
+		output : CICD2!DockerContainer(
+			image <- thisModule.String2StringLiteral('[unquoteString(image)/]')
+		)
+}
+lazy rule String2StringLiteral {
+	from
+		input : String
+	to
+		output : CICD2!StringLiteral(
+			value <- input
+		)
+}
+[generateCopyExpressions()/]
+[generateCopyMatrix()/]
+[generateCopyParameters()/]
+[generateExpression2StringHelpers('CICD1')/]
 [/template]
 
 [template public generateDeleteStep(transformation : DeleteStep)]
@@ -109,17 +226,146 @@ rule DeleteStep {
 }
 [/template]
 
-[template public generateReplaceStep(transformation : ReplaceStep)]
+[template public generateAddStep(transformation : AddStep)]
 [generateCopyPipeline()/]
+abstract rule Job {
+	from
+		input : CICD1!Job
+	to
+		output : CICD2!Job(
+			agent <- input.agent,
+			allowFailure <- input.allowFailure,
+			environmentVariables <- input.environmentVariables,
+			id <- input.id,
+			ifCondition <- input.ifCondition,
+			inputs <- input.inputs,
+			matrix <- input.matrix,
+			maxAttempts <- input.maxAttempts,
+			name <- input.name,
+			next <- input.next,
+			outputs <- input.outputs,
+			services <- input.services,
+			shell <- input.shell,
+			timeoutMinutes <- input.timeoutMinutes,
+			workingDirectory <- input.workingDirectory
+		)
+}
+
+rule ScriptJob extends Job {
+	from
+		input : CICD1!ScriptJob (
+			input.id <> [job/]
+		)
+	to
+		output : CICD2!ScriptJob(
+			steps <- input.steps
+		)
+}
+
+rule AddStep extends Job {
+	from
+		input : CICD1!ScriptJob (
+			input.id = [job/]
+		)
+	to
+		output : CICD2!ScriptJob(
+			steps <- input.steps->insertAt([index/], thisModule.CreateStep(''))
+		)
+}
+
+rule PipelineCallJob extends Job {
+	from
+		input : CICD1!PipelineCallJob
+	to
+		output : CICD2!PipelineCallJob(
+			args <- input.args,
+			pipelinePath <- input.pipelinePath
+		)
+}
+
+lazy rule CreateStep {
+	from
+		string : String
+	to
+		step :
+			[initStep(step)/]
+}
+[generateCopySteps()/]
+[generateCopyTriggers()/]
+[generateCopyVariableDeclaration()/]
+[generateCopyAgent()/]
+[generateCopyDockerContainer()/]
+[generateCopyExpressions()/]
+[generateCopyMatrix()/]
+[generateCopyParameters()/]
+[generateExpression2StringHelpers('CICD1')/]
+[/template]
+
+[template public initStep(step : CICD::Step)]
+[if (step.oclIsTypeOf(Command))]
+[let command : CICD::Command = step.oclAsType(Command)]
+			CICD2!Command (
+				program <- thisModule.String2StringLiteral([command.program.oclAsType(StringLiteral).value/])
+[if (not command.shell.oclIsUndefined())]
+				,shell <- thisModule.String2StringLiteral([command.shell.oclAsType(StringLiteral).value/])
+[/if]
+[/let]
+[elseif (step.oclIsTypeOf(Plugin))]
+[let plugin : CICD::Plugin = step.oclAsType(Plugin)]
+			CICD2!Plugin (
+				pluginName <- '[unquoteString(plugin.pluginName)/]',
+				version <- '[unquoteString(plugin.version)/]'
+[if (plugin.kwargs->notEmpty())]
+	            ,kwargs <- Sequence{
+[for (arg : CICD::Assignment | plugin.kwargs) separator (',')]
+					Sequence{'[unquoteString(arg.key.name)/]','[unquoteString(arg.value.oclAsType(StringLiteral).value)/]'}
+[/for]}->collect(pair | thisModule.CreateAssignment(pair->first(), pair->last()))
+[/if]
+[/let]
+[elseif (step.oclIsTypeOf(Checkout))]
+[let checkout : CICD::Checkout = step.oclAsType(Checkout)]
+			CICD2!Checkout (
+[if (not checkout.path.oclIsUndefined())]
+				path <- thisModule.String2StringLiteral([checkout.path.oclAsType(StringLiteral).value/])
+[/if]
+[/let]	
+[/if]
+			)
+[/template]
+
+[template public createAssignment(traceabilityContext : OclAny)]
+lazy rule CreateAssignment {
+	from
+		key : String,
+		value : String
+	to
+		assignment : CICD2!Assignment(
+			key <- thisModule.String2Variable(key),
+			value <- thisModule.String2StringLiteral(value)
+		)
+}
+
+lazy rule String2Variable {
+	from
+		string : String
+	to
+		variable : CICD2!VariableDeclaration(
+			name <- string
+		)
+}
+
 lazy rule String2StringLiteral {
 	from
 		input : String
 	to
-		output : CICD2!StringLiteral(
-			value <- input
+		outptu : CICD2!StringLiteral(
+			value <- if input.oclIsUndefined() then '' else input endif
 		)
 }
+[/template]
 
+[template public generateReplaceStep(transformation : ReplaceStep)]
+[generateCopyPipeline()/]
 rule ReplaceStep {
 	from
 		input : CICD1!Step (
@@ -128,14 +374,12 @@ rule ReplaceStep {
 		)
 	to
 		output : 
-[if (step.oclIsTypeOf(Command))]
-[let command : Command = step.oclAsType(Command)]
-			CICD2!Command (
-				program <- thisModule.String2StringLiteral([command.program.oclAsType(StringLiteral).value/])
-[/let]
-			)
-[/if]
+			[initStep(step)/]
 }
+
+
+
+[createAssignment()/]
 
 abstract rule Step {
 	from
@@ -277,16 +521,14 @@ rule Assignment[index/] {
 [/template]
 
 [template public generateATLScript(transformation : ATLScript)]
-[script/]
+[unquoteString(script)/]
 [/template]
 
 [template public generateReplaceAgentLabels(transformation : ReplaceAgentLabels)]
 [generateCopyPipeline()/]
 rule ReplaceAgentLabels extends Agent {
 	from
-		input : CICD1!Agent(
-			[if (not condition.oclIsUndefined())][unquoteString(condition)/][/if]
-		)
+		input : CICD1!Agent[if (not condition.oclIsUndefined())]([unquoteString(condition)/])[/if]
 	to
 		output : CICD2!CustomAgent(
 			labels <- Sequence{
@@ -344,7 +586,7 @@ rule PipelineWithTrigger extends Pipeline {
 [generateExpression2StringHelpers('CICD1')/]
 [/template]
 
-[template public generateGenerateTrigger(trigger : Trigger)]
+[template public generateGenerateTrigger(trigger : CICD::Trigger)]
 [if (trigger.oclIsTypeOf(ManualTrigger))]
 lazy rule GenerateTrigger {
 	from input : String
@@ -922,7 +1164,7 @@ create OUT : CircleCI2 from IN : CircleCI1;
 rule Workflow {
 	from
 		input : CircleCI!Workflow (
-			input.name <> '[transformation.name/]'
+			input.name <> '[unquoteString(transformation.name)/]'
 		)
 	to
 		drop

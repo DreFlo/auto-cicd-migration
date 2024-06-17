@@ -67,16 +67,28 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 			return createATLScript();
 		case TransformationsPackage.CHANGE_PLUGIN:
 			return createChangePlugin();
-		case TransformationsPackage.CHANGE_AGENT_LABEL:
-			return createChangeAgentLabel();
 		case TransformationsPackage.REPLACE_AGENT_LABELS:
 			return createReplaceAgentLabels();
 		case TransformationsPackage.ADD_TRIGGER:
 			return createAddTrigger();
+		case TransformationsPackage.JOB_TRANSFORMATION:
+			return createJobTransformation();
+		case TransformationsPackage.EDIT_STEP:
+			return createEditStep();
+		case TransformationsPackage.NEW_STEP:
+			return createNewStep();
 		case TransformationsPackage.REPLACE_STEP:
 			return createReplaceStep();
+		case TransformationsPackage.ADD_STEP:
+			return createAddStep();
 		case TransformationsPackage.DELETE_STEP:
 			return createDeleteStep();
+		case TransformationsPackage.ADD_PORTS:
+			return createAddPorts();
+		case TransformationsPackage.SET_OPTIONS:
+			return createSetOptions();
+		case TransformationsPackage.CHANGE_IMAGE:
+			return createChangeImage();
 		case TransformationsPackage.ADD_ORB_REFERENCE_EXECUTOR:
 			return createAddOrbReferenceExecutor();
 		case TransformationsPackage.SET_CIRCLE_CI_VERSION:
@@ -167,17 +179,6 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
-	public ChangeAgentLabel createChangeAgentLabel() {
-		ChangeAgentLabelImpl changeAgentLabel = new ChangeAgentLabelImpl();
-		return changeAgentLabel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public ReplaceAgentLabels createReplaceAgentLabels() {
 		ReplaceAgentLabelsImpl replaceAgentLabels = new ReplaceAgentLabelsImpl();
 		return replaceAgentLabels;
@@ -200,6 +201,39 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public JobTransformation createJobTransformation() {
+		JobTransformationImpl jobTransformation = new JobTransformationImpl();
+		return jobTransformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EditStep createEditStep() {
+		EditStepImpl editStep = new EditStepImpl();
+		return editStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NewStep createNewStep() {
+		NewStepImpl newStep = new NewStepImpl();
+		return newStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ReplaceStep createReplaceStep() {
 		ReplaceStepImpl replaceStep = new ReplaceStepImpl();
 		return replaceStep;
@@ -211,9 +245,53 @@ public class TransformationsFactoryImpl extends EFactoryImpl implements Transfor
 	 * @generated
 	 */
 	@Override
+	public AddStep createAddStep() {
+		AddStepImpl addStep = new AddStepImpl();
+		return addStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DeleteStep createDeleteStep() {
 		DeleteStepImpl deleteStep = new DeleteStepImpl();
 		return deleteStep;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AddPorts createAddPorts() {
+		AddPortsImpl addPorts = new AddPortsImpl();
+		return addPorts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SetOptions createSetOptions() {
+		SetOptionsImpl setOptions = new SetOptionsImpl();
+		return setOptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ChangeImage createChangeImage() {
+		ChangeImageImpl changeImage = new ChangeImageImpl();
+		return changeImage;
 	}
 
 	/**

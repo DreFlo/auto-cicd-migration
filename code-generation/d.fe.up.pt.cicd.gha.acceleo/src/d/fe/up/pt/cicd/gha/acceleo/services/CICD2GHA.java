@@ -51,11 +51,16 @@ public class CICD2GHA {
 		}
 	}
 	
-	public String quoteString(String string) {
+	public String quoteString(String string, Boolean singleQuotes) {
 		if (string.matches("^\"(?:\\\\.|[^\\\"])*\"$") || string.matches("^'(?:\\\\.|[^\\'])*'$")) {
 			return string;
 		} else {
-			return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\\\"").replaceAll("(?<!\\\\)\\\\(?!\\\\)", "\\\\") + "\"";
+			if (!singleQuotes) {
+				return "\"" + string.replaceAll("(?<!\\\\)\"", "\\\\\"").replace("\\", "\\\\") + "\"";
+			}
+			else {
+				return "'" + string + "'";
+			}
 		}
 	}
 	

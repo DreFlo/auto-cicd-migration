@@ -133,7 +133,7 @@ abstract rule Job2Job {
 				else
 					OclUndefined
 				endif,
-			name <- cicdJob.id,
+			name <- cicdJob.id.replaceAll('/', '-'),
 			outputs <- cicdJob.outputs, 
 			services <- cicdJob.services->collect(service | thisModule.DockerContainer2Service(service)),
 			strategy <- cicdJob.matrix,

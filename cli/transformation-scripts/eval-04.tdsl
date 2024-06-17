@@ -1,3 +1,7 @@
-during {
+while {
     add trigger when "input.triggers->isEmpty()" manual
+    set container options when "true" to '--user root'
+    replace step 2 on 'build-and-test' with command {
+        script 'pip install -r requirements.txt'
+    }
 }

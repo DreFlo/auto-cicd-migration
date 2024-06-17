@@ -1,5 +1,5 @@
 name: "Workflow"
-run-name: Deploy to ${{ inputs || rerere && 3 || 4 }} by @${{ github.actor }}
+run-name: Deploy to ${{ inputs || "rerere" && 3 || 4 }} by @${{ github.actor }}
 on:
   check_run:
     types: assigned
@@ -21,7 +21,7 @@ on:
     outputs:
       workflow_output1:
         description: "The first job output"
-        value: ${{ jobs.my_job.outputs.job_output1 }}
+        value: ${{ jobs.my_job.outputs.job_output1 || 'rerere' && 3 || 4 }}
       workflow_output2:
         description: "The second job output"
         value: ${{ jobs.my_job.outputs.job_output2 }}

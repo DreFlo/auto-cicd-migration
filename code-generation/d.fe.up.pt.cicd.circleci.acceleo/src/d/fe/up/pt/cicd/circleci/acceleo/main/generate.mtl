@@ -232,7 +232,7 @@ executor: [executor.name/]
 [if (dockerContainer.oclIsTypeOf(NullDockerContainer))]
 - 
   image: [generateExpression(image)/]
-  NULL_DOCKER_CONTAINER: [generateExpression(dockerContainer.image)/]
+  name: "%%__CICD__AGENT#%!!__#%!![dockerContainer.oclAsType(NullDockerContainer).agent/]"
 [elseif (dockerContainer.oclIsTypeOf(DockerContainer))]
 [generateDockerContainer(dockerContainer.oclAsType(DockerContainer))/]
 [/if]

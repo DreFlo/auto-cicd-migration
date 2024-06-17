@@ -8,6 +8,7 @@ import d.fe.up.pt.cicd.metamodel.CICD.LinuxAgent;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class LinuxAgentImpl extends PresetAgentImpl implements LinuxAgent {
 	/**
-	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
+	 * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContainer()
@@ -63,15 +64,6 @@ public class LinuxAgentImpl extends PresetAgentImpl implements LinuxAgent {
 	 */
 	@Override
 	public DockerContainer getContainer() {
-		if (container != null && container.eIsProxy()) {
-			InternalEObject oldContainer = (InternalEObject) container;
-			container = (DockerContainer) eResolveProxy(oldContainer);
-			if (container != oldContainer) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CICDPackage.LINUX_AGENT__CONTAINER,
-							oldContainer, container));
-			}
-		}
 		return container;
 	}
 
@@ -80,8 +72,18 @@ public class LinuxAgentImpl extends PresetAgentImpl implements LinuxAgent {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DockerContainer basicGetContainer() {
-		return container;
+	public NotificationChain basicSetContainer(DockerContainer newContainer, NotificationChain msgs) {
+		DockerContainer oldContainer = container;
+		container = newContainer;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					CICDPackage.LINUX_AGENT__CONTAINER, oldContainer, newContainer);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -91,11 +93,34 @@ public class LinuxAgentImpl extends PresetAgentImpl implements LinuxAgent {
 	 */
 	@Override
 	public void setContainer(DockerContainer newContainer) {
-		DockerContainer oldContainer = container;
-		container = newContainer;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.LINUX_AGENT__CONTAINER, oldContainer,
-					container));
+		if (newContainer != container) {
+			NotificationChain msgs = null;
+			if (container != null)
+				msgs = ((InternalEObject) container).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.LINUX_AGENT__CONTAINER, null, msgs);
+			if (newContainer != null)
+				msgs = ((InternalEObject) newContainer).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - CICDPackage.LINUX_AGENT__CONTAINER, null, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CICDPackage.LINUX_AGENT__CONTAINER, newContainer,
+					newContainer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case CICDPackage.LINUX_AGENT__CONTAINER:
+			return basicSetContainer(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -107,9 +132,7 @@ public class LinuxAgentImpl extends PresetAgentImpl implements LinuxAgent {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case CICDPackage.LINUX_AGENT__CONTAINER:
-			if (resolve)
-				return getContainer();
-			return basicGetContainer();
+			return getContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

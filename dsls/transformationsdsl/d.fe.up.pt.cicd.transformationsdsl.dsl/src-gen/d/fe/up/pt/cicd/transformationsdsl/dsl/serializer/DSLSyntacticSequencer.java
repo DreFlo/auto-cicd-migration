@@ -85,7 +85,7 @@ public class DSLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'on'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) 'run' 'ATL' (ambiguity) model=MODELS
+	 *     (rule start) 'run' 'atl' (ambiguity) model=MODELS
 	 
 	 * </pre>
 	 */

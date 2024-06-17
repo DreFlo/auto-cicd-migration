@@ -1,6 +1,6 @@
 # CICD Language Transpiler
 
-[![DOI](https://zenodo.org/badge/753056108.svg)](https://zenodo.org/doi/10.5281/zenodo.11922313)
+<a href="https://zenodo.org/doi/10.5281/zenodo.11922313"><img src="https://zenodo.org/badge/753056108.svg" alt="DOI"></a>
 
 ## Project Structure
 

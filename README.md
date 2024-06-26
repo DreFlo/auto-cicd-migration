@@ -4,7 +4,7 @@
 
 ## Thesis
 
-[Thesis](./docs/thesis/thesis.pdf)
+[Thesis](./doc/thesis/thesis.pdf)
 
 ## Project Structure
 

@@ -9,7 +9,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="preTIM" upperBound="-1"
         eType="#//TSMTransformation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="onTIM" upperBound="-1"
-        eType="#//Transformation" containment="true"/>
+        eType="#//TIMTransformation" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="postTIM" upperBound="-1"
         eType="#//TSMTransformation" containment="true"/>
   </eClassifiers>
@@ -45,7 +45,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="ecore:EClass ../../d.fe.up.pt.cicd.metamodel/model/CICD.ecore#//Trigger"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="JobTransformation" eSuperTypes="#//TIMTransformation">
+  <eClassifiers xsi:type="ecore:EClass" name="JobTransformation" abstract="true" eSuperTypes="#//TIMTransformation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="job" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EditStep" eSuperTypes="#//JobTransformation">

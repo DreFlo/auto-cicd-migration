@@ -118,7 +118,7 @@ diffs = [diff for diff in diffs if not full_variable_names(diff)]
 diffs = [diff for diff in diffs if not empty_map_to_null(diff)]
 diffs = [diff for diff in diffs if not if_without_brackets(diff)]
 #diffs = [diff for diff in diffs if not delete_zero(diff)]
-diffs = [diff for diff in diffs if not environment_variable_syntax(diff)]
+#diffs = [diff for diff in diffs if not environment_variable_syntax(diff)]
 diffs = [diff for diff in diffs if not container_image(diff)]
 
 print('\n'.join(diffs))

@@ -78,7 +78,7 @@ def encoding(string):
             return True
     return False
 
-functions = [native_package_version_mismatch, changed_name, trigger_deleted, macos_version_mismatch, native_package_lost_args, step_env_deleted, string_to_double, continue_on_error, encoding]
+functions = [native_package_version_mismatch, changed_name, trigger_deleted, native_package_lost_args, step_env_deleted, string_to_double, continue_on_error, encoding, macos_version_mismatch]
 
 for diff in diffs:
     for function in functions:

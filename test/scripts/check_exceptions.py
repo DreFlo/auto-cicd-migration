@@ -2,7 +2,7 @@ import re
 
 logs = ''
 
-with open('..\..\cli\log_circleci', 'r', encoding='utf-16le') as file:
+with open('..\..\cli\log_circleci_validated', 'r', encoding='utf-16le') as file:
     logs = file.read()
 
 split_logs = re.split(r"\n(?=Running \.\.\\)", logs)
@@ -19,6 +19,10 @@ ATL_exceptions = [log for log in file_exceptions if 'org.eclipse.m2m.atl.engine.
 
 null_exceptions = [log for log in file_exceptions if 'java.lang.NullPointerException' in log]
 
+no_dot_ops = [log for log in file_exceptions if 'NoDotOps' in log]
+
+severe_exceptions = [log for log in file_exceptions if 'SEVERE' in log]
+
 print(len(split_logs))
 print(len(file_exceptions))
 print(len(YAML_parser_exceptions))
@@ -26,6 +30,9 @@ print(len(gha_syntax_exceptions))
 print(len(circleci_syntax_exceptions))
 print(len(ATL_exceptions))
 print(len(null_exceptions))
+print(len(no_dot_ops))
+print(len(severe_exceptions))
+print(len(no_dot_ops)/len(severe_exceptions))
 
 # print(set(YAML_parser_exceptions).intersection(gha_syntax_exceptions))
 # print(set(YAML_parser_exceptions).intersection(circleci_syntax_exceptions))

@@ -11,6 +11,7 @@ files_with_native_package_lost_args = 0
 files_with_step_env_deleted = 0
 files_with_string_to_double = 0
 files_with_encoding = 0
+files_with_macos_version_mismatch = 0
 
 unknown_diffs = []
 
@@ -22,7 +23,7 @@ for filename in os.listdir(categorized_diffs_dir):
             if diffs['total'] > 0: 
                 files_with_diffs += 1
                 total_no_name_change_no_trigger = diffs['total'] - (diffs['changed_name'] + diffs['trigger_deleted'])
-                total_no_metamodel_no_circleci_shenanigans = total_no_name_change_no_trigger - (diffs['native_package_version_mismatch'] + diffs['macos_version_mismatch'])
+                total_no_metamodel_no_circleci_shenanigans = total_no_name_change_no_trigger - (diffs['native_package_version_mismatch'])
                 if total_no_name_change_no_trigger > 0:
                     files_with_diffs_no_name_changes += 1
                 if total_no_metamodel_no_circleci_shenanigans > 0:
@@ -41,6 +42,8 @@ for filename in os.listdir(categorized_diffs_dir):
                     files_with_string_to_double += 1
                 if diffs['encoding'] > 0:
                     files_with_encoding += 1
+                if diffs['macos_version_mismatch'] > 0:
+                    files_with_macos_version_mismatch += 1
 
 print(f'Files with diffs: {files_with_diffs}')
 print(f'Files with diffs (excluding name changes and trigger deletions): {files_with_diffs_no_name_changes}')
@@ -49,5 +52,6 @@ print(f'Files with lost args: {files_with_native_package_lost_args}')
 print(f'Files with step env deleted: {files_with_step_env_deleted}')
 print(f'Files with string to double: {files_with_string_to_double}')
 print(f'Files with encoding: {files_with_encoding}')
+print(f'Files with macos version mismatch: {files_with_macos_version_mismatch}')
 print(f'Files with unknown diffs: {files_with_unknown_diffs}')
 # for diff in unknown_diffs:print(diff)

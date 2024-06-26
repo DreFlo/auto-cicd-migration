@@ -461,12 +461,6 @@ rule CopyVariableReference
 	t.reference ::= s.reference;
 }
 
-rule CopyBuiltInFunction
-	transform s : Source!CICD::BuiltInFunction
-	to t : Target!CICD::BuiltInFunction
-	extends CopyExpression {
-}
-
 @abstract
 rule CopyBinaryOp
 	transform s : Source!CICD::BinaryOp

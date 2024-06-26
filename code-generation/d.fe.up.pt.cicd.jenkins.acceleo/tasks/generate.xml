@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="d.fe.up.pt.cicd.jenkins.acceleo">
     <property name="ECLIPSE_HOME" value="../../../../../../../eclipse/modeling-2023-12/eclipse"/>
-    <property name="ECLIPSE_WORKSPACE" value="../../../../../../Dissertation Eclipse/runtime-EclipseXtext"/>
+    <property name="ECLIPSE_WORKSPACE" value="../../../../../../Dissertation Eclipse/workspace"/>
 
     <!-- The classpath with only the dependencies used by the project -->
     <path id="d.fe.up.pt.cicd.jenkins.acceleo.libraryclasspath">

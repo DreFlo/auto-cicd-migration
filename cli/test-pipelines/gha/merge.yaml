@@ -1,0 +1,13 @@
+name: "Workflow"
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+    - cron: "*/10 * * * *"
+
+jobs:
+  build:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - run: echo "Hello World!A"

@@ -512,7 +512,7 @@ add_ssh_keys:
 [template public generateScheduleTrigger(trigger : ScheduleTrigger) post (trim())]
 - 
   schedule:
-    cron: [cron/]
+    cron: [quoteString(cron).toString().replaceAll('\n', '\\\\n')/]
 [if (branches->notEmpty())]
     branches:
     [if (ignoreSpecifiedBranches)]

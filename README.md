@@ -1,5 +1,7 @@
 # CICD Language Transpiler
 
+<a href="https://zenodo.org/doi/10.5281/zenodo.11922313"><img src="https://zenodo.org/badge/753056108.svg" alt="DOI"></a>
+
 ## Project Structure
 
 - [cli](./cli/) - Contains the source code for the command line interface and the logic to integrate the various modeling projects into one cohesive program
